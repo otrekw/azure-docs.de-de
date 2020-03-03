@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031559"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622015"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -26,8 +26,8 @@ Die neue v2-SKU enthält die folgenden Verbesserungen:
   Zonenredundanz ist nur dort verfügbar, wo auch Azure-Zonen verfügbar sind. In anderen Regionen werden alle anderen Features unterstützt. Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statische VIP**: Die Application Gateway v2-SKU unterstützt exklusiv den statischen VIP-Typ. Dadurch wird sichergestellt, dass die dem Application Gateway zugeordnete VIP während des Lebenszyklus der Bereitstellung unverändert bleibt, selbst nach einem Neustart.  Es gibt keine statische VIP in v1, daher müssen Sie für das Routing des Domänennamens an App Services über das Application Gateway die URL des Application Gateways anstelle der IP-Adresse verwenden.
 - **Erneutes Generieren von Headern**: Application Gateway ermöglicht Ihnen das Hinzufügen, Entfernen oder Aktualisieren von HTTP-Anforderungs- und Antwortheadern mit dem v2-SKU. Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern mit Application Gateway](rewrite-http-headers.md).
-- **Key Vault-Integration (Vorschau)** : Application Gateway v2 unterstützt die Integration mit Key Vault (in der öffentlichen Vorschau) für Serverzertifikate, die an HTTPS-fähige Listener angefügt sind. Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
-- **Azure Kubernetes Service-Eingangscontroller (Vorschau)** : Der Application Gateway v2-Eingangscontroller ermöglicht die Verwendung von Azure Application Gateway als Eingang für einen Azure Kubernetes Service (AKS), der als AKS-Cluster bezeichnet wird. Weitere Informationen finden Sie auf der [Dokumentationsseite](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Key Vault-Integration**: Application Gateway v2 unterstützt die Integration in Key Vault für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
+- **Azure Kubernetes Service-Eingangscontroller**: Der Application Gateway v2-Eingangscontroller ermöglicht die Verwendung von Azure Application Gateway als Eingang für einen Azure Kubernetes Service (AKS), der als AKS-Cluster bezeichnet wird. Weitere Informationen finden Sie unter [Was ist der Application Gateway-Eingangscontroller?](ingress-controller-overview.md).
 - **Leistungsverbesserungen**: Die v2-SKU bietet eine bis zu fünf Mal bessere SSL-Auslagerungsleistung verglichen mit der Standard/WAF-SKU.
 - **Schnellere Bereitstellung und Aktualisierung**: Die v2-SKU ermöglicht verglichen mit der Standard/WAF-SKU eine schnellere Bereitstellung und Aktualisierung. Dies umfasst auch Änderungen an der WAF-Konfiguration.
 

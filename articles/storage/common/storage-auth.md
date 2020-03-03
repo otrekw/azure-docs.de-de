@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 783e8666e2602f9251d81e976a27fbce099defa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460536"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616288"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorisierung des Zugriffs auf Daten in Azure Storage
 
@@ -23,19 +23,21 @@ Immer dann, wenn Sie auf Daten in Ihrem Speicherkonto zugreifen, sendet der Clie
 
 In der folgenden Tabelle werden die Optionen beschrieben, die in Azure Storage zum Autorisieren des Ressourcenzugriffs zur Verfügung stehen:
 
-|  |Gemeinsam verwendeter Schlüssel (Speicherkontoschlüssel)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |Anonymer öffentlicher Lesezugriff  |
-|---------|---------|---------|---------|---------|
-|Azure-Blobs     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |[Unterstützt](storage-auth-aad.md)         |[Unterstützt](../blobs/storage-manage-access-to-resources.md)         |
-|Azure Files (SMB)     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |Nicht unterstützt         |[Unterstützt, aber nur mit AAD Domain Services](../files/storage-files-active-directory-overview.md)         |Nicht unterstützt         |
-|Azure Files (REST)     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |Nicht unterstützt         |Nicht unterstützt         |
-|Azure-Warteschlangen     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |[Unterstützt](storage-auth-aad.md)         |Nicht unterstützt         |
-|Azure-Tabellen     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |Nicht unterstützt         |Nicht unterstützt         |
+|  |Gemeinsam verwendeter Schlüssel (Speicherkontoschlüssel)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |Active Directory (Vorschau) |Anonymer öffentlicher Lesezugriff  |
+|---------|---------|---------|---------|---------|---------|
+|Azure-Blobs     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |[Unterstützt](storage-auth-aad.md)         |Nicht unterstützt|[Unterstützt](../blobs/storage-manage-access-to-resources.md)         |
+|Azure Files (SMB)     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |Nicht unterstützt         |[Unterstützt, aber nur mit AAD Domain Services](../files/storage-files-active-directory-overview.md)         |[Unterstützt, Anmeldeinformationen müssen mit Azure AD synchronisiert werden](../files/storage-files-active-directory-overview.md)|Nicht unterstützt         |
+|Azure Files (REST)     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |Nicht unterstützt         |Nicht unterstützt |Nicht unterstützt         |
+|Azure-Warteschlangen     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |[Unterstützt](storage-auth-aad.md)         |Nicht unterstützt | Nicht unterstützt         |
+|Azure-Tabellen     |[Unterstützt](/rest/api/storageservices/authorize-with-shared-key/)         |[Unterstützt](storage-sas-overview.md)         |Nicht unterstützt         |Nicht unterstützt| Nicht unterstützt         |
 
 Im Anschluss werden die einzelnen Autorisierungsoptionen kurz erläutert:
 
 - **Integration von Azure Active Directory (Azure AD)** für Blobs und Warteschlangen. Azure AD bietet rollenbasierte Zugriffssteuerung (RBAC, Role-Based Access Control) für eine präzise Steuerung des Zugriffs eines Clients auf Ressourcen in einem Speicherkonto. Weitere Informationen zur Azure AD-Integration für Blobs und Warteschlangen finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-- **Azure AD Domain Services-Integration (Vorschauversion)** für Dateien. Azure Files unterstützt die identitätsbasierte Autorisierung per Server Message Block (SMB) über Azure AD DS. Sie können die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Clientzugriffs auf Azure Files-Ressourcen in einem Speicherkonto verwenden. Weitere Informationen zur Azure AD-Integration für Dateien unter Verwendung von Domain Services finden Sie unter [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau) – Übersicht](../files/storage-files-active-directory-overview.md).
+- **Azure Active Directory Domain Services-Authentifizierung (Azure AD DS)** für Azure Files. Azure Files unterstützt die identitätsbasierte Autorisierung per Server Message Block (SMB) über Azure AD DS. Sie können die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für eine präzise Steuerung des Clientzugriffs auf Azure Files-Ressourcen in einem Speicherkonto verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
+
+- **AD-Authentifizierung (Active Directory)** für Azure Files. Azure Files unterstützt identitätsbasierte Autorisierung über SMB über AD. Ihr AD-Domänendienst kann auf lokalen Computern oder auf Azure-VMs gehostet werden. Der SMB-Zugriff auf Dateien wird mithilfe von AD-Anmeldeinformationen von in die Domäne eingebundenen Computern unterstützt, entweder lokal oder in Azure. Sie können RBAC für Zugriffssteuerung auf Freigabeebene und NTFS-DACLs für die Berechtigungserzwingung auf Verzeichnis-/Dateiebene verwenden. Weitere Informationen zur Azure Files-Authentifizierung mithilfe von Domänendiensten finden Sie in der [Übersicht](../files/storage-files-active-directory-overview.md).
 
 - **Autorisierung mit gemeinsam verwendetem Schlüssel** für Blobs, Dateien, Warteschlangen und Tabellen. Ein Client mit gemeinsam verwendetem Schlüssel übergibt mit jeder Anforderung einen Header, der mit dem Speicherkonto-Zugriffsschlüssel signiert wird. Weitere Informationen finden Sie unter [Authentifizieren mit gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key/).
 - **Shared Access Signatures** für Blobs, Dateien, Warteschlangen und Tabellen. Shared Access Signatures (SAS) ermöglichen den begrenzten delegierten Zugriff auf Ressourcen in einem Speicherkonto. Einschränkungen des Zeitintervalls, für das die Signatur gültig ist, oder von Berechtigungen, die sie gewährt, bieten Flexibilität beim Verwalten des Zugriffs. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).

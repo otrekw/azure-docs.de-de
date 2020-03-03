@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766829"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505893"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 
@@ -59,7 +59,7 @@ Nachdem Sie die Abgleichskriterien angegeben haben, können sie der Testkonfigur
 
 ### <a name="default-health-probe-settings"></a>Einstellungen für die standardmäßige Integritätsüberprüfung
 
-| Überprüfungseigenschaft | value | Beschreibung |
+| Überprüfungseigenschaft | value | BESCHREIBUNG |
 | --- | --- | --- |
 | Überprüfungs-URL |http://127.0.0.1:\<port\>/ |URL-Pfad |
 | Intervall |30 |Wartezeitraum in Sekunden, bevor der nächste Integritätstest gesendet wird.|
@@ -85,7 +85,7 @@ Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle 
 
 Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefinierten Integritätstests.
 
-| Überprüfungseigenschaft | Beschreibung |
+| Überprüfungseigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
 | Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
@@ -101,9 +101,11 @@ Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefin
 
 ## <a name="nsg-considerations"></a>NSG-Aspekte
 
-Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, müssen die Portbereiche 65503–65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet sein. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
+Sie müssen eingehenden Internetdatenverkehr über die TCP-Ports 65503–65534 (für die Application Gateway v1-SKU) und über die TCP-Ports 65200–65535 (für die v2-SKU) mit dem Zielsubnetz **Beliebig** und der Quelle **GatewayManager**-Diensttag zulassen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich.
 
-Außerdem kann die Internetkonnektivität in ausgehender Richtung nicht blockiert werden, und eingehender Datenverkehr vom AzureLoadBalancer-Tag muss zugelassen werden.
+Außerdem kann die Internetkonnektivität in ausgehender Richtung nicht blockiert werden, und eingehender Datenverkehr vom **AzureLoadBalancer**-Tag muss zugelassen werden.
+
+Weitere Informationen finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich mit der Systemüberwachung von Application Gateway vertraut gemacht haben, können Sie einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-portal.md) im Azure-Portal oder einen [benutzerdefinierten Integritätstest](application-gateway-create-probe-ps.md) mit PowerShell und dem Azure Resource Manager-Bereitstellungsmodell konfigurieren.

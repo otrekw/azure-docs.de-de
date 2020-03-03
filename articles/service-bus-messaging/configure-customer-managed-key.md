@@ -6,14 +6,14 @@ ms.service: service-bus
 documentationcenter: ''
 author: axisc
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903317"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624083"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Service Bus-Daten mithilfe des Azure-Portals
 Azure Service Bus Premium ermöglicht die Verschlüsselung ruhender Daten mit der Azure-Speicherdienstverschlüsselung (Azure Storage Service Encryption, SSE). Service Bus Premium verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle mit Azure Storage gespeicherten Daten durch von Microsoft verwaltete Schlüssel verschlüsselt. 
@@ -78,22 +78,22 @@ Nachdem Sie kundenseitig verwaltete Schlüssel aktiviert haben, müssen Sie den 
     1. Geben Sie die Details für den Schlüssel ein, und klicken Sie auf **Auswählen**. Dadurch wird die Verschlüsselung von ruhenden Daten im Namespace mit einem kundenseitig verwalteten Schlüssel ermöglicht. 
 
 
-> [!IMPORTANT]
-> Wenn Sie vom Kunden verwaltete Schlüssel zusammen mit der georedundanten Notfallwiederherstellung verwenden möchten, überprüfen Sie Folgendes: 
->
-> Um die Verschlüsselung im Ruhezustand mit vom Kunden verwalteten Schlüsseln zu aktivieren, wird eine [Zugriffsrichtlinie](../key-vault/key-vault-secure-your-key-vault.md) für die von Service Bus verwaltete Identität in der angegebenen Azure Key Vault-Instanz eingerichtet. Dies gewährleistet den kontrollierten Zugriff auf Azure Key Vault aus dem Azure Service Bus-Namespace.
->
-> Gehen Sie daher folgendermaßen vor:
-> 
->   * Wenn die [georedundante Notfallwiederherstellung](service-bus-geo-dr.md) bereits für den Service Bus-Namespace aktiviert ist und Sie den vom Kunden verwalteten Schlüssel aktivieren möchten: 
->     * Heben Sie die Kopplung auf.
->     * [Richten Sie die Zugriffsrichtlinien](../key-vault/managed-identity.md) für die verwaltete Identität sowohl für den primären als auch für den sekundären Namespace auf den Schlüsseltresor ein.
->     * Richten Sie die Verschlüsselung für den primären Namespace ein.
->     * Stellen Sie die Kopplung des primären und des sekundären Namespace wieder her.
-> 
->   * Wenn Sie in einem Service Bus-Namespace, in dem bereits vom Kunden verwaltete Schlüssel eingerichtet sind, georedundante Notfallwiederherstellung aktivieren möchten:
->     * [Richten Sie die Zugriffsrichtlinien](../key-vault/managed-identity.md) für die verwaltete Identität für den sekundären Namespace auf den Schlüsseltresor ein.
->     * Koppeln Sie den primären und den sekundären Namespace.
+    > [!IMPORTANT]
+    > Wenn Sie vom Kunden verwaltete Schlüssel zusammen mit der georedundanten Notfallwiederherstellung verwenden möchten, überprüfen Sie Folgendes: 
+    >
+    > Um die Verschlüsselung im Ruhezustand mit vom Kunden verwalteten Schlüsseln zu aktivieren, wird eine [Zugriffsrichtlinie](../key-vault/key-vault-secure-your-key-vault.md) für die von Service Bus verwaltete Identität in der angegebenen Azure Key Vault-Instanz eingerichtet. Dies gewährleistet den kontrollierten Zugriff auf Azure Key Vault aus dem Azure Service Bus-Namespace.
+    >
+    > Gehen Sie daher folgendermaßen vor:
+    > 
+    >   * Wenn die [georedundante Notfallwiederherstellung](service-bus-geo-dr.md) bereits für den Service Bus-Namespace aktiviert ist und Sie den vom Kunden verwalteten Schlüssel aktivieren möchten: 
+    >     * Heben Sie die Kopplung auf.
+    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/managed-identity.md) für die verwaltete Identität sowohl für den primären als auch für den sekundären Namespace auf den Schlüsseltresor ein.
+    >     * Richten Sie die Verschlüsselung für den primären Namespace ein.
+    >     * Stellen Sie die Kopplung des primären und des sekundären Namespace wieder her.
+    > 
+    >   * Wenn Sie in einem Service Bus-Namespace, in dem bereits vom Kunden verwaltete Schlüssel eingerichtet sind, georedundante Notfallwiederherstellung aktivieren möchten:
+    >     * [Richten Sie die Zugriffsrichtlinien](../key-vault/managed-identity.md) für die verwaltete Identität für den sekundären Namespace auf den Schlüsseltresor ein.
+    >     * Koppeln Sie den primären und den sekundären Namespace.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Rotieren der Verschlüsselungsschlüssel
@@ -105,6 +105,224 @@ Sie können Ihren Schlüssel im Schlüsseltresor mit dem Rotationsmechanismus vo
 Wenn Sie den Zugriff auf die Verschlüsselungsschlüssel widerrufen, werden die Daten dadurch nicht aus Service Bus gelöscht. Es kann jedoch nicht über den Event Hubs-Namespace auf die Daten zugegriffen werden. Sie können den Verschlüsselungsschlüssel mithilfe von Zugriffsrichtlinien oder durch das Löschen des Schlüssels widerrufen. Unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md) erfahren Sie mehr über Zugriffsrichtlinien und das Sichern Ihres Schlüsseltresors.
 
 Nachdem der Verschlüsselungsschlüssel widerrufen wurde, funktioniert der Service Bus-Dienst im verschlüsselten Namespace nicht mehr. Wenn der Zugriff auf den Schlüssel aktiviert oder der gelöschte Schlüssel wiederhergestellt wird, wählt der Service Bus-Dienst den Schlüssel aus, sodass Sie aus dem verschlüsselten Service Bus-Namespace auf die Daten zugreifen können.
+
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Verwenden von Resource Manager-Vorlagen zum Aktivieren von Verschlüsselung
+In diesem Abschnitt wird gezeigt, wie die folgenden Aufgaben mithilfe von **Azure Resource Manager-Vorlagen** ausgeführt werden. 
+
+1. Erstellen Sie einen Service Bus-Namespace vom Typ **Premium** mit einer **verwalteten Dienstidentität**.
+2. Erstellen Sie einen **Schlüsseltresor**, und gewähren Sie der Dienstidentität Zugriff auf den Schlüsseltresor. 
+3. Aktualisieren Sie den Service Bus-Namespace mit den Schlüsseltresorinformationen (Schlüssel/Wert). 
+
+
+### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Erstellen eines Service Bus-Namespace vom Typ „Premium“ mit einer verwalteten Dienstidentität
+In diesem Abschnitt erfahren Sie, wie Sie einen Azure Service Bus-Namespace mit einer verwalteten Dienstidentität erstellen, indem Sie eine Azure Resource Manager-Vorlage und PowerShell verwenden. 
+
+1. Erstellen Sie eine Azure Resource Manager-Vorlage, um einen Service Bus-Namespace des Premium-Tarifs mit einer verwalteten Dienstidentität zu erstellen. Benennen Sie die Datei: **CreateServiceBusPremiumNamespace.json**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+    
+             }
+          }
+       ],
+       "outputs":{
+          "ServiceBusNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.ServiceBus/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Erstellen Sie eine Vorlagenparameterdatei mit dem folgenden Namen: **CreateServiceBusPremiumNamespaceParams.json**. 
+
+    > [!NOTE]
+    > Ersetzen Sie die folgenden Werte: 
+    > - `<ServiceBusNamespaceName>`: Der Name Ihres Service Bus-Namespace.
+    > - `<Location>`: Der Speicherort Ihres Service Bus-Namespace.
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    ```
+3. Führen Sie den folgenden PowerShell-Befehl aus, um die Vorlage bereitzustellen und einen Service Bus-Namespace des Typs „Premium“ zu erstellen. Rufen Sie dann die ID des Service Bus-Namespace ab, um sie später zu verwenden. Ersetzen Sie `{MyRG}` durch den Namen der Ressourcengruppe, bevor Sie den Befehl ausführen.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
+    
+    $ServiceBusNamespaceId = $outputs.Outputs["serviceBusNamespaceId"].value
+    ```
+ 
+### <a name="grant-service-bus-namespace-identity-access-to-key-vault"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Service Bus-Namespaceidentität
+
+1. Führen Sie den folgenden Befehl aus, um einen Schlüsseltresor zu erstellen, für den **Bereinigungsschutz** und **vorläufiges Löschen** aktiviert ist. 
+
+    ```powershell
+    New-AzureRmKeyVault -Name "{keyVaultName}" -ResourceGroupName {RGName}  -Location "{location}" -EnableSoftDelete -EnablePurgeProtection    
+    ```
+    
+    (ODER)
+    
+    Führen Sie den folgenden Befehl aus, um einen **vorhandenen Schlüsseltresor** zu aktualisieren. Geben Sie vor dem Ausführen des Befehls Werte für Ressourcengruppen und Schlüsseltresornamen an. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Legen Sie die Schlüsseltresor-Zugriffsrichtlinie so fest, dass die verwaltete Identität des Service Bus-Namespace auf den Schlüsselwert im Schlüsseltresor zugreifen kann. Verwenden Sie die ID des Service Bus-Namespace aus dem vorherigen Abschnitt. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $ServiceBusNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-service-bus-namespace-with-customer-managed-key-from-key-vault"></a>Verschlüsseln von Daten im Service Bus-Namespace mit einem kundenseitig verwalteten Schlüssel aus dem Schlüsseltresor
+Bisher haben Sie die folgenden Schritte ausgeführt: 
+
+1. Sie haben einen Premium-Namespace mit einer verwalteten Identität erstellt.
+2. Sie haben einen Schlüsseltresor erstellt und der verwalteten Identität Zugriff auf den Schlüsseltresor gewährt. 
+
+In diesem Schritt aktualisieren Sie den Service Bus-Namespace mit Schlüsseltresorinformationen. 
+
+1. Erstellen Sie eine JSON-Datei mit dem Namen **UpdateServiceBusNamespaceWithEncryption.json** mit folgendem Inhalt: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.ServiceBus/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Premium",
+                "tier":"Premium",
+                "capacity":1
+             },
+             "properties":{
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Erstellen Sie eine Vorlagenparameterdatei: **UpdateServiceBusNamespaceWithEncryptionParams.json**.
+
+    > [!NOTE]
+    > Ersetzen Sie die folgenden Werte: 
+    > - `<ServiceBusNamespaceName>`: Der Name Ihres Service Bus-Namespace.
+    > - `<Location>`: Der Speicherort Ihres Service Bus-Namespace.
+    > - `<KeyVaultName>`: Der Name Ihres Schlüsseltresors.
+    > - `<KeyName>`: Der Name des Schlüssels im Schlüsseltresor.  
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "namespaceName":{
+             "value":"<ServiceBusNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Führen Sie den folgenden PowerShell-Befehl aus, um die Resource Manager-Vorlage bereitzustellen. Ersetzen Sie `{MyRG}` durch den Namen Ihrer Ressourcengruppe, bevor Sie den Befehl ausführen. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
+    ```
+    
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln:

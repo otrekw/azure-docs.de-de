@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025145"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586783"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten
 
@@ -54,20 +54,23 @@ Eventuell wollen Sie eine Kopie der von den Aufgaben generierten Protokolle oder
 
 > [!TIP]
 > Eine andere Möglichkeit zum Beibehalten von Protokollen und anderen Auftrags- und Aufgabenausgabedaten ist die Verwendung der Bibliothek [Azure Batch File Conventions](batch-task-output.md) (Azure Batch-Dateikonventionen).
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>Auftragsvorbereitungsaufgabe
-Vor der Ausführung der Aufgaben eines Auftrags führt Batch die Auftragsvorbereitungsaufgabe auf jedem Computeknoten aus, der zum Ausführen einer Aufgabe eingeplant ist. Standardmäßig wartet der Batch-Dienst, bis die Auftragsvorbereitungsaufgabe abgeschlossen ist, bevor er die geplanten Aufgaben auf dem Knoten ausführt. Sie können den Dienst allerdings auch dahingehend konfigurieren, dass er nicht wartet. Nach dem Neustart des Knotens wird die Auftragsvorbereitungsaufgabe erneut ausgeführt, aber Sie können dieses Verhalten auch deaktivieren.
+
+
+Vor der Ausführung der Aufgaben eines Auftrags führt Batch die Auftragsvorbereitungsaufgabe auf jedem Computeknoten aus, der zum Ausführen einer Aufgabe eingeplant ist. Standardmäßig wartet Batch, bis die Auftragsvorbereitungsaufgabe abgeschlossen ist, bevor die geplanten Aufgaben auf dem Knoten ausgeführt werden. Sie können den Dienst allerdings auch dahingehend konfigurieren, dass er nicht wartet. Wenn der Knoten neu gestartet wird, wird die Auftragsvorbereitungsaufgabe erneut ausgeführt. Sie können dieses Verhalten auch deaktivieren. Wenn Sie einen Auftrag mit einer Auftragsvorbereitungsaufgabe haben und eine Auftrags-Manager-Aufgabe konfiguriert ist, wird die Auftragsvorbereitungsaufgabe vor der Auftrags-Manager-Aufgabe ausgeführt, genauso wie bei allen anderen Tasks. Die Auftragsvorbereitungsaufgabe wird immer zuerst ausgeführt.
 
 Die Auftragsvorbereitungsaufgabe wird nur auf Knoten ausgeführt, die zum Ausführen einer Aufgabe eingeplant sind. Das verhindert die unnötige Ausführung von Auftragsvorbereitungsaufgaben an Knoten, denen keine Aufgaben zugewiesen sind. Dies kann eintreten, wenn die Anzahl der Aufgaben für einen Auftrag geringer ist, als die Anzahl der Knoten in einem Pool. Dies gilt auch, wenn die [gleichzeitige Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert ist. Einige Knoten bleiben unbeschäftigt, wenn die Gesamtzahl von Aufgaben geringer als die Gesamtzahl der möglichen zeitgleich ausgeführten Aufgaben ist. Indem Sie die Auftragsvorbereitungsaufgabe nicht auf Knoten im Leerlauf ausführen, können Sie bei den Gebühren für Datenübertragungen sparen.
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] unterscheidet sich vom [CloudPool.StartTask][pool_starttask] insofern, dass „JobPreparationTask“ beim Start jedes Auftrags ausgeführt wird, während „StartTask“ nur ausgeführt wird, wenn ein Computeknoten einem Pool erstmals hinzugefügt oder neu gestartet wird.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>Auftragsfreigabeaufgabe
+
+>## <a name="job-release-task"></a>Auftragsfreigabeaufgabe
+
 Nachdem ein Auftrag als abgeschlossen markiert wurde, wird die Auftragsfreigabeaufgabe auf jedem Knoten im Pool ausgeführt, der mindestens eine Aufgabe ausgeführt hat. Um einen Auftrag als abgeschlossen zu markieren, geben Sie eine Terminate-Anforderung aus. Der Batch-Dienst legt anschließend den Status des Auftrags auf *Wird beendet* fest, beendet alle aktiven bzw. ausgeführten Aufgaben im Zusammenhang mit dem Auftrag und führt die Auftragsfreigabeaufgabe aus. Danach wird der Status des Auftrags in *Abgeschlossen* geändert.
 
 > [!NOTE]

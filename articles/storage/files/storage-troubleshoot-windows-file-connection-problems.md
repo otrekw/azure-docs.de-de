@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544972"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597965"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
 Dieser Artikel beschreibt allgemeine Probleme im Zusammenhang mit Microsoft Azure Files, wenn Sie eine Verbindung von Windows-Clients herstellen. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme bereitgestellt. Zusätzlich zu den Schritten zur Problembehandlung in diesem Artikel können Sie auch [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  verwenden, um sicherzustellen, dass die Windows-Clientumgebung über die richtigen erforderlichen Komponenten verfügt. AzFileDiagnostics automatisiert die Erkennung eines Großteils der Symptome, die in diesem Artikel erwähnt werden und hilft, Ihre Umgebung einzurichten, um eine optimale Leistung zu erzielen. Sie erhalten diese Informationen auch unter [Problembehandlung für Azure Files-Freigaben](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Hier finden Sie Schritte zum Beheben von Problemen mit dem Verbinden, Zuordnen und Einbinden von Azure Files-Freigaben.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Fehler 5 beim Bereitstellen einer Azure-Dateifreigabe
@@ -250,7 +247,7 @@ Verwenden Sie eine der folgenden Lösungen:
 
 -   Binden Sie das Laufwerk vom selben Benutzerkonto ein, das auch die Anwendung enthält. Sie können ein Tool wie z.B. PsExec verwenden.
 - Übergeben Sie den Speicherkontonamen und -schlüssel an die Parameter des „net use“-Befehls.
-- Verwenden Sie die den Befehl cmdkey, um die Anmeldeinformationen in Credential Manager hinzuzufügen. Führen Sie dies über eine Befehlszeile im Kontext des Dienstkontos aus. Verwenden Sie dazu entweder eine interaktive Anmeldung oder „runas“.
+- Verwenden Sie die den Befehl cmdkey, um die Anmeldeinformationen in Credential Manager hinzuzufügen. Führen Sie dies über eine Befehlszeile im Kontext des Dienstkontos aus. Verwenden Sie dazu entweder eine interaktive Anmeldung oder `runas`.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Ordnen Sie die Freigabe direkt zu, ohne einen zugeordneten Laufwerkbuchstaben zu verwenden. Einige Anwendungen stellen möglicherweise nicht ordnungsgemäß die Verbindung mit dem Laufwerkbuchstaben wieder her, sodass die Verwendung des vollständigen UNC-Pfads zuverlässiger sein kann. 
@@ -300,7 +297,7 @@ Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob 
 
 ### <a name="cause"></a>Ursache
 
-Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der AAD DS-Authentifizierung (Azure Active Directory Domain Service) für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
+Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure AD DS-Authentifizierung (Azure Active Directory Domain Services) für Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
 
 ### <a name="solution"></a>Lösung
 

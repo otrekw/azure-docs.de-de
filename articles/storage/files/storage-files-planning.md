@@ -4,101 +4,99 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368619"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597809"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
+[Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
 
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. Da Azure Files vollständig verwaltet ist, ist die Bereitstellung in Produktionsszenarien wesentlich einfacher als das Bereitstellen und Verwalten eines Dateiservers oder NAS-Geräts. In diesem Artikel werden die Aspekte behandelt, die beim Bereitstellen einer Azure-Dateifreigabe in der Produktionsumgebung Ihrer Organisation zu berücksichtigen sind.
+- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files SMB-Zugriff bietet, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe des standardmäßigen SMB-Clients einbinden, der unter Windows, macOS und Linux verfügbar ist. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
+
+- **Lokales Zwischenspeichern von Azure-Dateifreigaben mit Azure-Dateisynchronisierung**: Die Azure-Dateisynchronisierung ermöglicht das Zentralisieren der Dateifreigaben Ihrer Organisation in Azure Files, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Die Azure-Dateisynchronisierung transformiert Ihre lokalen Windows Server-Computer in einen schnellen Cache für Ihre Azure-Dateifreigabe. 
+
+Dieser Artikel befasst sich hauptsächlich mit Bereitstellungsüberlegungen zum Bereitstellen einer Azure-Dateifreigabe, die direkt von einem lokalen oder cloudbasierten Client eingebunden werden soll. Weitere Informationen zum Planen einer Azure-Dateisynchronisierungsbereitstellung finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md).
 
 ## <a name="management-concepts"></a>Verwaltungskonzepte
+[!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
- Das folgende Diagramm veranschaulicht die Verwaltungskonstrukte von Azure Files:
+Beim Bereitstellen von Azure-Dateifreigaben in Speicherkonten wird Folgendes empfohlen:
 
-![Dateistruktur](./media/storage-files-introduction/files-concepts.png)
+- Ausschließliches Bereitstellen von Azure-Dateifreigaben in Speicherkonten mit anderen Azure-Dateifreigaben. Auch wenn GPv2-Speicherkonten Speicherkonten mit verschiedenen Zwecken ermöglichen, kann das Mischen von Ressourcen das spätere Beheben von Leistungsproblemen erschweren, da für Speicherressourcen wie z. B. Azure-Dateifreigaben und Blobcontainer die Grenzen des Speicherkontos gemeinsam sind. 
 
-* **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ausführliche Informationen zur Kapazität von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- Beachten Sie beim Bereitstellen von Azure-Dateifreigaben die IOPS-Einschränkungen eines Speicherkontos. Im Idealfall würden Sie Dateifreigaben Speicherkonten im Verhältnis 1:1 zuordnen. Dies ist jedoch ggf. aufgrund verschiedener Beschränkungen und Einschränkungen in Ihrer Organisation oder in Azure nicht immer möglich. Wenn es nicht möglich ist, dass nur eine Dateifreigabe in einem Speicherkonto bereitgestellt wird, sollten Sie berücksichtigen, welche Freigaben sehr aktiv sein werden und welche Freigaben weniger aktiv sind, um sicherzustellen, dass die aktivsten Dateifreigaben nicht zusammen im gleichen Speicherkonto gruppiert werden.
 
-* **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze für die Dateifreigabe erreicht ist. Die Gesamtkapazität für Premium- und Standarddateifreigaben beträgt 100 TiB.
+- Stellen Sie nur GPv2- und FileStorage-Konten bereit, und aktualisieren Sie GPv1- und klassische Speicherkonten, wenn diese in Ihrer Umgebung vorhanden sind. 
 
-* **Verzeichnis:** Eine optionale Hierarchie von Verzeichnissen.
+## <a name="identity"></a>Identity
+Für den Zugriff auf eine Azure-Dateifreigabe muss der Benutzer der Dateifreigabe authentifiziert sein und über Autorisierung für den Zugriff auf die Freigabe verfügen. Dies erfolgt basierend auf der Identität des Benutzers, der auf die Dateifreigabe zugreift. Azure Files ist in drei Hauptidentitätsanbieter integriert:
+- **Active Directory im Besitz des Kunden** (Vorschau): Azure-Speicherkonten können über Domänenbeitritt wie ein Windows Server-Dateiserver oder ein NAS-Gerät mit einem kundeneigenen Windows Server Active Directory verbunden werden. Ihr Active Directory-Domänencontroller kann lokal, auf einem virtuellen Azure-Computer oder sogar als virtueller Computer in einem anderen Cloudanbieter bereitgestellt werden. Azure Files ist unabhängig vom Speicherort des Domänencontrollers. Sobald ein Speicherkonto einer Domäne beigetreten ist, kann der Endbenutzer eine Dateifreigabe mit dem Benutzerkonto einbinden, mit dem er sich bei seinem PC angemeldet hat. Bei der AD-basierten Authentifizierung wird das Kerberos-Authentifizierungsprotokoll verwendet.
+- **Azure Active Directory Domain Services (Azure AD DS)** : Azure AD DS bietet einen von Microsoft verwalteten Active Directory-Domänencontroller, der für Azure-Ressourcen verwendet werden kann. Der Domänenbeitritt Ihres Speicherkontos zu Azure AD DS bietet ähnliche Vorteile wie der Domänenbeitritt zu einem Active Directory im Besitz eines Kunden. Diese Bereitstellungsoption ist besonders nützlich für Lift-and-Shift-Anwendungsszenarien, die AD-basierte Berechtigungen erfordern. Da Azure AD DS AD-basierte Authentifizierung bereitstellt, verwendet diese Option auch das Kerberos-Authentifizierungsprotokoll.
+- **Azure-Speicherkontoschlüssel**: Azure-Dateifreigaben können auch mit einem Azure-Speicherkontoschlüssel bereitgestellt werden. Bei einer solchen Einbindung einer Dateifreigabe wird der Speicherkontoname als Benutzername und der Speicherkontoschlüssel als Kennwort verwendet. Die Verwendung des Speicherkontoschlüssels zum Einbinden der Azure-Dateifreigabe ist praktisch ein Administratorvorgang, da die eingebundene Dateifreigabe über vollständige Berechtigungen für alle Dateien und Ordner auf der Freigabe verfügt, auch wenn diese über ACLs verfügen. Wenn Sie den Speicherkontoschlüssel zum Einbinden über SMB verwenden, wird das NTLMv2-Authentifizierungsprotokoll verwendet.
 
-* **Datei:** Eine Datei in der Freigabe. Die Datei kann bis zu 1 TiB groß sein.
+Für Kunden, die von lokalen Dateiservern migrieren oder neue Dateifreigaben in Azure Files erstellen, die sich wie Windows-Dateiserver oder NAS-Geräte verhalten sollen, ist der Domänenbeitritt des Speicherkontos zum **Active Directory im Besitz des Kunden** die empfohlene Option. Weitere Informationen zum Domänenbeitritt Ihres Speicherkontos zu einem Active Directory im Besitz des Kunden finden Sie unter [Azure Files Active Directory: Übersicht](storage-files-active-directory-overview.md).
 
-* **URL-Format:** Für Anforderung an eine Azure-Dateifreigabe mithilfe des REST-Protokolls „File“ sind Dateien mit dem folgenden URL-Format adressierbar:
+Wenn Sie beabsichtigen, den Speicherkontoschlüssel für den Zugriff auf Ihre Azure-Dateifreigaben zu verwenden, empfehlen wir die Verwendung von Dienstendpunkten, wie im Abschnitt [Netzwerk](#networking) beschrieben.
 
-    ```
-    https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
-    ```
+## <a name="networking"></a>Netzwerk
+Auf Azure-Dateifreigaben kann über den öffentlichen Endpunkt des Speicherkontos von überall aus zugegriffen werden. Dies bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzer autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. In vielen Kundenumgebungen ist die Einbindung der Azure-Dateifreigabe in die lokale Arbeitsstation zunächst nicht erfolgreich, obwohl Einbindungen von virtuellen Azure-Computern problemlos funktionieren. Dies liegt daran, dass viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) Port 445 blockieren, der von SMB für die Kommunikation verwendet wird. 
 
-## <a name="data-access-method"></a>Datenzugriffsmethode
+Zum Aufheben der Blockierung des Zugriffs auf Ihre Azure-Dateifreigabe stehen Ihnen zwei Hauptoptionen zur Verfügung:
 
-Azure Files bietet zwei integrierte, praktische Datenzugriffsmethoden, die Sie für den Zugriff auf Ihre Daten getrennt oder gemeinsam verwenden können:
+- Entsperren von Port 445 für das lokale Netzwerk Ihrer Organisation. Auf Azure-Dateifreigaben kann nur extern über den öffentlichen Endpunkt zugegriffen werden, indem internetsichere Protokolle wie SMB 3.0 und die FileREST-API verwendet werden. Dies ist die einfachste Möglichkeit, vom lokalen Standort aus auf Ihre Azure-Dateifreigabe zuzugreifen, da keine erweiterte Netzwerkkonfiguration erforderlich ist, die über das Ändern von Regeln für den Port für ausgehenden Datenverkehr Ihres Unternehmens hinausgeht. Es wird jedoch empfohlen, Legacy- und veraltete Versionen des SMB-Protokolls zu entfernen (also SMB 1.0). Weitere Informationen hierzu finden Sie unter [Sichern von Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server) und [Sichern von Linux](storage-how-to-use-files-linux.md#securing-linux).
 
-1. **Direkter Cloudzugriff:** Azure-Dateifreigaben können unter [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und/oder [Linux](storage-how-to-use-files-linux.md) mithilfe des Standardprotokolls Server Message Block (SMB) oder über die REST-API „File“ eingebunden werden. Bei SMB erfolgen Lese- und Schreibvorgänge in Dateien auf der Freigabe direkt auf der Dateifreigabe in Azure. Zur Bereitstellung durch eine VM in Azure muss der SMB-Client des Betriebssystems mindestens SMB 2.1 unterstützen. Für eine lokale Bereitstellung, z.B. auf der Arbeitsstation eines Benutzers, muss der von der Arbeitsstation unterstützte SMB-Client mindestens SMB 3.0 (mit Verschlüsselung) unterstützen. Zusätzlich zu SMB können neue Anwendungen oder Dienste über die REST-API „File“ direkt auf die Dateifreigabe zugreifen. Diese stellt eine einfache und skalierbare Anwendungsprogrammierschnittstelle für die Softwareentwicklung bereit.
-2. **Azure-Dateisynchronisierung:** Mit der Azure-Dateisynchronisierung können die Freigaben auf Windows Server-Computern lokal oder in Azure repliziert werden. Ihre Benutzer greifen auf die Dateifreigabe über den Windows-Server zu, z.B. über eine SMB- oder NFS-Freigabe. Dies ist nützlich für Szenarien, in denen Daten weit entfernt von einem Azure-Rechenzentrum abgerufen und geändert werden, z.B. in einer Zweigstelle. Daten können zwischen mehreren Windows Server-Endpunkten repliziert werden, z.B. zwischen mehreren Zweigstellen. Schließlich können Daten in Azure Files mehrstufig gespeichert werden, z.B. so, dass über den Server weiter auf alle Daten zugegriffen werden kann, der Server aber nicht über eine vollständige Kopie der Daten verfügt. Vielmehr werden die Daten beim Öffnen durch den Benutzer nahtlos abgerufen.
+- Zugreifen auf Azure-Dateifreigaben über eine ExpressRoute- oder VPN-Verbindung. Wenn Sie über einen Netzwerktunnel auf Ihre Azure-Dateifreigabe zugreifen, können Sie Ihre Azure-Dateifreigabe wie eine lokale Dateifreigabe einbinden, da der SMB-Datenverkehr Ihre Organisationsgrenze nicht überschreitet.   
 
-Die folgende Tabelle verdeutlicht, wie Ihre Benutzer und Anwendungen auf Ihre Azure-Dateifreigabe zugreifen können:
+Obwohl es aus technischer Sicht wesentlich einfacher ist, ihre Azure-Dateifreigaben über den öffentlichen Endpunkt einzubinden, erwarten wir, dass die meisten Kunden ihre Azure-Dateifreigaben über eine ExpressRoute- oder VPN-Verbindung einbinden. Zu diesem Zweck müssen Sie Folgendes für Ihre Umgebung konfigurieren:  
 
-| | Direkter Cloudzugriff | Azure-Dateisynchronisierung |
-|------------------------|------------|-----------------|
-| Welche Protokolle müssen Sie verwenden? | Azure Files unterstützt SMB 2.1, SMB 3.0 und die REST-API „File“. | Auf die Azure-Dateifreigabe kann über alle unter Windows Server unterstützten Protokolle (SMB, NFS, FTPS usw.) zugegriffen werden. |  
-| Wo wird Ihre Workload ausgeführt? | **In Azure:** Azure Files bietet einen direkten Zugriff auf Ihre Daten. | **Lokal mit langsamem Netzwerk:** Windows-, Linux- und macOS-Clients können eine lokale Windows-Dateifreigabe als schnellen Cache Ihrer Azure-Dateifreigabe einbinden. |
-| Welche Art von Zugriffssteuerungslisten benötigen Sie? | Freigabe- und Dateiebene. | Freigabe-, Datei- und Benutzerebene. |
+- **Netzwerktunnelung mithilfe von ExpressRoute, Site-to-Site- oder Point-to-Site-VPN**: Das Tunneln in ein virtuelles Netzwerk ermöglicht den Zugriff auf Azure-Dateifreigaben vom lokalen Standort aus, auch wenn Port 445 blockiert ist.
+- **Private Endpunkte**: Private Endpunkte stellen Ihrem Speicherkonto eine dedizierte IP-Adresse innerhalb des Adressraums des virtuellen Netzwerks zur Verfügung. Dies ermöglicht Netzwerktunnelung, ohne dass lokale Netzwerke für alle IP-Adressbereiche, die sich im Besitz der Azure-Speichercluster befinden, geöffnet werden müssen. 
+- **DNS--Weiterleitung**: Konfigurieren Sie das lokale DNS, um den Namen Ihres Speicherkontos (also `storageaccount.file.core.windows.net` für die öffentlichen Cloudregionen) aufzulösen, um die IP-Adresse Ihrer privaten Endpunkte aufzulösen.
 
-## <a name="data-security"></a>Datensicherheit
+Informationen zum Planen der Netzwerke, die mit der Bereitstellung einer Azure-Dateifreigabe verbunden sind, finden Sie unter [Überlegungen zum Azure Files-Netzwerk](storage-files-networking-overview.md).
 
-Azure Files bietet mehrere integrierte Optionen zum Gewährleisten der Datensicherheit:
+## <a name="encryption"></a>Verschlüsselung
+Azure Files unterstützt zwei verschiedene Verschlüsselungstypen: Verschlüsselung während der Übertragung, die sich auf die Verschlüsselung bezieht, die beim Einbinden/Zugreifen auf die Azure-Dateifreigabe verwendet wird, sowie die Verschlüsselung ruhender Daten, die sich darauf bezieht, wie die Daten beim Speichern auf einem Datenträger verschlüsselt werden. 
 
-* Unterstützung für die Verschlüsselung in beiden drahtgebundenen Protokollen: SMB 3.0-Verschlüsselung und REST-API „File“ über HTTPS. Standardmäßig gilt: 
-    * Clients, die die SMB 3.0-Verschlüsselung unterstützen, senden und empfangen Daten über einen verschlüsselten Kanal.
-    * Clients, die SMB 3.0 mit Verschlüsselung nicht unterstützen, können innerhalb des Rechenzentrums über SMB 2.1 oder SMB 3.0 ohne Verschlüsselung kommunizieren. SMB-Clients dürfen nicht unverschlüsselt zwischen Rechenzentren über SMB 2.1 oder SMB 3.0 kommunizieren.
-    * Clients können über die REST-API „File“ mit HTTP oder HTTPS kommunizieren.
-* Verschlüsselung ruhender Daten ([Azure-Speicherdienstverschlüsselung](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Die Speicherdienstverschlüsselung (SSE) ist für alle Speicherkonten aktiviert. Ruhende Daten werden mit vollständig verwalteten Schlüsseln verschlüsselt. Durch Verschlüsselung ruhender Daten erhöhen sich weder die Speicherkosten, noch wird die Leistung verringert. 
-* Optionale Anforderung der Verschlüsselung von Daten während der Übertragung: Bei Auswahl dieser Option lehnt Azure Files den Zugriff auf die Daten über unverschlüsselte Kanäle ab. Konkret sind bei verschlüsselten Verbindungen nur HTTPS und SMB 3.0 zugelassen.
+### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
+Standardmäßig ist in allen Azure-Speicherkonten die Verschlüsselung während der Übertragung aktiviert. Das bedeutet Folgendes: Wenn Sie eine Dateifreigabe über SMB einbinden oder über FileREST darauf zugreifen (per Azure-Portal, PowerShell/CLI oder Azure-SDKs), lässt Azure Files die Verbindung nur dann zu, wenn sie über SMB 3.0 oder höher mit Verschlüsselung oder über HTTPS hergestellt wird. Clients, die SMB 3.0 nicht unterstützen, oder Clients, die zwar SMB 3.0, aber nicht die SMB-Verschlüsselung unterstützen, können die Azure-Dateifreigabe nicht einbinden, wenn die Verschlüsselung während der Übertragung aktiviert ist. Weitere Informationen dazu, welche Betriebssysteme SMB 3.0 mit Verschlüsselung unterstützen, finden Sie in der ausführlichen Dokumentation zu [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und [Linux](storage-how-to-use-files-linux.md). Alle aktuellen PowerShell-, CLI- und SDK-Versionen unterstützen HTTPS.  
 
-    > [!Important]  
-    > Die Notwendigkeit einer sicheren Datenübertragung führt dazu, dass ältere SMB-Clients, die nicht in der Lage sind, mit SMB 3.0 mit Verschlüsselung zu kommunizieren, nicht funktionieren. Weitere Informationen finden Sie unter [Einbinden unter Windows](storage-how-to-use-files-windows.md), [Einbinden unter Linux](storage-how-to-use-files-linux.md) und [Einbinden unter macOS](storage-how-to-use-files-mac.md).
+Sie können die Verschlüsselung während der Übertragung für ein Azure-Speicherkonto deaktivieren. Wenn die Verschlüsselung deaktiviert ist, lässt Azure Files auch SMB 2.1, SMB 3.0 ohne Verschlüsselung und nicht verschlüsselte FileREST-API-Aufrufe über HTTP zu. Der Hauptgrund für die Deaktivierung der Verschlüsselung während der Übertragung ist die Unterstützung einer älteren Anwendung, die unter einem älteren Betriebssystem wie z. B. Windows Server 2008 R2 oder einer älteren Linux-Distribution ausgeführt werden muss. Azure Files lässt nur SMB 2.1-Verbindungen innerhalb der gleichen Region zu, in der sich auch die Azure-Dateifreigabe befindet. Ein SMB 2.1-Client außerhalb der Azure-Region der Azure-Dateifreigabe – z. B. ein lokales System oder eine andere Azure-Region – kann nicht auf die Dateifreigabe zugreifen.
 
-Für maximale Sicherheit empfehlen wir dringend, stets sowohl die Verschlüsselung ruhender Daten als auch die Verschlüsselung von Daten während der Übertragung zu aktivieren, wenn Sie moderne Clients für den Zugriff auf Ihre Daten verwenden. Wenn Sie z. B. eine Freigabe auf einer VM mit Windows Server 2008 R2 bereitstellen müssen, die nur SMB 2.1 unterstützt, müssen Sie unverschlüsselten Datenverkehr zu Ihrem Speicherkonto zulassen, da SMB 2.1 keine Verschlüsselung unterstützt.
+Wir empfehlen dringend, sicherzustellen, dass die Verschlüsselung von Daten während der Übertragung aktiviert ist.
 
-Wenn Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugreifen, verwenden wir stets HTTPS und SMB 3.0 mit Verschlüsselung, um Ihre Daten mit Ihren Windows-Servern zu synchronisieren. Dies gilt unabhängig davon, ob Sie eine Verschlüsselung ruhender Daten benötigen.
+Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="file-share-performance-tiers"></a>Leistungsstufen von Dateifreigaben
+### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
+[!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
-Azure Files bietet zwei Leistungsstufen: Standard und Premium.
+## <a name="storage-tiers"></a>Speicherebenen
+[!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-### <a name="standard-file-shares"></a>Standarddateifreigaben
+Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen Diensten für Premium-Dateifreigaben und Standarddateifreigaben identisch. Es gibt jedoch einige wichtige Unterschiede:
+- **Abrechnungsmodell**
+    - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz bezahlen, den Sie bereitstellen, und nicht für den Speicherplatz, den Sie tatsächlich anfordern. 
+    - Standard-Dateifreigaben werden mit einem Modell mit nutzungsbasierter Bezahlung abgerechnet, das die Grundkosten für den Speicherplatz für den tatsächlich genutzten Speicher und dann zusätzliche Transaktionskosten basierend auf der Nutzung der Freigabe umfasst. Mit Standard-Dateifreigaben erhöht sich Ihre Rechnung, wenn Sie die Azure-Dateifreigabe umfangreicher nutzen (Lesen/Schreiben/Einbinden).
+- **Redundanzoptionen**
+    - Premium-Dateifreigaben sind nur für lokal redundanten (LRS) und zonenredundanten Speicher (ZRS) verfügbar. 
+    - Standard-Dateifreigaben sind für lokal redundanten, zonenredundanten, georedundanten (GRS) und georedundanten (GZRS) Speicher verfügbar.
+- **Maximale Größe einer Dateifreigabe**
+    - Premium-Dateifreigaben können ohne zusätzlichen Aufwand für bis zu 100 TiB bereitgestellt werden.
+    - Standardmäßig können Standard-Dateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden, indem das Featureflag *large file share* (große Dateifreigabe) des Speicherkontos verwendet wird. Standard-Dateifreigaben dürfen nur bis zu 100 TiB für lokal redundante oder zonenredundante Speicherkonten umfassen. Weitere Informationen zum Erhöhen der  
+- **Regionale Verfügbarkeit**
+    - Premium-Dateifreigaben sind nicht in allen Regionen verfügbar, und zonenredundante Unterstützung ist in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter [Unterstützung von Azure-Verfügbarkeitszonen nach Region](../../availability-zones/az-overview.md#services-support-by-region). Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
+    - Standard-Dateifreigaben sind in allen Azure-Regionen verfügbar.
+- Azure Kubernetes Service (AKS) unterstützt Premium-Dateifreigaben ab Version 1.13.
 
-Standard-Dateifreigaben beruhen auf Festplattenlaufwerken (HDDs). Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. universelle Dateifreigaben und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
+Wenn eine Dateifreigabe als Premium- oder als Standard-Dateifreigabe erstellt wurde, können Sie sie nicht automatisch in den anderen Tarif konvertieren. Wenn Sie zum anderen Tarif wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Es wird empfohlen, `robocopy` für Windows oder `rsync` für macOS und Linux zu verwenden, um diesen Kopiervorgang auszuführen.
 
-> [!IMPORTANT]
-> Wenn Sie Dateifreigaben über 5 TiB verwenden möchten, finden Sie im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier) die erforderlichen Schritte sowie Informationen zur regionalen Verfügbarkeit und Einschränkungen.
-
-### <a name="premium-file-shares"></a>Premium-Dateifreigaben
-
-Premium-Dateifreigaben beruhen auf Solid State Drives (SSDs). Premium-Dateifreigaben bieten konsistent hohe Leistung und niedrige Latenz im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge für Workloads mit besonders umfassenden E/A. Dadurch sind sie für eine Vielzahl von Workloads wie Datenbanken, Websitehosting und Entwicklungsumgebungen geeignet. Premium-Dateifreigaben sind nur in einem Abrechnungsmodell nach Bereitstellung verfügbar. Premium-Dateifreigaben verwenden ein von Standarddateifreigaben separates Bereitstellungsmodell.
-
-Azure Backup ist für Premium-Dateifreigaben verfügbar, und Azure Kubernetes Service unterstützt Premium-Dateifreigaben ab Version 1.13.
-
-Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen Sie unseren Artikel zu diesem Thema: [Erstellen einer Azure- Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
-
-Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie Robocopy oder AzCopy verwenden.
-
-> [!IMPORTANT]
-> Premium-Dateifreigaben sind mit LRS in den meisten Regionen verfügbar, in denen Speicherkonten angeboten werden. Mit ZRS sind sie in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu Regionen, die ZRS unterstützen, finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md).
->
-> Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
-
-#### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
-
+### <a name="understanding-provisioning-for-premium-file-shares"></a>Grundlegendes zur Bereitstellung für Premium-Dateifreigaben
 Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
 
 Auf einer Best-Effort-Basis können alle Freigaben für 60 Minuten oder länger (je nach Größe der Freigabe) auf bis zu 3 IOPS pro GiB an bereitgestelltem Speicher erhöht werden (Burst). Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
@@ -135,7 +133,6 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 > Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen zu gängigen Leistungsproblemen und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
 
 #### <a name="bursting"></a>Bursting
-
 Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie; bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert möglich.
 
 Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
@@ -153,51 +150,25 @@ Freigabeguthaben können drei Zustände aufweisen:
 
 Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. Burstguthaben werden nicht angesammelt, wenn der Freigabe-IOPS aufgrund einer Einschränkung durch den Server unter den IOPS-Grundwert fällt.
 
-## <a name="file-share-redundancy"></a>Dateifreigaberedundanz
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Aktivieren von Standard-Dateifreigaben für bis zu 100 TiB
+[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+#### <a name="regional-availability"></a>Regionale Verfügbarkeit
+[!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
-Wenn Sie sich für schreibgeschützten georedundanten Speicher (RA-GRS) entscheiden, sollten Sie wissen, dass Azure File schreibgeschützten georedundanten Speicher (RA-GRS) zu diesem Zeitpunkt in keiner Region unterstützt. Dateifreigaben im RA-GRS-Speicherkonto funktionieren wie in GRS-Konten und werden mit GRS-Preisen abgerechnet.
+## <a name="redundancy"></a>Redundanz
+[!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-> [!Warning]  
-> Wenn Sie Ihre Azure-Dateifreigabe als Cloudendpunkt in einem GRS-Speicherkonto verwenden, sollten Sie kein Failover des Speicherkontos einleiten. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen. Im Fall des Ausfalls einer Azure-Region löst Microsoft das Failover des Speicherkontos auf eine Weise aus, die mit der Azure-Dateisynchronisierung kompatibel ist.
+## <a name="migration"></a>Migration
+In vielen Fällen werden Sie keine ganz neue Dateifreigabe für Ihre Organisation einrichten, sondern stattdessen eine vorhandene Dateifreigabe von einem lokalen Dateiserver oder NAS-Gerät zu Azure Files migrieren. Es gibt viele Tools, die von Microsoft und Drittanbietern bereitgestellt werden, um eine Migration zu einer Dateifreigabe durchzuführen. Sie können grob in zwei Kategorien unterteilt werden:
 
-Premium-Freigaben von Azure Files unterstützen sowohl LRS als auch ZRS, wobei ZRS derzeit in einer kleineren Teilmenge von Regionen verfügbar ist.
+- **Tools, die Dateisystemattribute (z. B. ACLs und Zeitstempel) verwalten**:
+    - **[Azure-Dateisynchronisierung](storage-sync-files-planning.md)** : Azure-Dateisynchronisierung kann als Methode zum Erfassen von Daten in einer Azure-Dateifreigabe verwendet werden, auch wenn die gewünschte Endbereitstellung keine lokale Präsenz verwalten soll. Azure-Dateisynchronisierung kann direkt in vorhandenen Bereitstellungen von Windows Server 2012 R2, Windows Server 2016 und Windows Server 2019 installiert werden. Ein Vorteil der Verwendung von Azure-Dateisynchronisierung als Erfassungsmechanismus besteht darin, dass Endbenutzer die vorhandene Dateifreigabe weiterhin verwenden können. Ein Failover auf die Azure-Dateifreigabe kann erfolgen, nachdem alle Daten im Hintergrund hochgeladen wurden.
+    - **[Robocopy:](https://technet.microsoft.com/library/cc733145.aspx)** Robocopy ist ein bekanntes Kopiertool, das im Lieferumfang von Windows und Windows Server enthalten ist. Robocopy kann zum Übertragen von Daten in Azure Files verwendet werden, indem die Dateifreigabe lokal bereitgestellt wird. Anschließend wird der bereitgestellte Speicherort als Ziel des Robocopy-Befehls verwendet.
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding für größere Dateifreigaben (Standard-Tarif)
-
-Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreigaben sind mit einer Kapazität von 100 TiB verfügbar.
-
-### <a name="restrictions"></a>Beschränkungen
-
-- Die Konvertierung von LRS/ZRS-Konten in GRS/GZRS-Konten ist für Speicherkonten, für die große Dateifreigaben aktiviert wurden, nicht möglich.
-
-### <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Standarddateifreigaben mit einer Kapazitätsgrenze von 100 TiB sind in allen Azure-Regionen allgemein verfügbar.
-
-- LRS: Alle Regionen außer „Südafrika, Norden“ und „Südafrika, Westen“.
-- ZRS: Alle Regionen außer „Japan, Osten“, „Europa, Norden“ und „Südafrika, Norden“.
-- GRS/GZRS: Wird nicht unterstützt.
-
-### <a name="enable-and-create-larger-file-shares"></a>Aktivieren und Erstellen größerer Dateifreigaben
-
-In unserem Artikel [Aktivieren und Erstellen großer Dateifreigaben](storage-files-how-to-create-large-file-share.md) erfahren Sie, wie Sie größere Dateifreigaben verwenden können.
-
-## <a name="data-growth-pattern"></a>Muster des Datenwachstums
-
-Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 100 TiB. Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
-
-Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mit einem einzelnen Windows-Dateiserver synchronisiert werden. Dadurch können Sie sicherstellen, dass ältere große Dateifreigaben, über die Sie möglicherweise lokal verfügen, in die Azure-Dateisynchronisierung übertragen werden können. Weitere Informationen finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-files-planning.md).
-
-## <a name="data-transfer-method"></a>Datenübertragungsmethode
-
-Es gibt viele einfache Optionen, um Daten in einem Massenvorgang aus einer vorhandenen Dateifreigabe (z.B. einer lokalen Dateifreigabe) in Azure Files zu übertragen. Dazu zählen u.a.:
-
-* **[Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : Als Teil einer ersten Synchronisierung zwischen einer Azure-Dateifreigabe (einem „Cloudendpunkt“) und einem Windows-Verzeichnisnamespace (einem „Serverendpunkt“) repliziert die Azure-Dateisynchronisierung alle Daten aus der vorhandenen Dateifreigabe in Azure Files.
-* **[Azure Import/Export:](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** Mit dem Azure Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in eine Azure-Dateifreigabe übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. 
-* **[Robocopy:](https://technet.microsoft.com/library/cc733145.aspx)** Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalten ist. Robocopy kann zum Übertragen von Daten in Azure Files verwendet werden, indem die Dateifreigabe lokal bereitgestellt wird. Anschließend wird der bereitgestellte Speicherort als Ziel des Robocopy-Befehls verwendet.
-* **[AzCopy:](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird.
+- **Tools, die keine Dateisystemattribute verwalten**:
+    - **Data Box**: Data Box bietet einen Offline-Datenübertragungsmechanismus für das physische Übertragen von Daten in Azure. Diese Methode ist darauf ausgelegt, den Durchsatz zu erhöhen und Bandbreite zu sparen, unterstützt jedoch derzeit keine Dateisystemattribute wie Zeitstempel und ACLs.
+    - **[AzCopy:](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

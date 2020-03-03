@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid-Ereignishandler
-description: Informationen zu unterstützten Ereignishandlern für Azure Event Grid Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen.
+description: Informationen zu unterstützten Ereignishandlern für Azure Event Grid Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 3cef32cd204e8bd4b21353cf66575a721315b387
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 7ea00d663264e902c1818f7a4684e90eccd97b28
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511313"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525803"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Ereignishandler in Azure Event Grid
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Links zu Inhalten für die einzelnen Ereignishandler.
 
 Verwenden Sie Azure Automation für die Verarbeitung von Ereignissen mit automatisierten Runbooks.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 |[Tutorial: Azure Automation mit Event Grid und Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Erstellen Sie einen virtuellen Computer, der ein Ereignis gesendet. Das Ereignis löst ein Automation-Runbook, das den virtuellen Computer markiert, sowie eine Nachricht aus, die an einen Microsoft Teams-Kanal gesendet wird. |
 
@@ -34,7 +34,7 @@ Verwenden Sie Azure Functions für eine serverlose Reaktion auf Ereignisse.
 
 Wenn Sie Azure Functions als Handler einsetzen, verwenden Sie den Event Grid-Trigger anstelle der generischen HTTP-Trigger. Event Grid überprüft Event Grid-Funktionstrigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Verarbeiten von Ereignissen mit Funktionen](custom-event-to-function.md) | Beschreibt das Senden eines benutzerdefinierten Ereignisses an eine Funktion, damit dieses verarbeitet wird |
 | [Event Grid-Trigger für Azure Functions](../azure-functions/functions-bindings-event-grid.md) | Übersicht über die Verwendung des Event Grid-Triggers in Functions. |
@@ -48,7 +48,7 @@ Verwenden Sie Event Hubs, wenn Ihre Lösung Ereignisse schneller abruft, als die
 
 Event Hubs können entweder als Ereignisquelle oder Ereignishandler fungieren. In den folgenden Artikeln wird gezeigt, wie Event Hubs als Handler verwendet werden.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit Azure CLI und Event Grid](custom-event-to-eventhub.md) | Sendet ein benutzerdefiniertes Ereignis an einen Event Hub, damit es durch eine Anwendung verarbeitet wird. |
 | [Resource Manager-Vorlage: Benutzerdefiniertes Thema und Event Hubs-Endpunkt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Eine Resource Manager-Vorlage, mit der ein Abonnement für ein benutzerdefiniertes Thema erstellt wird. Sendet Ereignisse an Azure Event Hubs. |
@@ -59,7 +59,7 @@ Beispiele für Event Hubs als Quelle finden Sie unter [Event Hubs-Quelle](event-
 
 Verwenden Sie Azure Relay Hybrid Connections zum Senden von Ereignissen an Anwendungen, die sich in einem Unternehmensnetzwerk befinden und nicht über einen öffentlich zugänglichen Endpunkt verfügen.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Senden von Ereignissen an eine Hybridverbindung](custom-event-to-hybrid-connection.md) | Sendet ein benutzerdefiniertes Ereignis zur Verarbeitung durch eine Listeneranwendung an eine bestehende Hybridverbindung. |
 
@@ -67,7 +67,7 @@ Verwenden Sie Azure Relay Hybrid Connections zum Senden von Ereignissen an Anwen
 
 Verwenden Sie Logic Apps, um Geschäftsprozesse für die Reaktion auf Ereignisse zu automatisieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Eine Logik-App überwacht die Änderungen an einem virtuellen Computer und sendet E-Mails zu diesen Änderungen. |
 | [Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Eine Logik-App sendet jedes Mal eine E-Mail-Benachrichtigung, wenn Ihrer IoT Hub-Instanz ein Gerät hinzugefügt wird. |
@@ -123,7 +123,7 @@ az eventgrid event-subscription create \
 
 Verwenden Sie Queue Storage, um Ereignisse zu empfangen, die gepullt werden müssen. Bei einem Prozess mit langer Ausführungszeit und zu langer Antwortdauer können Sie Queue Storage verwenden. Wenn die Ereignisse an Queue Storage gesendet werden, kann die App Ereignisse nach einem eigenen Zeitplan pullen und verarbeiten.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Queue Storage mit Azure CLI und Event Grid](custom-event-to-queue-storage.md) | Beschreibt das Senden von benutzerdefinierten Ereignisse an eine Queue Storage-Instanz. |
 
@@ -131,7 +131,7 @@ Verwenden Sie Queue Storage, um Ereignisse zu empfangen, die gepullt werden müs
 
 Verwenden Sie Webhooks für anpassbare Endpunkte, die auf Ereignisse reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | Schnellstart: Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit [Azure CLI](custom-event-quickstart.md), [PowerShell](custom-event-quickstart-powershell.md) und dem [Portal](custom-event-quickstart-portal.md) | Zeigt das Senden von benutzerdefinierten Ereignissen an einen WebHook. |
 | Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json), [PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) und dem [Portal](blob-event-quickstart-portal.md) | Zeigt das Senden von Blob Storage-Ereignissen an einen WebHook. |

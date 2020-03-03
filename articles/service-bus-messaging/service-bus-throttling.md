@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301995"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598288"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Drosselungsvorgänge für Azure Service Bus
 
@@ -55,6 +55,11 @@ Nicht alle Vorgänge werden gleich erstellt. Hier sind die Guthabenkosten für d
 |-----------|-----------|
 | Datenvorgänge (Send, SendAsync, Receive, ReceiveAsync, Peek) |Guthabenwert 1 pro Nachricht |
 | Verwaltungsvorgänge (Create, Read, Update, Delete on Queues, Topics, Subscriptions, Filters) | Guthabenwert 10 |
+
+> [!NOTE]
+> Beachten Sie, dass beim Senden an ein Thema jede Nachricht anhand von Filtern ausgewertet wird, bevor sie für das Abonnement verfügbar gemacht wird.
+> Jede Filterauswertung wird auch auf das Guthabenlimit (d. h. 1 Gutschrift pro Filterauswertung) angerechnet.
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>Woher weiß ich, dass bei mir die Drosselung durchgeführt wird?
 

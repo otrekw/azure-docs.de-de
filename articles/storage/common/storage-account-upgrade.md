@@ -6,25 +6,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975826"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616840"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise. Konten vom Typ „Allgemein v2“ unterstützen die standardmäßigen Kontozugriffsebenen „Heiß“ oder „Kalt“ und das Blobebenentiering zwischen „Heiß“, „Kalt“ und „Archiv“.
 
-Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden.
+Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2“ von einem Speicherkonto vom Typ „Universell V1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden. Bei einem Upgrade auf ein Speicherkonto vom Typ „Universell V2“ gibt es keine Ausfallzeiten und kein Risiko von Datenverlusten. Das Kontoupgrade erfolgt über einen einfachen Azure Resource Manager Vorgang, bei dem der Kontotyp geändert wird.
 
 > [!IMPORTANT]
 > Ein Upgrade eines Speicherkontos vom Typ „Universell V1“ oder eines Blobspeicherkontos auf „Allgemein v2“ ist endgültig und kann nicht rückgängig gemacht werden.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Speicherkonto.
@@ -35,7 +35,7 @@ Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2�
 
     ![Upgrade für Konto durchführen](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren,
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v1“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 

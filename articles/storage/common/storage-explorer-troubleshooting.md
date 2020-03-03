@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931210"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561679"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
-Microsoft Azure Storage-Explorer ist eine eigenständige App, über die Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, nationalen Clouds und Azure Stack gehostet werden.
+Microsoft Azure Storage-Explorer ist eine eigenständige App, mit der Sie unter Windows, macOS und Linux komfortabel mit Azure Storage-Daten arbeiten können. Die App kann mit Storage-Konten verbunden werden, die in Azure, nationalen Clouds und Azure Stack gehostet werden.
 
 In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage-Explorer zusammengefasst.
 
@@ -60,7 +60,18 @@ Wenn Sie nicht über eine Rolle verfügen, mit der Berechtigungen für die Verwa
 
 Für dieses Problem verfügen wir derzeit nicht über eine RBAC-bezogene Lösung. Zur Problemumgehung können Sie einen SAS-URI anfordern, um ihn [an Ihre Ressource anzufügen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Fehler Selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
+### <a name="recommended-built-in-rbac-roles"></a>Empfohlene integrierte RBAC-Rollen
+
+Es gibt mehrere integrierte RBAC-Rollen, die die Berechtigungen bereitstellen können, die für die Verwendung von Storage-Explorer erforderlich sind. Einige dieser Rollen sind:
+- [Besitzer:](/azure/role-based-access-control/built-in-roles#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen. **Hinweis**: Über diese Rolle erhalten Sie Schlüsselzugriff.
+- [Mitwirkender](/azure/role-based-access-control/built-in-roles#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen. **Hinweis**: Über diese Rolle erhalten Sie Schlüsselzugriff.
+- [Leser:](/azure/role-based-access-control/built-in-roles#reader) Lesen und Auflisten von Ressourcen.
+- [Speicherkontomitwirkender:](/azure/role-based-access-control/built-in-roles#storage-account-contributor) Vollständige Verwaltung von Speicherkonten. **Hinweis**: Über diese Rolle erhalten Sie Schlüsselzugriff.
+- [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Vollzugriff auf Azure Storage-Blobcontainer und -Daten.
+- [Mitwirkender an Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs.
+- [Leser von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Lesen und Auflisten von Azure Storage-Containern und -Blobs.
+
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Error: Selbstsigniertes Zertifikat in der Zertifikatkette (und vergleichbare Fehler)
 
 Zertifikatfehler treten in der Regel in einer der folgenden Situationen auf:
 
@@ -77,12 +88,12 @@ Dieses Problem kann auch auftreten, wenn es mehrere Zertifikate gibt (Stamm- und
 Wenn Sie nicht sicher sind, woher das Zertifikat kommt, können Sie zur Lösung die folgenden Schritte befolgen:
 
 1. Installieren Sie OpenSSL.
-    * [Windows:](https://slproweb.com/products/Win32OpenSSL.html) Eine Light-Version sollte ausreichend sein.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Eine Light-Version sollte ausreichend sein.
     * Mac und Linux: Sollte im Betriebssystem enthalten sein.
 2. Führen Sie OpenSSL aus.
     * Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe**.
     * Mac und Linux: Führen Sie `openssl` über ein Terminal aus.
-3. Führen Sie `s_client -showcerts -connect microsoft.com:443`aus.
+3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.
 4. Suchen Sie nach selbstsignierten Zertifikaten. Wenn Sie sich nicht sicher sind, welche Zertifikate selbst signiert sind, notieren Sie sich, wo immer der Betreff `("s:")` und der Zertifikataussteller `("i:")` identisch sind.
 5. Wenn Sie selbstsignierte Zertifikate gefunden haben, kopieren Sie für jedes Zertifikat den gesamten Inhalt von (und einschließlich) `-----BEGIN CERTIFICATE-----` bis `-----END CERTIFICATE-----`, und fügen Sie ihn in eine neue CER-Datei ein.
 6. Öffnen Sie Storage-Explorer, und navigieren Sie zu **Bearbeiten** > **SSL-Zertifikate** > **Zertifikate importieren**. Verwenden Sie dann die Dateiauswahl, um die von Ihnen erstellten CER-Dateien zu suchen, auszuwählen und zu öffnen.
@@ -244,20 +255,20 @@ Wenn Sie die nicht beschädigten Verbindungen beibehalten möchten, können Sie 
 
 Nachdem Sie alle Ihre Verbindungen überprüft haben, müssen Sie für alle Verbindungsnamen, die nicht zurückgesetzt werden, ihre beschädigten Daten löschen (falls vorhanden) und sie mit den Standardschritten in Storage-Explorer zurücksetzen:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. Suchen Sie im Menü **Start** nach der **Anmeldeinformationsverwaltung** und öffnen Sie sie.
 2. Wechseln Sie zu **Windows-Anmeldeinformationen**.
 3. Suchen Sie unter **Generische Anmeldeinformationen** nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Öffnen Sie Spotlight (BEFEHL+LEERTASTE), und suchen Sie nach **Schlüsselbundverwaltung (Keychain Access)** .
 2. Suchen Sie nach Einträgen, die den Schlüssel `<connection_type_key>/<corrupted_connection_name>` aufweisen (z. B. `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Löschen Sie diese Einträge, und fügen Sie die Verbindungen erneut hinzu.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 Die lokale Anmeldeinformationsverwaltung variiert je nach Linux-Distribution. Wenn Ihre Linux-Distribution kein integriertes GUI-Tool für die lokale Anmeldeinformationsverwaltung enthält, können Sie ein Drittanbietertool zur Verwaltung Ihrer lokalen Anmeldeinformationen installieren. Sie können z. B. [Seahorse](https://wiki.gnome.org/Apps/Seahorse/) verwenden, ein Open-Source-GUI-Tool zur Verwaltung lokaler Anmeldeinformationen für Linux.
 
@@ -309,7 +320,7 @@ Diese Pakete sind die häufigsten Anforderungen für Storage-Explorer unter Linu
 > [!NOTE]
 > Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, können Sie .NET Core bis Version 2.2 verwenden. Die Funktion höherer Versionen als 2.2 wurde bisher nicht überprüft.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. Laden Sie Storage-Explorer herunter.
 2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -318,7 +329,7 @@ Diese Pakete sind die häufigsten Anforderungen für Storage-Explorer unter Linu
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Laden Sie Storage-Explorer herunter.
 2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
@@ -327,7 +338,7 @@ Diese Pakete sind die häufigsten Anforderungen für Storage-Explorer unter Linu
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Laden Sie Storage-Explorer herunter.
 2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +347,7 @@ Diese Pakete sind die häufigsten Anforderungen für Storage-Explorer unter Linu
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Laden Sie Storage-Explorer herunter.
 2. Installieren Sie die [.NET Core-Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).

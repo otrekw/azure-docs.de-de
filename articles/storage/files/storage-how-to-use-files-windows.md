@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816635"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598584"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -22,25 +22,23 @@ Wenn Sie eine Azure-Dateifreigabe außerhalb der Azure-Region verwenden möchten
 Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die entweder auf einem virtuellen Azure-Computer oder lokal ausgeführt wird. In der folgenden Tabelle wird veranschaulicht, welche Betriebssystemversionen den Zugriff auf Dateifreigaben in den einzelnen Umgebungen unterstützen:
 
 | Windows-Version        | SMB-Version | Einbindung in Azure-VM möglich | Lokale Einbindung möglich |
-|------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | Ja | Ja |
+|------------------------|-------------|-----------------------|-----------------------|
+| Windows Server 2019 | SMB 3.0 | Ja | Ja |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ja | Ja |
 | Halbjährlicher Windows Server-Kanal<sup>2</sup> | SMB 3.0 | Ja | Ja |
-| Windows Server 2016    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
-| Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 7              | SMB 2.1     | Ja                   | Nein                   |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
+| Windows Server 2016 | SMB 3.0 | Ja | Ja |
+| Windows 8.1 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
+| Windows Server 2012 | SMB 3.0 | Ja | Ja |
+| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nein |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nein |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803, 1809 und 1903.  
-<sup>2</sup>Windows Server, Versionen 1803, 1809 und 1903.
+<sup>1</sup>Windows 10, Versionen 1507, 1607, 1709, 1803, 1809, 1903 und 1909.  
+<sup>2</sup>Windows Server, Versionen 1809, 1903 und 1909.  
+<sup>3</sup>Regulärer Microsoft-Support für Windows 7 und Windows Server 2008 R2 wurde beendet. Es ist möglich, zusätzlichen Support nur für Sicherheitsupdates über das [ESU-Programm (Extended Security Update)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) zu erwerben. Es wird dringend empfohlen, diese Betriebssysteme zu migrieren.
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 * **Speicherkontoname**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
@@ -82,7 +80,7 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 ## <a name="using-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 Zum Verwenden einer Azure-Dateifreigabe mit Windows müssen Sie sie entweder einbinden, d.h. ihr einen Laufwerkbuchstaben oder Bereitstellungspunktpfad zuweisen, oder über ihren [UNC-Pfad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) darauf zugreifen. 
 
-Im Gegensatz zu anderen SMB-Freigaben, mit denen Sie vielleicht interagiert haben, wie z B. jene, die auf einem Windows Server-Computer, Linux Samba-Server oder NAS-Gerät gehostet werden, unterstützen Azure-Dateifreigaben derzeit keine Kerberos-Authentifizierung mit Ihrer Active Directory (AD) oder Azure Active Directory (AAD)-Identität. Allerdings [arbeiten](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) wir bereits an dieser Funktion. Stattdessen müssen Sie für den Zugriff auf Ihre Azure-Dateifreigabe den Speicherkontoschlüssel für das Speicherkonto verwenden, das Ihre Azure-Dateifreigabe enthält. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, kann die [Azure-Dateisynchronisierung](storage-files-planning.md#data-access-method) den Mangel an Kerberos-Authentifizierung und ACL-Unterstützung in der Zwischenzeit ausgleichen, bis die AAD-basierte Kerberos-Authentifizierung und ACL-Unterstützung öffentlich verfügbar sind.
+Im Gegensatz zu anderen SMB-Freigaben, mit denen Sie vielleicht interagiert haben, wie z B. jene, die auf einem Windows Server-Computer, Linux Samba-Server oder NAS-Gerät gehostet werden, unterstützen Azure-Dateifreigaben derzeit keine Kerberos-Authentifizierung mit Ihrer Active Directory (AD) oder Azure Active Directory (AAD)-Identität. Allerdings [arbeiten](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) wir bereits an dieser Funktion. Stattdessen müssen Sie für den Zugriff auf Ihre Azure-Dateifreigabe den Speicherkontoschlüssel für das Speicherkonto verwenden, das Ihre Azure-Dateifreigabe enthält. Ein Speicherkontoschlüssel ist ein Administratorschlüssel für ein Speicherkonto, der Administratorberechtigungen für alle Dateien und Ordner in der Dateifreigabe, auf die Sie zugreifen, sowie für alle Dateifreigaben und anderen Speicherressourcen (Blobs, Warteschlangen, Tabellen usw.) in Ihrem Speicherkonto umfasst. Wenn dies für Ihre Workload nicht ausreicht, kann die [Azure-Dateisynchronisierung](storage-sync-files-planning.md) den Mangel an Kerberos-Authentifizierung und ACL-Unterstützung in der Zwischenzeit ausgleichen, bis die AAD-basierte Kerberos-Authentifizierung und ACL-Unterstützung öffentlich verfügbar sind.
 
 Ein allgemeines Muster für das Migrieren von Branchenanwendungen per Lift & Shift, die eine SMB-Dateifreigabe an Azure erwarten, ist die Verwendung einer Azure-Dateifreigabe als Alternative für die Ausführung eines dedizierten Windows-Dateiservers auf einem virtuellen Azure-Computer. Ein wichtiger Aspekt für die erfolgreiche Migration einer Branchenanwendung zur Verwendung einer Azure-Dateifreigabe ist, dass viele Branchenanwendungen im Kontext eines dedizierten Dienstkontos mit begrenzten Berechtigungen anstatt des Administratorkontos eines virtuellen Computers ausgeführt werden. Daher müssen Sie sicherstellen, dass Sie die Anmeldeinformationen für die Azure-Dateifreigabe aus dem Kontext des Dienstkontos und nicht Ihres Administratorkontos einbinden/speichern.
 
@@ -233,16 +231,16 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 
 | Windows-Version                           | SMB 1-Standardstatus | Deaktivierungs-/Entfernungsmethode       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | Deaktiviert             | Entfernen mit Windows-Funktion |
-| Windows Server, Versionen ab 1709            | Deaktiviert             | Entfernen mit Windows-Funktion |
-| Windows 10, Versionen ab 1709                | Deaktiviert             | Entfernen mit Windows-Funktion |
-| Windows Server 2016                       | Enabled              | Entfernen mit Windows-Funktion |
-| Windows 10,Versionen 1507, 1607 und 1703 | Enabled              | Entfernen mit Windows-Funktion |
-| Windows Server 2012 R2                    | Enabled              | Entfernen mit Windows-Funktion | 
-| Windows 8.1                               | Enabled              | Entfernen mit Windows-Funktion | 
-| Windows Server 2012                       | Enabled              | Deaktivieren mit Registrierung       | 
-| Windows Server 2008 R2                    | Enabled              | Deaktivieren mit Registrierung       |
-| Windows 7                                 | Enabled              | Deaktivieren mit Registrierung       | 
+| Windows Server 2019                       | Disabled             | Entfernen mit Windows-Funktion |
+| Windows Server, Versionen ab 1709            | Disabled             | Entfernen mit Windows-Funktion |
+| Windows 10, Versionen ab 1709                | Disabled             | Entfernen mit Windows-Funktion |
+| Windows Server 2016                       | Aktiviert              | Entfernen mit Windows-Funktion |
+| Windows 10,Versionen 1507, 1607 und 1703 | Aktiviert              | Entfernen mit Windows-Funktion |
+| Windows Server 2012 R2                    | Aktiviert              | Entfernen mit Windows-Funktion | 
+| Windows 8.1                               | Aktiviert              | Entfernen mit Windows-Funktion | 
+| Windows Server 2012                       | Aktiviert              | Deaktivieren mit Registrierung       | 
+| Windows Server 2008 R2                    | Aktiviert              | Deaktivieren mit Registrierung       |
+| Windows 7                                 | Aktiviert              | Deaktivieren mit Registrierung       | 
 
 ### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
 > Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1

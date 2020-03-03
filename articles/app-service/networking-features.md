@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die Netzwerkfeatures in Azure App Service u
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971756"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649225"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -27,8 +27,8 @@ Azure App Service ist ein verteiltes System. Die Rollen, mit denen eingehende HT
 | Eingehende Funktionen | Ausgehende Funktionen |
 |---------------------|-------------------|
 | Von der App zugewiesene Adresse | Hybridverbindungen |
-| Zugriffseinschränkungen | Gatewaygeforderte VNet-Integration |
-| Dienstendpunkte | VNet-Integration (Vorschau) |
+| Zugriffseinschränkungen | VNET-Integration, die ein Gateway erfordert |
+| Dienstendpunkte | VNET-Integration |
 
 Sofern nicht anders angegeben ist, können alle Funktionen zusammen verwendet werden. Sie können die Funktionen kombinieren, um Ihre verschiedenen Probleme zu lösen.
 
@@ -36,7 +36,7 @@ Sofern nicht anders angegeben ist, können alle Funktionen zusammen verwendet we
 
 Für jeden vorliegenden Anwendungsfall kann es einige Möglichkeiten geben, das Problem zu lösen.  Die richtige zu verwendende Funktion hängt manchmal von Aspekten ab, die über den Anwendungsfall selbst hinausgehen. Anhand der folgenden Anwendungsfälle für eingehende Anforderungen wird vorgeschlagen, wie App Service-Netzwerkfunktionen verwendet werden können, um Probleme hinsichtlich des Steuerns von Datenverkehr zu lösen, der an Ihre App gesendet wird. 
  
-| Eingehende Anwendungsfälle | Feature |
+| Eingehende Anwendungsfälle | Funktion |
 |---------------------|-------------------|
 | Unterstützung für IP-basiertes SSL für Ihre App benötigt | Von der App zugewiesene Adresse |
 | Nicht freigegeben, dedizierte eingehende Adresse für Ihre App | Von der App zugewiesene Adresse |
@@ -50,13 +50,15 @@ Für jeden vorliegenden Anwendungsfall kann es einige Möglichkeiten geben, das 
 
 Anhand der folgenden Anwendungsfälle für ausgehenden Datenverkehr wird vorgeschlagen, wie App Service-Netzwerkfunktionen verwendet werden können, um Anforderungen zu lösen, die Ihre App hinsichtlich ausgehendem Zugriff stellt. 
 
-| Ausgehende Anwendungsfälle | Feature |
+| Ausgehende Anwendungsfälle | Funktion |
 |---------------------|-------------------|
 | Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in derselben Region | VNET-Integration </br> ASE |
-| Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in einer anderen Region | Gatewaygeforderte VNet-Integration </br> ASE und VNet-Peering |
+| Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in einer anderen Region | VNET-Integration, die ein Gateway erfordert </br> ASE und VNet-Peering |
 | Zugreifen auf Ressourcen, die mit Dienstendpunkten geschützt sind | VNET-Integration </br> ASE |
 | Zugreifen auf Ressourcen in einem privaten Netzwerk, das nicht mit Azure verbunden ist | Hybridverbindungen |
-| Zugreifen auf Ressourcen über ExpressRoute-Verbindungen | VNet-Integration (derzeit beschränkt auf RFC 1918-Adressen) </br> ASE | 
+| Zugreifen auf Ressourcen über ExpressRoute-Verbindungen | VNET-Integration </br> ASE | 
+| Sicherer ausgehender Datenverkehr von Ihrer Web-App | VNET-Integration und Netzwerksicherheitsgruppen </br> ASE | 
+| Weiterleiten ausgehenden Datenverkehrs von Ihrer Web-App | VNET-Integration und Routingtabellen </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>Standardmäßiges Netzwerkverhalten
@@ -134,7 +136,7 @@ Hybridverbindungen sind nicht für die Entwicklung beliebt, sondern werden auch 
 
 Die Funktion „Gatewaygeforderte App Service-VNet-Integration“ ermöglicht, dass in Ihrer App **ausgehende** Anforderungen an ein virtuelles Azure-Netzwerk gesendet werden. Mit der Funktion wird der Host, auf dem Ihre App ausgeführt wird, über einen Punkt-zu-Standort-VPN mit einem virtuellen Netzwerkgateway in Ihrem VNet verbunden. Wenn Sie die Funktion konfigurieren, erhält Ihre App eine der Punkt-zu-Standort-Adressen, die jeder Instanz zugewiesen sind. Über diese Funktion können Sie auf Ressourcen zugreifen, die sich in einer beliebigen Region in klassischen oder in Resource Manager-VNets befinden. 
 
-![Gatewaygeforderte VNet-Integration](media/networking-features/gw-vnet-integration.png)
+![VNET-Integration, die ein Gateway erfordert](media/networking-features/gw-vnet-integration.png)
 
 Diese Funktion löst das Problem des Zugreifens auf Ressourcen in anderen VNets und kann sogar genutzt werden, über ein VNet Verbindungen mit anderen VNets oder sogar lokal herzustellen. Die Funktion kann nicht mit VNets, die über ExpressRoute verbunden sind, kann aber mit Netzwerken verwendet werden, die über ein Site-to-Site-VPN (Standort-zu-Standort-VPN) verbunden sind. Es ist normalerweise nicht sinnvoll, diese Funktion aus einer App in einer App Service-Umgebung (ASE) zu verwenden, da sich die ASE bereits in Ihrem VNet befindet. Diese Funktion löst folgende Anwendungsfälle:
 
@@ -151,10 +153,12 @@ Die Funktion „Gatewaygeforderte VNet-Integration“ ist sehr nützlich, löst 
 * Zugreifen auf Ressourcen in Resource Manager-VNets in derselben Region
 * Zugreifen auf Ressourcen, die mit Dienstendpunkten geschützt sind 
 * Zugreifen auf Ressourcen, auf die über ExpressRoute- oder VPN-Verbindungen zugegriffen werden kann
+* Sichern des gesamten ausgehenden Datenverkehrs 
+* Erzwingen von Tunnelung für den gesamten ausgehenden Datenverkehr. 
 
 ![VNET-Integration](media/networking-features/vnet-integration.png)
 
-Diese Funktion befindet sich in der Vorschauphase und darf nicht für Produktionsworkloads verwendet werden. Wenn Sie mehr zu dieser Funktion erfahren möchten, lesen Sie den Artikel [Integrieren Ihrer App in ein Azure Virtual Network][vnetintegration].
+Wenn Sie mehr zu dieser Funktion erfahren möchten, lesen Sie den Artikel [Integrieren Ihrer App in ein Azure Virtual Network][vnetintegration].
 
 ## <a name="app-service-environment"></a>App Service-Umgebung 
 

@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen (FAQ) zu Azure Files | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 07/30/2019
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: e5b1880a12cda440a5772de80b8ec67b8f7ed5c3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665379"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598186"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -85,7 +85,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-region-availability"></a>
   **Welche Regionen werden für die Azure-Dateisynchronisierung unterstützt?**  
-    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#region-availability) im Planungshandbuch für die Azure-Dateisynchronisierung. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
+    Eine Liste der verfügbaren Regionen finden Sie im Abschnitt [Regionsverfügbarkeit](storage-sync-files-planning.md#azure-file-sync-region-availability) im Planungshandbuch für die Azure-Dateisynchronisierung. Wir erweitern den Support kontinuierlich auf weitere Regionen, einschließlich nicht öffentliche Regionen.
 
 * <a id="cross-domain-sync"></a>
   **Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
@@ -151,13 +151,17 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="afs-ntfs-acls"></a>
   **Werden NTFS-ACLs auf Verzeichnis-/Dateiebene in der Azure-Dateisynchronisierung zusammen mit den in Azure Files gespeicherten Daten beibehalten?**
 
-    NTFS-ACLs, die von lokalen Dateiservern stammen, werden von der Azure-Dateisynchronisierung als Metadaten beibehalten. Azure Files unterstützt keine Authentifizierung mit Azure AD-Anmeldeinformationen für den Zugriff auf Dateifreigaben, die mit dem Dienst für die Azure-Dateisynchronisierung verwaltet werden.
+    Ab dem 24. Februar 2020 werden neue und vorhandene ACLs, die durch die Azure-Dateisynchronisierung gestaffelt sind, im NTFS-Format persistent gespeichert, und ACL-Änderungen, die direkt an der Azure-Dateifreigabe vorgenommen werden, werden mit allen Servern in der Synchronisierungsgruppe synchronisiert. Alle Änderungen an den ACLs, die an Azure Files vorgenommen werden, werden über die Azure-Dateisynchronisierung synchronisiert. Stellen Sie beim Kopieren von Daten in Azure Files sicher, dass Sie SMB verwenden, um auf die Freigabe zuzugreifen und die ACLs beizubehalten. Vorhandene REST-basierte Tools wie AzCopy oder Storage-Explorer speichern ACLs nicht persistent.
+
+    Wenn Sie Azure Backup für Ihre von der Datensynchronisierung verwalteten Dateifreigaben aktiviert haben, können Datei-ACLs weiterhin als Teil des Sicherungs- und Wiederherstellungsworkflows wiederhergestellt werden. Dies funktioniert für die gesamte Freigabe oder für einzelne Dateien/Verzeichnisse.
+
+    Wenn Sie Momentaufnahmen als Teil der selbstverwalteten Sicherungslösung für Dateifreigaben verwenden, die von der Dateisynchronisierung verwaltet werden, werden die ACLs möglicherweise nicht ordnungsgemäß als NTFS-ACLs wiederhergestellt, wenn die Momentaufnahmen vor dem 24. Februar 2020 erstellt wurden. In diesem Fall sollten Sie sich an den Azure-Support wenden.
     
 ## <a name="security-authentication-and-access-control"></a>Sicherheit, Authentifizierung und Zugriffssteuerung
 * <a id="ad-support"></a>
 **Unterstützt Azure Files die identitätsbasierte Authentifizierung und Zugriffssteuerung?**  
     
-    Ja. Azure Files unterstützt die auf Identitäten basierende Authentifizierung und Zugriffssteuerung mit Azure AD Domain Services (Azure AD DS). Die Azure AD DS-Authentifizierung per SMB für Azure Files ermöglicht es in die Domäne eingebundenen Azure AD DS-Windows-VMs, mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Weitere Einzelheiten finden Sie unter [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau) – Übersicht](storage-files-active-directory-overview.md). 
+    Ja, Azure Files unterstützt identitätsbasierte Authentifizierung und Zugriffssteuerung. Sie können eine von zwei Methoden zur Verwendung von identitätsbasierter Zugriffssteuerung auswählen: Active Directory (AD) (Vorschau) oder Azure Active Directory Domain Services (Azure AD DS) (GA). AD unterstützt Authentifizierung mithilfe von in die Domäne eingebundenen AD-Computern, entweder lokal oder in Azure, um über SMB auf Azure-Dateifreigaben zuzugreifen. Die Azure AD DS-Authentifizierung per SMB für Azure Files ermöglicht es in die Domäne eingebundenen Azure AD DS-Windows-VMs, mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Weitere Informationen finden Sie unter [Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff](storage-files-active-directory-overview.md). 
 
     Azure Files verfügt noch über zwei weitere Möglichkeiten zur Verwaltung der Zugriffssteuerung:
 
@@ -168,14 +172,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 * <a id="ad-support-devices"></a>
-**Unterstützt die Azure AD DS-Authentifizierung über SMB für Azure Files den SMB-Zugriff mit Azure AD-Anmeldeinformationen von Geräten, die in Azure AD eingebunden oder dafür registriert sind?**
+**Unterstützt die Azure Files Azure Active Directory Domain Services-Authentifizierung (Azure AD DS) über SMB für Azure Files den SMB-Zugriff mit Azure AD-Anmeldeinformationen von Geräten, die in Azure AD eingebunden oder dafür registriert sind?**
 
     Nein. Dieses Szenario wird nicht unterstützt.
 
 * <a id="ad-support-rest-apis"></a>
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für NTFS-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
-    Derzeit wird das Abrufen, Festlegen oder Kopieren von NTFS-ACLs für Verzeichnisse oder Dateien durch REST-APIs nicht unterstützt.
+    Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (oder höher) erfassen, festlegen oder kopieren.
 
 * <a id="ad-vm-subscription"></a>
 **Kann ich auf Azure Files mit Azure AD-Anmeldeinformationen von einer VM unter einem anderen Abonnement zugreifen?**
@@ -183,19 +187,29 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Wenn das Abonnement, unter dem die Dateifreigabe bereitgestellt wurde, demselben Azure AD-Mandanten wie die Azure AD Domain Services-Bereitstellung (mit Einbindung der VM) zugeordnet ist, können Sie auf Azure Files mit den gleichen Azure AD-Anmeldeinformationen zugreifen. Die Einschränkung bezieht sich nicht auf das Abonnement, sondern auf den zugeordneten Azure AD-Mandanten.    
     
 * <a id="ad-support-subscription"></a>
-**Kann ich die Azure AD DS-Authentifizierung für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
+**Kann ich die Azure Files Azure AD DS- oder AD-Authentifizierung für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
 
-    Nein. Azure Files unterstützt nur die Azure AD DS-Integration mit einem Azure AD-Mandanten, der sich in demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein.
+    Nein. Azure Files unterstützt nur die Azure AD DS- oder AD-Integration mit einem Azure AD-Mandanten, der sich unter demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein. Diese Einschränkung gilt für Azure AD DS- und AD-Authentifizierungsmethoden. Wenn Sie AD für die Authentifizierung verwenden, müssen die AD-Anmeldeinformationen mit dem Azure AD synchronisiert werden, dem das Speicherkonto zugeordnet ist.
 
 * <a id="ad-linux-vms"></a>
-**Unterstützt die Azure AD DS-Authentifizierung für Azure Files virtuelle Linux-Computer?**
+**Unterstützt die Azure Files AD DS- oder AD-Authentifizierung Linux-VMs?**
 
     Nein. Die Authentifizierung von virtuellen Linux-Computern wird nicht unterstützt.
 
-* <a id="ad-aad-smb-afs"></a>
-**Kann ich die Azure AD DS-Authentifizierung für Azure Files auf Dateifreigaben nutzen, die per Azure-Dateisynchronisierung verwaltet werden?**
+* <a id="ad-multiple-forest"></a>
+**Unterstützt die Azure Files AD-Authentifizierung Integration in eine AD-Umgebung mit mehreren Gesamtstrukturen?**    
 
-    Nein. Azure Files verfügt nicht über Unterstützung für die Beibehaltung von NTFS-ACLs auf Dateifreigaben, die per Azure-Dateisynchronisierung verwaltet werden. Die Datei-ACLs, die von lokalen Dateiservern stammen, werden von der Azure-Dateisynchronisierung beibehalten. Alle NTFS-ACLs, die für Azure Files nativ konfiguriert werden, werden vom Dienst für die Azure-Dateisynchronisierung überschrieben. Azure Files unterstützt auch keine Authentifizierung mit Azure AD-Anmeldeinformationen für den Zugriff auf Dateifreigaben, die mit dem Dienst für die Azure-Dateisynchronisierung verwaltet werden.
+    Azure Files AD-Authentifizierung ist nur in die Gesamtstruktur des AD-Domänendiensts integriert, bei dem das Speicherkonto registriert ist. Zur Unterstützung der Authentifizierung von einer anderen AD-Gesamtstruktur muss die Gesamtstrukturvertrauensstellung in Ihrer Umgebung ordnungsgemäß konfiguriert sein. Die Art und Weise, Azure Files bei einem AD-Domänendienst registriert wird, ist größtenteils identisch mit einem regulären Dateiserver, auf dem eine Identität (Computer- oder Dienstanmeldekonto) in AD für die Authentifizierung erstellt wird. Der einzige Unterschied besteht darin, dass der registrierte SPN des Speicherkontos auf „file.core.windows.net“ endet, was nicht mit dem Domänensuffix übereinstimmt. Wenden Sie sich an Ihren Domänenadministrator, um festzustellen, ob ein Update Ihrer DNS-Routingrichtlinie erforderlich ist, um die Authentifizierung mit mehreren Gesamtstrukturen aufgrund des unterschiedlichen Domänensuffixes zu aktivieren.
+
+* <a id=""></a>
+**Welche Regionen sind für Azure Files AD-Authentifizierung (Vorschau) verfügbar?**
+
+    Weitere Informationen finden Sie unter [Regionale AD-Verfügbarkeit](storage-files-identity-auth-active-directory-enable.md#regional-availability).
+
+* <a id="ad-aad-smb-afs"></a>
+**Kann ich Azure Files Azure AD DS-Authentifizierung oder Active Directory-Authentifizierung (AD) (Vorschau) für Dateifreigaben nutzen, die durch Azure-Dateisynchronisierung verwaltet werden?**
+
+    Ja, Sie können Azure AD DS- oder AD-Authentifizierung für eine von der Azure-Dateisynchronisierung verwaltete Dateifreigabe aktivieren. Änderungen an den NTFS-ACLs der Verzeichnisse/Dateien auf lokalen Dateiservern werden in Azure Files gestaffelt und umgekehrt.
 
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
@@ -331,7 +345,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="need-larger-share"></a>
 **Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
-    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
 
 * <a id="lfs-performance-impact"></a>
 **Wirkt sich eine Erweiterung meines Dateifreigabekontingents auf meine Workloads oder die Azure-Dateisynchronisierung aus?**

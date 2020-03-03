@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157266"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597167"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -72,7 +72,7 @@ BlockBlobStorage-Konten unterstützen derzeit kein Tiering zu den Zugriffsebenen
 
 Ein FileStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. Diese Speicherkontoart unterstützt Dateien, aber keine Block-, Anfüge- oder Seitenblobs, Tabellen oder Warteschlangen.
 
-FileStorage-Konten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
+FileStorage-Konten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Speicherebenen für Dateifreigaben](../files/storage-files-planning.md#storage-tiers) des Planungshandbuchs für Azure Files.
 
 ## <a name="naming-storage-accounts"></a>Benennen von Speicherkonten
 

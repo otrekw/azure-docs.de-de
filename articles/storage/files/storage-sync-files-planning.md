@@ -7,66 +7,99 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162088"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598254"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
-Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
+[Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
 
-Dieser Artikel beschreibt wichtige Überlegungen für die Bereitstellung der Azure-Dateisynchronisierung. Es wird empfohlen, dass Sie [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) lesen. 
+- **Direktes Einbinden einer Azure-Dateifreigabe**: Da Azure Files SMB-Zugriff bietet, können Sie Azure-Dateifreigaben lokal oder in der Cloud mithilfe des standardmäßigen SMB-Clients einbinden, der unter Windows, macOS und Linux verfügbar ist. Da Azure-Dateifreigaben serverlos sind, erfordert die Bereitstellung für Produktionsszenarien keine Verwaltung eines Dateiservers oder NAS-Geräts. Dies bedeutet, dass Sie keine Softwarepatches anwenden oder physische Datenträger austauschen müssen. 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+- **Lokales Zwischenspeichern von Azure-Dateifreigaben mit Azure-Dateisynchronisierung**: Die Azure-Dateisynchronisierung ermöglicht das Zentralisieren der Dateifreigaben Ihrer Organisation in Azure Files, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Die Azure-Dateisynchronisierung transformiert Ihre lokalen Windows Server-Computer in einen schnellen Cache für Ihre Azure-Dateifreigabe. 
 
-## <a name="azure-file-sync-terminology"></a>Terminologie der Azure-Dateisynchronisierung
-Bevor wir in die Details der Planung für eine Azure-Dateisynchronisierungsbereitstellung einsteigen, müssen Sie die Terminologie verstehen.
+In diesem Artikel werden die Bereitstellungsüberlegungen zum Bereitstellen von Azure-Dateisynchronisierung behandelt. Informationen zum Planen einer Bereitstellung von Azure-Dateifreigaben, die direkt von einem lokalen oder cloudbasierten Client eingebunden werden sollen, finden Sie unter [Planen einer Azure Files-Bereitstellung](storage-files-planning.md).
 
-### <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
-Der Speichersynchronisierungsdienst ist die Azure-Ressource der obersten Ebene für die Azure-Dateisynchronisierung. Die Speichersynchronisierungsdienst-Ressource ist der Speicherkontoressource gleichgeordnet und kann in ähnlicher Weise in Azure-Ressourcengruppen bereitgestellt werden. Eine spezielle Ressource der obersten Ebene der Speicherkontoressource ist erforderlich, da der Speichersynchronisierungsdienst Synchronisierungsbeziehungen mit mehreren Speicherkonten über mehrere Synchronisierungsgruppen erstellen kann. In einem Abonnement können mehrere Speichersynchronisierungsdienst-Ressourcen bereitgestellt werden.
+## <a name="management-concepts"></a>Verwaltungskonzepte
+Eine Azure-Dateisynchronisierungsbereitstellung umfasst drei grundlegende Verwaltungsobjekte:
 
-### <a name="sync-group"></a>Synchronisierungsgruppe
-Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen Satz von Dateien. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Wenn Sie beispielsweise über zwei unterschiedliche Sätze von Dateien verfügen, die Sie mit der Azure-Dateisynchronisierung verwalten möchten, würden Sie zwei Synchronisierungsgruppen erstellen und beiden unterschiedliche Endpunkte hinzufügen. Ein Speichersynchronisierungsdienst kann beliebig viele Synchronisierungsgruppen hosten.  
+- **Azure-Dateifreigabe**: Eine Azure-Dateifreigabe ist eine serverlose Clouddateifreigabe, die den *Cloudendpunkt* einer Azure-Dateisynchronisierungs-Synchronisierungsbeziehung bereitstellt. Auf Dateien in einer Azure-Dateifreigabe kann direkt mit SMB oder dem FileREST-Protokoll zugegriffen werden. Wir empfehlen Ihnen jedoch, auf die Dateien hauptsächlich über den Windows Server-Cache zuzugreifen, wenn die Azure-Dateifreigabe mit Azure-Dateisynchronisierung verwendet wird. Das liegt daran, dass Azure Files derzeit über keinen effizienten Mechanismus zur Erkennung von Änderungen verfügt, wie es bei Windows Server der Fall ist, sodass direkte Änderungen an der Azure-Dateifreigabe Zeit benötigen, um erneut an die Serverendpunkte weitergegeben zu werden.
+- **Serverendpunkt**: Der Pfad auf dem Windows-Server, der mit einer Azure-Dateifreigabe synchronisiert wird. Dies kann ein bestimmter Ordner auf einem Volume oder das Stammverzeichnis des Volumes sein. Mehrere Serverendpunkte können auf demselben Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden.
+- **Synchronisierungsgruppe**: Das-Objekt, das die Synchronisierungsbeziehung zwischen einem **Cloudendpunkt** oder einer Azure-Dateifreigabe und einem Serverendpunkt definiert. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Wenn Sie beispielsweise über zwei unterschiedliche Sätze von Dateien verfügen, die Sie mit der Azure-Dateisynchronisierung verwalten möchten, würden Sie zwei Synchronisierungsgruppen erstellen und beiden unterschiedliche Endpunkte hinzufügen.
 
-### <a name="registered-server"></a>Registrierter Server
-Das Objekt „Registrierter Server“ stellt eine Vertrauensstellung zwischen Ihrem Server (oder Cluster) und dem Speichersynchronisierungsdienst dar. Sie können beliebig viele Server bei einer Instanz des Speichersynchronisierungsdiensts registrieren. Allerdings kann ein Server (oder Cluster) zu einem beliebigen Zeitpunkt jeweils nur bei einem Speichersynchronisierungsdienst registriert sein.
+### <a name="azure-file-share-management-concepts"></a>Konzepte der Azure-Dateifreigabeverwaltung
+[!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
-### <a name="azure-file-sync-agent"></a>Azure-Dateisynchronisierungs-Agent
-Der Azure-Dateisynchronisierungs-Agent ist ein herunterladbares Paket, mit dem ein Windows Server-Computer mit einer Azure-Dateifreigabe synchronisiert werden kann. Der Azure-Dateisynchronisierungs-Agent besteht aus drei Hauptkomponenten: 
-- **FileSyncSvc.exe**: Der Hintergrunddienst, der für das Überwachen von Änderungen an Serverendpunkten und das Einleiten von Synchronisierungssitzungen mit Azure zuständig ist.
-- **StorageSync.sys**: Der Dateisystemfilter der Azure-Dateisynchronisierung, der für das Tiering von Dateien nach Azure Files zuständig ist (wenn Cloudtiering aktiviert ist).
-- **PowerShell-Verwaltungs-Cmdlets**: PowerShell-Cmdlets für die Interaktion mit dem Azure-Ressourcenanbieter „Microsoft.StorageSync“. Sie finden diese an folgenden Speicherorten (Standard):
-    - C:\Programme\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
-    - C:\Programme\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
+### <a name="azure-file-sync-management-concepts"></a>Konzepte der Azure-Dateisynchronisierungsverwaltung
+Synchronisierungsgruppen werden in **Speichersynchronisierungsdiensten** bereitgestellt. Dabei handelt es sich um Objekte der obersten Ebene, die Server für die Verwendung mit Azure-Dateisynchronisierung registrieren und die Synchronisierungsgruppenbeziehungen enthalten. Die Speichersynchronisierungsdienst-Ressource ist der Speicherkontoressource gleichgeordnet und kann in ähnlicher Weise in Azure-Ressourcengruppen bereitgestellt werden. Ein Speichersynchronisierungsdienst kann Synchronisierungsgruppen erstellen, die Azure-Dateifreigaben für mehrere Speicherkonten und mehrere registrierte Windows-Server enthalten.
 
-### <a name="server-endpoint"></a>Serverendpunkt
-Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten Server dar, z. B. einen Ordner auf einem Servervolume. Mehrere Serverendpunkte können auf demselben Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z. B.`F:\sync1` und `F:\sync2`). Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. 
+Bevor Sie eine Synchronisierungsgruppe in einem Speichersynchronisierungsdienst erstellen können, müssen Sie zunächst einen Windows-Server beim Speichersynchronisierungsdienst registrieren. Dadurch wird ein **registriertes Serverobjekt** erstellt, das eine Vertrauensstellung zwischen Ihrem Server oder Cluster und dem Speichersynchronisierungsdienst darstellt. Um einen Speichersynchronisierungsdienst zu registrieren, müssen Sie zunächst den Azure-Dateisynchronisierungs-Agent auf dem Server installieren. Ein einzelner Server oder Cluster kann zu einem beliebigen Zeitpunkt jeweils nur bei einem Speichersynchronisierungsdienst registriert sein.
 
-Sie können einen Serverendpunkt über einen Bereitstellungspunkt erstellen. Beachten Sie, dass Bereitstellungspunkte innerhalb des Serverendpunkts übersprungen werden.  
+Eine Synchronisierungsgruppe enthält einen Cloudendpunkt oder eine Azure-Dateifreigabe und mindestens einen Serverendpunkt. Das Serverendpunktobjekt enthält die Einstellungen, die die **Cloudtieringfunktion** konfigurieren, die die Zwischenspeicherungsfunktion der Azure-Dateisynchronisierung bereitstellt. Um eine Synchronisierung mit einer Azure-Dateifreigabe durchführen zu können, muss sich das Speicherkonto, das die Azure-Dateifreigabe enthält, in der gleichen Azure-Region befinden wie der Speichersynchronisierungsdienst.
 
-Sie können einen Serverendpunkt auf dem Systemvolume erstellen, dabei gelten jedoch zwei Einschränkungen:
-* Das Cloudtiering kann nicht aktiviert werden.
-* Die schnelle Wiederherstellung des Namespace (bei dem der gesamte Namespace im System schnell heruntergefahren und dann der Inhalt abgerufen wird) wird nicht ausgeführt.
+### <a name="management-guidance"></a>Leitfaden zur Verwaltung
+Beim Bereitstellen von Azure-Dateisynchronisierung wird Folgendes empfohlen:
 
+- Bereitstellen von Azure-Dateifreigaben im Verhältnis 1:1 mit Windows-Dateifreigaben. Das Serverendpunktobjekt bietet Ihnen ein hohes Maß an Flexibilität bei der Einrichtung der Synchronisierungstopologie auf der Serverseite der Synchronisierungsbeziehung. Um die Verwaltung zu vereinfachen, sollte der Pfad des Serverendpunkts mit dem Pfad der Windows-Dateifreigabe übereinstimmen. 
 
-> [!Note]  
-> Es werden nur nicht austauschbare Volumes unterstützt.  Laufwerke, die über eine Remotefreigabe zugeordnet werden, werden für einen Serverendpunktpfad nicht unterstützt.  Außerdem kann ein Serverendpunkt auch dann auf dem Windows-Systemvolume angeordnet sein, wenn das Cloudtiering auf dem Systemvolume nicht unterstützt wird.
+- Verwenden von so wenig Speichersynchronisierungsdiensten wie möglich. Dadurch wird die Verwaltung vereinfacht, wenn Synchronisierungsgruppen mehrere Serverendpunkte enthalten, da ein Windows-Server nur jeweils bei einem Speichersynchronisierungsdienst registriert sein kann. 
 
-Wenn Sie einen Serverspeicherort, an dem ein Satz Dateien vorhanden ist, einer Synchronisierungsgruppe als Serverendpunkt hinzufügen, werden diese Dateien mit anderen Dateien, die sich bereits auf anderen Endpunkten in der Synchronisierungsgruppe befinden, zusammengeführt.
+- Beachten Sie beim Bereitstellen von Azure-Dateifreigaben die IOPS-Einschränkungen eines Speicherkontos. Im Idealfall würden Sie Dateifreigaben im Verhältnis 1:1 mit Speicherkonten zuordnen. Dies ist jedoch ggf. aufgrund verschiedener Beschränkungen und Einschränkungen nicht immer möglich, sowohl in Ihrer Organisation als auch in Azure. Wenn es nicht möglich ist, dass nur eine Dateifreigabe in einem Speicherkonto bereitgestellt wird, sollten Sie berücksichtigen, welche Freigaben sehr aktiv sein werden und welche Freigaben weniger aktiv sind, um sicherzustellen, dass die aktivsten Dateifreigaben nicht zusammen im gleichen Speicherkonto gruppiert werden.
 
-### <a name="cloud-endpoint"></a>Cloudendpunkt
-Ein Cloudendpunkt ist eine Azure-Dateifreigabe, die Teil einer Synchronisierungsgruppe ist. Die gesamte Azure-Dateifreigabe wird synchronisiert, und eine Azure-Dateifreigabe kann nur einem Cloudendpunkt angehören. Aus diesem Grund kann eine Azure-Dateifreigabe nur einer Synchronisierungsgruppe angehören. Wenn Sie eine Azure-Dateifreigabe, die über einen Satz vorhandener Dateien verfügt, einer Synchronisierungsgruppe als Cloudendpunkt hinzufügen, werden diese Dateien mit anderen Dateien zusammengeführt, die sich bereits auf anderen Endpunkten in der Synchronisierungsgruppe befinden.
+## <a name="windows-file-server-considerations"></a>Überlegungen zu Windows-Dateiservern
+Um die Synchronisierungsfunktion unter Windows Server zu aktivieren, müssen Sie den herunterladbaren Azure-Dateisynchronisierungs-Agent installieren. Der Azure-Dateisynchronisierungs-Agent stellt zwei Hauptkomponenten bereit: `FileSyncSvc.exe`, den Windows-Hintergrunddienst, der für die Überwachung von Änderungen an den Serverendpunkten und das Initiieren von Synchronisierungssitzungen zuständig ist, und `StorageSync.sys`, einen Dateisystemfilter, der das Cloudtiering und schnelle Notfallwiederherstellung ermöglicht.  
+
+### <a name="operating-system-requirements"></a>Betriebssystemanforderungen
+Die Azure-Dateisynchronisierung wird mit den folgenden Versionen von Windows Server unterstützt:
+
+| Version | Unterstützte SKUs | Unterstützte Bereitstellungsoptionen |
+|---------|----------------|------------------------------|
+| Windows Server 2019 | Datacenter, Standard und IoT | Vollständig und Core |
+| Windows Server 2016 | Datacenter, Standard und Storage Server | Vollständig und Core |
+| Windows Server 2012 R2 | Datacenter, Standard und Storage Server | Vollständig und Core |
+
+Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden.
 
 > [!Important]  
-> Die Azure-Dateisynchronisierung unterstützt direkte Änderungen an der Azure-Dateifreigabe. Allerdings müssen alle Änderungen, die Sie an der Azure-Dateifreigabe vornehmen, zuerst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen erkannt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Darüber hinaus bewirken Änderungen, die über das REST-Protokoll an einer Azure-Dateifreigabe vorgenommen wurden, keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
+> Es wird empfohlen, alle Servercomputer, die für die Azure-Dateisynchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
 
-### <a name="cloud-tiering"></a>Cloudtiering 
-Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Weitere Informationen finden Sie unter [Grundlegendes zum Cloudtiering](storage-sync-cloud-tiering.md).
+### <a name="minimum-system-resources"></a>Mindestens erforderliche Systemressourcen
+Für die Azure-Dateisynchronisierung ist entweder ein physischer oder ein virtueller Server mit mindestens einer CPU und mindestens 2 GiB Arbeitsspeicher erforderlich.
 
-## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Systemanforderungen und Interoperabilität der Azure-Dateisynchronisierung 
-Dieser Abschnitt behandelt die Systemanforderungen für den Azure-Dateisynchronisierungs-Agent und die Interoperabilität mit Windows Server-Features und -Rollen sowie Lösungen von Drittanbietern.
+> [!Important]  
+> Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2048 MiB Arbeitsspeicher konfiguriert werden.
+
+Bei den meisten Produktionsworkloads empfiehlt es sich nicht, einen Azure-Dateisynchronisierungsserver nur mit den Mindestanforderungen zu konfigurieren. Weitere Informationen finden Sie unter [Empfohlenen Systemressourcen](#recommended-system-resources).
+
+### <a name="recommended-system-resources"></a>Empfohlene Systemressourcen
+Ebenso wie jede Serverfunktion oder -anwendung werden die Systemressourcenanforderungen für die Azure-Dateisynchronisierung durch die Skalierung der Bereitstellung bestimmt. Größere Bereitstellungen auf einem Server erfordern umfangreichere Systemressourcen. Für die Azure-Dateisynchronisierung wird die Skalierung durch die Anzahl der Objekte an den Serverendpunkten und die Änderung für das Dataset bestimmt. Ein einzelner Server kann über mehrere Serverendpunkte in mehreren Synchronisierungsgruppen verfügen, und die Anzahl der in der folgenden Tabelle aufgeführten Objekte gilt für den vollständigen Namespace, an den ein Server angefügt ist. 
+
+Beispiel: Serverendpunkt A mit 10 Millionen Objekten + Serverendpunkt B mit 10 Millionen Objekten = 20 Millionen Objekte. Für diese Beispielbereitstellung wird die Verwendung von 8 CPUs, 16 GiB Arbeitsspeicher für den stabilen Status und (falls möglich) 48 GiB Arbeitsspeicher für die Erstmigration empfohlen.
+ 
+Namespacedaten werden aus Leistungsgründen im Arbeitsspeicher gespeichert. Aus diesem Grund benötigen größere Namespaces mehr Arbeitsspeicher, um eine gute Leistung zu gewährleisten, und umfangreiche Änderungen erfordern mehr CPU-Leistung für die Verarbeitung. 
+ 
+In der folgenden Tabelle sind sowohl die Größe des Namespace als auch eine Konvertierung in die Kapazität typischer universeller Dateifreigaben angegeben. Dabei beträgt die durchschnittliche Dateigröße 512 KiB. Wenn Ihre Dateigrößen geringer sind, sollten Sie ggf. zusätzlichen Arbeitsspeicher für die gleiche Kapazität hinzufügen. Verwenden Sie als Grundlage für Ihre Arbeitsspeicherkonfiguration die Größe des Namespace.
+
+| Namespacegröße: Dateien und Verzeichnisse (Millionen)  | Typische Kapazität (TiB)  | CPU-Kerne  | Empfohlener Arbeitsspeicher (GiB) |
+|---------|---------|---------|---------|
+| 3        | 1.4     | 2        | 8 (Erstsynchronisierung) / 2 (normale Änderungen)      |
+| 5        | 2.3     | 2        | 16 (Erstsynchronisierung) / 4 (normale Änderungen)    |
+| 10       | 4,7     | 4        | 32 (Erstsynchronisierung) / 8 (normale Änderungen)   |
+| 30       | 14,0    | 8        | 48 (Erstsynchronisierung) / 16 (normale Änderungen)   |
+| 50       | 23,3    | 16       | 64 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+| 100*     | 46,6    | 32       | 128 (Erstsynchronisierung) / 32 (normale Änderungen)  |
+
+\*Die Synchronisierung von mehr als 100 Millionen Dateien und Verzeichnisse wird zurzeit nicht empfohlen. Dies ist eine weiche Einschränkung basierend auf unseren getesteten Schwellenwerten. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](storage-files-scale-targets.md#azure-file-sync-scale-targets).
+
+> [!TIP]
+> Die Erstsynchronisierung eines Namespace ist ein aufwendiger Vorgang. Es wird daher empfohlen, bis zum Abschluss der Erstsynchronisierung mehr Arbeitsspeicher zuzuordnen. Dies ist nicht zwingend erforderlich, kann jedoch die Erstsynchronisierung beschleunigen. 
+> 
+> Eine normale Änderung umfasst 0,5 % des Namespace pro Tag. Wenn bei Ihnen mehr Änderungen auftreten, sollten Sie weitere CPUs hinzufügen. 
+
+- Ein lokal angeschlossenes Volume, das mit dem NTFS-Dateisystem formatiert ist
 
 ### <a name="evaluation-cmdlet"></a>Auswertungs-Cmdlet
 Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungs-Cmdlet für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Cmdlet prüft auf potenzielle Probleme mit Ihrem Dateisystem und Dataset, z. B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Damit werden die meisten – aber nicht alle – der unten genannten Features überprüft. Es wird empfohlen, dass Sie den verbleibenden Teil dieses Abschnitts sorgfältig durchgehen, um sicherzustellen, dass Ihre Bereitstellung reibungslos verläuft. 
@@ -77,54 +110,35 @@ Sie können das Auswertungs-Cmdlet installieren, indem Sie das PowerShell-Modul 
 Sie können das Auswertungstool in unterschiedlicher Weise aufrufen: Sie können die Systemprüfungen, die Datasetprüfungen oder beide Prüfungen durchführen. So führen Sie sowohl die System- als auch die Datasetprüfungen durch: 
 
 ```powershell
-    Invoke-AzStorageSyncCompatibilityCheck -Path <path>
+Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 So prüfen Sie nur Ihr Dataset:
 ```powershell
-    Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
+Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 So testen Sie nur die Systemanforderungen:
 ```powershell
-    Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
+Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 ```powershell
-    $errors = Invoke-AzStorageSyncCompatibilityCheck […]
-    $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+$errors = Invoke-AzStorageSyncCompatibilityCheck […]
+$errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Systemanforderungen
-- Ein Server, auf dem eine der folgenden Betriebssystemversionen ausgeführt wird:
+### <a name="file-system-compatibility"></a>Dateisystemkompatibilität
+Azure-Dateisynchronisierung wird nur auf direkt zugeordneten NTFS-Volumes unterstützt. Direkt zugeordneter Speicher (DAS) unter Windows Server bedeutet, dass das Windows Server-Betriebssystem der Besitzer des Dateisystems ist. DAS kann durch physisches Anfügen von Datenträgern an den Dateiserver, das Anfügen von virtuellen Datenträgern an eine Dateiserver-VM (z. B. eine von Hyper-V gehostete VM) oder sogar durch iSCSI bereitgestellt werden.
 
-    | Version | Unterstützte SKUs | Unterstützte Bereitstellungsoptionen |
-    |---------|----------------|------------------------------|
-    | Windows Server 2019 | Datacenter und Standard | Vollständig und Core |
-    | Windows Server 2016 | Datacenter und Standard | Vollständig und Core |
-    | Windows Server 2012 R2 | Datacenter und Standard | Vollständig und Core |
-    | Windows Server IoT 2019 for Storage| Datacenter und Standard | Vollständig und Core |
-    | Windows Storage Server 2016| Datacenter und Standard | Vollständig und Core |
-    | Windows Storage Server 2012 R2| Datacenter und Standard | Vollständig und Core |
+Nur NTFS-Volumes werden unterstützt. ReFS, FAT, FAT32 und andere Dateisysteme werden nicht unterstützt.
 
-    Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden.
-
-    > [!Important]  
-    > Es wird empfohlen, alle Servercomputer, die für die Azure-Dateisynchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
-
-- Ein Server mit mindestens 2 GiB Arbeitsspeicher
-
-    > [!Important]  
-    > Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2.048 MiB Arbeitsspeicher konfiguriert werden.
-    
-- Ein lokal angeschlossenes Volume, das mit dem NTFS-Dateisystem formatiert ist
-
-### <a name="file-system-features"></a>Features des Dateisystems
+In der folgenden Tabelle wird der Interop-Status der NTFS-Dateisystemfeatures gezeigt: 
 
 | Funktion | Status der Unterstützung | Notizen |
 |---------|----------------|-------|
-| Zugriffssteuerungslisten (ACLs) | Vollständig unterstützt. | Windows-Zugriffssteuerungslisten werden von der Azure-Dateisynchronisierung beibehalten und von Windows Server auf Serverendpunkten erzwungen. Windows-Zugriffssteuerungslisten werden (noch) nicht von Azure Files unterstützt, wenn direkt auf Dateien in der Cloud zugegriffen wird. |
+| Zugriffssteuerungslisten (ACLs) | Vollständig unterstützt. | Diskrete Zugriffssteuerungslisten im Windows-Stil werden von der Azure-Dateisynchronisierung beibehalten und von Windows Server für Serverendpunkte erzwungen. ACLs können auch erzwungen werden, wenn die Azure-Dateifreigabe direkt eingebunden wird. Hierfür ist jedoch zusätzliche Konfiguration erforderlich. Weitere Informationen finden Sie im Abschnitt [Identität](#identity). |
 | Feste Links | Ausgelassen | |
 | Symbolische Links | Ausgelassen | |
 | Bereitstellungspunkte | Teilweise unterstützt | Bereitstellungspunkte können der Stamm eines Serverendpunkts sein, aber sie werden übersprungen, wenn sie im Namespace des Serverendpunkts enthalten sind. |
@@ -134,10 +148,7 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 | Sparsedateien | Vollständig unterstützt. | Sparsedateien werden synchronisiert (werden nicht blockiert), werden jedoch als vollständige Dateien in die Cloud synchronisiert. Wenn sich der Inhalt der Datei in der Cloud (oder auf einem anderen Server) ändert, handelt es sich bei der Datei nicht länger um eine Sparsedatei, sobald die Änderung heruntergeladen wird. |
 | Alternative Datenströme (ADS) | Beibehalten, aber nicht synchronisiert | Beispielsweise werden Klassifizierungstags, die von der Dateiklassifizierungsinfrastruktur erstellt werden, nicht synchronisiert. Vorhandene Klassifizierungstags in Dateien auf den einzelnen Serverendpunkten bleiben hiervon unberührt. |
 
-> [!Note]  
-> Nur NTFS-Volumes werden unterstützt. ReFS, FAT, FAT32 und andere Dateisysteme werden nicht unterstützt.
-
-### <a name="files-skipped"></a>Übersprungene Dateien
+<a id="files-skipped"></a>Die Azure-Dateisynchronisierung überspringt auch bestimmte temporäre Dateien und Systemordner:
 
 | Datei/Ordner | Hinweis |
 |-|-|
@@ -212,7 +223,130 @@ Die Verwendung von Sysprep auf einem Server, auf dem der Azure-Dateisynchronisie
 ### <a name="windows-search"></a>Windows-Suche
 Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien in der Windows-Suche übersprungen und nicht indiziert. Dateien ohne Tiering werden ordnungsgemäß indiziert.
 
-### <a name="antivirus-solutions"></a>Virenschutzlösungen
+### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andere Lösungen für hierarchisches Speichermanagement (HSM)
+Es sollten keine anderen HSM-Lösungen in Verbindung mit der Azure-Dateisynchronisierung verwendet werden.
+
+## <a name="identity"></a>Identity
+Die Azure-Dateisynchronisierung funktioniert mit Ihrer AD-basierten Standardidentität, ohne dass ein besonderes Setup über das Einrichten der Synchronisierung hinaus erforderlich ist. Wenn Sie Azure-Dateisynchronisierung verwenden, besteht die allgemeine Erwartung darin, dass die meisten Zugriffe die Azure-Dateisynchronisierungs-Cacheserver und nicht die Azure-Dateifreigabe durchlaufen. Da sich die Serverendpunkte unter Windows Server befinden und Windows Server seit sehr langer Zeit ACLs im AD- und Windows-Stil unterstützt, ist nichts weiter erforderlich, als sicherzustellen, dass die beim Speichersynchronisierungsdienst registrierten Windows-Dateiserver zur Domäne gehören. Die Azure-Dateisynchronisierung speichert ACLs für die Dateien in der Azure-Dateifreigabe und repliziert sie auf alle Serverendpunkte.
+
+Auch wenn Änderungen, die direkt an der Azure-Dateifreigabe vorgenommen werden, für die Synchronisierung mit den Serverendpunkten in der Synchronisierungsgruppe länger dauern, können Sie dennoch sicherstellen, dass Sie Ihre AD-Berechtigungen für Ihre Dateifreigabe auch direkt in der Cloud erzwingen können. Zu diesem Zweck müssen Sie Ihr Speicherkonto mit Ihrem lokalen AD in die Domäne einbinden, ebenso wie die Windows-Dateiserver in die Domäne eingebunden werden. Weitere Informationen zum Domänenbeitritt Ihres Speicherkontos zu einem Active Directory im Besitz des Kunden finden Sie unter [Azure Files Active Directory: Übersicht](storage-files-active-directory-overview.md).
+
+> [!Important]  
+> Der Domänenbeitritt Ihres Speicherkontos zu Active Directory ist für die erfolgreiche Bereitstellung der Azure-Dateisynchronisierung nicht erforderlich. Dies ist ein streng optionaler Schritt, der es der Azure-Dateifreigabe ermöglicht, lokale ACLs zu erzwingen, wenn Benutzer die Azure-Dateifreigabe direkt einbinden.
+
+## <a name="networking"></a>Netzwerk
+Der Azure-Dateisynchronisierungs-Agent kommuniziert mit dem Speichersynchronisierungsdienst und der Azure-Dateifreigabe unter Verwendung des Azure-Dateisynchronisierungs-REST-Protokolls und des FileREST-Protokolls. Beide Protokolle verwenden immer HTTPS über Port 443. SMB wird nie zum Hochladen oder Herunterladen von Daten zwischen Ihrem Windows-Server und der Azure-Dateifreigabe verwendet. Da die meisten Unternehmen HTTPS-Datenverkehr über Port 443 als Voraussetzung für den Besuch der meisten Websites zulassen, ist für die Bereitstellung von Azure-Dateisynchronisierung normalerweise keine spezielle Netzwerkkonfiguration erforderlich.
+
+Je nach den Richtlinien Ihres Unternehmens oder gesetzlichen Anforderungen müssen Sie möglicherweise eine restriktivere Kommunikation mit Azure erzwingen. Daher bietet die Azure-Dateisynchronisierung verschiedene Möglichkeiten, Netzwerke zu konfigurieren. Basierend auf Ihren Anforderungen können Sie Folgendes ausführen:
+
+- Tunneln der Synchronisierung und des Datenverkehrs für Uploads/Downloads über ExpressRoute oder ein Azure-VPN. 
+- Nutzen von Azure Files- und Azure-Netzwerkfeatures, z. B. von Dienstendpunkten und privaten Endpunkten.
+- Konfigurieren der Azure-Dateisynchronisierung zur Unterstützung Ihres Proxys in Ihrer Umgebung.
+- Drosseln der Netzwerkaktivität aus der Azure-Dateisynchronisierung.
+
+Weitere Informationen zum Konfigurieren der Netzwerkfunktionen der Azure-Dateisynchronisierung finden Sie unter:
+- [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md)
+- [Sicherstellen, dass die Azure-Dateisynchronisierung in Ihrem Rechenzentrum ein guter Nachbar ist](storage-sync-files-server-registration.md)
+
+## <a name="encryption"></a>Verschlüsselung
+Wenn Sie Azure-Dateisynchronisierung verwenden, sind drei verschiedene Verschlüsselungsebenen zu beachten: Verschlüsselung im ruhenden Speicher von Windows Server, Verschlüsselung während der Übertragung zwischen dem Azure-Dateisynchronisierungs-Agent und Azure und Verschlüsselung im Ruhezustand Ihrer Daten in der Azure-Dateifreigabe. 
+
+### <a name="windows-server-encryption-at-rest"></a>Windows Server-Verschlüsselung ruhender Daten 
+Es gibt zwei Strategien für die Verschlüsselung von Daten unter Windows Server, die in der Regel mit der Azure-Dateisynchronisierung funktionieren: Verschlüsselung unterhalb des Dateisystems, sodass das Dateisystem und alle Daten, die in das Dateisystem geschrieben werden, verschlüsselt sind, und Verschlüsselung im Dateiformat selbst. Diese Methoden schließen sich nicht gegenseitig aus. Sie können bei Bedarf auch zusammen verwendet werden, da sich der Verschlüsselungszweck unterscheidet.
+
+Um Verschlüsselung unterhalb des Dateisystems bereitzustellen, bietet Windows Server einen BitLocker-Posteingang. BitLocker ist für die Azure-Dateisynchronisierung vollständig transparent. Der Hauptgrund für die Verwendung eines Verschlüsselungsmechanismus wie BitLocker besteht darin, die physische Exfiltration von Daten durch Diebstahl der Datenträger aus Ihrem lokalen Rechenzentrum zu verhindern, sowie das Querladen eines nicht autorisierten Betriebssystems zu verhindern, um nicht autorisierte Lese- und Schreibvorgänge für Ihre Daten auszuführen. Weitere Informationen zu BitLocker finden Sie unter [BitLocker: Übersicht](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview).
+
+Produkte von Drittanbietern, die ähnlich wie BitLocker funktionieren, da sie sich unter dem NTFS-Volume befinden, sollten auf ähnliche Weise vollständig transparent mit der Azure-Dateisynchronisierung zusammenarbeiten. 
+
+Die andere Hauptmethode zum Verschlüsseln von Daten besteht darin, den Datenstrom der Datei zu verschlüsseln, wenn die Datei von der Anwendung gespeichert wird. Einige Anwendungen können dies nativ ausführen. Dies ist jedoch in der Regel nicht der Fall. Ein Beispiel für eine Methode zum Verschlüsseln des Datenstroms der Datei ist Azure Information Protection (AIP)/Azure Rights Management Services (Azure RMS)/Active Directory RMS. Der Hauptgrund für die Verwendung eines Verschlüsselungsmechanismus wie AIP/RMS besteht darin, die Exfiltration von Daten aus Ihrer Dateifreigabe durch Benutzer zu verhindern, die sie an andere Speicherorte kopieren (z. B. auf ein Flashlaufwerk) oder per E-Mail an eine nicht autorisierte Person senden. Wenn der Datenstrom einer Datei als Teil des Dateiformats verschlüsselt ist, wird diese Datei weiterhin auf der Azure-Dateifreigabe verschlüsselt sein. 
+
+Die Azure-Dateisynchronisierung kann nicht mit NTFS EFS (NTFS Encrypted File System) oder Verschlüsselungslösungen von Drittanbietern zusammenarbeiten, die sich über dem Dateisystem, aber unterhalb des Datenstroms der Datei befinden. 
+
+### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
+Der Azure-Dateisynchronisierungs-Agent kommuniziert mit dem Speichersynchronisierungsdienst und der Azure-Dateifreigabe unter Verwendung des Azure-Dateisynchronisierungs-REST-Protokolls und des FileREST-Protokolls. Beide Protokolle verwenden immer HTTPS über Port 443. Die Azure-Dateisynchronisierung sendet keine unverschlüsselten Anforderungen über HTTP. 
+
+Azure-Speicherkonten enthalten einen Switch, der Verschlüsselung während der Übertragung erfordert. Dieser ist standardmäßig aktiviert. Auch wenn der Switch auf Speicherkontoebene deaktiviert ist (was bedeutet, dass unverschlüsselte Verbindungen mit Ihren Azure-Dateifreigaben möglich sind), verwendet die Azure-Dateisynchronisierung weiterhin nur verschlüsselte Kanäle für den Zugriff auf Ihre Dateifreigabe.
+
+Der Hauptgrund für die Deaktivierung der Verschlüsselung während der Übertragung für ein Speicherkonto ist die Unterstützung einer älteren Anwendung, die unter einem älteren Betriebssystem wie z. B. Windows Server 2008 R2 oder einer älteren Linux-Distribution ausgeführt werden muss und direkt mit einer Azure-Dateifreigabe kommuniziert. Wenn die Legacyanwendung mit dem Windows Server-Cache der Dateifreigabe kommuniziert, hat das Umschalten dieser Einstellung keine Auswirkungen. 
+
+Wir empfehlen dringend, sicherzustellen, dass die Verschlüsselung von Daten während der Übertragung aktiviert ist.
+
+Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+### <a name="azure-file-share-encryption-at-rest"></a>Verschlüsselung der Azure-Dateifreigabe im Ruhezustand
+[!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
+
+## <a name="storage-tiers"></a>Speicherebenen
+[!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
+
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Aktivieren von Standarddateifreigaben für bis zu 100 TiB
+[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
+
+#### <a name="regional-availability"></a>Regionale Verfügbarkeit
+[!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
+
+## <a name="azure-file-sync-region-availability"></a>Regionale Verfügbarkeit der Azure-Dateisynchronisierung
+Azure-Dateisynchronisierung ist in den folgenden Regionen verfügbar:
+
+| Azure Cloud | Geografische Region | Azure-Region | Regionscode |
+|-------------|-------------------|--------------|-------------|
+| Öffentlich | Asia | Asien, Osten | `eastasia` |
+| Öffentlich | Asia | Asien, Südosten | `southeastasia` |
+| Öffentlich | Australien | Australien (Osten) | `australiaeast` |
+| Öffentlich | Australien | Australien, Südosten | `australiasoutheast` |
+| Öffentlich | Brasilien | Brasilien Süd | `brazilsouth` |
+| Öffentlich | Canada | Kanada, Mitte | `canadacentral` |
+| Öffentlich | Canada | Kanada, Osten | `canadaeast` |
+| Öffentlich | Europa | Nordeuropa | `northeurope` |
+| Öffentlich | Europa | Europa, Westen | `westeurope` |
+| Öffentlich | Frankreich | Frankreich, Mitte | `francecentral` |
+| Öffentlich | Frankreich | Frankreich, Süden* | `francesouth` |
+| Öffentlich | Indien | Indien, Mitte | `centralindia` |
+| Öffentlich | Indien | Indien (Süden) | `southindia` |
+| Öffentlich | Japan | Japan, Osten | `japaneast` |
+| Öffentlich | Japan | Japan, Westen | `japanwest` |
+| Öffentlich | Korea | Korea, Mitte | `koreacentral` |
+| Öffentlich | Korea | Korea, Süden | `koreasouth` |
+| Öffentlich | Südafrika | Südafrika, Norden | `southafricanorth` |
+| Öffentlich | Südafrika | Südafrika, Westen* | `southafricawest` |
+| Öffentlich | Vereinigte Arabische Emirate | VAE, Mitte* | `uaecentral` |
+| Öffentlich | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | `uaenorth` |
+| Öffentlich | UK | UK, Süden | `uksouth` |
+| Öffentlich | UK | UK, Westen | `ukwest` |
+| Öffentlich | US | USA (Mitte) | `centralus` |
+| Öffentlich | US | East US | `eastus` |
+| Öffentlich | US | USA (Ost) 2 | `eastus2` |
+| Öffentlich | US | USA Nord Mitte | `northcentralus` |
+| Öffentlich | US | USA Süd Mitte | `southcentralus` |
+| Öffentlich | US | USA, Westen-Mitte | `westcentralus` |
+| Öffentlich | US | USA (Westen) | `westus` |
+| Öffentlich | US | USA, Westen 2 | `westus2` |
+| US Gov | US | US Gov Arizona | `usgovarizona` |
+| US Gov | US | US Gov Texas | `usgovtexas` |
+| US Gov | US | US Government, Virginia | `usgovvirginia` |
+
+Die Azure-Dateisynchronisierung unterstützt nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst.
+
+Für die mit Sternchen gekennzeichneten Regionen müssen Sie sich an den Azure-Support wenden, um Zugriff auf Azure Storage in diesen Regionen anzufordern. Der Prozess ist in [diesem Dokument](https://azure.microsoft.com/global-infrastructure/geographies/) beschrieben.
+
+## <a name="redundancy"></a>Redundanz
+[!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
+
+> [!Important]  
+> Georedundanter und geozonenredundanter Speicher können ein manuelles Failover des Speichers in die sekundäre Region durchführen. Es wird empfohlen, so nicht außerhalb eines Notfalls vorzugehen, wenn Sie Azure-Dateisynchronisierung verwenden, weil die Wahrscheinlichkeit von Datenverlusten hoch ist. Bei einem Notfall, bei dem Sie ein manuelles Failover des Speichers initiieren möchten, müssen Sie eine Supportanfrage bei Microsoft öffnen, damit die Azure-Dateisynchronisierung die Synchronisierung mit dem sekundären Endpunkt fortsetzt.
+
+## <a name="migration"></a>Migration
+Wenn Sie über einen vorhandenen Windows-Dateiserver verfügen, kann die Azure-Dateisynchronisierung direkt installiert werden, ohne dass Daten auf einen neuen Server verschoben werden müssen. Wenn Sie die Migration zu einem neuen Windows-Dateiserver im Rahmen der Einführung von Azure-Dateisynchronisierung planen, gibt es mehrere mögliche Ansätze zum Verschieben von Daten:
+
+- Erstellen Sie Serverendpunkte für die alte Dateifreigabe und die neue Dateifreigabe, und lassen Sie die Azure-Dateisynchronisierung die Daten zwischen den Serverendpunkten synchronisieren. Der Vorteil dieses Ansatzes besteht darin, dass es sehr einfach ist, den Speicher auf dem neuen Dateiserver zu überschreiben, da die Azure-Dateisynchronisierung Cloudtiering unterstützt. Wenn Sie bereit sind, können Sie Endbenutzer an die Dateifreigabe auf dem neuen Server übergeben und den Serverendpunkt der alten Dateifreigabe entfernen.
+
+- Erstellen Sie einen Serverendpunkt nur auf dem neuen Dateiserver, und kopieren Sie Daten aus der alten Dateifreigabe mithilfe von `robocopy`. Abhängig von der Topologie der Dateifreigaben auf dem neuen Server (wie viele Freigaben auf den einzelnen Volumes vorhanden sind, wie leer die einzelnen Volumes sind usw.) müssen Sie möglicherweise vorübergehend zusätzlichen Speicher bereitstellen, da davon ausgegangen wird, dass `robocopy` von Ihrem alten Server auf Ihren neuen Server in Ihrem lokalen Rechenzentrum schneller ausgeführt wird, als die Azure-Dateisynchronisierung Daten in Azure verschiebt.
+
+Es ist auch möglich, Data Box zum Migrieren von Daten zu einer Azure-Dateisynchronisierungsbereitstellung zu verwenden. Wenn Kunden Data Box zum Erfassen von Daten verwenden möchten, geschieht dies meist, weil sie glauben, dass dies die Geschwindigkeit ihrer Bereitstellung erhöht oder weil es bei Szenarien mit eingeschränkter Bandbreite hilfreich ist. Obwohl die Verwendung einer Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung die Bandbreitenauslastung verringert, ist es wahrscheinlich in den meisten Szenarien schneller, einen Onlinedatenupload über eine der oben beschriebenen Methoden einzusetzen. Weitere Informationen zum Verwenden von Data Box zum Erfassen von Daten in Ihrer Azure-Dateisynchronisierungsbereitstellung finden Sie unter [Migrieren von Daten in die Azure-Dateisynchronisierung mit Azure Data Box](storage-sync-offline-data-transfer.md).
+
+Ein häufiger Fehler, den Kunden beim Migrieren von Daten in ihre neue Azure-Dateisynchronisierungsbereitstellung machen, besteht darin, Daten direkt in die Azure-Dateifreigabe zu kopieren, anstatt auf ihre Windows-Dateiserver. Obwohl die Azure-Dateisynchronisierung alle neuen Dateien in der Azure-Dateifreigabe identifiziert und sie zurück mit Ihren Windows-Dateifreigaben synchronisiert, ist dies im allgemeinen deutlich langsamer als das Laden von Daten über den Windows-Dateiserver. Viele Azure-Kopiertools wie AzCopy haben den zusätzlichen Nachteil, dass nicht alle wichtigen Metadaten einer Datei (z. B. Zeitstempel und ACLs) kopiert werden.
+
+## <a name="antivirus"></a>Virenschutz
 Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 
 
 Die internen Virenschutzlösungen von Microsoft – Windows Defender und System Center Endpoint Protection (SCEP) – überspringen beide automatisch das Lesen von Dateien, für die dieses Attribut festgelegt ist. Wir haben sie getestet und ein kleineres Problem identifiziert: Wenn Sie einer bestehenden Synchronisierungsgruppe einen Server hinzufügen, werden Dateien, die kleiner als 800 Byte sind, auf dem neuen Server zurückgerufen (heruntergeladen). Diese Dateien verbleiben auf dem neuen Server und werden nicht in Speicherebenen aufgeteilt, da sie nicht die Größenanforderungen für das Tiering (> 64 KB) erfüllen.
@@ -220,7 +354,7 @@ Die internen Virenschutzlösungen von Microsoft – Windows Defender und System 
 > [!Note]  
 > Anbieter von Antivirensoftware können die Kompatibilität zwischen ihrem Produkt und der Azure-Dateisynchronisierung mithilfe der [Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) überprüfen, die aus dem Microsoft Download Center heruntergeladen werden kann.
 
-### <a name="backup-solutions"></a>Sicherungslösungen
+## <a name="backup"></a>Backup 
 Wie Virenschutzlösungen können auch Sicherungslösungen den Rückruf von Tieringdateien verursachen. Es wird empfohlen, die Azure-Dateifreigabe mithilfe einer Cloudsicherungslösung anstelle eines lokalen Sicherungsprodukts zu sichern.
 
 Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie eine Wiederherstellung durchführen, verwenden Sie die Wiederherstellungsoptionen auf Volume- oder Dateiebene. Mithilfe der Wiederherstellungsoption auf Dateiebene wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.  Bei der Wiederherstellung auf Volumeebene werden die neueren Dateiversionen in der Azure-Dateifreigabe oder auf anderen Serverendpunkten nicht ersetzt.
@@ -231,134 +365,8 @@ Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf ei
 > [!Note]  
 > Bei Version 9 des Azure-Dateisynchronisierungs-Agents werden VSS-Momentaufnahmen (einschließlich der Registerkarte „Vorherige Versionen“) jetzt auf Volumes mit aktiviertem Cloudtiering unterstützt. Allerdings müssen Sie die vorherige Versionskompatibilität über PowerShell aktivieren. [Weitere Informationen](storage-files-deployment-guide.md).
 
-### <a name="encryption-solutions"></a>Verschlüsselungslösungen
-Die Unterstützung von Verschlüsselungslösungen hängt davon ab, wie sie implementiert werden. Die Azure-Dateisynchronisierung funktioniert mit:
-
-- BitLocker-Verschlüsselung
-- Azure Information Protection, Azure Rights Management Services (Azure RMS) und Active Directory RMS
-
-Die Azure-Dateisynchronisierung funktioniert nicht mit:
-
-- NTFS EFS (Encrypted File System)
-
-Im Allgemeinen sollte die Azure-Dateisynchronisierung Interoperabilität mit Verschlüsselungslösungen unterstützen, die unterhalb des Dateisystems ansetzen, wie etwa BitLocker, sowie mit Lösungen, die im Dateiformat implementiert sind, wie etwa Azure Information Protection. Es wurde keine besondere Interoperabilität für Lösungen implementiert, die oberhalb des Dateisystems ansetzen (wie etwa NTFS EFS).
-
-### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Andere Lösungen für hierarchisches Speichermanagement (HSM)
-Es sollten keine anderen HSM-Lösungen in Verbindung mit der Azure-Dateisynchronisierung verwendet werden.
-
-## <a name="region-availability"></a>Regionale Verfügbarkeit
-Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
-
-| Region | Standort des Rechenzentrums |
-|--------|---------------------|
-| Australien (Osten) | Neusüdwales |
-| Australien, Südosten | Victoria |
-| Brasilien Süd | Sao Paulo, Bundesland |
-| Kanada, Mitte | Toronto |
-| Kanada, Osten | Quebec City |
-| Indien, Mitte | Pune |
-| USA (Mitte) | Iowa |
-| Asien, Osten | Hongkong (SAR) |
-| East US | Virginia |
-| USA (Ost 2) | Virginia |
-| Frankreich, Mitte | Paris |
-| Frankreich, Süden* | Marseille |
-| Korea, Mitte | Seoul |
-| Korea, Süden | Busan |
-| Japan, Osten | Tokio, Saitama |
-| Japan, Westen | Osaka |
-| USA Nord Mitte | Illinois |
-| Nordeuropa | Irland |
-| Südafrika, Norden | Johannesburg |
-| Südafrika, Westen* | Kapstadt |
-| USA Süd Mitte | Texas |
-| Indien (Süden) | Chennai |
-| Asien, Südosten | Singapur |
-| UK, Süden | London |
-| UK, Westen | Cardiff |
-| US Gov Arizona | Arizona |
-| US Gov Texas | Texas |
-| US Government, Virginia | Virginia |
-| Vereinigte Arabische Emirate, Norden | Dubai |
-| VAE, Mitte* | Abu Dhabi |
-| Europa, Westen | Niederlande |
-| USA, Westen-Mitte | Wyoming |
-| USA (Westen) | Kalifornien |
-| USA, Westen 2 | Washington |
-
-Die Azure-Dateisynchronisierung unterstützt nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst.
-
-Für die mit Sternchen gekennzeichneten Regionen müssen Sie sich an den Azure-Support wenden, um Zugriff auf Azure Storage in diesen Regionen anzufordern. Der Prozess ist in [diesem Dokument](https://azure.microsoft.com/global-infrastructure/geographies/) beschrieben.
-
-### <a name="azure-disaster-recovery"></a>Azure-Notfallwiederherstellung
-Um vor dem Verlust einer Azure-Region zu schützen, integriert die Azure-Dateisynchronisierung [georedundanten Speicher](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Der GRS funktioniert durch die Verwendung von asynchroner Blockreplikation zwischen Speichern in der primären Region, mit der Sie normalerweise interagieren, und Speichern in der gekoppelten sekundären Region. Bei einem Notfall, infolgedessen eine Azure-Region vorübergehend oder dauerhaft offline geschaltet wird, führt Microsoft für den Speicher ein Failover auf die gekoppelte Region durch. 
-
-> [!Warning]  
-> Wenn Sie Ihre Azure-Dateifreigabe als Cloudendpunkt in einem GRS-Speicherkonto verwenden, sollten Sie kein Failover des Speicherkontos einleiten. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen. Im Fall des Ausfalls einer Azure-Region löst Microsoft das Failover des Speicherkontos auf eine Weise aus, die mit der Azure-Dateisynchronisierung kompatibel ist.
-
-Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateisynchronisierung zu unterstützen, werden alle Azure-Dateisynchronisierungsregionen mit einer sekundären Region gekoppelt, die der vom Speicher verwendeten sekundären Region entspricht. Bei diesen Paaren handelt es sich um Folgende:
-
-| Primäre Region      | Regionspaar      |
-|---------------------|--------------------|
-| Australien (Osten)      | Australien, Südosten|
-| Australien, Südosten | Australien (Osten)     |
-| Brasilien Süd        | USA Süd Mitte   |
-| Kanada, Mitte      | Kanada, Osten        |
-| Kanada, Osten         | Kanada, Mitte     |
-| Indien, Mitte       | Indien (Süden)        |
-| USA (Mitte)          | USA (Ost) 2          |
-| Asien, Osten           | Asien, Südosten     |
-| East US             | USA (Westen)            |
-| USA (Ost) 2           | USA (Mitte)         |
-| Frankreich, Mitte      | Frankreich, Süden       |
-| Frankreich, Süden        | Frankreich, Mitte     |
-| Japan, Osten          | Japan, Westen         |
-| Japan, Westen          | Japan, Osten         |
-| Korea, Mitte       | Korea, Süden        |
-| Korea, Süden         | Korea, Mitte      |
-| Nordeuropa        | Europa, Westen        |
-| USA Nord Mitte    | USA Süd Mitte   |
-| Südafrika, Norden  | Südafrika, Westen  |
-| Südafrika, Westen   | Südafrika, Norden |
-| USA Süd Mitte    | USA Nord Mitte   |
-| Indien (Süden)         | Indien, Mitte      |
-| Asien, Südosten      | Asien, Osten          |
-| UK, Süden            | UK, Westen            |
-| UK, Westen             | UK, Süden           |
-| US Gov Arizona      | US Gov Texas       |
-| US Gov Iowa         | US Government, Virginia    |
-| US Government, Virginia      | US Gov Texas       |
-| Europa, Westen         | Nordeuropa       |
-| USA, Westen-Mitte     | USA, Westen 2          |
-| USA (Westen)             | East US            |
-| USA, Westen 2           | USA, Westen-Mitte    |
-
 ## <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
-
-## <a name="recommended-azure-file-sync-machine-configuration"></a>Empfohlene Computerkonfiguration für die Azure-Dateisynchronisierung
-
-Die Computeranforderungen für die Azure-Dateisynchronisierung werden durch die Anzahl der Objekte im-Namespace und die Änderung des Datasets festgelegt. Ein einzelner Server kann an mehrere Synchronisierungsgruppen angefügt werden, und die Anzahl der in der folgenden Tabelle aufgeführten Objekte gilt für den vollständigen Namespace, an den ein Server angefügt ist. Beispiel: Serverendpunkt A mit 10 Millionen Objekten + Serverendpunkt B mit 10 Millionen Objekten = 20 Millionen Objekte. Für diese Beispielbereitstellung wird die Verwendung von 8 CPUs, 16 GiB Arbeitsspeicher für den stabilen Status und (falls möglich) 48 GiB Arbeitsspeicher für die Erstmigration empfohlen.
- 
-Namespacedaten werden aus Leistungsgründen im Arbeitsspeicher gespeichert. Aus diesem Grund benötigen größere Namespaces mehr Arbeitsspeicher, um eine gute Leistung zu gewährleisten, und umfangreiche Änderungen erfordern mehr CPU-Leistung für die Verarbeitung. 
- 
-In der folgenden Tabelle sind sowohl die Größe des Namespace als auch eine Konvertierung in die Kapazität typischer universeller Dateifreigaben angegeben. Dabei beträgt die durchschnittliche Dateigröße 512 KiB. Wenn Ihre Dateigrößen geringer sind, sollten Sie ggf. zusätzlichen Arbeitsspeicher für die gleiche Kapazität hinzufügen. Verwenden Sie als Grundlage für Ihre Arbeitsspeicherkonfiguration die Größe des Namespace.
-
-| Namespacegröße: Dateien und Verzeichnisse (Millionen)  | Typische Kapazität (TiB)  | CPU-Kerne  | Empfohlener Arbeitsspeicher (GiB) |
-|---------|---------|---------|---------|
-| 3        | 1.4     | 2        | 8 (Erstsynchronisierung) / 2 (normale Änderungen)      |
-| 5        | 2.4     | 2        | 16 (Erstsynchronisierung) / 4 (normale Änderungen)    |
-| 10       | 4.8     | 4        | 32 (Erstsynchronisierung) / 8 (normale Änderungen)   |
-| 30       | 14.3    | 8        | 48 (Erstsynchronisierung) / 16 (normale Änderungen)   |
-| 50       | 23.8    | 16       | 64 (Erstsynchronisierung) / 32 (normale Änderungen)  |
-| 100*     | 47.7   | 32       | 128 (Erstsynchronisierung) / 32 (normale Änderungen)  |
-
-\*Mehr als 100 Millionen Dateien und Verzeichnisse wurden nicht getestet. Dies ist ein weicher Grenzwert.
-
-> [!TIP]
-> Die Erstsynchronisierung eines Namespace ist ein aufwendiger Vorgang. Es wird daher empfohlen, bis zum Abschluss der Erstsynchronisierung mehr Arbeitsspeicher zuzuordnen. Dies ist nicht zwingend erforderlich, kann jedoch die Erstsynchronisierung beschleunigen. 
-> 
-> Eine normale Änderung umfasst 0,5 % des Namespace pro Tag. Wenn bei Ihnen mehr Änderungen auftreten, sollten Sie weitere CPUs hinzufügen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Berücksichtigen von Firewall- und Proxyeinstellungen](storage-sync-files-firewall-and-proxy.md)

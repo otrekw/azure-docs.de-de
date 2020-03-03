@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927889"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598424"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -21,9 +21,9 @@ Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deploym
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Eine Azure-Dateifreigabe in derselben Region, in der Sie die Azure-Dateisynchronisierung bereitstellen möchten. Weitere Informationen finden Sie unter
-    - [Region availability](storage-sync-files-planning.md#region-availability) (Regionale Verfügbarkeit, in englischer Sprache) für die Azure-Dateisynchronisierung.
+    - [Region availability](storage-sync-files-planning.md#azure-file-sync-region-availability) (Regionale Verfügbarkeit, in englischer Sprache) für die Azure-Dateisynchronisierung.
     - Eine Schritt-für-Schritt-Beschreibung zum Erstellen einer Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md).
-* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit der Azure-Dateisynchronisierung. Weitere Informationen zu unterstützten Versionen von Windows Server finden Sie unter [Interoperability with Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability) (Interoperabilität mit Windows Server, in englischer Sprache).
+* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit der Azure-Dateisynchronisierung. Weitere Informationen zu unterstützten Versionen von Windows Server finden Sie unter [Interoperability with Windows Server](storage-sync-files-planning.md#windows-file-server-considerations) (Interoperabilität mit Windows Server, in englischer Sprache).
 * Das Azure PowerShell-Modul kann mit PowerShell 5.1 oder PowerShell 6+ verwendet werden. Sie können das Azure PowerShell-Modul für Azure-Dateisynchronisierung auf jedem unterstützten System verwenden, auch auf Nicht-Windows-Systemen. Aber das Cmdlet für die Serverregistrierung muss immer direkt für die Windows Server-Instanz ausgeführt werden, die Sie registrieren (entweder direkt oder per PowerShell-Remoting). Unter Windows Server 2012 R2 können Sie anhand des Werts der **PSVersion**-Eigenschaft des **$PSVersionTable**-Objekts überprüfen, ob mindestens PowerShell 5.1\* ausgeführt wird:
 
     ```powershell
@@ -53,7 +53,7 @@ Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deploym
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung
 Deaktivieren Sie für jeden Server, den Sie mit der Azure-Dateisynchronisierung verwenden möchten, einschließlich aller Serverknoten in einem Failovercluster, die **Verstärkte Sicherheitskonfiguration für Internet Explorer**. Dies ist nur für die anfängliche Serverregistrierung erforderlich. Sie können sie nach dem Registrieren des Servers erneut aktivieren.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 > [!Note]  
 > Sie können diesen Schritt überspringen, wenn Sie Azure File Sync auf dem Windows Server Core bereitstellen.
 
@@ -65,7 +65,7 @@ Deaktivieren Sie für jeden Server, den Sie mit der Azure-Dateisynchronisierung 
 4. Wählen Sie im Dialogfeld **Verstärkte Sicherheitskonfiguration für Internet Explorer** für **Administratoren** und **Benutzer** **Aus** aus:  
     ![Popupfenster „Verstärkte Sicherheitskonfiguration für Internet Explorer“, in dem „Aus“ gewählt ist](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Um die Verstärkte Sicherheitskonfiguration für Internet Explorer zu deaktivieren, führen Sie Folgendes in einer PowerShell-Sitzung mit erhöhten Rechten aus:
 
 ```powershell
@@ -96,7 +96,7 @@ Die Bereitstellung der Azure-Dateisynchronisierung beginnt mit der Platzierung e
 > [!Note]
 > Der Speichersynchronisierungsdienst hat Zugriffsberechtigungen aus dem Abonnement und der Ressourcengruppe geerbt, in der er bereitgestellt wurde. Sie sollten sorgfältig überprüfen, wer darauf zugreifen darf. Entitäten mit Schreibzugriff können die Synchronisierung neuer Sätze von Dateien aus Server starten, die bei diesem Speichersynchronisierungsdienst registriert sind, und bewirken, dass Daten in Azure-Speicher übertragen werden, auf den sie zugreifen können.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Ressource erstellen*, und suchen Sie dann nach „Azure-Dateisynchronisierung“. Wählen Sie in den Suchergebnissen **Azure-Dateisynchronisierung** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.
 
 Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
@@ -108,8 +108,8 @@ Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
 Wenn Sie fertig sind, wählen Sie **Erstellen** aus, um den Speichersynchronisierungsdienst bereitzustellen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Ersetzen Sie **<Az_Region>** , **<RG_Name>** und **<my_storage_sync_service>** durch Ihre eigenen Werte. Verwenden Sie anschließend die folgenden Befehle, um einen Speichersynchronisierungsdienst zu erstellen und bereitzustellen:
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Ersetzen Sie `<Az_Region>`, `<RG_Name>` und `<my_storage_sync_service>` durch Ihre eigenen Werte. Verwenden Sie anschließend die folgenden Befehle, um einen Speichersynchronisierungsdienst zu erstellen und bereitzustellen:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -160,7 +160,7 @@ $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name 
 ## <a name="install-the-azure-file-sync-agent"></a>Installieren des Azure-Dateisynchronisierungs-Agents
 Der Azure-Dateisynchronisierungs-Agent ist ein herunterladbares Paket, mit dem ein Windows Server-Computer mit einer Azure-Dateifreigabe synchronisiert werden kann. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Sie können den Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunterladen. Doppelklicken Sie nach Abschluss des Downloads auf das MSI-Paket, um die Installation des Azure-Dateisynchronisierungs-Agents zu starten.
 
 > [!Important]  
@@ -172,7 +172,7 @@ Folgendes Vorgehen wird empfohlen:
 
 Wenn die Installation des Azure-Dateisynchronisierungs-Agents abgeschlossen ist, wird automatisch die Benutzeroberfläche der Serverregistrierung geöffnet. Vor der Registrierung benötigen Sie einen Speichersynchronisierungsdienst. Wie Sie einen Speichersynchronisierungsdienst erstellen, erfahren Sie im nächsten Abschnitt.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Führen Sie den folgenden PowerShell-Code aus, um die entsprechende Version des Azure-Dateisynchronisierungs-Agents für Ihr Betriebssystem herunterzuladen und auf Ihrem System zu installieren.
 
 > [!Important]  
@@ -216,7 +216,7 @@ Durch das Registrieren des Windows-Servers bei einem Speichersynchronisierungsdi
 > [!Note]
 > Die Serverregistrierung verwendet Ihre Azure-Anmeldeinformationen zum Erstellen einer Vertrauensstellung zwischen dem Speichersynchronisierungsdienst und Ihrer Windows Server-Instanz, doch anschließend erstellt der Server seine eigene Identität, die gültig ist, solange der Server registriert bleibt und das aktuelle Shared Access Signature-Token (Speicher-SAS) gültig ist, und verwendet sie. Sobald die Registrierung des Servers aufgehoben ist, kann kein neues SAS-Token an den Server ausgegeben werden, sodass der Server nicht mehr auf Ihre Azure-Dateifreigaben zugreifen kann und damit jede Synchronisierung beendet wird.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des Azure-Dateisynchronisierungs-Agents automatisch öffnen. Wenn dies nicht der Fall ist, können Sie sie aus ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“. Wenn die Benutzeroberfläche der Serverregistrierung geöffnet ist, wählen Sie **Anmelden** aus, um mit der Registrierung zu beginnen.
 
 Nach der Anmeldung werden die folgenden Informationen abgefragt:
@@ -229,7 +229,7 @@ Nach der Anmeldung werden die folgenden Informationen abgefragt:
 
 Nachdem Sie die entsprechenden Informationen ausgewählt haben, wählen Sie **Registrieren** aus, um die Serverregistrierung abzuschließen. Während des Registrierungsvorgangs werden Sie erneut aufgefordert, sich anzumelden.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
@@ -244,7 +244,7 @@ Ein Cloudendpunkt ist ein Zeiger auf eine Azure-Dateifreigabe. Alle Serverendpun
 > [!Important]  
 > Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Um eine Synchronisierungsgruppe zu erstellen, navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Speichersynchronisierungsdienst, und wählen Sie dann **+ Synchronisierungsgruppe** aus:
 
 ![Erstellen einer neuen Synchronisierungsgruppe im Azure-Portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -256,7 +256,7 @@ Geben Sie im Bereich, der jetzt geöffnet wird, die folgenden Informationen ein,
 - **Speicherkonto**: Wenn Sie **Speicherkonto auswählen** auswählen, wird ein weiterer Bereich angezeigt, in dem Sie das Speicherkonto auswählen können, das die Azure-Dateifreigabe enthält, mit der Sie die Synchronisierung ausführen möchten.
 - **Azure-Dateifreigabe**: Der Name der Azure-Dateifreigabe, mit der die Synchronisierung ausgeführt werden soll.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Um die Synchronisierungsgruppe zu erstellen, führen Sie den folgenden PowerShell-Befehl aus. Denken Sie daran, `<my-sync-group>` mit dem gewünschten Namen der Synchronisierungsgruppe zu ersetzen.
 
 ```powershell
@@ -306,7 +306,7 @@ New-AzStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>Erstellen eines Serverendpunkts
 Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten Server dar, z. B. einen Ordner auf einem Servervolume. Ein Serverendpunkt muss ein Pfad auf einem registrierten Server sein (statt einer eingebundenen Freigabe), und um Cloudtiering verwenden zu können, darf der Pfad sich nicht auf einem Systemvolume befinden. Network Attached Storage (NAS) wird nicht unterstützt.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Um einen Serverendpunkt hinzuzufügen, wechseln Sie zu der neu erstellten Synchronisierungsgruppe, und wählen Sie dann **Serverendpunkt hinzufügen** aus.
 
 ![Hinzufügen eines neuen Serverendpunkts im Bereich „Synchronisierungsgruppe“](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -320,7 +320,7 @@ Geben Sie im Bereich **Serverendpunkt hinzufügen** die folgenden Informationen 
 
 Wählen Sie **Erstellen** aus, um den Serverendpunkt hinzuzufügen. Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und Windows Server synchron. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Führen Sie die folgenden PowerShell-Befehle aus, um den Serverendpunkt zu erstellen, und achten Sie darauf, dass Sie `<your-server-endpoint-path>` und `<your-volume-free-space>` mit den gewünschten Werten ersetzen.
 
 ```powershell

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939244"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598305"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -58,7 +58,7 @@ Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisi
 
 In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Portal. 
 
@@ -128,7 +128,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 6. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Das folgende PowerShell-Skript kann verwendet werden, um Ihrem Speicherkonto eine Richtlinie hinzuzufügen. Die Variable `$rgname` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden.
 
@@ -158,7 +158,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+# <a name="template"></a>[Vorlage](#tab/template)
 
 Sie können die Lebenszyklusverwaltung definieren, indem Sie Azure Resource Manager-Vorlagen verwenden. Hier ist eine Beispielvorlage für das Bereitstellen eines GPv2-Speicherkontos mit RA-GRS mit einer Richtlinie für die Lebenszyklusverwaltung angegeben.
 
@@ -311,7 +311,7 @@ Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen vo
 
 Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
 
-| Aktionsausführungsbedingung             | Wert der Bedingung                          | Beschreibung                             |
+| Aktionsausführungsbedingung             | Wert der Bedingung                          | BESCHREIBUNG                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen     |
 | daysAfterCreationGreaterThan     | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobmomentaufnahmen |
@@ -438,7 +438,7 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen das erste Mal ausgeführt werden.  
 
 **Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**  
-Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann das Ausführen der Richtlinie bis zu 48 Stunden dauern.   
+Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern.   
 
 **Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**  
 Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob auf der heißen Ebene manuell aktivieren, würde es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Deaktivieren Sie vorübergehend die Regel, die sich auf dieses Blob auswirkt, um zu verhindern, dass es erneut archiviert wird. Aktivieren Sie die Regel erneut, wenn das Blob sicher zurück auf die Archivspeicherebene verschoben werden kann. Sie können das Blob auch an einen anderen Speicherort kopieren, falls es sich dauerhaft auf einer heißen oder kalten Ebene befinden muss.

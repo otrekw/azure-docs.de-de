@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790375"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587497"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
 Bisher bot der Azure Service Bus Namespaces nur im Standard-Tarif an. Namespaces sind mehrinstanzenfähige Setups, die für niedrige Durchsätze und Entwicklerumgebungen optimiert wurden. Der Premium-Tarif bietet dedizierte Ressourcen pro Namespace für vorhersagbare Latenz und höheren Durchsatz zu einem festen Preis. Der Premium-Tarif ist für hohen Durchsatz und Produktionsumgebungen optimiert, die zusätzliche Enterprisefeatures erfordern.
@@ -118,7 +118,7 @@ Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die M
     Die Bestätigungsseite wird angezeigt, wenn die Migration abgeschlossen ist.
     ![Wechseln des Namespace: Erfolg][]
 
-## <a name="caveats"></a>Einschränkungen
+## <a name="caveats"></a>Vorbehalte
 
 Einige der im Standard-Tarif von Azure Service Bus zur Verfügung stehenden Features werden im Premium-Tarif nicht unterstützt. Dies ist beabsichtigt, da der Premium-Tarif dedizierte Ressourcen für planbaren Durchsatz und planbare Wartezeit bietet.
 

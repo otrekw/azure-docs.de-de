@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198580"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592525"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -168,6 +168,8 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
     - **Bitanzahl**: 32-Bit oder 64-Bit.
     - **WebSocket-Protokoll**: Z.B. für [ASP.NET SignalR] oder [socket.io](https://socket.io/).
     - **Always On**: Lassen Sie die App auch dann geladen, wenn kein Datenverkehr stattfindet. Dies ist für fortlaufende WebJobs oder WebJobs, die mithilfe eines CRON-Ausdrucks ausgelöst werden, erforderlich.
+      > [!NOTE]
+      > Mit der Always On-Funktion können Sie den Endpunkt nicht steuern. Er sendet immer eine Anforderung an den Anwendungsstamm.
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]

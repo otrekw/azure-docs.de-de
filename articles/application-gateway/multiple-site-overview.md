@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719952"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523780"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
@@ -21,7 +21,7 @@ Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Webanwendung am
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.
+> Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal für die v1-SKU aufgeführt werden. Bei der v2-SKU haben genaue Übereinstimmungen eine höhere Rangfolge. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.
 
 Anforderungen für `http://contoso.com` werden an „ContosoServerPool“ und Anforderungen für `http://fabrikam.com` an „FabrikamServerPool“ weitergeleitet.
 
