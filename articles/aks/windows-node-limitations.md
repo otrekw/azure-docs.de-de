@@ -2,17 +2,14 @@
 title: Einschränkungen für Windows Server-Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zu den bekannten Einschränkungen beim Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768570"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615642"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -54,9 +51,9 @@ Die Masterknoten (die Steuerungsebene) in einem AKS-Cluster werden von AKS als D
 
 AKS-Cluster mit Windows-Knotenpools müssen das (erweiterte) Azure CNI-Netzwerkmodell verwenden. Kubenet Basic-Netzwerke werden nicht unterstützt. Weitere Informationen zu den Unterschieden der Netzwerkmodelle finden Sie unter [Netzwerkkonzepte für Anwendungen in AKS][azure-network-models]. Das Azure CNI-Netzwerkmodell erfordert zusätzliche Planung und Überlegungen in Bezug auf die Verwaltung von IP-Adressen. Weitere Informationen zum Planen und Implementieren von Azure CNI finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][configure-azure-cni].
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Kann ich die Mindestanzahl von Pods pro Knoten ändern?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Kann ich die maximale Anzahl von Pods pro Knoten ändern?
 
-Derzeit müssen zwingend mindestens 30 Pods festgelegt werden, um die Zuverlässigkeit Ihrer Cluster sicherzustellen.
+Derzeit müssen zwingend maximal 30 Pods festgelegt werden, um die Zuverlässigkeit Ihrer Cluster sicherzustellen.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Wie kann ich meine Windows-Knoten patchen?
 

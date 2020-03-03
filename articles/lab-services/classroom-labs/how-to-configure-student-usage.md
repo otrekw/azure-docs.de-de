@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169220"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539173"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -35,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese 
     ![Hinzufügen der E-Mail-Adressen von Benutzern](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Wählen Sie **Speichern** aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 
 
-    ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Benutzerliste](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > Nach der Registrierung für das Lab werden die Namen von Benutzern in der Liste angezeigt. Der in der Liste angezeigte Name wird aus Vor- und Nachnamen des Benutzers im Azure Active Directory zusammengesetzt. 
@@ -101,11 +101,14 @@ Sie können den Registrierungslink auch über das Portal abrufen und mithilfe Ih
 2. Wählen Sie im Dialogfeld **Benutzerregistrierung** die Option **Fertig** aus. 
 4. Senden Sie den **Registrierungslink** an einen Kursteilnehmer, damit sich diese Person für die Klasse registrieren kann. 
 
-## <a name="view-users-registered-with-the-lab"></a>Anzeigen der beim Lab registrierten Benutzer
+## <a name="view-registered-users"></a>Anzeigen registrierter Benutzer
 
-Wählen Sie **Benutzer** im linken Menü, um die Liste der Benutzer anzuzeigen, die beim Lab registriert sind. 
+1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). 
+2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten.
+3. Wählen Sie auf der Seite **My labs** (Meine Labs) das Lab aus, dessen Nutzung Sie nachverfolgen möchten. 
+4. Wählen Sie **Benutzer** im linken Menü bzw. die Kachel **Benutzer**. Daraufhin werden bei Ihrem Lab registrierte Studenten angezeigt.  
 
-![Liste der beim Lab registrierten Benutzer](../media/how-to-configure-student-usage/students-registered.png)
+    ![Registrierte Benutzer](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Festlegen von Kontingenten für Benutzer
 Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen: 
@@ -115,7 +118,7 @@ Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen:
 3. Geben Sie auf der Seite **Kontingent pro Benutzer** die Anzahl der Stunden an, die Sie jedem Benutzer (Kursteilnehmer) außerhalb der planmäßigen Kursstunden zuteilen möchten, und wählen Sie dann **Speichern** aus.
 
     ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: \<Anzahl der Stunden>** . 
+5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: \<Anzahl von Stunden>** und auch in der Benutzerliste.
 
     ![Kontingent pro Benutzer: nach der Änderung](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
