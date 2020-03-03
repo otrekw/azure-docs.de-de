@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371337"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558878"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -26,7 +26,7 @@ Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subne
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
 
-In diesem Tutorial erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen, bei dem sich die Firewall in einem eigenen VNET befindet. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
+In diesem Tutorial erstellen Sie der Einfachheit halber ein einzelnes vereinfachtes VNET mit drei Subnetzen. Für Produktionsbereitstellungen wird ein [Hub-Spoke-Modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) empfohlen. Die Firewall befindet sich dabei in einem eigenen VNET. Die Workloadserver befinden sich in per Peering verknüpften VNETs in derselben Region mit einem oder mehreren Subnetzen.
 
 * **AzureFirewallSubnet:** Das Subnetz mit der Firewall.
 * **Workload-SN:** Das Subnetz mit dem Workloadserver. Der Netzwerkdatenverkehr dieses Subnetzes durchläuft die Firewall.
@@ -60,7 +60,7 @@ Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 2. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie anschließend **Hinzufügen**.
 3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge *Test-FW-RG* ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
+5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle anderen Ressourcen, die Sie erstellen, müssen sich an demselben Standort befinden.
 6. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-a-vnet"></a>Erstellen eines VNET
@@ -193,10 +193,11 @@ Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf [www
 6. Geben Sie für **Priorität** den Wert **200** ein.
 7. Wählen Sie für **Aktion** die Option **Zulassen** aus.
 8. Geben Sie unter **Regeln** > **Ziel-FQDNs** für **Name** die Zeichenfolge **Allow-Google** ein.
-9. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-10. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
-11. Geben Sie unter **Ziel-FQDNs** die Adresse **www.google.com** ein.
-12. Wählen Sie **Hinzufügen**.
+9. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
+10. Geben Sie unter **Quelle** die Adresse **10.0.2.0/24** ein.
+11. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein.
+12. Geben Sie unter **Ziel-FQDNs** die Adresse **www.google.com** ein.
+13. Wählen Sie **Hinzufügen**.
 
 Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
 
@@ -209,10 +210,11 @@ Hierbei handelt es sich um die Netzwerkregel, die ausgehenden Zugriff auf zwei I
 3. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
 4. Geben Sie für **Priorität** den Wert **200** ein.
 5. Wählen Sie für **Aktion** die Option **Zulassen** aus.
-6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **Allow-DNS** ein.
+6. Geben Sie unter **Regeln** > **IP-Adressen** für **Name** den Namen **Allow-DNS** ein.
 7. Wählen Sie für **Protokoll** die Option **UDP** aus.
-8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-9. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
+9. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
+1. Geben Sie unter **Quelle** die Adresse **10.0.2.0/24** ein.
+2. Geben Sie unter **Zieladresse** die Adresse **209.244.0.3,209.244.0.4** ein.
 
    Dies sind öffentliche DNS-Server, die von CenturyLink betrieben werden.
 1. Geben Sie unter **Zielports** den Wert **53** ein.

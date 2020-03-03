@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442580"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561441"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -179,9 +179,10 @@ Fügen Sie zunächst eine Netzwerkregel hinzu, um Webdatenverkehr zuzulassen.
 6. Wählen Sie für **Aktion** die Option **Zulassen** aus.
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowWeb** ein.
 7. Wählen Sie für **Protokoll** die Option **TCP** aus.
-8. Geben Sie unter **Quelladressen** die Zeichenfolge **192.168.1.0/24** ein.
-9. Geben Sie für die Zieladresse die Zeichenfolge **10.6.0.0/16** ein.
-10. Geben Sie unter **Zielports** den Wert **80** ein.
+8. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
+9. Geben Sie unter **Quelle** die Adresse **192.168.1.0/24** ein.
+10. Geben Sie unter **Zieladresse** die Zeichenfolge **10.6.0.0/16** ein.
+11. Geben Sie unter **Zielports** den Wert **80** ein.
 
 Fügen Sie nun eine Regel hinzu, um RDP-Datenverkehr zuzulassen.
 
@@ -189,10 +190,11 @@ Geben Sie in der zweiten Regel Zeile die folgenden Informationen ein:
 
 1. Geben Sie unter **Name** den Namen **AllowRDP** ein.
 2. Wählen Sie für **Protokoll** die Option **TCP** aus.
-3. Geben Sie unter **Quelladressen** die Zeichenfolge **192.168.1.0/24** ein.
-4. Geben Sie für die Zieladresse die Zeichenfolge **10.6.0.0/16** ein.
-5. Geben Sie unter **Zielports** den Wert **3389** ein.
-6. Wählen Sie **Hinzufügen**.
+3. Wählen Sie unter **Quelltyp** die Option **IP-Adresse** aus.
+4. Geben Sie unter **Quelle** die Adresse **192.168.1.0/24** ein.
+5. Geben Sie unter **Zieladresse** die Zeichenfolge **10.6.0.0/16** ein.
+6. Geben Sie unter **Zielports** den Wert **3389** ein.
+7. Wählen Sie **Hinzufügen**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Erstellen und Verbinden der VPN-Gateways
 

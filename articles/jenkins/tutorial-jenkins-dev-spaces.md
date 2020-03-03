@@ -3,12 +3,12 @@ title: Verwenden des Azure Dev Spaces-Plug-Ins für Jenkins mit Azure Kubernet
 description: Hier erfahren Sie, wie Sie das Azure Dev Spaces-Plug-In in einer Continuous Integration-Pipeline verwenden.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209669"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619980"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Tutorial: Verwenden des Azure Dev Spaces-Plug-Ins für Jenkins mit Azure Kubernetes Service 
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie das Azure Dev Spaces-Plug-In für Jenkins und das Azure Container Registry-Plug-In verwenden, um Code zu erstellen und in einem Entwicklungsbereich bereitzustellen.
-
-Weitere Informationen zu Azure Dev Spaces, ACR Tasks und CI/CD mit Jenkins finden Sie in den folgenden Ressourcen:
-
-Azure Dev Spaces:
-* [Funktionsweise und Konfiguration von Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR Tasks:
-* [Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-CI/CD mit Jenkins in Azure:
-* [Tutorial: Bereitstellen über GitHub in Azure Kubernetes Service (AKS) mit Continuous Integration und Continuous Deployment von Jenkins](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [CI/CD mit Jenkins in Azure](jenkins-continuous-deployment.md)

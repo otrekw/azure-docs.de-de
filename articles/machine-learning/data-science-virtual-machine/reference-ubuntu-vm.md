@@ -1,5 +1,6 @@
 ---
-title: 'Referenz: DSVM unter Ubuntu'
+title: 'Referenz: Data Science Virtual Machine für Ubuntu'
+titleSuffix: Azure Data Science Virtual Machine
 description: Details zu den Tools, die in der Data Science Virtual Machine für Ubuntu enthalten sind
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497631"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525820"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenz: Data Science Virtual Machine für Ubuntu (Linux)
 
@@ -231,7 +232,7 @@ Die folgenden Azure-Tools werden auf dem virtuellen Computer installiert:
 * **Azure-Bibliotheken**: Im Folgenden finden Sie einige der vorinstallierten Bibliotheken.
   
   * **Python**: Die zu Azure gehörenden Bibliotheken in Python sind *azure*, *azureml*, *pydocumentdb* und *pyodbc*. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.
-  * **R**: Die zu Azure gehörenden Bibliotheken in R sind AzureML und RODBC.
+  * **R:** Die zu Azure gehörenden Bibliotheken in R sind AzureML und RODBC.
   * **Java**: Sie finden die Liste mit den Azure Java-Bibliotheken im Verzeichnis „/dsvm/sdk/AzureSDKJava“ auf der VM. Die wichtigsten Bibliotheken sind Azure-Speicher- und -Verwaltungs-APIs, Azure Cosmos DB und JDBC-Treiber für SQL Server.  
 
 Sie können über den vorinstallierten Firefox-Browser auf das [Azure-Portal](https://portal.azure.com) zugreifen. Im Azure-Portal können Sie Azure-Ressourcen erstellen, verwalten und überwachen.
@@ -253,14 +254,14 @@ Informationen zum Bereitstellen von Modellen in R und Python für Azure Machine 
 
 ## <a name="machine-learning-tools"></a>Machine Learning-Tools
 
-Die VM enthält Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Das umfasst:
+Die VM enthält Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Dazu gehören:
 
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
 * **xgboost**: Ein Tool, das optimierte Boosted Tree-Algorithmen bereitstellt.
 * **Rattle**: R-basiertes grafisches Tool zum einfachen Durchsuchen und Modellieren von Daten.
 * **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install` -Befehl verwenden.
 * **LightGBM**: Ein schnelles, verteiltes Gradient-Boosted-Hochleistungsframework auf der Grundlage von Entscheidungsstrukturalgorithmen.
-* **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Zu den vorinstallierten Bibliotheken zählen u. a. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie diesen Befehl ausführen:
+* **R:** Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Zu den vorinstallierten Bibliotheken zählen u. a. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie diesen Befehl ausführen:
   
         install.packages(<lib name>)
 
@@ -280,7 +281,7 @@ vw house_dataset
 
 In diesem Verzeichnis sind noch weitere, größere Demos enthalten. Informationen zu Vowpal Wabbit finden Sie in [diesem Abschnitt auf GitHub](https://github.com/JohnLangford/vowpal_wabbit) und im [Vowpal Wabbit-Wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
 
-### <a name="xgboost"></a>XGBoost
+### <a name="xgboost"></a>Xgboost
 
 Die xgboost-Bibliothek wurde für Boosted (Tree)-Algorithmen entworfen und optimiert. Das Ziel dieser Bibliothek besteht darin, die Rechenleistung von Computern erheblich zu verbessern, um Struktur-Boosting-Vorgänge in großem Umfang zu ermöglichen, die skalierbar, portabel und präzise sind.
 
@@ -336,9 +337,9 @@ Eine grafische Benutzeroberfläche mit einer Reihe von Registerkarten wird geöf
 1. Wählen Sie die Option **Forest** (Gesamtstruktur) und **Execute** (Ausführen) aus, um eine zufällige Gesamtstruktur zu erstellen.
 1. Wählen Sie die Registerkarte **Evaluate** (Auswerten) aus.
 1. Wählen Sie die Option **Risk** (Risiko) und **Execute** (Ausführen) aus, um zwei Leistungsdarstellungen zu **Risk (Cumulative)** (Risiko (Kumulativ)) anzuzeigen.
-1. Klicken Sie auf die Registerkarte **Log** (Protokoll), um den generierten R-Code für die obigen Vorgänge anzuzeigen.
+1. Wählen Sie die Registerkarte **Log** (Protokoll) aus, um den generierten R-Code für die obigen Vorgänge anzuzeigen.
    (Aufgrund eines Fehlers in der aktuellen Version von Rattle müssen Sie im Text des Protokolls vor **Export this log** (Protokoll exportieren) das Zeichen **#** eingeben.)
-1. Klicken Sie auf die Schaltfläche **Export** (Exportieren), um die R-Skriptdatei *weather_script.R* im Basisordner zu speichern.
+1. Wählen Sie die Schaltfläche **Export** (Exportieren) aus, um die R-Skriptdatei *weather_script.R* im Basisordner zu speichern.
 
 Sie können Rattle und R beenden. Nun können Sie das generierte R-Skript bearbeiten. Sie können das Skript auch unverändert verwenden und es jederzeit ausführen, um alle Aktionen auf der Rattle-Benutzeroberfläche zu wiederholen. Dies ist besonders für Einsteiger in R eine Möglichkeit, auf einer einfachen grafischen Benutzeroberfläche schnell Analysen und maschinelles Lernen durchzuführen, während in R automatisch Code zum Ändern bzw. Lernen generiert wird.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152328"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605596"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -91,7 +91,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
     ![Eingabezuordnung zum Ausführen von Python-Code](media/module/python-module.png)
 
-4. Um neue Python-Pakete oder Code einzuschließen, fügen Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, in **Script bundle** (Skriptbundle) hinzu. Die Eingabe in **Script bundle** muss eine ZIP-Datei sein, die bereits in Ihren Arbeitsbereich hochgeladen wurde. 
+4. Um neue Python-Pakete oder Code einzuschließen, fügen Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, in **Script bundle** (Skriptbundle) hinzu. Die Eingabe in **Script bundle** muss eine ZIP-Datei sein, die als Dateityp „Dataset“ in Ihren Arbeitsbereich hochgeladen wurde. 
 
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten, Sie müssen dem Pfad aber ein Verzeichnis mit dem Namen **src** voranstellen.
 

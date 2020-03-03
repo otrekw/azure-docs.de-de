@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982597"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623628"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -258,9 +258,9 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, w
 
     ![Screenshot: Korrekte Konfiguration des der Pipeline](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-## <a name="run-the-pipeline"></a>Ausführen der Pipeline
+## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
 
-Nachdem Ihre Pipeline nun vollständig eingerichtet ist, können Sie eine Pipelineausführung übermitteln.
+Nachdem die Einrichtung Ihrer Pipeline jetzt abgeschlossen ist, können Sie eine Pipelineausführung übermitteln, um Ihr Machine Learning-Modell zu trainieren. Sie können eine Pipelineausführung jederzeit übermitteln, während Sie im Designer mit der Erstellung von Pipelines beschäftigt sind. Dies können Sie nutzen, um Ihre Arbeit zwischendurch zu überprüfen und sicherzustellen, dass Ihre Pipeline wie gewünscht funktioniert.
 
 1. Wählen Sie im oberen Bereich der Canvas die Option **Ausführen** aus.
 

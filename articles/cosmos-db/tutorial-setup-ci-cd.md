@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846543"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561901"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -73,7 +73,7 @@ In diesem Tutorial fügen Sie den Task am Anfang hinzu, um sicherzustellen, dass
 
 Sie konfigurieren die Tests nun zur Verwendung des Emulators. Der Emulator-Buildtask exportiert die Umgebungsvariable „CosmosDbEmulator.Endpoint“. Diese kann von nachfolgenden Tasks in der Buildpipeline verwendet werden, um Anforderungen auszugeben. 
 
-In diesem Tutorial führen Sie mithilfe des [Visual Studio-Testtasks](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) Komponententests aus, die über eine Datei vom Typ **.runsettings** konfiguriert wurden. Weitere Informationen zur Komponententesteinrichtung finden Sie in der [Dokumentation](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017). Das in diesem Dokument verwendete vollständige Codebeispiel für die To-Do-Anwendung ist auf [Github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) verfügbar.
+In diesem Tutorial führen Sie mithilfe des [Visual Studio-Testtasks](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) Komponententests aus, die über eine Datei vom Typ **.runsettings** konfiguriert wurden. Weitere Informationen zur Komponententesteinrichtung finden Sie in der [Dokumentation](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017). Das in diesem Dokument verwendete vollständige Codebeispiel für die To-Do-Anwendung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) verfügbar.
 
 Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings**, die Parameter definiert, die an die Komponententests einer Anwendung übergeben werden sollen. Beachten Sie, dass die Variable `authKey` der [bekannte Schlüssel](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) für den Emulator ist. Dieses `authKey`-Element ist der vom Emulator-Buildtask erwartete Schlüssel. Er muss in der Datei vom Typ **.runsettings** definiert sein.
 

@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025339"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559146"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>Zuweisen von benutzerdefinierten Administratorrollen mithilfe der Graph-API in Azure Active Directory 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Zuweisen von benutzerdefinierten Administratorrollen mithilfe von Microsoft Graph-API in Azure Active Directory 
 
-Sie können die Zuweisung von Rollen zu Benutzerkonten mithilfe der Microsoft Graph-API automatisieren. In diesem Artikel werden POST-, GET- und DELETE-Vorgänge für Rollenzuweisungen (roleAssignments) behandelt.
+Mithilfe von Microsoft Graph-API können Sie automatisieren, wie Benutzerkonten Rollen zugewiesen werden sollen. In diesem Artikel werden POST-, GET- und DELETE-Vorgänge für Rollenzuweisungen (roleAssignments) behandelt.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -35,7 +35,8 @@ HTTP-Anforderung zum Erstellen einer Rollenzuweisung zwischen einem Benutzer und
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
 ```
 
 Body
@@ -48,7 +49,7 @@ Body
 }
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 201 Created
@@ -59,7 +60,7 @@ HTTP-Anforderung zum Erstellen einer Rollenzuweisung, bei der der Prinzipal oder
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Body
@@ -72,7 +73,7 @@ Body
 }
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -86,7 +87,7 @@ HTTP-Anforderung zum Erstellen einer einzelnen Rollenzuweisung mit Ressourcenber
 POST
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Body
@@ -99,7 +100,7 @@ Body
 }
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 400 Bad Request
@@ -130,10 +131,10 @@ HTTP-Anforderung zum Abrufen einer Rollenzuweisung für einen bestimmten Prinzip
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=principalId eq ‘<object-id-of-principal>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -156,10 +157,10 @@ HTTP-Anforderung zum Abrufen einer Rollenzuweisung für eine bestimmte Rollendef
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -176,15 +177,15 @@ HTTP-Anforderung zum Abrufen einer Rollenzuweisung anhand der ID
 GET
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 200 OK
 { 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
     "resourceScopes":["/"]
@@ -195,26 +196,26 @@ HTTP/1.1 200 OK
 
 HTTP-Anforderung zum Löschen einer Rollenzuweisung zwischen einem Benutzer und einer Rollendefinition
 
-DELETE
+Delete
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-response
+Antwort
 ``` HTTP
 HTTP/1.1 204 No Content
 ```
 
 HTTP-Anforderung zum Löschen einer Rollenzuweisung, die nicht mehr vorhanden ist
 
-DELETE
+Delete
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 404 Not Found
@@ -222,13 +223,13 @@ HTTP/1.1 404 Not Found
 
 HTTP-Anforderung zum Löschen einer Rollenzuweisung einer integrierten Rollendefinition
 
-DELETE
+Delete
 
 ``` HTTP
-https://graph.windows.net/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
-response
+Antwort
 
 ``` HTTP
 HTTP/1.1 400 Bad Request

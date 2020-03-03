@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391901"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597251"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -58,12 +58,7 @@ BEKs werden auch gesichert. Wenn die BEKs verloren gehen, können autorisierte B
 
 Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans.
 
-- **Virtuelle Windows-Computer:** Für virtuelle Windows-Computer erstellt der Backup-Dienst in Zusammenarbeit mit VSS eine App-konsistente Momentaufnahme der VM-Datenträger.
-
-  - Standardmäßig führt Azure Backup vollständig VSS-Sicherungen durch. [Weitere Informationen](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)
-  - Um die Einstellung so zu ändern, dass Azure Backup Sicherungen von VSS-Kopien erstellt, legen Sie über eine Eingabeaufforderung den folgenden Registrierungsschlüssel fest:
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**.
+- **Virtuelle Windows-Computer:** Für virtuelle Windows-Computer erstellt der Backup-Dienst in Zusammenarbeit mit VSS eine App-konsistente Momentaufnahme der VM-Datenträger.  Standardmäßig führt Azure Backup eine vollständige VSS-Sicherung durch (die Protokolle der Anwendung, z. B. SQL Server zum Zeitpunkt der Sicherung, werden abgeschnitten, um eine konsistente Sicherung auf Anwendungsebene zu erhalten).  Wenn Sie in einer Azure-VM-Sicherung eine SQL Server-Datenbank verwenden, können Sie die Einstellung ändern, um eine VSS-Kopiesicherung (zum Beibehalten von Protokollen) zu erstellen. [hier finden Sie weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)
 
 - **Virtuelle Linux-Computer:** Um App-konsistente Momentaufnahmen der Linux-VMs zu erstellen, verwenden Sie das Linux-Framework für vorher und nachher auszuführende Skripts (Pre- und Post-Skripts), um Ihre eigenen benutzerdefinierten Skripts zu schreiben und Konsistenz zu gewährleisten.
 

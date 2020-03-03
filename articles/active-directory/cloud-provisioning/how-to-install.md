@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549501"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620933"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent ausgef�
     ![Bildschirm „Dienste“](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Nachdem Sie den Agent installiert haben, muss er konfiguriert und aktiviert werden, bevor er mit der Synchronisierung von Benutzern beginnen kann. Informationen zum Konfigurieren eines neuen Agents finden Sie unter [Konfigurieren des neuen Azure AD Connect-Cloudbereitstellungs-Agents](how-to-configure.md).
+>Nachdem Sie den Agent installiert haben, muss er konfiguriert und aktiviert werden, bevor er mit der Synchronisierung von Benutzern beginnen kann. Informationen zum Konfigurieren eines neuen Agents finden Sie unter [Erstellen einer neuen Konfiguration für die cloudbasierte Azure AD Connect-Bereitstellung](how-to-configure.md).
 
 
 

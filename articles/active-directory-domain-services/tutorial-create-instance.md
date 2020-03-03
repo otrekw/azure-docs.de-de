@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931268"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612346"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -68,17 +68,17 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 * **Nicht routingfähige Domänensuffixe:** Im Allgemeinen wird empfohlen, nicht routingfähige Domänennamesuffixe wie z. B. *contoso.local* zu vermeiden. Das Suffix *.local* ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
 
 > [!TIP]
-> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, ein eindeutiges Präfix für den Domänennamen einzuschließen. Lautet Ihr DNS-Stammname beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *corp.contoso.com* oder *ds.contoso.com*. In einer Hybridumgebung mit einer lokalen AD DS-Umgebung werden diese Präfixe unter Umständen bereits verwendet. Verwenden Sie ein eindeutiges Präfix für Azure AD DS.
+> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Wir empfehlen Ihnen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Sie können den DNS-Stammnamen für Ihre verwaltete Azure AD DS-Domäne verwenden, müssen aber möglicherweise einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
+> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, sollten Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com* erstellen. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
-> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aadds.contoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an, der unter Umständen ein eindeutiges Präfix enthält.
+> Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
-> Weitere Informationen finden Sie unter [Auswählen eines Namenspräfixes für die Domäne][naming-prefix].
+> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aaddscontoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an.
 
 Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 
-* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (beispielsweise *contoso* im Domänennamen *contoso.com*) darf maximal 15 Zeichen lang sein.
+* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (z. B. *aaddscontoso* im Domänennamen *aaddscontoso.com*) darf maximal 15 Zeichen lang sein.
 * **Netzwerknamenskonflikte:** Der DNS-Domänenname für Ihre verwaltete Domäne darf im virtuellen Netzwerk noch nicht vorhanden sein. Achten Sie speziell auf die folgenden Szenarien, die zu einem Namenskonflikt führen würden:
     * Im virtuellen Azure-Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
     * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, verfügt über eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
@@ -120,7 +120,7 @@ Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsopt
     ![Benachrichtigung im Azure-Portal über den Fortschritt der Bereitstellung](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Die Seite wird mit Aktualisierungen zum Bereitstellungsvorgang geladen, u. a. mit der Erstellung neuer Ressourcen in Ihrem Verzeichnis.
-1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz (z. B. *aadds.contoso.com*) aus. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
+1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz (z. B. *aaddscontoso.com*) aus. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
 
     ![Status „Wird bereitgestellt“ der Domäne](./media/tutorial-create-instance/provisioning-in-progress.png)
 

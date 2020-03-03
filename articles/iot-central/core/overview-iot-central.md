@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024125"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589408"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -39,15 +39,19 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 - Aufträge unterstützen keine komplexen Typen.
 - Array-Schematypen werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
-- Nur an Standorten in den USA und Europa verfügbar.
+- Verfügbarkeit besteht nur in den Regionen USA, Europa, Asien-Pazifik und Australien.
 - Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
+- Die Unterstützung für [IoT Plug & Play](../../iot-pnp/overview-iot-plug-and-play.md) befindet sich in der Vorschauphase und ist nur in ausgewählten Regionen verfügbar.
+
+    > [!NOTE]
+    > Wenden Sie sich an den technischen Support, um Zugriff auf eine Vorschauanwendung mit Unterstützung von IoT Plug & Play-Geräten zu erhalten.
 
 ## <a name="personas"></a>Personas
 
 In der Dokumentation von IoT Central werden vier Personas verwendet, die mit einer IoT Central-Anwendung interagieren:
 
-- Ein _Lösungsentwickler_ definiert die Arten von Geräten, die eine Verbindung mit der Anwendung herstellen, und passt die Anwendung für den Operator an.
-- Ein _Operator_ verwaltet die mit der Anwendung verbundenen Geräte.
+- Ein _Lösungsentwickler_ definiert die Arten von Geräten, die eine Verbindung mit der Anwendung herstellen, und passt die Anwendung für den Bediener an.
+- Ein _Bediener_ verwaltet die mit der Anwendung verbundenen Geräte.
 - Ein _Administrator_ kümmert sich um administrative Aufgaben – etwa um die [Verwaltung von Benutzern und Rollen](howto-administer.md) innerhalb der Anwendung.
 - Ein _Geräteentwickler_ erstellt den Code, der auf einem mit der Anwendung verbundenen Gerät oder IoT Edge-Modul ausgeführt wird.
 
@@ -63,9 +67,9 @@ Sie können eine neue IoT Central-Anwendung schnell bereitstellen und anschließ
 Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Gerätevorlage_ für die Geräte erstellen, die eine Verbindung mit Ihrer Anwendung herstellen. Eine Gerätevorlage ist die Blaupause zum Definieren der Merkmale und des Verhaltens eines Gerätetyps. Hierzu zählt beispielsweise Folgendes:
 
 - Telemetriedaten, die das Gerät sendet
-- Geschäftliche Eigenschaften, die ein Operator ändern kann
+- Geschäftliche Eigenschaften, die ein Bediener ändern kann
 - Geräteeigenschaften, die von einem Gerät festgelegt werden und in der Anwendung schreibgeschützt sind
-- Vom Operator festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen
+- Vom Bediener festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen
 
 Diese Gerätevorlage enthält Folgendes:
 
@@ -96,10 +100,10 @@ Als Lösungsentwickler können Sie mit IoT Central Code für Testgeräte generie
 
 ### <a name="customize-the-ui"></a>Anpassen der Benutzeroberfläche
 
-Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-Anwendung für die Operatoren anpassen, die die Anwendung tagtäglich verwenden. Die Anpassungsmöglichkeiten für Lösungsentwickler umfassen Folgendes:
+Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-Anwendung für die Bediener anpassen, die die Anwendung tagtäglich verwenden. Die Anpassungsmöglichkeiten für Lösungsentwickler umfassen Folgendes:
 
 - Definieren des Layouts von Eigenschaften und Einstellungen für eine Gerätevorlage
-- Konfigurieren benutzerdefinierter Dashboards, um Operatoren bei der Gewinnung von Erkenntnissen sowie bei der schnelleren Behebung von Problemen zu unterstützen
+- Konfigurieren benutzerdefinierter Dashboards, um Bediener bei der Gewinnung von Erkenntnissen sowie bei der schnelleren Behebung von Problemen zu unterstützen
 - Konfigurieren benutzerdefinierter Analysen zur Untersuchung von Zeitreihendaten Ihrer verbundenen Geräte
 
 ## <a name="pricing"></a>Preise
@@ -140,13 +144,13 @@ Weitere Informationen finden Sie unter [Azure IoT Edge-Geräte und IoT Central](
 
 IoT Central-Anwendungen werden vollständig von Microsoft gehostet, was den Verwaltungsaufwand für Ihre Anwendungen verringert.
 
-Als Operator verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um die Geräte in Ihrer IoT Central-Lösung zu verwalten. Operatoren führen Aufgaben wie die folgenden aus:
+Als Bediener verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um die Geräte in Ihrer IoT Central-Lösung zu verwalten. Bediener führen Aufgaben wie die folgenden aus:
 
 - Überwachen der mit der Anwendung verbundenen Geräte
 - Behandeln und Beheben von Problemen mit Geräten
 - Bereitstellen neuer Geräte
 
-Als Lösungsentwickler können Sie benutzerdefinierte Regeln und Aktionen definieren, die über Datenstreaming von verbundenen Geräten ausgeführt werden. Operatoren können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
+Als Lösungsentwickler können Sie benutzerdefinierte Regeln und Aktionen definieren, die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
 
 Administratoren verwalten über [Benutzerrollen und Berechtigungen](howto-administer.md) den Zugriff auf Ihre Anwendung.
 

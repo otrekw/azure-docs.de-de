@@ -1,5 +1,5 @@
 ---
-title: Tutorial zum Kopieren von Daten auf Ihr Azure Data Box Heavy-Gerät mithilfe des Datenkopierdiensts | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren von Daten auf Azure Data Box Heavy mit dem Datenkopierdienst'
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Datenkopierdienst Daten auf Ihr Azure Data Box Heavy-Gerät kopieren.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc28ea5f74ad16d4387d246ef73618a53ea26e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595819"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560219"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -55,7 +55,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 3. Füllen Sie im Dialogfeld **Auftrag konfigurieren und starten** die folgenden Felder aus:
     
-    |Feld                          |Wert    |
+    |Feld                          |value    |
     |-------------------------------|---------|
     |**Auftragsname**                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |**Quellpfad**                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |
@@ -111,7 +111,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 6. Während der Auftragsausführung gilt für die Seite **Daten kopieren** Folgendes:
 
-    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Mögliche Statuswerte:
+    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Der Status kann Folgendes sein:
         - **Wird ausgeführt**
         - **Fehler**
         - **Erfolgreich**

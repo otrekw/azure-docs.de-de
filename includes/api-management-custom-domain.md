@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66249036"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649539"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Vorgehensweise der Antwort des APIM-Proxyservers mit SSL-Zertifikaten beim TLS-Handshake
 
@@ -20,7 +20,7 @@ Wenn der Kunde eine oder mehrere benutzerdefinierte für den Proxy konfigurierte
 Wenn der Kunde einen Client verwendet, der den [SNI](https://tools.ietf.org/html/rfc6066#section-3)-Header nicht sendet, antwortet APIM gemäß der folgenden Logik:
 
 * Wenn der Dienst nur eine für den Proxy konfigurierte benutzerdefinierte Domäne enthält, ist das Standardzertifikat das Zertifikat, das für die benutzerdefinierte Proxydomäne ausgestellt wurde.
-* Wenn der Dienst mehrere benutzerdefinierte Domänen für den Proxy konfiguriert hat (wird nur im **Premium**-Tarif unterstützt), kann der Kunde festlegen, welches Zertifikat als Standardzertifikat verwendet werden soll. Zum Festlegen des Standardzertifikats sollte die Eigenschaft [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) auf „true“ („defaultSslBinding“:„true“) festgelegt werden. Wenn der Kunde die Eigenschaft nicht festgelegt, ist das Standardzertifikat das Zertifikat, das für die unter „*.azure-api.net“ gehostete Proxystandarddomäne ausgestellt wird.
+* Wenn der Dienst mehrere benutzerdefinierte Domänen für den Proxy konfiguriert hat (Unterstützung in den Tarifen **Developer** und **Premium**), kann der Kunde festlegen, welches Zertifikat als Standardzertifikat verwendet werden soll. Zum Festlegen des Standardzertifikats sollte die Eigenschaft [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) auf „true“ („defaultSslBinding“:„true“) festgelegt werden. Wenn der Kunde die Eigenschaft nicht festgelegt, ist das Standardzertifikat das Zertifikat, das für die unter „*.azure-api.net“ gehostete Proxystandarddomäne ausgestellt wird.
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>Unterstützung für PUT/POST-Anforderung mit großer Nutzlast
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212200"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620633"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definieren von Anspruchstransformationen von Telefonnummern in Azure AD B2C
 
@@ -26,14 +26,44 @@ Dieser Artikel enthält eine Referenz und Beispiele für die Verwendung von Tele
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-Dieser Anspruch überprüft das Format der Telefonnummer. Wenn ein gültiges Format vorliegt, wird es in ein Standardformat geändert, das von Azure AD B2C verwendet wird. Wenn die angegebene Telefonnummer nicht in einem gültigen Format vorliegt, wird eine Fehlermeldung zurückgegeben.
+Konvertiert einen `phoneNumber`-Datentyp in einen `string`-Datentyp.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumberString | string |  Der Zeichenfolgenanspruch für die Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. Wenn der Eingabeanspruch `country` bereitgestellt wird, liegt die Telefonnummer im lokalen Format vor (ohne Ländercode). |
-| InputClaim | country | string | [Optional] Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer im ISO3166-Format (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
+| InputClaim | phoneNumber | phoneNumber |  Der Anspruchstyp, der in eine Zeichenfolge konvertiert werden soll. |
+| OutputClaim | phoneNumberString | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+In diesem Beispiel wird der „cellPhoneNumber“-Anspruch mit dem Werttyp `phoneNumber` in einen „cellPhone“-Anspruch mit dem Werttyp `string` konvertiert.
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+  - **phoneNumber**: +11234567890 (Werttyp „phoneNumber“)
+- Ausgabeansprüche:
+  - **phoneNumberString**: +11234567890 (Werttyp „string“)
+
+
+## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
+
+Diese Anspruchstransformation überprüft das Format der Telefonnummer. Wenn ein gültiges Format vorliegt, wird es in ein Standardformat geändert, das von Azure AD B2C verwendet wird. Wenn die angegebene Telefonnummer nicht in einem gültigen Format vorliegt, wird eine Fehlermeldung zurückgegeben.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | phoneNumberString | Zeichenfolge |  Der Zeichenfolgenanspruch für die Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. Wenn der Eingabeanspruch `country` bereitgestellt wird, liegt die Telefonnummer im lokalen Format vor (ohne Ländercode). |
+| InputClaim | country | Zeichenfolge | [Optional] Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer im ISO3166-Format (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
 | OutputClaim | outputClaim | phoneNumber | Das Ergebnis dieser Anspruchstransformation. |
 
 Die Anspruchstransformation **ConvertStringToPhoneNumberClaim** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einem [Anzeigesteuerelement](display-controls.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationInvalidPhoneNumber** steuern die Fehlermeldung, die dem Benutzer anzeigt wird.
@@ -68,10 +98,10 @@ Das selbstbestätigte technische Profil, das das technische Validierungsprofil a
 ### <a name="example-1"></a>Beispiel 1
 
 - Eingabeansprüche:
-  - **phoneNumberString**: 045 456-7890
+  - **phoneNumberString**: 033 456-7890
   - **country**: DK
 - Ausgabeansprüche:
-  - **outputClaim**: +450546148120
+  - **outputClaim**: +450334567890
 
 ### <a name="example-2"></a>Beispiel 2
 
@@ -80,17 +110,18 @@ Das selbstbestätigte technische Profil, das das technische Validierungsprofil a
 - Ausgabeansprüche: 
   - **outputClaim**: +11234567890
 
+
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
 Hierdurch werden der Ländercode und die nationale Rufnummer aus dem Eingabeanspruch extrahiert. Optional wird eine Ausnahme ausgelöst, wenn die angegebene Telefonnummer ungültig ist.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | string | Der Zeichenfolgenanspruch der Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. |
+| InputClaim | phoneNumber | Zeichenfolge | Der Zeichenfolgenanspruch der Telefonnummer. Die Telefonnummer muss im internationalen Format vorliegen. Ihr muss ein führendes Zeichen „+“ und der Ländercode vorangestellt werden. |
 | InputParameter | throwExceptionOnFailure | boolean | [Optional] Ein Parameter, der angibt, ob eine Ausnahme ausgelöst wird, wenn die Telefonnummer ungültig ist. Der Standardwert ist „false“. |
-| InputParameter | countryCodeType | string | [Optional] Ein Parameter, der den Typ des Ländercodes im Ausgabeanspruch angibt. Verfügbare Werte sind **CallingCode** (der internationale Aufrufcode für ein Land, z.B. +1) oder **ISO3166** (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
-| OutputClaim | nationalNumber | string | Der Zeichenfolgenanspruch für die nationale Rufnummer der Telefonnummer. |
-| OutputClaim | countryCode | string | Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer. |
+| InputParameter | countryCodeType | Zeichenfolge | [Optional] Ein Parameter, der den Typ des Ländercodes im Ausgabeanspruch angibt. Verfügbare Werte sind **CallingCode** (der internationale Aufrufcode für ein Land, z.B. +1) oder **ISO3166** (der aus zwei Buchstaben bestehende ISO-3166-Ländercode). |
+| OutputClaim | nationalNumber | Zeichenfolge | Der Zeichenfolgenanspruch für die nationale Rufnummer der Telefonnummer. |
+| OutputClaim | countryCode | Zeichenfolge | Der Zeichenfolgenanspruch für den Ländercode der Telefonnummer. |
 
 
 Wenn die Anspruchstransformation **GetNationalNumberAndCodeFromPhoneNumberString** aus einem [technischen Validierungsprofil](validation-technical-profile.md) ausgeführt wird, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einer [Anzeigesteuerelementaktion](display-controls.md#display-control-actions) aufgerufen wird, dann steuern die **UserMessageIfPhoneNumberParseFailure**-Metadaten des selbstbestätigten technischen Profils die Fehlermeldung, die dem Benutzer angezeigt wird.

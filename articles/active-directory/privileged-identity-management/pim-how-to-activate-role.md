@@ -14,12 +14,12 @@ ms.date: 06/28/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6007762c897337170dec69c3486302aa62723480
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8f95a1a08189668e5b6f88941069566b00a73bce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756285"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499190"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
@@ -28,6 +28,117 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfac
 Wenn Sie für eine Administratorrolle berechtigt sind, können Sie diese Rolle aktivieren, um privilegierte Aufgaben durchzuführen. Wenn Sie z. B. gelegentlich Office 365-Funktionen verwalten, dürfen Ihre privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
 
 Dieser Artikel richtet sich an Administratoren, die ihre Azure AD-Rolle in Privileged Identity Management aktivieren müssen.
+
+## <a name="determine-your-version-of-pim"></a>Ermitteln der PIM-Version
+
+Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management auf eine neue Version aktualisiert, die dem Verhalten von Azure-Ressourcenrollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
+
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+
+# <a name="new-version"></a>[Neue Version](#tab/new)
+
+## <a name="activate-a-role"></a>Aktivieren einer Rolle
+
+Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identity Management mithilfe der Navigationsoption **Meine Rollen** die Aktivierung anfordern.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Informationen zum Hinzufügen der Privileged Identity Management-Kachel zu Ihrem Dashboard finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
+
+1. Wählen Sie **Meine Rollen** aus, und wählen Sie dann **Azure AD-Rollen** aus, um eine Liste der Azure AD-Rollen anzuzeigen, für die Sie berechtigt sind.
+
+    ![Seite „Meine Rollen“ mit den Rollen, die aktiviert werden können](./media/pim-how-to-activate-role/my-roles.png)
+
+1. Suchen Sie in der Liste **Azure AD-Rollen** die zu aktivierende Rolle.
+
+    ![Azure AD-Rollen: Liste meiner berechtigten Rollen](./media/pim-how-to-activate-role/activate-link.png)
+
+1. Wählen Sie **Aktivieren** aus, um den Bereich „Aktivieren“ zu öffnen.
+
+    ![Azure AD Rollen: Aktivierungsseite mit Dauer und Bereich](./media/pim-how-to-activate-role/activate-page.png)
+
+1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
+
+    ![Überprüfung meiner Identität mit MFA vor der Rollenaktivierung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+
+1. Wählen Sie **Meine Identität überprüfen** aus, und folgen Sie den Anweisungen zur Bereitstellung einer zusätzlichen Sicherheitsüberprüfung.
+
+    ![Anzeige, die eine Sicherheitsüberprüfung wie z. B. einen PIN-Code verlangt](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+
+1. Wenn Sie einen reduzierten Bereich angeben möchten, wählen Sie **Bereich** aus, um den Filterbereich zu öffnen. Im Filterbereich können Sie die Azure AD-Ressourcen angeben, auf die Sie Zugriff benötigen. Es wird empfohlen, nur Zugriff auf die tatsächlich benötigten Ressourcen anzufordern.
+
+1. Falls erforderlich, geben Sie einen Startzeitpunkt für die Aktivierung an. Die Azure AD-Rolle wird dann nach dem ausgewählten Zeitpunkt aktiviert.
+
+1. Geben Sie im Feld **Grund** den Grund für die Aktivierungsanforderung ein.
+
+1. Wählen Sie **Aktivieren**aus.
+
+    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie aktiviert und der Liste der aktiven Rollen hinzugefügt. Wenn Sie die Rolle verwenden möchten, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus.
+
+    ![Vervollständigter Aktivierungsbereich mit Umfang, Startzeit, Dauer und Grund](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
+
+    Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
+
+    ![Ausstehende Genehmigung für die Aktivierungsanforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
+
+Führen Sie im Falle einer Verzögerung nach der Aktivierung die folgenden Schritte nach der Aktivierung aus, um Ihre Azure AD-Rollen sofort zu verwenden.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Wählen Sie **Meine Rollen** aus, um eine Liste der Azure AD-Rollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
+
+1. Wählen Sie **Azure AD-Rollen** aus.
+
+1. Wählen Sie die Registerkarte **Aktive Rollen** aus.
+
+1. Sobald die Rolle aktiv ist, melden Sie sich vom Portal ab und dann erneut an.
+
+    Die Rolle sollte jetzt zur Verwendung zur Verfügung stehen.
+
+## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
+
+Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Wählen Sie **Meine Anforderungen** aus, um eine Liste mit Ihren Anforderungen von Azure AD-Rollen und Azure-Ressourcenrollen anzuzeigen.
+
+    ![Meine Anforderungen: Azure AD-Seite mit Ihren ausstehenden Anforderungen](./media/pim-how-to-activate-role/my-requests-page.png)
+
+1. Scrollen Sie nach rechts, um die Spalte **Anforderungsstatus** anzuzeigen.
+
+## <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
+
+Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich ist, nicht mehr benötigen, können Sie eine ausstehende Anforderung jederzeit abbrechen.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Wählen Sie **Meine Anforderungen** aus.
+
+1. Wählen Sie für die Rolle, für die Sie eine ausstehende Anforderung abbrechen möchten, den Link **Abbrechen** aus.
+
+    Durch das Auswählen von „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
+
+   ![Liste „Meine Anforderungen“ mit hervorgehobener Aktion „Abbrechen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>Keine Gewährung von Berechtigungen nach der Aktivierung einer Rolle
+
+Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktivierung möglicherweise nicht sofort an alle Portale weitergegeben, für die diese privilegierte Rolle benötigt wird. In einigen Fällen kann die Web-Zwischenspeicherung im Portal auch dann dazu führen, dass die Änderung nicht sofort wirksam ist, wenn diese weitergegeben wurde. Falls die Aktivierung verzögert ist, sollten Sie Folgendes tun.
+
+1. Melden Sie sich vom Azure-Portal ab und dann wieder an.
+
+    Wenn Sie eine Azure AD-Rolle aktivieren, werden die Phasen Ihrer Aktivierung angezeigt. Nach Abschluss aller Phasen wird der Link **Abmelden** angezeigt. Sie können diesen Link verwenden, um sich abzumelden. Hiermit werden die meisten Fälle von Verzögerungen bei der Aktivierung gelöst.
+
+1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
+
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ## <a name="activate-a-role"></a>Aktivieren einer Rolle
 
@@ -77,9 +188,7 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Iden
 
     Nachdem alle Phasen abgeschlossen wurden, klicken Sie auf den Link **Abmelden**, um sich vom Azure-Portal abzumelden. Wenn Sie sich erneut am Portal anmelden, können Sie die Rolle nun verwenden.
 
-    Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
-
-    ![Ausstehende Genehmigungsbenachrichtigung für die Aktivierungsanforderung](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
+    Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), wird in der oberen rechten Ecke des Browsers eine Azure-Benachrichtigung angezeigt, in der Sie darüber informiert werden, dass die Genehmigung der Anforderung aussteht.
 
 ## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
 
@@ -137,6 +246,8 @@ Wenn Sie in Privileged Identity Management eine Rolle aktivieren, wird die Aktiv
 
 1. Überprüfen Sie in Privileged Identity Management, ob Sie als Mitglied der Rolle aufgeführt sind.
 
+ ---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren von Azure-Ressourcenrollen in PIM](pim-resource-roles-activate-your-roles.md)
+- [Aktivieren meiner Azure-Ressourcenrollen in Privileged Identity Management](pim-how-to-activate-role.md)

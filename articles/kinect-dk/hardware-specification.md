@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371290"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619959"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Hardwarespezifikationen für Azure Kinect DK
 
@@ -42,7 +42,7 @@ In diesem Artikel werden folgende Abkürzungen verwendet:
 
 Das Azure Kinect-Gerät hat folgende Abmessungen und folgendes Gewicht:
 
-- **Abmessungen:** 103 × 39 × 126 mm
+- **Dimensions** (Dimensionen): 103 × 39 × 126 mm
 - **Gewichtung:** 440 g
 
 ![Azure Kinect DK: Abmessungen](./media/resources/hardware-specs-media/dimensions.png)
@@ -51,7 +51,7 @@ Das Azure Kinect-Gerät hat folgende Abmessungen und folgendes Gewicht:
 
 Azure Kinect DK ist für Entwickler und gewerbliche Unternehmen mit folgenden Umgebungsbedingungen konzipiert:
 
-- **Temperatur:** 10–25 °C
+- **Temperature**: 10–25 °C
 - **Luftfeuchtigkeit:** 8–90 % relative Luftfeuchtigkeit (nicht kondensierend)
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Weitere Sicherheitsinformationen für das Produkt finden Sie [hier](https://supp
 
 Azure Kinect DK verfügt über eine von Microsoft entwickelte integrierte 1-Megapixel-Tiefenkamera, die auf dem Laufzeitverfahren (Time Of Flight, TOF) basiert und den [auf der ISSCC 2018 vorgestellten Bildsensor](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018) verwendet. Die Tiefenkamera unterstützt folgende Modi:
 
- | Modus            | Auflösung | FoI       | FPS                | Betriebsbereich* | Belichtungszeit |
+ | Mode            | Lösung | FoI       | FPS                | Betriebsbereich* | Belichtungszeit |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
 | NFOV unklassifiziert   | 640 × 576    | 75° × 65°   | 0, 5, 15, 30       | 0,5–3,86 m       | 12,8 ms        |
 | NFOV 2 × 2 klassifiziert (SW) | 320 × 288    | 75° × 65°   | 0, 5, 15, 30       | 0,5–5,46 m       | 12,8 ms        |
@@ -71,7 +71,7 @@ Azure Kinect DK verfügt über eine von Microsoft entwickelte integrierte 1-Me
 | WFOV unklassifiziert   | 1\.024 × 1.024  | 120° × 120° | 0, 5, 15           | 0,25–2,21 m      | 20,3 ms        |
 | Passives IR      | 1\.024 × 1.024  | –       | 0, 5, 15, 30       | –              | 1,6 ms         |
 
-\*15–95 % Reflektivität bei 850 nm, 2,2 μW/cm<sup>2</sup>/nm, Zufallsfehler-Standardabweichung ≤ 17 mm, typischer systematischer Fehler < 11 mm + 0,1 % Entfernung ohne Mehrweg-Interferenz. Tiefe außerhalb des angegebenen Bereichs hängt von der Objektreflektivität ab.
+\*15–95 % Reflektivität bei 850 nm, 2,2 μW/cm<sup>2</sup>/nm, Zufallsfehler-Standardabweichung ≤ 17 mm, typischer systematischer Fehler < 11 mm + 0,1 % Entfernung ohne Mehrweg-Interferenz. Unter Umständen kann auch Tiefe außerhalb des oben angegebenen Betriebsbereichs erreicht werden. Dies hängt vom Reflexionsvermögen eines Objekts ab.
 
 ## <a name="color-camera-supported-operating-modes"></a>Unterstützte Betriebsmodi der Farbkamera
 
@@ -99,12 +99,12 @@ Im Anschluss finden Sie die zulässigen manuellen Belichtungswerte für die RGB-
 |----|-------|--------|--------|
 | -11|     488|    500|    500 |
 | -10|     977|   1250|   1250 |
-|  -9|    1\.953|   2500|   2500 |
+|  –9|    1\.953|   2500|   2500 |
 |  -8|    3906|  10000|   8\.330 |
 |  -7|    7813|  20000|  16.670 |
 |  -6|   15625|  30.000|  33.330 |
 |  -5|   31.250|  40.000|  41.670 |
-|  -4|   62.500|  50000|  50000 |
+|  –4|   62.500|  50000|  50000 |
 |  -3|  125.000|  60000|  66.670 |
 |  -2|  250.000|  80.000|  83.330 |
 |  -1|  500000| 100.000| 100.000 |
@@ -113,7 +113,7 @@ Im Anschluss finden Sie die zulässigen manuellen Belichtungswerte für die RGB-
 
 ## <a name="depth-sensor-raw-timing"></a>Rohzeiten für den Tiefensensor
 
-Tiefenmodus | IR <br>Impulse | Impuls <br>Breite  | Leerlauf- <br>zeiträume| Leerlaufzeit | Belichtungs- <br> zeit
+Tiefenmodus | IR <br>Impulse | Impuls <br>Breite  | Idle <br>zeiträume| Leerlaufzeit | Belichtungs- <br> Time
 -|-|-|-|-|-
 NFOV unklassifiziert <br>  NFOV 2 × 2 klassifiziert <br> WFOV 2 × 2 klassifiziert | 9 | 125 us | 8 | 1\.450 us | 12,8 ms 
 WFOV unklassifiziert                                            | 9 | 125 us | 8 | 2\.390 us | 20,3 ms
@@ -152,7 +152,7 @@ Azure Kinect DK ist ein USB 3.0-Verbundgerät und macht folgende Hardwareendpu
 
 Die Herstellerkennung lautet „0x045E“ (Microsoft). Die Produkt-IDs finden Sie in der folgenden Tabelle:
 
-|    USB-Schnittstelle        |    PNP-IP    |     Hinweise            |
+|    USB-Schnittstelle        |    PNP-IP    |     Notizen            |
 |-------------------------|--------------|----------------------|
 |    USB 3.1-Hub (1. Generation)    |    0x097A    |    Haupthub    |
 |    USB 2.0-Hub         |    0x097B    |    HS-USB          |
@@ -160,7 +160,7 @@ Die Herstellerkennung lautet „0x045E“ (Microsoft). Die Produkt-IDs finden Si
 |    Farbkamera       |    0x097D    |    USB 3.0            |
 |    Mikrofone        |    0x097E    |    HS-USB          |
 
-## <a name="indicators"></a>Anzeigen
+## <a name="indicators"></a>Indikatoren
 
 Auf der Vorderseite des Geräts befindet sich eine Kamerastreaminganzeige. Diese kann mithilfe des Sensor-SDK programmgesteuert deaktiviert werden.
 

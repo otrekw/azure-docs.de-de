@@ -2,37 +2,39 @@
 title: 'Azure DNS: Schützen von Azure DNS-Zonen und -Einträgen'
 description: In diesem Lernpfad erhalten Sie eine Einführung in den Schutz von DNS-Zonen und Datensätzen in Microsoft Azure DNS.
 services: dns
-author: rohinkoul
+author: asudbring
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
-ms.author: rohink
-ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 2/20/2020
+ms.author: allensu
+ms.openlocfilehash: 72c0278c6f13d641b12b205cd8ca0a2f158a454f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983825"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614407"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>So schützen Sie DNS-Zonen und -Ressourceneintragssätze
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DNS-Zonen und -Ressourceneintragssätze sind kritische Ressourcen. Das Löschen einer DNS-Zone oder auch nur eines einzelnen DNS-Ressourceneintragssatzes kann zu einem vollständigen Dienstausfall führen.  Daher ist es wichtig, dass kritische DNS-Zonen und -Ressourceneintragssätze vor unzulässigen oder versehentlichen Änderungen geschützt werden.
+DNS-Zonen und -Ressourceneintragssätze sind kritische Ressourcen. Das Löschen einer DNS-Zone oder eines einzelnen DNS-Eintrags kann zu einem Dienstausfall führen. DNS-Zonen und -Einträge müssen vor unzulässigen oder versehentlichen Änderungen geschützt werden.
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre DNS-Zonen und -Ressourceneinträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
+In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre privaten DNS-Zonen und -Einträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Die rollenbasierte Zugriffssteuerung in Azure (role-based access control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Mit RBAC können Sie den Benutzern genau die Zugriffsrechte erteilen, die diese zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
+Die rollenbasierte Zugriffssteuerung in Azure (role-based access control, RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Benutzer, -Gruppen und -Ressourcen. Bei der rollenbasierten Zugriffssteuerung können Sie genau die Zugriffsebene gewähren, die Benutzer benötigen. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Erste Schritte mit der Zugriffsverwaltung im Azure-Portal](../role-based-access-control/overview.md).
 
 ### <a name="the-dns-zone-contributor-role"></a>Die Rolle „Mitwirkender für DNS-Zone“
 
-Bei der Rolle „Mitwirkender für DNS-Zone“ handelt es sich um eine integrierte Rolle, die von Azure für die Verwaltung von DNS-Ressourcen bereitgestellt wird.  Durch das Zuweisen von „DNS Zone Contributor“-Berechtigungen zu einem Benutzer oder einer Gruppe wird dieser Gruppe ermöglicht, DNS-Ressourcen zu verwalten, jedoch keine Ressourcen eines anderen Typs.
+Die Rolle „Mitwirkender für DNS-Zone“ ist eine integrierte Rolle für die Verwaltung von privaten DNS-Ressourcen. Diese Rolle wird auf einen Benutzer oder eine Gruppe angewendet, damit dieser Benutzer oder diese Gruppe DNS-Ressourcen verwalten kann.
 
-Nehmen wir beispielsweise an, dass die Ressourcengruppe *meineZonen* fünf Zonen für die Contoso Corporation enthält. Indem dem DNS-Administrator die Berechtigungen „Mitwirkender für DNS-Zone“ für diese Ressourcengruppe erteilt werden, wird die vollständige Kontrolle über diese DNS-Zonen ermöglicht. Außerdem wird das Erteilen von unnötigen Berechtigungen vermieden. Der DNS-Administrator kann z.B. keine virtuellen Computer erstellen oder anhalten.
+Die Ressourcengruppe *myResourceGroup* enthält fünf Zonen für die Contoso Corporation. Indem dem DNS-Administrator die Berechtigungen „Mitwirkender für DNS-Zone“ für diese Ressourcengruppe erteilt werden, wird die vollständige Kontrolle über diese DNS-Zonen ermöglicht. So lässt sich vermeiden, dass unnötige Berechtigungen erteilt werden. Der DNS-Administrator kann virtuelle Computer weder erstellen noch beenden.
 
-Die einfachste Möglichkeit, RBAC-Berechtigungen zuzuweisen, ist das Zuweisen [über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).  Öffnen Sie **Zugriffssteuerung (IAM)** für die Ressourcengruppe, klicken Sie auf **Hinzufügen**, und wählen Sie anschließend die Rolle **Mitwirkender für DNS-Zone** sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
+Die einfachste Möglichkeit, RBAC-Berechtigungen zuzuweisen, ist das Zuweisen [über das Azure-Portal](../role-based-access-control/role-assignments-portal.md).  
+
+Öffnen Sie die **Zugriffssteuerung (IAM)** für die Ressourcengruppe, wählen Sie **Hinzufügen** und dann die Rolle **Mitwirkender für DNS-Zone** aus. Wählen Sie Benutzer oder Gruppen aus, denen Sie die Berechtigung erteilen möchten.
 
 ![RBAC auf Ressourcengruppenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -40,21 +42,30 @@ Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../ro
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$rsg = "<resource group name>"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg
 ```
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
+
+az role assignment create \
+--assignee "<user email address>" \
+--role "DNS Zone Contributor" \
+--resource-group "<resource group name>"
 ```
 
 ### <a name="zone-level-rbac"></a>RBAC auf Zonenebene
 
-Azure-RBAC-Regeln können auf ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource angewendet werden. Im Fall von Azure DNS kann diese Ressource eine einzelne DNS-Zone oder sogar ein einzelner Ressourceneintragssatz sein.
+Azure-RBAC-Regeln können auf ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource angewendet werden. Bei dieser Ressource kann es sich um eine einzelne DNS-Zone oder einen einzelnen Eintragssatz handeln.
 
-Nehmen wir beispielsweise an, dass die Ressourcengruppe *meineZonen* die Zone *contoso.com* und eine Teilzone *kunden.contoso.com* enthält, in der CNAME-Einträge für jedes Kundenkonto erstellt werden.  Dem Konto, das für die Verwaltung von CNAME-Einträgen verwendet wird, dürfen Berechtigungen zum Erstellen von Einträgen nur in der Zone *kunden.contoso.com* erteilt werden. Es darf keinen Zugriff auf die anderen Zonen haben.
+Die Ressourcengruppe *myResourceGroup* enthält beispielsweise die Zone *contoso.com* und die Teilzone *customers.contoso.com*. Für jedes Kundenkonto werden CNAME-Einträge erstellt. Dem Administratorkonto, das zum Verwalten der CNAME-Einträge verwendet wird, werden Berechtigungen zum Erstellen von Einträgen in der Zone *customers.contoso.com* zugewiesen. Das Konto kann nur *customers.contoso.com* verwalten.
 
 RBAC-Berechtigungen auf Zonenebene können über das Azure-Portal erteilt werden.  Öffnen Sie **Zugriffssteuerung (IAM)** für die Zone, klicken Sie auf **Hinzufügen**, und wählen Sie anschließend die Rolle **Mitwirkender für DNS-Zone** sowie die erforderlichen Benutzer oder Gruppen aus, um Berechtigungen zu erteilen.
 
@@ -64,21 +75,32 @@ Berechtigungen können auch [mithilfe von Azure PowerShell erteilt werden](../ro
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$rsg = "<resource group name>"
+$zon = "<zone name>"
+$typ = "Microsoft.Network/DNSZones"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -ResourceGroupName $rsg -ResourceName $zon -ResourceType $typ
 ```
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
+
+az role assignment create \
+--assignee <user email address> \
+--role "DNS Zone Contributor" \
+--scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/DnsZones/<zone name>/"
 ```
 
 ### <a name="record-set-level-rbac"></a>RBAC auf Ressourceneintragssatz-Ebene
 
-Wir können einen Schritt weiter gehen. Berücksichtigen Sie den E-Mail-Administrator für Contoso Corporation, der Zugriff auf die MX- und TXT-Einträge an der Spitze der Zone „contoso.com“ benötigt.  Er benötigt keinen Zugriff auf andere MX- oder TXT-Einträge oder Einträge eines anderen Typs.  Azure DNS ermöglicht Ihnen das Zuweisen von Berechtigungen auf Ressourceneintragssatz-Ebene für den Zugriff auf genau die Einträge, auf die der E-Mail-Administrator zugreifen muss.  Dem E-Mail-Administrator wird genau die Kontrolle erteilt, die er benötigt. Er kann keine anderen Änderungen vornehmen.
+Berechtigungen werden auf Eintragssatzebene angewendet.  Der Benutzer erhält die Kontrolle über die benötigten Einträge und kann keine weiteren Änderungen vornehmen.
 
-RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können über das Azure-Portal konfiguriert werden, indem die Schaltfläche **Benutzer** auf der Seite „Ressourceneintragssatz“ verwendet wird:
+RBAC-Berechtigungen auf Eintragssatzebene können im Azure-Portal mithilfe der Schaltfläche **Zugriffssteuerung (IAM)** auf der Seite des Eintragssatzes konfiguriert werden:
 
 ![RBAC auf Ressourceneintragssatz-Ebene über das Azure-Portal](./media/dns-protect-zones-recordsets/rbac3.png)
 
@@ -86,21 +108,31 @@ RBAC-Berechtigungen auf Ressourceneintragssatz-Ebene können auch [mithilfe von 
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+$usr = "<user email address>"
+$rol = "DNS Zone Contributor"
+$sco = 
+"/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+New-AzRoleAssignment -SignInName $usr -RoleDefinitionName $rol -Scope $sco
 ```
 
 Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](../role-based-access-control/role-assignments-cli.md):
 
 ```azurecli
 # Grant permissions to a specific record set
-azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+
+az role assignment create \
+--assignee "<user email address>" \
+--role "DNS Zone Contributor" \
+--scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 ### <a name="custom-roles"></a>Benutzerdefinierte Rollen
 
-Die integrierte Rolle „Mitwirkender für DNS-Zone“ ermöglicht die vollständige Kontrolle über eine DNS-Ressource. Sie können auch Ihre eigenen benutzerdefinierten Azure-Rollen erstellen, um eine noch präzisere Kontrolle bereitzustellen.
+Die integrierte Rolle „Mitwirkender für DNS-Zone“ ermöglicht die vollständige Kontrolle über eine DNS-Ressource. Sie können auch Ihre eigenen benutzerdefinierten Azure-Rollen erstellen, um eine präzisere Kontrolle bereitzustellen.
 
-Betrachten Sie noch einmal das Beispiel, in dem für jedes Contoso Corporation-Kundenkonto ein CNAME-Eintrag in der Zone *kunden.contoso.com* erstellt wird.  Dem Konto, das für die Verwaltung dieser CNAMEs verwendet wird, sollte die Berechtigung zur Verwaltung von ausschließlich CNAME-Einträgen erteilt werden.  Es kann dann keine Einträge anderer Typen (wie z.B. MX-Einträge) ändern oder Vorgänge auf Zonenebene, wie z.B. das Löschen einer Zone, durchführen.
+Dem Konto, das für die Verwaltung von CNAME-Einträgen verwendet wird, wird nur die Berechtigung zur Verwaltung von CNAME-Einträgen erteilt. Das Konto kann keine anderweitigen Einträge ändern. Das Konto kann keine Vorgänge auf Zonenebene durchführen, wie z. B. Löschvorgänge in der Zone.
 
 Das folgende Beispiel zeigt eine benutzerdefinierte Rollendefinition für die Verwaltung von ausschließlich CNAME-Einträgen:
 
@@ -123,7 +155,7 @@ Das folgende Beispiel zeigt eine benutzerdefinierte Rollendefinition für die Ve
     "NotActions": [
     ],
     "AssignableScopes": [
-        "/subscriptions/ c276fc76-9cd4-44c9-99a7-4fd71546436e"
+        "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
     ]
 }
 ```
@@ -149,7 +181,7 @@ Sie kann außerdem über die Azure CLI erstellt werden:
 
 ```azurecli
 # Create new role definition based on input file
-azure role create -inputfile <file path>
+az role create -inputfile <file path>
 ```
 
 Die Rolle kann anschließend auf die gleiche Weise wie integrierte Rollen zugewiesen werden, wie weiter oben in diesem Artikel beschrieben.
@@ -158,26 +190,45 @@ Weitere Informationen zum Erstellen, Verwalten und Zuweisen von benutzerdefinier
 
 ## <a name="resource-locks"></a>Ressourcensperren
 
-Zusätzlich zu RBAC unterstützt Azure Resource Manager eine andere Art der Sicherheitssteuerung, und zwar die Funktion zum Sperren von Ressourcen. Während Ihnen RBAC-Regeln die Kontrolle der Aktionen spezifischer Benutzer und Gruppen ermöglichen, werden Ressourcensperren auf die Ressource angewendet und gelten für alle Benutzer und Rollen. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/lock-resources.md).
+Azure Resource Manager unterstützt eine andere Art der Sicherheitssteuerung: die Möglichkeit zum Sperren von Ressourcen. Ressourcensperren werden auf die Ressource angewendet und gelten für alle Benutzer und Rollen. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/management/lock-resources.md).
 
-Es gibt zwei Arten von Ressourcensperren: **CanNotDelete** und **ReadOnly**. Diese können entweder auf eine DNS-Zone oder auf einen einzelnen Ressourceneintragssatz angewendet werden.  In den folgenden Abschnitten werden einige häufige Szenarios sowie Vorgehensweisen zu deren Unterstützung mithilfe von Ressourcensperren beschrieben.
+Es gibt zwei Arten von Ressourcensperren: **CanNotDelete** und **ReadOnly**. Diese Arten von Sperren können entweder auf eine private DNS-Zone oder auf einen einzelnen Eintragssatz angewendet werden. In den folgenden Abschnitten werden einige häufige Szenarios sowie Vorgehensweisen zu deren Unterstützung mithilfe von Ressourcensperren beschrieben.
 
 ### <a name="protecting-against-all-changes"></a>Schutz vor jeglichen Änderungen
 
-Um alle Änderungen zu verhindern, wenden Sie eine ReadOnly-Sperre auf die Zone an.  Dadurch wird verhindert, dass neue Ressourceneintragssätze erstellt werden und vorhandene Ressourceneintragssätze bearbeitet oder gelöscht werden.
+Um Änderungen zu verhindern, wenden Sie eine ReadOnly-Sperre auf die Zone an. Diese Sperre verhindert das Erstellen neuer Eintragssätze sowie das Bearbeiten oder Löschen vorhandener Eintragssätze.
 
 Ressourcensperren auf Zonenebene können über das Azure-Portal erstellt werden.  Wählen Sie auf der DNS-Zonenseite **Sperren** und dann **+Hinzufügen** aus:
 
 ![Ressourcensperren auf Zonenebene über das Azure-Portal](./media/dns-protect-zones-recordsets/locks1.png)
 
-Ressourcensperren auf Zonenebene können auch über Azure PowerShell erstellt werden:
+Ressourcensperren auf Zonenebene können auch über [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest) erstellt werden:
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+
+$lvl = "<lock level>"
+$lnm = "<lock name>"
+$rsc = "<zone name>"
+$rty = "Microsoft.Network/DNSZones"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Das Konfigurieren von Azure-Ressourcensperren über die Azure CLI wird derzeit nicht unterstützt.
+Der entsprechende Befehl ist auch [über die Azure-Befehlszeilenschnittstelle verfügbar](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+
+```azurecli-interactive
+# Lock a DNS zone
+
+az lock create \
+--lock-type "<lock level>" \
+--name "<lock name>" \
+--resource-name "<zone name>" \
+--namespace "Microsoft.Network" \
+--resource-type "DnsZones" \
+--resource-group "<resource group name>"
+```
 
 ### <a name="protecting-individual-records"></a>Schützen von einzelnen Einträgen
 
@@ -186,33 +237,52 @@ Um zu verhindern, dass ein vorhandener DNS-Ressourceneintragssatz bearbeitet wir
 > [!NOTE]
 > Das Anwenden einer CanNotDelete-Sperre auf einen Ressourceneintragssatz bietet keine effektive Steuerung. Der Ressourceneintragssatz kann zwar nicht gelöscht, aber bearbeitet werden.  Zulässige Bearbeitungen umfassen das Hinzufügen und Entfernen von Einträgen zu dem bzw. aus dem Ressourceneintragssatz. Dazu zählt auch das Entfernen aller Einträge, um einen leeren Ressourceneintragssatz zu hinterlassen. Dies hat die gleiche Wirkung wie das Löschen des Ressourceneintragssatzes aus der Sichtweise einer DNS-Auflösung.
 
-Ressourcensperren auf Ressourceneintragssatz-Ebene können derzeit nur mithilfe von Azure PowerShell konfiguriert werden.  Sie werden im Azure-Portal oder in der Azure CLI nicht unterstützt.
+Ressourcensperren auf Ressourceneintragssatz-Ebene können derzeit nur mithilfe von Azure PowerShell konfiguriert werden.  Sie werden im Azure-Portal und in der Azure CLI nicht unterstützt.
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+
+$lvl = "<lock level>"
+$lnm = "<lock name>"
+$rsc = "<zone name>/<record set name>"
+$rty = "Microsoft.Network/DNSZones/<record type>"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>Schutz vor dem Löschen von Zonen
 
-Wenn eine Zone in Azure DNS gelöscht wird, werden alle Ressourceneintragssätze in der Zone ebenfalls gelöscht.  Dieser Vorgang kann nicht rückgängig gemacht werden.  Das versehentliche Löschen einer kritischen Zone hat unter Umständen eine erhebliche Auswirkung auf den Geschäftsbetrieb.  Der Schutz vor dem versehentlichen Löschen von Zonen ist daher sehr wichtig.
+Wenn eine Zone in Azure DNS gelöscht wird, werden alle Eintragssätze in der Zone ebenfalls gelöscht.  Dieser Vorgang kann nicht rückgängig gemacht werden. Das versehentliche Löschen einer kritischen Zone hat unter Umständen eine erhebliche Auswirkung auf den Geschäftsbetrieb.  Der Schutz vor einer versehentlichen Löschung von Zonen ist sehr wichtig.
 
-Durch das Anwenden einer CanNotDelete-Sperre auf eine Zone wird das Löschen der Zone verhindert.  Da Zonen jedoch von untergeordneten Ressourcen geerbt werden, wird außerdem das Löschen von Ressourceneintragssätzen in der Zone verhindert, was möglicherweise nicht gewünscht ist.  Darüber hinaus ist dies, wie im Hinweis oben beschrieben, zudem ineffizient, da Einträge immer noch aus den vorhandenen Ressourceneintragssätzen entfernt werden können.
+Durch das Anwenden einer CanNotDelete-Sperre auf eine Zone wird das Löschen der Zone verhindert. Sperren werden von untergeordneten Ressourcen geerbt. Eine Sperre verhindert, dass Eintragssätze in der Zone gelöscht werden. Wie im Hinweis oben beschrieben, ist dieses Vorgehen wirkungslos, da Einträge immer noch aus den vorhandenen Eintragssätzen entfernt werden können.
 
-Ziehen Sie alternativ in Betracht, eine CanNotDelete-Sperre auf einen Ressourceneintragssatz in der Zone anzuwenden, wie z.B. den SOA-Eintragssatz.  Da die Zone nicht gelöscht werden kann, ohne auch die Ressourceneintragssätze zu löschen, dient dies dem Schutz vor dem Löschen von Zonen, wobei Ressourceneintragssätze innerhalb der Zone immer noch frei bearbeitet werden können. Wenn versucht wird, die Zone zu löschen, erkennt Azure Resource Manager, dass dadurch auch der SOA-Eintragssatz gelöscht würde, und blockiert den Aufruf, da der SOA-Eintragssatz gesperrt ist.  Es werden keine Ressourceneintragssätze gelöscht.
+Als Alternative können Sie eine CanNotDelete-Sperre auf einen Eintragssatz in der Zone anwenden, z.B. auf den SOA-Eintragssatz. Die Zone wird nur gelöscht, wenn auch die Eintragssätze gelöscht werden. Diese Sperre schützt vor dem Löschen von Zonen, ermöglicht aber Änderungen an Eintragssätzen innerhalb der Zone. Azure Resource Manager erkennt alle Versuche, eine Zone zu löschen. Da diese Löschung auch den SOA-Eintragssatz löschen würde, blockiert Azure Resource Manager den Aufruf, da die SOA gesperrt ist.  Es werden keine Ressourceneintragssätze gelöscht.
 
 Der folgende PowerShell-Befehl erstellt eine CanNotDelete-Sperre für den SOA-Eintragssatz der angegebenen Zone:
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+
+$lvl = "CanNotDelete"
+$lnm = "<lock name>"
+$rsc = "<zone name>/@"
+$rty = "Microsoft.Network/DNSZones/SOA"
+$rsg = "<resource group name>"
+
+New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Eine andere Möglichkeit, zu verhindern, dass eine Zone versehentlich gelöscht wird, besteht darin, mithilfe einer benutzerdefinierten Rolle sicherzustellen, dass Operator und Dienstkonten, die zum Verwalten Ihrer Zonen verwendet werden, keine Berechtigungen zum Löschen von Zonen besitzen. Wenn Sie eine Zone löschen müssen, können Sie ein Löschen in zwei Schritten erzwingen, indem Sie zuerst Berechtigungen zum Löschen von Zonen erteilen (im Gültigkeitsbereich der Zone, um das Löschen der falschen Zone zu verhindern) und zweitens die Zone löschen.
+Eine weitere Option zum Verhindern der versehentlichen Löschung einer Zone ist die Verwendung einer benutzerdefinierten Rolle. Diese Rolle stellt sicher, dass die Konten, die Sie zum Verwalten Ihrer Zonen verwenden, keine Berechtigungen zum Löschen von Zonen besitzen. 
 
-Dieser zweite Ansatz hat den Vorteil, dass er in allen Zonen funktioniert, auf die diese Konten zugreifen, ohne dass Sie daran denken müssen, Sperren zu erstellen. Er hat den Nachteil, dass alle Konten mit Berechtigungen zum Löschen von Zonen, z.B. der Besitzer des Abonnements, noch versehentlich eine wichtige Zone löschen können.
+Wenn Sie eine Zone löschen müssen, können Sie einen zweistufigen Löschvorgang erzwingen:
 
-Es ist möglich, beide Ansätze – Ressourcensperren sowie benutzerdefinierte Rollen – als tiefgreifende Vorbeugungsmaßnahme zum DNS-Zonenschutz gleichzeitig zu verwenden.
+ - Erteilen Sie im ersten Schritt allgemeine Berechtigungen zum Löschen von Zonen.
+ - Erteilen Sie im zweiten Schritt Berechtigungen zum Löschen der betreffenden Zone.
+
+Die benutzerdefinierte Rolle funktioniert für alle Zonen, auf die von diesen Konten zugegriffen wird. Konten mit Berechtigungen zum Löschen von Zonen, z.B. der Abonnementbesitzer, können weiterhin versehentlich eine Zone löschen.
+
+Es ist möglich, beide Ansätze – Ressourcensperren sowie benutzerdefinierte Rollen – als umfassende Vorbeugungsmaßnahme zum DNS-Zonenschutz gleichzeitig zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

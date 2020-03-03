@@ -1,5 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Data Science VM-Instanz unter CentOS'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurieren und erstellen Sie eine Data Science Virtual Machine für Linux (CentOS), um Analysen und Machine Learning-Vorgänge durchzuführen.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204183"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526024"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Schnellstart: Einrichten einer Data Science Virtual Machine-Instanz mit CentOS (Linux) in Azure
 
@@ -33,7 +34,7 @@ Es folgen die Schritte zum Erstellen einer Data Science VM-Instanz unter CentOS:
 
 1. Wählen Sie im nachfolgenden Fenster die Option **Erstellen** aus.
 
-    [![](media/linux-dsvm-intro/create-centos.png "Schaltfläche zum Erstellen eines CentOS-Computers")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. Sie sollten auf das Blatt „Virtuellen Computer erstellen“ umgeleitet werden.
    
@@ -45,10 +46,10 @@ Es folgen die Schritte zum Erstellen einer Data Science VM-Instanz unter CentOS:
     
        * **Abonnement**: Falls Sie über mehrere Abonnements verfügen, müssen Sie das Abonnement auswählen, unter dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
        * **Ressourcengruppe**: Erstellen Sie eine neue Gruppe, oder verwenden Sie eine bereits vorhandene.
-       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. So wird er im Azure-Portal angezeigt.
-       * **Region**: Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Weitere Informationen zu [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. Unter diesem Namen wird er im Azure-Portal angezeigt.
+       * **Region**: Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Informieren Sie sich über die [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
        * **Image**: Behalten Sie den Standardwert bei.
-       * **Größe**: Dies sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/linux/sizes.md).
+       * **Size**: Diese Option sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/linux/sizes.md).
        * **Authentifizierungstyp:** Wählen Sie für eine schnellere Einrichtung die Option „Kennwort“ aus. 
          
          > [!NOTE]

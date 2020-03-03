@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512775"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613329"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
@@ -88,7 +88,7 @@ Sie können die Namensauflösung mit bedingten DNS-Weiterleitungen auf dem DNS-S
 
 Eine von Azure AD DS verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkressourcen. Diese Ressourcen werden für den erfolgreichen Betrieb und die Verwaltung der von Azure AD DS verwalteten Domäne benötigt und sollten nicht manuell konfiguriert werden.
 
-| Azure-Ressource                          | Beschreibung |
+| Azure-Ressource                          | BESCHREIBUNG |
 |:----------------------------------------|:---|
 | Netzwerkschnittstellenkarte                  | Azure AD DS hostet die verwaltete Domäne auf zwei Domänencontrollern (DCs), die auf Windows Server als virtuelle Azure-Computer ausgeführt werden. Jeder virtuelle Computer verfügt über eine virtuelle Netzwerkschnittstelle, die sich mit Ihrem virtuellen Subnetz verbindet. |
 | Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine standardmäßige öffentliche SKU-IP-Adresse. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
@@ -146,7 +146,7 @@ Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit
 
 ## <a name="user-defined-routes"></a>Benutzerdefinierte Routen
 
-Benutzerdefinierte Routen werden standardmäßig nicht erstellt und sind nicht erforderlich, damit Azure AD DS ordnungsgemäß funktioniert. Wenn Sie Routingtabellen verwenden müssen, vermeiden Sie Änderungen an der Route *0.0.0.0*. Änderungen an dieser Route können Azure AD Domain Services beeinträchtigen.
+Benutzerdefinierte Routen werden standardmäßig nicht erstellt und sind nicht erforderlich, damit Azure AD DS ordnungsgemäß funktioniert. Wenn Sie Routingtabellen verwenden müssen, vermeiden Sie Änderungen an der Route *0.0.0.0*. Änderungen an dieser Route führen zu Unterbrechungen von Azure AD Domain Services und versetzen die verwaltete Domäne in einen nicht unterstützten Status.
 
 Sie müssen auch eingehenden Datenverkehr von den IP-Adressen, die in den jeweiligen Azure-Diensttags enthalten sind, an das Azure AD Domain Services-Subnetz weiterleiten. Weitere Informationen zu Diensttags und der zugehörigen IP-Adresse finden Sie unter [IP-Bereiche und Diensttags von Azure – Public Cloud](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 

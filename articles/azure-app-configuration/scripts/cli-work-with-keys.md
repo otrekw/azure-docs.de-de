@@ -1,36 +1,34 @@
 ---
 title: 'Azure CLI-Skriptbeispiel: Verwenden von Schlüssel-Wert-Paaren in einem App Configuration-Speicher'
 titleSuffix: Azure App Configuration
-description: Informationen zur Verwendung von Schlüssel-Wert-Paaren in einem Azure App Configuration-Speicher
+description: Hier erfahren Sie, wie Sie ein Azure CLI-Skript verwenden, um Schlüsselwerte im App Configuration-Speicher zu erstellen, anzuzeigen, zu aktualisieren und zu löschen.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468149"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523646"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Verwenden von Schlüssel-Wert-Paaren in einem Azure App Configuration-Speicher
 
-Dieses Beispielskript erstellt ein neues Schlüssel-Wert-Paar in einem Azure App Configuration-Speicher, führt alle vorhandenen Schlüssel-Wert-Paare auf, aktualisiert den Wert des neu erstellten Schlüssels und löscht ihn schließlich.
+In diesem Beispielskript wird Folgendes gezeigt:
+* Erstellen eines neuen Schlüssel-Wert-Paars
+* Auflisten aller vorhandenen Schlüssel-Wert-Paare
+* Aktualisieren des Werts eines neu erstellten Schlüssels
+* Löschen des neuen Schlüssel-Wert-Paars
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+Für diesen Artikel ist mindestens die Azure CLI-Version 2.0 erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-In diesem Skript werden die folgenden Befehle verwendet, um Vorgänge für Schlüssel-Wert-Paare in einem App Configuration-Speicher auszuführen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Die folgende Tabelle enthält die im Beispielskript verwendeten Befehle: 
 
-| Get-Help | Notizen |
+| Befehl | Notizen |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Erstellt oder aktualisiert ein Schlüssel-Wert-Paar. |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Listet Schlüssel-Wert-Paare in einem App Configuration-Speicher auf. |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Löscht ein Schlüssel-Wert-Paar. |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Dient zum Erstellen oder Aktualisieren eines Schlüssel-Wert-Paars. |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Dient zum Auflisten von Schlüssel-Wert-Paaren in einem App Configuration-Speicher. |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Dient zum Löschen eines Schlüssel-Wert-Paars. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

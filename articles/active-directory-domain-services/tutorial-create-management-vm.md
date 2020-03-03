@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931584"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612217"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -44,6 +44,8 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine Windows Server-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Sehen Sie sich bei Bedarf das vorherige Tutorial zum [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne][create-join-windows-vm] an.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
+* Einen in Ihrem virtuellen Azure AD DS-Netzwerk bereitgestellten Azure Bastion-Host.
+    * Eine Anleitung zum Erstellen eines Azure Bastion-Hosts finden Sie [hier][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -84,16 +86,15 @@ Im vorherigen Tutorial wurde eine Windows Server-VM erstellt und in die verwalt
 Stellen Sie zunächst wie folgt eine Verbindung mit der Windows Server-VM her:
 
 1. Wählen Sie im Azure-Portal auf der linken Seite **Ressourcengruppen** aus. Wählen Sie die Ressourcengruppe, in der Ihre VM erstellt wurde (z. B. *myResourceGroup*), und dann die VM (z. B. *myVM*) aus.
-1. Wählen Sie im Fenster **Übersicht** der VM **Verbinden** aus.
+1. Wählen Sie im Bereich **Übersicht** für Ihren virtuellen Computer zuerst **Verbinden** und dann **Bastion** aus.
 
-    ![Herstellen einer Verbindung mit der Windows-VM im Azure-Portal](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Herstellen einer Verbindung mit einem virtuellen Windows-Computer unter Verwendung von Bastion im Azure-Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    Sie können auch einen [Azure Bastion-Host erstellen und verwenden (zurzeit als Vorschauversion verfügbar)][azure-bastion], um den Zugriff auf das Azure-Portal nur über SSL zuzulassen.
+1. Geben Sie die Anmeldeinformationen für Ihre VM ein, und wählen Sie anschließend **Verbinden** aus.
 
-1. Wählen Sie die Option *RDP-Datei herunterladen* aus. Speichern Sie die RDP-Datei in Ihrem Webbrowser.
-1. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
-1. Geben Sie die Anmeldeinformationen eines Benutzers ein, der Mitglied der Gruppe der *Azure AD DC-Administratoren* ist (z. B. *contoso\dee*).
-1. Wenn während des Anmeldevorgangs eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Ja** oder **Weiter**, um die Verbindung herzustellen.
+   ![Herstellen einer Verbindung über den Bastionhost im Azure-Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+Lassen Sie in Ihrem Webbrowser bei Bedarf das Öffnen von Popups zu, damit die Bastion-Verbindung angezeigt wird. Es dauert einige Sekunden, bis die Verbindung mit Ihrem virtuellen Computer hergestellt wurde.
 
 ## <a name="install-active-directory-administrative-tools"></a>Installieren der Active Directory-Verwaltungstools
 
@@ -105,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstool
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
-1. Wählen Sie auf der Seite **Serverauswahl** die aktuelle VM aus dem Serverpool (z. B. *myvm.aadds.contoso.com*) und anschließend **Weiter** aus.
+1. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer aus dem Serverpool (z. B. *myvm.aaddscontoso.com*) und dann **Weiter** aus.
 1. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**.
 1. Erweitern Sie auf der Seite **Features** den Knoten **Remote Server-Verwaltungstools** und anschließend den Knoten **Rollenverwaltungstools**.
 
@@ -125,7 +126,7 @@ Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Si
     ![Liste der auf dem Server installierten Verwaltungstools](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Wählen Sie **Active Directory-Verwaltungscenter** aus.
-1. Wählen Sie zum Durchsuchen der verwalteten Azure AD DS-Domäne im linken Bereich den Domänennamen aus (z. B. *aadds.contoso.com*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
+1. Wählen Sie zum Durchsuchen der verwalteten Azure AD DS-Domäne im linken Bereich den Domänennamen aus (z. B. *aaddscontoso.com*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
 
     ![Liste der verfügbaren Container, die Teil der verwalteten Azure AD DS-Domäne sind](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

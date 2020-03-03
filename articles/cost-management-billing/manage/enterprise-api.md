@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200675"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560540"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
+
+Alle Datums- und Uhrzeitparameter, die für APIs benötigt werden, müssen als kombinierte UTC-Werte (Coordinated Universal Time) angegeben werden. Die von APIs zurückgegebenen Werte werden im UTC-Format angezeigt.
 
 ## <a name="enabling-data-access-to-the-api"></a>Aktivieren des Datenzugriffs für die API
 * **Generieren oder Abrufen des API-Schlüssels**: Melden Sie sich beim Enterprise Portal an, und navigieren Sie zu „Berichte“ > „Nutzung herunterladen“ > „API-Zugriffsschlüssel“, um den API-Schlüssel zu generieren oder abzurufen.

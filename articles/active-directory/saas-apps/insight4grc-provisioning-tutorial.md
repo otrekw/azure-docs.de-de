@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057480"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621515"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung
 
@@ -90,7 +90,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernamen für den Insight4GRC-Administrator ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Insight4GRC herstellen kann. Vergewissern Sie sich bei einem Verbindungsfehler, dass Ihr Insight4GRC-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die SCIM-Endpunkt-URL ein. Die Endpunkt-URL sollte das Format `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` aufweisen, wobei **Insight4GRC Domain Name** der in den vorherigen Schritten abgerufene Wert ist. Geben Sie den Wert für Bearertoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Insight4GRC herstellen kann. Vergewissern Sie sich bei einem Verbindungsfehler, dass Ihr Insight4GRC-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Bereitstellung](./media/insight4grc-provisioning-tutorial/provisioning.png)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: a98c8b5d7c312582cf6644f74bda664c5031468b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166152"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616321"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Java
 
@@ -25,24 +25,27 @@ Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vis
 
 - Eine Java-IDE Ihrer Wahl.
 - [JDK 7 oder 8](https://aka.ms/azure-jdks) muss installiert sein.
-- Maven muss installiert sein.
+- [Maven](https://maven.apache.org/) muss installiert sein.
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Abrufen von Custom Vision SDK und Beispielcode
 
 Wenn Sie eine Java-App schreiben möchten, die Custom Vision verwendet, benötigen Sie die Maven-Pakete für Custom Vision. Diese Pakete sind in dem Beispielprojekt enthalten, das Sie herunterladen. Sie können hier aber auch einzeln auf sie zugreifen.
 
-Sie können das Custom Vision SDK aus dem zentralen Maven-Repository installieren:
+Sie finden das Custom Vision SDK im zentralen Maven-Repository:
 - [Trainings-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Vorhersage-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 Klonen Sie das Projekt [Cognitive Services Java SDK Samples](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) (Cognitive Services SDK-Beispiele für Java), oder laden Sie es herunter. Navigieren Sie zum Ordner **Vision/CustomVision/** .
 
-Dieses Java-Projekt erstellt ein neues Custom Vision-Objekterkennungsprojekt namens __Sample Java OD Project__, auf das über die [Custom Vision-Website](https://customvision.ai/) zugegriffen werden kann. Anschließend werden Bilder zum Trainieren und Testen einer Klassifizierung hochgeladen. In diesem Projekt soll die Klassifizierung bestimmen, ob es sich bei einem Baum um eine __Hemlocktanne__ oder um eine __japanische Zierkirsche__ handelt.
+Dieses Java-Projekt erstellt ein neues Custom Vision-Objekterkennungsprojekt namens __Sample Java OD Project__, auf das über die [Custom Vision-Website](https://customvision.ai/) zugegriffen werden kann. Anschließend werden Bilder zum Trainieren und Testen einer Klassifizierung hochgeladen. In diesem Projekt soll anhand der Klassifizierung bestimmt werden, ob es sich bei einem Objekt um eine **Gabel** oder um eine **Schere** handelt.
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-Das Programm ist so konfiguriert, dass Ihre zentralen Daten als Umgebungsvariablen gespeichert werden. Legen Sie diese Variablen fest, indem Sie in PowerShell zum Ordner **Vision/CustomVision** navigieren. Geben Sie dann die folgenden Befehle ein:
+Das Programm ist so konfiguriert, dass auf Ihre zentralen Daten als Umgebungsvariablen verwiesen wird. Navigieren Sie zum Ordner **Vision/CustomVision**, und geben Sie die folgenden PowerShell-Befehle ein, um die Umgebungsvariablen festzulegen. 
+
+> [!NOTE]
+> Wenn Sie ein anderes Betriebssystem als Windows verwenden, hilft Ihnen die Anleitung unter [Konfigurieren von Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) weiter.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -94,9 +97,9 @@ Der Vorhersageendpunkt (hier dargestellt durch das Objekt `predictor`) ist die R
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Führen Sie im Projektverzeichnis in PowerShell den folgenden Befehl aus, um die Lösung zu kompilieren und unter Verwendung von Maven auszuführen:
+Navigieren Sie zum Kompilieren und Ausführen der Lösung mit Maven an einer Eingabeaufforderung zum Projektverzeichnis (**Vision/CustomVision**), und führen Sie den run-Befehl aus:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

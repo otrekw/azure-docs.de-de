@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689335"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614429"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -44,6 +44,12 @@ Verwenden Sie die Schlüsselbegriffs- und Entitätserkennung zum Verarbeiten von
 Überwachen Sie auf der Twitter- oder Facebook-Seite Ihres Produkts das Benutzerfeedback. Nutzen Sie die Daten, um die Stimmung der Kunden bei der Einführung neuer Produkte zu analysieren, Schlüsselbegriffe zu Funktionen und Funktionswünschen zu extrahieren oder Kundenbeschwerden sofort zu bearbeiten. Sehen Sie sich die [Microsoft Flow-Beispielvorlage](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/) an.
 
 ![Abbildung mit einer Beschreibung, wie Sie das Feedback zu Ihrem Produkt und Unternehmen in sozialen Medien mithilfe der Schlüsselbegriffserkennung überwachen können](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Klassifizieren und bearbeiten Sie Dokumente, die vertrauliche Informationen enthalten.
+
+Verwenden Sie die Erkennung benannter Entitäten, um in Dokumenten personenbezogene und vertrauliche Informationen zu identifizieren. Verwenden Sie die Daten zum Klassifizieren oder Bearbeiten von Dokumenten, damit sie auf sichere Weise freigegeben werden können.
+
+![Abbildung zur Verwendung der Erkennung benannter Entitäten, um personenbezogene Informationen zu erkennen und Dokumente zu klassifizieren und zu bearbeiten](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

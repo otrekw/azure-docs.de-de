@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185885"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620686"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
@@ -98,7 +98,7 @@ Sie starten eine Auswertung, indem Sie auf **Was-wäre-wenn** klicken. Das Auswe
 
 Wenn [klassische Richtlinien](policy-migration.md#classic-policies) für die ausgewählten Cloud-Apps vorhanden ist, wird ein Indikator angezeigt. Durch Klicken auf den Indikator werden Sie zur Seite „Klassische Richtlinien“ umgeleitet. Auf der Seite „Klassische Richtlinien“ können Sie eine klassische Richtlinie migrieren oder einfach deaktivieren. Schließen Sie diese Seite, um zu den Auswertungsergebnissen zurückzukehren.
 
-In der Liste der Richtlinien, die für den ausgewählten Benutzer gelten, finden Sie auch eine Liste der [Steuerelemente zur Rechteerteilung](controls.md#grant-controls) und [Sitzungssteuerelemente](controls.md#session-controls), die der Benutzer erfüllen muss.
+In der Liste der Richtlinien, die für den ausgewählten Benutzer gelten, finden Sie auch eine Liste der [Gewährungssteuerelemente](concept-conditional-access-grant.md) und [Sitzungssteuerelemente](concept-conditional-access-session.md), die der Benutzer erfüllen muss.
 
 In der Liste der Richtlinien, die nicht für den Benutzer gelten, finden Sie auch die Gründe dafür, warum diese Richtlinien nicht gelten. Für jede der aufgeführten Richtlinien entspricht der Grund der ersten Bedingung, die nicht erfüllt wurde. Falls eine Richtlinie nicht angewendet wird, könnte sie deaktiviert worden sein, da sie nicht weiter auswertet wird.   
 

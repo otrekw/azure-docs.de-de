@@ -1,18 +1,18 @@
 ---
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046124"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649737"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
-Kunden können die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) verwenden, um Informationen zu Dienstanbietern und Angeboten von Dienstanbietern anzuzeigen, um bestimmte Ressourcen mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) zu delegieren sowie um zusätzliche Angebote von Dienstanbietern zu suchen und kaufen. Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können Unternehmen, die mehrere Mandanten verwalten, denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
+Kunden können die Seite **Dienstanbieter** im [Azure-Portal](https://portal.azure.com) verwenden, um Informationen zu Dienstanbietern und Angeboten von Dienstanbietern anzuzeigen, um bestimmte Ressourcen mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) zu delegieren sowie um neue Angebote von Dienstanbietern zu suchen und kaufen. Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können Unternehmen, die mehrere Mandanten verwalten, denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
 
 Um auf die Seite **Dienstanbieter** im Azure-Portal zuzugreifen, können die Kunden **Alle Dienste** auswählen, dann nach **Dienstanbieter** suchen und es auswählen. Sie können die Seite auch finden, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Dienstanbieter“ eingeben.
 
@@ -23,7 +23,7 @@ Beachten Sie, dass auf der Seite **Dienstanbieter** nur Informationen zu den Die
 
 ## <a name="view-service-provider-details"></a>Anzeigen von Dienstanbieterdetails
 
-Zum Anzeigen von Informationen über die Dienstanbieter, mit denen ein Kunde arbeitet, kann dieser im linken Bereich der Seite **Dienstanbieter** die Option **Anbieterangebote** auswählen.
+Um Informationen zu Dienstleistern anzuzeigen, kann der Kunde auf der linken Seite der Seite **Dienstanbieter** die Option **Anbieterangebote** auswählen.
 
 Zu jedem Angebot eines Dienstanbieters werden dem Kunden der Name des Dienstanbieters und das dazugehörige Angebot angezeigt sowie der Name, den der Kunde während des Onboardingvorgangs eingegeben hat.
 
@@ -59,12 +59,20 @@ Nachdem er die Änderungen überprüft hat, kann der Kunde auf die neue Version 
 
 Delegierungen stellen die Rollenzuweisungen dar, die dem Dienstanbieter Berechtigungen für die von einem Kunden delegierten Ressourcen erteilen. Um diese Informationen anzuzeigen, wählen Sie im linken Bereich der Seite **Dienstanbieter** die Option **Delegierungen** aus.
 
-Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Delegierungsinformationen sortieren und gruppieren oder nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
+Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Delegierungsinformationen sortieren. Sie können auch nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
 
 > [!NOTE]
 > Kunden werden weder diese Rollenzuweisungen noch Benutzer des Dienstanbietermandanten angezeigt, denen diese Rollen erteilt wurden. Dies gilt für die [Anzeige der Rollenzuweisungsinformationen für den delegierten Bereich im Azure-Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) ebenso wie für APIs.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="audit-delegations-in-your-environment"></a>Überwachen von Delegierungen in Ihrer Umgebung
 
+Kunden möchten möglicherweise Einblick in die Abonnements und/oder Ressourcengruppen gewinnen, die an Dienstanbieter für die [delegierte Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) delegiert wurden. Dies ist besonders nützlich für Kunden mit einer großen Anzahl von Abonnementen oder mit vielen Benutzern, die Verwaltungsaufgaben ausführen.
+
+Wir bieten eine in [Azure Policy integrierte Richtliniendefinition](../../governance/policy/samples/built-in-policies.md#lighthouse), um die Delegierung von Bereichen zu einem verwaltenden Mandanten zu überwachen. Sie können diese Richtlinie einer Verwaltungsgruppe zuordnen, die alle Abonnements umfasst, die Sie überwachen möchten. Wenn Sie die Compliance mit dieser Richtlinie überprüfen, werden alle delegierten Abonnements und/oder Ressourcengruppen (innerhalb der Verwaltungsgruppe, der die Richtlinie zugeordnet ist) im Zustand „nicht kompatibel“ angezeigt. Sie können dann die Ergebnisse überprüfen und bestätigen, dass es keine unerwarteten Delegierungen gibt.
+
+Weitere Informationen zum Zuweisen einer Richtlinie und zum Anzeigen der Ergebnisse des Konformitätszustands finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung](../../governance/policy/assign-policy-portal.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+ 
 - Erfahren Sie mehr über [Azure Lighthouse](../overview.md).
 - Erfahren Sie, wie Dienstanbieter [Kunden anzeigen und verwalten](view-manage-customers.md) können, indem sie im Azure-Portal zu **Meine Kunden** navigieren.

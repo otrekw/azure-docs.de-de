@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406726"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624015"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java mit REST-APIs
 > [!div class="op_single_selector"]
@@ -26,19 +26,19 @@ ms.locfileid: "74406726"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Erstellen Sie eine Java-Konsolenanwendung, mit der unter Verwendung von [IntelliJ](https://www.jetbrains.com/idea/), des [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) und der [REST-API für Azure Cognitive Search](/rest/api/searchservice/) ein Azure Cognitive Search-Index erstellt, geladen und abgefragt wird. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Erstellen Sie eine Java-Konsolenanwendung, mit der ein Suchindex erstellt, geladen und abgefragt wird, indem [IntelliJ](https://www.jetbrains.com/idea/), das [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) und die [Azure Cognitive Search-REST-API](/rest/api/searchservice/) verwendet werden. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Erstellen und Testen dieses Beispiels wurden die folgenden Softwareprodukte und Dienste verwendet:
+Zum Erstellen und Testen dieser Schnellstartanleitung wurden die folgenden Softwareprodukte und Dienste verwendet:
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 <a name="get-service-info"></a>
 
@@ -56,7 +56,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
 Für jede Anforderung, die an Ihren Dienst gesendet wird, ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="set-up-your-environment"></a>Einrichten der Umgebung
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
 Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
@@ -143,7 +143,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
 1. Klicken Sie auf **OK** , um das Fenster zu schließen.
 
-### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
+### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
 
 1. Erweitern Sie im Fenster **Projekt** die Quellstruktur, um auf den Ordner `src` >  `main` >`resources` > `app` zuzugreifen und eine `config.properties`-Datei hinzuzufügen. Wählen Sie hierzu den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Datei** aus, und geben Sie dann den Dateinamen ein.
 
@@ -159,7 +159,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
 ### <a name="add-the-main-method"></a>Hinzufügen der main-Methode
 
-1. Fügen Sie im Ordner `src` >  `main` > `java` > `app` eine `App`-Klasse hinzu. Wählen Sie hierzu den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
+1. Fügen Sie im Ordner `src` >  `main` > `java` > `app` eine `App`-Klasse hinzu. Wählen Sie hierfür den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
 1. Öffnen Sie die `App`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Dieser Code enthält die `main`-Methode. 
 
     Der Code mit aufgehobener Auskommentierung liest die Suchdienstparameter und verwendet sie, um eine Instanz des Suchdienstclients zu erstellen. Der Suchdienstclient-Code wird im nächsten Abschnitt hinzugefügt.

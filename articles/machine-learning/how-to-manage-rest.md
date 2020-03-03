@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76965263"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580627"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
+Es gibt verschiedene Möglichkeiten zur Verwaltung Ihrer Azure ML-Ressourcen. Sie können das [-Portal](https://portal.azure.com/), die [Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder das [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) verwenden. Sie können auch die REST-API verwenden. Die REST-API verwendet HTTP-Verben in einer Standardmethode zum Erstellen, Abrufen, Aktualisieren und Löschen von Ressourcen. Die REST-API funktioniert mit jeder Sprache oder jedem Tool, die bzw. das HTTP-Anforderungen ausführen kann. Durch die unkomplizierte Struktur von REST sind diese APIs häufig eine gute Wahl in Skriptumgebungen sowie für MLOps-Automatisierung. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 Sie sollten eine `202 Accepted`-Antwort erhalten und in den zurückgegebenen Headern einen `Location`-URI. Sie können diesen URI für Informationen zur Bereitstellung mit GET abrufen, einschließlich hilfreicher Debuginformationen, wenn ein Problem mit einer ihrer abhängigen Ressourcen vorliegt (wenn Sie beispielsweise vergessen haben, Administratorzugriff für Ihre Containerregistrierung zu aktivieren). 
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="resource-provider-errors"></a>Fehler der Ressourcenanbieter
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>Verschieben des Arbeitsbereichs
+
+> [!WARNING]
+> Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
+
+### <a name="deleting-the-azure-container-registry"></a>Löschen der Azure Container Registry
+
+Der Azure Machine Learning-Arbeitsbereich verwendet für einige Operationen die Azure Container Registry (ACR). Es wird automatisch eine ACR-Instanz erstellt, wenn erstmals eine erforderlich ist.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

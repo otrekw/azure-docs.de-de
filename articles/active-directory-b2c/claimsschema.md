@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372977"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581105"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
 | DataType | 1:1 | Der Typ des Anspruchs. |
@@ -72,7 +72,7 @@ Das Element **DataType** unterstützt die folgenden Werte:
 |phoneNumber|Stellt eine Telefonnummer dar. |
 |INT| Stellt eine Zahl zwischen -2.147.483.648 und 2.147.483.647 dar|
 |long| Stellt eine Zahl zwischen -9.223.372.036.854.775.808 und 9.223.372.036.854.775.807 dar |
-|string| Stellt Text als Sequenz von UTF-16-Codeeinheiten dar.|
+|Zeichenfolge| Stellt Text als Sequenz von UTF-16-Codeeinheiten dar.|
 |stringCollection|Stellt eine `string`-Auflistung dar.|
 |userIdentity| Stellt eine Benutzeridentität dar.|
 |userIdentityCollection|Stellt eine `userIdentity`-Auflistung dar.|
@@ -81,7 +81,7 @@ Das Element **DataType** unterstützt die folgenden Werte:
 
 Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Protocol | 1:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
@@ -175,9 +175,11 @@ Das **Restriction**-Element enthält die folgenden Elemente:
 
 #### <a name="enumeration"></a>Enumeration
 
+Das **Enumeration**-Element definiert die auf der Benutzeroberfläche verfügbaren Optionen, die der Benutzer für einen Anspruch auswählen kann, z. B. einen Wert in einem `CheckboxMultiSelect`-, `DropdownSingleSelect`- oder `RadioSingleSelect`-Element. Alternativ können Sie verfügbare Optionen mit dem [LocalizedCollections](localization.md#localizedcollections)-Element definieren und lokalisieren. Um nach einem Element aus einer **Enumeration**-Anspruchssammlung zu suchen, verwenden Sie die Anspruchstransformation [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection).
+
 Das **Enumeration**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
 |value | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
@@ -209,7 +211,7 @@ Das **Pattern**-Element kann die folgenden Attribute enthalten:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
-| HelpText | Nein | Das Muster oder der reguläre Ausdruck für diesen Anspruch. |
+| HelpText | Nein | Eine Fehlermeldung für Benutzer, wenn die Überprüfung des regulären Ausdrucks einen Fehler ergibt. |
 
 Im folgenden Beispiel wird ein **email**-Anspruch mit Eingabeüberprüfung mit regulärem Ausdruck und Hilfetext konfiguriert:
 
@@ -238,7 +240,7 @@ Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfel
 
 Das Element **UserInputType** verfügt über folgende Benutzereingabetypen:
 
-| UserInputType | ClaimType wird unterstützt | BESCHREIBUNG |
+| UserInputType | ClaimType wird unterstützt | Beschreibung |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Dropdownfeld mit Mehrfachauswahl. Der Anspruchswert wird durch eine Zeichenfolge der ausgewählten Werte mit Kommatrennzeichen dargestellt. |
 |DateTimeDropdown | `date`, `dateTime` |Dropdownfeld zur Auswahl von Tag, Monat und Jahr. |
@@ -407,5 +409,3 @@ Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds ve
   </Restriction>
 </ClaimType>
 ```
-
-Verwenden Sie zum Anzeigen der **Enumeration**-Werte in einem **responseMsg**-Anspruch die Anspruchstransformationen `GetMappedValueFromLocalizedCollection` oder `CreateStringClaim`. Weitere Informationen finden Sie unter [String Claims Transformations (Transformationen von Zeichenfolgeansprüchen)](string-transformations.md).

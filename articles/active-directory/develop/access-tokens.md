@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161391"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620881"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -70,7 +70,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 
 ### <a name="header-claims"></a>Headeransprüche
 
-|Anspruch | Format | Beschreibung |
+|Anspruch | Format | BESCHREIBUNG |
 |--------|--------|-------------|
 | `typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
 | `nonce` | String | Ein eindeutiger Bezeichner, der zum Schutz vor Token-Replay-Angriffen verwendet wird. Ihre Ressource kann diesen Wert zum Schutz vor Wiedergaben aufzeichnen. |
@@ -178,7 +178,7 @@ Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberpr�
 
 Ein JWT enthält drei Segmente, die durch das Zeichen `.` getrennt sind. Das erste Segment wird als **Header**, das zweite als **Text** und das dritte als **Signatur** bezeichnet. Mit dem Signatursegment kann die Authentizität des Tokens überprüft werden, sodass es für Ihre App als vertrauenswürdig eingestuft werden kann.
 
-Von Azure AD ausgestellte Token werden mit asymmetrischen Verschlüsselungsalgorithmen nach Industriestandard signiert, z.B. RSA 256. Der Header des JWT enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet werden:
+Von Azure AD ausgestellte Token werden mit asymmetrischen Verschlüsselungsalgorithmen nach Industriestandard (z. B. RS256) signiert. Der Header des JWT enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet werden:
 
 ```json
 {

@@ -4,12 +4,12 @@ description: Enthält Informationen zu Problembehandlungsschritten, mit denen Si
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198614"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603135"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -44,7 +44,7 @@ Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](back
 
 Leistungsengpässe auf dem Computer, der gesichert wird, können Verzögerungen verursachen. Die Fähigkeit des Computers, vom Datenträger zu lesen oder darauf zu schreiben, und die verfügbare Bandbreite zum Senden von Daten über das Netzwerk können beispielsweise für Engpässe sorgen.
 
-Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemmonitor](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon).
+Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemmonitor](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon).
 
 Hier sind einige Leistungsindikatoren und Bereiche angegeben, die bei der Diagnose von Engpässen, um optimale Sicherungen zu erzielen, hilfreich sein können.
 

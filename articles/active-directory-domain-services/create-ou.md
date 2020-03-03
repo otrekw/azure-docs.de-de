@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367143"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614066"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -66,11 +66,11 @@ Um eine benutzerdefinierte Organisationseinheit zu erstellen, verwenden Sie die 
 1. Melden Sie sich bei Ihrer Verwaltungs-VM an. Weitere Informationen zu den Schritten zum Herstellen einer Verbindung mithilfe des Azure-Portals finden Sie unter [Herstellen einer Verbindung mit einer Windows Server-VM][connect-windows-server-vm].
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Wählen Sie zum Erstellen und Verwalten von Organisationseinheiten **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
-1. Wählen Sie im linken Bereich die verwaltete Azure AD DS-Domäne aus, z. B. *aadds.contoso.com*. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt:
+1. Wählen Sie im linken Bereich Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus. Eine Liste der vorhandenen Organisationseinheiten und Ressourcen wird angezeigt:
 
     ![Wählen Sie Ihre von Azure AD DS verwaltete Domäne im Active Directory-Verwaltungscenter aus.](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. Der Bereich **Aufgaben** wird auf der rechten Seite des Active Directory-Verwaltungscenters angezeigt. Wählen Sie unter der Domäne wie *aadds.contoso.com* die Option **Neu > Organisationseinheit** aus.
+1. Der Bereich **Aufgaben** wird auf der rechten Seite des Active Directory-Verwaltungscenters angezeigt. Wählen Sie unter der Domäne (z. B. *aaddscontoso.com*) die Option **Neu > Organisationseinheit** aus.
 
     ![Wählen Sie die Option aus, um eine neue Organisationseinheit im Active Directory-Verwaltungscenter zu erstellen.](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 

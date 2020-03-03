@@ -1,5 +1,5 @@
 ---
-title: Verbinden mit und Konfigurieren und Aktivieren von Azure Data Box Gateway im Azure-Portal | Microsoft-Dokumentation
+title: Verbinden mit und Konfigurieren und Aktivieren von Azure Data Box Gateway im Azure-Portal
 description: Im dritten Tutorial zur Bereitstellung von Data Box Gateway erfahren Sie, wie Sie Ihr virtuelles Gerät verbinden, einrichten und aktivieren können.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 898cb63f8868ce2abaee8784214322edf9a56997
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000316"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561832"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Überprüfen Sie Folgendes, bevor Sie Data Box Gateway konfigurieren und einrichten:
 
 * Sie haben ein virtuelles Gerät bereitgestellt und eine damit verbundene URL abgerufen, wie unter [Bereitstellen eines Data Box Gateways in Hyper-V](data-box-gateway-deploy-provision-hyperv.md) bzw. [Bereitstellen eines Data Box Gateways in VMware](data-box-gateway-deploy-provision-vmware.md) beschrieben.
-* Sie haben den Aktivierungsschlüssel vom Data Box Gateway-Dienst erhalten, den Sie zur Verwaltung von Data Box Gateway-Geräten erstellt haben. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
+* Sie haben den Aktivierungsschlüssel vom Data Box Gateway-Dienst erhalten, den Sie zur Verwaltung von Data Box Gateway-Geräten erstellt haben. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
 
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Herstellen einer Verbindung mit der lokalen Webbenutzeroberfläche 

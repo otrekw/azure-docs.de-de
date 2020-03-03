@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704491"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613302"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Konfigurieren von E-Mail-Benachrichtigungen für Probleme in Azure Active Directory Domain Services
 
@@ -58,7 +58,7 @@ Sie können auch festlegen, dass alle *globalen Administratoren* des Azure AD-Ve
 Führen Sie die folgenden Schritte aus, um die vorhandenen Empfänger von E-Mail-Benachrichtigungen anzuzeigen oder weitere Empfänger hinzuzufügen:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
-1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aadds.contoso.com*) aus.
+1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie links im Azure AD DS-Ressourcenfenster die Option **Benachrichtigungseinstellungen** aus. Die vorhandenen Empfänger für E-Mail-Benachrichtigungen werden angezeigt.
 1. Um einen E-Mail-Empfänger hinzuzufügen, geben Sie die E-Mail-Adresse in die Tabelle mit zusätzlichen Empfängern ein.
 1. Klicken Sie anschließend im oberen Navigationsbereich auf **Speichern**.

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960223"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614233"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Ändern der SKU für eine vorhandene, von Azure AD Domain Services verwaltete Domäne
 
@@ -46,7 +46,7 @@ Weitere Informationen zu diesen Grenzwerten finden Sie unter [Azure AD DS-Funkti
 
 Führen Sie die folgenden Schritte aus, um die SKU für eine verwaltete Azure AD DS-Domäne im Azure-Portal zu ändern:
 
-1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne in der Liste aus (z. B. *aadds.contoso.com*).
+1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie in der Liste Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie auf der Seite „Azure AD DS“ im Menü auf der linken Seite die Optionen **Einstellungen > SKU** aus.
 
     ![Auswählen der SKU-Menüoption für Ihre verwaltete Azure AD DS-Domäne im Azure-Portal](media/change-sku/overview-change-sku.png)

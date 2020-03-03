@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200400"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587089"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Erwerben von Reservierungen mit monatlicher Zahlung
 
@@ -30,7 +30,7 @@ Monatliche Zahlungen sind für Folgendes verfügbar:
 - App Service-Stempelgebühr
 - Verwalteter Datenträger
 - Azure-Daten-Explorer
-- Azure Database for MariaDB/MySQL/PostgreSQL
+- Azure Database for MariaDB, MySQL und PostgreSQL
 - Azure VMware Solution by CloudSimple
 
 
@@ -48,7 +48,7 @@ Wenn Sie den Zahlungsplan nach dem Kauf anzeigen möchten, wählen Sie eine Rese
 
 Geleistete Zahlungen können mithilfe von APIs und Nutzungsdaten sowie in der Kostenanalyse angezeigt werden. Bei Reservierungen mit monatlicher Zahlung wird der Häufigkeitswert in Nutzungsdaten und in der Reservierungsgebühren-API als **Serie** angezeigt. Bei Reservierungen mit Vorauszahlung wird der Wert als **Einmalig** angezeigt.
 
-In der Standardansicht der Kostenanalyse werden monatliche Käufe angezeigt. Wenden Sie für **Gebührentyp** den Filter **Einkauf** und für **Häufigkeit** den Filter **Serie** an, um alle Käufe anzuzeigen. Sollen nur Reservierungen angezeigt werden, wenden Sie einen Filter für **Reservierung** an.
+In der Standardansicht der Kostenanalyse werden monatliche Käufe angezeigt. Wenden Sie auf **Gebührentyp** den Filter **Einkauf** und auf **Häufigkeit** den Filter **Serie** an, um alle Käufe anzuzeigen. Sollen nur Reservierungen angezeigt werden, wenden Sie einen Filter für **Reservierung** an.
 
 ![Beispiel für Reservierungserwerbskosten in der Kostenanalyse](./media/monthly-payments-reservations/cost-analysis.png)
 
@@ -62,7 +62,7 @@ Mit monatlicher Abrechnung erworbene Reservierungen können genau wie andere Res
 
 Wenn Sie eine Reservierung mit monatlicher Zahlung umtauschen, müssen die Kosten für die gesamte Lebensdauer des neuen Einkaufs höher sein als die Restzahlungen, die für die zurückgegebene Reservierung storniert werden. Ansonsten gelten für den Umtausch keine weiteren Einschränkungen, und es fallen auch keine Gebühren an. Sie können eine Reservierung mit Vorauszahlung umtauschen, um eine neue Reservierung mit monatlicher Abrechnung zu erwerben. Der Wert für die Lebensdauer der neuen Reservierung muss jedoch höher sein als der anteilige Wert der zurückgegebenen Reservierung.
 
-Wenn Sie eine Reservierung mit monatlicher Zahlung stornieren, erhebt Microsoft ggf. eine Stornogebühr für die stornierten weiteren Zahlungen. Die übrigen ausstehenden Zahlungen werden mit dem Rückerstattungslimit von 50.000 USD verrechnet.
+Wenn Sie eine Reservierung mit monatlicher Zahlung stornieren, kann Microsoft für die stornierten zugesagten Zahlungen ggf. eine Stornogebühr in Höhe von 12 % erheben. Diese Strafgebühr wird von Microsoft derzeit aber nicht berechnet. Stornierte zugesagte Zahlungen werden mit dem Rückerstattungslimit von 50.000 USD verrechnet. Falls eine Strafgebühr für die Stornierung berechnet wird, hat dies keine Auswirkung auf das Rückerstattungslimit.
 
 Weitere Informationen zu Umtausch und Rückerstattungen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](exchange-and-refund-azure-reservations.md).
 

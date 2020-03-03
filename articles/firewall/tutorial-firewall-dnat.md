@@ -1,23 +1,23 @@
 ---
-title: Filtern von eingehendem Datenverkehr mit Azure Firewall-DNAT im Azure-Portal
+title: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Portal
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall-DNAT über das Azure-Portal bereitstellen und konfigurieren.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195736"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621784"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Datenverkehr per Azure Firewall-DNAT im Azure-Portal
+# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Azure-Portal
 
-Sie können die Ziel-Netzwerkadressübersetzung (Destination Network Address Translation, DNAT) von Azure Firewall so konfigurieren, dass eingehender Datenverkehr für Ihre Subnetze übersetzt und gefiltert wird. Wenn Sie DNAT konfigurieren, ist die Aktion für die NAT-Regelsammlung auf **Dnat** festgelegt. Jede Regel in der NAT-Regelsammlung kann dann verwendet werden, um die öffentliche IP-Adresse und den Port Ihrer Firewall in eine private IP-Adresse und den zugehörigen Port zu übersetzen. Mit DNAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
+Sie können die Ziel-Netzwerkadressübersetzung (Destination Network Address Translation, DNAT) von Azure Firewall so konfigurieren, dass eingehender Internetdatenverkehr für Ihre Subnetze übersetzt und gefiltert wird. Wenn Sie DNAT konfigurieren, ist die Aktion für die NAT-Regelsammlung auf **Dnat** festgelegt. Jede Regel in der NAT-Regelsammlung kann dann verwendet werden, um die öffentliche IP-Adresse und den Port Ihrer Firewall in eine private IP-Adresse und den zugehörigen Port zu übersetzen. Mit DNAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,7 +42,7 @@ In diesem Tutorial erstellen Sie zwei mittels Peering verknüpfte VNETs:
 3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **RG-DNAT-Test** ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
 ## <a name="set-up-the-network-environment"></a>Einrichten der Netzwerkumgebung
 
@@ -62,7 +62,7 @@ Erstellen Sie zuerst die VNETs, und führen Sie anschließend das Peering dafür
 
      Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
      > [!NOTE]
-     > Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+     > Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
 11. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
@@ -149,9 +149,9 @@ Nachdem die Bereitstellung abgeschlossen ist, können Sie sich die private IP-Ad
 3. Klicken Sie auf **Firewall** und anschließend auf **Erstellen**. 
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
-   |NAME     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |Subscription     |\<Ihr Abonnement\>|
    |Resource group     |**Vorhandene verwenden**: RG-DNAT-Test |
    |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
@@ -176,7 +176,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **SN-Workload** 
 5. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 6. Wählen Sie unter **Ressourcengruppe** die Option **Vorhandene verwenden**, und wählen Sie **RG-DNAT-Test** aus.
 7. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-8. Klicken Sie auf **Create**.
+8. Klicken Sie auf **Erstellen**.
 9. Klicken Sie auf **Aktualisieren** und anschließend auf die Routingtabelle **RT-FWroute**.
 10. Klicken Sie auf **Subnetze** und anschließend auf **Zuordnen**.
 11. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie **VN-Spoke** aus.

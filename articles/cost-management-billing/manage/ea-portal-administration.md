@@ -3,16 +3,16 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 142ef421599cef4083efdf8b9ed700d2baa152b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199771"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598390"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -118,6 +118,8 @@ Das Dev/Test-Angebot gilt derzeit nicht für Azure Government-Kunden.
 
 Bei einer Kontoübertragung wird ein Kontobesitzer von einer Registrierung zu einer anderen verschoben. Alle zugehörigen Abonnements des Kontobesitzers werden zur Zielregistrierung verschoben. Dies wird ausgeführt, wenn Sie über mehrere aktive Registrierungen verfügen und nur ausgewählte Kontobesitzer verschieben möchten.
 
+Dieser Abschnitt dient nur zu Informationszwecken, da die Aktion von einem Unternehmensadministrator nicht durchgeführt werden kann. Es ist eine Supportanfrage erforderlich, um ein Unternehmenskonto in eine neue Registrierung zu übertragen.
+
 Beachten Sie die folgenden Punkte, wenn Sie ein Unternehmenskonto in eine neue Registrierung übertragen:
 
 - Nur die in der Anforderung angegebenen Konten werden übertragen. Wenn alle Konten ausgewählt sind, werden alle Konten übertragen.
@@ -147,6 +149,8 @@ Eine Registrierungsübertragung wird in folgenden Fällen in Betracht gezogen:
 - Die Verpflichtungslaufzeit einer aktuellen Registrierung ist abgelaufen.
 - Eine Registrierung befindet sich im Status abgelaufen/verlängert und eine neue Vereinbarung wird ausgehandelt.
 - Wenn Sie über mehrere Registrierungen verfügen und alle Konten und Abrechnungen in einer einzigen Registrierung konsolidieren möchten.
+
+Dieser Abschnitt dient nur zu Informationszwecken, da die Aktion von einem Unternehmensadministrator nicht durchgeführt werden kann. Es ist eine Supportanfrage erforderlich, um eine Unternehmensregistrierung in eine neue Registrierung zu übertragen.
 
 Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Registrierung anfordern, werden die folgenden Aktionen ausgeführt:
 

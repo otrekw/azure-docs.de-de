@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f29eeba98e0cc89c65dda814e03d63d2f3493c35
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469040"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586018"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -35,6 +35,18 @@ In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) Die Umgebungsvariable `JAVA_HOME` muss auf den Ordner verweisen, in dem das JDK installiert ist.
 - Ein [binäres Maven-Archiv](https://maven.apache.org/download.cgi). Führen Sie unter Ubuntu `apt-get install maven` aus, um Maven zu installieren.
 - [Git](https://www.git-scm.com/downloads). Führen Sie unter Ubuntu `sudo apt-get install git` aus, um Git zu installieren.
+
+## <a name="introductory-notes"></a>Einführende Hinweise
+
+*Die Struktur eines Cosmos DB-Kontos.* Ein Cosmos DB-*Konto* enthält unabhängig von der API oder der Programmiersprache null oder mehr *Datenbanken*, eine *Datenbank* (DB) enthält null oder mehr *Container*, und ein *Container* enthält null oder mehr Elemente, wie im folgenden Diagramm zu sehen:
+
+![Entitäten in einem Azure Cosmos-Konto](./media/databases-containers-items/cosmos-entities.png)
+
+Weitere Informationen zu Datenbanken, Containern und Elementen finden Sie [hier](databases-containers-items.md). Einige wichtige Eigenschaften werden auf der Containerebene definiert. Hierzu zählen unter anderem der *bereitgestellte Durchsatz* und der *Partitionsschlüssel*. 
+
+Der bereitgestellte Durchsatz wird in Anforderungseinheiten (Request Units, *RUs*) gemessen. Diese haben einen Preis und wirken sich erheblich auf die Betriebskosten des Kontos aus. Der bereitgestellte Durchsatz kann container- oder datenbankspezifisch ausgewählt werden. In der Regel wird jedoch die containerspezifische Durchsatzangabe bevorzugt. Weitere Informationen zur Durchsatzbereitstellung finden Sie [hier](set-throughput.md).
+
+Wenn Elemente in einen Cosmos DB-Container eingefügt werden, wird die Datenbank horizontal skaliert, indem weitere Speicher- und Computeressourcen zur Bewältigung der Anforderungen hinzugefügt werden. Speicher- und Computekapazität werden in diskreten Einheiten (*Partitionen*) hinzugefügt. In Ihren Dokumenten muss ein Feld als Partitionsschlüssel ausgewählt werden, durch den jedes Dokument einer Partition zugeordnet wird. Zur Verwaltung von Partitionen wird jeder Partition ein ungefähr gleicher Slice aus dem Bereich der Partitionsschlüsselwerte zugewiesen. Es empfiehlt sich daher, einen relativ zufälligen oder gleichmäßig verteilten Partitionsschlüssel zu wählen. Andernfalls fallen für einige Partitionen deutlich mehr Anforderungen an als für andere. Diese werden als *heiße Partitionen* bzw. *kalte Partitionen* bezeichnet und sollten vermieden werden. Weitere Informationen zur Partitionierung finden Sie [hier](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -73,27 +85,27 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 * `CosmosClient`-Initialisierung `CosmosClient` bietet die clientseitige logische Darstellung für den Azure Cosmos-Datenbankdienst. Mit diesem Client werden Anforderungen für den Dienst konfiguriert und ausgeführt.
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateSyncClient":::
 
 * Erstellung von `CosmosDatabase`:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * Erstellung von `CosmosContainer`:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateContainerIfNotExists":::
 
 * Erstellung eines Elements mithilfe der Methode `createItem`:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="CreateItem":::
    
 * Punktlesevorgänge werden mithilfe der Methode `readItem` ausgeführt.
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="ReadItem":::
 
 * SQL-Abfragen über JSON erfolgen mithilfe der `queryItems`-Methode:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java" id="QueryItems":::
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Verwalten von Datenbankressourcen mithilfe der asynchronen API (async)
 
@@ -101,27 +113,27 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 * `CosmosAsyncClient`-Initialisierung `CosmosAsyncClient` bietet die clientseitige logische Darstellung für den Azure Cosmos-Datenbankdienst. Mit diesem Client werden asynchrone Anforderungen für den Dienst konfiguriert und ausgeführt.
     
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateAsyncClient":::
 
 * Erstellung von `CosmosAsyncDatabase`:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateDatabaseIfNotExists":::
 
 * Erstellung von `CosmosAsyncContainer`:
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateContainerIfNotExists":::
 
 * Für die Erstellung wird genau wie bei der synchronen API die Methode `createItem` verwendet. Dieses Beispiel zeigt, wie Sie zahlreiche asynchrone Anforderungen vom Typ `createItem` effizient ausgeben können. Hierzu wird ein reaktiver Stream abonniert, der die Anforderungen sowie Benachrichtigungen ausgibt. Da dieses einfache Beispiel bis zum Abschluss ausgeführt und dann beendet wird, werden Instanzen vom Typ `CountDownLatch` verwendet, um sicherzustellen, dass das Programm nicht während der Elementerstellung beendet wird. **Bei der asynchronen Programmierung dürfen asynchrone Vorgänge nicht zu einer Blockierung führen. In der Praxis werden Anforderungen im Rahmen einer main()-Schleife generiert, die unbegrenzt ausgeführt wird, sodass kein Latch für asynchrone Aufrufe benötigt wird.**
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="CreateItem":::
    
 * Punktlesevorgänge werden genau wie bei der synchronen API mithilfe der Methode `readItem` ausgeführt.
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="ReadItem":::
 
 * SQL-Abfragen über JSON werden genau wie bei der synchronen API mithilfe der Methode `queryItems` ausgeführt.
 
-    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+    :::code language="java" source="~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java" id="QueryItems":::
 
 ## <a name="run-the-app"></a>Ausführen der App
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512758"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613201"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 
@@ -87,7 +87,7 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
 
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Wählen Sie zum Erstellen und Verwalten von Organisationseinheiten **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
-1. Wählen Sie im linken Bereich die verwaltete Azure AD DS-Domäne aus, z. B. *aadds.contoso.com*.
+1. Wählen Sie im linken Bereich Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus.
 1. Öffnen Sie den Container **System** und dann den Container **Kennworteinstellungen**.
 
     Eine integrierte Kennwortrichtlinie für die verwaltete Azure AD DS-Domäne wird angezeigt. Sie können diese integrierte Richtlinie nicht ändern. Erstellen Sie stattdessen eine benutzerdefinierte Kennwortrichtlinie, um die Standardrichtlinie außer Kraft zu setzen.
@@ -112,7 +112,7 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
 
     ![Auswählen von Benutzern und Gruppen, auf die die Kennwortrichtlinie angewendet werden soll](./media/how-to/fgpp-applies-to.png)
 
-1. Kennwortrichtlinien können nur auf Gruppen angewendet werden. Erweitern Sie im Dialogfeld **Speicherorte** den Domänennamen, z. B. *aadds.contoso.com*, und wählen Sie dann eine Organisationseinheit aus, z. B. **AADDC-Benutzer**. Wenn Sie über eine benutzerdefinierte Organisationseinheit verfügen, die eine Gruppe von Benutzern enthält, die Sie anwenden möchten, wählen Sie diese Organisationseinheit aus.
+1. Kennwortrichtlinien können nur auf Gruppen angewendet werden. Erweitern Sie im Dialogfeld **Speicherorte** den Domänennamen (z. B. *aaddscontoso.com*) und wählen Sie dann eine Organisationseinheit (z. B. **AADDC-Benutzer**) aus. Wenn Sie über eine benutzerdefinierte Organisationseinheit verfügen, die eine Gruppe von Benutzern enthält, die Sie anwenden möchten, wählen Sie diese Organisationseinheit aus.
 
     ![Auswählen der Organisationseinheit, zu der die Gruppe gehört](./media/how-to/fgpp-container.png)
 

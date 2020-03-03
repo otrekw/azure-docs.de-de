@@ -1,5 +1,5 @@
 ---
-title: Was ist DSVM für geografische KI?
+title: Was ist Data Science Virtual Machine für geografische künstliche Intelligenz?
 titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine für geografische KI umfasst ArcGIS Pro für die Verwendung geografischer Daten sowie Python, R, und Data Science-Toolkits für die Verwendung von ML und KI.
 keywords: deep learning, KI, data science-tools, data science-VM, räumliche Analysen
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526060"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Was ist Data Science Virtual Machine für geografische künstliche Intelligenz?
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276879"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615150"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End
 
@@ -42,6 +42,12 @@ Suchen Sie oben in der Datei nach `#define INMEMORY_DEMO`, und kommentieren Sie 
 Suchen Sie nach der `StorageConnectionString`-Eigenschaft, und legen Sie den Wert auf den `Connection String`-Text fest, den Sie im Schritt [Erstellen eines Datenbankkontos](#create-a-database-account) kopiert haben. Speichern Sie die Datei .
 
 Sie können den Freigabedienst erneut veröffentlichen und die Beispiel-App ausführen.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+Aufgrund von „Breaking Changes“ wird Unity 2019.3 derzeit nicht unterstützt. Verwenden Sie Unity 2019.1 oder 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

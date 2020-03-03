@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online | Microsoft-Dokumentation
+title: Verwenden von Azure Data Box Heavy zum Verschieben von Dateifreigabeinhalten zu SharePoint Online
 description: In diesem Tutorial erfahren Sie, wie Sie mit der Azure Data Box Heavy Inhalte von Dateifreigaben zu SharePoint Online migrieren.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325267"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560047"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 

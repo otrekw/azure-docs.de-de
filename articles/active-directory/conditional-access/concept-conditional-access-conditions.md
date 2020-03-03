@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192079"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620728"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -54,6 +54,8 @@ Wenn Sie **alle Standorte** einschließen, umfasst diese Option alle IP-Adressen
 
 Beispielsweise können einige Organisationen entscheiden, dass keine mehrstufige Authentifizierung erforderlich ist, wenn ihre Benutzer mit dem Netzwerk an einem vertrauenswürdigen Standort wie dem physischen Hauptsitz verbunden sind. Administratoren können eine Richtlinie erstellen, die einen beliebigen Standort einschließt, aber die ausgewählten Standorte für ihre Netzwerke am Hauptsitz ausschließt.
 
+Im Artikel [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](location-condition.md) finden Sie weitere Informationen zu Standorten.
+
 ## <a name="client-apps-preview"></a>Client-Apps (Vorschau)
 
 Richtlinien für bedingten Zugriff gelten standardmäßig für browserbasierte Anwendungen und Anwendungen, die moderne Authentifizierungsprotokolle verwenden. Zusätzlich zu diesen Anwendungen können Administratoren auch Exchange ActiveSync-Clients und andere Clients einschließen, die Legacyprotokolle verwenden.
@@ -64,9 +66,21 @@ Richtlinien für bedingten Zugriff gelten standardmäßig für browserbasierte A
    - Clients mit moderner Authentifizierung
       - Diese Option umfasst Anwendungen wie Office-Desktop- und Telefonanwendungen.
    - Exchange ActiveSync-Clients
+      - Dies umfasst standardmäßig die gesamte Verwendung des Exchange ActiveSync-Protokolls (EAS-Protokolls). Durch die Auswahl von **Richtlinie nur auf unterstützte Plattformen anwenden** wird die Richtlinie auf unterstützte Plattformen wie iOS, Android und Windows beschränkt.
       - Wenn die Verwendung von Exchange ActiveSync durch eine Richtlinie blockiert wird, erhält der betroffene Benutzer eine einzige Quarantäne-E-Mail. Diese E-Mail enthält Informationen zum Grund für die Blockierung und gegebenenfalls Korrekturanweisungen.
    - Andere Clients
-      - Diese Option umfasst Clients, die Standard-/Legacyauthentifizierungsprotokolle wie IMAP, MAPI, POP und SMTP sowie ältere Office-Anwendungen verwenden, die keine moderne Authentifizierung unterstützen.
+      - Diese Option umfasst Clients, die Standard-/Legacyauthentifizierungsprotokolle verwenden, die keine moderne Authentifizierung unterstützen.
+         - Authentifiziertes SMTP: Wird von POP- und IMAP-Clients zum Senden von E-Mail-Nachrichten verwendet.
+         - AutoErmittlung: Wird von Outlook- und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und eine Verbindung damit herzustellen.
+         - Exchange Online PowerShell: Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Entsprechende Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Web Services (EWS): Eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird.
+         - IMAP4: Wird von IMAP-E-Mail-Clients verwendet.
+         - MAPI über HTTP (MAPI/HTTP): Wird von Outlook 2010 und höher verwendet.
+         - Offlineadressbuch (OAB): Eine Kopie der Adressenlistensammlungen, die von Outlook heruntergeladen und verwendet werden.
+         - Outlook Anywhere (RPC über HTTP): Wird von Outlook 2016 und früher verwendet.
+         - Outlook-Dienst: Wird von der Mail- und Kalender-App für Windows 10 verwendet.
+         - POP3: Wird von POP-E-Mail-Clients verwendet.
+         - Berichtswebdienste: Werden zum Abrufen von Berichtsdaten in Exchange Online verwendet.
 
 Diese Bedingungen werden häufig verwendet, wenn ein verwaltetes Gerät erforderlich ist, Legacyauthentifizierung blockiert wird und Webanwendungen blockiert werden, aber mobile oder Desktop-Apps zulässig sind.
 

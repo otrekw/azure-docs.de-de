@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132211"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612566"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Tutorial: Aktivieren der Kennwortsynchronisierung in Azure Active Directory Domain Services für Hybridumgebungen
 
@@ -68,7 +68,7 @@ Nachdem Sie Azure AD Connect installiert und für die Synchronisierung mit Azure
 
     In diesem Beispielscreenshot werden die folgenden Connectors verwendet:
 
-    * Der Azure AD-Connector hat den Namen *contoso.onmicrosoft.com – AAD*.
+    * Der Azure AD-Connector hat den Namen *aaddscontoso.onmicrosoft.com – AAD*.
     * Der lokale AD DS-Connector hat den Namen *onprem.contoso.com*.
 
 1. Kopieren Sie das folgende PowerShell-Skript, und fügen Sie es auf dem Computer ein, auf dem Azure AD Connect installiert ist. Das Skript löst eine vollständige Kennwortsynchronisierung aus, einschließlich der Legacy-Kennworthashes. Aktualisieren Sie die Variablen `$azureadConnector` und `$adConnector` mit den Connectornamen aus dem vorherigen Schritt.

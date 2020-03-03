@@ -1,20 +1,17 @@
 ---
-title: Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
+title: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325442"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593596"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
 Standardmäßig ist die öffentliche IP-Adresse, die einer Lastenausgleichsressource zugeordnet ist, die von einem AKS-Cluster erstellt wurde, nur gültig solange die Ressource existiert. Wenn Sie den Kubernetes-Dienst löschen, werden auch der zugehörige Lastenausgleich und die zugehörige IP-Adresse gelöscht. Wenn Sie eine bestimmte IP-Adresse für einen Kubernetes-Dienst zuweisen oder beibehalten möchten, können Sie eine statische öffentliche IP-Adresse erstellen und verwenden.
 
@@ -98,6 +95,30 @@ Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
 kubectl apply -f load-balancer-service.yaml
 ```
 
+## <a name="apply-a-dns-label-to-the-service"></a>Anwenden einer DNS-Bezeichnung auf den Dienst
+
+Wenn Ihr Dienst eine dynamische oder statische öffentliche IP-Adresse verwendet, können Sie die Dienstanmerkung `service.beta.kubernetes.io/azure-dns-label-name` verwenden, um eine öffentliche DNS-Bezeichnung festzulegen. Damit wird ein vollqualifizierter Domänenname für Ihren Dienst veröffentlicht, der die öffentlichen DNS-Server und die Domäne der obersten Ebene von Azure verwendet. Der Anmerkungswert muss innerhalb des Azure-Standorts eindeutig sein, daher wird die Verwendung einer ausreichend qualifizierten Bezeichnung empfohlen.   
+
+Azure fügt dann automatisch ein Standardsubnetz wie `<location>.cloudapp.azure.com` (wobei der Standort die von Ihnen ausgewählte Region ist) an den von Ihnen angegebenen Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Beispiel:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> Informationen zum Veröffentlichen des Diensts in Ihrer eigenen Domäne finden Sie unter [Azure DNS][azure-dns-zone] und dem Projekt [external-dns][external-dns].
+
 ## <a name="troubleshoot"></a>Problembehandlung
 
 Wenn es die in der *loadBalancerIP*-Eigenschaft des Dienstmanifests für Kubernetes angegebene statische IP-Adresse nicht gibt oder nicht in dem Knoten „Ressourcengruppe“ erstellt wurde und keine zusätzlichen Delegierungen konfiguriert sind, kann der Lastenausgleichsdienst nicht erstellt werden. Prüfen Sie zur Problembehandlung mithilfe des Befehls [kubectl describe][kubectl-describe] die Ereignisse, die zur Erstellung des Diensts geführt haben. Geben Sie den Namen des Diensts wie folgt genauso wie in dem YAML-Manifest an:
@@ -136,6 +157,8 @@ Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr benötigen, der an Ihre A
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906629"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539602"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> Erstellen Sie unbedingt ein Speicherkonto vom Typ „Allgemein v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
+> Erstellen Sie unbedingt ein Standardspeicherkonto vom Typ „Universell v2 (GPv2)“. Statische Websites sind in keinem anderen Speicherkontotyp verfügbar.
 
 In diesem Tutorial wird [Visual Studio Code](https://code.visualstudio.com/download) verwendet. Hierbei handelt es sich um ein kostenloses Tool für Programmierer, mit dem die statische Website erstellt und in einem Azure Storage-Konto bereitgestellt werden kann.
 

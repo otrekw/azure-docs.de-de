@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186623"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649363"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung mit Azure PowerShell
-Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von einer einzelnen Client-IP-Adresse in einem Zeitraum von einer Minute zulässig sind.
-Dieser Artikel zeigt das Konfigurieren einer WAF-Ratenbegrenzungsregel mithilfe von Azure PowerShell, die steuert, wie viele Anforderungen von einem einzelnen Client an eine Webanwendung, die */promo* in der URL enthält, zulässig sind.
+Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von Clients in einem Zeitraum von einer Minute zulässig sind.
+Dieser Artikel zeigt das Konfigurieren einer WAF-Ratenbegrenzungsregel mithilfe von Azure PowerShell, die steuert, wie viele Anforderungen von Clients an eine Webanwendung, die */promo* in der URL enthält, zulässig sind.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -27,12 +27,12 @@ Azure PowerShell bietet eine Reihe von Cmdlets, die das [Azure Resource Manager]
 
 Sie können [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) auf Ihrem lokalen Computer installieren und in einer beliebigen PowerShell-Sitzung nutzen. Befolgen Sie die Anweisungen auf der Seite, um sich mit Ihren Azure-Anmeldeinformationen anzumelden und das Azure PowerShell-Modul zu installieren.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Herstellen einer Verbindung mit Azure über einen interaktiven Anmeldedialog
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Herstellen einer Verbindung mit Azure über ein interaktives Anmeldedialogfeld
 ```
 Connect-AzAccount
 
 ```
-Stellen Sie vor dem Installieren des Front Door-Moduls sicher, dass Sie die aktuelle Version von PowerShellGet installiert haben. Führen Sie den folgenden Befehl aus, und öffnen Sie PowerShell erneut.
+Stellen Sie vor dem Installieren des Front Door-Moduls sicher, dass die aktuelle Version von PowerShellGet installiert ist. Führen Sie den folgenden Befehl aus, und öffnen Sie PowerShell erneut.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
@@ -73,7 +73,7 @@ Legen Sie eine Ratenbegrenzung mit [New-AzFrontDoorWafCustomRuleObject](/powersh
 
 Suchen Sie mithilfe von `Get-AzureRmResourceGroup` nach dem Namen der Ressourcengruppe, die das Front Door-Profil enthält. Konfigurieren Sie als Nächstes mithilfe von [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) eine Sicherheitsrichtlinie mit einer Ratenbegrenzungsregel in der angegebenen Ressourcengruppe, die das Front Door-Profil enthält.
 
-Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](../../frontdoor/quickstart-create-front-door.md) erstellt haben.
+Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß den Anweisungen im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](../../frontdoor/quickstart-create-front-door.md) erstellt haben.
 
  mit [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
@@ -89,7 +89,7 @@ Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwen
 Verknüpfen Sie das Sicherheitsrichtlinienobjekt mit einem vorhandenen Front Door-Front-End-Host, und aktualisieren Sie die Front Door-Eigenschaften. Rufen Sie zunächst mithilfe des Befehls [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) das Front Door-Objekt ab.
 Legen Sie dann mit dem Befehl [Set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) die Eigenschaft *WebApplicationFirewallPolicyLink* des Front-Ends auf die *Ressourcen-ID* des im vorherigen Schritt erstellten „$ratePolicy“-Objekts fest. 
 
-Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](../../frontdoor/quickstart-create-front-door.md) erstellt haben. Ersetzen Sie im folgenden Beispiel „$frontDoorName“ durch den Namen Ihres Front Door-Profils. 
+Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß den Anweisungen im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](../../frontdoor/quickstart-create-front-door.md) erstellt haben. Ersetzen Sie im folgenden Beispiel „$frontDoorName“ durch den Namen Ihres Front Door-Profils. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `

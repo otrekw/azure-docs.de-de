@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 56a58d0141366f30f2bde503998b59b8642d3d86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8d5b6cb3aeabe98853af1a727c1d29145395f9c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436661"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650906"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 
@@ -93,12 +93,12 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="logic-apps"></a>Logic Apps
 
-Der Azure Logic Apps-Dienst ist in Azure Deutschland nicht verfügbar. Azure Scheduler (verfügbar) ist allerdings bald veraltet. Verwenden Sie Logic Apps, um Planungsaufträge in Azure weltweit zu erstellen.
+Azure Logic Apps ist in Azure Deutschland nicht verfügbar. Sie können aber Planungsaufträge stattdessen mithilfe von Logic Apps im globalen Azure erstellen. Azure Scheduler war zwar in Azure Deutschland verfügbar, wird jedoch eingestellt.
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
-- Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+- Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
+- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

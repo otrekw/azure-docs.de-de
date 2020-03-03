@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549447"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612775"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -63,16 +63,16 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 
 * **Vertrauenswürdiger Aussteller**: Das Zertifikat muss von einer Zertifizierungsstelle ausgestellt sein, der die Computer vertrauen, die über sicheres LDAP eine Verbindung mit der Domäne herstellen. Hierbei kann es sich um eine öffentliche Zertifizierungsstelle oder um eine Unternehmenszertifizierungsstelle handeln, die von diesen Computern als vertrauenswürdig eingestuft wird.
 * **Lebensdauer** : Das Zertifikat muss mindestens für die nächsten 3 bis 6 Monate gültig sein. Der Zugriff auf Ihre verwaltete Domäne über sicheres LDAP wird unterbrochen, wenn das Zertifikat abläuft.
-* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aadds.contoso.com* heißt, muss als Antragstellername im Zertifikat * *.aadds.contoso.com* angegeben sein.
+* **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aaddscontoso.com* heißt, muss als Antragstellername im Zertifikat * *.aaddscontoso.com* angegeben sein.
     * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
 * **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
 
-In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird, z. B. *aadds.contoso.com*:
+In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
-$dnsName="aadds.contoso.com"
+$dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
 $lifetime=Get-Date
@@ -94,7 +94,7 @@ PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 
 Thumbprint                                Subject
 ----------                                -------
-959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aadds.contoso.com
+959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aaddscontoso.com
 ```
 
 ## <a name="understand-and-export-required-certificates"></a>Verstehen und Exportieren von erforderlichen Zertifikaten
@@ -125,7 +125,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
     ![Öffnen des Speichers mit eigenen Zertifikaten in der Microsoft Management Console](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. Das im vorherigen Schritt erstellte selbstsignierte Zertifikat wird angezeigt (z. B. *aadds.contoso.com*). Klicken Sie mit der rechten Maustaste auf dieses Zertifikat, und wählen Sie **Alle Aufgaben > Exportieren...** aus.
+1. Das im vorherigen Schritt erstellte selbstsignierte Zertifikat wird angezeigt (z. B. *aaddscontoso.com*). Klicken Sie mit der rechten Maustaste auf dieses Zertifikat, und wählen Sie **Alle Aufgaben > Exportieren...** aus.
 
     ![Exportieren eines Zertifikats in der Microsoft Management Console](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -150,7 +150,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
 Clientcomputer müssen dem Aussteller des Secure LDAP-Zertifikats vertrauen, damit die Verbindung mit der verwalteten Domäne über LDAPS erfolgreich hergestellt werden kann. Die Clientcomputer benötigen ein Zertifikat, um Daten, die von Azure AD DS verschlüsselt wurden, erfolgreich zu entschlüsseln. Wenn Sie eine öffentliche Zertifizierungsstelle verwenden, muss der Computer diesen Zertifikatausstellern automatisch vertrauen und über ein entsprechendes Zertifikat verfügen. In diesem Tutorial verwenden Sie ein selbstsigniertes Zertifikat. Im vorherigen Schritt haben Sie ein Zertifikat generiert, das den privaten Schlüssel enthält. Jetzt exportieren Sie das selbstsignierte Zertifikat und installieren es dann im Speicher für vertrauenswürdige Zertifikate auf den Clientcomputern:
 
-1. Navigieren Sie in der MMC zurück zu *Zertifikate (Lokaler Computer) > Eigene Zertifikate > Zertifikate*. Das im vorherigen Schritt erstellte selbstsignierte Zertifikat wird angezeigt (z. B. *aadds.contoso.com*). Klicken Sie mit der rechten Maustaste auf dieses Zertifikat, und wählen Sie **Alle Aufgaben > Exportieren...** aus.
+1. Navigieren Sie in der MMC zurück zu *Zertifikate (Lokaler Computer) > Eigene Zertifikate > Zertifikate*. Das zuvor erstellte selbstsignierte Zertifikat wird angezeigt (z. B. *aaddscontoso.com*). Klicken Sie mit der rechten Maustaste auf dieses Zertifikat, und wählen Sie **Alle Aufgaben > Exportieren...** aus.
 1. Klicken Sie im **Zertifikatexport-Assistenten** auf **Weiter**.
 1. Da Sie den privaten Schlüssel für Clients nicht benötigen, wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option **Nein, privaten Schlüssel nicht exportieren** aus und klicken dann auf **Weiter**.
 1. Wählen Sie auf der Seite **Format der zu exportierenden Datei** als Dateiformat für das exportierte Zertifikat die Option **Base-64-codiert X.509 (.CER)** aus:
@@ -180,7 +180,7 @@ Sie haben ein digitales Zertifikat erstellt und exportiert, das den privaten Sch
 
     ![Suchen und Auswählen der verwalteten Azure AD DS-Domäne im Azure-Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
+1. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie auf der linken Seite des Azure AD DS-Fensters die Option **Secure LDAP** aus.
 1. Standardmäßig ist der sichere LDAP-Zugriff auf Ihre verwaltete Domäne deaktiviert. Ändern Sie die Einstellung für **Secure LDAP** in **Aktivieren**.
 1. Der Secure LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet ist standardmäßig deaktiviert. Wenn Sie den öffentlichen Secure LDAP-Zugriff aktivieren, ist Ihre Domäne anfällig für Brute-Force-Kennwortangriffe aus dem Internet. Im nächsten Schritt konfigurieren Sie eine Netzwerksicherheitsgruppe, um den Zugriff auf die erforderlichen IP-Quelladressbereiche zu beschränken.
@@ -219,7 +219,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Action                            | Allow        |
+    | Aktion                            | Allow        |
     | Priority                          | 401          |
     | Name                              | AllowLDAPS   |
 
@@ -235,10 +235,10 @@ Wenn der Secure LDAP-Zugriff über das Internet aktiviert wurde, aktualisieren S
 
 Konfigurieren Sie Ihren externen DNS-Anbieter, und erstellen Sie einen Hosteintrag wie z. B. *ldaps*, um diesen in diese externe IP-Adresse aufzulösen. Um dieses Szenario zuerst auf Ihrem Computer zu testen, können Sie einen Eintrag in der Windows-Datei „hosts“ erstellen. Zum Bearbeiten der Datei „hosts“ auf Ihrem lokalen Computer öffnen Sie den *Editor* als Administrator. Dort öffnen Sie die hosts-Datei im Ordner *C:\Windows\System32\drivers\etc*.
 
-Der folgende DNS-Beispieleintrag – der von Ihrem externen DNS-Anbieter stammen oder sich in der lokalen hosts-Datei befinden kann – löst Datenverkehr für *ldaps.aadds.contoso.com* in die externe IP-Adresse *40.121.19.239* auf:
+Durch den folgenden DNS-Beispieleintrag (entweder bei Ihrem externen DNS-Anbieter oder in der lokalen Datei „hosts“) wird Datenverkehr für *ldaps.aaddscontoso.com* in die externe IP-Adresse *40.121.19.239* aufgelöst:
 
 ```
-40.121.19.239    ldaps.aadds.contoso.com
+40.121.19.239    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Testen von Abfragen in der verwalteten Domäne
@@ -246,13 +246,13 @@ Der folgende DNS-Beispieleintrag – der von Ihrem externen DNS-Anbieter stammen
 Zum Herstellen von Verbindungen und Bindungen mit Ihrer verwalteten Azure AD DS-Domäne sowie für Suchvorgänge über LDAP verwenden Sie das Tool *LDP.exe*. Dieses Tool ist im RSAT-Paket (Remote Server Administration Tools, Remoteserver-Verwaltungstools) enthalten. Weitere Informationen finden Sie unter [Installieren der Remoteserver-Verwaltungstools][rsat].
 
 1. Öffnen Sie *LDP.exe*, und stellen Sie eine Verbindung mit der verwalteten Domäne her. Wählen Sie **Verbindung** und dann **Verbinden...** aus.
-1. Geben Sie den DNS-Domänennamen Ihrer verwalteten Domäne für Secure LDAP ein, den Sie im vorherigen Schritt erstellt haben, z. B. *ldaps.aadds.contoso.com*. Um Secure LDAP zu verwenden, legen Sie den **Port** auf *636* fest und aktivieren das Kontrollkästchen für **SSL**.
+1. Geben Sie den DNS-Domänennamen Ihrer verwalteten Domäne für Secure LDAP ein, den Sie im vorherigen Schritt erstellt haben (z. B. *ldaps.aaddscontoso.com*). Um Secure LDAP zu verwenden, legen Sie den **Port** auf *636* fest und aktivieren das Kontrollkästchen für **SSL**.
 1. Klicken Sie auf **OK**, um eine Verbindung mit der verwalteten Domäne herzustellen.
 
 Als Nächstes erstellen Sie eine Bindung mit Ihrer verwalteten Azure AD DS-Domäne. Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen ausführen, wenn Sie die Synchronisierung von NTLM-Kennworthashes für Ihre Azure AD DS-Instanz deaktiviert haben. Weitere Informationen zum Deaktivieren der Synchronisierung von NTLM-Kennworthashes finden Sie unter [Schützen Ihrer verwalteten Azure AD DS-Domäne][secure-domain].
 
 1. Wählen Sie die Menüoption **Verbindung** und dann die Option **Binden...** aus.
-1. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe *AAD DC-Administratoren* gehört, z. B. *contosoadmin*. Geben Sie das Kennwort des Benutzerkontos und dann Ihre Domäne ein, z. B. *aadds.contoso.com*.
+1. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe *AAD DC-Administratoren* gehört, z. B. *contosoadmin*. Geben Sie das Kennwort des Benutzerkontos und dann Ihre Domäne (z. B. *aaddscontoso.com*) ein.
 1. Wählen Sie als **Bindungstyp** die Option *Bindung mit Anmeldeinformationen* aus.
 1. Klicken Sie auf **OK**, um die Bindung mit Ihrer verwalteten Azure AD DS-Domäne herzustellen.
 
@@ -265,7 +265,7 @@ So zeigen Sie die Objekte an, die in Ihrer verwalteten Azure AD DS-Domäne ges
 
     ![Suchen nach Objekten in der verwalteten Azure AD DS-Domäne mit „LDP.exe“](./media/tutorial-configure-ldaps/ldp-query.png)
 
-Um einen bestimmten Container direkt abzufragen, können Sie im Menü **Ansicht > Struktur** einen **BaseDN**-Wert angeben, wie z. B. *OU=AADDC Users,DC=CONTOSO,DC=COM* oder *OU=AADDC Computers,DC=CONTOSO,DC=COM*. Weitere Informationen zum Formatieren und Erstellen von Abfragen finden Sie unter [Grundlagen zu LDAP-Abfragen][ldap-query-basics].
+Wenn Sie einen bestimmten Container direkt abfragen möchten, können Sie im Menü **Ansicht > Struktur** einen Wert vom Typ **BaseDN** angeben (z. B. *OU=AADDC Users,DC=AADDSCONTOSO,DC=COM* oder *OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM*). Weitere Informationen zum Formatieren und Erstellen von Abfragen finden Sie unter [Grundlagen zu LDAP-Abfragen][ldap-query-basics].
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -273,7 +273,7 @@ Wenn Sie der lokalen Datei „hosts“ auf Ihrem Computer einen DNS-Eintrag hinz
 
 1. Öffnen Sie den *Editor* auf Ihrem lokalen Computer als Administrator.
 1. Navigieren Sie zum Ordner *C:\Windows\System32\drivers\etc*, und öffnen Sie die Datei „hosts“.
-1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `40.121.19.239    ldaps.aadds.contoso.com`.
+1. Löschen Sie die Zeile für den von Ihnen hinzugefügten Eintrag, z. B. `40.121.19.239    ldaps.aaddscontoso.com`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

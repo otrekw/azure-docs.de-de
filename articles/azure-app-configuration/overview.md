@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467554"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523474"
 ---
 # <a name="what-is-azure-app-configuration"></a>Was ist Azure App Configuration?
 
@@ -19,9 +19,9 @@ Azure App Configuration ist ein Dienst zur zentralen Verwaltung von Anwendungsei
 
 ## <a name="why-use-app-configuration"></a>Gründe für die Verwendung von App Configuration
 
-Cloudbasierte Anwendungen werden häufig auf mehreren virtuellen Computern oder in Containern in mehreren Regionen ausgeführt, und es werden mehrere externe Dienste verwendet. Die Erstellung einer verteilten Anwendung, die robust und skalierbar ist, stellt eine Herausforderung dar.
+Cloudbasierte Anwendungen werden häufig auf mehreren virtuellen Computern oder in Containern in mehreren Regionen ausgeführt, und es werden mehrere externe Dienste verwendet. Das Erstellen einer stabilen und skalierbaren Anwendung in einer verteilten Umgebung stellt eine große Herausforderung dar.
 
-Entwickler greifen als Hilfe bei der immer komplexer werdenden Erstellung von Anwendungen auf verschiedene Programmiermethodiken zurück. Die [Twelve-Factor-App](https://12factor.net/) enthält beispielsweise viele sorgfältig getestete Architekturmuster und bewährte Methoden für die Verwendung mit Cloudanwendungen. Eine wichtige Empfehlung dieses Leitfadens lautet, dass Konfiguration und Code getrennt werden sollten. In diesem Fall sollten die Konfigurationseinstellungen einer Anwendung getrennt von der ausführbaren Datei vorliegen und aus der Runtimeumgebung oder einer externen Quelle eingelesen werden.
+Entwickler greifen als Hilfe bei der immer komplexer werdenden Erstellung von Anwendungen auf verschiedene Programmiermethodiken zurück. Die [Twelve-Factor-App](https://12factor.net/) enthält beispielsweise viele sorgfältig getestete Architekturmuster und bewährte Methoden für die Verwendung mit Cloudanwendungen. Eine wichtige Empfehlung dieses Leitfadens lautet, dass Konfiguration und Code getrennt werden sollten. Die Konfigurationseinstellungen einer Anwendung sollten getrennt von der ausführbaren Datei vorliegen und aus der Runtimeumgebung oder einer externen Quelle eingelesen werden.
 
 App Configuration kann zwar mit allen Anwendungen genutzt werden, eignet sich aber beispielsweise besonders für folgende Arten von Anwendungen:
 
@@ -38,7 +38,7 @@ Mit App Configuration kommen Sie in den Genuss der folgenden Vorteile:
 * Dedizierte Benutzeroberfläche für die Verwaltung von Featureflags
 * Vergleich von zwei Sätzen von Konfigurationen in benutzerdefinierten Dimensionen
 * Erweiterte Sicherheit durch Identitäten, die per Azure verwaltet werden
-* Vollständige Datenverschlüsselungen im ruhenden Zustand oder während der Übertragung
+* Verschlüsselung vertraulicher Informationen im Ruhezustand und während der Übertragung
 * Native Integration mit beliebten Frameworks
 
 App Configuration ergänzt die Lösung [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), die zum Speichern von Anwendungsgeheimnissen verwendet wird. Mit App Configuration können die folgenden Szenarien einfacher implementiert werden:
@@ -49,7 +49,7 @@ App Configuration ergänzt die Lösung [Azure Key Vault](https://azure.microsoft
 
 ## <a name="use-app-configuration"></a>Verwendung von App Configuration
 
-Die einfachste Möglichkeit zum Hinzufügen eines App Configuration-Speichers zu Ihrer Anwendung ist eine von Microsoft bereitgestellte Clientbibliothek. Je nach Programmiersprache und Framework stehen Ihnen die folgenden am besten geeigneten Methoden zur Verfügung.
+Die einfachste Möglichkeit zum Hinzufügen eines App Configuration-Speichers zu Ihrer Anwendung ist eine von Microsoft bereitgestellte Clientbibliothek. Die folgenden Methoden sind verfügbar, um je nach gewählter Sprache und Framework eine Verbindung mit Ihrer Anwendung herzustellen.
 
 | Programmiersprache und Framework | Gewusst wie: Herstellen einer Verbindung |
 |---|---|

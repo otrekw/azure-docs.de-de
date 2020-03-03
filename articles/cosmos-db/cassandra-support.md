@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445638"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623419"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -96,7 +96,7 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen
 
 ## <a name="cassandra-api-limits"></a>Einschränkungen für die Cassandra-API
 
-Bei der Cassandra-API für Azure Cosmos DB gibt es keine Einschränkungen hinsichtlich der Größe von Daten, die in einer Tabelle gespeichert sind. Es können Hunderte von Terabytes oder Petabytes von Daten gespeichert werden. Gleichzeitig wird sichergestellt, dass die Grenzwerte für Partitionsschlüssel berücksichtigt werden. In ähnlicher Weise gibt es bei jedem Entitäts- oder Zeilenäquivalent keine Einschränkungen hinsichtlich der Anzahl von Spalten. Die Gesamtgröße der Entität sollte jedoch 2 MB nicht überschreiten. Der Daten für jeden Partitionsschlüssel dürfen in allen anderen APIs 10 GB nicht überschreiten.
+Bei der Cassandra-API für Azure Cosmos DB gibt es keine Einschränkungen hinsichtlich der Größe von Daten, die in einer Tabelle gespeichert sind. Es können Hunderte von Terabytes oder Petabytes von Daten gespeichert werden. Gleichzeitig wird sichergestellt, dass die Grenzwerte für Partitionsschlüssel berücksichtigt werden. In ähnlicher Weise gibt es bei jedem Entitäts- oder Zeilenäquivalent keine Einschränkungen hinsichtlich der Anzahl von Spalten. Die Gesamtgröße der Entität sollte jedoch 2 MB nicht überschreiten. Die Datenmenge für jeden Partitionsschlüssel darf wie bei allen anderen APIs auch 20 GB nicht überschreiten.
 
 ## <a name="tools"></a>Tools 
 

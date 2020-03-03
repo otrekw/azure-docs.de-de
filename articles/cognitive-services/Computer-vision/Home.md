@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772505"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565960"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -48,7 +48,7 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 
 ## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
 
-Mit der [Lese-API](concept-recognizing-text.md#read-api) des maschinellen Sehens können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet unsere neuesten Modelle und kann für Text auf bzw. mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Englisch ist derzeit die einzige unterstützte Sprache.
+Mit der [Lese-API](concept-recognizing-text.md#read-api) des maschinellen Sehens können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet unsere neuesten Modelle und kann für Text auf bzw. mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Derzeit werden nur die Sprachen Englisch und Spanisch unterstützt.
 
 Sie können auch die [OCR](concept-recognizing-text.md#ocr-optical-character-recognition-api)-API (Optical Character Recognition, optische Zeichenerkennung) verwenden, um gedruckten Text in verschiedenen Sprachen zu extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
 

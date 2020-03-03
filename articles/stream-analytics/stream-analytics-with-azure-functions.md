@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772875"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589452"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Tutorial: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -191,11 +191,16 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 Im Falle eines Fehlers beim Senden von Ereignissen an Azure Functions werden die meisten Vorgänge von Stream Analytics wiederholt. Mit Ausnahme des HTTP-Fehlers 413 (Entität zu groß) werden alle HTTP-Ausnahmen bis zur erfolgreichen Ausführung wiederholt. Fehler vom Typ „Entität zu groß“ werden als Datenfehler gemäß der [Ausgabefehlerrichtlinie](stream-analytics-output-error-policy.md) behandelt und entweder wiederholt oder verworfen.
 
+> [!NOTE]
+> Das Zeitlimit für HTTP-Anforderungen von Stream Analytics an Azure Functions ist auf 100 Sekunden festgelegt. Falls Ihre Azure Functions-App mehr als 100 Sekunden für die Verarbeitung eines Batchs benötigt, tritt für Stream Analytics ein Fehler auf.
+
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Wenn Sie im Azure-Portal versuchen, die Werte für die maximal zulässige Batchgröße oder die maximal zulässige Batchanzahl auf einen leeren Wert (Standard) zurückzusetzen, ändert sich der Wert beim Speichern in den zuvor eingegebenen Wert. Geben Sie in diesem Fall die Standardwerte für diese Felder manuell ein.
 
 Die Verwendung von [HTTP-Routing](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) für Ihre Azure Functions wird derzeit nicht von Stream Analytics unterstützt.
+
+Die Unterstützung für die Verbindungsherstellung mit der Azure Functions-Lösung, die in einem virtuellen Netzwerk gehostet wird, ist nicht aktiviert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

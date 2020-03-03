@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406931"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623993"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]
@@ -25,25 +25,30 @@ ms.locfileid: "74406931"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Erstellen Sie eine Node.js-Anwendung, die einen Azure Cognitive Search-Index erstellt, Daten in den Index lädt und den Index abfragt. Dieser Artikel veranschaulicht Schritt für Schritt, wie Sie die Anwendung erstellen. Alternativ dazu können Sie [den Quellcode und die Daten herunterladen](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) und die Anwendung von der Befehlszeile ausführen.
+Erstellen Sie eine Node.js-Anwendung, die einen Azure Cognitive Search-Index erstellt, Daten in den Index lädt und den Index abfragt. Dieser Artikel veranschaulicht Schritt für Schritt, wie Sie die Anwendung erstellen. Alternativ können Sie [den Quellcode und die Daten herunterladen](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/) und die Anwendung über die Befehlszeile ausführen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet.
+Zum Erstellen und Testen dieser Schnellstartanleitung wurden die folgenden Softwareprodukte und Dienste verwendet:
 
-+ [Node.js](https://nodejs.org).
++ [Node.js](https://nodejs.org)
+
 + [NPM](https://www.npmjs.com) sollte von Node.js installiert worden sein.
+
 + Eine Beispielstruktur für den Index sowie zugehörige Dokumente werden in diesem Artikel bereitgestellt. Sie können die Struktur und die Dokumente auch aus dem [Verzeichnis **quickstart** des Repositorys](https://github.com/Azure-Samples/azure-search-javascript-samples/) abrufen.
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
+
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 Empfohlen:
 
-* [Visual Studio Code](https://code.visualstudio.com).
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * Die Erweiterungen [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) und [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) für VS Code.
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>Abrufen von Schlüsseln und URLs
 
 Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunkt und einen Zugriffsschlüssel. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
@@ -58,7 +63,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="set-up-your-environment"></a>Einrichten der Umgebung
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
 Öffnen Sie zunächst eine PowerShell-Konsole oder eine andere Umgebung, in der Sie Node.js installiert haben.
 
@@ -108,16 +113,17 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Hea
       }
     }
     ```
-Erstellen Sie die Datei **azure_search_config.json**, in der die Daten Ihres Suchdiensts gespeichert werden sollen:
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. Erstellen Sie die Datei **azure_search_config.json**, in der die Daten Ihres Suchdiensts gespeichert werden sollen:
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 Ersetzen Sie den Wert `[SERVICE_NAME]` durch den Namen Ihres Suchdiensts. Ersetzen Sie `[ADMIN_KEY]` und `[QUERY_KEY]` durch die zuvor notierten Schlüsselwerte. 
 
@@ -403,7 +409,7 @@ Das [**nconf**-Paket](https://github.com/indexzero/nconf) ermöglicht Ihnen das 
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ Zum Schluss geben Sie die asynchrone Hauptfunktion `run` an und rufen sie auf. D
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
@@ -478,7 +484,7 @@ In Azure Cognitive Search sind Dokumente Datenstrukturen, bei denen es sich sowo
  getPostDataUrl() { return `https://${this.searchServiceName}.search.windows.net/indexes/${this.indexName}/docs/index?api-version=${this.apiVersion}`;  }
 ```
 
-Ebenso wie bei `AzureSearchClient.createIndexAsync(definition)` benötigen Sie eine Funktion, die `AzureSearchClient.request()` aufruft und die Hoteldaten als Textkörper übergibt. Fügen Sie in **AzureSearchClient.js** `postDataAsync(hotelsData)` hinter `createIndexAsync(definition)` hinzu:
+Ebenso wie bei `AzureSearchClient.createIndexAsync(definition)` benötigen Sie eine Funktion, die `AzureSearchClient.request()` aufruft und die Hoteldaten als Textkörper übergibt. Fügen Sie in **AzureSearchClient.js**`postDataAsync(hotelsData)` hinter `createIndexAsync(definition)` hinzu:
 
 ```javascript
 async postDataAsync(hotelsData) {

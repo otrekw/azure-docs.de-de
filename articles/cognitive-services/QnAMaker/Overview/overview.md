@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843055"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561091"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Was ist der QnA Maker-Dienst?
 
@@ -77,6 +77,10 @@ Nachdem die Wissensdatenbank Benutzerfragen über den veröffentlichten Endpunkt
 ## <a name="development-lifecycle"></a>Lebenszyklus der Entwicklung
 
 QnA Maker bietet Erstellungs-, Trainings- und Veröffentlichungsfunktionen sowie Zusammenarbeitsberechtigungen und lässt sich somit in den gesamten Entwicklungszyklus integrieren.
+
+> [!div class="mx-imgBorder"]
+> ![Konzeptuelle Darstellung des Entwicklungszyklus](../media/qnamaker-overview-learnabout/development-cycle.png)
+
 
 ## <a name="how-do-i-start"></a>Wie kann ich anfangen?
 

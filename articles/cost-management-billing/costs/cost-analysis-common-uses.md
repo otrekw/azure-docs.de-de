@@ -4,16 +4,16 @@ description: In diesem Artikel wird erläutert, wie Sie in Azure Cost Management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199975"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562580"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
@@ -83,6 +83,9 @@ Die Berichtsdatei mit den Nutzungsdetails im CSV-Format enthält eine Aufschlüs
 ## <a name="view-monthly-ea-cost-breakdown"></a>Anzeigen der Aufschlüsselung der EA-Kosten pro Monat
 
 Durch die Registrierung Ihres Enterprise Agreements (EA) entstehen Kosten für Ihre gesamte Organisation. Wenn Sie verstehen, wie Kosten anfallen und im Laufe der Zeit in Rechnung gestellt werden, können Sie die entsprechenden Beteiligten besser einbeziehen, um sicherzustellen, dass die Kosten verantwortungsbewusst verwaltet werden.
+
+Es werden nur die Kosten für Ihre aktive Registrierung angezeigt. Wenn Sie eine Registrierung (inaktiv) in eine neue Registrierung (aktiv) übertragen haben, werden die Kosten für die vorherige Registrierung in Cost Management nicht angezeigt.
+
 
 1. Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Übersicht**.
 1. Klicken Sie für den aktuellen Monat auf **Aufschlüsselung**, und zeigen Sie die Entstehung der Zahlungsverpflichtungen an.  

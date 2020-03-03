@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509137"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614250"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -29,7 +29,7 @@ In diesem Artikel wird gezeigt, wie Sie den Integritätsstatus von Azure AD DS 
 Der Integritätsstatus für eine verwaltete Azure AD DS-Domäne wird im Azure-Portal angezeigt. Neben Informationen zum Zeitpunkt der letzten Sicherung und Synchronisierung mit Azure AD finden Sie auch mögliche Warnungen, die auf ein Problem mit der Integrität der verwalteten Domäne hinweisen. Zum Anzeigen des Integritätsstatus für eine verwaltete Azure AD DS-Domäne führen Sie die folgenden Schritte aus:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
-1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aadds.contoso.com*) aus.
+1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie links im Azure AD DS-Ressourcenfenster die Option **Integrität** aus. Der folgende Screenshot zeigt als Beispiel eine fehlerfreie verwaltete Azure AD DS-Domäne sowie den Status der letzten Sicherung und Synchronisierung mit Azure AD:
 
     ![Übersicht über die Seite „Integrität“ im Azure-Portal mit dem Azure Active Directory Domain Services-Status](./media/check-health/health-page.png)

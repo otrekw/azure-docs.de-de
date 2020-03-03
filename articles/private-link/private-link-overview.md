@@ -8,15 +8,18 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 452202555734a208a9f32d6f8899e1f679df4a68
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aea424d4e74f0744f5891a0d7b3b08008fa227b5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443991"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562036"
 ---
 # <a name="what-is-azure-private-link"></a>Was ist Azure Private Link? 
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
+
+> [!IMPORTANT]
+> Azure Private Link ist jetzt allgemein verfügbar. Sowohl der Dienst für private Endpunkte als auch der Dienst „Private Link“ (Dienst im Hintergrund von Load Balancer Standard) ist allgemein verfügbar. Für unterschiedliche Azure PaaS-Instanzen wird das Onboarding für Azure Private Link basierend auf verschiedenen Zeitplänen durchgeführt. Der Abschnitt [Verfügbarkeit](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) weiter unten enthält Informationen zum genauen Status von Azure PaaS unter Private Link. Weitere Informationen zu bekannten Einschränkungen finden Sie unter [Privater Endpunkt](private-endpoint-overview.md#limitations) und [Private Link-Dienst](private-link-service-overview.md#limitations). 
 
 ![Privater Endpunkt – Übersicht](media/private-link-overview/private-endpoint.png)
 
@@ -37,16 +40,16 @@ Azure Private Link bietet folgende Vorteile:
 
 |Szenario  |Unterstützte Dienste  |Verfügbare Regionen | Status  |
 |:---------|:-------------------|:-----------------|:--------|
-|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard | Alle öffentlichen Regionen  | Vorschau  |
+|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard | Alle öffentlichen Regionen  | Allgemein verfügbar <br/> [Weitere Informationen](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
 |Private Link für Azure PaaS-Dienste   | Azure Storage        |  Alle öffentlichen Regionen      | Vorschau <br/> [Weitere Informationen](/azure/storage/common/storage-private-endpoints)  |
 |  | Azure Data Lake Storage Gen2        |  Alle öffentlichen Regionen      | Vorschau <br/> [Weitere Informationen](/azure/storage/common/storage-private-endpoints)  |
-|  |  Azure SQL-Datenbank         | Alle öffentlichen Regionen      |   Vorschau      |
-||Azure SQL Data Warehouse| Alle öffentlichen Regionen |Vorschau|
-||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Norden-Mitte |Vorschau|
-|  |  Azure Database for PostgreSQL (Einzelserver)         | Alle öffentlichen Regionen      |   Vorschau      |
-|  |  Azure Database for MySQL         | Alle öffentlichen Regionen      |   Vorschau      |
-|  |  Azure Database for MariaDB         | Alle öffentlichen Regionen      |   Vorschau      |
-|  |  Azure-Schlüsseltresor         | Alle öffentlichen Regionen      |   Vorschau      |
+|  |  Azure SQL-Datenbank         | Alle öffentlichen Regionen      |   Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+||Azure SQL Data Warehouse| Alle öffentlichen Regionen |Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Norden-Mitte |Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  Azure Database for PostgreSQL (Einzelserver)         | Alle öffentlichen Regionen      |   Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  Azure Database for MySQL         | Alle öffentlichen Regionen      |   Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  Azure Database for MariaDB         | Alle öffentlichen Regionen      |   Vorschau <br/> [Weitere Informationen](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure-Schlüsseltresor         | Alle öffentlichen Regionen      |   Vorschau   <br/> [Weitere Informationen](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -67,6 +70,9 @@ Häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Azure Pri
  
 ## <a name="limits"></a>Einschränkungen  
 Informationen zu Einschränkungen finden Sie unter [Einschränkungen für Azure Private Link](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
+
+## <a name="service-level-agreement"></a>Vereinbarung zum Servicelevel
+Informationen zur Vereinbarung zum Servicelevel (SLA) finden Sie unter [SLA für Azure Private Link](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)

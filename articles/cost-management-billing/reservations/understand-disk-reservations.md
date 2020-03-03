@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Anwendung eines Reservierungsrabatts auf Azure Disk Storage
-description: Erfahren Sie, wie der Rabatt für reservierte Azure-Datenträger auf Ihre verwalteten SSD Premium-Datenträger angewendet wird.
+title: Grundlegendes zur Anwendung eines Reservierungsrabatts auf Azure-Datenträgerspeicher
+description: Hier erfahren Sie, wie ein Rabatt für reservierte Azure-Datenträger auf Ihre verwalteten Azure-SSD Premium-Datenträger angewendet wird.
 author: roygara
 ms.service: cost-management-billing
 ms.devlang: na
@@ -9,46 +9,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
-ms.openlocfilehash: 7f23aaebc20b562768fb04ae988e4aff1b62fb21
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902145"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586647"
 ---
-# <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Grundlegendes zur Anwendung Ihres Reservierungsrabatts auf Azure Disk Storage
+# <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Grundlegendes zur Anwendung Ihres Reservierungsrabatts auf Azure-Datenträgerspeicher
 
-Nach dem Erwerb von reservierter Azure-Datenträgerkapazität wird der Reservierungsrabatt automatisch auf Datenträgerressourcen angewendet, die den Reservierungsbedingungen entsprechen. Der Reservierungsrabatt gilt nur für die Datenträgerkapazität. Datenträgermomentaufnahmen werden zu den Preisen der nutzungsbasierten Bezahlung abgerechnet.
+Nach dem Erwerb von reservierter Azure-Datenträgerkapazität wird ein Reservierungsrabatt automatisch auf Datenträgerressourcen angewendet, die den Reservierungsbedingungen entsprechen. Der Reservierungsrabatt gilt nur für Datenträger-SKUs. Für Datenträger-Momentaufnahmen werden die Preise für die nutzungsbasierte Bezahlung verwendet.
 
-Weitere Informationen zur Azure-Datenträgerreservierung finden Sie unter [Einsparen von Kosten durch Azure-Datenträgerreservierung](../../virtual-machines/linux/disks-reserved-capacity.md).
-Informationen zu den Preisen für die Azure-Datenträgerreservierung finden Sie unter [Preise für Azure-Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+Weitere Informationen zur Azure-Datenträgerreservierung finden Sie unter [Einsparen von Kosten durch Azure-Datenträgerreservierung](../../virtual-machines/linux/disks-reserved-capacity.md). Informationen zu den Preisen für die Azure-Datenträgerreservierung finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Anwendung des Reservierungsrabatts
 
-Der Rabatt für die Azure-Datenträgerreservierung verfällt bei Nichtnutzung und wird stündlich auf verwaltete Datenträgerressourcen angewendet. Wenn Sie also in einer bestimmten Stunde keine verwalteten Datenträgerressourcen verwenden, die den Reservierungsbedingungen entsprechen, verlieren Sie eine Reservierungsmenge für die betreffende Stunde. Nicht genutzte Stunden verfallen.
+Nicht in Anspruch genommener Rabatt für die Azure-Datenträgerreservierung geht verloren. Der Rabatt wird stündlich auf verwaltete Datenträgerressourcen angewendet. Wenn also in einer Stunde keine verwalteten Datenträgerressourcen vorhanden sind, die den Reservierungsbedingungen entsprechen, verlieren Sie eine Reservierungsmenge für diese Stunde. Ungenutzte Stunden werden nicht übertragen.
 
-Wenn Sie eine Ressource löschen, gilt der Reservierungsrabatt automatisch für eine andere entsprechende Ressource im angegebenen Reservierungsumfang. Werden im angegebenen Reservierungsumfang keine entsprechenden Ressourcen gefunden, gehen die reservierten Stunden verloren.
+Wenn Sie eine Ressource löschen, gilt der Reservierungsrabatt automatisch für eine andere entsprechende Ressource im angegebenen Reservierungsumfang. Wird keine entsprechende Ressource gefunden, gehen die reservierten Stunden verloren.
 
 ## <a name="discount-examples"></a>Beispiele für die Anwendung des Rabatts
 
-Die folgenden Beispiele zeigen, wie der Rabatt für die Azure-Datenträgerreservierung abhängig von den jeweiligen Bereitstellungen angewendet wird:
+Die folgenden Beispiele zeigen, wie der Rabatt für die Azure-Datenträgerreservierung abhängig der Bereitstellung angewendet wird:
 
-Angenommen, Sie haben für eine Laufzeit von einem Jahr eine reservierte Kapazität von 100 P30-Datenträgern (~1 TiB pro Datenträger) in der Region „USA, Westen 2“ erworben. Die Kosten dieser Beispielreservierung liegen bei 140 100 USD. Sie können entweder den gesamten Betrag vorab bezahlen oder sich für die Zahlung von zwölf festen Monatsraten in Höhe von jeweils 11.675 USD entscheiden.
-Für diese Beispiele gehen wir davon aus, dass Sie sich für einen monatlichen Zahlungsplan entschieden haben. In den folgenden Szenarien erfahren Sie, was passiert, wenn Sie Ihre reservierte Kapazität unter- oder überschreiten bzw. einteilen.
+Angenommen, Sie erwerben und reservieren 100 Datenträger vom Typ P30 in der Region „USA, Westen 2“ mit einer Laufzeit von einem Jahr. Jeder Datenträger verfügt über etwa 1 TiB Speicherplatz. Die Kosten dieser Beispielreservierung liegen bei 140.100 USD. Sie können entweder den gesamten Betrag im Voraus bezahlen oder sich für die Zahlung von zwölf festen Monatsraten in Höhe von jeweils 11.675 USD entscheiden.
+
+In den folgenden Szenarien erfahren Sie, was passiert, wenn Sie Ihre reservierte Kapazität unter- oder überschreiten bzw. einteilen. Bei diesen Beispielen wird davon ausgegangen, dass Sie sich für einen monatlichen Zahlungsplan entschieden haben.
 
 ### <a name="underusing-your-capacity"></a>Unterschreitung Ihrer Kapazität
 
-Angenommen, Sie haben in einer bestimmten Stunde innerhalb des Reservierungszeitraums von Ihrer Datenträgerreservierung von 100 P30 SSD Premium-Datenträgern nur 99 bereitgestellt. Der verbleibende P30-Datenträger wird in dieser Stunde nicht verwendet und nicht übertragen.
+Angenommen, Sie stellen für eine Stunde innerhalb des Reservierungszeitraums nur 99 Ihrer 100 reservierten Azure-SSD Premium-Datenträger (Solid State Drive) vom Typ P30 bereit. Der übrige P30-Datenträger wird während dieser Stunde nicht verwendet. Er wird auch nicht übertragen.
 
 ### <a name="overusing-your-capacity"></a>Überschreitung Ihrer Kapazität
 
-Angenommen, Sie haben in einer bestimmten Stunde innerhalb des Reservierungszeitraums 101 P30 SSD Premium-Datenträger verwendet. Der Reservierungsrabatt gilt nur für 100 P30-Datenträger, und der überzählige P30-Datenträger wird für diese Stunde zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet. Wenn Ihre Nutzung in der nächsten Stunde auf 100 P30-Datenträger zurückgeht, wird die gesamte Nutzung durch die Reservierung abgedeckt.
+Angenommen, Sie verwenden in einer Stunde innerhalb des Reservierungszeitraums 101 SSD Premium-Datenträger vom Typ P30. Der Reservierungsrabatt gilt nur für 100 P30-Datenträger. Der zusätzliche P30-Datenträger wird zum Preis für die nutzungsbasierte Bezahlung für diese Stunde abgerechnet. Wenn Ihre Nutzung in der nächsten Stunde auf 100 P30-Datenträger zurückgeht, ist die gesamte Nutzung durch die Reservierung abgedeckt.
 
-### <a name="tiering-your-capacity"></a>Einteilen Ihrer Kapazität
+### <a name="tiering-your-capacity"></a>Einteilung Ihrer Kapazität
 
-Angenommen, Sie möchten in einer bestimmten Stunde innerhalb Ihres Reservierungszeitraums insgesamt 200 P30 SSD Premium-Datenträger verwenden. In den ersten 30 Minuten verwenden Sie nur 100 Datenträger. Während dieses Zeitraums wird Ihre Nutzung vollständig abgedeckt, da Sie eine Reservierung für 100 P30-Datenträger vorgenommen haben. Wenn Sie dann die Verwendung der ersten 100 beenden (sodass die Nutzung auf null zurückgeht) und dann mit der Verwendung der anderen 100 für die verbleibenden 30 Minuten beginnen, ist auch diese Nutzung im Rahmen Ihrer Reservierung abgedeckt.
+Angenommen, Sie möchten in einer Stunde innerhalb Ihres Reservierungszeitraums insgesamt 200 SSD Premium-Datenträger vom Typ P30 verwenden. Nehmen wir weiter an, dass in den ersten 30 Minuten nur 100 Datenträger genutzt werden. Während dieses Zeitraums ist Ihre Nutzung vollständig abgedeckt, da Ihre Reservierung 100 Datenträger vom Typ P30 umfasst. Wenn Sie dann die Verwendung der ersten 100 beenden (sodass die Nutzung auf null zurückgeht) und dann mit der Verwendung der anderen 100 für die verbleibenden 30 Minuten beginnen, ist auch diese Nutzung im Rahmen Ihrer Reservierung abgedeckt.
 
-![Beispieldarstellung für die Unterschreitung, Überschreitung und Einteilung der Kapazität](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
+![Beispiel für die Unterschreitung, Überschreitung und Einteilung der Kapazität](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

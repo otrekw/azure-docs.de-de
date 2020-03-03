@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/20/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977349"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587157"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Tutorial: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
@@ -34,7 +34,7 @@ Sie müssen Ihre Protokollclients nicht ändern oder eigene Cluster betreiben, w
 
 Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
-* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 * [Java Development Kit (JDK) 1.7 oder höher](https://aka.ms/azure-jdks)
 * Ein binäres Maven-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
@@ -42,34 +42,10 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
+Wenn Sie einen Event Hubs-Namespace im **Standard**-Tarif erstellen, wird der Kafka-Endpunkt für den Namespace automatisch aktiviert. Sie können Ereignisse von Ihren Anwendungen, die das Kafka-Protokoll verwenden, in Event Hubs im Standard-Tarif streamen. Befolgen Sie die Schritt-für-Schritt-Anleitung unter [Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md), um einen Event Hubs-Namespace mit dem **Standard**-Tarif zu erstellen. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie links oben auf **Ressource erstellen**.
-2. Suchen Sie nach **Event Hubs**, und wählen Sie die hier gezeigten Optionen aus:
-    
-    ![Suchen nach Event Hubs im Portal](./media/event-hubs-kafka-stream-analytics/select-event-hubs.png) 
-3. Klicken Sie auf der Seite **Event Hubs** auf **Erstellen**.
-4. Gehen Sie auf der Seite **Namespace erstellen** wie folgt vor: 
-    1. Geben Sie einen eindeutigen **Namen** für den Namespace an. 
-    2. Wählen Sie einen **Tarif** aus. 
-    3. Wählen Sie **Kafka aktivieren** aus. Dies ist ein **wichtiger** Schritt. 
-    4. Wählen Sie das **Azure-Abonnement** aus, in dem der Event Hub-Namespace erstellt werden soll. 
-    5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus. 
-    6. Wählen Sie einen **Standort** aus. 
-    7. Klicken Sie auf **Erstellen**.
-    
-        ![Erstellen eines Namespace](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
-4. Wählen Sie in der **Benachrichtigungsmeldung** den Namen der **Ressourcengruppe** aus. 
-
-    ![Erstellen eines Namespace](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
-1. Wählen Sie den **Event Hub-Namespace** in der Ressourcengruppe aus. 
-2. Wählen nach dem Erstellen des Namespace unter **EINSTELLUNGEN** die Option **Freigegebene Zugriffsrichtlinien** aus.
-
-    ![Klicken auf „SAS-Richtlinien“](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
-5. Sie können die Standardrichtlinie **RootManageSharedAccessKey** auswählen oder eine neue Richtlinie hinzufügen. Klicken Sie auf den Richtliniennamen, und kopieren Sie die **Verbindungszeichenfolge**. Sie verwenden die Verbindungszeichenfolge, um den Kafka-Client zu konfigurieren. 
-    
-    ![Auswählen einer Richtlinie](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
-
-Nun können Sie Ereignisse von Ihren Anwendungen streamen, die das Kafka-Protokoll in Event Hubs verwenden.
+> [!NOTE]
+> Event Hubs für Kafka ist nur für die Tarife **Standard** und **Dediziert** verfügbar. Für den Tarif **Basic** wird Kafka auf Event Hubs nicht unterstützt.
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>Senden von Nachrichten mit Kafka in Event Hubs
 

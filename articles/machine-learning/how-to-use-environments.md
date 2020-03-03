@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9d6c823b5dc85676b15188c8f1783e50e5ed441b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cb76c7d7804a7d39e8a18c7a4cf41e9b4e0a7593
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717813"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623638"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Wiederverwenden von Umgebungen für Training und Bereitstellung mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -231,7 +231,7 @@ build.wait_for_completion(show_output=True)
 
  Die [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) der Azure Machine Learning-Klasse `Environment` ermöglicht es Ihnen, das Gastbetriebssystem, in dem Ihr Trainingslauf ausgeführt wird, im Detail anzupassen und zu steuern.
 
-Wenn Sie Docker `enable`, erstellt der Dienst ein Docker-Image. Außerdem wird eine Python-Umgebung erstellt, die Ihre Angaben innerhalb des betreffenden Docker-Containers verwendet. Diese Funktionalität bietet zusätzliche Isolation und Reproduzierbarkeit für Ihre Trainingsläufe.
+Wenn Sie Docker aktivieren, erstellt der Dienst ein Docker-Image. Außerdem wird eine Python-Umgebung erstellt, die Ihre Angaben innerhalb des betreffenden Docker-Containers verwendet. Diese Funktionalität bietet zusätzliche Isolation und Reproduzierbarkeit für Ihre Trainingsläufe.
 
 ```python
 # Creates the environment inside a Docker container.

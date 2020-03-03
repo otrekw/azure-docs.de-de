@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie mithilfe von Ansible einen Azure Dat
 keywords: Ansible, Azure, DevOps, Bash, Playbook, MySQL, Datenbank
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156527"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603124"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Tutorial: Konfigurieren von Datenbanken in Azure Database for MySQL mit Ansible
 
@@ -56,7 +56,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * Eine Ressourcengruppe mit dem Namen `myResourceGroup` wird erstellt.
 * Die Ressourcengruppe wird am Standort `eastus` erstellt:
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook rg.yml
@@ -105,7 +105,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * Im Abschnitt `vars` muss der Wert von `mysqlserver_name` eindeutig sein.
 * Ersetzen Sie im Abschnitt `vars` den Platzhalter `<server_admin_password>` durch ein Kennwort.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook mysql_create.yml
@@ -147,7 +147,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * Die Kommunikation für Verbindungen mit Azure-Datenbank für MySQL erfolgt über Port 3306. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 3306 unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Server herstellen, wenn Ihre IT-Abteilung Port 3306 öffnet.
 * Im Playbook wird das Modul `azure_rm_resource` verwendet, das die direkte Nutzung der REST-API ermöglicht.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook mysql_firewall.yml
@@ -243,7 +243,7 @@ Speichern Sie das folgende Playbook als `mysql_query.yml`:
         var: mysqldatabasefacts
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook mysql_query.yml

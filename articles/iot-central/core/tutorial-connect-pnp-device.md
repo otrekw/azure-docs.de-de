@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602595"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Tutorial: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion) und Verbinden mit Ihrer IoT Central-Anwendung
 
 Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines [IoT Plug & Play-Geräts (Vorschauversion)](../../iot-pnp/overview-iot-plug-and-play.md) beschrieben. IoT Central kann ein Gerätefunktionsmodell verwenden, um eine Gerätevorlage und Visualisierungen für ein Gerät zu erstellen, wenn das Gerät zum ersten Mal eine Verbindung herstellt.
+
+Die Unterstützung für [IoT Plug & Play](../../iot-pnp/overview-iot-plug-and-play.md) befindet sich in der Vorschauphase und ist nur in ausgewählten Regionen verfügbar.
+
+> [!NOTE]
+> Wenden Sie sich an den technischen Support, um Zugriff auf eine Vorschauanwendung mit Unterstützung von IoT Plug & Play-Geräten zu erhalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -80,7 +85,7 @@ In diesem Tutorial verwenden Sie den [Vcpkg](https://github.com/microsoft/vcpkg)
 
 Zum Herstellen einer Verbindung mit einer IoT Central-Anwendung benötigen Sie einen Geräteschlüssel. Generieren Sie wie folgt einen Geräteschlüssel:
 
-1. Melden Sie sich bei der IoT Central-Anwendung an, die Sie mithilfe der Vorlage **Benutzerdefinierte App > Vorschauanwendung** in der Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) erstellt haben.
+1. Melden Sie sich bei der IoT Central-Anwendung an, die Sie mithilfe der Vorlage **Benutzerdefinierte Anwendung** in der Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) erstellt haben.
 
 1. Navigieren Sie zur Seite **Verwaltung**, und wählen Sie **Geräteverbindung**.
 

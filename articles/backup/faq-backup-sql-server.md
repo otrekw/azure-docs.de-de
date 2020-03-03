@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172012"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597081"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -37,13 +37,15 @@ Die automatische Korrektur wird für alle Benutzer standardmäßig als Funktion 
 - Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
 - Öffnen Sie auf der SQL Server-Instanz den **Task-Manager**, und starten Sie dann den Dienst **AzureWLBackupCoordinatorSvc** neu.
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Häufig gestellte Fragen zur Sicherung von SQL Server auf Azure-VMs: Kann ich steuern, wie viele gleichzeitige Sicherungen für die SQL Server-Instanz ausgeführt werden?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Kann ich steuern, wie viele gleichzeitige Sicherungen für die SQL Server-Instanz ausgeführt werden?
 
 Ja. Sie können die Rate verringern, mit der die Sicherungsrichtlinie ausgeführt wird, um die Auswirkungen auf eine SQL Server-Instanz zu minimieren. So ändern Sie die Einstellung:
 
 1. Erstellen Sie auf der SQL Server-Instanz im Ordner *C:\Programme\Azure Workload Backup\bin* die Datei *ExtensionSettingsOverrides.json*.
 2. Ändern Sie in der Datei *ExtensionSettingsOverrides.json* die Einstellung **DefaultBackupTasksThreshold** in einen niedrigeren Wert (z. B. „5“). <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+Der Standardwert von „DefaultBackupTasksThreshold“ ist **20**.
 
 3. Speichern Sie Ihre Änderungen, und schließen Sie die Datei.
 4. Öffnen Sie auf der SQL Server-Instanz **Task-Manager**. Starten Sie den Dienst **AzureWLBackupCoordinatorSvc** neu.<br/> <br/>

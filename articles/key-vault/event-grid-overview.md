@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Überwachen von Key Vault mit Azure Event Grid'
-description: 'Tutorial: Verwenden von Azure Event Grid zum Abonnieren von Key Vault-Ereignissen'
-services: media-services
+title: Überwachen von Key Vault mit Azure Event Grid
+description: Verwenden von Azure Event Grid zum Abonnieren von Key Vault-Ereignissen
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133351"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650740"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Tutorial: Überwachen von Key Vault mit Azure Event Grid (Vorschau)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Überwachen von Key Vault mit Azure Event Grid (Vorschau)
 
 Die Key Vault-Integration in Event Grid befindet sich derzeit in der Vorschauphase. Sie ermöglicht es Benutzern, benachrichtigt zu werden, wenn sich der Status eines geheimen Schlüssels, der im Schlüsseltresor (Key Vault) gespeichert ist, geändert hat. Eine Statusänderung ist als Geheimnis, das demnächst abläuft (innerhalb von 30 Tagen bis Ablauf), als Geheimnis, das abgelaufen ist, oder als Geheimnis definiert ist, für das eine neue Version verfügbar ist. Es werden Benachrichtigungen für alle drei Geheimnistypen (Schlüssel, Zertifikat und Geheimnis) unterstützt.
 
@@ -27,10 +27,10 @@ Event Grid verwendet [Ereignisabonnements](../event-grid/concepts.md#event-subsc
 
 Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema für Azure Key Vault](../event-grid/event-schema-key-vault.md).
 
-> [!NOTE]
-> Ereignisse werden nur für Geheimnisversionen (alle drei Typen) ausgelöst, die nach dem Festlegen des Abonnements erstellt wurden.
->
-> Für vorhandene Geheimnisse müssen Sie neue Versionen generieren.
+> [!WARNING]
+> Benachrichtigungsereignisse werden nur für neue Versionen von Geheimnissen, Schlüsseln und Zertifikaten ausgelöst, und Sie müssen zuerst das Ereignis in Ihrem Schlüsseltresor abonnieren, um diese Benachrichtigungen zu erhalten.
+> 
+> Sie erhalten Benachrichtigungsereignisse für Zertifikate nur, wenn das Zertifikat gemäß der Richtlinie, die Sie hierfür angegeben haben, automatisch verlängert wird.
 
 ## <a name="practices-for-consuming-events"></a>Methoden zum Nutzen von Ereignissen
 

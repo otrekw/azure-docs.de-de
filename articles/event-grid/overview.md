@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437305"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505908"
 ---
 # <a name="what-is-azure-event-grid"></a>Was ist Azure Event Grid?
 
@@ -39,11 +39,15 @@ Ausführliche Informationen zu den Funktionen der einzelnen Quellen sowie entspr
 * [Benutzerdefinierte Themen](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)
+* [Key Vault (Vorschau)](event-sources.md#key-vault-preview)
 * [Media Services](event-sources.md#media-services)
 * [Ressourcengruppen (Verwaltungsvorgänge)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
 * [Storage Blob](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
+* [App Configuration](event-sources.md#app-configuration)
+* [Signal R](event-sources.md#azure-signalr)
+* [Machine Learning](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>Ereignishandler
 
@@ -55,8 +59,8 @@ Ausführliche Informationen zu den Funktionen der einzelnen Handler sowie entspr
 * [Hybridverbindungen](event-handlers.md#hybrid-connections)
 * [Logik-Apps](event-handlers.md#logic-apps)
 * [Power Automate (ehemals „Microsoft Flow“)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Queue Storage](event-handlers.md#queue-storage)
 * [Service Bus](event-handlers.md#service-bus)
+* [Queue Storage](event-handlers.md#queue-storage)
 * [Webhooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Konzepte

@@ -9,19 +9,19 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: bf9b6e9144174eda433776d96d0a7c78d2d733a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9519644105e76951ca70b0b9a7c827163b45f86a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436656"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650836"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
 > [!IMPORTANT]
 > Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Germany-Standorten bereitgestellt.
 >
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
 > Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
@@ -59,12 +59,12 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="scheduler"></a>Scheduler
 
-Azure Scheduler ist veraltet. Verwenden Sie Azure Logic Apps zum Erstellen von Planungsaufträgen.
+Azure Scheduler wird eingestellt. Wenn Sie Planungsaufträge erstellen möchten, können Sie stattdessen [Azure Logic Apps](../logic-apps/logic-apps-overview.md) im globalen Azure verwenden.
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
-- Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+- Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
+- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview.md)
 
 ## <a name="network-watcher"></a>Network Watcher
 

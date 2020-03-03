@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133520"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650757"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 
@@ -83,7 +83,7 @@ Sehen wir uns die Dateien an, die Sie in Ihr Azure Notebooks-Projekt hochgelade
 * **01-turbofan\_regression.ipynb:** Dieses Notebook verwendet den Machine Learning-Dienstarbeitsbereich zum Erstellen und Ausführen eines Machine Learning-Experiments. Mit dem Notebook werden im Allgemeinen die folgenden Schritte ausgeführt:
 
   1. Herunterladen von Daten aus dem Azure Storage-Konto, das von der Geräteumgebung erstellt wurde
-  1. Untersuchen und Vorbereiten der Daten für das Training und das Klassifizierungsmodell
+  1. Untersucht und bereitet die Daten vor und verwendet diese dann zum Trainieren des Klassifizierungsmodells.
   1. Bewerten des Modells aus dem Experiment mithilfe eines Testdatasets (Test\_FD003.txt)
   1. Veröffentlichen des besten Klassifizierungsmodells im Machine Learning-Dienstarbeitsbereich
 

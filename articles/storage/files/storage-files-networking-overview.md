@@ -4,15 +4,15 @@ description: Hier finden Sie eine Übersicht über die Netzwerkoptionen für Azu
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 10/19/2019
+ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 596479652478bffb6d18a90fc53d5972b3839408
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 09d7f93c7a1d8ad9e567ecfe0bb3854d9d54f6e0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126536"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597744"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -22,64 +22,127 @@ Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstel
 
 In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr Anwendungsfall einen direkten Zugriff auf die Azure-Dateifreigabe statt der Nutzung der Azure-Dateisynchronisierung erfordert. Weitere Informationen zu Überlegungen zum Netzwerkbetrieb für eine Bereitstellung mit der Azure-Dateisynchronisierung finden Sie unter [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="storage-account-settings"></a>Speicherkontoeinstellungen
-Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Azure-Speicherkonten stellen zwei grundlegende Arten von Einstellungen zur Verfügung, um das Netzwerk zu schützen: Verschlüsselung während der Übertragung sowie Firewalls und virtuelle Netzwerke (VNETs).
+Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto vorgenommen. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Speicherkonten machen verschiedene Einstellungen verfügbar, die zum Schutz des Netzwerkzugriffs auf Ihre Dateifreigaben beitragen. Hierzu zählen Netzwerkendpunkte, Speicherkonto-Firewalleinstellungen sowie Verschlüsselung während der Übertragung.
 
-### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
+## <a name="accessing-your-azure-file-shares"></a>Zugreifen auf Ihre Azure-Dateifreigaben
+Wenn Sie eine Azure-Dateifreigabe innerhalb eines Speicherkontos bereitstellen, kann über den öffentlichen Endpunkt des Speicherkontos sofort auf die Dateifreigabe zugegriffen werden. Das bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzers autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. 
+
+In vielen Kundenumgebungen ist die Einbindung der Azure-Dateifreigabe in die lokale Arbeitsstation zunächst nicht erfolgreich, obwohl Einbindungen von virtuellen Azure-Computern problemlos funktionieren. Das liegt daran, dass viele Organisationen und Internetdienstanbieter (Internet Service Providers, ISPs) den Port 445 blockieren, der von SMB für die Kommunikation verwendet wird. Diese Praxis geht auf Sicherheitsempfehlungen im Zusammenhang mit alten und veralteten Versionen des SMB-Protokolls zurück. SMB 3.0 ist zwar ein internetsicheres Protokoll, das gilt jedoch nicht für ältere Versionen (insbesondere SMB 1.0). Der externe Zugriff auf Azure-Dateifreigaben über den öffentlichen Endpunkt ist nur über SMB 3.0 und das FileREST-Protokoll (ebenfalls ein internetsicheres Protokoll) zulässig.
+
+In der lokalen Umgebung kann am einfachsten auf die Azure-Dateifreigabe zugegriffen werden, wenn das lokale Netzwerk für den Port 445 geöffnet wird. Daher empfiehlt Microsoft die folgenden Schritte, um SMB 1.0 aus Ihrer Umgebung zu entfernen:
+
+1. Stellen Sie sicher, dass SMB 1.0 auf den Geräten Ihrer Organisation entfernt oder deaktiviert wurde. Alle derzeit unterstützten Versionen von Windows und Windows Server unterstützen das Entfernen oder Deaktivieren von SMB 1.0. Ab Windows 10, Version 1709, ist SMB 1.0 nicht mehr standardmäßig im Betriebssystem installiert. Weitere Informationen zum Deaktivieren von SMB 1.0 finden Sie auf den Seiten zum jeweiligen Betriebssystem:
+    - [Sichern von Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)
+    - [Sichern von Linux](storage-how-to-use-files-linux.md#securing-linux)
+2. Stellen Sie sicher, dass keine Produkte in Ihrer Organisation SMB 1.0 benötigen, und entfernen Sie diejenigen Produkte, die diese Version verwenden. Im Blog [SMB1 Product Clearinghouse](https://aka.ms/stillneedssmb1) finden Sie alle Erst- und Drittanbieterprodukte, von denen Microsoft bekannt ist, dass sie SMB 1.0 erfordern. 
+3. (Optional) Verwenden Sie eine Drittanbieterfirewall im lokalen Netzwerk Ihrer Organisation, um zu verhindern, dass SMB 1.0-Datenverkehr Ihre Organisation verlässt.
+
+Wenn der Port 445 in Ihrer Organisation aufgrund einer Richtlinie oder gesetzlichen Vorgabe blockiert werden oder Datenverkehr für Azure einem deterministischen Pfad folgen muss, können Sie Azure VPN Gateway oder ExpressRoute verwenden, um Datenverkehr an Ihre Azure-Dateifreigabe zu tunneln.
+
+> [!Important]  
+> Selbst wenn Sie sich beim Zugriff auf Ihre Azure-Dateifreigaben für eine alternative Methode entscheiden, empfiehlt es sich dennoch, SMB 1.0 aus Ihrer Umgebung zu entfernen.
+
+### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Tunneln von Datenverkehr über ein virtuelles privates Netzwerk oder über ExpressRoute
+Wenn Sie einen Netzwerktunnel zwischen Ihrem lokalen Netzwerk und Azure einrichten, entsteht eine Peeringbeziehung zwischen Ihrem lokalen Netzwerk und mindestens einem virtuellen Netzwerk in Azure. Ein [virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNET) ähnelt einem herkömmlichen Netzwerk in Ihrer lokalen Umgebung. Ähnlich wie ein Azure-Speicherkonto oder eine Azure-VM ist ein VNET eine Azure-Ressource, die in einer Ressourcengruppe bereitgestellt wird. 
+
+Azure Files unterstützt folgende Mechanismen, um Datenverkehr zwischen Ihren lokalen Arbeitsstationen/Servern und Azure zu tunneln:
+
+- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das verwendet wird, um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem anderen Standort (beispielsweise einer lokalen Umgebung) über das Internet zu senden. Azure VPN Gateway ist eine Azure-Ressource, die neben einem Speicherkonto oder anderen Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden kann. VPN-Gateways machen zwei Arten von Verbindungen verfügbar:
+    - [Point-to-Site-VPN](../../vpn-gateway/point-to-site-about.md)-Gatewayverbindungen (P2S-VPN) sind VPN-Verbindungen zwischen Azure und einem einzelnen Client. Diese Lösung ist primär für Geräte nützlich, die nicht zum lokalen Netzwerk Ihrer Organisation gehören, z. B. im Fall von Telearbeitern, die ihre Azure-Dateifreigabe von Zuhause, im Café oder im Hotel einbinden möchten. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Informationen zur Vereinfachung der Bereitstellung einer P2S-VPN-Verbindung finden Sie unter [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md) bzw. unter [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md).
+    - [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)-Verbindungen (S2S-VPN) sind VPN-Verbindungen zwischen Azure und dem Netzwerk Ihrer Organisation. Mit dieser Lösung können Sie einmalig eine VPN-Verbindung für einen VPN-Server oder ein im Netzwerk Ihrer Organisation gehostetes Gerät konfigurieren und müssen diese Einrichtung nicht für jedes Clientgerät wiederholen, das auf Ihre Azure-Dateifreigabe zugreifen muss. Informationen zur Vereinfachung der Bereitstellung einer S2S-VPN-Verbindung finden Sie unter [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
+- [ExpressRoute](../../expressroute/expressroute-introduction.md) ermöglicht die Erstellung einer definierten Route zwischen Azure und Ihrem lokalen Netzwerk, die nicht über das Internet läuft. Da ExpressRoute einen dedizierten Pfad zwischen Ihrem lokalen Rechenzentrum und Azure bereitstellt, ist dieser Dienst sehr nützlich, wenn die Netzwerkleistung ein wichtiger Aspekt ist. ExpressRoute ist auch dann eine gute Option, wenn die Richtlinie Ihrer Organisation oder gesetzliche Vorschriften einen deterministischen Pfad zu den Ressourcen in der Cloud erfordern.
+
+Unabhängig von der Tunnelingmethode, die Sie für den Zugriff auf Ihre Azure-Dateifreigaben verwenden, benötigen Sie einen Mechanismus, der sicherstellt, dass der für Ihr Speicherkonto bestimmte Datenverkehr über den Tunnel und nicht über Ihre reguläre Internetverbindung geleitet wird. Es ist zwar technisch möglich, Datenverkehr an den öffentlichen Endpunkt des Speicherkontos weiterzuleiten, dies erfordert jedoch die Hartcodierung aller IP-Adressen für die Azure-Speichercluster in einer Region, da Speicherkonten jederzeit zwischen Speicherclustern verschoben werden können. Darüber hinaus müssen in diesem Fall ständig die IP-Adresszuordnungen aktualisiert werden, da immer wieder neue Cluster hinzukommen.
+
+Wir empfehlen daher die Verwendung privater Endpunkte, anstatt die IP-Adressen Ihrer Speicherkonten in VPN-Routingregeln hartzucodieren. Durch die privaten Endpunkte erhält Ihr Speicherkonto eine IP-Adresse aus dem Adressraum eines virtuellen Azure-Netzwerks. Da durch die Einrichtung eines Tunnels mit Azure eine Peeringbeziehung zwischen Ihrem lokalen Netzwerk und mindestens einem virtuellen Netzwerk entsteht, sorgt diese Methode dauerhaft für eine korrekte Weiterleitung.
+
+### <a name="private-endpoints"></a>Private Endpunkte
+Neben dem standardmäßigen öffentlichen Endpunkt für ein Speicherkonto ermöglicht Azure Files die Verwendung privater Endpunkte. Ein privater Endpunkt ist ein Endpunkt, auf den nur innerhalb eines virtuellen Azure-Netzwerks zugegriffen werden kann. Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, erhält Ihr Speicherkonto eine private IP-Adresse aus dem Adressraum Ihres virtuellen Netzwerks. Dies ist vergleichbar mit einem lokalen Dateiserver oder NAS-Gerät, der bzw. das eine IP-Adresse aus dem dedizierten Adressraum Ihres lokalen Netzwerks erhält. 
+
+Ein privater Endpunkt ist einem bestimmten Subnetz des virtuellen Azure-Netzwerks zugeordnet. Ein Speicherkonto kann über private Endpunkte in mehreren virtuellen Netzwerken verfügen.
+
+Die Verwendung privater Endpunkte mit Azure Files ermöglicht Folgendes:
+- Herstellen einer sicheren Verbindung mit Ihren Azure-Dateifreigaben aus lokalen Netzwerken über eine VPN- oder ExpressRoute-Verbindung mit privatem Peering
+- Schützen Ihrer Azure-Dateifreigaben, indem Sie die Speicherkontofirewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt blockiert werden. Durch die Erstellung eines privaten Endpunkts werden Verbindungen mit dem öffentlichen Endpunkt nicht standardmäßig blockiert.
+- Erhöhen der Sicherheit für das virtuelle Netzwerk durch die Möglichkeit zum Blockieren der Exfiltration von Daten aus dem virtuellen Netzwerk (und Peeringgrenzen)
+
+### <a name="private-endpoints-and-dns"></a>Private Endpunkte und DNS
+Wenn Sie einen privaten Endpunkt erstellen, wird standardmäßig auch eine private DNS-Zone erstellt, die der Unterdomäne `privatelink` entspricht, oder es wird eine vorhandene private DNS-Zone entsprechend aktualisiert. Streng genommen muss keine private DNS-Zone erstellt werden, um einen privaten Endpunkt für Ihr Speicherkonto zu verwenden. Es wird jedoch im Allgemeinen dringend empfohlen und ist explizit erforderlich, wenn Sie Ihre Azure-Dateifreigabe mit einem Active Directory Benutzerprinzipal einbinden oder über die FileREST-API zugreifen.
+
+> [!Note]  
+> In diesem Artikel wird das Speicherkonto-DNS-Suffix für die öffentlichen Azure-Regionen (`core.windows.net`) verwendet. Dieser Kommentar gilt auch für Azure Sovereign Clouds wie etwa die Azure US Government-Cloud und die Azure China-Cloud. Verwenden Sie einfach die entsprechenden Suffixe für Ihre Umgebung. 
+
+In Ihrer privaten DNS-Zone werden ein A-Eintrag für `storageaccount.privatelink.file.core.windows.net` und ein CNAME-Eintrag für den regulären Namen des Speicherkontos im Format `storageaccount.file.core.windows.net` erstellt. Da Ihre private Azure-DNS-Zone mit dem virtuellen Netzwerk verbunden ist, das den privaten Endpunkt enthält, können Sie sich die DNS-Konfiguration ansehen, indem Sie das Cmdlet `Resolve-DnsName` über PowerShell auf einem virtuellen Azure-Computer aufrufen (oder `nslookup` unter Windows und Linux):
+
+```powershell
+Resolve-DnsName -Name "storageaccount.file.core.windows.net"
+```
+
+In diesem Beispiel wird das Speicherkonto `storageaccount.file.core.windows.net` in die private IP-Adresse des privaten Endpunkts (`192.168.0.4`) aufgelöst.
+
+```Output
+Name                              Type   TTL   Section    NameHost
+----                              ----   ---   -------    --------
+storageaccount.file.core.windows. CNAME  29    Answer     csostoracct.privatelink.file.core.windows.net
+net
+
+Name       : storageaccount.privatelink.file.core.windows.net
+QueryType  : A
+TTL        : 1769
+Section    : Answer
+IP4Address : 192.168.0.4
+
+
+Name                   : privatelink.file.core.windows.net
+QueryType              : SOA
+TTL                    : 269
+Section                : Authority
+NameAdministrator      : azureprivatedns-host.microsoft.com
+SerialNumber           : 1
+TimeToZoneRefresh      : 3600
+TimeToZoneFailureRetry : 300
+TimeToExpiration       : 2419200
+DefaultTTL             : 300
+```
+
+Wenn Sie den gleichen Befehl lokal ausführen, sehen Sie, dass der gleiche Speicherkontoname stattdessen in die öffentliche IP-Adresse des Speicherkontos aufgelöst wird. `storageaccount.file.core.windows.net` ist ein CNAME-Eintrag für `storageaccount.privatelink.file.core.windows.net`, was wiederum ein CNAME-Eintrag für den Azure-Speichercluster ist, von dem das Speicherkonto gehostet wird:
+
+```Output
+Name                              Type   TTL   Section    NameHost
+----                              ----   ---   -------    --------
+storageaccount.file.core.windows. CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
+net
+storageaccount.privatelink.file.c CNAME  60    Answer     file.par20prdstr01a.store.core.windows.net
+ore.windows.net
+
+Name       : file.par20prdstr01a.store.core.windows.net
+QueryType  : A
+TTL        : 60
+Section    : Answer
+IP4Address : 52.239.194.40
+```
+
+Dies zeigt, dass das Speicherkonto sowohl den öffentlichen Endpunkt als auch einen oder mehrere private Endpunkte verfügbar machen kann. Um sicherzustellen, dass der Speicherkontoname in die private IP-Adresse des privaten Endpunkts aufgelöst wird, müssen Sie die Konfiguration auf Ihren lokalen DNS-Servern ändern. Hierzu gibt es verschiedene Möglichkeiten:
+
+- Ändern der Datei „hosts“ auf Ihren Clients, damit `storageaccount.file.core.windows.net` in die private IP-Adresse des gewünschten privaten Endpunkts aufgelöst wird: Hiervon wird in Produktionsumgebungen dringend abgeraten, da Sie diese Änderungen für jeden Client vornehmen müssen, von dem Ihre Azure-Dateifreigaben eingebunden werden sollen, und Änderungen am Speicherkonto oder am privaten Endpunkt nicht automatisch behandelt werden.
+- Erstellen eines A-Eintrags für `storageaccount.file.core.windows.net` auf Ihren lokalen DNS-Servern: Diese Lösung hat den Vorteil, dass Clients in Ihrer lokalen Umgebung das Speicherkonto automatisch auflösen können, ohne dass jeder Client einzeln konfiguriert werden muss. Sie ist jedoch ähnlich fehleranfällig wie das Ändern der Hostdatei, da Änderungen nicht berücksichtigt werden. Für einige Umgebungen ist diese Lösung trotz ihrer Fehleranfälligkeit die beste Wahl.
+- Weiterleiten der Zone `core.windows.net` von Ihren lokalen DNS-Servern an Ihre private Azure-DNS-Zone: Der private Azure-DNS-Host ist über eine spezielle IP-Adresse (`168.63.129.16`) erreichbar, auf die nur innerhalb von virtuellen Netzwerken zugegriffen werden kann, die mit der privaten Azure-DNS-Zone verknüpft sind. Um diese Einschränkung zu umgehen, können Sie zusätzliche DNS-Server in Ihrem virtuellen Netzwerk ausführen, die `core.windows.net` an die private Azure-DNS-Zone weiterleiten. Zur Vereinfachung dieser Einrichtung stehen PowerShell-Cmdlets zur Verfügung, die automatisch DNS-Server in Ihrem virtuellen Azure-Netzwerk bereitstellen und wie gewünscht konfigurieren.
+
+## <a name="storage-account-firewall-settings"></a>Speicherkonto-Firewalleinstellungen
+Eine Firewall ist eine Netzwerkrichtlinie, die steuert, von welchen Anforderungen auf den öffentlichen Endpunkt für ein Speicherkonto zugegriffen werden darf. Mithilfe der Speicherkontofirewall können Sie den Zugriff auf den öffentlichen Endpunkt des Speicherkontos auf bestimmte IP-Adressen oder -Bereiche oder auf ein virtuelles Netzwerk beschränken. Im Allgemeinen beschränken die meisten Firewallrichtlinien für Speicherkonten den Netzwerkzugriff auf ein virtuelles Netzwerk (oder auf mehrere). 
+
+Der Speicherkontozugriff kann auf zwei Arten auf ein virtuelles Netzwerk beschränkt werden:
+- Erstellen eines oder mehrerer privater Endpunkte für das Speicherkonto und Beschränken des gesamten Zugriffs auf den öffentlichen Endpunkt: Dadurch wird sichergestellt, dass nur von Datenverkehr aus den gewünschten virtuellen Netzwerken auf die Azure-Dateifreigaben im Speicherkonto zugegriffen werden kann.
+- Beschränken des öffentlichen Endpunkts auf ein einzelnes virtuelles Netzwerk (oder auf mehrere): Hierzu werden sogenannte *Dienstendpunkte* des virtuellen Netzwerks verwendet. Wenn Sie den Datenverkehr für ein Speicherkonto über einen Dienstendpunkt beschränken, erfolgt der Zugriff auf das Speicherkonto weiterhin über die öffentliche IP-Adresse.
+
+Weitere Informationen zum Konfigurieren der Speicherkontofirewall finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 Standardmäßig ist in allen Azure-Speicherkonten die Verschlüsselung während der Übertragung aktiviert. Das bedeutet Folgendes: Wenn Sie eine Dateifreigabe über SMB einbinden oder über FileREST darauf zugreifen (per Azure-Portal, PowerShell/CLI oder Azure-SDKs), lässt Azure Files die Verbindung nur dann zu, wenn sie über SMB 3.0 oder höher mit Verschlüsselung oder über HTTPS hergestellt wird. Clients, die SMB 3.0 nicht unterstützen, oder Clients, die zwar SMB 3.0, aber nicht die SMB-Verschlüsselung unterstützen, können die Azure-Dateifreigabe nicht einbinden, wenn die Verschlüsselung während der Übertragung aktiviert ist. Weitere Informationen dazu, welche Betriebssysteme SMB 3.0 mit Verschlüsselung unterstützen, finden Sie in der ausführlichen Dokumentation zu [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) und [Linux](storage-how-to-use-files-linux.md). Alle aktuellen PowerShell-, CLI- und SDK-Versionen unterstützen HTTPS.  
 
 Sie können die Verschlüsselung während der Übertragung für ein Azure-Speicherkonto deaktivieren. Wenn die Verschlüsselung deaktiviert ist, lässt Azure Files auch SMB 2.1, SMB 3.0 ohne Verschlüsselung und nicht verschlüsselte FileREST-API-Aufrufe über HTTP zu. Der Hauptgrund für die Deaktivierung der Verschlüsselung während der Übertragung ist die Unterstützung einer älteren Anwendung, die unter einem älteren Betriebssystem wie z. B. Windows Server 2008 R2 oder einer älteren Linux-Distribution ausgeführt werden muss. Azure Files lässt nur SMB 2.1-Verbindungen innerhalb der gleichen Region zu, in der sich auch die Azure-Dateifreigabe befindet. Ein SMB 2.1-Client außerhalb der Azure-Region der Azure-Dateifreigabe – z. B. ein lokales System oder eine andere Azure-Region – kann nicht auf die Dateifreigabe zugreifen.
 
 Weitere Informationen zur Verschlüsselung während der Übertragung finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-### <a name="firewalls-and-virtual-networks"></a>Firewalls und virtuelle Netzwerke 
-Eine Firewall ist eine Netzwerkrichtlinie, die steuert, welche Anforderungen auf die Azure-Dateifreigaben und andere Speicherressourcen in Ihrem Speicherkonto zugreifen dürfen. Wenn ein Speicherkonto mit den standardmäßigen Netzwerkeinstellungen erstellt wird, ist es nicht auf ein bestimmtes Netzwerk beschränkt und daher über das Internet erreichbar. Das bedeutet nicht, dass jeder beliebige Benutzer im Internet auf die Daten zugreifen kann, die in den Azure-Dateifreigaben in Ihrem Speicherkonto gehostet werden, sondern dass das Speicherkonto autorisierte Anforderungen aus jedem Netzwerk akzeptiert. Anforderungen können mit einem Speicherkontoschlüssel, einem SAS-Token (nur FileREST) oder einem Active Directory-Benutzerprinzipal autorisiert werden. 
-
-Die Firewallrichtlinie für ein Speicherkonto kann verwendet werden, um den Zugriff auf bestimmte IP-Adressen oder -Adressbereiche oder auf ein virtuelles Netzwerk zu beschränken. Im Allgemeinen beschränken die meisten Firewallrichtlinien für Speicherkonten den Netzwerkzugriff auf ein virtuelles Netzwerk. 
-
-Ein [virtuelles Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNET) ähnelt einem herkömmlichen Netzwerk, das Sie in Ihrem eigenen Rechenzentrum betreiben. Es ermöglicht Ihnen, einen sicheren Kommunikationskanal zu erstellen, über den Ihre Azure-Ressourcen – z. B. Azure-Dateifreigaben, VMs, SQL-Datenbanken usw. – miteinander kommunizieren können. Ähnlich wie ein Azure-Speicherkonto oder eine Azure-VM ist ein VNET eine Azure-Ressource, die in einer Ressourcengruppe bereitgestellt wird. Mit einer zusätzlichen Netzwerkkonfiguration können Azure-VNETs auch mit Ihren lokalen Netzwerken verbunden werden.
-
-Wenn Ressourcen wie beispielsweise eine Azure-VM zu einem virtuellen Netzwerk hinzugefügt werden, wird eine angefügte virtuelle Netzwerkschnittstelle auf speziell dieses VNET beschränkt. Dies ist möglich, weil Azure-VMs virtualisierte Computer sind, die natürlich über Netzwerkschnittstellen verfügen. Virtuelle Computer werden im Rahmen der IaaS-Produktfamilie (Infrastructure-as-a-Service) von Azure angeboten. Da es sich bei Azure-Dateifreigaben um serverlose Dateifreigaben handelt, verfügen sie nicht über eine Netzwerkschnittstelle, die Sie einem VNET hinzufügen können. Anders gesagt: Azure Files werden im Rahmen der PaaS-Produktfamilie (Platform-as-a-Service) von Azure angeboten. Damit ein Speicherkonto Bestandteil eines VNETs sein kann, unterstützt Azure ein Konzept für PaaS-Dienste, das als Dienstendpunkt bezeichnet wird. Ein Dienstendpunkt ermöglicht die Ausführung von PaaS-Diensten in einem virtuellen Netzwerk. Weitere Informationen zu Dienstendpunkten finden Sie unter [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md).
-
-Ein Speicherkonto kann einem oder mehreren virtuellen Netzwerken hinzugefügt werden. Weitere Informationen zum Hinzufügen eines Speicherkontos zu einem virtuellen Netzwerk oder zum Konfigurieren weiterer Firewalleinstellungen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-## <a name="azure-networking"></a>Azure-Netzwerke
-Standardmäßig kann über das Internet auf Azure-Dienste wie Azure Files zugegriffen werden. Da der Datenverkehr zu Ihrem Speicherkonto standardmäßig verschlüsselt ist (und SMB 1.2-Einbindungen außerhalb einer Azure-Region nie zulässig sind), besteht keine immanente Gefahr durch den Zugriff auf Ihre Azure-Dateifreigaben über das Internet. Je nach den Richtlinien Ihres Unternehmens oder gesetzlichen Anforderungen müssen Sie möglicherweise eine restriktivere Kommunikation mit Azure erzwingen. Daher bietet Azure verschiedene Möglichkeiten, den Azure-externen, an Azure Files gerichteten Datenverkehr zu beschränken. Sie können Ihren Netzwerkbetrieb noch weiter schützen, indem Sie über eins der folgenden Dienstangebote auf Ihre Azure-Dateifreigabe zugreifen:
-
-- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das verwendet wird, um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem anderen Standort (beispielsweise einer lokalen Umgebung) über das Internet zu senden. Azure VPN Gateway ist eine Azure-Ressource, die neben einem Speicherkonto oder anderen Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden kann. VPN-Gateways machen zwei Arten von Verbindungen verfügbar:
-    - [Point-to-Site-VPN](../../vpn-gateway/point-to-site-about.md)-Gatewayverbindungen (P2S-VPN) sind VPN-Verbindungen zwischen Azure und einem einzelnen Client. Diese Lösung ist primär für Geräte nützlich, die nicht zum lokalen Netzwerk Ihrer Organisation gehören, z. B. im Fall von Telearbeitern, die ihre Azure-Dateifreigabe von Zuhause, im Café oder im Hotel einbinden möchten. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. 
-    - [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)-Verbindungen (S2S-VPN) sind VPN-Verbindungen zwischen Azure und dem Netzwerk Ihrer Organisation. Mit dieser Lösung können Sie einmalig eine VPN-Verbindung für einen VPN-Server oder ein im Netzwerk Ihrer Organisation gehostetes Gerät konfigurieren und müssen diese Einrichtung nicht für jedes Clientgerät wiederholen, das auf Ihre Azure-Dateifreigabe zugreifen muss.
-- [ExpressRoute](../../expressroute/expressroute-introduction.md) ermöglicht die Erstellung einer definierten Route zwischen Azure und Ihrem lokalen Netzwerk, die nicht über das Internet läuft. Da ExpressRoute einen dedizierten Pfad zwischen Ihrem lokalen Rechenzentrum und Azure bereitstellt, ist dieser Dienst sehr nützlich, wenn die Netzwerkleistung ein wichtiger Aspekt ist. ExpressRoute ist auch dann eine gute Option, wenn die Richtlinie Ihrer Organisation oder gesetzliche Vorschriften einen deterministischen Pfad zu den Ressourcen in der Cloud erfordern.
-
-## <a name="securing-access-from-on-premises"></a>Schützen des Zugriffs aus lokalen Umgebungen 
-Wenn Sie Dateifreigaben für allgemeine Zwecke (für Dateien wie beispielsweise Office-Dokumente, PDFs, CAD-Dokumente usw.) zu Azure Files migrieren, müssen Ihre Benutzer in der Regel weiterhin von lokalen Geräten (Arbeitsstationen, Laptops, Tablets) auf ihre Dateien zugreifen. Der wichtigste Aspekt bei einer Dateifreigabe für allgemeine Zwecke ist die Frage, wie lokale Benutzer sicher über das Internet oder WAN auf ihre Dateifreigaben zugreifen können.
-
-Die einfachste Möglichkeit, aus einer lokalen Umgebung auf Ihre Azure-Dateifreigabe zuzugreifen, besteht darin, Port 445 (den von SMB verwendeten Port) Ihres lokalen Netzwerks zu öffnen und den über das Azure-Portal bereitgestellten UNC-Pfad einzubinden. Dafür sind keinen besonderen Netzwerkeinstellungen erforderlich. Viele Kunden öffnen Port 445 aufgrund veralteter Sicherheitsinformationen zu SMB 1.0 nur ungern. Microsoft betrachtet SMB 1.0 nicht als sicheres Protokoll für den Internetzugriff. Azure Files implementiert SMB 1.0 nicht. 
-
-SMB 3.0 wurde mit der expliziten Anforderung konzipiert, ein sicheres Dateifreigabeprotokoll für den Internetzugriff darzustellen. Wenn Sie daher SMB 3.0 und höher verwenden, besteht aus Sicht des Computernetzwerks kein Unterschied, ob Sie Port 445 oder Port 443 öffnen, den für HTTPS-Verbindungen genutzten Port. Anstatt Port 445 zu blockieren, um unsicheren Datenverkehr über SMB 1.0 zu verhindern, empfiehlt Microsoft die folgenden Schritte:
-
-> [!Important]  
-> Auch wenn Sie Port 445 für ausgehenden Datenverkehr geschlossen lassen, empfiehlt Microsoft, die folgenden Schritte dennoch auszuführen, um SMB 1.0 aus Ihrer Umgebung zu entfernen.
-
-1. Stellen Sie sicher, dass SMB 1.0 auf den Geräten Ihrer Organisation entfernt oder deaktiviert wurde. Alle derzeit unterstützten Versionen von Windows und Windows Server unterstützen das Entfernen oder Deaktivieren von SMB 1.0. Ab Windows 10, Version 1709, ist SMB 1.0 nicht mehr standardmäßig im Betriebssystem installiert. Weitere Informationen zum Deaktivieren von SMB 1.0 finden Sie auf den Seiten zum jeweiligen Betriebssystem:
-    - [Sichern von Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)
-    - [Sichern von Linux](storage-how-to-use-files-linux.md#securing-linux)
-1. Stellen Sie sicher, dass keine Produkte in Ihrer Organisation SMB 1.0 benötigen, und entfernen Sie diejenigen Produkte, die diese Version verwenden. Im Blog [SMB1 Product Clearinghouse](https://aka.ms/stillneedssmb1) finden Sie alle Erst- und Drittanbieterprodukte, von denen Microsoft bekannt ist, dass sie SMB 1.0 erfordern. 
-1. (Optional) Verwenden Sie eine Drittanbieterfirewall im lokalen Netzwerk Ihrer Organisation, um Datenverkehr über SMB 1.0 zu verhindern.
-
-Wenn Port 445 in Ihrer Organisation aufgrund einer Richtlinie oder gesetzlichen Vorgabe blockiert werden muss, können Sie Azure VPN Gateway oder ExpressRoute verwenden, um Datenverkehr über Port 443 zu tunneln. Weitere Informationen zu den Schritten zur Bereitstellung dieser Optionen finden Sie auf den jeweiligen Seiten:
-- [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md)
-- [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
-
-In Ihrer Organisation gilt möglicherweise die weitere Anforderung, dass vom lokalen Standort ausgehender Datenverkehr einem deterministischen Pfad zu Ihren Ressourcen in der Cloud folgen muss. Wenn dies der Fall ist, kann ExpressRoute diese Anforderung erfüllen.
-
-## <a name="securing-access-from-cloud-resources"></a>Schützen des Zugriffs von Cloudressourcen
-Wenn eine lokale Anwendung per Lift & Shift in die Cloud verlagert wird, werden Anwendung und Anwendungsdaten gleichzeitig verschoben. Das bedeutet, dass bei Lift & Shift-Migrationen der Zugriff auf die Azure-Dateifreigabe auf diejenigen virtuellen Computer oder Azure-Dienste beschränkt werden muss, die auf diese Dateifreigabe zugreifen müssen, damit sie funktionieren. 
-
-Sie können VNETs verwenden, um festzulegen, welche VMs oder anderen Azure-Ressourcen Netzwerkverbindungen (SMB-Einbindungen oder REST-API-Aufrufe Ihrer Azure-Dateifreigabe) herstellen dürfen. Es wird empfohlen, die Azure-Dateifreigabe in einem VNET zu platzieren, wenn Sie nicht verschlüsselten Datenverkehr zu Ihrem Speicherkonto zulassen. Andernfalls sollte die Entscheidung, ob ein VNET verwendet werden soll oder nicht, durch Ihre Geschäftsanforderungen und organisationsweite Richtlinie bestimmt werden.
-
-Der Hauptgrund für die Zulassung von nicht verschlüsseltem Datenverkehr zu Ihrer Azure-Dateifreigabe ist die Unterstützung von Windows Server 2008 R2, Windows 7 oder einem anderen älteren Betriebssystem, das über SMB 2.1 (oder SMB 3.0 ohne Verschlüsselung bei einigen Linux-Distributionen) auf Ihre Azure-Dateifreigabe zugreifen muss. Die Verwendung von SMB 2.1 oder SMB 3.0 ohne Verschlüsselung in Betriebssystemen, die SMB 3.0 und höher mit Verschlüsselung unterstützen, wird nicht empfohlen.
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Azure Files: Übersicht](storage-files-introduction.md)

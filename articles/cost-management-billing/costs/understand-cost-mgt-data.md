@@ -4,17 +4,17 @@ description: In diesem Artikel erfahren Sie mehr über die Daten, die in Azure C
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199890"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560608"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -135,9 +135,9 @@ Im Anschluss finden Sie einige Tipps zur Verwendung von Tags:
 - Verwenden Sie die Tags-API zusammen mit „Query“ oder „UsageDetails“, um alle Kosten auf der Grundlage der aktuellen Tags zu erhalten.
 
 
-**Upgrade einer kostenlosen Testversion auf nutzungsbasierte Bezahlung**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade einer kostenlosen Testversion auf nutzungsbasierte Bezahlung
 
-Kunden mit einem kostenlosen Testangebot (044P), die auf das PAYG-Angebot (003P) umstellen, können ihre Nutzung während des kostenlosen Testzeitraums anzeigen. Nach der Konvertierung sind die Nutzungsdaten der kostenlosen Testversion allerdings nicht mehr sichtbar. Nur PAYG-Nutzungsdaten und -Kosten werden nach der Konvertierung in Cost Management angezeigt.
+Informationen zur Verfügbarkeit der kostenlosen Dienste nach einem Upgrade auf die nutzungsbasierte Bezahlung finden Sie in den [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq/).
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Zeitplan zur Datenaktualisierung der bewerteten Nutzung
 
@@ -157,6 +157,17 @@ Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15.
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
 Unabhängig davon, ob Sie die [Cost Management-APIs](../index.yml), Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden und sich somit ändern, bis die Rechnung geschlossen ist.
+
+## <a name="cost-rounding"></a>Runden von Kosten
+
+Die in Cost Management angezeigten Kosten sind gerundet. Von der Abfrage-API zurückgegebene Kosten sind nicht gerundet. Beispiel:
+
+- Kostenanalyse im Azure-Portal: Gebühren werden gemäß Standardrundungsregeln gerundet. Werte über 0,5 werden also aufgerundet, darunter werden die Kosten abgerundet. Eine Rundung wird nur vorgenommen, wenn Werte angezeigt werden. Bei der Datenverarbeitung und -aggregation erfolgt keine Rundung. Kosten werden von der Kostenanalyse beispielsweise wie folgt aggregiert:
+  - Gebühr 1: 0,004 USD
+  - Gebühr 2: 0,004 USD
+  - Aggregierte Gebühr: 0,004 + 0,004 = 0,008. Angezeigte Gebühr: 0,01 USD.
+- Abfrage-API: Gebühren werden mit acht Dezimalstellen angezeigt und nicht gerundet.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert.
 

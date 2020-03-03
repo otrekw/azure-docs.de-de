@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987146"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561560"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?
 
@@ -34,7 +34,7 @@ Zur Verwendung der gruppenbasierten Lizenzierung müssen Sie über eine der folg
 
 - Kostenpflichtiges oder Testabonnement für Azure AD Premium P1 oder höher
 
-- Kostenpflichtige oder kostenlose Edition von Office 365 Enterprise E3 oder Office 365 A3 oder Office 365 GCC G3 und höher
+- Kostenpflichtige Edition oder kostenlose Testversion von Office 365 Enterprise E3 oder Office 365 A3 oder Office 365 GCC G3 oder Office 365 E3 für GCCH oder Office 365 E3 für DOD und höher
 
 ### <a name="required-number-of-licenses"></a>Erforderliche Anzahl von Lizenzen
 Für alle Gruppen, denen eine Lizenz zugewiesen ist, müssen Sie auch über eine Lizenz für jedes einzelne Mitglied verfügen. Sie müssen zwar nicht jedem Mitglied der Gruppe eine Lizenz zuweisen, aber Sie müssen mindestens über genügend Lizenzen für alle Mitglieder verfügen. Bei 1.000 einzelnen Mitgliedern, die lizenzierten Gruppen in Ihrem Mandanten angehören, müssen Sie beispielsweise über mindestens 1.000 Lizenzen verfügen, um den Lizenzvertrag zu erfüllen.

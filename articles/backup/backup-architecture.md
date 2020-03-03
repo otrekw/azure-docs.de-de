@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963936"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584386"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -135,7 +135,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
 1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang. Wenn Sie Workloads auf dem virtuellen Computer sichern (z. B. SQL Server-Datenbanksicherungen), benötigen die Back-End-Daten auch einen Internetzugang.
+Sie brauchen die Internetverbindung nicht explizit zuzulassen, um Ihre virtuellen Azure-Computer zu sichern.
 
 ![Sicherung virtueller Azure-Computer](./media/backup-architecture/architecture-azure-vm.png)
 

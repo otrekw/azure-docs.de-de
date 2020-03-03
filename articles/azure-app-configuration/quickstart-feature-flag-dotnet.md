@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120868"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619323"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer .NET Framework-App
 
@@ -31,11 +31,18 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wählen Sie **Feature-Manager** >  **+Hinzufügen** aus, um ein Featureflag namens `Beta` hinzuzufügen.
+
+    > [!div class="mx-imgBorder"]
+    > ![Aktivieren eines Featureflags mit dem Namen „Beta“](media/add-beta-feature-flag.png)
+
+    Definieren Sie `label` vorerst nicht.
 
 ## <a name="create-a-net-console-app"></a>Erstellen einer .NET-Konsolen-App
 
@@ -43,7 +50,7 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 
 1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Klicken Sie auf **Weiter**.
 
-1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.8** oder höher aus. Klicken Sie auf **Erstellen**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
@@ -67,13 +74,8 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um umfa
 1. Aktualisieren Sie die Methode `Main`, um eine Verbindung mit App Configuration herzustellen. Geben Sie dabei die Option `UseFeatureFlags` an, sodass Featureflags abgerufen werden. Zeigen Sie dann eine Meldung an, wenn das `Beta`-Featureflag aktiviert ist.
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

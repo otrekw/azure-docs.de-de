@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025553"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498771"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM
 
@@ -29,20 +29,20 @@ Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) könn
 
 ## <a name="determine-your-version-of-pim"></a>Ermitteln der PIM-Version
 
-Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management auf eine neue Version aktualisiert, die dem Verhalten von Azure-Ressourcenrollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
+Ab November 2019 wird der Bereich „Azure AD-Rollen“ von Privileged Identity Management auf eine neue Version aktualisiert, die der Oberfläche von Azure-Rollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Rollen zu genehmigen oder abzulehnen.
 
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+# <a name="new-version"></a>[Neue Version](#tab/new)
 
 ## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
 
-Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure-Ressourcenrolle aussteht. Sie können diese ausstehenden Anforderungen in Privileged Identity Management anzeigen.
+Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure AD-Rolle aussteht. Sie können diese ausstehenden Anforderungen in Privileged Identity Management anzeigen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -50,7 +50,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Wählen Sie **Anforderungen genehmigen** aus.
 
-    ![Anforderungen genehmigen: Seite „Azure-Ressourcen“ mit einer Überprüfungsanforderung](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Anforderungen genehmigen: Seite mit einer Anforderung zum Überprüfen von Azure AD-Rollen](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     Im Abschnitt **Anforderungen für Rollenaktivierungen** wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
 
@@ -64,7 +64,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Wählen Sie **Genehmigen** aus. Sie erhalten eine Azure-Benachrichtigung über Ihre Genehmigung.
 
-    ![Genehmigungsbenachrichtigung, dass die Anforderung genehmigt wurde](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Genehmigungsbenachrichtigung, dass die Anforderung genehmigt wurde](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
 ## <a name="deny-requests"></a>Ablehnen von Anforderungen
 
@@ -83,12 +83,12 @@ Nachfolgend finden Sie einige Informationen zu Workflowbenachrichtigungen:
 - Die genehmigenden Personen werden per E-Mail benachrichtigt, wenn für die Anforderung einer Rolle die Überprüfung aussteht. E-Mail-Benachrichtigungen enthalten einen direkten Link zur Anforderung, damit diese von der genehmigenden Person genehmigt oder abgelehnt werden kann.
 - Anforderungen werden von der ersten genehmigenden Person bearbeitet, die sich mit der Genehmigung oder Ablehnung befasst.
 - Wenn eine genehmigende Person auf die Anforderung reagiert, werden alle genehmigenden Personen über die Aktion informiert.
-- Ressourcenadministratoren werden benachrichtigt, wenn ein genehmigter Benutzer in seiner Rolle aktiv wird.
+- Globale Administratoren und Administratoren für privilegierte Rollen werden benachrichtigt, wenn ein genehmigter Benutzer in seiner Rolle aktiv wird.
 
 >[!NOTE]
->Wenn ein Ressourcenadministrator der Meinung ist, dass ein genehmigter Benutzer nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in Privileged Identity Management entfernen. Ressourcenadministratoren werden nur über ausstehende Anforderungen benachrichtigt, wenn sie genehmigende Personen sind. Sie können aber ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie die ausstehenden Anforderungen in Privileged Identity Management anzeigen.
+>Wenn ein globaler Administrator oder ein Administrator für privilegierte Rollen der Meinung ist, dass ein genehmigter Benutzer nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in Privileged Identity Management entfernen. Administratoren werden nur über ausstehende Anforderungen benachrichtigt, wenn sie genehmigende Personen sind. Sie können aber ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie die ausstehenden Anforderungen in Privileged Identity Management anzeigen.
 
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
 
@@ -132,7 +132,7 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
     ![Bereich zum Ablehnen ausgewählter Anforderungen mit einem Ablehnungsgrund](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Klicken Sie auf **Ablehnen**.
+1. Wählen Sie **Ablehnen** aus.
 
     Das Statussymbol wird mit Ihrer Ablehnung aktualisiert.
 

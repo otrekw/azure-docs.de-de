@@ -3,7 +3,7 @@ title: Verbinden von Datenquellen mit Azure Sentinel | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Datenquellen mit Azure Sentinel verbinden.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
-ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.author: yelevin
+ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462546"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588330"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -45,35 +45,46 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
 
 - **Dienst-zu-Dienst-Integration**:<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD-Überwachungsprotokolle und -Anmeldungen](connect-azure-active-directory.md)
     - [Azure-Aktivität](connect-azure-activity.md)
+    - [Azure AD-Überwachungsprotokolle und -Anmeldungen](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Domänennamenserver](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
     - [Windows-Sicherheitsereignisse](connect-windows-security-events.md) 
     - [Windows-Firewall](connect-windows-firewall.md)
+    - [Windows-Sicherheitsereignisse](connect-windows-security-events.md)
 
 - **Externe Lösungen per API**: Einige Datenquellen werden mit APIs verbunden, die von der verbundenen Datenquelle bereitgestellt werden. Normalerweise werden bei den meisten Sicherheitstechnologien verschiedene APIs bereitgestellt, über die Ereignisprotokolle abgerufen werden können. Mit den APIs wird eine Verbindung mit Azure Sentinel hergestellt, und es werden bestimmte Datentypen erfasst und an Azure Log Analytics gesendet. Per API verbundene Appliances sind:
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Externe Lösungen per Agent**: Azure Sentinel kann mit allen anderen Datenquellen verbunden werden, über die Echtzeit-Protokollstreaming per Syslog-Protokoll durchgeführt werden kann, indem ein Agent verwendet wird. <br>Für die meisten Appliances wird das Syslog-Protokoll zum Senden von Nachrichten genutzt, die das eigentliche Protokoll und die Daten zum Protokoll enthalten. Das Format der Protokolle variiert zwar, die meisten Appliances unterstützen jedoch die CEF-basierte Formatierung (Common Event Format) für Protokolldaten. <br>Der Azure Sentinel-Agent, der auf dem Log Analytics-Agent basiert, konvertiert Protokolle im CEF-Format in ein Format, das von Log Analytics erfasst werden kann. Je nach Appliancetyp wird der Agent entweder direkt auf der Appliance oder auf einem dedizierten Linux-Server installiert. Der Agent für Linux empfängt Ereignisse vom Syslog-Daemon per UDP. Falls für einen Linux-Computer aber die Erfassung einer großen Menge von Syslog-Ereignissen erwartet wird, werden diese per TCP über den Syslog-Daemon an den Agent und von dort an Log Analytics gesendet.
     - Firewalls, Proxys und Endpunkte:
-        - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint-Produkte](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [One Identity Safeguard](connect-one-identity.md)
         - [Andere CEF-Appliances](connect-common-event-format.md)
         - [Andere Syslog-Appliances](connect-syslog.md)
-        - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop Reveal(x)](connect-extrahop.md)
-        - [One Identity Safeguard](connect-one-identity.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP-Lösungen
     - [Threat Intelligence-Anbieter](connect-threat-intelligence.md)
     - [DNS-Computer](connect-dns.md): Der Agent wird direkt auf dem DNS-Computer installiert.

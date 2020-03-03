@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462189"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647477"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure
 
@@ -22,9 +22,11 @@ Azure-Kunden mit einem Enterprise Agreement (EA) können zur Verwaltung ihrer Or
 - Unternehmensadministrator (nur Leseberechtigung)<sup>1</sup>
 - Abteilungsadministrator
 - Abteilungsadministrator (nur Leseberechtigung)
-- Kontobesitzer
+- Kontobesitzer<sup>2</sup>
 
 <sup>1</sup> Der Rechnungsempfänger des Konzernvertrags hat diese Rolle.
+
+<sup>2</sup> Der Rechnungsempfänger kann nicht im Azure EA-Portal hinzugefügt oder geändert werden. Er wird der EA-Registrierung basierend auf dem Benutzer hinzugefügt, der auf der Vereinbarungsebene als Rechnungsempfänger eingerichtet ist. Zum Ändern des Rechnungsempfängers muss über einen Partner/Software Advisor eine Anfrage an das regionale Betriebszentrum (Regional Operations Center, ROC) gerichtet werden.
 
 Diese Rollen sind spezifisch für die Verwaltung von Azure Enterprise Agreements und ergänzend zu den integrierten Rollen in Azure zum Steuern des Zugriffs auf Ressourcen. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../../role-based-access-control/built-in-roles.md).
 
@@ -38,9 +40,9 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 |Unternehmensadministrator (nur Leseberechtigung)|Unbegrenzt|
 |Abteilungsadministrator|Unbegrenzt|
 |Abteilungsadministrator (nur Leseberechtigung)|Unbegrenzt|
-|Kontobesitzer|1 pro Konto<sup>2</sup>|
+|Kontobesitzer|Einer pro Konto<sup>3</sup>|
 
-<sup>2</sup> Für jedes Konto ist ein eindeutiges Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto erforderlich.
+<sup>3</sup> Für jedes Konto ist ein individuelles Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto erforderlich.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organisationsstruktur und Berechtigungen nach Rolle
 
@@ -48,17 +50,17 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 |---|---|---|---|---|---|
 |Anzeigen von Unternehmensadministratoren|✔|✔|✘|✘|✘|
 |Hinzufügen und Entfernen von Unternehmensadministratoren|✔|✘|✘|✘|✘|
-|Anzeigen von Benachrichtigungskontakten<sup>3</sup> |✔|✔|✘|✘|✘|
-|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>3</sup> |✔|✘|✘|✘|✘|
+|Anzeigen von Benachrichtigungskontakten<sup>4</sup> |✔|✔|✘|✘|✘|
+|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>4</sup> |✔|✘|✘|✘|✘|
 |Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|
 |Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✘|
 |Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✔|✘|✘|
-|Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>4</sup>|✘|✘|
+|Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>5</sup>|✘|✘|
 |Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✔|
 
-- <sup>3</sup> Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen über das Azure Enterprise Agreement.
-- <sup>4</sup> Die Aufgabe ist auf Konten in Ihrer Abteilung beschränkt.
+- <sup>4</sup> Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen zum Azure Enterprise Agreement.
+- <sup>5</sup> Die Aufgabe ist auf Konten in Ihrer Abteilung beschränkt.
 
 
 ## <a name="usage-and-costs-access-by-role"></a>Zugriff auf Nutzung und Kosten nach Rolle
@@ -69,11 +71,11 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 |Anzeigen von Ausgabenkontingenten der Abteilungen|✔|✔|✘|✘|✘|
 |Festlegen von Ausgabenkontingenten der Abteilungen|✔|✘|✘|✘|✘|
 |Anzeigen der EA-Preisliste der Organisation|✔|✔|✘|✘|✘|
-|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |Verwalten von Ressourcen im Azure-Portal|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> Erfordert das Aktivieren der Richtlinie **DA view charges** (Gebühren anzeigen für Abteilungsadministrator) im Enterprise Portal durch den Unternehmensadministrator. Der Abteilungsadministrator kann dann Kostendetails für die Abteilung einsehen.
-- <sup>6</sup> Erfordert das Aktivieren der Richtlinie **AO view charges** (Gebühren anzeigen für Kontobesitzer) im Enterprise Portal durch den Unternehmensadministrator. Der Kontobesitzer kann dann Kostendetails für das Konto einsehen.
+- <sup>6</sup> Erfordert die Aktivierung der Richtlinie **DA-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Abteilungsadministrator kann dann Kostendetails für die Abteilung einsehen.
+- <sup>7</sup> Erfordert die Aktivierung der Richtlinie **AO-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Kontobesitzer kann dann Kostendetails für das Konto einsehen.
 
 
 ## <a name="pricing-in-azure-portal"></a>Preise im Azure-Portal

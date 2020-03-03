@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: c6c07c48bf94b50d46a50a47f57857fdd15a0e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697250"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648392"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
 
@@ -50,7 +50,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Erstellen eines Dienstprinzipals mit selbstsigniertem Zertifikat
 
-Im folgenden Beispiel geht es um ein einfaches Szenario. [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) wird zum Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat verwendet, und [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) wird verwendet, um dem Dienstprinzipal die Rolle [Leser](/azure/role-based-access-control/built-in-roles#reader) zuzuweisen. Die Rollenzuweisung ist auf Ihr derzeit ausgewähltes Azure-Abonnement beschränkt. Verwenden Sie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext), um ein anderes Abonnement auszuwählen.
+Im folgenden Beispiel geht es um ein einfaches Szenario. Darin wird [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) zum Erstellen eines Dienstprinzipals mit einem selbstsignierten Zertifikat verwendet, und [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) wird verwendet, um dem Dienstprinzipal die Rolle [Leser](/azure/role-based-access-control/built-in-roles#reader) zuzuweisen. Die Rollenzuweisung ist auf Ihr derzeit ausgewähltes Azure-Abonnement beschränkt. Verwenden Sie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext), um ein anderes Abonnement auszuwählen.
 
 > [!NOTE]
 > Das Cmdlet „New-SelfSignedCertificate“ und das PKI-Modul werden derzeit nicht in PowerShell Core unterstützt. 

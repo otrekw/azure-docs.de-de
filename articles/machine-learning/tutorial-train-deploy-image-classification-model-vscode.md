@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code'
+title: 'Tutorial: Trainieren und Bereitstellen eines Modells unter Verwendung der Visual Studio Code-Erweiterung'
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mit TensorFlow und der Azure Machine Learning-Erweiterung für Visual Studio Code ein Modell für die Bildklassifizierung trainieren und bereitstellen.
 services: machine-learning
@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157381"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602552"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code
 
-Hier erfahren Sie, wie Sie mit TensorFlow und der Azure Machine Learning-Erweiterung für Visual Studio Code ein Bildklassifizierungsmodell für die Erkennung handgeschriebener Ziffern trainieren.
+Hier erfahren Sie, wie Sie mit TensorFlow und der Azure Machine Learning-Erweiterung für Visual Studio Code ein Bildklassifizierungsmodell für die Erkennung handgeschriebener Ziffern trainieren und bereitstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement. Wenn Sie keines besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) registrieren.
+- Azure-Abonnement. Wenn Sie keins besitzen, können Sie sich für die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) registrieren.
 - Installieren Sie [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview). Hierbei handelt es sich um einen einfachen plattformübergreifenden Code-Editor.
 - Azure Machine Learning Studio-Erweiterung für Visual Studio Code. Eine Installationsanleitung finden Sie im Tutorial [Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code](./tutorial-setup-vscode-extension.md).
 
@@ -56,11 +56,11 @@ Als Erstes müssen Sie einen Arbeitsbereich erstellen, damit Sie eine Anwendung 
     > [!div class="mx-imgBorder"]
     > ![Erstellen eines Arbeitsbereichs](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. Standardmäßig wird ein Name mit dem Datum und der Uhrzeit der Erstellung generiert. Ändern Sie in der Befehlspalette den Namen in „TeamWorkspace“, und drücken Sie die **EINGABETASTE**.
-1. Wählen Sie in der Befehlspalette die Option **Neue Ressourcengruppe erstellen** aus. 
-1. Geben Sie im Textfeld der Befehlspalette „TeamWorkspace-rg“ ein, und drücken Sie die **EINGABETASTE**. 
-1. Wählen Sie in der Befehlspalette einen Standort für Ihren Arbeitsbereich aus. Wählen Sie am besten einen Standort aus, der dem Standort, an dem Sie Ihr Modell bereitstellen möchten, am nächsten gelegen ist. Wählen Sie in diesem Fall **USA, Westen 2** aus.
-1. Wenn Sie aufgefordert werden, eine Arbeitsbereichs-SKU auszuwählen, wählen Sie **Basic** aus, um einen Basic-Arbeitsbereich zu erstellen. Weitere Informationen zu verschiedenen Arbeitsbereichsangeboten finden Sie in der Übersicht über [Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
+1. Standardmäßig wird ein Name mit dem Datum und der Uhrzeit der Erstellung generiert. Ändern Sie im Texteingabefeld den Namen in **TeamWorkspace**, und drücken Sie die EINGABETASTE.
+1. Wählen Sie **Eine neue Ressourcengruppe erstellen** aus. 
+1. Nennen Sie Ihre Ressourcengruppe **TeamWorkspace-rg**, und drücken Sie die EINGABETASTE. 
+1. Wählen Sie einen Standort für Ihren Arbeitsbereich aus. Wählen Sie am besten einen Standort aus, der dem Standort, an dem Sie Ihr Modell bereitstellen möchten, am nächsten gelegen ist. Beispiel: „USA, Westen 2“.
+1. Wenn Sie zum Auswählen des Arbeitsbereichstyps aufgefordert werden, wählen Sie **Basic** aus, um einen Basic-Arbeitsbereich zu erstellen. Weitere Informationen zu verschiedenen Arbeitsbereichsangeboten finden Sie in der Übersicht über [Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
 
 Jetzt wird eine Anforderung an Azure zum Erstellen eines neuen Arbeitsbereichs in Ihrem Konto gesendet. Nach einigen Minuten wird der neue Arbeitsbereich in Ihrem Abonnementknoten angezeigt. 
 
@@ -77,7 +77,7 @@ In Ihrem Arbeitsbereich können Experimente erstellt werden, um einzelne Modellt
     > [!div class="mx-imgBorder"]
     > ![Erstellen eines Experiments](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Geben Sie in der Eingabeaufforderung der Befehlspalette Ihrem Experiment den Namen „MNIST“, und drücken Sie die **EINGABETASTE**, um das neue Experiment zu erstellen. 
+1. Nennen Sie Ihr Experiment **MNIST**, und drücken Sie die EINGABETASTE, um das neue Experiment zu erstellen. 
 
 Wie bei Arbeitsbereichen wird eine Anforderung an Azure gesendet, um ein Experiment mit den bereitgestellten Konfigurationen zu erstellen. Nach einigen Minuten wird das neue Experiment im Knoten *Experimente* Ihres Arbeitsbereichs angezeigt. 
 
@@ -96,8 +96,8 @@ Erstellen eines Computeziels:
     > ![Erstellen eines Computeziels](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. Wählen Sie **Azure Machine Learning Compute (AmlCompute)** aus. Azure Machine Learning Compute ist eine verwaltete Computeinfrastruktur, die Benutzern das einfache Erstellen von Computezielen mit einem oder mehreren Knoten ermöglicht, die Sie gemeinsam mit anderen Benutzern in Ihrem Arbeitsbereich verwenden können.
-1. Wählen Sie eine VM-Größe aus. Wählen Sie in der Eingabeaufforderung der Befehlspalette **Standard_F2s_v2** aus. Die Größe Ihrer VM wirkt sich auf die Zeitspanne aus, die zum Trainieren der Modelle erforderlich ist. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
-1. Geben Sie dem Computeziel in der Eingabeaufforderung der Befehlspalette den Namen „TeamWkspc-com“, und drücken Sie die **EINGABETASTE**, um das Computeziel zu erstellen.
+1. Wählen Sie eine VM-Größe aus. Wählen Sie in der Optionenliste **Standard_F2s_v2** aus. Die Größe Ihrer VM wirkt sich auf die Zeitspanne aus, die zum Trainieren der Modelle erforderlich ist. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+1. Nennen Sie Ihr Computeziel **TeamWkspc-com**, und drücken Sie die EINGABETASTE, um Ihr Computeziel zu erstellen.
 
 Nach einigen Minuten wird das neue Computeziel im Knoten *Compute* Ihres Arbeitsbereichs angezeigt.
 
@@ -115,10 +115,10 @@ So erstellen Sie eine Laufzeitkonfiguration:
     > [!div class="mx-imgBorder"]
     > ![Erstellen einer Laufzeitkonfiguration](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. Geben Sie der Laufzeitkonfiguration in der Eingabeaufforderung der Befehlspalette den Namen „MNIST-rc“, und drücken Sie die **EINGABETASTE**, um das Computeziel zu erstellen.
+1. Nennen Sie Ihre Laufzeitkonfiguration **MNIST-rc**, und drücken Sie die EINGABETASTE, um Ihre Laufzeitkonfiguration zu erstellen.
 1. Wählen Sie anschließend den Auftragstyp **TensorFlow Single-Node Training** (TensorFlow: Training auf einem einzelnen Knoten) aus.
 1. Drücken Sie die **EINGABETASTE**, um die Skriptdatei für die Ausführung auf dem Computeziel zu suchen. In diesem Fall ist die Datei `train.py` im Verzeichnis `vscode-tools-for-ai/mnist-vscode-docs-sample` das Skript zum Trainieren des Modells.
-1. Geben Sie in der Eingabeaufforderung der Befehlspalette Folgendes ein, um die erforderlichen Pakete anzugeben:
+1. Geben Sie Folgendes in das Eingabefeld ein, um die erforderlichen Pakete anzugeben:
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -192,7 +192,7 @@ So führen Sie ein Azure Machine Learning-Experiment aus
     > [!div class="mx-imgBorder"]
     > ![Ausführen eines Experiments](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. Wählen Sie in der Befehlspalette das Computeziel **TeamWkspc-com** aus.
+1. Wählen Sie in der Liste mit den Computezieloptionen das Computeziel **TeamWkspc-com** aus.
 1. Wählen Sie anschließend die Laufzeitkonfiguration **MNIST-rc** aus.
 1. Jetzt wird eine Anforderung zum Ausführen Ihres Experiments auf dem ausgewählten Computeziel in Ihrem Arbeitsbereich an Azure gesendet. Dieser Vorgang dauert einige Minuten. Die Zeitspanne für die Ausführung des Trainingsauftrags ist von mehreren Faktoren abhängig, wie z. B. dem Computetyp und der Größe der Trainingsdaten. Wenn Sie den Status des Experiments nachverfolgen möchten, klicken Sie mit der rechten Maustaste auf den aktuellen Ausführungsknoten, und wählen Sie **View Run in Azure portal** (Ausführung im Azure-Portal anzeigen) aus.
 1. Wenn das Dialogfeld mit der Anforderung zum Öffnen einer externen Website angezeigt wird, wählen Sie **Öffnen** aus.
@@ -222,9 +222,9 @@ Registrieren des Modells:
     > [!div class="mx-imgBorder"]
     > ![Registrieren eines Modells](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Geben Sie Ihrem Modell in der Befehlspalette den Namen „MNIST-TensorFlow-model“, und drücken Sie die **EINGABETASTE**.
-1. Ein TensorFlow-Modell besteht aus mehreren Dateien. Wählen Sie in der Befehlspalette **Model folder** (Modellordner) als Modellpfadformat aus. 
-1. Wählen Sie das Verzeichnis `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` aus.
+1. Nennen Sie Ihr Modell **MNIST-TensorFlow-model**, und drücken Sie die EINGABETASTE.
+1. Ein TensorFlow-Modell besteht aus mehreren Dateien. Wählen Sie in der Optionenliste die Option **Model folder** (Modellordner) als Modellpfadformat aus. 
+1. Wählen Sie das Verzeichnis `azureml_outputs/Run_1/outputs/outputs/model` aus.
 
     Eine Datei, die Ihre Modellkonfigurationen enthält, wird mit etwa folgendem Inhalt in Visual Studio Code angezeigt:
 
@@ -234,7 +234,7 @@ Registrieren des Modells:
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -266,10 +266,10 @@ So stellen Sie einen Webdienst als ACI bereit:
     > [!div class="mx-imgBorder"]
     > ![Bereitstellen des Modells](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Wählen Sie in der Befehlspalette **Azure Container Instances** aus.
-1. Geben Sie Ihrem Dienst den Namen „mnist-tensorflow-svc“, und drücken Sie in der Befehlspalette die **EINGABETASTE**.
-1. Wählen Sie das Skript aus, das im Container ausgeführt werden soll, indem Sie in der Befehlspalette die **EINGABETASTE** drücken und im Verzeichnis `mnist-vscode-docs-sample` nach der Datei `score.py` suchen.
-1. Geben Sie die Abhängigkeiten an, die zum Ausführen des Skripts erforderlich sind, indem Sie in der Befehlspalette die **EINGABETASTE** drücken und im Verzeichnis `mnist-vscode-docs-sample` nach der Datei `env.yml` suchen.
+1. Wählen Sie **Azure Container Instances** aus.
+1. Nennen Sie Ihren Dienst **mnist-tensorflow-svc**, und drücken Sie die EINGABETASTE.
+1. Wählen Sie das Skript aus, das im Container ausgeführt werden soll. Drücken Sie hierzu im Eingabefeld die EINGABETASTE, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `score.py`. ****
+1. Geben Sie die Abhängigkeiten an, die zum Ausführen des Skripts erforderlich sind. Drücken Sie hierzu im Eingabefeld die EINGABETASTE, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `env.yml`. ****
 
     Eine Datei, die Ihre Modellkonfigurationen enthält, wird mit etwa folgendem Inhalt in Visual Studio Code angezeigt:
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276960"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615492"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
 
@@ -44,13 +44,13 @@ Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP
 
 ## <a name="deploy-your-sharing-anchors-service"></a>Bereitstellen Ihres Diensts für die Freigabe von Ankern (Sharing Anchors)
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 Öffnen Sie Visual Studio und dann das Projekt im Ordner `Sharing\SharingServiceSample`.
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 Sie müssen eine Ressourcengruppe und einen App Service-Plan erstellen, bevor Sie den Dienst in VS Code bereitstellen.
 
@@ -74,7 +74,7 @@ Wählen Sie neben **Hostingplan** die Option **Neu** aus.
 
 Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstellungen:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
 | Location | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
@@ -89,6 +89,12 @@ Klicken Sie auf **OK**.
 ## <a name="deploy-the-sample-app"></a>Bereitstellen der Beispiel-App
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+Aufgrund von „Breaking Changes“ wird Unity 2019.3 derzeit nicht unterstützt. Verwenden Sie Unity 2019.1 oder 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

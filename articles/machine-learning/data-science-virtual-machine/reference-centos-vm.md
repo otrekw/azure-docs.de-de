@@ -1,5 +1,6 @@
 ---
-title: 'Referenz: DSVM unter CentOS'
+title: 'Referenz: Data Science Virtual Machine für CentOS'
+titleSuffix: Azure Data Science Virtual Machine
 description: Details zu den Tools, die in der Data Science Virtual Machine für CentOS enthalten sind
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493715"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525837"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Referenz: Data Science Virtual Machine für CentOS (Linux)
 
@@ -79,7 +80,7 @@ source activate py35
 
 Geben Sie zum Aufrufen einer interaktiven Sitzung in der Shell **python** ein. 
 
-Installieren Sie mithilfe von Conda oder pip weitere Python-Bibliotheken. Aktivieren Sie für pip zuerst die richtige Umgebung, wenn Sie die Standardeinstellung nicht verwenden möchten:
+Installieren Sie mithilfe von Conda oder PIP weitere Python-Bibliotheken. Aktivieren Sie für pip zuerst die richtige Umgebung, wenn Sie die Standardeinstellung nicht verwenden möchten:
 
 ```bash
 source activate root
@@ -140,7 +141,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-Sie können die Hadoop-bezogenen Dienste anhalten, wenn Sie sie nicht benötigen. Führen Sie dazu `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` aus.
+Sie können die Hadoop-bezogenen Dienste anhalten, wenn Sie sie nicht benötigen, indem Sie `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` ausführen.
 
 Das Verzeichnis „/dsvm/samples/MRS“ umfasst ein Beispiel, in dem gezeigt wird, wie Machine Learning Server in einem Remote-Spark-Kontext (dies ist die eigenständige Spark-Instanz in der DSVM-Instanz) entwickelt und getestet wird.
 
@@ -148,7 +149,7 @@ Das Verzeichnis „/dsvm/samples/MRS“ umfasst ein Beispiel, in dem gezeigt wir
 
 Sie können aus mehreren Code-Editoren auswählen, einschließlich vi/VIM, Emacs, gedit, PyCharm, RStudio, Eclipse, LaTex und IntelliJ. 
 
-* gedit, Eclipse, IntelliJ, R Studio und PyCharm sind grafische Editoren. Sie müssen bei einem grafischen Desktop angemeldet sein, um sie verwenden zu können. Sie können diese über Desktop- und Anwendungsmenüverknüpfungen öffnen.
+* gedit, Eclipse, IntelliJ, R Studio und PyCharm sind grafische Editoren. Sie müssen bei einem grafischen Desktop angemeldet sein, um sie verwenden zu können. Verwenden Sie zum Öffnen die Desktop- und Anwendungsmenüverknüpfungen.
 
 * Vim und Emacs sind textbasierte Editoren. Bei Emacs erleichtert das ESS-Add-On-Paket die Arbeit mit R im Emacs-Editor. Weitere Informationen finden Sie auf der [ESS-Website](https://ess.r-project.org/).
 
@@ -172,7 +173,7 @@ Die Open-Source-Datenbank PostgresSQL ist in der DSVM-Instanz verfügbar. Die Di
 
 ### <a name="squirrel-sql"></a>SQuirreL SQL
 
-SQuirreL SQL ist ein grafischer SQL-Client, der eine Verbindung mit verschiedenen Datenbanken (einschließlich SQL Server, PostgresSQL und MySQL) herstellen und SQL-Abfragen ausführen kann. Sie können SQuirreL SQL in einer grafischen Desktopsitzung (z. B. mithilfe des X2Go-Clients) über ein Desktopsymbol ausführen. Alternativ können Sie den Client mithilfe des folgenden Befehls in der Shell ausführen:
+SQuirreL SQL ist ein grafischer SQL-Client, der eine Verbindung mit verschiedenen Datenbanken (einschließlich SQL Server, PostgresSQL und MySQL) herstellen und SQL-Abfragen ausführen kann. Sie können SQuirreL SQL in einer grafischen Desktopsitzung (z. B. mithilfe des X2Go-Clients) über ein Desktopsymbol ausführen. Alternativ können Sie den Client mit dem folgenden Befehl in der Shell ausführen:
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
@@ -186,7 +187,7 @@ Weitere Informationen finden Sie unter [SQuirreL SQL](http://squirrel-sql.source
 
 Das ODBC-Treiberpaket für SQL Server verfügt auch über zwei Befehlszeilentools:
 
-* **bcp**: Das Tool bcp kopiert Daten per Massenkopiervorgang zwischen einer Instanz von SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format. Das Tool bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie eine für diese Tabelle erstellte Formatdatei verwenden. Alternativ müssen Sie die Struktur der Tabelle und die Datentypen, die für ihre Spalten gelten, verstehen.
+* **bcp**: Das Tool bcp kopiert Daten per Massenkopiervorgang zwischen einer Instanz von SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format. Das Tool bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie eine für diese Tabelle erstellte Formatdatei verwenden. Alternativ müssen Sie mit der Struktur der Tabelle und den Datentypen, die für ihre Spalten gelten, vertraut sein.
 
   Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
@@ -195,7 +196,7 @@ Das ODBC-Treiberpaket für SQL Server verfügt auch über zwei Befehlszeilentool
   Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
   > [!NOTE]
-  > Bei diesem Tool gibt es einige Unterschiede zwischen Linux- und Windows-Plattformen. Ausführliche Informationen dazu finden Sie in der -Dokumentation.
+  > Für dieses Tool gelten einige Unterschiede zwischen Linux- und Windows-Plattformen. Ausführliche Informationen dazu finden Sie in der -Dokumentation.
 
 ### <a name="database-access-libraries"></a>Bibliotheken für den Datenbankzugriff
 
@@ -209,11 +210,11 @@ Bibliotheken für den Datenbankzugriff sind in R und Python verfügbar:
 Die folgenden Azure-Tools werden in der DSVM-Instanz installiert:
 
 * **Azure CLI**: Mit der Befehlszeilenschnittstelle in Azure können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie **azure help** ein, um die Azure-Tools zu öffnen. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Storage-Explorer**: Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, sowie zum Hoch- und Herunterladen von Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell öffnen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
+* **Azure Storage-Explorer**: Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure-Speicherkonto gespeichert haben, sowie zum Hoch- und Herunterladen von Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell öffnen, indem Sie **StorageExplorer** eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
 * **Azure-Bibliotheken**: Die folgenden Bibliotheken sind in der DSVM-Instanz vorinstalliert:
   
   * **Python**: Die zu Azure gehörenden Bibliotheken in Python sind *azure*, *azureml*, *pydocumentdb* und *pyodbc*. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.
-  * **R**: Die zu Azure gehörenden Bibliotheken in R sind AzureML und RODBC.
+  * **R:** Die zu Azure gehörenden Bibliotheken in R sind AzureML und RODBC.
   * **Java**: Die Liste mit den Azure Java-Bibliotheken befindet sich im Verzeichnis „/dsvm/sdk/AzureSDKJava“ in der DSVM-Instanz. Die wichtigsten Bibliotheken sind Azure-Speicher- und -Verwaltungs-APIs, Azure Cosmos DB und JDBC-Treiber für SQL Server.  
 
 Sie können über den vorinstallierten Firefox-Browser auf das [Azure-Portal](https://portal.azure.com) zugreifen. Im Azure-Portal können Sie Azure-Ressourcen erstellen, verwalten und überwachen.
@@ -235,13 +236,13 @@ Informationen zum Bereitstellen von Modellen in R und Python für Azure Machine 
 
 ## <a name="machine-learning-tools"></a>Machine Learning-Tools
 
-DSVM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Das umfasst:
+DSVM enthält einige Machine Learning-Tools und -Algorithmen, die vorkompiliert und lokal vorinstalliert wurden. Dazu gehören:
 
 * **Microsoft Cognitive Toolkit**: Ein Deep Learning-Toolkit.
 * **Vowpal Wabbit**: Ein Algorithmus für schnelles Onlinelernen.
 * **XGBoost**: Ein Tool, das optimierte Boosted Tree-Algorithmen bereitstellt.
 * **Python**: Anaconda Python wird als Paket mit Machine Learning-Algorithmen für Bibliotheken wie Scikit-learn bereitgestellt. Sie können andere Bibliotheken installieren, indem Sie den `pip install` -Befehl verwenden.
-* **R**: Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Zu den vorinstallierten Bibliotheken zählen u. a. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie `install.packages(<lib name>)` ausführen.
+* **R:** Für R ist eine umfassende Bibliothek mit Machine Learning-Funktionen verfügbar. Zu den vorinstallierten Bibliotheken zählen u. a. lm, glm, randomForest und rpart. Sie können andere Bibliotheken installieren, indem Sie `install.packages(<lib name>)` ausführen.
 
 Microsoft Cognitive Toolkit, Vowpal Wabbit und XGBoost werden in den nächsten Abschnitten ausführlicher erläutert.
 

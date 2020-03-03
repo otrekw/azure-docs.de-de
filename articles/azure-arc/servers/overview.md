@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch, Hybrid
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190322"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586239"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Was ist Azure Arc für Server (Vorschauversion)?
 
@@ -49,8 +49,12 @@ In den meisten Fällen sollte der Standort, den Sie beim Erstellen des Installat
 
 Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und Linux-Versionen unterstützt: 
 
-- Windows Server 2012 R2 und höhere Versionen
+- Windows Server 2012 R2 und höher (einschließlich Windows Server Core)
 - Ubuntu 16.04 und 18.04
+- CentOS Linux 7
+- SUSE Linux Enterprise Server (SLES) 15
+- Red Hat Enterprise Linux 7 (RHEL)
+- Amazon Linux 7
 
 >[!NOTE]
 >Von diesem Vorschaurelease des Connected Machine-Agents für Windows wird nur Windows Server in englischer Sprache unterstützt.
@@ -66,6 +70,15 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 
 Bevor Sie Ihre Computer mit Azure Arc für Server (Vorschauversion) konfigurieren, sollten Sie sich mit den [Abonnementgrenzwerten](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) von Azure Resource Manager sowie mit den [Grenzwerten für Ressourcengruppen](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) vertraut machen, um die Anzahl der zu verbindenden Computer zu planen.
 
+## <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
+
+Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wird dringend empfohlen, den Computer so zu konfigurieren, dass er TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. 
+
+|Plattform/Sprache | Support | Weitere Informationen |
+| --- | --- | --- |
+|Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück. | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
+| Windows Server 2012 R2 und höhere Versionen | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) verwenden.|
+
 ### <a name="networking-configuration"></a>Netzwerkkonfiguration
 
 Der Connected Machine-Agent für Linux und Windows kommuniziert ausgehend auf sichere Weise über den TCP-Port 443 mit Azure Arc. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen.
@@ -79,7 +92,7 @@ Diensttags:
 
 URLs:
 
-| Agent-Ressource | BESCHREIBUNG |
+| Agent-Ressource | Beschreibung |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -130,15 +143,20 @@ Das Paket für den Azure Connected Machine-Agent für Windows und Linux steht 
 >[!NOTE]
 >Im Rahmen dieser Vorschau wurde nur ein einzelnes, für Ubuntu 16.04 oder 18.04 geeignetes Paket veröffentlicht.
 
+Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ihren Anforderungen manuell oder automatisch auf das neueste Release aktualisiert werden. Für Windows kann das Agent-Update mithilfe von Windows Update durchgeführt werden. Für Ubuntu können Sie das Befehlszeilentool [apt](https://help.ubuntu.com/lts/serverguide/apt.html) verwenden.
+
+### <a name="agent-status"></a>Agent-Status
+
+Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatnachricht an den Dienst. Sollte 15 Minuten lang keine Heartbeatnachricht empfangen werden, wird der Computer als offline betrachtet, und der Status wird im Portal automatisch in **Nicht verbunden** geändert. Wenn wieder eine Heartbeatnachricht des Connected Machine-Agents empfangen wird, ändert sich der Status automatisch in **Verbunden**.
+
 ## <a name="install-and-configure-agent"></a>Installieren und Konfigurieren des Agents
 
 Für Computer in Ihrer Hybridumgebung kann abhängig von Ihren Anforderungen auf verschiedene Weise eine Direktverbindung mit Azure hergestellt werden. Anhand der folgenden Tabelle können Sie ermitteln, welche der Methoden für Ihre Organisation am besten geeignet ist:
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 |--------|-------------|
 | Interaktiv | Installieren Sie den Agent manuell auf einem einzelnen Computer oder auf einigen wenigen Computern. Eine entsprechende Anleitung finden Sie unter [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md).<br> Im Azure-Portal können Sie ein Skript generieren und dieses auf dem Computer ausführen, um die Installations- und Konfigurationsschritte des Agents zu automatisieren.|
 | Skalierbar | Installieren und konfigurieren Sie den Agent für mehrere Computer. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Verbinden von Computern mit Azure mithilfe von Azure Arc für Server – PowerShell](onboard-service-principal.md).<br> Mit dieser Methode wird ein Dienstprinzipal für die nicht interaktive Verbindungsherstellung mit Computern erstellt.|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
