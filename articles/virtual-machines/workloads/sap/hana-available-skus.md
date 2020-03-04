@@ -3,22 +3,22 @@ title: SKUs für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
 description: SKUs für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5ed903eefea3a8c13bb9e43f5ef71063b453d93
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806642"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617258"
 ---
 # <a name="available-skus-for-hli"></a>Verfügbare SKUs für HLI
 
@@ -55,6 +55,7 @@ Der auf Stempeln der Revision 4 basierende Dienst „SAP HANA in Azure (große 
 | Optimiert für OLTP: SAP Business Suite<br /> auf SAP HANA oder S/4HANA (OLTP),<br /> generisches OLTP | SAP HANA in Azure S72m<br /> – 2 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 36 CPU-Kerne und 72 CPU-Threads |  1,5 TB |  6 TB | Wird nicht mehr angeboten |
 |---| SAP HANA in Azure S144m<br /> – 4 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 72 CPU-Kerne und 144 CPU-Threads |  3,0 TB |  12TB | Wird nicht mehr angeboten |
 |---| SAP HANA in Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-Kerne und 192 CPU-Threads  |  4,0 TB |  16 TB | Wird nicht mehr angeboten |
+| --- | SAP HANA in Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276-Prozessor (auch als Cascade Lake bezeichnet)<br /> 112 CPU-Kerne und 224 CPU-Threads |  6,0 TB |  10,5 TB | Verfügbar in Revision3- und Revision4-Stempeln  |
 |---| SAP HANA in Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  6,0 TB |  18 TB | Verfügbar in Revision4-Stempeln|
 |---| SAP HANA in Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  8,0 TB |  22 TB |  Verfügbar in Revision4-Stempeln |
 |---| SAP HANA in Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  12,0 TB |  28 TB | Verfügbar in Revision4-Stempeln|
@@ -90,7 +91,7 @@ Die jeweils gewählten Konfigurationen hängen von der Workload, den CPU-Ressour
 
 Die Hardwarebasis für die Angebote (mit Ausnahme von Einheiten für Projekte mit kundenspezifischer Größe) sind SAP HANA TDI-zertifiziert. Die SKUs werden durch zwei unterschiedliche Hardwareklassen wie folgt unterteilt:
 
-- S72, S72m, S96, S144, S144m, S192, S192m, S192xm und S224, die als „Typ-I-Klasse“ von SKUs bezeichnet werden.
+- S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 und S224m, die als „Typ-I-Klasse“ von SKUs bezeichnet werden.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
 - Wenn Sie an anderen S224-SKU-Angeboten zwischen 4,5 TB und 9 TB mit Optane interessiert sind, erhalten Sie weitere Informationen bei Ihrem Microsoft-Kontoteam. 
 
@@ -98,7 +99,7 @@ Die Hardwarebasis für die Angebote (mit Ausnahme von Einheiten für Projekte mi
 Ein vollständiges Umfeld von HANA (große Instanz) ist nicht ausschließlich zur Verwendung durch einen einzelnen Kunden zugeordnet. Dies gilt für Racks mit Compute- und Speicherressourcen, die über ein in Azure bereitgestelltes Netzwerkfabric verbunden sind. Die Infrastruktur von HANA (große Instanz) stellt wie Azure verschiedene &quot;Kundenmandanten&quot; bereit, die in den drei folgenden Ebenen voneinander isoliert sind:
 
 - **Netzwerk:** Isolation durch virtuelle Netzwerke innerhalb des Umfelds von HANA (große Instanz).
-- **Speicher**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind und die Speichervolumes zwischen Mandanten isolieren.
+- **Storage**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind und die Speichervolumes zwischen Mandanten isolieren.
 - **Compute**: Dedizierte Zuweisung von Servereinheiten zu einem einzelnen Mandanten. Keine Hard- oder Softpartitionierung von Servereinheiten. Keine Freigabe einer einzelnen Server- oder Hosteinheit zwischen Mandanten. 
 
 Die Bereitstellungen von Einheiten von HANA (große Instanz) zwischen verschieden Mandanten sind füreinander nicht sichtbar. In verschiedenen Mandanten bereitgestellte Einheiten von HANA (große Instanz) können nicht direkt auf der Ebene des Umfelds von HANA (große Instanz) miteinander kommunizieren. Nur Einheiten von HANA (große Instanz) innerhalb eines Mandanten können auf der Ebene des Umfelds von HANA (große Instanz) miteinander kommunizieren.

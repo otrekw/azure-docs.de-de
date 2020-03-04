@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: Livetranskription
           href: live-transcription.md
-        - name: Funktionsvergleiche
+        - name: Vergleich von Liveereignistypen
           href: live-event-types-comparison.md
         - name: Zustandswerte und Abrechnung
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
+        - name: Partner für lokale Encoder werden
+          href: become-on-premises-encoder-partner.md
         - name: Fehlercodes für Liveereignisse
           href: live-event-error-codes.md
     - name: Verpackung und Bereitstellung

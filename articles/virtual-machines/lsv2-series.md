@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492595"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587259"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -23,7 +23,7 @@ Die Lsv2-Reihe bietet direkt zugeordneten lokalen NVMe-Speicher mit hohem Durchs
 >
 > Dank des hohen Durchsatzes und der IOPS des lokalen Datenträgers eignen sich virtuelle Computer der Lsv2-Serie ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen.
 >
-> Weitere Informationen finden Sie unter [Optimize performance on the Lsv2-series virtual machines (Optimieren der Leistung von virtuellen Computern der Lsv2-Reihe)](/linux/storage-performance.md).  
+> Weitere Informationen finden Sie unter „Optimieren der Leistung virtueller Computer der Lsv2-Serie für [Windows](../virtual-machines/windows/storage-performance.md) oder [Linux](../virtual-machines/linux/storage-performance.md)“.  
 
 ACU: 150–175
 

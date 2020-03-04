@@ -1,10 +1,10 @@
 ---
-title: Behandlung von Problemen beim SAP HANA 2.0 HSR-Pacemaker-Setup für die horizontale Skalierung mit SLES 12 SP3 auf virtuellen Azure-Computern | Microsoft-Dokumentation
+title: SAP HANA – Horizontale Skalierung von HSR-Pacemaker mit SLES auf Azure VMs – Problembehandlung | Microsoft-Dokumentation
 description: Dieser Leitfaden erläutert die Überprüfung und Problembehandlung einer komplexen SAP HANA-Hochverfügbarkeitskonfiguration für die horizontale Skalierung basierend auf der SAP HANA-Systemreplikation (HSR) und Pacemaker unter SLES 12 SP3, die auf virtuellen Azure-Computern ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: gwallace
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099662"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617120"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446057"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520705"
 ---
 Inkrementelle Momentaufnahmen (Vorschau) sind Sicherungen zu einem bestimmten Zeitpunkt für verwaltete Datenträger, die im Erfassungszustand nur aus allen Änderungen seit der letzten Momentaufnahme bestehen. Wenn Sie versuchen, eine inkrementelle Momentaufnahme herunterzuladen oder anderweitig zu verwenden, wird die vollständige VHD verwendet. Diese neue Funktion für Momentaufnahmen verwalteter Datenträger kann es potenziell ermöglichen, dass diese kostengünstiger sind, da Sie nicht mehr den gesamten Datenträger mit jeder einzelnen Momentaufnahme speichern müssen, es sei denn, Sie entscheiden sich dazu. Ebenso wie reguläre Momentaufnahmen können inkrementelle Momentaufnahmen verwendet werden, um einen vollständigen verwalteten Datenträger oder eine reguläre Momentaufnahme zu erstellen.
 
@@ -21,10 +21,15 @@ Es gibt einige Unterschiede zwischen einer inkrementellen Momentaufnahme und ein
 
 Inkrementelle Momentaufnahmen bieten außerdem eine differenzielle Funktion, die für verwaltete Datenträger exklusiv verfügbar ist. Sie ermöglichen es Ihnen, die Änderungen zwischen zwei inkrementellen Momentaufnahmen der gleichen verwalteten Datenträger bis hinunter zur Blockebene abzurufen. Sie können diese Funktion verwenden, um den Datenbedarf beim regionsübergreifenden Kopieren von Momentaufnahmen zu verringern.
 
-## <a name="restrictions"></a>Beschränkungen
+### <a name="supported-regions"></a>Unterstützte Regionen
 
-- Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen-Mitte“, „Kanada, Osten“, „Kanada, Mitte“ „Europa, Norden“ und „Asien, Südosten“ verfügbar.
-- Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde.
+Derzeit werden nur die folgenden Regionen unterstützt:
+
+- Verfügbar als GA-Angebot in den Regionen USA, Westen-Mitte, Kanada, Osten und Kanada, Mitte.
+- Verfügbar als öffentliche Vorschau in den Regionen USA, Osten, USA, Osten 2, USA, Mitte, Europa, Norden, Asien, Südosten.
+
+## <a name="restrictions"></a>Beschränkungen
+- Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde (gilt nur während der Vorschau).
 - Inkrementelle Momentaufnahmen können derzeit nicht zwischen Abonnements verschoben werden.
 - Sie können zurzeit nur SAS-URIs mit jeweils bis zu fünf Momentaufnahmen einer bestimmten Momentaufnahmefamilie generieren.
 - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen.

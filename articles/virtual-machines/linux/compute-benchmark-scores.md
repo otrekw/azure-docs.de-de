@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036689"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650843"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
 Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zur Verfügung.
@@ -28,7 +28,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="av2---general-compute"></a>Av2 – Compute allgemein
 (15.03.2019 00:06:55 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2660 0 mit 2,20 GHz | 1 | 1 | 1.9 | 6\.483 | 120 | 1,85 % | 273 |
 | Standard_A1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 1.9 | 6\.059 | 208 | 3,43 % | 217 |
@@ -52,10 +52,12 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 8 | 1 | 62,9 | 49.838 | 633 | 1,27% | 182 |
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 8 | 1 | 62,9 | 49.123 | 2\.483 | 5,05 % | 259 |
 
+Hinweis: Virtuelle Computer der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozessoren bereitgestellt werden (wie oben gezeigt wurde). Die Konfigurationen für CPU-Leistung und Arbeitsspeicher bei virtuellen Computern der Av2-Serie eignen sich am besten für Workloads der Einstiegsebene wie Entwicklung und Tests. Die Größe wird gedrosselt, um eine relativ konsistente Prozessorleistung für die laufende Instanz zu bieten – unabhängig von der Hardware, auf der sie bereitgestellt wird. Software, die bestimmte neuere Prozessoroptimierungen nutzt, kann allerdings signifikantere Abweichungen zwischen den Prozessortypen erkennen.
+
 ## <a name="b---burstable"></a>B – Burstfähig
 (15.03.2019 00:27:08 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 1.9 | 13.593 | 307 | 2,26% | 28 |
 | Standard_B1ms | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 1 | 1 | 1.9 | 14.069 | 495 | 3,52 % | 672 |
@@ -70,10 +72,14 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 8 | 1 | 31,4 | 111.929 | 1\.562 | 1,40 % | 35 |
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 8 | 1 | 31,4 | 109.537 | 1\.354 | 1,24 % | 665 |
 
+Hinweis: Virtuelle Computer der B-Serie sind für Workloads mit burstfähigen Leistungsanforderungen vorgesehen. VM-Instanzen sammeln Guthaben an, wenn sie weniger als ihre Baseline verwenden. Wenn der virtuelle Computer Guthaben angesammelt hat, kann sein Burst die Baseline mit bis zu 100 % überschreiten, um kurze CPU-Burstanforderungen zu erfüllen. Die Burstzeit hängt von verfügbaren Guthaben ab. Dies ist eine Funktion der VM-Größe und -Zeit.  
+
+CoreMark ist ein für kurze Zeit ausgeführter Test, der normalerweise innerhalb der verfügbaren Burstguthaben abgeschlossen wird.  Daher stellen die oben genannten Zahlen in der Regel die Burstleistung der VM dar und spiegeln die Leistung der kurzen, intensiven Workloads (typisch bei der B-Serie) wider.
+
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – Compute allgemein + Storage Premium
 (12.03.2019 18:52:03 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 2 | 1 | 7,8 | 20.153 | 838 | 4,16 % | 147 |
 | Standard_D2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 2 | 1 | 7,8 | 20.903 | 1\.324 | 6,33 % | 553 |
@@ -90,7 +96,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="dv3---general-compute"></a>Dv3 – Compute allgemein
 (12.03.2019 18:54:27 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 2 | 1 | 7,8 | 20.359 | 799 | 3,93 % | 154 |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 2 | 1 | 7,8 | 20.737 | 1\.422 | 6,86 % | 546 |
@@ -107,7 +113,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="dsv2---storage-optimized"></a>DSv2 – Datenspeicheroptimiert
 (15.03.2019 00:53:13 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 3.4 | 14.642 | 600 | 4,10 % | 259 |
 | Standard_DS1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 1 | 1 | 3.4 | 14.808 | 904 | 6,10 % | 434 |
@@ -147,7 +153,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="dv2---general-compute"></a>Dv2 – Compute allgemein
 (12.03.2019 18:53:48 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 3.4 | 14.730 | 663 | 4,50 % | 385 |
 | Standard_D1_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 1 | 1 | 3.4 | 15.057 | 1\.319 | 8,76 % | 322 |
@@ -173,7 +179,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 – Arbeitsspeicheroptimiert + Storage Premium
 (12.03.2019 19:17:33 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 2 | 1 | 15,7 | 20.957 | 1\.200 | 5,73 % | 672 |
 | Standard_E4s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 4 | 1 | 31,4 | 40.420 | 1\.993 | 4,93 % | 672 |
@@ -195,14 +201,14 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 – Arbeitsspeicheroptimierung und Storage Premium (isoliert)
 (11.04.2019 22:07:29 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 64 | 2 | 425,2 | 627.745 | 4\.062 | 0,65 % | 196 |
 
 ## <a name="ev3---memory-optimized"></a>Ev3 – Arbeitsspeicheroptimiert
 (12.03.2019 18:52:13 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 2 | 1 | 15,7 | 21.171 | 1\.772 | 8,37 % | 693 |
 | Standard_E4_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 4 | 1 | 31,4 | 41.181 | 3\.148 | 7,64% | 700 |
@@ -215,7 +221,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 – Arbeitsspeicheroptimiert (isoliert)
 (12.03.2019 18:57:51 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 64 | 2 | 425,2 | 625.855 | 4\.881 | 0,78 % | 7 |
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 64 | 2 | 425,2 | 629.151 | 9\.756 | 1,55 % | 217 |
@@ -223,7 +229,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 – Compute + Datenspeicheroptimiert
 (12.03.2019 18:51:35 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU mit 2,70 GHz | 2 | 1 | 3.9 | 28.219 | 1\.843 | 6,53% | 700 |
 | Standard_F4s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU mit 2,70 GHz | 4 | 1 | 7,8 | 53.911 | 1\.002 | 1,86 % | 707 |
@@ -236,7 +242,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="fs---compute-and-storage-optimized"></a>Fs – Compute- und Datenspeicheroptimiert
 (15.03.2019 00:12:51 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 1.9 | 14.552 | 504 | 3,46 % | 350 |
 | Standard_F1s | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 1 | 1 | 1.9 | 14.784 | 858 | 5,80 % | 357 |
@@ -253,7 +259,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="f---compute-optimized"></a>F – Compute-optimiert
 (12.03.2019 18:53:59 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 1 | 1 | 1.9 | 14.937 | 593 | 3,97 % | 350 |
 | Standard_F1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 1 | 1 | 1.9 | 15.460 | 1\.326 | 8,58 % | 350 |
@@ -270,7 +276,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="gs---storage-optimized"></a>GS – Datenspeicheroptimiert
 (12.03.2019 22:22:33 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_GS1 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 2 | 1 | 27,5 | 28.835 | 2\.222 | 7,71 % | 287 |
 | Standard_GS2 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 4 | 1 | 55,0 | 55.568 | 3\.139 | 5,65 % | 287 |
@@ -285,7 +291,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="g---compute-optimized"></a>G – Compute-optimiert
 (12.03.2019 22:23:51 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_G1 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 2 | 1 | 27,5 | 32.808 | 2\.679 | 8,17 % | 287 |
 | Standard_G2 | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 4 | 1 | 55,0 | 62.907 | 4\.465 | 7,10 % | 287 |
@@ -296,7 +302,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="h---high-performance-compute-hpc"></a>H – High Performance Computing (HPC)
 (12.03.2019 22:50:51 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_H8 | Intel(R) Xeon(R) CPU E5-2667 v3 mit 3,20 GHz | 8 | 1 | 55,0 | 149.859 | 734 | 0,49 % | 175 |
 | Standard_H8m | Intel(R) Xeon(R) CPU E5-2667 v3 mit 3,20 GHz | 8 | 1 | 110,2 | 149.931 | 657 | 0,44% | 147 |
@@ -308,7 +314,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="lv2---storage-optimized"></a>Lv2 – Datenspeicheroptimiert
 (14.03.2019 17:49:04 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L8s_v2 | AMD EPYC 7551 32-Kerne-Prozessor | 8 | 1 | 62,9 | 80.528 | 404 | 0,50 % | 119 |
 | Standard_L16s_v2 | AMD EPYC 7551 32-Kerne-Prozessor | 16 | 2 | 125,9 | 154.829 | 3\.708 | 2,40% | 119 |
@@ -319,7 +325,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="ls---storage-optimized"></a>Ls – Datenspeicheroptimiert
 (12.03.2019 22:22:29 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L4s | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 4 | 1 | 31,4 | 56.488 | 2\.916 | 5,16 % | 287 |
 | Standard_L8s | Intel(R) Xeon(R) CPU E5-2698B v3 mit 2,00 GHz | 8 | 1 | 62,9 | 107.017 | 2\.323 | 2,17% | 287 |
@@ -329,7 +335,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="m---memory-optimized"></a>M – Arbeitsspeicheroptimiert
 (11.04.2019 19:30:39 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M8-2 ms | Intel(R) Xeon(R) CPU E7-8890 v3 mit 2,50 GHz | 2 | 1 | 215,2 | 22.605 | 29 | 0,13 % | 42 |
 | Standard_M8-4ms | Intel(R) Xeon(R) CPU E7-8890 v3 mit 2,50 GHz | 4 | 1 | 215,2 | 44.488 | 183 | 0,41 % | 42 |
@@ -360,7 +366,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 – GPU-fähig
 (21.03.2019 17:48:37 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 6 | 1 | 110,2 | 106.929 | 353 | 0,33 % | 49 |
 | Standard_NC12s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 12 | 1 | 220,4 | 213.585 | 875 | 0,41 % | 42 |
@@ -370,7 +376,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 – GPU-fähig
 (12.03.2019 23:19:19 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 6 | 1 | 110,2 | 107.115 | 321 | 0,30 % | 63 |
 | Standard_NC12s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 12 | 1 | 220,4 | 213.814 | 656 | 0,31 % | 63 |
@@ -380,7 +386,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="nc---gpu-enabled"></a>NC – GPU-fähig
 (12.03.2019 22:08:03 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 6 | 1 | 55,0 | 102.211 | 658 | 0,64 % | 259 |
 | Standard_NC12 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 12 | 1 | 110,2 | 203.523 | 2\.293 | 1,13% | 259 |
@@ -390,7 +396,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="nds--gpu-enabled"></a>NDs – GPU-fähig
 (12.03.2019 22:19:10 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_ND6s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 6 | 1 | 110,2 | 107.095 | 353 | 0,33 % | 63 |
 | Standard_ND12s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2,60 GHz | 12 | 1 | 220,4 | 212.298 | 3\.457 | 1,63% | 63 |
@@ -400,7 +406,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 ## <a name="nv---gpu-enabled"></a>NV – GPU-fähig
 (12.03.2019 22:08:13 pbi 3897709)
 
-| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | Standardabweichung | Standardabw. % | Ausführungsanz. |
+| Größe des virtuellen Computers | CPU | vCPUs | NUMA-Knoten | Speicher (GiB) | Durchschn. Bewertung | StdDev | Standardabw. % | Ausführungsanz. |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NV6 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 6 | 1 | 55,0 | 101.728 | 2\.094 | 2,06% | 259 |
 | Standard_NV12 | Intel(R) Xeon(R) CPU E5-2690 v3 mit 2,60 GHz | 12 | 1 | 110,2 | 203.903 | 1\.724 | 0,85 % | 252 |

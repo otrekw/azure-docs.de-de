@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Dienstendpunktrichtlinien über das Azure-Portal eingerichtet und zugeordnet werden.
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 09/18/2018
-ms.author: kumud
-ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/21/2020
+ms.author: rdhillon
+ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710922"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651179"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Erstellen, Ändern oder Löschen einer Dienstendpunktrichtlinie über das Azure-Portal
 
@@ -40,27 +40,32 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 ## <a name="create-a-service-endpoint-policy"></a>Erstellen einer Dienstendpunktrichtlinie
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Geben Sie im Suchbereich „Dienstendpunktrichtlinie“ ein, und klicken Sie auf **Dienstendpunktrichtlinie (Vorschau)** und dann auf **Erstellen**.
+2. Geben Sie im Suchbereich „Dienstendpunktrichtlinie“ ein, und wählen Sie **Dienstendpunktrichtlinie** und dann **Erstellen** aus.
+
+![Dienstendpunktrichtlinie erstellen](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
+
 3. Geben Sie unter **Allgemeine Informationen** folgende Informationen ein, bzw. wählen Sie sie aus: 
 
-   - Abonnement: Wählen Sie Ihr Abonnement für die Richtlinie aus.    
-   - Ressourcengruppe: Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.     
+   - Abonnement: Wählen Sie Ihr Abonnement für die Richtlinie aus.
+   - Ressourcengruppe: Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroup* ein.
    - Name: myEndpointPolicy
-   - Standort: USA, Westen-Mitte     
+   - Standort: USA (Mitte)
  
-   ![Grundlagen zur Erstellung von Dienstendpunktrichtlinien](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
-   
-4. Geben Sie unter **Richtliniendefinitionen** folgende Informationen ein, bzw. wählen Sie sie aus:
+   ![Grundlagen zur Erstellung von Dienstendpunktrichtlinien](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
 
-   - Klicken Sie auf **+ Eine Ressource hinzufügen**, und geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Hinzufügen**.  
-   - Bereich: Wählen Sie **Einzelnes Konto** oder **Alle Konten im Abonnement** oder **Alle Konten in der Ressourcengruppe** aus.    
-   - Abonnement: Wählen Sie Ihr Abonnement für das Speicherkonto aus. Richtlinien- und Speicherkonten können sich in verschiedenen Abonnements befinden.   
+4. Wählen Sie unter **Ressourcen** die Option **+ Hinzufügen** aus, und geben Sie im Bereich **Ressource hinzufügen** die folgenden Informationen ein, oder wählen Sie sie dort aus:
+
+   - Dienst        : Bei „Dienstendpunktrichtlinien“ steht nur **Microsoft.Storage** zur Verfügung.
+   - Bereich: Wählen Sie eine der Optionen **Einzelnes Konto**, **Alle Konten im Abonnement** oder **Alle Konten in der Ressourcengruppe** aus.
+   - Abonnement: Wählen Sie Ihr Abonnement für das Speicherkonto aus. Richtlinien- und Speicherkonten können sich in verschiedenen Abonnements befinden.
    - Ressourcengruppe: Wählen Sie Ihre Ressourcengruppe aus. Erforderlich, wenn der Bereich auf „Alle Konten in der Ressourcengruppe“ oder auf „Einzelnes Konto“ festgelegt ist.  
-   - Ressource: mystorageaccountportal    
-   - Klicken Sie auf **+ Eine Ressource hinzufügen**, um mit dem Hinzufügen weiterer Ressourcen fortzufahren.
-   
-   ![Erstellen von Definitionen einer Dienstendpunktrichtlinie](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
-   
+   - Ressource       : Wählen Sie unter dem ausgewählten Abonnement oder der ausgewählten Ressourcengruppe Ihre Azure Storage-Ressource aus.
+   - Klicken Sie unten auf die Schaltfläche **Hinzufügen**, um das Hinzufügen der Ressource abzuschließen.
+
+   ![Definition einer Dienstendpunktrichtlinie – Ressource](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
+
+   - Fügen Sie weitere Ressourcen hinzu, indem Sie die vorstehenden Schritte nach Bedarf wiederholen.
+
 5. Optional: Geben Sie unter **Tags** folgende Informationen ein, bzw. wählen Sie sie aus:
    
    - Schlüssel: Wählen Sie Ihren Schlüssel für die Richtlinie aus. Beispiel: Abtlg     
@@ -68,56 +73,44 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 6. Klicken Sie auf **Überprüfen + erstellen**. Überprüfen Sie die Informationen, und klicken Sie auf **Erstellen**. Um weitere Änderungen vorzunehmen, klicken Sie auf **Zurück**. 
 
-   ![Durchführen von abschließenden Überprüfungen einer Dienstendpunktrichtlinie](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-finalcreatereview.PNG)
+   ![Durchführen von abschließenden Überprüfungen einer Dienstendpunktrichtlinie](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
- 
 ## <a name="view-endpoint-policies"></a>Anzeigen von Endpunktrichtlinien 
 
-1. Beginnen Sie im Portal im Feld *Alle Dienste* mit der Eingabe von *Dienstendpunktrichtlinien*. Wählen Sie **Dienstendpunktrichtlinien (Vorschau)** aus.
+1. Beginnen Sie im Portal im Feld *Alle Dienste* mit der Eingabe von *Dienstendpunktrichtlinien*. Wählen Sie **Dienstendpunktrichtlinien** aus.
 2. Wählen Sie unter **Abonnements** Ihr Abonnement und Ihre Ressourcengruppe aus, wie in der folgenden Abbildung dargestellt wird.
 
-   ![Anzeigen einer Richtlinie](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)
+   ![Anzeigen einer Richtlinie](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
 3. Wählen Sie die Richtlinie aus, und klicken Sie auf **Richtliniendefinitionen**, um weitere Richtliniendefinitionen anzuzeigen oder hinzuzufügen.
 
-   ![Anzeigen von Richtliniendefinitionen](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicy-adddefinitions.PNG)
+   ![Anzeigen von Richtliniendefinitionen](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. Wählen Sie **Zugeordnete Subnetze** aus, um die der Richtlinie zugeordneten Subnetze anzuzeigen. Um die Richtlinie einem Subnetz zuzuordnen, klicken Sie auf „Zum virtuellen Netzwerk in der gleichen Region navigieren“.
+4. Wählen Sie **Zugeordnete Subnetze** aus, um die der Richtlinie zugeordneten Subnetze anzuzeigen. Wenn noch kein Subnetz zugeordnet wurde, führen Sie die Anleitungen im nächsten Schritt aus.
 
-   ![Anzeigen der zugeordneten Subnetze](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-view-associatedsubnets.PNG)
+   ![Zugeordnete Subnetze](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
-## <a name="associate-a-policy-to-a-subnet"></a>Zuordnen einer Richtlinie zu einem Subnetz
+5. Zuordnen einer Richtlinie zu einem Subnetz
 
 >[!WARNING] 
-> Stellen Sie sicher, dass alle Ressourcen für den ausgewählten Dienst, auf die über das Subnetz zugegriffen wird, zur Richtlinie hinzugefügt wurden, bevor Sie die Richtlinie zuordnen. Sobald die Richtlinie zugeordnet wurde, ist für Endpunktregionen für den Dienst nur der Zugriff auf die in der Richtlinie aufgeführten Ressourcen zulässig. 
+> Stellen Sie sicher, dass alle Ressourcen, auf die über das Subnetz zugegriffen wird, der Richtliniendefinition hinzugefügt wurden, bevor Sie die Richtlinie dem angegebenen Subnetz zuordnen. Sobald die Richtlinie zugeordnet wurde, wird nur der Zugriff auf die *in der Zulassungsliste aufgeführten* Ressourcen über Dienstendpunkte gestattet. 
+>
+> Stellen Sie außerdem sicher, dass in dem der Dienstendpunktrichtlinie zugeordneten Subnetz keine verwalteten Azure-Dienste vorhanden sind.
 
-Bevor Sie eine Richtlinie einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen. Danach können Sie die Richtlinie dem Subnetz zuordnen:
+- Bevor Sie eine Richtlinie einem Subnetz zuordnen können, müssen Sie ein virtuelles Netzwerk und ein Subnetz erstellen. Hilfe dazu finden Sie im Artikel [Erstellen eines virtuellen Netzwerks](./quick-create-portal.md).
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
-3. Geben Sie unter **Virtuelles Netzwerk erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
-   - Name: myVirtualNetwork      
-   - Adressraum: 10.0.0.0/16      
-   - Abonnement: Wählen Sie Ihr Abonnement aus. Die Richtlinie muss sich im selben Abonnement wie das VNET befinden.     
-   - Ressourcengruppe: Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.     
-   - Standort: USA, Westen-Mitte     
-   - Name des Subnetzes: Privat     
-   - Adressbereich: 10.0.0.0/24
-     
-4. Beginnen Sie oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** mit der Eingabe von *myVirtualNetwork*. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
-5. Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze**, und wählen Sie dann **Privat** aus.
-6. Klicken Sie wie in der folgenden Abbildung gezeigt auf **Dienstendpunkte**, auf **Microsoft.Storage**, auf **Dienstendpunktrichtlinien**, auf **myEndpointPolicy** und dann auf **Speichern**:
+- Nachdem Sie das virtuelle Netzwerk und das Subnetz eingerichtet haben, müssen Sie VNET-Dienstendpunkte für Azure Storage konfigurieren. Wählen Sie auf dem Blatt „Virtual Network“ die Option **Dienstendpunkte**, anschließend im nächsten Bereich **Microsoft.Storage** und dann unter **Subnetze** das gewünschte VNET oder Subnetz aus.
 
-   ![Zuordnen einer Richtlinie](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-associatepolicies.PNG)
+- Jetzt können Sie entweder aus der Dropdownliste im vorstehenden Bereich die gewünschte Dienstendpunktrichtlinie auswählen, wenn Sie bereits Dienstendpunktrichtlinien erstellt haben, bevor Sie den Dienstendpunkt für das Subnetz konfigurieren (siehe die Abbildung unten)
+
+    ![Subnetz beim Erstellen des Dienstendpunkts zuordnen](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
+
+- ODER – wenn Sie Dienstendpunktrichtlinien erst nach der Konfiguration von Dienstendpunkten zuordnen – auswählen, dass das Subnetz über das Blatt „Dienstendpunktrichtlinie“ zugeordnet werden soll, indem Sie zum Bereich **Zugeordnete Subnetze** navigieren (siehe die Abbildung unten).
+
+    ![Subnetz über SEP zuordnen](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
 
 >[!WARNING] 
->Von diesem Subnetz aus kann basierend auf Netzwerksicherheitsgruppen (NSGs) auf Dienstressourcen in anderen Regionen zugegriffen werden. Um den Zugriff nur auf Endpunktregionen zu beschränken, beschränken Sie NSGs ausschließlich auf Datenverkehr von Diensten in Endpunktregionen ein. Weitere Informationen zum Erstellen von NSGs mit Diensttags pro Region finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](manage-network-security-group.md?toc=%2fcreate-a-security-rule%2f.json).
-
-Im folgenden Beispiel ist der Zugriff der NSG ausschließlich auf Azure Storage-Ressourcen in „USA, Westen-Mitte“ und „USA, Westen 2“ mit einer Regel namens „Alle ablehnen“ als Regel niedrigerer Priorität beschränkt.
-
-![NSG „Alle ablehnen“](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-nsg-rules.PNG)
-
+>Der Zugriff auf Azure Storage-Ressourcen in allen Regionen wird gemäß der Dienstendpunktrichtlinie (Service Endpoint Policy, SEP) aus diesem Subnetz eingeschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie eine Dienstendpunktrichtlinie erstellt und einem Subnetz zugeordnet. Um mehr über Dienstendpunktrichtlinien zu erfahren, lesen Sie [Dienstendpunktrichtlinien für virtuelle Netzwerke (Vorschau)](virtual-network-service-endpoint-policies-overview.md).
-

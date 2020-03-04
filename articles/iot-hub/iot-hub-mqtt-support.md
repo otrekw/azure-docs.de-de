@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111758"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648494"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -161,28 +161,27 @@ Dieses Repository enthält Folgendes:
 
 **Für Windows:**
 
-•   TelemetryMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht an einen Azure IoT Hub, der auf einem Windows-Computer erstellt und ausgeführt wird.
+* TelemetryMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht an einen Azure IoT Hub, der auf einem Windows-Computer erstellt und ausgeführt wird.
 
-•   SubscribeMQTTWin32: Enthält Code zum Abonnieren von Ereignissen eines bestimmten IoT Hubs auf einem Windows-Computer.
+* SubscribeMQTTWin32: Enthält Code zum Abonnieren von Ereignissen eines bestimmten IoT Hubs auf einem Windows-Computer.
 
-•   DeviceTwinMQTTWin32: Enthält Code zum Abfragen und Abonnieren der Gerätezwillingsereignisse eines Geräts im Azure IoT Hub auf einem Windows-Computer.
+* DeviceTwinMQTTWin32: Enthält Code zum Abfragen und Abonnieren der Gerätezwillingsereignisse eines Geräts im Azure IoT Hub auf einem Windows-Computer.
 
-•   PnPMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht mit IoT Plug & Play-Gerätefunktionen in der Vorschauversion an einen Azure IoT Hub, der auf einem Windows-Computer erstellt und ausgeführt wird. Weitere Informationen zu IoT Plug & Play finden Sie [hier](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play).
+* PnPMQTTWin32: Enthält Code zum Senden einer Telemetrienachricht mit IoT Plug & Play-Gerätefunktionen in der Vorschauversion an einen Azure IoT Hub, der auf einem Windows-Computer erstellt und ausgeführt wird. Weitere Informationen zu IoT Plug & Play finden Sie [hier](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play).
 
 **Für Linux:**
 
-•   MQTTLinux: Enthält Code und ein Buildskript zur Ausführung unter Linux (bisher wurden WSL, Ubuntu und Raspbian getestet).
+* MQTTLinux: Enthält Code und ein Buildskript zur Ausführung unter Linux (bisher wurden WSL, Ubuntu und Raspbian getestet).
 
-•   LinuxConsoleVS2019: Enthält denselben Code, aber in einem VS2019-Projekt für WSL (Windows-Subsystem für Linux). Dieses Projekt ermöglicht Ihnen das schrittweise Debuggen des unter Linux ausgeführten Codes in Visual Studio.
+* LinuxConsoleVS2019: Enthält denselben Code, aber in einem VS2019-Projekt für WSL (Windows-Subsystem für Linux). Dieses Projekt ermöglicht Ihnen das schrittweise Debuggen des unter Linux ausgeführten Codes in Visual Studio.
 
 **Für mosquitto_pub:**
 
-•   Dieser Ordner enthält zwei Beispielbefehle, die bei dem Hilfsprogrammtool „mosquitto_pub“ von Mosquitto.org verwendet werden.
+Dieser Ordner enthält zwei Beispielbefehle, die bei dem Hilfsprogrammtool „mosquitto_pub“ von Mosquitto.org verwendet werden.
 
-„Mosquitto_sendmessage“: Dient zum Senden einer einfachen Textnachricht an einen Azure IoT Hub, der als Gerät fungiert.
+* „Mosquitto_sendmessage“: Dient zum Senden einer einfachen Textnachricht an einen Azure IoT Hub, der als Gerät fungiert.
 
-„Mosquitto_subscribe“: Dient zum Anzeigen von Ereignissen, die in einem Azure IoT Hub eintreten.
-
+* „Mosquitto_subscribe“: Dient zum Anzeigen von Ereignissen, die in einem Azure IoT Hub eintreten.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Direktes Verwenden des Protokolls MQTT (als Modul)
 
@@ -340,9 +339,9 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
-| 204 | Erfolg (kein Inhalt) |
+| 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Serverfehler |
 
@@ -373,7 +372,7 @@ Die möglichen Statuscodes lauten:
 
 |Status | BESCHREIBUNG |
 | ----- | ----------- |
-| 200 | Erfolg |
+| 204 | Erfolg (kein Inhalt) |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Serverfehler |

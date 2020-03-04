@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/21/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291514"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598322"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -48,10 +48,13 @@ In dieser Phase planen Sie die Migration Ihrer SAP-Workload zur Azure-Plattform.
     - BCDR-Architektur (Business Continuity & Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung)
     - Ausführliche Informationen zu den Supportpaketversionen für Betriebssystem, Datenbank, Kernel und SAP. Es kann nicht unbedingt davon ausgegangen werden, dass jede von SAP NetWeaver oder S/4HANA unterstützte Betriebssystemversion auch von Azure-VMs unterstützt wird. Gleiches gilt auch für DBMS-Versionen. Überprüfen Sie die folgenden Quellen, um SAP-Versionen, DMBS-Versionen und Betriebssystemversionen aneinander auszurichten und ggf. zu aktualisieren, um Unterstützung von SAP und in Azure sicherzustellen. Sie benötigen Versionskombinationen, die von SAP und Azure unterstützt werden, um vollständige Unterstützung von SAP und Microsoft zu erhalten. Ggf. müssen Sie ein Upgrade einiger Softwarekomponenten einplanen. Weitere Einzelheiten zur unterstützten SAP-, Betriebssystem- und DBMS-Software sind hier dokumentiert:
         - [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533). In diesem Hinweis wird die minimale Betriebssystemversion definiert, die auf Azure-VMs unterstützt wird. Außerdem sind die Mindestanforderungen für die Datenbankversionen definiert, die für die meisten Nicht-HANA-Datenbanken erforderlich sind. Schließlich sind die SAP-Angaben zur Dimensionierung für die von SAP unterstützten Azure-VM-Typen angegeben.
+        - [SAP-Supporthinweis Nr. 2015553](https://launchpad.support.sap.com/#/notes/2015553). In diesem Hinweis werden die Richtlinien zur Unterstützung von Azure Storage und die für Microsoft benötigte Supportbeziehung definiert.
         - [SAP-Supporthinweis Nr. 2039619](https://launchpad.support.sap.com/#/notes/2039619). In diesem Hinweis ist die Oracle-Unterstützungsmatrix für Azure definiert. Oracle unterstützt nur Windows und Oracle Linux als Gastbetriebssysteme auf Azure für SAP-Workloads. Dieser Supporthinweis gilt ebenfalls für die SAP-Anwendungsschicht, in der die SAP-Instanzen ausgeführt werden. Oracle unterstützt jedoch keine Hochverfügbarkeit für SAP Central Services in Oracle Linux über Pacemaker. Wenn Sie Hochverfügbarkeit für ASCS in Oracle Linux benötigen, müssen Sie die SIOS Protection Suite für Linux verwenden. Ausführliche SAP-Zertifizierungsdaten finden Sie im SAP-Supporthinweis [#1662610 - Support details for SIOS Protection Suite for Linux](https://launchpad.support.sap.com/#/notes/1662610) (Nr. 1662610: Details zur Unterstützung der SIOS Protection Suite für Linux). Für Windows wird die von SAP unterstützte Windows Server-Failoverclusterlösung für SAP Central Services in Verbindung mit Oracle als DBMS-Ebene unterstützt.
         - [SAP-Supporthinweis Nr. 2235581](https://launchpad.support.sap.com/#/notes/2235581). Dieser Hinweis enthält die Unterstützungsmatrix für SAP HANA in verschiedenen Betriebssystemversionen.
         - Von SAP HANA unterstützte Azure-VMs und [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sind auf der [SAP-Website](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) aufgeführt.
         - [SAP-Produktverfügbarkeitsmatrix [Product Availability Matrix, PAM]](https://support.sap.com/en/).
+        - [SAP-Supporthinweis Nr. 2555629 – SAP HANA 2.0 Dynamic Tiering – Hypervisor und Cloudunterstützung](https://launchpad.support.sap.com/#/notes/2555629)
+        - [SAP-Supporthinweis Nr. 1662610 – Supportdetails zu SIOS Protection Suite für Linux](https://launchpad.support.sap.com/#/notes/1662610)
         - SAP-Hinweise zu anderen SAP-spezifischen Produkten     
     - Es wird empfohlen, für SAP-Produktionssysteme strenge 3-Tier-Entwürfe zu verwenden. Es empfiehlt sich nicht, Kombinationen aus ASCS, DBMS und App-Server auf einem virtuellen Computer zu verwenden. Die Verwendung von Clusterkonfigurationen mit mehreren SIDs für SAP Central Services wird auf Azure in Windows-Gastbetriebssystemen unterstützt. Diese Konfiguration wird jedoch nicht für SAP Central Services unter Linux-Betriebssystemen auf Azure unterstützt. In diesen Artikeln finden Sie Dokumentation zum Szenario mit dem Windows-Gastbetriebssystem:
         - [Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen unter Verwendung von Windows Server-Failoverclustering und freigegebene Datenträger in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
@@ -148,6 +151,21 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
             - RoutingHistorylength = 30
+    6. Betriebssystemeinstellungen oder Patches
+        - Lesen Sie zur Ausführung von HANA auf SAP diese Hinweise und Dokumentationen:
+            -   [SAP-Supporthinweis Nr. 2814271 – SAP HANA Backup fails on Azure with Checksum Error](https://launchpad.support.sap.com/#/notes/2814271) (SAP HANA-Sicherung in Azure schlägt mit Prüfsummenfehler fehl)
+            -   [SAP-Supporthinweis Nr. 2753418 – Potential Performance Degradation Due to Timer Fallback](https://launchpad.support.sap.com/#/notes/2753418) (Potenzielle Leistungsbeeinträchtigung aufgrund eines Zeitgeberfallbacks)
+            -   [SAP-Supporthinweis Nr. 2791572 – Performance Degradation Because of Missing VDSO Support For Hyper-V in Azure](https://launchpad.support.sap.com/#/notes/2791572) (Leistungsbeeinträchtigung aufgrund von fehlender VDSO-Unterstützung für Hyper-V in Azure)
+            -   [SAP-Supporthinweis Nr. 2382421 – Optimieren der Netzwerkkonfiguration auf HANA- und Betriebssystemebene](https://launchpad.support.sap.com/#/notes/2382421)
+            -   [SAP-Supporthinweis Nr. 2694118 – Hochverfügbarkeits-Add-On für Red Hat Enterprise Linux in Azure](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP-Supporthinweis Nr. 1984787 – SUSE LINUX Enterprise Server 12: Installationshinweise](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation und Upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
+            -   [SAP support note #2292690 - SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690) (2292690 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 7)
+            -   [SAP-Supporthinweis Nr. 2772999 – Red Hat Enterprise Linux 8.x: Installation und Konfiguration](https://launchpad.support.sap.com/#/notes/2772999)
+            -   [SAP-Supporthinweis Nr. 2777782 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+            -   [SAP-Supporthinweis Nr. 2578899 – SUSE Linux Enterprise Server 15: Installationshinweis](https://launchpad.support.sap.com/#/notes/2578899)
+            -   [SAP-Supporthinweis Nr. https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -    [SAP-Supporthinweis Nr. 2729475 – HWCCT Failed with Error "Hypervisor is not supported" on Azure VMs certified for SAP HANA](https://launchpad.support.sap.com/#/notes/2729475) (HWCCT ist mit der Meldung „Hypervisor wird nicht unterstützt“ auf für SAP HANA zertifizierten Azure-VMs fehlgeschlagen)
 1. Testen Ihrer Verfahren für Hochverfügbarkeit und Notfallwiederherstellung
    1. Simulieren Sie Failoversituationen durch Herunterfahren von VMs (Windows-Gastbetriebssysteme) oder das Versetzen von Betriebssystemen in den Panikmodus (Linux-Gastbetriebssysteme). Mithilfe dieses Schritts können Sie herausfinden, ob Ihre Failoverkonfigurationen wie beabsichtigt funktionieren.
    1. Messen Sie, wie viel Zeit für die Ausführung eines Failovers benötigt wird. Wenn Sie die Zeiten zu lang sind, erwägen Sie Folgendes:
@@ -160,7 +178,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
    1.  Überprüfen Sie, ob die Regeln für [Netzwerksicherheitsgruppen und ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) erwartungsgemäß funktionieren und die geschützten Ressourcen abschirmen.
    1.  Stellen Sie sicher, dass alle Ressourcen, die verschlüsselt werden müssen, auch verschlüsselt werden. Definieren und implementieren Sie Prozesse zum Sichern von Zertifikaten, zum Speichern und Zugreifen auf diese Zertifikate und zum Wiederherstellen der verschlüsselten Entitäten.
    1.  Verwenden Sie [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) für Betriebssystem-Datenträger, sofern dies im Rahmen der Betriebssystemunterstützung möglich ist.
-   1.  Achten Sie darauf, nicht zu viele Verschlüsselungsebenen zu verwenden. Es ist in manchen Fällen sinnvoll, Azure Disk Encryption zusammen mit einer der TDE-Methoden (Transparent Data Encryption) für das DBMS einzusetzen, um verschiedene Datenträger oder Komponenten auf demselben Server zu schützen.  Auf einem SAP DBMS-Server kann z. B. Azure Disk Encryption (ADE) auf dem Startdatenträger des Betriebssystems (wenn das Betriebssystem ADE unterstützt) und den Datenträgern aktiviert werden, die nicht von den DBMS-Datenpersistenzdateien verwendet werden.  Ein Beispiel ist die Verwendung von ADE auf dem Datenträger, auf dem sich die DBMS TDE-Verschlüsselungsschlüssel befinden.
+   1.  Achten Sie darauf, nicht zu viele Verschlüsselungsebenen zu verwenden. Es ist in manchen Fällen sinnvoll, Azure Disk Encryption zusammen mit einer der TDE-Methoden (Transparent Data Encryption) für das DBMS einzusetzen, um verschiedene Datenträger oder Komponenten auf demselben Server zu schützen.  Beispielsweise kann auf einem SAP DBMS-Server Azure Disk Encryption (ADE) auf dem Startdatenträger des Betriebssystems (wenn das Betriebssystem ADE unterstützt) und den Datenträgern aktiviert werden, die von den DBMS-Datenpersistenzdateien nicht verwendet werden.  Ein Beispiel ist die Verwendung von ADE auf dem Datenträger, auf dem sich die DBMS TDE-Verschlüsselungsschlüssel befinden.
 1. Leistungstests. Nehmen Sie in SAP auf der Grundlage von SAP-Ablaufverfolgung und Messungen diese Vergleiche vor:
    - Vergleichen Sie ggf. die 10 wichtigsten Onlineberichte mit Ihrer aktuellen Implementierung.
    - Vergleichen Sie ggf. die 10 wichtigsten Batchaufträge mit Ihrer aktuellen Implementierung.
@@ -209,7 +227,7 @@ Sammeln Sie in dieser Phase alle Ihre Erkenntnisse aus den Nicht-Produktionsbere
     - Verwenden Sie den [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)-Prozess, wenn Sie zugleich mit Ihrer Migration ein Upgrade der SAP-Version durchführen müssen. Bedenken Sie, dass nicht alle Kombinationen von Quell- und Ziel-DBMS unterstützt werden. Weitere Informationen finden Sie in den spezifischen SAP-Supporthinweisen zu den verschiedenen DMO-Releases. Beispielsweise in [Database Migration Option (DMO) für SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
     - Testen Sie, ob der Durchsatz der Datenübertragung über das Internet oder über ExpressRoute besser ist, für den Fall dass Sie Sicherungen oder SAP-Exportdateien verschieben müssen. Falls Sie Daten über das Internet übertragen, müssen Sie möglicherweise einige Regeln Ihrer Netzwerksicherheitsgruppen/Anwendungssicherheitsgruppen ändern, die Sie für zukünftige Produktionssysteme benötigen.
 1.  Bevor Sie Systeme von ihrer alten Plattform zu Azure verschieben, erfassen Sie Daten zum Ressourcenverbrauch. Zu den nützlichen Daten zählen CPU-Auslastung, Speicherdurchsatz und IOPS-Daten. Erfassen Sie diese Daten insbesondere für Einheiten der DBMS-Schicht, aber auch für Einheiten der Anwendungsschicht. Messen Sie außerdem die Latenz von Netzwerk und Speicher.
-1.  Überprüfen Sie regelmäßig die SAP-Supporthinweise, das SAP HANA-Hardwareverzeichnis und das SAP PAM. Vergewissern Sie sich, dass es keine Änderungen an unterstützten VMs für Azure, unterstützten Betriebssystemversionen für diese VMs und unterstützten SAP- und DBMS-Versionen gegeben hat.
+1.  Überprüfen Sie die SAP-Supporthinweise sowie die erforderlichen Betriebssystemeinstellungen, das SAP HANA-Hardwareverzeichnis und die SAP PAM. Vergewissern Sie sich, dass es keine Änderungen an unterstützten VMs für Azure, unterstützten Betriebssystemversionen für diese VMs und unterstützten SAP- und DBMS-Versionen gegeben hat.
 1.  Aktualisieren Sie Bereitstellungsskripts, um die neuesten Entscheidungen zu berücksichtigen, die Sie zu VM-Typen und Azure-Funktionen getroffen haben.
 1.  Überprüfen Sie nach der Bereitstellung von Infrastruktur und Anwendungen Folgendes:
     - Es wurden die richtigen VM-Typen mit den korrekten Attributen und Speichergrößen bereitgestellt.
@@ -219,7 +237,7 @@ Sammeln Sie in dieser Phase alle Ihre Erkenntnisse aus den Nicht-Produktionsbere
     - Die virtuellen Computer wurden wie geplant in Azure-Verfügbarkeitsgruppen bereitgestellt.
     - Azure Storage Premium wird für Datenträger mit spezifischen Anforderungen an die Latenz oder mit einer [SLA von 99,9 % für Einzel-VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) verwendet.
     - Azure Schreibbeschleunigung wurde ordnungsgemäß bereitgestellt.
-        - Achten Sie darauf, dass Speicherplätze in den VMs oder Stripesets für Datenträger, die Azure-Schreibbeschleunigung benötigen, ordnungsgemäß erstellt wurden.
+        - Vergewissern Sie sich, dass Speicherplätze in den VMs oder Stripesets für Datenträger, die Schreibbeschleunigung benötigen, ordnungsgemäß erstellt wurden.
         - Überprüfen Sie die [Konfiguration von Software-RAID unter Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
         - Überprüfen Sie die [Konfiguration von LVM unter Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
     - Es werden ausschließlich [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwendet.

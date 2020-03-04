@@ -3,22 +3,22 @@ title: Speicherarchitektur von SAP HANA in Azure (große Instanzen) | Microsoft-
 description: Speicherarchitektur für die Bereitstellung von SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099643"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616890"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
@@ -36,6 +36,8 @@ Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tab
 | S192 | 4\.608 GB | 1\.024 GB | 1\.536 GB | 1\.024 GB |
 | S192m | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S192xm |  11.520 GB |  1\.536 GB |  1\.792 GB |  1\.536 GB |
+| S224 |  4\.224 GB |  512 GB |  1\.024 GB |  512 GB |
+| S224m |  8\.448 GB |  512 GB |  1\.024 GB |  512 GB |
 | S384 | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
 | S384m | 12.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
 | S384xm | 16.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
@@ -56,7 +58,7 @@ Wenn Sie eine SKU von HANA (große Instanz) unterteilen, könnten die Unterteilu
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
 | 768 | 1\.280 GB | 512 GB | 768 GB | 512 GB |
-| 1024 | 1\.792 GB | 640 GB | 1\.024 GB | 640 GB |
+| 1\.024 | 1\.792 GB | 640 GB | 1\.024 GB | 640 GB |
 | 1\.536 | 3\.328 GB | 768 GB | 1\.280 GB | 768 GB |
 
 
@@ -74,7 +76,7 @@ Es ist möglich, mehrere aktive SAP HANA-Instanzen auf Einheiten von HANA (groß
 
 - **S72, S72m, S96, S144, S192:** In Inkrementen von 256 GB, wobei 256 GB die kleinste Einheit ist. Andere Inkremente wie 256 GB und 512 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
 - **S144m und S192m:** In Inkrementen von 256 GB, wobei 512 GB die kleinste Einheit ist. Andere Inkremente wie 512 GB und 768 GB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
-- **Typ II-Klasse:** In Inkrementen von 512 GB, wobei 2 TB die kleinste Einheit ist. Andere Inkremente wie 512 GB, 1 TB und 1,5 TB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
+- **Typ II-Klasse**: In Inkrementen von 512 GB, wobei 2 TB die kleinste Einheit ist. Andere Inkremente wie 512 GB, 1 TB und 1,5 TB können bis zum Maximum des Arbeitsspeichers der Einheit kombiniert werden.
 
 Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa wie folgt aussehen:
 

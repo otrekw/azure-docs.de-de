@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: Aktivieren des Kennwortrückschreibens in die lokale Umgebung
       href: tutorial-enable-sspr-writeback.md
+    - name: Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
+      href: tutorial-configure-custom-password-protection.md
     - name: Integrieren von Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: Konzepte
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Kennwortschutz für Azure AD
       items:
-        - name: Konfigurieren der Liste gesperrter Kennwörter
-          href: howto-password-ban-bad-configure.md
         - name: Lokale Integration
           items:
             - name: Bereitstellen des Kennwortschutzes für Azure AD

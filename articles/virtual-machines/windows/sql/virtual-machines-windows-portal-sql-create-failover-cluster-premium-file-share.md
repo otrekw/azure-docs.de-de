@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906799"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651360"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -149,7 +149,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
    1. Wählen Sie **Weiter** und anschließend **Entfernen** aus.
 
-1. <a name="ports"></a>Öffnen Sie die Firewallports.
+1. <span id="ports"> </span>Öffnen Sie die Firewallports.  
 
    Öffnen Sie auf jedem virtuellen Computer die folgenden Ports in der Windows-Firewall:
 
@@ -369,7 +369,7 @@ So erstellen Sie den Lastenausgleich
 
 1. Wählen Sie **Hinzufügen**.
 
-1. Legen Sie auf dem Blatt **Integritätstest hinzufügen**<a name="probe"></a> die folgenden Parameter für den Integritätstest fest.
+1. Legen Sie auf dem Blatt **Integritätstest hinzufügen** <span id="probe"> </span>die folgenden Parameter für den Integritätstest fest.
 
    - **Name**: Ein Name für den Integritätstest.
    - **Protokoll:** TCP.

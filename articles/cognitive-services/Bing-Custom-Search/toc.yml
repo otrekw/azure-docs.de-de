@@ -27,13 +27,9 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: 'Verwenden von C#'
-              href: sdk-csharp-quick-start.md
-            - name: Verwenden von Python
-              href: sdk-python-quickstart.md
-            - name: Verwenden von Java
-              href: sdk-java-quickstart.md
-- name: Lernprogramme
+            - name: Clientbibliotheken der benutzerdefinierten Bing-Suche
+              href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Erstellen einer benutzerdefinierten Suchwebseite
       href: ./tutorials/custom-search-web-page.md
@@ -114,5 +110,5 @@
       href: endpoint-custom.md
     - name: Sprach- und Regionsunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

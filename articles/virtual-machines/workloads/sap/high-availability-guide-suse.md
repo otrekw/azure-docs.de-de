@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf dem SUSE Linux Enterprise Server for SAP Applications | Microsoft-Dokumentation
+title: Hochverfügbarkeit von Azure VMs für SAP NetWeaver unter SLES | Microsoft-Dokumentation
 description: Hochverfügbarkeitsleitfaden für SAP NetWeaver auf dem SUSE Linux Enterprise Server for SAP Applications
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4dbce04df4a2542884f1f24b3207fe45fd4b26ae
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985516"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598237"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973034"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562563"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -77,7 +77,7 @@ Sie erstellen vom Benutzer definierte Routen, indem Sie entweder [benutzerdefini
 
 ### <a name="user-defined"></a>Benutzerdefiniert
 
-Sie können benutzerdefinierte Routen in Azure erstellen, um Standardsystemrouten von Azure außer Kraft zu setzen oder der Routentabelle eines Subnetzes zusätzliche Routen hinzuzufügen. In Azure erstellen Sie eine Routentabelle und ordnen die Routentabelle dann null oder mehr Subnetzen eines virtuellen Netzwerks zu. Jedem Subnetz können null oder mehr Routentabellen zugeordnet sein. Informationen zur maximalen Anzahl von Routen, die Sie einer Routentabelle hinzufügen können, und zur maximalen Anzahl von benutzerdefinierten Routentabellen, die Sie pro Azure-Abonnement erstellen können, finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Wenn Sie eine Routentabelle erstellen und einem Subnetz zuordnen, werden die darin enthaltenen Routen mit den Standardrouten, die Azure einem Subnetz standardmäßig hinzufügt, kombiniert oder dadurch außer Kraft gesetzt.
+Sie können benutzerdefinierte (statische) Routen in Azure erstellen, um Standardsystemrouten von Azure außer Kraft zu setzen oder der Routentabelle eines Subnetzes zusätzliche Routen hinzuzufügen. In Azure erstellen Sie eine Routentabelle und ordnen die Routentabelle dann null oder mehr Subnetzen eines virtuellen Netzwerks zu. Jedem Subnetz können null oder mehr Routentabellen zugeordnet sein. Informationen zur maximalen Anzahl von Routen, die Sie einer Routentabelle hinzufügen können, und zur maximalen Anzahl von benutzerdefinierten Routentabellen, die Sie pro Azure-Abonnement erstellen können, finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Wenn Sie eine Routentabelle erstellen und einem Subnetz zuordnen, werden die darin enthaltenen Routen mit den Standardrouten, die Azure einem Subnetz standardmäßig hinzufügt, kombiniert oder dadurch außer Kraft gesetzt.
 
 Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen des nächsten Hops angeben:
 
