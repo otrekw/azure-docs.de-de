@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849461"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592202"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planen eines Runbooks in Azure Automation
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Das am häufigsten auftretende Intervall, mit dem ein Zeitplan in Azure Automation konfiguriert werden kann, beträgt eine Stunde. Wenn Sie Zeitpläne häufiger ausführen müssen, stehen Ihnen zwei Optionen zur Verfügung:
 
-* Erstellen Sie einen [Webhook](../automation-webhooks.md) für das Runbook, und rufen Sie mit dem [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) den Webhook auf. Der Azure Scheduler bietet eine differenziertere Granularität bei der Definition eines Zeitplans.
+* Erstellen Sie einen [Webhook](../automation-webhooks.md) für das Runbook, und rufen Sie mit dem [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) den Webhook auf. Azure Logic Apps bietet eine differenziertere Granularität bei der Definition eines Zeitplans.
 
 * Erstellen Sie vier Zeitpläne, die einmal pro Stunde alle mit einem Abstand von 15 Minuten voneinander beginnen. In diesem Szenario kann das Runbook alle 15 Minuten mit unterschiedlichen Zeitplänen ausgeführt werden.
 

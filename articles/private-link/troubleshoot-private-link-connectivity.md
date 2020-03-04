@@ -13,26 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191051"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539466"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Problembehandlung bei Konnektivitätsproblemen beim Private Link-Dienst
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Problembehandlung bei Konnektivitätsproblemen mit Azure Private Link
 
-In dieser Anleitung finden Sie ausführliche Anweisungen zum Überprüfen und Diagnostizieren der Konnektivität für die Einrichtung Ihres Private Link-Diensts. 
+In diesem Artikel finden Sie ausführliche Anweisungen zum Überprüfen und Diagnostizieren der Konnektivität für die Einrichtung von Azure Private Link.
 
-Mit Azure Private Link können Sie auf Azure PaaS-Dienste (z. B. Azure Storage, Azure Cosmos DB und SQL-Datenbank) und über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen Private Link-Dienst in Ihrem virtuellen Netzwerk (VNET) erstellen und privat für Ihre Kunden zur Verfügung stellen. 
+Mit Azure Private Link können Sie auf Azure PaaS-Dienste (z. B. Azure Storage, Azure Cosmos DB und Azure SQL-Datenbank) und über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf in Azure gehostete Kunden- oder Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen Private Link-Dienst in Ihrem virtuellen Netzwerk erstellen und Ihren Kunden privat zur Verfügung stellen.
 
-Sie können den Private Link-Zugriff für Ihren Dienst aktivieren, der mit Azure Load Balancer Standard ausgeführt wird. Consumer Ihres Diensts können einen privaten Endpunkt innerhalb ihres virtuellen Netzwerks erstellen und diesen zum Dienst zuordnen, um privat darauf zuzugreifen.
+Sie können Ihren Dienst, der hinter dem Standard-Tarif von Azure Load Balancer ausgeführt wird, für den Private Link-Zugriff aktivieren. Consumer Ihres Diensts können einen privaten Endpunkt innerhalb ihres virtuellen Netzwerks erstellen und diesen zum Dienst zuordnen, um privat darauf zuzugreifen.
 
-Die folgenden Konnektivitätsszenarios sind mit dem Private Link-Dienst verfügbar:
-- Virtuelle Netzwerke in derselben Region 
+Die folgenden Konnektivitätsszenarios sind mit Private Link verfügbar:
+
+- Virtuelle Netzwerke in derselben Region
 - Virtuelle Netzwerke mit regionalem Peering
 - Virtuelle Netzwerke mit globalem Peering
-- Lokale Kundennetzwerke über VPN oder ExpressRoute-Verbindungen
+- Lokale Kunden über VPN oder ExpressRoute-Verbindungen
 
 ## <a name="deployment-troubleshooting"></a>Problembehandlung für Bereitstellungen
 
@@ -40,76 +41,75 @@ Informationen zur Problembehandlung in Fällen, bei denen Sie die Quell-IP-Adres
 
 Stellen Sie sicher, dass die Einstellung **privateLinkServiceNetworkPolicies** für das Subnetz deaktiviert ist, aus dem Sie die Quell-IP-Adresse auswählen.
 
-## <a name="diagnosing-connectivity-problems"></a>Diagnostizieren von Konnektivitätsproblemen
+## <a name="diagnose-connectivity-problems"></a>Diagnostizieren von Konnektivitätsproblemen
 
-Führen Sie die unten aufgeführten Schritte durch, um sicherzustellen, dass die Konfigurationen ordnungsgemäß festgelegt sind, wenn beim Einrichten Ihres Private Link-Diensts Konnektivitätsprobleme auftreten.
+Falls Konnektivitätsprobleme mit Ihrem Private Link-Setup auftreten, vergewissern Sie sich mithilfe der folgenden Schritte, dass alle üblichen Konfigurationen ordnungsgemäß festgelegt sind.
 
-1. Überprüfen Sie die Konfiguration des Private Link-Diensts, indem Sie die Ressource durchsuchen: 
+1. Überprüfen Sie die Konfiguration von Private Link, indem Sie die Ressource durchsuchen.
 
-    a) Rufen Sie das **Private Link-Center** auf.
+    a. Navigieren Sie zum **Private Link-Center**.
 
       ![Private Link-Center](./media/private-link-tsg/private-link-center.png)
 
-    b) Klicken Sie im linken Navigationsbereich auf **Private Link-Dienste**.
+    b. Wählen Sie im linken Bereich **Private Link-Dienste** aus.
 
       ![Private Link-Dienste](./media/private-link-tsg/private-link-service.png)
 
-    c) Filtern Sie nach dem zu diagnostizierenden Private Link-Dienst, und wählen Sie ihn aus.
+    c. Filtern Sie nach dem zu diagnostizierenden Private Link-Dienst, und wählen Sie ihn aus.
 
-    d) Überprüfen Sie die privaten Endpunktverbindungen.
-     - Stellen Sie sicher, dass der private Endpunkt, mit dem Sie eine Verbindung herstellen möchten, mit dem Verbindungsstatus **Genehmigt** aufgeführt wird. 
-     - Wählen Sie den Status **Ausstehend** aus, wenn er angezeigt wird, und genehmigen Sie die Verbindung. 
+    d. Überprüfen Sie die privaten Endpunktverbindungen.
+     - Stellen Sie sicher, dass der private Endpunkt, mit dem Sie eine Verbindung herstellen möchten, mit dem Verbindungsstatus **Genehmigt** aufgeführt wird.
+     - Wenn der Zustand **Ausstehend** ist, wählen Sie diesen aus und genehmigen Sie ihn.
 
        ![Private Endpunktverbindungen](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Navigieren Sie zu dem privaten Endpunkt, über den Sie die Verbindung herstellen, indem Sie auf seinen Namen klicken. Stellen Sie sicher, dass der Verbindungsstatus **Genehmigt** angezeigt wird.
+     - Wechseln Sie zu dem privaten Endpunkt, von dem aus Sie eine Verbindung herstellen, indem Sie den Namen auswählen. Stellen Sie sicher, dass der Verbindungsstatus **Genehmigt** angezeigt wird.
 
        ![Übersicht über die private Endpunktverbindung](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
-     - Testen Sie die Konnektivität noch mal, sobald beide Seiten genehmigt wurden.
+     - Testen Sie die Konnektivität erneut, nachdem beide Seiten genehmigt wurden.
 
-    e) Überprüfen Sie den **Alias** auf der Registerkarte „Übersicht“ und die **Ressourcen-ID** auf der Registerkarte „Eigenschaften“. 
-     - Stellen Sie sicher, dass **der Alias und die Ressourcen-ID** mit **dem Alias und der Ressourcen-ID** übereinstimmen, die Sie zum Erstellen des privaten Endpunkts für diesen Dienst verwenden. 
+    e. Überprüfen Sie den **Alias** auf der Registerkarte **Übersicht** und die **Ressourcen-ID** auf der Registerkarte **Eigenschaften**.
+     - Stellen Sie sicher, dass die Informationen für **Alias** und **Ressourcen-ID** mit dem **Alias** und der **Ressourcen-ID** übereinstimmen, die Sie zum Erstellen des privaten Endpunkts für diesen Dienst verwenden.
 
-       ![Alias überprüfen](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![Überprüfen der Informationen für Alias](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![Ressourcen-ID überprüfen](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![Überprüfen der Informationen für Ressourcen-ID](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f) Überprüfen Sie die Sichtbarkeit (im Abschnitt „Übersicht“).
+    f. Überprüfen Sie die Informationen für **Sichtbarkeit** auf der Registerkarte **Übersicht**.
      - Stellen Sie sicher, dass Ihr Abonnement dem Bereich **Sichtbarkeit** entspricht.
 
-       ![Sichtbarkeit überprüfen](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![Überprüfen der Informationen für Sichtbarkeit](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g) Überprüfen Sie die Lastenausgleichsinformationen (im Abschnitt „Übersicht“).
-     - Sie können zum Lastenausgleich navigieren, indem Sie auf den Lastenausgleichslink klicken.
+    g. Überprüfen Sie die Informationen für **Lastenausgleich** auf der Registerkarte **Übersicht**.
+     - Sie können zum Lastenausgleich wechseln, indem Sie den Lastenausgleichslink auswählen.
 
-       ![Lastenausgleich überprüfen](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![Überprüfen der Informationen für Lastenausgleich](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
      - Stellen Sie sicher, dass die Einstellungen für den Lastenausgleich wie gewünscht konfiguriert sind.
-       - Überprüfen Sie die Front-End-IP-Konfiguration.
-       - Überprüfen Sie die Back-End-Pools.
-       - Überprüfen Sie die Lastenausgleichsregeln.
+       - Überprüfen Sie die **Front-End-IP-Konfiguration**.
+       - Überprüfen Sie die **Back-End-Pools**.
+       - Überprüfen Sie die **Lastenausgleichsregeln**.
 
-       ![Lastenausgleichseigenschaften überprüfen](./media/private-link-tsg/pls-ilb-properties.png)
+       ![Überprüfen der Lastenausgleichseigenschaften](./media/private-link-tsg/pls-ilb-properties.png)
 
-     - Stellen Sie sicher, dass der Lastenausgleich gemäß der oben gezeigten Einstellungen funktioniert.
+     - Stellen Sie sicher, dass der Lastenausgleich gemäß der vorherigen Einstellungen funktioniert.
        - Wählen Sie einen virtuellen Computer (VM) in einem beliebigen anderen Subnetz als dem Subnetz aus, in dem der Back-End-Pool für den Lastenausgleich verfügbar ist.
-       - Versuchen Sie, über die oben gezeigte VM auf das Front-End für den Lastenausgleich zuzugreifen.
+       - Versuchen Sie, über die vorherige VM auf das Front-End für den Lastenausgleich zuzugreifen.
        - Wenn gemäß der Lastenausgleichsregeln eine Verbindung mit dem Back-End-Pool hergestellt wird, ist Ihr Lastenausgleich betriebsbereit.
        - Sie können außerdem die Lastenausgleichsmetrik über Azure Monitor überprüfen, um zu überprüfen, ob Daten über den Lastenausgleich geleitet werden.
 
-2. Verwenden Sie [**Azure Monitor**](https://docs.microsoft.com/azure/azure-monitor/overview), um zu überprüfen, ob Daten übermittelt werden.
+1. Überprüfen Sie mithilfe von [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), ob Daten übermittelt werden.
 
-    a) Klicken Sie bei der Ressource für den Private Link-Dienst auf **Metriken**.
+    a. Wählen Sie bei der Ressource für den Private Link-Dienst die Option **Metriken** aus.
      - Wählen Sie **Eingehende Bytes** oder **Ausgehende Bytes** aus.
-     - Überprüfen Sie, ob Daten übermittelt werden, wenn Sie versuchen, eine Verbindung mit dem Private Link-Dienst herzustellen. Rechnen Sie mit einer Verzögerung von etwa 10 Minuten.
+     - Überprüfen Sie, ob Daten übermittelt werden, wenn Sie versuchen, eine Verbindung mit dem Private Link-Dienst herzustellen. Rechnen Sie mit einer Verzögerung von etwa zehn Minuten.
 
-       ![Private Link-Dienstmetriken überprüfen](./media/private-link-tsg/pls-metrics.png)
+       ![Überprüfen von Private Link-Dienstmetriken](./media/private-link-tsg/pls-metrics.png)
 
-3. Wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), wenn Sie weiterhin Konnektivitätsprobleme haben. 
+1. Sollten weiterhin Konnektivitätsprobleme auftreten, wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
  * [Erstellen eines Private Link-Diensts mithilfe der Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
-
- * [Leitfaden zur Problembehandlung bei privaten Endpunkten](troubleshoot-private-endpoint-connectivity.md)
+ * [Leitfaden zur Problembehandlung bei privaten Azure-Endpunkten](troubleshoot-private-endpoint-connectivity.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389950"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589316"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
 DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
@@ -38,6 +38,7 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen un
 
 ## <a name="considerations"></a>Überlegungen
 - Sie können jeweils nur einen Katalog mit freigegebenen Images an ein Lab anfügen. Wenn Sie einen anderen Katalog anfügen möchten, müssen Sie zuvor den vorhandenen Katalog trennen. 
+- DevTest Labs unterstützt derzeit nur generalisierte Images aus dem Katalog der freigegebenen Images.
 - DevTest Labs bietet zurzeit keine Möglichkeit, Images über das Lab in den Katalog hochzuladen. 
 - Wenn Sie eine VM mit einem Image aus dem Katalog mit freigegebenen Images erstellen, verwendet DevTest Labs immer die aktuelle veröffentlichte Version des Images. Wenn ein Image jedoch mehrere Versionen aufweist, kann der Benutzer während der Erstellung des virtuellen Computers auf der Registerkarte „Erweiterte Einstellungen“ einen Computer aus einer früheren Version erstellen.  
 - DevTest Labs versucht sicherzustellen, dass der Katalog mit freigegebenen Images die Images automatisch in die Region des Labs repliziert, dies ist jedoch nicht immer möglich. Stellen Sie daher sicher, dass die Images bereits in die Region des Labs repliziert wurden, damit es nicht zu Problemen kommt, wenn Benutzer diese Images zum Erstellen von VMs verwenden.

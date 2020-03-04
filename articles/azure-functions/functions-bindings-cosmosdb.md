@@ -43,7 +43,7 @@ Informationen zum partitionsübergreifenden Lauschen auf Einfügungen und Aktual
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die aufgerufen wird, wenn etwas in der angegebenen Datenbank und Sammlung eingefügt oder aktualisiert wird.
 
@@ -76,7 +76,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
 
@@ -112,7 +112,7 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
 
@@ -145,7 +145,7 @@ Der JavaScript-Code sieht wie folgt aus:
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs)-Attribut.
 
@@ -164,11 +164,11 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
 
 Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger).
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
@@ -215,7 +215,7 @@ Der Trigger gibt nicht an, ob ein Dokument aktualisiert oder eingefügt wurde, e
 
 Die Azure Cosmos DB-Eingabebindung verwendet die SQL-API, um mindestens ein Azure Cosmos DB-Dokument abzurufen und an den Eingabeparameter der Funktion zu übergeben. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -523,7 +523,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -881,7 +881,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -1093,17 +1093,17 @@ Der JavaScript-Code sieht wie folgt aus:
 
 ## <a name="input---attributes"></a>Eingabe: Attribute
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs)-Attribut.
 
 Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. Weitere Informationen zu diesen Einstellungen und anderen Eigenschaften, die Sie konfigurieren können, finden Sie im [folgenden Konfigurationsabschnitt](#input---configuration).
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
@@ -1129,15 +1129,15 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="input---usage"></a>Eingabe: Verwendung
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Wenn die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten.
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Wenn die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aktualisierungen erfolgen beim Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Weitere Informationen finden Sie im [Eingabebeispiel](#input).
 
@@ -1147,7 +1147,7 @@ Aktualisierungen erfolgen beim Beenden der Funktion nicht automatisch. Verwenden
 
 Die Azure Cosmos DB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank mithilfe der SQL-API.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -1233,7 +1233,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -1361,7 +1361,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Azure Cosmos DB-Ausgabebindung in einer *function.json*-Datei sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
 
@@ -1420,7 +1420,7 @@ Der JavaScript-Code sieht wie folgt aus:
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs)-Attribut.
 
@@ -1438,11 +1438,11 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
 
 Ein vollständiges Beispiel finden Sie unter [Ausgabe](#output).
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 

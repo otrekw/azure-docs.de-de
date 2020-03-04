@@ -10,18 +10,84 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 771ae508aaa46167413c2e701d8193790198cb68
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138009"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565909"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, die beim Verwenden von Azure Machine Learning auftreten können.
 
-## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Ausfall: SR-IOV-Upgrade auf NCv3-Maschinen in AmlCompute
+## <a name="sdk-installation-issues"></a>SDK-Installationsprobleme
+
+**Fehlermeldung: 'PyYAML' kann nicht deinstalliert werden.**
+
+Azure Machine Learning SDK für Python: Bei PyYAML handelt es sich um ein mit distutils installiertes Projekt. Daher können wir bei einer teilweisen Deinstallation nicht genau bestimmen, welche Dateien zu ihm gehören. Verwenden Sie diesen Befehl, um die Installation des SDKs fortzusetzen und diesen Fehler zu ignorieren:
+
+```Python
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
+
+**Fehlermeldung: `ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Die Python 3.7.4-Distribution von Anaconda weist einen Fehler auf, der die azureml-sdk-Installation unterbricht. Dieser Fehler wird in diesem [GitHub-Problem](https://github.com/ContinuumIO/anaconda-issues/issues/11195) behandelt. Zur Problembehandlung können Sie mithilfe des folgenden Befehls eine neue Conda-Umgebung erstellen:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Dadurch wird eine Conda-Umgebung mithilfe von Python 3.7.3 erstellt, bei der das Installationsproblem in 3.7.4 nicht auftritt.
+
+## <a name="training-and-experimentation-issues"></a>Probleme beim Training und beim Experimentieren
+
+### <a name="metric-document-is-too-large"></a>Metrikdokument ist zu groß.
+Azure Machine Learning weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+Intern verkettet Azure ML die Blöcke mit demselben Metriknamen zu einer zusammenhängenden Liste.
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Kein Modul benannt)
+Wenn Sie beim Übermitteln von Experimenten in Azure ML auf „ModuleErrors“ treffen, bedeutet dies, dass das Trainingsskript die Installation eines Pakets erwartet, es aber nicht hinzugefügt wird. Nachdem Sie den Paketnamen angegeben haben, installiert Azure ML das Paket in der für Ihr Training verwendeten Umgebung. 
+
+Wenn Sie [Estimators](concept-azure-machine-learning-architecture.md#estimators) verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten. Wenn Sie Ihr eigenes Azure ML-Umgebungsobjekt besitzen, das das vom Estimator verwendete Standardimage außer Kraft setzen soll, können Sie diese Umgebung über den `environment`-Parameter des Estimatorkonstruktors angeben.
+
+Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und sklearn. Die Verwendung dieser Estimators stellt sicher, dass die hauptsächlichen Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
+ 
+Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
+Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+
+> [!Note]
+> Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
+ 
+### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (Name nicht definiert), AttributeError (Objekt besitzt kein Attribut)
+Diese Ausnahme sollte von Ihren Trainingsskripts stammen. Sie können sich die Protokolldateien des Azure-Portals ansehen, um weitere Informationen über den nicht definierten Namen oder den Attributfehler zu erhalten. Aus dem SDK können Sie `run.get_details()` verwenden, um die Fehlermeldung anzuzeigen. Dadurch werden auch alle für Ihre Ausführung generierten Protokolldateien aufgelistet. Werfen Sie unbedingt einen Blick auf das Trainingsskript, und beheben Sie den Fehler, bevor Sie Ihren Durchlauf erneut übermitteln. 
+
+### <a name="horovod-has-been-shut-down"></a>Horovod wurde heruntergefahren
+In den meisten Fällen, wenn „AbortedError: Horovod wurde heruntergefahren“ auftritt, bedeutet dies, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfachere Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von Horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
+
+### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>SR-IOV-Verfügbarkeit auf NCv3-Computern in AmlCompute für verteiltes Training
+Azure Compute hat den Rollout eines [SR-IOV-Upgrades](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/) von NCv3-Computern durchgeführt, das Kunden mit dem verwalteten Computeangebot von Azure ML (AmlCompute) nutzen können. Die Updates ermöglichen die Unterstützung des gesamten MPI-Stapels und die Nutzung des Infiniband-RDMA-Netzwerks für eine verbesserte verteilte Trainingsleistung bei mehreren Knoten, insbesondere für Deep Learning.
+
+Zeigen Sie den [Aktualisierungszeitplan](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/) an, um zu erfahren, wann der Rollout zur Unterstützung Ihrer Region durchgeführt wird.
+
+### <a name="run-or-experiment-deletion"></a>Löschen von Ausführungen oder Experimenten
+Experimente können mit der Methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
+
+Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
+
+## <a name="azure-machine-learning-compute-issues"></a>Azure Machine Learning Compute-Probleme
+Bekannte Probleme bei der Verwendung von Azure Machine Learning Compute (AmlCompute).
+
+### <a name="trouble-creating-amlcompute"></a>Probleme beim Erstellen von AmlCompute
+
+In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verfügbaren Release ihren Azure Machine Learning-Arbeitsbereich über das Azure-Portal erstellt haben, AmlCompute nicht in diesem Arbeitsbereich erstellen können. In einem solchen Fall können Sie entweder eine Supportanfrage für den Dienst erstellen oder über das Portal oder das SDK einen neuen Arbeitsbereich erstellen und die Blockierung dadurch umgehend aufheben.
+
+### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Ausfall: SR-IOV-Upgrade auf NCv3-Maschinen in AmlCompute
 
 Azure Compute wird die NCv3-SKUs ab Anfang November 2019 aktualisieren, um alle MPI-Implementierungen und -Versionen sowie RDMA-Verben für mit InfiniBand ausgestattete virtuelle Computer zu unterstützen. Dies erfordert eine kurze Ausfallzeit – [erfahren Sie mehr über das SR-IOV-Upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
@@ -43,28 +109,6 @@ Möglicherweise möchten Sie ein Experiment ausführen, das nur ein Dataset enth
 Als Zwischenlösung können Sie das Dataset mit einem beliebigen Datentransformationsmodul verbinden (Auswählen von Spalten im Dataset, Bearbeiten von Metadaten, Teilen von Daten usw.) und das Experiment ausführen. Anschließend können Sie das Dataset visualisieren. 
 
 Die folgende Abbildung zeigt die Vorgehensweise: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
-
-## <a name="sdk-installation-issues"></a>SDK-Installationsprobleme
-
-**Fehlermeldung: 'PyYAML' kann nicht deinstalliert werden.**
-
-Azure Machine Learning SDK für Python: Bei PyYAML handelt es sich um ein mit distutils installiertes Projekt. Daher können wir bei einer teilweisen Deinstallation nicht genau bestimmen, welche Dateien zu ihm gehören. Verwenden Sie diesen Befehl, um die Installation des SDKs fortzusetzen und diesen Fehler zu ignorieren:
-
-```Python
-pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
-```
-
-**Fehlermeldung: `ERROR: No matching distribution found for azureml-dataprep-native`**
-
-Die Python 3.7.4-Distribution von Anaconda weist einen Fehler auf, der die azureml-sdk-Installation unterbricht. Dieser Fehler wird in diesem [GitHub-Problem](https://github.com/ContinuumIO/anaconda-issues/issues/11195) behandelt. Zur Problembehandlung können Sie mithilfe des folgenden Befehls eine neue Conda-Umgebung erstellen:
-```bash
-conda create -n <env-name> python=3.7.3
-```
-Dadurch wird eine Conda-Umgebung mithilfe von Python 3.7.3 erstellt, bei der das Installationsproblem in 3.7.4 nicht auftritt.
-
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problem beim Erstellen von Azure Machine Learning Compute
-
-In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verfügbaren Release ihren Azure Machine Learning-Arbeitsbereich über das Azure-Portal erstellt haben, Azure Machine Learning Compute nicht in diesem Arbeitsbereich erstellen können. In einem solchen Fall können Sie entweder eine Supportanfrage für den Dienst erstellen oder über das Portal oder das SDK einen neuen Arbeitsbereich erstellen und die Blockierung dadurch umgehend aufheben.
 
 ## <a name="image-building-failure"></a>Fehler bei der Image-Erstellung
 
@@ -255,38 +299,6 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >Kubernetes speichert die Geheimnisse im Base64-codierten Format. Sie müssen die `cert.pem`- und die `key.pem`-Komponente jedes Geheimnisses aus dem Base64-Format decodieren, bevor Sie diese Komponenten für `attach_config.enable_ssl` bereitstellen. 
 
-## <a name="recommendations-for-error-fix"></a>Empfehlungen zur Fehlerbehebung
-Auf der Grundlage allgemeiner Beobachtungen finden Sie hier Empfehlungen für Azure ML zur Behebung einiger der häufigsten Fehler in Azure ML.
-
-### <a name="metric-document-is-too-large"></a>Metrikdokument ist zu groß.
-Azure Machine Learning weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
-
-```python
-run.log_list("my metric name", my_metric[:N])
-run.log_list("my metric name", my_metric[N:])
-```
-
- Intern verkettet der Dienst für den Ausführungsverlauf die Blöcke mit demselben Metriknamen zu einer zusammenhängenden Liste.
-
-### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Kein Modul benannt)
-Wenn Sie beim Übermitteln von Experimenten in Azure ML auf „ModuleErrors“ treffen, bedeutet dies, dass das Trainingsskript die Installation eines Pakets erwartet, es aber nicht hinzugefügt wird. Nachdem Sie den Paketnamen angegeben haben, installiert Azure ML das Paket in der für Ihr Training verwendeten Umgebung. 
-
-Wenn Sie [Estimators](concept-azure-machine-learning-architecture.md#estimators) verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten.
-
-Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und sklearn. Die Verwendung dieser Estimators stellt sicher, dass die Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
- 
-Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
-Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
-
-> [!Note]
-> Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
- 
- ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (Name nicht definiert), AttributeError (Objekt besitzt kein Attribut)
-Diese Ausnahme sollte von Ihren Trainingsskripts stammen. Sie können sich die Protokolldateien des Azure-Portals ansehen, um weitere Informationen über den nicht definierten Namen oder den Attributfehler zu erhalten. Aus dem SDK können Sie `run.get_details()` verwenden, um die Fehlermeldung anzuzeigen. Dadurch werden auch alle für Ihre Ausführung generierten Protokolldateien aufgelistet. Werfen Sie unbedingt einen Blick auf das Trainingsskript, und beheben Sie den Fehler, bevor Sie den Vorgang wiederholen. 
-
-### <a name="horovod-is-shut-down"></a>Horovod ist heruntergefahren.
-In den meisten Fällen bedeutet diese Ausnahme, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfache Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
-
 ## <a name="labeling-projects-issues"></a>Probleme beim Bezeichnen von Projekten
 
 Bekannte Probleme beim Bezeichnen von Projekten.
@@ -306,12 +318,6 @@ Wählen Sie die Schaltfläche **Erste** aus, um alle bezeichneten Bilder zu lade
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.
 
 Löschen Sie die Bezeichnung, indem Sie auf das daneben angezeigte Kreuzsymbol klicken.
-
-## <a name="run-or-experiment-deletion"></a>Löschen von Ausführungen oder Experimenten
-
-Experimente können mit der Methode [Experiment.archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
-
-Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
 
 ## <a name="moving-the-workspace"></a>Verschieben des Arbeitsbereichs
 
