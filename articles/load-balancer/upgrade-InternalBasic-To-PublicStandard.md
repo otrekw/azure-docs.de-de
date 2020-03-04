@@ -1,26 +1,27 @@
 ---
 title: Upgraden einer öffentlichen Load Balancer-Instanz von Basic auf Standard – Azure Load Balancer
-description: In diesem Artikel erfahren Sie, wie Sie eine öffentliche Azure Load Balancer-Instanz von der Basic- auf die Standard-SKU upgraden.
+description: In diesem Artikel erfahren Sie, wie Sie für den internen Azure Load Balancer Basic ein Upgrade auf den öffentlichen Load Balancer Standard durchführen können.
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
 ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616748"
+ms.locfileid: "77617814"
 ---
-# <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
-[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgraden einer internen Azure Load Balancer-Instanz: Ausgehende Verbindung erforderlich
+[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Da die interne Load Balancer Standard-Instanz keine ausgehende Verbindung bietet, stellen wir eine Lösung bereit, um stattdessen eine öffentliche Load Balancer Standard-Instanz zu erstellen.
 
-Ein Upgrade umfasst zwei Phasen:
+Ein Upgrade umfasst drei Phasen:
 
-1. Migrieren der Konfiguration
-2. Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
+1. Migrieren der Konfiguration zur öffentlichen Load Balancer Standard-Instanz
+2. Hinzufügen virtueller Computer zu Back-End-Pools der öffentlichen Load Balancer Standard-Instanz
+3. Einrichten von NSG-Regeln für Subnetze/VMs, die keine Verbindung mit dem Internet erhalten sollten
 
 Dieser Artikel behandelt die Migration einer Konfiguration. Die Vorgehensweise zu Hinzufügen virtueller Computer zu Back-End-Pools kann abhängig von Ihrer spezifischen Umgebung variieren. Einige generelle Empfehlungen dazu finden Sie jedoch [hier](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -28,15 +29,15 @@ Dieser Artikel behandelt die Migration einer Konfiguration. Die Vorgehensweise z
 
 Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werden:
 
-* Erstellt eine Load Balancer-Instanz mit Standard-SKU in der angegebenen Ressourcengruppe und am angegebenen Standort.
-* Nahtloses Kopieren der Konfigurationen der Load Balancer-Instanz mit Basic-SKU in die neu erstellte Load Balancer Standard-Instanz.
+* Erstellen einer öffentlichen Load Balancer-Instanz mit Standard-SKU in der angegebenen Ressourcengruppe und am angegebenen Standort
+* Nahtloses Kopieren der Konfigurationen der internen Load Balancer-Instanz mit Basic-SKU in die neu erstellte öffentliche Load Balancer Standard-Instanz
 
 ### <a name="caveatslimitations"></a>Vorbehalte/Einschränkungen
 
-* Das Skript unterstützt nur Upgrades für öffentliche Load Balancer-Instanzen. Wenn Sie eine interne Load Balancer Basic-Instanz upgraden möchten, haben Sie zwei Möglichkeiten: Falls keine ausgehende Konnektivität benötigt wird, können Sie eine interne Load Balancer Standard-Instanz erstellen. Falls ausgehende Konnektivität erforderlich ist, können Sie eine interne Load Balancer Standard-Instanz und eine öffentliche Load Balancer Standard-Instanz erstellen.
-* Die Load Balancer Standard-Instanz hat eine neue öffentliche Adresse. Die mit der vorhandenen Load Balancer Basic-Instanz verknüpften IP-Adressen können aufgrund der abweichenden SKUs nicht nahtlos auf die Load Balancer Standard-Instanz übertragen werden.
+* Das Skript unterstützt das Upgrade der internen Load Balancer-Instanz, wenn eine ausgehende Verbindung erforderlich ist. Wenn für keine der VMs eine ausgehende Verbindung erforderlich ist, finden Sie auf [dieser Seite](upgrade-basicInternal-standard.md) die bewährte Methode.
+* Die Load Balancer Standard-Instanz hat eine neue öffentliche Adresse. Die mit der vorhandenen internen Load Balancer Basic-Instanz verknüpften IP-Adressen können aufgrund der abweichenden SKUs nicht nahtlos auf die öffentliche Load Balancer Standard-Instanz übertragen werden.
 * Wenn die Load Balancer Standard-Instanz in einer anderen Region erstellt wird, können die virtuellen Computer aus der alten Region nicht der neu erstellten Load Balancer Standard-Instanz zugeordnet werden. Erstellen Sie zur Umgehung dieser Einschränkung einen neuen virtuellen Computer in der neuen Region.
-* Wenn Ihre Load Balancer-Instanz über keine Front-End-IP-Konfiguration oder über keinen Back-End-Pool verfügt, tritt beim Ausführen des Skripts wahrscheinlich ein Fehler auf. Stellen Sie sicher, dass die Angaben vorhanden sind.
+* Wenn Ihre Load Balancer-Instanz über keine Front-End-IP-Konfiguration oder über keinen Back-End-Pool verfügt, tritt beim Ausführen des Skripts wahrscheinlich ein Fehler auf.  Stellen Sie sicher, dass die Angaben vorhanden sind.
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
@@ -75,7 +76,7 @@ So führen Sie das Skript aus
    * **oldRgName: [Zeichenfolge]: Erforderlich:** Die Ressourcengruppe für die vorhandene Load Balancer Basic-Instanz, die Sie upgraden möchten. Wählen Sie zur Ermittlung dieses Zeichenfolgenwerts im Azure-Portal Ihre Load Balancer Basic-Quelle aus, und klicken Sie auf die **Übersicht** für den Lastenausgleich. Die Ressourcengruppe befindet sich auf dieser Seite.
    * **oldLBName: [Zeichenfolge]: Erforderlich:** Der Name der vorhandene Load Balancer Basic-Instanz, die Sie upgraden möchten. 
    * **newrgName: [Zeichenfolge]: Erforderlich:** Die Ressourcengruppe, in der die Load Balancer Standard-Instanz erstellt wird. Hierbei kann es sich um eine neue oder um eine bereits vorhandene Ressourcengruppe handeln. Beachten Sie bei Verwendung einer vorhandenen Ressourcengruppe, dass der Name der Load Balancer-Instanz innerhalb der Ressourcengruppe eindeutig sein muss. 
-   * **newlocation: [Zeichenfolge]: Erforderlich:** Der Standort, an dem die Load Balancer Standard-Instanz erstellt wird. Es empfiehlt sich, für die Load Balancer Standard-Instanz den Standort der gewählten Load Balancer Basic-Instanz zu übernehmen, um die Verknüpfung mit anderen vorhandenen Ressourcen zu erleichtern.
+   * **newlocation: [Zeichenfolge]: Erforderlich:** Der Standort, an dem die Load Balancer Standard-Instanz erstellt wird. Es wird empfohlen, für die Load Balancer Standard-Instanz den Standort der gewählten Load Balancer Basic-Instanz zu übernehmen, um die Verknüpfung mit anderen vorhandenen Ressourcen zu erleichtern.
    * **newLBName: [Zeichenfolge]: Erforderlich:** Der Name der zu erstellenden Load Balancer Standard-Instanz.
 1. Führen Sie das Skript mit den entsprechenden Parametern aus. Es kann fünf bis sieben Minuten dauern, bis es fertig ist.
 
@@ -108,6 +109,9 @@ In den folgenden Szenarien wird gezeigt, wie Sie virtuelle Computer zu Back-End-
 
 * **Erstellen neuer virtueller Computer, um sie den Back-End-Pools der neu erstellten öffentlichen Load Balancer Standard-Instanz hinzuzufügen:**
     * Weitere Informationen zum Erstellen eines virtuellen Computers sowie zum Zuordnen des virtuellen Computers zu Load Balancer Standard finden Sie [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+
+### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Erstellen von NSG-Regeln für VMs, die die Kommunikation vom oder zum Internet unterbinden sollen
+Wenn Sie verhindern möchten, dass der Internetdatenverkehr Ihre VMs erreicht, können Sie eine [NSG-Regel](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) für die Netzwerkschnittstelle der VMs erstellen.
 
 ## <a name="common-questions"></a>Häufig gestellte Fragen
 

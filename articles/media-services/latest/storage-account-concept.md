@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619294"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602138"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-Konten
 
@@ -44,7 +44,7 @@ In Media Services v3 verwenden Sie Azure Storage-APIs zum Hochladen von Dateien
 
 Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen durch die speicherseitige Verschlüsselung verschlüsselt werden. Die folgende Tabelle zeigt, wie die speicherseitige Verschlüsselung in Media Services v3 funktioniert:
 
-|Verschlüsselungsoption|BESCHREIBUNG|Media Services v3|
+|Verschlüsselungsoption|Beschreibung|Media Services v3|
 |---|---|---|
 |Media Services-Speicherverschlüsselung| AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet|Nicht unterstützt<sup>(1)</sup>|
 |[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet|Unterstützt|
@@ -62,6 +62,10 @@ Unten sind die wichtigsten Szenarien aufgeführt, die bewirken, dass ein Media S
 |---|---|
 |Das Media Services-Konto oder angefügte Speicherkonten wurden zu separaten Abonnements migriert. |Migrieren Sie das bzw. die Speicherkonten oder das Media Services-Konto, damit diese Komponenten sich alle unter demselben Abonnement befinden. |
 |Für das Media Services-Konto wird ein angefügtes Speicherkonto unter einem anderen Abonnement verwendet, da es sich um ein frühes Media Services-Konto handelt, für das dies unterstützt wurde. Alle frühen Media Services-Konten wurden in moderne ARM-basierte Konten (Azure Resources Manager) konvertiert und weisen den Status „Getrennt“ auf. |Migrieren Sie das Speicherkonto oder Media Services-Konto, damit diese Komponenten sich alle unter demselben Abonnement befinden.|
+
+## <a name="azure-storage-firewall"></a>Azure Storage-Firewall
+
+Azure Media Services unterstützt keine Speicherkonten, bei denen die Azure Storage-Firewall oder [private Endpunkte](https://docs.microsoft.com/azure/storage/common/storage-network-security) aktiviert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

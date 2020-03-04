@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120886"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526228"
 ---
 # <a name="classroom-labs-concepts"></a>Konzepte von Classroom-Labs
 
@@ -32,7 +32,13 @@ Die Kontingentstunden werden gezählt, wenn Kursteilnehmer den virtuellen Comput
 
 ## <a name="schedules"></a>Zeitpläne
 
-Zeitpläne sind die Zeitfenster (einmalig oder wiederkehrend), die ein Kursleiter für die Klasse erstellen kann. Alle virtuellen Computer im Lab werden zu Beginn des Zeitplans automatisch gestartet und am Ende des Zeitplans automatisch beendet. Kontingentstunden werden nicht verbraucht, wenn ein Zeitplan ausgeführt wird.
+Zeitpläne sind die Zeitfenster, die ein Kursleiter für die Klasse erstellen kann, damit die virtuellen Computer der Kursteilnehmer für den Unterricht zur Verfügung stehen.  Zeitpläne können einmalig oder wiederkehrend sein.  Kontingentstunden werden nicht verbraucht, wenn ein Zeitplan ausgeführt wird.
+
+Es stehen drei Arten von Zeitplänen zur Verfügung: „Standard“, „Start only“ (Nur starten) und „Stop only“ (Nur beenden).
+
+- **Standard**: Die Dienstebene Standard bietet eine verbesserte Leistungsvorhersagbarkeit und ist für Datenbanken mit mehreren gleichzeitigen Anforderungen konzipiert, z.B.  Dieser Zeitplan startet alle virtuellen Computer der Kursteilnehmer zur angegebenen Startzeit und schaltet alle virtuellen Computer der Kursteilnehmer zur angegebenen Endzeit ab.
+- **Start only** (Nur starten).   Dieser Zeitplan startet alle virtuellen Computer der Kursteilnehmer zum angegebenen Zeitpunkt.  Virtuelle Computer der Kursteilnehmer werden erst dann angehalten, wenn ein Kursteilnehmer seinen virtuellen Computer über das Azure Lab Services-Portal beendet oder wenn nur ein Zeitplan für „Stop only“ (Nur beenden) vorliegt.
+- **Stop only** (Nur beenden).  Dieser Zeitplan beendet alle virtuellen Computer der Kursteilnehmer zum angegebenen Zeitpunkt.  
 
 ## <a name="template-virtual-machine"></a>Vorlage für virtuelle Maschinen
 

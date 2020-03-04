@@ -2,17 +2,17 @@
 title: Was ist der Azure Private Link-Dienst?
 description: Erfahren Sie mehr über den Azure Private Link-Dienst.
 services: private-link
-author: malopMSFT
+author: sumeetmittal
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: sumi
+ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191079"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587412"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -98,7 +98,7 @@ Die Genehmigung der Verbindungen kann automatisiert werden, indem Sie die Eigens
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Abrufen von Verbindungsinformationen mithilfe von TCP-Proxy v2
 
-Bei Verwendung des Private Link-Diensts ist die Quell-IP-Adresse der von dem privaten Endpunkt kommenden Pakete die NAT (Netzwerkadressenübersetzung) auf der Dienstanbieterseite, die die NAT-IP verwendet, die vom virtuellen Netzwerk des Anbieters zugewiesen wird. Daher erhalten die Anwendungen die zugeordnete NAT-IP-Adresse anstelle der tatsächlichen Quell-IP-Adresse der Dienstconsumer. Wenn Ihre Anwendung die tatsächliche Quell-IP-Adresse von der Consumerseite benötigt, können Sie das Proxyprotokoll in Ihrem Dienst aktivieren und die Informationen aus dem Proxyprotokollheader abrufen. Zusätzlich zur Quell-IP-Adresse enthält der Proxyprotokollheader auch die LinkID des privaten Endpunkts. Die Kombination aus Quell-IP-Adresse und LinkID kann Dienstanbietern bei der eindeutigen Identifizierung ihrer Kunden helfen. Weitere Informationen zum Proxyprotokoll finden Sie hier. 
+Bei Verwendung des Private Link-Diensts ist die Quell-IP-Adresse der von dem privaten Endpunkt kommenden Pakete die NAT (Netzwerkadressenübersetzung) auf der Dienstanbieterseite, die die NAT-IP verwendet, die vom virtuellen Netzwerk des Anbieters zugewiesen wird. Daher erhalten die Anwendungen die zugeordnete NAT-IP-Adresse anstelle der tatsächlichen Quell-IP-Adresse der Dienstconsumer. Wenn Ihre Anwendung die tatsächliche Quell-IP-Adresse von der Consumerseite benötigt, können Sie das Proxyprotokoll in Ihrem Dienst aktivieren und die Informationen aus dem Proxyprotokollheader abrufen. Zusätzlich zur Quell-IP-Adresse enthält der Proxyprotokollheader auch die LinkID des privaten Endpunkts. Die Kombination aus Quell-IP-Adresse und LinkID kann Dienstanbietern bei der eindeutigen Identifizierung ihrer Kunden helfen. Weitere Informationen zum Proxyprotokoll finden Sie [hier](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt). 
 
 Diese Informationen werden wie folgt mithilfe eines benutzerdefinierten TLV-Vektors (Type-Length-Value) codiert:
 
@@ -111,6 +111,8 @@ Details zum benutzerdefinierten TLV:
 |value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 Bytes); stellt die LINKID des privaten Endpunkts dar. Codiert im Little-Endian-Format.|
 
+ > [!NOTE]
+ > Der Dienstanbieter ist für die Sicherstellung zuständig, dass der Dienst hinter dem Lastenausgleich im Tarif „Standard“ so konfiguriert ist, dass er den Proxyprotokollheader gemäß der [Spezifikation](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) analysiert, wenn das Proxyprotokoll für den Private Link-Dienst aktiviert ist. Die Anforderung schlägt fehl, wenn die Proxyprotokolleinstellung für den Private Link-Dienst aktiviert und der Dienst nicht zum Analysieren des Headers konfiguriert ist. Ebenso schlägt die Anforderung fehl, wenn der Dienst einen Proxyprotokollheader erwartet, während die Einstellung für den Private Link-Dienst nicht aktiviert ist. Sobald die Proxyprotokolleinstellung aktiviert ist, wird der Proxyprotokollheader auch in die HTTP/TCP-Integritätstests vom Host zu den virtuellen Back-End-Computern einbezogen, obwohl im Header keine Clientinformationen enthalten sind. 
 
 ## <a name="limitations"></a>Einschränkungen
 

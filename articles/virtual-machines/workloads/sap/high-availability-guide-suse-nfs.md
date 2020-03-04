@@ -1,10 +1,10 @@
 ---
-title: Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server | Microsoft-Dokumentation
+title: Hochverfügbarkeit für NFS auf Azure-VMs unter SLES | Microsoft-Dokumentation
 description: Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824865"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598730"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -76,7 +76,7 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise High Availability Extension 12 SP3][sles-hae-guides]
   * Hochverfügbarer NFS-Speicher mit DRBD und Pacemaker
 * [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp]
-* [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes] (Versionshinweise zur SUSE-Hochverfügbarkeitserweiterung 12 SP3)
+* [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes] (Versionshinweise zur SUSE-Hochverfügbarkeitserweiterung 12 SP3, in englischer Sprache)
 
 ## <a name="overview"></a>Übersicht
 
@@ -136,7 +136,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
    „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie einen Datenträger für jedes SAP-System auf beiden virtuellen Computern hinzu.
-1. Erstellen Sie einen Lastenausgleich (intern). Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden.  
+1. Erstellen Sie einen Lastenausgleich (intern). Sie sollten [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) verwenden.  
    1. Befolgen Sie diese Anleitung, um eine Load Balancer Standard-Instanz zu erstellen:
       1. Erstellen der Front-End-IP-Adressen
          1. IP-Adresse 10.0.0.4 für NW1
@@ -153,7 +153,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
             1. Virtuelles Netzwerk auswählen
             1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
             1. Wählen Sie die virtuellen Computer des NFS-Clusters und deren IP-Adressen aus.
-            1. Klicken Sie auf "Hinzufügen".
+            1. Klicken Sie auf Hinzufügen.
          1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
             * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
       1. Erstellen der Integritätstests
@@ -217,7 +217,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
             * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW2.
 
 > [!Note]
-> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen (keine öffentliche IP-Adresse) Azure Load Balancer Standard-Instanz platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
 
 > [!IMPORTANT]
 > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

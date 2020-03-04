@@ -2,23 +2,20 @@
 title: Verwenden der Autoskalierung für Cluster in Azure Kubernetes Service (AKS)
 description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der Autoskalierung automatisch zur Erfüllung der Anwendungsanforderungen in einem Azure Kubernetes Service-Cluster (AKS) skalieren.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 033cf88e29ba4a9f7ce9397fe216f7380e70be07
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713404"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596248"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
 Um die Anwendungsanforderungen in Azure Kubernetes Service (AKS) zu erfüllen, müssen Sie möglicherweise die Anzahl von Knoten anpassen, die Ihre Workloads ausführen. Die Komponente für die automatische Clusterskalierung kann auf Pods in Ihrem Cluster überprüfen, die aufgrund von Ressourceneinschränkungen nicht geplant werden können. Sobald Probleme erkannt werden, wird die Anzahl von Knoten in einem Knotenpool erhöht, um den Anwendungsanforderungen gerecht zu werden. Die Knoten werden außerdem regelmäßig auf einen Mangel an ausgeführten Pods überprüft, und bei Bedarf wird die Anzahl von Knoten verringert. Diese Fähigkeit zur automatischen Erhöhung oder Verringerung der Knotenanzahl in Ihrem AKS-Cluster ermöglicht es Ihnen, einen effizienten, kostengünstigen Cluster zu betreiben.
 
-In diesem Artikel wird gezeigt, wie Sie die Autoskalierung für Cluster in einem AKS-Cluster aktivieren und verwalten. 
+In diesem Artikel wird gezeigt, wie Sie die Autoskalierung für Cluster in einem AKS-Cluster aktivieren und verwalten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -106,6 +103,90 @@ Im oben stehenden Beispiel wird die automatische Clusterskalierung für den einz
 
 Überwachen Sie die Leistung Ihrer Anwendungen und Dienste, und passen Sie die Anzahl von Knoten zur Autoskalierung für Cluster an die erforderliche Leistung an.
 
+## <a name="using-the-autoscaler-profile"></a>Verwenden des Autoskalierungsprofils
+
+Sie können auch differenziertere Details der Clusterautoskalierung konfigurieren, indem Sie die Standardwerte im clusterweiten Autoskalierungsprofil ändern. Ein Ereignis zum zentralen Herunterskalieren tritt z. B. ein, wenn die Knoten nach 10 Minuten nicht ausgelastet sind. Wenn Sie Workloads hatten, die alle 15 Minuten ausgeführt wurden, möchten Sie vielleicht das Autoskalierungsprofil so ändern, dass es nach 15 oder 20 Minuten nicht ausgelastete Knoten zentral herunterskaliert. Wenn Sie die Clusterautoskalierung aktivieren, wird ein Standardprofil verwendet, sofern Sie keine anderen Einstellungen angeben. Das Profil für die Clusterautoskalierung verfügt über die folgenden Einstellungen, die Sie aktualisieren können:
+
+| Einstellung                          | BESCHREIBUNG                                                                              | Standardwert |
+|----------------------------------|------------------------------------------------------------------------------------------|---------------|
+| scan-interval                    | Häufigkeit der Neubewertung von Clustern für das zentrale Hoch- oder Herunterskalieren                                    | 10 Sekunden    |
+| scale-down-delay-after-add       | Wie lange nach dem zentralen Hochskalieren die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                               | 10 Minuten    |
+| scale-down-delay-after-delete    | Wie lange nach dem Löschen des Knotens die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                          | scan-interval |
+| scale-down-delay-after-failure   | Wie lange nach dem Fehler beim zentralen Herunterskalieren die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                     | 3 Minuten     |
+| scale-down-unneeded-time         | Wie lange ein Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist                  | 10 Minuten    |
+| scale-down-unready-time          | Wie lange ein nicht bereiter Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist         | 20 Minuten    |
+| scale-down-utilization-threshold | Auslastungsgrad des Knotens, definiert als Summe der angeforderten Ressourcen dividiert durch die Kapazität, unterhalb derer ein Knoten für das zentrale Herunterskalieren in Betracht gezogen werden kann | 0.5 |
+| max-graceful-termination-sec     | Maximale Anzahl von Sekunden, die die Clusterautoskalierung beim Versuch, einen Knoten zentral herunterzuskalieren, auf die Beendigung des Pods wartet | 600 Sekunden   |
+
+> [!IMPORTANT]
+> Das Profil der Clusterautoskalierung betrifft alle Knotenpools, die die Clusterautoskalierung verwenden. Sie können kein Autoskalierungsprofil pro Knotenpool festlegen.
+
+### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
+
+Um das Einstellungsprofil für die Clusterautoskalierung verwenden zu können, benötigen Sie die CLI-Erweiterung *aks-preview* Version 0.4.30 oder höher. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>Festlegen des Profils für die Clusterautoskalierung in einem vorhandenen AKS-Cluster
+
+Verwenden Sie den Befehl [az aks update][az-aks-update] mit dem Parameter *cluster-autoscaler-profile*, um das Clusterautoskalierungsprofil für Ihren Cluster festzulegen. Das folgende Beispiel konfiguriert die Einstellung des Scanintervalls im Profil auf 30 Sekunden.
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+Wenn Sie die Clusterautoskalierung für Knotenpools im Cluster aktivieren, verwenden diese Cluster auch das Profil der Clusterautoskalierung. Beispiel:
+
+```azurecli-interactive
+az aks nodepool update \
+  --resource-group myResourceGroup \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+> [!IMPORTANT]
+> Wenn Sie das Profil für die Clusterautoskalierung festlegen, werden alle vorhandenen Knotenpools mit aktivierter Clusterautoskalierung sofort mit der Verwendung des Profils beginnen.
+
+### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Festlegen des Profils für die Clusterautoskalierung beim Erstellen eines AKS-Clusters
+
+Sie können auch den Parameter *cluster-autoscaler-profile* verwenden, wenn Sie Ihren Cluster erstellen. Beispiel:
+
+```azurecli-interactive
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3 \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+Der obige Befehl erstellt einen AKS-Cluster und legt für das Scanintervall 30 Sekunden für das clusterweite Autoskalierungsprofil fest. Der Befehl aktiviert auch die Clusterautoskalierung des ursprünglichen Knotenpools, legt die minimale Knotenanzahl auf 1 und die maximale Knotenanzahl auf 3 fest.
+
+### <a name="reset-cluster-autoscaler-profile-to-default-values"></a>Zurücksetzen des Profils für die Clusterautoskalierung auf die Standardwerte
+
+Verwenden Sie den Befehl [az aks update][az-aks-update], um das Profil für die Clusterautoskalierung auf Ihrem Cluster zurückzusetzen.
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile ""
+```
+
 ## <a name="disable-the-cluster-autoscaler"></a>Deaktivieren der Autoskalierung für Cluster
 
 Wenn Sie die automatische Clusterskalierung nicht mehr verwenden möchten, können Sie sie mit dem Befehl [az aks update][az-aks-update] unter Angabe des Parameters *--disable-cluster-autoscaler* deaktivieren. Beim Deaktivieren der Autoskalierung für Cluster werden keine Knoten entfernt.
@@ -140,7 +221,7 @@ AzureDiagnostics
 | where Category == "cluster-autoscaler"
 ```
 
-Sofern Protokolle zum Abrufen vorhanden sind, sollten diese in etwa folgendermaßen angezeigt werden.
+Sofern Protokolle zum Abrufen vorhanden sind, sollten diese in etwa dem folgenden Beispiel entsprechen.
 
 ![Log Analytics-Protokolle](media/autoscaler/autoscaler-logs.png)
 
@@ -185,20 +266,20 @@ Wenn Sie die automatische Clusterskalierung für einen vorhandenen Cluster wiede
 In diesem Artikel wurde gezeigt, wie Sie die Anzahl von AKS-Knoten automatisch skalieren können. Außerdem können Sie mit der horizontalen automatischen Podskalierung automatisch die Anzahl von Pods anpassen, auf denen Ihre Anwendung ausgeführt wird. Die Schritte zum Verwenden der horizontalen automatischen Podskalierung finden Sie unter [Skalieren von Anwendungen in Azure Kubernetes Service (AKS)][aks-scale-apps].
 
 <!-- LINKS - internal -->
+[aks-faq]: faq.md
+[aks-scale-apps]: tutorial-kubernetes-scale.md
+[aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
+[autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
-[aks-scale-apps]: tutorial-kubernetes-scale.md
+[az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
