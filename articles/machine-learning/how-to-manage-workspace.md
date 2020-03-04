@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f31c5583671ed3441e1a3f0f53c8518e550080a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137604"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580728"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
 
 1. Geben Sie die folgenden Informationen an, um den neuen Arbeitsbereich zu konfigurieren:
 
-   Feld|Beschreibung 
+   Feld|BESCHREIBUNG 
    ---|---
    Arbeitsbereichname |Geben Sie einen eindeutigen Namen ein, der Ihren Arbeitsbereich identifiziert. In diesem Beispiel verwenden wir **docs-ws**. Namen müssen in der Ressourcengruppe eindeutig sein. Verwenden Sie einen Namen, der leicht zu merken ist und sich von den von anderen Benutzern erstellten Arbeitsbereichen unterscheidet. Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.
    Subscription |Wählen Sie das gewünschte Azure-Abonnement aus.
@@ -119,6 +119,12 @@ Verwenden Sie die Schaltfläche „Löschen“ oben in dem Arbeitsbereich, den S
 
 > [!WARNING]
 > Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
+
+### <a name="deleting-the-azure-container-registry"></a>Löschen der Azure Container Registry
+
+Der Azure Machine Learning-Arbeitsbereich verwendet für einige Operationen die Azure Container Registry (ACR). Es wird automatisch eine ACR-Instanz erstellt, wenn erstmals eine erforderlich ist.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

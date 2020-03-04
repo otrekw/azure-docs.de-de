@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513557"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539381"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -21,6 +21,9 @@ Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithi
 - [Pushinstallation](#push-installation): Site Recovery installiert den Mobilitäts-Agent auf dem Server, wenn der Schutz im Azure-Portal aktiviert wird.
 - Manuelle Installation: Über die [Benutzeroberfläche](#install-mobility-agent-through-ui) oder die [Eingabeaufforderung](#install-mobility-agent-through-command-prompt) können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
 - [Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mithilfe von Softwarebereitstellungstools wie Configuration Manager automatisieren.
+
+> [!NOTE]
+> Der Mobilitäts-Agent verwendet ungefähr 6-10 % des Arbeitsspeichers auf den Quellcomputern für VMware-VMS oder physische Computer.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
 
@@ -35,7 +38,7 @@ Die Pushinstallation ist ein integraler Bestandteil des Auftrags [Replikation ak
 
 Die Einzelheiten des Workflows für die Pushinstallation werden in den folgenden Abschnitten beschrieben.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Ab [Version 9.23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)
+### <a name="from-923-version-onwards"></a>Ab [Version 9.23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)
 
 Bei der Installation des Mobilitäts-Agents werden die folgenden Schritte ausgeführt
 
@@ -73,7 +76,7 @@ Bei der Installation des Mobilitäts-Agents werden die folgenden Schritte ausgef
 
     ![Seite für die Mobility Service-Registrierung](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse und die konfigurierte Passphrase an.  
+5. Geben Sie unter **Konfigurationsserverdetails** die IP-Adresse und die konfigurierte Passphrase an.
 
     ![Seite für die Mobility Service-Registrierung](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 

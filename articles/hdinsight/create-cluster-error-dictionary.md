@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905481"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617540"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
 
@@ -172,7 +172,7 @@ Sie haben nicht die erforderlichen Berechtigungen zum Verwalten der Identität b
 1. Öffnen Sie das Azure-Portal.
 1. Wechseln Sie zum Speicherkonto.
 1. Prüfen Sie die Einstellung unter **Zugriffssteuerung (IAM)** .
-1. Stellen Sie sicher, dass der Rolle „Mitwirkender an Storage-Blobdaten“ oder der Rolle „Besitzer von Speicherblobdaten“ der Zugriff auf die benutzerseitig zugewiesene verwaltete Identität für das Abonnement zugewiesen wurde.
+1. Stellen Sie sicher, dass dem Benutzer die Rolle „Mitwirkender an Storage-Blobdaten“ oder „Besitzer von Speicherblobdaten“ zugewiesen wurde.
 
 Weitere Informationen finden Sie unter [Festlegen von Berechtigungen für verwaltete Identitäten im Data Lake Storage Gen2-Konto](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 

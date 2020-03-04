@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850437"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564772"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -140,4 +140,4 @@ Bevor Sie die Verschiebung einleiten, lesen Sie unbedingt den gesamten Artikel, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Neben dem Überprüfen der Nutzungs- und Abrechnungsdetails in einem ausgewählten Azure-Abonnement können Sie über die [Verwendungsberichts-API](view-usage-reports.md) auch ausführliche Berichte zur täglichen Nutzung überprüfen.
+Die aktuellsten Preisinformationen finden Sie unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

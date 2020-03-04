@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665767"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615969"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
@@ -48,14 +48,20 @@ Weitere Informationen zu Warnungen finden Sie unter [Verwalten von und Reagieren
 
 In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen für bestimmte Ressourcentypen:
 
-* [Warnungen für IaaS-VMs und -Server](security-center-alerts-iaas.md)
-* [Warnungen für Native Compute](security-center-alerts-compute.md)
-* [Warnungen für Datendienste](security-center-alerts-data-services.md)
+* [Warnungen für IaaS Windows-Computer](threat-protection.md#windows-machines)
+* [Warnungen für IaaS Linux-Computer](threat-protection.md#linux-machines)
+* [Warnungen für Azure App Service](threat-protection.md#app-services)
+* [Warnungen für Azure Container](threat-protection.md#azure-containers)
+* [Warnungen für SQL-Datenbank und SQL Data Warehouse](threat-protection.md#data-sql)
+* [Warnungen für Azure Storage](threat-protection.md#azure-storage)
+* [Warnungen für Cosmos DB](threat-protection.md#cosmos-db)
 
 In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitstellte Ressourcen zu implementieren:
 
-* [Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center](security-center-alerts-service-layer.md)
-* [Bedrohungserkennung für Azure WAF und Azure DDoS Protection](security-center-alerts-integration.md)
+* [Warnungen für die Azure-Verwaltungsebene (Azure Resource Manager) – Vorschau](threat-protection.md#management-layer)
+* [Warnungen für Azure Key Vault (Vorschau)](threat-protection.md#azure-keyvault)
+* [Warnungen auf Azure-Netzwerkebene](threat-protection.md#network-layer)
+* [Warnungen von anderen Diensten](threat-protection.md#alerts-other)
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in Security Center verwenden. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
@@ -63,5 +69,3 @@ In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in
 * [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 * [Verwalten von Sicherheitswarnungen](security-center-managing-and-responding-alerts.md)
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/)(Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

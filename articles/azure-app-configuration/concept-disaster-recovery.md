@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899641"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523763"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
 
@@ -27,9 +27,9 @@ Ihre Anwendung lädt ihre Konfiguration parallel aus dem primären und sekundär
 
 ## <a name="failover-between-configuration-stores"></a>Failover zwischen Konfigurationsspeichern
 
-In technischer Hinsicht führt Ihre Anwendung kein Failover aus. Sie versucht, den gleichen Satz von Konfigurationsdaten gleichzeitig aus zwei App Configuration-Speichern abzurufen. Gestalten Sie Ihren Code so, dass die Daten zuerst aus dem sekundären Speicher und anschließend aus dem primären Speicher geladen werden. Dadurch wird sichergestellt, dass die Konfigurationsdaten im primären Speicher Vorrang haben, wenn sie verfügbar sind. Der folgende Codeausschnitt zeigt, wie Sie dies über die .NET Core-CLI implementieren:
+In technischer Hinsicht führt Ihre Anwendung kein Failover aus. Sie versucht, den gleichen Satz von Konfigurationsdaten gleichzeitig aus zwei App Configuration-Speichern abzurufen. Gestalten Sie Ihren Code so, dass die Daten zuerst aus dem sekundären Speicher und anschließend aus dem primären Speicher geladen werden. Dadurch wird sichergestellt, dass die Konfigurationsdaten im primären Speicher Vorrang haben, wenn sie verfügbar sind. Der folgende Codeausschnitt zeigt, wie Sie dies über .NET Core implementieren:
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -70,17 +70,18 @@ Im Azure-Portal können Sie eine Änderung wie folgt an einen anderen Konfigurat
 
 1. Wählen Sie auf der Registerkarte **Import/Export** Folgendes aus: **Exportieren** > **App-Konfiguration** > **Ziel** > **Ressource auswählen**.
 
-2. Geben Sie auf dem neuen Blatt, dass geöffnet wird, das Abonnement, die Ressourcengruppe und den Ressourcennamen Ihres sekundären Speichers an, und wählen Sie anschließend **Anwenden** aus.
+1. Geben Sie auf dem neuen Blatt, dass geöffnet wird, das Abonnement, die Ressourcengruppe und den Ressourcennamen Ihres sekundären Speichers an, und wählen Sie anschließend **Anwenden** aus.
 
-3. Die Benutzeroberfläche wird aktualisiert, sodass Sie auswählen können, welche Konfigurationsdaten Sie in den sekundären Speicher exportieren möchten. Sie können den Standardzeitwert unverändert lassen sowie **Quellbezeichnung** und **Zielbezeichnung** auf den gleichen Wert festlegen. Wählen Sie **Übernehmen**.
+1. Die Benutzeroberfläche wird aktualisiert, sodass Sie auswählen können, welche Konfigurationsdaten Sie in den sekundären Speicher exportieren möchten. Sie können den Standardzeitwert unverändert lassen sowie **Quellbezeichnung** und **Zielbezeichnung** auf den gleichen Wert festlegen. Wählen Sie **Übernehmen**.
 
-4. Wiederholen Sie die vorherigen Schritte für alle Konfigurationsänderungen.
+1. Wiederholen Sie die vorherigen Schritte für alle Konfigurationsänderungen.
 
 Dieser Exportprozess kann mithilfe der Azure-Befehlszeilenschnittstelle automatisiert werden. Der folgenden Befehl zeigt, wie Sie eine einzelne Konfigurationsänderung aus dem primären in den sekundären Speicher exportieren:
 
+```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie gelernt, wie Sie Ihre Anwendung zum Erzielen von Georesilienz für App Configuration während der Laufzeit erweitern. Konfigurationsdaten aus App Configuration können auch zur Erstellungs- oder Bereitstellungszeit eingebettet werden. Weitere Informationen finden Sie unter [Integrieren in eine CI/CD-Pipeline](./integrate-ci-cd-pipeline.md).
-

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80f38f8bf323717693df70399ad982c51dda8f13
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169802"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580714"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -340,6 +340,8 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 ### <a name="use-a-dataset"></a>Verwenden eines Datasets 
 
 Wenn Sie in der Pipeline ein `TabularDataset` oder `FileDataset` verwenden möchten, müssen Sie es in ein [DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py)-Objekt umwandeln, indem Sie [as_named_input(name)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-) aufrufen. Sie übergeben das `DatasetConsumptionConfig`-Objekt als eine der `inputs` an den Pipelineschritt. 
+
+Aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL erstellte Datasets können für jeden Pipelineschritt als Eingabe verwendet werden. Mit Ausnahme des Schreibens der Ausgabe in einen [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) oder [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) können Ausgabedaten ([PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) nur in Azure-Bob- und Azure-Dateifreigabe-Datenspeicher geschrieben werden.
 
 ```python
 dataset_consuming_step = PythonScriptStep(

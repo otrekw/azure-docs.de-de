@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Informationen zum Konfigurieren von Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers und zum Konfigurieren von HTTPS mithilfe dieses Eingangscontrollers
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486184"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623161"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten Traefik-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -49,15 +49,18 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 Erstellen Sie einen Kubernetes-Namespace für den Traefik-Eingangscontroller, und installieren Sie ihn mithilfe von `helm`.
 
+> [!NOTE]
+> Wenn in Ihrem AKS RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
+
 ```console
 kubectl create ns traefik
-helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
+helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
 
 > [!NOTE]
 > Im obigen Beispiel wird ein öffentlicher Endpunkt für den Eingangscontroller erstellt. Wenn Sie stattdessen einen privaten Endpunkt für Ihren Eingangscontroller verwenden müssen, fügen Sie den Parameter *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* für den Befehl *helm install* hinzu.
 > ```console
-> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
 > Dieser private Endpunkt wird innerhalb des virtuellen Netzwerks verfügbar gemacht, in dem Ihr AKS-Cluster bereitgestellt wird.
 
@@ -95,7 +98,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Öffnen Sie [values.yaml][values-yaml], und ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *traefik.MY_CUSTOM_DOMAIN*, wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. Ersetzen Sie zudem *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: traefik  # Custom Ingress*. Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
+Öffnen Sie [values.yaml][values-yaml], und führen Sie die folgenden Updates durch:
+* Ersetzen Sie alle Vorkommen von *<REPLACE_ME_WITH_HOST_SUFFIX>* durch *traefik.MY_CUSTOM_DOMAIN*, wobei Sie für *MY_CUSTOM_DOMAIN* Ihre Domäne verwenden. 
+* Ersetzen Sie *kubernetes.io/ingress.class: traefik-azds  # Dev Spaces-specific* durch *kubernetes.io/ingress.class: traefik  # Custom Ingress*. 
+
+Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -148,6 +155,9 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
 Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die öffentliche URL über den Befehl `azds list-uris` öffnen. Im obigen Beispiel lautet die öffentliche URL für den Dienst *bikesharingweb*`http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
+
+> [!NOTE]
+> Wenn anstelle des Diensts *bikesharingweb* eine Fehlerseite angezeigt wird, überprüfen Sie, ob Sie **sowohl** die Anmerkung *kubernetes.io/ingress.class* als auch den Host in der Datei *values.yaml* aktualisiert haben.
 
 Verwenden Sie den Befehl `azds space select`, um unter *dev* einen untergeordneten Bereich zu erstellen, und listen Sie die URLs für den Zugriff auf den untergeordneten Entwicklungsbereich auf.
 

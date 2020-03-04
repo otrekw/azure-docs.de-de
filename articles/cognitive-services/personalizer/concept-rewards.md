@@ -1,27 +1,22 @@
 ---
 title: 'Relevanzbewertung: Personalisierung'
-titleSuffix: Azure Cognitive Services
 description: Die Relevanzbewertung gibt an, wie gut die Personalisierungsauswahl – die RewardActionID – für den Benutzer war. Der Wert der Relevanzbewertung richtet sich nach Ihrer Geschäftslogik und basiert auf Beobachtungen zum Benutzerverhalten. Die Personalisierung trainiert die eigenen Machine Learning-Modelle durch Auswertung der Relevanz.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490888"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623781"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
 
 Die Relevanzbewertung gibt an, wie gut die Personalisierungsauswahl – die [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response) – für den Benutzer war. Der Wert der Relevanzbewertung richtet sich nach Ihrer Geschäftslogik und basiert auf Beobachtungen zum Benutzerverhalten.
 
-Die Personalisierung trainiert die eigenen Machine Learning-Modelle durch Auswertung der Relevanz. 
+Die Personalisierung trainiert die eigenen Machine Learning-Modelle durch Auswertung der Relevanz.
+
+Erfahren Sie, [wie](how-to-settings.md#configure-rewards-for-the-feedback-loop) Sie den standardmäßigen Relevanzwert im Azure-Portal für Ihre Personalisierungsressource konfigurieren können.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Verwenden der Relevanz-API für die Bewertung der Personalisierung
 
@@ -47,16 +42,16 @@ Berücksichtigen Sie diese Signale und Verhalten für den Kontext der Relevanzbe
 
 Ein Relevanzergebnis muss in der Geschäftslogik berechnet werden. Das Ergebnis kann wie folgt dargestellt werden:
 
-* Eine einzelne Zahl, die einmal übermittelt wird 
+* Eine einzelne Zahl, die einmal übermittelt wird
 * Eine Bewertung (z. B. 0,8), die sofort übermittelt wird, und eine zusätzliche Bewertung (in der Regel 0,2), die später gesendet wird
 
 ## <a name="default-rewards"></a>Standardrelevanz
 
 Wenn innerhalb der [Reward Wait Time](#reward-wait-time) (Relevanzwartezeit) seit dem Aufruf für die Priorisierung kein Relevanzergebnis empfangen wird, wendet die Personalisierung implizit die **Default Reward** (Standardrelevanz) an, um diesem Ereignis einen Rang zuzuweisen.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Erstellen von Relevanzen mit mehreren Faktoren  
+## <a name="building-up-rewards-with-multiple-factors"></a>Erstellen von Relevanzen mit mehreren Faktoren
 
-Für eine effektive Personalisierung können Sie für die Relevanzbewertung mehrere Faktoren zugrunde legen. 
+Für eine effektive Personalisierung können Sie für die Relevanzbewertung mehrere Faktoren zugrunde legen.
 
 Sie können z. B. die folgenden Regeln für die Personalisierung einer Liste von Videoinhalten anwenden:
 
@@ -93,8 +88,8 @@ Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevan
 * **Berücksichtigen Sie unbeabsichtigte Folgen:** Erstellen Sie Relevanzfunktionen, die zu fundierten Ergebnissen auf der Basis von [Ethik und verantwortungsvoller Verwendung](ethics-responsible-use.md) führen.
 
 * **Nutzen Sie inkrementelle Relevanzwerte:** Das Addieren partieller Relevanzwerte für weniger bedeutsames Benutzerverhalten kann zu einer höheren Gesamtrelevanz durch die Personalisierung führen. Durch diese inkrementelle Relevanz wissen Algorithmen, wann der richtige Zeitpunkt ist, um den Benutzer an das gewünschte Verhalten heranzuführen.
-    * Wenn Sie eine Liste mit Filmen präsentieren und der Benutzer eine Weile mit der Maus auf den ersten Film zeigt, um Informationen anzuzeigen, wissen Sie, dass eine gewisse Benutzerbindung eingesetzt hat. Das Verhalten kann mit einer Relevanzbewertung von 0,1 gewertet werden. 
-    * Wenn der Benutzer die Seite geöffnet und dann geschlossen hat, kann das Relevanzergebnis 0,2 lauten. 
+    * Wenn Sie eine Liste mit Filmen präsentieren und der Benutzer eine Weile mit der Maus auf den ersten Film zeigt, um Informationen anzuzeigen, wissen Sie, dass eine gewisse Benutzerbindung eingesetzt hat. Das Verhalten kann mit einer Relevanzbewertung von 0,1 gewertet werden.
+    * Wenn der Benutzer die Seite geöffnet und dann geschlossen hat, kann das Relevanzergebnis 0,2 lauten.
 
 ## <a name="reward-wait-time"></a>Belohnungswartezeit
 
@@ -106,12 +101,12 @@ Wenn die **Reward Wait Time** (Relevanzwartezeit) abgelaufen ist und keine Relev
 
 Befolgen Sie diese Empfehlungen für bessere Ergebnisse.
 
-* Legen Sie die Relevanzwartezeit so kurz wie möglich fest. Sie sollte jedoch ausreichen, um Feedback vom Benutzer zu erhalten. 
+* Legen Sie die Relevanzwartezeit so kurz wie möglich fest. Sie sollte jedoch ausreichen, um Feedback vom Benutzer zu erhalten.
 
 * Wählen Sie keine Dauer unterhalb der für Feedback erforderlichen Zeit aus. Wenn einige Ihrer Relevanzbewertungen eingehen, nachdem ein Benutzer eine Minute eines Videos angesehen hat, sollte das Experiment mindestens doppelt so lang dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Vertiefendes Lernen](concepts-reinforcement-learning.md) 
+* [Vertiefendes Lernen](concepts-reinforcement-learning.md)
 * [Testen Sie die Rang-API.](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Testen Sie die Relevanz-API.](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

@@ -2,14 +2,14 @@
 title: Installieren des Chef-Clients aus dem Azure-Portal
 description: Informationen zum Bereitstellen und Konfigurieren des Chef-Clients aus dem Azure-Portal
 keywords: Azure, Chef, Devops, Client, Installation, Portal
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158257"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586358"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
 Im Azure-Portal können Sie einem Linux- oder Windows-Computer direkt die Chef-Clienterweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch den Prozess.
@@ -79,24 +79,24 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
 1. Geben Sie auf der Registerkarte **Erweiterung installieren** die folgenden Werte an, und wählen Sie dann **OK** aus.
 
     - **URL des Chef-Servers:** Geben Sie die URL des Chef-Servers ein, die den Namen der Organisation enthält, z.B. *https://api.chef.io/organization/mycompany* .
-    - **Chef-Knotenname**: Geben Sie den Namen des Chef-Knotens ein. Dies kann ein beliebiger Wert sein.
+    - **Chef-Knotenname**: Geben Sie den Namen des Chef-Knotens ein.
     - **Ausführungsliste**: Geben Sie die Chef-Ausführungsliste ein, die dem Computer hinzugefügt wird. Dieser Wert kann leer bleiben.
-    - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Beispiel: *Tarcher-Validierungssteuerelement*.
+    - **Name des Überprüfungsclients**: Geben Sie den Namen des Chef-Überprüfungsclients ein. Beispiel: `tarcher-validator`.
     - **Validierungsschlüssel**: Wählen Sie eine Datei aus, die den Validierungsschlüssel enthält, der beim Bootstrapping Ihrer Computer verwendet wird.
     - **Clientkonfigurationsdatei**: Wählen Sie eine Konfigurationsdatei für den Chef-Client aus. Dieser Wert kann leer bleiben.
-    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer bleiben. Bleibt der Wert leer, wird die aktuelle Version installiert.
+    - **Chef-Clientversion**: Geben Sie die Version des zu installierenden Chef-Clients ein. Dieser Wert kann leer gelassen werden, um die neueste Version zu installieren.
     - **SSL-Überprüfungsmodus**: Wählen Sie entweder **Keine** oder **Peer**. Für die Demo wurde *Keine* ausgewählt.
     - **Chef-Umgebung**: Geben Sie die Chef-Umgebung ein, in der dieser Knoten ein Mitglied sein sollte. Dieser Wert kann leer bleiben.
-    - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer bleiben.
+    - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer zugreifen muss. Dieser Wert kann leer bleiben.
     - **Chef-Server-SSL-Zertifikat**: Wählen Sie das SSL-Zertifikat aus, das Ihrer Chef-Server-Instanz zugewiesen ist. Dieser Wert kann leer bleiben.
 
       ![Installieren des Chef-Servers auf einem virtuellen Linux-Computer](./media/chef-extension-portal/install-extension.png)
 
-1. Wählen Sie nach Rückkehr zur Registerkarte **Erweiterungen** die Option **OK** aus.
+1. Wenn die Registerkarte **Erweiterungen** angezeigt wird, wählen Sie **OK**aus.
 
-1. Wählen Sie nach Rückkehr zur Registerkarte **Einstellungen** die Option **OK** aus.
+1. Wenn die Registerkarte **Einstellungen** angezeigt wird, wählen Sie **OK**aus.
 
-1. Lesen Sie nach Rückkehr zur Registerkarte **Erstellen** (die eine Zusammenfassung der von Ihnen ausgewählten und eingegebenen Optionen darstellt) sowohl die Informationen als auch die **Nutzungsbedingungen**, und wählen Sie **Erstellen** aus.
+1. Wenn die Registerkarte **Erstellen** angezeigt wird, sehen Sie eine Zusammenfassung der Optionen, die Sie ausgewählt und eingegeben haben. Überprüfen Sie die Informationen sowie die **Nutzungsbedingungen**, und wählen Sie **Erstellen** aus.
 
 Wenn der Prozess zum Erstellen und Bereitstellen der VM mit der Chef-Erweiterung abgeschlossen ist, zeigt eine Benachrichtigung an, ob der Vorgang erfolgreich verlaufen ist. Darüber hinaus wird die Ressourcenseite für die neue VM automatisch im Azure-Portal geöffnet, sobald sie erstellt ist.
 
@@ -104,4 +104,5 @@ Wenn der Prozess zum Erstellen und Bereitstellen der VM mit der Chef-Erweiterung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](chef-automation.md)

@@ -1,0 +1,74 @@
+---
+title: Optionen für die Datenerfassung
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie mehr über die Optionen zur Datenerfassung für das Training Ihrer Machine Learning-Modelle.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.reviewer: nibaccam
+author: nibaccam
+ms.author: nibaccam
+ms.date: 02/26/2020
+ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651952"
+---
+# <a name="data-ingestion-in-azure-machine-learning"></a>Datenerfassung in Azure Machine Learning
+
+In diesem Artikel lernen Sie die Vor- und Nachteile der folgenden mit Azure Machine Learning verfügbaren Optionen zur Datenerfassung kennen. 
+
+1. [Azure Data Factory](#use-azure-data-factory)-Pipelines
+2. [Python-SDK für Azure Machine Learning](#use-the-python-sdk)
+
+Die Datenerfassung ist der Prozess, bei dem unstrukturierte Daten aus einer oder mehreren Quellen extrahiert und dann für das Training von Machine Learning-Modellen vorbereitet werden. Sie ist auch zeitintensiv, insbesondere wenn sie manuell durchgeführt wird und Sie über große Datenmengen aus mehreren Quellen verfügen. Die Automatisierung dieses Aufwands setzt Ressourcen frei und stellt sicher, dass Ihre Modelle die aktuellsten und geeignetsten Daten verwenden.
+
+Es wird empfohlen, die Auswertung zunächst mit Azure Data Factory (ADF) durchzuführen, da es speziell für das Extrahieren, Laden und Transformieren von Daten entwickelt wurde. Wenn Sie Ihre Anforderungen mit ADF nicht erfüllen können, verwenden Sie das Python-SDK, um eine benutzerdefinierte Codelösung zu entwickeln, oder verwenden Sie ADF und das Python-SDK zusammen, um einen Gesamtworkflow für die Datenerfassung zu erstellen, der Ihren Anforderungen entspricht.
+
+## <a name="use-azure-data-factory"></a>Verwenden von Azure Data Factory
+
+[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) bietet native Unterstützung für die Überwachung von Datenquellen und für Trigger für Datenerfassungspipelines.  
+
+In der folgenden Tabelle sind die Vor- und Nachteile der Verwendung von Azure Data Factory für Ihre Datenerfassungsworkflows zusammengefasst.
+
+|Vorteile|Nachteile
+---|---
+Speziell zum Extrahieren, Laden und Transformieren von Daten konzipiert.|Bietet derzeit eine begrenzte Anzahl von Pipelineaufgaben für Azure Data Factory. 
+Gestattet Ihnen die Erstellung datengesteuerter Workflows zur Orchestrierung von Datenverschiebungen und Transformationen in großem Stil.|Erstellung und Wartung sind teuer. Weitere Informationen finden Sie auf der [Preisgestaltungsseite](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) von Azure Data Factory.
+Integriert mit verschiedenen Azure-Tools wie [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) und [Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Führt keine nativen Skripts aus, sondern vertraut stattdessen auf ein separates Compute für Skriptausführungen 
+Unterstützt nativ die von der Datenquelle ausgelöste Datenerfassung| 
+Die Prozesse für die Datenvorbereitung und das Modelltraining sind voneinander getrennt.|
+Eingebettete Funktionen für die Datenherkunft für Azure Data Factory-Dataflows|
+Bietet eine [Benutzeroberfläche](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) für geringe Codeerfahrungen für Ansätze ohne Skripterstellung |
+
+Diese Schritte und das folgende Diagramm veranschaulichen den Workflow von Azure Data Factory bei der Datenerfassung.
+
+1. Pullen der Daten aus den Quellen
+1. Transformieren und Speichern der Daten in einen Ausgabeblobcontainer, der als Datenspeicher für Azure Machine Learning dient
+1. Wenn vorbereitete Daten gespeichert sind, ruft die Azure Data Factory-Pipeline eine Machine Learning-Pipeline auf, die die vorbereiteten Daten für das Modelltraining erhält
+
+
+    ![ADF-Datenerfassung](media/concept-data-ingestion/data-ingest-option-one.svg)
+
+## <a name="use-the-python-sdk"></a>Verwenden des Python SDK 
+
+Mit dem [Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) können Sie Datenerfassungsaufgaben in eine [Azure Machine Learning-Pipeline](how-to-create-your-first-pipeline.md) integrieren.
+
+In der folgenden Tabelle sind die Vor- und Nachteile der Verwendung des SDK und eines ML-Pipelineschritts für Aufgaben der Datenerfassung zusammengefasst.
+
+Vorteile| Nachteile
+---|---
+Konfigurieren eigener Python-Skripts | Unterstützt das Auslösen von Datenquellenänderungen nicht nativ Erfordert Implementierungen von Logic App oder Azure Functions
+Datenvorbereitung als Teil jeder Modelltrainingsausführung|Erfordert Entwicklungsfähigkeiten zum Erstellen eines Skripts für die Datenerfassung
+Unterstützt Datenvorbereitungsskripts für verschiedene Computeziele, einschließlich [Azure Machine Learning-Compute](concept-compute-target.md#azure-machine-learning-compute-managed) |Bietet keine Benutzeroberfläche für die Erstellung des Erfassungsmechanismus
+
+In der folgenden Abbildung besteht die Azure Machine Learning-Pipeline aus zwei Schritten: Datenerfassung und Modelltraining. Der Schritt der Datenerfassung umfasst Aufgaben, die mithilfe von Python-Bibliotheken und dem Python-SDK durchgeführt werden können, z. B. das Extrahieren von Daten aus lokalen/webseitigen Quellen und grundlegende Datentransformationen wie die Imputation fehlender Werte. Der Trainingsschritt verwendet dann die vorbereiteten Daten als Eingabe für Ihr Trainingsskript, um Ihr Machine Learning-Modell zu trainieren. 
+
+![Azure-Pipeline und SDK-Datenerfassung](media/concept-data-ingestion/data-ingest-option-two.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Erfahren Sie, wie Sie mit [Azure-Pipelines](how-to-cicd-data-ingestion.md) die Entwicklungslebenszyklen Ihrer Datenerfassungspipelines automatisieren und verwalten können.

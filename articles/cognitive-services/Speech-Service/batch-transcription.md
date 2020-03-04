@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200077"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500010"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -87,14 +87,55 @@ Die Konfigurationsparameter werden als JSON angegeben:
 
 Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription:
 
-| Parameter | Beschreibung |
-|-----------|-------------|
-| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `None` (deaktiviert den Obszönitätenfilter), `Masked` (Obszönitäten werden durch Sternchen ersetzt), `Removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `Tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `Masked`. |
-| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `None` (deaktiviert Satzzeichen), `Dictated` (explizite Satzzeichen), `Automatic` (der Decoder verwaltet die Satzzeichen), `DictatedAndAutomatic` (vorgeschriebene Satzzeichen) oder „automatic“. |
-| `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. |
-| `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. |
-| `AddDiarization` | Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Gültige Werte sind `true` zum Aktivieren der Diarisierung und `false` (der Standardwert) zu deren Deaktivierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.|
-|`TranscriptionResultsContainerUrl`|Optionale URL mit [Dienst-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert.
+:::row:::
+   :::column span="1":::
+      **Parameter**
+   :::column-end:::
+   :::column span="2":::
+      **Beschreibung**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind: `None` (deaktiviert den Obszönitätenfilter), `Masked` (Obszönitäten werden durch Sternchen ersetzt), `Removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `Tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Zulässige Werte sind: `None` (deaktiviert die Interpunktion), `Dictated` (impliziert explizite (gesprochene) Interpunktion), `Automatic` (überlässt dem Decoder die Interpunktion) oder `DictatedAndAutomatic` (verwendet diktierte und automatische Interpunktion). Die Standardeinstellung ist `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren von Zeitstempeln auf Wortebene.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Stimmung pro Äußerung.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Zulässige Werte sind `true` zum Aktivieren und `false` (Standardwert) zum Deaktivieren der Diarisierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Optionale URL mit [Dienst-SAS](../../storage/common/storage-sas-overview.md) zu einem beschreibbaren Container in Azure. Das Ergebnis wird in diesem Container gespeichert.
+:::row-end:::
 
 ### <a name="storage"></a>Storage
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720511"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613986"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer über Azure AD Domain Services verwalteten Domäne
 
@@ -74,7 +74,7 @@ Nachdem Sie über eine VM verfügen, die als Azure AD-Anwendungsproxyconnector v
         > [!NOTE]
         > Das zum Registrieren des Connectors verwendete globale Administratorkonto muss demselben Verzeichnis angehören, in dem Sie den Anwendungsproxydienst aktivieren.
         >
-        > Wenn die Azure AD-Domäne beispielsweise *contoso.com* lautet, muss sich der globale Administrator als `admin@contoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
+        > Wenn die Azure AD-Domäne beispielsweise *aaddscontoso.com* lautet, muss sich der globale Administrator als `admin@aaddscontoso.com` oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
 
    * Falls auf der VM, auf der Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für Internet Explorer“ aktiviert ist, ist der Registrierungsbildschirm möglicherweise blockiert. Zum Zulassen des Zugriffs befolgen Sie die Anweisungen in der Fehlermeldung, um „Verstärkte Sicherheitskonfiguration für Internet Explorer“ während des Installationsvorgangs zu deaktivieren.
    * Falls bei der Connectorregistrierung ein Fehler auftritt, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md) weiter.
@@ -99,16 +99,16 @@ Weitere Informationen finden Sie unter [Konfigurieren der eingeschränkten Kerbe
 
 Verwenden Sie das Cmdlet [Get-ADComputer][Get-ADComputer], um die Einstellungen für den Computer abzurufen, auf dem der Azure AD-Anwendungsproxyconnector installiert ist. Melden Sie sich mit einem Benutzerkonto an, das Mitglied der Gruppe *Azure AD DC-Administratoren* ist, und führen Sie auf Ihrem in die Domäne eingebundenen virtuellen Verwaltungscomputer die folgenden Cmdlets aus.
 
-Das folgende Beispiel ruft Informationen über das Computerkonto namens *appproxy.contoso.com* ab. Geben Sie Ihren eigenen Computernamen für die in den vorherigen Schritten konfigurierte Azure AD-Anwendungsproxy-VM an.
+Das folgende Beispiel ruft Informationen über das Computerkonto namens *appproxy.aaddscontoso.com* ab. Geben Sie Ihren eigenen Computernamen für die in den vorherigen Schritten konfigurierte Azure AD-Anwendungsproxy-VM an.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Verwenden Sie für jeden Anwendungsserver, auf dem die Apps hinter dem Azure AD-Anwendungsproxy ausgeführt werden, das PowerShell-Cmdlet [Set-ADComputer][Set-ADComputer], um die ressourcenbasierte KCD zu konfigurieren. Im folgenden Beispiel werden dem Azure AD-Anwendungsproxyconnector Berechtigungen zur Verwendung des Computers *appserver.contoso.com* erteilt:
+Verwenden Sie für jeden Anwendungsserver, auf dem die Apps hinter dem Azure AD-Anwendungsproxy ausgeführt werden, das PowerShell-Cmdlet [Set-ADComputer][Set-ADComputer], um die ressourcenbasierte KCD zu konfigurieren. Im folgenden Beispiel werden dem Azure AD-Anwendungsproxyconnector Berechtigungen zur Verwendung des Computers *appserver.aaddscontoso.com* erteilt:
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 Wenn Sie mehrere Azure AD-Anwendungsproxyconnectors bereitstellen, müssen Sie die ressourcenbasierte KCD für jede Connectorinstanz konfigurieren.

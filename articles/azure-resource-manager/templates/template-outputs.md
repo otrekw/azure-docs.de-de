@@ -2,13 +2,13 @@
 title: Ausgaben in Vorlagen
 description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage definiert werden.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476196"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622840"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Ausgaben in einer Azure Resource Manager-Vorlage
 
@@ -43,6 +43,24 @@ Im Ausgabeabschnitt können Sie einen Wert bedingt zurückgeben. In der Regel ve
 
 Ein einfaches Beispiel der bedingten Ausgabe finden Sie unter der [Vorlage für die bedingte Ausgabe](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
+## <a name="dynamic-number-of-outputs"></a>Dynamische Anzahl von Ausgaben
+
+In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie das **copy**-Element verwenden.
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+Weitere Informationen finden Sie unter [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md).
+
 ## <a name="linked-templates"></a>Verknüpfte Vorlagen
 
 Mit der Funktion [reference](template-functions-resource.md#reference) in der übergeordneten Vorlage können Sie den Ausgabewert aus einer verknüpften Vorlage abrufen. Die Syntax in der übergeordneten Vorlage lautet wie folgt:
@@ -69,7 +87,7 @@ Bei erfolgreicher Bereitstellung werden die Ausgabewerte automatisch in den Erge
 
 Sie können ein Skript verwenden, um Ausgabewerte aus dem Bereitstellungsverlauf abzurufen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ Sie können ein Skript verwenden, um Ausgabewerte aus dem Bereitstellungsverlauf
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \

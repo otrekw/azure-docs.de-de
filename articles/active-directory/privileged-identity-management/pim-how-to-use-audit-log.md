@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024176"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498497"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM
 
@@ -32,9 +32,9 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+# <a name="new-version"></a>[Neue Version](#tab/new)
 
 Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure AD-Rollen anzuzeigen.
 
@@ -50,7 +50,7 @@ Mit der Ressourcenüberwachung erhalten Sie eine Übersicht über alle Aktivitä
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    ![Ressourcenüberwachungsliste mit Filtern](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Ressourcenüberwachungsliste mit Filtern](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>Anzeigen der eigenen Überwachung
 
@@ -66,9 +66,9 @@ In der eigenen Überwachung können Sie Ihre persönliche Rollenaktivität anzei
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    ![Überwachungsliste für den aktuellen Benutzer](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Überwachungsliste für den aktuellen Benutzer](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ## <a name="view-audit-history"></a>Anzeigen des Überwachungsverlaufs
 
@@ -88,7 +88,7 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
 
     Am unteren Rand der Seite wird eine Tabelle mit Informationen zu jeder Aktion im verfügbaren Überwachungsverlauf angezeigt. Die Spalten haben die folgende Bedeutung:
 
-    | Column | Beschreibung |
+    | Column | BESCHREIBUNG |
     | --- | --- |
     | Time | Der Zeitpunkt, zu dem die Aktion erfolgt ist. |
     | Anforderer | Der Benutzer, der die Rollenaktivierung oder -änderung angefordert hat. Wenn der Wert **Azure System**lautet, suchen Sie im Azure-Überwachungsverlauf nach weiteren Informationen. |

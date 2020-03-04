@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714477"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648424"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
@@ -41,11 +41,11 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
  
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 
-* Benutzer mit den Rollen **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Berichtsleser** oder **Globaler Administrator**
+* Benutzer mit den Rollen **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Berichtsleser**, **Globaler Leser** oder **Globaler Administrator**
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
-Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
+Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Überwachung** die Option **Überwachungsprotokolle** aus. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
 
 
 
@@ -90,16 +90,20 @@ Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 Bei Verwendung des Filters **Dienst** können Sie in einer Dropdownliste die folgenden Dienste auswählen:
 
 - All
+- AAD Management UX
 - Zugriffsüberprüfungen
-- Kontobereitstellung 
-- Anwendungs-SSO
+- Kontobereitstellung
+- Anwendungsproxy
 - Authentifizierungsmethoden
 - B2C
 - Bedingter Zugriff
 - Kernverzeichnis
 - Berechtigungsverwaltung
+- Hybridauthentifizierung
 - Schutz der Identität (Identity Protection)
 - Invited Users (Eingeladene Benutzer)
+- MIM Service (MIM-Dienst)
+- MyApps
 - PIM
 - Self-Service-Gruppenverwaltung
 - Self-Service-Kennwortverwaltung
@@ -118,7 +122,11 @@ Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filterop
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- KeyManagement
+- Bezeichnung
 - Andere
+- PermissionGrantPolicy
 - Richtlinie
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Mit dem Filter **Status** können Sie eine Filterung basierend auf dem Status ei
 - Erfolg
 - Fehler
 
-Bei Verwendung des Filters **Ziel** können Sie anhand des Namens oder des Benutzerprinzipalnamens (User Principal Name, UPN) ein bestimmtes Ziel suchen. Bei dem Zielnamen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt. 
+Bei Verwendung des Filters **Ziel** können Sie anhand des Beginns des Namens oder des Benutzerprinzipalnamens (User Principal Name, UPN) ein bestimmtes Ziel suchen. Bei dem Zielnamen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt. 
 
-Bei Verwendung des Filters **Initiiert von** können Sie den Namen eines Akteurs oder einen Benutzerprinzipalnamen (UPN) definieren. Bei dem Namen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt.
+Bei Verwendung des Filters **Initiiert von** können Sie definieren, womit der Name eines Akteurs oder ein Benutzerprinzipalname (UPN) beginnt. Bei dem Namen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt.
 
 Mit dem Filter **Datumsbereich** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
 
-- 1 Monat
 - 7 Tage
 - 24 Stunden
 - Benutzerdefiniert
@@ -179,11 +186,11 @@ Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie 
 
 - Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/users.png "Überwachungsprotokolle")
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Überwachung**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/groups.png "Überwachungsprotokolle")
 

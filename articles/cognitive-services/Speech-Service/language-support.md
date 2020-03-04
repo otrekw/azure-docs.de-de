@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935340"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617279"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Sprach- und Regionsunterstützung für den Speech-Dienst
 
@@ -37,8 +37,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
  Gebietsschema | Sprache | Unterstützt | Anpassungen
 ------|------------|-----------|-------------
 `ar-AE` | Arabisch (VAE) | Ja | Nein
-`ar-BH` | Arabisch (Bahrain) | Ja | Sprachmodell
-`ar-EG` | Arabisch (Ägypten), modernes Hocharabisch | Ja | Sprachmodell
+`ar-BH` | Arabisch (Bahrain), modernes Hocharabisch | Ja | Sprachmodell
+`ar-EG` | Arabisch (Ägypten) | Ja | Sprachmodell
 `ar-KW` | Arabisch (Kuwait) | Ja | Nein
 `ar-QA` | Arabisch (Katar) | Ja | Nein
 `ar-SA` | Arabisch (Saudi-Arabien) | Ja | Nein
@@ -95,9 +95,10 @@ Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](
 Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurzsprachname
 --------|----------|--------|---------|------------
 `de-DE` | Deutsch (Deutschland) | Female | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
-`en-US` | Englisch (USA) | Male | „Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)“ | "en-US-GuyNeural"
 `en-US` | Englisch (USA) | Female | „Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)“ | "en-US-JessaNeural"
+`en-US` | Englisch (USA) | Male | „Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)“ | "en-US-GuyNeural"
 `it-IT` | Italienisch (Italien) | Female |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
+`pt-BR` | Portugiesisch (Brasilien) | Female | „Microsoft Server Speech Text to Speech Voice (pt-BR, FranciscaNeural)“ | „pt-BR-FranciscaNeural“
 `zh-CN` | Chinesisch (Festland) | Female | „Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)“ | "zh-CN-XiaoxiaoNeural"
 
 Informationen dazu, wie Sie neuronale Stimmen konfigurieren und anpassen können, finden Sie unter [Anpassen von Sprechweisen](speech-synthesis-markup.md#adjust-speaking-styles).

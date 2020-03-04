@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3dbe5871a78634d2866ec1a3d1455492762ff2aa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484229"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619243"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
 
@@ -966,6 +966,9 @@ Um den Dienst in Internetinformationsdienste zu hosten, würde ein Entwickler ei
 
 Anforderungen aus Azure Active Directory enthalten ein OAuth 2.0-Bearertoken.   Alle Dienste, die die Anforderung empfangen, müssen den Aussteller als Azure Active Directory für den erwarteten Azure Active Directory-Mandanten authentifizieren, damit auf den Microsoft Graph-API-Dienst zugegriffen werden kann.  Im Token wird der Aussteller durch einen iss-Anspruch, z. B. „iss“, identifiziert: „https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ “.  In diesem Beispiel wird die Basisadresse des Anspruchswerts (https://sts.windows.net ) zum Identifizieren von Azure Active Directory als Aussteller verwendet, und das Segment mit der relativen Adresse (cbb1a5ac-f33b-45fa-9bf5-f37db0fed422) ist ein eindeutiger Bezeichner des Azure Active Directory-Mandanten, für den das Token ausgestellt wurde. Die Zielgruppe für das Token ist die Anwendungsvorlagen-ID für die App im Katalog. Die Anwendungsvorlagen-ID für alle benutzerdefinierten Apps lautet „8adf8e6e-67b2-4cf2-a259-e3dc5476c621“. Für Apps im Katalog variiert die Anwendungsvorlagen-ID jeweils. Sollten Sie Fragen zur Anwendungsvorlagen-ID für eine Kataloganwendung haben, wenden Sie sich an ProvisioningFeedback@microsoft.com. Jede der in einem einzelnen Mandanten registrierten Anwendungen kann den gleichen `iss`-Anspruch mit SCIM-Anforderungen empfangen.
 
+   > [!NOTE]
+   > Es wird ***nicht*** empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.
+
 Entwickler, die die von Microsoft bereitgestellten CLI-Bibliotheken zum Erstellen eines SCIM-Diensts verwenden, können Anforderungen von Azure Active Directory authentifizieren, indem sie das Microsoft.Owin.Security.ActiveDirectory-Paket verwenden. Hierzu müssen die folgenden Schritte ausgeführt werden: 
 
 Implementieren Sie zunächst in einem Anbieter die Microsoft.SystemForCrossDomainIdentityManagement.IProvider.StartupBehavior-Eigenschaft so, dass eine Methode zurückgegeben wird, die bei jedem Start des Diensts aufgerufen werden soll: 
@@ -1448,12 +1451,15 @@ Wenn Sie eine Anwendung erstellen, die von mehreren Mandanten verwendet wird, k�
 ### <a name="gallery-onboarding-checklist"></a>Onboardingprüfliste für den Katalog
 Verwenden Sie die folgende Prüfliste, um ein schnelles Onboarding Ihrer Anwendung zu gewährleisten und den Kunden eine reibungslose Bereitstellung zu bieten. Die Informationen werden beim Onboarding für den Katalog von Ihnen erfasst. 
 > [!div class="checklist"]
-> * [Unterstützung von SCIM 2.0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (erforderlich)
+> * Unterstützung eines [SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation)-Benutzer- und Gruppenendpunkts (nur einer ist erforderlich, aber beide werden empfohlen)
 > * Unterstützung von mindestens 25 Anforderungen pro Sekunde und Mandant (erforderlich)
-> * Unterstützung der Schemaerkennung (empfohlen)
+> * Einrichtung eines Kontakts für technische und supportbezogene Fragen, um Kunden nach dem Katalogonboarding zu unterstützen (erforderlich)
+> * 3 nicht ablaufende Testanmeldeinformationen für Ihre Anwendung (erforderlich)
 > * Unterstützung der OAuth-Autorisierungscodegenehmigung oder eines langlebigen Tokens gemäß der Beschreibung weiter unten (erforderlich)
 > * Einrichtung einer Anlaufstelle für technische und supportbezogene Fragen, um Kunden nach dem Katalogonboarding zu unterstützen (erforderlich)
+> * Unterstützung der Aktualisierung mehrerer Gruppenmitgliedschaften mit einem einzelnen PATCH (empfohlen) 
 > * Öffentliche Dokumentation Ihres SCIM-Endpunkts (empfohlen) 
+> * [Unterstützung der Schemaerkennung (empfohlen)](https://tools.ietf.org/html/rfc7643#section-6)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorisierung für Bereitstellungsconnectors im Anwendungskatalog

@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Dokumentation zum Hosting
+summary: Container für den Speech-Dienst sind sowohl für Spracherkennungs- als auch für Sprachsyntheseszenarien verfügbar und umfassen standardmäßige oder angepasste Modelle.
+metadata:
+  title: 'Dokumentation zum Hosten: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 1e8a57f6132af467975714e585f18059cf9b569e
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562813"
+landingContent:
+- title: Erste Schritte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Container für den Speech-Dienst
+      url: speech-container-howto.md
+    - text: Container für den Speech-Dienst mit Kubernetes
+      url: speech-container-howto-on-premises.md
+    - text: Container für den Speech-Dienst in Azure Container Instances
+      url: deploy-speech-on-container-instances.md
+- title: Ausführliche Leitfäden
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Azure Speech-Ressource
+      url: get-started.md#create-a-speech-resource-in-azure
+    - text: Konfigurieren von Containern
+      url: speech-container-configuration.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Unterstützte Regionen
+      url: regions.md
+    - text: Sovereign Clouds
+      url: sovereign-clouds.md

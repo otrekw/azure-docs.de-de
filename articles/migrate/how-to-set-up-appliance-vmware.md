@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291939"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598152"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -35,7 +35,7 @@ Die Einrichtung der Appliance umfasst Folgendes:
 2. Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus.
 3. Klicken Sie auf **Herunterladen**, um die OVA-Vorlagendatei herunterzuladen.
 
-
+  ![Schritte zum Herunterladen einer OVA-Datei](./media/tutorial-assess-vmware/download-ova.png)
 
 ### <a name="verify-security"></a>Überprüfen der Sicherheit
 
@@ -45,12 +45,8 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen Einstellungen entsprechen.
+3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen [Einstellungen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) entsprechen.
 
-  **Algorithmus** | **Hashwert**
-  --- | ---
-  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
-  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
@@ -58,6 +54,8 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 Importieren Sie die heruntergeladene Datei, und erstellen Sie eine VM.
 
 1. Klicken Sie in der vSphere-Clientkonsole auf **Datei** > **Deploy OVF Template** (OVF-Vorlage bereitstellen).
+![Menübefehl zum Bereitstellen einer OVF-Vorlage](./media/tutorial-assess-vmware/deploy-ovf.png)
+
 2. Geben Sie im Assistenten zum Bereitstellen der OVF-Vorlage unter **Quelle** den Speicherort der OVA-Datei an.
 3. Geben Sie unter **Name** und **Standort** einen Anzeigenamen für die VM an. Wählen Sie das Inventarobjekt aus, in dem die VM gehostet wird.
 5. Geben Sie unter **Host/Cluster** den Host oder Cluster an, auf bzw. in dem die VM ausgeführt wird.

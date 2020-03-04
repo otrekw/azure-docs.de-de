@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132249"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613059"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -33,7 +33,7 @@ Azure AD DS-Sicherheitsüberwachungen sind auf die herkömmliche Überwachung f�
 
 Die folgenden Überwachungsereigniskategorien sind verfügbar:
 
-| Name der Überwachungskategorie | BESCHREIBUNG |
+| Name der Überwachungskategorie | Beschreibung |
 |:---|:---|
 | Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -84,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 > Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Ereignisse aus der Vergangenheit können nicht abgerufen oder wiedergegeben werden. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung von Sicherheitsüberwachungen auftreten.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
+1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aaddscontoso.com*) aus.
 1. Wählen Sie im Fenster „Azure AD DS“ auf der linken Seite **Diagnoseeinstellungen** aus.
 1. Standardmäßig ist keine Diagnoseeinstellung konfiguriert. Wählen Sie als erstes **Diagnoseeinstellung hinzufügen** aus.
 

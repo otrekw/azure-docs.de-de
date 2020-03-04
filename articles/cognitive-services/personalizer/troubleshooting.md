@@ -2,14 +2,14 @@
 title: 'Problembehandlung: Personalisierung'
 description: Dieser Artikel enthält Antworten auf Fragen zur Behandlung von Problemen mit Personalizer.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469543"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650519"
 ---
 # <a name="personalizer-troubleshooting"></a>Troubleshooting für Personalizer
 
@@ -32,6 +32,19 @@ Dieser Artikel enthält Antworten auf Fragen zur Behandlung von Problemen mit Pe
 </details>
 
 ## <a name="learning-loop"></a>Lernschleife
+
+<details>
+<summary>
+<b>Die Lernschleife erreicht ohne Personalisierung keine 100 %ige Übereinstimmung mit dem System. Wie kann ich dies korrigieren?</b></summary>
+
+**Antwort:** Die Gründe, warum Sie Ihr Ziel mit der Lernschleife nicht erreichen:
+* Nicht ausreichend Features mit dem Rang-API-Aufruf gesendet
+* Fehler in den gesendeten Features – z. B. das Senden von nicht aggregierten Featuredaten wie Zeitstempel an die Rang-API
+* Fehler bei der Schleifenverarbeitung – z. B. kein Senden von Relevanzdaten an die Relevanz-API für Ereignisse
+
+Um das Problem zu beheben, müssen Sie die Verarbeitung ändern, indem Sie entweder die an die Schleife gesendeten Features ändern oder sicherstellen, dass die Relevanz eine korrekte Bewertung der Qualität der Antwort des Rangs ist.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Wenn ein neuer Aktualisierungszeitraum beginnt, wird das aktualisierte Modell ve
 <details>
 <summary><b>Wie importiere ich eine Lernrichtlinie?</b></summary>
 
-**Antwort:** Informieren Sie sich über [Konzepte von Lernrichtlinien](concept-active-learning.md#understand-learning-policy-settings) und die [Anwendung](how-to-learning-policy.md) einer neuen Lernrichtlinie. Wenn Sie keine Lernrichtlinie auswählen möchten, können Sie eine [Offlineauswertung](how-to-offline-evaluation.md) verwenden, um basierend auf Ihren aktuellen Ereignissen eine Lernrichtlinie vorzuschlagen.
+**Antwort:** Informieren Sie sich über [Konzepte von Lernrichtlinien](concept-active-learning.md#understand-learning-policy-settings) und die [Anwendung](how-to-manage-model.md) einer neuen Lernrichtlinie. Wenn Sie keine Lernrichtlinie auswählen möchten, können Sie eine [Offlineauswertung](how-to-offline-evaluation.md) verwenden, um basierend auf Ihren aktuellen Ereignissen eine Lernrichtlinie vorzuschlagen.
 
 </details>
 

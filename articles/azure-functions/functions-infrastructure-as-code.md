@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963953"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621052"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -309,17 +309,25 @@ Der Premium-Tarif bietet die gleiche Skalierung wie der Verbrauchstarif, umfasst
 
 ### <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
-Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `sku`-Eigenschaftswert angeben.
+Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie können ihn angeben, indem Sie entweder `EP1`, `EP2` oder `EP3` für den `Name`-Eigenschaftswert im `sku`-[Beschreibungsobjekt](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object) angeben.
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```

@@ -4,11 +4,11 @@
   items:
     - name: Was ist Data Catalog?
       href: overview.md
-- name: Schnellstart
+- name: Schnellstarts
   items:
     - name: Erstellen einer Azure Data Catalog-Instanz
       href: data-catalog-get-started.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Registrieren von Datenassets
       href: register-data-assets-tutorial.md
@@ -24,7 +24,7 @@
       href: data-catalog-prerequisites.md
     - name: Häufig gestellte Fragen
       href: data-catalog-frequently-asked-questions.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Registrieren von Datenquellen
       href: data-catalog-how-to-register.md
@@ -34,7 +34,7 @@
       href: data-catalog-how-to-annotate.md
     - name: Dokumentdatenquellen
       href: data-catalog-how-to-documentation.md
-    - name: Verbindungen mit Datenquellen
+    - name: Verbindung mit Datenquellen herstellen
       href: data-catalog-how-to-connect.md
     - name: Arbeiten mit großen Datenquellen
       href: data-catalog-how-to-big-data.md

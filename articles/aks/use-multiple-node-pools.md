@@ -2,17 +2,14 @@
 title: Verwenden mehrerer Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.author: mlearned
-ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443923"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615694"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -32,8 +29,7 @@ Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Fü
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
 * Siehe [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Der Standardknotenpool (der erste) kann nicht gelöscht werden.
-* Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
+* Sie können den Systemknotenpool, standardmäßig der erste Knotenpool, nicht löschen.
 * Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt.
 * Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 * Der Name eines Knotenpools darf nur Kleinbuchstaben und Ziffern enthalten und muss mit einem Kleinbuchstaben beginnen. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.

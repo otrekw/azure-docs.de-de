@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561771"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623113"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Verwenden von Apache Hive als Tool zum Extrahieren, Transformieren und Laden (ETL)
 
@@ -81,7 +81,7 @@ Das ETL-Modell wird normalerweise für die folgenden Fälle verwendet:
 
 * Laden von Streamingdaten oder großen Mengen von halb- oder unstrukturierten Daten aus externen Quellen in eine vorhandene Datenbank oder ein Informationssystem.
 * Bereinigen, Transformieren und Überprüfen der Daten vor dem Laden, ggf. mit mehr als einem Transformationsdurchlauf durch den Cluster.
-* Generieren von Berichten und Visualisierungen, die regelmäßig aktualisiert werden.  Falls die Berichterstellung während des Tags beispielsweise zu lange dauert, können Sie die Erstellung des Berichts für die Nacht planen.  Sie können Azure Scheduler und PowerShell verwenden, um eine Hive-Abfrage automatisch auszuführen.
+* Generieren von Berichten und Visualisierungen, die regelmäßig aktualisiert werden. Falls die Berichterstellung während des Tags beispielsweise zu lange dauert, können Sie die Erstellung des Berichts für die Nacht planen. Um eine Hive-Abfrage automatisch auszuführen, können Sie [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) und PowerShell verwenden.
 
 Wenn das Ziel für die Daten keine Datenbank ist, können Sie eine Datei im passenden Format innerhalb der Abfrage generieren, z.B. eine CSV-Datei. Diese Datei kann dann in Excel oder Power BI importiert werden.
 

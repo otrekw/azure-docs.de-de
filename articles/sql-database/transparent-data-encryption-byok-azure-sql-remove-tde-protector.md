@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/24/2020
+ms.openlocfilehash: 811e3bc206b4d98106bdbb1ce2655cd69c8585a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201661"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589248"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 
@@ -43,11 +43,11 @@ Informationen zur Installation finden Sie unter [Installieren der Azure CLI](/cl
 
 In dieser Anleitung wird beschrieben, wie auf eine möglicherweise kompromittierte TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Data Warehouse-Instanz zu reagieren ist, die TDE mit vom Kunden verwalteten Schlüsseln in Azure Key Vault mit BYOK-Unterstützung (Bring Your Own Key) verwendet. Weitere Informationen zu BYOK-Unterstützung für TDE finden Sie auf der [Übersichtsseite](transparent-data-encryption-byok-azure-sql.md).
 
-Die folgenden Verfahren sollten nur in Ausnahmefällen oder in Testumgebungen durchgeführt werden. Lesen Sie den Leitfaden sorgfältig, da das Löschen von aktiv verwendeten TDE-Schutzvorrichtungen aus Azure Key Vault zu **Datenverlust** führen kann.
+Die folgenden Verfahren sollten nur in Ausnahmefällen oder in Testumgebungen durchgeführt werden. Lesen Sie den Leitfaden sorgfältig, da das Löschen von aktiv verwendeten TDE-Schutzvorrichtungen aus Azure Key Vault zur **Nichtverfügbarkeit der Datenbank** führen kann.
 
 Wenn der Verdacht besteht, dass ein Schlüssel kompromittiert ist, d.h ein Dienst oder Benutzer unautorisierten Zugriff auf den Schlüssel hat, empfiehlt es sich, den Schlüssel zu löschen.
 
-Denken Sie daran: Sobald die TDE-Schutzvorrichtung aus Key Vault gelöscht ist, **werden alle Verbindungen mit den verschlüsselten Datenbanken unter dem Server blockiert, und diese Datenbanken werden offline geschaltet und innerhalb von 24 Stunden gelöscht**. Auf alte Sicherungen, die mit dem kompromittierten Schlüssel verschlüsselt wurden, kann nicht mehr zugegriffen werden.
+Beachten Sie: Sobald die TDE-Schutzvorrichtung in Key Vault gelöscht ist, beginnen alle verschlüsselten Datenbanken nach etwa 10 Minuten, mit einer entsprechenden Fehlermeldung alle Verbindungen zu verweigern und ihren Status in [Kein Zugriff](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector) zu ändern.
 
 In den folgenden Schritten wird beschrieben, wie Sie die Fingerabdrücke der TDE-Schutzvorrichtung überprüfen, die von den virtuellen Protokolldateien (Virtual Log Files, VLF) einer bestimmten Datenbank weiterhin verwendet werden.
 Der Fingerabdruck der aktuellen TDE-Schutzvorrichtung für die Datenbank und die Datenbank-ID können gefunden werden durch Ausführung von:

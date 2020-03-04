@@ -1,43 +1,27 @@
 ---
-title: Schlüssel-Wert-Speicher von Azure App Configuration
-description: Enthält eine Übersicht über die Speicherung von Konfigurationsdaten in Azure App Configuration.
+title: Grundlagen des Schlüssel-Wert-Speichers von Azure App Configuration
+description: Erfahren Sie, wie Konfigurationsdaten in Azure App Configuration gespeichert werden.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.date: 02/19/2020
+ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425220"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523603"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
-Azure App Configuration speichert Konfigurationsdaten als Schlüssel-Wert-Paare. Schlüssel-Wert-Paare sind eine einfache und flexible Methode zur Darstellung verschiedener Arten von Anwendungseinstellungen, mit denen Entwickler vertraut sind.
+Azure App Configuration speichert Konfigurationsdaten als Schlüssel-Wert-Paare. Schlüssel-Wert-Paare sind eine einfache und flexible Darstellung von Anwendungseinstellungen, die von Entwicklern verwendet werden.
 
 ## <a name="keys"></a>Schlüssel
 
-Schlüssel dienen als Name für Schlüssel-Wert-Paare und werden zum Speichern und Abrufen von entsprechenden Werten verwendet. Es ist eine häufige Vorgehensweise, Schlüssel mit einem Trennzeichen (z. B. `/` oder `:`) in einem hierarchischen Namespace zu organisieren. Verwenden Sie hierbei eine Konvention, die für Ihre Anwendung am besten geeignet ist. Bei App Configuration werden Schlüssel als Ganzes behandelt. Sie werden nicht analysiert, um zu ermitteln, wie ihre Namen strukturiert sind, und es werden auch keine Regeln dafür erzwungen.
+Schlüssel dienen als Bezeichner für Schlüssel-Wert-Paare und werden zum Speichern und Abrufen von entsprechenden Werten verwendet. Es ist eine häufige Vorgehensweise, Schlüssel mit einem Trennzeichen (z. B. `/` oder `:`) in einem hierarchischen Namespace zu organisieren. Verwenden Sie hierbei eine Konvention, die für Ihre Anwendung am besten geeignet ist. Bei App Configuration werden Schlüssel als Ganzes behandelt. Sie werden nicht analysiert, um zu ermitteln, wie ihre Namen strukturiert sind, und es werden auch keine Regeln dafür erzwungen.
 
-Bei Verwendung von Konfigurationsdaten in Anwendungsframeworks sind möglicherweise bestimmte Benennungsschemas für Schlüssel-Wert-Paare vorgegeben. Für das Spring Cloud-Framework von Java werden beispielsweise `Environment`-Ressourcen definiert, die Einstellungen für eine Spring-Anwendung für die Parametrisierung durch Variablen, z. B. *application name* und *profile* bereitstellen. Schlüssel für Spring Cloud-bezogene Konfigurationsdaten beginnen normalerweise mit diesen beiden Elementen, die durch ein Trennzeichen getrennt sind.
-
-Für in App Configuration gespeicherte Schlüssel wird die Groß-/Kleinschreibung beachtet, und es handelt sich um Unicode-basierte Zeichenfolgen. *app1* und *App1* sind in einem App Configuration-Speicher zwei unterschiedliche Schlüssel. Beachten Sie dies, wenn Sie in einer Anwendung Konfigurationseinstellungen verwenden, da für Konfigurationsschlüssel in einigen Frameworks die Groß-/Kleinschreibung nicht beachtet wird. Vom ASP.NET Core-Konfigurationssystem werden Schlüssel beispielsweise als Zeichenfolgen ohne Berücksichtigung der Groß-/Kleinschreibung behandelt. Um beim Abfragen von App Configuration in einer ASP.NET Core-Anwendung unvorhersehbares Verhalten zu vermeiden, verwenden Sie keine Schlüssel, die sich nur anhand der Groß-/Kleinschreibung unterscheiden.
-
-Sie können in Schlüsselnamen, die in App Configuration eingegeben werden, beliebige Unicode-Zeichen verwenden, mit Ausnahme von `*`, `,` und `\`. Diese Zeichen sind reserviert. Wenn Sie ein reserviertes Zeichen einfügen möchten, müssen Sie es wie folgt mit Escapezeichen versehen: `\{Reserved Character}`. Für ein Schlüssel-Wert-Paar gilt ein kombiniertes Größenlimit von 10 KB. Dieses Limit umfasst alle Zeichen des Schlüssels, seinen Wert sowie alle zugeordneten optionalen Attribute. Innerhalb dieses Limits können Sie für Schlüssel viele hierarchische Ebenen verwenden.
-
-### <a name="design-key-namespaces"></a>Entwerfen von Schlüsselnamespaces
-
-Es gibt zwei allgemeine Vorgehensweisen beim Benennen von Schlüsseln, die für Konfigurationsdaten verwendet werden: flach und hierarchisch. Aus Sicht der Anwendungsnutzung ähneln sich diese Vorgehensweisen, aber die hierarchische Benennung bietet eine Reihe von Vorteilen:
-
-* Einfachere Lesbarkeit. Um lange Folgen von Zeichen zu vermeiden, fungieren Trennzeichen in einem hierarchischen Schlüsselnamen als Leerstellen in einem Satz. Sie bieten außerdem natürliche Unterbrechungen zwischen Wörtern.
-* Einfachere Verwaltung. Eine Schlüsselnamenhierarchie umfasst logische Gruppen mit Konfigurationsdaten.
-* Einfachere Nutzung. Es ist einfacher, eine Abfrage zu schreiben, bei der sich für Schlüssel in einer hierarchischen Struktur Musterübereinstimmungen ergeben und nur ein Teil der Konfigurationsdaten abgerufen wird. Außerdem verfügen viele neuere Programmierframeworks über native Unterstützung für hierarchische Konfigurationsdaten, damit Ihre Anwendung spezifische Konfigurationssätze nutzen kann.
-
-Sie können Schlüssel in App Configuration auf viele verschiedene Arten hierarchisch organisieren. Stellen Sie sich diese Schlüssel als [URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) vor. Jeder hierarchische Schlüssel ist ein *Ressourcenpfad* mit einer oder mehreren Komponenten, die durch Trennzeichen verbunden sind. Wählen Sie aus, welches Zeichen Sie basierend auf den Anforderungen Ihrer Anwendung, Ihrer Programmiersprache oder Ihrem Framework verwenden möchten. Verwenden Sie für unterschiedliche Schlüssel verschiedene Trennzeichen in App Configuration.
-
-Hier sind einige Beispiele dafür angegeben, wie Sie Ihre Schlüsselnamen in einer Hierarchie strukturieren können:
+Hier sind zwei Beispiele für in eine Hierarchie strukturierte Schlüsselnamen:
 
 * Basierend auf Komponentendiensten
 
@@ -48,6 +32,24 @@ Hier sind einige Beispiele dafür angegeben, wie Sie Ihre Schlüsselnamen in ein
 
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+
+Bei Verwendung von Konfigurationsdaten in Anwendungsframeworks sind möglicherweise bestimmte Benennungsschemas für Schlüsselwerte vorgegeben. Beispielsweise definiert das Spring Cloud-Framework von Java `Environment`-Ressourcen, die Einstellungen für eine Spring-Anwendung bereitstellen.  Diese werden durch Variablen parametrisiert, die *Anwendungsname* und *Profil* enthalten. Schlüssel für Spring Cloud-bezogene Konfigurationsdaten beginnen normalerweise mit diesen beiden Elementen, die durch ein Trennzeichen getrennt sind.
+
+Für in App Configuration gespeicherte Schlüssel wird die Groß-/Kleinschreibung beachtet, und es handelt sich um Unicode-basierte Zeichenfolgen. *app1* und *App1* sind in einem App Configuration-Speicher zwei unterschiedliche Schlüssel. Beachten Sie dies, wenn Sie in einer Anwendung Konfigurationseinstellungen verwenden, da für Konfigurationsschlüssel in einigen Frameworks die Groß-/Kleinschreibung nicht beachtet wird. Schlüssel sollten nicht durch Groß-/Kleinschreibung unterschieden werden.
+
+Sie können in Schlüsselnamen beliebige Unicodezeichen verwenden, mit Ausnahme von `*`, `,` und `\`.  Wenn Sie eines dieser reservierten Zeichen einfügen müssen, versehen Sie es wie folgt mit Escapezeichen: `\{Reserved Character}`. 
+
+Für ein Schlüssel-Wert-Paar gilt ein kombiniertes Größenlimit von 10 KB. Dieses Limit umfasst alle Zeichen des Schlüssels, seinen Wert sowie alle zugeordneten optionalen Attribute. Innerhalb dieses Limits können Sie für Schlüssel viele hierarchische Ebenen verwenden.
+
+### <a name="design-key-namespaces"></a>Entwerfen von Schlüsselnamespaces
+
+Es gibt zwei allgemeine Vorgehensweisen beim Benennen von Schlüsseln, die für Konfigurationsdaten verwendet werden: flach und hierarchisch. Aus Sicht der Anwendungsnutzung ähneln sich diese Vorgehensweisen, aber die hierarchische Benennung bietet eine Reihe von Vorteilen:
+
+* Einfachere Lesbarkeit. Trennzeichen in einem hierarchischen Schlüsselnamen fungieren in einem Satz als Leerstellen. Sie bieten außerdem natürliche Unterbrechungen zwischen Wörtern.
+* Einfachere Verwaltung. Eine Schlüsselnamenhierarchie umfasst logische Gruppen mit Konfigurationsdaten.
+* Einfachere Nutzung. Es ist einfacher, eine Abfrage zu schreiben, bei der sich für Schlüssel in einer hierarchischen Struktur Musterübereinstimmungen ergeben und nur ein Teil der Konfigurationsdaten abgerufen wird. Außerdem verfügen viele neuere Programmierframeworks über native Unterstützung für hierarchische Konfigurationsdaten, damit Ihre Anwendung spezifische Konfigurationssätze nutzen kann.
+
+Sie können Schlüssel in App Configuration auf viele verschiedene Arten hierarchisch organisieren. Stellen Sie sich diese Schlüssel als [URIs](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) vor. Jeder hierarchische Schlüssel ist ein *Ressourcenpfad* mit einer oder mehreren Komponenten, die durch Trennzeichen verbunden sind. Wählen Sie aus, welches Zeichen Sie basierend auf den Anforderungen Ihrer Anwendung, Ihrer Programmiersprache oder Ihrem Framework verwenden möchten. Verwenden Sie für unterschiedliche Schlüssel verschiedene Trennzeichen in App Configuration.
 
 ### <a name="label-keys"></a>Bezeichnen von Schlüsseln
 
@@ -61,7 +63,7 @@ Eine Bezeichnung ist praktisch zum Erstellen von Varianten eines Schlüssels. Mi
 
 ### <a name="version-key-values"></a>Versionsverwaltung von Schlüsselwerten
 
-App Configuration versieht Schlüsselwerte nicht automatisch mit Versionsangaben, wenn sie geändert werden. Verwenden Sie Bezeichnungen als Möglichkeit zum Erstellen von mehreren Versionen eines Schlüsselwerts. Beispielsweise können Sie eine Zahl einer Anwendungsversion oder eine Git-Commit-ID in Bezeichnungen eingeben, um Schlüsselwerte zu identifizieren, die einem bestimmten Softwarebuild zugeordnet sind.
+App Configuration versieht Schlüsselwerte nicht automatisch mit Versionsangaben. Verwenden Sie Bezeichnungen als Möglichkeit zum Erstellen von mehreren Versionen eines Schlüsselwerts. Beispielsweise können Sie eine Zahl einer Anwendungsversion oder eine Git-Commit-ID in Bezeichnungen eingeben, um Schlüsselwerte zu identifizieren, die einem bestimmten Softwarebuild zugeordnet sind.
 
 Sie können in Bezeichnungen beliebige Unicodezeichen verwenden, mit Ausnahme von `*`, `,` und `\`. Diese Zeichen sind reserviert. Um ein reserviertes Zeichen einzufügen, müssen Sie es wie folgt mit Escapezeichen versehen: `\{Reserved Character}`.
 
@@ -74,7 +76,7 @@ Jeder Schlüsselwert wird anhand seines Schlüssels und einer Bezeichnung, die a
 | `key` wird weggelassen oder lautet `key=*` | Übereinstimmung mit allen Schlüsseln |
 | `key=abc` | Exakte Übereinstimmung mit dem Schlüsselnamen **abc** |
 | `key=abc*` | Übereinstimmung mit Schlüsselnamen, die mit **abc** beginnen |
-| `key=abc,xyz` | Übereinstimmung mit Schlüsselnamen mit **abc** oder **xyz**, auf fünf CSVs beschränkt |
+| `key=abc,xyz` | Übereinstimmung mit Schlüsselnamen mit **abc** oder **xyz**. Auf fünf CSVs beschränkt. |
 
 Sie können auch die folgenden Bezeichnungsmuster verwenden:
 
@@ -88,9 +90,9 @@ Sie können auch die folgenden Bezeichnungsmuster verwenden:
 
 ## <a name="values"></a>Werte
 
-Bei Werten, die Schlüsseln zugewiesen sind, handelt es sich ebenfalls um Unicode-Zeichenfolgen. Sie können alle Unicode-Zeichen für Werte verwenden. Jedem Wert ist ein optionaler, benutzerdefinierter Inhaltstyp zugeordnet. Verwenden Sie dieses Attribut, um Informationen (z. B. ein Codierungsschema) zu einem Wert zu speichern, die Ihrer Anwendung die richtige Verarbeitung ermöglichen.
+Bei Werten, die Schlüsseln zugewiesen sind, handelt es sich ebenfalls um Unicode-Zeichenfolgen. Sie können alle Unicode-Zeichen für Werte verwenden. Jedem Wert ist ein optionaler, benutzerdefinierter Inhaltstyp zugeordnet. Verwenden Sie dieses Attribut, um Informationen zu einem Wert zu speichern, die Ihrer Anwendung die richtige Verarbeitung ermöglichen.
 
-In einem App Configuration-Speicher gespeicherte Konfigurationsdaten, die alle Schlüssel und Werte umfassen, werden im ruhenden Zustand und während der Übertragung verschlüsselt. App Configuration ist keine Ersatzlösung für Azure Key Vault. Speichern Sie darin keine Anwendungsgeheimnisse.
+In einem App Configuration-Speicher gespeicherte Konfigurationsdaten werden im ruhenden Zustand und während der Übertragung verschlüsselt. Die Schlüssel werden im Ruhezustand nicht verschlüsselt. App Configuration ist keine Ersatzlösung für Azure Key Vault. Speichern Sie darin keine Anwendungsgeheimnisse.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

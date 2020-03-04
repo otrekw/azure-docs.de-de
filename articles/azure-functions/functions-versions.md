@@ -3,12 +3,12 @@ title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290375"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539500"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -38,7 +38,7 @@ Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-langua
 
 ## <a name="creating-1x-apps"></a>Ausführen auf einer spezifischen Version
 
-Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 2.x festgelegt. Diese Version kann bei Bedarf geändert werden. Die Runtimeversion kann nur in 1.x geändert werden, wenn Sie Ihre Funktions-App erstellt, aber noch keine Funktionen hinzugefügt haben.  Der Wechsel zwischen 2.x und 3.x ist auch bei Apps möglich, die bereits über Funktionen verfügen. Es empfiehlt sich allerdings trotzdem, zuerst einen Test in einer neuen App durchzuführen.
+Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 3.x festgelegt. Diese Version kann bei Bedarf geändert werden. Die Runtimeversion kann nur in 1.x geändert werden, wenn Sie Ihre Funktions-App erstellt, aber noch keine Funktionen hinzugefügt haben.  Der Wechsel zwischen 2.x und 3.x ist auch bei Apps möglich, die bereits über Funktionen verfügen. Es empfiehlt sich allerdings trotzdem, zuerst einen Test in einer neuen App durchzuführen.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrieren von 1.x zu neueren Versionen
 

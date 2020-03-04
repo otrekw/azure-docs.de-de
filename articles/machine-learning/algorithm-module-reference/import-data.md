@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163193"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598458"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -48,9 +48,7 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
 
 1. Fügen Sie Ihrer Pipeline das Modul **Import Data** (Daten importieren) hinzu. Sie finden dieses Modul in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe) im Designer.
 
-1. Klicken Sie auf **Launch Data Import Wizard** (Datenimport-Assistenten starten), um die Datenquelle mithilfe eines Assistenten zu konfigurieren.
-
-    Der Assistent ruft den Kontonamen und die Anmeldeinformationen ab und unterstützt Sie bei der Konfiguration weiterer Optionen. Wenn Sie eine bestehende Konfiguration bearbeiten, werden die aktuellen Werte zuerst geladen.
+1. Wählen Sie das Modul aus, um den rechten Bereich zu öffnen.
 
 1. Wählen Sie **Datenquelle** und dann den Datenquellentyp aus. Dabei kann es sich um „HTTP“ oder „Datenspeicher“ handeln.
 
@@ -60,6 +58,11 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
 
     ![import-data-preview](media/module/import-data.png)
 
+1. Das Kontrollkästchen **Ausgabe erneut generieren** legt fest, ob das Modul zum erneuten Generieren der Ausgabe zur Laufzeit ausgeführt werden soll. 
+
+    Die Option ist standardmäßig deaktiviert. Dies bedeutet, dass das System die Ausgabe der letzten Ausführung wiederverwendet, um die Laufzeit zu verkürzen, wenn das Modul bereits mit denselben Parametern ausgeführt wurde. 
+
+    Wenn sie ausgewählt ist, führt das System das Modul erneut aus, um die Ausgabe neu zu generieren. Wählen Sie also diese Option aus, wenn die zugrunde liegenden Daten im Speicher aktualisiert werden, um die neuesten Daten zu erhalten.
 
 
 1. Ausführen der Pipeline.

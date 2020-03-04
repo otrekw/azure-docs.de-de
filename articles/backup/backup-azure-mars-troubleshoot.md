@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installati
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 06c741547e0206059195f481ed29dc8e69aa4dd3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665316"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583808"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -20,11 +20,11 @@ In diesem Artikel erfahren Sie, wie Sie möglicherweise auftretende Fehler bei K
 Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS) beginnen:
 
 - [Stellen Sie sicher, dass der MARS-Agent aktuell](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
-- [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure eine Netzwerkverbindung besteht](https://aka.ms/AB-A4dp50).
+- [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure eine Netzwerkverbindung besteht](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Stellen Sie sicher, dass MARS ausgeführt wird (in der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
-- [Stellen Sie sicher, dass am Speicherort des Ablageordners 5-10 % freier Volumespeicherplatz vorhanden ist](https://aka.ms/AB-AA4dwtt).
-- [Prüfen Sie, ob Azure Backup von einem anderen Prozess oder einer Antivirensoftware beeinträchtigt wird](https://aka.ms/AB-AA4dwtk).
-- Wenn geplante Sicherungen fehlschlagen, manuelle Sicherungen jedoch funktionieren, lesen Sie den Abschnitt [Sicherungen werden nicht nach Zeitplan ausgeführt](https://aka.ms/ScheduledBackupFailManualWorks).
+- [Stellen Sie sicher, dass am Speicherort des Ablageordners 5-10 % freier Volumespeicherplatz vorhanden ist](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Prüfen Sie, ob Azure Backup von einem anderen Prozess oder einer Antivirensoftware beeinträchtigt wird](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- Wenn geplante Sicherungen fehlschlagen, manuelle Sicherungen jedoch funktionieren, lesen Sie den Abschnitt [Sicherungen werden nicht nach Zeitplan ausgeführt](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule).
 - Stellen Sie sicher, dass Ihr Betriebssystem über die neuesten Updates verfügt.
 - [Stellen Sie sicher, dass nicht unterstützte Laufwerke und Dateien mit nicht unterstützten Attributen von der Sicherung ausgeschlossen werden](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
 - Vergewissern Sie sich, dass die Uhr des geschützten Systems für die richtige Zeitzone konfiguriert ist.
@@ -33,7 +33,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
   - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wird.
   - Verwenden Sie dieselbe Passphrase, die ursprünglich zum Registrieren des Servers verwendet wurde.
 - Bei Offlinesicherungen müssen Sie sicherstellen, dass Azure PowerShell 3.7.0 auf dem Quellcomputer und dem Zielcomputer für die Sicherungskopie installiert ist, bevor Sie die Sicherung starten.
-- Wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird, lesen Sie [diesen Artikel](https://aka.ms/AB-AA4dwtr).
+- Wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird, lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine).
 
 ## <a name="invalid-vault-credentials-provided"></a>Es wurden ungültige Tresoranmeldeinformationen angegeben.
 
@@ -42,7 +42,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | Ursache | Empfohlene Aktionen |
 | ---     | ---    |
 | **Die Tresor-Anmeldeinformationen sind ungültig** <br/> <br/> Die Dateien mit den Tresoranmeldeinformationen sind möglicherweise beschädigt oder abgelaufen. (Beispiel: Sie wurden möglicherweise mehr als 48 Stunden vor der Registrierung heruntergeladen.)| Laden Sie neue Anmeldeinformationen aus dem Recovery Services-Tresor im Azure-Portal herunter. (Siehe Schritt 6 im Abschnitt [Herunterladen des MARS-Agents](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent).) Führen Sie dann nach Bedarf die folgenden Schritte aus: <ul><li> Wenn Sie MARS bereits installiert und registriert haben, öffnen Sie die MMC-Konsole des Microsoft Azure Backup-Agents, und wählen Sie dann **Server registrieren** im Bereich **Aktionen** aus, um die Registrierung mit den neuen Anmeldeinformationen abzuschließen. <br/> <li> Wenn bei der Neuinstallation ein Fehler auftritt, wiederholen Sie den Installationsvorgang mit neuen Anmeldeinformationen.</ul> **Hinweis**: Wenn mehrere Dateien mit Tresor-Anmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei für die nächsten 48 Stunden gültig. Wir empfehlen, eine neue Datei mit Tresor-Anmeldeinformationen herunterzuladen.
-| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.
+| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.<br></br> Wenn Sie die Verbindung über Azure Express Route herstellen, stellen Sie sicher, dass die Einstellungen wie unter [Azure ExpressRoute-Unterstützung](backup-support-matrix-mars-agent.md#azure-expressroute-support) beschrieben konfiguriert sind.
 | **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Weitere Empfehlungen

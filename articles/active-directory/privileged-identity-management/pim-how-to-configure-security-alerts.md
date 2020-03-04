@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024193"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498922"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in Privileged Identity Management
 
@@ -32,11 +32,11 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Sicherheitswarnungen für Azure AD-Rollen zu untersuchen.
 
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+# <a name="new-version"></a>[Neue Version](#tab/new)
 
 ![Azure AD-Rollen – Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -135,7 +135,7 @@ Passen Sie die Einstellungen für die verschiedenen Warnungen so an, dass sie f�
 
 ![Einstellungenseite für eine Warnung zum Aktivieren und Konfigurieren von Einstellungen](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ![Azure AD-Rollen – Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 

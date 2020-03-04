@@ -136,7 +136,7 @@
           href: provision-throughput-autopilot.md
         - name: Häufig gestellte Fragen zu Autopilot
           href: autopilot-faq.md
-    - name: SQL-Abfragereferenz
+    - name: SQL-Abfrage (SQL query)
       items:
         - name: Erste Schritte
           displayName: 'sql query, query basics'
@@ -437,6 +437,9 @@
             - name: Indizieren von Geodaten
               displayName: 'geospatial, spatial, index'
               href: sql-query-geospatial-index.md
+        - name: Datetime
+          displayName: 'datetime, date, time'
+          href: working-with-dates.md
         - name: Parametrisierte Abfrage
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
@@ -464,10 +467,6 @@
             - name: Indizierungsrichtlinien
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Datentypen
-          items:
-            - name: Datetime
-              href: working-with-dates.md
         - name: Gültigkeitsdauer
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md

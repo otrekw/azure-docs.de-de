@@ -5,10 +5,11 @@
     - name: Was ist Azure Front Door Service?
       href: front-door-overview.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Erstellen einer „Front Door“
       href: quickstart-create-front-door.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
       href: front-door-custom-domain.md

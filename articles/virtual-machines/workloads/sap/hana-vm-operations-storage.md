@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/27/2019
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707477"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598526"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -54,8 +54,11 @@ Da für DBMS-Systeme (und somit auch für SAP HANA) eine geringe Speicherlatenz 
 
 **Empfehlung: Als Stripegrößen für RAID 0 wird Folgendes empfohlen:**
 
-- 64 KB oder 128 KB für **/hana/data**
+- 256 KB für **/hana/log**
 - 32 KB für **/hana/log**
+
+> [!IMPORTANT]
+> Die Stripegröße für „/hana/data“ wurde abweichend von früheren Empfehlungen von 64 KB oder 128 KB auf der Grundlage von Kundenerfahrungen mit neueren Linux-Versionen in 256 KB geändert. Die Größe von 256 KB bietet eine etwas bessere Leistung.
 
 > [!NOTE]
 > Sie müssen keine Redundanzebenen mit RAID-Volumes konfigurieren, da Azure Storage Premium und Standard drei Images einer virtuellen Festplatte beibehalten. Die Nutzung eines RAID-Volumes dient nur dazu, Volumes zu konfigurieren, die genügend E/A-Durchsatz bieten.
@@ -65,7 +68,7 @@ Das Kumulieren einer Reihe von Azure-VHDs unter einem RAID-Volume ist für den I
 Darüber hinaus sollten Sie den E/A-Gesamtdurchsatz eines virtuellen Computers beachten, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Speicherdurchsatz im Allgemeinen ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) beschrieben.
 
 ## <a name="linux-io-scheduler-mode"></a>E/A-Scheduler-Modus für Linux
-Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter und SAP empfehlen im Allgemeinen, den E/A-Scheduler-Modus für Datenträgervolumes von **cfq** in **noop** zu ändern. Details finden Sie im [SAP-Hinweis 1984787](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter und SAP empfehlen im Allgemeinen, den E/A-Schedulermodus für Datenträgervolumes von **cfq** in **noop** (Non-Multiqueue) oder **none** (Multiqueue) zu ändern. Details finden Sie im [SAP-Hinweis 1984787](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Lösungen mit Storage Premium und Azure-Schreibbeschleunigung für virtuelle Azure-Computer der M-Serie
@@ -182,7 +185,7 @@ Microsoft führt derzeit einen neuen Azure-Speichertyp namens [Azure Ultra-Daten
 
 Mit einem Ultra-Datenträger können Sie einen einzelnen Datenträger definieren, der Ihre Anforderungen hinsichtlich Größe, IOPS und Datenträgerdurchsatz erfüllt. Sie müssen also keine Manager für logische Volumes wie LVM oder MDADM zusätzlich zu Azure Storage Premium mehr verwenden, um Volumes zu erstellen, die Ihre Anforderungen an IOPS und Durchsatz erfüllen. Sie können eine Konfigurationsmischung aus Ultra-Datenträgern und Storage Premium ausführen. Auf diese Weise können Sie die Verwendung von Ultra-Datenträgern auf die leistungskritischen Volumes „/hana/data“ und „/hana/log“ beschränken und die anderen Volumes mit Azure Storage Premium nutzen.
 
-Ein weiterer Vorteil eines Ultra-Datenträgers kann auch die bessere Leselatenz im Vergleich mit Storage Premium sein. Eine geringere Leselatenz kann auch zu Vorteilen führen, wenn Sie die HANA-Startdauern und den nachfolgenden Ladevorgang der Daten in den Arbeitsspeicher verkürzen möchten. Weitere Vorteile von Disk Storage Ultra können sich zudem ergeben, wenn von HANA Sicherungspunkte geschrieben werden. Da Storage Premium-Datenträger für „/hana/data“ normalerweise nicht per Schreibbeschleunigung zwischengespeichert werden, ist die Schreiblatenz für „/hana/data“ unter Storage Premium verglichen mit dem Ultra-Datenträger höher. Es ist zu erwarten, dass das Schreiben von Sicherungspunkten per Ultra-Datenträger auf dem Ultra-Datenträger eine bessere Leistung aufweist.
+Ein weiterer Vorteil eines Ultra-Datenträgers kann auch die bessere Leselatenz im Vergleich mit Storage Premium sein. Eine geringere Leselatenz kann auch Vorteile mit sich bringen, wenn Sie die HANA-Startdauern und das nachfolgende Laden der Daten in den Arbeitsspeicher verkürzen möchten. Weitere Vorteile von Disk Storage Ultra können sich zudem ergeben, wenn von HANA Sicherungspunkte geschrieben werden. Da Storage Premium-Datenträger für „/hana/data“ normalerweise nicht per Schreibbeschleunigung zwischengespeichert werden, ist die Schreiblatenz für „/hana/data“ unter Storage Premium verglichen mit dem Ultra-Datenträger höher. Es ist zu erwarten, dass das Schreiben von Sicherungspunkten per Ultra-Datenträger auf dem Ultra-Datenträger eine bessere Leistung aufweist.
 
 > [!IMPORTANT]
 > Ultra-Datenträger sind noch nicht in allen Azure-Regionen vorhanden und unterstützen noch nicht alle unten aufgeführten VM-Typen. Ausführliche Informationen dazu, wo Ultra-Datenträger verfügbar sind und welche VM-Familien unterstützt werden, finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk).
@@ -195,8 +198,8 @@ Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschri
 | VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | Volume „/hana/data“ | E/A-Durchsatz für „/hana/data“ | IOPS für „/hana/data“ | Volume „/hana/log“ | E/A-Durchsatz für „/hana/log“ | IOPS für „/hana/log“ |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1\.200 MB/s | 600 GB | 700 MBit/s | 7\.500 | 512 GB | 500 MBit/s  | 2\.000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBit/s | 7\.500 | 256 GB | 250 MBit/s  | 2\.000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBit/s | 7\.500 | 256 GB | 250 MBit/s  | 2\.000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBit/s | 7\.500 | 256 GB | 250 MBit/s  | 2\.000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBit/s | 7\.500 | 256 GB | 250 MBit/s  | 2\.000 |
 | M64ls | 512 GB | 1\.000 MB/s | 600 GB | 600 MBit/s | 7\.500 | 512 GB | 400 MBit/s  | 2\.500 |
 | M64s | 1\.000 GiB | 1\.000 MB/s |  1\.200 GB | 600 MBit/s | 7\.500 | 512 GB | 400 MBit/s  | 2\.500 |
 | M64ms | 1\.750 GiB | 1\.000 MB/s | 2\.100 GB | 600 MBit/s | 7\.500 | 512 GB | 400 MBit/s  | 2\.500 |

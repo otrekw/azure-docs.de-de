@@ -16,12 +16,12 @@ ms.author: arjay
 ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f500f662db11aaa63548f7d19ace00553d5159af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f2a01b74212e51dd7b5c31ffb59707068211c6d4
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547556"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562223"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produktnamen und Serviceplanbezeichner für die Lizenzierung
 
@@ -29,7 +29,7 @@ Bei der Verwaltung von Lizenzen im [Azure-Portal](https://portal.azure.com/#blad
 
 - **Produktname**: wird in Verwaltungsportalen verwendet
 - **Zeichenfolgen-ID**: wird von PowerShell v1.0-Cmdlets verwendet, wenn Vorgänge für Lizenzen durchgeführt werden
-- **GUID**: GUID, die von Azure AD Graph und Microsoft Graph verwendet wird
+- **GUID**: Von der Microsoft Graph-API verwendete GUID
 - **Enthaltene Dienstpläne**: Eine Liste der im Produkt enthaltenen Dienstpläne, die der Zeichenfolgen-ID und der GUID entsprechen
 - **Enthaltene Dienstpläne (Anzeigenamen)** : Eine Liste der im Produkt enthaltenen Dienstpläne (Anzeigenamen), die der Zeichenfolgen-ID und der GUID entsprechen
 

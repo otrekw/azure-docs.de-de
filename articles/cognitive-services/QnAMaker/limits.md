@@ -3,12 +3,12 @@ title: 'Einschränkungen und Begrenzungen: QnA Maker'
 description: QnA Maker weist Metagrenzwerte für Teile der Wissensdatenbank und des Diensts auf. Es ist wichtig, Ihre Wissensdatenbank innerhalb dieser Grenzwerte zu halten, um sie testen und veröffentlichen zu können.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252007"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650366"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -55,7 +55,7 @@ Die maximale Anzahl von Deep-Links, die zum Extrahieren von Fragen und Antworten
 
 ## <a name="metadata-limits"></a>Grenzwerte für Metadaten
 
-Die Metadaten werden in Kleinbuchstaben gespeichert und verglichen.
+Metadaten werden als textbasiertes Schlüssel-Werte-Paar dargestellt, z. B. `product:windows 10`. Die Metadaten werden in Kleinbuchstaben gespeichert und verglichen.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Nach Azure Cognitive Search-Tarif
 
@@ -71,8 +71,8 @@ Die Länge und die zulässigen Zeichen für den Metadatennamen und -wert sind in
 
 |Element|Zulässige Zeichen|RegEx-Musterabgleich|Maximale Anzahl von Zeichen|
 |--|--|--|--|
-|Name|Zulässig:<br>alphanumerische Zeichen (Buchstaben und Ziffern)<br>`_` (Unterstrich)|`^[a-zA-Z0-9_]+$`|100|
-|value|Alles zulässig mit Ausnahme von:<br>`:` (Doppelpunkt)<br>`|` (senkrechter Strich)|`^[^:|]+$`|500|
+|Name (Schlüssel)|Zulässig:<br>alphanumerische Zeichen (Buchstaben und Ziffern)<br>`_` (Unterstrich)<br> Darf keine Leerzeichen enthalten.|`^[a-zA-Z0-9_]+$`|100|
+|value|Alles zulässig mit Ausnahme von:<br>`:` (Doppelpunkt)<br>`|` (senkrechter Strich)<br>Nur ein Wert ist zulässig.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Grenzwerte für die Inhalte einer Knowledge Base
@@ -103,4 +103,4 @@ Dabei handelt es sich um die Grenzwerte für die einzelnen Aktualisierungsaktion
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wann und wie [Diensttarife](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker) geändert werden:
+Erfahren Sie, wann und wie [Diensttarife](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) geändert werden:

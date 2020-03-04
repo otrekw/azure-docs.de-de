@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712566"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613763"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -94,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
     | Präfix der DNS-Bezeichnung          | Geben Sie einen DNS-Namen für die VM ein, z. B. *myvm*. |
     | Größe des virtuellen Computers                   | Geben Sie eine VM-Größe an, z. B. *Standard_DS2_v2*. |
     | Domäne für den Beitritt            | Der DNS-Name der mit Azure AD DS verwalteten Domäne, z. B. *aadds.contoso.com*. |
-    | Domänenbenutzername           | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aadds.contoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
+    | Domänenbenutzername           | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
     | Domänenkennwort           | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |
     | Optionaler OU-Pfad          | Die benutzerdefinierte Organisationseinheit, der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird die VM der Standardorganisationseinheit *AAD DC-Computer* hinzugefügt. |
     | Administratorbenutzername der VM         | Geben Sie ein lokales Administratorkonto an, das für die VM erstellt werden soll. |
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in 
     | Resource group            | Wählen Sie die Ressourcengruppe mit Ihrer vorhandenen VM aus. |
     | Location                  | Wählen Sie den Standort Ihrer vorhandenen VM aus. |
     | VM-Liste                   | Geben Sie die durch Trennzeichen getrennte Liste mit den vorhandenen VMs ein, die in die mit Azure AD DS verwaltete Domäne eingebunden werden sollen, z. B. *myVM1,myVM2*. |
-    | Benutzername für Domänenbeitritt     | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aadds.contoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
+    | Benutzername für Domänenbeitritt     | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
     | Benutzerkennwort für Domänenbeitritt | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |
     | Optionaler OU-Pfad          | Die benutzerdefinierte Organisationseinheit, der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird die VM der Standardorganisationseinheit *AAD DC-Computer* hinzugefügt. |
 

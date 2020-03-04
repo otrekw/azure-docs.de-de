@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370472"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623673"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +57,10 @@ Datenspeicher unterstützen derzeit das Speichern von Verbindungsinformationen i
 [Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Dienstprinzipal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;SQL-Datenbank&nbsp;| SQL-Authentifizierung <br>Dienstprinzipal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;PostgreSQL | SQL-Authentifizierung| ✓ | ✓ | ✓ |✓
-Azure&nbsp;Database&nbsp;for&nbsp;MySQL | SQL-Authentifizierung|  | ✓ | ✓ |✓
-Databricks-Dateisystem&nbsp;&nbsp;| Keine Authentifizierung | | ✓* | ✓ * |✓* 
+Azure&nbsp;Database&nbsp;for&nbsp;MySQL | SQL-Authentifizierung|  | ✓* | ✓* |✓*
+Databricks-Dateisystem&nbsp;&nbsp;| Keine Authentifizierung | | ✓** | ✓ ** |✓** 
 
-*nur in lokalen Computezielszenarien unterstützt
+*MySQL wird nur für die Pipeline [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) unterstützt. <br> \** Databricks wird nur für die Pipeline [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) unterstützt.
 
 ### <a name="storage-guidance"></a>Leitfaden für Speicher
 
@@ -77,20 +77,22 @@ Wenn Sie eine Azure Storage-Lösung als Datenspeicher registrieren, erstellen Si
 
 >[!IMPORTANT]
 > Im Rahmen des aktuellen Erstellungs- und Registrierungsvorgangs des Datenspeichers überprüft Azure Machine Learning, ob der vom Benutzer zur Verfügung gestellte Prinzipal (Benutzername, Dienstprinzipal oder SAS-Token) Zugriff auf den zugrunde liegenden Speicherdienst hat. 
-<br>
+<br><br>
 Bei Datenspeichern von Azure Data Lake Storage Gen 1 und 2 erfolgt diese Überprüfung jedoch erst später, wenn Datenzugriffsmethoden wie [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) oder [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) aufgerufen werden. 
 
 ### <a name="python-sdk"></a>Python SDK
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format `register_azure_*` auf.
 
-Die Informationen, die Sie zum Auffüllen der `register()`-Methode benötigen, finden Sie im [Azure-Portal](https://portal.azure.com):
+Die Informationen, die Sie zum Auffüllen der `register()`-Methode benötigen, finden Sie im [Azure-Portal](https://portal.azure.com).
+Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. 
 
-1. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. 
-2. Informationen wie Kontoname, Container und Name der Dateifreigabe finden Sie auf der Seite **Übersicht**. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** zu **Kontoschlüssel**. 
+* Zum Abrufen von Authentifizierungselementen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** zu **Kontoschlüssel**. 
+
+* Wechseln Sie für Dienstprinzipalelemente wie Mandanten-ID und Kunden-ID zu Ihren **App-Registrierungen**, und wählen Sie die zu verwendenden Apps aus. Die entsprechende **Übersichtsseite** enthält diese Punkte.
 
 > [!IMPORTANT]
-> Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, wird nur die Erstellung eines Azure-Blobdatenspeichers unterstützt. Legen Sie den-Parameter `grant_workspace_access` auf `True` fest, um für Ihren Arbeitsbereich Zugriff auf Ihr Speicherkonto zu gewähren.
+> Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, wird nur die Erstellung von Blob-, Dateifreigabe-, ADLS Gen 1- und ADLS Gen 2-Datenspeichern  **über das SDK** unterstützt. Legen Sie den-Parameter `grant_workspace_access` auf `True` fest, um für Ihren Arbeitsbereich Zugriff auf Ihr Speicherkonto zu gewähren.
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer, eine Azure-Dateifreigabe und Azure Data Lake Storage Generation 2 als Datenspeicher registrieren können. Weitere Speicherdienste finden Sie in der [Referenzdokumentation für die `register_azure_*`-Methoden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
 
@@ -134,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage Generation 2
 
-Für einen Datenspeicher von Azure Data Lake Storage Generation 2 (ADLS Gen 2) verwenden Sie [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-), um einen Datenspeicher für Anmeldeinformationen zu registrieren, der mit einem Azure DataLake Gen 2-Speicher mit [Dienstprinzipalberechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) verbunden ist. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Für einen Datenspeicher von Azure Data Lake Storage Generation 2 (ADLS Gen 2) verwenden Sie [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-), um einen Datenspeicher für Anmeldeinformationen zu registrieren, der mit einem Azure DataLake Gen 2-Speicher mit [Dienstprinzipalberechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) verbunden ist. Damit Sie Ihren Dienstprinzipal nutzen können, müssen Sie [Ihre Anwendung registrieren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) und die Rollenzuweisungen für den Leser- und Datenzugriff festlegen. Erfahren Sie mehr über die [für ADLS Gen 2 eingerichtete Zugriffssteuerung](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Der folgende Code erstellt den Datenspeicher `adlsgen2_datastore_name` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf das Dateisystem `test` im `account_name`-Speicherkonto zu und verwendet dazu die bereitgestellten Anmeldeinformationen des Dienstprinzipals.
 
@@ -162,12 +164,19 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 Erstellen Sie einen neuen Datenspeicher in wenigen Schritten in Azure Machine Learning-Studio:
 
+> [!IMPORTANT]
+> Wenn sich Ihr Speicherkonto in einem virtuellen Netzwerk befindet, wird nur die Erstellung von Datenspeichern [über das SDK](#python-sdk) unterstützt. 
+
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 1. Wählen Sie im linken Bereich unter **Verwalten** die Option **Datenspeicher** aus.
 1. Wählen Sie **+ Neuer Datenspeicher** aus.
 1. Füllen Sie das Formular für einen neuen Datenspeicher aus. Das Formular aktualisiert sich ausgehend von den gewählten Optionen für den Azure Storage-Typ und den Authentifizierungstyp intelligent selbst.
   
-Die Informationen, die Sie zum Auffüllen des Formulars benötigen, finden Sie im [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungselementen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** zu **Kontoschlüssel**.
+Die Informationen, die Sie zum Auffüllen des Formulars benötigen, finden Sie im [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. 
+
+* Zum Abrufen von Authentifizierungselementen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** zu **Kontoschlüssel**. 
+
+* Wechseln Sie für Dienstprinzipalelemente wie Mandanten-ID und Kunden-ID zu Ihren **App-Registrierungen**, und wählen Sie die zu verwendenden Apps aus. Die entsprechende **Übersichtsseite** enthält diese Punkte. 
 
 Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn Sie einen Azure-Blobdatenspeicher erstellen: 
     

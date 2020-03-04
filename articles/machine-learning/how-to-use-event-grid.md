@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 49ee00d43820d5aeb50e44cff1b6c5a448b4ce81
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904286"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623913"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Erstellen von ereignisgesteuerten Workflows für maschinelles Lernen (Vorschauversion)
 
@@ -25,15 +25,15 @@ Weitere Informationen finden Sie unter [Nutzen von Azure Machine Learning-Ereign
 
 Verwenden Sie Event Grid, um übliche Szenarien wie die folgenden zu ermöglichen:
 
-* Auslösen von Pipelines für erneutes Trainieren
+* Senden von E-Mails nach Abschluss der Ausführung
+* Verwenden einer Azure-Funktion nach dem Registrieren eines Modells
 * Streaming von Ereignissen aus Azure Machine Learning an verschiedene Endpunkte
+* Auslösen einer ML-Pipeline bei Drifterkennung
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
 * Mitwirkender- oder Besitzerzugriff auf den Azure Machine Learning-Arbeitsbereich, für den Sie Ereignisse erstellen.
-* Wählen Sie einen Ereignishandlerendpunkt aus, z. B. einen Webhook oder einen Event Hub. Weitere Informationen finden Sie unter [Ereignishandler](https://docs.microsoft.com/azure/event-grid/event-handlers). 
 
-## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Konfigurieren von Ereignissen für maschinelles Lernen mit dem Azure-Portal
+### <a name="configure-eventgrid-using-the-azure-portal"></a>Konfigurieren von EventGrid über das Azure-Portal
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu Ihrem Azure Machine Learning-Arbeitsbereich.
 
@@ -51,7 +51,7 @@ Verwenden Sie Event Grid, um übliche Szenarien wie die folgenden zu ermögliche
 
 Nachdem Sie Ihre Auswahl bestätigt haben, klicken Sie auf __Erstellen__. Nach der Konfiguration werden diese Ereignisse per Pushvorgang an ihren Endpunkt übermittelt.
 
-## <a name="set-up-azure-event-grid-using-cli"></a>Einrichten von Azure Event Grid über CLI
+### <a name="configure-eventgrid-using-the-cli"></a>Konfigurieren von EventGrid über das CLI
 
 Sie können entweder die neueste [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installieren oder die Azure Cloud Shell verwenden, die als Bestandteil Ihres Azure-Abonnements bereitgestellt wird.
 
@@ -77,6 +77,12 @@ az eventgrid event-subscription create \
 ```
 
 ## <a name="sample-scenarios"></a>Beispielszenarien
+
+### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Verwenden von Azure Functions, um ein Modell auf Basis von Tags bereitzustellen
+
+Ein Azure Machine Learning-Modellobjekt enthält Parameter, über die Sie Bereitstellungen abwickeln können, so z. B. Modellname, Version, Tag und Eigenschaft. Das Modellregistrierungsereignis kann einen Endpunkt auslösen, und Sie können eine Azure-Funktion verwenden, um ein Modell entsprechend den Werten dieser Parameter bereitzustellen.
+
+Ein Beispiel finden Sie im Repository unter [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid). Führen Sie die Schritte aus, die in der **README**-Datei angegeben sind.
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>Verwenden einer Logik-App, um E-Mail-Warnungen zu senden
 
@@ -158,12 +164,6 @@ Ab jetzt wird die Data Factory-Pipeline ausgelöst, wenn eine Datendrift auftrit
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>Verwenden von Azure Functions, um ein Modell auf Basis von Tags bereitzustellen
-
-Ein Azure Machine Learning-Modellobjekt enthält Parameter, über die Sie Bereitstellungen abwickeln können, so z. B. Modellname, Version, Tag und Eigenschaft. Das Modellregistrierungsereignis kann einen Endpunkt auslösen, und Sie können eine Azure-Funktion verwenden, um ein Modell entsprechend den Werten dieser Parameter bereitzustellen.
-
-Ein Beispiel finden Sie im Repository unter [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid). Führen Sie die Schritte aus, die in der **README**-Datei angegeben sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

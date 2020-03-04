@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206105"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562359"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamingendpunkte (Ursprung) in Azure Media Services
 
@@ -73,7 +73,7 @@ Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Prof
 
 <sup>1</sup> Wird nur direkt für den Streamingendpunkt verwendet, wenn das CDN nicht für den Endpunkt aktiviert ist.<br/>
 
-## <a name="properties"></a>Eigenschaften
+## <a name="streaming-endpoint-properties"></a>Eigenschaften von Streamingendpunkten
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
@@ -130,50 +130,36 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
 
 - `scaleUnits`: Stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Wenn Sie zum **Premium**-Type wechseln möchten, passen Sie `scaleUnits` an.
 
-## <a name="working-with-cdn"></a>Arbeiten mit dem CDN
+## <a name="why-use-multiple-streaming-endpoints"></a>Gründe für die Verwendung mehrerer Streamingendpunkte
 
-In den meisten Fällen sollte das CDN aktiviert sein. Wenn Sie jedoch von einer maximalen Parallelität von weniger als 500 Benutzern ausgehen, wird empfohlen, das CDN zu deaktivieren, da sich das CDN am besten mit Parallelität skalieren lässt.
+Ein einzelner Streamingendpunkt kann sowohl Live- als auch On-Demand-Videos streamen, und die meisten Kunden verwenden nur einen Streamingendpunkt. Dieser Abschnitt enthält einige Beispiele dafür, warum Sie möglicherweise mehrere Streamingendpunkte verwenden müssen.
 
-### <a name="considerations"></a>Überlegungen
+* Jede reservierte Einheit ermöglicht eine Bandbreite von 200 MBit/s. Wenn Sie mehr als 2.000 MBit/s (2 GBit/s) Bandbreite benötigen, können Sie den zweiten Streamingendpunkt und den Lastenausgleich verwenden, um zusätzliche Bandbreite zu erhalten.
 
-* Der Streamingendpunkt `hostname` und die Streaming-URL ändern sich nicht, und zwar unabhängig davon, ob Sie CDN aktivieren oder nicht.
-* Wenn Sie Ihre Inhalte mit oder ohne CDN testen können möchten, erstellen Sie einen anderen Streamingendpunkt, für den kein CDN aktiviert ist.
+    Das CDN ist jedoch die beste Möglichkeit, eine Erweiterung für Streaminginhalte zu erreichen. Wenn Sie jedoch so viele Inhalte bereitstellen, dass das CDN mehr als 2 GBit/s pullt, können Sie zusätzliche Streamingendpunkte (Ursprünge) hinzufügen. In diesem Fall müssten Sie Inhalts-URLs ausgeben, die auf die beiden Streamingendpunkte verteilt sind. Dieser Ansatz ermöglicht ein besseres Zwischenspeichern als der Versuch, Anforderungen nach dem Zufallsprinzip (z. B. über einen Traffic Manager) an jeden Ursprung zu senden. 
+    
+    > [!TIP]
+    > Wenn das CDN mehr als 2 GBit/s pullt, könnte eine fehlerhafte Konfiguration vorliegen (z. B. kein Ursprungsschutz).
+    
+* Lastenausgleich für verschiedene CDN-Anbieter. Sie könnten z. B. den standardmäßigen Streamingendpunkt für die Verwendung des Verizon CDN einrichten und einen zweiten Endpunkt für die Verwendung von Akamai erstellen. Fügen Sie dann etwas Lastenausgleich zwischen den beiden hinzu, um einen Multi-CDN-Lastenausgleich zu erreichen. 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>Ausführliche Erläuterung der Funktionsweise der Zwischenspeicherung
+    Kunden führen jedoch häufig einen Lastenausgleich über mehrere CDN-Anbieter mit einem einzelnen Ursprung durch.
+* Streamen von gemischten Inhalten: Liveinhalte und Video on Demand. 
 
-Beim Hinzufügen des CDN gilt kein spezifischer Bandbreitenwert, da die erforderliche Bandbreite für einen CDN-aktivierten Streamingendpunkt variieren kann. Vieles hängt ab von der Art des Inhalts, davon, wie beliebt dieser ist, sowie von den Bitraten und den Protokollen. Im CDN wird nur der Inhalt zwischengespeichert, der angefordert wird. Das heißt, dass beliebter Inhalt direkt über das CDN bereitgestellt wird, sofern das Videofragment zwischengespeichert ist. Liveinhalte werden wahrscheinlich zwischengespeichert, da normalerweise viele Benutzer sich genau dasselbe ansehen. On-Demand-Inhalte können sich etwas schwieriger gestalten, da beliebte Inhalte und weniger beliebte Inhalte enthalten sein können. Wenn Sie über Millionen von Video-Medienobjekten verfügen, von denen keines beliebt ist (nur zwei oder drei Aufrufe pro Woche), jedoch tausende Personen die unterschiedlichen Videos ansehen, wird die Effektivität des CDN viel stärker beeinträchtigt. Mit diesen Cachefehlern erhöht sich die Last für den Streamingendpunkt.
+    Die Zugriffsmuster für Live- und bedarfsgesteuerte Inhalte sind sehr unterschiedlich. Bei den Liveinhalten besteht tendenziell eine große gleichzeitige Nachfrage nach denselben Inhalten. Der Video-on-Demand-Inhalt (z. B. ausführliche Archivinhalte) wird nur in geringem Maße für denselben Inhalt verwendet. Das Zwischenspeichern funktioniert also sehr gut bei den Liveinhalten, aber nicht so gut bei den ausführlichen Inhalten.
 
-Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. Jedes einzelne Videofragment wird als eigene Entität zwischengespeichert. Stellen Sie sich beispielsweise die erste Wiedergabe eines bestimmten Videos vor. Wenn der Betrachter sich nur einige wenige Sekunden hier und dort ansieht, werden nur die von ihm angesehenen Videofragmente im CDN zwischengespeichert. Mit dem adaptiven Streaming gibt es normalerweise 5 bis 7 unterschiedliche Videobitraten. Wenn ein Benutzer eine Bitrate ansieht und ein anderer Benutzer eine andere Bitrate, werden die Bitraten jeweils separat im CDN zwischengespeichert. Auch wenn zwei Benutzer die gleiche Bitrate ansehen, kann es sein, dass das Streaming über unterschiedliche Protokolle erfolgt. Jedes Protokoll (HLS, MPEG-DASH, Smooth Streaming) wird separat zwischengespeichert. Somit werden jede Bitrate und jedes Protokoll separat zwischengespeichert, und nur die Videofragmente, die angefordert wurden, werden zwischengespeichert.
+    Stellen Sie sich ein Szenario vor, in dem Ihre Kunden hauptsächlich Liveinhalte sehen, aber nur gelegentlich bedarfsgesteuerte Inhalte verfolgen und diese vom selben Streamingendpunkt aus bedient werden. Die geringe Nutzung von bedarfsgesteuerten Inhalten würde Cachespeicherplatz belegen, der besser für die Liveinhalte eingespart werden könnte. In diesem Szenario würden wir empfehlen, den Liveinhalt von einem Streamingendpunkt und den ausführlichen Inhalt von einem anderen Streamingendpunkt aus bereitzustellen. Dies wird die Leistung der Inhalte der Liveereignisse verbessern.
+    
+## <a name="scaling-streaming-with-cdn"></a>Skalieren des Streamings mit CDN
 
-### <a name="enable-azure-cdn-integration"></a>Aktivieren der Azure CDN-Integration
+Weitere Informationen finden Sie in folgenden Artikeln:
 
-> [!IMPORTANT]
-> CDN kann nicht für Konten von Azure-Testversionen oder Studentenversionen aktiviert werden.
->
-> Die CDN-Integration ist in allen Azure-Rechenzentren mit Ausnahme der Regionen US-Regierung und China aktiviert.
-
-Nachdem ein Streamingendpunkt mit aktiviertem CDN bereitgestellt wurde, gibt es eine definierte Wartezeit auf Media Services, bevor das DNS-Update durchgeführt wird, um den Streamingendpunkt dem CDN-Endpunkt zuzuordnen.
-
-Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist eventuell eingeschränkt.
-
-Wenn der standardmäßige Streamingendpunkt erstellt wird, ist er standardmäßig mit Verizon Standard konfiguriert. Sie können Verizon Premium- oder Akamai Standard-Anbieter über REST-APIs konfigurieren.
-
-Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon**für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. 
-
-> [!NOTE]
-> Ausführliche Informationen zu Azure CDN finden Sie in der [CDN-Übersicht](../../cdn/cdn-overview.md).
-
-### <a name="determine-if-dns-change-was-made"></a>Bestimmen, ob eine DNS-Änderung vorgenommen wurde
-
-Sie können mit https://www.digwebinterface.com feststellen, ob eine DNS-Änderung an einem Streamingendpunkt vorgenommen wurde (der Datenverkehr wird an das Azure CDN weitergeleitet). Wenn die Ergebnisse azureedge.net-Domänennamen in den Ergebnissen enthalten, wird der Datenverkehr nun auf das CDN geleitet.
+- [CDN-Übersicht](../../cdn/cdn-overview.md)
+- [Skalieren des Streamings mit CDN](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 
 Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
-
-## <a name="see-also"></a>Weitere Informationen
-
-[CDN-Übersicht](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

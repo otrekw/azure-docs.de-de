@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373126"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651685"
 ---
 ## <a name="use-custom-page-content"></a>Verwenden benutzerdefinierter Seiteninhalte
 
@@ -46,7 +46,7 @@ Anstatt benutzerdefinierte Seiteninhalte von Grund auf neu zu erstellen, können
 
 In der folgenden Tabelle sind die von Azure AD B2C bereitgestellten Standardseiteninhalte aufgelistet. Laden Sie die Dateien herunter, und verwenden Sie sie als Ausgangspunkt für das Erstellen eigener benutzerdefinierter Seiten.
 
-| Standardseite | Beschreibung | ID für Inhaltsdefinition<br/>(nur benutzerdefinierte Richtlinie) |
+| Standardseite | BESCHREIBUNG | ID für Inhaltsdefinition<br/>(nur benutzerdefinierte Richtlinie) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. | *api.error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Selbstbestätigte Seite**. Verwenden Sie diese Datei als benutzerdefinierten Seiteninhalt für Seiten zum Anmelden über ein soziales Netzwerk, zum Registrieren eines lokalen Kontos, zum Anmelden mit einem lokalen Konto, zum Zurücksetzen des Kennworts usw. Das Formular kann verschiedene Eingabesteuerelemente enthalten, z.B. ein Texteingabefeld, ein Kennworteingabefeld, ein Optionsfeld, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen. | *api.localaccountsignin*, *api.localaccountsignup*, *api.localaccountpasswordreset*, *api.selfasserted* |
@@ -61,7 +61,7 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
 ## <a name="guidelines-for-using-custom-page-content"></a>Richtlinien zum Verwenden benutzerdefinierter Seiteninhalte
 
 - Verwenden Sie eine absolute URL, wenn Sie externe Ressourcen wie Medien-, CSS- und JavaScript-Dateien in Ihre HTML-Datei einbeziehen.
-- Fügen Sie Ihren HTML-Tags das Attribut `data-preload="true"` hinzu, um die Ladereihenfolge für CSS und JavaScript zu steuern. Mit `data-preload=true` wird die Seite erstellt, bevor sie dem Benutzer angezeigt wird. Mit diesem Attribut wird ein „Flackern“ der Seite verhindert, da die CSS-Datei vorab geladen und die unformatierte HTML-Datei dem Benutzer nicht angezeigt wird. Der folgende HTML-Codeausschnitt zeigt die Verwendung des `data-preload`-Tags.
+- Mit der [Seitenlayoutversion](../articles/active-directory-b2c/page-layout.md) 1.2.0 und höher können Sie in den HTML-Tags das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern. Mit `data-preload=true` wird die Seite erstellt, bevor sie dem Benutzer angezeigt wird. Mit diesem Attribut wird ein „Flackern“ der Seite verhindert, da die CSS-Datei vorab geladen und die unformatierte HTML-Datei dem Benutzer nicht angezeigt wird. Der folgende HTML-Codeausschnitt zeigt die Verwendung des `data-preload`-Tags.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

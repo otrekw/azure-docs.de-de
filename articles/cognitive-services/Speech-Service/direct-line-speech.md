@@ -3,50 +3,50 @@ title: Direct Line Speech (Speech-Dienst)
 titleSuffix: Azure Cognitive Services
 description: Ein Überblick über die Features, Funktionen und Einschränkungen für Sprachassistenten, die Direct Line Speech mit dem Speech Software Development Kit (SDK) verwenden.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806217"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562529"
 ---
 # <a name="about-direct-line-speech"></a>Informationen zu Direct Line Speech
 
-[Sprachassistenten](voice-assistants.md) hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei häufig antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde. Geräte stellen eine Verbindung mit Assistenten über das `DialogServiceConnector`-Objekt des Speech SDKs her.
+**Direct Line Speech** ist eine robuste, End-to-End-Lösung zur Erstellung eines flexiblen, erweiterbaren Sprachassistenten. Es basiert auf dem Bot-Framework und seinem Direct Line Speech-Kanal, der für die Sprachein- und Sprachausgabeinteraktion mit Bots optimiert ist.
 
-**Direct Line Speech** ist eine stabile, End-to-End-Lösung zum Erstellen eines flexiblen, erweiterbaren Sprachassistenten, der auf dem Bot Framework und seinem Direct Line Speech-Kanal basiert und für die Spracheingabe- sowie Sprachausgabe-Interaktion mit Bots optimiert ist.
+[Sprachassistenten](voice-assistants.md) hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei häufig antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde.
 
-Direct Line Speech bietet ein Höchstmaß an Anpassungsmöglichkeiten und Vielseitigkeit für Sprachassistenten. Es eignet sich hervorragend für interaktive Szenarien, die offen, natürlich oder eine Kombination aus beidem sind und Aufgabenerledigung oder die Verwendung von Befehl-und-Steuerung (Command-and-Control) bieten. Dieser hohe Grad an Flexibilität ist mit einer höheren Komplexität verbunden, und Szenarien, die auf klar definierte Aufgaben unter Verwendung natürlicher Sprache ausgerichtet sind, können [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) für eine optimierte Benutzererfahrung berücksichtigen.
+Direct Line Speech bietet ein Höchstmaß an Anpassungsmöglichkeiten und Vielseitigkeit für Sprachassistenten. Es ist für interaktive Szenarien konzipiert, die offen, natürlich oder eine Kombination aus beidem sind und Aufgabenerledigung oder die Verwendung von Befehl-und-Steuerung (Command-and-Control) bieten. Dieser hohe Grad an Flexibilität ist mit einer höheren Komplexität verbunden, und Szenarien, die auf klar definierte Aufgaben unter Verwendung natürlicher Sprache ausgerichtet sind, können [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) für eine optimierte Benutzererfahrung berücksichtigen.
 
 ## <a name="getting-started-with-direct-line-speech"></a>Erste Schritte mit Direct Line Speech
 
 Die ersten Schritte zum Erstellen eines Sprachassistenten mit Direct Line Speech sind das [Abrufen eines Speech-Abonnementschlüssels](get-started.md), das Erstellen eines neuen, diesem Abonnement zugeordneten Bots und das Verbinden des Bot mit dem Direct Line Speech-Kanal.
 
-   ![Konzeptionelle Darstellung des Orchestrierungsdienst-Flows](media/voice-assistants/overview-directlinespeech.png "Flow des Speech-Kanals")
+   ![Konzeptionelle Darstellung des Orchestrierungsdienst-Flows von Direct Line Speech](media/voice-assistants/overview-directlinespeech.png "Flow des Speech-Kanals")
 
 Eine vollständige, schrittweise Anleitung zur Erstellung eines einfachen Sprachassistenten mit Direct Line Speech finden Sie in dem [Tutorial zur Sprachaktivierung Ihres Bot mit dem Speech SDK und dem Direct Line Speech-Kanal](tutorial-voice-enable-your-bot-speech-sdk.md).
 
-Wir bieten außerdem Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 Minuten Code ausführen können. In dieser Tabelle werden Schnellstarts für Sprachassistenten nach Sprache aufgelistet.
+Wir bieten außerdem Schnellstarts an, mit denen Sie Code ausführen und die APIs schnell erlernen können. Diese Tabelle enthält eine Liste mit Schnellstarts für Sprachassistenten, die nach Sprache und Plattform sortiert sind.
 
 | Schnellstart | Plattform | API-Referenz |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Durchsuchen](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Durchsuchen](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Beispielcode
 
 Beispielcode für die Erstellung eines Sprachassistenten ist auf GitHub verfügbar. Diese Beispiele decken die Clientanwendung für die Verbindung mit Ihrem Assistenten in mehreren gängigen Programmiersprachen ab.
 
 * [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples)
-* [Tutorial: Ermöglichen der Verwendung von Sprache in Ihrem Assistenten mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Tutorial: Sprachaktivierung für Ihren Assistenten mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Anpassung
 

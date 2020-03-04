@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460993"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561919"
 ---
-# <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
 Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die Entwicklern ermöglicht, anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
 
@@ -75,7 +75,7 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 
 **Attribute**
 
-| attribute | Beschreibung | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `name` | Identifiziert die Stimme, die für die Ausgabe der Sprachsynthese verwendet wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech). | Erforderlich |
 
@@ -213,7 +213,7 @@ Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterst
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
-| Sprache | type | Beschreibung |
+| Sprache | type | BESCHREIBUNG |
 |-------|------|-------------|
 | `en-US-JessaNeural` | `type="cheerful"` | Drückt eine positive und glückliche Emotion aus |
 | | `type="empathy"` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
@@ -259,7 +259,7 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 | `strength` | Gibt die relative Dauer einer Pause mit einem der folgenden Werte an:<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium (Standard)</li><li>strong</li><li>x-strong</li></ul> | Optional |
 | `time` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Beispiele für gültige Werte sind `2s` und `500` | Optional |
 
-| Strength | Beschreibung |
+| Strength | BESCHREIBUNG |
 |----------|-------------|
 | „None“, oder wenn kein Wert angegeben | 0 ms |
 | x-weak | 250 ms |
@@ -325,7 +325,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 **Attribute**
 
-| attribute | Beschreibung | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `alphabet` | Gibt das phonetische Alphabet an, das verwendet werden soll, wenn die Aussprache der Zeichenfolge im `ph`-Attribut synthetisiert wird. Die Zeichenfolge, die das Alphabet angibt, muss in Kleinbuchstaben angegeben werden. Nachstehend sind die Alphabete aufgeführt, die Sie angeben können.<ul><li>ipa &ndash; International Phonetic Alphabet (Internationales phonetisches Alphabet)</li><li>sapi &ndash; Speech API Phone Set (Phongruppe für Spracheingabe-API)</li><li>ups &ndash; Universal Phone Set (Universelle Phongruppe)</li></ul>Das Alphabet gilt nur für das Phonem im Element. Weitere Informationen finden Sie unter [Phonetic Alphabet Reference (Referenz zum phonetischen Alphabet)](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Optional |
 | `ph` | Eine Zeichenfolge mit Phonen, die die Aussprache des Worts im `phoneme`-Element angeben. Wenn die angegebene Zeichenfolge nicht erkannte Phone enthält, weist der Sprachsynthesedienst das gesamte SSML-Dokument zurück und erzeugt keine der im Dokument angegebenen Sprachausgaben. | Erforderlich, wenn Phoneme verwendet werden. |
@@ -445,7 +445,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 **Attribute**
 
-| attribute | BESCHREIBUNG | Erforderlich/optional |
+| attribute | Beschreibung | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `interpret-as` | Gibt an, welchen Inhaltstyp der Text des Elements darstellt. Die folgende Tabelle listet die unterschiedlichen Typen auf. | Erforderlich |
 | `format` | Enthält weitere Informationen, wie genau der Elementtext formatiert ist, für Inhaltstypen, die mehrdeutige Formate haben können. SSML definiert Formate für Inhaltstypen, die diese verwenden (siehe Tabelle unten). | Optional |
