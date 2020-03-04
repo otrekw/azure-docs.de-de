@@ -1,29 +1,27 @@
 ---
 title: SharePoint-Dateien – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Fügen Sie Ihrer Wissensdatenbank geschützte SharePoint-Datenquellen hinzu, um sie um Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843291"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650434"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
-Fügen Sie Ihrer Wissensdatenbank geschützte SharePoint-Datenquellen hinzu, um sie um Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
+Fügen Sie Ihrer Wissensdatenbank geschützte cloudbasierte SharePoint-Datenquellen hinzu, um sie um Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
 
 Wenn Sie Ihrer Wissensdatenbank ein geschütztes SharePoint-Dokument hinzufügen, müssen Sie als QnA Maker-Manager eine Active Directory-Berechtigung für QnA Maker anfordern. Die SharePoint-Zugriffsberechtigung muss QnA Maker nur ein Mal durch den Active Directory-Manager erteilt werden. Bei nachfolgenden Dokumenthinzufügungen zur Wissensdatenbank ist keine Autorisierung mehr erforderlich, sofern die gleiche SharePoint-Ressource verwendet wird.
 
 Falls der QnA Maker-Wissensdatenbank-Manager nicht der Active Directory-Manager ist, müssen Sie bei diesem Prozess mit dem Active Directory-Manager zusammenarbeiten.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Cloudbasiertes SharePoint – QnA Maker verwendet Microsoft Graph für Berechtigungen. Wenn Ihr SharePoint lokal verfügbar ist, können Sie nicht aus SharePoint extrahieren, da Microsoft Graph nicht in der Lage ist, die Berechtigungen zu bestimmen.
+* URL-Format – QnA Maker unterstützt nur SharePoint-URLs, die für die Freigabe generiert werden und das Format „https://*.sharepoint.com“ aufweisen.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Hinzufügen unterstützter Dateitypen zur Wissensdatenbank
 

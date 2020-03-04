@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/07/2020
+ms.date: 02/20/2020
 ms.author: raiye
-ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087234"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506029"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="february-2020-guest-os"></a>Gastbetriebssystem für Februar 2020
+
+>[!NOTE]
+>Das Gastbetriebssystem für Februar wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Februar enthalten. Änderungen der Liste vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2.85, 3.82, 4.75 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537813]  |  Windows-Sicherheit | 2.85 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537794]  |  Windows-Sicherheit | 3.82 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537803]  |  Windows-Sicherheit | 4.75 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537764]  |  Letztes kumulatives Update | 5.4 | 11. Februar 2020 |
+|  Rel 20-02 |  [4532691]  |  Letztes kumulatives Update | 6.16 | 11. Februar 2020 |
+|  Rel 20-02 |  [4534310]  |  Monatlicher Rollup | 2.85 | 14. Januar 2020 |
+|  Rel 20-02 |  [4536952]  |  Wartungsstapelaktualisierung | 2.85 | 14. Januar 2020 |
+|  Rel 20-02 |  [4537829]  |  Wartungsstapelaktualisierung | 2.85 | 11. Februar 2020 |
+|  Rel 20-02 |  [4538483]  |  Erweiterte Sicherheitsupdates | 2.85 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537820]  |  Monatlicher Rollup | 2.85 | 11. Februar 2020 |
+|  Rel 20-02 |  [4537759]  |  Sicherheitsupdate (Flash) | 3.82, 4.75 | 11. Februar 2020 |
+|  Rel 20-02 |  [4534283]  |  Monatlicher Rollup | 3.82 | 14. Januar 2020 |
+|  Rel 20-02 |  [4532920]  |  Wartungsstapelaktualisierung | 3.82 | 10. Dezember 2020 |
+|  Rel 20-02 |  [4534297]  |  Nicht sicherheitsrelevant | 4.75 | 14. Januar 2020 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>Gastbetriebssystem für Januar 2020
 
