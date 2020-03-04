@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983077"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620838"
 ---
 # <a name="boolean-claims-transformations"></a>Transformationen von booleschen Ansprüchen
 
@@ -120,9 +120,9 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 
 | Element | TransformationClaimType  | Datentyp  | Notizen |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | boolean | Der Anspruchstyp, der bestätigt werden soll. |
+| InputClaim | inputClaim | boolean | Der Anspruchstyp, der bestätigt werden soll. |
 | InputParameter |valueToCompareTo | boolean | Der Wert, der verglichen werden soll (TRUE oder FALSE). |
-| OutputClaim | inputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| OutputClaim | compareResult | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 
 Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines booleschen Anspruchstyps mit einem `true`-Wert überprüfen. Wenn der Wert des `IsAgeOver21Years`-Anspruchstyps `true` entspricht, gibt die Anspruchstransformation `true`, andernfalls `false` zurück.

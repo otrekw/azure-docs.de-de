@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380858"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620849"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -48,13 +48,30 @@ Richtlinien für den bedingten Zugriff werden durchgesetzt, nachdem die First-Fa
 
 In diesem Abschnitt wird erläutert, wie eine Richtlinie für bedingten Zugriff zum Blockieren der Legacyauthentifizierung konfiguriert wird. 
 
+### <a name="legacy-authentication-protocols"></a>Ältere Authentifizierungsprotokolle
+
+Die folgenden Optionen gelten als ältere Authentifizierungsprotokolle.
+
+- Authentifiziertes SMTP: wird von POP- und IMAP-Clients zum Senden von E-Mails verwendet
+- AutoErmittlung: wird von Outlook und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und diese zu verbinden
+- Exchange Online PowerShell: wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Exchange Web Services (EWS): eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird
+- IMAP4: wird von IMAP-E-Mail-Clients verwendet
+- MAPI über HTTP (MAPI/HTTP): wird von Outlook 2010 und höher verwendet
+- Offlineadressbuch (OAB): eine Kopie der Adressenlistensammlungen, die von Outlook heruntergeladen und verwendet werden
+- Outlook Anywhere (RPC über HTTP): wird von Outlook 2016 und früher verwendet
+- Outlook-Dienst: wird von der Mail- und Kalender-App für Windows 10 verwendet
+- POP3: wird von POP-E-Mail-Clients verwendet
+- Reporting Web Services: wird zum Abrufen von Berichtsdaten in Exchange Online verwendet
+- Andere Clients: andere Protokolle, bei denen die Verwendung älterer Authentifizierungsmethoden identifiziert wird
+
 ### <a name="identify-legacy-authentication-use"></a>Identifizieren der Verwendung der Legacyauthentifizierung
 
 Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
 
 1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf **Spalten** > **Client-App** hinzu.
-1. **Filter hinzufügen** > **Client-App** > alle Optionen für **Andere Clients** auswählen und auf **Übernehmen** klicken.
+1. **Filter hinzufügen** > **Client-App** > wählen Sie alle älteren Authentifizierungsprotokolle aus, und klicken Sie auf **Anwenden**.
 
 Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
@@ -78,7 +95,7 @@ Wenn Sie die Legacyauthentifizierung für Ihre Organisation blockieren möchten,
 - Alle Cloud-Apps
 - Zugriff blockieren
 
-![Arbeitsaufträge](./media/block-legacy-authentication/03.png)
+![Zuweisungen](./media/block-legacy-authentication/03.png)
 
 Azure verfügt über eine Sicherheitsfunktion, die Sie am Erstellen einer solchen Richtlinie hindert, weil diese Konfiguration gegen die [Best Practices](best-practices.md) für Richtlinien für bedingten Zugriff verstößt.
  

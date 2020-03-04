@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: e8f2b2661a07da43e924929df7666cfd970372b1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485453"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623905"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB – Tarife
 
@@ -79,7 +79,7 @@ Beachten Sie, dass der Speicher nur zentral hochskaliert und nicht herunterskali
 
 ## <a name="backup"></a>Backup
 
-Der Dienst erstellt automatisch Sicherungen Ihres Servers. Die Mindestaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Sie können eine Aufbewahrungsdauer von bis zu 35 Tagen festlegen. Die Aufbewahrungsdauer kann während der Lebensdauer des Servers jederzeit angepasst werden. Sie können zwischen lokal redundanten und georedundanten Sicherungen wählen. Georedundante Sicherungen werden auch in der [geografisch gepaarten Region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) gespeichert, die zur Erstellungsregion Ihres Servers gehört (Regionspaar). Diese Redundanz sorgt in einem Notfall für Schutz. Sie haben auch die Möglichkeit, Ihren Server in einer beliebigen anderen Azure-Region, in der der Dienst verfügbar ist, mit georedundanten Sicherungen wiederherzustellen. Es ist nicht möglich, zwischen den beiden Sicherungsspeicheroptionen zu wechseln, sobald der Server erstellt ist.
+Der Dienst erstellt automatisch Sicherungen Ihres Servers. Sie können als Aufbewahrungszeitraum einen Bereich von 7 bis 35 Tagen auswählen. Bei universellen und arbeitsspeicheroptimierten Servern können Sie georedundanten Speicher für Sicherungen auswählen. Im [Artikel zu Konzepten](concepts-backup.md) erfahren Sie mehr über Sicherungen.
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 

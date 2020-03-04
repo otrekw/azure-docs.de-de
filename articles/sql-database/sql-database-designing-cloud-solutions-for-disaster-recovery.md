@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807948"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624146"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
 
@@ -119,7 +119,7 @@ Die Ressourcen der Anwendung sollten in jedem Gebiet mit erheblichem Nutzungsbed
 
 ![Szenario 3: Konfiguration mit der primären Datenbank in „USA, Osten“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-Am Tagesende (z.B. um 23:00 Uhr Ortszeit) sollten die aktiven Datenbanken zur nächsten Region („Europa, Norden“) umgeleitet werden. Diese Aufgabe kann mithilfe des [Azure Scheduler-Diensts](../scheduler/scheduler-intro.md) vollständig automatisiert werden.  Diese Aufgabe umfasst die folgenden Schritte:
+Am Tagesende (z. B. um 23:00 Uhr Ortszeit) sollten die aktiven Datenbanken zur nächsten Region („Europa, Norden“) umgeleitet werden. Diese Aufgabe kann mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) vollständig automatisiert werden. Diese Aufgabe umfasst die folgenden Schritte:
 
 * Umleiten des primären Servers in der Failovergruppe nach „Europa, Norden“ mit freundlichem Failover (1)
 * Entfernen der Failovergruppe zwischen „USA, Osten“ und „Europa, Norden“
@@ -130,7 +130,7 @@ Das folgende Diagramm veranschaulicht die neue Konfiguration nach dem geplanten 
 
 ![Szenario 3: Umleiten des primären Servers nach „Europa, Norden“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Bei einem Ausfall in „Europa, Norden“ wird das automatische Datenbankfailover beispielsweise von der Failovergruppe initiiert. Dies führt dazu, dass die Anwendung vorzeitig in die nächste Region verschoben wird (1).  In diesem Fall ist „USA, Osten“ die einzige verbleibende sekundäre Region, bis „Europa, Norden“ wieder online ist. Die verbleibenden zwei Regionen sind durch das Wechseln ihrer Rollen für die Kunden in allen drei geografischen Gebieten verfügbar. Azure Scheduler muss entsprechend angepasst werden. Da die verbleibenden Regionen zusätzlichen Benutzerdatenverkehr aus Europa erhalten, wird die Leistung der Anwendung nicht nur durch zusätzliche Latenz, sondern auch durch eine erhöhte Anzahl von Endbenutzerverbindungen beeinträchtigt. Nachdem der Ausfall in „Europa, Norden“ behoben wurde, wird die sekundäre Datenbank dort sofort mit der aktuellen primären Datenbank synchronisiert. Das folgende Diagramm veranschaulicht einen Ausfall in „Europa, Norden“:
+Bei einem Ausfall in „Europa, Norden“ wird das automatische Datenbankfailover beispielsweise von der Failovergruppe initiiert. Dies führt dazu, dass die Anwendung vorzeitig in die nächste Region verschoben wird (1).  In diesem Fall ist „USA, Osten“ die einzige verbleibende sekundäre Region, bis „Europa, Norden“ wieder online ist. Die verbleibenden zwei Regionen sind durch das Wechseln ihrer Rollen für die Kunden in allen drei geografischen Gebieten verfügbar. Azure Logic Apps muss entsprechend angepasst werden. Da die verbleibenden Regionen zusätzlichen Benutzerdatenverkehr aus Europa erhalten, wird die Leistung der Anwendung nicht nur durch zusätzliche Latenz, sondern auch durch eine erhöhte Anzahl von Endbenutzerverbindungen beeinträchtigt. Nachdem der Ausfall in „Europa, Norden“ behoben wurde, wird die sekundäre Datenbank dort sofort mit der aktuellen primären Datenbank synchronisiert. Das folgende Diagramm veranschaulicht einen Ausfall in „Europa, Norden“:
 
 ![Szenario 3: Ausfall in „Europa, Norden“](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

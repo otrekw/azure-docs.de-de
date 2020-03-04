@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999116"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561747"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -85,14 +85,14 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 1. Navigieren Sie im Feld für das **Dokument mit Nutzungsbedingungen** zu Ihrer PDF-Datei mit den fertig gestellten Nutzungsbedingungen, und wählen Sie die Datei aus.
 1. Wählen Sie die Sprache für Ihr Dokument mit Nutzungsbedingungen aus. Die Sprachoption ermöglicht das Hochladen mehrerer Nutzungsbedingungen in verschiedenen Sprachen. Die Version der Nutzungsbedingungen, die einem Endbenutzer angezeigt wird, basiert auf den Browsereinstellungen.
 1. Legen Sie **Benutzer müssen die Nutzungsbedingungen erweitern** auf **Ein** fest, damit die Endbenutzer die Nutzungsbedingungen anzeigen müssen, bevor sie diesen zustimmen können.
-1. Wenn die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen sollen, über das der Zugriff erfolgt, legen Sie **Zustimmung der Benutzer auf jedem Gerät erforderlich** auf **Ein** fest. Weitere Informationen finden Sie unter [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use).
+1. Wenn die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen sollen, über das der Zugriff erfolgt, legen Sie **Zustimmung der Benutzer auf jedem Gerät erforderlich** auf **Ein** fest. Wenn diese Option aktiviert ist, müssen Benutzer möglicherweise weitere Anwendungen installieren. Weitere Informationen finden Sie unter [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use).
 1. Wenn die Zustimmungen zu Nutzungsbedingungen nach einem Zeitplan ablaufen sollen, legen Sie **Ablauf für Einwilligungen** auf **Ein** fest. Wenn diese Option aktiviert ist, werden zwei zusätzliche Zeitplaneinstellungen angezeigt.
 
    ![Einstellungen von „Ablauf für Einwilligungen“ zum Festlegen des Startdatums, der Häufigkeit und Dauer](./media/terms-of-use/expire-consents.png)
 
 1. Verwenden Sie die Einstellungen **Ablauf startet am** und **Häufigkeit**, um den Zeitplan für den Ablauf der Nutzungsbedingungen anzugeben. In der folgenden Tabelle wird das Ergebnis für ein paar Beispieleinstellungen aufgezeigt:
 
-   | Ablauf startet am | Frequency | Ergebnis |
+   | Ablauf startet am | Häufigkeit | Ergebnis |
    | --- | --- | --- |
    | Heutiges Datum  | Monatlich | Ab heute müssen die Benutzer den Nutzungsbedingungen zustimmen und diesen dann jeden Monat erneut zustimmen. |
    | Datum in der Zukunft  | Monatlich | Ab heute müssen die Benutzer den Nutzungsbedingungen zustimmen. Wenn das Datum in der Zukunft eintritt, laufen die Zustimmungen ab, und die Benutzer müssen dann den Nutzungsbedingungen jeden Monat erneut zustimmen.  |
@@ -129,7 +129,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
     Benutzerdefinierte Richtlinien für bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis auf die Ebene einer spezifischen Cloudanwendung oder Benutzergruppe. Weitere Informationen finden Sie unter [Quickstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps](require-tou.md).
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
    Wenn Sie eine benutzerdefinierte Richtlinienvorlage für bedingten Zugriff ausgewählt haben, wird ein neuer Bildschirm angezeigt, auf dem Sie die benutzerdefinierte Richtlinie für bedingten Zugriff erstellen können.
 
@@ -276,6 +276,10 @@ Wenn ein Benutzer Windows 10 und Microsoft Edge verwendet, wird eine Meldung zum
 ![Windows 10 und Microsoft Edge – Meldung, in der Sie darauf hingewiesen werden, dass Ihr Gerät registriert werden muss](./media/terms-of-use/per-device-win10-edge.png)
 
 Bei Verwendung von Chrome werden die Benutzer aufgefordert, die [Erweiterung „Windows 10 Accounts“](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) zu installieren.
+
+### <a name="join-an-android-device"></a>Verknüpfen eines Android-Geräts
+
+Wenn ein Benutzer ein Android-Gerät verwendet, wird er aufgefordert, die [Microsoft Authenticator-App](https://play.google.com/store/apps/details?id=com.azure.authenticator) zu installieren.
 
 ### <a name="browsers"></a>Browser
 

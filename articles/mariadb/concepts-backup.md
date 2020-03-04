@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 333e51782fd0dd88b3e8747fb831b841a22c8e6c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e10c23aaaef6315e072348d879d5f077e16382a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773088"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623659"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
 
@@ -20,6 +20,8 @@ Azure Database for MariaDB erstellt automatisch Sicherungen und speichert diese 
 ## <a name="backups"></a>Backups
 
 Azure Database for MariaDB erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Optional können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+
+Diese Sicherungsdateien können nicht exportiert werden. Die Sicherungen können nur für Wiederherstellungsvorgänge in Azure Database for MariaDB verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](howto-migrate-dump-restore.md) verwenden.
 
 ### <a name="backup-frequency"></a>Sicherungshäufigkeit
 
@@ -54,7 +56,7 @@ Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B
 > [!IMPORTANT]
 > Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden alle zum Server gehörigen Datenbanken ebenfalls gelöscht und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) nutzen.
 
-### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
+### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
 Unabhängig von Ihrer gewählten Option für die Sicherungsredundanz können Sie eine Wiederherstellung für einen beliebigen Zeitpunkt durchführen, der innerhalb Ihres Aufbewahrungszeitraums für Sicherungen liegt. Ein neuer Server wird in derselben Azure-Region wie der ursprüngliche Server erstellt. Bei der Erstellung werden die Konfiguration für den Tarif, die Computegeneration, die Anzahl von V-Kernen, die Speichergröße, den Aufbewahrungszeitraum für Sicherungen und die Option für Sicherungsredundanz des ursprünglichen Servers verwendet.
 
@@ -62,7 +64,7 @@ Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Beispiel
 
 Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsicherung erstellt wird, bevor Sie die Wiederherstellung für einen Zeitpunkt innerhalb der letzten fünf Minuten durchführen können.
 
-### <a name="geo-restore"></a>Geografische Wiederherstellung
+### <a name="geo-restore"></a>Geowiederherstellung
 
 Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 

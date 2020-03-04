@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484807"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598271"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 
@@ -151,6 +151,25 @@ Die Zeppelin Notebooks werden in den Clusterhauptknoten gespeichert. Wenn Sie de
 
 Das Notebook wird als JSON-Datei in Ihrem Downloadverzeichnis gespeichert.
 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Verwenden von Shiro zum Konfigurieren des Zugriffs auf Zeppelin-Interpreter in ESP-Clustern (Enterprise-Sicherheitspaket)
+Wie bereits erwähnt, wird der `%sh`-Interpreter ab HDInsight 4.0 nicht unterstützt. Da der `%sh`-Interpreter potenzielle Sicherheitsprobleme bewirkt, z. B. Zugriff auf Keytabs mithilfe von Shellbefehlen, wurde er auch aus HDInsight 3.6 ESP-Clustern entfernt. Das bedeutet, dass der `%sh`-Interpreter beim Klicken auf **Neue Notiz erstellen** oder auf der Interpreter-Benutzeroberfläche standardmäßig nicht verfügbar ist. 
+
+Privilegierte Domänenbenutzer können mithilfe der Datei `Shiro.ini` den Zugriff auf die Interpreter-Benutzeroberfläche steuern. Daher können nur diese Benutzer neue `%sh`-Interpreter erstellen und für jeden neuen `%sh`-Interpreter Berechtigungen festlegen. Führen Sie die folgenden Schritte aus, um den Zugriff mithilfe der Datei `shiro.ini` zu steuern:
+
+1. Definieren Sie eine neue Rolle mit dem Namen einer vorhandenen Domänengruppe. Im folgenden Beispiel ist `adminGroupName` eine Gruppe privilegierter Benutzer in AAD. Verwenden Sie keine Sonderzeichen oder Leerzeichen im Gruppennamen. Die Zeichen nach `=` geben die Berechtigungen für diese Rolle an. `*` bedeutet, dass die Gruppe über vollständige Berechtigungen verfügt.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Fügen Sie die neue Rolle für den Zugriff auf Zeppelin-Interpreter hinzu. Im folgenden Beispiel erhalten alle Benutzer in `adminGroupName` Zugriff auf Zeppelin-Interpreter und können neue Interpreter erstellen. Sie können mehrere Rollen, getrennt durch Kommas, in die eckigen Klammern von `roles[]` einfügen. Benutzer, die über die erforderlichen Berechtigungen verfügen, können dann auf Zeppelin-Interpreter zugreifen.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
+
 ## <a name="livy-session-management"></a>Livy-Sitzungsverwaltung
 
 Wenn Sie den ersten Codeabsatz in Ihrem Zeppelin-Notebook ausführen, wird in Ihrem HDInsight Spark-Cluster eine neue Livy-Sitzung erstellt. Diese Sitzung kann für alle Zeppelin Notebooks gemeinsam verwendet werden, die Sie erstellen. Falls die Livy-Sitzung aus irgendeinem Grund beendet wird (Clusterneustart usw.), können Sie keine Aufträge über das Zeppelin Notebook ausführen.
@@ -175,7 +194,7 @@ Zum Überprüfen des Diensts über Ambari navigieren Sie zu `https://CLUSTERNAME
 
 Zum Überprüfen des Diensts über eine Befehlszeile stellen Sie eine SSH-Verbindung zum Hauptknoten her. Ändern Sie mit dem Befehl `sudo su zeppelin` den Benutzer in Zeppelin. Statusbefehle:
 
-|Befehl |Beschreibung |
+|Get-Help |BESCHREIBUNG |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Dienststatus|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Dienstversion|
@@ -183,7 +202,7 @@ Zum Überprüfen des Diensts über eine Befehlszeile stellen Sie eine SSH-Verbin
 
 ### <a name="log-locations"></a>Protokollspeicherorte
 
-|Dienst |Pfad |
+|Dienst |`Path` |
 |---|---|
 |Zeppelin-Server|/usr/hdp/current/zeppelin-server/|
 |Serverprotokolle|/var/log/zeppelin|

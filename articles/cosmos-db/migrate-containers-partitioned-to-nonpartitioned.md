@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445266"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623349"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 
-Azure Cosmos DB unterstützt das Erstellen von Containern ohne Partitionsschlüssel. Derzeit können Sie nicht partitionierte Container mithilfe der Azure CLI und der Azure Cosmos DB SDKs (.NET, Java, Node.js) erstellen, deren Version 2.x oder früher entspricht. Sie können nicht partitionierte Container nicht über das Azure-Portal erstellen. Diese nicht partitionierten Container sind jedoch nicht elastisch und verfügen über eine feste Speicherkapazität von 10 GB und einen begrenzten Durchsatz von 10.000 RU/s.
+Azure Cosmos DB unterstützt das Erstellen von Containern ohne Partitionsschlüssel. Derzeit können Sie nicht partitionierte Container mithilfe der Azure CLI und der Azure Cosmos DB SDKs (.NET, Java, Node.js) erstellen, deren Version 2.x oder früher entspricht. Sie können nicht partitionierte Container nicht über das Azure-Portal erstellen. Diese nicht partitionierten Container sind jedoch nicht elastisch und verfügen über eine feste Speicherkapazität von 20 GB und einen begrenzten Durchsatz von 10.000 RU/s.
 
 Die nicht partitionierten Container sind veraltet. Sie sollten Ihre vorhandenen nicht partitionierten Container zu partitionierten Containern migrieren, um den Speicher und den Durchsatz zu skalieren. Azure Cosmos DB stellt einen systemdefinierten Mechanismus zum Migrieren Ihrer nicht partitionierten Container zu partitionierten Containern bereit. In diesem Artikel wird erläutert, wie Sie all Ihre vorhanden nicht partitionierten Container automatisch zu partitionierten Containern migrieren. Sie können das Feature für die automatische Migration nur verwenden, wenn Sie die V3-Version der SDKs für die jeweiligen Sprachen verwenden.
 

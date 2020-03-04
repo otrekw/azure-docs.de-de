@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a79db11ff05bcc9d18619c7f508a9864c17c3b8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012795"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647504"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
 
@@ -26,7 +26,7 @@ Die Azure Cosmos DB-Leistung basiert auf der Menge des bereitgestellten Durchsa
 
 Als global verteiltes Datenbanksystem ist Cosmos DB der einzige Azure-Dienst, der umfassende SLAs zu Latenz, Durchsatz, Konsistenz und Hochverfügbarkeit bietet. Der Durchsatz, den Sie bereitstellen, wird auf jede der Regionen angewandt, die Ihrem Cosmos-Konto zugeordnet sind. Für Lesevorgänge bietet Cosmos DB mehrere klar definierte [Konsistenzebenen](consistency-levels.md), zwischen denen Sie wählen können. 
 
-In der folgenden Tabelle ist die Anzahl der erforderlichen RUs für Lese- und Schreibvorgänge basierend auf einem Datenelement mit einer Größe von 1 KB und 100 KB/s angegeben.
+In der folgenden Tabelle ist die Anzahl der erforderlichen RUs für Lese- und Schreibvorgänge basierend auf einem Datenelement mit einer Größe von 1 KB und 100 KB/s angegeben, während die standardmäßige automatische Indizierung deaktiviert ist. 
 
 |Elementgröße|1 Lesevorgang|1 Schreibvorgang|
 |-------------|------|-------|

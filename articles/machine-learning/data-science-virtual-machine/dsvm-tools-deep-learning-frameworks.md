@@ -10,17 +10,17 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984709"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587599"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Deep Learning- und KI-Frameworks für Azure Data Science VM
 Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
-## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
+## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Caffe ist unter `/opt/caffe` installiert.   Beispiele finden Sie unter `/opt/caffe/examples`.|
 | Zur Ausführung      | Melden Sie sich mithilfe von X2Go auf Ihrer VM an, starten Sie ein neues Terminal, und geben Sie Folgendes ein:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Daraufhin öffnet sich ein neues Browserfenster mit Beispielnotebooks. Binärdateien werden in /opt/caffe/build/install/bin installiert.<br/><br/>Für die installierte Version von Caffe ist Python 2.7 erforderlich. Sie kann nicht mit der standardmäßig aktivierten Version 3.5 von Python verwendet werden. Um zu Python 2.7 zu wechseln, führen Sie `source activate root` aus, um in die Anaconda-Umgebung zu wechseln.|    
 
-## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
@@ -38,7 +38,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Caffe2 wird in der Conda-Umgebung von Python 2.7 (root) installiert. |
 | Zur Ausführung      | Terminal: Starten Sie Python, und importieren Sie Caffe2. <br/> * JupyterHub: [Stellen Sie eine Verbindung mit JupyterHub her](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), und navigieren Sie dann zum Caffe2-Verzeichnis. Dort finden Sie Beispielnotebooks. Für einige Notebooks muss im Python-Code der Caffe2-Stamm festgelegt werden. Geben Sie „/opt/caffe2“ ein. |
 
-## <a name="chainerhttpschainerorg"></a>[Chainer](https://chainer.org/)
+## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -47,7 +47,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Chainer wird in Python 3.5 installiert. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die Python 3.5-Umgebung, und führen Sie `python` und dann `import chainer` aus. <br/> * JupyterHub: [Stellen Sie eine Verbindung mit JupyterHub her](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), und navigieren Sie dann zum Chainer-Verzeichnis. Dort finden Sie Beispielnotebooks.| 
 
-## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA-, cuDNN-, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit)
+## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA-, cuDNN-, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
@@ -57,7 +57,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Zur Ausführung      | Öffnen Sie eine Eingabeaufforderung (unter Windows) oder ein Terminal (unter Linux), und führen Sie dann _nvidia-smi_ aus. |
 
 
-## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
@@ -66,7 +66,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Horovod wird in Python 3.5 installiert. |
 | Zur Ausführung      | Aktivieren Sie die richtige Umgebung am Terminal, und führen Sie dann Python aus. |
 
-## <a name="kerashttpskerasio"></a>[Keras](https://keras.io/)
+## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
@@ -75,7 +75,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Keras wird unter Windows in Python 3.6 und unter Linux in Python 3.5 installiert. |
 | Zur Ausführung      | Aktivieren Sie die richtige Umgebung am Terminal, und führen Sie dann Python aus. |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | CNTK wird unter [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) in Python 3.6 und unter [Linux](./dsvm-tools-languages.md#python-linux-edition) in Python 3.5 installiert. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie Python aus. <br/>Jupyter: Stellen Sie eine Verbindung mit [Jupyter](provision-vm.md) oder [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) her, und öffnen Sie dann das CNTK-Verzeichnis für Beispiele. |
 
-## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
 | Unterstützte Versionen | 1.3.0 |
@@ -92,7 +92,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | MXNet ist unter `C:\dsvm\tools\mxnet` (Windows) bzw. unter `/dsvm/tools/mxnet` (Ubuntu) installiert. Python-Bindungen werden in Python 3.6 unter [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) und in Python 3.5 unter [Linux](./dsvm-tools-languages.md#python-linux-edition) installiert) R-Bindungen sind außerdem in der Ubuntu DSVM enthalten. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Conda-Umgebung, und führen Sie dann `import mxnet` aus. <br/>Jupyter: Stellen Sie eine Verbindung mit [Jupyter](provision-vm.md#access-the-dsvm) oder [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) her, und öffnen Sie dann das `mxnet`-Verzeichnis für Beispiele. |
 
-## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
+## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
@@ -101,7 +101,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | MXNet Model Server wird unter [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) in Python 3.6 und unter [Linux](./dsvm-tools-languages.md#python-linux-edition) in Python 3.5 installiert. |
 | Zur Ausführung      | Terminal: Führen Sie zuerst `sudo systemctl stop jupyterhub` aus, um den JupyterHub-Dienst zu beenden, da beide am gleichen Port lauschen. Aktivieren Sie dann die richtige Conda-Umgebung, und führen Sie `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` Python aus. |
 
-## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
@@ -111,16 +111,16 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | `nvidia-smi` befindet sich im Systempfad. |
 | Zur Ausführung      | Öffnen Sie auf einem virtuellen Computer **mit GPUs** eine Eingabeaufforderung (unter Windows) oder ein Terminal (unter Linux), und führen Sie dann `nvidia-smi` aus. |
 
-## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
-| Unterstützte Versionen | 1.2.0 (Ubuntu 16.04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18.04) |
+| Unterstützte Versionen | 1.2.0 (Ubuntu 16.04, Windows 2016), 1.4.0 (Ubuntu 18.04, Windows 2019) |
 | Unterstützte DSVM-Editionen      | Linux |
 | Konfiguration/Installation auf der DSVM  | Installiert in [Python 3.5](dsvm-tools-languages.md#python-linux-edition). Jupyter-Beispielnotebooks sind im Lieferumfang enthalten, und die Beispiele befinden sich unter „/dsvm/samples/pytorch“. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Stellen Sie eine Verbindung her, und öffnen Sie dann das PyTorch-Verzeichnis für Beispiele.  |
 
-## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -129,7 +129,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Konfiguration/Installation auf der DSVM  | Installiert in Python 3.5 unter [Linux](dsvm-tools-languages.md#python-linux-edition) und Python 3.6 unter [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus. <br/> * Jupyter: Stellen Sie eine Verbindung mit [Jupyter](provision-vm.md) oder [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) her, und öffnen Sie dann das TensorFlow-Verzeichnis für Beispiele.   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
@@ -139,7 +139,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 | Zur Ausführung      |  Beispiele sind [online](https://www.tensorflow.org/serving/) verfügbar.   |
 
 
-## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |

@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209459"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622893"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 
@@ -33,7 +33,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 }
 ```
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | Beschreibung |
 |:--- |:--- |:--- |
 | $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt.<br><br> Verwenden Sie Folgendes für Bereitstellungen von Ressourcengruppen: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`.<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`. |
 | contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
@@ -164,7 +164,7 @@ Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkunge
 ],
 ```
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Namespace |Ja |Namespace für die benutzerdefinierten Funktionen. Damit können Sie Namenskonflikte mit Vorlagenfunktionen vermeiden. |
 | function-name |Ja |Name der benutzerdefinierten Funktion. Wenn Sie die Funktion aufrufen, kombinieren Sie den Funktionsnamen mit dem Namespace. Verwenden Sie z. B. `"[contoso.uniqueName()]"`, um die Funktion „uniqueName“ im Namespace „contoso“ aufzurufen. |
@@ -260,10 +260,14 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 | output-name |Ja |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
 | condition |Nein | Boolescher Wert, der angibt, ob dieser Ausgabewert zurückgegeben wird. Wenn `true`, wird der Wert in die Ausgabe für die Bereitstellung einbezogen. Wenn `false`, wird der Ausgabewert für diese Bereitstellung ausgelassen. Wenn keine Angabe erfolgt, lautet der Standardwert `true`. |
 | type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. Bei Angabe von **securestring** für den Ausgabetyp wird der Wert nicht im Bereitstellungsverlauf angezeigt und kann nicht aus einer anderen Vorlage abgerufen werden. Um einen geheimen Wert in mehreren Vorlagen zu verwenden, speichern Sie das Geheimnis in einer Key Vault-Instanz, und verweisen Sie in der Parameterdatei auf das Geheimnis. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](key-vault-parameter.md). |
-| value |Ja |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
+| value |Nein |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. Geben Sie **value** oder **copy** an. |
+| copy |Nein | Wird verwendet, um mehr als einen Wert für eine Ausgabe zurückzugeben. Geben Sie **value** oder **copy** an. Weitere Informationen finden Sie unter [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md). |
 
 Beispiele für die Verwendung von Ausgaben finden Sie unter [Ausgaben in einer Azure Resource Manager-Vorlage](template-outputs.md).
 
@@ -302,7 +307,7 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber
   ],
 ```
 
-In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in VS Code unten rechts **Azure Resource Manager Vorlage** angezeigt wird, können Sie die Inline Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
+In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
 
 ![Azure Resource Manager-Vorlagenmodus in Visual Studio Code](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -379,7 +384,7 @@ Sie können ein Metadatenobjekt nicht zu benutzerdefinierten Funktionen hinzufü
 
 ## <a name="multi-line-strings"></a>Mehrzeilige Zeichenfolgen
 
-Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Zum Beispiel die Standorteigenschaft und einen der Kommentare im folgenden JSON-Beispiel.
+Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beispielsweise die Standorteigenschaft und einen der Kommentare im folgenden JSON-Beispiel an.
 
 ```json
 {

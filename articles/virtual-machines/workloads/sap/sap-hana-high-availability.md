@@ -1,23 +1,23 @@
 ---
-title: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server | Microsoft-Dokumentation
+title: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SLES | Microsoft-Dokumentation
 description: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
-ms.author: sedusch
-ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: radeltch
+ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721504"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565841"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -124,7 +124,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie ein virtuelles Netzwerk.
 1. Erstellen Sie eine Verfügbarkeitsgruppe.
    - Richten Sie die maximale Updatedomäne ein.
-1. Erstellen Sie einen Lastenausgleich (intern). Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden.
+1. Erstellen Sie einen Lastenausgleich (intern). Sie sollten [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) verwenden.
    - Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.
    - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.

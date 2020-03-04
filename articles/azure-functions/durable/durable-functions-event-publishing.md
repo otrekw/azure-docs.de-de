@@ -3,12 +3,12 @@ title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 5ee60dadc90af5a9b941ba890bddb9b96de3f35d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547471"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562162"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
@@ -18,24 +18,19 @@ Es folgen einige Szenarien, in denen diese Funktion hilfreich ist:
 
 * **DevOps-Szenarien wie Blau/Grün-Bereitstellungen**: Vor der Implementierung einer [parallelen Bereitstellungsstrategie](durable-functions-versioning.md#side-by-side-deployments) möchten Sie möglicherweise wissen, ob irgendeine Aufgabe ausgeführt wird.
 
-* **Erweiterte Unterstützung für Überwachung und Diagnose:** Sie können die Orchestrierungsstatusinformationen in einem externen, für Abfragen optimierten Speicher (z. B. SQL-Datenbank oder CosmosDB) verfolgen.
+* **Erweiterte Unterstützung für Überwachung und Diagnose:** Sie können die Orchestrierungsstatusinformationen in einem externen, für Abfragen optimierten Speicher wie Azure SQL-Datenbank oder Azure Cosmos DB verfolgen.
 
 * **Lang andauernde Hintergrundaktivität:** Bei Verwendung von Durable Functions für eine lang andauernde Hintergrundaktivität erleichtert diese Funktion Ihnen die Ermittlung des aktuellen Status.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Installieren Sie [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in Ihrem Durable Functions-Projekt.
-* Installieren Sie den [Azure-Speicheremulator](../../storage/common/storage-use-emulator.md).
+* Installieren Sie [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) (nur Windows), oder verwenden Sie ein vorhandenes Azure Storage-Konto.
 * Installieren Sie [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), oder verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md).
 
 ## <a name="create-a-custom-event-grid-topic"></a>Erstellen eines benutzerdefinierten Event Grid-Themas
 
-Erstellen Sie ein Event Grid-Thema zum Senden von Ereignissen aus Durable Functions. In den folgenden Anweisungen wird gezeigt, wie Sie ein Thema mithilfe der Azure-Befehlszeilenschnittstelle (CLI) erstellen. Informationen zur Vorgehensweise mit PowerShell oder im Azure-Portal finden Sie in folgenden Artikeln:
-
-* [EventGrid-Schnellstarts: Erstellen eines benutzerdefinierten Ereignisses – PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
-* [EventGrid-Schnellstarts: Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal](../../event-grid/custom-event-quickstart-portal.md)
+Erstellen Sie ein Event Grid-Thema zum Senden von Ereignissen aus Durable Functions. In den folgenden Anweisungen wird gezeigt, wie Sie ein Thema mithilfe der Azure-Befehlszeilenschnittstelle (CLI) erstellen. Dies kann [mithilfe von PowerShell](../../event-grid/custom-event-quickstart-powershell.md) oder [über das Azure-Portal](../../event-grid/custom-event-quickstart-portal.md) erfolgen.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -69,7 +64,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 Jetzt können Sie Ereignisse an das Thema senden.
 
-## <a name="configure-azure-event-grid-publishing"></a>Konfigurieren der Veröffentlichung in Azure Event Grid
+## <a name="configure-event-grid-publishing"></a>Konfigurieren der Veröffentlichung in Event Grid
 
 Suchen Sie in Ihrem Durable Functions-Projekt nach der Datei `host.json`.
 
@@ -99,11 +94,13 @@ Legen Sie die App-Einstellung für den Schlüssel des Themas in der Funktions-Ap
 }
 ```
 
-Stellen Sie sicher, dass der [Speicheremulator](../../storage/common/storage-use-emulator.md) ausgeführt wird. Es ist ratsam, vor der Ausführung den Befehl `AzureStorageEmulator.exe clear all` auszuführen.
+Wenn Sie den [Speicheremulator](../../storage/common/storage-use-emulator.md) (nur Windows) verwenden, vergewissern Sie sich, dass er funktioniert. Es ist ratsam, vor der Ausführung den Befehl `AzureStorageEmulator.exe clear all` auszuführen.
+
+Wenn Sie ein vorhandenes Azure Storage-Konto verwenden, ersetzen Sie `UseDevelopmentStorage=true` in `local.settings.json` durch die zugehörige Verbindungszeichenfolge.
 
 ## <a name="create-functions-that-listen-for-events"></a>Erstellen von Funktionen, die auf Ereignisse warten
 
-Erstellen Sie eine Funktions-App. Es wird empfohlen, sie in der gleichen Region wie das Event Grid-Thema anzusiedeln.
+Erstellen Sie mithilfe des Azure-Portals eine weitere Funktions-App zum Lauschen auf Ereignisse, die von Ihrer Durable Functions-App veröffentlicht werden. Es wird empfohlen, sie in derselben Region wie das Event Grid-Thema zu platzieren.
 
 ### <a name="create-an-event-grid-trigger-function"></a>Erstellen einer Event Grid-Triggerfunktion
 
@@ -111,7 +108,7 @@ Erstellen Sie eine Funktion zum Empfangen der Lebenszyklusereignisse. Wählen Si
 
 ![Wählen Sie „Erstellen einer benutzerdefinierten Funktion“ aus.](./media/durable-functions-event-publishing/functions-portal.png)
 
-Wählen Sie „Event Grid-Trigger“ und dann `C#` aus.
+Wählen Sie „Event Grid-Trigger“ und dann eine Sprache aus.
 
 ![Wählen Sie den Event Grid-Trigger aus.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
@@ -121,15 +118,7 @@ Geben Sie den Namen der Funktion ein, und wählen Sie dann `Create` aus.
 
 Es wird eine Funktion mit folgendem Code erstellt:
 
-#### <a name="precompiled-c"></a>Vorkompilierter C#-Code
-```csharp
-public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
-#### <a name="c-script"></a>C#-Skript
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -143,6 +132,17 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+module.exports = async function(context, eventGridEvent) {
+    context.log(typeof eventGridEvent);
+    context.log(eventGridEvent);
+}
+```
+
+---
+
 Wählen Sie `Add Event Grid Subscription`aus. Durch diesen Vorgang wird dem erstellten Event Grid-Thema ein Event Grid-Abonnement hinzugefügt. Weitere Informationen finden Sie unter [Begriffe in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts).
 
 ![Wählen Sie den Link zum Event Grid-Trigger aus.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
@@ -153,69 +153,9 @@ Wählen Sie `Event Grid Topics` als **Thementyp** aus. Wählen Sie die Ressource
 
 Sie können nun Lebenszyklusereignisse empfangen.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Erstellen Sie langlebige Funktionen (Durable Functions), um die Ereignisse zu senden.
+## <a name="run-durable-functions-app-to-send-the-events"></a>Ausführen der Durable Functions-App zum Senden der Ereignisse
 
-Starten Sie in Ihrem Durable Functions-Projekt das Debuggen auf Ihrem lokalen Computer.  Der folgende Code entspricht dem Beispielcode für die langlebigen Funktionen. `host.json` und `local.settings.json` haben Sie bereits auf dem lokalen Computer konfiguriert.
-
-### <a name="precompiled-c"></a>Vorkompilierter C#-Code
-
-```csharp
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
-
-namespace LifeCycleEventSpike
-{
-    public static class Sample
-    {
-        [FunctionName("Sample")]
-        public static async Task<List<string>> RunOrchestrator(
-            [OrchestrationTrigger] IDurableOrchestrationContext context)
-        {
-            var outputs = new List<string>();
-
-            // Replace "hello" with the name of your Durable Activity Function.
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Tokyo"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Seattle"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "London"));
-
-            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-            return outputs;
-        }
-
-        [FunctionName("Sample_Hello")]
-        public static string SayHello([ActivityTrigger] string name, ILogger log)
-        {
-            log.LogInformation($"Saying hello to {name}.");
-            return $"Hello {name}!";
-        }
-
-        [FunctionName("Sample_HttpStart")]
-        public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
-            [DurableClient] IDurableOrchestrationClient starter,
-            ILogger log)
-        {
-            // Function input comes from the request content.
-            string instanceId = await starter.StartNewAsync("Sample", null);
-            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-            return starter.CreateCheckStatusResponse(req, instanceId);
-        }
-    }
-}
-```
-
-> [!NOTE]
-> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` und das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
-
-Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt Durable Functions mit dem Senden von Lebenszyklusereignissen. `http://localhost:7071/api/Sample_HttpStart` ist in der Regel der Endpunkt für das lokale Debuggen.
-
-Überprüfen Sie die Protokolle der Funktion, die Sie im Azure-Portal erstellt haben.
+Starten Sie in dem zuvor konfigurierten Durable Functions-Projekt das Debuggen auf Ihrem lokalen Computer, und starten Sie eine Orchestrierung. Die App veröffentlicht Durable Functions-Lebenszyklusereignisse in Event Grid. Stellen Sie sicher, dass Event Grid die von Ihnen erstellte Listenerfunktion auslöst, indem Sie ihre Protokolle im Azure-Portal überprüfen.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)

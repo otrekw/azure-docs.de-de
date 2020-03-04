@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931234"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612519"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)
 
@@ -89,7 +89,7 @@ Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurier
    > [!NOTE]
    > Wenn die Menüoption **Vertrauensstellungen** nicht angezeigt wird, suchen Sie unter **Eigenschaften** nach dem *Gesamtstrukturtyp*. Nur *Ressourcengesamtstrukturen* können Vertrauensstellungen erstellen. Wenn der Gesamtstrukturtyp *Benutzer* lautet, können Sie keine Vertrauensstellungen erstellen. Es gibt derzeit keine Möglichkeit, den Gesamtstrukturtyp einer verwalteten Azure AD DS-Domäne zu ändern. Sie müssen die verwaltete Domäne löschen und als eine Ressourcengesamtstruktur neu erstellen.
 
-1. Geben Sie einen Namen für die Azure AD DS-Domäne ein, z. B. *aadds.contoso.com*, und wählen Sie dann **Weiter** aus.
+1. Geben Sie einen Namen für die Azure AD DS-Domäne ein, z. B. *aaddscontoso.com*, und wählen Sie dann **Weiter** aus.
 1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend**-Vertrauensstellung aus.
 1. Wählen Sie die Option aus, mit der die Vertrauensstellung **Nur für diese Domäne** erstellt wird. Im nächsten Schritt erstellen Sie die Vertrauensstellung im Azure-Portal für die verwaltete Azure AD DS-Domäne.
 1. Wählen Sie die Option zum Verwenden von **Gesamtstrukturweite Authentifizierung** aus, und geben Sie dann ein Vertrauensstellungskennwort ein. Dasselbe Kennwort wird auch im Azure-Portal im nächsten Abschnitt eingegeben.
@@ -102,7 +102,7 @@ Nachdem Sie die lokale AD DS-Domäne konfiguriert haben, um die verwaltete Azure
 
 Führen Sie die folgenden Schritte aus, um die ausgehende Vertrauensstellung für die verwaltete Azure AD DS-Domäne im Azure-Portal zu erstellen:
 
-1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie dann Ihre verwaltete Domäne aus, z. B. *aadds.contoso.com*.
+1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie dann Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*.
 1. Wählen Sie im Menü auf der linken Seite der verwalteten Azure AD DS-Domäne die Option **Vertrauensstellungen** aus, und wählen Sie dann **+ Hinzufügen** aus.
 1. Geben Sie einen Anzeigenamen ein, der Ihre Vertrauensstellung kennzeichnet, und geben Sie dann den lokalen DNS-Namen der vertrauenswürdigen Gesamtstruktur ein, z. B. *onprem.contoso.com*.
 1. Geben Sie dasselbe Vertrauensstellungskennwort an, das beim Konfigurieren der eingehenden Gesamtstruktur-Vertrauensstellung für die lokale AD DS-Domäne im vorherigen Abschnitt verwendet wurde.
@@ -194,7 +194,7 @@ Mit dem virtuellen Windows Server-Computer, der mit der Azure AD DS-Ressourcenge
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Überprüfen der gesamtstrukturübergreifenden Authentifizierung für eine Ressource
 
 1. Melden Sie sich mit einem Benutzerkonto aus Ihrem lokalen Active Directory bei einem Windows-Computer an, der mit Ihrem lokalen Active Directory verknüpft ist.
-1. Stellen Sie über **Windows-Explorer-** eine Verbindung mit der von Ihnen erstellten Freigabe her. Verwenden Sie dazu den vollqualifizierten Hostnamen und den Namen der Freigabe, z. B. `\\fs1.aadds.contoso.com\CrossforestShare`.
+1. Stellen Sie über **Windows-Explorer-** eine Verbindung mit der von Ihnen erstellten Freigabe her. Verwenden Sie dazu den vollqualifizierten Hostnamen und den Namen der Freigabe, z. B. `\\fs1.aaddscontoso.com\CrossforestShare`.
 1. Um die Schreibberechtigung zu überprüfen, wählen Sie den Ordner mit der rechten Maustaste aus, wählen Sie **Neu** aus, und wählen Sie dann **Textdokument** aus. Verwenden Sie den Standardnamen **Neues Textdokument**.
 
     Wenn die Schreibberechtigungen ordnungsgemäß festgelegt sind, wird ein neues Textdokument erstellt. In den folgenden Schritten öffnen, bearbeiten und löschen Sie die Datei nach Bedarf.

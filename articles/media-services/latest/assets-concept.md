@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186311"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505819"
 ---
 # <a name="assets-in-azure-media-services"></a>Medienobjekte in Azure Media Services
 
@@ -28,9 +28,15 @@ Ein Medienobjekt ist einem Blobcontainer im [Azure Storage-Konto](storage-accoun
 
 Die **Archivspeicherebene** wird nur empfohlen, wenn Sie über sehr große Quelldateien verfügen, die bereits codiert wurden, und wenn der Codierungsauftrag in einem Ausgabeblobcontainer platziert wurde. Die Blobs in dem Ausgabecontainer, den Sie einem Medienobjekt zuordnen und zum Streamen oder Analysieren Ihrer Inhalte verwenden möchten, müssen auf den Speicherebenen **heiß** oder **kalt** vorhanden sein.
 
-### <a name="naming-blobs"></a>Benennen von Blobs
+### <a name="naming"></a>Benennung 
 
-Die Namen von Dateien/Blobs in einem Objekt müssen die [Anforderungen an Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) und die [Anforderungen an NTFS-Namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file) erfüllen. Diese Anforderungen bestehen, da die Dateien zur Verarbeitung aus Blobspeicher auf einen lokalen NTFS-Datenträger kopiert werden können.
+#### <a name="assets"></a>Objekte
+
+Ressourcennamen müssen eindeutig sein. Media Services v3-Ressourcennamen (beispielsweise Objekte, Aufträge und Transformationen) unterliegen den Namenseinschränkungen von Azure Resource Manager. Weitere Informationen finden Sie unter [Namenskonventionen](media-services-apis-overview.md#naming-conventions).
+
+#### <a name="blobs"></a>BLOBs
+
+Die Namen von Dateien/Blobs innerhalb einer Ressource müssen die [Anforderungen an Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) und die [Anforderungen an NTFS-Namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file) erfüllen. Diese Anforderungen bestehen, da die Dateien zur Verarbeitung aus Blob Storage auf einen lokalen NTFS-Datenträger kopiert werden können.
 
 ## <a name="upload-digital-files-into-assets"></a>Hochladen von digitalen Dateien in Medienobjekte
 

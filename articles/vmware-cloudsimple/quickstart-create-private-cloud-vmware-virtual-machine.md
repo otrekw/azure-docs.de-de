@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer VMware-VM in einer privaten AVS-Cloud'
-description: Beschreibt das Erstellen einer VMware-VM in einer privaten AVS-Cloud
+title: 'Schnellstart: Erstellen einer Azure VMware-VM in einer privaten Cloud – Azure VMware Solution by CloudSimple'
+description: Beschreibt, wie eine Azure VMware-VM in einer privaten CloudSimple-Cloud erstellt wird
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020062"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566147"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten AVS-Cloud
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten Cloud
 
-Um virtuelle Computer in Ihrer privaten AVS-Cloud zu erstellen, greifen Sie als Erstes über das Azure-Portal auf das AVS-Portal zu.
+Um virtuelle Computer in Ihrer privaten Cloud zu erstellen, greifen Sie zuerst über das Azure-Portal auf das CloudSimple-Portal zu.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="access-the-avs-portal"></a>Zugreifen auf das AVS-Portal
+## <a name="access-the-cloudsimple-portal"></a>Zugriff auf das CloudSimple-Portal
 
 1. Wählen Sie **Alle Dienste** aus.
-2. Suchen Sie nach **AVS Services** (AVS-Dienste).
-3. Wählen Sie den AVS-Dienst aus, über den Sie Ihre private AVS-Cloud erstellen möchten.
-4. Klicken Sie auf der Seite **Übersicht** auf **Go to the AVS portal** (Zum AVS-Portal wechseln), um eine neue Browserregisterkarte für das AVS-Portal zu öffnen. Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an. 
+2. Suchen Sie nach **CloudSimple Services**.
+3. Wählen Sie den CloudSimple-Dienst aus, über den Sie Ihre private Cloud erstellen möchten.
+4. Klicken Sie auf der Seite **Übersicht** auf **Go to the CloudSimple portal**, um eine neue Browserregisterkarte für das CloudSimple-Portal zu öffnen.  Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an.  
 
-    ![Starten des AVS-Portals](media/launch-cloudsimple-portal.png)
+    ![Starten des CloudSimple-Portals](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>Starten der vCenter-Webbenutzeroberfläche
 
 Jetzt können Sie vCenter starten, um virtuelle Computer und Richtlinien einzurichten.
 
-Um auf vCenter zuzugreifen, beginnen Sie im AVS-Portal. Klicken Sie auf der Startseite unter **Common Tasks** auf **Launch vSphere Client**. Wählen Sie die private AVS-Cloud aus, und klicken Sie dann auf **Launch vSphere Client** (vSphere-Client starten) für die private AVS-Cloud.
+Um auf vCenter zuzugreifen, starten Sie im CloudSimple-Portal. Klicken Sie auf der Startseite unter **Common Tasks** auf **Launch vSphere Client**.  Wählen Sie die private Cloud aus, und klicken Sie dann auf **Launch vSphere Client** für die private Cloud.
 
    ![VSphere-Client starten](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>Hochladen einer ISO- oder vSphere-Vorlage
 
   > [!WARNING]
-  > Verwenden Sie für ISO-Uploads den vSphere HTML5-Client. Die Verwendung des Flash-Clients kann zu einem Fehler führen.
+  > Verwenden Sie für ISO-Uploads den vSphere HTML5-Client.  Die Verwendung eines Flash-Clients kann zu einem Fehler führen.
 
 1. Rufen Sie die ISO- oder vSphere-Vorlage ab, die Sie auf vCenter hochladen möchten, um einen virtuellen Computer zu erstellen, damit er in Ihrem lokalen System zur Verfügung steht.
 2. Klicken Sie in vCenter, auf das Symbol **Datenträger**, und wählen Sie **vsanDatastore** aus. Klicken Sie auf **Dateien** und dann auf **Neuer Ordner**.
@@ -78,7 +78,7 @@ Um auf vCenter zuzugreifen, beginnen Sie im AVS-Portal. Klicken Sie auf der Star
 8. Wählen Sie das Gastbetriebssystem der ISO-Datei für den virtuellen Computer aus, den Sie erstellen, und klicken Sie auf **Weiter**.
     ![Neuer virtueller Computer](media/vcvm07.png)
 
-9. Wählen Sie Optionen für Festplatte und Netzwerk aus. Wählen Sie für „Neues CD-/DVD-Laufwerk“ **Datastore-ISO-Datei** aus. Wenn Sie Datenverkehr aus der öffentlichen IP-Adresse an diesen virtuellen Computer zulassen möchten, wählen Sie das Netzwerk als **vm-1** aus.
+9. Wählen Sie Optionen für Festplatte und Netzwerk aus. Wählen Sie für „Neues CD-/DVD-Laufwerk“ **Datastore-ISO-Datei** aus.  Wenn Sie Datenverkehr aus der öffentlichen IP-Adresse an diesen virtuellen Computer zulassen möchten, wählen Sie das Netzwerk als **vm-1** aus.
     ![Neuer virtueller Computer](media/vcvm08.png)
 
 10. Ein Auswahlfenster wird geöffnet. Wählen Sie die Datei aus, die Sie zuvor in den Ordner „ISO-Dateien und Vorlagen“ hochgeladen haben, und klicken Sie auf **OK**.
@@ -90,17 +90,17 @@ Um auf vCenter zuzugreifen, beginnen Sie im AVS-Portal. Klicken Sie auf der Star
 Der virtuelle Computer wird jetzt den Workload-Computeressourcen hinzugefügt und ist einsatzbereit. 
 ![Neuer virtueller Computer](media/vcvm12.png)
 
-Die grundlegende Einrichtung ist jetzt abgeschlossen. Sie können Ihre private AVS-Cloud ähnlich wie Ihre lokale Infrastruktur für virtuelle Computer verwenden.
+Die grundlegende Einrichtung ist jetzt abgeschlossen. Sie können mit der Verwendung Ihrer privaten Cloud ähnlich wie mit der Verwendung Ihrer lokalen Infrastruktur für virtuelle Computer beginnen.
 
-Die folgenden Abschnitte enthalten optionale Informationen zum Einrichten von DNS- und DHCP-Servern für Workloads in der privaten AVS-Cloud und zum Ändern der Standardnetzwerkkonfiguration.
+Die folgenden Abschnitte enthalten optionale Informationen zum Einrichten von DNS- und DHCP-Servern für private Cloudworkloads und zum Ändern der Standardnetzwerkkonfiguration.
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Hinzufügen von Benutzern und Identitätsquellen zu vCenter (optional)
 
-AVS weist ein vCenter-Standardbenutzerkonto mit dem Benutzernamen `cloudowner@AVS.local` zu. Für Ihren Einstieg ist keine zusätzliche Kontoeinrichtung erforderlich. Normalerweise weist AVS Administratoren die Berechtigungen zu, die sie zum Ausführen normaler Vorgänge benötigen. Richten Sie Ihr lokales Active Directory oder Azure AD als [zusätzliche Identitätsquelle](set-vcenter-identity.md) in der privaten AVS-Cloud ein.
+CloudSimple weist ein vCenter-Standardbenutzerkonto mit dem Benutzernamen `cloudowner@cloudsimple.local` zu. Für Ihren Einstieg ist keine zusätzliche Kontoeinrichtung erforderlich.  Normalerweise weist CloudSimple Administratoren die Berechtigungen zu, die sie zum Ausführen normaler Vorgänge benötigen.  Richten Sie Ihr lokales Active Directory oder Azure AD als [zusätzliche Identitätsquelle](set-vcenter-identity.md) in Ihrer privaten Cloud ein.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>Erstellen eines DNS- und DHCP-Servers (optional)
 
-Anwendungen und Workloads, die in einer privaten AVS-Cloudumgebung ausgeführt werden, erfordern Namensauflösung und DHCP-Dienste für das Nachschlagen und die IP-Adresszuweisung. Zur Bereitstellung dieser Dienste ist eine ordnungsgemäße DHCP- und DNS-Infrastruktur erforderlich. Sie können einen virtuellen Computer in vCenter konfigurieren, um diese Dienste in Ihrer privaten AVS-Cloudumgebung bereitzustellen.
+Anwendungen und Workloads, die in einer privaten Cloudumgebung ausgeführt werden, erfordern Namensauflösung und DHCP-Dienste für Nachschlagen und IP-Adresszuweisung. Zur Bereitstellung dieser Dienste ist eine ordnungsgemäße DHCP- und DNS-Infrastruktur erforderlich. Sie können einen virtuellen Computer in vCenter konfigurieren, um diese Dienste in Ihrer privaten Cloudumgebung bereitzustellen.
 
 Voraussetzungen
 
@@ -114,7 +114,7 @@ Voraussetzungen
 
 #### <a name="linux-based-dns-server-setup"></a>Setup für Linux-basiertes DNS-Server
 
-Linux bietet verschiedene Pakete für das Einrichten von DNS-Servern. Hier ist ein Link zu Anleitungen, wie Sie einen Open-Source-BIND DNS-Server einrichten.
+Linux bietet verschiedene Pakete für das Einrichten von DNS-Servern.  Hier ist ein Link zu Anleitungen, wie Sie einen Open-Source-BIND DNS-Server einrichten.
 
 [Beispiel-Setup](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ In diesen Microsoft-Themen wird beschrieben, wie Sie einen Windows-Server als DN
 
 ## <a name="customize-networking-configuration-optional"></a>Anpassen der Netzwerkkonfiguration (optional)
 
-Über die Netzwerkseiten im AVS-Portal können Sie die Konfiguration für Firewalltabellen und öffentliche IP-Adressen für virtuelle Computer angeben.
+Über die Netzwerkseiten im CloudSimple-Portal können Sie die Konfiguration für Firewalltabellen und öffentliche IP-Adressen für virtuelle Computer angeben.
 
 ### <a name="allocate-public-ips"></a>Zuordnen von öffentlichen IP-Adressen
 
-1. Navigieren Sie im AVS-Portal zu **Network > Public IP** (Netzwerk > Öffentliche IP-Adresse).
+1. Navigieren Sie im CloudSimple-Portal zu **Netzwerk > Öffentliche IP-Adresse**.
 2. Klicken Sie auf **Öffentliche IP-Adresse zuordnen**.
 3. Geben Sie einen Namen ein, um den IP-Adresseintrag zu identifizieren.
 4. Behalten Sie den Standardort bei.
@@ -207,10 +207,10 @@ python3 -m http.server 80
 ```
 Starten Sie einen Browser auf Ihrem Desktop, und verweisen Sie ihn an Port 80 für die öffentliche IP-Adresse, um die Dateien auf Ihrem virtuellen Computer zu durchsuchen.
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>AVS-Standardfirewallregeln für öffentliche IP-Adressen
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>CloudSimple-Standardfirewallregeln für öffentliche IP-Adresse
 
 * VPN-Datenverkehr: Der gesamte Datenverkehr zwischen (von/in) dem VPN und allen Workloadnetzwerken und dem Verwaltungsnetzwerk wird zugelassen.
-* Interner Datenverkehr in der privaten AVS-Cloud: Der gesamte Ost-West-Datenverkehr zwischen (von/in) Workloadnetzwerken und dem Verwaltungsnetzwerk (siehe oben) wird zugelassen.
+* Interner privater Clouddatenverkehr: Der gesamte Ost-West-Datenverkehr zwischen (von/in) Workloadnetzwerken und dem Verwaltungsnetzwerk (siehe oben) wird zugelassen.
 * Internet-Datenverkehr:
   * Der gesamte eingehende Datenverkehr aus dem Internet in Workloadnetzwerke und das Verwaltungsnetzwerk wird verweigert.
   * Der gesamte ausgehende Datenverkehr in das Internet aus Workloadnetzwerken oder dem Verwaltungsnetzwerk wird zugelassen.
@@ -219,7 +219,7 @@ Mithilfe des Features „Firewallregeln“ können Sie auch die Art und Weise ä
 
 ## <a name="install-solutions-optional"></a>Installieren von Lösungen (optional)
 
-Sie können Lösungen in Ihrer privaten AVS-Cloud installieren, um Ihre vCenter-Umgebung für die private AVS-Cloud voll nutzen zu können. Sie können Sicherung, Notfallwiederherstellung, Replizierung und andere Funktionen einrichten, um Ihre virtuellen Computer zu schützen. Beispiele hierfür sind VMware Site Recovery Manager (VMware SRM) und Veeam Backup & Replication.
+Sie können Lösungen in Ihrer privaten CloudSimple-Cloud installieren, um ihre vCenter-Umgebung für die private Cloud voll nutzen zu können. Sie können Sicherung, Notfallwiederherstellung, Replizierung und andere Funktionen einrichten, um Ihre virtuellen Computer zu schützen. Beispiele hierfür sind VMware Site Recovery Manager (VMware SRM) und Veeam Backup & Replication.
 
 Um eine Lösung zu installieren, müssen Sie zusätzliche Berechtigungen für einen begrenzten Zeitraum anfordern. Lesen Sie [Eskalieren von Berechtigungen](escalate-private-cloud-privileges.md).
 
@@ -227,4 +227,4 @@ Um eine Lösung zu installieren, müssen Sie zusätzliche Berechtigungen für ei
 
 * [Nutzen von virtuellen VMware-Computern in Azure](quickstart-create-vmware-virtual-machine.md)
 * [Connect from on-premises to CloudSimple using ExpressRoute](on-premises-connection.md)
-* [Einrichten von VPN-Gateways im AVS-Netzwerk](vpn-gateway.md)
+* [Einrichten von VPN-Gateways im CloudSimple-Netzwerk](vpn-gateway.md)

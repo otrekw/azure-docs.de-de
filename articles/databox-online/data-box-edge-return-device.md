@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356147"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651099"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Zurückgeben oder Ersetzen Ihres Azure Data Box Edge-Geräts
 
@@ -72,7 +72,7 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 3. Trennen Sie die Netzkabel, und entfernen Sie alle Netzwerkkabel vom Gerät.
 4. Bereiten Sie das Versandpaket vor, indem Sie Ihren eigenen Karton verwenden oder den leeren, den Sie von Azure erhalten haben. Bringen Sie das Gerät und die mitgelieferten Netzkabel im Karton unter.
 5. Bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.
-6. Planen Sie eine Abholung mit Ihrem regionalen Paketdienst. Bei Rückgabe des Geräts in den USA ist dies UPS. So planen Sie die Abholung:
+6. Planen Sie eine Abholung mit Ihrem regionalen Paketdienst. Bei Rückgabe des Geräts in den USA ist dies UPS oder FedEx. So planen Sie eine Abholung durch UPS
 
     1. Rufen Sie Ihre lokale UPS-Versandstelle an (landesspezifische kostenfreie Telefonnummer).
     2. Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie auf dem gedruckten Etikett finden.

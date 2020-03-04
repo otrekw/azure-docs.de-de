@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744704"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587378"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
@@ -34,7 +34,7 @@ Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der A
 | :------------------- | ------------------- | ------------------- |
 | [Erreichen von Ressourcengrenzwerten](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Die Nutzung der im überwachten Abonnement verfügbaren Ressourcen (Datenübertragungseinheiten, DTUs), Datenbankarbeitsthreads und Datenbankanmeldesitzungen hat Grenzwerte erreicht. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Die Nutzung von CPU-Ressourcen hat Grenzwerte für die verwaltete Instanz erreicht. Dies beeinträchtigt die Datenbankleistung. |
 | [Gestiegene Workload](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Eine Zunahme der Workload oder fortlaufende Häufung von Workloads wurde in der Datenbank erkannt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Eine Zunahme der Workload wurde erkannt. Dies beeinträchtigt die Datenbankleistung. |
-| [Hohe Arbeitsspeicherauslastung](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Oder es gibt eine zunehmende Anzahl von Workern, die Arbeitsspeicherzuweisungen angefordert haben. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Dies beeinträchtigt die Datenbankleistung. |
+| [Hohe Arbeitsspeicherauslastung](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Worker, die Speicherzuweisungen angefordert haben, müssen statistisch gesehen lange auf Speicherbelegung warten. Dies gilt auch, wenn eine zunehmende Anzahl von Workern eine Speicherbelegung angefordert haben. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Worker, die Speicherzuweisungen angefordert haben, warten statistisch gesehen lange auf Speicherbelegung. Dies beeinträchtigt die Datenbankleistung. |
 | [Sperren](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Übermäßige Datenbanksperren wurden erkannt, welche die Leistung von SQL-Datenbank beeinträchtigen. | Übermäßige Datenbanksperren wurden erkannt, welche die Datenbankleistung beeinträchtigen. |
 | [Erhöhter Wert für „Maximaler Grad an Parallelität“](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Die Option „Maximaler Grad an Parallelität“ (MAXDOP) wurde geändert, was sich auf die Effizienz der Ausführung von Abfragen auswirkt. Dies beeinträchtigt die Datenbankleistung. |
 | [Seitenlatchkonflikt](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies beeinträchtigt die Leistung von SQL-Datenbank. | Mehrere Threads versuchen gleichzeitig, auf dieselben Datenpufferseiten im Arbeitsspeicher zuzugreifen. Dies führt zu längeren Wartezeiten und verursacht einen Seitenlatchkonflikt. Dies beeinträchtigt die Datenbankleistung. |

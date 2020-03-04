@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462001"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587123"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -328,7 +328,7 @@ Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht
 **Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
 
 > [!WARNING]
-> Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures).
+> Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures). Verwenden Sie als [enforcementMode](./assignment-structure.md#enforcement-mode) den Modus **DoNotEnforce**, um Auswirkungen einer fehlerhaften Auswertung auf neue oder aktualisierte Ressourcen beim Testen und Überprüfen einer neuen Richtliniendefinition zu verhindern.
 
 #### <a name="value-examples"></a>Beispiele von Werten
 
@@ -580,13 +580,22 @@ Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templ
 
 Die folgenden Funktionen stehen zur Verwendung in einer Richtlinienregel zur Verfügung, unterscheiden sich jedoch von der Verwendung in einer Azure Resource Manager-Vorlage:
 
-- addDays(dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**: [Erforderlich] string – Zeichenfolge im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ'
   - **numberOfDaysToAdd**: [Erforderlich] integer – Anzahl der hinzuzufügenden Tage
-- utcNow() – Im Gegensatz zu einer Resource Manager-Vorlage kann dies auch außerhalb von „defaultValue“ verwendet werden.
+- `utcNow()`: Im Gegensatz zu einer Resource Manager-Vorlage kann dies auch außerhalb von defaultValue verwendet werden.
   - Gibt eine Zeichenfolge zurück, die auf das aktuelle Datum und die aktuelle Uhrzeit im Universal ISO 8601 DateTime-Format 'jjjj-MM-ttTHH:mm:ss.fffffffZ' festgelegt ist.
 
-Darüber hinaus ist die `field` Funktion für Richtlinienregeln verfügbar. `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
+Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
+
+- `field(fieldName)`
+  - **fieldName** [erforderlich]: Zeichenfolge – Name des abzurufenden [Felds](#fields)
+  - Gibt den Wert dieses Felds aus der Ressource zurück, die von der If-Bedingung ausgewertet wird
+  - `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - Gibt die API-Version der Anforderung zurück, die die Richtlinienauswertung ausgelöst hat (z. B. `2019-09-01`). Dabei handelt es sich um die API-Version, die in der PUT/PATCH-Anforderung für Auswertungen bei der Erstellung/Aktualisierung von Ressourcen verwendet wurde. Bei der Kompatibilitätsauswertung vorhandener Ressourcen wird immer die neueste API-Version verwendet.
+  
+
 
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 

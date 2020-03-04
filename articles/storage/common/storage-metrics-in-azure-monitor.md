@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 34665db48d2097fd3be3cdcd11a0d9cceb31855c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748380"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588942"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -334,13 +334,13 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="account-level"></a>Kontoebene
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | UsedCapacity | Die vom Speicherkonto beanspruchte Speichermenge. Bei Standardspeicherkonten ist das die Summe der von Blob, Table, File und Queue beanspruchten Kapazität. Bei Storage Premium- und Blob Storage-Konten ist es der gleiche Wert wie für „BlobCapacity“. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | BlobCapacity | Der gesamte im Speicherkonto beanspruchte Blobspeicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 <br/> Abmessungen: **BlobType** und **BlobTier** ([Definition](#metrics-dimensions)) |
 | BlobCount    | Die Anzahl von im Speicherkonto gespeicherten Blobs. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 <br/> Abmessungen: **BlobType** und **BlobTier** ([Definition](#metrics-dimensions)) |
@@ -349,7 +349,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="table-storage"></a>Table Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | TableCapacity | Der vom Speicherkonto beanspruchte Table-Speicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | TableCount   | Die Anzahl von Tabellen im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
@@ -357,7 +357,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="queue-storage"></a>Queue Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | QueueCapacity | Der vom Speicherkonto beanspruchte Queue-Speicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | QueueCount   | Die Anzahl von Warteschlangen im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
@@ -365,7 +365,7 @@ Azure Storage stellt in Azure Monitor folgende Kapazitätsmetriken bereit:
 
 ### <a name="file-storage"></a>File Storage
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | FileCapacity | Der vom Speicherkonto beanspruchte File-Speicher. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
 | FileCount   | Die Anzahl von Dateien im Speicherkonto. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Beispielwert: 1024 |
@@ -377,7 +377,7 @@ Transaktionsmetriken werden für jede Anforderung an ein Speicherkonto aus Azure
 
 Azure Storage stellt in Azure Monitor folgende Transaktionsmetriken bereit:
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | Transaktionen | Die Anzahl von Anforderungen, die an einen Speicherdienst oder an den angegebenen API-Vorgang gerichtet wurden. Diese Anzahl umfasst erfolgreiche und nicht erfolgreiche Anforderungen sowie Anforderungen, die zu Fehlern geführt haben. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Verfügbare Dimensionen: ResponseType, GeoType, ApiName, Authentication ([Definition](#metrics-dimensions))<br/> Beispielwert: 1024 |
 | Eingehende Daten | Die eingehende Datenmenge. Dieser Wert umfasst an Azure Storage gerichtete eingehende Daten von einem externen Client sowie eingehende Daten innerhalb von Azure. <br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Verfügbare Dimensionen: GeoType, ApiName, Authentication ([Definition](#metrics-dimensions)) <br/> Beispielwert: 1024 |
@@ -390,12 +390,12 @@ Azure Storage stellt in Azure Monitor folgende Transaktionsmetriken bereit:
 
 Azure Storage unterstützt folgende Dimensionen für Metriken in Azure Monitor:
 
-| Dimensionsname | Beschreibung |
+| Dimensionsname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | **BlobType** | Die Art des Blobs (nur für Blobmetriken). Die unterstützten Werte sind **BlockBlob**, **PageBlob**, und **Azure Data Lake Storage**. Anfügeblob ist in „BlockBlob“ enthalten. |
 | **BlobTier** | Azure Storage bietet unterschiedliche Zugriffsebenen, die Ihnen das Speichern von Blobobjektdaten auf die kostengünstigste Art ermöglichen. Weitere Informationen finden Sie in [Azure Storage-Blobtarif](../blobs/storage-blob-storage-tiers.md). Die unterstützten Werte umfassen: <br/> <li>**Hot**: Heiße Zugriffsebene</li> <li>**Cool**: Kalte Zugriffsebene</li> <li>**Archive**: Archivzugriffsebene</li> <li>**Premium**: Premium-Tarif für Blockblob</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Zugriffsebenentypen für Premium-Seitenblob</li> <li>**Standard**: Zugriffsebenentypen für Standard-Seitenblob</li> <li>**Kein Tarif**: Zugriffsebenentyp für Speicherkonto des Typs „Allgemein v1“</li> |
 | **GeoType** | Transaktion aus dem primären oder sekundären Cluster. Die verfügbaren Werte sind **Primary** und **Secondary**. Gilt für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beim Lesen von Objekten aus dem sekundären Mandanten. |
-| **ResponseType** | Transaktionsantworttyp. Verfügbaren Werte: <br/><br/> <li>**ServerOtherError**: Alle weiteren serverseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**ServerBusyError**: Authentifizierte Anforderung, die den HTTP-Statuscode 503 zurückgegeben hat. </li> <li>**ServerTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Das Timeout ist auf einen Serverfehler zurückzuführen. </li> <li>**AuthorizationError**: Authentifizierte Anforderung, die aufgrund eines nicht autorisierten Datenzugriffs oder aufgrund eines Autorisierungsfehlers nicht erfolgreich war. </li> <li>**NetworkError**: Authentifizierte Anforderung, die aufgrund von Netzwerkfehlern nicht erfolgreich war. Tritt üblicherweise auf, wenn ein Client vor Ablauf des Timeouts vorzeitig eine Verbindung trennt. </li> <li>**ClientThrottlingError**: Clientseitiger Drosselungsfehler. </li> <li>**ClientTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Wenn das Netzwerktimeout des Clients oder das Anforderungstimeout auf einen niedrigeren Wert festgelegt ist als vom Speicherdienst erwartet, handelt es sich um ein erwartetes Timeout. Andernfalls wird „ServerTimeoutError“ gemeldet. </li> <li>**ClientOtherError**: Alle weiteren clientseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**Erfolg**: Erfolgreiche Anforderung.</li> <li> **SuccessWithThrottling**: Erfolgreiche Anforderung, wenn ein SMB-Client bei den ersten Versuchen gedrosselt wird, der Vorgang aber letztendlich erfolgreich ist.</li> |
+| **ResponseType** | Transaktionsantworttyp. Verfügbaren Werte: <br/><br/> <li>**ServerOtherError**: Alle weiteren serverseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**ServerBusyError**: Authentifizierte Anforderung, die den HTTP-Statuscode 503 zurückgegeben hat. </li> <li>**ServerTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Das Timeout ist auf einen Serverfehler zurückzuführen. </li> <li>**AuthorizationError**: Authentifizierte Anforderung, die aufgrund eines nicht autorisierten Datenzugriffs oder aufgrund eines Autorisierungsfehlers nicht erfolgreich war. </li> <li>**NetworkError**: Authentifizierte Anforderung, die aufgrund von Netzwerkfehlern nicht erfolgreich war. Tritt üblicherweise auf, wenn ein Client vor Ablauf des Timeouts vorzeitig eine Verbindung trennt. </li>  <li>**ClientAccountBandwidthThrottlingError**: Die Bandbreite für die Anforderung wird aufgrund einer Überschreitung der [Skalierbarkeitslimits für Speicherkonten](scalability-targets-standard-account.md) gedrosselt.</li><li>**ClientAccountRequestThrottlingError**: Die Anforderungsrate für die Anforderung wird aufgrund einer Überschreitung der [Skalierbarkeitslimits für Speicherkonten](scalability-targets-standard-account.md) gedrosselt.<li>**ClientThrottlingError**: Anderer Fehler bei der clientseitigen Drosselung. ClientAccountBandwidthThrottlingError und ClientAccountRequestThrottlingError sind ausgeschlossen.</li> <li>**ClientTimeoutError**: Authentifizierte Anforderung mit Timeoutfehler, die den HTTP-Statuscode 500 zurückgegeben hat. Wenn das Netzwerktimeout des Clients oder das Anforderungstimeout auf einen niedrigeren Wert festgelegt ist als vom Speicherdienst erwartet, handelt es sich um ein erwartetes Timeout. Andernfalls wird „ServerTimeoutError“ gemeldet.</li> </li> <li>**ClientOtherError**: Alle weiteren clientseitigen Fehler (mit Ausnahme beschriebener Fehler). </li> <li>**Erfolg**: Erfolgreiche Anforderung.</li> <li> **SuccessWithThrottling**: Erfolgreiche Anforderung, wenn ein SMB-Client bei den ersten Versuchen gedrosselt wird, der Vorgang aber letztendlich erfolgreich ist.</li> |
 | **ApiName** | Der Name des Vorgangs. Beispiel: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Eine Liste mit allen Vorgangsnamen finden Sie [hier](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | **Authentifizierung** | Der in Transaktionen verwendete Authentifizierungstyp. Verfügbaren Werte: <br/> <li>**AccountKey**: Die Transaktion wird mit dem Speicherkontoschlüssel authentifiziert.</li> <li>**SAS**: Die Transaktion wird mit Shared Access Signatures authentifiziert.</li> <li>**OAuth**: Die Transaktion wird mit OAuth-Zugriffstoken authentifiziert.</li> <li>**Anonymous**: Die Transaktion wird anonym angefordert. Sie enthält keine Preflight-Anforderungen.</li> <li>**AnonymousPreflight**: Die Transaktion ist eine Preflightanforderung.</li> |
 

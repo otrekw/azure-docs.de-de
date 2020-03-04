@@ -1,5 +1,5 @@
 ---
-title: Fehler beim Erstellen oder Löschen einer Datenbank oder Tabelle im Azure-Daten-Explorer
+title: Fehler beim Erstellen oder Löschen einer Datenbank oder Tabelle in Azure Data Explorer
 description: Dieser Artikel enthält Schritte zum Beheben von Problemen, die beim Erstellen und Löschen von Datenbanken und Tabellen im Azure-Daten-Explorer auftreten können.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0d221138914230d5455dc0addbe08cdaaed36a0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67e4c33498b05884fe667a7977ddb40e647ab4c8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826253"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562393"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Problembehandlung: Fehler beim Erstellen oder Löschen einer Datenbank oder Tabelle im Azure-Daten-Explorer
 
@@ -20,7 +20,7 @@ Im Azure-Daten-Explorer arbeiten Sie regelmäßig mit Datenbanken und Tabellen. 
 
 ## <a name="creating-a-database"></a>Erstellen einer Datenbank
 
-1. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Um eine Datenbank erstellen zu können, müssen Sie Mitglied der Rolle *Mitwirkender* oder *Besitzer* für das Azure-Abonnement sein. Arbeiten Sie ggf. mit Ihrem Abonnementadministrator zusammen, damit dieser Sie zur entsprechenden Rolle hinzufügen kann.
+1. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Um eine Datenbank erstellen zu können, müssen Sie Mitglied der Rolle *Mitwirkender* oder *Besitzer* für das Azure-Abonnement sein. Arbeiten Sie ggf. mit Ihrem Abonnementadministrator zusammen, damit dieser Sie der entsprechenden Rolle hinzufügen kann.
 
 1. Stellen Sie sicher, dass für den Datenbanknamen keine Namensüberprüfungsfehler vorliegen. Der Name muss aus maximal 260 alphanumerischen Zeichen bestehen.
 
@@ -28,7 +28,7 @@ Im Azure-Daten-Explorer arbeiten Sie regelmäßig mit Datenbanken und Tabellen. 
 
 ## <a name="deleting-or-renaming-a-database"></a>Löschen oder Umbenennen einer Datenbank
 
-Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Um eine Datenbank löschen oder umbenennen zu können, müssen Sie Mitglied der Rolle *Mitwirkender* oder *Besitzer* für das Azure-Abonnement sein. Arbeiten Sie ggf. mit Ihrem Abonnementadministrator zusammen, damit dieser Sie zur entsprechenden Rolle hinzufügen kann.
+Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. Um eine Datenbank löschen oder umbenennen zu können, müssen Sie Mitglied der Rolle *Mitwirkender* oder *Besitzer* für das Azure-Abonnement sein. Arbeiten Sie ggf. mit Ihrem Abonnementadministrator zusammen, damit dieser Sie der entsprechenden Rolle hinzufügen kann.
 
 ## <a name="creating-a-table"></a>Erstellen einer Tabelle
 

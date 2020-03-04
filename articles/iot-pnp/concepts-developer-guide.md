@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905791"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605220"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Anleitung für Entwickler: Modellierung mit IoT Plug & Play (Vorschau)
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 Mithilfe von IoT Plug & Play können Sie Geräte verwenden, deren Funktionen bei Ihrem IoT-Hub registriert wurden. Beispielsweise können Sie direkt auf die Eigenschaften und Befehle eines Geräts zugreifen.
 
-Zur Verwendung eines mit dem IoT-Hub verbundenen IoT Plug & Play-Geräts können Sie entweder die IoT Hub-REST-API oder eines der IoT-Sprach-SDKs nutzen. In den folgenden Beispielen wird die IoT Hub-REST-API verwendet.
+Zur Verwendung eines mit dem IoT-Hub verbundenen IoT Plug & Play-Geräts können Sie entweder die IoT Hub-REST-API oder eines der IoT-Sprach-SDKs nutzen. In den folgenden Beispielen wird die IoT Hub-REST-API verwendet. Die aktuelle Version der API lautet `2019-07-01-preview`. Fügen Sie `?api-version=2019-07-01-preview` an die REST-API-Aufrufe an.
 
 Zum Abrufen des Werts einer Geräteeigenschaft, z. B. der Firmwareversion (`fwVersion`) in der `DeviceInformation`-Schnittstelle im Thermostat, verwenden Sie die Digital Twins-REST-API.
 
-Wenn das Thermostatgerät den Namen `t-123` trägt, können Sie alle mit dem Gerät implementierten Eigenschaften mit einem GET-Aufruf der REST-API abrufen:
+Wenn das Thermostatgerät den Namen `t-123` trägt, können Sie die Eigenschaften über alle mit dem Gerät implementierten Schnittstellen mit einem GET-Aufruf der REST-API abrufen:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Generell wird über folgende REST-API-Vorlage auf alle Eigenschaften zugegriffen, wobei `{device-id}` der Bezeichner für das Gerät ist:
+Generell wird über die folgende REST-API-Vorlage auf alle Eigenschaften über alle Schnittstellen zugegriffen, wobei `{device-id}` der Bezeichner für das Gerät ist:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Wenn Sie den Namen der Schnittstelle kennen und Eigenschaften für eine bestimmte Schnittstelle abrufen möchten, können Sie die Anforderung auf diese spezifische Schnittstelle nach deren Namen einschränken:
+Wenn Sie den Namen der Schnittstelle kennen (z. B. `deviceInformation`) und Eigenschaften für diese spezifische Schnittstelle abrufen möchten, können Sie die Anforderung auf diese Schnittstelle nach ihrem Namen einschränken:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Generell kann über folgende REST-API-Vorlage auf die Eigenschaften einer spezifischen Schnittstelle zugegriffen werden, wobei `device-id` der Bezeichner für das Gerät und `{interface-name}` der Name der Schnittstelle ist:

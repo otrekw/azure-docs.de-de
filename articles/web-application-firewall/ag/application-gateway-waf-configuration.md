@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Informationen zur Konfiguration von Anforde
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839967"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526789"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web Application Firewall-Anforderungsgrößenlimits und Ausschlusslisten
 
@@ -91,7 +91,13 @@ Wenn also die URL `http://www.contoso.com/?user%281%29=fdafdasfda` an die WAF ü
 Die Web Application Firewall ermöglicht Ihnen das Konfigurieren von Anforderungsgrößenlimits mit Ober- und Untergrenzen. Die folgenden zwei Konfigurationen für Größenlimits sind verfügbar:
 
 - Der Wert im Feld für die maximale Größe des Anforderungstexts wird in Kilobyte angegeben und bestimmt das Anforderungsgrößenlimit insgesamt mit Ausnahme von Dateiuploads. In diesem Feld können Werte von mindestens 1 KB bis maximal 128 KB angegeben werden. Der Standardwert für die Größe des Anforderungstexts beträgt 128 KB.
-- Der Wert im Feld für das Dateiuploadlimit wird in MB angegeben und bestimmt die maximal zulässige Größe für Dateiuploads. Für dieses Feld kann ein Mindestwert von 1 MB und ein Höchstwert von 500 MB für große SKU-Instanzen angegeben werden. Für mittlere SKU-Instanzen gilt ein Höchstwert von 100 MB. Der Standardwert für die Größe von Dateiuploads beträgt 100 MB.
+- Der Wert im Feld für das Dateiuploadlimit wird in MB angegeben und bestimmt die maximal zulässige Größe für Dateiuploads. In diesem Feld können Werte von mindestens 1 MB bis zu den folgenden Höchstwerten angegeben werden:
+
+   - 100 MB für v1 Mittlere WAF-Gateways
+   - 500 MB für v1 Große WAF-Gateways
+   - 750 MB für v2 WAF-Gateways 
+
+ Der Standardwert für die Größe von Dateiuploads beträgt 100 MB.
 
 Die WAF bietet außerdem einen konfigurierbaren Knopf zum Aktivieren bzw. Deaktivieren der Anforderungstextüberprüfung. Standardmäßig ist die Überprüfung des Anforderungstexts aktiviert. Ist die Überprüfung des Anforderungstexts deaktiviert, wertet die WAF die Inhalte des HTTP-Nachrichtentexts nicht aus. In diesem Fall erzwingt die WAF weiterhin WAF-Regeln für Header, Cookies und den URI. Ist die Überprüfung des Anforderungstexts deaktiviert, ist das Feld für die maximale Größe des Anforderungstexts nicht verfügbar, und es kann kein Wert festgelegt werden. Wenn Sie die Überprüfung des Anforderungstexts deaktivieren, können Nachrichten, die größer als 128 KB sind, an die WAF gesendet werden, aber der Nachrichtentext wird nicht auf Sicherheitsrisiken überprüft.
 

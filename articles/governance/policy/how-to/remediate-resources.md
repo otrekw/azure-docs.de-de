@@ -3,12 +3,12 @@ title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 09/09/2019
 ms.topic: how-to
-ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873045"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544180"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -143,7 +143,7 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
    ![Wartung – auswählen, welche Ressourcen gewartet werden](../media/remediate-resources/select-resources.png)
 
-1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie auf **Korrigieren** klicken. Auf der Registerkarte **Wartungstasks** wird die Seite „Richtlinienkonformität“ geöffnet, auf welcher der Fortschritt der Tasks angezeigt wird.
+1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie auf **Korrigieren** klicken. Auf der Registerkarte **Wartungstasks** wird die Seite zur Richtlinienkonformität geöffnet, auf der der Fortschritt der Tasks angezeigt wird. Durch dem Wartungstask erstellte Bereitstellungen beginnen sofort.
 
    ![Wartung – Status der Wartungsaufgaben](../media/remediate-resources/task-progress.png)
 

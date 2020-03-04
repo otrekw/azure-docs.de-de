@@ -7,52 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/22/2020
-ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/18/2020
+ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548814"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560081"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Erstellen von Apache Hadoop-Clustern mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop-Cluster mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
 
 Das Feature [Sichere Übertragung erforderlich](../storage/common/storage-require-secure-transfer.md) erhöht die Sicherheit Ihres Azure Storage-Kontos, indem alle Anforderungen für Ihr Konto über eine sichere Verbindung übertragen werden müssen. Dieses Feature und das WASB-Schema werden erst ab HDInsight-Clusterversion 3.6 unterstützt.
 
-**Das Aktivieren der sicheren Speicherübertragung nach dem Erstellen eines Clusters kann zu Fehlern bei der Verwendung Ihres Speicherkontos führen und wird daher nicht empfohlen. Es ist vorzuziehen, einen neuen Cluster mit der aktivierten Eigenschaft zu erstellen.**
+> [!IMPORTANT]
+> Das Aktivieren der sicheren Speicherübertragung nach dem Erstellen eines Clusters kann zu Fehlern bei der Verwendung Ihres Speicherkontos führen und wird daher nicht empfohlen. Es ist besser, einen neuen Cluster mit einem Speicherkonto zu erstellen, bei dem die sichere Übertragung bereits aktiviert ist.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="storage-accounts"></a>Speicherkonten
 
-Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
+### <a name="azure-portal"></a>Azure-Portal
 
-* Azure-Abonnement: Um ein kostenloses Testkonto für die Dauer eines Monats zu erstellen, navigieren Sie zu [azure.microsoft.com/free](https://azure.microsoft.com/free).
-* Ein Azure Storage-Konto mit aktivierter sicherer Übertragung. Entsprechende Anleitungen finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/common/storage-account-create.md) sowie unter [Vorschreiben einer sicheren Übertragung](../storage/common/storage-require-secure-transfer.md). 
-* Ein Blobcontainer im Speicherkonto.
+Standardmäßig ist die Eigenschaft für erforderliche sichere Übertragung aktiviert, wenn Sie ein Speicherkonto im Azure-Portal erstellen.
 
-## <a name="create-cluster"></a>Cluster erstellen
+Informationen zum Aktualisieren eines vorhandenen Speicherkontos über das Azure-Portal finden Sie unter [Erfordern sicherer Übertragung über das Azure-Portal](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account).
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+### <a name="powershell"></a>PowerShell
 
-In diesem Abschnitt erstellen Sie einen Hadoop-Cluster in HDInsight mit einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/deploy-powershell.md). Die Vorlage befindet sich auf [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Für diesen Artikel ist keine Erfahrung mit Resource Manager-Vorlagen erforderlich. Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Artikel verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md).
+Stellen Sie für das PowerShell-Cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) sicher, dass der Parameter `-EnableHttpsTrafficOnly` auf `1` festgelegt ist.
 
-1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden, und öffnen Sie die Resource Manager-Vorlage im Azure-Portal.
+Informationen zum Aktualisieren eines vorhandenen Speicherkontos mit PowerShell finden Sie unter [Erfordern sicherer Übertragung mit PowerShell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-2. Erstellen Sie den Cluster wie folgt:
+Stellen Sie für den Azure CLI-Befehl [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) sicher, dass der Parameter `--https-only` auf `true` festgelegt ist.
 
-    * Geben Sie die HDInsight-Version 3.6 an. Es wird mindestens Version 3.6 benötigt.
-    * Geben Sie ein Speicherkonto mit sicherer Übertragung an.
-    * Verwenden Sie einen kurzen Namen für das Speicherkonto.
-    * Speicherkonto und Blobcontainer müssen vorab erstellt werden.
-
-      Eine entsprechende Anleitung finden Sie unter [Cluster erstellen](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-
-Wenn Sie mithilfe der Skriptaktion Ihre eigenen Konfigurationsdateien bereitstellen, müssen Sie WASBS in den folgenden Einstellungen verwenden:
-
-* fs.defaultFS (core-site)
-* spark.eventLog.dir
-* spark.history.fs.logDirectory
+Informationen zum Aktualisieren eines vorhandenen Speicherkontos über die Azure-Befehlszeilenschnittstelle finden Sie unter [Erfordern sicherer Übertragung über die Azure-Befehlszeilenschnittstelle](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 
 ## <a name="add-additional-storage-accounts"></a>Hinzufügen weiterer Speicherkonten
 
@@ -64,25 +52,6 @@ Weitere Speicherkonten mit sicherer Übertragung können auf unterschiedliche We
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen HDInsight-Cluster erstellen und die sichere Übertragung an die Speicherkonten aktivieren.
-
-Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
-
-* Weitere Informationen zum Verwenden von [Apache Hive](https://hive.apache.org/) mit HDInsight (etwa zum Ausführen von Hive-Abfragen in Visual Studio) finden Sie unter [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md).
-* Informationen zu [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie unter [Verwenden von Apache Hadoop MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md).
-* Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Apache Hadoop-Tools für Visual Studio für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
-
-Weitere Informationen dazu, wie HDInsight Daten speichert und wie Sie Daten an HDInsight übertragen, finden Sie in den folgenden Artikeln:
-
+* Verwendung von Azure Storage (WASB) anstelle von [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) als Standarddatenspeicher
 * Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](hdinsight-hadoop-use-blob-storage.md).
 * Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten für Hadoop-Aufträge in HDInsight](hdinsight-upload-data.md).
-
-Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden Sie in den folgenden Artikeln:
-
-* Informationen zum Verwalten eines Linux-basierten HDInsight-Clusters finden Sie unter [Verwalten von HDInsight-Clustern mit Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-* Informationen zu den Optionen, die Sie beim Erstellen eines HDInsight-Clusters auswählen können, finden Sie unter [Erstellen von HDInsight unter Linux mit benutzerdefinierten Optionen](hdinsight-hadoop-provision-linux-clusters.md).
-* Wenn Sie mit Linux und Apache Hadoop vertraut sind und ausführliche Informationen zu Hadoop in HDInsight erhalten möchten, finden Sie diese unter [Arbeiten mit HDInsight unter Linux](hdinsight-hadoop-linux-information.md). Dieser Artikel enthält u.a. folgende Informationen:
-
-  * URLs für im Cluster gehostete Dienste, z. B. [Apache Ambari](https://ambari.apache.org/) und [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
-  * Speicherort von [Apache Hadoop](https://hadoop.apache.org/)-Dateien und -Beispielen im lokalen Dateisystem
-  * Verwendung von Azure Storage (WASB) anstelle von [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) als Standarddatenspeicher

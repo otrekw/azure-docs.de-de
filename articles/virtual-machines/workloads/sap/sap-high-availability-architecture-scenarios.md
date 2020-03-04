@@ -1,10 +1,10 @@
 ---
-title: Azure Virtual Machines-Architektur für Hochverfügbarkeit und Szenarien für SAP NetWeaver | Microsoft-Dokumentation
+title: Architektur und Szenarien mit Azure-VMs für die Hochverfügbarkeit von SAP NetWeaver | Microsoft-Dokumentation
 description: Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver auf Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291480"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623857"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -391,6 +391,8 @@ Sie können eine WSFC-Lösung zum Schützen der SAP ASCS/SCS-Instanz verwenden. 
 
 * **Gruppieren der SAP ASCS/SCS-Instanz mithilfe einer Dateifreigabe:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure][sap-high-availability-guide-wsfc-file-share].
 
+* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe einer ANF-SMB-Freigabe:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster über eine ANF-SMB-Freigabe](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb).
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Hochverfügbarkeitsarchitektur für eine SAP ASCS/SCS-Instanz unter Linux
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red H
 
 > ![Windows][Logo_Windows] Windows
 > 
-> Derzeit wird Multi-SID nur mit WSFC unterstützt. Multi-SID wird mithilfe von Dateifreigaben und freigegebenen Datenträgern unterstützt.
+> Multi-SID wird mit WSFC über Dateifreigaben und freigegebene Datenträger unterstützt.
 > 
-> Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur finden Sie unter:
+> Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur unter Windows finden Sie unter:
 
 * [Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen unter Verwendung von Windows Server-Failoverclustering und freigegebene Datenträger in Azure][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> Multi-SID-Clustering wird auf Linux-Pacemaker-Clustern für SAP ASCS/ERS unterstützt und ist auf **fünf** SAP-SIDs im selben Cluster beschränkt.
+> Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur unter Linux finden Sie unter:
+
+* [Leitfaden zur Multi-SID-Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Hochverfügbarkeit für DBMS-Instanzen
 

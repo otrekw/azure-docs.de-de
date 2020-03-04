@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164588"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622967"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Informationen zu Azure Monitor für Azure Cosmos DB (Vorschau)
 
@@ -35,8 +35,35 @@ Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, da diese Az
 >[!NOTE]
 >Für den Zugriff auf dieses Feature fallen keine Gebühren an. Ihnen werden nur die grundlegenden Features von Azure Monitor in Rechnung gestellt, die Sie entsprechend der Beschreibung auf der Seite [Azure Monitor-Preisdetails](https://azure.microsoft.com/pricing/details/monitor/) konfigurieren oder aktivieren.
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Anzeigen von Metriken auf Vorgangsebene für Azure Cosmos DB
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Zugreifen auf Azure Monitor für Azure Cosmos DB
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Wählen Sie auf der Navigationsleiste auf der linken Seite die Option **Monitor** und anschließend **Metrik** aus.
+
+   ![Bereich „Metriken“ in Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. Klicken Sie im Bereich **Metriken** auf **Ressource auswählen**. Wählen Sie dann das erforderliche **Abonnement** und die **Ressourcengruppe** aus. Wählen Sie unter **Ressourcentyp** die Option **Azure Cosmos DB-Konten** aus. Wählen Sie dann eins der vorhandenen Azure Cosmos-Konten und anschließend **Anwenden** aus.
+
+   ![Auswählen eines Cosmos DB-Kontos zum Anzeigen von Metriken](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. Als Nächstes können Sie eine Metrik aus der Liste der verfügbaren Metriken auswählen. Sie können spezifische Metriken für Anforderungseinheiten, Speicher, Wartezeit, Verfügbarkeit, Cassandra usw. auswählen. Ausführliche Informationen zu allen verfügbaren Metriken in dieser Liste finden Sie im Artikel [Metriken nach Kategorie](../../cosmos-db/monitor-cosmos-db-reference.md). In diesem Beispiel wählen Sie **Anforderungseinheiten** und als Aggregationswert **Mittelw.** aus.
+
+   Zusätzlich zu diesen Angaben können Sie auch **Zeitbereich** und **Zeitgranularität** für die Metriken auswählen. Sie können Metriken maximal für die letzten 30 Tage anzeigen.  Nach Anwendung des Filters wird ein darauf basierendes Diagramm angezeigt. Sie sehen die durchschnittliche Anzahl der pro Minute verbrauchten Anforderungseinheiten für den ausgewählten Zeitraum.  
+
+   ![Auswählen einer Metrik über das Azure-Portal](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Hinzufügen von Filtern zu Metriken
+
+Sie können Metriken und das angezeigte Diagramm auch nach bestimmten Werten für **CollectionName**, **DatabaseName**, **OperationType**, **Region** und **StatusCode** filtern. Wählen Sie zum Filtern der Metriken **Filter hinzufügen** und dann die erforderliche Eigenschaft aus, etwa **OperationType**. Wählen Sie anschließend einen Wert aus, beispielsweise **Query**. Im Diagramm werden die Anforderungseinheiten angezeigt, die für den Abfragevorgang im ausgewählten Zeitraum verbraucht wurden. Die über eine gespeicherte Prozedur ausgeführten Vorgänge werden nicht protokolliert und sind daher nicht unter der Metrik „OperationType“ verfügbar.
+
+![Hinzufügen eines Filters zum Auswählen der Metrikgranularität](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gruppieren. Beispielsweise können Sie die Anforderungseinheiten nach Vorgangstyp gruppieren und das Diagramm für alle Vorgänge auf einmal anzeigen, wie in der folgenden Abbildung dargestellt:
+
+![Hinzufügen eines Filters zum Anwenden der Aufteilung](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Anzeigen von Nutzungs- und Leistungsmetriken für Azure Cosmos DB
 
 Führen Sie die folgenden Schritte aus, um die Nutzung und Leistung Ihrer Speicherkonten in allen ihren Abonnements anzuzeigen.
 
@@ -90,7 +117,7 @@ Wählen Sie oben auf der Seite **Kapazität** aus, und der Bereich **Kapazität*
 
 Wie bei der Übersichtsarbeitsmappe wird beim Auswählen der Dropdownliste neben einer Azure Cosmos DB-Ressource in der Spalte **Abonnement** eine Aufschlüsselung nach den einzelnen Containern der Datenbank angezeigt.
 
-### <a name="operations"></a>Vorgänge 
+### <a name="operations"></a>Operationen (Operations) 
 
 Wählen Sie oben auf der Seite **Vorgänge** aus, und der Bereich **Vorgänge** der Arbeitsmappenvorlage wird geöffnet. Hier können Sie Ihre Anforderungen überprüfen, aufgeschlüsselt nach dem Typ der getätigten Anforderungen. 
 

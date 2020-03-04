@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c12787cd6e0df19fd842dd44da49aa5ea97aa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898881"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622579"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-Vorgänge in der Azure Cosmos DB-Cassandra-API von Spark
 
@@ -85,7 +85,7 @@ DESCRIBE keyspaces;
 **Überlegungen:**  
 
 - Durchsatz kann mithilfe der Anweisung „create table“ auf Tabellenebene zugewiesen werden.  
-- In einem Partitionsschlüssel können 10 GB Daten gespeichert werden.  
+- In einem Partitionsschlüssel können 20 GB Daten gespeichert werden.  
 - In einem Datensatz können bis zu 2 MB Daten gespeichert werden.  
 - In einem Partitionsschlüsselbereich können mehrere Partitionsschlüssel gespeichert werden.
 
@@ -120,7 +120,7 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>DROP TABLE
+### <a name="drop-table"></a>Löschen einer Tabelle
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
@@ -145,4 +145,4 @@ Fahren Sie nach dem Erstellen von Keyspace und Tabelle mit den folgenden Artikel
 * [Upsertvorgänge](cassandra-spark-upsert-ops.md)  
 * [Löschvorgänge](cassandra-spark-delete-ops.md)  
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)  
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)  
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)  

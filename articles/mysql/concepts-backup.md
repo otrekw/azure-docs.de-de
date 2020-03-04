@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d5941ef7ac2236137fada7202a8dd3cf2ebcc120
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 47fa4083c26f18149b0b69b05f2cfd0b227de868
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776289"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619575"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Sicherung und Wiederherstellung in Azure Database for MySQL
 
@@ -20,6 +20,8 @@ Für Azure Database for MySQL werden Sicherungen automatisch erstellt und in ein
 ## <a name="backups"></a>Backups
 
 Azure Database for MySQL nimmt Sicherungen der Datendateien und der Transaktionsprotokolle vor. Abhängig von der unterstützten maximalen Speichergröße werden entweder vollständige oder differenzielle Sicherungen (Server mit maximal 4 TB Speicher) oder Sicherungsmomentaufnahmen (Server mit bis zu 16 TB Speicher) angelegt. Dank dieser Sicherungen können Sie für einen Server den Stand zu einem beliebigen Zeitpunkt wiederherstellen, der innerhalb Ihres konfigurierten Aufbewahrungszeitraums für Sicherungen liegt. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Mit einer [optionalen Konfiguration](howto-restore-server-portal.md#set-backup-configuration) können Sie einen Zeitraum von bis zu 35 Tagen festlegen. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+
+Diese Sicherungsdateien können nicht exportiert werden. Die Sicherungen können nur für Wiederherstellungsvorgänge in Azure Database for MySQL verwendet werden. Zum Kopieren einer Datenbank können Sie [mysqldump](concepts-migrate-dump-restore.md) verwenden.
 
 ### <a name="backup-frequency"></a>Sicherungshäufigkeit
 
@@ -52,7 +54,7 @@ Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B
 > [!IMPORTANT]
 > Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) nutzen.
 
-### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
+### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
 Unabhängig von Ihrer gewählten Option für die Sicherungsredundanz können Sie eine Wiederherstellung für einen beliebigen Zeitpunkt durchführen, der innerhalb Ihres Aufbewahrungszeitraums für Sicherungen liegt. Ein neuer Server wird in derselben Azure-Region wie der ursprüngliche Server erstellt. Bei der Erstellung werden die Konfiguration für den Tarif, die Computegeneration, die Anzahl von V-Kernen, die Speichergröße, den Aufbewahrungszeitraum für Sicherungen und die Option für Sicherungsredundanz des ursprünglichen Servers verwendet.
 
@@ -60,7 +62,7 @@ Die Point-in-Time-Wiederherstellung ist für viele Szenarien hilfreich. Beispiel
 
 Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsicherung erstellt wird, bevor Sie die Wiederherstellung für einen Zeitpunkt innerhalb der letzten fünf Minuten durchführen können.
 
-### <a name="geo-restore"></a>Geografische Wiederherstellung
+### <a name="geo-restore"></a>Geowiederherstellung
 
 Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Server, die bis zu 4 TB Speicherkapazität unterstützen, können in der geografisch gekoppelten Region oder in einer beliebigen Region wiederhergestellt werden, die bis zu 16 TB Speicherkapazität unterstützt. Für Server, die bis zu 16 TB Speicherkapazität unterstützen, können Geosicherungen auch in beliebigen Regionen wiederhergestellt werden, die Server mit 16 TB unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for MySQL-Tarife](concepts-pricing-tiers.md).
 

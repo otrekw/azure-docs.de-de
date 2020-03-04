@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8cb14c19e8816d53c7d9385563f916bee5d4a6af
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2cc54077456fce1e7e0f47843a762beee8e715f7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886242"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526755"
 ---
 # <a name="security-controls-for-azure-storage"></a>Sicherheitskontrollen für Azure Storage
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
@@ -45,15 +45,15 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Azure Monitor-Metriken bereits verfügbar, Azure Monitor-Protokolle in der Vorschauversion |
+| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Azure Monitor-Metriken|
 | Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene | Ja | Azure Resource Manager-Aktivitätsprotokoll |
-| Protokollierung und Überwachung auf Datenebene| Ja | Diagnoseprotokolle des Diensts, Azure Monitor-Protokolle in der Vorschauversion  |
+| Protokollierung und Überwachung auf Datenebene| Ja | Dienstdiagnoseprotokolle|
 
 ## <a name="identity"></a>Identity
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja | Azure Active Directory, gemeinsam verwendeter Schlüssel, SAS-Token. |
+| Authentifizierung| Ja | Azure Active Directory, gemeinsam verwendeter Schlüssel, SAS-Token. |
 | Authorization| Ja | Unterstützung für die Autorisierung über rollenbasierte Zugriffssteuerung (RBAC), POSIX-Zugriffssteuerungslisten (ACLs) und SAS-Token |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung

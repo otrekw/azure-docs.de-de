@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486392"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605629"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -37,7 +37,6 @@ Die mehrstufige Authentifizierung wird unterstützt, wenn Azure Active Directory
 [![Authentifizierung in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md). Dieser Artikel enthält Informationen und Beispiele zur Authentifizierung, einschließlich der Verwendung von Dienstprinzipalen und automatisierten Workflows.
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Authentifizierung für die Webdienstbereitstellung
 
@@ -77,6 +76,9 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorg
 | Webdienst aufrufen | ✓ | ✓ | ✓ |
 
 Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen werden nur für Vorgänge im Arbeitsbereich und Machine Learning Compute unterstützt. Benutzerdefinierte Rollen können Lese-, Schreib- oder Löschberechtigungen für den Arbeitsbereich und die Computeressource in diesem Arbeitsbereich haben. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+
+> [!WARNING]
+> Azure Machine Learning wird derzeit nicht mit B2B Collaboration von Azure Active Directory unterstützt.
 
 ### <a name="securing-compute-targets-and-data"></a>Sichern von Computezielen und Daten
 

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045209"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650298"
 ---
 # <a name="vcore-model-overview"></a>Übersicht über das V-Kern-Modell
 
@@ -89,7 +89,7 @@ Weitere Informationen zu Regionen, in denen die Fsv2-Serie verfügbar ist, finde
 - Die M-Serie ist eine arbeitsspeicheroptimierte Hardwareoption für Workloads, die mehr Arbeitsspeicher und höhere Computegrenzwerte erfordert, als von Gen5 bereitgestellt werden.
 - Die M-Serie bietet 29 GB pro V-Kern und 128 V-Kerne. Dadurch erhöht sich der Grenzwert für den Arbeitsspeicher im Vergleich zu Gen5 um das Achtfache auf fast 4 TB.
 
-Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen. Wenn die Supportanfrage genehmigt wird, erfolgt die Auswahl und die Bereitstellung der M-Serie nach dem gleichen Muster wie bei anderen Hardwaregenerationen. Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
+Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen. Das Abonnement muss ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA).  Wenn die Supportanfrage genehmigt wird, erfolgt die Auswahl und die Bereitstellung der M-Serie nach dem gleichen Muster wie bei anderen Hardwaregenerationen. Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
 
 
 ### <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
@@ -142,7 +142,7 @@ Wählen Sie auf der Registerkarte **Grundlagen** im Abschnitt **Compute und Spei
   
 **So ändern Sie die Hardwaregeneration einer vorhandenen verwalteten Instanz**
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Wählen Sie auf der Seite „Verwaltete Instanz“ im Abschnitt "Einstellungen" den Link **Tarif** aus.
 
@@ -150,43 +150,25 @@ Wählen Sie auf der Seite „Verwaltete Instanz“ im Abschnitt "Einstellungen" 
 
 Auf der Seite **Tarif** können Sie die Hardwaregenerierung wie in den vorherigen Schritten beschrieben ändern.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie das folgende PowerShell-Skript:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Stellen Sie sicher, dass Sie Ihre Abonnement-ID, den Namen und die Ressourcengruppe der verwalteten Instanz eingeben.
+Weitere Informationen finden Sie unter dem Befehl [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance).
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Verwenden Sie den folgenden CLI-Befehl:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+Weitere Informationen finden Sie unter dem Befehl [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update).
 
 ---
 
@@ -194,7 +176,7 @@ Stellen Sie sicher, dass Sie Ihre Abonnement-ID, den Namen und die Ressourcengru
 
 #### <a name="gen4gen5-1"></a> Gen4/Gen5
 
-Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt. 
+Die Gen4-Hardware wird [eingestellt](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) und steht für die neuen Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf Gen5-Hardware bereitgestellt werden.
 
 Gen5 ist in den meisten Regionen weltweit verfügbar.
 

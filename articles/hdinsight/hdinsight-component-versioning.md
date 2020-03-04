@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198955"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649992"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -62,6 +62,12 @@ Die mit den HDInsight-Clusterversionen verknüpften Komponentenversionen des Had
 In den [HDInsight-Versionshinweisen](hdinsight-release-notes.md) finden Sie zusätzliche Anmerkungen zu den aktuellen Versionen von HDInsight.
 
 ## <a name="supported-hdinsight-versions"></a>Unterstützte HDInsight-Versionen
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>Supportablauf und Deaktivierung von HDInsight-Versionen
+
+**Supportablauf** bedeutet, dass Microsoft keinen Support mehr für die angegebene HDInsight-Version bietet und diese nicht mehr über das Azure-Portal zur Clustererstellung bereitsteht. Diese Versionen können jedoch weiterhin mithilfe der Azure CLI oder der verschiedenen SDKs erstellt werden. 
+
+**Deaktivierung** einer HDInsight-Version bedeutet, dass vorhandene Cluster weiterhin unverändert ausgeführt werden. Neue Cluster dieser Version können jedoch nicht (auch nicht mithilfe der CLI und SDKs) erstellt werden. Auch andere Funktionen auf Steuerungsebene (z. B. manuelle und automatische Skalierung) können nach der Deaktivierung der Version möglicherweise nicht mehr verwendet werden. Für deaktivierte Versionen ist kein Support verfügbar.
 
 In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. Der Ablauf der Unterstützung und die Deaktivierungstermine werden ebenfalls bereitgestellt, wenn sie bekannt sind.
 

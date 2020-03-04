@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424931"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623688"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
@@ -22,6 +22,20 @@ In diesem Artikel werden Sie durch einen allgemeinen empfohlenen Ansatz für die
 Sie können Abfrageoptimierungen in Azure Cosmos DB umfassend kategorisieren: Optimierungen, die die Anzahl der verbrauchten Anforderungseinheiten (Request Units, RUs) der Abfrage verringern, und Optimierungen, die nur die Latenz reduzieren. Durch Reduzieren der Anzahl der verbrauchten RUs einer Abfrage können Sie mit ziemlicher Sicherheit auch die Latenz verringern.
 
 In diesem Dokument werden Beispiele verwendet, die mit dem [Nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)-Dataset neu erstellt werden können.
+
+## <a name="important"></a>Wichtig
+
+- Befolgen Sie unsere [Tipps zur Leistungssteigerung](performance-tips.md), um die bestmögliche Leistung zu erzielen.
+    > [!NOTE] 
+    > Für eine bessere Leistung wird die Windows 64-Bit-Hostverarbeitung empfohlen. Das SQL SDK enthält eine native Datei „ServiceInterop.dll“, um Abfragen lokal zu analysieren und zu optimieren. Sie wird nur auf der Windows x64-Plattform unterstützt. Bei Linux und anderen nicht unterstützten Plattformen, bei denen die Datei „ServiceInterop.dll“ nicht verfügbar ist, reicht ein zusätzlicher Netzwerkaufruf an den Gateway, um die optimierte Abfrage zu erhalten. 
+- Bei der Cosmos DB-Abfrage wird eine Mindestelementanzahl nicht unterstützt.
+    - Der Code sollte jede Seitengröße von 0 bis zur maximal zulässigen Elementanzahl verarbeiten können.
+    - Die Anzahl der Elemente auf einer Seite kann und wird ohne vorherige Ankündigung geändert.
+- Leere Seiten werden bei Abfragen erwartet, und können jederzeit auftreten. 
+    - Leere Seiten werden in SDKs verfügbar gemacht, weil sie mehr Gelegenheit zum Abbrechen der Abfrage bieten. Außerdem wird so deutlich, dass das SDK mehrere Netzwerkaufrufe tätigt.
+    - Leere Seiten können in vorhandenen Workloads auftreten, da eine physische Partition in Cosmos DB geteilt ist. Die erste Partition mit 0 Ergebnissen verursacht die leere Seite.
+    - Leere Seiten werden dadurch verursacht, dass das Backend die Abfrage vorzeitig entfernt, da diese mehr als eine bestimmte Zeitspanne auf dem Backend zum Abrufen der Dokumente benötigt. Wenn Cosmos DB eine Abfrage vorzeitig entfernt, wird ein Fortsetzungstoken zurückgegeben, mit dem die Abfrage fortgesetzt werden kann. 
+- Stellen Sie sicher, die Abfrage vollständig ablaufen zu lassen. Sehen Sie sich die SDK-Beispiele an, und verwenden Sie eine WHILE-Schleife für `FeedIterator.HasMoreResults`, um die gesamte Abfrage ablaufen zu lassen.
 
 ### <a name="obtaining-query-metrics"></a>Abrufen von Abfragemetriken:
 

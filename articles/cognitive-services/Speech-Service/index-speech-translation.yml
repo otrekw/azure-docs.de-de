@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentation zur Sprachübersetzung
+summary: Die Sprachübersetzung in Speech-Dienst ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit.
+metadata:
+  title: 'Dokumentation zur Sprachübersetzung: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562805"
+landingContent:
+- title: Erste Schritte
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Sprachübersetzung?
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: Übersetzen von Sprache in Text
+      url: quickstarts/translate-speech-to-text.md
+    - text: Übersetzen von Sprache in mehrere Zielsprachen
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: Übersetzen von Sprache in Sprache
+      url: quickstarts/translate-speech-to-speech.md
+- title: Ausführliche Leitfäden
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Übersetzen von Sprache in Echtzeit
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: Übersetzen und Synthetisieren von Text mit REST-APIs
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sprachunterstützung
+      url: language-support.md#speech-translation
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: Häufig gestellte Fragen zur Sprachübersetzung
+      url: https://www.microsoft.com/translator/business/faq/

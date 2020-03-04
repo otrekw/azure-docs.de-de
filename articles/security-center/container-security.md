@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470767"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615347"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -65,7 +65,7 @@ Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehl
 
 Security Center bietet eine Echtzeit-Bedrohungserkennung für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
-Bedrohungen werden auf Host- und AKS-Clusterebene erkannt. Ausführliche Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
+Bedrohungen werden auf Host- und AKS-Clusterebene erkannt. Ausführliche Informationen finden Sie unter [Bedrohungsschutz für Azure-Container](threat-protection.md#azure-containers).
 
 
 ## <a name="container-security-faq"></a>Containersicherheit – häufig gestellte Fragen (FAQ)

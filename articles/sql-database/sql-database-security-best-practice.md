@@ -1,23 +1,27 @@
 ---
-title: 'Playbook: Bewährte Sicherheitsmethoden für Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Dieser Artikel enthält allgemeine Hinweise zu bewährten Sicherheitsmethoden in Azure SQL-Datenbank.
+title: Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen | Microsoft-Dokumentation
+titleSuffix: Azure SQL Database
+description: Dieser Artikel enthält allgemeine Sicherheitsanforderungen und bewährte Methoden in Azure SQL-Datenbank.
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845869"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506214"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Playbook: Bewährte Sicherheitsmethoden für SQL-Datenbank
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen in Azure SQL-Datenbank
 
-## <a name="overview"></a>Übersicht
+> [!NOTE]
+> Dieses Dokument enthält bewährte Methoden für den Umgang mit allgemeinen Sicherheitsanforderungen und entsprechende Lösungen. Nicht alle Anforderungen gelten für alle Umgebungen. Sie sollten mit Ihrem Datenbank- und Sicherheitsteam überlegen, welche Funktionen implementiert werden sollen.
+
+## <a name="solving-common-security-requirements"></a>Lösungen für allgemeine Sicherheitsanforderungen
 
 Dieses Dokument enthält Anleitungen zum Beheben allgemeiner Sicherheitsanforderungen für neue oder vorhandene Anwendungen mit Azure SQL-Datenbank. Es ist nach Sicherheitsbereichen auf hoher Ebene gegliedert. Informationen zur Behandlung bestimmter Bedrohungen finden Sie im Abschnitt [Allgemeine Sicherheitsbedrohungen und mögliche Risikominderungen](#common-security-threats-and-potential-mitigations). Obwohl einige der vorgestellten Empfehlungen auch dann gelten, wenn Sie Anwendungen aus einer lokalen Umgebung zu Azure migrieren, bilden Migrationsszenarien nicht den Schwerpunkt dieses Dokuments.
 
@@ -66,6 +70,9 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
 - SQL-Authentifizierung
 - Authentifizierung über Azure Active Directory
 
+> [!NOTE]
+> Die Azure Active Directory-Authentifizierung wird möglicherweise nicht für alle Tools und Drittanbieteranwendungen unterstützt.
+
 ### <a name="central-management-for-identities"></a>Zentrale Verwaltung für Identitäten
 
 Die zentrale Identitätsverwaltung bietet die folgenden Vorteile:
@@ -82,7 +89,7 @@ Die zentrale Identitätsverwaltung bietet die folgenden Vorteile:
 
 - Erstellen Sie einen Azure AD-Mandanten, [erstellen Sie Benutzer](../active-directory/fundamentals/add-users-azure-active-directory.md), um menschliche Benutzer darzustellen, und erstellen Sie [Dienstprinzipale](../active-directory/develop/app-objects-and-service-principals.md), die Apps, Dienste und Automatisierungstools darstellen. Dienstprinzipale entsprechen Dienstkonten in Windows und Linux. 
 
-- Weisen Sie Azure AD-Prinzipalen über die Gruppenzuweisung Zugriffsrechte für Ressourcen zu: Erstellen Sie Azure AD-Gruppen, gewähren Sie Zugriff auf Gruppen, und fügen Sie den Gruppen einzelne Mitglieder hinzu. Erstellen in Ihrer Datenbank eigenständige Datenbankbenutzer, die Ihren Azure AD-Gruppen zugeordnet sind. 
+- Weisen Sie Azure AD-Prinzipalen über die Gruppenzuweisung Zugriffsrechte für Ressourcen zu: Erstellen Sie Azure AD-Gruppen, gewähren Sie Zugriff auf Gruppen, und fügen Sie den Gruppen einzelne Mitglieder hinzu. Erstellen in Ihrer Datenbank eigenständige Datenbankbenutzer, die Ihren Azure AD-Gruppen zugeordnet sind. Zum Zuweisen von Berechtigungen innerhalb der Datenbank müssen Sie Benutzern Datenbankrollen mit den entsprechenden Berechtigungen zuordnen.
   - Weitere Informationen finden Sie in den Artikeln [Konfigurieren und Verwalten von Azure Active Directory-Authentifizierung mit SQL](sql-database-aad-authentication-configure.md) und [Verwenden von Azure AD für die Authentifizierung mit SQL](sql-database-aad-authentication.md).
   > [!NOTE]
   > In einer verwalteten Instanz können Sie auch Anmeldungen erstellen, die Azure AD-Prinzipalen in der Masterdatenbank zugeordnet sind. Siehe [CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
@@ -204,11 +211,6 @@ SQL-Authentifizierung bezieht sich auf die Authentifizierung eines Benutzers bei
 - Erstellen Sie als Serveradministrator Anmeldungen und Benutzer. Sofern nicht eigenständige Datenbankbenutzer mit Kennwörtern verwendet werden, werden alle Kennwörter in der Masterdatenbank gespeichert.
   - Lesen Sie dazu den Artikel [Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse](sql-database-manage-logins.md).
 
-- Bewährte Methoden für die Kennwortverwaltung:
-  - Stellen Sie ein komplexes Kennwort bereit, das aus lateinischen Groß- und Kleinbuchstaben, Ziffern (0 bis 9) und nicht alphanumerischen Zeichen (etwa $, !, # oder %) besteht.
-  - Verwenden Sie längere Passphrases anstelle von kürzeren, zufällig ausgewählten Zeichen.
-  - Erzwingen Sie mindestens alle 90 Tage eine manuelle Kennwortänderung.
-
 ## <a name="access-management"></a>Zugriffsverwaltung
 
 Zugriffsverwaltung ist der Vorgang der Steuerung und Verwaltung des Zugriffs und der Berechtigungen autorisierter Benutzer auf die Azure SQL-Datenbank.
@@ -250,9 +252,7 @@ Die folgenden bewährten Methoden sind optional, führen jedoch zu einer bessere
 
 - Verzichten Sie darauf, einzelnen Benutzern Berechtigungen zuzuweisen. Verwenden Sie stattdessen konsistent Rollen (Datenbank- oder Serverrollen). Rollen helfen bei der Berichterstellung und bei der Problembehandlung von Berechtigungen. (Azure RBAC unterstützt nur die Berechtigungszuweisung über Rollen.) 
 
-- Verwenden Sie integrierte Rollen, wenn die Berechtigungen der Rollen genau den erforderlichen Berechtigungen für den Benutzer entsprechen. Sie können Benutzer mehreren Rollen zuweisen. 
-
-- Erstellen und verwenden Sie benutzerdefinierte Rollen, wenn integrierte Rollen zu viele oder unzureichende Berechtigungen gewähren. Typische Rollen, die in der Praxis verwendet werden: 
+- Erstellen Sie benutzerdefinierte Rollen mit exakt den Berechtigungen, die benötigt werden, und verwenden Sie diese Rollen. Typische Rollen, die in der Praxis verwendet werden: 
   - Sicherheitsbereitstellung 
   - Administrator 
   - Entwickler 
@@ -260,14 +260,17 @@ Die folgenden bewährten Methoden sind optional, führen jedoch zu einer bessere
   - Prüfer 
   - Automatisierte Prozesse 
   - Endbenutzer 
+  
+- Verwenden Sie integrierte Rollen nur dann, wenn die Berechtigungen der Rollen genau den Berechtigungen entsprechen, die für den Benutzer erforderlich sind. Sie können Benutzer mehreren Rollen zuweisen. 
 
 - Beachten Sie, dass die Berechtigungen in SQL Server-Datenbank-Engine auf die folgenden Bereiche angewendet werden können. Je kleiner der Bereich, desto geringer die Auswirkungen der gewährten Berechtigungen: 
   - Azure SQL-Datenbank-Server (spezielle Rollen in der Masterdatenbank) 
   - Datenbank 
-  - Schema (siehe auch: [Schemaentwurf für SQL Server: Empfehlungen für den Schemaentwurf unter Sicherheitsaspekten](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
+  - Schema
+      - Es ist eine bewährte Methode, Schemas zum Gewähren von Berechtigungen innerhalb einer Datenbank zu verwenden. (Siehe auch: [Schemaentwurf für SQL Server: Empfehlungen für den Schemaentwurf unter Sicherheitsaspekten](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (Tabelle, Sicht, Prozedur usw.) 
   > [!NOTE]
-  > Es wird nicht empfohlen, Berechtigungen auf Objektebene anzuwenden, da diese Ebene der Gesamtimplementierung unnötige Komplexität hinzufügt. Wenn Sie sich dafür entscheiden, Berechtigungen auf Objektebene zu verwenden, sollten diese eindeutig dokumentiert werden. Gleiches gilt für Berechtigungen auf Spaltenebene, die aus denselben Gründen noch weniger empfehlenswert sind. Die Standardregeln für [DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) gelten nicht für Spalten.
+  > Es wird nicht empfohlen, Berechtigungen auf Objektebene anzuwenden, da diese Ebene der Gesamtimplementierung unnötige Komplexität hinzufügt. Wenn Sie sich dafür entscheiden, Berechtigungen auf Objektebene zu verwenden, sollten diese eindeutig dokumentiert werden. Gleiches gilt für Berechtigungen auf Spaltenebene, die aus denselben Gründen noch weniger empfehlenswert sind. Beachten Sie auch, dass GEWÄHREN auf Spaltenebene standardmäßig nicht durch [VERWEIGERN](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) auf Tabellenebene überschrieben wird. Dazu müsste die [Serverkonfiguration mit Common Criteria-Kompatibilität](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option) aktiviert werden.
 
 - Führen Sie regelmäßige Überprüfungen mithilfe der [Sicherheitsrisikobewertung (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) aus, um auf zu umfangreiche Berechtigungen zu testen.
 
@@ -320,7 +323,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 
 - Stellen Sie immer sicher, dass Sie über einen Überwachungspfad für sicherheitsbezogene Aktionen verfügen. 
 
-- Sie können die Definition der integrierten RBAC-Rollen abrufen, um die verwendeten Berechtigungen anzuzeigen und eine benutzerdefinierte Rolle basierend auf Ausschnitten und Kumulationen dieser über PowerShell zu erstellen. 
+- Sie können die Definition der integrierten RBAC-Rollen abrufen, um die verwendeten Berechtigungen anzuzeigen und anhand von Ausschnitten und deren Kumulationen über PowerShell eine benutzerdefinierte Rolle zu erstellen.
 
 - Da jedes Mitglied der db_owner-Datenbankrolle Sicherheitseinstellungen wie Transparent Data Encryption (TDE) oder SLO ändern kann, sollte diese Mitgliedschaft mit Bedacht erteilt werden. Es gibt jedoch viele Aufgaben, die die Berechtigungen von db_owner erfordern. Dazu gehören Aufgaben wie das Ändern von Datenbankeinstellungen. Überwachung spielt in jeder Lösung eine wichtige Rolle.
 
@@ -409,6 +412,8 @@ Die Verschlüsselung ruhender Daten ist der kryptografische Schutz von Daten, we
 
 Daten in Gebrauch sind die Daten, die bei der Ausführung von SQL-Abfragen im Speicher des Datenbanksystems gespeichert werden. Wenn in der Datenbank vertrauliche Daten gespeichert werden, muss Ihre Organisation ggf. sicherstellen, dass Benutzer mit umfassenden Berechtigungen daran gehindert werden, vertrauliche Daten in der Datenbank anzuzeigen. Benutzer mit umfassenden Berechtigungen wie z. B. Microsoft-Operatoren oder DBAs in Ihrer Organisation sollten in der Lage sein, die Datenbank zu verwalten, aber keine vertraulichen Daten anzeigen oder aus dem Arbeitsspeicher des SQL Server-Prozesses oder durch Abfragen der Datenbank extrahieren können.
 
+Die Richtlinien, die festlegen, welche Daten sensibel sind, und welche sensiblen Daten im Speicher verschlüsselt werden müssen und in Klartext für Administratoren nicht zugänglich sind, richten sich nach Ihrer Organisation und den Complianceanforderungen, die Sie erfüllen müssen. Entsprechende Anforderungen finden Sie unter [Identifizieren und Markieren von sensiblen Daten](#identify-and-tag-sensitive-data).
+
 **Implementierung**:
 
 - Verwenden Sie [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine), um sicherzustellen, dass sensible Daten in Azure SQL-Datenbank nicht als Klartext verfügbar gemacht werden (auch dann nicht, wenn sie sich im Arbeitsspeicher bzw. in Gebrauch befinden). Always Encrypted schützt die Daten vor Datenbankadministratoren (DBAs) und Cloudadministratoren (oder böswilligen Benutzern, die sich als hochprivilegierte Benutzer ausgeben können, aber nicht autorisiert sind) und verleiht Ihnen mehr Kontrolle darüber, wer auf Ihre Daten zugreifen kann.
@@ -416,6 +421,8 @@ Daten in Gebrauch sind die Daten, die bei der Ausführung von SQL-Abfragen im Sp
 **Bewährte Methoden:**
 
 - Always Encrypted ist kein Ersatz für die Verschlüsselung ruhender Daten (TDE) oder von Daten bei der Übertragung (SSL/TLS). Always Encrypted sollte nicht für nicht vertrauliche Daten verwendet werden, da dies Auswirkungen auf die Leistung und Funktionalität hat. Die Verwendung von Always Encrypted in Verbindung mit TDE und TLS (Transport Layer Security) wird für einen umfassenden Schutz von ruhenden Daten, während der Übertragung und im Gebrauch empfohlen. 
+
+- Bewerten Sie die Auswirkungen einer Verschlüsselung der identifizierten Spalten mit sensiblen Daten, bevor Sie „Always Encrypted“ in einer Produktionsdatenbank bereitstellen. Im Allgemeinen reduziert „Always Encrypted“ die Abfragefunktionalität von verschlüsselten Spalten und bringt weitere Einschränkungen mit sich, die unter [Always Encrypted – Details zur Funktion](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details) aufgeführt sind. Daher müssen Sie möglicherweise die Architektur Ihrer Anwendung überarbeiten, um die Funktionalität, die eine Abfrage nicht unterstützt, clientseitig erneut zu implementieren und/oder Ihr Datenbankschema umgestalten (einschließlich der Definition gespeicherter Prozeduren, Vorgänge, Ansichten und Trigger). Vorhandene Anwendungen funktionieren u. U. nicht mit verschlüsselten Spalten, wenn sie den Einschränkungen und Begrenzungen von „Always Encrypted“ nicht entsprechen. Auch wenn das Ökosystem von Microsoft-Tools, -Produkten und -Diensten, die „Always Encrypted“ unterstützen, stetig wächst, funktionieren einige davon nicht mit verschlüsselten Spalten. Das Verschlüsseln einer Spalte kann sich in Abhängigkeit von den Merkmalen Ihrer Workload auch auf die Spaltenabfrageleistung auswirken. 
 
 - Verwalten Sie Always Encrypted-Schlüssel mit Rollentrennung, wenn Sie Always Encrypted verwenden, um Daten vor bösartigen Datenbankadministratoren zu schützen. Mithilfe der Rollentrennung erstellt ein Sicherheitsadministrator die physischen Schlüssel. Der Datenbankadministrator erstellt in der Datenbank Metadatenobjekte für Spaltenhauptschlüssel und Spaltenverschlüsselungsschlüssel, die die physischen Schlüssel beschreiben. Während dieses Vorgangs benötigt der Sicherheitsadministrator keinen Zugriff auf die Datenbank, und der Datenbankadministrator benötigt keinen Zugriff auf die physischen Schlüssel in Klartext. 
   - Weitere Informationen finden Sie im Artikel [Verwalten von Schlüsseln mit Rollentrennung](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation). 
@@ -705,7 +712,7 @@ Optimieren Sie Ihre Datenbanksicherheit proaktiv, indem Sie potenzielle Datenban
 
 ### <a name="identify-and-tag-sensitive-data"></a>Identifizieren und Markieren von sensiblen Daten 
 
-Ermitteln Sie Spalten, die potenziell vertrauliche Daten enthalten. Klassifizieren Sie die Spalten, um erweiterte vertraulichkeitsbasierte Überwachungs- und Schutzszenarien zu nutzen. 
+Ermitteln Sie Spalten, die potenziell vertrauliche Daten enthalten. Welche Daten als sensibel betrachtet werden, hängt zum Großteil vom Kunden, den Complianceanforderungen usw. ab und muss von dem Benutzer, der für die Daten verantwortlich ist, bewertet werden. Klassifizieren Sie die Spalten, um erweiterte vertraulichkeitsbasierte Überwachungs- und Schutzszenarien zu nutzen. 
 
 **Implementierung**:
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705682"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619891"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -77,6 +77,14 @@ Ja, Video Indexer lässt sich in serverlose Technologie wie Logic Apps, Flow und
 
 Eine Übersicht über die Azure-Regionen, in denen Video Indexer verfügbar ist, finden Sie auf der Seite [Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all).
 
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Kann ich Video Indexer-Modelle an meinen speziellen Anwendungsfall anpassen? 
+
+Ja. In Video Indexer können Sie einige der verfügbaren Modelle anpassen, sodass diese Ihre Anforderungen besser erfüllen. 
+
+Unser Modell für Personen beispielsweise unterstützt von vorneherein 1.000.000 Gesichter von Prominenten, Sie können es aber auch trainieren, sodass weitere Gesichter erkannt werden, die sich nicht in dieser Datenbank befinden. 
+
+Details dazu finden Sie in den Artikeln zum Anpassen der Modelle für [Personen](customize-person-model-overview.md), [Marken](customize-brands-model-overview.md) und [Sprache](customize-language-model-overview.md). 
+
 ### <a name="what-is-the-sla-for-video-indexer"></a>Welche Vereinbarung zum Servicelevel (SLA) gilt für Video Indexer?
 
 Die SLA von Azure Media Services gelten für Video Indexer. Sie finden sie auf der [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/)-Seite. Die SLA gilt nur für kostenpflichtige Video Indexer-Konten, nicht für die kostenlose Testversion.
@@ -118,6 +126,21 @@ Video Indexer ist Teil der [Datenschutzbestimmungen von Microsoft](https://priva
 ### <a name="what-certifications-does-video-indexer-have"></a>Über welche Zertifizierungen verfügt Video Indexer?
 
 Video Indexer hat derzeit die SOC-Zertifizierung. Die Zertifizierung von Video Indexer finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
+
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Was ist der Unterschied zwischen privaten und öffentlichen Videos? 
+
+Beim Hochladen von Videos in Video Indexer können Sie aus zwei Datenschutzeinstellungen auswählen: privat oder öffentlich. Öffentliche Videos sind für alle zugänglich, einschließlich anonymer und nicht identifizierter Benutzer. Private Videos sind ausschließlich auf Mitglieder des Kontos beschränkt. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Ich habe versucht, ein Video mit der Option „öffentlich“ hochzuladen, aber es wurde als unpassend oder anstößig gekennzeichnet. Was bedeutet das? 
+
+Beim Hochladen eines Videos in Video Indexer führen Algorithmen und Modelle eine automatische Inhaltsanalyse durch, um sicherzustellen, dass keine unpassenden Inhalte öffentlich präsentiert werden. Wenn ein Video als möglicherweise anstößig eingestuft wird, kann es nicht als „öffentlich“ festgelegt werden. Die Mitglieder des Kontos können jedoch weiterhin als privates Video darauf zugreifen (anzeigen, Erkenntnisse und extrahierte Artefakte herunterladen und andere Vorgänge ausführen, die Kontomitgliedern zur Verfügung stehen).   
+
+Um ein Video für den öffentlichen Zugriff festzulegen, haben Sie folgende Möglichkeiten: 
+
+* Erstellen Sie eine eigene Schnittstellenschicht (z. B. eine App oder eine Website), und verwenden Sie diese für die Interaktion mit dem Video Indexer-Dienst. Auf diese Weise bleibt das Video in unserem Portal privat, und Ihre Benutzer können über Ihre Schnittstelle damit interagieren. In Ihrer Schnittstelle können Sie beispielsweise weiterhin Erkenntnisse abrufen oder die Anzeige des Videos zulassen. 
+* Fordern Sie die Überprüfung des Inhalts durch eine Person an. Unter der Voraussetzung, dass der Inhalt tatsächlich nicht anstößig ist, führt dies zur Aufhebung der Einschränkung. 
+
+    Diese Option kann dann geeignet sein, wenn die Video Indexer-Website direkt von Ihren Benutzern als Schnittstellenschicht verwendet wird und wenn das Video öffentlich (durch nicht authentifizierte Benutzer) einsehbar ist. 
 
 ## <a name="api-questions"></a>Fragen zu APIs
 

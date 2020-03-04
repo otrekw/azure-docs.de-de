@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845810"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526585"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -34,15 +34,13 @@ Azure-Schlüsseltresore sind nachverfolgte Ressourcen, die von Azure Resource Ma
 
 ### <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
-Bei diesem Feature ist der DELETE-Vorgang für einen Schlüsseltresor oder ein Key Vault-Objekt eine vorläufige Löschung, bei der die Ressourcen während einer bestimmten Aufbewahrungsdauer (90 Tage) effektiv gespeichert werden, das Objekt aber scheinbar gelöscht wird. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird. 
+Wenn vorläufiges Löschen aktiviert ist, werden Ressourcen, die als gelöscht gekennzeichnet wurden, für einen bestimmten Zeitraum (standardmäßig 90 Tage) aufbewahrt. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird.
 
-Vorläufiges Löschen ist jetzt für neu erstellte Schlüsseltresore standardmäßig aktiviert. Es kann über die [Azure-Befehlszeilenschnittstelle](key-vault-soft-delete-cli.md) oder mithilfe von [Azure PowerShell](key-vault-soft-delete-powershell.md) deaktiviert werden.
+Beim Erstellen eines neuen Schlüsseltresors ist vorläufiges Löschen standardmäßig aktiviert. Sie können über die [Azure-Befehlszeilenschnittstelle](key-vault-soft-delete-cli.md) oder [Azure PowerShell](key-vault-soft-delete-powershell.md) aber auch einen Schlüsseltresor ohne vorläufiges Löschen erstellen. Wenn vorläufiges Löschen in einem Schlüsseltresor aktiviert ist, kann es nicht mehr deaktiviert werden.
 
-Der Standardaufbewahrungszeitraum beträgt 90 Tage. Über das Azure-Portal kann das Intervall der Aufbewahrungsrichtlinie jedoch auf einen Wert zwischen sieben und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. 
+Der Standardaufbewahrungszeitraum beträgt 90 Tage. Über das Azure-Portal kann jedoch während der Erstellung des Schlüsseltresors das Intervall der Aufbewahrungsrichtlinie auf einen Wert zwischen 7 und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. Nach der Festlegung kann das Intervall für die Aufbewahrungsrichtlinie nicht mehr geändert werden.
 
-Wenn vorläufiges Löschen einmal für einen Schlüsseltresor festgelegt wurde, kann es nicht mehr deaktiviert werden, und das Intervall für die Aufbewahrungsrichtlinie kann nicht mehr geändert werden. 
-
-Der Name eines vorläufig gelöschten Schlüsseltresors kann erst nach Ablauf des Aufbewahrungszeitraums erneut verwendet werden. 
+Der Name eines vorläufig gelöschten Schlüsseltresors kann erst nach Ablauf des Aufbewahrungszeitraums erneut verwendet werden.
 
 ### <a name="purge-protection"></a>Bereinigungsschutz 
 

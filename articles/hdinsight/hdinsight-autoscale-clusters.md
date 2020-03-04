@@ -7,18 +7,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/11/2020
-ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/21/2020
+ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484841"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616092"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
 > [!Important]
-> Das Feature für die Autoskalierung funktioniert nur für Apache Spark-, Apache Hive-, LLAP- und Apache HBase-Cluster, die nach dem 8. Mai 2019 erstellt wurden. Die Autoskalierung für LLAP und HBase befindet sich in der Vorschauphase.
+> Die Azure HDInsight-Funktion für die automatische Skalierung wurde mit allgemeiner Verfügbarkeit am 7. November 2019 für Spark- und Hadoop-Cluster veröffentlicht und enthält Verbesserungen, die in der Vorschauversion des Features nicht verfügbar sind. Wenn Sie vor dem 7. November 2019 einen Spark-Cluster erstellt haben und die automatische Skalierung in Ihrem Cluster verwenden möchten, wird empfohlen, einen neuen Cluster zu erstellen und die automatische Skalierung für den neuen Cluster zu aktivieren. 
+>
+>Die automatische Skalierung für Interactive Query- (LLAP) und HBase-Cluster befindet sich noch in der Vorschauphase. Die automatische Skalierung ist nur für Spark-, Hadoop-, Interactive Query- und HBase-Cluster verfügbar. 
+
 
 Das Azure HDInsight-Feature der Autoskalierung skaliert die Anzahl der Workerknoten in einem Cluster automatisch zentral hoch oder herunter. Andere Arten von Knoten im Cluster können derzeit nicht skaliert werden.  Während der Erstellung eines neuen HDInsight-Clusters kann eine minimale und maximale Anzahl von Workerknoten festgelegt werden. Die automatische Skalierung überwacht dann die Ressourcenanforderungen der Analyselast und skaliert die Anzahl von Workerknoten dann zentral hoch oder herunter. Für dieses Feature fallen keine zusätzlichen Gebühren an.
 
@@ -245,7 +248,7 @@ Der im Azure-Portal aufgeführte Clusterstatus kann Ihnen helfen, die Aktivität
 
 Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden in der folgenden Liste erläutert.
 
-| Clusterstatus | Beschreibung |
+| Clusterstatus | BESCHREIBUNG |
 |---|---|
 | Wird ausgeführt | Der Cluster wird normal ausgeführt. Alle vorherigen Autoskalierungsaktivitäten wurde erfolgreich abgeschlossen. |
 | Wird aktualisiert  | Die Autoskalierungskonfiguration für den Cluster wird aktualisiert.  |

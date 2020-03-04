@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188773"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621941"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -60,11 +60,10 @@ Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müs
 
 Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für die gesamte Datenbank erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
 
-Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. In einer Datenbank mit gemeinsam genutztem Durchsatz:
+Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Erfordert jeder neue Container nach den ersten vier mindestens zusätzliche 100 RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s.
 
-* Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Erfordert jeder neue Container nach den ersten vier mindestens zusätzliche 100 RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s.
-
-* Es können maximal 25 Container in der Datenbank vorhanden sein. Wenn Sie bereits über mehr als 25 Container in einer Datenbank mit gemeinsam genutztem Durchsatz verfügen, können Sie erst dann zusätzliche Container erstellen, wenn die Containeranzahl kleiner als 25 ist.
+> [!NOTE]
+> In einer Datenbank mit gemeinsam genutzten Durchsatz können maximal 25 Container in der Datenbank vorhanden sein. Wenn Sie bereits über mehr als 25 Container in einer Datenbank mit gemeinsam genutztem Durchsatz verfügen, können Sie erst dann zusätzliche Container erstellen, wenn die Containeranzahl kleiner als 25 ist.
 
 Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
@@ -109,7 +108,7 @@ Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank
 |RUs zugewiesen oder verfügbar für einen bestimmten Container|Keine Garantien. Die einem bestimmten Container zugewiesenen RUs hängen von den Eigenschaften ab. Bei diesen Eigenschaften kann es sich um die Partitionsschlüssel der Container, die den Durchsatz gemeinsam nutzen, um die Verteilung der Workload oder um die Anzahl von Containern handeln. |Alle RUs, die für den Container konfiguriert wurden, sind ausschließlich für diesen Container reserviert.|
 |Maximale Speicherkapazität für einen Container|Unbegrenzt.|Unbegrenzt.|
 |Maximaler Durchsatz pro logischer Partition eines Containers|10.000 RUs|10.000 RUs|
-|Maximale Speicherkapazität (Daten und Index) pro logischer Partition eines Containers|10 GB|10 GB|
+|Maximale Speicherkapazität (Daten und Index) pro logischer Partition eines Containers|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

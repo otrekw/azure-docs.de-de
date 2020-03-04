@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentation zur Spracherkennung
+summary: Die Spracherkennung des Speech-Diensts (auch als Sprache-zu-Text bezeichnet) ermöglicht die Echtzeittranskription von Audiostreams in Text.
+metadata:
+  title: 'Dokumentation zur Spracherkennung: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562809"
+landingContent:
+- title: Erste Schritte
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Spracherkennung?
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: Erkennen von Sprache mit Mikrofoneingabe
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: Erkennen von Sprache aus einer Audiodatei
+      url: quickstarts/speech-to-text-from-file.md
+    - text: Erkennen von Sprache aus einem Blobspeicher
+      url: quickstarts/from-blob.md
+- title: Ausführliche Leitfäden
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ändern der Ausgangssprache für die Spracherkennung
+      url: how-to-specify-source-language.md
+    - text: Auswählen eines Spracherkennungsmodus
+      url: how-to-choose-recognition-mode.md
+    - text: Verbessern der Genauigkeit mithilfe von Begriffslisten
+      url: how-to-phrase-lists.md
+    - text: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
+      url: tutorial-tenant-model.md
+    - text: Verbessern der Genauigkeit mit Custom Speech
+      url: how-to-custom-speech.md
+    - text: Auswählen eines bestimmten Mikrofoneingabegeräts
+      url: how-to-select-audio-input-devices.md
+    - text: Verwenden der automatischen Erkennung der Ausgangssprache
+      url: how-to-automatic-language-detection.md
+    - text: Verwenden komprimierter Audioeingabeformate
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Verwenden komprimierter Audioeingabeformate (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: Verwenden komprimierter Audioeingabeformate (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: Vorbereiten von Custom Speech-Daten
+      url: how-to-custom-speech-test-data.md
+    - text: Überprüfen von Custom Speech-Daten
+      url: how-to-custom-speech-inspect-data.md
+    - text: Bewerten der Custom Speech-Genauigkeit
+      url: how-to-custom-speech-evaluate-data.md
+    - text: Trainieren eines benutzerdefinierten Modells
+      url: how-to-custom-speech-train-model.md
+    - text: Bereitstellen eines benutzerdefinierten Modells
+      url: how-to-custom-speech-deploy-model.md
+    - text: Erstellen von menschenmarkierten Transkriptionen
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sprachunterstützung
+      url: language-support.md#speech-to-text
+    - text: Preise
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Häufig gestellte Fragen zur Spracherkennung
+      url: faq-stt.md

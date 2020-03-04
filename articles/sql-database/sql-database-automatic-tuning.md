@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: eefaaa59a3dc0f0900666bc697f64e4f405a0d74
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190759"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498724"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -82,8 +82,8 @@ Die Optionen für die automatische Optimierung können unabhängig pro Datenbank
 > [!IMPORTANT]
 > Ab März 2020 werden Änderungen an den Azure-Standardeinstellungen für die automatische Optimierung wie folgt wirksam:
 > - Neue Azure-Standardwerte werden „FORCE_LAST_GOOD_PLAN“ = aktiviert, „CREATE_INDEX“ = deaktiviert und „DROP_INDEX“ = deaktiviert.
-> - Vorhandene Server ohne konfigurierte automatische Optimierungseinstellungen werden automatisch mit den neuen Azure-Standardeinstellungen konfiguriert. Dies gilt für alle Kunden, deren automatische Optimierung zurzeit einen nicht definierten Zustand aufweist.
-> - Neue erstellte Server werden automatisch mit den neuen Azure-Standardeinstellungen konfiguriert (im Gegensatz zu früher, wo sich die automatische Optimierungskonfiguration bei der Erstellung neuer Server in einem nicht definierten Zustand befunden hat).
+> - Vorhandene Server ohne konfigurierte automatische Optimierungseinstellungen werden automatisch so konfiguriert, dass sie die neuen Azure-Standardeinstellungen ERBEN. Dies gilt für alle Kunden, bei denen sich die automatische Optimierung von Servereinstellungen in einem nicht definierten Zustand befindet.
+> - Neu erstellte Server werden automatisch so konfiguriert, dass sie die neuen Azure-Standardeinstellungen ERBEN (im Gegensatz zu früher, wo sich die automatische Optimierungskonfiguration bei der Erstellung neuer Server in einem nicht definierten Zustand befand).
 >
 
 Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem übergeordneten Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.

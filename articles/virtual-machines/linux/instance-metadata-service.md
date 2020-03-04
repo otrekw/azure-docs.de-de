@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962508"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615610"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -38,10 +38,12 @@ Der Dienst ist in Azure-Regionen allgemein verfügbar. Unter Umständen sind nic
 
 Regions                                        | Verfügbarkeit?                                 | Unterstützte Versionen
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure China 21Vianet](https://www.azure.cn/)                                            | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+Die Version 2019-11-01 wird derzeit bereitgestellt und ist möglicherweise nicht in allen Regionen verfügbar.
 
 Diese Tabelle wird aktualisiert, wenn Dienstupdates und/oder neue unterstützte Versionen verfügbar sind.
 
@@ -132,6 +134,7 @@ HTTP-Statuscode | `Reason`
 400 – Ungültige Anforderung | Fehlender `Metadata: true`-Header oder fehlendes Format beim Abfragen eines Blattknotens
 404 – Nicht gefunden | Das angeforderte Element ist nicht vorhanden.
 405 – Methode unzulässig | Es werden ausschließlich `GET`-Anforderungen unterstützt.
+410 Nicht mehr vorhanden | Wiederholen Sie den Vorgang später (nach max. 70 Sekunden).
 429 – Zu viele Anforderungen | Die API unterstützt derzeit maximal 5 Abfragen pro Sekunde.
 500 – Dienstfehler     | Wiederholen Sie den Vorgang später.
 
@@ -455,14 +458,14 @@ identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Z
 instance | Siehe [Instanz-API](#instance-api) | 2017-04-02
 scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Instanz-API
+### <a name="instance-api"></a>Instanz-API
 
 Die folgenden Computekategorien werden über die Instanz-API zur Verfügung gestellt:
 
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Compute“ zugänglich.
 
-Daten | Beschreibung | Eingeführt in Version
+Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 2018-10-01
 customData | Diese Funktion ist zurzeit deaktiviert. Diese Dokumentation wird aktualisiert, wenn die Funktion verfügbar wird. | 2019-02-01
@@ -495,7 +498,7 @@ Die folgenden Netzwerkkategorien werden über die Instanz-API zur Verfügung ges
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Netzwerk/Schnittstelle“ zugänglich.
 
-Daten | Beschreibung | Eingeführt in Version
+Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
@@ -567,7 +570,6 @@ Nonce ist eine optionale 10-stellige Zeichenfolge. Wenn nicht angegeben, gibt IM
 ```
 
 Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie „vmId“, „sku“, „nonce“, „subscriptionId“, „timeStamp“ für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
-
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -715,9 +717,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```
 
 **Antwort**
+
 ```bash
 AzurePublicCloud
 ```
+
 Die Cloud und die Werte der Azure-Umgebung sind unten aufgelistet.
 
  Cloud   | Azure-Umgebung
@@ -817,7 +821,7 @@ Verification successful
 }
 ```
 
-Daten | Beschreibung
+Daten | BESCHREIBUNG
 -----|------------
 nonce | Vom Benutzer bereitgestellte optionale Zeichenfolge mit der Anforderung. Wenn in der Anforderung keine Nonce angegeben wurde, wird der aktuelle UTC-Zeitstempel zurückgegeben.
 Tarif | Der [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Name, Produkt und Herausgeber
@@ -836,10 +840,12 @@ Sobald Sie über die oben beschriebene Signatur verfügen, können Sie verifizie
 
  Cloud | Zertifikat
 ---------|-----------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
+
+Es gibt ein bekanntes Problem mit dem zum Signieren verwendeten Zertifikat. Die Zertifikate stimmen mit `metadata.azure.com` für die öffentliche Cloud möglicherweise nicht exakt überein. Daher sollte die Überprüfung der Zertifizierung einen allgemeinen Namen aus einer beliebigen Unterdomäne von `.metadata.azure.com` zulassen.
 
 ```bash
 
@@ -869,7 +875,7 @@ Für bestimmte Szenarien ist es beim Abfragen von Instance Metadata Service mit 
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Die folgende Beispielausgabe von einer Windows Server-VM mit aktiviertem Failovercluster enthält aus Gründen der Vereinfachung nur die IPv4-Routingtabelle.
 
 ```bat
@@ -910,7 +916,7 @@ Das Speicherprofil eines virtuellen Computers ist in drei Kategorien unterteilt:
 
 Das Imagereferenzobjekt enthält die folgenden Informationen zum Betriebssystemimage:
 
-Daten    | Beschreibung
+Daten    | BESCHREIBUNG
 --------|-----------------
 id      | Ressourcen-ID
 offer   | Angebot des Plattform- oder Marketplace-Images
@@ -920,7 +926,7 @@ version | Version des Plattform- oder Marketplace-Images
 
 Das Betriebssystemdatenträgerobjekt enthält die folgenden Informationen zum Betriebssystemdatenträger, der vom virtuellen Computer verwendet wird:
 
-Daten    | Beschreibung
+Daten    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers
@@ -935,7 +941,7 @@ writeAcceleratorEnabled | Gibt an, ob writeAccelerator für den Datenträger akt
 
 Das Datenträgerarray für Daten enthält eine Liste der Datenträger für Daten, die an den virtuellen Computer angefügt sind. Jedes Datenträgerobjekt enthält die folgenden Informationen:
 
-Daten    | Beschreibung
+Daten    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers

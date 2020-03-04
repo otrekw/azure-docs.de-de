@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
+title: Visualisieren von Daten mit dem Azure Data Explorer-Connector für Power BI
 description: 'In diesem Artikel erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: den Power BI-Connector für Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024211"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560489"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
 
@@ -28,7 +28,7 @@ Sie benötigen Folgendes, um diesen Artikel durchzuarbeiten:
 
 ## <a name="get-data-from-azure-data-explorer"></a>Abrufen von Daten aus Azure Data Explorer
 
-Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster her und fügen dann eine Teilmenge der Daten aus der Tabelle *StormEvents* ein. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster her, und anschließend fügen Sie eine Teilmenge der Daten aus der Tabelle *StormEvents* ein. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 1. Wählen Sie in Power BI Desktop auf der Registerkarte **Start** die Option **Daten abrufen** und anschließend **Mehr** aus.
 

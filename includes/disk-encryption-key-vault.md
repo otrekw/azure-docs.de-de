@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511477"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77618465"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -151,7 +151,7 @@ Generieren Sie mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyv
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-Sie können stattdessen auch einen privaten Schlüssel mithilfe des Azure CLI-Befehls [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) importieren:
+Sie können stattdessen auch einen privaten Schlüssel mithilfe des Befehls [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) in der Azure-Befehlszeilenschnittstelle importieren:
 
 In beiden Fällen geben Sie den Namen des KEK im Parameter „--key-encryption-key“ für den Azure CLI-Befehl [az vm encryption enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) an. 
 

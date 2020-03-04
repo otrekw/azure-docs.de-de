@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647600"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -259,7 +259,7 @@ Die endgültige Richtliniendatei der vertrauenden Seite sollte wie folgt aussehe
 
 Speichern Sie die Änderungen, und laden Sie die neue Richtliniendatei hoch. Nachdem Sie beide Richtlinien (die Erweiterung und die Dateien der vertrauenden Seite) hochgeladen haben, öffnen Sie einen Webbrowser, und navigieren Sie dann zu den Richtlinienmetadaten.
 
-Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie:
+Die IDP-Metadaten der Azure AD B2C-Richtlinie sind Informationen, die im SAML-Protokoll verwendet werden, um die Konfiguration eines SAML-Identitätsanbieters offenzulegen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -276,7 +276,6 @@ Ihre benutzerdefinierte Richtlinie und der Azure AD B2C-Mandant sind jetzt berei
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *SAMLApp1*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://localhost` ein. Diesen Wert ändern Sie später im Manifest der Anwendungsregistrierung.
-1. Wählen Sie **Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen** aus.
 1. Wählen Sie **Registrieren**.
 
 ### <a name="42-update-the-app-manifest"></a>4.2 Aktualisieren des App-Manifests
@@ -338,7 +337,7 @@ Der letzte Schritt besteht darin, Azure AD B2C als SAML-IdP in Ihrer SAML-Anwend
 In der Regel sind einige oder alle der folgenden Angaben erforderlich:
 
 * **Metadaten**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Aussteller**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **Aussteller**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **Anmelde-URL/SAML-Endpunkt/SAML-URL-** : Überprüfen Sie den Wert in der Metadatendatei.
 * **Zertifikat**: Dies ist *B2C_1A_SamlIdpCert*, aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
 

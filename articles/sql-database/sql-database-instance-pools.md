@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552779"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587395"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Was sind SQL-Datenbank-Instanzenpools (Vorschau)?
 
@@ -126,7 +126,7 @@ Wenn Probleme bei der Bereitstellung von Instanzenpools (Erstellung oder Löschu
 
 Wenn Probleme im Zusammenhang mit Einzelinstanzen oder Datenbanken in einem Pool auftreten, empfiehlt es sich, ein reguläres Supportticket für verwaltete Azure SQL-Datenbank-Instanzen zu erstellen.
 
-Zur Erstellung größerer Bereitstellungen von verwalteten Instanzen (mit oder ohne Instanzenpools) benötigen Sie möglicherweise ein größeres regionales Kontingent. Verwenden Sie die [Standardprozedur für verwaltete Instanzen zum Anfordern eines größeren Kontingents](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance). Beachten Sie dabei jedoch Folgendes: Bei Verwendung von Instanzenpools wird mit der Bereitstellungslogik der V-Kern-Gesamtverbrauch *auf Poolebene* mit Ihrem Kontingent verglichen, um zu ermitteln, ob Sie neue Ressourcen erstellen können, ohne Ihr Kontingent weiter erhöhen zu müssen.
+Zur Erstellung größerer Bereitstellungen von verwalteten Instanzen (mit oder ohne Instanzenpools) benötigen Sie möglicherweise ein größeres regionales Kontingent. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md). Bei Verwendung von Instanzenpools ist zu beachten, dass die Bereitstellungslogik den Gesamtverbrauch von virtuellen Kernen *auf Poolebene* mit Ihrem Kontingent vergleicht, um zu ermitteln, ob Sie ohne Kontingenterhöhung neue Ressourcen erstellen können.
 
 ## <a name="instance-pool-billing"></a>Abrechnung für Instanzenpools
 

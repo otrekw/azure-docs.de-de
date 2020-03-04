@@ -1,23 +1,23 @@
 ---
-title: Was ist Unterhaltungstranskription (Vorschau)? – Spracherkennungsdienst
+title: Informationen zur Unterhaltungstranskription (Vorschau) – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Die Unterhaltungstranskription ist eine Spracherkennungslösung, die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als Diarisierung bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen.
 services: cognitive-services
-author: markamos
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806285"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561067"
 ---
-# <a name="what-is-conversation-transcription-preview"></a>Was ist Unterhaltungstranskription (Vorschau)?
+# <a name="about-conversation-transcription-preview"></a>Informationen zur Unterhaltungstranskription (Vorschau)
 
 Die Unterhaltungstranskription ist eine [Spracherkennungslösung](speech-to-text.md), die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als _Diarisierung_ bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen. Die Unterhaltungstranskription unterscheidet Sprecher in einer Unterhaltung, um festzustellen, wer was wann gesagt hat, und vereinfacht es für Entwickler, ihren Anwendungen, die eine Diarisierung mit mehreren Sprechern durchführen, eine Spracherkennung hinzuzufügen.
 
@@ -44,7 +44,7 @@ Um Besprechungen für alle Beteiligten, z. B. taube und schwerhörige Teilnehmer
 
 Die Besprechungsteilnehmer können sich auf die Besprechung konzentrieren und das Aufzeichnen der Notizen der Unterhaltungstranskription überlassen. Die Teilnehmer können sich aktiv an der Besprechung beteiligen und schnell die nächsten Schritte verfolgen, indem sie das Transkript verwenden, anstatt Notizen zu machen und möglicherweise etwas während der Besprechung zu verpassen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Dies ist eine allgemeine Übersicht darüber, wie die Unterhaltungstranskription funktioniert.
 

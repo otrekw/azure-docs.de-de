@@ -1,36 +1,35 @@
 ---
-title: Erstellen von geplanten Aufträgen mit Azure Scheduler – Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihren ersten automatisierten Auftrag mit Azure Scheduler im Azure-Portal erstellen, planen und ausführen können.
+title: Erstellen geplanter Aufträge – Azure-Portal
+description: Erfahren Sie, wie Sie Ihren ersten automatisierten Auftrag mit Azure Scheduler im Azure-Portal erstellen, planen und ausführen.
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300989"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524800"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
-In diesem Tutorial wird gezeigt, wie Sie einen Auftrag erstellen und planen und diesen Auftrag dann überwachen und verwalten können. 
+In diesem Tutorial wird gezeigt, wie Sie einen Auftrag erstellen und planen und diesen Auftrag dann überwachen und verwalten können.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 ## <a name="create-job"></a>Erstellen eines Auftrags
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Wählen Sie im Azure-Menü **Ressource erstellen** aus. Geben Sie „scheduler“ in das Suchfeld ein. Wählen Sie in der Ergebnisliste **Scheduler** und dann **Erstellen** aus.
+1. Geben Sie in Azure im Suchfeld den Begriff `scheduler` als Filter ein. Wählen Sie in der Ergebnisliste **Scheduler-Auftragssammlungen** und dann **Erstellen** aus.
 
    ![Erstellen einer Ressource in Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -93,7 +92,7 @@ Um weitere Informationen zu diesen Bereichen anzuzeigen, wählen Sie einen Berei
 
 <a name="properties"></a>
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 Um schreibgeschützte Eigenschaften anzuzeigen, die die Verwaltungsmetadaten für Ihren Auftrag beschreiben, klicken Sie auf **Eigenschaften**.
 
@@ -117,7 +116,7 @@ Um die erweiterten Einstellungen Ihres Auftrags zu ändern, klicken Sie auf **Ak
 
 <a name="schedule"></a>
 
-### <a name="schedule"></a>Schedule
+### <a name="schedule"></a>Zeitplan
 
 Wenn Sie einen Zeitplan über den Auftragsassistenten einrichten, können Sie diesen Zeitplan ändern, z.B. Startdatum und -zeit, Wiederholungszeitplan und Enddatum und -zeit für wiederkehrende Aufträge.
 Zudem können Sie [komplexere Zeitpläne und fortgeschrittener Serien erstellen](scheduler-advanced-complexity.md).
@@ -147,6 +146,6 @@ Mit der rollenbasierten Zugriffssteuerung (RBAC) in Azure können Sie den Zugrif
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Konzepte, Terminologie und Entitäten in Azure Scheduler](scheduler-concepts-terms.md).
-* [Erstellen von erweiterten Zeitplänen und Wiederholungen für Aufträge im Azure Scheduler](scheduler-advanced-complexity.md)
+* [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
 * Erfahren Sie mehr über die [Hochverfügbarkeit und Zuverlässigkeit bei Azure Scheduler](scheduler-high-availability-reliability.md).
 * Erfahren Sie mehr über [Grenzwerte, Kontingente und Drosselungsschwellenwerte im Azure Scheduler](scheduler-limits-defaults-errors.md).

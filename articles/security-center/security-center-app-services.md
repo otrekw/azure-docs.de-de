@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912809"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616482"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Schützen Ihrer Azure App Service-Web-Apps und -APIs
 
@@ -29,7 +29,7 @@ Zum Aktivieren von Advanced Threat Protection für Ihren Azure App Service-Plan 
 
 Mit dem aktivierten App Service-Plan bewertet Security Center die von Ihrem App Service-Plan abgedeckten Ressourcen und generiert auf der Grundlage der Erkenntnisse Sicherheitsempfehlungen. Security Center schützt die VM-Instanz, in der Ihr App Service ausgeführt wird, und die Verwaltungsoberfläche. Es überwacht auch Anforderungen und Antworten, die an und von Ihren Apps gesendet werden, die im App Service ausgeführt werden.
 
-Security Center nutzt die Skalierung der Cloud und die Sichtbarkeit von Azure als Cloudanbieter, um allgemeine Angriffe auf Web-Apps zu überwachen. Security Center kann Angriffe auf Ihre Anwendungen erkennen und neu auftretende Angriffe identifizieren – selbst wenn sich Angreifer noch in der Aufklärungsphase befinden und Schwachstellen in mehreren von Azure gehosteten Anwendungen ermitteln. Als Azure-nativer Dienst ist Security Center auch in der einzigartigen Lage, hostbasierte Sicherheitsanalysen anzubieten, welche die zugrunde liegenden Serverknoten für diese PaaS abdecken und es Security Center ermöglichen, Angriffe auf bereits genutzte Webanwendungen zu erkennen. Ausführliche Informationen zu den Security Center-Warnungen der Bedrohungserkennung von Azure App Service finden Sie unter [Bedrohungserkennung für cloudnatives Computing](security-center-alerts-compute.md#azure-app-service-).
+Security Center nutzt die Skalierung der Cloud und die Sichtbarkeit von Azure als Cloudanbieter, um allgemeine Angriffe auf Web-Apps zu überwachen. Security Center kann Angriffe auf Ihre Anwendungen erkennen und neu auftretende Angriffe identifizieren – selbst wenn sich Angreifer noch in der Aufklärungsphase befinden und Schwachstellen in mehreren von Azure gehosteten Anwendungen ermitteln. Als Azure-nativer Dienst ist Security Center auch in der einzigartigen Lage, hostbasierte Sicherheitsanalysen anzubieten, welche die zugrunde liegenden Serverknoten für diese PaaS abdecken und es Security Center ermöglichen, Angriffe auf bereits genutzte Webanwendungen zu erkennen. Ausführliche Informationen finden Sie unter [Bedrohungsschutz für Azure App Service](threat-protection.md#app-services).
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Aktivieren der Überwachung und des Schutz von App Service
@@ -64,5 +64,4 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md): Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
 * [App Services](security-center-virtual-machine-protection.md#app-services):  Hier können Sie eine Liste Ihrer App Service-Umgebungen mit Integritätszusammenfassungen anzeigen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
-* [Azure Security Center – häufig gestellte Fragen:](security-center-faq.md) Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

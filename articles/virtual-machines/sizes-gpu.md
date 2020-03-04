@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 9be3c14bb435aaa1cddf008a27389bb3b1fdbc3d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492547"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566045"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Für GPU optimierte VM-Größen
 
@@ -31,15 +31,15 @@ GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer mit einze
 
 - Die Größen der [NV-Serie](nv-series.md) und der [NVv3-Serie](nvv3-series.md) sind für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX konzipiert und optimiert. Diese VMs werden von der NVIDIA Tesla M60-GPU unterstützt.
 
-- VM-Größen der [NVv4-Serie](nvv4-series.md) sind für VDI und Remotevisualisierung konzipiert und optimiert. Dank partitionierter GPUs bietet NVv4 die passende Größe für Workloads, die geringere GPU-Ressourcen erfordern. Diese virtuellen Computer basieren auf der AMD Radeon Instinct MI25-GPU.
+- VM-Größen der [NVv4-Serie](nvv4-series.md) sind für VDI und Remotevisualisierung konzipiert und optimiert. Dank partitionierter GPUs bietet NVv4 die passende Größe für Workloads, die geringere GPU-Ressourcen erfordern. Diese virtuellen Computer basieren auf der AMD Radeon Instinct MI25-GPU. VMs der NVv4-Serie unterstützen derzeit nur das Windows-Gastbetriebssystem.
 
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
 Um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie nutzen zu können, müssen NVIDIA-GPU-Treiber installiert werden.
 
-Mit der [NVIDIA-GPU-Treibererweiterung](/extensions/hpccompute-gpu-windows.md) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](/extensions/hpccompute-gpu-windows.md). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](/extensions/overview.md).
+Mit der [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie Azure PowerShell oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Betriebssystemen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows). Allgemeine Informationen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](/azure/virtual-machines/extensions/overview).
 
-Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie Informationen zu unterstützten Betriebssystemen und Treibern sowie Schritte zur Installation und zur Überprüfung unter [Einrichten von GPU-Treibern der N-Serie für Windows](/windows/n-series-driver-setup.md) bzw. [Einrichten von GPU-Treibern der N-Serie für Linux](/linux/n-series-driver-setup).
+Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie Informationen zu unterstützten Betriebssystemen und Treibern sowie Schritte zur Installation und zur Überprüfung unter [Einrichten von GPU-Treibern der N-Serie für Windows](/azure/virtual-machines/windows/n-series-driver-setup) bzw. [Einrichten von GPU-Treibern der N-Serie für Linux](/azure/virtual-machines/linux/n-series-driver-setup).
 
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 

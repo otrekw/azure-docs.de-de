@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110964"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586154"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank
 
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um eine Erhöhung der Anzahl der Server 
 
 Weitere Informationen finden Sie unter [SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle](sql-database-resource-limits-database-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a>Aktivieren des Abonnementzugriffs auf eine Region
+### <a id="other"></a> Aktivieren des Abonnementzugriffs auf eine Region
 
 Einige Angebotstypen sind nicht in allen Regionen verfügbar. Unter Umständen wird beispielsweise folgender Fehler angezeigt:
 

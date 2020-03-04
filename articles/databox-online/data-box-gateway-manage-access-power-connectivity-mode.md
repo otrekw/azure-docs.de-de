@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Azure Data Box Gateway: Gerätezugriff, Energieeinstellungen und Konnektivitätsmodus | Microsoft-Dokumentation'
+title: Verwalten des Gerätezugriffs, der Energieeinstellungen und des Konnektivitätsmodus von Azure Data Box Gateway
 description: In diesem Artikel wird beschrieben, wie Sie den Zugriff, die Energieeinstellungen und den Konnektivitätsmodus für das Azure Data Box Gateway-Gerät verwalten, mit dem Daten in Azure übertragen werden.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253178"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561815"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
@@ -41,7 +41,7 @@ Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, u
 
 3. Klicken Sie auf **Kennwort ändern**.
  
-### <a name="reset-device-password"></a>Gerätekennwort zurücksetzen
+### <a name="reset-device-password"></a>Zurücksetzen des Gerätekennworts
 
 Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen. Dies ist nützlich, wenn das Kennwort verloren gegangen ist. Dieser Workflow wird im Azure-Portal ausgeführt.
 

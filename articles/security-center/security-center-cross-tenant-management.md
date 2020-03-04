@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355589"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604256"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -46,7 +46,7 @@ Klicken Sie in der oberen Menüleiste auf das Filtersymbol, und wählen Sie aus 
 Die Ansichten und Aktionen sind im Grunde identisch. Im Folgenden finden Sie einige Beispiele:
 
 - **Verwalten von Sicherheitsrichtlinien**: Verwalten Sie in einer einzigen Ansicht den Sicherheitsstatus vieler Ressourcen mit [Richtlinien](tutorial-security-policy.md), ergreifen Sie Maßnahmen mit Sicherheitsempfehlungen, und erfassen und verwalten Sie sicherheitsrelevante Daten.
-- **Verbessern von Secure Score und Konformitätsstatus**: Mithilfe der mandantenübergreifenden Sichtbarkeit können Sie den gesamten Sicherheitsstatus all Ihrer Mandanten anzeigen und ermitteln, wo und wie Sie die [Sicherheitsbewertung](security-center-secure-score.md) und den [Compliancestatus](security-center-compliance-dashboard.md) für jeden einzelnen Mandanten optimieren können.
+- **Verbessern von Secure Score und Konformitätsstatus:** Mithilfe der mandantenübergreifenden Sichtbarkeit können Sie den gesamten Sicherheitsstatus aller Ihrer Mandanten anzeigen und ermitteln, wo und wie Sie die [Sicherheitsbewertung](security-center-secure-score.md) und den [Compliancestatus](security-center-compliance-dashboard.md) für jeden einzelnen Mandanten optimieren können.
 - **Umsetzen von Empfehlungen**: Sie können eine [Empfehlung](security-center-recommendations.md) für viele Ressourcen von verschiedenen Mandanten gleichzeitig überwachen und umsetzen. Anschließend können Sie die Sicherheitslücken, die das höchste Risiko darstellen, sofort für alle Mandanten beseitigen.
 - **Verwalten von Warnungen**: Ermitteln Sie [Warnungen](security-center-alerts-overview.md) auf den verschiedenen Mandanten. Ergreifen Sie Maßnahmen für Ressourcen, die nicht mit handlungsrelevanten [Schritten zur Bereinigung](security-center-managing-and-responding-alerts.md) konform sind.
 
@@ -56,5 +56,5 @@ Die Ansichten und Aktionen sind im Grunde identisch. Im Folgenden finden Sie ein
 In diesem Artikel wird erläutert, wie die mandantenübergreifende Verwaltung in Azure Security Center funktioniert. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Erhöhen Ihres Sicherheitsstatus in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Center – Häufig gestellte Fragen:](faq-general.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Weitere Informationen zu Azure Lighthouse in Unternehmensszenarien](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise): Erfahren Sie, wie Azure Lighthouse die mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, vereinfachen kann.

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385555"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598747"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -62,7 +62,7 @@ In Cloud Shell wird eine Azure-Dateifreigabe in einem Speicherkonto innerhalb ei
 Benutzer sollten den Zugriff auf ihre Dateien sperren, indem sie die Berechtigungen auf der Speicherkonto- oder Abonnementebene festlegen.
 
 ## <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
-Zugeordnete Azure-Speicherkonten müssen sich in derselben Region wie der Cloud Shell-Computer befinden, auf dem Sie diese bereitstellen. Um die aktuelle Region zu suchen, können Sie `env` in Bash ausführen und die Variable `ACC_LOCATION` suchen. Dateifreigaben erhalten ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.
+Um die aktuelle Region zu suchen, können Sie `env` in Bash ausführen und die Variable `ACC_LOCATION` suchen oder in PowerShell `$env:ACC_LOCATION` ausführen. Dateifreigaben erhalten ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.
 
 Cloud Shell-Computer sind in folgenden Regionen vorhanden:
 
@@ -71,6 +71,16 @@ Cloud Shell-Computer sind in folgenden Regionen vorhanden:
 |Amerika|USA, Osten; USA, Süden-Mitte; USA, Westen|
 |Europa|„Europa, Norden“, „Europa, Westen“|
 |Asien-Pazifik|Indien, Mitte; Asien, Südosten|
+
+Kunden sollten eine primäre Region auswählen, es sei denn, es gilt die Anforderung, dass ihre ruhenden Daten in einer bestimmten Region gespeichert werden müssen. Wenn eine solche Anforderung besteht, sollte eine sekundäre Speicherregion verwendet werden.
+
+### <a name="secondary-storage-regions"></a>Sekundäre Speicherregionen
+Wenn eine sekundäre Speicherregion verwendet wird, befindet sich das zugehörige Azure Storage-Konto in einer anderen Region als der Cloud Shell-Computer, auf dem Sie es einbinden. Beispielsweise kann Jane festlegen, dass sich ihr Speicherkonto in „Kanada, Osten“ befindet, einer sekundären Region, aber sich der Computer, in den es eingebunden ist, weiterhin in einer primären Region befindet. Ihre ruhenden Daten befinden sich in Kanada, werden jedoch in den USA verarbeitet.
+
+> [!NOTE]
+> Wenn eine sekundäre Region verwendet wird, können der Dateizugriff und die Startzeit für Cloud Shell verlangsamt sein.
+
+Ein Benutzer kann `(Get-CloudDrive | Get-AzStorageAccount).Location` in PowerShell ausführen, um den Speicherort seiner Dateifreigabe anzuzeigen.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Beschränken der Ressourcenerstellung mit einer Azure-Ressourcenrichtlinie
 Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](../azure-policy/json-samples.md) erstellen, die durch das jeweilige Tag ausgelöst werden.

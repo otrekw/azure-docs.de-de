@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471345"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614280"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 |    FileStorage    | Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
-<sup>2</sup> Azure-Datenträger für virtuelle Computer (sowohl verwaltete als auch nicht verwaltete Datenträger) unterstützen nur LRS. ZRS oder GZRS werden nicht unterstützt. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>2</sup> Speicherkonten, die verwaltete Azure-Datenträger für virtuelle Computer enthalten, verwenden immer LRS. Für nicht verwaltete Azure-Datenträger sollte ebenfalls LRS verwendet werden. Es ist möglich, ein Speicherkonto für nicht verwaltete Azure-Datenträger zu erstellen, das GRS verwendet. Dies wird jedoch aufgrund von potenziellen Konsistenzproblemen mit der asynchronen Georeplikation nicht empfohlen. Weder verwaltete noch nicht verwaltete Datenträger unterstützen ZRS oder GZRS. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter **Unterstützung der Dienste nach Region** in [Was sind Azure-Verfügbarkeitszonen?](../../availability-zones/az-overview.md).
 

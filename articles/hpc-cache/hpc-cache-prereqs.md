@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251956"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651065"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -95,7 +95,9 @@ Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise e
 > [!NOTE]
 > Wenn der Cache nicht im erforderlichen Umfang auf das NFS-Speichersystem zugreifen kann, ist die Speicherzielerstellung nicht erfolgreich.
 
-* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden.
+Weitere Informationen finden Sie unter [Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel](troubleshoot-nas.md).
+
+* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden. Weitere Informationen zur Problembehandlung bei VPN-Einstellungen finden Sie unter [Einschränkungen der VPN-Paketgröße](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions).
 
 * **Portzugriff:** Der Cache benötigt Zugriff auf bestimmte TCP/UDP-Ports Ihres Speichersystems. Verschiedene Speichertypen haben unterschiedliche Portanforderungen.
 
@@ -109,9 +111,11 @@ Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise e
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  Stellen Sie sicher, dass alle von der ``rpcinfo``-Abfrage zurückgegebenen Ports uneingeschränkten Datenverkehr aus dem Azure HPC Cache-Subnetz zulassen.
+
   * Vergewissern Sie sich zusätzlich zur Überprüfung der vom Befehl `rpcinfo` zurückgegebenen Ports, dass an den folgenden häufig verwendeten Ports eingehender und ausgehender Datenverkehr zugelassen wird:
 
-    | Protokoll | Port  | Dienst  |
+    | Protocol | Port  | Dienst  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
@@ -121,16 +125,20 @@ Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise e
 
   * Vergewissern Sie sich, dass die Firewalleinstellungen Datenverkehr an allen diesen erforderlichen Ports zulassen. Überprüfen Sie sowohl in Azure verwendete Firewalls als auch lokale Firewalls in Ihrem Rechenzentrum.
 
-* **Verzeichniszugriff:** Aktivieren Sie den Befehl `showmount` im Speichersystem. Mit diesem Befehl wird von Azure HPC Cache überprüft, ob Ihre Speicherzielkonfiguration auf einen gültigen Export verweist, und es wird sichergestellt, dass nicht von mehreren Einbindungen auf die gleichen Unterverzeichnisse zugegriffen wird, um Dateikonflikte zu vermeiden.
+* **Verzeichniszugriff:** Aktivieren Sie den Befehl `showmount` im Speichersystem. Mit diesem Befehl überprüft Azure HPC Cache, ob Ihre Speicherzielkonfiguration auf einen gültigen Export verweist. Außerdem wird sichergestellt, dass nicht von mehreren Einbindungen auf dieselben Unterverzeichnisse zugegriffen wird (Risiko von Dateikonflikten).
 
   > [!NOTE]
   > **Aktivieren Sie `showmount` nicht**, wenn Ihr NFS-Speichersystem das ONTAP 9.2-Betriebssystem von NetApp verwendet. Erstellen Sie in diesem Fall ein Supportticket. Weitere Informationen finden Sie [hier](hpc-cache-support-ticket.md).
 
+  Weitere Informationen zum Auflistungszugriff auf Verzeichnisse finden Sie im [Artikel zur Problembehandlung](troubleshoot-nas.md#enable-export-listing) für NFS-Speicherziele.
+
 * **Root-Zugriff:** Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
   
-  * Aktivieren Sie `no_root_squash`. Diese Option sorgt dafür, dass der Root-Remotebenutzer auf Dateien zugreifen kann, die sich im Besitz von Root befinden.
+  * `no_root_squash`aktivieren. Diese Option sorgt dafür, dass der Root-Remotebenutzer auf Dateien zugreifen kann, die sich im Besitz von Root befinden.
 
   * Vergewissern Sie sich, dass die Exportrichtlinien keine Einschränkungen für den Root-Zugriff aus dem Subnetz des Caches enthalten.
+
+  * Wenn Ihr Speicher Exporte aufweist, bei denen es sich um Unterverzeichnisse eines anderen Exports handelt, stellen Sie sicher, dass der Cache über Root-Zugriff auf das niedrigste Segment des Pfads verfügt. Weitere Informationen finden Sie unter [Root-Zugriff auf Verzeichnispfade](troubleshoot-nas.md#allow-root-access-on-directory-paths) im Artikel zur Problembehandlung für NFS-Speicherziele.
 
 * Der NFS-Back-End-Speicher muss eine kompatible Hardware-/Softwareplattform aufweisen. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
 

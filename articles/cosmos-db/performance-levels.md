@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928297"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623345"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3 
 - [Was muss ich tun, um den unterbrechungsfreien Zugriff auf meine Daten sicherzustellen?](#uninterrupted-access)
 - [Wie verändert sich meine Sammlung nach der Migration?](#collection-change)
 - [Wie verändert sich meine Abrechnung nach der Migration zu Sammlungen mit nur einer Partition?](#billing-change)
-- [Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?](#more-storage-needed)
+- [Welche Möglichkeiten habe ich, wenn ich mehr als 20 GB Speicher benötige?](#more-storage-needed)
 - [Kann ich vor der geplanten Migration zwischen den Leistungsebenen S1, S2 und S3 wechseln?](#change-before)
 - [Wie kann ich die Migration von den Leistungsebenen S1, S2 und S3 zu Sammlungen mit nur einer Partition selbst durchführen?](#migrate-diy)
 - [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer)
@@ -45,9 +45,9 @@ Die folgende Tabelle enthält einen Vergleich der Durchsatz- und Speicheroptione
 
 |   |Partitionierte Sammlung|Sammlung mit nur einer Partition|S1|S2|S3|
 |---|---|---|---|---|---|
-|Maximaler Durchsatz|Unbegrenzt|10\.000 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
+|Maximaler Durchsatz|Unbegrenzt|10.000 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
 |Minimaler Durchsatz|2.500 RU/s|400 RU/s|250 RU/s|1\.000 RU/s|2.500 RU/s|
-|Maximale Speichergröße|Unbegrenzt|10 GB|10 GB|10 GB|10 GB|
+|Maximale Speichergröße|Unbegrenzt|20 GB|20 GB|20 GB|20 GB|
 |Preis (monatlich)|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|Durchsatz: 6 USD/100 RU/s<br><br>Speicher: 0,25 USD/GB|25 USD|50 USD|100 USD|
 
 Sind Sie EA-Kunde? Wenn ja, helfen Ihnen die Informationen unter [Inwieweit bin ich betroffen, wenn ich EA-Kunde bin?](#ea-customer) weiter.
@@ -80,9 +80,9 @@ Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in 
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 20 GB Speicher benötige?
 
-Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 
+Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 20 GB Speicher verfügbar sind: Sie können das Azure Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 

@@ -1,81 +1,57 @@
 ---
-title: Gruppieren von Computern in Azure Migrate mithilfe der Visualisierung von Abhängigkeiten ohne Agent
-description: In diesem Abschnitt wird beschrieben, wie Gruppen mithilfe von Computerabhängigkeiten ohne Agent erstellt werden.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Einrichten der Abhängigkeitsvisualisierung ohne Agent in Azure Migrate
+description: Einrichten von Gruppen mit der Abhängigkeitsvisualisierung ohne Agent in der Azure Migrate-Serverbewertung.
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: hamusa
-ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 2/24/2020
+ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049747"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589129"
 ---
-# <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
+# <a name="set-up-agentless-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung ohne Agent 
 
-Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. 
+In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md#what-is-dependency-visualization) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+
+Mit der Abhängigkeitsvisualisierung ohne Agent können Sie Abhängigkeiten von Computern identifizieren, ohne einen Agent auf einem Computer installieren zu müssen. Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde.
 
 > [!IMPORTANT]
-> Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit als Vorschauversion für Azure VMware-VMs verfügbar, die mithilfe einer Azure Migrate-Appliance ermittelt wurden.
-> Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
+> Die Abhängigkeitsvisualisierung ohne Agent ist derzeit als Vorschauversion nur für virtuelle Azure VMware-Computer verfügbar, die mithilfe des Azure Migrate-Serverbewertungstools ermittelt wurden.
+> Die Funktionen sind möglicherweise eingeschränkt oder unvollständig.
+> Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="about-dependency-mapping"></a>Informationen zur Abhängigkeitszuordnung
-
-Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Computer mit höheren Zuverlässigkeitsgraden zugreifen möchten.
-
-- In Azure Migrate: Serverbewertung fassen Sie die Computer, die Sie bewerten möchten, in Gruppen zusammen. Gruppen bestehen normalerweise aus Computern, die Sie zusammen migrieren möchten. Mithilfe der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen den Computer überprüfen, um die Computer korrekt zu gruppieren.
-- Mit der Zuordnung können Sie alle unabhängigen Systeme ermitteln, die zusammen migriert werden müssen. Sie können bestimmen, ob ein ausgeführtes System noch benötigt wird oder eher außer Betrieb gesetzt als migriert werden sollte.
-- Die Visualisierung von Abhängigkeiten trägt dazu bei, dass nichts zurückbleibt. Außerdem werden unerwartete Ausfälle während der Migration vermieden.
-
-## <a name="about-agentless-visualization"></a>Informationen zur Visualisierung ohne Agent
-
-Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents auf Computern installieren. Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde.
-
-- Nachdem die Abhängigkeitsermittlung gestartet wurde, sammelt die Appliance Daten von Computern in einem Abrufintervall von fünf Minuten.
-- Die folgenden Daten werden gesammelt:
-    - TCP-Verbindungen
-    - Namen von Prozessen mit aktiven Verbindungen
-    - Namen der installierten Anwendungen, die die obigen Prozesse ausführen
-    - Nein. von Verbindungen, die in jedem Abrufintervall erkannt werden
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit nur für VMware-VMs verfügbar.
 - In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server hinzufügen oder aus einer Gruppe entfernen.
-- Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist zurzeit nicht verfügbar.
+- Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
 - Die Abhängigkeitsdaten können derzeit nicht im Tabellenformat heruntergeladen werden.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
+- [Überprüfen](concepts-dependency-visualization.md#agentless-visualization) Sie die Anforderungen und die Kosten, die mit der Abhängigkeitsvisualisierung ohne Agent verbunden sind.
+- Überprüfen Sie die [Supportanforderungen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) für das Einrichten einer Abhängigkeitsvisualisierung ohne Agent.
 - Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Die Abhängigkeitsanalyse ohne Agent ist zurzeit nur für VMware-Computer verfügbar.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
-- Vergewissern Sie sich, dass Sie die VMware-Computer in Azure Migrate ermittelt haben. Sie können dazu eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
-- [Lesen Sie die Anforderungen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) für das Einrichten einer Abhängigkeitsvisualisierung ohne Agent.
-
+- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
+- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für virtuelle [VMware](how-to-set-up-appliance-vmware.md)-Computer einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Erstellen eines Benutzerkontos für die Ermittlung
 
-Richten Sie ein Benutzerkonto ein, das über die erforderlichen Berechtigungen verfügt, damit die Serverbewertung für die Ermittlung auf die VM zugreifen kann. Sie können ein Benutzerkonto angeben.
+Richten Sie ein Benutzerkonto ein, damit die Serverbewertung zur Ermittlung auf den virtuellen Computer zugreifen kann. Sie können ein Benutzerkonto angeben.
 
-- **Erforderliche Berechtigung für Windows-VMs**: Das Benutzerkonto muss ein lokales Konto oder ein Domänenadministratorkonto sein.
-- **Erforderliche Berechtigung für Linux-VMs**: Für das Konto ist root-Berechtigung erforderlich. Alternativ benötigt das Benutzerkonto diese beiden Funktionen für /bin/netstat- und /bin/ls-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
+- **Virtuelle Windows-Computer:** Das Benutzerkonto muss ein lokales Konto oder ein Domänenadministratorkonto sein.
+- **Virtuelle Linux-Computer:** Für das Konto ist root-Berechtigung erforderlich. Alternativ benötigt das Benutzerkonto diese beiden Funktionen für /bin/netstat- und /bin/ls-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Hinzufügen des Benutzerkontos zur Appliance
 
-Sie müssen das Benutzerkonto zur Appliance hinzufügen.
+Fügen Sie das Benutzerkonto zur Appliance hinzu.
 
-Fügen Sie das Konto wie folgt hinzu:
-
-1. Öffnen Sie die Verwaltungs-App für die Appliance. Navigieren Sie zum Bereich **vCenter-Details angeben**.
-2. Klicken Sie im Abschnitt **Anwendungen und Abhängigkeiten auf VMs ermitteln** auf **Anmeldeinformationen hinzufügen**.
-3. Wählen Sie das **Betriebssystem** aus.
-4. Geben Sie einen Anzeigenamen für das Konto an.
-5. Geben Sie den **Benutzernamen** und das **Kennwort** ein.
+1. Öffnen Sie die Verwaltungs-App für die Appliance. 
+2. Navigieren Sie zum Bereich **vCenter-Details angeben**.
+3. Klicken Sie unter **Anwendungen und Abhängigkeiten auf VMs ermitteln** auf **Anmeldeinformationen hinzufügen**.
+3. Wählen Sie das **Betriebssystem** aus, geben Sie einen benutzerfreundlichen Namen für das Konto an, und geben Sie dann **Benutzername**/**Kennwort** an.
 6. Klicken Sie auf **Speichern**.
 7. Klicken Sie auf **Speichern und Ermittlung starten**.
 
@@ -94,12 +70,12 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung aktivie
 
     ![Starten der Abhängigkeitsermittlung](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-Nach dem Start der Abhängigkeitsermittlung können Sie die Abhängigkeiten 6 Stunden lang visualisieren.
+Ungefähr sechs Stunden nach dem Start der Abhängigkeitsermittlung können Sie die Abhängigkeiten visualisieren.
 
 ## <a name="visualize-dependencies"></a>Visualisieren von Abhängigkeiten
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
-2. Suchen Sie den Computer, für den Sie die Abhängigkeitszuordnung anzeigen möchten.
+2. Suchen Sie nach dem Computer, den Sie anzeigen möchten.
 3. Klicken Sie in der Spalte **Abhängigkeiten** auf **Abhängigkeiten anzeigen**.
 4. Ändern Sie den Zeitraum, für den Sie die Zuordnung anzeigen möchten, über die Dropdown-Liste **Zeitdauer**.
 5. Erweitern Sie die Gruppe **Client**, um die Computer aufzulisten, die eine Abhängigkeit zum ausgewählten Computer aufweisen.
@@ -131,4 +107,4 @@ Wählen Sie die Computer aus, auf denen Sie die Abhängigkeitsermittlung beenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Gruppieren der Computer](how-to-create-a-group.md)
+[Gruppieren von Computern](how-to-create-a-group.md) für die Bewertung

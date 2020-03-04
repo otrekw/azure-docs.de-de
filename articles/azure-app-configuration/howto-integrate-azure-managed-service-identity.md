@@ -1,31 +1,32 @@
 ---
-title: Integrieren mit verwalteten Azure-Identitäten
-description: Erfahren Sie, wie Sie verwaltete Azure-Identitäten verwenden, um die Authentifizierung für Azure App Configuration durchzuführen und Zugriff darauf zu erhalten.
+title: Authentifizieren mit verwalteten Azure-Identitäten
+titleSuffix: Azure App Configuration
+description: Authentifizieren bei Azure App Configuration mit verwalteten Azure-Identitäten
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
-ms.date: 12/29/2019
+ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 66bf27c1b1e8349c1a0e822c457412fdfca58e82
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212205"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619466"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 
-Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität kann Ihr Code den Dienstprinzipal verwenden, der für den Azure-Dienst erstellt wurde, auf dem er ausgeführt wird. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
+Mit [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität kann Ihr Code den Dienstprinzipal verwenden, der für den Azure-Dienst, auf dem er ausgeführt wird, erstellt wurde. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
 
-Azure App Configuration und die zugehörigen .NET Core-, .NET Framework- und Java Spring-Clientbibliotheken verfügen über integrierte Unterstützung für die verwaltete Dienstidentität. Zwar müssen Sie die verwaltete Identität nicht verwenden, jedoch entfällt durch deren Verwendung die Notwendigkeit für ein Zugriffstoken mit Geheimnissen. Ihr Code kann nur mithilfe des Dienstendpunkts auf den App Configuration-Speicher zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne sich Sorgen machen zu müssen, dass geheime Schlüssel offengelegt werden.
+Azure App Configuration und die zugehörigen .NET Core-, .NET Framework- und Java Spring-Clientbibliotheken verfügen über integrierte Unterstützung für die verwaltete Dienstidentität. Zwar müssen Sie die verwaltete Identität nicht verwenden, jedoch entfällt durch deren Verwendung die Notwendigkeit für ein Zugriffstoken mit Geheimnissen. Ihr Code kann nur mithilfe des Dienstendpunkts auf den App Configuration-Speicher zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne Geheimnisse offenzulegen.
 
-In diesem Tutorial wird veranschaulicht, wie Sie die verwaltete Identität für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Core-App mit Azure App Configuration](./quickstart-aspnet-core-app.md), bevor Sie fortfahren.
+In diesem Artikel wird veranschaulicht, wie Sie die verwaltete Identität für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Bevor Sie fortfahren, [erstellen Sie eine ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md).
 
-In diesem Tutorial wird außerdem gezeigt, wie Sie die verwaltete Identität in Verbindung mit den Key Vault-Verweisen von App Configuration verwenden können. Mit einer einzelnen verwalteten Identität können Sie nahtlos aus Key Vault auf beide Geheimnisse und aus App Configuration auf Konfigurationswertezugreifen. Wenn Sie diese Funktion erkunden möchten, stellen Sie zuerst [Verwenden von Key Vault-Verweisen mit ASP.NET Core](./use-key-vault-references-dotnet-core.md) fertig.
+In diesem Artikel wird außerdem gezeigt, wie Sie die verwaltete Identität in Verbindung mit den Key Vault-Verweisen von App Configuration verwenden können. Mit einer einzelnen verwalteten Identität können Sie nahtlos aus Key Vault auf beide Geheimnisse und aus App Configuration auf Konfigurationswertezugreifen. Wenn Sie diese Funktion erkunden möchten, stellen Sie zuerst [Verwenden von Key Vault-Verweisen mit ASP.NET Core](./use-key-vault-references-dotnet-core.md) fertig.
 
 Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Gewähren des Zugriffs auf App Configuration für eine verwaltete Identität.
@@ -78,7 +79,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 1. Fügen Sie einen Verweis auf das Paket *Azure.Identity* hinzu.
 
     ```cli
-    dotnet add package Azure.Identity --version 1.1.0
+    dotnet add package Azure.Identity
     ```
 
 1. Suchen Sie den Endpunkt Ihres App Configuration-Speichers. Diese URL wird auf der Registerkarte **Zugriffsschlüssel** für den Speicher im Azure-Portal aufgelistet.

@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425458"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597540"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -34,7 +34,7 @@ Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von ph
 **Lizenz** | Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **Bereitstellung** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen in der vCenter-Server-Instanz, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
 **Hardware** | Ressourcen in vCenter zum Zuordnen eines virtuellen Computers mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch 
-**Hashwert** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256: 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) überprüfen.
 **vCenter-Server/Host** | Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
 **Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlung** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
@@ -52,7 +52,7 @@ Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von ph
 **Lizenz** | Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
 **Bereitstellung einer Appliance**   |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die von Azure Migrate bereitgestellte Appliance-VM ist eine Hyper-V-VM mit Version 5.0.<br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
 **Hardware** | Ressourcen auf dem Hyper-V-Host zum Zuordnen von 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen Switch für die Appliance-VM
-**Hashwert** | MD5: 29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256: 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) überprüfen.
 **Hyper-V-Host** | Ausführung von Windows Server 2012 R2 oder höher
 **Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
 **Ermittlung** | Eine Appliance kann bis zu 5000 virtuelle Hyper-V-Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
@@ -67,7 +67,7 @@ Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von ph
 **Downloadlink** | [Downloadlink](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Downloadgröße** | 59,7 MB
 **Hardware** | Dedizierter physischer Computer oder verwendete VM. Der Computer, auf dem die Appliance ausgeführt wird, benötigt 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
-**Hashwert** | MD5: 1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) überprüfen.
 **Betriebssystem** | Auf dem Appliancecomputer muss Windows Server 2016 ausgeführt werden. 
 **Bereitstellung einer Appliance**   |  Das Installationsskript für die Appliance wird über das Portal heruntergeladen (in einem gezippten Ordner). <br/> Sie entzippen den Ordner und führen das PowerShell-Skript („AzureMigrateInstaller.ps1“) aus.
 **Ermittlung** | Eine Appliance kann bis zu 250 physische Server ermitteln.

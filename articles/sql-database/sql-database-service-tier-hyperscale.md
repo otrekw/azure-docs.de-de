@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845891"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587276"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -112,7 +112,7 @@ Mit der Möglichkeit, weitere Computeknoten schnell hoch- bzw. herunterzufahren,
 
 ## <a name="create-a-hyperscale-database"></a>Erstellen einer Hyperscale-Datenbank
 
-Eine Hyperscale-Datenbank kann über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) oder der [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) erstellt werden. Hyperscale-Datenbanken stehen nur bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) zur Verfügung.
+Eine Hyperscale-Datenbank kann über das [Azure-Portal](https://portal.azure.com), mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) oder der [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) erstellt werden. Hyperscale-Datenbanken stehen nur bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) zur Verfügung.
 
 Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Dienstzielen finden Sie in den [Ressourceneinschränkungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4).
 
@@ -125,7 +125,7 @@ Dadurch wird eine Hyperscale-Datenbank auf Gen5-Hardware mit 4 Kernen erstellt.
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrieren vorhandener Azure SQL-Datenbank-Instanzen zur Dienstebene „Hyperscale“
 
-Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. Dies erfolgt zurzeit im Rahmen einer unidirektionalen Migration. Sie können Datenbanken nicht aus „Hyperscale“ in eine andere Dienstebene verschieben. Dies kann nur durch Exportieren und Importieren von Daten erfolgen. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration der Kopie zu Hyperscale durchzuführen. Das Migrieren einer vorhandenen Azure SQL-Datenbank zur Hyperscale-Ebene ist ein von der Größe der Daten abhängiger Vorgang.
+Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder der [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. Dies erfolgt zurzeit im Rahmen einer unidirektionalen Migration. Sie können Datenbanken nicht aus „Hyperscale“ in eine andere Dienstebene verschieben. Dies kann nur durch Exportieren und Importieren von Daten erfolgen. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration der Kopie zu Hyperscale durchzuführen. Das Migrieren einer vorhandenen Azure SQL-Datenbank zur Hyperscale-Ebene ist ein von der Größe der Daten abhängiger Vorgang.
 
 Mit dem folgenden T-SQL-Befehl wird eine Datenbank in die Dienstebene „Hyperscale“ verschoben. Sie müssen sowohl die Edition als auch das Dienstziel in der `ALTER DATABASE`-Anweisung angeben.
 
@@ -192,51 +192,17 @@ Die Hyperskalierung für Azure SQL-Datenbank-Ebene ist zurzeit in den folgenden 
 - USA (Westen)
 - USA, Westen 2
 
-Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, die nicht als unterstützt aufgelistet ist, können Sie eine Onboardinganforderung über das Azure-Portal senden. Wir arbeiten daran, die Liste der unterstützten Regionen zu erweitern, also nutzen Sie stets die aktuelle Liste der Regionen.
+Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, die nicht als unterstützt aufgelistet ist, können Sie eine Onboardinganforderung über das Azure-Portal senden. Anweisungen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md). Beachten Sie beim Übermitteln Ihrer Anforderung die folgenden Richtlinien:
 
-So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht aufgelisteten Regionen an:
-
-1. Navigieren Sie zum Azure-Blatt [Hilfe und Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-
-2. Klicken Sie auf [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
-
-4. Wählen Sie das Abonnement aus, das Sie zum Erstellen der Datenbank(en) verwenden möchten.
-
-5. Wählen Sie unter **Kontingenttyp** den Eintrag **SQL-Datenbank** aus.
-
-6. Klicken Sie auf **Weiter: Lösungen**.
-
-1. Klicken Sie auf **Details angeben**.
-
-    ![Problemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
-
-8. Wählen Sie **Kontingenttyp für SQL-Datenbank** aus: **Andere Kontingentanforderung**.
-
-9. Füllen Sie die folgende Vorlage aus:
-
-    ![Kontingentdetails](media/sql-database-service-tier-hyperscale/request-screen-3.png)
-
-    Geben Sie in der Vorlage die folgenden Informationen ein:
-
-    > Anforderung zum Erstellen einer Hyperskalierung für Azure SQL-Datenbank-Instanz in einer neuen Region<br/> Region: [Geben Sie die angeforderte Region ein]  <br/>
-    > Compute-SKU/Gesamtzahl der Kerne einschließlich lesbarer Replikate <br/>
-    > Geschätzte TB-Anzahl 
-    >
-
-10. Wählen Sie **Schweregrad C** aus.
-
-11. Wählen Sie die entsprechende Kontaktmethode aus, und geben Sie die Details ein.
-
-12. Klicken Sie auf **Speichern** und **Fortfahren**.
+- Verwenden Sie die [Andere Kontingentanforderung](quota-increase-request.md#other) als SQL-Datenbank-Kontingenttyp.
+- Fügen Sie in den Textdetails den Wert für „Compute-SKU/Gesamtzahl der Kerne einschließlich lesbarer Replikate“ hinzu.
+- Legen Sie außerdem die geschätzten TB fest.
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
+
 Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienstebene bezüglich der GA.  Wir arbeiten daran, möglichst viele dieser Einschränkungen zu entfernen.
 
-| Problem | Beschreibung |
+| Problem | BESCHREIBUNG |
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Wiederherstellung bis zu einem bestimmten Zeitpunkt | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|

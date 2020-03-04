@@ -1,5 +1,5 @@
 ---
-title: Automatisierte Sicherung für SQL Server 2014-VMs in -Azure | Microsoft-Dokumentation
+title: Automatisierte Sicherung für Azure Virtual Machines mit SQL Server 2014
 description: Erläutert das Feature „Automatisierte Sicherung“ für SQL Server 2014-VMs, die in Azure ausgeführt werden. Dieser Artikel bezieht sich speziell auf VMs, die das Resource Manager-Modell verwenden.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7dea85d8de17a0f65e6e73b5b5fbe619d464d3d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790604"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650329"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 
@@ -68,15 +68,12 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 | **Verschlüsselung** | Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen `automaticbackup`-Container (mit der gleichen Namenskonvention). Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
 | **Kennwort** | Kennworttext | Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
 
-## <a name="configure-in-the-portal"></a>Konfigurieren im Portal
-
-Mit dem Azure-Portal können Sie die automatisierte Sicherung während der Bereitstellung oder für vorhandene virtuelle SQL Server 2014-Computer konfigurieren.
 
 ## <a name="configure-new-vms"></a>Konfigurieren neuer VMs
 
 Verwenden Sie das Azure-Portal zum Konfigurieren der automatisierten Sicherung, wenn Sie einen neuen virtuellen Computer mit SQL Server 2014 im Resource Manager-Bereitstellungsmodell erstellen.
 
-Scrollen Sie auf der Registerkarte **SQL Server-Einstellungen** nach unten zu **Automatisierte Sicherung**, und wählen Sie **Aktivieren** aus. Sie können auch den Aufbewahrungszeitraum und das Speicherkonto angeben, die Verschlüsselung aktivieren, Systemdatenbanken sichern und einen Sicherungszeitplan konfigurieren.  Auf dem folgenden Screenshot des Azure-Portals sehen Sie die Einstellungen für **Automatisierte SQL-Sicherung**.
+Scrollen Sie auf der Registerkarte **SQL Server-Einstellungen** nach unten zu **Automatisierte Sicherung**, und wählen Sie **Aktivieren** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie die Einstellungen für **Automatisierte SQL-Sicherung**.
 
 ![Konfigurieren der automatisierten SQL-Sicherung im Azure-Portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
@@ -84,7 +81,9 @@ Scrollen Sie auf der Registerkarte **SQL Server-Einstellungen** nach unten zu **
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Für vorhandene virtuelle SQL Server-Computer navigieren Sie zur Ressource [Virtuelle SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) und wählen dann **Sicherungen** aus. 
+Für vorhandene virtuelle SQL Server-Computer können Sie automatisierte Sicherungen aktivieren und deaktivieren, die Beibehaltungsdauer ändern, das Speicherkonto angeben und die Verschlüsselung über das Azure-Portal aktivieren. 
+
+Navigieren Sie für Ihren virtuellen SQL Server 2014-Computer zur [Ressource für virtuelle SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), und wählen Sie dann **Sicherungen** aus. 
 
 ![Automatisierte SQL-Sicherung für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
@@ -95,12 +94,12 @@ Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert A
 > [!NOTE]
 > Sie können die automatisierte Sicherung auch mithilfe einer Vorlage konfigurieren. Weitere Informationen finden Sie unter [Azure quickstart template for Automated Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update)(Azure-Schnellstartvorlage für die automatisierte Sicherung).
 
-## <a name="configure-with-powershell"></a>Konfigurieren mit PowerShell
+## <a name="configure-with-powershell"></a>Konfigurieren mithilfe von PowerShell
 
 Die automatisierte Sicherung kann mithilfe von PowerShell konfiguriert werden. Führen Sie zur Vorbereitung folgende Schritte aus:
 
 - [Laden Sie die aktuelle Version von Azure PowerShell herunter, und installieren Sie sie.](https://aka.ms/webpi-azps)
-- Öffnen Sie Windows PowerShell, und stellen Sie mit dem Befehl **Connect-AzAccount** eine Verknüpfung mit Ihrem Konto her.
+- Öffnen Sie Windows PowerShell, und stellen Sie mit dem Befehl **Connect-AzAccount** eine Verknüpfung mit Ihrem Konto her. 
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -116,7 +115,7 @@ $resourcegroupname = "resourcegroupname"
 
 Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, wird „SqlIaaSAgent“ oder „SQLIaaSExtension“ aufgeführt. Außerdem muss für die Erweiterung unter **ProvisioningState** der Zustand „Succeeded“ angezeigt werden.
 
-Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, indem Sie über [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) (Azure-Hybridvorteil) entweder eine Lizenz mit nutzungsbasierter Bezahlung oder die Verwendung Ihrer eigenen Lizenz (Bring-Your-Own-License, BYOL) auswählen. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](virtual-machines-windows-sql-ahb.md). 
+Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, und wählen Sie über den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) eine Lizenz mit nutzungsbasierter Bezahlung oder eine BYOL-Lizenz (Bring Your Own License) aus. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](virtual-machines-windows-sql-ahb.md). 
 
 ```powershell
 New-AzSqlVM  -Name $vmname `

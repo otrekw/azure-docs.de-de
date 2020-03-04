@@ -1,5 +1,5 @@
 ---
-title: 'Visualisieren von Daten über Azure Data Explorer mit einer importierten Abfrage in Power BI '
+title: Visualisieren von Daten über Azure Data Explorer mit einer importierten Abfrage in Power BI
 description: 'In diesem Artikel erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: das Importieren einer Abfrage aus Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ff156ab3fe74115bce8f7d6bdd3ba47b514f5ff5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806401"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562478"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Visualisieren von Daten mithilfe einer in Power BI importierten Abfrage
 

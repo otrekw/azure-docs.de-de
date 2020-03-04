@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638254"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587242"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle
 
@@ -37,14 +37,14 @@ Dieser Artikel bietet eine Übersicht über die SQL-Datenbank-Ressourcenlimits f
 | Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen. Beispiel: Wenn jeder Pool 1.000 DTUs umfasst, kann ein Server 54 Pools unterstützen.|
 |||
 
-> [!NOTE]
-> Wenn Sie ein höheres DTU-/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl erhalten möchten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU-/eDTU-Kontingent und das Datenbanklimit pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt.
-
 > [!IMPORTANT]
 > Wenn sich die Anzahl von Datenbanken dem Grenzwert pro SQL-Datenbank-Server nähert, kann Folgendes geschehen:
 >
 > - Höhere Latenz bei der Ausführung von Abfragen, die die Masterdatenbank betreffen.  Dies bezieht sich auch auf die Ansichten der Ressourcennutzungsstatistiken (z. B. sys.resource_stats) ein.
 > - Höhere Latenz bei Verwaltungsvorgängen und dem Rendern von Portalblickpunkten. Dazu gehört auch das Aufzählen von Datenbanken auf dem Server.
+
+> [!NOTE]
+> Wenn Sie ein höheres DTU-/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl erhalten möchten, übermitteln Sie im Azure-Portal eine neue Supportanfrage. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Speichergröße
 

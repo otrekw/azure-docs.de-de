@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/09/2019
-ms.openlocfilehash: e37571b0078b4966aab9f505ddf88c2edb353197
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435629"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560353"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell
 
@@ -73,47 +73,16 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
  Weitere Informationen zum Skalieren von Clustern finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md).
 
-## <a name="grantrevoke-access"></a>Gewähren/Entziehen des Zugriffs
-
-In HDInsight-Clustern stehen die folgenden HTTP-Webdienste zur Verfügung (alle mit RESTful-Endpunkten):
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-Der Zugriff auf diese Dienste wird standardmäßig gewährt. Sie können den Zugriff widerrufen/gewähren. Zum Widerrufen:
-
-```powershell
-Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
-```
-
-Zum Gewähren:
-
-```powershell
-$clusterName = "<HDInsight Cluster Name>"
-
-# Credential option 1
-$hadoopUserName = "admin"
-$hadoopUserPassword = '<Enter the Password>'
-$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
-
-# Credential option 2
-#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
-
-Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
-```
-
-> [!NOTE]  
-> Durch Gewähren/Widerrufen des Zugriffs werden der Benutzername und das Kennwort des Clusterbenutzers zurückgesetzt.
-
-Der Zugriff kann auch über das Portal gewährt bzw. widerrufen werden. Weitere Informationen finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md).
-
 ## <a name="update-http-user-credentials"></a>Aktualisieren von HTTP-Anmeldeinformationen
 
-Dabei handelt es sich um die gleiche Vorgehensweise wie beim Gewähren/Widerrufen des HTTP-Zugriffs. Wenn dem Cluster der HTTP-Zugriff gewährt wurde, müssen Sie ihn zunächst widerrufen.  Gewähren Sie anschließend den Zugriff mit den neuen HTTP-Anmeldeinformationen.
+[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) legt die Gateway-HTTP-Anmeldeinformationen eines Azure HDInsight-Clusters fest.
+
+```powershell
+$clusterName = "CLUSTERNAME"
+$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+
+Set-AzHDInsightGatewayCredential -ClusterName $clusterName -HttpCredential $credential
+```
 
 ## <a name="find-the-default-storage-account"></a>Suchen des Standardspeicherkontos
 

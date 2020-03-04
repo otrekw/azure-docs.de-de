@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048083"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498970"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -32,7 +32,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Rollen zu genehmigen oder abzulehnen.
 
@@ -46,15 +46,15 @@ Führen Sie die folgenden Schritte aus, um die Einstellungen für eine Azure AD-
 gt
 1. Öffnen Sie **Azure AD Privileged Identity Management** &gt; **Azure AD-Rollen** &gt; **Rolleneinstellungen**.
 
-    ![Seite „Rolleneinstellungen“ mit einer Auflistung der Azure-Ressourcenrollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Seite „Rolleneinstellungen“ mit einer Auflistung der Azure AD-Rollen](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Wählen Sie die Rolle aus, deren Einstellungen Sie konfigurieren möchten.
 
-    ![Seite „Details zur Rolleneinstellung“ mit einer Auflistung mehrerer Zuweisungs- und Aktivierungseinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Seite „Details zur Rolleneinstellung“ mit einer Auflistung mehrerer Zuweisungs- und Aktivierungseinstellungen](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. Klicken Sie auf **Bearbeiten**, um die Seite „Rolleneinstellungen“ zu öffnen.
 
-    ![Seite „Rolleneinstellungen“ mit Optionen zum Aktualisieren von Zuweisungs- und Aktivierungseinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Seite „Rolleneinstellungen“ mit Optionen zum Aktualisieren von Zuweisungs- und Aktivierungseinstellungen](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     Im Bereich „Rolleneinstellungen“ für jede Rolle können Sie verschiedene Einstellungen konfigurieren.
 
@@ -66,18 +66,18 @@ Sie können beim Typ **Berechtigt** eine dieser Optionen für die Zuweisungsdaue
 
 | | |
 | --- | --- |
-| **Dauerhafte berechtigte Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft berechtigte Zuweisungen veranlassen. |
-| **Berechtigte Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
+| **Dauerhafte berechtigte Zuweisung zulassen** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können dauerhafte berechtigte Zuweisungen zuweisen. |
+| **Berechtigte Zuweisungen laufen ab nach** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können anfordern, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
 
 Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wählen:
 
 | | |
 | --- | --- |
-| **Permanente aktive Zuweisung zulassen** | Ressourcenadministratoren können dauerhaft aktive Zuweisungen veranlassen. |
-| **Aktive Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |
+| **Permanente aktive Zuweisung zulassen** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können dauerhafte aktive Zuweisungen zuweisen. |
+| **Aktive Zuweisungen laufen ab nach** | Globale Administratoren und Administratoren mit einer privilegierten Rolle können anfordern, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |
 
 > [!NOTE]
-> Alle Zuweisungen mit einem angegebenen Enddatum können von Ressourcenadministratoren erneuert werden. Zudem können Benutzer Self-Service-Anforderungen auslösen, um [Rollenzuweisungen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md).
+> Alle Zuweisungen mit einem angegebenen Enddatum können von globalen Administratoren und Administratoren mit einer privilegierten Rolle erneuert werden. Zudem können Benutzer Self-Service-Anforderungen auslösen, um [Rollenzuweisungen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Mehrstufige Authentifizierung erforderlich
 
@@ -87,13 +87,13 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure Mu
 
 Es kann vorkommen, dass Sie einen Benutzer einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) zuweisen möchten. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die Multi-Factor Authentication (MFA) nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
 
-Sie können sicherstellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, indem Sie für die aktive Zuweisung MFA erzwingen. Aktivieren Sie dafür das Kontrollkästchen neben der Option **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**.
+Sie können sicherstellen, dass der Administrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, indem Sie für die aktive Zuweisung MFA erzwingen. Aktivieren Sie dafür das Kontrollkästchen neben der Option **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**.
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Bei Aktivierung Multi-Factor Authentication anfordern
 
 Sie können erzwingen, dass Benutzer, die für eine Rolle berechtigt sind,vor der Aktivierung ihre Identität über Azure MFA bestätigen müssen. Mithilfe von MFA kann mit hoher Wahrscheinlichkeit sichergestellt werden, dass es sich auch wirklich um den jeweiligen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
 
-Damit vor der Aktivierung MFA erzwungen wird, müssen Sie das Kontrollkästchen für die Option **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
+Damit vor der Aktivierung MFA erzwungen wird, müssen Sie unter **Rolleneinstellung bearbeiten** auf der Registerkarte „Zuweisung“ das Kontrollkästchen für die Option **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
 
 Weitere Informationen finden Sie unter [Multi-Factor Authentication und Privileged Identity Management](pim-how-to-require-mfa.md).
 

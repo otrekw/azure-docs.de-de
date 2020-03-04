@@ -3,23 +3,30 @@ title: Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 description: Verwenden Sie die Fusion-Technologie in Azure Sentinel, um die „Alarmmüdigkeit“ zu reduzieren und verwertbare Incidents zu erstellen, die auf der erweiterten Erkennung von mehrstufigen Angriffen basieren.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
-ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.date: 02/18/2020
+ms.author: yelevin
+ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369692"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587922"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
+
+
+> [!IMPORTANT]
+> Einige Fusion-Features in Azure Sentinel befinden sich zurzeit in der Public Preview.
+> Diese Features werden ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
 
 Durch die Verwendung der auf maschinellem Lernen basierenden Fusion-Technologie kann Azure Sentinel mehrstufige Angriffe automatisch erkennen. Hierzu werden anomale Verhaltensweisen und verdächtige Aktivitäten kombiniert, die an verschiedenen Stellen der Kill Chain beobachtet werden. Azure Sentinel generiert dann Incidents, die auf andere Weise nur sehr schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
 
@@ -41,13 +48,32 @@ Diese Erkennung ist in Azure Sentinel standardmäßig aktiviert. Befolgen Sie di
 
 Regelvorlagen können für die erweiterte Erkennung von mehrstufigen Angriffen nicht genutzt werden.
 
+> [!NOTE]
+> Azure Sentinel verwendet zurzeit 30 Tage an Verlaufsdaten, um die Systeme für das maschinelle Lernen zu trainieren. Diese Daten werden immer mit den Schlüsseln von Microsoft verschlüsselt, wenn sie die Pipeline für maschinelles Lernen durchlaufen. Die Trainingsdaten werden jedoch nicht mit [vom Kunden verwalteten Schlüsseln (Customer Managed Keys, CMK)](customer-managed-keys.md) verschlüsselt, wenn Sie CMK in Ihrem Azure Sentinel-Arbeitsbereich aktiviert haben. Um Fusion zu deaktivieren, navigieren Sie zu **Azure Sentinel** \> **Konfiguration** \> **Analyse \> Aktive Regeln \> Erweiterte mehrstufige Angriffserkennung**, und wählen Sie in der Spalte **Status** die Option **Deaktivieren** aus.
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusion mithilfe von Palo Alto Networks und Microsoft Defender ATP
 
-- Netzwerkanforderung an den TOR-Anonymisierungsdienst gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
+In diesen Szenarien werden zwei der grundlegenden Protokolle kombiniert, die von Sicherheitsanalysten verwendet werden: Firewallprotokolle von Palo Alto Networks und Endpunkt-Erkennungsprotokolle von Microsoft Defender ATP. In allen unten aufgeführten Szenarien wird eine verdächtige Aktivität am Endpunkt erkannt, die eine externe IP-Adresse betrifft, und darauf folgt anomaler Datenverkehr von der externen IP-Adresse zurück zur Firewall. In Palo Alto-Protokollen sucht Azure Sentinel hauptsächlich nach [Bedrohungen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), und der Datenverkehr wird als verdächtig eingestuft, wenn Bedrohungen durchgelassen werden (verdächtige Daten, Dateien, Überflutungen, Pakete, Scans, Spyware, URLs, Viren, Sicherheitsrisiken, Wildfireviren, Wildfires).
 
-- PowerShell hat eine verdächtige Netzwerkverbindung hergestellt, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Netzwerkanforderung an den TOR-Anonymisierungsdienst gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
 
-- Ausgehende Verbindung mit IP mit einem Verlauf nicht autorisierter Zugriffsversuche, gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
+In diesem Szenario erkennt Azure Sentinel zuerst eine Warnung, dass Microsoft Defender Advanced Threat Protection eine Netzwerkanforderung an einen TOR-Anonymisierungsdienst erkannt hat, der zu anomalen Aktivitäten führte. Dies wurde unter dem Konto {account name} mit der SID-ID {sid} um {time} initiiert. Die ausgehende IP-Adresse der Verbindung lautete {IndividualIp}.
+Anschließend wurden ungewöhnliche Aktivitäten von der Palo Alto Networks-Firewall um {TimeGenerated} erkannt. Dies deutet darauf hin, dass schädlicher Datenverkehr in Ihr Netzwerk eingedrungen ist. Die Ziel-IP-Adresse für den Netzwerkdatenverkehr lautet {DestinationIP}.
+
+Dieses Szenario befindet sich zurzeit in der Public Preview.
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell hat eine verdächtige Netzwerkverbindung hergestellt, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
+
+In diesem Szenario erkennt Azure Sentinel zuerst eine Warnung, dass Microsoft Defender Advanced Threat Protection erkannt hat, dass PowerShell eine verdächtige Netzwerkverbindung hergestellt hat und diese zu anomalen Aktivitäten führte, die von einer Palo Alto Network-Firewall erkannt wurden. Dies wurde durch das Konto {account name} mit der SID-ID {sid} um {time} initiiert. Die ausgehende IP-Adresse der Verbindung lautete {IndividualIp}. Anschließend wurden ungewöhnliche Aktivitäten von der Palo Alto Networks-Firewall um {TimeGenerated} erkannt. Dies deutet darauf hin, dass schädlicher Datenverkehr in Ihr Netzwerk eingedrungen ist. Die Ziel-IP-Adresse für den Netzwerkdatenverkehr lautet {DestinationIP}.
+
+Dieses Szenario befindet sich zurzeit in der Public Preview.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Ausgehende Verbindung mit IP mit einem Verlauf nicht autorisierter Zugriffsversuche, gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
+
+In diesem Szenario erkennt Azure Sentinel eine Warnung, dass Microsoft Defender Advanced Threat Protection eine ausgehende Verbindung mit einer IP-Adresse erkannt hat, die bereits in der Vergangenheit nicht autorisierte Zugriffsversuche durchgeführt hat, die zu von der Palo Alto Networks-Firewall erkannten anomalen Aktivitäten geführt haben. Dies wurde durch das Konto {account name} mit der SID-ID {sid} um {time} initiiert. Die ausgehende IP-Adresse der Verbindung lautete {IndividualIp}. Danach wurden ungewöhnliche Aktivitäten von der Palo Alto Networks-Firewall um {TimeGenerated} erkannt. Dies deutet darauf hin, dass schädlicher Datenverkehr in Ihr Netzwerk eingedrungen ist. Die Ziel-IP-Adresse für den Netzwerkdatenverkehr lautet {DestinationIP}.
+
+Dieses Szenario befindet sich zurzeit in der Public Preview.
 
 
 

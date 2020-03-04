@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965820"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588976"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory
 
@@ -27,7 +27,7 @@ Die Autorisierung mit Azure AD ist für alle universellen Speicherkonten sowie 
 
 Blob Storage unterstützt zudem das Erstellen von Shared Access Signatures (SAS), die mit Azure AD-Anmeldeinformationen unterzeichnet werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
 
-Azure Files unterstützt die Autorisierung mit Azure AD über SMB nur für in die Domäne eingebundene VMs. Informationen zur Verwendung von Azure AD über SMB für Azure Files finden Sie unter [Übersicht über die Unterstützung der Active Directory Domain Services-Authentifizierung (Azure AD DS) für den SMB-Zugriff in Azure Files](../files/storage-files-active-directory-overview.md).
+Azure Files unterstützt die Autorisierung mit AD (Vorschauversion) oder Azure AD DS (allgemein verfügbar) über SMB nur für in die Domäne eingebundene VMs. Informationen zur Verwendung von AD (Vorschauversion) oder Azure AD DS (allgemein verfügbar) über SMB für Azure Files finden Sie unter [Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff](../files/storage-files-active-directory-overview.md).
 
 Die Autorisierung mit Azure AD wird für Azure Table Storage nicht unterstützt. Verwenden Sie einen gemeinsam verwalteten Schlüssel zum Autorisieren von Anforderungen an Table Storage.
 

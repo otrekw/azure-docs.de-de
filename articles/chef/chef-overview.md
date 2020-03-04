@@ -2,14 +2,14 @@
 title: Verwenden von Chef mit Azure
 description: Einführung in die Verwendung von Chef zum Konfigurieren und Testen Ihrer Azure-Infrastruktur
 keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, Automatisieren
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: c22faa69bf8f42111d328a9c156dc1a2432731b2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158008"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586341"
 ---
 # <a name="using-chef-with-azure"></a>Verwenden von Chef mit Azure
 [Chef](https://www.chef.io) ist eine leistungsstarke Automatisierungsplattform, die die Infrastruktur des virtuellen Computers in Azure in Code transformiert. Chef automatisiert die Art, in der Infrastruktur in Ihrem Netzwerk – unabhängig von seiner Größe – konfiguriert, bereitgestellt und verwaltet wird.
@@ -17,7 +17,7 @@ ms.locfileid: "74158008"
 In diesem Artikel werden die Vorteile bei der Verwendung von Chef zum Verwalten der Azure-Infrastruktur beschrieben.
 
 ## <a name="chef-extension-on-azure"></a>Chef-Erweiterung für Azure
-Stellen Sie einen virtuellen Computer mit dem Chef-Client bereit, der als Hintergrunddienst mit der [Chef-Erweiterung](https://docs.microsoft.com/azure/chef/chef-extension-portal) im Azure-Portal ausgeführt wird. Nach der Bereitstellung können diese virtuellen Computer von einem Chef-Server verwaltet werden.
+Stellen Sie einen virtuellen Computer mit dem Chef-Client bereit, der als Hintergrunddienst mit der [Chef-Erweiterung](https://docs.microsoft.com/azure/chef/chef-extension-portal) im [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) ausgeführt wird. Nach der Bereitstellung können diese virtuellen Computer von einem Chef-Server verwaltet werden.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 Verwenden Sie Chef Workstation direkt in Azure Cloud Shell. Führen Sie all Ihre Chef-Hilfsprogramme und InSpec direkt über Cloud Shell aus. Sie können die Chef-Befehle aus folgenden Hilfsprogrammen verwenden:
@@ -27,7 +27,6 @@ Verwenden Sie Chef Workstation direkt in Azure Cloud Shell. Führen Sie all Ihre
 * [inspec](https://www.inspec.io/docs/reference/cli/)
 * [knife](https://docs.chef.io/knife.html)
 * [cookstyle](https://docs.chef.io/cookstyle.html)
-* [foodcritic](https://docs.chef.io/foodcritic.html)
 * [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
 
 Kombinieren Sie unsere Befehlshilfsprogramme mit den anderen Tools, die in Cloud Shell zur Verfügung stehen, z.B. `git`, `az-cli` und `terraform`, und schreiben Sie Ihre Infrastruktur- und Konformitätsautomatisierung über den Browser.
@@ -40,4 +39,4 @@ Unterstützt von Chef ermöglicht die [Chef Automate Azure Marketplace-Lösung](
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](/azure/virtual-machines/windows/chef-automation)
+* [Erstellen eines virtuellen Windows-Computers in Azure mithilfe von Chef](chef-automation.md)

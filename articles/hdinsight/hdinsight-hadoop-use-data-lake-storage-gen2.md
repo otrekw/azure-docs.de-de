@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186885"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623143"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -82,20 +82,18 @@ Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten*
     ![Screenshot: Zuweisen einer RBAC-Rolle](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Wählen Sie **Speichern** aus. Die vom Benutzer zugewiesene Identität, die Sie ausgewählt haben, wird jetzt unter der ausgewählten Rolle aufgelistet.
-1. Nachdem das anfängliche Setup abgeschlossen ist, können Sie einen Cluster über das Portal erstellen. Der Cluster muss sich in der gleichen Azure-Region befinden wie das Speicherkonto. Wählen Sie im Abschnitt **Speicher** des Menüs zur Clustererstellung die folgenden Optionen aus:
+1. Nachdem das anfängliche Setup abgeschlossen ist, können Sie einen Cluster über das Portal erstellen. Der Cluster muss sich in der gleichen Azure-Region befinden wie das Speicherkonto. Wählen Sie auf der Registerkarte **Speicher** des Menüs zur Clustererstellung die folgenden Optionen aus:
 
     * Wählen Sie für **Primärer Speichertyp** **Azure Data Lake Storage Gen2** aus.
-    * Suchen Sie unter **Speicherkonto auswählen** das neu erstellte Data Lake Storage Gen2-Speicherkonto, und wählen Sie es aus.
+    * Suchen Sie unter **Primäres Speicherkonto** das neu erstellte Data Lake Storage Gen2-Speicherkonto, und wählen Sie es aus.
 
-        ![Speichereinstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * Wählen Sie unter **Identität** die neu erstellte, vom Benutzer zugewiesene verwaltete Identität aus.
 
-    * Wählen Sie unter **Identität** das richtige Abonnement und die neu erstellte vom Benutzer zugewiesene verwaltete Identität aus.
+        ![Speichereinstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![Identitätseinstellungen für das Verwenden von Data Lake Storage Gen2 mit HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * Zum Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos auf der Speicherkontoebene müssen Sie lediglich die zuvor erstellte verwaltete Identität zum neuen Data Lake Storage Gen2-Speicherkonto hinzufügen, das Sie hinzufügen möchten. Beachten Sie, dass das Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos über das Blatt „Zusätzliche Speicherkonten“ in HDInsight nicht unterstützt wird.
-> * Sie können RA-GRS oder RA-ZRS (georedundanter Speicher mit Lesezugriff oder geo- und zonenredundanter Speicher) für das von HDInsight verwendete Azure-Speicherkonto aktivieren. Jedoch wird das Erstellen eines Clusters für den sekundären RA-GRS- oder RA-ZRS-Endpunkt nicht unterstützt.
+    > [!NOTE]
+    > * Zum Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos auf der Speicherkontoebene müssen Sie lediglich die zuvor erstellte verwaltete Identität zum neuen Data Lake Storage Gen2-Speicherkonto hinzufügen, das Sie hinzufügen möchten. Beachten Sie, dass das Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos über das Blatt „Zusätzliche Speicherkonten“ in HDInsight nicht unterstützt wird.
+    > * Sie können RA-GRS oder RA-ZRS (georedundanter Speicher mit Lesezugriff oder geo- und zonenredundanter Speicher) für das von HDInsight verwendete Azure-Speicherkonto aktivieren. Jedoch wird das Erstellen eines Clusters für den sekundären RA-GRS- oder RA-ZRS-Endpunkt nicht unterstützt.
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über die Azure CLI
@@ -151,7 +149,7 @@ az group deployment create --name HDInsightADLSGen2Deployment \
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-azure-powershell"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über Azure PowerShell
 
-Die Verwendung von PowerShell zum Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen2 wird derzeit nicht unterstützt.
+PowerShell wird zum Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen2 derzeit nicht unterstützt.
 
 ## <a name="access-control-for-data-lake-storage-gen2-in-hdinsight"></a>Zugriffssteuerung für Data Lake Storage Gen2 in HDInsight
 
@@ -205,7 +203,7 @@ Die Beispiele basieren auf einer [ssh-Verbindung](./hdinsight-hadoop-linux-use-s
 
 #### <a name="a-few-hdfs-commands"></a>Ein paar HDFS-Befehle
 
-1. Erstellen einer einfachen Datei im lokalen Speicher.
+1. Erstellen von Dateien im lokalen Speicher.
 
     ```bash
     touch testFile.txt

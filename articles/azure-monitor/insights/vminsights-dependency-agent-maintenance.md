@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400802"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565552"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Durchführen eines Upgrades für den Dependency-Agent für Azure Monitor für VMs
 
@@ -39,16 +39,9 @@ Sie können die neueste Version des Windows-Agents [hier](https://aka.ms/depende
 1. Melden Sie sich auf dem Computer mit einem Konto an, das über Administratorrechte verfügt.
 
 2. Führen Sie **InstallDependencyAgent-Windows. exe** aus, um den Setup-Assistenten zu starten.
+   
+3. Folgen Sie den Anweisungen im **Dependency-Agent-Setup**-Assistenten, um die vorherige Version des Dependency-Agents zu deinstallieren und dann die neueste Version zu installieren.
 
-3. Klicken Sie im Dialogfeld **Dependency Agent 9.9.1-Setup** auf **Ich stimme zu**, um die Lizenzvereinbarung zu akzeptieren.
-
-5. Klicken Sie im Dialogfeld **Dependency Agent 9.9.0-Deinstallation** auf **Weiter**. Auf der Statusseite wird der Fortschritt bei der Deinstallation der vorherigen Version angezeigt.
-
-6. Klicken Sie im Dialogfeld **Dependency Agent 9.9.0-Deinstallation** auf **Deinstallieren**, um mit der Deinstallation der vorherigen Version aus dem im Dialogfeld angegebenen Pfad fortzufahren. 
-
-7. Im Dialogfeld **Dependency Agent 9.9.0-Deinstallation** wird der Deinstallationsfortschritt angezeigt. Nach Abschluss des Vorgangs wird die Seite **Fertigstellen der Dependency-Agent-Deinstallation** geöffnet. Klicken Sie auf **Fertig stellen**.
-
-8. Im Dialogfeld **Dependency Agent 9.9.1-Setup** wird der Installationsfortschritt angezeigt. Wenn die Seite **Fertigstellen der Dependency-Agent-Deinstallation** geöffnet wird, klicken Sie auf **Fertig stellen**. 
 
 ### <a name="from-the-command-line"></a>Über die Befehlszeile
 

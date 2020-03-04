@@ -1,5 +1,5 @@
 ---
-title: Beheben von Problemen mit Azure Data Box, Azure Data Box Heavy | Microsoft-Dokumentation
+title: Beheben von Problemen mit Azure Data Box, Azure Data Box Heavy
 description: Beschreibt, wie Probleme in Azure Data Box und Azure Data Box Heavy beim Kopieren von Daten auf diese Geräte behoben werden.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848512"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560064"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
@@ -23,7 +23,7 @@ In diesem Artikel finden Sie Informationen zum Beheben von Problemen, die mit Az
 
 Fehler in Data Box und Data Box Heavy lassen sich wie folgt zusammenfassen:
 
-| Fehlerkategorie*        | BESCHREIBUNG        | Empfohlene Maßnahme    |
+| Fehlerkategorie*        | Beschreibung        | Empfohlene Maßnahme    |
 |----------------------------------------------|---------|--------------------------------------|
 | Container- oder Freigabenamen | Die Namen der Container oder Freigaben folgen nicht den Benennungsregeln für Azure.  |Laden Sie die Fehlerlisten herunter. <br> Benennen Sie die Container oder Freigaben um. [Weitere Informationen](#container-or-share-name-errors)  |
 | Größenbeschränkung für Container oder Freigaben | Die Datengesamtmenge in Containern oder Freigaben überschreitet den Azure-Grenzwert.   |Laden Sie die Fehlerlisten herunter. <br> Verringern Sie die Datengesamtmenge im Container oder in den Freigaben. [Weitere Informationen](#container-or-share-size-limit-errors)|

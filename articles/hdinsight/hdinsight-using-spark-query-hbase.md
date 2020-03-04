@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.custom: hdinsightactive
+ms.date: 02/24/2020
+ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937631"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623101"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Verwenden von Apache Spark zum Lesen und Schreiben von Apache HBase-Daten
 
@@ -21,11 +21,11 @@ Apache HBase wird üblicherweise über die Low-Level-API (scan-, get- und put-Ab
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zwei separate HDInsight-Cluster, die im selben virtuellen Netzwerk bereitgestellt wurden: einen HBase-Cluster und einen Spark-Cluster mit Spark 2.1 (HDInsight 3.6) als Mindestversion. Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).
+* Zwei separate HDInsight-Cluster, die im selben [virtuellen Netzwerk](./hdinsight-plan-virtual-network-deployment.md) bereitgestellt wurden: einen HBase-Cluster und einen Spark-Cluster mit Spark 2.1 (HDInsight 3.6) als Mindestversion. Weitere Informationen finden Sie unter [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Das [URI-Schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist „wasb://“ für Azure Blob Storage, „abfs://“ für Azure Data Lake Storage Gen2 oder „adl://“ für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Blob Storage aktiviert ist, lautet der URI `wasbs://`.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
+* Das [URI-Schema](hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dieses Schema ist „wasb://“ für Azure Blob Storage, „abfs://“ für Azure Data Lake Storage Gen2 oder „adl://“ für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Blob Storage aktiviert ist, lautet der URI `wasbs://`.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Übersicht über den Prozess
 
@@ -95,9 +95,17 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 Trennen Sie dann die SSH-Verbindung mit Ihrem HBase-Cluster.
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Ablegen von „hbase-site.xml“ in Ihrem Spark-Cluster
 
-1. Stellen Sie über SSH eine Verbindung mit dem Hauptknoten Ihres Spark-Clusters her.
+1. Stellen Sie über SSH eine Verbindung mit dem Hauptknoten Ihres Spark-Clusters her. Bearbeiten Sie den unten angegebenen Befehl, indem Sie `SPARKCLUSTER` durch den Namen Ihres Spark-Clusters ersetzen, und geben Sie dann den folgenden Befehl ein:
+
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. Geben Sie den folgenden Befehl ein, um `hbase-site.xml` aus dem Standardspeicher Ihres Spark-Clusters in den Spark 2-Konfigurationsordner im lokalen Speicher des Clusters zu kopieren:
 
@@ -128,7 +136,7 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
     import spark.sqlContext.implicits._
     ```  
 
-2. Geben Sie den folgenden Befehl ein, um einen Katalog für die Tabelle „Kontakte“ zu definieren, die Sie in HBase erstellt haben:
+1. Geben Sie den folgenden Befehl ein, um einen Katalog für die Tabelle „Kontakte“ zu definieren, die Sie in HBase erstellt haben:
 
     ```scala
     def catalog = s"""{
@@ -150,7 +158,7 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
      b. Identifizieren Sie das rowkey-Element als `key`, und ordnen Sie die in Spark verwendeten Spaltennamen der Spaltenfamilie, dem Spaltennamen und dem Spaltentyp zu, die in HBase verwendet werden.  
      c. Das rowkey-Element muss im Detail auch als benannte Spalte (`rowkey`) definiert werden, die über eine spezifische `cf`-Spaltenfamilie `rowkey` verfügt.  
 
-3. Geben Sie den folgenden Befehl ein, um eine Methode zu definieren, die einen Datenrahmen um Ihre `Contacts`-Tabelle in HBase bereitstellt:
+1. Geben Sie den folgenden Befehl ein, um eine Methode zu definieren, die einen Datenrahmen um Ihre `Contacts`-Tabelle in HBase bereitstellt:
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,40 +170,42 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
      }
     ```
 
-4. Erstellen Sie eine Instanz des Datenrahmens:
+1. Erstellen Sie eine Instanz des Datenrahmens:
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. Fragen Sie den Datenrahmen ab:
+1. Fragen Sie den Datenrahmen ab:
 
     ```scala
     df.show()
     ```
 
-6. Es sollten zwei Zeilen mit Daten angezeigt werden:
+    Es sollten zwei Zeilen mit Daten angezeigt werden:
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. Registrieren Sie eine temporäre Tabelle, sodass Sie die HBase-Tabelle mithilfe von Spark SQL abfragen können:
+1. Registrieren Sie eine temporäre Tabelle, sodass Sie die HBase-Tabelle mithilfe von Spark SQL abfragen können:
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. Erstellen Sie eine SQL-Abfrage für die `contacts`-Tabelle:
+1. Erstellen Sie eine SQL-Abfrage für die `contacts`-Tabelle:
 
     ```scala
     spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. Die Ergebnisse sollten wie folgt aussehen:
+    Die Ergebnisse sollten wie folgt aussehen:
 
     ```output
     +-------------+--------------------+
@@ -220,7 +230,7 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
         )
     ```
 
-2. Erstellen Sie eine Instanz von `ContactRecord`, und fügen Sie sie in ein Array ein:
+1. Erstellen Sie eine Instanz von `ContactRecord`, und fügen Sie sie in ein Array ein:
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -229,19 +239,19 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
     newData(0) = newContact
     ```
 
-3. Speichern Sie das Array mit den neuen Daten in HBase:
+1. Speichern Sie das Array mit den neuen Daten in HBase:
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. Untersuchen Sie die Ergebnisse:
+1. Untersuchen Sie die Ergebnisse:
 
     ```scala  
     df.show()
     ```
 
-5. Es sollte in etwa folgende Ausgabe angezeigt werden:
+    Es sollte in etwa folgende Ausgabe angezeigt werden:
 
     ```output
     +------+--------------------+--------------+------------+--------------+
@@ -253,7 +263,7 @@ In diesem Schritt definieren Sie ein Katalogobjekt, das das Apache Spark-Schema 
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. Geben Sie den folgenden Befehl ein, um die Spark-Shell zu schließen:
+1. Geben Sie den folgenden Befehl ein, um die Spark-Shell zu schließen:
 
     ```scala
     :q

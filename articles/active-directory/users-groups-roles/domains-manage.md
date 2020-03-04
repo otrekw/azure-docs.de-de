@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844518"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559232"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -30,7 +30,7 @@ Ein Domänenname ist ein wichtiger Bestandteil des Bezeichners für viele Verzei
 Wenn Ihr Verzeichnis erstellt wird, ist der anfängliche Domänenname (beispielsweise „contoso.onmicrosoft.com“) auch der primäre Domänenname. Die primäre Domäne ist der standardmäßige Domänenname für einen neuen Benutzer, wenn Sie einen neuen Benutzer erstellen. Durch das Festlegen eines primären Domänennamens wird die Erstellung neuer Benutzer durch einen Administrator im Portal optimiert. So ändern Sie den primären Domänennamen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Azure Active Directory**.
+2. Wählen Sie **Azure Active Directory** aus.
 3. Wählen Sie **Benutzerdefinierte Domänennamen**.
   
    ![Öffnen der Benutzerverwaltungsseite](./media/domains-manage/add-custom-domain.png)
@@ -102,12 +102,12 @@ In folgenden Fällen wird ein Fehler zurückgegeben:
 
 Wenn eine dieser Bedingungen zutrifft, bereinigen Sie die Verweise manuell, und versuchen Sie erneut, die Domäne zu löschen.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Verwenden von PowerShell oder der Graph-API zum Verwalten von Domänennamen
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Verwenden von PowerShell oder der Microsoft Graph-API zum Verwalten von Domänennamen
 
-Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory können auch über Microsoft PowerShell oder programmgesteuert mit der Azure AD-Graph-API durchgeführt werden.
+Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory können auch über Microsoft PowerShell oder programmgesteuert mit der Microsoft Graph-API durchgeführt werden.
 
 * [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Verwenden der Graph-API zum Verwalten von Domänennamen in Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Domänenressourcentyp](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

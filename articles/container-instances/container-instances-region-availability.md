@@ -2,14 +2,14 @@
 title: Ressourcenverfügbarkeit in verschiedenen Region
 description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den Azure Container Instances-Dienst in verschiedenen Azure-Regionen
 ms.topic: article
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117834"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525302"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -24,7 +24,7 @@ Weitere Informationen zu Kontingenten und anderen Grenzwerten in Ihren Bereitste
 
 ## <a name="availability---general"></a>Verfügbarkeit: allgemein
 
-Die folgenden Regionen und Ressourcen stehen Containergruppen mit Linux- und [unterstützten](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-basierten Containern zur Verfügung.
+Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit Containern auf der Basis von Linux und [unterstützten](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-Versionen zur Verfügung.
 
 | Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -37,7 +37,7 @@ Die folgenden Regionen und Ressourcen stehen Containergruppen mit Linux- und [un
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Verfügbarkeit – Windows Server 2019 LTSC, 1809 Bereitstellungen (Vorschauversion)
 
-Die folgenden Regionen und Ressourcen stehen Containergruppen mit Windows Server 2019-basierten Containern zur Verfügung (Vorschauversion).
+Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit Windows Server 2019-basierten Containern zur Verfügung (Vorschauversion).
 
 | Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -47,13 +47,16 @@ Die folgenden Regionen und Ressourcen stehen Containergruppen mit Windows Server
 
 ## <a name="availability---virtual-network-deployment"></a>Verfügbarkeit: Bereitstellung eines virtuellen Netzwerks
 
-Für eine Containergruppe, die in einem [virtuellen Azure-Netzwerk](container-instances-vnet.md) bereitgestellt wird, sind die folgenden Regionen und Ressourcen verfügbar.
+Für eine Containergruppe, die in einem [virtuellen Azure-Netzwerk](container-instances-vnet.md) bereitgestellt wird, sind die folgenden Regionen und maximalen Ressourcen verfügbar.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>Verfügbarkeit: GPU-Ressourcen (Vorschauversion)
 
-Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschau) bereitgestellt wird, sind die folgenden Regionen und Ressourcen verfügbar.
+Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschauversion) bereitgestellt wird, sind die folgenden Regionen und maximalen Ressourcen verfügbar.
+
+> [!IMPORTANT]
+> GPU-Ressourcen sind nur auf Anforderung verfügbar. Um Zugriff auf GPU-Ressourcen anzufordern, senden Sie eine [Azure-Supportanfrage][azure-support].
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -63,3 +66,6 @@ Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) 
 Teilen Sie dem Team auf [aka.ms/aci/feedback](https://aka.ms/aci/feedback) mit, wenn zusätzliche Regionen und eine Erhöhung der Ressourcenverfügbarkeit erforderlich sind.
 
 Informationen zur Problembehandlung bei der Bereitstellung von Containerinstanzen finden Sie unter [Beheben von Bereitstellungsproblemen für Azure Container Instances](container-instances-troubleshooting.md).
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

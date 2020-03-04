@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367709"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505971"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -30,7 +30,9 @@ Sie können die reservierte Azure Cosmos DB-Kapazität über das [Azure-Portal](
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Bestimmen des erforderlichen Durchsatzes vor dem Kauf
 
-Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den die vorhandenen oder in Kürze bereitzustellenden Ressourcen von Azure Cosmos DB verwenden. Mithilfe der folgenden Schritte können Sie die empfohlenen Reservierungsgrößen im Azure-Portal anzeigen:
+Der Kaufumfang der reservierten Kapazität sollte sich nach dem Gesamtdurchsatz richten, den die vorhandenen oder in Kürze bereitzustellenden Ressourcen von Azure Cosmos DB stündlich verwenden. Beispiel: Erwerben Sie eine reservierte Kapazität von 30.000 RU/s, wenn dies Ihr konsistentes stündliches Nutzungsmuster ist. In diesem Beispiel wird jeder bereitgestellte Durchsatz, der 30.000 RU/s überschreitet, nach dem nutzungsbasierten Tarif „Pay-as-you-go“ in Rechnung gestellt. Wenn der bereitgestellte Durchsatz in einer Stunde 30.000 RU/s unterschreitet, ist die zusätzlich reservierte Kapazität für diese Stunde nutzlos verschwendet.
+
+Wir berechnen Kaufempfehlungen anhand des stündlichen Nutzungsmusters. Wir analysieren die Nutzung der letzten 7, 30 und 60 Tage und empfehlen den Erwerb von reservierter Kapazität, die maximale Einsparungen bietet. Mithilfe der folgenden Schritte können Sie die empfohlenen Reservierungsgrößen im Azure-Portal anzeigen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 
@@ -46,7 +48,7 @@ Sie können Empfehlungen nach den folgenden Attributen filtern:
 - **Fakturierungsintervall** (monatlich oder Vorauszahlung)
 - **Durchsatztyp** (RUs oder Multimaster-RUs)
 
-Darüber hinaus können Sie Empfehlungen für den Gültigkeitsbereich einer einzelnen Ressourcengruppe, eines einzelnen Abonnements oder ihrer gesamten Azure-Registrierung festlegen. Sie können Empfehlungen auf der Grundlage der Nutzung in den letzten 7 Tagen, 30 Tagen oder 60 Tagen anzeigen.
+Darüber hinaus können Sie Empfehlungen für den Gültigkeitsbereich einer einzelnen Ressourcengruppe, eines einzelnen Abonnements oder ihrer gesamten Azure-Registrierung festlegen. 
 
 Im Folgenden finden Sie eine Beispielempfehlung:
 
@@ -66,7 +68,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
    ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png)
 
-   |Feld  |Beschreibung  |
+   |Feld  |BESCHREIBUNG  |
    |---------|---------|
    |`Scope`   |   Eine Option, die steuert, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/>  Wenn Sie **Gemeinsam** auswählen, wird der Reservierungsrabatt wird auf Azure Cosmos DB-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Bereich einzelne Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement angewendet. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet. <br/><br/> Sie können den Reservierungsumfang nach dem Kauf der reservierten Kapazität ändern.  |
    |Subscription  |   Das Abonnement, das für die Bezahlung der reservierten Azure Cosmos DB-Kapazitäten verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513608"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623588"
 ---
 # <a name="offline-evaluation"></a>Offlineauswertung
 
@@ -49,6 +49,16 @@ Im Folgenden finden Sie wichtige Überlegungen für die repräsentative Offlinea
 Die Personalisierung kann den Offlineauswertungsprozess verwenden, um eine stärker optimierte Lernrichtlinie automatisch zu ermitteln.
 
 Nach der Durchführung der Offlineauswertung können Sie die relative Effektivität der Personalisierung mit dieser neuen Richtlinie im Vergleich zur aktuellen Onlinerichtlinie sehen. Sie können diese Lernrichtlinie dann anwenden, sodass sie bei der Personalisierung sofort wirksam wird, indem Sie sie herunterladen und in den Bereich für Modelle und Richtlinien hochladen. Sie können sie aber auch zur späteren Analyse oder Verwendung herunterladen.
+
+In die Auswertung einbezogene aktuelle Richtlinien:
+
+| Lerneinstellungen | Zweck|
+|--|--|
+|**Online Policy** (Onlinerichtlinie)| Die derzeit in der Personalisierung verwendete Lernrichtlinie |
+|**Baseline**|Der Standard der Anwendung (wie durch die erste in Rangfolgeaufrufen gesendete Aktion bestimmt)|
+|**Random Policy** (Zufallsrichtlinie)|Ein imaginäres Rangfolgeverhalten, das immer ein zufällige Auswahl von Aktionen aus den angegebenen zurückgibt.|
+|**Benutzerdefinierte Richtlinien**|Zusätzliche, beim Starten der Auswertung hochgeladene Lernrichtlinien.|
+|**Optimized Policy** (Optimierte Richtlinie)|Wenn die Auswertung mit der Option zum Ermitteln einer optimierten Richtlinie gestartet wurde, wird sie auch verglichen, und Sie können sie herunterladen oder zur Online-Lernrichtlinie machen, wobei die aktuelle ersetzt wird.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Verstehen der Relevanz von Offlineauswertungsergebnissen
 
@@ -92,7 +102,7 @@ Wir empfehlen, sich Merkmalsauswertungen anzusehen, und folgende Fragen zu stell
 
 * Welche anderen, zusätzlichen Merkmale könnte Ihre Anwendung oder Ihr System bereitstellen, die denen ähneln, die effektiver sind?
 * Welche Merkmale können aufgrund niedriger Effektivität entfernt werden? Merkmale mit niedriger Effektivität fügen dem maschinellen Lernen _Störungen_ hinzu.
-* Gibt es Merkmale, die versehentlich aufgenommen wurden? Beispiele hierfür sind: personenbezogene Informationen (PII), doppelte IDs usw.
+* Gibt es Merkmale, die versehentlich aufgenommen wurden? Beispiele hierfür sind: benutzerbezogene Informationen, doppelte IDs usw.
 * Gibt es unerwünschte Merkmale, die aufgrund gesetzlicher Bestimmungen oder Überlegungen zur verantwortlichen Nutzung nicht für die Personalisierung verwendet werden sollten? Gibt es Merkmale, die Stellvertreter (d. h. eng abbildend oder korrelierend mit) unerwünschte Merkmale sein könnten?
 
 

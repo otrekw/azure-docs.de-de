@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: e63f330d463be21905467869474527fdf9d6abff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030917"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612798"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Erstellen einer verwalteten Azure Active Directory Domain Services-Domäne mithilfe einer Resource Manager-Vorlage
 
@@ -45,17 +45,17 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 * **Nicht routingfähige Domänensuffixe:** Im Allgemeinen wird empfohlen, nicht routingfähige Domänennamesuffixe wie z. B. *contoso.local* zu vermeiden. Das Suffix *.local* ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
 
 > [!TIP]
-> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, ein eindeutiges Präfix für den Domänennamen einzuschließen. Lautet Ihr DNS-Stammname beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *corp.contoso.com* oder *ds.contoso.com*. In einer Hybridumgebung mit einer lokalen AD DS-Umgebung werden diese Präfixe unter Umständen bereits verwendet. Verwenden Sie ein eindeutiges Präfix für Azure AD DS.
+> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Sie können den DNS-Stammnamen für Ihre verwaltete Azure AD DS-Domäne verwenden, müssen aber möglicherweise einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
+> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
-> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aadds.contoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an, der unter Umständen ein eindeutiges Präfix enthält.
+> Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
-> Weitere Informationen finden Sie unter [Auswählen eines Namenspräfixes für die Domäne][naming-prefix].
+> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aaddscontoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an.
 
 Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 
-* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (beispielsweise *contoso* im Domänennamen *contoso.com*) darf maximal 15 Zeichen lang sein.
+* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (beispielsweise *aaddscontoso* im Domänennamen *aaddscontoso.com*) darf maximal 15 Zeichen lang sein.
 * **Netzwerknamenskonflikte:** Der DNS-Domänenname für Ihre verwaltete Domäne darf im virtuellen Netzwerk noch nicht vorhanden sein. Achten Sie speziell auf die folgenden Szenarien, die zu einem Namenskonflikt führen würden:
     * Im virtuellen Azure-Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
     * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, verfügt über eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Fügen Sie, nachdem Sie die Gruppe *AAD DC Administrators* erstellt haben, mit dem Cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember] einen Benutzer zur Gruppe hinzu. Zuerst rufen Sie mit dem Cmdlet [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID der Gruppe *AAD DC Administrators* und dann mit dem Cmdlet [Get-AzureADUser][Get-AzureADUser] die Objekt-ID des gewünschten Benutzers ab.
 
-Das folgende Beispiel zeigt die Objekt-ID des Benutzers für das Konto mit dem Benutzerprinzipalnamen `admin@contoso.onmicrosoft.com`. Ersetzen Sie dieses Benutzerkonto durch den Benutzerprinzipalnamen des Benutzers, den Sie der Gruppe *AAD DC Administrators* hinzufügen möchten:
+Das folgende Beispiel zeigt die Objekt-ID des Benutzers für das Konto mit dem Benutzerprinzipalnamen `admin@aaddscontoso.onmicrosoft.com`. Ersetzen Sie dieses Benutzerkonto durch den Benutzerprinzipalnamen des Benutzers, den Sie der Gruppe *AAD DC Administrators* hinzufügen möchten:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,12 +128,12 @@ Für die Resource Manager-Ressourcendefinition sind u. a. die folgenden Konfigu
 | notificationSettings    | Wenn in der verwalteten Azure AD DS-Domäne Warnungen generiert werden, können E-Mail-Benachrichtigungen gesendet werden. <br />*Globale Administratoren* des Azure-Mandanten und Mitglieder der Gruppe *AAD DC-Administratoren* können für diese Benachrichtigungen *aktiviert* werden.<br /> Bei Bedarf können Sie weitere Empfänger von Benachrichtigungen hinzufügen, wenn für Warnungen Maßnahmen erforderlich sind.|
 | domainConfigurationType | Eine verwaltete Azure AD DS-Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Den Wert *domainConfiguration* müssen Sie nicht angeben, um eine Benutzergesamtstruktur zu erstellen.<br /> Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Legen Sie den Wert auf *ResourceTrusting* fest, um eine Ressourcengesamtstruktur zu erstellen.<br />Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.|
 
-Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert werden. Eine Benutzergesamtstruktur namens *aadds.contoso.com* wird erstellt, wobei alle Benutzer von Azure AD mit der verwalteten Azure AD DS-Domäne synchronisiert werden:
+Die folgende Parameterdefinition in Kurzform zeigt, wie diese Werte deklariert werden. Eine Benutzergesamtstruktur namens *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD mit der verwalteten Azure AD DS-Domäne synchronisiert werden:
 
 ```json
 "parameters": {
     "domainName": {
-        "value": "aadds.contoso.com"
+        "value": "aaddscontoso.com"
     },
     "filteredSync": {
         "value": "Disabled"
@@ -176,7 +176,7 @@ Diese Parameter und der Ressourcentyp können als Teil einer umfassenderen Resou
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Erstellen einer verwalteten Domäne mithilfe einer Beispielvorlage
 
-Mit der folgenden vollständigen Resource Manager-Beispielvorlage werden eine verwaltete Azure AD DS-Domäne sowie das unterstützende virtuelle Netzwerk, das Subnetz und Regeln für Netzwerksicherheitsgruppen erstellt. Die Regeln für Netzwerksicherheitsgruppen sind erforderlich, um die verwaltete Domäne zu schützen und einen ordnungsgemäßen Datenverkehrsfluss zu gewährleisten. Eine Benutzergesamtstruktur mit dem DNS-Namen *aadds.contoso.com* wird erstellt, wobei alle Benutzer von Azure AD synchronisiert werden:
+Mit der folgenden vollständigen Resource Manager-Beispielvorlage werden eine verwaltete Azure AD DS-Domäne sowie das unterstützende virtuelle Netzwerk, das Subnetz und Regeln für Netzwerksicherheitsgruppen erstellt. Die Regeln für Netzwerksicherheitsgruppen sind erforderlich, um die verwaltete Domäne zu schützen und einen ordnungsgemäßen Datenverkehrsfluss zu gewährleisten. Eine Benutzergesamtstruktur mit dem DNS-Namen *aaddscontoso.com* wird erstellt, wobei alle Benutzer von Azure AD synchronisiert werden:
 
 ```json
 {
@@ -190,7 +190,7 @@ Mit der folgenden vollständigen Resource Manager-Beispielvorlage werden eine ve
             "value": "FullySynced"
         },
         "domainName": {
-            "value": "aadds.contoso.com"
+            "value": "aaddscontoso.com"
         },
         "filteredSync": {
             "value": "Disabled"

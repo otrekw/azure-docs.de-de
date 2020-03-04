@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445545"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614828"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection für Azure Cosmos DB (Vorschau)
 
@@ -105,7 +105,7 @@ Außerdem wird eine E-Mail-Benachrichtigung mit den Warnungsdetails und empfohle
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP-Warnungen für Cosmos DB
 
- Eine Liste der Warnungen, die beim Überwachen von Azure Cosmos DB-Konten generiert werden, finden Sie im Abschnitt [Cosmos DB-Warnungen](../security-center/security-center-alerts-data-services.md#cosmos-db) in der Security Center-Dokumentation.
+ Eine Liste der Warnungen, die beim Überwachen von Azure Cosmos DB-Konten generiert werden, finden Sie im Abschnitt [Cosmos DB-Warnungen](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) in der Azure Security Center-Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

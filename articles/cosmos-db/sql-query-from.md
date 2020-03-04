@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873368"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587684"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM-Klausel in Azure Cosmos DB
 
@@ -79,15 +79,15 @@ FROM <from_specification>
   
   Gibt an, dass das Dokument von der anderen, durch den bereitgestellten Alias definierten Quelle abgerufen werden sollte.  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente abgerufen werden soll, die der angegebene Containerausdruck abruft.  
+  Gibt an, dass das Dokument durch Zugriff auf die Eigenschaft `property_name` abgerufen werden soll.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
   Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente abgerufen werden soll, die der angegebene Containerausdruck abruft.  
   
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
 Alle in den `<from_source>(`s) bereitgestellten oder abgeleiteten Aliase müssen eindeutig sein. Die Syntax `<container_expression>.`property_name ist identisch mit `<container_expression>' ['"property_name"']'`. Die letztgenannte Syntax kann jedoch verwendet werden, wenn ein Eigenschaftenname Nicht-ID-Zeichen enthält.  
   
@@ -114,7 +114,7 @@ Mit der FROM-Klausel kann die Quelle auf eine kleinere Teilmenge reduziert werde
     FROM Families.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -154,7 +154,7 @@ Das oben gezeigte Beispiel verwendet ein Array als Quelle. Sie können aber auch
     FROM Families.address.state
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [

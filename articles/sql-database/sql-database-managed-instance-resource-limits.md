@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201729"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605010"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -74,7 +74,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: [Universell](sql-database-serv
 | Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280, außer wenn die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) erreicht wurde. | 32.767 Dateien pro Datenbank, außer wenn der Grenzwert für die Instanzspeichergröße erreicht wurde. |
 | Maximale Größe der Datendatei | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB – 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB – 4 TB). |
 | Maximale Protokolldateigröße | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. |
-| Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 5.500 – 110.000 (1.375 IOPS/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
+| Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 10.000 – 200.000 (2500 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
 | Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Nicht begrenzt. |
 | E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |
@@ -96,7 +96,7 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: [Universell](sql-database-serv
 
 In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit von der Dateigröße dedizierte Mengen von IOPS und Durchsatz. Größere Dateien erhalten mehr IOPS und Durchsatz. Die E/A-Merkmale der Datenbankdateien sind in der folgenden Tabelle aufgeführt:
 
-| Dateigröße           | 0 – 128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1 – 2 TiB    | 2 – 4 TiB | 4 – 8 TiB |
+| Dateigröße | >=0 und <=128 GiB | >128 und <=256 GiB | >256 und <= 512 GiB | >0,5 and <=1 TiB    | >1 und <=2 TiB    | >2 und <=4 TiB | >4 und <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | IOPS pro Datei       | 500   | 1100 | 2300              | 5\.000              | 7\.500              | 7\.500              | 12.500   |
 | Durchsatz pro Datei | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
@@ -107,7 +107,7 @@ Es gibt auch Grenzwerte auf Instanzebene, wie der maximale Protokoll-Schreibdurc
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Eine verwaltete Instanz kann nur in [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all) erstellt werden. Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, können Sie eine [Supportanfrage über das Azure-Portal senden](#obtaining-a-larger-quota-for-sql-managed-instance).
+Eine verwaltete Instanz kann nur in [unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all) erstellt werden. Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, können Sie eine [Supportanfrage über das Azure-Portal senden](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Unterstützte Abonnementtypen
 
@@ -122,13 +122,13 @@ Für eine verwaltete Instanz wird derzeit nur die Bereitstellung bei folgenden A
 
 ## <a name="regional-resource-limitations"></a>Regionale Ressourcenbeschränkungen
 
-Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gibt es bei der verwalteten Instanz zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erhöht werden können):
+Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gibt es bei der verwalteten Instanz zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](quota-increase-request.md) erhöht werden können):
 
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen bei Bereitstellung verwalteter Instanzen in einer einzelnen Region.
 - **Grenzwert für virtuelle Kerneinheiten**: Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
 
 > [!Note]
-> Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
+> Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](quota-increase-request.md) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
 
 In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** für unterstützte Abonnementtypen angezeigt (standardmäßige Grenzwerte können mithilfe der unten beschriebenen Supportanfrage erweitert werden):
 
@@ -146,39 +146,9 @@ In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** 
 
 \*\* Höhere Grenzwerte für Subnetze und virtuelle Kerne sind in den folgenden Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen 2“.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Abrufen eines größeren Kontingents für verwaltete SQL-Instanz
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Anfordern einer Kontingenterhöhung für verwaltete SQL-Instanzen
 
-Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, senden Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal.
-Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Weise ein:
-
-1. Öffnen Sie **Hilfe + Support**, und klicken Sie auf **Neue Supportanfrage**.
-
-   ![Hilfe und Support](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Führen Sie auf der Registerkarte „Grundlagen“ für die neue Supportanfrage die folgenden Schritte aus:
-   - Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
-   - Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-   - Wählen Sie unter **Kontingenttyp** den Eintrag **Verwaltete SQL-Datenbank-Instanz** aus.
-   - Wählen Sie unter **Supportplan** Ihren Supportplan aus.
-
-     ![Problemtyp „Kontingent“](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. Klicken Sie auf **Weiter**.
-4. Führen Sie auf der Registerkarte **Problem** für die neue Supportanfrage die folgenden Schritte aus:
-   - Wählen Sie unter **Schweregrad** den Schweregrad des Problems aus.
-   - Geben Sie unter **Details** zusätzliche Informationen zu Ihrem Problem an, einschließlich Fehlermeldungen.
-   - Fügen Sie unter **Dateiupload** eine Datei mit weiteren Informationen an (bis zu 4 MB).
-
-     ![Problemdetails](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Eine gültige Anforderung sollte Folgendes enthalten:
-     > - Region, in der der Grenzwert für Abonnements erhöht werden muss.
-     > - Erforderliche Anzahl von virtuellen Kernen pro Dienstebene in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss).
-     > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der virtuellen Kerne pro Dienstebene in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen).
-
-5. Klicken Sie auf **Weiter**.
-6. Geben Sie auf der Registerkarte „Kontaktinformationen“ für die neue Supportanfrage Ihre bevorzugte Kontaktmethode (E-Mail oder Telefon) und die Kontaktdetails ein.
-7. Klicken Sie auf **Erstellen**.
+Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, senden Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

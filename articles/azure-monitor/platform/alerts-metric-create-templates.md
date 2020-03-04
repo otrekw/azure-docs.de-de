@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/17/2020
+ms.date: 2/24/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444008"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586528"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -1251,7 +1251,7 @@ Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit st
 
 Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
 
-Wenn Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, müssen Sie sowohl den Metriknamen als auch den Metriknamespace angeben.
+Wenn Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, müssen Sie sowohl den Metriknamen als auch den Metriknamespace angeben. Sie sollten sich auch vergewissern, dass die benutzerdefinierte Metrik bereits gemeldet wird, da Sie keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen können, die noch nicht vorhanden ist.
 
 Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als „customstaticmetricalert.json“.
 

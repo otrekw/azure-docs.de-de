@@ -1,24 +1,24 @@
 ---
-title: Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien
+title: Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien (Vorschau)
 titleSuffix: Azure AD B2C
-description: Erfahren Sie, wie Sie mit benutzerdefinierten Richtlinien in Azure Active Directory B2C Einmalkennwörter in Textnachrichten an die Telefone ihrer Anwendungsbenutzer senden.
+description: Erfahren Sie, wie Sie mit benutzerdefinierten Richtlinien in Azure Active Directory B2C Einmalkennwörter (One-Time Passwords, OTP) in Textnachrichten an die Telefone Ihrer Anwendungsbenutzer senden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840331"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647529"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C (Vorschau)
 
 Die Telefonregistrierung und -anmeldung in Azure Active Directory B2C (Azure AD B2C) ermöglicht es Ihren Benutzern, sich mit einem Einmalkennwort (One-Time Password, OTP) bei Ihren Anwendungen zu registrieren und anzumelden, das in einer Textnachricht an ihr Telefon gesendet wird. Mithilfe von Einmalkennwörtern können Sie das Risiko minimieren, dass Ihre Benutzer ihre Kennwörter vergessen oder versehentlich offenlegen.
 
@@ -26,7 +26,13 @@ Befolgen Sie die Schritte in diesem Artikel, um Ihren Kunden mithilfe benutzerde
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="pricing"></a>Preise
+
+Einmalkennwörter werden mithilfe von SMS-Textnachrichten an Ihre Benutzer gesendet. Es fallen möglicherweise für jede gesendete Nachricht Gebühren an. Preisinformationen finden Sie im Abschnitt **Separate Gebühren** unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Vor dem Einrichten von OTP benötigen Sie die folgenden Ressourcen.
 
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md)
 * In Ihrem Mandanten [registrierte Webanwendung](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ Beim Hochladen der einzelnen Dateien fügt Azure das Präfix `B2C_1A_` hinzu.
 1. Wählen Sie für **Antwort-URL** die Option `https://jwt.ms` aus.
 1. Wählen Sie **Jetzt ausführen** aus, und registrieren Sie sich mit einer E-Mail-Adresse oder Telefonnummer.
 1. Wählen Sie **Jetzt ausführen** erneut aus, und melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
+
+## <a name="get-user-account-by-phone-number"></a>Abrufen von Benutzerkonten anhand der Telefonnummer
+
+Ein Benutzer, der sich mit einer Telefonnummer anmeldet, aber keine E-Mail-Adresse für die Wiederherstellung bereitstellt, wird in Ihrem Azure AD B2C-Verzeichnis mit seiner Telefonnummer als Anmeldename erfasst. Wenn der Benutzer seine Telefonnummer später ändern möchte, muss das Helpdesk- oder Supportteam zunächst sein Konto ermitteln und dann seine Telefonnummer aktualisieren.
+
+Sie können einen Benutzer anhand der Telefonnummer (Anmeldename) mithilfe von [Microsoft Graph](manage-user-accounts-graph-api.md) ermitteln:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Beispiel:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

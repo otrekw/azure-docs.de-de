@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036295"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587208"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Löschen von Speicherblobs für Flowprotokolle für Netzwerksicherheitsgruppen in Network Watcher
 
@@ -135,6 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Nächste Schritte
-- Kunden können die Ausführung des Skripts mit [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) oder [Azure Automation](https://azure.microsoft.com/services/automation/) automatisieren.
+- Kunden können die Ausführung des Skripts mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) oder [Azure Automation](https://azure.microsoft.com/services/automation/) automatisieren.
 - Unter [Azure Monitor-Protokolle für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) finden Sie weitere Informationen über die NSG-Protokollierung.
 

@@ -2,17 +2,14 @@
 title: Erstellen eines privaten Azure Kubernetes Service-Clusters
 description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Cluster (AKS) erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
-ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 2/21/2020
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932594"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649506"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters (Preview)
 
@@ -31,13 +28,45 @@ Die Steuerungsebene oder der API-Server befindet sich in einem von Azure Kuberne
 * Die Version 2.0.77 oder höher der Azure CLI sowie die Version 0.4.18 der AKS-Vorschauerweiterung für die Azure CLI.
 
 ## <a name="currently-supported-regions"></a>Derzeit unterstützte Regionen
+
+* Australien (Osten)
+* Australien, Südosten
+* Brasilien Süd
+* Kanada, Mitte
+* Kanada, Osten
+* USA, Mitte
+* Asien, Osten
+* East US
+* USA (Ost) 2
+* USA, Osten 2 (EUAP)
+* Frankreich, Mitte
+* Deutschland, Norden
+* Japan, Osten
+* Japan, Westen
+* Korea, Mitte
+* Korea, Süden
+* USA Nord Mitte
+* Nordeuropa
+* Nordeuropa
+* USA Süd Mitte
+* UK, Süden
+* Europa, Westen
 * USA (Westen)
 * USA, Westen 2
 * USA (Ost) 2
-* Kanada, Mitte
+
+## <a name="currently-supported-availability-zones"></a>Derzeit unterstützte Verfügbarkeitszonen
+
+* USA (Mitte)
+* East US
+* USA (Ost) 2
+* Frankreich, Mitte
+* Japan, Osten
 * Nordeuropa
+* Asien, Südosten
+* UK, Süden
 * Europa, Westen
-* Australien (Osten)
+* USA, Westen 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Installieren der neuesten AKS-Vorschauerweiterung für die Azure CLI
 
@@ -98,6 +127,7 @@ Dabei gilt: *--enable-private-cluster* ist ein obligatorisches Flag für einen p
 > Wenn CIDR der Docker-Bridge-Adresse (172.17.0.1/16) mit der Subnetz-CIDR in Konflikt steht, ändern Sie die Docker-Bridge-Adresse entsprechend.
 
 ## <a name="connect-to-the-private-cluster"></a>Herstellen einer Verbindung mit dem privaten Cluster
+
 Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müssen Sie einen virtuellen Azure-Computer (VM) in einem virtuellen Netzwerk erstellen und eine Verbindung mit dem API-Server herstellen. Führen Sie hierzu folgende Schritte aus:
 
 1. Abrufen der Anmeldeinformationen für die Verbindung mit dem Cluster.
@@ -131,7 +161,8 @@ Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müs
 * Um einen benutzerdefinierten DNS-Server zu verwenden, stellen Sie einen AD-Server mit DNS für die Weiterleitung an die IP-Adresse 168.63.129.16 bereit
 
 ## <a name="limitations"></a>Einschränkungen 
-* Verfügbarkeitszonen werden zurzeit nur für die Regionen „USA, Osten 2“ und „USA, Westen 2“ unterstützt.
+* IP-autorisierte Bereiche können nicht auf den privaten API-Serverendpunkt angewandt werden, sie gelten nur für den öffentlichen API-Server.
+* Verfügbarkeitszonen werden derzeit für bestimmte Regionen unterstützt, wie am Anfang dieses Dokuments beschrieben. 
 * Die [Einschränkungen für den Azure Private Link-Dienst][private-link-service] gelten für private Cluster, private Azure-Endpunkte und VNET-Dienstendpunkte, die zurzeit nicht im selben virtuellen Netzwerk unterstützt werden.
 * Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk
 * Keine standardmäßige Unterstützung für die Azure DevOps-Integration mit privaten Clustern

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure Data Box und Azure Data Box Heavy über die lokale Webbenutzeroberfläche | Microsoft-Dokumentation
+title: Verwalten von Azure Data Box/Azure Data Box Heavy mit der lokalen Webbenutzeroberfläche
 description: In diesem Artikel wird beschrieben, wie Sie Ihre Data Box- und Data Box Heavy-Geräte über die lokale Webbenutzeroberfläche verwalten.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: cf7cf0a7aa2812d7a93c282cbda5f82dd83aac29
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496260"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560183"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 

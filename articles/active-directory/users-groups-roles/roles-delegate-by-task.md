@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639920"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596758"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -45,14 +45,14 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Erstellen von Azure AD B2C-Verzeichnissen | Alle Benutzer außer Gäste (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Erstellen von B2C-Anwendungen | Globaler Administrator | 
 Erstellen von Unternehmensanwendungen | Cloudanwendungsadministrator | Anwendungsadministrator
-Erstellen, Lesen, Aktualisieren und Löschen von B2C-Richtlinien | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Identitätsanbietern | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Kennwortzurücksetzung | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Profilbearbeitung | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Anmeldung | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Globaler Administrator | 
-Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+Erstellen, Lesen, Aktualisieren und Löschen von B2C-Richtlinien | B2C-IEF-Richtlinienadministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Identitätsanbietern | Externer Identitätsanbieteradministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Kennwortzurücksetzung | B2C-Benutzerflowadministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Profilbearbeitung | B2C-Benutzerflowadministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Anmeldung | B2C-Benutzerflowadministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerflows zur Registrierung |B2C-Benutzerflowadministrator | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | B2C-Administrator für Benutzerflowattribute | 
+Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Benutzeradministrator
 Lesen aller Konfigurationen | Globaler Leser | 
 Lesen von B2C-Überwachungsprotokollen | Globaler Leser (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
@@ -126,8 +126,8 @@ Lesen von BitLocker-Schlüsseln | Sicherheitsleseberechtigter | Kennwort-, Siche
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Erteilen der Zustimmung zu delegierten Berechtigungen | Cloudanwendungsadministrator | Anwendungsadministrator
-Erteilen der Zustimmung zu Anwendungsberechtigungen, jedoch nicht für Microsoft Graph oder Azure AD Graph | Cloudanwendungsadministrator | Anwendungsadministrator
-Erteilen der Zustimmung zu Anwendungsberechtigungen für Microsoft Graph oder Azure AD Graph | Globaler Administrator | 
+Erteilen der Einwilligung zu Anwendungsberechtigungen, jedoch nicht für Microsoft Graph | Cloudanwendungsadministrator | Anwendungsadministrator
+Erteilen der Einwilligung zu Anwendungsberechtigungen für Microsoft Graph | Administrator für privilegierte Rollen | 
 Erteilen der Zustimmung für Anwendungen, die auf eigene Daten zugreifen | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Erstellen einer Unternehmensanwendung | Cloudanwendungsadministrator | Anwendungsadministrator
 Verwalten eines Anwendungsproxys | Anwendungsadministrator | 
@@ -156,7 +156,7 @@ Lizenz zuweisen | Benutzeradministrator |
 Erstellen einer Gruppe | Benutzeradministrator | 
 Erstellen, Aktualisieren oder Löschen der Zugriffsüberprüfung einer Gruppe oder einer App | Benutzeradministrator | 
 Verwalten des Gruppenablaufs | Benutzeradministrator | 
-Verwalten von Gruppeneinstellungen | Globaler Administrator | 
+Verwalten von Gruppeneinstellungen | Gruppenadministrator | Benutzeradministrator | 
 Lesen der gesamten Konfiguration (mit Ausnahme der ausgeblendeten Mitgliedschaft) | Rolle „Verzeichnis lesen“ | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Lesen der ausgeblendeten Mitgliedschaft | Gruppenmitglied | Gruppenbesitzer, Kennwortadministrator, Exchange-Administrator, SharePoint-Administrator, Teams-Administrator, Benutzeradministrator
 Lesen der Mitgliedschaft von Gruppen mit ausgeblendeter Mitgliedschaft | Helpdeskadministrator | Benutzeradministrator, Teams-Administrator
@@ -234,7 +234,7 @@ Lesen eines Serverstatus | Globaler Leser |
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Verwalten von Identitätsanbietern | Globaler Administrator | 
+Verwalten von Identitätsanbietern | Externer Identitätsanbieteradministrator | 
 Verwalten von Einstellungen | Globaler Administrator | 
 Verwalten von Nutzungsbedingungen | Globaler Administrator | 
 Lesen aller Konfigurationen | Globaler Leser | 
@@ -330,11 +330,11 @@ Benutzer erstellen | Benutzeradministrator |
 Löschen von Benutzern | Benutzeradministrator | 
 Ungültige Aktualisierungstoken von Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 
 Ungültige Aktualisierungstoken von Benutzern ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzeradministrator
-Ungültige Aktualisierungstoken von privilegierten Administratorrollen (siehe Dokumentation) | Globaler Administrator | 
+Ungültige Aktualisierungstoken von privilegierten Administratorrollen (siehe Dokumentation) | Privilegierter Authentifizierungsadministrator | 
 Lesen einer Standardkonfiguration | Standardbenutzerrolle (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Zurücksetzen des Kennworts für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 
 Zurücksetzen des Kennworts für Benutzer ohne Administratorrechte (siehe Dokumentation) | Kennwortadministrator | Benutzeradministrator
-Zurücksetzen des Kennworts von privilegierten Administratoren | Globaler Administrator | 
+Zurücksetzen des Kennworts von privilegierten Administratoren | Privilegierter Authentifizierungsadministrator | 
 Widerrufen von Lizenzen | Lizenzadministrator | Benutzeradministrator
 Verwalten aller Eigenschaften mit Ausnahme des Benutzerprinzipalnamens | Benutzeradministrator | 
 Aktualisieren des Benutzerprinzipalnamens für Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator | 

@@ -3,16 +3,15 @@ title: Überprüfen Ihrer Kubernetes-Bereitstellungen in Azure für die Implemen
 description: Erfahren Sie, wie Sie Ihre Bereitstellungen von Azure Kubernetes Service mit kube-advisor auf die Implementierung von Best Practices überprüfen können.
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073775"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595432"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Überprüfen auf Best Practices von Kubernetes in Ihrem Cluster
 
@@ -22,7 +21,7 @@ Es gibt verschiedene Best Practices, die Sie in Ihren Kubernetes-Bereitstellunge
 
 Das [kube-advisor-Tool][kube-advisor-github] ist ein einzelner Container, der in Ihrem Cluster ausgeführt wird. Er fragt den Kubernetes-API-Server nach Informationen zu Ihren Bereitstellungen ab und gibt einen Satz von Verbesserungsvorschlägen zurück.
 
-Das kube-advisor-Tool kann Berichte zur Ressourcenanforderung und zu Grenzwerten erstellen, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, das kube-advisor-Tool selbst muss jedoch auf einem Linux-Pod geplant werden. Sie können einen Pod mit einem [Knoten-Selektor][ k8s-node-selector] in der Konfiguration des Pods so planen, dass er auf einem Knotenpool mit einem bestimmten Betriebssystem ausgeführt wird.
+Das kube-advisor-Tool kann Berichte zur Ressourcenanforderung und zu Grenzwerten erstellen, die in PodSpecs für Windows- und Linux-Anwendungen fehlen, das kube-advisor-Tool selbst muss jedoch auf einem Linux-Pod geplant werden. Sie können einen Pod mit einem [Knoten-Selektor][k8s-node-selector] in der Konfiguration des Pods so planen, dass er in einem Knotenpool mit einem bestimmten Betriebssystem ausgeführt wird.
 
 > [!NOTE]
 > Das kube-advisor-Tool wird von Microsoft auf „Beste Leistung“-Basis unterstützt. Probleme und Vorschläge sollten auf GitHub eingereicht werden.

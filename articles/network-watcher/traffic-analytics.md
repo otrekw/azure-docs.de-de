@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426223"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620001"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -201,7 +201,7 @@ Sie können Datenverkehrsanalysen auch mit dem PowerShell-Cmdlet [Set-AzNetworkW
 
 ## <a name="view-traffic-analytics"></a>Anzeigen der Datenverkehrsanalyse
 
-Wählen Sie auf der linken Seite im Portal **Alle Dienste** aus, und geben Sie dann *Monitor* in das Feld **Filter** ein. Wenn **Monitor** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus. Wählen Sie zum Erkunden der Datenverkehrsanalyse und der zugehörigen Funktionen **Network Watcher** und dann **Traffic Analytics** aus.
+Zum Anzeigen von Traffic Analytics suchen Sie in der Suchleiste des Portals nach **Network Watcher**. Sobald Network Watcher geöffnet ist, wählen Sie zum Erkunden der Datenverkehrsanalyse und der zugehörigen Funktionen die Option **Traffic Analytics** im linken Menü aus. 
 
 ![Zugreifen auf das Traffic Analytics-Dashboard](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

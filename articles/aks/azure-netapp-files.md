@@ -3,16 +3,15 @@ title: Integrieren von Azure NetApp Files in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Azure NetApp Files in Azure Kubernetes Service integrieren.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328700"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596639"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrieren von Azure NetApp Files in Azure Kubernetes Service
 
@@ -33,7 +32,8 @@ Bei Verwendung von Azure NetApp Files gelten folgende Einschränkungen:
 * Azure NetApp Files ist nur [in ausgewählten Azure-Regionen][anf-regions] verfügbar.
 * Bevor Sie Azure NetApp Files verwenden können, muss Ihnen der Zugriff auf den Azure NetApp Files-Dienst gewährt werden. Zum Beantragen des Zugriffs können Sie das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] verwenden. Sie können erst auf den Azure NetApp Files-Dienst zugreifen, wenn Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
 * Ihr Azure NetApp Files-Dienst muss im selben virtuellen Netzwerk wie Ihr AKS-Cluster erstellt werden.
-* In AKS wird nur die statische Bereitstellung für Azure NetApp Files unterstützt.
+* Nach der ersten Bereitstellung eines AKS-Clusters wird nur die statische Bereitstellung für Azure NetApp Files unterstützt.
+* Wenn Sie die dynamische Bereitstellung mit Azure NetApp Files verwenden möchten, installieren und konfigurieren Sie [NetApp Trident](https://netapp-trident.readthedocs.io/) Version 19.07 oder höher.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurieren von Azure NetApp Files
 
@@ -78,7 +78,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][az-network-vnet-subnet-create] [an Azure NetApp Files zu delegieren][anf-delegate-subnet]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
+Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][az-network-vnet-subnet-create][an Azure NetApp Files zu delegieren][anf-delegate-subnet]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
 
 ```azure-cli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus

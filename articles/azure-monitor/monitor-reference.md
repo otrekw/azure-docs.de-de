@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765723"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620260"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -24,7 +24,7 @@ Wichtige Erkenntnisse und Lösungen werden als Teil von Azure Monitor betrachtet
 
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Dabei werden sowohl Protokolle als auch Metriken erfasst und analysiert.
 
-| Erkenntnis | Beschreibung |
+| Erkenntnis | BESCHREIBUNG |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Erweiterbarer APM-Dienst (Application Performance Management) zum Überwachen Ihrer Live-Webanwendung auf einer beliebigen Plattform. |
 | [Azure Monitor für Container](insights/container-insights-overview.md) | Überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. |
@@ -38,7 +38,7 @@ Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte A
 
 Lösungen basieren auf Protokollabfragen und Ansichten, die für eine bestimmte Anwendung oder einen bestimmten Dienst angepasst sind. Dabei werden nur Protokolle erfasst und analysiert, und sie werden im Laufe der Zeit zugunsten von Erkenntnissen eingestellt.
 
-| Lösung | Beschreibung |
+| Lösung | BESCHREIBUNG |
 |:---|:---|
 | [Agent-Integrität](insights/solution-agenthealth.md) | Analysieren der Integrität und Konfiguration von Log Analytics-Agents. |
 | [Benachrichtigungsverwaltung](platform/alert-management-solution.md) | Analysieren von Warnungen, die von System Center Operations Manager, Nagios oder Zabbix erfasst werden. |
@@ -173,7 +173,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 ## <a name="product-integrations"></a>Produktintegrationen
 Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre Daten in einem Log Analytics-Arbeitsbereich, sodass sie mit anderen von Azure Monitor gesammelten Protokolldaten analysiert werden können.
 
-| Produkt/Dienst | Beschreibung |
+| Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
@@ -195,22 +195,22 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 ## <a name="other-solutions"></a>Andere Lösungen
 Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösungen zur Verfügung, aber die aktive Entwicklung wurde eingestellt und sie sind möglicherweise nicht in allen Regionen verfügbar. Diese fallen unter die Vereinbarung zum Servicelevel für die Azure Log Analytics-Datenerfassung.
 
-| Lösung | Beschreibung |
+| Lösung | BESCHREIBUNG |
 |:---|:---|
-| [Active Directory-Bewertung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
+| [Active Directory-Integritätsprüfung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
 | [Active Directory-Replikationsstatusmonitor](insights/ad-replication-status.md) | Regelmäßige Überwachung Ihrer Active Directory-Umgebung auf Replikationsfehler. |
 | [Aktivitätsprotokollanalyse](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analysieren von Aktivitätsprotokolleinträgen mithilfe vordefinierter Protokollabfragen und Ansichten. |
 | [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
 | [Container](insights/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |
 | [Bedarfsgesteuerte Bewertungen](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |
-| [SQL-Bewertung](insights/sql-assessment.md) | Bewerten des Risikos und der Integrität Ihrer SQL Server-Umgebungen.  |
+| [SQL-Integritätsprüfung](insights/sql-assessment.md) | Bewerten des Risikos und der Integrität Ihrer SQL Server-Umgebungen.  |
 | [Wire Data](insights/wire-data.md) | Konsolidierte Netzwerk- und Leistungsdaten, die von mit Windows verbundenen und mit Linux verbundenen Computern mit dem Log Analytics-Agent gesammelt werden. |
 
 
 ## <a name="third-party-integration"></a>Integration von Drittanbieterprodukten
 
-| Lösung | Beschreibung |
+| Lösung | BESCHREIBUNG |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | Der ITSM-Connector ermöglicht Ihnen, Azure und ein unterstütztes ITSM-Produkt bzw. einen unterstützten ITSM-Dienst zu verbinden.  |
 

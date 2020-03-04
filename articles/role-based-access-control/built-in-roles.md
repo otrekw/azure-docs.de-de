@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198665"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562019"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -115,6 +115,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Log Analytics-Leser](#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Logik-App-Mitwirkender](#logic-app-contributor) | Ermöglicht Ihnen die Verwaltung von Logik-Apps. Sie können aber nicht den App-Zugriff ändern. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logik-App-Operator](#logic-app-operator) | Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps. Sie können diese aber nicht bearbeiten oder aktualisieren. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Rolle „Mitwirkender für verwaltete Anwendungen“](#managed-application-contributor-role) | Ermöglicht das Erstellen von Ressourcen für verwaltete Anwendungen. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Rolle „Bediener für verwaltete Anwendung“](#managed-application-operator-role) | Ermöglicht Ihnen das Lesen und Durchführen von Aktionen für Ressourcen der verwalteten Anwendung. | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Leser für verwaltete Anwendungen](#managed-applications-reader) | Ermöglicht Ihnen, Ressourcen in einer verwalteten App zu lesen und JIT-Zugriff anzufordern. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Mitwirkender für verwaltete Identität](#managed-identity-contributor) | Dem Benutzer zugewiesene Identität erstellen, lesen, aktualisieren und löschen. | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Mitwirkender bei Ressourcenrichtlinien](#resource-policy-contributor) | Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Mitwirkender von Zeitplanungsauftragssammlung](#scheduler-job-collections-contributor) | Ermöglicht Ihnen das Verwalten von Scheduler-Auftragssammlungen, nicht aber den Zugriff darauf. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Sicherheitsadministrator](#security-admin) | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Sicherheitsadministrator](#security-admin) | Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Mitwirkender für Sicherheitsbewertungen](#security-assessment-contributor) | Ermöglicht das Pushen von Bewertungen an Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Sicherheits-Manager (Legacy)](#security-manager-legacy) | Dies ist eine Legacyrolle. Verwenden Sie stattdessen „Sicherheitsadministrator“. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Sicherheitsleseberechtigter](#security-reader) | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Sicherheitsleseberechtigter](#security-reader) | Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Site Recovery-Mitwirkender](#site-recovery-contributor) | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery-Operator](#site-recovery-operator) | Ermöglicht Ihnen ein Failover und ein Failback, aber nicht das Durchführen weiterer Site Recovery-Verwaltungsvorgänge. | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery-Leser](#site-recovery-reader) | Ermöglicht Ihnen die Anzeige des Site Recovery-Status, aber nicht die Durchführung weiterer Verwaltungsvorgänge. | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [VM-Benutzeranmeldung](#virtual-machine-user-login) | Anzeigen von virtuellen Computern im Portal und Anmelden als regulärer Benutzer. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Mitwirkender von Webplan](#web-plan-contributor) | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Arbeitsmappenmitwirkender](#workbook-contributor) | Kann freigegebene Arbeitsmappen speichern. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Arbeitsmappenleser](#workbook-reader) | Kann Arbeitsmappen lesen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>Besitzer
@@ -346,7 +350,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.ApiManagement/service/restore/action | Dient zum Wiederherstellen des API Management-Diensts aus dem angegebenen Container in einem vom Benutzer bereitgestellten Speicherkonto. |
 > | Microsoft.ApiManagement/service/updatecertificate/action | Dient zum Hochladen eines SSL-Zertifikats für einen API Management-Dienst. |
 > | Microsoft.ApiManagement/service/updatehostname/action | Dient zum Einrichten, Aktualisieren oder Entfernen benutzerdefinierter Domänennamen für einen API Management-Dienst. |
-> | Microsoft.ApiManagement/service/write | Dient zum Erstellen einer neuen Instanz des API Management-Diensts. |
+> | Microsoft.ApiManagement/service/write | Erstellen oder Aktualisieren einer API Management-Dienstinstanz |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
@@ -609,7 +613,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **Aktionen** |  |
 > | Microsoft.HybridCompute/machines/read | Liest einen beliebigen Azure Arc-Computer. |
-> | Microsoft.HybridCompute/machines/write | Schreibt einen Azure Arc-Computer. |
+> | Microsoft.HybridCompute/machines/write | Schreibt auf einem Azure Arc-Computer |
 > | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Abrufen der Zuweisung der Gastkonfiguration |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -626,9 +630,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **Aktionen** |  |
 > | Microsoft.HybridCompute/machines/read | Liest einen beliebigen Azure Arc-Computer. |
-> | Microsoft.HybridCompute/machines/write | Schreibt einen Azure Arc-Computer. |
-> | Microsoft.HybridCompute/machines/delete | Löscht einen Azure Arc-Computer. |
-> | Microsoft.HybridCompute/machines/reconnect/action | Verbindet einen Azure Arc-Computer erneut. |
+> | Microsoft.HybridCompute/machines/write | Schreibt auf einem Azure Arc-Computer |
+> | Microsoft.HybridCompute/machines/delete | Löscht einen Azure Arc-Computer |
+> | Microsoft.HybridCompute/machines/reconnect/action | Verbindet einen Azure Arc-Computer erneut |
 > | Microsoft.HybridCompute/*/read |  |
 > | **NotActions** |  |
 > | *keine* |  |
@@ -690,6 +694,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Listet die clusterAdmin-Anmeldeinformationen eines verwalteten Clusters auf. |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Ruft ein Zugriffsprofil für verwaltete Cluster anhand des Rollennamens mithilfe der Liste der Anmeldeinformationen ab. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1540,6 +1545,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Hiermit werden die unverschlüsselten Anmeldeinformationen für den Auftrag aufgelistet. |
 > | Microsoft.Databox/locations/availableSkus/action | Mit dieser Methode wird die Liste der verfügbaren SKUs zurückgegeben. |
+> | Microsoft.Databox/locations/validateInputs/action | Diese Methode führt alle Arten von Prüfungen aus. |
+> | Microsoft.Databox/locations/regionConfiguration/action | Diese Methode gibt die Konfigurationen für die Region zurück. |
 > | Microsoft.Databox/locations/validateAddress/action | Hiermit wird die Lieferadresse überprüft, und es werden – sofern vorhanden – alternative Adressen bereitgestellt. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
@@ -1565,6 +1572,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | Microsoft.EventGrid/eventSubscriptions/write | Erstellt oder aktualisiert eventSubscription. |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -1851,6 +1859,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.LabServices/labAccounts/createLab/action | Hiermit wird ein Lab in einem Lab-Konto erstellt. |
 > | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Hiermit werden Informationen zur regionalen Verfügbarkeit jeder Größenkategorie abgerufen, die in einem Labkonto konfiguriert sind. |
+> | Microsoft.LabServices/labAccounts/getPricingAndAvailability/action | Ruft die Preise und die Verfügbarkeit von Kombinationen aus Größen, Regionen und Betriebssystemen für das Labkonto ab. |
+> | Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action | Ruft Kerneinschränkungen und Nutzungsdaten für dieses Abonnement ab |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
@@ -1964,6 +1974,25 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/connections/*/read | Liest Verbindungen. |
 > | Microsoft.Web/customApis/*/read | Liest benutzerdefinierte API. |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="managed-application-contributor-role"></a>Rolle „Mitwirkender für verwaltete Anwendungen“
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht das Erstellen von Ressourcen für verwaltete Anwendungen. |
+> | **Id** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **Aktionen** |  |
+> | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
+> | Microsoft.Solutions/applications/* |  |
+> | Microsoft.Solutions/register/action | Hiermit registrieren Sie sich bei Lösungen. |
+> | Microsoft.Resources/subscriptions/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -2337,7 +2366,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. |
+> | **Beschreibung** | Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. |
 > | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
@@ -2351,6 +2380,21 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Security/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="security-assessment-contributor"></a>Mitwirkender für Sicherheitsbewertungen
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Ermöglicht das Pushen von Bewertungen an Security Center |
+> | **Id** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **Aktionen** |  |
+> | Microsoft.Security/assessments/write | Erstellen oder Aktualisieren von Sicherheitsbewertungen für Ihr Abonnement |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |
@@ -2386,7 +2430,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
+> | **Beschreibung** | Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
 > | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
@@ -3114,6 +3158,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Compute/locations/* | Erstellen und Verwalten von Compute-Speicherorten |
 > | Microsoft.Compute/virtualMachines/* | Erstellen und Verwalten von virtuellen Computern |
 > | Microsoft.Compute/virtualMachineScaleSets | Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer |
+> | Microsoft.Compute/disks/write | Erstellt einen neuen Datenträger oder aktualisiert einen bereits vorhandenen. |
+> | Microsoft.Compute/disks/read | Dient zum Abrufen der Eigenschaften eines Datenträgers. |
+> | Microsoft.Compute/disks/delete | Löscht den Datenträger. |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für ein Application Gateway. Nicht warnbar. |
@@ -3214,6 +3261,38 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | Microsoft.Web/sites/* | Erstellen und Verwalten von Websites (die Erstellung von Websites erfordert auch Schreibberechtigungen für den zugehörigen App Service-Plan) |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="workbook-contributor"></a>Arbeitsmappenmitwirkender
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Kann freigegebene Arbeitsmappen speichern. |
+> | **Id** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **Aktionen** |  |
+> | Microsoft.Insights/workbooks/write | Erstellen oder Aktualisieren einer Arbeitsmappe |
+> | Microsoft.Insights/workbooks/delete | Löschen einer Arbeitsmappe |
+> | Microsoft.Insights/workbooks/read | Lesen einer Arbeitsmappe |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+## <a name="workbook-reader"></a>Arbeitsmappenleser
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschreibung** | Kann Arbeitsmappen lesen. |
+> | **Id** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **Aktionen** |  |
+> | microsoft.insights/workbooks/read | Lesen einer Arbeitsmappe |
 > | **NotActions** |  |
 > | *keine* |  |
 > | **DataActions** |  |

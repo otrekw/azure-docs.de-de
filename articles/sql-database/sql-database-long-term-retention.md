@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162156"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499982"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
 
@@ -28,7 +28,13 @@ Viele Anwendungen dienen gesetzlichen, ordnungsgemäßen oder anderen geschäftl
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Funktionsweise der langfristigen Aufbewahrung von SQL-Datenbank
 
-Die langfristige Sicherungsaufbewahrung (LTR) nutzt die [automatischen](sql-database-automated-backups.md) vollständigen Datenbanksicherungen für die Point-in-Time-Wiederherstellung (Point In Time Restore, PITR). Wenn eine LTR-Richtlinie konfiguriert wurde, werden diese Sicherungen in verschiedene Blobs für langfristige Speicherung kopiert. Der Kopiervorgang ist ein Hintergrundauftrag, der keine Auswirkung auf die Leistung der Datenbankworkload hat. Die LTR-Sicherungen werden für einen Zeitraum aufbewahrt, der durch die LTR-Richtlinie festgelegt wird. Die LTR-Richtlinie für jede SQL-Datenbank kann auch angeben, wie oft die LTR-Sicherungen erstellt werden. Um von dieser Flexibilität zu profitieren, können Sie in der Richtlinie eine Kombination aus vier Parametern verwenden: wöchentliche Sicherungsaufbewahrung (W), monatliche Sicherungsaufbewahrung (M), jährliche Sicherungsaufbewahrung (Y) und Woche des Jahres (WeekOfYear). Wenn Sie den Parameter „W“ angeben, wird eine wöchentliche Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „M“ angeben, wird eine in der ersten Woche jedes Monats erstellte Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „Y“ angeben, wird eine Sicherung, die in der durch „WeekOfYear“ angegebenen Woche erstellt wird, in den langfristigen Speicher kopiert. Jede Sicherung wird für den durch diese Parameter angegebenen Zeitraum im langfristigen Speicher aufbewahrt. Jede Änderung der LTR-Richtlinie gilt für die zukünftigen Sicherungen. Wenn beispielsweise die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im nächsten Jahr erstellt. 
+Die langfristige Sicherungsaufbewahrung (LTR) nutzt die [automatischen](sql-database-automated-backups.md) vollständigen Datenbanksicherungen für die Point-in-Time-Wiederherstellung (Point In Time Restore, PITR). Wenn eine LTR-Richtlinie konfiguriert wurde, werden diese Sicherungen in verschiedene Blobs für langfristige Speicherung kopiert. Der Kopiervorgang ist ein Hintergrundauftrag, der keine Auswirkung auf die Leistung der Datenbankworkload hat. Die LTR-Richtlinie für jede SQL-Datenbank kann auch angeben, wie oft die LTR-Sicherungen erstellt werden.
+
+Um von LTR zu profitieren, können Sie eine Richtlinie mit einer Kombination aus vier Parametern definieren: wöchentliche Sicherungsaufbewahrung (W), monatliche Sicherungsaufbewahrung (M), jährliche Sicherungsaufbewahrung (Y) und Woche des Jahres (WeekOfYear). Wenn Sie den Parameter „W“ angeben, wird eine wöchentliche Sicherung in den langfristigen Speicher kopiert. Wenn Sie den Parameter „M“ angeben, wird die erste Sicherung jedes Monats in den langfristigen Speicher kopiert. Wenn Sie den Parameter „Y“ angeben, wird eine Sicherung, die in der durch „WeekOfYear“ angegebenen Woche erstellt wird, in den langfristigen Speicher kopiert. Wenn die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im Folgejahr erstellt. Jede Sicherung wird entsprechend den Richtlinienparametern, die beim Erstellen der LTR-Sicherung konfiguriert werden, im langfristigen Speicher aufbewahrt.
+
+> [!NOTE]
+> Jede Änderung der LTR-Richtlinie gilt nur für zukünftige Sicherungen. Wenn Sie beispielsweise die wöchentliche Sicherungsaufbewahrung (W), monatliche Sicherungsaufbewahrung (M) oder jährliche Sicherungsaufbewahrung (Y) ändern, gilt die Aufbewahrungseinstellung nur für neue Sicherungen. Die Aufbewahrung vorhandener Sicherungen wird nicht geändert. Wenn Sie ältere LTR-Sicherungen vor Ablauf des Aufbewahrungszeitraums löschen möchten, müssen Sie die [Sicherungen manuell löschen](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> 
 
 Beispiele für die LTR-Richtlinie:
 

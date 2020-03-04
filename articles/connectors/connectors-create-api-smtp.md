@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789153"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647578"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Senden von E-Mails von Ihrem SMTP-Konto mithilfe von Azure Logic Apps
 
@@ -49,7 +49,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Verbindungsinformationen an:
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Beschreibung |
    |----------|----------|-------------|
    | **Verbindungsname** | Ja | Ein Name für die Verbindung mit Ihrem SMTP-Server | 
    | **SMTP-Serveradresse** | Ja | Die Adresse Ihres SMTP-Servers | 
@@ -65,12 +65,10 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/smtpconnector/) des Connectors.
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/smtpconnector/).
 
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

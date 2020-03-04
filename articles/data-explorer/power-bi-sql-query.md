@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Daten aus Azure Data Explorer mithilfe einer SQL-Abfrage in Power BI
+title: Visualisieren von Daten aus Azure Data Explorer mit einer Power BI-SQL-Abfrage
 description: 'In diesem Artikel erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: eine SQL-Abfrage für einen Azure Data Explorer-Cluster.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024083"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560472"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Visualisieren von Daten aus Azure Data Explorer mithilfe einer SQL-Abfrage in Power BI
 
@@ -52,7 +52,7 @@ In der Regel verwenden Sie die native Abfragesprache mit Azure Data Explorer. Hi
     |---|---|---|
     | Server | *help.kusto.windows.net* | Die URL für den Hilfecluster (ohne *https://* ). Für andere Cluster hat die URL das Format *\<Clustername\>.\<Region\>.kusto.windows.net*. |
     | Datenbank | *Beispiele* | Die Beispieldatenbank, die in dem Cluster gehostet wird, mit dem Sie eine Verbindung herstellen. |
-    | Datenkonnektivitätsmodus | *Import* | Bestimmt, ob Power BI die Daten importiert oder direkt eine Verbindung mit der Datenquelle herstellt. Für diesen Connector sind beide Optionen geeignet. |
+    | Datenkonnektivitätsmodus | *Importieren* | Bestimmt, ob Power BI die Daten importiert oder direkt eine Verbindung mit der Datenquelle herstellt. Für diesen Connector sind beide Optionen geeignet. |
     | Befehlstimeout | Nicht ausfüllen | Bestimmt, wie lange die Abfrage ausgeführt wird, bevor ein Timeoutfehler ausgelöst wird. |
     | SQL-Anweisung | Kopieren Sie die Abfrage unter dieser Tabelle. | Die SQL-Anweisung, die Azure Data Explorer in eine native Abfrage übersetzt. |
     | Weitere Optionen | Übernehmen Sie die Standardwerte. | Die weiteren Optionen gelten nicht für Azure Data Explorer-Cluster. |
@@ -70,7 +70,7 @@ In der Regel verwenden Sie die native Abfragesprache mit Azure Data Explorer. Hi
 
 1. Wählen Sie auf dem Bildschirm **help.kusto.windows.net: Beispiele** die Option **Laden** aus.
 
-    ![Laden von Daten](media/power-bi-sql-query/load-data.png)
+    ![Laden der Daten](media/power-bi-sql-query/load-data.png)
 
     Die Tabelle wird im Hauptfenster von Power BI in der Berichtsansicht geöffnet, in der Sie anhand der Beispieldaten Berichte erstellen können.
 

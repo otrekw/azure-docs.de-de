@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167382"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591607"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -73,20 +73,21 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 
 ## <a name="review-things-you-should-know"></a>Überprüfung wichtiger Informationen
 
-Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung aus einer einzelnen AD-Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
+### <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
+- Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung aus einer einzelnen AD-Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
 
-Wenn in Ihrer Umgebung Virtual Desktop Infrastructure (VDI) verwendet wird, finden Sie unter [Geräteidentität und Desktopvirtualisierung](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure) weitere Informationen.
+- Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
-Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
+- Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen bzw. obligatorischen Profilen verwenden.
 
-Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
+### <a name="os-imaging-considerations"></a>Überlegungen zur Erstellung von Betriebssystemimages
+- Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen bzw. obligatorischen Profilen verwenden.
+- Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
+- Wenn Sie den [vereinheitlichten Schreibfilter](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) und ähnliche Technologien verwenden, die Änderungen am Datenträger beim Neustart löschen, müssen diese angewandt werden, nachdem das Gerät in Azure AD Hybrid eingebunden wurde. Das Aktivieren solcher Technologien vor dem Abschluss der Einbindung in Azure AD Hybrid führt dazu, dass das Gerät bei jedem Neustart getrennt wird.
 
-Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>Behandeln von Geräten mit registriertem Azure AD-Status
 Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Eine etwaige Registrierung bei Azure AD wird nach der <i>Azure AD-Hybrideinbindung des Geräts</i> automatisch entfernt.
@@ -95,6 +96,11 @@ Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten 
 
 > [!NOTE]
 > Das für Azure AD registrierte Gerät wird nicht automatisch entfernt, wenn es von Intune verwaltet wird.
+
+### <a name="additional-considerations"></a>Weitere Überlegungen
+- Wenn in Ihrer Umgebung Virtual Desktop Infrastructure (VDI) verwendet wird, finden Sie unter [Geräteidentität und Desktopvirtualisierung](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure) weitere Informationen.
+
+- Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 
@@ -146,7 +152,7 @@ In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen.
 
 Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs in Azure AD Hybrid Join unter Windows 10
 
-| Art der lokalen AD UPNs | Domänentyp | Windows 10-Version | Beschreibung |
+| Art der lokalen AD UPNs | Domänentyp | Windows 10-Version | BESCHREIBUNG |
 | ----- | ----- | ----- | ----- |
 | Routingfähig | Im Verbund | Version 1703 | Allgemein verfügbar |
 | Nicht routingfähig | Im Verbund | Version 1803 | Allgemein verfügbar |

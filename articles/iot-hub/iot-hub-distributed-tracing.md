@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212483"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562427"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -131,7 +131,7 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bearbeiten des Beispiels zum Senden von Telemetriedaten zur Aktivierung der verteilten Ablaufverfolgung
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Beispiel in GitHub abrufen</a>
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Beispiel von GitHub abrufen</a>
 
 1. Öffnen Sie die Quelldatei `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` in einem Editor.
 
@@ -280,7 +280,7 @@ Eine Beschreibung der unterschiedlichen Protokolltypen finden Sie unter [Azure I
 Um den Fluss von IoT-Nachrichten zu visualisieren, richten Sie die Beispiel-App für die Anwendungsübersicht ein. Die Beispiel-App sendet die Protokolle der verteilten Ablaufverfolgung mithilfe einer Azure-Funktion und einem Event Hub an die [Anwendungsübersicht](../application-insights/app-insights-app-map.md).
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Beispiel in GitHub abrufen</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Beispiel von GitHub abrufen</a>
 
 In dieser Abbildung ist die verteilte Ablaufverfolgung mit drei Routingendpunkten in der Anwendungsübersicht dargestellt:
 
@@ -308,8 +308,8 @@ Nach der Aktivierung erfolgt die Unterstützung der verteilten Ablaufverfolgung 
 1. Das IoT-Gerät sendet die Nachricht an IoT Hub.
 1. Die Nachricht wird am IoT Hub-Gateway empfangen.
 1. IoT Hub sucht in den Anwendungseigenschaften der Nachricht nach `tracestate` und überprüft, ob das richtige Format vorliegt.
-1. Wenn dies der Fall ist, generiert und protokolliert IoT Hub `trace-id` und `span-id` in Azure Monitor-Diagnoseprotokollen unter der Kategorie `DiagnosticIoTHubD2C`.
-1. Nach Abschluss der Nachrichtenverarbeitung generiert IoT Hub ein anderes `span-id`-Element und protokolliert es zusammen mit dem vorhandenen `trace-id`-Element unter der Kategorie `DiagnosticIoTHubIngress`.
+1. In diesem Fall generiert IoT Hub eine global eindeutige `trace-id` für die Nachricht und eine `span-id` für den „Hop“ und protokolliert beide in Azure Monitor-Diagnoseprotokollen unter dem Vorgang `DiagnosticIoTHubD2C`.
+1. Nach Abschluss der Nachrichtenverarbeitung generiert IoT Hub eine andere `span-id` und protokolliert sie zusammen mit der vorhandenen `trace-id` unter dem Vorgang `DiagnosticIoTHubIngress`.
 1. Wenn für die Nachricht das Routing aktiviert ist, schreibt IoT Hub die Nachricht in den benutzerdefinierten Endpunkt und protokolliert ein weiteres `span-id`-Element mit dem gleichen `trace-id`-Element unter der Kategorie `DiagnosticIoTHubEgress`.
 1. Diese Schritte werden für jede generierte Nachricht wiederholt.
 

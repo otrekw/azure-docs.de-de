@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122524"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559843"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -171,7 +171,7 @@ Time Series Insights Preview speichert kalte Speicherdaten im [Parquet-Dateiform
 
 ### <a name="data-availability"></a>Datenverfügbarkeit
 
-Azure Time Series Insights Preview partitioniert und indiziert Daten, um eine optimale Abfrageleistung zu erzielen. Die Daten stehen nach der Indizierung für Abfragen zur Verfügung. Die Menge an erfassten Daten kann sich auf diese Verfügbarkeit auswirken.
+Azure Time Series Insights Preview partitioniert und indiziert Daten, um eine optimale Abfrageleistung zu erzielen. Die Daten können nach der Indizierung sowohl aus dem warmen (sofern aktiviert) als auch aus dem kalten Speicher abgefragt werden. Die Menge an erfassten Daten kann sich auf diese Verfügbarkeit auswirken.
 
 > [!IMPORTANT]
 > Während der Vorschauphase kann es bis zu 60 Sekunden dauern, bis Daten verfügbar werden. Wenn Sie eine erhebliche Latenz von weit über 60 Sekunden feststellen, übermitteln Sie ein Supportticket über das Azure-Portal.

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 2d078f9715a0cfa171f0c88776a4ab78c15215a8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186751"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561849"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Auswählen der passenden VM-SKU für Ihren Azure Data Explorer-Cluster 
 
@@ -47,7 +47,7 @@ Wählen Sie beim Erstellen eines Azure Data Explorer-Clusters die *optimale* VM-
 
 Die wesentlichen Unterschiede zwischen den verfügbaren SKU-Typen werden in der folgenden Tabelle beschrieben:
  
-| Attribut | D-SKU | L-SKU |
+| attribute | D-SKU | L-SKU |
 |---|---|---
 |**Kleine SKUs**|Mindestgröße ist D11 mit zwei Kernen|Mindestgröße ist L4 mit vier Kernen |
 |**Verfügbarkeit**|In allen Regionen verfügbar. (Die DS+PS-Version ist nur eingeschränkt verfügbar.)|In einigen Region verfügbar |
