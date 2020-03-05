@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614025"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252748"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
 
@@ -114,7 +114,7 @@ Zur Pullübertragung der Containerimages aus Azure Container Registry durch Serv
 
 Melden Sie sich bei der ACR-Instanz an. Verwenden Sie den Befehl **az acr login**, um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den die Containerregistrierung bei ihrer Erstellung erhalten hat.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ Nach Abschluss des Vorgangs wird eine **Erfolgsmeldung** zurückgegeben.
 
 Führen Sie den folgenden Befehl zum Abrufen des Kennworts Ihrer Containerregistrierung aus. Dieses Kennwort wird von Service Fabric für die Authentifizierung bei ACR zur Pullübertragung der Containerimages verwendet.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Damit Service Fabric diesen DNS-Namen dem Back-End-Dienst zuweisen kann, muss de
 
 Der Front-End-Dienst liest eine Umgebungsvariable, um den DNS-Namen der Redis-Instanz zu kennen. Diese Umgebungsvariable ist bereits in der Dockerfile definiert, die zum Generieren des Docker-Images verwendet wurde. Es ist keine weitere Maßnahme erforderlich.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

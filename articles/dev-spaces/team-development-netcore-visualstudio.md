@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine Teamentwicklung in einer .NET Core-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438173"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245055"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Entwicklung im Team mit .NET Core und Visual Studio über Azure Dev Spaces
 
@@ -146,6 +146,9 @@ Um eine Azure Dev Spaces-Instanz in einem Cluster vollständig zu löschen, eins
 Im folgenden Beispiel werden die Azure Dev Spaces-Controller Ihres aktiven Abonnements aufgelistet, und anschließend wird der Azure Dev Spaces-Controller gelöscht, der dem AKS-Cluster „myaks“ in der Ressourcengruppe „myaks-rg“ zugeordnet ist.
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

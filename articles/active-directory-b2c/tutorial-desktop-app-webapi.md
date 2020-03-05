@@ -2,20 +2,20 @@
 title: 'Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktopanwendung'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine Node.js-Web-API schützen und sie über eine .NET-Desktop-App aufrufen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849870"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183375"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Um eine geschützte Web-API über eine native Clientanwendung aufzurufen, müsse
 
 Im vorbereitenden Tutorial haben Sie eine native Clientanwendung mit dem Namen *nativeapp1* registriert. In den folgenden Schritten wird die Registrierung der nativen Anwendung mit den API-Bereichen konfiguriert, die Sie im vorherigen Abschnitt für *webapi1* verfügbar gemacht haben. Dadurch kann die Desktopanwendung ein Zugriffstoken von Azure AD B2C abrufen, mit dem die Web-API bereichsbezogenen Zugriff auf ihre Ressourcen überprüfen und gewähren kann. Die Codebeispiele für die Desktopanwendung und die Web-API werden später im Tutorial konfiguriert und ausgeführt.
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie **Anwendungen** und dann *nativeapp1* aus.
 1. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
@@ -59,7 +59,7 @@ Im vorbereitenden Tutorial haben Sie eine native Clientanwendung mit dem Namen *
 1. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche aus, die Sie zuvor definiert haben. Beispiel: *demo.read* und *demo.write*
 1. Klicken Sie auf **OK**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Wählen Sie **App-Registrierungen (Vorschau)** und anschließend die native Clientanwendung aus, die Zugriff auf die API erhalten soll. Beispiel: *nativeapp1*.
 1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.

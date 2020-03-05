@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690225"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920075"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -86,7 +86,7 @@ Navigieren Sie zum Konfigurieren einer **Warnung** zurück zur Seite **Warnungen
 
 1. Klicken Sie auf **Fertig**.
 
-Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options).
 
  Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
 
@@ -109,7 +109,7 @@ Eine Regel kann auch über die Seite **Metriken** erstellt werden:
    ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Metriken für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+* [Metriken für Azure Spring Cloud](spring-cloud-concept-metrics.md#user-metrics-options)
 * [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [SMS-Warnungsverhalten in Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

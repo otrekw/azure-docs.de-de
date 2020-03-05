@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976291"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197316"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -32,7 +33,7 @@ Key Vault-spezifische Informationen zur Befehlszeilenschnittstelle finden Sie in
 
 Key Vault-Vorgänge werden wie folgt separat über RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwaltet:
 
-| Vorgang | BESCHREIBUNG | Benutzerberechtigung |
+| Vorgang | Beschreibung | Benutzerberechtigung |
 |:--|:--|:--|
 |List|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
 |Wiederherstellen|Stellt einen gelöschten Schlüsseltresor wieder her.|Microsoft.KeyVault/vaults/write|
@@ -150,7 +151,7 @@ So löschen Sie einen vorläufig gelöschten Schlüssel dauerhaft (auch als Bere
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Den Aktionen zum **Wiederherstellen** und **Bereinigen** sind in einer Schlüsseltresor-Zugriffsrichtlinie eigene Berechtigungen zugewiesen. Damit ein Benutzer oder Dienstprinzipal eine Aktion zum **Wiederherstellen** oder **Bereinigen** ausführen kann, muss er über die entsprechende Berechtigung für diesen Schlüssel oder das Geheimnis verfügen. Die Berechtigung zum **Bereinigen** wird standardmäßig nicht zur Zugriffsrichtlinie eines Schlüsseltresors hinzugefügt, wenn mit der Verknüpfung „Alle“ alle Berechtigungen gewährt werden. Sie müssen die Berechtigung zum **Bereinigen** explizit gewähren. 
+Den Aktionen **Wiederherstellen** und **Endgültig löschen** sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Damit ein Benutzer oder Dienstprinzipal eine Aktion zum **Wiederherstellen** oder **Bereinigen** ausführen kann, muss er über die entsprechende Berechtigung für diesen Schlüssel oder das Geheimnis verfügen. Die Berechtigung zum **Bereinigen** wird standardmäßig nicht zur Zugriffsrichtlinie eines Schlüsseltresors hinzugefügt, wenn mit der Verknüpfung „Alle“ alle Berechtigungen gewährt werden. Sie müssen die Berechtigung zum **Bereinigen** explizit gewähren. 
 
 #### <a name="set-a-key-vault-access-policy"></a>Festlegen einer Schlüsseltresor-Zugriffsrichtlinie
 

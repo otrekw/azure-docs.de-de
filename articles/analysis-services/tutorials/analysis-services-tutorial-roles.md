@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572374"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273679"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
 
@@ -82,7 +82,7 @@ In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto aus Azure AD zur Se
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Hinzufügen eines Benutzers zur Modelldatenbank-Administratorrolle
 
-In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Internet Sales Administrator“ (Administrator für Internetverkäufe) hinzu, die bereits im Modell vorhanden ist. Diese Rolle verfügt über Vollzugriffsberechtigungen (Administrator) für die Beispielmodelldatenbank „adventureworks“. In dieser Aufgabe wird der TMSL-Befehl [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) in einem für Sie erstellten Skript verwendet.
+In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Internet Sales Administrator“ (Administrator für Internetverkäufe) hinzu, die bereits im Modell vorhanden ist. Diese Rolle verfügt über Vollzugriffsberechtigungen (Administrator) für die Beispielmodelldatenbank „adventureworks“. In dieser Aufgabe wird der TMSL-Befehl [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) in einem für Sie erstellten Skript verwendet.
 
 1. Erweitern Sie im **Objekt-Explorer** die Option **Datenbanken** > **adventureworks** > **Rollen**. 
 2. Klicken Sie mit der rechten Maustaste auf **Internet Sales Administrator** (Administrator für Internetverkäufe), und klicken Sie dann auf **Script Role as** (Rolle skripten als) > **CREATE OR REPLACE To** (ERSTELLEN ODER ERSETZEN:) > **Neues Abfrage-Editor-Fenster**.
@@ -98,7 +98,7 @@ In dieser Aufgabe fügen Sie ein Benutzer- oder Gruppenkonto zur Rolle „Intern
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Hinzufügen einer neuen Modelldatenbankrolle sowie eines Benutzers oder einer Gruppe
 
-In dieser Aufgabe verwenden Sie den [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl)-Befehl in einem TMSL-Skript, um die neue Rolle „Internet Sales Global“ (Internetverkäufe global) zu erstellen, Leseberechtigungen (*read*) für die Rolle anzugeben und ein Benutzer- oder Gruppenkonto aus Ihrer Azure AD-Instanz hinzuzufügen.
+In dieser Aufgabe verwenden Sie den [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl)-Befehl in einem TMSL-Skript, um die neue Rolle „Internet Sales Global“ (Internetverkäufe global) zu erstellen, Leseberechtigungen (*read*) für die Rolle anzugeben und ein Benutzer- oder Gruppenkonto aus Ihrer Azure AD-Instanz hinzuzufügen.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **adventureworks** und dann auf **Neue Abfrage** > **XMLA**. 
 2. Kopieren Sie das folgende TMSL-Skript, und fügen Sie es im Abfrage-Editor ein:

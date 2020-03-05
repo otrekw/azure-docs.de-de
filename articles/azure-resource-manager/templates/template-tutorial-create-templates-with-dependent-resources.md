@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f60f248ec3fbbe5adfb61bf361546d1d5e238f54
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834367"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250198"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -36,7 +36,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.

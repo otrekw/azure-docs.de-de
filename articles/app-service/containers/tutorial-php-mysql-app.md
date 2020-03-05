@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 89b8d9fb1d929e0598469ba582049c61216e923a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: cdac051e8f80186f7089996d931f02453128fdda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524018"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913072"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Erstellen einer PHP- und MySQL-App in Azure App Service unter Linux
 
@@ -403,15 +403,15 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-> [!NOTE]
-> Sie werden feststellen, dass am Ende der Bereitstellung [Composer](https://getcomposer.org/)-Pakete installiert werden. App Service führt diese Automatisierungen nicht während der Bereitstellung aus. Daher enthält dieses Beispielrepository drei zusätzliche Dateien im Stammverzeichnis für die Aktivierung:
+<!-- > [!NOTE]
+> You may notice that the deployment process installs [Composer](https://getcomposer.org/) packages at the end. App Service does not run these automations during default deployment, so this sample repository has three additional files in its root directory to enable it:
 >
-> - `.deployment`: Diese Datei weist App Service an, `bash deploy.sh` als benutzerdefiniertes Bereitstellungsskript auszuführen.
-> - `deploy.sh`: Das Der benutzerdefinierte Bereitstellungsskript. Wenn Sie die Datei überprüfen, sehen Sie, dass `php composer.phar install` nach `npm install` ausgeführt wird.
-> - `composer.phar`: Der Composer-Paket-Manager.
+> - `.deployment` - This file tells App Service to run `bash deploy.sh` as the custom deployment script.
+> - `deploy.sh` - The custom deployment script. If you review the file, you will see that it runs `php composer.phar install` after `npm install`.
+> - `composer.phar` - The Composer package manager.
 >
-> Mit diesem Ansatz können Sie der Git-basierten Bereitstellung in App Service beliebige Schritte hinzufügen. Weitere Informationen finden Sie unter [Ausführen von Composer](configure-language-php.md#run-composer).
->
+> You can use this approach to add any step to your Git-based deployment to App Service. For more information, see [Run Composer](configure-language-php.md#run-composer). -->
+> 
 
 ### <a name="browse-to-the-azure-app"></a>Navigieren zur Azure-App
 

@@ -1,18 +1,18 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: ce49e9e26160017d64d745c9c7ad5402bc3ae2ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: mimart
+ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641558"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186139"
 ---
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen sie **Anwendungen** und anschließend die Webanwendung aus, die Zugriff auf die API erhalten soll. Beispiel: *webapp1*.
 1. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
@@ -20,7 +20,7 @@ ms.locfileid: "73641558"
 1. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche aus, die Sie zuvor definiert haben. Beispiel: *demo.read* und *demo.write*
 1. Klicken Sie auf **OK**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Wählen Sie **App-Registrierungen (Vorschau)** und anschließend die Webanwendung aus, die Zugriff auf die API haben soll. Beispiel: *webapp1*.
 1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.

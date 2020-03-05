@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a80a1567c84ff3c2eda8ad22391aa862bb7d9d82
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963341"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915825"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Trainieren und vergleichen Sie mehrere Regressionsmodelle, um Autopreise mit dem Azure Machine Learning-Designer vorherzusagen.
 
@@ -62,7 +62,7 @@ Verwenden Sie das Modul **Select Columns in Dataset** (Spalten in Dataset auswä
 
 Machine Learning-Probleme sind vielfältig. Machine Learning-Aufgaben sind z.B. Klassifizierung, Clustering, Regression und Empfehlungssysteme, die möglicherweise jeweils einen anderen Algorithmus erfordern. Die Auswahl des Algorithmus hängt häufig von den Anforderungen des Anwendungsfalls ab. Nachdem Sie einen Algorithmus ausgewählt haben, müssen Sie seine Parameter optimieren, um ein genaueres Modell zu trainieren. Sie müssen alle Modelle basierend auf Metriken wie Genauigkeit, Verständlichkeit und Effizienz auswerten.
 
-Da das Ziel dieser Pipeline darin besteht, Automobilpreise vorherzusagen, und die Bezeichnungsspalte (Preis) reelle Zahlen enthält, ist ein Regressionsmodell eine gute Wahl. In Anbetracht der Tatsache, dass die Anzahl der Features relativ klein ist (weniger als 100) und diese Features nicht spärlich sind, ist es wahrscheinlich, dass die Entscheidungsgrenze nichtlinear ist.
+Da das Ziel dieser Pipeline darin besteht, Automobilpreise vorherzusagen, und die Bezeichnungsspalte (Preis) reelle Zahlen enthält, ist ein Regressionsmodell eine gute Wahl.
 
 Um die Leistung verschiedener Algorithmen zu vergleichen, verwenden wir zwei nichtlineare Algorithmen (**Boosted Decision Tree Regression** und **Decision Forest Regression**), um Modelle zu erstellen. Beide Algorithmen haben Parameter, die Sie ändern können, aber in diesem Beispiel werden die Standardwerte für diese Pipeline verwendet.
 

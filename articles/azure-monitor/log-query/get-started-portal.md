@@ -1,18 +1,17 @@
 ---
 title: Erste Schritte mit Azure Monitor Log Analytics | Microsoft-Dokumentation
 description: Dieser Artikel ist ein Tutorial zum Schreiben von Abfragen mithilfe von Log Analytics im Azure-Portal.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933047"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670235"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
 
@@ -106,7 +105,7 @@ Konzentrieren wir uns nun auf Ereignisse mit dem Schweregrad _Error_. Dieser wir
 
 Klicken Sie auf das Filtersymbol neben dem Spaltentitel, und wählen Sie im Popupfenster Werte aus, die bei _Beginnt mit_ den Text _error_ aufweisen:
 
-![Filter](media/get-started-portal/filter.png)
+![Filtern](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Sortieren und Gruppieren von Ergebnissen

@@ -4,12 +4,12 @@ description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorberei
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 131ea39b382735423a1edff72774313c4096ea2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552416"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252157"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Erstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
 
@@ -46,8 +46,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 Hier ist eine Beispielausgabe für eine neue Azure-Containerregistrierung mit dem Namen *mycontainerregistry082* angegeben (in gekürzter Form):
 
-```console
-$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic
+```output
 ...
 {
   "creationDate": "2018-03-16T21:54:47.297875+00:00",
@@ -78,10 +77,15 @@ Sie müssen sich bei der Azure-Containerregistrierung anmelden, damit Sie Images
 az acr login --name <acrName>
 ```
 
+Beispiel:
+
+```azurecli
+az acr login --name mycontainerregistry082
+```
+
 Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück:
 
-```console
-$ az acr login --name mycontainerregistry082
+```output
 Login Succeeded
 ```
 
@@ -97,8 +101,11 @@ az acr show --name <acrName> --query loginServer --output table
 
 Dies sieht beispielsweise wie folgt aus, wenn Ihre Registrierung den Namen *mycontainerregistry082* hat:
 
-```console
-$ az acr show --name mycontainerregistry082 --query loginServer --output table
+```azurecli
+az acr show --name mycontainerregistry082 --query loginServer --output table
+```
+
+```output
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
@@ -165,8 +172,11 @@ az acr repository list --name <acrName> --output table
 
 Beispiel:
 
-```console
-$ az acr repository list --name mycontainerregistry082 --output table
+```azurecli
+az acr repository list --name mycontainerregistry082 --output table
+```
+
+```output
 Result
 ----------------
 aci-tutorial-app
@@ -181,7 +191,7 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 Die Ausgabe sollte etwa folgendermaßen aussehen:
 
 ```console
-$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
+az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1

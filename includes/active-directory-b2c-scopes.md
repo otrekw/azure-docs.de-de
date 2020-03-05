@@ -1,27 +1,27 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 59cf0b81363c724d709d85105525bece13743f26
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: mimart
+ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474874"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183376"
 ---
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie **Anwendungen** aus.
 1. Wählen Sie die Anwendung *webapi1* aus, um ihre Seite mit den **Eigenschaften** zu öffnen.
 1. Wählen Sie **Veröffentlichte Bereiche** aus. Mit den veröffentlichten Bereichen können einer Clientanwendung bestimmte Berechtigungen für die Web-API gewährt werden.
-1. Geben Sie unter **BEREICH** den Bereich `demo.read` und als **BESCHREIBUNG** `Read access to the web API` ein.
-1. Geben Sie unter **BEREICH** den Bereich `demo.write` und als **BESCHREIBUNG** `Write access to the web API` ein.
+1. Geben Sie unter **BEREICH** den Bereich `demo.read` und als **BESCHREIBUNG**`Read access to the web API` ein.
+1. Geben Sie unter **BEREICH** den Bereich `demo.write` und als **BESCHREIBUNG**`Write access to the web API` ein.
 1. Wählen Sie **Speichern** aus.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Wählen Sie **App-Registrierungen (Vorschau)** aus.
 1. Wählen Sie die Anwendung *webapi1* aus, um ihre **Übersicht**-Seite zu öffnen.

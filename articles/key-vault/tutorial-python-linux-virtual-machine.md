@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242418"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198149"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Tutorial: Verwenden eines virtuellen Linux-Computers und einer Python-App zum Speichern von Geheimnissen in Azure Key Vault
 
@@ -197,7 +198,7 @@ Mit dem obigen Code wird ein zweistufiger Prozess durchgeführt:
    1. Ein Token wird vom lokalen MSI-Endpunkt auf dem virtuellen Computer abgerufen. Der Endpunkt ruft dann ein Token aus Azure Active Directory ab.
    1. Das Token wird an den Schlüsseltresor übergeben, und Ihr Geheimnis wird abgerufen.
 
-Führen Sie den folgenden Befehl aus: Der Wert des Geheimnisses sollte angezeigt werden.
+Führen Sie den folgenden Befehl aus. Der Wert des Geheimnisses sollte angezeigt werden.
 
 ```console
 python Sample.py

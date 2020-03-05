@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465436"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252784"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Tutorial: Erstellen von Containerimages für einen Linux-Service Fabric-Cluster
 
@@ -34,7 +34,7 @@ In dieser Tutorialreihe lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Einrichtung der Linux-Entwicklungsumgebung für Service Fabric. Befolgen Sie die [hier](service-fabric-get-started-linux.md) aufgeführten Anweisungen, um die Linux-Umgebung einzurichten.
-* Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+* Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Außerdem ist es erforderlich, dass Sie über ein Azure-Abonnement verfügen. Weitere Informationen zu einer kostenlosen Testversion finden Sie [hier](https://azure.microsoft.com/free/).
 
 ## <a name="get-application-code"></a>Abrufen von Anwendungscode
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Führen Sie zunächst den Befehl **az login** aus, um sich bei Ihrem Azure-Konto anzumelden.
 
-```bash
+```azurecli
 az login
 ```
 
 Verwenden Sie dann den Befehl **az account**, um Ihr Abonnement für die Erstellung der Azure Container Registry-Instanz auszuwählen. Anstelle von <subscription_id> müssen Sie die Abonnement-ID Ihres Azure-Abonnements angeben.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zu
 
 Erstellen Sie mithilfe des Befehls **az group create** eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 Erstellen Sie mit dem Befehl **az acr create** eine Azure Container Registry-Instanz. Ersetzen Sie \<acrName> durch den Namen der Containerregistrierung, die Sie für Ihr Abonnement erstellen möchten. Dieser muss aus alphanumerischen Zeichen bestehen und eindeutig sein.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ Im weiteren Verlauf des Tutorials verwenden wir „acrName“ als Platzhalter f�
 
 Melden Sie sich zunächst bei Ihrer ACR-Instanz an, bevor Sie Images per Push in sie übertragen. Verwenden Sie den Befehl **az acr login**, um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den die Containerregistrierung bei ihrer Erstellung erhalten hat.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Führen Sie den folgenden Befehl aus, um den loginServer-Namen abzurufen:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Dadurch wird eine Tabelle mit den folgenden Ergebnissen ausgegeben. Dieses Ergebnis wird zur Kennzeichnung Ihres **azure-vote-front**-Images verwendet, bevor es im nächsten Schritt an die Containerregistrierung weitergeleitet wird.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ Führen Sie nach der Kennzeichnung den Befehl „docker images“ aus, um den Vo
 
 Ausgabe:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ Die Ausführung der Docker-Push-Befehle nimmt einige Minuten in Anspruch.
 
 Führen Sie den Befehl [az acr repository list](/cli/azure/acr/repository) aus, um eine Liste der Images zurückzugeben, die per Push in Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Ausgabe:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

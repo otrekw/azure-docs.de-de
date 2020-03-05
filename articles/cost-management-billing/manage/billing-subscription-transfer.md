@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188393"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245384"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -45,7 +45,7 @@ Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren i
 
     > [!IMPORTANT]
     >
-    > Wenn Sie das Abonnement in den Azure AD-Mandanten des neuen Kontos verschieben, werden alle Zuweisungen der [rollenbasierten Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) zum Verwalten von Ressourcen im Abonnement dauerhaft entfernt. Nur der Benutzer des neuen Kontos, der Ihre Übertragungsanforderung angenommen hat, hat Zugriff auf die Verwaltung von Ressourcen im Abonnement. Weitere Informationen finden Sie unter [Übertragen des Abonnements an einen Benutzer in einem anderen Azure AD-Mandanten](../../cognitive-services/acoustics/known-issues.md). Alternativ können Sie das Kontrollkästchen deaktivieren, mit dem der Azure AD-Mandant des Abonnements den Abrechnungsbesitz überträgt, ohne das Abonnement in den Mandanten des neuen Kontos zu verschieben. In diesem Fall werden vorhandene RBAC-Berechtigungen zum Verwalten von Azure-Ressourcen beibehalten.
+    > Wenn Sie das Abonnement in den Azure AD-Mandanten des neuen Kontos verschieben, werden alle Zuweisungen der [rollenbasierten Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) zum Verwalten von Ressourcen im Abonnement dauerhaft entfernt. Nur der Benutzer des neuen Kontos, der Ihre Übertragungsanforderung angenommen hat, hat Zugriff auf die Verwaltung von Ressourcen im Abonnement. Weitere Informationen finden Sie unter [Übertragen des Abonnements an einen Benutzer in einem anderen Azure AD-Mandanten](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories). Alternativ können Sie das Kontrollkästchen deaktivieren, mit dem der Azure AD-Mandant des Abonnements den Abrechnungsbesitz überträgt, ohne das Abonnement in den Mandanten des neuen Kontos zu verschieben. In diesem Fall werden vorhandene RBAC-Berechtigungen zum Verwalten von Azure-Ressourcen beibehalten.
 
     ![Seite zum Senden der Übertragungsanforderung](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
@@ -76,7 +76,7 @@ Wenn Sie den Abrechnungsbesitz Ihres Abonnements an ein Konto in einem anderen A
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Übertragen von Visual Studio- und Partner Network-Abonnements
 
-Mit Abonnements für Visual Studio und Microsoft Partner Network sind monatliche Azure-Gutschriften verbunden. Wenn Sie derartige Abonnements übertragen, ist Ihr Guthaben im Zielabrechnungskonto nicht verfügbar. Für das Abonnement wird das Guthaben des Zielabrechnungskontos verwendet. Beispiel: Bob überträgt am 9. September ein Visual Studio Enterprise-Abonnement an das Konto von Jane, die die Übertragung annimmt. Nach der Übertragung wird für das Abonnement das Guthaben von Janes Konto verwendet. Das Guthaben wird jeweils am 9. des Monats zurückgesetzt.
+Mit Abonnements für Visual Studio und Microsoft Partner Network sind monatliche Azure-Gutschriften verbunden. Wenn Sie derartige Abonnements übertragen, ist Ihr Guthaben im Zielabrechnungskonto nicht verfügbar. Für das Abonnement wird das Guthaben des Ziel-Abrechnungskontos verwendet. Beispiel: Bob überträgt am 9. September ein Visual Studio Enterprise-Abonnement an das Konto von Jane, die die Übertragung annimmt. Nach der Übertragung wird für das Abonnement die Gutschrift für Janes Konto verwendet. Das Guthaben wird jeweils am 9. des Monats zurückgesetzt.
 
 
 <a id="EA"></a>

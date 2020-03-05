@@ -3,17 +3,16 @@ title: 'Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor'
 description: Hier erfahren Sie, wie Sie Ihr erstes Metrikdiagramm mit dem Azure-Metrik-Explorer erstellen.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: bwren
-ms.openlocfilehash: 7d9360840912614b6ae89d958d90de962b36506d
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661463"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor
 Mit dem Metrik-Explorer – einem Azure Monitor-Feature im Azure-Portal – können Sie auf der Grundlage von Metrikwerten Diagramme erstellen, Trends visuell korrelieren sowie Spitzen und Einbrüche bei Metrikwerten untersuchen. Verwenden Sie den Metrik-Explorer, um die Integrität und Auslastung Ihrer Azure-Ressourcen zu untersuchen oder um Diagramme auf der Grundlage benutzerdefinierter Metriken zu zeichnen. 

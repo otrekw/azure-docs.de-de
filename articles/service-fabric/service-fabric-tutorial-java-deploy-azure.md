@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465276"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252797"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Tutorial: Bereitstellen einer Java-Anwendung in einem Service Fabric-Cluster in Azure
 
@@ -53,13 +53,13 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 2. Anmelden bei Ihrem Azure-Konto
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. Legen Sie Ihr Azure-Abonnement fest, das Sie zum Erstellen der Ressourcen verwenden möchten.
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -73,7 +73,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
     Mit dem obigen Befehl werden die folgenden Informationen zurückgegeben, die Sie sich zur späteren Verwendung notieren sollten.
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -81,7 +81,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 5. Erstellen einer Ressourcengruppe für das Speicherkonto, in dem Ihre Protokolle gespeichert sind
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -89,7 +89,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 6. Erstellen eines Speicherkontos, das zum Speichern der erstellten Protokolle verwendet wird
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
@@ -101,13 +101,13 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 8. Kopieren Sie die Konto-SAS-URL, und bewahren Sie sie für die Erstellung Ihres Service Fabric-Clusters auf. Die URL lautet in etwa wie folgt:
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Erstellen Sie eine Ressourcengruppe, in der die Event Hub-Ressourcen enthalten sind. Event Hubs wird zum Senden von Nachrichten von Service Fabric an den Server verwendet, auf dem die ELK-Ressourcen ausgeführt werden.
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -115,7 +115,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 10. Erstellen Sie mit dem folgenden Befehl eine Event Hubs-Ressource. Befolgen Sie die Anweisungen in den Aufforderungen, um Details für namespaceName, eventHubName, consumerGroupName, sendAuthorizationRule und receiveAuthorizationRule einzugeben.
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -158,7 +158,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
     Kopieren Sie den Wert des Felds **sr** in der zurückgegebenen JSON-Ausgabe. Der Wert des Felds **sr** ist das SAS-Token für EventHubs. Die folgende URL ist ein Beispiel für das Feld **sr**:
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -185,7 +185,7 @@ Mit den folgenden Schritten werden die erforderlichen Ressourcen erstellt, die z
 
 14. Führen Sie den folgenden Befehl aus, um Ihren Service Fabric-Cluster zu erstellen:
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 

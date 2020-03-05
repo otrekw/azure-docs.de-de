@@ -8,24 +8,24 @@ ms.topic: tutorial
 ms.date: 11/16/2019
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 1c06cf12ac3264e77934a71426f9194136074e71
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: e4a2b1ee1b2b2726b7e0a807a965dbf4bc6b9500
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132977"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196993"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage
 
 Dieses Tutorial ist der erste Teil einer Serie. In diesem Tutorial wird beschrieben, wie eine Web-App bereitgestellt wird, für die die Azure Storage-Clientbibliothek zum Hochladen von Bildern in ein Speicherkonto verwendet wird. Nachdem Sie das Tutorial durchgearbeitet haben, verfügen Sie über eine Web-App, mit der Bilder in Azure-Speicher abgelegt und daraus angezeigt werden.
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 ![Bildgrößenänderungs-App in .NET](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 ![Bildgrößenänderungs-App in Node.js V2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![Bildgrößenänderungs-App in Node.js V10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -46,11 +46,11 @@ Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Falls Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
+Falls Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe 
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.  
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.  
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstellt.
 
@@ -69,7 +69,7 @@ Das Beispiel lädt Bilder in einen Blob-Container in einem Azure Storage-Konto h
 Ersetzen Sie im folgenden Befehl den Platzhalter `<blob_storage_account>` durch Ihren eigenen global eindeutigen Namen für das Blob Storage-Konto.
 
 ```azurecli-interactive
-$blobStorageAccount="<blob_storage_account>"
+blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia --resource-group myResourceGroup --sku Standard_LRS --kind blobstorage --access-tier hot
 
@@ -84,7 +84,7 @@ Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/accou
 Der öffentliche Zugriff für den Container *images* ist auf `off` festgelegt. Der öffentliche Zugriff für den Container *thumbnails* ist auf `container` festgelegt. Bei der Einstellung `container` für den öffentlichen Zugriff können Benutzer, die die Webseite besuchen, die Miniaturansichten anzeigen.
 
 ```azurecli-interactive
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup -n $blobStorageAccount --query [0].value --output tsv)
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup -n $blobStorageAccount --query "[0].value" --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount --account-key $blobStorageAccountKey --public-access off
 
@@ -117,7 +117,7 @@ Die Web-App umfasst einen Hostingort für den Code der Beispiel-App, der aus dem
 Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Ist `<web_app>` nicht eindeutig, wird die folgende Fehlermeldung angezeigt: _Eine Website mit dem angegebenen Namen `<web_app>` ist bereits vorhanden._ Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
-$webapp="<web_app>"
+webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 
@@ -125,7 +125,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Bereitstellen der Beispiel-App aus dem GitHub-Repository
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
@@ -136,7 +136,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
 
 ```azurecli-interactive
@@ -156,7 +156,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>Konfigurieren von Einstellungen für Web-Apps
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](/dotnet/api/overview/azure/storage) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
 
@@ -165,18 +165,18 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 
 Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](https://docs.microsoft.com/javascript/api/azure-storage) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
+storageConnectionString=$(az storage account show-connection-string --resource-group resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup --settings AzureStorageConfig__ImageContainer=images AzureStorageConfig__ThumbnailContainer=thumbnails AzureStorageConfig__AccountName=$blobStorageAccount AzureStorageConfig__AccountKey=$blobStorageAccountKey AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](https://github.com/Azure/azure-storage-js) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
 
@@ -193,7 +193,7 @@ Nachdem Sie die Web-App bereitgestellt und konfiguriert haben, können Sie die F
 
 Navigieren Sie zum Testen der Web-App zur URL Ihrer veröffentlichten App. Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 Wählen Sie den Bereich **Fotos hochladen** aus, um eine Datei auszuwählen und hochzuladen, oder ziehen Sie eine Datei in den Bereich. Das Bild wird nicht mehr angezeigt, wenn es erfolgreich hochgeladen wurde. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird.
 
@@ -236,7 +236,7 @@ Die folgenden Klassen und Methoden werden in den vorhergehenden Tasks verwendet:
 |[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)    | [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)        |
 |[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)     | [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync)        |
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 
 Wählen Sie **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird. 
 
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, (req, res) => {
 });
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 Wählen Sie **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird. 
 
@@ -398,13 +398,13 @@ Wählen Sie mit der Dateiauswahl eine Datei aus, und wählen Sie dann die Option
 
 Navigieren Sie wieder zu Ihrer App, um zu überprüfen, ob das in den Container **thumbnails** hochgeladene Bild sichtbar ist.
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 ![Bildgrößenänderungs-App (.NET) mit neuem Bild angezeigt](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 ![Bildgrößenänderungs-App (Node.js V2) mit neuem Bild angezeigt](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![Bildgrößenänderungs-App (Node.js V10) mit neuem Bild angezeigt](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

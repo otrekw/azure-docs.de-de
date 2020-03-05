@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1317ea6526a28c5d71dce1a3c25b2fd05f5e446b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588874"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271308"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe der Azure CLI
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Sie können dieses Tutorial mithilfe von Azure Cloud Shell absolvieren oder die entsprechenden Befehle lokal ausführen.  Falls Sie Azure Cloud Shell noch nie verwendet haben, [melden Sie sich jetzt an](https://shell.azure.com), um die Ersteinrichtung vorzunehmen.
-Wenn Sie diese Befehle lokal ausführen möchten, müssen Sie die CLI installieren.  Für dieses Tutorial müssen Sie mindestens Version 2.0.71 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie diese Befehle lokal ausführen möchten, müssen Sie die CLI installieren.  Für dieses Tutorial müssen Sie mindestens Version 2.0.71 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -61,7 +61,7 @@ Für den Zugriff auf das öffentliche Internet benötigen Sie mindestens eine ö
 
 ### <a name="create-a-public-ip-prefix"></a>Erstellen des Präfixes für öffentliche IP-Adressen
 
-Sie können für ein NAT-Gateway mehrere öffentliche IP-Adressressourcen und/oder Präfixes für öffentliche IP-Adressen verwenden. In diesem Szenario wird zur Veranschaulichung eine Präfixressource für öffentliche IP-Adressen hinzugefügt.   Verwenden Sie [az network public-ip prefix create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix), um eine Präfixressource für öffentliche IP-Adressen mit dem Namen **myPublicIPprefix** in **myResourceGroupNAT** zu erstellen.
+Sie können für ein NAT-Gateway mehrere öffentliche IP-Adressressourcen und/oder Präfixes für öffentliche IP-Adressen verwenden. In diesem Szenario wird zur Veranschaulichung eine Präfixressource für öffentliche IP-Adressen hinzugefügt.   Verwenden Sie [az network public-ip prefix create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create), um eine Präfixressource für öffentliche IP-Adressen mit dem Namen **myPublicIPprefix** in **myResourceGroupNAT** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip prefix create \

@@ -6,15 +6,16 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 57c5e3f2741f81bce2eff2d5ef2b0f2d029096e3
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36dada57e587da6e023a83c8ebb6555abe44b9ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976384"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184845"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 
@@ -32,13 +33,13 @@ Je nach Konfiguration und Umgebung gibt es verschiedene Varianten.
 
 Der gesamte Datenverkehr an einen Schlüsseltresor verläuft für alle drei Funktionen (Authentifizierung, Verwaltung und Datenebenenzugriff) über „HTTPS: Port 443“. Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an. Clients mit OCSP-Unterstützung sollten die Zertifikatsperrliste nicht erreichen, sondern nur gelegentlich [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Schlüsseltresor-Clientanwendungen müssen zur Authentifizierung auf Azure Active Directory-Endpunkte zugreifen. Der verwendete Endpunkt richtet sich nach der Azure AD-Mandantenkonfiguration, dem Typ von Prinzipal (Benutzerprinzipal oder Dienstprinzipal) und dem Kontotyp, z.B. Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto.  
 
 | Prinzipaltyp | Endpunkt:Port |
 | --- | --- |
-| Benutzer mit Microsoft-Konto<br> (Beispiel: user@hotmail.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443<br><br> und <br>login.live.com:443 |
+| Benutzer mit Microsoft-Konto<br> (Beispiel: user@hotmail.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443<br><br> and <br>login.live.com:443 |
 | Benutzer- oder Dienstprinzipal mit einem Geschäfts-, Schul- oder Unikonto bei Azure AD (z.B. user@contoso.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443 |
 | Benutzer- oder Dienstprinzipal mit einem Geschäfts-, Schul- oder Unikonto plus Active Directory-Verbunddienste (AD FS) oder einem anderen Verbundendpunkt (z.B. user@contoso.com) |Alle Endpunkte für ein Geschäfts-, Schul- oder Unikonto plus AD FS oder anderen Verbundendpunkten |
 
@@ -48,7 +49,7 @@ Es sind noch andere komplexe Szenarien möglich. Weitere Informationen finden Si
 
 Für die Schlüsseltresorverwaltung (CRUD und Festlegen der Zugriffsrichtlinie) benötigt die Schlüsseltresor-Clientanwendung Zugriff auf einen Azure Resource Manager-Endpunkt.  
 
-| Typ des Vorgangs | Endpunkt:Port |
+| Typ der Operation | Endpunkt:Port |
 | --- | --- |
 | Vorgänge auf der Steuerungsebene des Schlüsseltresors<br> mit Azure Resource Manager |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> management.microsoftazure.de:443 |
 | Azure Active Directory Graph-API |**Global:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Deutschland:**<br> graph.cloudapi.de:443 |
@@ -57,7 +58,7 @@ Für die Schlüsseltresorverwaltung (CRUD und Festlegen der Zugriffsrichtlinie) 
 
 Für alle Schlüsseltresorvorgänge in Bezug auf die Objektverwaltung (Schlüssel und Geheimnisse) und Kryptografie benötigt der Schlüsseltresorclient Zugriff auf den Schlüsseltresor-Endpunkt. Das DNS-Suffix des Endpunkts unterscheidet sich je nach Standort des Schlüsseltresors. Der Schlüsseltresor-Endpunkt hat das folgende Format: *Tresorname*.*regionsspezifisches DNS-Suffix*. Dies ist in der Tabelle unten beschrieben.  
 
-| Typ des Vorgangs | Endpunkt:Port |
+| Typ der Operation | Endpunkt:Port |
 | --- | --- |
 | Vorgänge, z.B. kryptografische Vorgänge für Schlüssel, Erstellen, Lesen, Aktualisieren und Löschen von Schlüsseln und Geheimnissen, Festlegen oder Abrufen von Tags und anderen Attributen für Sicherheitstresorobjekte (Schlüssel oder Geheimnisse) |**Global:**<br> &lt;Tresorname&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;Tresorname&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;Tresorname&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> &lt;Tresorname&gt;.vault.microsoftazure.de:443 |
 

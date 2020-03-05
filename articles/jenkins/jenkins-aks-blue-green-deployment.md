@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Bereitstellungen in Azure Kubernetes Ser
 keywords: Jenkins, Azure, DevOps, Kubernetes, K8s, AKS, Blau/Grün-Bereitstellung, Continuous Delivery, CD
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158554"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251475"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Bereitstellen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
 
@@ -82,21 +82,21 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus:
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Verwenden der Azure CLI 2.0, um einen verwalteten Kubernetes-Cluster zu erstellen
 Um einen verwalteten Kubernetes-Cluster mit der [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) zu erstellen, müssen Sie die Azure CLI-Version 2.0.25 oder höher verwenden.
 
-1. Melden Sie sich beim Azure-Konto an. Nachdem Sie den folgenden Befehl eingegeben haben, erhalten Sie Anweisungen zum Abschließen der Anmeldung. 
+1. Melden Sie sich bei Ihrem Azure-Konto an. Nachdem Sie den folgenden Befehl eingegeben haben, erhalten Sie Anweisungen zum Abschließen der Anmeldung. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Wenn Sie den Befehl `az login` im vorherigen Schritt ausführen, wird eine Liste mit allen Ihren Azure-Abonnements (und den zugehörigen Abonnement-IDs) angezeigt. In diesem Schritt legen Sie das Azure-Standardabonnement fest. Ersetzen Sie den Platzhalter &lt;ID-Ihres-Abonnements> durch die ID des gewünschten Azure-Abonnements. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Erstellen Sie eine Ressourcengruppe. Ersetzen Sie den Platzhalter &lt;Name-Ihrer-Ressourcengruppe> durch den Namen Ihrer neuen Ressourcengruppe, und ersetzen Sie den Platzhalter &lt;Ihr-Speicherort> durch den entsprechenden Speicherort. Der Befehl `az account list-locations` listet alle Azure-Speicherorte auf. Während der AKS-Vorschau sind nicht alle Speicherorte verfügbar. Wenn Sie einen Speicherort eingeben, der zu diesem Zeitpunkt nicht gültig ist, listet die Fehlermeldung die verfügbaren Speicherorte auf.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Sie können eine Blau/Grün-Bereitstellung manuell oder mit einem Setupskript (i
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Manuelles Einrichten eines Kubernetes-Clusters 
 1. Laden Sie die Kubernetes-Konfiguration in Ihren Profilordner herunter.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Sie können eine Blau/Grün-Bereitstellung manuell oder mit einem Setupskript (i
     
     Aktualisieren Sie mit dem folgenden Befehl den DNS-Namen für die entsprechende IP-Adresse:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Wiederholen Sie den Aufruf für `todoapp-test-blue` und `todoapp-test-green`:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Sie können eine Blau/Grün-Bereitstellung manuell oder mit einem Setupskript (i
 
 1. Führen Sie den Befehl `az acr create` aus, um eine Container Registry-Instanz zu erstellen. Im nächsten Abschnitt können Sie `login server` als URL der Docker-Registrierung verwenden.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Führen Sie den Befehl `az acr credential` aus, um Ihre Container Registry-Anmeldeinformationen anzuzeigen. Notieren Sie den Benutzername und das Kennwort für die Docker-Registrierung, da diese im nächsten Abschnitt benötigt werden.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -253,9 +253,9 @@ In diesem Abschnitt erfahren Sie, wie Sie den Jenkins-Server für die Ausführun
 
 1. Geben Sie den Skriptpfad als `deploy/aks/Jenkinsfile` ein.
 
-## <a name="run-the-job"></a>Ausführen des Auftrags
+## <a name="run-the-job"></a>Ausführung des Auftrags.
 
-1. Überprüfen Sie, ob Sie Ihr Projekt erfolgreich in Ihrer lokalen Umgebung ausführen können. Das geht so: [Führen Sie das Projekt auf einem lokalen Computer aus](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Überprüfen Sie, ob Sie Ihr Projekt erfolgreich in Ihrer lokalen Umgebung ausführen können. Gehen Sie dabei folgendermaßen vor: [Führen Sie das Projekt auf einem lokalen Computer aus](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
 
 1. Führen Sie den Jenkins-Auftrag aus. Wenn Sie den Auftrag zum ersten Mal ausführen, stellt Jenkins die ToDo-App in der blauen Umgebung bereit, die die standardmäßige inaktive Umgebung ist. 
 
@@ -276,7 +276,7 @@ Weitere Informationen zu Bereitstellungen ohne Downtime finden Sie in dieser [Sc
 
 Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, können Sie sie löschen.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

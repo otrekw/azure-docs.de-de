@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 500e07296040305f1e469fde78988f2551440e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471195"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250092"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen
 
@@ -36,7 +36,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./use-vs-code-to-create-template.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Azure SQL Server-Administratorkonto. Sie können das folgende Beispiel zum Generieren eines Kennworts verwenden:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

@@ -3,20 +3,20 @@ title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über ei
 titleSuffix: Azure AD B2C
 description: In diesem Tutorial wird beschrieben, wie Sie mit Active Directory B2C eine .NET Core-Web-API schützen und die API über eine Node.js-Single-Page-Webanwendung aufrufen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 07/24/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 80b2165b0ec652358a3eb8ac9d55b64f525e4690
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f6f9ff7bb0d504ecc163f6ce1f87477b1ea9c2d1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849840"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186140"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C
 

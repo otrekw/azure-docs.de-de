@@ -3,16 +3,16 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 37af492ae156aa880c55034550d4165ec046e74f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199754"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272399"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -721,7 +721,7 @@ Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzun
 
 - Die folgenden Excel-Dateien enthalten Details zu den Azure-Diensten und werden am 6. und 20. jedes Monats aktualisiert:
 
-   | Titel | Beschreibung | Dateiname |
+   | Titel | BESCHREIBUNG | Dateiname |
    | --- | --- | --- |
    | [Anzeigedienstnamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Listet alle aktiven Dienste auf und umfasst Folgendes: <br>  <ul><li>Dienstkategorie</li>   <li>Anzeigedienstnamen</li>   <li>Verpflichtungsname und Artikelnummer</li> <li>Verbrauchsname und Artikelnummer</li>   <li>Maßeinheiten</li>   <li>Faktoren zur Konvertierung zwischen berichteter Verwendung und angezeigter Enterprise Portal-Verwendung</li></ul> | Friendly\_Service\_Names.xlsx |
    | [Dienstdownloadfelder](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Diese Tabelle enthält eine Liste aller möglichen Kombinationen dienstbezogener Felder im Verwendungsdownloadbericht. | Service\_Download\_Fields.xlsx |

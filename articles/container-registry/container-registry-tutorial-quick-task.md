@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Regist
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456050"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252112"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -30,7 +30,7 @@ In den weiteren Tutorials erfahren Sie, wie Sie mithilfe von Tasks Containerimag
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,13 +52,13 @@ Klonen Sie nach dem Forken des Repositorys Ihren Fork, und geben Sie das Verzeic
 
 Klonen Sie das Repository mit `git`, und ersetzen Sie dabei **\<your-github-username\>** durch Ihren GitHub-Benutzernamen:
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 Geben Sie das Verzeichnis ein, das den Quellcode enthält:
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ Nachdem Sie den Quellcode auf Ihren Computer heruntergeladen haben, können Sie 
 
 In den Tutorials dieser Reihe werden Shell-Umgebungsvariablen verwendet, um das Ausführen der Beispielbefehle zu vereinfachen. Führen Sie den folgenden Befehl aus, um die Variable `ACR_NAME` festzulegen. Ersetzen Sie **\<registry-name\>** durch einen eindeutigen Namen für Ihre neue Containerregistrierung. Der Registrierungsname muss innerhalb von Azure eindeutig sein, darf nur Kleinbuchstaben enthalten und muss aus zwischen 5 und 50 alphanumerischen Zeichen bestehen. Da die anderen Ressourcen, die Sie in diesem Tutorial erstellen, auf diesem Namen basieren, sollte die Änderung dieser ersten Variablen ausreichend sein.
 
-```azurecli-interactive
+[![Start einbetten](https://shell.azure.com/images/launchcloudshell.png "Starten von Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 

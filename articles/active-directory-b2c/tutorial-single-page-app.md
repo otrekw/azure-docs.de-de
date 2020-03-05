@@ -3,20 +3,20 @@ title: 'Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwen
 titleSuffix: Azure AD B2C
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory B2C zum Bereitstellen von Benutzeranmeldungen für eine JavaScript-basierte Single-Page-Webanwendung verwenden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f66d8e229535346525f117d8ebbfb37b893fe022
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 435800d9c6bfd9131d50681a9808f9836104fac0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849810"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183340"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure Active Directory B2C (Azure AD B2C)
 
@@ -51,7 +51,7 @@ Im zweiten Tutorial, das Sie zur Vorbereitung absolviert haben, wurde eine Weban
 
 Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendung zu aktualisieren. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
@@ -61,7 +61,7 @@ Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere ne
 1. Wählen Sie **Speichern** aus.
 1. Notieren Sie sich auf der Eigenschaftenseite die **Anwendungs-ID**. Sie verwenden die App-ID in einem späteren Schritt, wenn Sie den Code in der Single-Page-Webanwendung aktualisieren.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.

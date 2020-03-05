@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470865"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250067"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung
 
@@ -42,7 +42,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Vergewissern Sie sich, dass das generierte Kennwort die Kennwortanforderungen für den virtuellen Computer erfüllt. Jeder Azure-Dienst hat bestimmte Kennwortanforderungen. Informationen zu den Kennwortanforderungen für virtuelle Computer finden Sie unter [Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024074"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249848"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-
 
 2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Dienst zu erstellen:
 
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
@@ -227,7 +227,7 @@ Drücken Sie in der Zelle**UMSCHALT+EINGABE**, um den Code auszuführen.
     ```
    Es wird ungefähr folgender Codeausschnitt angezeigt:
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ Die unformatierten Beispieldaten aus der Datei **small_radio_json.json** dienen 
 
    Daraufhin erhalten Sie eine Ausgabe wie die folgende:
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ Die unformatierten Beispieldaten aus der Datei **small_radio_json.json** dienen 
 
    Daraufhin erhalten Sie eine Ausgabe wie die folgende:
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+

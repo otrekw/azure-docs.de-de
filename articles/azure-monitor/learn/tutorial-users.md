@@ -1,19 +1,18 @@
 ---
 title: Analysieren von Kundenverhalten in Azure Application Insights | Microsoft-Dokumentation
 description: 'Tutorial: Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung.'
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894667"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670354"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 
@@ -33,7 +32,7 @@ Azure Application Insights sammelt Nutzungsinformationen, mit denen Sie nachvoll
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
