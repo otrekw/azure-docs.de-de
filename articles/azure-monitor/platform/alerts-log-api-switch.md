@@ -2,18 +2,16 @@
 title: Umsteigen von der Legacywarnungen-API von Log Analytics auf die neue Azure-Warnungen-API
 description: Enthält eine Übersicht über auf savedSearch basierende Legacywarnungen-API von Log Analytics und den Prozess zum Umsteigen auf die neue ScheduledQueryRules-API mit Details zu allgemeinen Kundenbedenken.
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425150"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668008"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Wechseln der API-Einstellung für Protokollwarnungen
 

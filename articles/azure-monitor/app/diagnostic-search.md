@@ -1,18 +1,14 @@
 ---
 title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentation
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678040"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669674"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
@@ -96,7 +92,7 @@ Sie können auch einen Zeitbereich festlegen, da die Suche in einem kürzeren Be
 
 Suchen Sie nach vollständigen Wörtern, nicht nach Teilzeichenfolgen. Verwenden Sie Anführungszeichen, um Sonderzeichen zu umschließen.
 
-| Zeichenfolge | *Nicht* gefunden | Gefunden |
+| String | *Nicht* gefunden | Gefunden |
 | --- | --- | --- |
 | HomeController.Info |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |USA|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`

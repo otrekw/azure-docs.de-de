@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights für Konsolenanwendungen | Microsoft-Dokumentation
 description: Überwachen Sie Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889140"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655428"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
 
@@ -26,7 +22,7 @@ Sie benötigen ein Abonnement für [Microsoft Azure](https://azure.com). Melden 
 
 ## <a name="getting-started"></a>Erste Schritte
 
-* Erstellen Sie im [Azure-Portal](https://portal.azure.com) [eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
+* Erstellen Sie im [Azure-Portal](https://portal.azure.com)[eine Application Insights-Ressource](../../azure-monitor/app/create-new-resource.md). Wählen Sie für den Typ **Allgemein** aus.
 * Erstellen Sie eine Kopie des Instrumentierungsschlüssels. Diesen finden Sie in der Dropdownliste **Essentials** der neuen Ressource, die Sie erstellt haben.
 * Installieren Sie das neueste [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights)-Paket.
 * Legen Sie den Instrumentierungsschlüssel im Code fest, bevor Sie Telemetriedaten nachverfolgen (oder legen Sie die Umgebungsvariable APPINSIGHTS_INSTRUMENTATIONKEY fest). Anschließend sollten Sie Telemetriedaten manuell nachverfolgen und im Azure-Portal anzeigen können.

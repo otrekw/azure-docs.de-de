@@ -1,18 +1,17 @@
 ---
 title: Computergruppen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Mit Computergruppen in Azure Monitor können Sie Protokollabfragen auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, und wie sie diese in einer Protokollabfrage verwenden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655333"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
@@ -22,7 +21,7 @@ Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-quer
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
 Sie können eine Computergruppe in Azure Monitor mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 |:--- |:--- |
 | Protokollabfrage |Erstellen Sie eine Protokollabfrage, die eine Liste mit Computern zurückgibt. |
 | Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollabfrage zu erstellen. |
@@ -47,7 +46,7 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-P
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:---|:---|
 | Name   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
@@ -119,7 +118,7 @@ Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Compu
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
 Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf Protokollabfragen erstellt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |

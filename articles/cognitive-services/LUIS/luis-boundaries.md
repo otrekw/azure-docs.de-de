@@ -7,29 +7,29 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818933"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273515"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
-Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
+Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
 
 
 ## <a name="model-boundaries"></a>Modelleinschränkungen
 
-Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie eine [LUIS-Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model)-App oder einen [LUIS-Container](luis-container-howto.md) verwenden. 
+Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie eine [LUIS-Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model)-App oder einen [LUIS-Container](luis-container-howto.md) verwenden.
 
 |Bereich|Begrenzung|
 |--|:--|
 | [App-Name][luis-get-started-create-app] | \* Standardzeichenlimit |
-| ANWENDUNGEN| 500 Anwendungen pro Azure-Erstellungsressource |
+| Anwendungen| 500 Anwendungen pro Azure-Erstellungsressource |
 | [Batchtests][batch-testing]| 10 Datasets, 1.000 Äußerungen pro Dataset|
 | Explizite Listen | 50 pro Anwendung|
 | Externe Entitäten | Keine Einschränkungen |
@@ -49,7 +49,7 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 | [Versionen](luis-concept-version.md)| 100 Versionen pro Anwendung |
 | [Versionsname][luis-how-to-manage-versions] | 10 Zeichen, ausschließlich alphanumerische Zeichen und Punkt (.) |
 
-\* Das Standardzeichenlimit beträgt 50 Zeichen. 
+\* Das Standardzeichenlimit beträgt 50 Zeichen.
 
 <a name="intent-and-entity-naming"></a>
 
@@ -66,7 +66,7 @@ Folgendes muss innerhalb einer LUIS-App eindeutig sein:
 
 Folgendes muss innerhalb des Gültigkeitsbereichs eindeutig sein:
 
-* Ausdrucksliste 
+* Ausdrucksliste
 
 ## <a name="object-naming"></a>Benennung der Objekte
 
@@ -85,11 +85,11 @@ Language Understanding verfügt über separate Schlüssel, einen Typ für die Er
 
 ## <a name="resource-key-limits"></a>Grenzen von Ressourcenschlüsseln
 
-Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung beim Erstellen und auf Endpunkten. Der LUIS-Endpunktschlüssel für Vorhersageabfragen gilt ausschließlich für Endpunktabfragen. 
+Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung beim Erstellen und auf Endpunkten. Der LUIS-Endpunktschlüssel für Vorhersageabfragen gilt ausschließlich für Endpunktabfragen.
 
-* 500 Anwendungen pro Azure-Erstellungsressource 
+* 500 Anwendungen pro Azure-Erstellungsressource
 
-|Schlüssel|Erstellen|Endpunkt|Zweck|
+|Key|Erstellen|Endpunkt|Zweck|
 |--|--|--|--|
 |Starter|1 Mio./Monat, 5/Sekunde|1\.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
 |F0: Free-Tarif |1 Mio./Monat, 5/Sekunde|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
@@ -102,7 +102,7 @@ Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung bei
 
 ## <a name="keyboard-controls"></a>Tastenkombinationen
 
-|Tastatureingabe | BESCHREIBUNG | 
+|Tastatureingabe | Beschreibung |
 |--|--|
 |STRG+E|Wechselt in der Liste der Äußerungen zwischen Token und Entitäten|
 

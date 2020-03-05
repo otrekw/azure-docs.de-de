@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 5d4b1282b0a08657aea6f8a13aae7ed1fe49079b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964208"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622445"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -47,7 +47,7 @@ In der folgenden Tabelle sind die verschiedenen Kombinationen und Auswahlmöglic
 | Azure Synapse Analytics (ehemals Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto
-Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Wenn Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Vorhandene Dateien mit demselben Namen werden überschrieben.
+Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Derzeit wird nur das Blockblob unterstützt. Wenn Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Vorhandene Dateien mit demselben Namen werden überschrieben.
 
 ## <a name="share-from-a-sql-based-source"></a>Freigeben über eine SQL-basierte Quelle
 Azure Data Share unterstützt die Freigabe von Tabellen oder Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals „Azure SQL DW“). Der Datenconsumer kann die Daten wahlweise in Azure Data Lake Storage Gen2 oder Azure Blob Storage als CSV- oder Parquet-Datei akzeptieren. Die vollständige Momentaufnahme überschreibt den Inhalt der Zieldatei. Alternativ kann der Datenconsumer die Daten in einer SQL-Tabelle akzeptieren. Wenn die SQL-Zieltabelle auf der Datenconsumerseite nicht verfügbar ist, erstellt Azure Data Share die SQL-Tabelle mit dem Quellschema. Die vollständige Momentaufnahme fügt den Inhalt der Quelltabelle an die SQL-Zieltabelle an. Die inkrementelle Momentaufnahme wird derzeit nicht unterstützt.

@@ -1,19 +1,17 @@
 ---
 title: Profilerstellung für Live-Azure App Service-Apps mit Application Insights | Microsoft-Dokumentation
 description: Profilerstellung für Live-Apps in Azure App Service mit Application Insights Profiler
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899942"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671541"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilerstellung für Live-Azure App Service-Apps mit Application Insights
 
@@ -45,7 +43,7 @@ Application Insights Profiler ist als Teil der App Services-Runtime bereits vori
 Application Insights Profiler kann aktiviert werden, indem Sie App-Einstellungen für Ihren Azure App Service erstellen. Auf der oben abgebildeten Seite mit den Optionen werden diese App-Einstellungen automatisch erstellt. Sie können die Erstellung dieser Einstellungen jedoch auch mithilfe einer Vorlage oder auf andere Weise automatisieren. Diese Einstellungen funktionieren auch dann, wenn sich die Application Insights-Ressource in einem anderen Abonnement als Ihre Azure App Service-Instanz befindet.
 Im Folgenden finden Sie die Einstellungen, die zum Aktivieren von Profiler erforderlich sind:
 
-|App-Einstellung    | Wert    |
+|App-Einstellung    | value    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey für Ihre Application Insights-Ressource    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

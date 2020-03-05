@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 587de168a17c407abf3c2a7797969df013760a9f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156640"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206553"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
 
@@ -56,7 +56,7 @@ In diesem Artikel verwenden wir das Portal, um das Toolkit installieren, nachdem
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Eine Anleitung zur Verwendung des Azure-Portals zum Ausführen der Skriptaktion finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Stellen Sie sicher, dass Sie die folgenden Eingaben zum Installieren von Microsoft Cognitive Toolkit bereitstellen. Verwenden Sie die folgenden Werte für die Skriptaktion:
+Eine Anleitung zur Verwendung des Azure-Portals zum Ausführen der Skriptaktion finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation). Stellen Sie sicher, dass Sie die folgenden Eingaben zum Installieren von Microsoft Cognitive Toolkit bereitstellen. Verwenden Sie die folgenden Werte für die Skriptaktion:
 
 |Eigenschaft |value |
 |---|---|

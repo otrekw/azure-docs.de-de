@@ -1,18 +1,17 @@
 ---
 title: Bestand der Überwachungslösungen in Azure | Microsoft-Dokumentation
 description: Bei Überwachungslösungen in Azure Monitor handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen.  Dieser Artikel enthält eine Liste mit verfügbaren Überwachungslösungen von Microsoft sowie Informationen zur Methode und Häufigkeit der Datensammlung.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663128"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Bestand und Datensammlungsdetails für Überwachungslösungen in Azure
 [Überwachungslösungen](solutions.md) nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Überwachungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.

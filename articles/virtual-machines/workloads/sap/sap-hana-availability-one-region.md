@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842681"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255474"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Verfügbarkeit von SAP HANA innerhalb einer Azure-Region
 In diesem Artikel werden mehrere Verfügbarkeitsszenarien innerhalb einer Azure-Region beschrieben. Azure bietet viele Regionen auf der ganzen Welt. Die Liste mit Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Für die Bereitstellung von SAP HANA auf VMs in einer Azure-Region bietet Microsoft die Bereitstellung einer einzelnen VM mit einer HANA-Instanz. Zur Erhöhung der Verfügbarkeit können Sie zwei VMs mit zwei HANA-Instanzen innerhalb einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereitstellen, die aus Verfügbarkeitsgründen die HANA-Systemreplikation verwenden. 
@@ -108,7 +108,7 @@ In diesem Szenario werden Daten, die auf der zweiten VM in der HANA-Instanz repl
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>SAP HANA-Systemreplikation mit automatischem Failover
 
-In der standardmäßigen und am häufigsten verwendeten Verfügbarkeitskonfiguration innerhalb einer Azure-Region ist bei zwei Azure-VMs, auf denen SLES (SUSE Linux Enterprise Server) ausgeführt wird, ein Failovercluster definiert. Der SLES-Cluster (SUSE Linux Enterprise Server) basiert auf dem [Pacemaker](http://www.linux-ha.org/wiki/Pacemaker)-Framework in Verbindung mit einem [STONITH](http://www.linux-ha.org/wiki/STONITH)-Gerät. 
+In der standardmäßigen und am häufigsten verwendeten Verfügbarkeitskonfiguration innerhalb einer Azure-Region ist bei zwei Azure-VMs, auf denen SLES (SUSE Linux Enterprise Server) ausgeführt wird, ein Failovercluster definiert. Der SLES-Cluster (SUSE Linux Enterprise Server) basiert auf dem [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)-Framework in Verbindung mit einem [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)-Gerät. 
 
 Aus SAP HANA-Sicht wird der verwendete Replikationsmodus synchronisiert, und ein automatisches Failover wird konfiguriert. Auf der zweiten VM agiert die SAP HANA-Instanz als Hot Standby-Knoten. Der Standby-Knoten empfängt einen synchronen Datenstrom von Änderungsdatensätzen aus der primären SAP HANA-Instanz. Da Transaktionen von der Anwendung auf dem primären HANA-Knoten committed werden, wartet dieser mit der Bestätigung des Commits in der Anwendung, bis der sekundäre SAP HANA-Knoten den Commitdatensatz bestätigt hat. SAP HANA bietet zwei verschiedene Modi für die synchrone Replikation. Einzelheiten und eine Beschreibung zu den Unterschieden zwischen diesen beiden Modi für die synchrone Replikation finden Sie im Artikel [Replication modes for SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html) (Replikationsmodi für die SAP HANA-Systemreplikation).
 

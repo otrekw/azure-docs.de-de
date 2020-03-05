@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904657"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651014"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
 > [!IMPORTANT]
-> Die vorherigen SAP-Anwendungsserver- und SAP-Nachrichtenserverconnectors werden ab dem 29. Februar 2020 als veraltet eingestuft. Der aktuelle SAP-Connector fasst diese älteren SAP-Connectors zusammen, damit Sie den Verbindungstyp nicht ändern müssen. Darüber hinaus ist er vollständig mit vorherigen Connectors kompatibel, bietet zahlreiche Zusatzfunktionen und verwendet weiterhin die SAP-.NET-Connectorbibliothek (SAP NCo).
+> Die älteren Connectors für SAP-Anwendungsserver und SAP-Nachrichtenserver sind seit dem 29. Februar 2020 veraltet. Der aktuelle SAP-Connector fasst diese älteren SAP-Connectors zusammen, damit Sie den Verbindungstyp nicht ändern müssen. Darüber hinaus ist er vollständig mit vorherigen Connectors kompatibel, bietet zahlreiche Zusatzfunktionen und verwendet weiterhin die SAP-.NET-Connectorbibliothek (SAP NCo).
 >
 > Für Logik-Apps, die die älteren Connectors verwenden, muss vor dem Veraltungsdatum eine [Migration zum neuesten Connector](#migrate) durchgeführt werden. Andernfalls treten bei diesen Logik-Apps Ausführungsfehler auf, und es können keine Nachrichten an Ihr SAP-System gesendet werden.
 
@@ -556,7 +556,10 @@ Zurzeit sind für den SAP-Connector folgende Probleme und Einschränkungen bekan
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/sap/).
+Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/sap/).
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

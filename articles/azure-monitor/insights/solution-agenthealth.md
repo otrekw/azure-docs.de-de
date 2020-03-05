@@ -1,18 +1,17 @@
 ---
 title: Lösung für die Agent-Integritätsdiagnose in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie Sie diese Lösung zum Überwachen der Integrität Ihrer Agents verwenden können, die Daten direkt an Log Analytics oder System Center Operations Manager melden.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062131"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663256"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -39,7 +38,7 @@ Fügen Sie die Lösung für die Agent-Integritätsdiagnose dem Log Analytics-Arb
 ### <a name="supported-agents"></a>Unterstützte Agents
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | Windows-Agents | Ja | Heartbeat-Ereignisse werden von direkten Windows-Agents erfasst.|
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Heartbeat-Ereignisse werden von Agents, die ihre Daten an die Verwaltungsgruppe melden, alle 60 Sekunden erfasst und dann an Azure Monitor weitergeleitet. Es ist keine direkte Verbindung zwischen Operations Manager-Agents und Azure Monitor erforderlich. Daten von Heartbeat-Ereignissen werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet.|
@@ -91,7 +90,7 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfrage | Beschreibung |
+| Abfrage | BESCHREIBUNG |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |

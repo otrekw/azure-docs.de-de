@@ -2,28 +2,28 @@
 title: Hinzufügen einer Web-API-Anwendung – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihrem Active Directory B2C-Mandanten eine Web-API-Anwendung hinzufügen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 04/16/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 37cb242f667190fcd29bed1b7a82ca44ba2c94e9
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e6dbf3d6fd5a43ab2d075c193c5bc589dc3566a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641562"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190176"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Hinzufügen einer Web-API-Anwendung zu Ihrem Azure Active Directory B2C-Mandanten
 
  Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie auf Anforderungen von Clientanwendungen reagieren können, die ein Zugriffstoken bereitstellen. In diesem Artikel wird beschrieben, wie Sie eine Web-API in Azure Active Directory B2C (Azure AD B2C) registrieren.
 
-Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. Weitere Informationen zu der neuen Oberfläche finden Sie [hier](https://aka.ms/b2cappregintro).
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
@@ -33,17 +33,17 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die
 6. Wählen Sie für **Web-App/Web-API einschließen** und n**Impliziten Ablauf zulassen** die Option **Ja**.
 7. Geben Sie für **Antwort-URLs** einen Endpunkt ein, an den Azure AD B2C von Ihrer App angeforderte Token zurückgibt. In Ihrer Produktionsanwendung können Sie die Antwort-URL auf einen Wert wie `https://localhost:44332` festlegen. Zu Testzwecken legen Sie die Antwort-URL auf `https://jwt.ms` fest.
 8. Geben Sie für **App-ID-URI** den für Ihre Web-API verwendeten Bezeichner ein. Der vollständige Bezeichner-URI (einschließlich der Domäne) wird für Sie generiert. Beispiel: `https://contosotenant.onmicrosoft.com/api`.
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 10. Notieren Sie sich auf der Eigenschaftenseite die Anwendungs-ID, die Sie beim Konfigurieren der Webanwendung verwenden.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-1. Wählen Sie **App-Registrierungen (Vorschau)** aus, und wählen Sie dann **Neue Registrierung** aus.
-1. Geben Sie einen **Namen** für die Anwendung ein. Beispiel: *webapi1*.
-1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie dann einen Endpunkt ein, an den Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgeben soll. In einer Produktionsanwendung können Sie den Umleitungs-URI auf einen Endpunkt wie `https://localhost:5000` festlegen. In einer Entwicklungs- oder Testumgebung können Sie ihn auf `https://jwt.ms` festlegen. Dabei handelt es sich um eine Microsoft-Webanwendung, die den decodierten Inhalt eines Tokens anzeigt (der Inhalt des Tokens verlässt niemals Ihren Browser). Sie können Umleitungs-URIs in Ihren registrierten Anwendungen jederzeit hinzufügen und ändern.
+1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
+1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *webapi1*.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie dann einen Endpunkt ein, an den Azure AD B2C von Ihrer Anwendung angeforderte Token zurückgeben soll. In einer Produktionsanwendung können Sie den Umleitungs-URI auf einen Endpunkt wie `https://localhost:5000` festlegen. In einer Entwicklungs- oder Testumgebung können Sie ihn auf `https://jwt.ms` festlegen. Dabei handelt es sich um eine Microsoft-Webanwendung, die den decodierten Inhalt eines Tokens anzeigt (der Inhalt des Tokens verlässt niemals Ihren Browser). Sie können Umleitungs-URIs in Ihren registrierten Anwendungen jederzeit hinzufügen und ändern.
 1. Wählen Sie **Registrieren**.
 1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung im Code der Web-API.
 

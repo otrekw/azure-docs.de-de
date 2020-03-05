@@ -1,16 +1,16 @@
 ---
-title: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster
+title: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Ihren Entwicklungscomputer mithilfe von Azure Dev Spaces mit einem AKS-Cluster verbinden.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770678"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196092"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
 
@@ -37,8 +37,8 @@ In dieser Anleitung wird die [Azure Dev Spaces-Beispielanwendung „Bike Sharing
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* [Azure-CLI installiert][azure-cli].
+* ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+* Die [Azure CLI][azure-cli] muss installiert sein.
 * [Visual Studio Code][vs-code] mit installierter [Azure Dev Spaces-Erweiterung][azds-vs-code] und ausgeführt unter macOS oder Windows 10.
 * Ausführung der [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) oder Ihrer eigenen Anwendung in einem AKS-Cluster.
 

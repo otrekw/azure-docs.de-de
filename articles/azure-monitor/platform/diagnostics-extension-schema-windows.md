@@ -1,18 +1,17 @@
 ---
 title: Schema der Diagnoseerweiterung für Windows
 description: Konfigurationsschemareferenz für die Azure-Diagnoseerweiterung für Windows in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 5b4d68ab5be2566310ddcc2eaf591d9908d35ad1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473186"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672360"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.
@@ -55,7 +54,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Beschreibt die öffentliche Diagnosekonfiguration  
 
-|Untergeordnete Elemente|BESCHREIBUNG|  
+|Untergeordnete Elemente|Beschreibung|  
 |--------------------|-----------------|  
 |**WadCfg**|Erforderlich. Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**StorageAccount**|Der Name des Azure Storage-Kontos zum Speichern der Daten. Kann auch als Parameter angegeben werden, wenn das Cmdlet „Set-AzureServiceDiagnosticsExtension“ ausgeführt wird.|  
@@ -100,13 +99,13 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Aktivieren Sie die Sammlung der Absturzabbilder.  
 
-|Attributes|Beschreibung|  
+|Attributes|BESCHREIBUNG|  
 |----------------|-----------------|  
 |**containerName**|Optional. Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Absturzabbilder verwendet wird|  
 |**crashDumpType**|Optional.  Konfiguriert die Azure-Diagnose für die Erfassung von kleinen oder vollständigen Absturzabbildern.|  
 |**directoryQuotaPercentage**|Optional.  Konfiguriert den Prozentsatz der **overallQuotaInMB**, der für Absturzabbilder auf dem virtuellen Computer reserviert werden soll.|  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Erforderlich. Definiert die Konfigurationswerte für jeden Prozess.<br /><br /> Das folgende Attribut ist ebenso erforderlich:<br /><br /> **processName**: Der Name des Prozesses, für den die Azure-Diagnose ein Absturzabbild erfassen soll|  
 
@@ -156,7 +155,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Konfiguriert die Erfassung der ETW-Ereignisse von EventSource und/oder der ETW-Manifest-basierten Anbieter  
 
-|Untergeordnete Elemente|BESCHREIBUNG|  
+|Untergeordnete Elemente|Beschreibung|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 |**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
@@ -168,7 +167,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden.  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**DefaultEvents**|Optionales Attribut:<br/><br/> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
 |**Event**|Erforderliches Attribut:<br /><br /> **id**: Die ID des Ereignisses<br /><br /> Optionales Attribut:<br /><br /> **eventDestination**: Der Name der Tabelle zum Speichern der Ereignisse|  
@@ -207,7 +206,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Optionales **scheduledTransferPeriod**-Attribut. Siehe Erklärung weiter oben.
 
-|Untergeordnetes Element|Beschreibung|  
+|Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> - **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> - **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators Die Werte sind in der [UnitType-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) verfügbar. |
 |**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispiel: Azure Monitor oder Event Hubs.|    
@@ -248,7 +247,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  In 1.9 hinzugefügt.
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Stats**|Weist das System an, Statistikinformationen für Docker-Container zu sammeln.|  
 
@@ -257,7 +256,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Eine Liste mit Standorten, an die die Diagnosedaten und die diesen Standorten zugeordnete Konfiguration gesendet werden soll.  
 
-|Elementname|Beschreibung|  
+|Elementname|BESCHREIBUNG|  
 |------------------|-----------------|  
 |**Senke**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
@@ -270,12 +269,12 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 |attribute|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**name**|string|Eine Zeichenfolge für den Senkennamen.|  
+|**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
 
 |Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
-|**Channels**|string|Einer für jeden zusätzlichen Filter, den Sie streamen|  
+|**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
+|**Channels**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
 
 ## <a name="channels-element"></a>Channels-Element  
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels*
@@ -284,9 +283,9 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Filter für Datenströme von Protokolldaten, die durch eine Senke übergeben werden.  
 
-|Element|type|Beschreibung|  
+|Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Channel**|string|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
+|**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
 ## <a name="channel-element"></a>Channel-Element
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels – Channel*

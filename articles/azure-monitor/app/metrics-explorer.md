@@ -1,18 +1,14 @@
 ---
 title: Untersuchen von Metriken in Azure Application Insights | Microsoft Docs
 description: Interpretieren von Metrik-Explorer-Diagrammen und Anpassen von Metrik-Explorer-Blättern
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820791"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670167"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Untersuchen von Metriken in Application Insights
 Metriken in [Application Insights][start] sind gemessene Werte und Anzahlen von Ereignissen, die als Telemetriedaten aus Ihrer Anwendung gesendet werden. Sie dienen zum Erkennen von Leistungsproblemen und Überwachen von Trends bei der Nutzung Ihrer Anwendung. Es gibt eine Vielzahl von Standardmetriken, doch Sie können auch eigene benutzerdefinierte Metriken und Ereignisse erstellen.
@@ -28,7 +24,7 @@ Hier sehen Sie einige Beispiele für Diagramme:
 
 Metrikdiagramme finden Sie überall im Application Insights-Portal. In den meisten Fällen lassen sich diese anpassen, und Sie können dem Blatt weitere Diagramme hinzufügen. Klicken Sie auf dem Blatt „Übersicht“, um ausführlichere Diagramme anzuzeigen (mit Titeln wie z.B. „Server“), oder klicken Sie auf **Metrik-Explorer**, um ein neues Blatt zu öffnen, auf dem Sie benutzerdefinierte Diagramme erstellen können.
 
-## <a name="time-range"></a>Zeitbereich
+## <a name="time-range"></a>Uhrzeitbereich
 Sie können den Zeitbereich der Diagramme oder Raster auf jedem Blatt ändern.
 
 ![Öffnen Sie das Blatt "Übersicht" Ihrer Anwendung im Azure-Portal](./media/metrics-explorer/03-range.png)

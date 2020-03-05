@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201491"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921146"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -32,7 +32,7 @@ Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht
     ![Konfiguration von Stream Analytics-Aufträgen im Azure-Portal][img.stream.analytics.preview.portal.settings.scale]
     
 4. Verwenden Sie den Schieberegler, um die SUs für den Auftrag festzulegen. Beachten Sie, dass Sie auf die jeweiligen SU-Einstellungen beschränkt sind. 
-5. Sie können die Anzahl der Ihrem Auftrag zugeordneten SUs ändern, auch wenn er gerade ausgeführt wird. Dies ist nicht möglich, wenn Ihr Auftrag eine [nicht partitionierte Ausgabe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) verwendet oder [eine mehrstufige Abfrage mit unterschiedlichen Werten für PARTITION BY](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values) aufweist. Ihr Auftrag sollte auch über mindestens 6 SUs verfügen, um diese Einstellung während der Ausführung des Auftrags zu ändern. Möglicherweise sind Sie darauf beschränkt, während der Ausführung des Auftrags aus einer Reihe von SU-Werten auszuwählen. 
+5. Sie können die Anzahl der Ihrem Auftrag zugeordneten SUs ändern, auch wenn er gerade ausgeführt wird. Dies ist nicht möglich, wenn Ihr Auftrag eine [nicht partitionierte Ausgabe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) verwendet oder [eine mehrstufige Abfrage mit unterschiedlichen Werten für PARTITION BY](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values) aufweist. Möglicherweise sind Sie darauf beschränkt, während der Ausführung des Auftrags aus einer Reihe von SU-Werten auszuwählen. 
 
 ## <a name="monitor-job-performance"></a>Überwachen der Auftragsleistung
 Über das Azure-Portal können Sie den Durchsatz eines Auftrags nachverfolgen:

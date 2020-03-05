@@ -4,18 +4,17 @@ description: Vereinfachen der komplexen Berichterstellung mit vordefinierten und
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872773"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658048"
 ---
 # <a name="workbook-text-parameters"></a>Textparameter in Arbeitsmappen
 
@@ -56,7 +55,7 @@ So sieht die Arbeitsmappe im Lesemodus aus.
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-4. Ausführen einer Abfrage, um die Ergebnisse anzuzeigen
+4. Führen Sie die Abfrage aus, um die Ergebnisse anzuzeigen.
 
     ![Abbildung eines Textparameters, auf den in der KQL verwiesen wird](./media/workbooks-text/text-reference.png)
 

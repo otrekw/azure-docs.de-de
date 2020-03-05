@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122454"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919769"
 ---
 # <a name="azure-classic-cli-commands"></a>Befehle der klassischen Azure-Befehlszeilenschnittstelle 
 
-> [!IMPORTANT]
-> In diesem Thema wird beschrieben, wie Sie die klassische Azure CLI installieren. Die klassische CLI ist veraltet und sollte nur mit dem klassischen Bereitstellungsmodell verwendet werden.
-> Verwenden Sie für alle anderen Bereitstellungen die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/).
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+In diesem Thema wird beschrieben, wie Sie die klassische Azure CLI installieren. Die klassische CLI ist veraltet und sollte nur mit dem klassischen Bereitstellungsmodell verwendet werden. Verwenden Sie für alle anderen Bereitstellungen die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/).
 
 Dieser Artikel enthält die Syntax und Optionen für Befehle der klassischen Azure-Befehlszeilenschnittstelle (CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen verwenden. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. 
 

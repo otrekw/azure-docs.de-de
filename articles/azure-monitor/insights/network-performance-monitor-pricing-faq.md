@@ -1,18 +1,17 @@
 ---
 title: Häufig gestellte Fragen zu Preisen für den Azure-Netzwerkleistungsmonitor | Microsoft-Dokumentation
 description: Häufig gestellte Fragen – Azure-Netzwerkleistungsmonitor
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898784"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654391"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Preisänderungen für Azure-Netzwerkleistungsmonitor
 
@@ -31,7 +30,7 @@ In den folgenden Abschnitten werden die Preisänderungen für diese Komponenten 
 
 Die Abrechnung für den Systemmonitor basierte bisher auf der Nutzung von zwei Komponenten:
 * **Knoten**: Alle synthetischen Transaktionen beginnen und enden an den Knoten. Knoten werden auch als Agents oder Microsoft-Verwaltungs-Agents bezeichnet.
-* **Daten**: Die Ergebnisse der verschiedenen Netzwerktests werden im Log Analytics-Workspace gespeichert.
+* **Data:** Die Ergebnisse der verschiedenen Netzwerktests werden im Log Analytics-Workspace gespeichert.
 
 Unter dem alten Modell wurde die Rechnung basierend auf der Anzahl der Knoten und dem Volumen der generierten Daten berechnet. 
 
@@ -110,7 +109,7 @@ Eine Verbindung ist ein Test der Erreichbarkeit eines Endpunkts (URL oder Netzwe
 
 Im Abschnitt [Verbindungsüberwachung](https://azure.microsoft.com/pricing/details/network-watcher/) finden Sie die Kosten für die Überwachung eines Endpunkts für den gesamten Monat. Die Gebühren für Daten stehen auf der [Preisseite](https://azure.microsoft.com/pricing/details/log-analytics/) für Log Analytics, im Abschnitt „Datenerfassung“, zur Verfügung.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 [Häufig gestellte Fragen zu Log Analytics-Preisen](https://azure.microsoft.com/pricing/details/log-analytics/): Der Abschnitt „FAQ“ enthält Informationen zum Free-Tarif, zu Preisen pro Knoten und weitere Preisdetails.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303221"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -53,7 +53,7 @@ Premium-Dateifreigaben bieten IOPS und Durchsatzkapazitäten, die den Anforderun
 
 Für viele Workloads werden E/A-Bursts geboten, sodass es ratsam ist, in Zeiten hoher Nutzung eine Prüfung vorzunehmen und die maximalen IOPS sowie die durchschnittlichen IOPS zu notieren. Premium-Dateifreigaben stellen IOPS basierend auf der Größe der Freigabe bereit. Premium-Dateifreigaben bieten auch einen kostenlosen Burstmodus, mit dem Sie Ihre E/A-Kapazität bis zu eine Stunde um das Dreifache erhöhen können.
 
-Weitere Informationen zur Leistung von Premium-Dateifreigaben finden Sie unter [Leistungsstufen von Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers).
+Weitere Informationen zur Leistung von Premium-Dateifreigaben finden Sie unter [Leistungsstufen von Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers).
 
 ### <a name="licensing-and-pricing"></a>Lizenzierung und Preise
 

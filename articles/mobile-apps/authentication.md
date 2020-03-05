@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453242"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296353"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Hinzufügen von Authentifizierung und Verwalten von Benutzeridentitäten in Ihren mobilen Apps
 
@@ -21,7 +21,7 @@ Mit einer Sicht auf die Benutzer und deren Verhalten in Ihrer Anwendung werden S
 Mit den folgenden Diensten können Sie Benutzerauthentifizierung in ihren mobilen Apps aktivieren.
 
 ## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Auth](/appcenter/auth/) ist ein cloudbasierter Identitätsverwaltungsdienst, den Entwicklern zum Authentifizieren von Benutzern und zum Verwalten von Benutzeridentitäten verwenden können. App Center Auth ist auch in andere Teile von Visual Studio App Center integriert. Entwickler können die Benutzeridentität dazu nutzen, ein [Anzeigen von Benutzerdaten](/appcenter/data/index) in anderen Diensten zu ermöglichen und sogar [Pushbenachrichtigungen an Benutzer anstatt an einzelne Geräte zu senden](/appcenter/push/push-to-user#app-center-auth-set-identity). 
+[App Center Auth](/appcenter/auth/) ist ein cloudbasierter Identitätsverwaltungsdienst, den Entwicklern zum Authentifizieren von Benutzern und zum Verwalten von Benutzeridentitäten verwenden können. App Center Auth ist auch in andere Teile von Visual Studio App Center integriert. Entwickler können die Benutzeridentität dazu nutzen, ein [Anzeigen von Benutzerdaten](/appcenter/data/index) in anderen Diensten zu ermöglichen und sogar [Pushbenachrichtigungen an Benutzer anstatt an einzelne Geräte zu senden](/appcenter/push/push-to-user#setting-user-identity). 
 
 **Wichtige Features**
 - Unterstützt von Azure Active Directory B2C (Azure AD B2C). 

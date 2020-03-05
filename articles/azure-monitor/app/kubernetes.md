@@ -1,18 +1,16 @@
 ---
 title: Verwenden von Application Insights zum Überwachen Ihres Azure Kubernetes Service (AKS) oder anderer gehosteter Kubernetes-Anwendungen – Azure Monitor | Microsoft-Dokumentation
 description: Azure Monitor verwendet die Service Mesh-Technologie Istio in Ihrem Kubernetes-Cluster, um Anwendungsüberwachung für jegliche gehosteten Kubernetes-Anwendungen bereitzustellen. Dadurch können Sie Application Insights-Telemetriedaten zu eingehenden und ausgehenden Anforderungen an und von Pods sammeln, die in Ihrem Cluster ausgeführt werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432526"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666785"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435872"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196925"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -152,7 +152,7 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
 
 * Informationen zum Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket finden Sie unter [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md).
 * Informationen zur Verwaltung eines HDInsight-Clusters mit ESP finden Sie unter [Verwalten von HDInsight-Clustern mit ESP](apache-domain-joined-manage.md).
-* Informationen zum Ausführen von Hive-Abfragen per SSH für HDInsight-Cluster mit ESP finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Informationen zum Ausführen von Hive-Abfragen per SSH für HDInsight-Cluster mit ESP finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Apache Hive unter Azure HDInsight per Hive-JDBC-Treiber](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Apache Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Power Query finden Sie unter [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).

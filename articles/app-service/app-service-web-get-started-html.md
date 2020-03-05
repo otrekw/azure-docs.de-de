@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e850984bd03f4b1e630db5beceed36e122340ead
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500434"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247805"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
@@ -48,7 +48,9 @@ Ersetzen Sie im folgenden Beispiel „<app_name>“ durch einen eindeutigen App-
 
 ```bash
 cd html-docs-hello-world
+```
 
+```azurecli
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -100,7 +102,7 @@ Speichern Sie Ihre Änderungen, und beenden Sie Nano. Verwenden Sie `^O` zum Spe
 
 Nun stellen Sie die App mit dem gleichen `az webapp up`-Befehl erneut bereit.
 
-```bash
+```azurecli
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -128,7 +130,7 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 
 In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe, indem Sie den folgenden Befehl in Cloud Shell ausführen. Denken Sie daran, dass der Name der Ressourcengruppe im Schritt [Erstellen einer Web-App](#create-a-web-app) automatisch für Sie generiert wurde.
 
-```bash
+```azurecli
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

@@ -1,19 +1,17 @@
 ---
 title: Aktualisieren des Azure Application Insights-Momentaufnahmedebuggers
 description: Upgrade des Momentaufnahmedebuggers für .NET-Apps in Azure App Services oder über NuGet-Pakete auf die neueste Version
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: d246fb36cc56a90faaf00c5b47ba69580a9c8a5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927191"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671391"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Upgraden des Momentaufnahmedebuggers
 
@@ -57,7 +55,7 @@ Wenn Sie den Momentaufnahmedebugger mithilfe der Websiteerweiterung aktiviert ha
     > [!NOTE]
     > Die Website wird im Rahmen des Upgradeprozesses neu gestartet.
 
-   ![Screenshot: App Service-Aufforderung zur Bestätigung der Übernahme der Überwachungseinstellungen. Das Textfeld enthält folgende Meldung: „Wir werden jetzt Änderungen an Ihren App-Einstellungen vornehmen und unsere Tools installieren, um Ihre Application Insights-Ressource mit der Web-App zu verknüpfen. Dies führt zu einem Neustart der Website. Möchten Sie fortfahren?“](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![Screenshot: App Service-Aufforderung zur Bestätigung der Übernahme der Überwachungseinstellungen. Das Textfeld enthält folgende Meldung: „Wir werden jetzt Änderungen an Ihren App-Einstellungen vornehmen und unsere Tools installieren, um Ihre Application Insights-Ressource mit der Web-App zu verknüpfen. Dies führt zu einem Neustart der Website. Möchten Sie den Vorgang fortsetzen?“](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
 9. Klicken Sie auf **Ja**, um die Änderungen zu übernehmen, und warten Sie, bis der Vorgang abgeschlossen ist.
 

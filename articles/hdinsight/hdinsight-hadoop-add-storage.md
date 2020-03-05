@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313999"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206706"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
@@ -46,7 +46,7 @@ Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
 ## <a name="add-storage-account"></a>Hinzufügen von Speicherkonten
 
-Verwenden Sie eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster), um die Änderungen anzuwenden. Beachten Sie Folgendes:
+Verwenden Sie eine [Skriptaktion](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster), um die Änderungen anzuwenden. Beachten Sie Folgendes:
 
 |Eigenschaft | value |
 |---|---|

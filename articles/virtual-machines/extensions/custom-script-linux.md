@@ -3,7 +3,7 @@ title: Ausführen von benutzerdefinierten Skripts auf Linux-VMs in Azure
 description: Automatisieren von Konfigurationsaufgaben für virtuelle Linux-Computer mithilfe der Erweiterung für benutzerdefinierte Skripts (v2)
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 22346501444694675d92d9a37497f9304c76e13d
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156555"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246160"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -113,16 +113,16 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | Name | Wert/Beispiel | Datentyp | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | Zeichenfolge |
+| type | CustomScript | Zeichenfolge |
 | typeHandlerVersion | 2.1 | INT |
 | fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1> | Zeichenfolge |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | Zeichenfolge |
 | skipDos2Unix (Beispiel) | false | boolean |
 | timestamp (Beispiel) | 123456789 | 32-bit integer |
-| storageAccountName (Beispiel) | examplestorageacct | string |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
 | managedIdentity (z. B.) | { } oder { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" } oder { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" } | JSON-Objekt |
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten

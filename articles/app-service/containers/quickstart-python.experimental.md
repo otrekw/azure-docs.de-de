@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030048"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246856"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
@@ -52,7 +52,7 @@ Die Azure CLI bietet viele praktische Befehle, die Sie über ein lokales Termina
 
 Um Azure-Befehle in der Azure CLI auszuführen, müssen Sie sich zunächst mit dem Befehl `az login` anmelden. Dieser Befehl öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ Mit dem Befehl [`az webapp up`](/cli/azure/webapp#az-webapp-up) wird die Web-App
 Führen Sie im Ordner *python-docs-hello-world*, der den Beispielcode enthält, den folgenden Befehl `az webapp up` aus. Ersetzen Sie `<app-name>` durch einen global eindeutigen App-Namen (*gültige Zeichen sind `a-z`, `0-9` und `-`* ). Ersetzen Sie außerdem `<location-name>` durch eine Azure-Region wie **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia** oder dergleichen. (Sie können eine Liste der zulässigen Regionen für Ihr Azure-Konto abrufen, indem Sie den Befehl [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ausführen.)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ Der Python-Beispielcode führt einen Linux-Container in App Service mit einem in
 
 Öffnen Sie ein Terminalfenster, und verwenden Sie die folgenden Befehle (entsprechend Ihrem Betriebssystem), um die erforderlichen Abhängigkeiten zu installieren und den integrierten Entwicklungsserver zu starten. 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ Speichern Sie Ihre Änderungen, und beenden Sie den Editor.
 
 Stellen Sie die Anwendung mit dem folgenden Befehl `az webapp up` erneut bereit. Verwenden Sie dabei den gleichen Befehl, den Sie beim ersten Bereitstellen der Anwendung verwendet haben, und ersetzen Sie `<app-name>` und `<location-name>` durch die gleichen Namen, die Sie zuvor verwendet haben. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ Sie können auf die Konsolenprotokolle zugreifen, die innerhalb der App und des 
 
 Aktivieren Sie als Erstes die Containerprotokollierung, indem Sie den folgenden Befehl in einem Terminal ausführen. Ersetzen Sie `<app-name>` durch den Namen Ihrer App und `<resource-group-name>` durch den Namen der Ressourcengruppe, die in der Ausgabe des von Ihnen verwendeten Befehls `az webapp up` angezeigt wird (Beispiel: appsvc_rg_Linux_centralus):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Führen Sie den folgenden Befehl aus, um den Protokolldatenstrom anzuzeigen, nachdem die Containerprotokollierung aktiviert wurde:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -221,7 +221,7 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe
 
 Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe, indem Sie den folgenden Befehl ausführen. Ersetzen Sie `<resource-group-name>` durch die in der Ausgabe des Befehls `az webapp up` gezeigte Ressourcengruppe, wie z. B. appsvc_rg_Linux_centralus. Die Ausführung des Befehls kann eine Minute in Anspruch nehmen.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

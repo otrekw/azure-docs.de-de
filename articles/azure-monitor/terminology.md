@@ -1,18 +1,17 @@
 ---
 title: Updates für Azure Monitor-Terminologie | Microsoft-Dokumentation
 description: Hier werden die aktuellen Terminologieänderungen beschrieben, die an Azure-Überwachungsdiensten vorgenommen wurden.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894350"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657842"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Namens- und Terminologieänderungen bei Azure Monitor
 Vor Kurzem wurden wichtige Änderungen bei Azure Monitor vorgenommen und verschiedene Dienste zur vereinfachten Überwachung für Azure-Kunden zusammengefasst. Dieser Artikel beschreibt die neuesten Namens- und Terminologieänderungen in der Azure Monitor-Dokumentation.

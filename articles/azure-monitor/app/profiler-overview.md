@@ -1,19 +1,17 @@
 ---
 title: Profilerstellung für Produktions-Apps in Azure mit Application Insights Profiler
 description: Identifizieren Sie den langsamsten Pfad in Ihrem Webservercode mithilfe eines kompakten Profilers.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922089"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671646"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilerstellung für Produktionsanwendungen in Azure mit Application Insights Profiler
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Aktivieren von Application Insights Profiler für Ihre Anwendung

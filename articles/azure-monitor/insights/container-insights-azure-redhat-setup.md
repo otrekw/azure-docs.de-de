@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190072"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250696"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container
 
@@ -113,7 +113,7 @@ Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachun
 
     Die Ausgabe sieht ungefähr so aus:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -197,7 +197,7 @@ Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachun
 
     Die Ausgabe sieht ungefähr so aus:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 

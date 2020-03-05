@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651473"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -64,9 +64,9 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
     ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | Eigenschaft | Description |
+    | Eigenschaft | BESCHREIBUNG |
     | --- | --- |
-    | NAME |Name der Vereinbarung |
+    | Name |Name der Vereinbarung |
     | Vereinbarungstyp | Muss X12 sein |
     | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
     | Hostidentität |Ein Bezeichner für den Hostpartner. |
@@ -93,7 +93,7 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="identifiers"></a>Bezeichner
 
-![Bezeichnereigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![Festlegen der Bezeichnereigenschaften](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
@@ -104,9 +104,9 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="acknowledgment"></a>Bestätigung
 
-![Bestätigungseigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+![Festlegen der Bestätigungseigenschaften](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | TA1 erwartet |Gibt eine technische Bestätigung an den Absender des Austauschs zurück. |
 | FA erwartet |Gibt eine Funktionsbestätigung an den Absender des Austauschs zurück. Wählen Sie dann basierend auf den Schemaversionen, mit denen Sie arbeiten, ob Sie die Bestätigungen des Typs 997 oder 999 wünschen. |
@@ -118,7 +118,7 @@ Wählen Sie ein Schema für jeden Transaktionstyp (ST1) und jede Absenderanwendu
 
 ![Schema auswählen](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | Version |Wählen Sie die X12-Version. |
 | Transaktionstyp (ST01) |Wählen Sie den Transaktionstyp. |
@@ -146,9 +146,9 @@ Wählen Sie ein Schema für jeden Transaktionstyp (ST1) und jede Absenderanwendu
 | Doppelte Gruppenkontrollnummern nicht zulassen |Blockiert Austauschvorgänge mit doppelten Gruppenkontrollnummern. |
 | Doppelte Transaktionssatz-Kontrollnummern nicht zulassen |Blockiert Austauschvorgänge mit doppelten Transaktionssatz-Kontrollnummern. |
 
-### <a name="validations"></a>Überprüfungen
+### <a name="validation"></a>Überprüfen
 
-![Überprüfungseigenschaften für empfangene Nachrichten festlegen](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+![Festlegen der Überprüfungseigenschaften für empfangene Nachrichten](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
 Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
 
@@ -189,7 +189,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="identifiers"></a>Bezeichner
 
-![Bezeichnereigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![Festlegen der Bezeichnereigenschaften](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
@@ -200,7 +200,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="acknowledgment"></a>Bestätigung
 
-![Bestätigungseigenschaften festlegen](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Festlegen der Bestätigungseigenschaften](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
@@ -216,7 +216,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 | --- | --- |
 | Version |Wählen Sie die X12-Version. |
 | Transaktionstyp (ST01) |Wählen Sie den Transaktionstyp. |
-| Schema |Wählen Sie das zu verwendende Schema aus. Schemas befinden sich in Ihrem Integrationskonto. Wenn Sie das Schema zuerst ausgewählt haben, konfiguriert es automatisch die Version und den Transaktionstyp.  |
+| SCHEMA |Wählen Sie das zu verwendende Schema aus. Schemas befinden sich in Ihrem Integrationskonto. Wenn Sie das Schema zuerst ausgewählt haben, konfiguriert es automatisch die Version und den Transaktionstyp.  |
 
 > [!NOTE]
 > Konfigurieren Sie das erforderliche [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md), das in Ihr [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md) hochgeladen wird.
@@ -225,19 +225,19 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ![Trennzeichen in einem Transaktionssatz angeben: „Standardbezeichner“ oder „Wiederholungstrennzeichen“](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | ISA11-Verwendung |Gibt das Trennzeichen an, das in einem Transaktionssatz verwendet werden soll: <p>Wählen Sie **Standardbezeichner** aus, um anstelle der Dezimalschreibweise des eingehenden Dokuments in der EDI-Empfangspipeline einen Punkt (.) für die Dezimalschreibweise zu verwenden. <p>Wählen Sie **Wiederholungstrennzeichen** aus, um das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur anzugeben. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
 
 ### <a name="control-numbers"></a>Kontrollnummern
 
-![Kontrollnummerneigenschaften angeben](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![Angeben der Kontrollnummerneigenschaften](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Kontrollversionsnummer (ISA12) |Wählen der Version des X12-Standards |
 | Verwendungsindikator (ISA15) |Wählen des Kontexts eines Austauschs.  Die Werte sind Informationen, Produktionsdaten oder Testdaten. |
-| SCHEMA |Generiert die GS- und ST-Segmente für einen X12-codierten Austausch, der an die Sendepipeline gesendet wird. |
+| Schema |Generiert die GS- und ST-Segmente für einen X12-codierten Austausch, der an die Sendepipeline gesendet wird. |
 | GS1 |Optional, einen Wert für den Funktionscode in der Dropdownliste wählen |
 | GS2 |Optional, Anwendungsabsender |
 | GS3 |Optional, Anwendungsempfänger |
@@ -273,7 +273,7 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 
 ### <a name="validation"></a>Überprüfen
 
-![Überprüfungseigenschaften für den Nachrichtenversand festlegen](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+![Festlegen der Überprüfungseigenschaften für den Nachrichtenversand](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
 Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
 
@@ -296,9 +296,13 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
     ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/x12/). 
+## <a name="connector-reference"></a>Connector-Referenz
 
-## <a name="learn-more"></a>Weitere Informationen
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
+Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/x12/). 
 
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

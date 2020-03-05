@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301691"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -59,7 +59,7 @@ Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
    Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
-   * Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** im Bereich des Data Lake Storage Gen2-Kontos zuzuweisen. Wenn Sie die Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen, treten jedoch Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
+   * Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** im Bereich des Data Lake Storage Gen2-Kontos zuzuweisen. Wenn Sie die Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen, treten jedoch Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
 
       Wenn Sie es vorziehen, eine Zugriffssteuerungsliste (ACL) zu verwenden, um den Dienstprinzipal mit einer bestimmten Datei oder einem bestimmten Verzeichnis zu verknüpfen, verweisen Sie auf [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 

@@ -6,19 +6,20 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 01/21/2020
-ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/27/2020
+ms.custom: subject-armqs
+ms.openlocfilehash: 7c02cdf772b06f7070071aa7ba35c59b019187cc
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587888"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301725"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Azure Cosmos DB-Instanz und eines Containers mit einer Azure Resource Manager-Vorlage
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Mit Azure Cosmos DB können Sie schnell Schlüssel/Wert-, Dokument- und Graphdatenbanken erstellen und abfragen. In dieser Schnellstartanleitung wird in erster Linie die Bereitstellung einer Resource Manager-Vorlage zur Erstellung einer Azure Cosmos-Datenbank und eines Containers in dieser Datenbank behandelt. In diesem Container können später Daten gespeichert werden.
 
-Die [Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.DocumentDB/allversions).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -26,11 +27,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Azure-Abonnement oder kostenloses Azure Cosmos DB-Testkonto
 
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>Erstellen eines Azure Cosmos-Kontos, einer Datenbank und eines Containers
+
+### <a name="review-the-template"></a>Überprüfen der Vorlage
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
 
@@ -46,6 +49,8 @@ In der Vorlage sind drei Azure-Ressourcen definiert:
 
 Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagenkatalog](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen. Die Vorlage erstellt ein Azure Cosmos-Konto, eine Datenbank und einen Container.
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
@@ -59,13 +64,13 @@ Weitere Azure Cosmos DB-Vorlagenbeispiele finden Sie im [Schnellstart-Vorlagen
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
     * **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
-    * **Kontoname**: Geben Sie einen Namen für das Azure Cosmos-Konto ein. Der Wert muss global eindeutig sein. 
-    * **Standort**: Geben Sie den Standort ein, an dem Sie Ihr Azure Cosmos-Konto erstellen möchten. Das Azure Cosmos-Konto kann sich am gleichen Standort befinden wie die Ressourcengruppe. 
+    * **Kontoname**: Geben Sie einen Namen für das Azure Cosmos-Konto ein. Der Wert muss global eindeutig sein.
+    * **Standort**: Geben Sie den Standort ein, an dem Sie Ihr Azure Cosmos-Konto erstellen möchten. Das Azure Cosmos-Konto kann sich am gleichen Standort befinden wie die Ressourcengruppe.
     * **Primäre Region**: Die primäre Replikatregion für das Azure Cosmos-Konto.
     * **Sekundäre Region**: Die sekundäre Replikatregion für das Azure Cosmos-Konto.
     * **Datenbankname**: Der Name der Azure Cosmos-Datenbank.
     * **Containername**: Der Name des Azure Cosmos-Containers.
-    * **Durchsatz**:  Der Durchsatz für den Container (Mindestwert: 400 RU/s). 
+    * **Durchsatz**:  Der Durchsatz für den Container (Mindestwert: 400 RU/s).
     * **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
 3. Wählen Sie die Option **Kaufen**. Nach erfolgreicher Bereitstellung des Azure Cosmos-Kontos erhalten Sie eine Benachrichtigung:
@@ -92,7 +97,7 @@ az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
-(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name 
+(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
 

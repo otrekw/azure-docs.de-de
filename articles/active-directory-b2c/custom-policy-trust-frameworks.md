@@ -2,20 +2,20 @@
 title: 'Referenz: Vertrauensframeworks in Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ffa25eec9c4b668f428d8e8b5a780a5fe4625a2c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851145"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188884"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
@@ -36,9 +36,9 @@ Zur Beantwortung all dieser Fragen wird für die benutzerdefinierten Azure AD B2
 
 Das Vertrauens-Framework sollte als geschriebene Spezifikation der Richtlinien für Identität, Sicherheit, Datenschutz und Schutz von Daten verstanden werden, die von Teilnehmern einer Interessengemeinschaft eingehalten werden müssen.
 
-Die Verbundidentität ist eine Basis zur Erzielung von Endbenutzer-Identitätszusicherung auf Internetniveau. Indem die Identitätsverwaltung an Drittanbieter delegiert wird, kann eine einzelne digitale Identität für einen Endbenutzer mit mehreren vertrauenden Seiten wiederverwendet werden.  
+Die Verbundidentität ist eine Basis zur Erzielung von Endbenutzer-Identitätszusicherung auf Internetniveau. Indem die Identitätsverwaltung an Drittanbieter delegiert wird, kann eine einzelne digitale Identität für einen Endbenutzer mit mehreren vertrauenden Seiten wiederverwendet werden.
 
-Für die Sicherstellung der Identität ist es erforderlich, dass Identitätsanbieter (IdPs) und Attributanbieter (AtPs) bestimmte Richtlinien und Methoden in Bezug auf die Sicherheit, den Datenschutz und den Betrieb einhalten.  Da keine direkten Untersuchungen durchgeführt werden können, müssen vertrauende Seiten (Relying Parties, RPs) Vertrauensstellungen mit den IdPs und AtPs entwickeln, die jeweils ausgewählt werden.  
+Für die Sicherstellung der Identität ist es erforderlich, dass Identitätsanbieter (IdPs) und Attributanbieter (AtPs) bestimmte Richtlinien und Methoden in Bezug auf die Sicherheit, den Datenschutz und den Betrieb einhalten.  Da keine direkten Untersuchungen durchgeführt werden können, müssen vertrauende Seiten (Relying Parties, RPs) Vertrauensstellungen mit den IdPs und AtPs entwickeln, die jeweils ausgewählt werden.
 
 Da die Zahl von Konsumenten und Anbietern von Informationen zur digitalen Identität ständig steigt, ist es nicht mehr haltbar, für diese Vertrauensstellungen die Verwaltung als Paare fortzusetzen. Dies gilt auch für den paarweisen Austausch der technischen Metadaten, die für die Netzwerkverbindung benötigt werden.  Mit Verbund-Hubs konnten diese Probleme nur in eingeschränktem Maße gelöst werden.
 
@@ -65,13 +65,13 @@ Vertrauensframeworks (TFs) sind der Dreh- und Angelpunkt des OIX-Vertrauensframe
 
 Daher wird mit einer TF-Spezifikation gesteuert, wie Identitätsinformationen zwischen den Teilnehmern der Interessengemeinschaft ausgetauscht werden: vertrauende Seiten, Identitäts- und Attributanbieter und Attributverifizierer.
 
-Eine TF-Spezifikation umfasst ein oder mehrere Dokumente, die als Referenz für die Steuerung der Interessengemeinschaft dienen und die Durchsetzung und Nutzung von Informationen zur digitalen Identität innerhalb der Gemeinschaft regeln. Es handelt sich also um eine Reihe von Richtlinien und Verfahren, die für das Herstellen von Vertrauen in die digitalen Identitäten für Onlinetransaktionen zwischen Mitgliedern einer Interessengemeinschaft ausgelegt sind.  
+Eine TF-Spezifikation umfasst ein oder mehrere Dokumente, die als Referenz für die Steuerung der Interessengemeinschaft dienen und die Durchsetzung und Nutzung von Informationen zur digitalen Identität innerhalb der Gemeinschaft regeln. Es handelt sich also um eine Reihe von Richtlinien und Verfahren, die für das Herstellen von Vertrauen in die digitalen Identitäten für Onlinetransaktionen zwischen Mitgliedern einer Interessengemeinschaft ausgelegt sind.
 
 Mit anderen Worten werden in einer TF-Spezifikation die Regeln zum Erstellen eines wettbewerbsfähigen Verbundökosystems für die Identität einer Gemeinschaft definiert.
 
 Derzeit herrscht ein breiter Konsens über die Vorteile eines derartigen Ansatz. Es besteht kein Zweifel, dass Vertrauens-Framework-Spezifikationen die Entwicklung von digitalen Identitätsökosystemen mit Merkmalen der überprüfbaren Sicherheit, der Sicherheit und des Datenschutzes begünstigen, was bedeutet, dass sie von verschiedenen Interessensgemeinschaften wiederverwendet werden können.
 
-Aus diesem Grund nutzen benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, die Spezifikation als Basis für ihre Datendarstellung für ein TF, um die Interoperabilität zu vereinfachen.  
+Aus diesem Grund nutzen benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, die Spezifikation als Basis für ihre Datendarstellung für ein TF, um die Interoperabilität zu vereinfachen.
 
 Azure AD B2C benutzerdefinierte Richtlinien, welche das Identity Experience Framework nutzen, stellen eine TF-Spezifikation als eine Mischung von Menschen und maschinenlesbaren Daten dar. Einige Abschnitte dieses Modells (üblicherweise Abschnitte, die mehr auf Governance ausgerichtet sind) werden als Verweise auf die veröffentlichten Dokumentationen zu Sicherheit und Datenschutz sowie die damit verbundenen Prozeduren (sofern vorhanden) dargestellt. Andere Abschnitte beschreiben ausführlich die Regeln bezüglich Konfiguration, Metadaten und Laufzeit, die betriebliche Automatisierung erleichtern.
 
@@ -106,21 +106,21 @@ Im Hinblick auf die Implementierung besteht die TF-Spezifikation aus einer Reihe
 ### <a name="understand-claims"></a>Verstehen von Ansprüchen
 
 > [!NOTE]
-> Wir bezeichnen alle möglichen Typen von Identitätsinformationen, die ausgetauscht werden können, als Ansprüche: Ansprüche in Bezug auf die Anmeldeinformationen eines Endbenutzers für die Authentifizierung, Identitätsüberprüfung, Kommunikationsgerät, physischer Standort, personenbezogene Attribute usw.  
+> Wir bezeichnen alle möglichen Typen von Identitätsinformationen, die ausgetauscht werden können, als Ansprüche: Ansprüche in Bezug auf die Anmeldeinformationen eines Endbenutzers für die Authentifizierung, Identitätsüberprüfung, Kommunikationsgerät, physischer Standort, personenbezogene Attribute usw.
 >
-> Wir verwenden den Begriff „Ansprüche“ statt „Attribute“, da es sich in Onlinetransaktionen bei diesen Datenartefakten nicht um Fakten handelt, die direkt durch die vertrauende Seite überprüft werden können. Stattdessen handelt es sich um Assertionen oder Ansprüche zu Fakten für die die vertrauende Seite ein ausreichendes Maß an Vertrauen haben muss, um die angeforderte Transaktion für den Endbenutzer zu gewähren.  
+> Wir verwenden den Begriff „Ansprüche“ statt „Attribute“, da es sich in Onlinetransaktionen bei diesen Datenartefakten nicht um Fakten handelt, die direkt durch die vertrauende Seite überprüft werden können. Stattdessen handelt es sich um Assertionen oder Ansprüche zu Fakten für die die vertrauende Seite ein ausreichendes Maß an Vertrauen haben muss, um die angeforderte Transaktion für den Endbenutzer zu gewähren.
 >
-> Ein weiterer Grund ist die Tatsache, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, für die Vereinfachung des Austauschs aller Arten von Informationen zur digitalen Identität auf einheitliche Weise ausgelegt sind. Dies gilt unabhängig davon, ob das zugrunde liegende Protokoll für die Benutzerauthentifizierung oder den Attributabruf definiert ist.  Ebenso verwenden wir den Ausdruck „Anspruchsanbieter“ zur allgemeinen Bezeichnung von Identitätsanbietern, Attributanbietern und Attributverifizierern, wenn nicht zwischen den jeweiligen spezifischen Funktionen unterschieden werden soll.   
+> Ein weiterer Grund ist die Tatsache, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, für die Vereinfachung des Austauschs aller Arten von Informationen zur digitalen Identität auf einheitliche Weise ausgelegt sind. Dies gilt unabhängig davon, ob das zugrunde liegende Protokoll für die Benutzerauthentifizierung oder den Attributabruf definiert ist.  Ebenso verwenden wir den Ausdruck „Anspruchsanbieter“ zur allgemeinen Bezeichnung von Identitätsanbietern, Attributanbietern und Attributverifizierern, wenn nicht zwischen den jeweiligen spezifischen Funktionen unterschieden werden soll.
 
 Mit diesen Anbietern wird gesteuert, wie Identitätsinformationen zwischen einer vertrauenden Seite, Identitäts- und Attributanbietern und Attributverifizierern ausgetauscht werden. Sie steuern, welche Identitäts- und Attributanbieter für die Authentifizierung einer vertrauenden Seite erforderlich sind. Dies kann als domänenspezifische Sprache (DSL) angesehen werden. Hierbei handelt es sich um eine Computersprache, die für eine bestimmte Anwendungsdomäne mit Vererbung, *if*-Anweisungen und Polymorphie spezialisiert ist.
 
-Diese Richtlinien stellen den maschinenlesbaren Teil des TF-Konstrukts von benutzerdefinierten Richtlinien in Azure AD B2C dar, für die das Identity Experience Framework genutzt wird. Sie enthalten alle betriebsbezogenen Details, einschließlich Anspruchsanbietern Metadaten und technischen Profilen, Anspruchsschemadefinitionen, Anspruchstransformationsfunktionen und User Journeys, die zur Vereinfachung der Orchestrierung und der Automatisierung eingefügt werden.  
+Diese Richtlinien stellen den maschinenlesbaren Teil des TF-Konstrukts von benutzerdefinierten Richtlinien in Azure AD B2C dar, für die das Identity Experience Framework genutzt wird. Sie enthalten alle betriebsbezogenen Details, einschließlich Anspruchsanbietern Metadaten und technischen Profilen, Anspruchsschemadefinitionen, Anspruchstransformationsfunktionen und User Journeys, die zur Vereinfachung der Orchestrierung und der Automatisierung eingefügt werden.
 
-Sie werden als *lebende Dokumente* betrachtet, da sich der Inhalt mit hoher Wahrscheinlichkeit im Laufe der Zeit, in Bezug auf die aktiven Teilnehmer, ändert, die in den Richtlinien deklariert werden. Zudem besteht die Möglichkeit, dass eine Änderung der allgemeinen Geschäftsbedingungen für Teilnehmer eintritt.  
+Sie werden als *lebende Dokumente* betrachtet, da sich der Inhalt mit hoher Wahrscheinlichkeit im Laufe der Zeit, in Bezug auf die aktiven Teilnehmer, ändert, die in den Richtlinien deklariert werden. Zudem besteht die Möglichkeit, dass eine Änderung der allgemeinen Geschäftsbedingungen für Teilnehmer eintritt.
 
 Das Einrichten und Verwalten des Verbunds wird erheblich vereinfacht, indem vertrauende Seiten gegenüber laufenden Neukonfigurationen von Vertrauensstellungen und der Konnektivität abgeschirmt werden, wenn unterschiedliche Anspruchsanbieter/-verifizierer dem Richtliniensatz (der die Gemeinschaft repräsentiert) beitreten oder diesen verlassen.
 
-Interoperabilität ist eine andere wesentliche Herausforderung. Zusätzliche Anspruchsanbieter/Prüfer müssen einbezogen werden, da es unwahrscheinlich ist, dass vertrauende Seiten alle erforderlichen Protokolle unterstützen. Mit benutzerdefinierten Azure AD B2C-Richtlinien wird dieses Problem gelöst, indem Branchenstandardprotokolle unterstützt und bestimmte User Journeys angewendet werden. Sie werden zum Umstellen von Anforderungen verwendet, wenn vertrauende Seiten und Attributanbieter nicht das gleiche Protokoll unterstützen.  
+Interoperabilität ist eine andere wesentliche Herausforderung. Zusätzliche Anspruchsanbieter/Prüfer müssen einbezogen werden, da es unwahrscheinlich ist, dass vertrauende Seiten alle erforderlichen Protokolle unterstützen. Mit benutzerdefinierten Azure AD B2C-Richtlinien wird dieses Problem gelöst, indem Branchenstandardprotokolle unterstützt und bestimmte User Journeys angewendet werden. Sie werden zum Umstellen von Anforderungen verwendet, wenn vertrauende Seiten und Attributanbieter nicht das gleiche Protokoll unterstützen.
 
 User Journeys enthalten Protokollprofile und Metadaten, um die „On the Wire“-Interoperabilität zwischen der vertrauenden Seite und anderen Teilnehmern zu installieren. Außerdem sind Regeln für die betriebsbezogene Runtime vorhanden, die auf Anforderung/Antwort-Nachrichten für den Austausch von Identitätsinformationen angewendet werden, um die Konformität mit veröffentlichten Richtlinien im Rahmen der TF-Spezifikation durchzusetzen. Das Konzept der Benutzer Journeys ist von entscheidender Bedeutung für die Anpassung der Kundenerfahrung. Es verdeutlicht auch, wie das System auf Protokollebene funktioniert.
 

@@ -1,18 +1,17 @@
 ---
 title: Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in Operations Manager | Microsoft-Dokumentation
 description: Azure Monitor für VMs ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird die Verwendung des Zuordnungsfeatures zum automatischen Erstellen von Diagrammen der verteilten Anwendungen in Operations Manager erörtert.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402636"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663452"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
 

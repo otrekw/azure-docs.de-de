@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152260"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912204"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
@@ -111,7 +111,7 @@ Nach Abschluss der Verarbeitung gibt das Modul ein transformiertes Dataset aus, 
 
 Nachdem Sie das transformierte Dataset erstellt haben, können Sie es als Eingabe für das Modul „Train Model“ (Modell trainieren) verwenden.
  
-### <a name="best-practices"></a>Bewährte Methoden
+## <a name="best-practices"></a>Bewährte Methoden
 
 Die folgenden bewährten Methoden können Ihnen dabei helfen, das Modul „Feature Hashing“ optimal zu nutzen:
 

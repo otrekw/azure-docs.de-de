@@ -1,18 +1,17 @@
 ---
 title: Bewährte Methoden für die Verwaltungslösung in Azure | Microsoft-Dokumentation
 description: ''
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553937"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663197"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Bewährte Methoden für das Erstellen von Verwaltungslösungen in Azure (Vorschau)
 > [!NOTE]
@@ -32,7 +31,7 @@ Dieser Artikel enthält bewährte Methoden für das [Erstellen einer Verwaltungs
 - Schließen Sie das [IngestionAPI-Modul](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) in Ihre Lösung ein, das von Runbooks verwendet wird, die Daten in das Log Analytics-Repository schreiben.  Konfigurieren Sie die Lösung so, dass auf diese Ressource [verwiesen](solutions-solution-file.md#solution-resource) wird, damit sie erhalten bleibt, wenn die Lösung entfernt wird.  Auf diese Weise kann das Modul von mehreren Lösungen gemeinsam verwendet werden.
 - Verwenden Sie [Automation-Variablen](../../automation/automation-schedules.md), um Werte für die Lösung bereitzustellen, die Benutzer möglicherweise später ändern möchten.  Selbst wenn die Lösung so konfiguriert ist, dass sie die Variable enthält, kann der entsprechende Wert trotzdem geändert werden.
 
-## <a name="views"></a>Ansichten
+## <a name="views"></a>Sichten
 - Alle Lösungen sollten eine einzige Ansicht enthalten, die im Portal des Benutzers angezeigt wird.  Die Ansicht kann mehrere [Visualisierungskomponenten](../../azure-monitor/platform/view-designer-parts.md) zur Veranschaulichung unterschiedlicher Datasets enthalten.
 - Fügen Sie allen Ansichten in Ihrer Lösung eine Meldung vom Typ [Datenflussüberprüfung](../../azure-monitor/platform/view-designer-tiles.md) hinzu, um die Benutzer auf Datenquellen hinzuweisen, die konfiguriert werden müssen, sodass die erforderlichen Daten gesammelt werden müssen.
 - Konfigurieren Sie die Lösung so, dass sie die Ansicht [enthält](solutions-solution-file.md#solution-resource), damit diese beim Entfernen der Lösung entfernt wird.

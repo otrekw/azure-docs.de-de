@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299311"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Tutorial: Überprüfen der Rechnung Ihrer Microsoft Partner-Vereinbarung
 
@@ -38,7 +38,7 @@ Seit dem Abschluss des Azure-Abonnements müssen mehr als 30 Tage vergangen sei
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-- Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+- Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 

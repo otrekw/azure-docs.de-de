@@ -2,20 +2,20 @@
 title: Sichern einer Azure API Management-API mithilfe von Azure Active Directory B2C
 description: Erfahren Sie, wie Sie von Azure Active Directory B2C ausgestellte Zugriffstoken zum Sichern eines Azure API Management-API-Endpunkts verwenden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186929"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -35,9 +35,9 @@ Sie benötigen die folgenden Ressourcen, bevor Sie mit den Schritten in diesem A
 
 Wenn Sie eine API in Azure API Management mit Azure AD B2C sichern, benötigen Sie mehrere Werte für die [eingehende Richtlinie](../api-management/api-management-howto-policies.md), die Sie in APIM erstellen. Notieren Sie sich zuerst die Anwendungs-ID einer Anwendung, die Sie zuvor in Ihrem Azure AD B2C-Mandanten registriert haben. Wenn Sie die Anwendung verwenden, die Sie in den Voraussetzungen erstellt haben, verwenden Sie die Anwendungs-ID für *webbapp1*.
 
-Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendungs-ID abzurufen. Weitere Informationen zu der neuen Oberfläche finden Sie [hier](https://aka.ms/b2cappregintro).
+Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendungs-ID abzurufen. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
@@ -45,7 +45,7 @@ Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere ne
 1. Wählen Sie unter **Verwalten** die Option **Anwendungen**.
 1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
@@ -87,7 +87,7 @@ Nun können Sie die eingehende Richtlinie, mit der API-Aufrufe überprüft werde
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure API Management-Instanz.
 1. Klicken Sie auf **APIs**.
 1. Wählen Sie die API aus, die Sie mit Azure AD B2C sichern möchten.
-1. Wählen Sie die Registerkarte **Entwurf** aus.
+1. Klicken Sie auf die Registerkarte **Entwurf**.
 1. Wählen Sie unter **Eingehende Verarbeitung** **\</\>** aus, um den Richtliniencode-Editor zu öffnen.
 1. Platzieren Sie das folgende `<validate-jwt>`-Tag in der `<inbound>`-Richtlinie.
 
@@ -129,7 +129,7 @@ Sie benötigen zunächst ein Token, das von Azure AD B2C zur Verwendung im `Auth
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
 1. Wählen Sie eine vorhandene Richtlinie für die Registrierung bzw. Anmeldung aus, wie z. B. *B2C_1_signupsignin1*.
 1. Wählen Sie für **Anwendung** die Option *webapp1* aus.
-1. Wählen Sie für **Antwort-URL** `https://jwt.ms` aus.
+1. Wählen Sie für **Antwort-URL**`https://jwt.ms` aus.
 1. Wählen Sie **Benutzerflow ausführen** aus.
 
     ![Ausführen der Benutzerflowseite für die Registrierung bzw. Anmeldung beim Benutzerflow im Azure-Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
@@ -160,7 +160,7 @@ Nachdem Sie sich das Zugriffstoken und den APIM-Abonnementschlüssel notiert hab
 
 1. Fügen Sie als Nächstes die folgenden Header hinzu:
 
-    | Schlüssel | Wert |
+    | Key | value |
     | --- | ----- |
     | `Authorization` | Der verschlüsselte Tokenwert, den Sie zuvor notiert haben, mit dem Präfix `Bearer ` (mit einem Leerzeichen nach „Bearer“) |
     | `Ocp-Apim-Subscription-Key` | Der APIM-Abonnementschlüssel, den Sie zuvor notiert haben |

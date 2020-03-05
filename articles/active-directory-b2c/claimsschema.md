@@ -2,20 +2,20 @@
 title: ClaimsSchema – Azure Active Directory B2C | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie das ClaimsSchema-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581105"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189923"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
 | DataType | 1:1 | Der Typ des Anspruchs. |
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | Ein Verweis auf ein **PredicateValidationsIn
 Das Element **DataType** unterstützt die folgenden Werte:
 
 | type | BESCHREIBUNG |
-| ------- | ----------- | 
+| ------- | ----------- |
 |boolean|Stellt einen booleschen Wert (`true` oder `false`) dar.|
 |date| Stellt einen Zeitpunkt dar, der in der Regel als Tagesdatum ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
 |dateTime|Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
@@ -162,7 +162,7 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 

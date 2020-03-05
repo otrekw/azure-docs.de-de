@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor – PowerShell-Schnellstartbeispiele
 description: Verwenden Sie PowerShell für den Zugriff auf Azure Monitor-Features wie die automatische Skalierung, Warnungen, Webhooks und die Suche in Aktivitätsprotokollen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551838"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659296"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
@@ -149,14 +146,14 @@ Sie können die Eigenschaften für E-Mails und Webhooks mit `New-AzAlertRuleEmai
 
 In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Erstellen einer Warnung mithilfe einer Metrik verwendet werden.
 
-| Parameter | value |
+| parameter | value |
 | --- | --- |
-| NAME |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | Standort für diese Warnungsregel |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-| operator |GreaterThan |
+| Operator |GreaterThan |
 | Schwellenwert (Anzahl/s für diese Metrik) |1 |
 | WindowSize (Format: hh:mm:ss) |00:05:00 |
 | Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet) |Average |

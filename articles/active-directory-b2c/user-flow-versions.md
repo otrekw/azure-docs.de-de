@@ -2,20 +2,20 @@
 title: Benutzerflowversionen in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, welche Versionen von Benutzerflows in Azure Active Directory B2C verfügbar sind.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7e174245755659494dfe1243c39619ae37f0f33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840076"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185619"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Benutzerflowversionen in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Neue Benutzerflows werden als neue Versionen hinzugefügt. Sobald Benutzerflows 
 
 ## <a name="v1"></a>V1
 
-| Benutzerflow | Empfohlen | Beschreibung |
+| Benutzerflow | Empfohlen | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | Zurücksetzen von Kennwörtern | Ja | Ermöglicht einem Benutzer nach Überprüfung der E-Mail-Adresse die Auswahl eines neuen Kennworts. Mithilfe dieses Benutzerflows können Sie Folgendes konfigurieren: <ul><li>[Multi-Factor Authentication](custom-policy-multi-factor-authentication.md)</li><li>Tokenkompatibilitätseinstellungen</li><li>[Anforderungen an die Komplexität von Kennwörtern](user-flow-password-complexity.md)</li></ul> |
 | Profilbearbeitung | Ja | Ermöglicht dem Benutzer die Konfiguration seiner Benutzerattribute. Mithilfe dieses Benutzerflows können Sie Folgendes konfigurieren: <ul><li>[Tokengültigkeitsdauer](tokens-overview.md)</li><li>Tokenkompatibilitätseinstellungen</li><li>Sitzungsverhalten</li></ul> |
@@ -45,7 +45,7 @@ Neue Benutzerflows werden als neue Versionen hinzugefügt. Sobald Benutzerflows 
 
 ## <a name="v2"></a>V2
 
-| Benutzerflow | Empfohlen | Beschreibung |
+| Benutzerflow | Empfohlen | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | Kennwortzurücksetzung v2 | Nein | Ermöglicht einem Benutzer nach Überprüfung der E-Mail-Adresse die Auswahl eines neuen Kennworts. Mithilfe dieses Benutzerflows können Sie Folgendes konfigurieren: <ul><li>[Multi-Factor Authentication](custom-policy-multi-factor-authentication.md)</li><li>Tokenkompatibilitätseinstellungen</li><li>[Altersbeschränkung](basic-age-gating.md)</li><li>[Anforderungen an die Komplexität von Kennwörtern](user-flow-password-complexity.md)</li></ul> |
 | Profilbearbeitung v2 | Ja | Ermöglicht dem Benutzer die Konfiguration seiner Benutzerattribute. Mithilfe dieses Benutzerflows können Sie Folgendes konfigurieren: <ul><li>[Tokengültigkeitsdauer](tokens-overview.md)</li><li>Tokenkompatibilitätseinstellungen</li><li>Sitzungsverhalten</li></ul> |

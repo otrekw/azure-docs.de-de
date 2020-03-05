@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192043"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585882"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -55,13 +55,17 @@ Wenn Sie dieses Kontrollkästchen aktivieren, müssen Benutzer Azure Multi-Facto
 
 Organisationen, die Microsoft Intune bereitstellen, können die von ihren Geräten zurückgegebenen Informationen verwenden, um Geräte zu identifizieren, die bestimmte Kompatibilitätsanforderungen erfüllen. Diese Informationen zur Richtliniencompliance werden von Intune an Azure AD weitergeleitet, sodass der bedingte Zugriff Entscheidungen zum Gewähren oder Blockieren des Zugriffs auf Ressourcen treffen kann. Weitere Informationen zu Konformitätsrichtlinien finden Sie im Artikel [Legen Sie mit Intune Regeln auf Geräten fest, um Zugriff auf Ressourcen in Ihrer Organisation zu gewähren](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
+Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt.
+
+Geräte müssen in Azure AD registriert werden, damit Sie als kompatibel gekennzeichnet werden können. Weitere Informationen zur Geräteregistrierung finden Sie im Artikel [Was ist eine Geräteidentität?](../devices/overview.md).
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Gerät mit Hybrid-Azure AD-Einbindung erforderlich
 
 Organisationen können die Geräteidentität als Teil ihrer Richtlinie für bedingten Zugriff verwenden. Mit diesem Kontrollkästchen können Organisationen festlegen, dass Geräte in Hybrid-Azure AD eingebunden sein müssen. Im Artikel [Was ist eine Geräteidentität?](../devices/overview.md) finden Sie weitere Informationen zu Geräteidentitäten.
 
 ### <a name="require-approved-client-app"></a>Genehmigte Client-App erforderlich
 
-Organisationen können festlegen, dass ein versuchter Zugriff auf die ausgewählten Cloud-Apps über eine genehmigte Client-App erfolgen muss.
+Organisationen können festlegen, dass ein versuchter Zugriff auf die ausgewählten Cloud-Apps über eine genehmigte Client-App erfolgen muss. Diese genehmigten Client-Apps unterstützen [Intune-App-Schutzrichtlinien](/intune/app-protection-policy) unabhängig von jeglicher MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte).
 
 Diese Einstellung gilt für die folgenden Client-Apps:
 
@@ -102,9 +106,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 
 ### <a name="require-app-protection-policy"></a>App-Schutzrichtlinie erforderlich
 
-In Ihrer Richtlinie für bedingten Zugriff können Sie verlangen, dass eine App-Schutzrichtlinie für die Client-App vorhanden sein muss, bevor der Zugriff auf die ausgewählten Cloud-Apps verfügbar ist. 
-
-![Steuern des Zugriffs mit einer App-Schutzrichtlinie](./media/technical-reference/22.png)
+In Ihrer Richtlinie für bedingten Zugriff können Sie festlegen, dass eine [Intune-App-Schutzrichtlinie](/intune/app-protection-policy) für die Client-App vorhanden sein muss, um auf die ausgewählten Cloud-Apps zugreifen zu können. 
 
 Diese Einstellung gilt für die folgenden Client-Apps:
 
@@ -119,9 +121,13 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Die Voraussetzung **App-Schutzrichtlinie erforderlich**:
     - Unterstützt als Geräteplattformbedingung nur iOS und Android.
 
+### <a name="terms-of-use"></a>Nutzungsbedingungen
+
+Wenn Ihre Organisation Nutzungsbedingungen erstellt hat, werden unter den Steuerelementen zur Rechteerteilung ggf. weitere Optionen angezeigt. Mit diesen Optionen können Administratoren die Bestätigung von Nutzungsbedingungen als Bedingung für den Zugriff auf die Ressourcen festlegen, die durch die Richtlinie geschützt werden. Weitere Informationen zu Nutzungsbedingungen finden Sie im Artikel [Nutzungsbedingungen für Azure Active Directory](terms-of-use.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bedingter Zugriff: Sitzungssteuerelemente](concept-conditional-access-session.md)
+- [Bedingter Zugriff: Sitzung](concept-conditional-access-session.md)
 
 - [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 

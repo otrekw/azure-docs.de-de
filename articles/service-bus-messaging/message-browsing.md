@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756395"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539364"
 ---
 # <a name="message-browsing"></a>Einsehen von Nachrichten
 
@@ -34,7 +34,7 @@ Peek gibt auch Nachrichten zurück, die gesperrt wurden und aktuell von anderen 
 
 ## <a name="peek-apis"></a>Peek-APIs
 
-Die Methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) und [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) sind in allen .NET- und Java-Clientbibliotheken und Empfängerobjekten vorhanden: **MessageReceiver**, **MessageSession**, **QueueClient** und **SubscriptionClient**. Peek funktioniert für alle Warteschlangen und Abonnements und ihre jeweiligen Warteschlangen für unzustellbare Nachrichten.
+Die Methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) und [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) sind in allen .NET- und Java-Clientbibliotheken und Empfängerobjekten vorhanden: **MessageReceiver**, **MessageSession**. Peek funktioniert für alle Warteschlangen und Abonnements und ihre jeweiligen Warteschlangen für unzustellbare Nachrichten.
 
 Bei wiederholtem Aufruf listet die Peek-Methode alle Nachrichten auf, die im Warteschlangen- oder Abonnementprotokoll vorhanden sind, und zwar in der Reihenfolge der Sequenznummern von der niedrigsten verfügbaren Sequenznummer bis zur höchsten. Dies ist die Reihenfolge, in der Nachrichten in die Warteschlange eingereiht wurden, und nicht die Reihenfolge, in der Nachrichten schließlich abgerufen werden.
 

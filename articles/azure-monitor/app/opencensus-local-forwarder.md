@@ -1,19 +1,15 @@
 ---
 title: Lokale OpenCensus-Weiterleitung für Azure Application Insights (Vorschau)
 description: Leitet verteilte Ablaufverfolgungsdaten und Spannen von OpenCensus aus Sprachen wie Python und Go an Azure Application Insights weiter.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406606"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669963"
 ---
 # <a name="local-forwarder-preview"></a>Lokale Weiterleitung (Vorschau)
 

@@ -1,18 +1,16 @@
 ---
 title: 'Azure Application Insights-Agent: ausführliche Anweisungen | Microsoft-Dokumentation'
 description: Ausführliche Anweisungen für die ersten Schritte mit dem Application Insights-Agent Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 3b053b7876494a3b2e6f392850c0323b56b1c3ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd5ca5039b537859d5b31c901ed1f93877ecb629
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230262"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671204"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights-Agent (ehemals „Statusmonitor v2“): Ausführliche Anleitungen
 
@@ -156,7 +154,7 @@ Wenn Sie aus irgendeinem Grund keine Verbindung zum PowerShell-Modul herstellen 
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>Manuelles Herunterladen der neuesten Nupkg-Datei
 
-1. Wechseln Sie zur Adresse https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+1. Gehe zu https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 2. Wählen Sie die neueste Version der Datei in der Tabelle **Versionsverlauf** aus.
 3. Wählen Sie unter **Installationsoptionen** die Option **Manueller Download** aus.
 
@@ -242,4 +240,4 @@ Lesen Sie die [API-Referenz](status-monitor-v2-api-enable-monitoring.md) mit ein
 
 Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
 
-- Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.
+- Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.

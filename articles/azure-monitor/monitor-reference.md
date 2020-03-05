@@ -1,18 +1,17 @@
 ---
 title: Was wird von Azure Monitor überwacht?
 description: Eine Referenz aller Dienste und anderer Ressourcen, die von Azure Monitor überwacht werden.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620260"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669113"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -173,7 +172,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 ## <a name="product-integrations"></a>Produktintegrationen
 Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre Daten in einem Log Analytics-Arbeitsbereich, sodass sie mit anderen von Azure Monitor gesammelten Protokolldaten analysiert werden können.
 
-| Produkt/Dienst | BESCHREIBUNG |
+| Produkt/Dienst | Beschreibung |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |

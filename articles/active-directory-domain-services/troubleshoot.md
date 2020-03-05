@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512622"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612719"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Häufige Fehler und Schritte zur Problembehandlung für Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Wenn Probleme beim Aktivieren von Azure AD DS auftreten, sehen Sie sich die folg
 
 | **Beispielfehlermeldung** | **Lösung** |
 | --- |:--- |
-| *Der Name contoso.com wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.* |[Domänennamenskonflikt im virtuellen Netzwerk](troubleshoot.md#domain-name-conflict) |
+| *Der Name „addscontoso.com“ wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.* |[Domänennamenskonflikt im virtuellen Netzwerk](troubleshoot.md#domain-name-conflict) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Der Dienst verfügt nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“. Löschen Sie die Anwendung „Azure AD Domain Services Sync“, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Domänendienste verfügen nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“](troubleshoot.md#inadequate-permissions) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Domänendiensteanwendung in Ihrem Azure AD-Mandanten verfügt nicht über die erforderlichen Berechtigungen zum Aktivieren der Domänendienste. Löschen Sie die Anwendung mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Domänendiensteanwendung ist in Ihrem Azure AD-Mandanten nicht ordnungsgemäß konfiguriert](troubleshoot.md#invalid-configuration) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Microsoft Azure AD-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert. Aktivieren Sie die Anwendung mit dem Anwendungsbezeichner 00000002-0000-0000-c000-000000000000, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Microsoft Graph-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert.](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ Wenn Probleme beim Aktivieren von Azure AD DS auftreten, sehen Sie sich die folg
 
 **Fehlermeldung**
 
-*Der Name contoso.com wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.*
+*Der Name „aaddscontoso.com“ wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.*
 
 **Lösung**
 
-Vergewissern Sie sich, dass im virtuellen Netzwerk keine AD DS-Umgebung mit dem gleichen Domänennamen und demselben oder einem per Peering verknüpften virtuellen Netzwerk vorhanden ist. Sie können beispielsweise über eine AD DS-Domäne namens *contoso.com* verfügen, die auf Azure-VMs ausgeführt wird. Wenn Sie versuchen, im virtuellen Netzwerk eine durch Azure AD DS verwaltete Domäne mit dem gleichen Domänennamen *contoso.com* zu aktivieren, tritt beim angeforderten Vorgang ein Fehler auf.
+Vergewissern Sie sich, dass im virtuellen Netzwerk keine AD DS-Umgebung mit dem gleichen Domänennamen und demselben oder einem per Peering verknüpften virtuellen Netzwerk vorhanden ist. Ein Beispiel: Angenommen, Sie verfügen über eine AD DS-Domäne namens *aaddscontoso.com*, die auf virtuellen Azure-Computern ausgeführt wird. Wenn Sie versuchen, im virtuellen Netzwerk eine verwaltete Azure AD DS-Domäne mit dem gleichen Domänennamen (*aaddscontoso.com*) zu aktivieren, ist der Vorgang nicht erfolgreich.
 
 Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen im virtuellen Netzwerk. Mit einem DNS-Lookup wird geprüft, ob eine vorhandene AD DS-Umgebung auf den angeforderten Domänennamen antwortet. Zur Behebung dieses Fehlers verwenden Sie einen anderen Namen beim Einrichten der durch Azure AD DS verwalteten Domäne, oder heben Sie die Bereitstellung der vorhandenen AD DS-Domäne auf, und versuchen Sie dann erneut, Azure AD DS zu aktivieren.
 
@@ -128,9 +128,9 @@ Führen Sie die folgenden Schritte aus, um den Status dieser Anwendung zu prüfe
 
 Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei der durch Azure AD DS verwalteten Domäne anmelden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
-* **Format der Anmeldeinformationen**: Geben Sie die Anmeldeinformationen im UPN-Format an, z.B. als `dee@contoso.onmicrosoft.com`. Das UPN-Format wird zur Angabe von Anmeldeinformationen in Azure AD DS empfohlen. Stellen Sie sicher, dass dieser UPN in Azure AD ordnungsgemäß konfiguriert ist.
+* **Format der Anmeldeinformationen**: Geben Sie die Anmeldeinformationen im UPN-Format an, z.B. als `dee@aaddscontoso.onmicrosoft.com`. Das UPN-Format wird zur Angabe von Anmeldeinformationen in Azure AD DS empfohlen. Stellen Sie sicher, dass dieser UPN in Azure AD ordnungsgemäß konfiguriert ist.
 
-    Der *SAMAccountName* für Ihr Konto (z.B. *CONTOSO\driley*) wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format *SAMAccountName* für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
+    Der SAM-Kontoname (*SAMAccountName*) für Ihr Konto (beispielsweise *AADDSCONTOSO\driley*) wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format *SAMAccountName* für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 
 * **Kennwortsynchronisierung**: Stellen Sie sicher, dass Sie die Kennwortsynchronisierung für [reine Cloudbenutzer][cloud-only-passwords] oder für [Hybridumgebungen mit Azure AD Connect][hybrid-phs] aktiviert haben.
     * **Hybride synchronisierte Konten:** Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, überprüfen Sie Folgendes:

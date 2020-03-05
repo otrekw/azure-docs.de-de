@@ -8,18 +8,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 6699b1617ccd1fef9a507e71fdd73a02b0e98bea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465037"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270633"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Dimension-Entität für eine LUIS-App
-Die vordefinierte dimension-Entität erkennt verschiedene Arten von Maßen, unabhängig von der LUIS-App-Kultur. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Maßen hinzufügen. Die dimension-Entität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
+Die vordefinierte dimension-Entität erkennt verschiedene Arten von Maßen, unabhängig von der LUIS-App-Kultur. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Maßen hinzufügen. Die dimension-Entität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt.
 
 ## <a name="types-of-dimension"></a>dimension-Typen
 
@@ -31,7 +31,7 @@ Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
 `10 1/2 miles of cable`
 
-#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
@@ -45,7 +45,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
@@ -74,7 +74,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.dimension** veranschaulicht.
 
@@ -90,10 +90,10 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.dimension** ver
     }
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-Erfahren Sie mehr über die Entitäten [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md) und [ordinal](luis-reference-prebuilt-ordinal.md). 
+Erfahren Sie mehr über die Entitäten [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md) und [ordinal](luis-reference-prebuilt-ordinal.md).

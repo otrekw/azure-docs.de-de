@@ -1,18 +1,17 @@
 ---
 title: Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 description: Konfigurieren Sie die Diagnoseerweiterung in Azure Monitor so, dass Daten an Azure Event Hub gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 573a56c537e48687e310acff8639c50d0d0c6e3d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467962"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672530"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. In diesem Artikel wird beschrieben, wie Daten aus der Windows Azure-Diagnoseerweiterung (WAD) an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.
@@ -40,7 +39,7 @@ Azure-Diagnose sendet Protokolle und Metriken stets an ein Azure Storage-Konto. 
 | Eigenschaft | Beschreibung |
 |:---|:---|
 | Name | Beschreibender Name für die Senke. Wird in der Konfiguration verwendet, um die Datenquellen anzugeben, die an die Senke senden sollen. |
-| Url  | URL des Event Hubs in der Form \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>.          |
+| url  | URL des Event Hubs in der Form \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>.          |
 | SharedAccessKeyName | Name einer SAS-Richtlinie für den Event Hub, der mindestens über **Senden**-Autorität verfügt. |
 | SharedAccessKey     | Primärer oder sekundär Schlüssel aus der SAS-Richtlinie für den Event Hub. |
 

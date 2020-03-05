@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019416"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656924"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -137,7 +137,7 @@ Sie haben das lokale Speicherkontingent für das Schreiben in das Protokollverze
 * Erhöhen Sie die Kontingentgrenze für lokale Ressourcen.
 
 Weitere Informationen finden Sie in den folgenden Dokumenten:
-* [Speichern und Anzeigen von Diagnosedaten in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
+* [Speichern und Anzeigen von Diagnosedaten in Azure Storage](/azure/storage/common/storage-introduction)
 * [Im Clouddienst werden keine IIS-Protokolle mehr geschrieben.](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Wie aktiviere ich WAD-Protokollierung für Clouddienste?

@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ec8e1df71e6513b13e9c37174a3363471be01d9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879269"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197588"
 ---
 # <a name="common-parameters-and-headers"></a>Allgemeine Parameter und Header
 
@@ -39,12 +40,12 @@ Der Dienst gibt anhand von HTTP-Statuscodes an, ob der Vorgang erfolgreich oder 
    }  
 ```
 
-|Elementname | Typ | BESCHREIBUNG |
+|Elementname | type | BESCHREIBUNG |
 |---|---|---|
 | code | Zeichenfolge | Der Typ des aufgetretenen Fehlers.|
 | message | Zeichenfolge | Eine Beschreibung der Ursache des Fehlers. |
 
 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
  [Referenz für die Azure Key Vault-REST-API](/rest/api/keyvault/)

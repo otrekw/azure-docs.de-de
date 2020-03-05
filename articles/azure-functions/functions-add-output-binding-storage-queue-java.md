@@ -1,14 +1,17 @@
 ---
 title: Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 description: Hier erfahren Sie, wie Sie eine per HTTP ausgelöste Java-Funktion mithilfe einer Queue Storage-Ausgabebindung mit Azure Storage verbinden.
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198546"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272804"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 
@@ -112,10 +115,19 @@ Nun können Sie die neue Ausgabebindung lokal testen.
 
 Verwenden Sie wie zuvor den folgenden Befehl, um das Projekt zu erstellen und die Functions-Runtime lokal zu starten:
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > Da Sie Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#add-to-your-functions-app) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
@@ -138,9 +150,17 @@ Als Nächstes verwenden Sie die Azure CLI, um die neue Warteschlange anzuzeigen 
 
 Führen Sie zum Aktualisieren Ihrer veröffentlichten App den folgenden Befehl erneut aus:  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 Sie können auch wieder cURL verwenden, um die bereitgestellte Funktion zu testen. Übergeben Sie wie zuvor den Wert `AzureFunctions` im Text der POST-Anforderung an die URL. Beispiel:
 

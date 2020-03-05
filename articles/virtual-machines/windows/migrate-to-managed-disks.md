@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7b907cf5bf64aa1a8a458a8d2b42c30dffd0dfd1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029795"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921350"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrieren von Azure-VMs zu Managed Disks in Azure
 
 Azure Managed Disks vereinfacht die Speicherverwaltung dadurch, dass die gesonderte Verwaltung von Speicherkonten entfällt.  Sie können auch Ihre vorhandenen Azure-VMs zu Managed Disks migrieren, um von der höheren Zuverlässigkeit von VMs in einer Verfügbarkeitsgruppe zu profitieren. Es wird sichergestellt, dass die Datenträger verschiedener VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um Single Points of Failure zu vermeiden. Datenträger verschiedener VMs werden automatisch in einer Verfügbarkeitsgruppe in unterschiedlichen Skalierungseinheiten von Speicher (sog. „Stamps“) platziert. Dadurch werden die Auswirkungen des Ausfalls einzelner Speicherskalierungseinheiten eingedämmt, die von Hardware- und Softwarefehlern verursacht werden.
 Je nach Anforderungen stehen vier Typen von Speicheroptionen zur Wahl. Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie in unserem Artikel [Auswählen eines Datenträgertyps](disks-types.md).
 
-## <a name="migration-scenarios"></a>Migrationsszenarien
+## <a name="migration-scenarios"></a>Migrationsszenarios
 
 Sie können in folgenden Szenarien zu Managed Disks migrieren:
 
@@ -29,6 +29,8 @@ Sie können in folgenden Szenarien zu Managed Disks migrieren:
 |Konvertieren einer einzelnen VM vom klassischen Bereitstellungsmodell in das Ressourcen-Manager-Bereitstellungsmodell auf verwalteten Datenträgern     |[Erstellen einer VM aus einer klassischen VHD](create-vm-specialized-portal.md)         |
 |Konvertieren aller VMs in einem VNet vom klassischen Bereitstellungsmodell in das Ressourcen-Manager-Bereitstellungsmodell auf verwalteten Datenträgern     |[Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zum Ressourcen-Manager-Bereitstellungsmodell](migration-classic-resource-manager-ps.md) und dann [Konvertieren eines virtuellen Computers von nicht verwalteten Datenträgern in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md)         |
 |Upgrade von VMs mit nicht verwalteten Standarddatenträgern auf VMs mit verwalteten Premium-Datenträgern     | Zuerst [konvertieren Sie eine Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](convert-unmanaged-to-managed-disks.md). Dann [aktualisieren Sie den Speichertyp eines verwalteten Datenträgers](convert-disk-storage.md).         |
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

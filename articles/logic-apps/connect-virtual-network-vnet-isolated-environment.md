@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191806"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500371"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -41,7 +41,7 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 * Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Wenn Sie kein virtuelles Netzwerk besitzen, erfahren Sie, wie Sie [ein virtuelles Azure-Netzwerk erstellen](../virtual-network/quick-create-portal.md).
 
-  * Ihr virtuelles Netzwerk muss vier *leere* Subnetze aufweisen, um Ressourcen in Ihrer ISE erstellen und bereitstellen zu können. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente für Ihre ISE. Sie können diese Subnetze im Voraus erstellen oder warten, bis Sie Ihre ISE erstellt haben, in der Sie Subnetze parallel erstellen können. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
+  * Ihr virtuelles Netzwerk muss vier *leere* Subnetze aufweisen, um Ressourcen in Ihrer ISE erstellen und bereitstellen zu können. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Sie können diese Subnetze im Voraus erstellen oder warten, bis Sie Ihre ISE erstellt haben, in der Sie Subnetze parallel erstellen können. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
 
   * Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
   
@@ -89,29 +89,27 @@ In dieser Tabelle werden die Ports in Ihrem virtuellen Azure-Netzwerk beschriebe
 > [!IMPORTANT]
 > Quellports sind kurzlebig. Legen Sie sie also für alle Regeln auf `*` fest. Wo vermerkt, verweisen die interne ISE und die externe ISE auf den [Endpunkt, der bei der ISE-Erstellung ausgewählt ist](connect-virtual-network-vnet-isolated-environment.md#create-environment). Weitere Informationen finden Sie unter [Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
 
-| Zweck | Direction | Zielports | Quelldiensttag | Zieldiensttag | Notizen |
+| Zweck | Richtung | Zielports | Quelldiensttag | Zieldiensttag | Notizen |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Subnetzinterne Kommunikation | Ein- und ausgehend | * | Adressraum für das virtuelle Netzwerk mit den ISE-Subnetzen | Adressraum für das virtuelle Netzwerk mit den ISE-Subnetzen | Erforderlich, damit der Datenverkehr in jedem Subnetz fließen kann. <p><p>**Wichtig**: Für die Kommunikation zwischen Komponenten innerhalb von Subnetzen müssen Sie sicherstellen, dass Sie alle Ports in diesen Subnetzen öffnen. |
-| Kommunikation zwischen Subnetzen | Ein- und ausgehend | 80, 443 | VirtualNetwork | VirtualNetwork | Für die Kommunikation zwischen Subnetzen |
-| Datenverkehr aus Azure Logic Apps | Ausgehend | 80, 443 | VirtualNetwork | Internet | Der Port hängt vom externen Dienste ab, mit dem der Logic Apps-Dienst kommuniziert. |
-| Azure Active Directory | Ausgehend | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage-Abhängigkeit | Ausgehend | 80, 443, 445 | VirtualNetwork | Storage | |
-| Datenverkehr zu Azure Logic Apps | Eingehend | 443 | Internes ISE: <br>VirtualNetwork <p><p>Externes ISE: <br>Internet | VirtualNetwork | Die IP-Adresse des Computers oder Diensts, der einen Anforderungstrigger oder Webhook in Ihrer Logik-App aufruft. Wenn Sie diesen Port schließen oder blockieren, werden HTTP-Aufrufe Ihrer Logik-Apps mit Anforderungstriggern verhindert. |
-| Ausführungsverlauf einer Logik-App | Eingehend | 443 | Internes ISE: <br>VirtualNetwork <p><p>Externes ISE: <br>Internet | VirtualNetwork | Die IP-Adresse des Computers, von dem aus Sie den Ausführungsverlauf Ihrer Logik-App anzeigen möchten. Wenn Sie diesen Port schließen oder blockieren, können Sie den Ausführungsverlauf zwar anzeigen, aber Sie können weder Ein- noch Ausgaben für die Schritte im Ausführungsverlauf anzeigen. |
-| Verbindungsverwaltung | Ausgehend | 443 | VirtualNetwork  | AppService | |
-| Veröffentlichen von Diagnoseprotokollen und Metriken | Ausgehend | 443 | VirtualNetwork  | AzureMonitor | |
-| Kommunikation über Azure Traffic Manager | Eingehend | Internes ISE: 454 <p><p>Externes ISE: 443 | AzureTrafficManager | VirtualNetwork | |
-| Logic Apps-Designer: dynamische Eigenschaften | Eingehend | 454 | Siehe Spalte **Hinweise** für zuzulassende IP-Adressen. | VirtualNetwork | Anforderungen werden von den [eingehenden](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-Adressen des Logic Apps-Zugriffsendpunkts für diese Region gesendet. |
+| Kommunikation zwischen Subnetzen innerhalb Ihres virtuellen Netzwerks | Ein- und ausgehend | * | Der Adressraum für das virtuelle Netzwerk, in dem sich die Subnetze Ihrer ISE befinden. | Der Adressraum für das virtuelle Netzwerk, in dem sich die Subnetze Ihrer ISE befinden. | Erforderlich für die Übertragung von Datenverkehr *zwischen* den Subnetzen in Ihrem virtuellen Netzwerk. <p><p>**Wichtig**: Damit Datenverkehr zwischen den *Komponenten* in den einzelnen Subnetzen übertragen werden kann, müssen alle Ports innerhalb der einzelnen Subnetze geöffnet werden. |
+| Kommunikation mit Ihrer Logik-App | Eingehend | 443 | Internes ISE: <br>VirtualNetwork <p><p>Externes ISE: <br>Internet | VirtualNetwork | Die Quell-IP-Adresse des Computers oder Diensts, der einen Anforderungstrigger oder Webhook in Ihrer Logik-App aufruft. <p><p>**Wichtig**: Wenn Sie diesen Port schließen oder blockieren, werden HTTP-Aufrufe für Logik-Apps mit Anforderungstriggern verhindert. |
+| Ausführungsverlauf einer Logik-App | Eingehend | 443 | Internes ISE: <br>VirtualNetwork <p><p>Externes ISE: <br>Internet | VirtualNetwork | Die Quell-IP-Adresse des Computers oder Diensts, von dem aus Sie den Ausführungsverlauf Ihrer Logik-App anzeigen möchten. <p><p>**Wichtig**: Wenn Sie diesen Port schließen oder blockieren, können Sie den Ausführungsverlauf zwar anzeigen, aber Sie können weder Ein- noch Ausgaben für die Schritte im Ausführungsverlauf anzeigen. |
+| Logic Apps-Designer: dynamische Eigenschaften | Eingehend | 454 | Die zuzulassenden IP-Adressen finden Sie in der Spalte **Hinweise**. | VirtualNetwork | Anforderungen werden von den [eingehenden](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-Adressen des Logic Apps-Zugriffsendpunkts für diese Region gesendet. |
+| Bereitstellen von Connectors | Eingehend | 454 | AzureConnectors | VirtualNetwork | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
 | Überprüfen der Netzwerkintegrität | Eingehend | 454 | Die zuzulassenden IP-Adressen finden Sie in der Spalte **Hinweise**. | VirtualNetwork | Anforderungen werden von den [eingehenden](../logic-apps/logic-apps-limits-and-config.md#inbound) und [ausgehenden](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-Adressen des Logic Apps-Zugriffsendpunkts für diese Region gesendet. |
 | Abhängigkeit von der App Service-Verwaltung | Eingehend | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Bereitstellen von Connectors | Eingehend | 454 | AzureConnectors | VirtualNetwork | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
-| Connectorrichtlinienbereitstellung | Eingehend | 3443 | APIManagement | VirtualNetwork | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
-| Azure SQL-Abhängigkeiten | Ausgehend | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Ausgehend | 1886 | VirtualNetwork | AzureMonitor | Zum Veröffentlichen des Integritätsstatus in Resource Health |
+| Kommunikation über Azure Traffic Manager | Eingehend | Internes ISE: 454 <p><p>Externes ISE: 443 | AzureTrafficManager | VirtualNetwork | |
 | API Management: Verwaltungsendpunkt | Eingehend | 3443 | APIManagement | VirtualNetwork | |
+| Connectorrichtlinienbereitstellung | Eingehend | 3443 | APIManagement | VirtualNetwork | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
+| Kommunikation von Ihrer Logik-App | Ausgehend | 80, 443 | VirtualNetwork | Variiert abhängig vom Ziel | Die Endpunkte für den externen Dienst, mit dem Ihre Logik-App kommunizieren muss. |
+| Azure Active Directory | Ausgehend | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Verbindungsverwaltung | Ausgehend | 443 | VirtualNetwork  | AppService | |
+| Veröffentlichen von Diagnoseprotokollen und Metriken | Ausgehend | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Storage-Abhängigkeit | Ausgehend | 80, 443, 445 | VirtualNetwork | Storage | |
+| Azure SQL-Abhängigkeiten | Ausgehend | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Ausgehend | 1886 | VirtualNetwork | AzureMonitor | Zum Veröffentlichen des Integritätsstatus in Resource Health erforderlich |
 | Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | Ausgehend | 5672 | VirtualNetwork | EventHub | |
-| Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | Eingehend <br>Ausgehend | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Eingehend | * | AzureLoadBalancer | VirtualNetwork | |
+| Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | Eingehend <br>Ausgehend | 6379–6383 | VirtualNetwork | VirtualNetwork | Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 ||||||
 
 <a name="create-environment"></a>
@@ -147,23 +145,19 @@ In dieser Tabelle werden die Ports in Ihrem virtuellen Azure-Netzwerk beschriebe
 
    **Erstellen eines Subnetzes**
 
-   Für Ihre ISE sind vier *leere* Subnetze erforderlich, die an keinen Dienst delegiert wurden, um eine Ressource in Ihrer Umgebung zu erstellen und bereitzustellen. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben.
+   Für Ihre ISE sind vier *leere* Subnetze erforderlich, die an keinen Dienst delegiert wurden, um eine Ressource in Ihrer Umgebung zu erstellen und bereitzustellen. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. Jedes Subnetz muss folgende Anforderungen erfüllen:
 
-   > [!IMPORTANT]
-   > 
-   > Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich (keine Zahlen) beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-
-   Außerdem muss jedes Subnetz diese Anforderungen erfüllen:
+   * Der Name muss mit einem alphabetischen Zeichen oder mit einem Unterstrich beginnen (keine Zahlen) und darf keines der folgenden Zeichen enthalten: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
 
-   * Es muss mindestens `/27` im Adressbereich verwendet werden, weil jedes Subnetz *mindestens* *32 Adressen* aufweisen muss. Beispiel:
+   * Es muss mindestens `/27` im Adressbereich verwenden, da jedes Subnetz *mindestens* 32 Adressen benötigt. Beispiel:
+
+     * `10.0.0.0/28` hat nur 16 Adressen und ist somit zu klein, da 2<sup>(32 – 28)</sup> 2<sup>4</sup> oder 16 ist.
 
      * `10.0.0.0/27` hat 32 Adressen, da 2<sup>(32 – 27)</sup> 2<sup>5</sup> oder 32 ist.
 
-     * `10.0.0.0/24` hat 256 Adressen, da 2<sup>(32 – 24)</sup> 2<sup>8</sup> oder 256 ist.
-
-     * `10.0.0.0/28` hat nur 16 Adressen und ist somit zu klein, da 2<sup>(32 – 28)</sup> 2<sup>4</sup> oder 16 ist.
+     * `10.0.0.0/24` hat 256 Adressen, da 2<sup>(32 – 24)</sup> 2<sup>8</sup> oder 256 ist. Zusätzliche Adressen haben jedoch keine weiteren Vorteile.
 
      Weitere Informationen zum Berechnen der Adressen finden Sie unter [Übersicht für IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

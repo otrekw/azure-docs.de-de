@@ -3,15 +3,15 @@ title: Spezifikationen von Microsoft Azure FXT Edge Filer | Microsoft-Dokumentat
 description: Physische und umgebungsbezogene Spezifikationen für Azure FXT Edge Filer-Hardware
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254709"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227472"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Spezifikationen von Azure FXT Edge Filer
 
@@ -37,7 +37,7 @@ Die Laufwerknummern sind im Zwischenraum zwischen den Laufwerken angegeben. Bei 
 | Laufwerknummern    |  Zweck   |  Spezifikationen |
 |------------------|--------|-----------------|
 | 0, 1             | OS     | 480 GB SATA SSD |
-| 2, 3, 4, 5, 6, 7, 8, 9 | Data   | FXT 6600: 3,2 TB NVMe SSD <br> FXT 6400: 1,6 TB NVMe SSD |
+| 2, 3, 4, 5, 6, 7, 8, 9 | Daten   | FXT 6600: 3,2 TB NVMe SSD <br> FXT 6400: 1,6 TB NVMe SSD |
 
 
 ## <a name="dimensions-and-weight"></a>Abmessungen und Gewicht
@@ -148,7 +148,7 @@ Dieser Abschnitt enthält Spezifikationen zu den Umgebungsbedingungen für die H
 
 ### <a name="airflow-shock-and-vibration"></a>Luftströmung, Stoßfestigkeit und Schwingungen 
 
-| Attribut         | Spezifikation |
+| attribute         | Spezifikation |
 |-------------------|---------------|
 | Luftströmung                    | Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. |
 | Stoßfestigkeit, bei Betrieb         | 6 G für eine Dauer von 11 Millisekunden (getestet in 6 verschiedenen Ausrichtungen) |

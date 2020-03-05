@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c0967c411aa10d046caee13441b046bf0f462442
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703302"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274323"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App unter Verwendung der Identität der App
 
@@ -76,37 +76,42 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 #### <a name="step-2-download-your-python-project"></a>Schritt 2: Herunterladen Ihres Python-Projekts
 
-[Laden Sie das Python-Daemon-Projekt herunter.](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [Laden Sie das Python-Daemon-Projekt herunter.](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>Schritt 3: Konfigurieren Ihres Python-Projekts
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Laden Sie das Codebeispiel herunter](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip).
 
-1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
-1. Navigieren Sie zum Unterordner **1-Call-MsGraph-WithSecret**.
-1. Bearbeiten Sie **parameters.json**, und ersetzen Sie die Felder `authority`, `client_id` und `secret` durch den folgenden Ausschnitt:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Generieren eines neuen geheimen Clientschlüssels]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>Schritt 3: Konfigurieren Ihres Python-Projekts
+> 
+> 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner in der Nähe des Datenträger-Stammverzeichnisses (beispielsweise **C:\Azure-Samples**).
+> 1. Navigieren Sie zum Unterordner **1-Call-MsGraph-WithSecret**.
+> 1. Bearbeiten Sie **parameters.json**, und ersetzen Sie die Felder `authority`, `client_id` und `secret` durch den folgenden Ausschnitt:
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    Hierbei gilt:
+>    - `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+>    - `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
+>    - `Enter_the_Client_Secret_Here`: Ersetzen Sie diesen Wert durch den geheimen Clientschlüssel, den Sie in Schritt 1 erstellt haben.
+>
+> > [!TIP]
+> > Die Werte für **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App. Navigieren Sie zum Generieren eines neuen Schlüssels zur Seite **Zertifikate & Geheimnisse**.
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
-    
-    > [!div renderon="docs"]
-    >> Hierbei gilt:
-    >> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
-    >> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
-    >> * `Enter_the_Client_Secret_Here`: Ersetzen Sie diesen Wert durch den geheimen Clientschlüssel, den Sie in Schritt 1 erstellt haben.
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>Schritt 3: Administratorzustimmung
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > Die Werte für **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App. Navigieren Sie zum Generieren eines neuen Schlüssels zur Seite **Zertifikate & Geheimnisse**.
-    
-#### <a name="step-4-admin-consent"></a>Schritt 4: Administratorzustimmung
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>Schritt 4: Administratorzustimmung
 
 Wenn Sie zu diesem Zeitpunkt versuchen, die Anwendung auszuführen, wird der Fehler *HTTP 403 – Verboten* angezeigt: `Insufficient privileges to complete the operation`. Dieser Fehler tritt auf, da für eine *nur für die App geltende Berechtigung* eine Administratoreinwilligung erforderlich ist. Ein globaler Administrator Ihres Verzeichnisses muss der Anwendung also seine Einwilligung geben. Wählen Sie je nach Ihrer Rolle eine der unten angegebenen Optionen aus:
 
@@ -133,7 +138,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
 >> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 
-#### <a name="step-5-run-the-application"></a>Schritt 5: Ausführen der Anwendung
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>Schritt 4: Ausführen der Anwendung
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>Schritt 5: Ausführen der Anwendung
 
 Sie müssen einmalig die Abhängigkeiten dieses Beispiels installieren.
 

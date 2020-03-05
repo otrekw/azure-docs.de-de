@@ -1,20 +1,18 @@
 ---
 title: Analysieren von Trends in Visual Studio | Microsoft Docs
 description: Es wird beschrieben, wie Sie Trends in den Application Insights-Telemetriedaten in Visual Studio analysieren, visualisieren und untersuchen.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899314"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670864"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analysieren von Trends in Visual Studio
 Mit dem Application Insights-Tool „Trends“ wird visualisiert, wie sich die wichtigen Telemetrieereignisse Ihrer Webanwendung im Laufe der Zeit ändern, damit Sie Probleme und Anomalien schnell identifizieren können. Durch die Angabe von Links zu ausführlicheren Diagnoseinformationen kann das Trends-Tool Sie in Bezug auf das Verbessern der App-Leistung, das Ermitteln der Ursachen von Ausnahmen und das Erlangen von Einblicken in benutzerdefinierte Ereignisse unterstützen.
@@ -71,7 +69,7 @@ So navigieren Sie zwischen Blasen in der Visualisierung
 > 
 > 
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>Filtern
 Ermitteln Sie spezifischere Trends mit den Filtersteuerelementen am unteren Rand des Fensters. Klicken Sie auf den Namen eines Filters, um ihn anzuwenden. Sie können schnell zwischen verschiedenen Filtern wechseln, um Trends zu ermitteln, die ggf. in einer bestimmten Dimension Ihrer Telemetriedaten versteckt sind. Wenn Sie einen Filter in einer Dimension anwenden, z.B. „Ausnahmetyp“, bleiben die Filter in anderen Dimensionen auch dann zugänglich, wenn sie scheinbar abgeblendet sind. Klicken Sie erneut auf einen Filter, um die Anwendung aufzuheben. Klicken Sie bei gedrückter STRG-Taste, um mehrere Filter in derselben Dimension auszuwählen.
 
 ![Trendfilter](./media/visual-studio-trends/TrendsFiltering-750.png)

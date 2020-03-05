@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen, Trainieren und Veröffentlichen einer Wissensda
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf der Grundlage einer einfachen FAQ-Webseite, um Fragen zu QnA Maker zu beantworten.
 ms.topic: quickstart
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108729"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299090"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -154,6 +154,5 @@ Weitere Informationen finden Sie unter:
 
 * [Markdownformat in Antworten](../reference-markdown-format.md)
 * [Datenquellen](../concepts/knowledge-base.md) für QnA Maker-Inhalt
-* [Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v4](../tutorials/create-qna-bot.md)
 
 

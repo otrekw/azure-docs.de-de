@@ -1,18 +1,17 @@
 ---
 title: Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt die Schritte zum Verbinden von Configuration Manager mit einem Arbeitsbereich in Azure Monitor und zum Beginnen der Analyse von Daten.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513654"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655255"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
 Sie können Ihre Microsoft Endpoint Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  

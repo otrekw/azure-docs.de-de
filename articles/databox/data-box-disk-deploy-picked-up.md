@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845486"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273168"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
 
 Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder gelten jeweils andere Anweisungen.
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[In den USA oder in Kanada](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[In den USA oder in Kanada](#tab/in-us-or-canada)
 
 Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -67,7 +67,7 @@ Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie w
     - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
     - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-### <a name="in-europetabin-europe"></a>[In Europa](#tab/in-europe)
+### <a name="in-europe"></a>[In Europa](#tab/in-europe)
 
 Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
@@ -80,7 +80,7 @@ Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.    
 3. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
 
-### <a name="in-australiatabin-australia"></a>[In Australien](#tab/in-australia)
+### <a name="in-australia"></a>[In Australien](#tab/in-australia)
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
 
@@ -88,7 +88,7 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 3. Bringen Sie das Etikett am Box-Gerät an. 
 4. Reservieren Sie online unter https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference einen Abholtermin. 
 
-### <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan)
+### <a name="in-japan"></a>[In Japan](#tab/in-japan)
 
 1. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
 2. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
@@ -115,7 +115,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 - E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
 - Telefonnummer: 03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[In Korea](#tab/in-korea)
+### <a name="in-korea"></a>[In Korea](#tab/in-korea)
 
 1. Legen Sie den Rücksendeschein bei.
 2. Gehen Sie zum Anfordern der Abholung wie folgt vor, wenn der Rücksendeschein vorliegt:
@@ -130,7 +130,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
     4. Bei einer Anforderung per Telefon erhalten Sie eine mündliche Bestätigung.
 
 
-### <a name="in-singaporetabin-singapore"></a>[In Singapur](#tab/in-singapore)
+### <a name="in-singapore"></a>[In Singapur](#tab/in-singapore)
 
 1. Drucken Sie das Adressetikett aus, und bringen Sie es am Paket an. Sollte das Etikett beschädigt oder verloren gegangen sein:
     - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
@@ -157,7 +157,7 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
 3. Übergeben Sie die Box an den Kurier.
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
 Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
 
@@ -175,8 +175,6 @@ Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden un
 3. Das Azure Data Box Operations-Team organisiert in Abstimmung mit Ihnen die Lieferung an das Azure-Rechenzentrum.
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>Nächste Schritte
 

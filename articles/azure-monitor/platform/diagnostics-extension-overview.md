@@ -1,18 +1,17 @@
 ---
 title: Übersicht zur Azure-Diagnoseerweiterung
 description: Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistungsmessung, zur Überwachung und zur Datenverkehrsanalyse in Clouddiensten, virtuellen Maschinen und Service Fabric.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467996"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672377"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
@@ -21,13 +20,13 @@ Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.m
 > Die Azure-Diagnoseerweiterung ist einer der Agents, die zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem von Computeressourcen verfügbar sind. Unter [Übersicht über die Azure Monitor Agents](agents-overview.md) finden Sie eine Beschreibung der verschiedenen Agents und Anleitungen zum Auswählen der geeigneten Agents für Ihre Anforderungen.
 
 ## <a name="comparison-to-log-analytics-agent"></a>Vergleich mit Log Analytics-Agent
-Der Log Analytics-Agent in Azure Monitor kann auch zum Sammeln von Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor Agents](agents-overview.md). 
+Der Log Analytics-Agent in Azure Monitor kann auch zum Sammeln von Überwachungsdaten aus dem Gastbetriebssystem virtueller Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](agents-overview.md). 
 
 Beachten Sie die folgenden Hauptunterschiede:
 
-- Die Azure-Diagnoseerweiterung kann nur mit Azure-VMs verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
-- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent sammelt Daten für [Azure Monitor-Protokolle](data-platform-logs.md).
-- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](/azure/security-center/)erforderlich.
+- Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
+- Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent erfasst Daten für [Azure Monitor-Protokolle](data-platform-logs.md).
+- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [Azure Monitor für VMs](../insights/vminsights-overview.md) und andere Dienste wie [Azure Security Center](/azure/security-center/) erforderlich.
 
 ## <a name="costs"></a>Kosten
 Es fallen keine Kosten für die Azure-Diagnoseerweiterung an, aber möglicherweise Gebühren für die erfassten Daten. Unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) finden Sie Informationen für das Ziel, auf dem Sie Daten sammeln.
@@ -52,7 +51,7 @@ In den folgenden Tabellen sind die Daten aufgeführt, die von der Windows- und L
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-Diagnoseerweiterung (LAD)
 
-| Data source | BESCHREIBUNG |
+| Data source | Beschreibung |
 | --- | --- |
 | syslog | Ereignisse, die an das Linux-Ereignisprotokollierungssystem gesendet werden.   |
 | Leistungsindikatoren  | Numerische Werte, die die Leistung verschiedener Aspekte von Betriebssystem und Workloads messen. |
@@ -65,7 +64,7 @@ Konfigurieren Sie mindestens eine *Datensenke*, um Daten an andere zusätzliche 
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows-Diagnoseerweiterung (WAD)
 
-| Destination | Beschreibung |
+| Destination | BESCHREIBUNG |
 |:---|:---|
 | Azure Monitor-Metriken | Sammeln von Leistungsdaten für Azure Monitor-Metriken. Siehe [Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Verwenden Sie Azure Event Hubs, um Daten an Empfänger außerhalb von Azure zu senden. Siehe [Streamen von Azure-Diagnosedaten an Event Hubs](diagnostics-extension-stream-event-hubs.md). |
@@ -86,7 +85,7 @@ LAD schreibt in Azure Storage Daten in Tabellen. LAD unterstützt die Senken in 
 
 
 ## <a name="installation-and-configuration"></a>Installation und Konfiguration
-Die Diagnoseerweiterung wird als [VM-Erweiterung](/virtual-machines/extensions/overview) in Azure implementiert, sodass die gleichen Installationsoptionen mit Resource Manager-Vorlagen, PowerShell und der Befehlszeilenschnittstelle unterstützt werden. Weitere Informationen zu Installation und Wartung von VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](/virtual-machines/extensions/features-windows) und [Informationen zu Erweiterungen und Features für virtuelle Computer für Linux](/virtual-machines/extensions/features-linux).
+Die Diagnoseerweiterung wird als [VM-Erweiterung](../../virtual-machines/extensions/overview.md) in Azure implementiert, sodass die gleichen Installationsoptionen mit Resource Manager-Vorlagen, PowerShell und der Befehlszeilenschnittstelle unterstützt werden. Weitere Informationen zu Installation und Wartung von VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](../../virtual-machines/extensions/features-windows.md) und [Informationen zu Erweiterungen und Features für virtuelle Computer für Linux](../../virtual-machines/extensions/features-linux.md).
 
 Sie können die Windows- und Linux-Diagnoseerweiterung auch im Azure-Portal unter **Diagnoseeinstellungen** im Abschnitt **Überwachung** des Menüs der VM installieren und konfigurieren.
 

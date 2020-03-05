@@ -1,5 +1,5 @@
 ---
-title: Senden von Daten an eine Blobebene (heiß, kalt oder Archiv) mit Azure Data Box oder Azure Data Box Heavy | Microsoft-Dokumentation
+title: Senden von Daten an eine Blobebene (heiß, kalt oder Archiv) per Azure Data Box oder Azure Data Box Heavy | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Daten mit Azure Data Box oder Azure Data Box Heavy an eine geeignete Blockblob-Speicherebene, z. B. die heiße oder kalte Ebene bzw. die Archivebene, gesendet werden.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427878"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560370"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box oder Azure Data Box Heavy
 
@@ -54,7 +54,7 @@ Sobald die Daten vom Data Box-Gerät in die Standardebene hochgeladen wurden, k�
 
 Nachfolgend wird beschrieben, wie Sie die Blobebene mithilfe eines Azure PowerShell-Skripts auf „Archiv“ festlegen können.
 
-1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten. Stellen Sie sicher, dass Sie PowerShell 5.0 oder höher ausführen. Geben Sie Folgendes ein:
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten. Stellen Sie sicher, dass Sie PowerShell 5.0 oder höher ausführen. Typ:
 
    `$PSVersionTable.PSVersion`     
 

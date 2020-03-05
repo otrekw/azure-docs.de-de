@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832582"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250252"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Erstellen und Testen eines neuen simulierten Geräts
 
@@ -28,11 +28,11 @@ Im ersten Szenario fügen Sie dem vorhandenen Gerätetyp **Chiller** (Kältemasc
 
 Im zweiten Szenario möchte Contoso das neue intelligente Gerät "Lightbulb" (Leuchtmittel) testen. Zum Ausführen der Tests erstellen Sie ein neues simuliertes Gerät mit den folgenden Merkmalen:
 
-*Properties*
+*Eigenschaften*
 
-| NAME                     | Werte                      |
+| Name                     | Werte                      |
 | ------------------------ | --------------------------- |
-| Farbe                    | White, Red, Blue            |
+| Color                    | White, Red, Blue            |
 | Brightness               | 0 bis 100                    |
 | Estimated remaining life | Countdown ab 10.000 Stunden |
 
@@ -40,7 +40,7 @@ Im zweiten Szenario möchte Contoso das neue intelligente Gerät "Lightbulb" (Le
 
 In der folgenden Tabelle sind die Daten aufgeführt, die das Leuchtmittel als Datenstrom an die Cloud sendet:
 
-| NAME   | Werte      |
+| Name   | Werte      |
 | ------ | ----------- |
 | Status | „on“, „off“ |
 | Temperatur | Grad F |
@@ -53,7 +53,7 @@ In der folgenden Tabelle sind die Daten aufgeführt, die das Leuchtmittel als Da
 
 In der folgenden Tabelle sind die Aktionen aufgeführt, die das neue Gerät unterstützt:
 
-| NAME        |
+| Name        |
 | ----------- |
 | Switch on   |
 | Switch off  |
@@ -62,9 +62,9 @@ In der folgenden Tabelle sind die Aktionen aufgeführt, die das neue Gerät unte
 
 In der folgenden Tabelle ist der Anfangszustand des Geräts aufgeführt:
 
-| NAME                     | Werte |
+| Name                     | Werte |
 | ------------------------ | -------|
-| Initial color            | Weiß  |
+| Initial color            | White  |
 | Initial brightness       | 75     |
 | Initial remaining life   | 10.000 |
 | Initial telemetry status | „on“   |
@@ -123,7 +123,7 @@ In diesem Abschnitt fügen Sie dem vorhandenen Gerätetyp **Chiller**den neuen T
 
 1. Kopieren Sie aus der heruntergeladenen Kopie des Microservices "Gerätesimulation" die folgenden Dateien in Ihren neuen Ordner:
 
-    | `Source` | Ziel |
+    | `Source` | Destination |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
@@ -446,7 +446,7 @@ Bei dem nachstehenden Skript wird angenommen, dass der Name Ihres Hubs **device-
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test

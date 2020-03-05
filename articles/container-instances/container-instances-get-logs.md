@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Containerprotokolle und -ereignisse in Azure 
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664736"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250000"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Abrufen von Containerprotokollen und -ereignissen in Azure Container Instances
 
@@ -21,8 +21,11 @@ Sie können den Befehl [az container logs][az-container-logs] verwenden, um Prot
 
 Im Folgenden finden Sie die Protokollausgabe des aufgabenbasierten Beispielcontainers aus [Festlegen der Befehlszeile in einer Containerinstanz](container-instances-start-command.md#azure-cli-example), nachdem eine ungültige URL mithilfe der Außerkraftsetzung einer Befehlszeilen bereitgestellt wurde:
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -49,8 +52,11 @@ Der Befehl [az container attach][az-container-attach] liefert Diagnoseinformatio
 
 Hier ist beispielsweise die Ausgabe aus dem aufgabenbasierten Container aus [Festlegen der Befehlszeile in einer Containerinstanz](container-instances-start-command.md#azure-cli-example), nachdem eine gültige URL einer großen zu verarbeitenden Textdatei bereitgestellt wurde:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...

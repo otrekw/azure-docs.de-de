@@ -3,20 +3,20 @@ title: Verwalten von Benutzern mit der Microsoft Graph-API
 titleSuffix: Azure AD B2C
 description: Erfahren Sie mehr zum Verwalten von Benutzern in einem Azure AD B2C-Mandanten durch Aufrufen der Microsoft Graph-API und Automatisieren des Vorgangs mithilfe einer Anwendungsidentität.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585627"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187315"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -59,7 +59,7 @@ Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden.
 
 In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity][graph-objectIdentity] aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden.
 
-| Eigenschaft   | type |Beschreibung|
+| Eigenschaft   | type |BESCHREIBUNG|
 |:---------------|:--------|:----------|
 |signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|

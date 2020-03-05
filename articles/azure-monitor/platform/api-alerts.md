@@ -1,20 +1,18 @@
 ---
 title: Verwenden der REST-API für Log Analytics-Warnungen
 description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics, einer Komponente von Log Analytics, erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680663"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664999"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API 
+
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
 
 > [!IMPORTANT]
@@ -137,7 +135,7 @@ Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn 
 
 Die Eigenschaften von Schwellenwerten sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `Operator` |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
 | `Value` |Der Wert für den Schwellenwert. |

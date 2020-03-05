@@ -3,12 +3,12 @@ title: Beenden der Überwachung Ihres Azure Kubernetes Service-Clusters | Micros
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Azure AKS-Clusters mit Azure Monitor für Container beenden können.
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: fb75379ba6c8109316f78288222039627bcb5902
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715966"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250743"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Beenden der Überwachung Ihres Azure Kubernetes Service (AKS) Azure Monitors für Container
 
@@ -139,7 +139,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das zurückgegebene Ergebnis anzeigt:
 
-```azurecli
+```output
 ProvisioningState       : Succeeded
 ```
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupNam
 
 Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das zurückgegebene Ergebnis anzeigt:
 
-```powershell
+```output
 ProvisioningState       : Succeeded
 ```
 

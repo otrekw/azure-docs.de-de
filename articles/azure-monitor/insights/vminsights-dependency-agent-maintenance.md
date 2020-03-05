@@ -1,18 +1,17 @@
 ---
 title: Durchführen eines Upgrades für den Dependency-Agent für Azure Monitor für VMs | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie ein Upgrade des Dependency-Agents für Azure Monitor für VMs über die Befehlszeile, den Setup-Assistenten und mithilfe anderer Methoden durchführen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: c98c48a4494ac37ef4868c44d4a7adacfd0d48da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565552"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662432"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Durchführen eines Upgrades für den Dependency-Agent für Azure Monitor für VMs
 

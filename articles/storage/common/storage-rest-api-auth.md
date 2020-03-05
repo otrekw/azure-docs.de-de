@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965719"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916063"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Aufrufen von REST-API-Vorgängen mit Autorisierung mit gemeinsam verwendetem Schlüssel
 
@@ -27,7 +27,7 @@ Die Beispielanwendung listet die Blobcontainer für ein Speicherkonto auf. Sie b
 
 - Installieren von [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) mit der Workload **Azure-Entwicklung**.
 
-- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Ein allgemeines Speicherkonto. Falls Sie noch kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](storage-account-create.md).
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```

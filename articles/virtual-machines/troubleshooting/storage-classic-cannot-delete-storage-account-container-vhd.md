@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926230"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915036"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Behebung von Problemen beim Löschen klassischer Speicherressourcen
 Dieser Artikel enthält Informationen zur Problembehandlung, wenn beim Versuch, ein klassisches Azure Storage-Konto, einen Azure-Container oder eine Seitenblobdatei (*.vhd) zu löschen, einer der folgenden Fehler auftritt. 
@@ -30,6 +30,10 @@ Eine „Datenträgerressource“ wird verwendet, um eine Seitenblobdatei (*.vhd)
 
 
 ## <a name="steps-while-deleting-a-classic-virtual-machine"></a>Schritte zum Löschen eines klassischen virtuellen Computers 
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 1. Löschen Sie den klassischen virtueller Computer.
 2. Wenn das Kontrollkästchen „Datenträger“ aktiviert ist, wird die mit dem Seitenblob (*.vhd) verknüpfte **Datenträgerlease** (siehe Abbildung oben) unterbrochen. Die eigentliche VHD-Datei des Seitenblobs befindet sich immer noch im Speicherkonto.
 ![Screenshot des Portals mit Fehler im geöffneten Bereich „Löschen“ (klassisch) des virtuellen Computers](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
@@ -79,7 +83,7 @@ Wenn der Benutzer versucht, den Löschvorgang mit PowerShell durchzuführen, tri
 
 > <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
 > 
-> <span style="color:red">Remove-AzureStorageContainer : Der Remoteserver hat einen Fehler zurückgegeben: (412) Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben. HTTP-Statuscode: 412 – HTTP-Fehlermeldung: Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.</span>
+> <span style="color:red">Remove-AzureStorageContainer : The remote server returned an error: (412) Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben. HTTP-Statuscode: 412 – HTTP-Fehlermeldung: Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>VHD kann nicht gelöscht werden. 
 
@@ -101,7 +105,7 @@ Wenn der Benutzer versucht, den Löschvorgang mit PowerShell durchzuführen, tri
 
 > <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
-> <span style="color:red">Remove-AzureStorageBlob : Der Remoteserver hat einen Fehler zurückgegeben: (412) Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben. HTTP-Statuscode: 412 – HTTP-Fehlermeldung: Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.</span>
+> <span style="color:red">Remove-AzureStorageBlob : The remote server returned an error: (412) Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben. HTTP-Statuscode: 412 – HTTP-Fehlermeldung: Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.</span>
 
 
 ## <a name="resolution-steps"></a>Lösungsschritte

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047103"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498846"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -33,7 +33,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
-    ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[Neue Version](#tab/new)
 
@@ -75,11 +75,11 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
 1. Wenn Sie einen bestimmten Zuweisungszeitraum angeben möchten, deaktivieren Sie dieses Kontrollkästchen, und ändern Sie nach Bedarf die Felder für den Start- und/oder den Endzeitpunkt (Datum und Uhrzeit). Wählen Sie abschließend **Fertig** aus.
 
-    ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. Wählen Sie **Hinzufügen** aus, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status wird angezeigt.
 
-    ![Neue Zuweisung: Benachrichtigung](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Neue Zuweisung: Benachrichtigung](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung
 
@@ -87,21 +87,17 @@ Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandene
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Wählen Sie **Azure-Ressourcen** aus.
+1. Wählen Sie **Azure AD-Rollen** aus.
 
-1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
-
-1. Wählen Sie unter „Verwalten“ den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
+1. Wählen Sie **Rollen** aus, um die Liste der Rollen für Azure AD anzuzeigen.
 
 1. Wählen Sie die Rolle aus, die Sie aktualisieren oder entfernen möchten.
 
 1. Suchen Sie die Rollenzuweisung auf den Registerkarten **Berechtigte Rollen** oder **Aktive Rollen**.
 
-    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. Wählen Sie **Aktualisieren** oder **Entfernen** aus, um die Rollenzuweisung zu aktualisieren oder zu entfernen.
-
-    Informationen zum Erweitern einer Rollenzuweisung finden Sie unter [Verlängern oder Erneuern von Azure-Ressourcenrollen in Privileged Identity Management](pim-resource-roles-renew-extend.md).
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 

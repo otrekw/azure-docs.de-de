@@ -1,19 +1,18 @@
 ---
 title: Azure Automation-Ressourcen in Verwaltungslösungen | Microsoft-Dokumentation
 description: Verwaltungslösungen enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401823"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663061"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
 > [!NOTE]
@@ -191,7 +190,7 @@ Die Eigenschaften für Anmeldeinformationsressourcen werden in der folgenden Tab
 
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | description |Optionale Beschreibung für den Zeitplan |
 | startTime |Gibt die Startzeit eines Zeitplans als DateTime-Objekt an. Eine Zeichenfolge kann bereitgestellt werden, wenn sie in ein gültiges DateTime-Objekt konvertiert werden kann. |
@@ -261,7 +260,7 @@ Die Eigenschaften für Auftragszeitpläne werden in der folgenden Tabelle beschr
 
 Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | description | Optionale Beschreibung für die Variable |
 | isEncrypted | Gibt an, ob die Variable verschlüsselt werden soll |
@@ -273,9 +272,9 @@ Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle besch
 
 Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen Datentyp konfiguriert werden.  Die folgende Tabelle enthält die unterschiedlichen zulässigen Datentypen und ihre Syntax.  Beachten Sie, dass Werte im JSON-Format immer eingeschlossen in Anführungszeichen erwartet werden, wobei Sonderzeichen innerhalb der Anführungszeichen enthalten sein müssen.  So würde beispielsweise ein Zeichenfolgenwert mit einschließenden Anführungszeichen angegeben werden (mit dem Escapezeichen \\), während ein numerischer Wert mit nur einem Satz von Anführungszeichen angegeben werden müsste.
 
-| Datentyp | BESCHREIBUNG | Beispiel | Aufgelöst in |
+| Datentyp | Beschreibung | Beispiel | Aufgelöst in |
 |:--|:--|:--|:--|
-| string   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
+| Zeichenfolge   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
 | NUMERIC  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
 | boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | "true" | true |
 | datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |

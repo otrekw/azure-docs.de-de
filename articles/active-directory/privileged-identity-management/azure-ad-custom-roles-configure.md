@@ -16,16 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048125"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498677"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management
 
 Ein Administrator mit einer privilegierten Rolle kann die Rolleneinstellungen ändern, die für Benutzer gelten, wenn diese ihre Zuweisung zu einer benutzerdefinierten Rolle aktivieren. Ein solcher Administrator kann auch die Einstellungen für andere Anwendungsadministratoren ändern, die benutzerdefinierte Rollen zuweisen.
+
+> [!NOTE]
+> Benutzerdefinierte Azure AD-Rollen sind in der Vorschauversion nicht in die integrierten Verzeichnisrollen integriert. Sobald die Funktion allgemein verfügbar ist, erfolgt die Rollenverwaltung auf der Benutzeroberfläche für integrierte Rollen. Wenn das folgende Banner angezeigt wird, sollten diese Rollen [auf der Benutzeroberfläche für integrierte Rollen](pim-how-to-activate-role.md) verwaltet werden, und dieser Artikel trifft nicht zu:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 
@@ -95,7 +100,7 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
+- [Aktivieren einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-activate.md)
 - [Zuweisen einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-assign.md)
 - [Entfernen oder Aktualisieren der Zuweisung einer benutzerdefinierten Azure AD-Rolle](azure-ad-custom-roles-update-remove.md)
 - [Rollendefinitionen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484535"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299328"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Grundlegendes zum Azure AD-Schema
 Ein Objekt in Azure Active Directory (Azure AD) ist wie jedes Verzeichnis ein programmgesteuertes allgemeines Datenkonstrukt, das Elemente wie Benutzer, Gruppen und Kontakte darstellt. Wenn Sie einen neuen Benutzer oder Kontakt in Azure AD erstellen, erstellen Sie eine neue Instanz dieses Objekts. Diese Instanzen können anhand ihrer Eigenschaften unterschieden werden.
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überpr�
 1.  Wechseln Sie zum [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer).
 1.  Melden Sie sich mit Ihrem globalen Administratorkonto an.
 1.  Wählen Sie links **Berechtigungen ändern** aus, und stellen Sie sicher, dass für **Directory.ReadWrite.All** die *Einwilligung erteilt* wurde.
-1.  Führen Sie die Abfrage https://graph.microsoft.com/beta/serviceprincipals/? $filter=startswith(Anzeigename,'Active') aus. Mit dieser Abfrage wird eine gefilterte Liste von Dienstprinzipalen zurückgegeben.
+1.  Führen Sie die Abfrage `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` aus. Mit dieser Abfrage wird eine gefilterte Liste von Dienstprinzipalen zurückgegeben.
 1.  Suchen Sie nach `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"`, und notieren Sie sich den Wert für `"id"`.
     ```
     "value": [

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871991"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621881"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
 
@@ -37,7 +37,7 @@ Informationen dazu, wie Azure Cosmos DB Partitionen verwaltet, finden Sie unter 
 
 Im Folgenden finden Sie eine gute Anleitung zum Auswählen eines Partitionsschlüssels:
 
-* Eine einzelne logische Partition darf maximal 10 GB Speicherplatz haben.  
+* Der Speicherplatz einer einzelnen logischen Partition ist auf maximal 20 GB begrenzt.  
 
 * Azure Cosmos-Container haben einen Mindestdurchsatz von 400 Anforderungseinheiten pro Sekunde (Request units per second, RU/s). Wird der Durchsatz für eine Datenbank bereitgestellt, beträgt die Mindestanzahl von RUs pro Container 100 RUs/Sek. (Anforderungseinheiten pro Sekunde). Anforderungen an denselben Partitionsschlüssel dürfen den einer Partition zugeordneten Durchsatz nicht überschreiten. Wenn Anforderungen den zugeordneten Durchsatz überschreiten, gilt für die Anforderungen eine Ratenbegrenzung. Daher ist es wichtig, einen Partitionsschlüssel auszuwählen, der nicht zu partiellen starken Auslastungen innerhalb Ihrer Anwendung führt.
 

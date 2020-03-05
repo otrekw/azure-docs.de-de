@@ -3,16 +3,16 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 727f3cb25d2f95ec4db9f12080005d464b69d6ad
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301419"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -25,10 +25,6 @@ Alle Zusatzvereinbarungen, die für Azure-Kunden erforderlich sind, müssen dere
 ## <a name="enrollment-provisioning-status"></a>Registrierungsbereitstellungsstatus
 
 Das Startdatum eines neuen Mindestverbrauchs wird durch das Datum definiert, an dem das regionale Betriebszentrum diesen verarbeitet hat. Da Mindestverbrauchsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen des Mindestverbrauchs in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung unter https://www.explore.ms zeigt den Beginn des Mindestverbrauchs an. Das Startdatum der Abdeckung ist dann, wenn der Mindestverbrauch im Azure EA-Portal angezeigt wird.
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Sonderpreise und Zusatzvereinbarungen am Azure Commitment Discount
-
-Wenn Sie Sonderpreise und ACD-Zusatzvereinbarungen (Azure Commitment Discount, Azure-Vertragsrabatt) benötigen, müssen Sie diese mit Ihrem Kontoteam besprechen. Das Azure-Betriebsteam kann den Azure-Vertragsrabatt anwenden, wenn eine Zusatzvereinbarung vom Business Desk verarbeitet und beim Azure-Betriebsteam angefordert wurde. Der Azure-Vertragsrabatt wird nur auf den aktuellen Monat angewendet. Alle vorangegangenen Monate werden durch eine rückwirkende Gutschrift kompensiert. 
 
 ## <a name="support-offer-not-provisioned"></a>Supportangebot nicht bereitgestellt
 

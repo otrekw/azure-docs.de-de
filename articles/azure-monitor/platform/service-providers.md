@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor-Protokolle für Dienstanbieter | Microsoft-Dokumentation
 description: Mit Azure Monitor-Protokollen können Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter Server in der lokalen oder Cloudinfrastruktur des Kunden verwalten und überwachen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117062"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658879"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 

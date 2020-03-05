@@ -3,22 +3,21 @@ title: Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (W
 description: Erfahren Sie, wie Sie Azure-Diagnosedaten in einem Azure Storage-Konto erfassen, damit Sie sie mit einem der verschiedenen verfügbaren Tools anzeigen können.
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473218"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672258"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. Dieser Artikel enthält ausführliche Informationen zum Installieren und Konfigurieren der Windows-Diagnoseerweiterung sowie eine Beschreibung der Speicherung von Daten in einem Azure Storage-Konto.
 
-Die Diagnoseerweiterung wird als [VM-Erweiterung](/virtual-machines/extensions/overview) in Azure implementiert, sodass die gleichen Installationsoptionen mit Resource Manager-Vorlagen, PowerShell und der Befehlszeilenschnittstelle unterstützt werden. Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](/virtual-machines/extensions/features-windows).
+Die Diagnoseerweiterung wird als [VM-Erweiterung](../../virtual-machines/extensions/overview.md) in Azure implementiert, sodass die gleichen Installationsoptionen mit Resource Manager-Vorlagen, PowerShell und der Befehlszeilenschnittstelle unterstützt werden. Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](../../virtual-machines/extensions/features-windows.md).
 
 ## <a name="install-with-azure-portal"></a>Installieren über das Azure-Portal
 Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im Azure-Portal installieren und konfigurieren. Bei dieser Methode können Sie eine Oberfläche verwenden, anstatt direkt mit der Konfiguration zu arbeiten. Wenn Sie die Diagnoseerweiterung aktivieren, wird automatisch eine Standardkonfiguration mit den gängigsten Leistungsindikatoren und Ereignissen verwendet. Sie können diese Standardkonfiguration entsprechend Ihren spezifischen Anforderungen ändern.
@@ -36,7 +35,7 @@ Sie können die Diagnoseerweiterung auf einem einzelnen virtuellen Computer im A
 
 Nachdem die Diagnoseerweiterung aktiviert wurde, können Sie die Standardkonfiguration ändern. In der folgenden Tabelle werden die Optionen beschrieben, die Sie auf den einzelnen Registerkarten ändern können. Einige Optionen verfügen über einen **benutzerdefinierten** Befehl, über den Sie eine detailliertere Konfiguration angeben können. Informationen zu den verschiedenen Einstellungen finden Sie unter [Schema der Windows-Diagnoseerweiterung](diagnostics-extension-schema-windows.md).
 
-| Registerkarte | Beschreibung |
+| Registerkarte | BESCHREIBUNG |
 |:---|:---|
 | Übersicht | Zeigt die aktuelle Konfiguration mit Links zu den anderen Registerkarten an. |
 | Leistungsindikatoren | Wählen Sie die zu sammelnden Leistungsindikatoren und die zugehörigen Abtastraten aus.  |

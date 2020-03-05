@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969929"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921520"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -290,6 +290,9 @@ Weitere Informationen zu den Azure Ressource Manager-Vorlagen finden Sie unter [
 Konfigurieren Sie vor der Bereitstellung der DSCForLinux-Erweiterung die Dateien `public.json` und `protected.json` gemäß den verschiedenen Szenarios in Abschnitt 3.
 
 #### <a name="classic"></a>Klassisch
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Der klassische Bereitstellungsmodus wird auch Azure-Dienstverwaltungsmodus genannt. Sie können in den Modus wechseln, indem Sie Folgendes ausführen:
 ```
 $ azure config mode asm

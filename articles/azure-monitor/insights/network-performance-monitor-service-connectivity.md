@@ -1,18 +1,17 @@
 ---
 title: Netzwerkleistungsmonitor-Lösung mit Dienstkonnektivitätmonitor – Azure Log Analytics
 description: Verwenden Sie den Dienstkonnektivitätsmonitor von Netzwerkleistungsmonitor, um die Netzwerkkonnektivität an einem beliebigen Endpunkt zu überwachen, der über einen geöffneten TCP-Port verfügt.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 11975a86b5d9135b42dd51bdd787c2f76cabe259
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551504"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654544"
 ---
 # <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
@@ -58,7 +57,7 @@ Beginnen Sie mit der Erstellung Ihrer Tests zur Überwachung der Netzwerkkonnekt
 
     * Wählen Sie **Web** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf HTTP/S-Anforderungen reagiert, etwa outlook.office365.com oder bing.com.<br>
     * Wählen Sie **Netzwerk** aus, wenn Sie die Konnektivität mit einem Dienst überwachen möchten, der auf TCP-Anforderungen, aber nicht auf HTTP/S-Anforderungen reagiert, etwa einem SQL-Server, FTP-Server oder SSH-Port. 
-    * Beispiel:  Um einen Webtest für ein Blobspeicherkonto zu erstellen, wählen Sie **Web** aus und geben Sie das Ziel als „*yourstorageaccount*.blob.core.windows.net“ ein. Mit [diesem Link](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
+    * Beispiel: Um einen Webtest für ein Blobspeicherkonto zu erstellen, wählen Sie **Web** aus und geben Sie das Ziel als „*yourstorageaccount*.blob.core.windows.net“ ein. Mit [diesem Link](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) können Sie auf ähnliche Weise Tests für einen anderen Tabellenspeicher, einen Queue Storage oder Azure Files erstellen.
 4. Wenn Sie keine Netzwerkmessung durchführen möchten, z.B. von Netzwerklatenz, Paketverlusten oder Topologieermittlung, deaktivieren Sie das Kontrollkästchen **Netzwerkmessungen durchführen**. Zur optimalen Nutzung der Funktion sollten Sie das Kontrollkästchen aktiviert lassen. 
 5. Geben Sie unter **Ziel** die URL/den FQDN/die IP-Adresse ein, für die bzw. den Sie die Netzwerkkonnektivität überwachen möchten.
 6. Geben Sie unter **Portnummer** die Portnummer des Zieldiensts ein. 

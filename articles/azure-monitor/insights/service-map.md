@@ -1,18 +1,17 @@
 ---
 title: Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation
 description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168177"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663622"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -327,7 +326,7 @@ Die in diesen Tabellen dargestellten Daten wurden aus Daten generiert, die vom D
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | `Direction` |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
 | `Machine` |Der vollqualifizierte Domänenname des Computers |
@@ -339,7 +338,7 @@ Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze
 
 Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über die Anzahl der gruppierten physischen Verbindungen in den folgenden Eigenschaften des Datensatzes bereitgestellt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | `LinksEstablished` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums eingerichtet wurden |
 | `LinksTerminated` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums beendet wurden |
@@ -350,7 +349,7 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | `BytesSent` |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
 | `BytesReceived` |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
@@ -378,7 +377,7 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 
 *VMConnection* enthält außerdem in den folgenden Eigenschaften des Datensatzes Geolocationinformationen für das Remoteende jeder Verbindung: 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | `RemoteCountry` |Der Name des Landes oder der Region, in dem bzw. der „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
 | `RemoteLatitude` |Der Breitengrad der Geolocation.  Beispielsweise *47,68* |
@@ -406,7 +405,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |

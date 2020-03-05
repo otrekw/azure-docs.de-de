@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137962"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197469"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -76,7 +76,7 @@ Die Standpunktanalyse v3 kann Bewertungen und Bezeichnungen auf Satz- und Dokume
 
 ### <a name="example-c-code"></a>C#-Beispielcode
 
-Eine C#-Beispielanwendung, die diese Version der Standpunktanalyse aufruft, finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
+Eine C#-Beispielanwendung, die diese Version der Standpunktanalyse aufruft, finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs).
 
 
 #### <a name="version-21"></a>[Version 2.1](#tab/version-2)

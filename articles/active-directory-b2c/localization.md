@@ -2,20 +2,20 @@
 title: Lokalisierung – Azure Active Directory B2C
 description: Erfahren Sie, wie Sie das Localization-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033464"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184450"
 ---
 # <a name="localization"></a>Lokalisierung
 
@@ -39,9 +39,9 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
 
 Das **Localization**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Enabled | Nein | Mögliche Werte: `true` oder `false`. |
+| Aktiviert | Nein | Mögliche Werte: `true` oder `false`. |
 
 Das **Localization**-Element enthält die folgenden XML-Elemente:
 
@@ -54,7 +54,7 @@ Das **Localization**-Element enthält die folgenden XML-Elemente:
 
 Das **SupportedLanguages**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Ja | Die Sprache, die standardmäßig für lokalisierte Ressourcen verwendet werden soll |
 | MergeBehavior | Nein | Enumerationswerte von Werten, die mit jedem Anspruchstyp in übergeordneten Richtlinien mit dem gleichen Bezeichner zusammengeführt werden. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch, der in der Basisrichtlinie angegeben ist, überschreiben. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Der Wert `Append` gibt an, dass die Sammlung von Daten an das Ende der Sammlung, die in der übergeordneten Richtlinie angegebenen ist, angefügt werden soll. Der Wert `Prepend` gibt an, dass die Sammlung von Daten vor der Sammlung, die in der übergeordneten Richtlinie angegebenen ist, eingefügt werden soll. Der Wert `ReplaceAll` gibt an, dass die Sammlung von Daten, die in der übergeordneten Richtlinie definiert sind, ignoriert werden soll und stattdessen die in der aktuellen Richtlinie definierten Daten verwendet werden sollen. |
@@ -71,13 +71,13 @@ Das **SupportedLanguages**-Element enthält die folgenden Elemente:
 
 Das **LocalizedResources**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
 
 Das **LocalizedResources**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0:n | Definiert vollständige Sammlungen in verschiedenen Kulturen. Eine Sammlung kann eine unterschiedliche Anzahl von Elementen und unterschiedliche Zeichenfolgen für verschiedene Kulturen aufweisen. Beispiele für Sammlung sind die Enumerationen, die in Anspruchstypen angezeigt werden. Beispielsweise wird dem Benutzer eine Liste mit Ländern/Regionen in einer Dropdownliste angezeigt. |
 | LocalizedStrings | 0:n | Definiert alle Zeichenfolgen in verschiedenen Kulturen, mit Ausnahme von Zeichenfolgen, die in Sammlungen enthalten sind. |
@@ -94,7 +94,7 @@ Das **LocalizedCollections**-Element enthält die folgenden Elemente:
 
 Das **LocalizedCollection**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ElementType | Ja | Verweist auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtliniendatei. |
 | ElementId | Ja | Eine Zeichenfolge mit einem Verweis auf einen Anspruchstyp, der bereits in dem ClaimsSchema-Abschnitt, der bei Festlegung von **ElementType** auf einen Anspruchstyp verwendet wird, definiert wurde. |
@@ -104,14 +104,14 @@ Das **LocalizedCollection**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Item | 0:n | Definiert eine verfügbare Option für den Benutzer, über die dieser einen Anspruch in der Benutzeroberfläche auswählen kann, z.B. einen Wert in einer Dropdownliste. |
+| Element | 0:n | Definiert eine verfügbare Option für den Benutzer, über die dieser einen Anspruch in der Benutzeroberfläche auswählen kann, z.B. einen Wert in einer Dropdownliste. |
 
 Das **Item**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Text | Ja | Die benutzerfreundliche Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt werden soll. |
-| Wert | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
+| value | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
 | SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
@@ -144,7 +144,7 @@ Das **LocalizedStrings**-Element enthält die folgenden Elemente:
 
 Das **LocalizedString**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ElementType | Ja | Ein Verweis auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtlinie. Mögliche Werte: `ClaimType`, `UxElement`, `ErrorMessage` oder `Predicate`. Der Wert `ClaimType` wird verwendet, um eines der Anspruchsattribute gemäß der StringId zu lokalisieren. Der Wert `UxElement` wird verwendet, um eines der Elemente der Benutzeroberfläche gemäß der StringId zu lokalisieren. Der Wert `ErrorMessage` wird verwendet, um eine der Systemfehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `Predicate` wird verwendet, um eine der [Predicate](predicates.md)-Fehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `InputValidation` wird verwendet, um eine der Fehlermeldungen der [PredicateValidation](predicates.md)-Gruppe gemäß der StringId zu lokalisieren. |
 | ElementId | Ja | Wenn **ElementType** auf `ClaimType`, `Predicate` oder `InputValidation` festgelegt wurde, enthält dieses Element einen Verweis auf einen Anspruchstyp, der bereits im ClaimsSchema-Abschnitt definiert wurde. |

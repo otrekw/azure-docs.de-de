@@ -1,18 +1,14 @@
 ---
 title: Einrichten von Warnungen in Application Insights mithilfe von PowerShell | Microsoft Docs
 description: Automatisieren Sie die Konfiguration von Application Insights so, dass Sie bei Metrikänderungen E-Mails erhalten.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928563"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669844"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights mithilfe von PowerShell
 
@@ -122,7 +118,7 @@ Die Metriken werden von verschiedenen Telemetriemodulen gesendet:
 
 | Metrikgruppe | Erfassungsmodul |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>view |[Browser JavaScript](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>Ansicht |[Browser JavaScript](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[Leistung](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Abhängigkeit](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | request,<br/>requestFailed |[Serveranfrage](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |

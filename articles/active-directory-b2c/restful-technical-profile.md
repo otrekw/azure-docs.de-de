@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 80298ca4df01a93730fc831fc495b3123ead5f97
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197985"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585678"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -130,6 +130,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ClaimUsedForRequestPayload| Nein | Der Name eines Zeichenfolgenanspruchs, der die an die REST-API zu sendende Nutzlast enthält. |
 | DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Mögliche Werte sind `true` oder `false` (Standardwert). Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Die entsprechenden Informationen finden Sie im Abschnitt [Zurückgegebene Fehlermeldung](#returning-error-message). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+| ResolveJsonPathsInJsonTokens  | Nein | Gibt an, ob das technische Profil JSON-Pfade auflöst. Mögliche Werte sind `true` oder `false` (Standardwert). Verwenden Sie diese Metadaten, um Daten aus einem geschachtelten JSON-Element zu lesen. Legen Sie in einem Ausgabeanspruch ([OutputClaim](technicalprofiles.md#outputclaims)) den Partneranspruchstyp (`PartnerClaimType`) auf das auszugebende JSON-Pfadelement fest. Beispiel: `firstName.localized` oder `data.0.to.0.email`|
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
@@ -174,7 +175,7 @@ Das folgende Beispiel zeigt ein technisches Profil mit Standardauthentifizierung
 
 Wenn als Typ der Authentifizierung `ClientCertificate` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) für die Authentifizierung. |
 
@@ -195,7 +196,7 @@ Wenn als Typ der Authentifizierung `ClientCertificate` festgelegt ist, enthält 
 
 Wenn als Typ der Authentifizierung `Bearer` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Nein | Das OAuth 2.0-Bearertoken. |
 

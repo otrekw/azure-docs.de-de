@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596691"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299668"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Behandeln eines Problems mit Privileged Identity Management
 
@@ -28,7 +28,7 @@ Haben Sie ein Problem mit Privileged Identity Management (PIM) in Azure Active D
 
 ### <a name="problem"></a>Problem
 
-Als aktiver Besitzer oder Benutzerzugriffsadministrator für eine Azure-Ressource können Sie Ihre Ressource in Privileged Identity Management zwar sehen, aber keine Aktionen ausführen (also beispielsweise eine berechtigte Zuweisung vornehmen oder eine Liste mit Rollenzuweisungen auf der Ressourcenübersichtsseite anzeigen). Bei jeder dieser Aktionen tritt ein Autorisierungsfehler auf.
+Als aktiver Besitzer oder Benutzerzugriffsadministrator für eine Azure-Ressource können Sie Ihre Ressource in Privileged Identity Management zwar anzeigen, aber keine Aktionen ausführen (also beispielsweise eine berechtigte Zuweisung vornehmen oder eine Liste mit Rollenzuweisungen auf der Ressourcenübersichtsseite anzeigen). Bei jeder dieser Aktionen tritt ein Autorisierungsfehler auf.
 
 ### <a name="cause"></a>Ursache
 
@@ -36,7 +36,7 @@ Dieses Problem kann auftreten, wenn die Rolle „Benutzerzugriffsadministrator�
 
 ### <a name="resolution"></a>Lösung
 
-Weisen Sie dem Privileged Identity Management-Dienstprinzipalnamen (MS-PIM) die Rolle „Benutzerzugriffsadministrator“ auf der Abonnementebene zu. Diese Zuweisung sorgt dafür, dass der Privileged Identity Management-Dienst auf die Azure-Ressourcen zugreifen kann. Die Rolle kann abhängig von Ihren Anforderungen auf der Ebene einer Verwaltungsgruppe oder auf der Abonnementebene zugewiesen werden. Weitere Informationen zu Dienstprinzipalen finden Sie unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role).
+Weisen Sie dem Privileged Identity Management-Dienstprinzipalnamen (MS-PIM) die Rolle „Benutzerzugriffsadministrator“ auf der Abonnementebene zu. Diese Zuweisung sorgt dafür, dass der Privileged Identity Management-Dienst auf die Azure-Ressourcen zugreifen kann. Die Rolle kann abhängig von Ihren Anforderungen auf der Ebene einer Verwaltungsgruppe oder auf der Abonnementebene zugewiesen werden. Weitere Informationen zu Dienstprinzipalen finden Sie unter [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

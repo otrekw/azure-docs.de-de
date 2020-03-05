@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970541"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916590"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -61,7 +61,7 @@ Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Unterstützte Sprachen der Speech-API
-Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) für Speech.
+Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden Sie unter [Unterstützte Sprachen](../speech-service/speech-to-text.md) für Speech.
 
 ### <a name="bing-spell-check-supported-languages"></a>Unterstützte Sprachen der Bing-Rechtschreibprüfung
 Eine Liste und den Status der unterstützten Sprachen finden Sie unter [Liste und Status der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) für die Bing-Rechtschreibprüfung.

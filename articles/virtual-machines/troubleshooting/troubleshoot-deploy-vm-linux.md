@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058232"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921435"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Behandlung von Problemen bei der Bereitstellung virtueller Linux-Computer in Azure
 
-Um Bereitstellungsprobleme virtueller Computer in Azure zu behandeln, sehen Sie sich die [wichtigsten Probleme](#top-issues) für häufige Fehler und die Lösungen dazu an.
+Um Bereitstellungsprobleme virtueller Computer (VMs) in Azure zu behandeln, sehen Sie sich die [wichtigsten Probleme](#top-issues) für häufige Fehler und die Lösungen dazu an.
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
 
@@ -46,9 +46,9 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
     - Erstellen Sie einen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).
     - Fügen Sie den neuen virtuellen Computer zum gleichen virtuellen Netzwerk hinzu.
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Wie aktiviere ich meine monatliche Gutschrift für Visual Studio Enterprise (BizSpark)?
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Wie aktiviere ich mein monatliches Guthaben für Visual Studio Enterprise (BizSpark)
 
-Informationen zum Aktivieren Ihrer monatlichen Gutschrift finden Sie in [diesem Artikel](https://azure.microsoft.com/offers/ms-azr-0064p/).
+Um Ihr monatliches Guthaben zu aktivieren, lesen Sie diesen [Artikel](https://azure.microsoft.com/offers/ms-azr-0064p/).
 
 ## <a name="why-can-i-not-install-the-gpu-driver-for-an-ubuntu-nv-vm"></a>Warum kann ich den GPU-Treiber nicht für eine NV-VM mit Ubuntu installieren?
 
@@ -60,11 +60,11 @@ Treiber für auf Linux basierende VMs befinden sich [hier](../linux/n-series-dri
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ich kann keine GPU-Instanz in meiner VM der N-Serie finden
 
-Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server 2016 oder Windows Server 2012 R2 nutzen zu können. Informationen zur Einrichtung von Treibern stehen für [Windows-VMs](../windows/n-series-driver-setup.md) und [Linux-VMs](../linux/n-series-driver-setup.md) zur Verfügung.
+Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server 2016 oder Windows Server 2012 R2 nutzen zu können. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md) und [Linux-VMs](../linux/n-series-driver-setup.md) zur Verfügung.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Sind VMs der N-Serie in meiner Region verfügbar?
+## <a name="is-n-series-vms-available-in-my-region"></a>Stehen VMs der N-Serie in meiner Region zur Verfügung?
 
-Sie können die Verfügbarkeit in der Tabelle [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services) und die Preise [hier](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series) finden.
+Informationen zur Verfügbarkeit finden Sie in der [Tabelle verfügbarer Produkte nach Region](https://azure.microsoft.com/regions/services), und Informationen zu Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 
 ## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ich kann keine VM-Größenfamilie sehen, die ich bei der Größenänderung meines virtuellen Computers haben möchte.
 
@@ -86,6 +86,7 @@ Sie können die Liste unter [Linux auf von Azure unterstützten Verteilungen](..
 
 Ja. Sie können einen vorhandenen klassischen virtuellen Computer in eine neue oder vorhandene Verfügbarkeitsgruppe hinzufügen. Weitere Informationen finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen.

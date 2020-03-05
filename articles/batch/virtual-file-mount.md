@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919004"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
@@ -33,11 +33,11 @@ In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der 
 
 Wenn Sie das Dateisystem in den Pool einbinden, statt Vorgänge eigene Daten aus einem großen Dataset abrufen zu lassen, können Aufgaben einfacher und effizienter auf die erforderlichen Daten zugreifen.
 
-Stellen Sie sich ein Szenario vor, in dem mehrere Aufgaben auf dieselben Daten zugreifen müssen. Ein Beispiel hierfür ist das Rendern eines Films. Jede Aufgabe rendert jeweils einen oder mehrere Frames aus den Szenendateien. Durch die Einbindung eines Laufwerks, das die Szenendateien enthält, können Computeknoten einfacher auf freigegebene Daten zugreifen. Darüber hinaus kann das zugrunde liegende Dateisystem basierend auf der Leistung und Skalierung (Durchsatz und IOPS) unabhängig ausgewählt und skaliert werden, die für die Anzahl von Computeknoten erforderlich ist, die gleichzeitig auf die Daten zugreifen. Beispielsweise kann ein verteilter speicherinterner [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)-Cache verwendet werden, um große Renderings im Kinofilmmaßstab mit Tausenden von gleichzeitigen Renderknoten zu unterstützen, die auf lokal gespeicherte Quelldaten zugreifen. Für Daten, die sich bereits in einem cloudbasierten Blobspeicher befinden, kann alternativ [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) verwendet werden, um diese Daten als lokales Dateisystem einzubinden. Blobfuse ist nur auf Linux-Knoten verfügbar, [Azure Files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) bietet jedoch einen ähnlichen Workflow und ist sowohl unter Windows als auch unter Linux verfügbar.
+Stellen Sie sich ein Szenario vor, in dem mehrere Aufgaben auf einen gemeinsamen Satz von Daten zugreifen müssen. Ein Beispiel hierfür ist das Rendern eines Films. Jede Aufgabe rendert jeweils ein oder mehrere Frames aus den Szenendateien. Durch die Einbindung eines Laufwerks, das die Szenendateien enthält, können Computeknoten einfacher auf freigegebene Daten zugreifen. Darüber hinaus kann das zugrunde liegende Dateisystem basierend auf der Leistung und Skalierung (Durchsatz und IOPS) unabhängig ausgewählt und skaliert werden, die für die Anzahl von Computeknoten erforderlich ist, die gleichzeitig auf die Daten zugreifen. Beispielsweise kann ein verteilter speicherinterner [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md)-Cache verwendet werden, um große Renderings im Kinofilmmaßstab mit Tausenden von gleichzeitigen Renderknoten zu unterstützen, die auf lokal gespeicherte Quelldaten zugreifen. Für Daten, die sich bereits in einem cloudbasierten Blobspeicher befinden, kann alternativ [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) verwendet werden, um diese Daten als lokales Dateisystem einzubinden. Blobfuse ist nur auf Linux-Knoten verfügbar, [Azure Files](https://azure.microsoft.com/blog/a-new-era-for-azure-files-bigger-faster-better/) bietet jedoch einen ähnlichen Workflow und ist sowohl unter Windows als auch unter Linux verfügbar.
 
 ## <a name="mount-a-virtual-file-system-on-a-pool"></a>Einbinden eines virtuellen Dateisystems in einen Pool  
 
-Durch die Einbindung eines virtuellen Dateisystems in einen Pool wird das Dateisystem für jeden Computeknoten im Pool verfügbar. Das Dateisystem wird entweder konfiguriert, wenn ein Computeknoten einem Pool beitritt oder wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird.
+Durch die Einbindung eines virtuellen Dateisystems in einen Pool wird das Dateisystem für jeden Computeknoten im Pool verfügbar. Das Dateisystem wird entweder konfiguriert, wenn ein Computeknoten einem Pool beitritt (hinzugefügt wird) oder wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird.
 
 Um ein Dateisystem in einen Pool einzubinden, erstellen Sie ein `MountConfiguration`-Objekt. Wählen Sie das Objekt aus, das Ihrem virtuellen Dateisystem entspricht: `AzureBlobFileSystemConfiguration`, `AzureFileShareConfiguration`, `NfsMountConfiguration` oder `CifsMountConfiguration`.
 
@@ -47,7 +47,7 @@ Für alle MountConfiguration-Objekte sind die folgenden Basisparameter erforderl
 - **Relativer Einbindungspfad oder Quelle**: Der Speicherort des auf dem Computeknoten eingebundenen Dateisystems, relativ zu dem `fsmounts`-Standardverzeichnis, auf das auf dem Knoten über `AZ_BATCH_NODE_MOUNTS_DIR` zugegriffen werden kann. Der genaue Speicherort hängt von dem auf dem Knoten verwendeten Betriebssystem ab. Beispielsweise ist der physische Speicherort auf einem Ubuntu-Knoten `mnt\batch\tasks\fsmounts` zugeordnet, und auf einem CentOS-Knoten ist er `mnt\resources\batch\tasks\fsmounts` zugeordnet.
 - **Einbindungsoptionen oder blobfuse-Optionen**: Diese Optionen beschreiben bestimmte Parameter für die Einbindung eines Dateisystems.
 
-Nachdem das `MountConfiguration`-Objekt erstellt wurde, können Sie dem Objekt die `MountConfigurationList`-Eigenschaft zuweisen, wenn Sie den Pool erstellen. Das Dateisystem wird entweder eingebunden, wenn ein Knoten einem Pool beitritt oder wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird.
+Nachdem das `MountConfiguration`-Objekt erstellt wurde, können Sie dem Objekt die `MountConfigurationList`-Eigenschaft zuweisen, wenn Sie den Pool erstellen. Das Dateisystem wird entweder eingebunden, wenn ein Knoten einem Pool beitritt (hinzugefügt wird) oder wenn der Knoten neu gestartet oder ein Reimaging durchgeführt wird.
 
 Beim Einbinden des Dateisystems wird eine Umgebungsvariable vom Typ `AZ_BATCH_NODE_MOUNTS_DIR` erstellt, die auf den Speicherort der eingebundenen Dateisysteme sowie auf Protokolldateien verweist, die für die Problembehandlung und das Debuggen hilfreich sind. Protokolldateien werden im Abschnitt [Diagnostizieren von Einbindungsfehlern](#diagnose-mount-errors) ausführlicher erläutert.  
 
@@ -88,9 +88,6 @@ new PoolAddParameter
 Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Weitere Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Verwenden von SAS (Shared Access Signatures)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Problembehandlung](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) bei blobfuse. Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Zusätzlich zum Leitfaden zur Problembehandlung stellen GitHub-Issues im blobfuse-Repository eine hilfreiche Möglichkeit dar, um sich über aktuelle blobfuse-Probleme und -Lösungen zu informieren. Weitere Informationen finden Sie auf der GitHub-Seite zu blobfuse auf der Registerkarte [„Issues“](https://github.com/Azure/azure-storage-fuse/issues).
-
-> [!NOTE]
-> Blobfuse wird unter Debian derzeit nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützte SKUs](#supported-skus).
 
 ```csharp
 new PoolAddParameter
@@ -174,7 +171,8 @@ Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie
 |---|---|---|---|---|---|---|
 | Batch | rendering-centos73 | Rendering | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8, 9 | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.4 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Hinweis: Unterstützt A_8-/9-Speicher</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

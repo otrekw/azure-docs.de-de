@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264830"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539449"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -41,6 +41,9 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     6. Wählen Sie **Speichern** aus.
 
         ![Fenster „Neues Lab“](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > Wenn das Labkonto mit der Option [Auswahl des Labstandorts](allow-lab-creator-pick-lab-location.md) konfiguriert wurde, wird eine Option zum Auswählen eines Standorts für das Lab angezeigt. 
 4. Geben Sie auf der Seite mit den **VM-Anmeldeinformationen** die Standardanmeldeinformationen für alle VMs im Lab an.
     1. Geben Sie den **Namen des Benutzers** für alle VMs im Lab an.
     2. Geben Sie das **Kennwort** für den Benutzer an. 
@@ -52,12 +55,14 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
         Ein Kursleiter kann auch dasselbe Kennwort für alle VMs im Lab verwenden, oder den Kursteilnehmern erlauben, die Kennwörter für ihre virtuellen Computer selbst festzulegen. Standardmäßig ist diese Einstellung für alle Windows- und Linux-Images mit Ausnahme von Ubuntu aktiviert. Bei der Auswahl einer **Ubuntu**-VM ist diese Einstellung deaktiviert, sodass die Kursteilnehmer bei der ersten Anmeldung aufgefordert werden, ein Kennwort festzulegen.  
 
         ![Fenster „Neues Lab“](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Notieren Sie sich den Benutzernamen und das Kennwort. Diese Angaben werden nicht noch einmal angezeigt.    
     4. Wählen Sie dann **Weiter** auf der Seite **VM-Anmeldeinformationen** aus. 
-5. Geben Sie auf der Seite mit den **Labrichtlinien** die Anzahl von Stunden ein, die jedem Benutzer (**Kontingent pro Benutzer**) außerhalb der geplanten Zeit für das Lab zugeordnet sind, und wählen Sie anschließend **Fertig stellen** aus. 
+5. Führen Sie auf der Seite **Labrichtlinien** die folgenden Schritte aus:
+    1. Geben Sie die Anzahl von Stunden ein, die jedem Benutzer außerhalb der geplanten Zeit für das Lab zugeteilt wird (**Kontingent pro Benutzer**). 
+    2. Geben Sie für die Option **Richtlinie zum Herunterfahren** an, ob der virtuelle Computer automatisch heruntergefahren werden soll, wenn der Benutzer die Verbindung trennt. Sie können auch angeben, wie lange der virtuelle Computer vor dem automatischen Herunterfahren darauf warten soll, dass der Benutzer die Verbindung wiederherstellt. Weitere Informationen finden Sie unter [Aktivieren des automatischen Herunterfahrens von VMs beim Trennen](how-to-enable-shutdown-disconnect.md).
+    3. Wählen Sie anschließend **Fertig stellen** aus. 
 
-    ![Kontingent pro Benutzer](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Kontingent pro Benutzer](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Der folgende Bildschirm sollte angezeigt werden, auf dem der Status der VM-Vorlagenerstellung angegeben ist. Die Erstellung der Vorlage im Lab dauert bis zu 20 Minuten. 
 
     ![Status der VM-Vorlagenerstellung](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -92,7 +97,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 
 ### <a name="vm-sizes"></a>VM-Größen  
 
-| Size | Kerne | RAM | Beschreibung | 
+| Size | Kerne | RAM | BESCHREIBUNG | 
 | ---- | ----- | --- | ----------- | 
 | Klein | 2 | 3,5 GB | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
 | Medium | 4 | 7 GB | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. | 

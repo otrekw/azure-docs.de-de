@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491269"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270528"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>Vordefinierte KeyPhrase-Entität für eine LUIS-App
-Die keyPhrase-Entität extrahiert eine Vielzahl von Schlüsselbegriffen aus einer Äußerung. Sie müssen der App keine Beispieläußerungen hinzufügen, die „keyPhrase“ enthalten. Die keyPhrase-Entität wird für [viele Kulturen](luis-language-support.md#languages-supported) im Rahmen der Features der [Textanalyse](../text-analytics/overview.md) unterstützt. 
+Die keyPhrase-Entität extrahiert eine Vielzahl von Schlüsselbegriffen aus einer Äußerung. Sie müssen der App keine Beispieläußerungen hinzufügen, die „keyPhrase“ enthalten. Die keyPhrase-Entität wird für [viele Kulturen](luis-language-support.md#languages-supported) im Rahmen der Features der [Textanalyse](../text-analytics/overview.md) unterstützt.
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Auflösung der vorgefertigten keyPhrase-Entität
 
@@ -27,7 +27,7 @@ Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
 `where is the educational requirements form for the development and engineering group`
 
-#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
@@ -39,7 +39,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
@@ -76,7 +76,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** veranschaulicht.
 
@@ -96,7 +96,7 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** ver
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 

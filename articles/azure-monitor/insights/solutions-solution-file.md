@@ -1,19 +1,18 @@
 ---
 title: Erstellen einer Verwaltungslösungsdatei in Azure | Microsoft-Dokumentation
 description: Verwaltungslösungen beinhalten gebündelte Verwaltungsszenarien, die Kunden zu ihrer Azure-Umgebung hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977689"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662536"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -62,7 +61,7 @@ Ein Beispielparameter ist unten dargestellt.
 
 In der folgenden Tabelle werden die Attribute eines Parameters beschrieben.
 
-| attribute | Beschreibung |
+| attribute | BESCHREIBUNG |
 |:--- |:--- |
 | type |Der Datentyp für den Parameter. Das für den Benutzer angezeigte Eingabesteuerelement hängt vom Datentyp ab.<br><br>bool – Dropdownfeld<br>string – Textfeld<br>int – Textfeld<br>securestring – Kennwortfeld<br> |
 | category |Optionale Kategorie für den Parameter.  Parameter in der gleichen Kategorie werden gruppiert. |
@@ -77,14 +76,14 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 >
 >
 
-| Parameter | type | Beschreibung |
+| Parameter | type | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| .<Name der Region |string |Azure Automation-Kontoname |
-| pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
-| regionId |string |Region des Azure Automation-Kontos |
-| solutionName |string |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
-| workspaceName |string |Name des Log Analytics-Arbeitsbereichs. |
-| workspaceRegionId |string |Region des Azure Log Analytics-Arbeitsbereichs |
+| .<Name der Region |Zeichenfolge |Azure Automation-Kontoname |
+| pricingTier |Zeichenfolge |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
+| regionId |Zeichenfolge |Region des Azure Automation-Kontos |
+| solutionName |Zeichenfolge |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
+| workspaceName |Zeichenfolge |Name des Log Analytics-Arbeitsbereichs. |
+| workspaceRegionId |Zeichenfolge |Region des Azure Log Analytics-Arbeitsbereichs |
 
 
 Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren und in Ihrer Lösungsdatei einfügen können.  
@@ -205,7 +204,7 @@ Die Lösungsressource muss über eine [Abhängigkeit](../../azure-resource-manag
 ### <a name="properties"></a>Eigenschaften
 Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Dies umfasst die Ressourcen, die in der Lösung enthalten sind oder von dieser referenziert werden. Dadurch wird definiert, wie die Ressource nach Installation der Lösung verwaltet wird.  Jede Ressource in der Lösung muss entweder in der Eigenschaft **referencedResources** oder in der Eigenschaft **containedResources** aufgelistet werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | workspaceResourceId |ID des Log Analytics-Arbeitsbereichs im Format *\<Ressourcengruppen-ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* . |
 | referencedResources |Liste der Ressourcen in der Lösung, die nicht entfernt werden sollen, wenn die Lösung entfernt wird. |
@@ -216,7 +215,7 @@ Das obige Beispiel ist für eine Lösung mit einem Runbook, einem Zeitplan und e
 ### <a name="plan"></a>Planen
 Die Entität **Plan** der Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | name |Name der Lösung |
 | version |Die Version der Lösung, wie vom Autor festgelegt. |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112085"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190652"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
 
@@ -34,9 +34,9 @@ Bei Ihrer Anwendungsentwicklung entfällt ein Großteil der Arbeit auf die Erste
 ## <a name="sample-code-and-demo"></a>Beispielcode und Demo
 In diesem Artikel wird ein Stellenportal als Beispiel verwendet. Das Beispiel wird als eine ASP.NET MVC-Anwendung implementiert.
 
--   Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+- Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](http://azjobsdemo.azurewebsites.net/) anzeigen und testen.
 
--   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
+- Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
 ## <a name="get-started"></a>Erste Schritte
 Wenn Sie noch keine Erfahrung mit der Suchentwicklung gesammelt haben, können Sie sich die Facettennavigation am besten als eine Lösung vorstellen, die die Möglichkeiten für die selbstständige Suche aufzeigt. Die Facettennavigation ist eine Art Drilldownsuche, die auf vordefinierten Filtern basiert, und dient zur schnellen Eingrenzung der Suchergebnisse durch Point-and-Click-Aktionen. 
@@ -243,7 +243,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>Tipps und bewährte Methoden
+## <a name="tips-and-best-practices"></a>Tipps und Best Practices
 
 ### <a name="indexing-tips"></a>Tipps zur Indizierung
 **Verbessern Sie die Indexeffizienz, indem Sie kein Suchfeld verwenden**

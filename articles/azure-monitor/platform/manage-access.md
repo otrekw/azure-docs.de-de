@@ -1,18 +1,17 @@
 ---
 title: Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor | Microsoft-Dokumentation
 description: Sie können den Zugriff auf Daten, die in einem Log Analytics-Arbeitsbereich in Azure Monitor gespeichert sind, mithilfe von Berechtigungen auf Ressourcen-, Arbeitsbereichs- oder Tabellenebene verwalten. In diesem Artikel wird dies ausführlich erläutert.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289117"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272622"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -89,6 +88,7 @@ if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null
 else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+}
 ```
 
 ### <a name="using-a-resource-manager-template"></a>Verwenden einer Resource Manager-Vorlage
@@ -132,7 +132,7 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 
 Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
-| type    | Berechtigung | Beschreibung |
+| type    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
 | Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellungen und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
 | Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Veraltet: es gibt keinen Grund, diese Berechtigung Benutzern zuzuweisen. |
@@ -160,7 +160,7 @@ Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausf
 
 Die Rolle „Log Analytics-Mitwirkender“ umfasst die folgenden Azure-Aktionen:
 
-| Berechtigung | Beschreibung |
+| Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
 | `*/read`     | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellung und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
 | `Microsoft.Automation/automationAccounts/*` | Erstellen und Konfigurieren von Azure Automation-Konten (einschließlich Hinzufügen und Bearbeiten von Runbooks) |
@@ -187,7 +187,7 @@ Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzuneh
 
 Wenn Benutzer Protokolle aus einem Arbeitsbereich mit Zugriff im Ressourcenkontext abfragen, verfügen sie über die folgenden Berechtigungen für die Ressource:
 
-| Berechtigung | Beschreibung |
+| Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Beispiele:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Möglichkeit, alle Protokolldaten für die Ressource anzuzeigen.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Die Möglichkeit zum Konfigurieren von Diagnoseeinstellungen, um das Einrichten von Protokollen für diese Ressource zuzulassen. |

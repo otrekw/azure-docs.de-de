@@ -3,20 +3,20 @@ title: Definieren eines technischen Profils für einen JWT-Aussteller in einer b
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie ein technisches Profil für einen JWT-Tokenaussteller (JSON Web Token) in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841981"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187473"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -61,7 +61,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 
 Das CryptographicKeys-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | issuer_secret | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Signieren des JWT-Tokens. Dies ist der `B2C_1A_TokenSigningKeyContainer`-Schlüssel, den Sie in [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) konfiguriert haben. |
 | issuer_refresh_token_key | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) zum Verschlüsseln des Aktualisierungstokens. Sie haben den `B2C_1A_TokenEncryptionKeyContainer`-Schlüssel in [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) konfiguriert. |

@@ -3,12 +3,12 @@ title: Einrichten der Abhängigkeitsvisualisierung in Azure Migrate
 description: Beschreibt das Einrichten der Abhängigkeitsvisualisierung in der Serverbewertung von Azure Migrate
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589048"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916284"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -76,7 +76,7 @@ Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren
 5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
 Sie können den Agent über die Befehlszeile oder mithilfe einer automatisierten Methode wie Configuration Manager oder [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196) installieren.
-- [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
+- [Weitere Informationen](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) zur Verwendung dieser Methoden zum Installieren des MMA-Agent.
 - Der MMA-Agent kann auch mit diesem [Skript](https://go.microsoft.com/fwlink/?linkid=2104394) installiert werden.
 - [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) über die durch den MMA unterstützten Windows-Betriebssysteme.
 

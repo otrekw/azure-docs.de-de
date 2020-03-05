@@ -1,18 +1,17 @@
 ---
 title: Warnungsverwaltungslösung in Azure Log Analytics | Microsoft-Dokumentation
 description: Die Alert Management-Lösung in Log Analytics unterstützt Sie beim Analysieren aller Warnungen in Ihrer Umgebung.  Zusätzlich zur Konsolidierung von in Log Analytics generierten Warnungen werden Warnungen aus verbundenen Verwaltungsgruppen von System Center Operations Manager in Log Analytics importiert.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: fe484d8b5a06946b844acb5e506ec4dcc99ebc23
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932723"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668382"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
@@ -81,7 +80,7 @@ Mit der Alert Management-Lösung werden alle Datensätze vom Typ **Warnung**anal
 
 Die Lösung importiert Warnungen aus System Center Operations Manager, und es werden jeweils ein entsprechender Datensatz vom Typ **Warnung** und der SourceSystem-Eintrag **OpsManager** erstellt.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:  
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `Type` |*Warnung* |
 | `SourceSystem` |*OpsManager* |
@@ -107,7 +106,7 @@ Die Lösung importiert Warnungen aus System Center Operations Manager, und es we
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatensätzen, die mit dieser Lösung erfasst wurden: 
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |Kritische Warnungen, die innerhalb der letzten 24 Stunden ausgelöst wurden |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |Warnungen vom Typ „Warnung“, die innerhalb der letzten 24 Stunden ausgelöst wurden |

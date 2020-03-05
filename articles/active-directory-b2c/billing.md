@@ -2,20 +2,20 @@
 title: Abrechnungsmodell für Azure Active Directory B2C
 description: Erfahren Sie mehr über das Azure AD B2C-Abrechnungsmodell basierend auf den monatlich aktiven Benutzern (Monthly Active Users, MAU) und die Aktivierung der Abrechnung für ein bestimmtes Azure-Abonnement.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564772"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190006"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 

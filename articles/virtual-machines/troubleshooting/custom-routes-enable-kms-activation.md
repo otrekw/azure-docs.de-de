@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748633"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920160"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung
 
@@ -84,6 +84,8 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
 4. Versuchen Sie, Windows zu aktivieren, und überprüfen Sie, ob das Problem behoben ist.
 
 ### <a name="for-classic-vms"></a>Für klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Führen Sie die folgenden Befehle aus:

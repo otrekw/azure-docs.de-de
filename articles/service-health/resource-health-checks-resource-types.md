@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5d1c720d3cbafafc81276a968abf2003bbd46ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303952"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -28,7 +28,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Wird das Batch-Konto ausgeführt?</li><li>Wurde das Poolkontingent für dieses Batch-Konto überschritten?</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind alle Cacheknoten funktionstüchtig?</li><li>Kann der Cache vom Rechenzentrum aus erreicht werden?</li><li>Hat der Cache die maximale Anzahl von Verbindungen erreicht?</li><li> Hat der Cache seinen verfügbaren Arbeitsspeicher ausgschöpft? </li><li>Tritt im Cache eine große Anzahl von Seitenfehlern auf?</li><li>Ist der Cache stark ausgelastet?</li></ul>|

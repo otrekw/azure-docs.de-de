@@ -3,21 +3,21 @@ title: Zugreifen auf und Überprüfen von Überwachungsprotokollen
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie programmgesteuert und im Azure-Portal auf Azure AD B2C-Überwachungsprotokolle zugreifen.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/20/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505624"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185776"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die 
 
 Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
-|Aktivitätstyp |Beschreibung  |
+|Aktivitätstyp |BESCHREIBUNG  |
 |---------|---------|
 |Authorization |Aktivitäten, die sich auf die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen beziehen (z. B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |

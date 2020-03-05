@@ -1,18 +1,17 @@
 ---
 title: 'Netzwerkleistungsmonitor-Lösung in Azure: häufig gestellte Fragen | Microsoft-Dokumentation'
 description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538184"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654432"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -258,7 +257,7 @@ Dies ist in folgenden Fällen möglich:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>In der Funktion Dienstkonnektivitätsmonitor wird die Dienstantwortzeit als nicht verfügbar angezeigt, es sind jedoch gültige Angaben zu Netzwerkverlust und Latenz verfügbar
 Dies kann der Fall sein, wenn der Zieldienst keine Webanwendung ist, der Test aber als Webtest konfiguriert ist. Bearbeiten Sie die Testkonfiguration, und wählen Sie für den Testtyp „Netzwerk“ anstelle von „Web“ aus.
 
-## <a name="miscellaneous"></a>Verschiedenes
+## <a name="miscellaneous"></a>Sonstiges
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Ist die Leistung auf dem zur Überwachung verwendeten Knoten beeinträchtigt?
 Der Prozess des Netzwerkleistungsmonitors ist so konfiguriert, dass er beendet wird, wenn mehr als 5 % der CPU-Ressourcen des Hosts genutzt werden. Dadurch wird sichergestellt, dass die Knoten weiterhin für die üblichen Workloads verwendet werden können, ohne dass die Leistung beeinträchtigt wird.

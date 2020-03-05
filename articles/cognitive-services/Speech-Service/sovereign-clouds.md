@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424914"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228082"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>Speech-Dienste mit Sovereign Clouds
 
@@ -56,7 +56,7 @@ Ein in China befindliches Azure-Rechenzentrum mit direktem Zugang zu China Mobil
 - TTS im Speech SDK: *config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<IhrSchlüssel\>");*
 - Authentication Tokens: https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure-Portal: https://portal.azure.cn
-- Custom Speech-Portal: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- Custom Speech-Portal: https://speech.azure.cn/CustomSpeech
 - Verfügbare SKUs: S0
 - Unterstützte Features:
   - Spracherkennung

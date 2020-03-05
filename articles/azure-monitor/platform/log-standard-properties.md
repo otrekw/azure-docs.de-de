@@ -1,18 +1,17 @@
 ---
 title: Standardeigenschaften in Azure Monitor-Protokolldatensätzen | Microsoft-Dokumentation
 description: Beschreibt Eigenschaften, die mehreren Datentypen in Azure Monitor-Protokollen gemein sind.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672088"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardeigenschaften in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../log-query/logs-structure.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutige Menge an Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.

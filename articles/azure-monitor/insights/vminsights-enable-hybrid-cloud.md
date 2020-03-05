@@ -1,18 +1,17 @@
 ---
 title: Aktivieren von Azure Monitor (Vorschauversion) für eine Hybridumgebung | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für eine Hybridcloudumgebung aktivieren, die einen oder mehrere virtuelle Computer enthält.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969677"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669623"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für eine Hybridumgebung
 
@@ -49,7 +48,7 @@ Sie können den Dependency-Agent durch Ausführen von `InstallDependencyAgent-Wi
 
 In der folgenden Tabelle sind die Parameter hervorgehoben, die von Setup für den Agent auf der Befehlszeile unterstützt werden.
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:--|:--|
 | /? | Gibt eine Liste der Befehlszeilenoptionen zurück. |
 | /S | Führt eine automatische Installation ohne Benutzereingriff aus. |
@@ -66,7 +65,7 @@ Der Dependency-Agent wird auf Linux-Servern mit *InstallDependencyAgent-Linux64.
 > Zum Installieren oder Konfigurieren des Agent ist Root-Zugriff erforderlich.
 >
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:--|:--|
 | -help | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | -S | Führt eine automatische Installation ohne Benutzereingaben aus. |

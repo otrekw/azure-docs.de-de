@@ -1,18 +1,17 @@
 ---
 title: Verwenden von PowerShell zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
 description: In Log Analytics-Arbeitsbereichen in Azure Monitor werden Daten von Servern in Ihrer lokalen oder Cloudinfrastruktur gespeichert. Sie können Computerdaten aus dem Azure-Speicher sammeln, wenn sie von Azure-Diagnose generiert werden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659274"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor mithilfe von PowerShell
 
@@ -200,7 +199,7 @@ Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch def
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurieren von Log Analytics zum Senden der Azure-Diagnose
 Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an den Arbeitsbereich gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
 
-| Ressourcentyp | Protokolle | metrics |
+| Ressourcentyp | Protokolle | Metriken |
 | --- | --- | --- |
 | Anwendungsgateways    | Ja | Ja |
 | Automation-Konten     | Ja | |

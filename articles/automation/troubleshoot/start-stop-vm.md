@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966680"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505727"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -110,7 +110,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* Überprüfen Sie, ob Ihr [RunAs-Konto](../manage-runas-account.md) über die erforderlichen Berechtigungen für die virtuellen Computer verfügt, die Sie starten oder beenden möchten. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom RunAs-Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+* Überprüfen Sie, ob Ihr [RunAs-Konto](../manage-runas-account.md) über die erforderlichen Berechtigungen für die virtuellen Computer verfügt, die Sie starten oder beenden möchten. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
 
 * Virtuelle Computer können nicht gestartet oder beendet werden, wenn sie explizit ausgeschlossen sind. Ausgeschlossene VMs werden im Automation-Konto, das der Lösung bereitgestellt wird, in der **External_ExcludeVMNames**-Variablen festgelegt. Das folgende Beispiel zeigt, wie Sie diesen Wert mit PowerShell abfragen können.
 
@@ -149,9 +149,9 @@ Dieser Fehler kann einen der folgenden Gründe haben:
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Um VMs zu starten und zu beenden, muss das RunAs-Konto für das Automation-Konto über die entsprechenden Berechtigungen auf dem virtuellen Computer verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom RunAs-Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+* Um VMs zu starten und zu beenden, muss das RunAs-Konto für das Automation-Konto über die entsprechenden Berechtigungen auf dem virtuellen Computer verfügen. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
 
-* Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.md).
+* Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.yml).
 
 * Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
@@ -207,7 +207,7 @@ Wenn Ihr RunAs-Konto [falsch konfiguriert](../manage-runas-account.md#misconfigu
 
 Wenn das Zertifikat für Ihr RunAs-Konto abgelaufen ist, befolgen Sie die Schritte unter [Erneuerung eines selbstsignierten Zertifikat](../manage-runas-account.md#cert-renewal) zur Erneuerung des Zertifikats.
 
-Das Problem wird möglicherweise durch fehlende Berechtigungen verursacht. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom RunAs-Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
+Das Problem wird möglicherweise durch fehlende Berechtigungen verursacht. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
 
 ## <a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
 

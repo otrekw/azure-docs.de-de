@@ -1,25 +1,19 @@
 ---
 title: Übersicht über die Benachrichtigung und Benachrichtigungsüberwachung in Azure
 description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische Warnungen und die Schnittstelle für Warnungen.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830325"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665663"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
 In diesem Artikel wird beschrieben, was Warnungen sind, welche Vorteile sie haben und wie Sie mit der Nutzung beginnen.  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
 Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
@@ -41,26 +35,29 @@ Nachfolgend sind die wichtigste Attribute einer Warnungsregel aufgeführt:
 **Signal**: Wird von der Zielressource ausgegeben. Zulässige Signaltypen sind: Metrik, Aktivitätsprotokoll, Application Insights und Protokoll.
 
 **Kriterien**: Eine Kombination aus Signal und Logik, die auf eine Zielressource angewendet wird. Beispiele: 
-   - CPU in Prozent > 70 %
-   - Serverantwortzeit > 4 ms 
-   - Anzahl der Ergebnisse einer Protokollabfrage > 100
+
+- CPU in Prozent > 70 %
+- Serverantwortzeit > 4 ms 
+- Anzahl der Ergebnisse einer Protokollabfrage > 100
 
 **Warnungsname**: Ein bestimmter Name für die Warnungsregel, der vom Benutzer konfiguriert wird.
 
 **Warnungsbeschreibung**: Eine Beschreibung für die Warnungsregel, die vom Benutzer konfiguriert wird.
 
 **Schweregrad**: Der Schweregrad der Warnung, nachdem die in der Warnungsregel angegebene Kriterien erfüllt sind. Der Schweregrad kann zwischen 0 und 4 liegen.
-   - Schweregrad 0 = Kritischer Fehler
-   - Schweregrad 1 = Fehler
-   - Schweregrad 2 = Warnung
-   - Schweregrad 3 = Information
-   - Schweregrad 4 = Ausführlicher Modus 
+
+- Schweregrad 0 = Kritischer Fehler
+- Schweregrad 1 = Fehler
+- Schweregrad 2 = Warnung
+- Schweregrad 3 = Information
+- Schweregrad 4 = Ausführlicher Modus 
 
 **Aktion:** Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
 Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Überwachen von Datenquellen](../../azure-monitor/platform/data-sources.md) beschrieben ist. Dazu gehören unter anderem folgende Ansprüche:
+
 - Metrikwerte
 - Protokollsuchabfragen
 - Aktivitätsprotokollereignisse
@@ -69,7 +66,7 @@ Sie können Warnungen für Metriken und Protokolle ausgeben, wie es unter [Über
 
 Früher verfügten Azure Monitor-Metriken, Application Insights, Log Analytics und Service Health über separate Benachrichtigungsfunktionen. Im Laufe der Zeit verbesserte und kombinierte Azure sowohl die Benutzeroberfläche als auch verschiedene Benachrichtigungsmethoden. Diese Konsolidierung ist noch nicht abgeschlossen. Infolgedessen gibt es noch einige Benachrichtigungsfunktionen, die im neuen Warnungssystem noch nicht vorhanden sind.  
 
-| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
+| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** |
 |-------------|----------------|-------------|
 | Dienstintegrität | Aktivitätsprotokoll  | Wird nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Webverfügbarkeitstests | Wird nicht unterstützt. Siehe [Webtestwarnungen](../../azure-monitor/app/monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
@@ -79,7 +76,7 @@ Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt d
 
 Die folgenden Warnungsstatus werden unterstützt.
 
-| State | Beschreibung |
+| State | BESCHREIBUNG |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
@@ -106,7 +103,7 @@ Klassische Warnungen werden nicht angezeigt oder nachverfolgt. Sie können die A
 
 Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -114,7 +111,7 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 
 Klicken Sie auf die folgenden Werte am oberen Rand der Seite „Warnungen“, um eine andere Seite zu öffnen:
 
-| value | Beschreibung |
+| value | BESCHREIBUNG |
 |:---|:---|
 | Warnungen gesamt | Die Gesamtanzahl der Warnungen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Ansicht „Alle Warnungen“ ohne Filter zu öffnen. |
 | Intelligente Gruppen | Die Gesamtanzahl anhand von Warnungen erstellter intelligenter Gruppen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Liste „Intelligente Gruppen“ in der Ansicht „Alle Warnungen“ zu öffnen.
@@ -149,7 +146,7 @@ Klicken Sie auf **Warnungen gesamt**, um die Seite **Alle Warnungen** anzuzeigen
 
 Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am oberen Rand der Seite auswählen:
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |:---|:---|
 | Subscription | Wählen Sie die Azure-Abonnements aus, für die Sie Warnungen anzeigen möchten. Sie können auch alle Ihre Abonnements auswählen. Nur Warnungen, auf die Sie Zugriff in den ausgewählten Abonnements haben, sind in der Ansicht enthalten. |
 | Resource group | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
@@ -170,7 +167,7 @@ Wenn Sie eine Warnung auswählen, zeigt diese Seite Details der Warnung und erm�
 
 Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte:
 
-| `Section` | Beschreibung |
+| `Section` | BESCHREIBUNG |
 |:---|:---|
 | Zusammenfassung | Zeigt die Eigenschaften und andere wichtige Informationen zur Warnung an. |
 | Verlauf | Listet die einzelnen Aktionen, die von der Warnung ausgeführt wurden, und alle an der Warnung vorgenommenen Änderungen auf. Das beschränkt sich derzeit auf Statusänderungen. |

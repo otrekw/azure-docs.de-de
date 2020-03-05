@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights-Datenmodell | Microsoft-Dokumentation
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677911"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663874"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
 In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](../../azure-monitor/app/app-insights-overview.md) SDKs an das Portal gesendet werden.
@@ -116,7 +112,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.data.eventTime |Zeichenfolge |UTC |
 | context.data.isSynthetic |boolean |Anforderung scheint von einem Bot oder Webtest zu stammen. |
 | context.data.samplingRate |number |Prozentsatz der vom SDK generierten Telemetriedaten, die an das Portal gesendet werden. Bereich liegt zwischen 0.0 und 100.0. |
-| context.device |object |Clientgerät |
+| context.device |Objekt (object) |Clientgerät |
 | context.device.browser |Zeichenfolge |IE, Chrome, ... |
 | context.device.browserVersion |Zeichenfolge |Chrome 48.0, ... |
 | context.device.deviceModel |Zeichenfolge | |
@@ -131,7 +127,7 @@ Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Fel
 | context.device.roleName |Zeichenfolge | |
 | context.device.screenResolution |Zeichenfolge | |
 | context.device.type |Zeichenfolge |PC, Browser, ... |
-| context.location |object |Abgeleitet von „clientip“. |
+| context.location |Objekt (object) |Abgeleitet von „clientip“. |
 | context.location.city |Zeichenfolge |Abgeleitet von „clientip“, falls bekannt |
 | context.location.clientip |Zeichenfolge |Letztes Oktagon wird als 0 anonymisiert. |
 | context.location.continent |Zeichenfolge | |
@@ -229,10 +225,10 @@ Gesendet von [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
-| request [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel:  4 =&gt; 25 %. |
+| request [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
 | request [0] id |Zeichenfolge |Vorgangs-ID |
-| request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Max. Länge: 250 |
+| request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Länge: 250 |
 | request [0] responseCode |integer |HTTP-Antwort, die an den Client gesendet wird. |
 | request [0] success |boolean |Standard == (responseCode &lt; 400) |
 | request [0] url |Zeichenfolge |Host nicht eingeschlossen |
@@ -277,7 +273,7 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](../../azure-monitor/app/monito
 
 | `Path` | type | Notizen |
 | --- | --- | --- |
-| availability [0] availabilityMetric.name |Zeichenfolge |Verfügbarkeit |
+| availability [0] availabilityMetric.name |Zeichenfolge |availability |
 | availability [0] availabilityMetric.value |number |1.0 oder 0.0 |
 | availability [0] count |integer |100/([Stichproben](../../azure-monitor/app/sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | availability [0] dataSizeMetric.name |Zeichenfolge | |
@@ -291,7 +287,7 @@ Liefert Berichtdaten zu [Verfügbarkeitswebtests](../../azure-monitor/app/monito
 | availability [0] testRunId |Zeichenfolge | |
 | availability [0] testTimestamp |Zeichenfolge | |
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 Generiert von TrackMetric().
 
 Der Metrikwert befindet sich in context.custom.metrics[0].

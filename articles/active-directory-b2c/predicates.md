@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951019"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585763"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -42,16 +42,17 @@ Das **Predicates**-Element enthält das folgende Element:
 
 Das **Predicate**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 | Methode | Ja | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters** oder **IsDateRange**. Mit dem **IsLengthRange**-Wert wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Mit dem **MatchesRegex**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Mit dem **IncludesCharacters**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Mit dem **IsDateRange**-Wert wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. |
+| HelpText | Nein | Eine Fehlermeldung für Benutzer, wenn die Überprüfung einen Fehler ergibt. Diese Zeichenfolge kann mithilfe der [Sprachanpassung](localization.md) lokalisiert werden. |
 
 Das **Predicate**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | Eine Fehlermeldung für Benutzer, wenn die Überprüfung einen Fehler ergibt. Diese Zeichenfolge kann mithilfe der [Sprachanpassung](localization.md) lokalisiert werden. |
+| UserHelpText | 0:1 | (Veraltet) Eine Fehlermeldung für Benutzer, wenn die Überprüfung einen Fehler ergibt. |
 | Parameter | 1:1 | Die Parameter für den Methodentyp der Zeichenfolgenüberprüfung. |
 
 Das **Parameters**-Element enthält die folgenden Elemente:
@@ -69,11 +70,10 @@ Das **Parameter**-Element enthält die folgenden Attribute:
 Das folgende Beispiel zeigt eine `IsLengthRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ Das folgende Beispiel zeigt eine `IsLengthRange`-Methode mit den Parametern `Min
 Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `RegularExpression`, der einen regulären Ausdruck angibt:
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,8 +91,7 @@ Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `Regul
 Das folgende Beispiel zeigt eine `IncludesCharacters`-Methode mit dem Parameter `CharacterSet`, der den Zeichensatz angibt:
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
@@ -137,13 +135,13 @@ Das **PredicateValidations**-Element muss direkt nach dem **Predicates**-Element
 
 Das **PredicateValidations**-Element enthält das folgende Element:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | Eine Liste mit Prädikatüberprüfungen. |
 
 Das **PredicateValidation**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird. Das **ClaimType**-Element kann diesen Bezeichner in der Richtlinie verwenden. |
 
@@ -161,22 +159,22 @@ Das **PredicateGroups**-Element enthält das folgende Element:
 
 Das **PredicateGroups**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
 
 Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  Eine Beschreibung des Prädikats, die nützlich sein kann, damit Benutzer wissen, welchen Wert sie eingeben müssen. |
+| UserHelpText | 0:1 |  Eine Beschreibung des Prädikats, die nützlich sein kann, damit Benutzer wissen, welchen Wert sie eingeben müssen. |
 | PredicateReferences | 1:n | Eine Liste mit Prädikatverweisen. |
 
 Das **PredicateReferences**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nein | Gibt an, dass der Wert mindestens der Anzahl von Prädikatdefinitionen für die Eingabe entsprechen muss, um angenommen zu werden. |
+| MatchAtLeast | Nein | Gibt an, dass der Wert mindestens der Anzahl von Prädikatdefinitionen für die Eingabe entsprechen muss, um angenommen zu werden. Ohne diese Angabe muss der Wert allen Prädikatdefinitionen entsprechen. |
 
 Das **PredicateReferences**-Element enthält die folgenden Elemente:
 
@@ -186,7 +184,7 @@ Das **PredicateReferences**-Element enthält die folgenden Elemente:
 
 Das **PredicateReference**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
 
@@ -206,58 +204,50 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -361,8 +351,7 @@ Mit den Elementen **Predicates** und **PredicateValidations** können Sie die mi
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

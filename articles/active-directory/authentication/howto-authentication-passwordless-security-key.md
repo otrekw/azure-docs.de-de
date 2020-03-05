@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848441"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504944"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -40,7 +40,9 @@ Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden 
 
 ## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
 
-Auf den von Ihnen verwendeten Geräten muss Windows 10 (Version 1809 oder höher) ausgeführt werden. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
+Auf in Azure AD eingebundenen Geräten, die Sie für Pilotversuche verwenden möchten, muss mindestens die Windows 10-Version 1809 ausgeführt werden. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
+
+Auf in Azure AD Hybrid eingebundenen Geräten muss mindestens der Build 18945 von Windows 10 Insider ausgeführt werden.
 
 ## <a name="enable-passwordless-authentication-method"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 
@@ -79,13 +81,13 @@ Im nachfolgenden Beispiel hat der Benutzer bereits einen FIDO2-Sicherheitsschlü
 
 ## <a name="troubleshooting-and-feedback"></a>Problembehandlung und Feedback
 
-Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses Features auftreten, teilen Sie uns dies über die Windows-Feedback-Hub-App mit.
+Wenn Sie Feedback geben möchten oder Probleme beim Anzeigen der Vorschau dieses Features auftreten, teilen Sie uns dies in folgenden Schritten über die Windows-Feedback-Hub-App mit:
 
 1. Starten Sie **Feedback-Hub**, und stellen Sie sicher, dass Sie angemeldet sind.
 1. Senden Sie Ihr Feedback unter der folgenden Kategorisierung:
-   1. Kategorie: Sicherheit und Datenschutz
-   1. Unterkategorie: FIDO
-1. Wenn Sie Protokolle erfassen möchten, verwenden Sie die folgende Option: **Problem reproduzieren**
+   - Kategorie: Sicherheit und Datenschutz
+   - Unterkategorie: FIDO
+1. Verwenden Sie die Option **Problem reproduzieren**, um Protokolle zu erfassen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -95,7 +97,7 @@ Die Administratorbereitstellung und Bereitstellungsaufhebung von Sicherheitsschl
 
 ### <a name="upn-changes"></a>Änderungen des Benutzerprinzipalnamens
 
-Wenn der Benutzerprinzipalname eines Benutzers geändert wird, können Sie die FIDO2-Sicherheitsschlüssel nicht mehr ändern, um dies zu berücksichtigen. Die Lösung besteht darin, das Gerät zurückzusetzen, und der Benutzer muss seine FIDO2-Sicherheitsschlüssel erneut registrieren.
+Wir arbeiten derzeit an der Unterstützung eines Features, das eine Änderung des Benutzerprinzipalnamens auf Geräten mit Azure AD Hybrid- und Azure AD-Einbindung ermöglicht. Wenn der Benutzerprinzipalname eines Benutzers geändert wird, können Sie die FIDO2-Sicherheitsschlüssel nicht mehr ändern, um dies zu berücksichtigen. Zur Lösung dieses Problems muss das Gerät zurückgesetzt werden, und der Benutzer muss die Registrierung erneut ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

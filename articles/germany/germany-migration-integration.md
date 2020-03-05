@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c8d5b6cb3aeabe98853af1a727c1d29145395f9c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 2daf755e51630a8f5b6a8c5692eb85593078bb4b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650906"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268064"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 
@@ -98,7 +98,7 @@ Azure Logic Apps ist in Azure Deutschland nicht verfügbar. Sie können aber Pla
 Weitere Informationen finden Sie unter:
 
 - Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
-- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview.md)
+- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,17 @@
 ---
 title: Office 365-Verwaltungslösung in Azure | Microsoft-Dokumentation
 description: Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in Azure.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Azure Monitor erstellt werden.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111569"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663253"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -245,7 +244,7 @@ Klicken Sie auf die Kachel **Office 365**, um das Dashboard **Office 365** zu ö
 
 Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind die zehn wichtigsten Warnungen nach ihrer Anzahl aufgeführt. Dies richtet sich jeweils nach den Spaltenkriterien für den angegebenen Bereich und Zeitraum. Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie unten in der Spalte auf „Alle anzeigen“ oder indem Sie auf die Spaltenüberschrift klicken.
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |:--|:--|
 | Operationen (Operations) | Bietet Informationen über die aktiven Benutzer aller Ihrer überwachten Office 365-Abonnements. Sie können auch die Anzahl der Aktivitäten sehen, die im Verlauf aufgetreten sind.
 | Exchange | Zeigt die Aufschlüsselung der Exchange Server-Aktivitäten, z.B. Berechtigungen zum Hinzufügen oder Festlegen von Postfächern. |
@@ -307,7 +306,7 @@ Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, 
 
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure Active Directory-Objekten vorgenommen werden.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -325,7 +324,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure 
 
 Diese Datensätze werden aus Überwachungsdaten für die Sicherheit von Rechenzentren erstellt.  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | EffectiveOrganization | Der Name des Mandanten, der Ziel der Erhöhung der Rechte/des Cmdlets war. |
 | ElevationApprovedTime | Der Zeitstempel des Zeitpunkts, als die Erhöhung der Rechte genehmigt wurde. |
@@ -356,7 +355,7 @@ Diese Datensätze werden erstellt, wenn Änderungen an der Exchange-Konfiguratio
 
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchange-Postfächern vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -394,7 +393,7 @@ Diese Datensätze werden erstellt, wenn ein Eintrag zur Postfachüberwachung ers
 
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchange-Gruppen vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -413,7 +412,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchan
 
 Diese Eigenschaften gelten für alle SharePoint-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -464,7 +463,7 @@ Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 
 Die folgende Tabelle enthält Beispielprotokollabfragen für Updatedatensätze, die mit dieser Lösung erfasst werden.
 
-| Abfrage | Beschreibung |
+| Abfrage | BESCHREIBUNG |
 | --- | --- |
 |Anzahl aller Vorgänge in Ihrem Office 365-Abonnement |OfficeActivity &#124; summarize count() by Operation |
 |Verwendung von SharePoint-Websites|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|

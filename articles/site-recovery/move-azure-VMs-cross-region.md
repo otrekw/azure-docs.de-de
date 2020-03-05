@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303918"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
@@ -21,7 +21,7 @@ Vielleicht möchten Sie Azure Infrastructure-as-a-Service-VMs (IaaS) von einer 
 
 > [!div class="checklist"]
 > * Überprüfen der Voraussetzungen
-> * Vorbereiten der Quell-VMs
+> * Vorbereiten der virtuellen Quellcomputer
 > * Vorbereiten der Zielregion
 > * Kopieren von Daten in die Zielregion
 > * Testen der Konfiguration
@@ -64,13 +64,13 @@ Vielleicht möchten Sie Azure Infrastructure-as-a-Service-VMs (IaaS) von einer 
 
 3. Stellen Sie sicher, dass Sie für jede im Quellnetzwerklayout identifizierte Komponente eine Zielressource erstellen. Dadurch wird sichergestellt, dass Ihre VMs in der Zielregion über alle Funktionen und Features verfügen, die sie in der Quellregion hatten.
 
-   Azure Site Recovery ermittelt und erstellt automatisch ein virtuelles Netzwerk und Speicherkonto, wenn Sie die Replikation für die Quell-VM aktivieren. Sie können diese Ressourcen auch vorab erstellen und sie beim Aktivieren der Replikation der VM zuweisen. Alle anderen Ressourcen in der Zielregion müssen jedoch manuell erstellt werden. Informationen zum Erstellen der am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten:
+   Azure Site Recovery erkennt und erstellt automatisch ein virtuelles Netzwerk und Speicherkonto, wenn Sie die Replikation für den virtuellen Quellcomputer aktivieren. Sie können diese Ressourcen auch vorab erstellen und sie beim Aktivieren der Replikation der VM zuweisen. Alle anderen Ressourcen in der Zielregion müssen jedoch manuell erstellt werden. Informationen zum Erstellen der am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten:
 
    - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation zum Azure-Netzwerk](https://docs.microsoft.com/azure/#pivot=products&panel=network). 
+   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation zum Azure-Netzwerk](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
 
 4. Wenn Sie die Konfiguration vor dem Verschieben testen möchten, [erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in der Zielregion. Das Testen der Einrichtung verursacht nur minimale Beeinträchtigungen in der Produktionsumgebung und wird empfohlen.
     
@@ -119,7 +119,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcen
    > [!IMPORTANT]
    > Wir empfehlen, für das Testfailover ein separates Azure-VM-Netzwerk zu verwenden und nicht das Produktionsnetzwerk in der Zielregion.
 
-4. Klicken Sie zum Testen der Verschiebung auf **OK**. Wählen Sie zum Überwachen des Status die VM aus, um ihre **Eigenschaften** anzuzeigen. Alternativ können Sie den Auftrag **Testfailover** im Tresor auswählen. Wählen Sie dann **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** aus.
+4. Wählen Sie zum Testen der Verschiebung **OK** aus. Wählen Sie zum Überwachen des Status die VM aus, um ihre **Eigenschaften** anzuzeigen. Alternativ können Sie den Auftrag **Testfailover** im Tresor auswählen. Wählen Sie dann **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** aus.
 5. Nach Abschluss des Failovers wird der virtuelle Azure-Replikatcomputer im Azure-Portal unter **Virtuelle Computer** angezeigt. Stellen Sie sicher, dass die VM ausgeführt wird, die passende Größe hat und mit dem entsprechenden Netzwerk verbunden ist.
 6. Wählen Sie zum Löschen der VM, die Sie zum Testen erstellt haben, die Option **Testfailover bereinigen** für das replizierte Element aus. Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Test.
 

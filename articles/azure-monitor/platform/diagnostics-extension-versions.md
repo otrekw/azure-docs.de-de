@@ -1,18 +1,17 @@
 ---
 title: Konfigurationsschema der Azure-Diagnoseerweiterung für Windows – Versionen und Versionsverlauf
 description: Relevant für die Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM Scale Sets, Service Fabric und Cloud Services.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 20d9cdf264e62bc901c8e821065527a1d067b2db
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473174"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672241"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Konfigurationsschema der Azure-Diagnoseerweiterung für Windows – Versionen und Versionsverlauf
 Dieser Artikel bietet Informationen zum Versionsverlauf der Schemaversionen der [Azure-Diagnoseerweiterung für Windows](diagnostics-extension-overview.md), die im Rahmen des Microsoft Azure SDK geliefert wird.  

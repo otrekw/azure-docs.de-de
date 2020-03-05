@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie mithilfe der Azure Firewall-Integration inner
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513342"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565722"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -41,9 +41,11 @@ Beim Datenverkehr an und von einer ASE müssen die folgenden Konventionen eingeh
 
 ## <a name="locking-down-inbound-management-traffic"></a>Sperren der Verwaltung des eingehenden Datenverkehrs
 
-Wenn Subnetz Ihrer App Service-Umgebung nicht bereits eine NSG zugewiesen ist, erstellen Sie eine Netzwerksicherheitsgruppe. Legen Sie in der NSG die erste Regel fest, um Datenverkehr vom Diensttag mit dem Namen AppServiceManagement an den Ports 454 und 455 zuzulassen. Dies ist alles, was für die Verwaltung der App Service-Umgebung durch öffentliche IP-Adressen erforderlich ist. Die Adressen, die sich hinter diesem Diensttag befinden, werden nur zum Verwalten von Azure App Service verwendet. Der Verwaltungsdatenverkehr, der durch diese Verbindungen fließt, wird verschlüsselt und durch Authentifizierungszertifikate gesichert. Der typische Datenverkehr in diesem Kanal umfasst Dinge wie vom Kunden initiierte Befehle und Integritätstests. 
+Wenn Subnetz Ihrer App Service-Umgebung nicht bereits eine NSG zugewiesen ist, erstellen Sie eine Netzwerksicherheitsgruppe. Legen Sie in der NSG als erste Regel fest, dass Datenverkehr des Diensttags „AppServiceManagement“ an den Ports 454 und 455 zugelassen werden soll. Die Regel zum Zulassen des Zugriffs für das Tag „AppServiceManagement“ ist das Einzige, was von öffentlichen IP-Adressen erforderlich ist, um Ihre ASE zu verwalten. Die Adressen, die sich hinter diesem Diensttag befinden, werden nur zum Verwalten von Azure App Service verwendet. Der Verwaltungsdatenverkehr, der durch diese Verbindungen fließt, wird verschlüsselt und durch Authentifizierungszertifikate gesichert. Der typische Datenverkehr in diesem Kanal umfasst Dinge wie vom Kunden initiierte Befehle und Integritätstests. 
 
 App Service-Umgebungen, die über das Portal mit einem neuen Subnetz erstellt werden, werden mit einer NSG eingerichtet, die die Zulassungsregel für das AppServiceManagement-Tag enthält.  
+
+Ihre ASE muss auch eingehende Anforderungen des Tags „Load Balancer“ am Port 16001 zulassen. Die Load Balancer-Anforderungen am Port 16001 sind Keep-Alive-Prüfungen zwischen Load Balancer und ASE-Front-Ends. Ist der Port 16001 blockiert, wird Ihre ASE fehlerhaft.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
 
@@ -273,6 +275,21 @@ Linux ist in Regionen des Typs US Gov nicht verfügbar und wird daher nicht als 
 | Azure SQL |
 | Azure Storage |
 | Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>IP-Adressabhängigkeiten
+
+| Endpunkt | Details |
+|----------| ----- |
+| \*:123 | NTP-Uhrzeitüberprüfung. Datenverkehr wird an mehreren Endpunkten am Port 123 überprüft. |
+| \*:12000 | Dieser Port wird für einige Systemüberwachungsfunktionen verwendet. Wenn er blockiert wird, ist die Selektierung mancher Probleme schwieriger, die ASE wird jedoch weiterhin ausgeführt. |
+| 40.77.24.27:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 40.77.24.27:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.90.249.229:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.90.249.229:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 104.45.230.69:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 104.45.230.69:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.82.184.151:80 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
+| 13.82.184.151:443 | Erforderlich für die Überwachung von ASE-Problemen und Warnungen zu diesen |
 
 #### <a name="dependencies"></a>Abhängigkeiten ####
 

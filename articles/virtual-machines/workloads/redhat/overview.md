@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133821"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920551"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-Workloads in Azure
 Red Hat-Workloads werden in einer Reihe von Angeboten in Azure unterstützt. Red Hat Enterprise Linux-Images (RHEL) gehören ebenso wie die Red Hat Update Infrastructure (RHUI) zum Kern von RHEL-Workloads.
@@ -39,7 +39,7 @@ Azure bietet auch Red Hat Gold-Images an. Diese Images eignen sich für Kunden, 
 > Hinweis zur doppelten Fakturierung: Als doppelte Fakturierung wird eine Situation bezeichnet, in der ein Benutzer zweimal für RHEL-Abonnements bezahlt. Diese Situation tritt gewöhnlich dann auf, wenn ein Kunde „subscription-manager“ verwendet, um eine Berechtigung an eine RHEL-PAYG-VM anzufügen. Wenn ein Kunde beispielsweise „subscription-manager“ verwendet, um eine Berechtigung für SAP-Pakete an ein RHEL-PAYG-Image anzufügen, wird dieser Kunde indirekt doppelt belastet, weil er zweimal für RHEL bezahlt: einmal über die PAYG-Premiumgebühr und einmal über sein SAP-Abonnement. Dies passiert bei BYOS-Benutzern nicht.
 
 ### <a name="generation-2-images"></a>Images der Generation 2
-Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computer der 1. Generation einige neuere Features. Details finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Der Hauptunterschied aus der Perspektive eines RHEL-Images besteht darin, dass VMs der Generation 2 eine UEFI statt einer BIOS-Firmwareschnittstelle verwenden und beim Start eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Record (MBR) nutzen. Dadurch können Betriebssystemdatenträger u. a. größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) nur mit Images der Generation 2 ausgeführt.
+Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computer der 1. Generation einige neuere Features. Details finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Der Hauptunterschied aus der Perspektive eines RHEL-Images besteht darin, dass VMs der Generation 2 eine UEFI statt einer BIOS-Firmwareschnittstelle verwenden und beim Start eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Record (MBR) nutzen. Dadurch können Betriebssystemdatenträger u. a. größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](../../mv2-series.md) nur mit Images der Generation 2 ausgeführt.
 
 RHEL-Images der Generation 2 sind im Marketplace verfügbar. Suchen Sie in der Image-SKU nach „Gen2“, wenn Sie alle Images mit der Azure CLI auflisten. Navigieren Sie beim Bereitstellen des virtuellen Computers zur Registerkarte „Erweitert“, um einen virtuellen Computer der Generation 2 bereitzustellen.
 

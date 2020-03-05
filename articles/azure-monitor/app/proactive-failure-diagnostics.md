@@ -1,19 +1,15 @@
 ---
 title: Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen in Application Insights | Microsoft Docs
 description: Macht Sie auf ungewöhnliche Änderungen bei der Rate fehlgeschlagener Anforderungen an Ihre Web-App aufmerksam und bietet eine Analyse der Diagnose. Es ist keine Konfiguration erforderlich.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912855"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671748"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.

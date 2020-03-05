@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor für Netzwerke (Vorschau)
 description: Eine kurze Übersicht über Azure Monitor für Netzwerke, das eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration bietet.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839983"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654867"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor für Netzwerke (Vorschau)
 Azure Monitor für Netzwerke bietet eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Die erweiterte Suchfunktion hilft beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, auf denen Ihre Website gehostet wird, indem einfach nach dem Namen der gehosteten Website gesucht wird.

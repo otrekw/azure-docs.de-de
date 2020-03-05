@@ -3,20 +3,20 @@ title: Benutzerdefinierte E-Mail-Überprüfung
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie die Überprüfungs-E-Mail anpassen, die an Ihre Kunden gesendet wird, wenn sie sich für die Verwendung Ihrer Azure AD B2C-fähigen Anwendungen registrieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045934"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189530"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C
 

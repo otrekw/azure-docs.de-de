@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 02/20/2020
+ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045037"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500272"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Anreicherungspipeline der kognitiven Azure-Suche
 
@@ -33,6 +33,8 @@ Benutzerdefinierte WebAPI-Skill-Endpunkte nach Standardtimeout, wenn sie innerha
         "uri": "https://[your custom skill uri goes here]",
         "timeout": "PT230S",
 ```
+
+Vergewissern Sie sich, dass der URI sicher ist (HTTPS).
 
 Derzeit ist die einzige Methode für die Interaktion mit einem benutzerdefinierten Skill über eine Web-API-Schnittstelle. Die Web-API-Anforderungen müssen die in diesem Abschnitt beschriebenen Voraussetzungen erfüllen.
 

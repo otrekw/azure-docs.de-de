@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9f666376020d36bd57b2cc9e78a0704a8ec47b4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358749"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199783"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Queue Storage-Clientbibliothek v12 für JavaScript
 
@@ -28,7 +28,7 @@ Mit der Azure Queue Storage-Clientbibliothek v12 für JavaScript können Sie Fol
 * Löschen von Nachrichten aus einer Warteschlange
 * Löschen einer Warteschlange
 
-[API-Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue) | [Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)
+[API-Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue) | [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -296,7 +296,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Diese App erstellt drei Nachrichten und fügt sie zu einer Azure-Warteschlange hinzu. Der Code listet die Nachrichten in der Warteschlange auf, ruft sie ab und löscht sie und löscht letztendlich die Warteschlange.
+Diese App erstellt drei Nachrichten und fügt sie einer Azure-Warteschlange hinzu. Der Code listet die Nachrichten in der Warteschlange auf, ruft sie ab und löscht sie und löscht letztendlich die Warteschlange.
 
 Navigieren Sie im Konsolenfenster zu dem Verzeichnis, das die Datei *queues-quickstart-v12.js* enthält, und führen Sie dann den folgenden `node`-Befehl aus, um die App auszuführen.
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f6286f0a9c15b8089ff5ce9d6f3879b40aceaef
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 631266f983886e3ca34d609b425f8a71b808b39f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033159"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919395"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Windows 
 
@@ -51,7 +51,7 @@ Führen Sie zum Abfragen des GPU-Gerätestatus das mit dem Treiber installierte 
 
 1. Öffnen Sie eine Eingabeaufforderung, und wechseln Sie in das Verzeichnis **C:\Programme\NVIDIA Corporation\NVSMI**.
 
-2. Führen Sie `nvidia-smi`aus. Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden angezeigt. Für **GPU-Auslastung** wird **0 %** angezeigt, sofern gerade keine GPU-Workload auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
+2. Führen Sie `nvidia-smi` aus. Wenn der Treiber installiert wurde, wird eine Ausgabe ähnlich der folgenden angezeigt. Für **GPU-Auslastung** wird **0 %** angezeigt, sofern gerade keine GPU-Workload auf dem virtuellen Computer ausgeführt wird. Die Treiberversion und die GPU-Informationen weichen möglicherweise von den angezeigten Informationen ab.
 
 ![NVIDIA-Gerätestatus](./media/n-series-driver-setup/smi.png)  
 
@@ -63,7 +63,7 @@ So installieren Sie die neueste Version (1.1) der HpcVMDrivers-Erweiterung auf e
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Windows](extensions-features.md).
 
 Das RDMA-Netzwerk unterstützt Message Passing Interface-Datenverkehr (MPI) für Anwendungen mit [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) oder Intel MPI 5.x. 
 

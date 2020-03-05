@@ -1,18 +1,17 @@
 ---
 title: Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
 description: Die Lösung „Azure Monitor für VMs“ erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399315"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670711"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
 
@@ -48,7 +47,7 @@ Die folgenden Felder und Konventionen gelten sowohl für VMConnection als auch f
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 |Direction |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
 |Machine |Der vollqualifizierte Domänenname des Computers |
@@ -67,11 +66,11 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 |LinksFailed |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
 |LinksLive |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>Metriken
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 |BytesSent |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
 |BytesReceived |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
@@ -113,7 +112,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 |:--|:--|
 |MaliciousIp |Die RemoteIp-Adresse |
 |IndicatorThreadType |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
-|BESCHREIBUNG |Beschreibung der beobachteten Bedrohung. |
+|Beschreibung |Beschreibung der beobachteten Bedrohung. |
 |TLPLevel |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
 |Confidence |Werte sind *0–100*. |
 |severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
@@ -138,7 +137,7 @@ Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern 
  
 Die Identität eines Ports ergibt aus den obigen fünf Feldern und wird in der Eigenschaft „PortId“ gespeichert. Diese Eigenschaft kann dazu verwendet werden, Datensätze für einen bestimmten Port für einen Zeitraum schnell zu finden. 
 
-#### <a name="metrics"></a>metrics 
+#### <a name="metrics"></a>Metriken 
 
 Portdatensätze umfassen Metriken, die die zugeordneten Verbindungen darstellen. Derzeit werden die folgenden Metriken gemeldet (die Details zu den einzelnen Metriken finden Sie im vorherigen Abschnitt): 
 

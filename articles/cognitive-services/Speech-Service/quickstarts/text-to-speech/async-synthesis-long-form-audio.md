@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: eef9a99e4c94fa45e21abfc9d19fcef1230ffe76
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944681"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919344"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Schnellstart: Asynchrone Synthese für lange Audioinhalte in Python (Vorschau)
 
@@ -30,7 +30,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Python 2.7.x oder 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnement und ein Abonnementschlüssel für den Spracherkennungsdienst. [Erstellen Sie ein Azure-Konto](../../get-started.md#try-the-speech-service-using-a-new-azure-account) und [eine Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure), um den Schlüssel zu erhalten. Stellen Sie beim Erstellen der Speech-Ressource sicher, dass als Tarif **S0** und als Standort eine [unterstützte Region](../../regions.md#standard-and-neural-voices) festgelegt ist.
+* Ein Azure-Abonnement und ein Abonnementschlüssel für den Spracherkennungsdienst. [Erstellen Sie ein Azure-Konto](../../get-started.md#new-resource) und [eine Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure), um den Schlüssel zu erhalten. Stellen Sie beim Erstellen der Speech-Ressource sicher, dass als Tarif **S0** und als Standort eine [unterstützte Region](../../regions.md#standard-and-neural-voices) festgelegt ist.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 

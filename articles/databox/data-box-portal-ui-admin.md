@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147912"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911813"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Verwalten von Data Box Disk über das Azure-Portal
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag zu klonen.
 
     ![Klonen eines Auftrags (1)](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Die Auftragsdetails bleiben unverändert. Als Auftragsname wird der Name des ursprünglichen Auftrags mit dem Zusatz *-Clone* verwendet. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzinformationen gelesen haben. Klicken Sie auf **Create**.    
+2.  Die Auftragsdetails bleiben unverändert. Als Auftragsname wird der Name des ursprünglichen Auftrags mit dem Zusatz *-Clone* verwendet. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzinformationen gelesen haben. Klicken Sie auf **Erstellen**.    
 
 Der Klon wird in wenigen Minuten erstellt und im Portal angezeigt.
 
@@ -83,11 +83,11 @@ Das Adressetikett muss unter Umständen heruntergeladen werden, wenn Sie das Rü
 Führen Sie die folgenden Schritte aus, um ein Adressetikett herunterzuladen.
 1.  Navigieren Sie zu **Übersicht > Versandetikett herunterladen**. Diese Option steht erst zur Verfügung, wenn der Datenträger versendet wurde. 
 
-    ![Herunterladen eines Adressetiketts](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![Versandetikett herunterladen](media/data-box-portal-ui-admin/download-shipping-label.png)
 
 2.  Dadurch wird das folgende Rücksendeetikett heruntergeladen. Speichern Sie das Etikett, drucken Sie es aus, und bringen Sie es an der Rücklieferung an.
 
-    ![Beispiel für ein Adressetikett](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![Beispiel für Versandetikett](media/data-box-portal-ui-admin/example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Bearbeiten der Lieferadresse
 

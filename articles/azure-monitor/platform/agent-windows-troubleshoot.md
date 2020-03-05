@@ -1,18 +1,16 @@
 ---
 title: Behandeln von Problemen mit dem Log Analytics-Agent für Windows
 description: Beschreibt die Symptome, Ursachen und Lösungen für die häufigsten Probleme mit dem Log Analytics-Agent für Windows in Azure Monitor.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397451"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668790"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -62,7 +60,7 @@ Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit A
 
 - Filtern Sie das *Operations Manager*-Ereignisprotokoll nach **Ereignisquellen** - *Integritätsdienstmodule*, *Integritätsdienst* und *Dienstconnector*, und filtern Sie nach der **Ereignisebene** *Warnung* und *Fehler*, um zu überprüfen, ob Ereignisse geschrieben wurden, die in der folgenden Tabelle aufgeführt sind. Wenn dies der Fall ist, sehen Sie sich die Lösungsschritte für jedes mögliche Ereignis an.
 
-    |Ereignis-ID |`Source` |BESCHREIBUNG |Lösung |
+    |Ereignis-ID |`Source` |Beschreibung |Lösung |
     |---------|-------|------------|-----------|
     |2133 und 2129 |Integritätsdienst |Fehler bei der Verbindung des Agents mit dem Dienst |Dieser Fehler kann auftreten, wenn der Agent nicht direkt oder über eine Firewall/einen Proxyserver mit dem Azure Monitor-Dienst kommunizieren kann. Überprüfen Sie die Proxyeinstellungen des Agents, und stellen Sie sicher, dass die Netzwerkfirewall/der Netzwerkproxy den TCP-Datenverkehr vom Computer zum Dienst zulässt.|
     |2138 |Integritätsdienstmodule |Proxy erfordert Authentifizierung |Konfigurieren Sie die Proxyeinstellungen des Agents, und geben Sie den erforderlichen Benutzernamen und das Kennwort für die Authentifizierung beim Proxyserver an. |

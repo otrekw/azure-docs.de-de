@@ -3,20 +3,20 @@ title: Einrichten der Anmeldung mit einem Amazon-Konto unter Verwendung benutzer
 titleSuffix: Azure AD B2C
 description: Einrichten der Anmeldung mit einem Amazon-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a0767938f8a470c63ec7fe3d7789212b1baf871
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850365"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188510"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Amazon-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 

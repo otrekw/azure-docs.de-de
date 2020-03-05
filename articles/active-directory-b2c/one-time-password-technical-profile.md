@@ -3,20 +3,20 @@ title: Aktivieren von Einmalkennwortüberprüfung
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie ein Einmalkennwort (One-Time Password, OTP) mithilfe von benutzerdefinierten Azure AD B2C-Richtlinien einrichten.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114051"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184025"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -61,7 +61,7 @@ Das **InputClaimsTransformations**-Element darf eine Sammlung von **InputClaimsT
 
 Das **OutputClaims**-Element enthält eine Liste der Ansprüche, die vom Anbieter des Einmalkennwortprotokolls generiert werden. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | Beschreibung |
+| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | otpGenerated | Ja | Der generierte Code, dessen Sitzung von Azure AD B2C verwaltet wird. |
 
@@ -71,7 +71,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Die folgenden Einstellungen können verwendet werden, um die Codegenerierung und -wartung zu konfigurieren:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Nein | Die Zeit in Sekunden bis zum Ablauf des Codes. Mindestwert: `60`, Maximalwert: `1200`, Standardwert: `600`. |
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
@@ -117,7 +117,7 @@ Der zweite Modus dieses technischen Profils besteht darin, einen Code zu überpr
 
 Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | Beschreibung |
+| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner, der den Benutzer identifiziert, der zuvor einen Code generiert hat. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 | otpToVerify | Ja | Der Überprüfungscode, der vom Benutzer bereitgestellt wird. |

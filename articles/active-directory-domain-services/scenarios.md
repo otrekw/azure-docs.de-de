@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132284"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917229"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gängige Anwendungsfälle und Szenarien für Azure Active Directory Domain Services
 
@@ -97,7 +97,7 @@ Beachten Sie die folgenden Bereitstellungsaspekte für diesen Beispielanwendungs
 
 Mit Azure AD DS können Sie verwaltete Domänendienste für in Azure bereitgestellte Remotedesktopserver bereitstellen. Weitere Informationen zu diesem Bereitstellungsszenario finden Sie unter [Integrieren von Azure AD Domain Services in Ihre RDS-Bereitstellung][windows-rds].
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>In die Domäne eingebundene HDInsight-Cluster (Vorschau)
+## <a name="domain-joined-hdinsight-clusters"></a>In die Domäne eingebundene HDInsight-Cluster
 
 Sie können einen in eine verwaltete Azure AD DS-Domäne eingebundenen Azure HDInsight-Cluster einrichten, für den Apache Ranger aktiviert ist. Sie können Hive-Richtlinien über Apache Ranger erstellen und anwenden und zulassen, dass Benutzer (z. B. Datenanalysten) mithilfe von ODBC-basierten Tools wie Excel oder Tableau eine Verbindung mit Hive herstellen. Wir arbeiten weiterhin daran, andere Workloads wie HBase, Spark und Storm zu HDInsight-Instanzen hinzuzufügen, die in eine Domäne eingebunden sind.
 

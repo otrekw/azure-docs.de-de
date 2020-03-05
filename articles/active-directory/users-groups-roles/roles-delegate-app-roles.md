@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024871"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558977"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
@@ -74,7 +74,7 @@ In einigen Fällen enthalten Unternehmensanwendungen, die über den Anwendungska
 
 Azure AD umfasst eine Reihe integrierter Administratorrollen zum Gewähren des Zugriffs zum Verwalten der Konfiguration in Azure AD für alle Anwendungen. Die Verwendung dieser Rollen wird empfohlen, um IT-Experten Zugriff zum Verwalten von umfassenden Berechtigungen für die Anwendungskonfiguration zu gewähren, ohne Zugriff auf die Verwaltung anderer Bereiche von Azure AD zu gewähren, die nicht mit der Anwendungskonfiguration zusammenhängen.
 
-- Anwendungsadministrator: Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+- Anwendungsadministrator: Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen, mit Ausnahme von Berechtigungen für Microsoft Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 - Cloudanwendungsadministrator: Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
 Weitere Informationen und eine Beschreibung dieser Rollen finden Sie unter [Verfügbare Rollen](directory-assign-admin-roles.md#available-roles).

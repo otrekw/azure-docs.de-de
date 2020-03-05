@@ -2,17 +2,16 @@
 title: Erfassen des Azure-Aktivitätsprotokolls mit Diagnoseeinstellungen (Vorschau) – Azure Monitor | Microsoft-Dokumentation
 description: Verwenden Sie Diagnoseeinstellungen, um Azure-Aktivitätsprotokolle an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs weiterzuleiten.
 author: bwren
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016254"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670337"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Die Methode für das Senden von Aktivitätsprotokolleinträgen an [einen Event Hub oder ein Speicherkonto](activity-log-export.md) oder an einen [Log Analytics-Arbeitsbereich](activity-log-collect.md) wurde in die Verwendung von [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel werden die Unterschiede zwischen den Methoden und das Löschen von Legacyeinstellungen in Vorbereitung auf den Wechsel zu Diagnoseeinstellungen beschrieben.

@@ -3,17 +3,16 @@ title: Streamen von Protokollen der Azure-Plattform an Event Hubs
 description: Erfahren Sie, wie Ressourcenprotokolle an Event Hubs gestreamt werden, um Daten an externe Systeme zu senden, z.B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750357"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658913"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Streamen von Protokollen der Azure-Plattform an Azure Event Hubs
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird das Streamen von Plattformprotokollen an Event Hubs beschrieben, um Daten an externe Systeme zu senden, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
@@ -57,7 +56,7 @@ Mit den Diagnoseeinstellungen werden Ressourcenprotokolle für Azure-Computeress
 ## <a name="consuming-log-data-from-event-hubs"></a>Nutzen von Protokolldaten aus Event Hubs
 Plattformprotokolle aus Event Hubs werden im JSON-Format mit den Elementen in der folgenden Tabelle genutzt.
 
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | records |Ein Array sämtlicher Protokollereignisse in dieser Nutzlast. |
 | time |Der Zeitpunkt, zu dem das Ereignis aufgetreten ist. |

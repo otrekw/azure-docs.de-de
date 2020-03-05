@@ -1,18 +1,17 @@
 ---
 title: Erstellen einer Datenpipeline mit der Datensammler-API von Azure Monitor | Microsoft-Dokumentation
 description: Mit der HTTP-Datensammler-API von Azure Monitor können Sie dem Log Analytics-Arbeitsbereich über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie in Dateien gespeicherte Daten auf automatisierte Weise hochgeladen werden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0300b44577725ddb272086713220d3318f1726fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363964"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655332"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Erstellen einer Datenpipeline mit der Datensammler-API
 

@@ -1,18 +1,15 @@
 ---
 title: Überblick über klassische Warnungen in Microsoft Azure und Microsoft Azure Monitor
 description: Klassische Warnungen sind veraltet. Mit Warnungen können Sie Metriken, Ereignisse oder Protokolle für Ihre Azure-Ressourcen überwachen. Lassen Sie sich benachrichtigen, wenn eine von Ihnen festgelegte Bedingung erfüllt ist.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747026"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668265"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 

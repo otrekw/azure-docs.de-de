@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: peterlu
-author: peterclu
+ms.author: larryfr
+author: blackmist
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 34aba3c00ac0026abebbdfc93143aa5e7f788e8b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251922"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268477"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ In diesem Artikel erfahren Sie, wie Sie durch die Aktivierung von Azure Applicat
 
 Die Meta- und Antwortdaten für den Dienst – entsprechend der Webdienst-Metadaten und den Vorhersagen des Modells – werden in den Azure Application Insights-Ablaufverfolgungen unter der Meldung `"model_data_collection"` protokolliert. Sie können Azure Application Insights für den Zugriff auf diese Daten direkt abfragen oder zur längeren Aufbewahrung oder weiteren Verarbeitung einen [fortlaufenden Export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) in ein Speicherkonto einrichten. Modelldaten können dann im Azure Machine Learning-Dienst zum Einrichten von Bezeichnungen, erneuten Trainings, Erklärungen, Datenanalysen oder zu anderen Zwecken verwendet werden. 
 
-## <a name="use-the-azure-portal-to-configure"></a>Verwenden des Azure-Portals für die Konfiguration
-
-Sie können Azure Application Insights im Azure-Portal aktivieren und deaktivieren. 
-
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich.
-
-1. Wählen Sie auf der Registerkarte **Bereitstellungen** den Dienst aus, für den Sie Azure Application Insights aktivieren möchten.
-
-   [![Liste der Dienste auf der Registerkarte „Bereitstellungen“](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Wählen Sie **Bearbeiten** aus.
-
-   [![Schaltfläche „Bearbeiten“](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. Aktivieren Sie in **Erweiterte Einstellungen** das Kontrollkästchen **AppInsights-Diagnose aktivieren**.
-
-   [![Aktiviertes Kontrollkästchen zum Aktivieren der Diagnose](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Wählen Sie unten auf dem Bildschirm **Aktualisieren** aus, um die Änderungen zu übernehmen.
-
-### <a name="disable"></a>Disable
-
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich.
-1. Wählen Sie **Bereitstellungen**, den Dienst und dann **Bearbeiten** aus.
-
-   [![Verwenden der Schaltfläche „Bearbeiten“](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. Deaktivieren Sie in **Erweiterte Einstellungen** das Kontrollkästchen **AppInsights-Diagnose aktivieren**.
-
-   [![Deaktiviertes Kontrollkästchen zum Aktivieren der Diagnose](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Wählen Sie unten auf dem Bildschirm **Aktualisieren** aus, um die Änderungen zu übernehmen.
- 
 ## <a name="use-python-sdk-to-configure"></a>Verwenden des Python SDK zum Konfigurieren 
 
 ### <a name="update-a-deployed-service"></a>Aktualisieren eines bereitgestellten Diensts

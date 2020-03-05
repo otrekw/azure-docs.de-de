@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598662"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
@@ -77,7 +77,7 @@ Wenn Sie die Ressourcen bereinigen möchten, die im Rahmen dieses Artikels erste
 
 Installieren Sie zunächst die aktuelle Version des [PowerShellGet](/powershell/scripting/gallery/installing-psget)-Moduls.
 
-Aktualisieren Sie anschließend Ihr PowerShell-Modul, melden Sie sich bei Ihrem Azure-Abonnement an, erstellen Sie eine Ressourcengruppe und dann ein Speicherkonto.
+Aktualisieren Sie dann Ihr PowerShell-Modul, melden Sie sich bei Ihrem Azure-Abonnement an, und erstellen Sie eine Ressourcengruppe und anschließend ein Speicherkonto.
 
 ### <a name="upgrade-your-powershell-module"></a>Aktualisieren Ihres PowerShell-Moduls
 
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 In diesem Artikel haben Sie eine Premium-Dateifreigabe erstellt. Wenn Sie sich über die von diesem Konto gebotene Leistung informieren möchten, lesen Sie den Abschnitt „Leistungsstufe“ im Planungshandbuch.
 
 > [!div class="nextstepaction"]
-> [Leistungsstufen von Dateifreigaben](storage-files-planning.md#file-share-performance-tiers)
+> [Speicherebenen](storage-files-planning.md#storage-tiers)

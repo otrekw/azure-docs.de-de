@@ -3,20 +3,20 @@ title: Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenb
 titleSuffix: Azure AD B2C
 description: Informationen zum Konfigurieren des ROPC-Flows in Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949183"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189700"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -24,16 +24,7 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-In Azure Active Directory B2C (Azure AD B2C) werden die folgenden Optionen unterstützt:
-
-- **Nativer Client**: Die Benutzerinteraktion während der Authentifizierung erfolgt, wenn Code auf einem Gerät auf Benutzerseite ausgeführt wird. Bei dem Gerät kann es sich um eine mobile Anwendung handeln, die unter einem nativen Betriebssystem wie Android oder iOS ausgeführt wird.
-- **Flow für öffentlichen Client**: Im API-Aufruf werden nur die von einer Anwendung gesammelten Benutzeranmeldeinformationen gesendet. Die Anmeldeinformationen der Anwendung werden nicht gesendet.
-- **Neue Ansprüche hinzufügen**: Der Inhalt des ID-Tokens kann geändert werden, um neue Ansprüche hinzuzufügen.
-
-Folgende Flüsse werden nicht unterstützt:
-
-- **Server-zu-Server**: Das Identitätsschutzsystem benötigt eine zuverlässige IP-Adresse, die vom Aufrufer (dem nativen Client) im Rahmen der Interaktion erfasst wurde. Bei einem serverseitigen API-Aufruf wird nur die IP-Adresse des Servers verwendet. Wenn der dynamische Schwellenwert einer fehlgeschlagenen Authentifizierung überschritten wird, identifiziert das System für den Identitätsschutz eine wiederholt auftretende IP-Adresse als Angreifer.
-- **Flow für vertraulichen Client**: Die Anwendungsclient-ID wird überprüft, der geheime Anwendungsschlüssel wird jedoch nicht überprüft.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erstellen eines Benutzerflows für Ressourcenbesitzer
 
@@ -65,7 +56,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Schlüssel | Wert |
+| Key | value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -105,7 +96,7 @@ Erstellen Sie einen POST-Aufruf wie den folgenden, wobei Sie die Informationen a
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Schlüssel | Wert |
+| Key | value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

@@ -3,17 +3,16 @@ title: Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich
 description: Hier erfahren Sie, wie Sie Azure-Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich in Azure Monitor streamen.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750365"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658998"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. In diesem Artikel wird beschrieben, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Dies gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen in Azure Monitor-Protokollen erfasst werden, zu analysieren sowie andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. 

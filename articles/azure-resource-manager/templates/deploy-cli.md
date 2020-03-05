@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 242b9f2a4bc39f8aa083d9c89d3dd7ed850b3489
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154294"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250665"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
 
@@ -63,7 +63,7 @@ az group deployment create \
 
 Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -183,7 +183,7 @@ az group deployment validate \
 
 Wenn keine Fehler erkannt werden, gibt der Befehl Informationen über die Testbereitstellung zurück. Beachten Sie insbesondere, dass der **error**-Wert NULL ist.
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -192,7 +192,7 @@ Wenn keine Fehler erkannt werden, gibt der Befehl Informationen über die Testbe
 
 Wenn ein Fehler erkannt wird, gibt der Befehl eine Fehlermeldung zurück. Beispielsweise wird beim Übergeben eines falschen Werts für die Speicherkonto-SKU der folgende Fehler zurückgegeben:
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -208,7 +208,7 @@ Wenn ein Fehler erkannt wird, gibt der Befehl eine Fehlermeldung zurück. Beispi
 
 Wenn Ihre Vorlage einen Syntaxfehler aufweist, gibt der Befehl einen Fehler zurück, der angibt, dass die Vorlage nicht analysiert werden konnte. Die Meldung gibt Zeilennummer und Position des Analysefehlers an.
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

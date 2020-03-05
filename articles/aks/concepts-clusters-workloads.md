@@ -2,17 +2,14 @@
 title: Konzepte – Grundlagen zu Kubernetes für Azure Kubernetes Service (AKS)
 description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von Kubernetes kennen, und erfahren Sie, wie diese mit den Features in Azure Kubernetes Service (AKS) in Zusammenhang stehen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596231"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -106,7 +103,7 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
     - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
     - 2 % des Arbeitsspeichers oberhalb von 128 GB
 
-Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die wichtig für die Clusterintegrität sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und CPU meldet, als wenn sie kein Teil eines Kubernetes-Clusters wären. Die obigen Ressourcenreservierungen können nicht geändert werden.
+Die obigen Regeln für die Arbeitsspeicher- und CPU-Zuteilung werden verwendet, um die Integrität von Agent-Knoten zu gewährleisten. Einige dieser Knoten hosten Systempods, die für die Clusterintegrität wichtig sind. Diese Zuteilungsregeln sorgen auch dafür, dass der Knoten weniger zuteilbaren Arbeitsspeicher und CPU meldet, als wenn sie kein Teil eines Kubernetes-Clusters wären. Die obigen Ressourcenreservierungen können nicht geändert werden.
 
 Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers zusätzlich zum festen Entfernungsschwellenwert von 750 Mi als nicht zuteilbar angegeben.
 

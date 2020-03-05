@@ -2,17 +2,17 @@
 title: 'Virtuelle Computer der arbeitsspeicheroptimierten Dv2- und DSv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Dv2-Serie und der Dsv2-Serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1ba13733fdf5cf8aa83cbf71a23d013bf4ae90d4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492623"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914040"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Arbeitsspeicheroptimierte Dv2- und Dsv2-Serie
 

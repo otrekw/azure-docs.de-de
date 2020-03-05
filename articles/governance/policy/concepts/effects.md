@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972809"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544129"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -158,7 +158,7 @@ Das **operations**-Eigenschaftenarray ermöglicht es, mehrere Tags auf unterschi
 
 Die **operation**-Eigenschaft hat die folgenden Optionen:
 
-|Vorgang |Beschreibung |
+|Vorgang |BESCHREIBUNG |
 |-|-|
 |addOrReplace |Fügt das definierte Tag und den Wert zur Ressource hinzu, auch wenn das Tag bereits mit einem anderen Wert vorhanden ist. |
 |Hinzufügen |Fügt der Ressource das definierte Tag und den definierten Wert hinzu. |
@@ -331,7 +331,8 @@ Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erw
 
 ### <a name="deployifnotexists-evaluation"></a>Auswertung von „DeployIfNotExists“
 
-„DeployIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden.
+„DeployIfNotExists“ wird mit einem zeitlichen Abstand von etwa 15 Minuten ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden.
+Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
 
 Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt.
 

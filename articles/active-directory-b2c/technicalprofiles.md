@@ -3,20 +3,20 @@ title: TechnicalProfiles
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das TechnicalProfiles-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425606"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186742"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -81,11 +81,11 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 **TechnicalProfile** enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | Der Domänenname für das technische Profil. Wenn das technische Profil z.B. als Identitätsanbieter Facebook angibt, lautet der Domänenname „Facebook.com“. |
 | DisplayName | 1:1 | Der Name des technischen Profils, der Benutzern angezeigt werden kann. |
-| Beschreibung | 0:1 | Die Beschreibung des technischen Profils, die Benutzern angezeigt werden kann. |
+| BESCHREIBUNG | 0:1 | Die Beschreibung des technischen Profils, die Benutzern angezeigt werden kann. |
 | Protocol | 0:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
 | Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die vom Protokoll im Verlauf einer Transaktion für die Kommunikation mit dem Endpunkt verwendet werden. |
 | InputTokenFormat | 0:1 | Das Format des Eingabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. Der Wert `JWT` stellt ein JSON-Webtoken gemäß IETF-Spezifikation dar. Der Wert `SAML11` stellt ein SAML 1.1-Sicherheitstoken gemäß OASIS-Spezifikation dar.  Der Wert `SAML2` stellt ein SAML 2.0-Sicherheitstoken gemäß OASIS-Spezifikation dar. |
@@ -126,7 +126,7 @@ Das **Metadata**-Element enthält die folgenden Elemente:
 
 Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Key | Ja | Der Metadatenschlüssel. Eine Liste der Metadatenelemente finden Sie unter den einzelnen Typen von technischen Profilen. |
 
@@ -134,7 +134,7 @@ Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 Das **CryptographicKeys**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Key | 1:n | Ein kryptografischer Schlüssel, der in diesem technischen Profil verwendet wird. |
 
@@ -142,7 +142,7 @@ Das **CryptographicKeys**-Element enthält das folgende Element:
 
 Das **Key**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Nein | Ein eindeutiger Bezeichner eines bestimmten Schlüsselpaars, auf das von anderen Elementen in der Richtliniendatei verwiesen wird. |
 | StorageReferenceId | Ja | Ein Bezeichner eines Speicherschlüsselcontainers, auf den von anderen Elementen in der Richtliniendatei verwiesen wird. |
@@ -167,7 +167,7 @@ Das **InputClaimsTransformation**-Element enthält das folgende Attribut:
 
 Das **InputClaims**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | Ein erwarteter Eingabeanspruchstyp. |
 
@@ -185,7 +185,7 @@ Das **InputClaim**-Element enthält die folgenden Attribute:
 
 Das **DisplayClaims**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1:n | Ein erwarteter Eingabeanspruchstyp. |
 
@@ -215,7 +215,7 @@ Das **PersistedClaims**-Element enthält die folgenden Elemente:
 
 Das **PersistedClaim**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
@@ -244,7 +244,7 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 
 Das **OutputClaimsTransformations**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | Die Bezeichner von Anspruchstransformationen, die ausgeführt werden sollen, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. Eine Anspruchstransformation kann verwendet werden, um vorhandene ClaimsSchema-Ansprüche zu ändern oder neue zu generieren. |
 
@@ -284,7 +284,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
 Das **IncludeTechnicalProfile**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 
@@ -292,7 +292,7 @@ Das **IncludeTechnicalProfile**-Element enthält das folgende Attribut:
 
 Das **UseTechnicalProfileForSessionManagement**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 

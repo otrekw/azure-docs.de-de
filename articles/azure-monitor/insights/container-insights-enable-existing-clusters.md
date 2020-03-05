@@ -3,12 +3,12 @@ title: Überwachen eines bereitgestellten Azure Kubernetes Service-Clusters | Mi
 description: Erfahren Sie, wie Sie die Überwachung eines Azure Kubernetes Service-Clusters (AKS) mit Azure Monitor für bereits in Ihrem Abonnement bereitgestellte Container aktivieren.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 57d492778828254da7a6899641ab9dbd19a40154
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977792"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250627"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -35,7 +35,7 @@ az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMana
 
 Die Ausgabe ähnelt der folgenden:
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 
@@ -51,7 +51,7 @@ Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vornehmen möchten,
 
     Die Ausgabe ähnelt der folgenden:
 
-    ```azurecli
+    ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
@@ -67,7 +67,7 @@ Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vornehmen möchten,
 
 3. Im folgenden Beispiel wird die Liste mit den Arbeitsbereichen Ihrer Abonnements im JSON-Standardformat angezeigt.
 
-    ```
+    ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
@@ -81,7 +81,7 @@ Wenn Sie die Integration in einen vorhandenen Arbeitsbereich vornehmen möchten,
 
     Die Ausgabe ähnelt der folgenden:
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -272,7 +272,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-       ```powershell
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -286,7 +286,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
        Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-       ```azurecli
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -306,7 +306,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 Die Ausgabe sollte wie folgt aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -320,7 +320,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 
 Die Ausgabe sollte wie folgt aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
 
-```
+```output
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
@@ -336,7 +336,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 Die Ausgabe sollte wie folgt aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:  
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -352,7 +352,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zur Lösung im JSON-Format zurückgegeben.  In den Ergebnissen des Befehls sollte das Profil des Überwachungs-Add-Ons angezeigt werden, ähnlich der folgenden Beispielausgabe:
 
-```
+```output
 "addonProfiles": {
     "omsagent": {
       "config": {

@@ -3,12 +3,12 @@ title: Einbinden eines gitRepo-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533218"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252083"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -48,8 +48,11 @@ az container create \
 
 Um zu überprüfen, ob das gitRepo-Volume eingebunden wurde, starten Sie eine Shell im Container mit [az container exec][az-container-exec], und listen Sie das Verzeichnis auf:
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -82,13 +85,13 @@ Zum Einbinden eines gitRepo-Volumes für ein privates Git-Repository geben Sie A
 
 Beispiel: Der `--gitrepo-url`-Parameter der Azure CLI für ein privates GitHub-Repository würde etwa wie folgt aussehen (dabei steht „gituser“ für den GitHub-Benutzernamen, und „abcdef1234fdsa4321abcdef“ ist das persönliche Zugriffstoken des Benutzers):
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 Für ein Azure Repos Git-Repository geben Sie einen Benutzernamen (Sie können wie im folgenden Beispiel „azurereposuser“ verwenden) in Kombination mit einem gültigen PAT an:
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

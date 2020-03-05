@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905258"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526494"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -121,6 +121,8 @@ AzCopy erstellt Protokoll- und Plandateien für jeden Auftrag. Sie können die P
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
 Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Allerdings können Sie den Speicherort ändern.
+
+Der relevante Fehler ist nicht zwingend der erste Fehler in der Datei. Bei Netzwerkfehlern, Timeouts, Serverauslastungsfehlern und Ähnlichem wird der Vorgang von AzCopy bis zu 20-mal wiederholt, was in der Regel zum Erfolg führt.  Der erste angezeigte Fehler ist unter Umständen ein harmloser Vorgang, der erfolgreich wiederholt wurde.  Sehen Sie sich daher nicht den ersten Fehler in der Datei an, sondern die Fehler in der Nähe von `UPLOADFAILED`, `COPYFAILED` oder `DOWNLOADFAILED`. 
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.

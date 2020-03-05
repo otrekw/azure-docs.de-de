@@ -5,18 +5,17 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 319d43b4096c638eee74031e5b506b5cec3ffd5d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 06b35fdcd9da333c3c9d94d41c84a2f25ede59ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467282"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666564"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
 
@@ -92,7 +91,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="virtual-machines"></a>Virtual Machines
 
-| Daten | BESCHREIBUNG |
+| Daten | Beschreibung |
 |:---|:---|
 |  Agent-Datenquellen | Datenquellen, die von [Windows](agent-windows.md)- und [Linux](../learn/quick-collect-linux-computer.md)-Agents erfasst werden, enthalten Ereignisse, Leistungsdaten und benutzerdefinierte Protokolle. Eine Liste der Datenquellen und Details zur Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](data-sources.md). |
 | Überwachungslösungen | Überwachungslösungen schreiben von Agents gesammelte Daten in ihren Log Analytics-Arbeitsbereich. Eine Liste der Lösungen finden Sie unter [Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure](../insights/solutions-inventory.md). Ausführliche Informationen zum Installieren und Verwenden von Lösungen finden Sie unter [Überwachungslösungen in Azure Monitor](../insights/solutions.md). |
@@ -101,7 +100,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="applications"></a>Anwendungen
 
-| Daten | BESCHREIBUNG |
+| Daten | Beschreibung |
 |:---|:---|
 | Anforderungen und Ausnahmen | Ausführliche Daten zu Anwendungsanforderungen und -ausnahmen sind in den Tabellen _requests_, _pageViews_ und _exceptions_ enthalten. Aufrufe von [externen Komponenten](../app/asp-net-dependencies.md) sind in der Tabelle _dependencies_ enthalten. |
 | Nutzung und Leistung | Leistungsdaten für die Anwendung finden Sie in den Tabellen _requests_, _browserTimings_ und _performanceCounters_. Daten für [benutzerdefinierte Metriken](../app/api-custom-events-metrics.md#trackevent) sind in der Tabelle _customMetrics_ enthalten.|
@@ -117,7 +116,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="custom"></a>Benutzerdefiniert 
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 | REST-API | Schreiben von Daten in einen Log Analytics-Arbeitsbereich von einem beliebigen REST-Client. Ausführliche Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](data-collector-api.md).
 | Logik-App | Schreiben von Daten in einen Log Analytics-Arbeitsbereich von einem Logik-App-Workflow mit der Aktion **Datensammler von Azure Log Analytics**. |

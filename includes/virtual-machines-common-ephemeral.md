@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775853"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155517"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, sind aber stärker durch den Zeitpunkt der VM-Bereitstellung oder das Reimaging der einzelnen VM-Instanzen betroffen. Mit einem kurzlebigen Betriebssystem-Datenträger erzielen Sie eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und schnelleres VM-Reimaging. 
  
@@ -33,7 +33,7 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 |                             | Permanenter Betriebssystem-Datenträger                          | Kurzlebiger Betriebssystemdatenträger                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximale Größe für Betriebssystem-Datenträger      | 2 TiB                                                                                        | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist. Informationen zur **Cachegröße in GiB** finden Sie unter [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md) und [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series).              |
-| Unterstützte VM-Größen          | Alle                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| Unterstützte VM-Größen          | All                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Unterstützung für Datenträgertyp           | Verwalteter und nicht verwalteter Betriebssystem-Datenträger                                                                | Nur verwalteter Betriebssystem-Datenträger                                                               |
 | Unterstützung für Regionen              | Alle Regionen                                                                                  | Alle Regionen                              |
 | Datenpersistenz            | Auf Betriebssystem-Datenträger geschriebene Daten von einem Betriebssystem-Datenträger werden in Azure Storage gespeichert.                                  | Auf den Betriebssystem-Datenträger geschriebene Daten werden auf dem lokalen VM-Speicher gespeichert und nicht in Azure Storage gespeichert. |
@@ -44,7 +44,7 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 
 ## <a name="size-requirements"></a>Größenanforderungen
 
-Sie können VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Windows Server-Standardimages aus dem Marketplace sind beispielsweise etwa 127 GiB groß, was bedeutet, dass Sie eine VM-Größe mit einem Cache von mehr als 127 GiB benötigen. In diesem Fall hat [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series) eine Cachegröße von 86 GiB und ist damit nicht groß genug. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. In diesem Fall ist Standard_DS3_v2 die kleinste Größe in der DSv2-Serie, die Sie mit diesem Image verwenden können. Einfache Linux-Images im Marketplace und Windows Server-Images, die mit `[smallsize]` gekennzeichnet sind, liegen in der Regel bei etwa 30 GiB und können die meisten der verfügbaren VM-Größen verwenden.
+Sie können VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Windows Server-Standardimages aus dem Marketplace sind beispielsweise etwa 127 GiB groß, was bedeutet, dass Sie eine VM-Größe mit einem Cache von mehr als 127 GiB benötigen. In diesem Fall hat [Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) eine Cachegröße von 86 GiB und ist damit nicht groß genug. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. In diesem Fall ist Standard_DS3_v2 die kleinste Größe in der DSv2-Serie, die Sie mit diesem Image verwenden können. Einfache Linux-Images im Marketplace und Windows Server-Images, die mit `[smallsize]` gekennzeichnet sind, liegen in der Regel bei etwa 30 GiB und können die meisten der verfügbaren VM-Größen verwenden.
 
 Kurzlebige Datenträger erfordern außerdem, dass die VM-Größe Storage Premium unterstützt. Die Größen weisen in der Regel (aber nicht immer) ein `s` im Namen auf, z.B. DSv2- und EsV3. Ausführliche Informationen dazu, welche Größen Storage Premium unterstützen, finden Sie unter den [Größen für virtuelle Azure-Computer](../articles/virtual-machines/linux/sizes.md).
 

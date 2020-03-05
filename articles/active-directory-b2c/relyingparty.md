@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/02/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: b64583bc61b87e900690e397fac57d64d145db05
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372747"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585695"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -117,6 +117,7 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 | SessionExpiryInSeconds | 0:1 | Die Lebensdauer des als Integer angegebenen Azure AD B2C-Sitzungscookies, das bei erfolgreicher Authentifizierung im Benutzerbrowser gespeichert wird. |
 | JourneyInsights | 0:1 | Kopieren des Azure Application Insights-Instrumentierungsschlüssels, der verwendet werden soll. |
 | ContentDefinitionParameters | 0:1 | Die Liste von Schlüssel-Wert-Paaren, die an der LoadUri-Parameter der ContentDefinition angefügt wird. |
+|ScriptExecution| 0:1| Die unterstützten [JavaScript](javascript-samples.md)-Ausführungsmodi. Mögliche Werte: `Allow` und `Disallow` (Standardwert).
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -154,13 +155,13 @@ Im folgenden Beispiel wird ein Parameter namens `campaignId` mit dem Wert `hawai
 
 Das **ContentDefinitionParameters**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | Eine Zeichenfolge, die das Schlüssel-Wert-Paar enthält, das der Abfragezeichenfolge einer Inhaltsdefinition des URI zum Laden angefügt wird. |
 
 Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
@@ -170,16 +171,16 @@ Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mi
 
 Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Der Wert muss `PolicyProfile` sein. |
 
 **TechnicalProfile** enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Die Zeichenfolge, die den Namen des technischen Profils enthält. |
-| Beschreibung | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält. |
+| BESCHREIBUNG | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält. |
 | Protocol | 1:1 | Das Protokoll, das für den Verbund verwendet wird. |
 | Metadaten | 0:1 | Die Sammlung von *Elementen* von Schlüssel-Wert-Paaren, die vom Protokoll für die Kommunikation mit dem Endpunkt im Verlauf einer Transaktion verwendet wird, um die Interaktion zwischen der vertrauenden Seite und anderen Teilnehmern der Community zu konfigurieren. |
 | OutputClaims | 1:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Ausgabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
@@ -215,7 +216,7 @@ Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstell
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Verweis auf das **PartnerClaimType**-Element eines Ausgabeanspruchs. Die Ausgabeansprüche müssen in der Richtlinie der **OutputClaims**-Sammlung der vertrauenden Seite definiert werden. |
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048183"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620306"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
 
@@ -86,8 +86,8 @@ Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisunge
 1. Aufnahme in die Abonnement-Whitelist (für dieses Feature mit frühzeitigem Zugriff erforderlich)
 2. Erstellen von Azure Key Vault und Speichern des Schlüssels
 3. Erstellen einer *Clusterressource*
-4. Gewähren von Berechtigungen für Key Vault
-5. Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
+4. Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
+5. Gewähren von Berechtigungen für Key Vault
 6. Zuordnung von Log Analytics-Arbeitsbereichen
 
 Das Verfahren wird derzeit auf der Benutzeroberfläche nicht unterstützt, und der Bereitstellungsprozess erfolgt über die REST-API.
@@ -135,7 +135,7 @@ Die folgenden Einstellungen sind über die CLI und PowerShell verfügbar:
 
 ### <a name="create-cluster-resource"></a>Erstellen einer *Clusterressource*
 
-Diese Ressource wird als temporäre Identitätsverbindung zwischen Key Vault und Ihren Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements in die Whitelist aufgenommen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden. Application Insights und Log Analytics erfordern separate Clusterressourcen. Der Typ der Clusterressource wird zum Erstellungszeitpunkt definiert, indem die Eigenschaft „clusterType“ entweder auf „LogAnalytics“ oder „ApplicationInsights“ festgelegt wird. Der Typ der Clusterressource kann nicht geändert werden.
+Diese Ressource wird als temporäre Identitätsverbindung zwischen Key Vault und Ihren Arbeitsbereichen verwendet. Nachdem Sie eine Bestätigung erhalten haben, dass Ihre Abonnements in die Whitelist aufgenommen wurden, erstellen Sie eine Log Analytics-*Clusterressource* in der Region, in der sich Ihre Arbeitsbereiche befinden. Application Insights und Log Analytics erfordern separate Clusterressourcen. Der Typ der *Clusterressource* wird zum Erstellungszeitpunkt definiert, indem die Eigenschaft „clusterType“ entweder auf „LogAnalytics“ oder „ApplicationInsights“ festgelegt wird. Der Typ der Clusterressource kann nicht geändert werden.
 
 Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisungen im Anhang für diesen Schritt.
 
@@ -156,61 +156,73 @@ Content-type: application/json
    }
 }
 ```
+Die Identität wird der *Clusterressource* zum Zeitpunkt der Erstellung zugewiesen.
 Der „clusterType“-Wert ist für Application Insights-CMK „ApplicationInsights“.
 
 **Antwort**
 
-Die Identität wird der *Clusterressource* zum Zeitpunkt der Erstellung zugewiesen.
+202 (Akzeptiert). Hierbei handelt es sich um eine Resource Manager-Standardantwort für asynchrone Vorgänge.
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-„principalId“ ist eine GUID, die vom verwalteten Identitätsdienst für die *Cluster*-Ressource generiert wird.
-
-> [!IMPORTANT]
-> Kopieren Sie den Wert „cluster-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
-
-Wenn Sie die *Clusterressource* aus irgendeinem Grund löschen möchten, z. B. um sie mit einem anderen Namen oder Clustertyp zu erstellen, verwenden Sie den folgenden API-Aufruf:
+Wenn Sie die *Clusterressource* aus irgendeinem Grund löschen möchten (um sie beispielsweise mit einem anderen Namen oder Clustertyp zu erstellen), verwenden Sie die folgende REST-API:
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
+
+Während des Zeitraums des frühzeitigen Zugriffs auf das Feature wird der ADX-Cluster manuell vom Produktteam bereitgestellt, sobald die vorherigen Schritte abgeschlossen sind. Verwenden Sie Ihren Microsoft-Kanal, um die Details der *Clusterressource* anzugeben. Kopieren Sie die JSON-Antwort aus der GET REST-API der *Clusterressource*:
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Antwort**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+„principalId“ ist eine GUID, die vom verwalteten Identitätsdienst für die *Cluster*-Ressource generiert wird.
+
+> [!IMPORTANT]
+> Kopieren Sie den Wert „cluster-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
+
+
 ### <a name="grant-key-vault-permissions"></a>Erteilen von Key Vault-Berechtigungen
 
-Aktualisieren Sie Key Vault, und fügen Sie die Zugriffsrichtlinie für die Clusterressource hinzu. Die Berechtigungen für Key Vault werden dann zur Verwendung für die Datenverschlüsselung an die zugrunde liegende Azure Monitor Storage-Instanz weitergegeben.
-Öffnen Sie Key Vault im Azure-Portal, und klicken Sie auf „Zugriffsrichtlinien“ und dann auf „+ Zugriffsrichtlinie hinzufügen“, um eine neue Richtlinie mit den folgenden Einstellungen zu erstellen:
+> [!IMPORTANT]
+> Dieser Schritt muss ausgeführt werden, nachdem Sie über Ihren Microsoft-Kanal eine Bestätigung von der Produktgruppe erhalten haben, dass die Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster) abgeschlossen wurde. Wenn Sie die Key Vault-Zugriffsrichtlinie vor dieser Bereitstellung aktualisieren, tritt möglicherweise ein Fehler auf.
 
-- „Schlüsselberechtigungen“: Wählen Sie die Berechtigungen „Abrufen“, „Schlüssel packen“ und „Schlüssel entpacken“ aus.
+Aktualisieren Sie Ihre Key Vault-Instanz mit einer neuen Zugriffsrichtlinie, um Ihrer *Clusterressource* Berechtigungen zu erteilen. Diese Berechtigungen werden von der zugrunde liegenden Azure Monitor Storage-Instanz für die Datenverschlüsselung verwendet.
+Öffnen Sie Ihre Key Vault-Instanz im Azure-Portal, und klicken Sie auf „Zugriffsrichtlinien“ und dann auf „+ Zugriffsrichtlinie hinzufügen“, um eine neue Richtlinie mit den folgenden Einstellungen zu erstellen:
 
-- „Prinzipal auswählen“: Geben Sie die Cluster-ID ein. Hierbei handelt es sich um den Wert für „clusterId“ in der Antwort im vorherigen Schritt.
+- Schlüsselberechtigungen: Wählen Sie die Berechtigungen „Abrufen“, „Schlüssel packen“ und „Schlüssel entpacken“ aus.
+- Prinzipal auswählen: Geben Sie den Cluster-ID-Wert ein, der in der Antwort des vorherigen Schritts zurückgegeben wurde.
 
 ![Erteilen von Key Vault-Berechtigungen](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 Die Berechtigung *Abrufen* ist erforderlich, damit sichergestellt werden kann, dass Key Vault als wiederherstellbar konfiguriert ist, um Ihren Schlüssel und den Zugriff auf Ihre Azure Monitor-Daten zu schützen.
 
-Es dauert einige Minuten, bis die *Clusterressource* in Azure Resource Manager weitergegeben wird. Wenn Sie diese Zugriffsrichtlinie direkt nach dem Erstellen der *Clusterressource* konfigurieren, kann ein vorübergehender Fehler auftreten. In diesem Fall versuchen Sie es nach einigen Minuten noch einmal.
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualisieren der Clusterressource mit Schlüsselbezeichnerdetails
 
-Mit diesem Schritt werden weitere zukünftige Updates der Schlüsselversion in Ihrer Key Vault-Instanz angewendet. Aktualisieren Sie die *Clusterressource* mit Details zum *Schlüsselbezeichner* in Key Vault, damit Azure Monitor Storage die neue Schlüsselversion verwenden kann. Wählen Sie in Azure Key Vault die aktuelle Version Ihres Schlüssels aus, um die Schlüsselbezeichnerdetails abzurufen.
+Dieser Schritt gilt für zukünftige Aktualisierungen der Schlüsselversion in Ihrer Key Vault-Instanz. Aktualisieren Sie die *Clusterressource* mit Details zum *Schlüsselbezeichner* in Key Vault, damit Azure Monitor Storage die neue Schlüsselversion verwenden kann. Wählen Sie in Azure Key Vault die aktuelle Version Ihres Schlüssels aus, um die Schlüsselbezeichnerdetails abzurufen.
 
 ![Erteilen von Key Vault-Berechtigungen](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 „KeyVaultProperties“ enthält die Details des Key Vault-Schlüsselbezeichners.
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Bereitstellung des Azure Monitor-Datenspeichers (ADX-Cluster)
-
-Während des Zeitraums des frühzeitigen Zugriffs auf das Feature wird der ADX-Cluster manuell vom Produktteam bereitgestellt, sobald die vorherigen Schritte abgeschlossen sind. Verwenden Sie den mit Microsoft bestehenden Kanal, um die folgenden Details bereitzustellen:
-
-- Bestätigung, dass die oben beschriebenen Schritte erfolgreich abgeschlossen wurden.
-
-- Die JSON-Antwort aus dem vorherigen Schritt. Diese kann jederzeit mit einem API-Aufruf vom Typ „Get“ abgerufen werden:
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **Antwort**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Arbeitsbereichszuordnung zur *Clusterressource*
 

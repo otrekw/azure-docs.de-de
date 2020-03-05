@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623304"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270161"
 ---
 # <a name="streaming-ingestion-preview"></a>Streamingerfassung (Vorschauversion)
 
@@ -37,7 +37,7 @@ Wenn die Datenmenge mehr als 1 MB pro Sekunde und Tabelle beträgt, verwenden S
  
     ![Streamingerfassung aktiviert](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. Definieren Sie auf der [Webbenutzeroberfläche](https://dataexplorer.azure.com/) die [Streamingerfassungsrichtlinie](/azure/kusto/concepts/streamingingestionpolicy) für Tabellen oder Datenbanken, die Streamingdaten empfangen. 
+1. Definieren Sie auf der [Webbenutzeroberfläche](https://dataexplorer.azure.com/) die [Streamingerfassungsrichtlinie](/azure/kusto/management/streamingingestionpolicy) für Tabellen oder Datenbanken, die Streamingdaten empfangen. 
 
     > [!NOTE]
     > * Wird die Richtlinie auf der Datenbankebene definiert, kann die Streamingerfassung für alle Tabellen in der Datenbank verwendet werden.
@@ -63,7 +63,7 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 > [!WARNING]
 > Die Deaktivierung der Streamingerfassung kann mehrere Stunden dauern.
 
-1. Entfernen Sie die [Streamingerfassungsrichtlinie](/azure/kusto/concepts/streamingingestionpolicy) aus allen relevanten Tabellen und Datenbanken. Wenn Sie die Streamingerfassungsrichtlinie entfernen, werden die Streamingerfassungsdaten aus dem anfänglichen Speicher in den permanenten Speicher im Spaltenspeicher (Erweiterungen oder Shards) verschoben. Die Datenverschiebung kann zwischen einigen Sekunden und mehreren Stunden dauern. Dies ist abhängig von der Datenmenge im anfänglichen Speicher sowie davon, wie die CPU und der Arbeitsspeicher vom Cluster genutzt wird.
+1. Entfernen Sie die [Streamingerfassungsrichtlinie](/azure/kusto/management/streamingingestionpolicy) aus allen relevanten Tabellen und Datenbanken. Wenn Sie die Streamingerfassungsrichtlinie entfernen, werden die Streamingerfassungsdaten aus dem anfänglichen Speicher in den permanenten Speicher im Spaltenspeicher (Erweiterungen oder Shards) verschoben. Die Datenverschiebung kann zwischen einigen Sekunden und mehreren Stunden dauern. Dies ist abhängig von der Datenmenge im anfänglichen Speicher sowie davon, wie die CPU und der Arbeitsspeicher vom Cluster genutzt wird.
 1. Navigieren Sie im Azure-Portal zum Azure Data Explorer-Cluster. Wählen Sie unter **Einstellungen** die Option **Konfigurationen** aus. 
 1. Wählen Sie im Bereich **Konfigurationen** die Option **Off** aus, um die **Streamingerfassung** zu aktivieren.
 1. Wählen Sie **Speichern** aus.
@@ -76,11 +76,11 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 * Die Datengröße pro Erfassungsanforderung ist auf 4 MB beschränkt.
 * Schemaaktualisierungen wie etwa die Erstellung und Änderung von Tabellen und Erfassungszuordnungen können für den Streamingerfassungsdienst bis zu fünf Minuten dauern.
 * Wenn die Streamingerfassung in einem Cluster aktiviert wird, wird ein Teil des lokalen SSD-Datenträgers der Clustercomputer für Streamingerfassungsdaten genutzt, wodurch sich der verfügbare Speicherplatz für den aktiven Cache verringert. Dies gilt auch, wenn gar keine Daten per Streaming erfasst werden.
-* [Erweiterungstags](/azure/kusto/management/extents-overview.md#extent-tagging) können für die Streamingerfassungsdaten nicht festgelegt werden.
+* [Erweiterungstags](/azure/kusto/management/extents-overview#extent-tagging) können für die Streamingerfassungsdaten nicht festgelegt werden.
 
 Folgende Features werden von der Streamingerfassung nicht unterstützt:
 * [Datenbankcursor](/azure/kusto/management/databasecursor)
-* [Datenzuordnung](/azure/kusto/management/mappings). Es wird nur die [vorab erstellte](/azure/kusto/management/tables#create-ingestion-mapping) Datenzuordnung unterstützt. 
+* [Datenzuordnung](/azure/kusto/management/mappings). Es wird nur die [vorab erstellte](/azure/kusto/management/create-ingestion-mapping-command) Datenzuordnung unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

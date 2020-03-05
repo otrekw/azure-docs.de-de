@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301943"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -51,7 +51,7 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 * **Subnetz:** Front-End: 10.1.0.0/24, Back-End: 10.1.1.0/24 (für diese Übung optional)
 * **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
 * **Name des Gateways des virtuellen Netzwerks:** VNet1GW
-* **Öffentliche IP-Adresse:** VNet1GWIP
+* **Öffentliche IP-Adresse:** VNet1GWpip
 * **VPN-Typ:** routenbasiert
 * **Verbindungstyp:** Site-to-Site (IPsec)
 * **Gatewaytyp**: VPN
@@ -61,7 +61,7 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 
 ## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. Erstellen des VPN-Gateways
 
@@ -77,7 +77,7 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 * **Instanzendetails > Gatewaytyp**: VPN
 * **Instanzendetails > VPN-Typ**: routenbasiert
 * **Virtuelles Netzwerk > Gatewaysubnetz-Adressbereich**: 10.1.255.0/27
-* **Öffentliche IP-Adresse > Name der öffentlichen IP-Adresse**: VNet1GWIP
+* **Öffentliche IP-Adresse > Name der öffentlichen IP-Adresse**: VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 

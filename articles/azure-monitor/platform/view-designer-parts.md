@@ -1,18 +1,17 @@
 ---
 title: Referenzleitfaden zu den Ansicht-Designer-Komponenten in Azure Monitor | Microsoft-Dokumentation
 description: Mit dem Ansicht-Designer in Azure Monitor können Sie benutzerdefinierte Ansichten erstellen, die im Azure-Portal angezeigt werden und verschiedene Visualisierungen für Daten im Log Analytics-Arbeitsbereich enthalten. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 853f0153283f31c9242b884babf5778f96cce141
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931992"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658556"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungskomponenten in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -72,18 +71,18 @@ Die Kopfzeile zeigt eine einzelne Zahl an, die die Anzahl der Datensätze aus ei
 | Symbol verwenden |Wählen Sie diesen Link, um das Symbol anzuzeigen. |
 | **Titel** | |
 | Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
-| Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -103,18 +102,18 @@ Die Kopfzeile zeigt zwei Zahlen an, die die Anzahl der Datensätze aus separaten
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Titel** | |
 | Legende |Der Text, der oben in der Kopfzeile angezeigt wird. |
-| Abfragen |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Kopfzeile ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die ersten beiden Eigenschaften für die ersten zehn Datensätze in den Ergebnissen werden angezeigt. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Balken werden automatisch basierend auf dem relativen Wert der numerischen Spalte erstellt.<br><br>Verwenden Sie den Befehl `Sort` in der Abfrage, um die Datensätze in der Liste zu sortieren. Sie können **Alle anzeigen** auswählen, um die Abfrage auszuführen und alle Datensätze zurückzugeben. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -134,7 +133,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Ring** | |
-| Abfragen |Die Abfrage, die für das Ringdiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. |
+| Abfrage |Die Abfrage, die für das Ringdiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Ring** |**&gt; Mitte** |
 | Text |Der Text, der unter dem Wert innerhalb des Ringdiagramms angezeigt wird. |
@@ -144,18 +143,18 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Farbe 1<br>Farbe 2<br>Farbe 3 |Wählen Sie die Farbe für jeden der im Ring angezeigten Werte aus. |
 | **Weitere Optionen** |**> Erweiterte Farbzuordnung** |
 | Feldwert |Geben Sie den Namen eines Felds ein, um es in einer anderen Farbe anzuzeigen, wenn es im Ring enthalten ist. |
-| Farbe |Wählen Sie die Farbe für das eindeutige Feld aus. |
+| Color |Wählen Sie die Farbe für das eindeutige Feld aus. |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -164,7 +163,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/view-designer-parts/view-two-timelines-list.png)
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -175,19 +174,19 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Erstes Diagramm<br>Zweites Diagramm** | |
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
-| Farbe |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
-| Abfragen |Die Abfrage, die für die erste Reihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
+| Color |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
+| Abfrage |Die Abfrage, die für die erste Reihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
 | Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Letztes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li></ul> |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -201,7 +200,7 @@ Die Kopfzeile zeigt statischen Text und einen optionalen Link. Die Liste zeigt m
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
 | Neue Gruppe |Wählen Sie diesen Link aus, um in der Ansicht auf Grundlage der aktuellen Ansicht eine neue Gruppe zu erstellen. |
-| Farbe |Die Hintergrundfarbe der Kopfzeile. |
+| Color |Die Hintergrundfarbe der Kopfzeile. |
 | **Kopfzeile** | |
 | Image |Die Bilddatei, die in der Kopfzeile angezeigt wird. |
 | Bezeichnung |Der Text, der in der Kopfzeile angezeigt wird. |
@@ -228,7 +227,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
-| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Abfrage |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel |Der Text, der über dem Legendenwert angezeigt wird. |
@@ -239,16 +238,16 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
 | Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -268,23 +267,23 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | Titel |Der Text, der oben in der Kopfzeile angezeigt wird. |
 | Untertitel |Der Text, der unter dem Titel oben in der Kopfzeile angezeigt wird. |
 | **Liniendiagramm** | |
-| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Abfrage |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
 | Benutzerdefinierte Bezeichnung |Der Text, der für die Y-Achse neben der Bezeichnung für den Typ der *Einheit* angezeigt wird. Wenn keine Bezeichnung angegeben ist, wird nur der Typ der *Einheit* angezeigt. |
 | **Liste** | |
-| Abfragen |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
+| Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
-| Farbe |Die Farbe der Balken oder Sparklines. |
+| Color |Die Farbe der Balken oder Sparklines. |
 | Vorgang |Der Vorgang, der für die Sparkline ausgeführt werden soll. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Trennlinie für Name und Wert |Ein Trennzeichen, um die Texteigenschaft in mehrere Werte zu gliedern. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#sparklines). |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie in der Liste auf einen Eintrag klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Liste** |**> Spaltentitel** |
-| NAME |Der Text, der oben in der ersten Spalte angezeigt wird. |
-| Wert |Der Text, der oben in der zweiten Spalte angezeigt wird. |
+| Name |Der Text, der oben in der ersten Spalte angezeigt wird. |
+| value |Der Text, der oben in der zweiten Spalte angezeigt wird. |
 | **Liste** |**&gt; Schwellenwerte** |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um Schwellenwerte zu aktivieren. Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#thresholds). |
 
@@ -303,7 +302,7 @@ Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen
 | Titel |Der Text, der im oberen Bereich des Diagramms angezeigt wird. |
 | Untertitel |Der Text, der unter dem Titel oben im Diagramm angezeigt wird. |
 | **Diagramm 1<br>Diagramm 2<br>Diagramm 3** |**Liniendiagramm** |
-| Abfragen |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
+| Abfrage |Die Abfrage, die für das Liniendiagramm ausgeführt wird. Die erste Eigenschaft ist ein Textwert, die zweite Eigenschaft ist ein numerischer Wert. Bei dieser Abfrage wird üblicherweise das Schlüsselwort *measure* verwendet, um die Ergebnisse zusammenzufassen. Wenn in der Abfrage das Schlüsselwort *interval* verwendet wird, wird für die X-Achse des Diagramms dieses Zeitintervall verwendet. Wenn in der Abfrage das Schlüsselwort *interval* nicht verwendet wird, wird für die X-Achse ein Stundenintervall verwendet. |
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Diagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
@@ -323,7 +322,7 @@ Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, w
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
-| Einstellung           | BESCHREIBUNG |
+| Einstellung           | Beschreibung |
 |:--|:--|
 | Protokollsuche (Automatisch) | Protokollabfrage, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollabfrage, auf der das Element basiert.
 | Protokollsuche        | Die Protokollabfrage, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}* , um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
@@ -350,12 +349,12 @@ Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standa
 
 In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |:--- |:--- |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um ein Farbsymbol links von jedem Wert anzuzeigen. Das Symbol gibt die Integrität des Werts relativ zu den angegebenen Schwellenwerten an. |
-| NAME |Der Name des Schwellenwerts |
+| Name |Der Name des Schwellenwerts |
 | Schwellenwert |Der Wert für den Schwellenwert. Die Farbe der Integrität für jedes Listenelement ist auf die Farbe des höchsten Schwellenwerts festgelegt, den der Wert des Listenelements überschritten hat. Wenn keine Schwellenwerte überschritten werden, wird eine Standardfarbe verwendet. |
-| Farbe |Die Farbe, die den Schwellenwert angibt. |
+| Color |Die Farbe, die den Schwellenwert angibt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zur Unterstützung der Abfragen in Visualisierungskomponenten.

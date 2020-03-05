@@ -3,20 +3,20 @@ title: Übersicht über technische Profile in benutzerdefinierten Richtlinien
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie technische Profile in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505656"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183651"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -40,7 +40,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
 - [Sitzungsverwaltung](custom-policy-reference-sso.md) – Verarbeiten verschiedener Typen von Sitzungen.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern. 
+- [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern.
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile
 
@@ -48,7 +48,7 @@ Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie sen
 
 ![Diagramm des Flows für technische Profile](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung**: Stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird. 
+1. **Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung**: Stellt den Sitzungszustand des technischen Profils wieder her, indem die [SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) verwendet wird.
 1. **Eingabeanspruchstransformation**: Aus dem Anspruchsbehälter werden Eingabeansprüche jeder [Eingabeanspruchstransformation](claimstransformations.md) entnommen.  Bei den Ausgabeansprüchen einer Eingabeanspruchstransformation kann es sich um Eingabeansprüche einer nachfolgenden Eingabeanspruchstransformation handeln.
 1. **Eingabeansprüche**: Ansprüche werden dem Anspruchsbehälter entnommen und für das technische Profil verwendet. Ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwendet beispielsweise die Eingabeansprüche, um die Ausgabeansprüche im Vorhinein auszufüllen, die der Benutzer angibt. Ein technisches REST-API-Profil verwendet die Eingabeansprüche, um Eingabeparameter an den REST-API-Endpunkt zu senden. Azure Active Directory verwendet einen Eingabeanspruch als eindeutigen Bezeichner zum Lesen, Aktualisieren oder Löschen eines Kontos.
 1. **Ausführung des technischen Profils** – Das technische Profil tauscht die Ansprüche mit der konfigurierten Partei aus. Beispiel:
@@ -64,7 +64,7 @@ Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie sen
 
 ## <a name="technical-profile-inclusion"></a>Einbindung des technischen Profils
 
-Ein technisches Profil kann ein anderes technisches Profil enthalten, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen.  Das `IncludeTechnicalProfile`-Element ist ein Verweis auf das technische Basisprofil, von dem ein technisches Profil abgeleitet wird. Die Anzahl von Ebenen ist nicht begrenzt. 
+Ein technisches Profil kann ein anderes technisches Profil enthalten, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen.  Das `IncludeTechnicalProfile`-Element ist ein Verweis auf das technische Basisprofil, von dem ein technisches Profil abgeleitet wird. Die Anzahl von Ebenen ist nicht begrenzt.
 
 Das technische Profil **AAD-UserReadUsingAlternativeSecurityId-NoError** enthält z. B. das Profil **AAD-UserReadUsingAlternativeSecurityId**. Dieses technische Profil legt das Metadatenelement `RaiseErrorIfClaimsPrincipalDoesNotExist` auf `true` fest und löst einen Fehler aus, wenn ein Konto für ein soziales Netzwerk nicht im Verzeichnis vorhanden ist. **AAD-UserReadUsingAlternativeSecurityId-NoError** setzt dieses Verhalten außer Kraft und deaktiviert die Fehlermeldung.
 

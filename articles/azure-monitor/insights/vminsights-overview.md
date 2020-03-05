@@ -1,18 +1,17 @@
 ---
 title: Was ist Azure Monitor für VMs (Vorschauversion)? | Microsoft-Dokumentation
 description: Übersicht über die Azure Monitor für VMs-Lösung, mit der neben dem automatischen Ermitteln und Zuordnen von Anwendungskomponenten und ihren Abhängigkeiten auch die Integrität und Leistung der virtuellen Azure-Computer überwacht wird.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 17aa81c626c1bfa8a8a344552b7a0fe61dd85a7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1dcce3ab9f975fcf5910c382df3489d5d4ed425a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365783"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670663"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Was ist Azure Monitor für VMs (Vorschauversion)?
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9777c62d97c70d4f6a0d0a4d912dea3fa8decd23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499556"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273436"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>Vordefinierte PersonName-Entität für eine LUIS-App
 Die vordefinierte personName-Entität erkennt die Namen von Personen. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit personName hinzufügen. Die personName-Entität wird in den [Kulturen](luis-reference-prebuilt-entities.md) Englisch und Chinesisch unterstützt.
@@ -28,7 +28,7 @@ Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 `Is Jill Jones in Cairo?`
 
 
-#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
@@ -40,7 +40,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
@@ -65,7 +65,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.personName** veranschaulicht.
 
@@ -79,10 +79,10 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.personName** ve
 }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-Erfahren Sie mehr über die Entitäten [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md) und [ordinal](luis-reference-prebuilt-ordinal.md). 
+Erfahren Sie mehr über die Entitäten [email](luis-reference-prebuilt-email.md), [number](luis-reference-prebuilt-number.md) und [ordinal](luis-reference-prebuilt-ordinal.md).

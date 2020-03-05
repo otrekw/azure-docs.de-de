@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 9519644105e76951ca70b0b9a7c827163b45f86a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: ef254f465e7aecd87d79a5505cd89c37351e56f5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650836"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267774"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
@@ -64,7 +64,7 @@ Azure Scheduler wird eingestellt. Wenn Sie Planungsaufträge erstellen möchten,
 Weitere Informationen finden Sie unter:
 
 - Erfahren Sie mehr, indem Sie die [Tutorials zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
-- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview.md)
+- Lesen Sie [Was ist Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 
 ## <a name="network-watcher"></a>Network Watcher
 

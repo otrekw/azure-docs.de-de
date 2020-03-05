@@ -1,18 +1,17 @@
 ---
 title: Aktivieren von Azure Monitor für VMs (klassisch) mit PowerShell oder Vorlagen
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für mindestens einen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe aktivieren.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977678"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251434"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mit Azure PowerShell oder Resource Manager-Vorlagen
 
@@ -100,7 +99,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
         Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-        ```powershell
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -114,7 +113,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 
         Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-        ```azurecli
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -155,7 +154,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 ```
 Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
 
-```powershell
+```output
 provisioningState       : Succeeded
 ```
 
@@ -171,7 +170,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 Die Ausgabe sieht ungefähr so aus:
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 
@@ -185,7 +184,7 @@ Um Azure Monitor für VMs für mehrere VMs oder VM-Skalierungsgruppen zu aktivie
 
 Für jede VM oder VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung bereits installiert ist. Wenn die VM-Erweiterung installiert ist, versucht das Skript, sie neu zu installieren. Wenn die VM-Erweiterung nicht installiert ist, installiert das Skript die Log Analytics- und Dependency-Agent-VM-Erweiterungen.
 
-Vergewissern Sie sich, dass Sie mindestens die Version 1.0.0 des Azure PowerShell-Moduls „Az“ mit aktivierten `Enable-AzureRM`-Kompatibilitätsaliasen verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Vergewissern Sie sich, dass Sie mindestens die Version 1.0.0 des Azure PowerShell-Moduls „Az“ mit aktivierten `Enable-AzureRM`-Kompatibilitätsaliasen verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Führen Sie `Get-Help` aus, um eine Liste der Argumentendetails des Skripts und der Beispielverwendung zu erhalten.
 

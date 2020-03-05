@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41a4eb565f49b75b64cc072d3017c41000154e2a
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065825"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544265"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -95,13 +95,15 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 
    h. **NOT REGEX MATCH**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut nicht mit einem Muster für reguläre Ausdrücke übereinstimmt.
    
-   i. **Greater_Than.** Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer als der Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
+   i. **Greater_Than**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer als der Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
    
-   j. **Greater_Than_OR_EQUALS.** Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer oder gleich als dem Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
+   j. **Greater_Than_OR_EQUALS**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer oder gleich als dem Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
+   
+   k. **Includes**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut den Zeichenfolgewert enthält, wie [hier](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8) beschrieben. (Bei der Auswertung wird die Groß-/Kleinschreibung berücksichtigt.) 
 
 
 >[!IMPORTANT] 
-> Die Filter „Includes“ und „IsMemberOf“ werden nicht unterstützt. Sie werden in Kürze von der Benutzeroberfläche entfernt.
+> Der IsMemberOf-Filter wird aktuell nicht unterstützt.
 
 9. Optional: Wiederholen Sie die Schritte 7 und 8, um weitere Bereichsklauseln hinzuzufügen.
 
@@ -118,7 +120,7 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 
 
 ## <a name="common-scoping-filters"></a>Allgemeine Bereichsfilter
-| Zielattribut| Operator | value | Beschreibung|
+| Zielattribut| Operator | value | BESCHREIBUNG|
 |----|----|----|----|
 |userPrincipalName|REGEX MATCH|.\*@domain.com |Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich im Umfang der Bereitstellung.|
 |userPrincipalName|NOT REGEX MATCH|.\*@domain.com|Alle Benutzer mit dem „userPrincipal“, der die Domäne @domain.com hat, befinden sich nicht im Umfang der Bereitstellung.|

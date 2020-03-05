@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954103"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303935"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -73,7 +73,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
     - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
     -  [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
-    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+    - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
 
 
@@ -95,7 +95,7 @@ Die folgenden Schritte zeigen, wie Sie den virtuellen Computer mithilfe von Azur
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Aktivieren der Replikation für Azure-VMs und Starten des Kopiervorgangs für die Daten
 
-Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcengruppe zugeordnet sind.
+Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourcengruppe zugeordnet sind.
 
 1. Wählen Sie im nächsten Schritt den virtuellen Computer aus, den Sie verschieben möchten, und wählen Sie dann **OK** aus.
 1. Wählen Sie unter **Einstellungen** die Option **Notfallwiederherstellung** aus.
@@ -124,7 +124,7 @@ Wenn Sie den verschobenen virtuellen Computer überprüft haben und Änderungen 
 
 Wenn Sie den verschobenen virtuellen Computer überprüft haben und die Änderung committen möchten, klicken Sie unter **Replizierte Elemente** mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Committen** aus. Durch diesen Schritt wird der Prozess zum Verschieben in die Zielregion abgeschlossen. Warten Sie, bis der Commitauftrag abgeschlossen ist.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Die folgenden Schritte dienen zur Bereinigung der Quellregion und der zugehörigen Ressourcen, die für die Verschiebung verwendet wurden.
 

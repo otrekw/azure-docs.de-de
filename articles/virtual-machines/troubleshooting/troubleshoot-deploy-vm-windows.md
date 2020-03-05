@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058037"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921410"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problembehandlung von Problemen bei der Bereitstellung von virtuellen Windows-Computern in Azure
 
@@ -86,9 +86,9 @@ Die Treiber für virtuelle Windows-basierten Computer befinden sich [hier](../wi
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ich kann keine GPU-Instanz in meiner VM der N-Serie finden
 
-Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server 2016 oder Windows Server 2012 R2 nutzen zu können. Informationen zur Einrichtung von Treibern stehen für [Windows-VMs](../windows/n-series-driver-setup.md) und [Linux-VMs](../linux/n-series-driver-setup.md) zur Verfügung.
+Nach der Bereitstellung müssen Sie auf jedem virtuellen Computer NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen von virtuellen Azure-Computern der N-Serie mit Windows Server 2016 oder Windows Server 2012 R2 nutzen zu können. Informationen zur Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md) und [Linux-VMs](../linux/n-series-driver-setup.md) zur Verfügung.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Sind VMs der N-Serie in meiner Region verfügbar?
+## <a name="is-n-series-vms-available-in-my-region"></a>Stehen VMs der N-Serie in meiner Region zur Verfügung?
 
 Informationen zur Verfügbarkeit finden Sie in der [Tabelle verfügbarer Produkte nach Region](https://azure.microsoft.com/regions/services), und Informationen zu Preisen finden Sie [hier](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 
@@ -106,6 +106,8 @@ Dieser [Artikel](../windows/client-images.md) beschreibt die erforderlichen Bere
 Wenn eine VM ausgeführt wird, wird Sie auf einem physischen Server bereitgestellt. Die physischen Server in Azure-Regionen werden in Clustern gemeinsamer physischer Hardware gruppiert. Das Ändern der Größe einer VM, das erfordert, dass die VM in andere Hardwareclustern verschoben wird, kann unterschiedlich sein, je nachdem, welches Bereitstellungsmodell zur Bereitstellung der VM verwendet wurde.
 
 - Für VMs, die im klassischen Bereitstellungsmodell bereitgestellt werden, muss die Clouddienstbereitstellung entfernt werden und erneut bereitgestellt werden, um die Größe der VMs in eine andere Größenfamilie zu ändern.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 - Für die im Resource Manager-Bereitstellungsmodell bereitgestellten virtuellen Computer müssen Sie alle VMs in der Verfügbarkeitsgruppe anhalten, bevor Sie die Größe einer VM in der Verfügbarkeitsgruppe ändern.
 

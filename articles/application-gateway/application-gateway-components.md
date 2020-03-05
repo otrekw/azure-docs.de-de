@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301351"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -53,7 +53,7 @@ Application Gateway unterstützt vier Protokolle: HTTP, HTTPS, HTTP/2 und WebSoc
 >Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Application Gateway-Listenern verbunden sind. Die Kommunikation mit Back-End-Serverpools erfolgt immer über HTTP/1.1. Die HTTP/2-Unterstützung ist standardmäßig deaktiviert. Sie können es aktivieren.
 
 - Sie geben die Option für HTTP- und HTTPS-Protokolle in der Listenerkonfiguration an.
-- Unterstützung für [die Protokolle WebSocket und HTTP/2](overview.md#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](application-gateway-websocket.md) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
+- Unterstützung für [die Protokolle WebSocket und HTTP/2](features.md#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](application-gateway-websocket.md) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
 
 Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden.
 
@@ -115,9 +115,9 @@ Die Angaben für Port und Protokoll in den HTTP-Einstellungen bestimmen, ob der 
 
 Diese Komponente wird außerdem für folgende Zwecke verwendet:
 
-- Bestimmen, ob eine Benutzersitzung durch [cookiebasierte Sitzungsaffinität](overview.md#session-affinity) auf demselben Server beibehalten wird.
+- Bestimmen, ob eine Benutzersitzung durch [cookiebasierte Sitzungsaffinität](features.md#session-affinity) auf demselben Server beibehalten wird.
 
-- Ordnungsgemäßes Entfernen von Mitgliedern des Back-End-Pools über den [Verbindungsausgleich](overview.md#connection-draining).
+- Ordnungsgemäßes Entfernen von Mitgliedern des Back-End-Pools über den [Verbindungsausgleich](features.md#connection-draining).
 
 - Zuordnen eines benutzerdefinierten Tests zum Überwachen der Integrität des Back-Ends, Überschreiben von Hostname und -pfad in der Anforderung und benutzerfreundliches Angeben von Einstellungen für das App Service-Back-End mit nur einem Klick.
 

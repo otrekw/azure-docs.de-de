@@ -1,18 +1,17 @@
 ---
 title: Anzeigen von Azure Application Insights-App-Daten | Microsoft-Dokumentation
 description: Sie können die Application Insights-Connector-Lösung verwenden, um Leistungsprobleme zu diagnostizieren und zu verstehen, wofür Benutzer Ihre App verwenden, wenn die Überwachung mit Application Insights durchgeführt wird.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665152"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 

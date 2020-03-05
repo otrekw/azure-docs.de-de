@@ -3,20 +3,20 @@ title: Definieren eines technischen Validierungsprofils in einer benutzerdefinie
 titleSuffix: Azure AD B2C
 description: Validieren Sie Ansprüche mithilfe eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950798"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185725"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -53,7 +53,7 @@ Das **ValidationTechnicalProfiles**-Element enthält die folgenden Elemente:
 
 Das **ValidationTechnicalProfile**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtlinie oder der übergeordneten Richtlinie definiert ist. |
 |ContinueOnError|Nein| Zeigt an, ob die Validierung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst. Mögliche Werte: `true` oder `false` (Standard, die Verarbeitung weiterer Validierungsprofile wird beendet und ein Fehler zurückgegeben). |
@@ -67,7 +67,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
 
 Das **Precondition**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
 | `ExecuteActionsIf` | Ja | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
@@ -76,7 +76,7 @@ Das **Precondition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Wert | 1:n | Die Daten, die von der Überprüfung verwendet werden. Wenn der Typ dieser Überprüfung `ClaimsExist` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Wenn der Typ der Überprüfung `ClaimEquals` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Während ein anderes Wertelement den zu überprüfenden Wert enthält.|
+| value | 1:n | Die Daten, die von der Überprüfung verwendet werden. Wenn der Typ dieser Überprüfung `ClaimsExist` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Wenn der Typ der Überprüfung `ClaimEquals` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Während ein anderes Wertelement den zu überprüfenden Wert enthält.|
 | Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Vorbedingung innerhalb eines Orchestrierungsschritts „true“ ist. Der Wert der **Aktion** wird auf `SkipThisValidationTechnicalProfile` festgelegt. Gibt an, dass das zugeordnete technische Validierungsprofil nicht ausgeführt werden soll. |
 
 ### <a name="example"></a>Beispiel

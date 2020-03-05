@@ -1,18 +1,17 @@
 ---
 title: Azure Key Vault-Lösung in Azure Monitor | Microsoft-Dokumentation
 description: Sie können die Azure Key Vault-Lösung in Azure Monitor verwenden, um Azure Key Vault-Protokolle zu überprüfen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889106"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667142"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 

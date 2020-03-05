@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997223"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604332"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
 
@@ -89,7 +89,7 @@ Wir haben alle drei in den vorherigen Schritten gezeigten Bildschirme eingestell
 
 ### <a name="classic-identity--access-preview---the-new-experience"></a>Identität und Zugriff (klassisch) in der Vorschau – die neue Erfahrung
 
-Das Log Analytics-Dashboard hat Einblicke zu einem einzelnen Arbeitsbereich angezeigt. Allerdings bieten die nativen Funktionen von Security Center Einblick in alle Abonnements und Arbeitsbereiche, die ihnen zugeordnet sind. Sie können auf eine benutzerfreundliche Ansicht zugreifen, die Ihnen ermöglicht, sich auf das Wesentliche zu konzentrieren, mit Empfehlungen, deren Rangfolge sich nach ihrer Sicherheitsbewertung richtet.
+Das Log Analytics-Dashboard hat Einblicke zu einem einzelnen Arbeitsbereich angezeigt. Allerdings bieten die nativen Funktionen von Security Center Einblick in alle Abonnements und Arbeitsbereiche, die ihnen zugeordnet sind. Sie können auf eine benutzerfreundliche Ansicht zugreifen, die es Ihnen ermöglicht, sich auf das Wesentliche zu konzentrieren – mit Empfehlungen, deren Rangfolge sich nach ihrer Sicherheitsbewertung richtet.
 
 Alle Features des Dashboards **Identität und Zugriff** in Log Analytics können durch Auswählen von **Identität und Zugriff (Vorschau)** in Security Center aufgerufen werden.
 

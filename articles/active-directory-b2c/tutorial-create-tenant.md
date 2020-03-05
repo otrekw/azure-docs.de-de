@@ -2,20 +2,20 @@
 title: 'Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten'
 description: Erfahren Sie, wie Sie sich auf die Registrierung Ihrer Anwendungen vorbereiten können, indem Sie einen Azure Active Directory B2C-Mandanten über das Azure-Portal erstellen.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/28/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547590"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186402"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -68,8 +68,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     Wählen Sie für **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie einen **Namen** für die Ressourcengruppe ein, die den Mandanten enthalten soll, wählen Sie den **Ressourcengruppenstandort** und dann **Erstellen** aus.
 
     ![Formular zum Verknüpfen von Abonnementeinstellungen im Azure-Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-    
-    Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen. 
+
+    Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen.
 
 ## <a name="select-your-b2c-tenant-directory"></a>Auswählen Ihres B2C-Mandantenverzeichnisses
 

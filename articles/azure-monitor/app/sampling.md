@@ -1,20 +1,16 @@
 ---
 title: Stichprobenerstellung für Telemetriedaten in Azure Application Insights | Microsoft-Dokumentation
 description: So behalten Sie die Kontrolle über die Menge an erfassten Telemetriedaten.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989976"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671493"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 

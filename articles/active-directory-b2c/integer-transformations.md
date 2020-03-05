@@ -3,20 +3,20 @@ title: Beispiele für die Transformation von Integeransprüchen für benutzerdef
 titleSuffix: Azure AD B2C
 description: Hier finden Sie Beispiele für die Transformation von Integeransprüchen für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948862"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187677"
 ---
 # <a name="integer-claims-transformations"></a>Transformationen von Integer-Ansprüchen
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von Integer-Anspruchstrans
 
 Konvertiert einen long-Datentyp in einen string-Datentyp.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | Der Anspruchstyp, der in eine Zeichenfolge konvertiert werden soll. |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |

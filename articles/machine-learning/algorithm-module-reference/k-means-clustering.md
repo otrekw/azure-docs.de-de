@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152209"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921163"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
@@ -107,11 +107,11 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, fügen Sie ein mit Tags versehenes Dataset hinzu, und trainieren Sie das Modell mit dem Modul [Train Clustering Model](train-clustering-model.md) (Trainieren des Clusteringsmodells).  
   
-### <a name="results"></a>Ergebnisse
+## <a name="results"></a>Ergebnisse
 
 Nach Abschluss der Konfiguration und des Trainings des Modells haben Sie ein Modell, mit dem Sie Ergebnisse generieren können. Es gibt jedoch mehrere Möglichkeiten, das Modell zu trainieren, die Ergebnisse anzuzeigen und sie zu nutzen: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Erfassen einer Momentaufnahme des Modells in Ihrem Arbeitsbereich
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Erfassen einer Momentaufnahme des Modells in Ihrem Arbeitsbereich
 
 Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
@@ -121,7 +121,7 @@ Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
 Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die in der Pipeline verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Anzeigen des Ergebnisdatasets des Clusterings 
+### <a name="see-the-clustering-result-dataset"></a>Anzeigen des Ergebnisdatasets des Clusterings 
 
 Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
@@ -142,3 +142,7 @@ Sie können dieses Problem auf verschiedene Weise vermeiden:
 -   Erstellen Sie mehrere Modelle, wobei Sie die Metrik variieren oder mehr Iterationen vornehmen.  
   
 Im Allgemeinen ist es bei Clusteringmodellen möglich, dass eine bestimmte Konfiguration zu einer lokal optimierten Menge von Clustern führt. Mit anderen Worten, die vom Modell zurückgegebene Menge von Clustern passt nur zu den aktuellen Datenpunkten und ist nicht für andere Daten generalisierbar. Wenn Sie eine andere Anfangskonfiguration verwendet haben, kann die k-Means-Methode eine andere (bessere) Konfiguration finden. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

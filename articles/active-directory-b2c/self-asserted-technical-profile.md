@@ -3,20 +3,20 @@ title: Definieren eines selbstbestätigten technischen Profils in einer benutzer
 titleSuffix: Azure AD B2C
 description: Definieren Sie ein selbstbestätigtes technisches Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425594"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183804"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -198,7 +198,7 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 | setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showSignupLink <sup>2</sup>| Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.| 
+| setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.|
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 Hinweise:

@@ -1,18 +1,17 @@
 ---
 title: Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich über Azure-Mandanten hinweg | Microsoft-Dokumentation
 description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor eines anderen Mandanten.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: e3b368f8a59d201f70bfad05125ed59b4b8551c5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669266"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Erfassen von Azure-Aktivitätsprotokollen für Azure Active Directory-Mandanten (Legacy) in Azure Monitor
 

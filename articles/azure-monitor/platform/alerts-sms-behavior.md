@@ -2,21 +2,21 @@
 title: SMS-Warnungsverhalten in Aktionsgruppen
 description: SMS-Nachrichtenformat und Antworten auf SMS-Nachrichten zum Kündigen des Abonnements, erneuten Abonnieren oder Anfordern von Hilfe.
 author: dkamstra
+ms.author: dukek
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346296"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665305"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-Warnungsverhalten in Aktionsgruppen
-## <a name="overview"></a>Übersicht ##
+
+## <a name="overview"></a>Übersicht 
 Mit Aktionsgruppen können Sie eine Aktionsliste konfigurieren. Diese Gruppen werden beim Definieren von Warnungen genutzt, um sicherzustellen, dass eine bestimmte Aktionsgruppe benachrichtigt wird, wenn die Warnung ausgelöst wird. Eine der unterstützten Aktionen ist SMS – SMS-Benachrichtigungen unterstützen die bidirektionale Kommunikation. Ein Benutzer kann auf eine SMS antworten:
 
 - **Abonnieren von Warnungen kündigen:** Ein Benutzer kann das Abonnieren aller SMS-Warnungen für alle Aktionsgruppen oder eine einzelne Aktionsgruppe kündigen.
@@ -42,7 +42,7 @@ Ein SMS-Empfänger, der als Teil einer Aktionsgruppe konfiguriert ist, erhält e
 >Wenn ein Benutzer das Abonnement aller SMS-Warnungen gekündigt hat, aber dann einer neuen Aktionsgruppe hinzugefügt wird, EMPFÄNGT er SMS-Warnungen für diese neue Aktionsgruppe, doch die Kündigung des Abonnements für alle vorherigen Aktionsgruppen bleibt bestehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Verschaffen Sie sich einen [Überblick über Aktivitätsprotokollwarnungen](alerts-overview.md), und erfahren Sie, wie Sie gewarnt werden können.  
+Verschaffen Sie sich einen [Übersicht über Aktivitätsprotokollwarnungen](alerts-overview.md), und erfahren Sie, wie Sie gewarnt werden können.  
 Erfahren Sie mehr über die [SMS-Rateneinschränkung](alerts-rate-limiting.md).  
-Erfahren Sie mehr über [Aktionsgruppen](../../azure-monitor/platform/action-groups.md).
+Weitere Informationen zu [Aktionsgruppen](../../azure-monitor/platform/action-groups.md)
 

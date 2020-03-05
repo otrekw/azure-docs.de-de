@@ -3,12 +3,12 @@ title: Verwalten von signierten Images
 description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und signierte Images gepusht und gepullt werden.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 0418b13c352dc3b81d34501e7e76be6c54615a83
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456457"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249924"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -99,7 +99,9 @@ Beispiel: Um sich die Rolle selbst zu erteilen, können Sie z.B. die folgenden B
 REGISTRY=myregistry
 USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
+```
 
+```azurecli
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
 ```
 

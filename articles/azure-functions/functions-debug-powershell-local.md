@@ -6,18 +6,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d15858e1fb535189891303a89b00021027f1e8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227039"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163759"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
 Mit Azure Functions können Sie Ihre Funktionen als PowerShell-Skripts entwickeln.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 Sie können Ihre PowerShell-Funktionen lokal debuggen, wie Sie es mit jedem PowerShell-Skript machen würden, indem Sie die folgenden Standardentwicklungstools verwenden:
 
@@ -108,7 +106,7 @@ PowerShell Core wird parallel zu Windows PowerShell installiert. Legen Sie Power
 
 1. Drücken Sie F1, um die verfügbaren Befehle anzuzeigen, und suchen Sie dann `Session`.
 
-1. Wählen Sie die Option für **PowerShell: Sitzungsmenü anzeigen** aus.
+1. Wählen Sie die Option für **PowerShell: Menü „Sitzung“ anzeigen**.
 
 1. Wenn die **aktuelle Sitzung** nicht **PowerShell Core 6** entspricht, wählen Sie **Wechseln zu: PowerShell Core 6** aus.
 

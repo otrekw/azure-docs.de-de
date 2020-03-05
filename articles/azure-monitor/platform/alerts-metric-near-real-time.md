@@ -2,18 +2,17 @@
 title: Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 description: Referenz zu Supportmetriken und -protokollen für Metrikwarnungen in Azure Monitor
 author: harelbr
+ms.author: harelbr
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 14dc7b33a82b490f005d9684e4c9cb76bd947a7c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9585e74170d21ad899224462b6e41e7e9bb75727
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364491"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664813"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 

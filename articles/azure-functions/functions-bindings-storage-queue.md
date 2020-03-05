@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482257"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164592"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Queue Storage-Trigger und -Bindungen für Azure Functions – Übersicht
 
@@ -20,7 +20,7 @@ Azure Functions kann ausgeführt werden, wenn neue Azure Queue Storage-Nachricht
 | Aktion | type |
 |---------|---------|
 | Ausführen einer Funktion, wenn sich Queue Storage-Daten ändern | [Trigger](./functions-bindings-storage-queue-trigger.md) |
-| Schreiben von Queue Storage-Nachrichten |[Ausgabebindung](./functions-bindings-storage-blob-output.md) |
+| Schreiben von Queue Storage-Nachrichten |[Ausgabebindung](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Hinzufügen zu Ihrer Funktions-App
 
@@ -49,4 +49,4 @@ Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ausführen einer Funktion, wenn sich Queue Storage-Daten ändern (Trigger)](./functions-bindings-storage-queue-trigger.md)
-- [Schreiben von Queue Storage-Nachrichten (Ausgabebindung)](./functions-bindings-storage-blob-output.md)
+- [Schreiben von Queue Storage-Nachrichten (Ausgabebindung)](./functions-bindings-storage-queue-output.md)

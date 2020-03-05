@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492443"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273564"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
@@ -369,9 +369,6 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 |`To`|`string`|Die Zieladresse.|
 |`Label`|`string`|Die anwendungsspezifische Bezeichnung.|
 |`CorrelationId`|`string`|Die Korrelations-ID.|
-
-> [!NOTE]
-> Zurzeit ist der Service Bus-Trigger, der mit sitzungsabhängigen Warteschlangen und Abonnements funktioniert, in der Vorschauphase. Verfolgen Sie [dieses Element](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458), um alle weiteren Updates zu dieser Funktion zu erhalten. 
 
 [Codebeispiele](#example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
 

@@ -8,20 +8,20 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933625"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270674"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Veraltete vordefinierte Entitäten in einer LUIS-App
 Die folgenden vordefinierten Entitäten sind veraltet und können neuen LUIS-Apps nicht hinzugefügt werden.
 
-* **datetime:** Vorhandene LUIS-Apps, die **datetime** verwenden, sollten zu **datetimeV2** migriert werden, auch wenn die datetime-Entität in bereits vorhandenen Apps weiterhin funktioniert.
+* **Datetime**: Vorhandene LUIS-Apps, die **datetime** verwenden, sollten zu **datetimeV2** migriert werden, auch wenn die datetime-Entität in bereits vorhandenen Apps weiterhin funktioniert.
 * **geography:** Vorhandene LUIS-Apps, die **geography** verwenden, werden bis Dezember 2018 unterstützt.
 * **encyclopedia:** Vorhandene LUIS-Apps, die **encyclopedia** verwenden, werden bis Dezember 2018 unterstützt.
 
@@ -43,7 +43,7 @@ Vordefinierte Entität   |   Beispieläußerung   |   JSON
 **encyclopedia** ist nur im Gebietsschema `en-US` verfügbar.
 
 #### <a name="encyclopedia-subtypes"></a>Untergeordnete encyclopedia-Typen
-Die integrierte Entität „encyclopedia“ enthält mehr als 100 Untertypen in der folgenden Tabelle: Darüber hinaus werden encyclopedia-Entitäten häufig mehrere Typen zugeordnet. Die Abfrage „Ronald Reagan“ ergibt z.B. Folgendes: 
+Die integrierte Entität „encyclopedia“ enthält mehr als 100 Untertypen in der folgenden Tabelle: Darüber hinaus werden encyclopedia-Entitäten häufig mehrere Typen zugeordnet. Die Abfrage „Ronald Reagan“ ergibt z.B. Folgendes:
 
 ```json
 {
@@ -163,5 +163,5 @@ Vordefinierte Entität   |   Vordefinierte Entität (untergeordnete Typen)   |  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md). 
+Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md).
 

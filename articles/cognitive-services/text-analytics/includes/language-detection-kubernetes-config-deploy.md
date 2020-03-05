@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: c39df1e6af292d3774c6cba62663454bd2d8ad28
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: addb044d82429a4471e7ecd302351dd7b7eada84
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383430"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262636"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Bereitstellen des Sprachenerkennungscontainers für einen AKS-Cluster
 
@@ -32,7 +32,7 @@ ms.locfileid: "74383430"
 
     Nachdem dieser Befehl ausgeführt wurde, wird eine Meldung ähnlich der folgenden ausgegeben:
 
-    ```console
+    ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "74383430"
 
 1. Öffnen Sie den Text-Editor Ihrer Wahl. In diesem Beispiel wird Visual Studio Code verwendet.
 
-    ```azurecli
+    ```console
     code .
     ```
 
@@ -103,7 +103,7 @@ ms.locfileid: "74383430"
 
     Nachdem der Befehl die Bereitstellungskonfiguration erfolgreich angewendet hat, wird eine Meldung ähnlich der folgenden Ausgabe angezeigt:
 
-    ```console
+    ```output
     deployment.apps "language" created
     service "language" created
     ```
@@ -115,7 +115,7 @@ ms.locfileid: "74383430"
 
     Die Ausgabe für den Ausführungsstatus des Pods:
 
-    ```console
+    ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
@@ -128,7 +128,7 @@ ms.locfileid: "74383430"
 
     Die Ausgabe für den Ausführungsstatus des *language*-Diensts im Pod:
 
-    ```console
+    ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
     kubernetes   ClusterIP      10.0.0.1      <none>           443/TCP          2m
     language     LoadBalancer   10.0.100.64   168.61.156.180   5000:31234/TCP   2m

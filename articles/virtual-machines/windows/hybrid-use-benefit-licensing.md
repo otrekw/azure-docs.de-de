@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461157"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911785"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-> [!Important]
-> Jede Lizenz für zwei Prozessoren oder jeder Satz an Lizenzen für je 16 Kerne kann für zwei Instanzen mit bis zu acht Kernen oder für eine Instanz mit bis zu 16 Kernen eingesetzt werden. Der Azure-Hybridvorteil für Standard Edition-Lizenzen kann nur einmalig entweder lokal oder in Azure verwendet werden. Mit der Datacenter Edition ist die gleichzeitige Nutzung sowohl lokal als auch in Azure möglich.
->
+Jede Lizenz für zwei Prozessoren oder jeder Satz an Lizenzen für je 16 Kerne kann für zwei Instanzen mit bis zu acht Kernen oder für eine Instanz mit bis zu 16 Kernen eingesetzt werden. Der Azure-Hybridvorteil für Standard Edition-Lizenzen kann nur einmalig entweder lokal oder in Azure verwendet werden. Mit der Datacenter Edition ist die gleichzeitige Nutzung sowohl lokal als auch in Azure möglich.
 
-> [!Important]
-> Die Nutzung des Azure-Hybridvorteils für Windows Server mit virtuellen Computern mit dem Windows Server-Betriebssystem wird jetzt in allen Regionen unterstützt. Dies gilt auch für virtuelle Computer mit zusätzlicher Software, z.B. SQL Server oder Marketplace-Software von Drittanbietern. 
->
+Die Nutzung des Azure-Hybridvorteils für Windows Server mit virtuellen Computern mit dem Windows Server-Betriebssystem wird jetzt in allen Regionen unterstützt. Dies gilt auch für virtuelle Computer mit zusätzlicher Software, z.B. SQL Server oder Marketplace-Software von Drittanbietern. 
 
-> [!NOTE]
-> Bei klassischen VMs wird die Bereitstellung von neuen VMs nur über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
->
 
+## <a name="classic-vms"></a>Klassische virtuelle Computer
+
+Bei klassischen VMs wird die Bereitstellung von neuen VMs nur über lokale benutzerdefinierte Images unterstützt. Um die in diesem Artikel genannten unterstützten Funktionen nutzen zu können, müssen Sie klassische VMs zunächst zum Resource Manager-Modell migrieren.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Möglichkeiten zur Nutzung des Azure-Hybridvorteils für Windows Server

@@ -3,17 +3,16 @@ title: Azure Application Insights – Protokollbasierte Metriken | Microsoft-Dok
 description: Dieser Artikel listet die Metriken von Azure Application Insights mit unterstützten Aggregationen und Dimensionen auf. Zu den Details der protokollbasierten Metriken gehören die zugrunde liegenden Kusto-Abfrageanweisungen.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664914"
 ---
 # <a name="application-insights-log-based-metrics"></a>Protokollbasierte Metriken von Application Insights
 
@@ -50,7 +49,7 @@ Die Metrik *Verfügbarkeit* zeigt den Prozentsatz der Webtestläufe, bei denen k
 
 |Unit of measure|Unterstützte Aggregationen|Unterstützte Dimensionen|
 |---|---|---|---|---|---|
-|Prozentsatz|Durchschnitt|Ausführungsort, Testname|
+|Prozentwert|Average|Ausführungsort, Testname|
 
 ```Kusto
 availabilityResults 
@@ -80,7 +79,7 @@ Die Metrik *Verfügbarkeitstests* spiegelt die Anzahl der von Azure Monitor ausg
 
 |Unit of measure|Unterstützte Aggregationen|Unterstützte Dimensionen|
 |---|---|---|---|---|---|
-|Count|Count|Ausführungsort, Testname, Testergebnis|
+|Anzahl|Anzahl|Ausführungsort, Testname, Testergebnis|
 
 ```Kusto
 availabilityResults
@@ -185,7 +184,7 @@ Diese Metrik spiegelt die Anzahl der ausgelösten Ausnahmen von Ihrem Anwendungs
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
-|Count|Count|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 exceptions
@@ -200,7 +199,7 @@ Die Anzahl fehlerhafter Abhängigkeitsaufrufe.
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
-|Count|Count|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Keine|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 dependencies
@@ -215,7 +214,7 @@ Jedes Mal, wenn Sie eine Ausnahme bei Application Insights protokollieren, erfol
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
-|Count|Count|Cloudrollenname, Cloudrolleninstanz, Gerätetyp|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Cloudrollenname, Cloudrolleninstanz, Gerätetyp|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 exceptions
@@ -229,7 +228,7 @@ Die Anzahl der verfolgten Serveranforderungen, die als *fehlgeschlagen* markiert
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
-|Count|Count|Cloudrolleninstanz, Cloudrollenname, Echter oder synthetischer Datenverkehr, Anforderungsleistung, Antwortcode|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Cloudrolleninstanz, Cloudrollenname, Echter oder synthetischer Datenverkehr, Anforderungsleistung, Antwortcode|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 requests
@@ -244,7 +243,7 @@ Diese Metrik zeigt die Anzahl der Serverausnahmen.
 
 |Unit of measure|Unterstützte Aggregationen|Vorab aggregierte Dimensionen|Notizen|
 |---|---|---|---|
-|Count|Count|Cloudrollenname, Cloudrolleninstanz|Protokollbasierte Version verwendet **Sum**-Aggregation|
+|Anzahl|Anzahl|Cloudrollenname, Cloudrolleninstanz|Protokollbasierte Version verwendet **Sum**-Aggregation|
 
 ```Kusto
 exceptions
@@ -313,7 +312,7 @@ Die Metrik zeigt, wie viel der gesamten Prozessorleistung von dem Prozess genutz
 
 |Unit of measure|Unterstützte Aggregationen|Unterstützte Dimensionen|
 |---|---|---|
-|Prozentsatz|Durchschnitt, Minimum, Maximum|Cloudrolleninstanz
+|Prozentwert|Durchschnitt, Minimum, Maximum|Cloudrolleninstanz
 
 ```Kusto
 performanceCounters
@@ -359,7 +358,7 @@ CPU-Auslastung durch *alle* Prozesse, die auf der überwachten Serverinstanz aus
 
 |Unit of measure|Unterstützte Aggregationen|Unterstützte Dimensionen|
 |---|---|---|
-|Prozentsatz|Durchschnitt, Minimum, Maximum|Cloudrolleninstanz
+|Prozentwert|Durchschnitt, Minimum, Maximum|Cloudrolleninstanz
 
 >[!NOTE]
 > Die Prozessorzeitmetrik ist für die in Azure App Services gehosteten Anwendungen nicht verfügbar. Verwenden Sie die [Prozess-CPU](#process-cpu-performancecountersprocesscpupercentage)-Metrik, um die CPU-Auslastung der in App Services gehosteten Webanwendungen zu verfolgen.

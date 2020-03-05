@@ -3,17 +3,16 @@ title: Erstellen einer Diagnoseeinstellung zum Erfassen von Protokollen und Metr
 description: Erstellen Sie Diagnoseeinstellungen, um Protokolle der Azure-Plattform an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs weiterzuleiten.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751087"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672411"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedene Ziele zu senden.
@@ -35,7 +34,7 @@ Mit einer einzelnen Diagnoseeinstellung kann maximal eines der Ziele definiert w
 ## <a name="destinations"></a>Destinations 
 Plattformprotokolle können an die Ziele in der folgenden Tabelle gesendet werden. Die Konfiguration für jedes Ziel wird mithilfe desselben Verfahrens zum Erstellen von Diagnoseeinstellungen vorgenommen, das in diesem Artikel beschrieben ist. Folgen Sie den einzelnen Links in der folgenden Tabelle, um ausführliche Informationen zum Senden von Daten an das jeweilige Ziel zu erhalten.
 
-| Destination | Beschreibung |
+| Destination | BESCHREIBUNG |
 |:---|:---|
 | [Log Analytics-Arbeitsbereich](resource-logs-collect-workspace.md) | Das Erfassen von Protokollen in einem Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren sowie andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. |
 | [Event Hubs](resource-logs-stream-event-hubs.md) | Das Senden von Protokollen an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z.B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. |
@@ -69,7 +68,7 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
 3. Wenn noch kein Name für die Einstellung vorhanden ist, geben Sie ihr einen Namen.
 4. Aktivieren Sie das Kontrollkästchen für jedes Ziel, um die Protokolle zu senden. Klicken Sie auf **Konfigurieren**, um die jeweiligen Einstellungen anzugeben, die in der folgenden Tabelle beschrieben sind.
 
-    | Einstellung | Beschreibung |
+    | Einstellung | BESCHREIBUNG |
     |:---|:---|
     | Log Analytics-Arbeitsbereich | Name des Arbeitsbereichs. |
     | Speicherkonto | Name des Speicherkontos. |

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773851"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587582"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -36,7 +36,7 @@ Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests fü
 
 Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten.
 * Versuchen Sie es mit einem **computeoptimierten** Cluster, wenn die Verarbeitungsrate höher als die Eingaberate sein soll.
-* Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten.
+* Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit höher.
 
 ![Neue Integration Runtime](media/data-flow/ir-new.png "Neue Integration Runtime")
 
@@ -87,17 +87,24 @@ Fügen Sie in der Pipeline eine [Aktivität „Gespeicherte Prozedur“](transfo
 
 Planen Sie die Anpassung der Größe Ihrer Quelle und Senke in Azure SQL-Datenbank und Azure SQL Data Warehouse vor der Pipelineausführung, um den Durchsatz zu erhöhen und die Drosselung durch Azure beim Erreichen der DTU-Grenzwerte zu minimieren. Stellen Sie nach Abschluss der Pipelineausführung die Größe Ihrer Datenbanken für die normale Ausführung wieder her.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Nur Azure SQL Data Warehouse] Verwenden eines Stagingprozesses zum Laden von Daten per Massenvorgang über PolyBase
+* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer SQL-Datenbank-Quelltabelle mit 887.000 Zeilen und 74 Spalten in eine SQL-Datenbank-Tabelle mit einer einzelnen abgeleiteten Spalte etwa drei Minuten.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>Verwenden von Staging zum Massenladen von Daten über Polybase [nur Azure Synapse SQL-DW]
 
 Um zeilenweise Einfügungen in Data Warehouse zu vermeiden, aktivieren Sie unter den Senkeneinstellungen die Option **Staging aktivieren**, damit ADF [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) verwenden kann. PolyBase ermöglicht ADF das Massenladen der Daten.
 * Wenn Sie die Datenflussaktivität aus einer Pipeline ausführen, müssen Sie einen Blob- oder ADLS Gen2-Speicherort auswählen, um die Daten während des Massenladevorgangs bereitzustellen.
 
+* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer Dateiquelle mit einer Datei (421 MB) mit 74 Spalten in eine Synapse-Tabelle und eine einzelne abgeleitete Spalte etwa vier Minuten.
+
 ## <a name="optimizing-for-files"></a>Optimieren für Dateien
 
-Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen.
+Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen. Es empfiehlt sich, zunächst dateibasierte Senken zu testen und dabei die Standardpartitionierung und -optimierungen beizubehalten.
+
 * Bei kleineren Dateien kann manchmal das Auswählen von *Einzelne Partition* besser und schneller sein, als Spark anzuweisen, die kleinen Dateien zu partitionieren.
 * Wenn Sie nicht über genügend Informationen zu Ihren Quelldaten verfügen, wählen Sie die *Roundrobin*-Partitionierung aus, und legen Sie die Anzahl der Partitionen fest.
 * Wenn die Daten Spalten aufweisen, die gute Hashschlüssel darstellen können, wählen Sie *Hashpartitionierung* aus.
+
+* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer Dateiquelle mit einer Dateisenke einer Datei (421 MB) mit 74 Spalten in eine einzelne abgeleitete Spalte etwa zwei Minuten.
 
 Beim Debuggen in der Datenvorschau sowie beim Debuggen der Pipeline gelten das Limit und die Stichprobengrößen für dateibasierte Quelldatasets nur für die Anzahl zurückgegebener Zeilen (nicht für die Anzahl gelesener Zeilen). Dies kann sich auf die Leistung der Debugausführungen auswirken und ggf. dazu führen, dass der Ablauf nicht erfolgreich ist.
 * Debugcluster sind standardmäßig kleine Cluster mit einem einzelnen Knoten, und es wird empfohlen, kleine Beispieldateien zum Debuggen zu verwenden. Navigieren Sie zu den Debugeinstellungen, und verweisen Sie unter Verwendung einer temporären Datei auf eine kleine Teilmenge Ihrer Daten.

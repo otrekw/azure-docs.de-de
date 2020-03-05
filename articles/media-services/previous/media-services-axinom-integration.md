@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974613"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197163"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74974613"
 ## <a name="overview"></a>Übersicht
 Azure Media Services (AMS) bietet nun dynamischen Google Widevine-Schutz (im [Blog von Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) finden Sie Einzelheiten). Darüber hinaus bietet Azure Media Player (AMP) nun auch Unterstützung für Widevine (Details finden Sie im [AMP-Dokument](https://amp.azure.net/libs/amp/latest/docs/) ). Dies ist eine wichtige Neuerung für das Streamen von durch CENC geschützte Inhalte mit Multi-Native-DRM (PlayReady und Widevine) in modernen Browsern, die mit MSE und EME ausgestattet sind.
 
-Ab Media Services .NET SDK, Version 3.5.2, ermöglicht Media Services Ihnen die Konfiguration der Widevine-Lizenzvorlage und das Abrufen von Widevine-Lizenzen. Sie können sich auch von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Ab Media Services .NET SDK, Version 3.5.2, ermöglicht Media Services Ihnen die Konfiguration der Widevine-Lizenzvorlage und das Abrufen von Widevine-Lizenzen. Sie können sich auch von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 In diesem Artikel wird beschrieben, wie von Axinom verwaltete Lizenzserver integriert und getestet werden. Insbesondere wird Folgendes behandelt:  
 
@@ -197,7 +197,7 @@ Die folgenden Parameter sind in der Minilösung erforderlich, die den Widevine-L
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

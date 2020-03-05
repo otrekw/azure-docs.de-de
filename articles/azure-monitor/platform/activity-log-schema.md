@@ -3,17 +3,16 @@ title: Ereignisschema des Azure-Aktivitätsprotokolls
 description: Beschreibt das Ereignisschema für jede Kategorie im Azure-Aktivitätsprotokoll.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749468"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668841"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema für jede Kategorie. 
@@ -112,7 +111,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 ```
 
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | authorization |Blob mit RBAC-Eigenschaften des Ereignisses. Enthält normalerweise die Eigenschaften „action“, „role“ und „scope“. |
 | caller |E-Mail-Adresse des Benutzers, der den Vorgang, UPN-Anspruch oder SPN-Anspruch auf Grundlage der Verfügbarkeit ausgeführt hat. |
@@ -259,7 +258,7 @@ Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit de
 ```
 
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | channels | Immer „Admin, Operation“ |
 | correlationId | Eine GUID im Zeichenfolgenformat. |
@@ -352,7 +351,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 ```
 
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | caller | Immer „Microsoft.Insights/alertRules“ |
 | channels | Immer „Admin, Operation“ |
@@ -378,7 +377,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 Das Feld „properties“ enthält abhängig von der Quelle des Warnungsereignisses unterschiedliche Werte. Zwei allgemeine Ereignisanbieter für Warnungen sind Aktivitätsprotokollwarnungen und Metrikwarnungen.
 
 #### <a name="properties-for-activity-log-alerts"></a>Eigenschaften für Aktivitätsprotokollwarnungen
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | properties.subscriptionId | Die Abonnement-ID aus dem Aktivitätsprotokollereignis, das verursacht hat, dass diese Warnungsregel des Aktivitätsprotokolls aktiviert wurde. |
 | properties.eventDataId | Die Ereignisdaten-ID aus dem Aktivitätsprotokollereignis, das verursacht hat, dass diese Warnungsregel des Aktivitätsprotokolls aktiviert wurde. |
@@ -389,7 +388,7 @@ Das Feld „properties“ enthält abhängig von der Quelle des Warnungsereignis
 | properties.status | Der Status aus dem Aktivitätsprotokollereignis, das verursacht hat, dass diese Warnungsregel des Aktivitätsprotokolls aktiviert wurde.|
 
 #### <a name="properties-for-metric-alerts"></a>Eigenschaften für Metrikwarnungen
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | properties.RuleUri | Ressourcen-ID der Metrikwarnungsregel selbst. |
 | properties.RuleName | Der Name der Metrikwarnungsregel. |
@@ -462,7 +461,7 @@ Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engi
 ```
 
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | caller | Immer „Microsoft.Insights/autoscaleSettings“ |
 | channels | Immer „Admin, Operation“ |
@@ -552,7 +551,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 ```
 
 ### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | channels | Immer „Vorgang“ |
 | correlationId | Eine GUID im Zeichenfolgenformat. |
@@ -743,7 +742,7 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 
 ### <a name="policy-event-property-descriptions"></a>Beschreibungen der Richtlinienereigniseigenschaften
 
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | authorization | Array von RBAC-Eigenschaften des Ereignisses. Bei neuen Ressourcen ist dies die Aktion und der Bereich der Anforderung, die eine Auswertung ausgelöst hat. Bei vorhandenen Ressourcen lautet die Aktion „Microsoft.Resources/checkPolicyCompliance/read“. |
 | caller | Bei neuen Ressourcen ist dies die Identität, die eine Bereitstellung initiiert hat. Bei vorhandenen Ressourcen ist dies die GUID des Microsoft Azure Policy Insights-Ressourcenanbieters. |

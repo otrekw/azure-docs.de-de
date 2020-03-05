@@ -1,18 +1,17 @@
 ---
 title: app()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einer bestimmten Application Insights-App in derselben Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933078"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670254"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 
@@ -29,7 +28,7 @@ Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer 
 
 - *Bezeichner*: Identifiziert die Anwendung mit einem der Formate in der folgenden Tabelle.
 
-| Bezeichner | BESCHREIBUNG | Beispiel
+| Bezeichner | Beschreibung | Beispiel
 |:---|:---|:---|
 | Ressourcenname | Für Menschen lesbarer Name der Anwendung (auch als „Komponentenname“ bezeichnet) | app("fabrikamapp") |
 | Qualifizierter Name | Vollständiger Name der Anwendung in der Form: „Abonnementname/Ressourcengruppe/Komponentenname“ | app('AI-Prototype/Fabrikam/fabrikamapp') |

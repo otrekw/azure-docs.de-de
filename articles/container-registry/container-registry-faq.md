@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708307"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252066"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -114,13 +114,13 @@ ACR unterstützt die HTTP-API V2 für Docker-Registrierungen. Der Zugriff auf di
 
 Bash:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 PowerShell:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Sie sollten sich im Azure-Portal davon überzeugen können, dass die Speichernutzung gestiegen ist. Sie können die Nutzung auch über die CLI abfragen.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Löschen Sie das Image mithilfe der Azure CLI oder des Portals, und überprüfen Sie nach wenigen Minuten die aktualisierte Nutzung.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -216,12 +216,12 @@ ACR unterstützt [benutzerdefinierte Rollen](container-registry-roles.md), die u
   Anschließend können Sie die Rolle `AcrPull` oder `AcrPush` einem Benutzer zuweisen (im folgenden Beispiel wird `AcrPull` verwendet):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Oder weisen Sie die Rolle einem Dienstprinzipal zu, der anhand seiner Anwendungs-ID identifiziert wird:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ Die zugewiesene Person kann sich authentifizieren und auf Images in der Registri
   az acr repository list -n myRegistry
   ```
 
- So rufen Sie ein Image per Pull ab
-    
-  ```azurecli
+* So rufen Sie ein Image per Pull ab
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ Informationen zur Behebung von Problemen mit der allgemeinen Umgebung und der Re
  - Wenn `docker pull` ständig ausfällt, kann dies an einem Problem mit dem Docker-Daemon liegen. Das Problem kann in der Regel durch einen Neustart des Docker-Daemons behoben werden. 
  - Wenn dieses Problem nach dem Neustart des Docker-Daemons weiterhin besteht, liegt ggf. ein Problem mit der Netzwerkverbindung des Computers vor. Um zu überprüfen, ob das allgemeine Netzwerk auf dem Computer funktionsfähig ist, führen Sie den folgenden Befehl zum Testen der Endpunktkonnektivität aus. Die Mindestversion von `az acr`, die diesen Befehl für die Konnektivitätsprüfung enthält, ist 2.2.9. Aktualisieren Sie Ihre Azure-Befehlszeilenschnittstelle, falls Sie eine ältere Version verwenden.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - Sie sollten für alle Docker-Clientvorgänge stets einen Wiederholungsmechanismus einrichten.
 
 ### <a name="docker-pull-is-slow"></a>Docker-Pullvorgang ist langsam

@@ -1,18 +1,17 @@
 ---
 title: HTTP-Datensammler-API von Azure Monitor | Microsoft-Dokumentation
 description: Mit der HTTP-Datensammler-API von Azure Monitor können Sie einem Log Analytics-Arbeitsbereich über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932588"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666751"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Azure Monitor autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -36,11 +35,11 @@ Alle Daten im Log Analytics-Arbeitsbereich werden als Datensätze mit einem best
 Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung mit den zu sendenden Daten in JavaScript Object Notation (JSON).  Die nächsten drei Tabellen enthalten die Attribute, die für die einzelnen Anforderungen erforderlich sind. Jedes Attribut wird weiter unten in diesem Artikel ausführlicher beschrieben.
 
 ### <a name="request-uri"></a>Anforderungs-URI
-| Attribut | Eigenschaft |
+| attribute | Eigenschaft |
 |:--- |:--- |
 | Methode |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| Content-Typ |Anwendung/json |
+| Inhaltstyp |Anwendung/json |
 
 ### <a name="request-uri-parameters"></a>URI-Parameter der Anforderung
 | Parameter | BESCHREIBUNG |
@@ -52,7 +51,7 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 ### <a name="request-headers"></a>Anforderungsheader
 | Header | BESCHREIBUNG |
 |:--- |:--- |
-| Autorisierung |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
+| Authorization |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
 | Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Darf nur Buchstaben, Ziffern und Unterstriche (_) sowie höchstens 100 Zeichen enthalten. |
 | x-ms-date |Das Datum, zu dem die Anforderung verarbeitet wurde, im RFC 1123-Format |
 | x-ms-AzureResourceId | Ressourcen-ID der Azure-Ressource, der die Daten zugeordnet werden sollen. Dadurch wird die Eigenschaft [_ResourceId](log-standard-properties.md#_resourceid) ausgefüllt, und es werden die Daten zugelassen, die in [resource-context](design-logs-deployment.md#access-mode)-Abfragen einbezogen werden sollen. Wenn dieses Feld nicht angegeben wird, werden die Daten nicht in „resource-context“-Abfragen einbezogen. |
@@ -135,7 +134,7 @@ Um den Datentyp einer Eigenschaft festzulegen, fügt Azure Monitor ein Suffix an
 
 | Datentyp der Eigenschaft | Suffix |
 |:--- |:--- |
-| Zeichenfolge |_s |
+| String |_s |
 | Boolean |_b |
 | Double |_d |
 | Datum/Uhrzeit |_t |
@@ -199,7 +198,7 @@ Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst z
 | 500 |Interner Serverfehler |UnspecifiedError |Auf dem Server wurde ein interner Fehler festgestellt. Versuchen Sie die Anforderung erneut. |
 | 503 |Dienst nicht verfügbar |ServiceUnavailable |Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
 
-## <a name="query-data"></a>Abfragen von Daten
+## <a name="query-data"></a>Daten abfragen
 Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Azure Monitor übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht, und dem Suffix **_CL**. Wenn Sie z.B. **MyCustomLog** verwendet haben, werden alle Datensätze mit `MyCustomLog_CL` zurückgegeben.
 
 ## <a name="sample-requests"></a>Beispielanforderungen
@@ -468,7 +467,7 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="alternatives-and-considerations"></a>Alternativen und Überlegungen
 Während die Datensammler-API die meisten Ihrer Anforderungen an die Erfassung von Freiformdaten in Azure-Protokollen erfüllen sollte, gibt es Fälle, in denen eine Alternative erforderlich sein könnte, um einige der Einschränkungen der API zu umgehen. Es gibt folgende Optionen, einschließlich der wichtigsten Überlegungen:
 
-| Alternative | BESCHREIBUNG | Am besten geeignet für |
+| Alternative | Beschreibung | Am besten geeignet für |
 |---|---|---|
 | [Benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Native SDK-basierte Erfassung in Application Insights | Application Insights, das in der Regel über ein SDK in Ihrer Anwendung instrumentiert wird, bietet die Möglichkeit, benutzerdefinierte Daten über benutzerdefinierte Ereignisse zu senden. | <ul><li> Daten, die innerhalb Ihrer Anwendung erzeugt, aber nicht vom SDK über einen der Standarddatentypen (Anforderungen, Abhängigkeiten, Ausnahmen usw.) abgeholt werden.</li><li> Daten, die am häufigsten mit anderen Anwendungsdaten in Application Insights korreliert werden </li></ul> |
 | Datensammler-API in Azure Monitor-Protokollen | Die Datensammler-API in Azure Monitor-Protokollen ist eine völlig offene Methode zur Datenerfassung. Alle in einem JSON-Objekt formatierten Daten können hier gesendet werden. Nachdem sie gesendet wurden, werden sie verarbeitet und stehen in Protokollen zur Verfügung, um mit anderen Daten in Protokollen oder mit anderen Application Insights-Daten korreliert zu werden. <br/><br/> Es ist ziemlich einfach, die Daten als Dateien auf einen Azure Blob-Blob hochzuladen, von wo aus diese Dateien verarbeitet und an Log Analytics hochgeladen werden. Eine Beispielimplementierung einer derartigen Pipeline finden Sie in [diesem](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) Artikel. | <ul><li> Daten, die nicht notwendigerweise innerhalb einer Anwendung generiert werden, die innerhalb von Application Insights instrumentiert wird.</li><li> Beispiele sind Lookup- und Faktentabellen, Referenzdaten, vorab aggregierte Statistiken usw. </li><li> Vorgesehen für Daten, auf die mit anderen Azure Monitor-Daten über Querverweise verwiesen wird (Application Insights, andere Protokolldatentypen, Security Center, Azure Monitor für Container/VMs usw.). </li></ul> |

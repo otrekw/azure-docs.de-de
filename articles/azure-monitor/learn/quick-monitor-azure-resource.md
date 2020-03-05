@@ -1,18 +1,17 @@
 ---
 title: Überwachen einer Azure-Ressource mit Azure Monitor
 description: Hier erfahren Sie, wie Sie Daten für eine Azure-Ressource in Azure Monitor erfassen und analysieren.
-ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863977"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661863"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Schnellstart: Überwachen einer Azure-Ressource mit Azure Monitor
 [Azure Monitor](../overview.md) beginnt in dem Moment, in dem Azure-Ressourcen erstellt werden, mit dem Sammeln von Daten aus diesen Ressourcen. Diese Schnellstartanleitung bietet eine kurze Übersicht darüber, welche Daten für eine Ressource automatisch gesammelt werden, und erläutert, wie Sie die Daten für eine bestimmte Ressource im Azure-Portal anzeigen können. Später können Sie Einstellungen für die Sammlung weiterer Daten konfigurieren und zum Azure Monitor-Menü wechseln, um mit denselben Tools auf Daten zuzugreifen, die für alle Ressourcen in Ihrem Abonnement gesammelt wurden.

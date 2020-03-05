@@ -1,18 +1,15 @@
 ---
 title: Aktionsregeln für Azure Monitor-Warnungen
 description: In diesem Artikel wird erläutert, was Aktionsregeln in Azure Monitor sind und wie sie konfiguriert und verwaltet werden können.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767686"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668467"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -71,7 +68,7 @@ Die folgenden Filter sind verfügbar:
 * **Ressourcentyp**:  Ein Filter, der auf einem bestimmten Ressourcentyp basiert. Dieser Filter bietet ebenfalls eine Mehrfachauswahl. **Ressourcentyp = „Virtual Machines“** bedeutet, dass die Aktionsregel für alle virtuellen Computer gilt.
 * **Warnungsregel-ID**: Eine Option zum Filtern nach bestimmten Warnungsregeln anhand der Resource Manager-ID der Warnungsregel.
 * **Überwachungsbedingung**:  Ein Filter für Warnungsinstanzen mit der Überwachungsbedingung **Ausgelöst** oder **Aufgelöst**.
-* **Beschreibung:** Eine Regex-Entsprechung (regulärer Ausdruck), die eine Zeichenfolgenübereinstimmung mit der Beschreibung definiert, die als Teil der Warnungsregel definiert ist. **Description contains 'prod'** findet beispielsweise alle Warnungen, die die Zeichenfolge „prod“ in ihren Beschreibungen enthalten.
+* **Beschreibung**: Eine Regex-Entsprechung (regulärer Ausdruck), die eine Zeichenfolgenübereinstimmung mit der Beschreibung definiert, die als Teil der Warnungsregel definiert ist. **Description contains 'prod'** findet beispielsweise alle Warnungen, die die Zeichenfolge „prod“ in ihren Beschreibungen enthalten.
 * **Warnungskontext (Nutzlast)** : Eine Regex-Übereinstimmung, die eine Zeichenfolgenübereinstimmung mit den Warnungskontextfeldern der Nutzlast einer Warnung definiert. **Alert context (payload) contains 'Computer-01'** findet beispielsweise alle Warnungen, deren Nutzlasten die Zeichenfolge „Computer-01“ enthalten.
 
 Diese Filter werden in Verbindung miteinander angewendet. Wenn Sie beispielsweise **Ressourcentyp' = „Virtual Machines** und **Schweregrad' = Sev0** festlegen, wird nach allen **Sev0**-Warnungen ausschließlich auf Ihren VMs gefiltert. 
@@ -84,7 +81,7 @@ Konfigurieren Sie nun die Aktionsregel für die Unterdrückung von Warnungen ode
 
 #### <a name="suppression"></a>Unterdrückung
 
-Wenn Sie **Suppression** (Unterdrückung) auswählen, konfigurieren Sie den Zeitraum, für den Aktionen und Benachrichtigungen unterdrückt werden sollen. Wählen Sie eine der folgenden Optionen:
+Wenn Sie **Suppression** (Unterdrückung) auswählen, konfigurieren Sie den Zeitraum, für den Aktionen und Benachrichtigungen unterdrückt werden sollen. Wählen Sie eine der folgenden Optionen aus:
 * **From now (Always)** (Ab jetzt (Immer)): Alle Benachrichtigungen werden unbefristet unterdrückt.
 * **At a scheduled time** (Zur geplanten Zeit): Benachrichtigungen werden in einem bestimmten Zeitraum unterdrückt.
 * **With a recurrence** (Mit Wiederholung): Unterdrückt Benachrichtigungen bei einem wiederkehrenden täglichen, wöchentlichen oder monatlichen Zeitplan.
@@ -103,7 +100,7 @@ Fügen Sie bei Auswahl von **Aktionsgruppe** auf der Umschaltfläche eine vorhan
 ### <a name="action-rule-details"></a>Details der Aktionsregel
 
 Konfigurieren Sie schließlich folgende Details für die Aktionsregel:
-* NAME
+* Name
 * Ressourcengruppe, in der sie gespeichert wird
 * BESCHREIBUNG 
 

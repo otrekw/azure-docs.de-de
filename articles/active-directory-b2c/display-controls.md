@@ -3,20 +3,20 @@ title: Referenz zu Anzeigesteuerelementen
 titleSuffix: Azure AD B2C
 description: Referenz zu Anzeigesteuerelementen für Azure AD B2C Verwendung von Anzeigesteuerelementen zur Anpassung von Benutzerjourneys, die in benutzerdefinierten Richtlinien definiert sind
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136345"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188731"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
 
@@ -46,7 +46,7 @@ In der folgenden Abbildung wird eine selbstbestätigte Registrierungsseite mit z
 
 Das **DisplayControl**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für das Anzeigesteuerelement verwendet wird. Auf diesen kann [verwiesen](#referencing-display-controls) werden. |
 | UserInterfaceControlType | Ja | Der Typ des Anzeigesteuerelements. Derzeit wird [VerificationControl](display-control-verification.md) unterstützt. |

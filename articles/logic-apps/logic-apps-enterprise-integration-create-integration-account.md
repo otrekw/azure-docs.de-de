@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979433"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250995"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -35,7 +35,7 @@ In diesem Thema wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Integrationskonto erstellen
 
@@ -140,13 +140,13 @@ Um diese Änderung durchzuführen, können Sie das Azure-Portal verwenden, indem
 
 1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten höheren Tarif fest.
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
    Wenn Sie z.B. derzeit den Basic-Tarif nutzen, können Sie `skuName` auf `Standard` festlegen:
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
    ```
 
@@ -164,13 +164,13 @@ Verwenden Sie für diese Änderung die [Azure CLI](https://docs.microsoft.com/cl
 
 1. Geben Sie an der Eingabeaufforderung den [Befehl **az resource**](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) ein, und legen Sie `skuName` auf den gewünschten niedrigeren Tarif fest.
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
    Wenn Sie z.B. derzeit den Standard-Tarif nutzen, können Sie `skuName` auf `Basic` festlegen:
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
    ```
 

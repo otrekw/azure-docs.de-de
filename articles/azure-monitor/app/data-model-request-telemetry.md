@@ -1,19 +1,15 @@
 ---
 title: Datenmodell für Anforderungstelemetrie – Azure Application Insights
 description: Application Insights-Datenmodell für Anforderungstelemetrie
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928833"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671901"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
@@ -21,13 +17,13 @@ Ein Anforderungstelemetrieelement (in [Application Insights](../../azure-monitor
 
 Die Anforderungstelemetrie unterstützt das Standarderweiterbarkeitsmodell mit benutzerdefinierten `properties` und `measurements`.
 
-## <a name="name"></a>NAME
+## <a name="name"></a>Name
 
 Der Name der Anforderung gibt den Codepfad für die Verarbeitung der Anforderung an. Ein niedriger Kardinalitätswert ermöglicht die bessere Gruppierung von Anforderungen. Für HTTP-Anforderungen gibt er die HTTP-Methode und die URL-Pfadvorlage wie `GET /values/{id}` ohne den tatsächlichen `id`-Wert an.
 
 Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.NET-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
-Max. Länge: 1024 Zeichen
+Max. Länge: 1.024 Zeichen
 
 ## <a name="id"></a>id
 
@@ -45,7 +41,7 @@ Max. Länge: 2.048 Zeichen
 
 Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
 
-Max. Länge: 1024 Zeichen
+Max. Länge: 1.024 Zeichen
 
 ## <a name="duration"></a>Duration
 
@@ -55,11 +51,11 @@ Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss positiv sein und unte
 
 Das Ergebnis einer Anforderungsausführung. HTTP-Statuscode für HTTP-Anforderungen. Kann ein `HRESULT`-Wert oder ein Ausnahmetyp für andere Anforderungstypen sein.
 
-Max. Länge: 1024 Zeichen
+Max. Länge: 1.024 Zeichen
 
-## <a name="success"></a>Erfolgreich
+## <a name="success"></a>Erfolg
 
-Angabe eines erfolgreichen oder fehlerhaften Aufrufs. Dies ist ein Pflichtfeld. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
+Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs. Dies ist ein Pflichtfeld. Wenn der Wert nicht explizit auf `false` festgelegt ist, gilt eine Anforderung als erfolgreich. Legen Sie diesen Wert auf `false` fest, wenn der Vorgang durch eine Ausnahme unterbrochen oder ein Fehlerergebniscode zurückgegeben wurde.
 
 Für Webanwendungen definiert Application Insights eine Anforderung als erfolgreich, wenn der Antwortcode kleiner als `400` oder gleich `401` ist. In manchen Fällen entspricht diese Standardzuordnung jedoch nicht der Semantik der Anwendung. Der Antwortcode `404` kann „keine Datensätze“ angeben, was Teil eines normalen Datenflusses sein kann. Er kann auch einen fehlerhaften Link angeben. Für die fehlerhaften Links können Sie sogar eine erweiterte Logik implementieren. Durch Analysieren des URL-Verweisers können Sie fehlerhafte Links nur als Fehler markieren, wenn diese sich auf derselben Website befinden. Oder Sie können sie als Fehler markieren, wenn der Zugriff darauf über die mobile Anwendung des Unternehmens erfolgt. Auf ähnliche Weise geben `301` und `302` einen Fehler an, wenn der Zugriff über einen Client erfolgt, auf dem die Umleitung nicht unterstützt wird.
 

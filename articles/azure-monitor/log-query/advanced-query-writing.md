@@ -1,18 +1,17 @@
 ---
 title: Erweiterte Abfragen in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Azure Monitor über das Analytics-Portal veranschaulicht wird.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8895224bef037c8c3f8b28a6085359837478d924
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894502"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670286"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Schreiben erweiterter Abfragen in Azure Monitor
 
@@ -131,5 +130,5 @@ Informationen zur Verwendung der [Abfragesprache Kusto](/azure/kusto/query/) mit
 - [Aggregationsfunktionen](aggregations.md)
 - [Erweiterte Aggregationen](advanced-aggregations.md)
 - [JSON und Datenstrukturen](json-data-structures.md)
-- [Verknüpfungen](joins.md)
+- [Joins](joins.md)
 - [Diagramme](charts.md)

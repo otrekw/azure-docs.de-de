@@ -2,7 +2,7 @@
 title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Speicher
 description: Erfahren Sie, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
 services: virtual-machines-windows
-author: laurenhughes
+author: sasha-melamed
 manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -10,16 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: a14e38cd93e7d6273282e209db8ce83ec99f16db
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 57b248908a02327f2521be05920259681a26817a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068160"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920228"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimieren der Leistung virtueller Computer der Lsv2-Serie
 
-Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A- und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen zur Anwendung kommen.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
+Virtuelle Computer der Lsv2-Serie unterstützen verschiedenste Workloads, die hohe Anforderungen an E/A-Leistung und Durchsatz des lokalen Speichers stellen und in einem breiten Spektrum von Anwendungen und Branchen eingesetzt werden.  Die Lsv2-Serie ist ideal für Big Data, SQL, NoSQL-Datenbanken, Data Warehousing und große Transaktionsdatenbanken wie Cassandra, MongoDB, Cloudera und Redis geeignet.
 
 Virtuelle Computer der Lsv2-Serie nutzen den AMD EPYC™ 7551-Prozessor optimal aus, um die bestmögliche Leistung zwischen Prozessor, Arbeitsspeicher, NVMe-Geräten und den virtuellen Computern zu erzielen. Neben der Maximierung der Hardwareleistung erfüllen virtuelle Computer der Lsv2-Serie auch die Anforderungen von Windows- und Linux-Betriebssystemen, um mit der Hardware und Software eine bessere Leistung zu erreichen.
 

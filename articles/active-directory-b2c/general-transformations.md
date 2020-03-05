@@ -3,20 +3,20 @@ title: Beispiele für die Transformation von allgemeinen Ansprüchen für benutz
 titleSuffix: Azure AD B2C
 description: Beispiele für die Transformation allgemeiner Ansprüche für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982805"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188544"
 ---
 # <a name="general-claims-transformations"></a>Transformationen allgemeiner Ansprüche
 
@@ -36,13 +36,13 @@ Kopiert den Wert eines Anspruchs in einen anderen. Beide Ansprüche müssen dens
 Verwenden Sie diese Anspruchstransformation, um einen Wert von einer Zeichenfolge oder einem numerischen Anspruch in einen anderen Anspruch zu kopieren. Im folgenden Beispiel wird der Wert des externalEmail-Anspruchs in einen email-Anspruch kopiert.
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,7 +51,7 @@ Verwenden Sie diese Anspruchstransformation, um einen Wert von einer Zeichenfolg
 - Eingabeansprüche:
     - **inputClaim**: bob@contoso.com
 - Ausgabeansprüche:
-    - **outputClaim**: bob@contoso.com 
+    - **outputClaim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -88,10 +88,10 @@ Hash des angegebenen Nur-Texts, der Salt und einen geheimen Schlüssel verwendet
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | plaintext | string | Der zu verschlüsselnde Eingabeanspruch |
-| InputClaim | Salt | string | Der Salt-Parameter. Sie können mit der `CreateRandomString`-Anspruchstransformation einen Zufallswert erstellen. |
-| InputParameter | randomizerSecret | string | Verweist auf einen vorhandenen Azure AD B2C-**Richtlinienschlüssel**. Gehen Sie wie folgt vor, um einen neuen Richtlinienschlüssel zu erstellen: Wählen Sie in Ihrem Azure AD B2C-Mandanten unter **Verwalten** die Option **Identity Experience Framework** aus. Wählen Sie **Richtlinienschlüssel** aus, um die in Ihrem Mandanten verfügbaren Schlüssel anzuzeigen. Wählen Sie **Hinzufügen**. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus. Geben Sie einen Namen an (das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt). Geben Sie im Textfeld **Geheimnis** einen geheimen Schlüssel ein, der verwendet werden soll, z. B. „1234567890“. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus. Klicken Sie auf **Erstellen**. |
-| OutputClaim | hash | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Der im Eingabeanspruch `plaintext` konfigurierte Anspruch. |
+| InputClaim | plaintext | Zeichenfolge | Der zu verschlüsselnde Eingabeanspruch |
+| InputClaim | Salt | Zeichenfolge | Der Salt-Parameter. Sie können mit der `CreateRandomString`-Anspruchstransformation einen Zufallswert erstellen. |
+| InputParameter | randomizerSecret | Zeichenfolge | Verweist auf einen vorhandenen Azure AD B2C-**Richtlinienschlüssel**. Gehen Sie wie folgt vor, um einen neuen Richtlinienschlüssel zu erstellen: Wählen Sie in Ihrem Azure AD B2C-Mandanten unter **Verwalten** die Option **Identity Experience Framework** aus. Wählen Sie **Richtlinienschlüssel** aus, um die in Ihrem Mandanten verfügbaren Schlüssel anzuzeigen. Wählen Sie **Hinzufügen**. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus. Geben Sie einen Namen an (das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt). Geben Sie im Textfeld **Geheimnis** einen geheimen Schlüssel ein, der verwendet werden soll, z. B. „1234567890“. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus. Klicken Sie auf **Erstellen**. |
+| OutputClaim | hash | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Der im Eingabeanspruch `plaintext` konfigurierte Anspruch. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

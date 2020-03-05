@@ -3,12 +3,12 @@ title: Konfigurieren eines benutzerdefinierten Linux-Containers
 description: Erfahren Sie, wie Sie einen benutzerdefinierten Linux-Container in Azure App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671877"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255884"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service
 
@@ -159,6 +159,8 @@ In den folgenden Listen werden unterstützte und nicht unterstützte Docker Comp
 ## <a name="configure-vnet-integration"></a>Konfigurieren der VNET-Integration
 
 Die Verwendung eines benutzerdefinierten Containers mit VNET-Integration erfordert möglicherweise eine zusätzliche Containerkonfiguration. Siehe [Integrieren Ihrer App in ein Azure Virtual Network](../web-sites-integrate-with-vnet.md).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

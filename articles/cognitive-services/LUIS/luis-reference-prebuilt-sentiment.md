@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
-ms.openlocfilehash: a91246e4a4b3dc98bf11d2b014478fd40252f14b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506873"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270421"
 ---
 # <a name="sentiment-analysis"></a>Stimmungsanalyse
 Wenn die Standpunktanalyse konfiguriert wurde, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
@@ -26,7 +26,7 @@ Wenn die Standpunktanalyse konfiguriert wurde, enthält die JSON-Antwort von LUI
 
 Stimmungsdaten stellen eine Bewertung zwischen 1 und 0 dar, die eine eher positive (näher an 1) oder negative (näher an 0) Stimmung in den Daten angibt.
 
-#### <a name="english-languagetabenglish"></a>[Englische Sprache](#tab/english)
+#### <a name="english-language"></a>[Englische Sprache](#tab/english)
 
 Wenn die Kultur `en-us` ist, lautet die Antwort:
 
@@ -37,7 +37,7 @@ Wenn die Kultur `en-us` ist, lautet die Antwort:
 }
 ```
 
-#### <a name="other-languagestabother-languages"></a>[Weitere Sprachen](#tab/other-languages)
+#### <a name="other-languages"></a>[Weitere Sprachen](#tab/other-languages)
 
 Für alle anderen Kulturen lautet die Antwort:
 
@@ -46,7 +46,7 @@ Für alle anderen Kulturen lautet die Antwort:
   "score": 0.9163064
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 

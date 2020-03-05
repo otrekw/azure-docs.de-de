@@ -1,18 +1,17 @@
 ---
 title: Aktivieren von Azure Monitor für VMs (Vorschauversion) für die Auswertung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Monitor für VMs für einen einzelnen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe auswerten.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400592"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664610"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für die Auswertung
 

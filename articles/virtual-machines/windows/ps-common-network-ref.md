@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 3abde706ddff297094c7fbb1579b534894b349d2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9debe04759772ef51946dc99943ec4eff6f61dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032913"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911830"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Häufige PowerShell-Befehle für virtuelle Azure-Netzwerke
 
@@ -73,6 +73,6 @@ Einige Variablen könnten hilfreich sein, wenn Sie mehr als einen der Befehle au
 | Löschen einer öffentlichen IP-Adresse |[Remove-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress" -ResourceGroupName $myResourceGroup<BR><BR>Entfernt die angegebene öffentliche IP-Adresse aus der Ressourcengruppe. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die soeben erstellte Netzwerkschnittstelle beim [Erstellen einer VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Erfahren Sie, wie Sie eine [VM mit mehreren Netzwerkschnittstellen erstellen](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md).
+Verwenden Sie die soeben erstellte Netzwerkschnittstelle beim [Erstellen einer VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
 

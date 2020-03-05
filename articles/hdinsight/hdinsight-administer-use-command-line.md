@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/06/2019
-ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 02/26/2020
+ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951801"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199460"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Verwalten von Azure HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -40,7 +40,7 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="list-clusters"></a>Auflisten von Clustern
+## <a name="list-clusters"></a>Auflisten der Cluster
 
 Verwenden Sie [az hdinsight list](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list), um Cluster aufzulisten. Bearbeiten Sie die folgenden Befehle, indem Sie `RESOURCE_GROUP_NAME` durch den Namen Ihrer Ressourcengruppe ersetzen und dann die folgenden Befehle eingeben:
 
@@ -82,15 +82,15 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 
-Verwenden Sie [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize), um die Größe des angegebenen HDInsight-Clusters auf die angegebene Größe anzupassen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen. Ersetzen Sie `TARGET_INSTANCE_COUNT` durch die gewünschte Anzahl von Workerknoten für Ihren Cluster. Weitere Informationen zum Skalieren von Clustern finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md). Geben Sie den folgenden Befehl ein:
+Verwenden Sie [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize), um die Größe des angegebenen HDInsight-Clusters auf die angegebene Größe anzupassen. Bearbeiten Sie den folgenden Befehl, indem Sie `RESOURCE_GROUP_NAME` und `CLUSTER_NAME` durch die entsprechenden Informationen ersetzen. Ersetzen Sie `WORKERNODE_COUNT` durch die gewünschte Anzahl von Workerknoten für Ihren Cluster. Weitere Informationen zum Skalieren von Clustern finden Sie unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md). Geben Sie den folgenden Befehl ein:
 
 ```azurecli-interactive
-az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, verschiedene Verwaltungsaufgaben für HDInsight-Cluster auszuführen. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, verschiedene Verwaltungsaufgaben für HDInsight-Cluster auszuführen. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md)

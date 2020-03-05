@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300535"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 
@@ -96,7 +96,7 @@ Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisie
 
 Weitere Informationen finden Sie unter [Benutzernamen in Office 365, Azure oder Intune stimmen nicht mit lokaler UPN oder alternativen Benutzernamen überein](https://support.microsoft.com/kb/2523192).
 
-Durch die Aktivierung dieses Features kann die Synchronisierungsengine den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden. Wenn Sie einen Verbund verwenden, wird das Feature nicht unterstützt.
+Durch die Aktivierung dieses Features kann die Synchronisierungsengine den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden.
 
 Dieses Feature ist standardmäßig für neu erstellte Azure AD-Verzeichnisse aktiviert. Sie können ermitteln, ob das Feature aktiviert ist, indem Sie Folgendes ausführen:  
 

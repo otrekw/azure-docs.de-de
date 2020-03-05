@@ -1,18 +1,17 @@
 ---
 title: Problembehandlung für die Azure Log Analytics-VM-Erweiterung in Azure Monitor | Microsoft-Dokumentation
 description: Beschrieben werden die Symptome, Ursachen und Lösungen für die häufigsten Probleme, die bei der Log Analytics-Erweiterung für virtuelle Windows und Linux Azure-Computer auftreten.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: e0f41529c5daed134c6eb8efb3595e311cf5fee1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88d76fc0c215653cf732ba7b827d82187d738fd9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363149"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658471"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problembehandlung für die Log Analytics-VM-Erweiterung in Azure Monitor
 Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammenhang mit der Log Analytics-VM-Erweiterung für virtuelle Windows- und Linux-Computer mit Microsoft Azure auftreten können, sowie Vorschläge für mögliche Problemlösungen.

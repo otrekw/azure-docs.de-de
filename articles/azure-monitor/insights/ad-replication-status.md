@@ -1,18 +1,17 @@
 ---
 title: Überwachen des Active Directory-Replikationsstatus mit Azure Monitor | Microsoft-Dokumentation
 description: Mit dem Active Directory-Replikationsstatusmonitor-Lösungspaket wird die Active Directory-Umgebung regelmäßig auf Replikationsfehler überwacht.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406096"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667175"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Überwachen des Active Directory-Replikationsstatus mit Azure Monitor
 

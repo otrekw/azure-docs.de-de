@@ -1,18 +1,16 @@
 ---
 title: API-Referenz für den Azure Application Insights-Agent
 description: API-Referenz für den Application Insights-Agent. Get-ApplicationInsightsMonitoringStatus. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899685"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671255"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights-Agent-API: Get-ApplicationInsightsMonitoringStatus
 
@@ -177,12 +175,12 @@ Sie können auch überprüfen, welcher Instrumentierungsschlüssel Ihrer Website
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-**Optional**. Dieser Schalter meldet die Versionsnummern und Pfade von DLLs, die für die Überwachung erforderlich sind.
+**Optional:** Dieser Schalter meldet die Versionsnummern und Pfade von DLLs, die für die Überwachung erforderlich sind.
 Verwenden Sie diese Option, wenn Sie die Version einer DLL ermitteln müssen (einschließlich Application Insights SDK).
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Optional**. Verwenden Sie diesen Schalter, um zu melden, ob IIS ausgeführt wird.
+**Optional:** Verwenden Sie diesen Schalter, um zu melden, ob IIS ausgeführt wird.
 Damit werden auch externe Tools heruntergeladen, um zu ermitteln, ob die erforderlichen DLLs in die IIS-Laufzeit geladen werden.
 
 
@@ -194,10 +192,10 @@ Wenn dieser Prozess aus irgendeinem Grund fehlschlägt, können Sie diese Befehl
 
 ### <a name="-force"></a>-Force
 
-**Optional**. Nur mit InspectProcess verwendet. Verwenden Sie diese Option, um die Benutzereingabeaufforderung zu überspringen, die angezeigt wird, bevor zusätzliche Tools heruntergeladen werden.
+**Optional:** Nur mit InspectProcess verwendet. Verwenden Sie diese Option, um die Benutzereingabeaufforderung zu überspringen, die angezeigt wird, bevor zusätzliche Tools heruntergeladen werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
  Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
- - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.
+ - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.

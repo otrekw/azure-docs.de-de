@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 2a1a9b1973ded5db7182fb1898fc7222904c39c3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 09002a8c0999dc137ca3386ca7392a566d323e8a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863960"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196058"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -29,7 +29,7 @@ Mit der Azure Blob Storage-Clientbibliothek v12 für .NET ist Folgendes möglich
 * Herunterladen des Blobs auf den lokalen Computer
 * Löschen eines Containers
 
-[API-Referenzdokumentation](/dotnet/api/azure.storage.blobs) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+[API-Referenzdokumentation](/dotnet/api/azure.storage.blobs) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -85,7 +85,6 @@ dotnet add package Azure.Storage.Blobs
 Der Code lautet wie folgt:
 
 ```csharp
-using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using System;
@@ -181,7 +180,7 @@ Der folgende Codeausschnitt führt folgende Aktionen durch:
 
 1. Erstellen einer Textdatei im lokalen Verzeichnis *data*
 1. Abrufen eines Verweises auf ein [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)-Objekt durch Aufrufen der [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient)-Methode für den Container aus dem Abschnitt [Erstellen eines Containers](#create-a-container)
-1. Hochladen der lokalen Textdatei in das Blob durch Aufrufen der [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync)-Methode. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
+1. Hochladen der lokalen Textdatei in das Blob durch Aufrufen der [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_)-Methode. Mit dieser Methode wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, sofern es bereits vorhanden ist.
 
 Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
@@ -201,7 +200,7 @@ Console.WriteLine("Uploading to Blob storage as blob:\n\t {0}\n", blobClient.Uri
 
 // Open the file and upload its data
 using FileStream uploadFileStream = File.OpenRead(localFilePath);
-await blobClient.UploadAsync(uploadFileStream);
+await blobClient.UploadAsync(uploadFileStream, true);
 uploadFileStream.Close();
 ```
 

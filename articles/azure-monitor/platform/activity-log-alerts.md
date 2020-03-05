@@ -1,22 +1,20 @@
 ---
 title: Aktivitätsprotokollwarnungen in Azure Monitor
 description: Lassen Sie sich per SMS, Webhook und E-Mail usw. benachrichtigen, wenn bestimmte Ereignisse im Aktivitätsprotokoll auftreten.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747531"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669012"
 ---
-# <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll 
+# <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll
 
 ## <a name="overview"></a>Übersicht
+
 Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neues [Aktivitätsprotokollereignis](activity-log-schema.md) auftritt, das die in der Warnung angegebenen Bedingungen erfüllt. Die Warnungsregel wird basierend auf der Reihenfolge und der Menge der im [Azure-Aktivitätsprotokoll](platform-logs-overview.md) erfassten Ereignisse ausgelöst. Warnungsregeln des Aktivitätsprotokolls sind Azure-Ressourcen, sie können also mithilfe einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Weitere Informationen zur Erstellung oder Verwendung von Warnungsregeln des Aktivitätsprotokolls finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts-activity-log.md).
 
 > [!NOTE]

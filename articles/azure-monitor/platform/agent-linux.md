@@ -1,18 +1,17 @@
 ---
 title: Verbinden von Linux-Computern mit Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Linux-Computer, die in anderen Clouds oder lokal gehostet werden, über den Log Analytics-Agent für Linux mit Azure Monitor verbunden werden können.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290324"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668705"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Verbinden von Linux-Computern mit Azure Monitor
 

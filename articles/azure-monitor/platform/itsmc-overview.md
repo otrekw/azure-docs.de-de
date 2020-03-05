@@ -1,18 +1,17 @@
 ---
 title: IT Service Management Connector in Azure Log Analytics | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über den ITSM-Connector (IT Service Management-Connector) sowie Informationen zur Verwendung dieser Lösung, um die ITSM-Arbeitselemente in Azure Log Analytics zu überwachen und zu verwalten und um etwaige Probleme schnell zu lösen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672224"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -229,7 +228,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Geplantes Enddatum
 - Startdatum der Arbeit
 - Enddatum der Arbeit
-- Beschreibung
+- BESCHREIBUNG
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Ausgabedaten für einen ServiceNow-Incident
@@ -276,7 +275,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   Geplantes Enddatum |
 | WorkStartDate_t  | Tatsächliches Startdatum |
 | WorkEndDate_t | Tatsächliches Enddatum|
-| Description_s | Beschreibung |
+| Description_s | BESCHREIBUNG |
 | Computer  | Konfigurationselement |
 
 

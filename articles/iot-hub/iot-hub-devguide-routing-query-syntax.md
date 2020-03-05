@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064817"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616041"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -52,11 +52,11 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
-| contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
-| iothub-connection-device-id | string | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
-| iothub-enqueuedtime | string | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
-| iothub-interface-name | string | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
+| contentType | Zeichenfolge | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
+| contentEncoding | Zeichenfolge | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
+| iothub-connection-device-id | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
+| iothub-enqueuedtime | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
+| iothub-interface-name | Zeichenfolge | Dieser Wert wird vom Benutzer festgelegt und stellt den Namen der Schnittstelle für den digitalen Zwilling dar, die die Telemetrienachricht implementiert. Verwenden Sie `$interfaceName` für die Abfrage. Dieses Feature steht als Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) zur Verfügung. |
 
 Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Neben den Eigenschaften **contentType**, **contentEncoding** und **enqueuedTime** können auch die Eigenschaften **connectionDeviceId** und **connectionModuleId** abgefragt werden.
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 Eine vollständige Liste der unterstützten Operatoren und Funktionen finden Sie unter [Ausdrücke und Bedingungen](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="message-routing-query-based-on-message-body"></a>Abfrage des Nachrichtenroutings basierend auf dem Nachrichtentext 
+## <a name="message-routing-query-based-on-message-body"></a>Abfrage des Nachrichtenroutings basierend auf dem Nachrichtentext
 
 Die Nachricht sollte ein mit UTF-8, UTF-16 oder UTF-32 codiertes JSON-Format aufweisen, um das Abfragen des Nachrichtentexts zu ermöglichen. `contentType` muss auf `application/JSON` und `contentEncoding` muss in der Systemeigenschaft auf eine der unterstützten UTF-Codierungen festgelegt sein. Wenn diese Eigenschaften nicht festgelegt sind, wird der Abfrageausdruck für den Nachrichtentext nicht von IoT Hub ausgewertet. 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> Hier sehen Sie, wie die Codierung des Texts in JavaScript behandelt werden muss. Wenn Sie sich ein Beispiel in C# ansehen möchten, laden Sie die [Azure IoT-Beispiele für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) herunter. Entzippen Sie die Datei „master.zip“. In der Datei „Program.cs“ aus der Visual Studio-Projektmappe *SimulatedDevice* werden die Codierung und Übermittlung von Nachrichten an eine IoT Hub-Instanz gezeigt. Dieses Beispiel wird auch im [Nachrichtenrouting-Tutorial](tutorial-routing.md) zum Testen des Nachrichtenroutings verwendet. Am Ende von „Program.cs“ befindet sich auch eine Methode, die dazu dient, in einer der codierten Dateien zu lesen, die Datei zu decodieren und den Inhalt als lesbaren ASCII-Code auszugeben. 
+
 
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
@@ -209,6 +213,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+Routingabfragen für Text oder Gerätezwilling mit einem Punkt in der Nutzlast oder im Eigenschaftsnamen werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

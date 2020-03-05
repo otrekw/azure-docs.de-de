@@ -2,20 +2,20 @@
 title: 'Azure Active Directory B2C: ClaimsTransformations | Microsoft-Dokumentation'
 description: Definition des ClaimsTransformations-Elements im Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836693"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189735"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ Ein ClaimsTransformations-XML-Element muss im BuildingBlocks-Abschnitt der Richt
 
 Das **ClaimsTransformation**-Element enthält die folgenden Attribute:
 
-| attribute |Erforderlich | Beschreibung |
+| attribute |Erforderlich | BESCHREIBUNG |
 | --------- |-------- | ----------- |
 | Id |Ja | Ein Bezeichner, der zur eindeutigen Identifizierung der Anspruchstransformation verwendet wird. Andere XML-Elemente in der Richtlinie verweisen auf den Bezeichner. |
 | Transformationsmethode | Ja | Die Transformationsmethode, die für die Anspruchstransformation verwendet werden soll. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
@@ -51,7 +51,7 @@ Das **ClaimsTransformation**-Element enthält die folgenden Elemente:
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -59,10 +59,10 @@ Das **ClaimsTransformation**-Element enthält die folgenden Elemente:
 ```
 
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Eine Liste von **InputClaim**-Elementen, die Anspruchstypen angeben, die als Eingabe in die Anspruchstransformation eingefügt werden. Jedes dieser Elemente enthält einen Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde. |
-| InputParameters | 0:1 | Eine Liste von **InputParameter**-Elementen, die für die Anspruchstransformation als Eingabe bereitgestellt werden.  
+| InputParameters | 0:1 | Eine Liste von **InputParameter**-Elementen, die für die Anspruchstransformation als Eingabe bereitgestellt werden.
 | OutputClaims | 0:1 | Eine Liste von **OutputClaim**-Elementen, die Anspruchstypen angeben, die nach dem Aufruf des ClaimsTransformation-Elements erstellt werden. Jedes dieser Elemente enthält einen Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt definiert wurde. |
 
 ### <a name="inputclaims"></a>InputClaims
@@ -77,7 +77,7 @@ Das **InputClaims**-Element enthält das folgende Element:
 
 Das **InputClaim**-Element enthält die folgenden Attribute:
 
-| attribute |Erforderlich | Beschreibung |
+| attribute |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde. |
 | TransformationClaimType |Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
@@ -92,7 +92,7 @@ Das **InputParameters**-Element enthält das folgende Element:
 
 #### <a name="inputparameter"></a>InputParameter
 
-| attribute | Erforderlich |Beschreibung |
+| attribute | Erforderlich |BESCHREIBUNG |
 | --------- | ----------- |----------- |
 | Id | Ja | Ein Bezeichner, der einen Verweis auf einen Parameter der Anspruchstransformationsmethode darstellt. Jede Anspruchstransformationsmethode verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der Tabelle für Anspruchstransformationen. |
 | DataType | Ja | Der Datentyp des Parameters, z.B. „String“, „Boolean“, „Int“ oder „DateTime“, gemäß der DataType-Enumeration im XML-Schema der benutzerdefinierten Richtlinie. Dieser Typ wird dazu verwendet, arithmetische Operationen ordnungsgemäß auszuführen. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
@@ -102,11 +102,11 @@ Das **InputParameters**-Element enthält das folgende Element:
 
 Das **OutputClaims**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | Ein erwarteter Ausgabeanspruchstyp. |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 Das **OutputClaim**-Element enthält die folgenden Attribute:
 
@@ -114,7 +114,7 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde.
 | TransformationClaimType | Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
- 
+
 Wenn die Typen des Eingabeanspruchs und des Ausgabeanspruchs übereinstimmen (String oder Boolean), können Sie den Eingabeanspruch auch als Ausgabeanspruch verwenden. In diesem Fall ändert die Anspruchstransformation den Eingabeanspruch mit dem Ausgabewert.
 
 ## <a name="example"></a>Beispiel

@@ -1,15 +1,15 @@
 ---
 title: 'Problembehandlung: QnA Maker'
 description: Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA Maker-Dienst ermöglichen einen schnelleren Einstieg in die Nutzung des Diensts und bessere Ergebnisse.
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 9032f2cdc134289fef6c0cbc2e874198aefa90ee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650383"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296098"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -224,7 +224,7 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Wie kann ich einen neuen Bot mit QnA Maker erstellen?</b></summary>
 
-**Antwort:** Folgen Sie den Anweisungen in [dieser](./Tutorials/create-qna-bot.md) Dokumentation, um Ihren Bot mit Azure Bot Service zu erstellen.
+**Antwort:** Folgen Sie den Anweisungen in [dieser](./Quickstarts/create-publish-knowledge-base.md) Dokumentation, um Ihren Bot mit Azure Bot Service zu erstellen.
 
 </details>
 
@@ -255,7 +255,7 @@ Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` g
 
 **Antwort:** Führen Sie die folgenden Schritte aus, um den QnA Maker-Dienst als Webchat-Steuerelement in Ihre Website einzubetten:
 
-1. Erstellen Sie Ihren FAQ-Bot, indem Sie den [hier](./Tutorials/create-qna-bot.md) angegebenen Anweisungen folgen.
+1. Erstellen Sie Ihren FAQ-Bot, indem Sie den [hier](./Quickstarts/create-publish-knowledge-base.md) angegebenen Anweisungen folgen.
 2. Aktivieren Sie den Webchat, indem Sie die [hier](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
 
 </details>

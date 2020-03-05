@@ -2,20 +2,20 @@
 title: Beispiele für die Transformation von Datumsansprüchen für benutzerdefinierte Richtlinien
 description: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982907"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188833"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -29,8 +29,8 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von D
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | string | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
-| InputClaim | rightOperand | string | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
+| InputClaim | leftOperand | Zeichenfolge | Typ des ersten Anspruchs, der nach dem zweiten Anspruch liegen sollte. |
+| InputClaim | rightOperand | Zeichenfolge | Typ des zweiten Anspruchs, der vor dem ersten Anspruch liegen sollte. |
 | InputParameter | AssertIfEqualTo | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der linke Operand gleich dem rechten Operanden ist. |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der rechte Operanden fehlt. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
@@ -114,7 +114,7 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBir
 - Ausgabeansprüche:
     - **outputClaim:** 1559347200 (June 1, 2019 12:00:00 AM)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 Wandelt den Anspruchstyp **DateTime** in den Anspruchstyp **Date** um. Die Anspruchstransformation entfernt das Uhrzeitformat aus dem Datum.
 
@@ -172,7 +172,7 @@ Bestimmt, ob ein dateTime-Wert größer, kleiner oder gleich einem anderen ist. 
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | dateTime | Der erste dateTime-Wert, für den überprüft werden soll, ob er vor oder nach einem zweiten dateTime-Wert liegt. Ein Null-Wert löst eine Ausnahme aus. |
 | InputClaim | secondDateTime | dateTime | Der zweite dateTime-Wert, für den überprüft werden soll, ob er vor oder nach dem ersten dateTime-Wert liegt. Ein NULL-Wert wird als dateTime-Wert der aktuellen Uhrzeit behandelt. |
-| InputParameter | Operator | string | Einer der folgenden Werte: identisch (same), später als (later than) oder früher als (earlier than). |
+| InputParameter | Operator | Zeichenfolge | Einer der folgenden Werte: identisch (same), später als (later than) oder früher als (earlier than). |
 | InputParameter | timeSpanInSeconds | INT | Addiert den Zeitraum zum ersten Datum/Uhrzeit-Wert. |
 | OutputClaim | result | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 

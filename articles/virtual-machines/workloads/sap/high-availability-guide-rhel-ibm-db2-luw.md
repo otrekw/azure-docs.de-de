@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099681"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598696"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -68,7 +68,7 @@ IBM Db2 wird in der Version 10.5 und höher unterstützt, wie im SAP-Hinweis [19
 
 Bevor Sie mit einer Installation beginnen, lesen Sie zunächst die folgenden SAP-Hinweise und die -Dokumentation:
 
-| SAP-Hinweis | BESCHREIBUNG |
+| SAP-Hinweis | Beschreibung |
 | --- | --- |
 | [1928533] | SAP-Anwendungen in Azure: Unterstützte Produkte und Azure-VM-Typen |
 | [2015553] | SAP in Azure: Supportvoraussetzungen |
@@ -141,7 +141,7 @@ Um eine IBM Db2-Konfiguration bereitzustellen, müssen die folgenden Schritte au
 
 Abschließen des Planungsprozesses, bevor Sie die Bereitstellung ausführen. Planung bildet die Grundlage für die Bereitstellung einer Konfiguration von Db2 mit HADR in Azure. Schlüsselelemente, die in der Planung für IMB Db2 LUW (Datenbankteil der SAP-Umgebung) berücksichtigt werden müssen, werden in der folgenden Tabelle aufgeführt.
 
-| Thema | Kurzbeschreibung |
+| Thema | Kurze Beschreibung |
 | --- | --- |
 | Definieren von Azure-Ressourcengruppen | Ressourcengruppen, in denen Sie virtuelle Computer, VNET, Azure Load Balancer und andere Ressourcen bereitstellen. Können vorhanden oder neu sein. |
 | Definition von virtuellem Netzwerk/Subnetz | Umgebung, in der virtuelle Computer für IBM Db2 und Azure Load Balancer bereitgestellt werden. Kann vorhanden sein oder neu erstellt werden. |
@@ -177,7 +177,7 @@ Vergewissern Sie sich, dass das ausgewählte Betriebssystem von IBM/SAP für IBM
     + Wählen Sie die Azure-Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben, oder wählen Sie eine Verfügbarkeitszone (nicht die gleiche Zone wie in Schritt 3) aus.
 1. Fügen Sie den virtuellen Computern Datenträger hinzu. Prüfen Sie dann die Empfehlung für die Dateisystemkonfiguration, die Sie im Artikel [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload][dbms-db2] finden.
 
-## <a name="create-the-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
+## <a name="create-the-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
     
 Informationen zum Erstellen eines grundlegenden Pacemaker-Clusters für diesen IBM Db2-Server finden Sie unter [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure][rhel-pcs-azr]. 
 
@@ -370,7 +370,7 @@ Die folgenden Elemente haben eines der folgenden Präfixe:
 - **[1]** : Gilt nur für Knoten 1 
 - **[2]** : Gilt nur für Knoten 2
 
-**[A]** Voraussetzungen für die Pacemaker-Konfiguration
+**[A]** Voraussetzung für die Pacemaker-Konfiguration:
 1. Fahren Sie beide Datenbankserver mit Benutzer „db2\<sid>“ mit „db2stop“ herunter.
 1. Ändern Sie die Shellumgebung für „db2\<sid> Benutzer“ in */bin/ksh*:
 <pre><code># Install korn shell:
@@ -434,6 +434,11 @@ Daemon Status: corosync: active/disabled pacemaker: active/disabled pcsd: active
 
 ### <a name="configure-azure-load-balancer"></a>Konfigurieren von Azure Load Balancer
 Um Azure Load Balancer zu konfigurieren, empfehlen wir Ihnen, die [SKU „Azure Load Balancer Standard“](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden und dann wie folgt vorzugehen:
+
+> [!NOTE]
+> Bei der SKU „Azure Load Balancer Standard“ gibt es Einschränkungen, wenn von den Knoten unterhalb des Load Balancers aus auf öffentliche IP-Adressen zugegriffen wird. Im Artikel [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) werden Verfahren beschrieben, wie diesen Knoten der Zugriff auf öffentliche IP-Adressen ermöglicht werden kann.
+
+
 
 1. Erstellen eines Front-End-IP-Pools:
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03ea130011b23704731d68e5685e4ea0938e19b5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e6b2f73540a0af7ed9c12469406a77d1bed8a2b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771801"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268464"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Die folgenden Metriken können während des Trainings eines Experiments zu einem
 |Listen|Funktion:<br>`run.log_list(name, value, description='')`<br><br>Beispiel:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | Protokollieren Sie eine Liste mit Werten für die Ausführung unter dem jeweiligen Namen.|
 |Zeile|Funktion:<br>`run.log_row(name, description=None, **kwargs)`<br>Beispiel:<br>run.log_row("Y over X", x=1, y=0.4) | Mit *log_row* wird eine Metrik mit mehreren Spalten erstellt, wie in kwargs beschrieben. Jeder benannte Parameter erzeugt eine Spalte mit dem angegebenen Wert.  *log_row* kann einmal aufgerufen werden, um ein beliebiges Tupel zu protokollieren, oder mehrmals in einer Schleife, um eine vollständige Tabelle zu erzeugen.|
 |Tabelle|Funktion:<br>`run.log_table(name, value, description='')`<br><br>Beispiel:<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | Protokollieren Sie ein Wörterbuchobjekt für die Ausführung unter dem jeweiligen Namen. |
-|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>`run.log_image("ROC", plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
+|Bilder|Funktion:<br>`run.log_image(name, path=None, plot=None)`<br><br>Beispiel:<br>`run.log_image("ROC", plot=plt)` | Protokollieren Sie ein Image für die Ausführungsaufzeichnung. Verwenden Sie log_image, um eine Imagedatei oder einen Matplotlib-Plot für die Ausführung zu protokollieren.  Diese Images werden angezeigt und können mit der Ausführungsaufzeichnung verglichen werden.|
 |Ausführung kennzeichnen|Funktion:<br>`run.tag(key, value=None)`<br><br>Beispiel:<br>run.tag("selected", "yes") | Kennzeichnen Sie die Ausführung mit einem Zeichenfolgenschlüssel und einem optionalen Zeichenfolgenwert.|
 |Datei oder Verzeichnis hochladen|Funktion:<br>`run.upload_file(name, path_or_stream)`<br> <br> Beispiel:<br>run.upload_file("best_model.pkl", "./model.pkl") | Laden Sie eine Datei in die Ausführungsaufzeichnung hoch. Ausführungen erfassen die Datei im angegebenen Ausgabeverzeichnis. Die ist für die meisten Ausführungstypen standardmäßig „./outputs“.  Verwenden Sie upload_file nur, wenn zusätzliche Dateien hochgeladen werden müssen, oder kein Ausgabeverzeichnis angegeben ist. Wir empfehlen, `outputs` zum Namen hinzuzufügen, damit das Hochladen in das Ausgabeverzeichnis erfolgt. Sie können alle Dateien, die dieser Ausführungsaufzeichnung zugeordnet sind, mit `run.get_file_names()` auflisten.|
 
@@ -297,7 +297,7 @@ Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddes
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Sie können nun alle Metriken abrufen, die im obigen Beispiel protokolliert wurden, um das beste Modell zu ermitteln.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Anzeigen des Experiments in Ihrem Arbeitsbereich in [Azure Machine Learning-Studio](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>Anzeigen des Experiments in Ihrem Arbeitsbereich in [Azure Machine Learning-Studio](https://ml.azure.com)
 
 Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Sie können aus [Azure Machine Learning-Studio](https://ml.azure.com) auf den Verlauf zugreifen.
 

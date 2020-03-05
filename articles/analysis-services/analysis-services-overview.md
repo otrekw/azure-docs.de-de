@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a61bc852d3042d0bd8828bf89dce6ab6b760d092
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77459683"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272953"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -214,7 +214,7 @@ Zur Verwaltung von Serverressourcen (beispielsweise Erstellen von Serverressourc
 
 ### <a name="object-model-and-scripting"></a>Objektmodell und Skripterstellung
 
-Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Tabellarische Modelle enthalten das [Tabellenobjektmodell](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) verfügbar gemacht. 
+Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Tabellarische Modelle enthalten das [Tabellenobjektmodell](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) verfügbar gemacht. 
 
 ## <a name="supports-the-latest-client-tools"></a>Unterstützung der neuesten Clienttools
 

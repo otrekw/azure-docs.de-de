@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Konfigurieren von Warnungen
           href: pim-resource-roles-configure-alerts.md
-        - name: Anzeigen von Aktivitäts- und Überwachungsverlauf
+        - name: Anzeigen des Überwachungsverlaufs
           href: azure-pim-resource-rbac.md
         - name: Verwenden von benutzerdefinierten Rollen
           href: pim-resource-roles-custom-role-policy.md

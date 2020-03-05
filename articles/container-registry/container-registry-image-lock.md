@@ -3,18 +3,18 @@ title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972936"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659695"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
 Sie können eine Imageversion oder ein Repository in einer Azure-Containerregistrierung sperren, damit es nicht gelöscht oder aktualisiert werden kann. Aktualisieren Sie die Attribute mithilfe des Azure CLI-Befehls [az acr repository update][az-acr-repository-update], um ein Image oder ein Repository zu sperren. 
 
-Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 > [!IMPORTANT]
 > Dieser Artikel gilt nicht für das Sperren einer ganzen Registrierung, z. B. durch die Verwendung von **Einstellungen > Sperren** im Azure-Portal oder von `az lock`-Befehlen in der Azure CLI. Das Sperren einer Registrierungsressource hindert Sie nicht am Erstellen, Aktualisieren oder Löschen von Daten in Repositorys. Das Sperren einer Registrierung wirkt sich nur auf Verwaltungsvorgänge wie das Hinzufügen oder Löschen von Replizierungen oder das Löschen der Registrierung selbst aus. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/management/lock-resources.md).
@@ -44,7 +44,7 @@ Führen Sie den folgenden Befehl vom Typ [az acr repository show][az-acr-reposit
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 

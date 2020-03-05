@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552932"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208541"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
-Azure Security Center bietet Integritätsbewertungen von [unterstützten](security-center-services.md#supported-endpoint-protection-solutions-) Versionen von Endpoint Protection-Lösungen. In diesem Artikel werden die Szenarien erläutert, die dazu führen, dass Security Center die folgenden beiden Empfehlungen generiert:
+Azure Security Center bietet Integritätsbewertungen von [unterstützten](security-center-services.md#endpoint-supported) Versionen von Endpoint Protection-Lösungen. In diesem Artikel werden die Szenarien erläutert, die dazu führen, dass Security Center die folgenden beiden Empfehlungen generiert:
 
 * **Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren**
 * **Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben**

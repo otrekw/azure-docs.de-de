@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302541"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -83,7 +83,7 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 - NWW (Norwegen, Westen)
 - SNZ (Schweiz, Norden)
 
-Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
+Schreiben Sie an [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Wie viele Azure-Dateifreigaben kann ich in einem Tresor schützen?
 

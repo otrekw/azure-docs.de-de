@@ -1,18 +1,15 @@
 ---
 title: 'Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas'
 description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-author: rboucher
-ms.author: robb
-ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120144"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670388"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle
 
@@ -25,7 +22,7 @@ Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`
 
 ## <a name="top-level-resource-logs-schema"></a>Ressourcenprotokollschema der obersten Ebene
 
-| Name | Erforderlich/Optional | Beschreibung |
+| Name | Erforderlich/Optional | BESCHREIBUNG |
 |---|---|---|
 | time | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
 | resourceId | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. Für Mandantendienste sieht das Format folgendermaßen aus: /tenants/tenant-id/providers/provider-name. |

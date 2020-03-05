@@ -1,18 +1,17 @@
 ---
 title: Neues in der Azure Monitor-Dokumentation
 description: Wichtige Aktualisierungen für die Azure Monitor-Dokumentation (monatlich aktualisiert).
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2020
-ms.openlocfilehash: f390de40504d4d6065705ca23555ac2164c9847b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065002"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657740"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
@@ -26,7 +25,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Sammeln von Protokolldaten mit dem Log Analytics-Agent](platform/log-analytics-agent.md): Die Tabelle mit den Netzwerkfirewallanforderungen wurde aktualisiert.
 
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 - [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](platform/action-groups.md): Eine nicht mehr benötigte Einstellung für Funktionen der Version 2 wurde entfernt.
 - [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](platform/alerts-metric-create-templates.md): Ein Beispiel für den Parameter *ignoreDataBefore* wurde hinzugefügt.  Einschränkungen für Regeln mit mehreren Kriterien wurden hinzugefügt.
 - [Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API](platform/api-alerts.md): Das JSON-Beispiel wurde korrigiert.
@@ -81,7 +80,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 ### <a name="agents"></a>Agents
 - [Verbinden von Linux-Computern mit Azure Monitor](platform/agent-linux.md): Neuer Artikel.
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 - [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](platform/alerts-metric-create-templates.md): Diesem Artikel wurde ein Beispiel eine benutzerdefinierte Metrik hinzugefügt.
 - [Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor](platform/alerts-dynamic-thresholds.md): Diesem Artikel wurde ein Abschnitt zum Interpretieren dynamischer Schwellenwertdiagramme hinzugefügt.
 - [Überblick über Warnungen in Microsoft Azure](platform/alerts-overview.md): In diesem Artikel wurde die Resource Graph-Abfrage aktualisiert.

@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892497"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664251"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 
@@ -28,7 +28,7 @@ Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder höher, erforderlich. Führen Sie `Get-InstalledModule -Name Az -AllVersions | select Name,Version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder höher, erforderlich. Führen Sie `Get-InstalledModule -Name Az -AllVersions | select Name,Version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Übertragen von Daten mit AzCopy
 
-Das Dienstprogramm [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ist eine weitere Option für eine leistungsstarke, skriptfähige Datenübertragung für Azure Storage. Verwenden Sie AzCopy, um Daten in und aus Blob-, Datei- und Tabellenspeicher zu übertragen.
+Das Befehlszeilenprogramm AzCopy bietet skriptfähige Hochleistungsdatenübertragung für Azure Storage. Mit AzCopy können Daten zwischen Blobspeicher und Azure Files übertragen werden. Weitere Informationen zu AzCopy v10 (der aktuellen Version von AzCopy) finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md). Informationen zur Verwendung von AzCopy V10 mit Blobspeicher finden Sie unter [Übertragen von Daten mit AzCopy und Blob Storage](../common/storage-use-azcopy-blobs.md).
 
-Als kurzes Beispiel sehen Sie hier den AzCopy-Befehl für das Hochladen der Datei *myfile.txt* in den Container *mystoragecontainer* in einem PowerShell-Fenster.
+Im folgenden Beispiel wird AzCopy verwendet, um eine lokale Datei in ein Blob hochzuladen. Denken Sie daran, die Beispielwerte durch Ihre eigenen Werte zu ersetzen:
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

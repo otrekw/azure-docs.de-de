@@ -3,20 +3,20 @@ title: Beispiele für die Transformation von JSON-Ansprüchen für benutzerdefin
 titleSuffix: Azure AD B2C
 description: Beispiele für die Transformation von JSON-Ansprüchen für das IEF-Schema (Identity Experience Framework) von Azure Active Directory B2C
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367126"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187592"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
@@ -30,9 +30,9 @@ Verwenden Sie entweder Anspruchswerte oder Konstanten, um eine JSON-Zeichenfolge
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Beliebige Zeichenfolge in Punktnotation | string | Der JsonPath der JSON-Zeichenfolge, in den der Anspruchswert eingefügt wird. |
-| InputParameter | Beliebige Zeichenfolge in Punktnotation | string | Der JsonPath der JSON-Zeichenfolge, in den der Zeichenfolgenwert der Konstante eingefügt wird. |
-| OutputClaim | outputClaim | string | Die generierte JSON-Zeichenfolge. |
+| InputClaim | Beliebige Zeichenfolge in Punktnotation | Zeichenfolge | Der JsonPath der JSON-Zeichenfolge, in den der Anspruchswert eingefügt wird. |
+| InputParameter | Beliebige Zeichenfolge in Punktnotation | Zeichenfolge | Der JsonPath der JSON-Zeichenfolge, in den der Zeichenfolgenwert der Konstante eingefügt wird. |
+| OutputClaim | outputClaim | Zeichenfolge | Die generierte JSON-Zeichenfolge. |
 
 Im folgenden Beispiel werden eine JSON-Zeichenfolge basierend auf dem Anspruchswert „email“ und „otp“ sowie Konstantenzeichenfolgen generiert.
 
@@ -96,9 +96,9 @@ Abrufen eines angegebenen JSON-Datenelements
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Element abzurufen |
-| InputParameter | claimToExtract | string | Der Name des JSON-Elements, das extrahiert werden soll |
-| OutputClaim | extractedClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
+| InputClaim | inputJson | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Element abzurufen |
+| InputParameter | claimToExtract | Zeichenfolge | Der Name des JSON-Elements, das extrahiert werden soll |
+| OutputClaim | extractedClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
 
 Im folgenden Beispiel hat die Anspruchstransformation das `emailAddress`-Element aus dem JSON-Datenelement extrahiert: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -132,11 +132,11 @@ Abrufen einer Liste der angegebenen JSON-Datenelemente
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | string | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um die Ansprüche abzurufen. |
+| InputClaim | jsonSourceClaim | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um die Ansprüche abzurufen. |
 | InputParameter | errorOnMissingClaims | boolean | Gibt an, ob ein Fehler ausgelöst werden soll, wenn einer der Ansprüche fehlt. |
-| InputParameter | includeEmptyClaims | string | Gibt an, dass leere Ansprüche hinzugefügt werden sollen. |
-| InputParameter | jsonSourceKeyName | string | Name des Elementschlüssels |
-| InputParameter | jsonSourceValueName | string | Name des Elementwerts |
+| InputParameter | includeEmptyClaims | Zeichenfolge | Gibt an, dass leere Ansprüche hinzugefügt werden sollen. |
+| InputParameter | jsonSourceKeyName | Zeichenfolge | Name des Elementschlüssels |
+| InputParameter | jsonSourceValueName | Zeichenfolge | Name des Elementwerts |
 | OutputClaim | Collection | string, int, boolean und datetime |Liste mit Ansprüchen, die extrahiert werden sollen. Der Name des Anspruchs soll dem Namen entsprechen, der im Eingabeanspruch _jsonSourceClaim_ angegeben ist. |
 
 In diesem Beispiel extrahiert die Anspruchstransformation die folgenden Ansprüche aus dem JSON-Datenelement: email (string), displayName (string), membershipNum (int), active (boolean) und birthdate (datetime).
@@ -186,8 +186,8 @@ Abrufen eines angegebenen numerisches JSON-Datenelements (long)
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um den Anspruch abzurufen. |
-| InputParameter | claimToExtract | string | Der Name des JSON-Elements, das extrahiert werden soll |
+| InputClaim | inputJson | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um den Anspruch abzurufen. |
+| InputParameter | claimToExtract | Zeichenfolge | Der Name des JSON-Elements, das extrahiert werden soll |
 | OutputClaim | extractedClaim | long | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
 
 Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus dem JSON-Datenelement.
@@ -229,8 +229,8 @@ Abrufen des ersten Elements aus dem JSON-Datenarray.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | string | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Element aus dem JSON-Array abzurufen. |
-| OutputClaim | extractedClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um das erste Element im JSON-Array. |
+| InputClaim | inputJsonClaim | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Element aus dem JSON-Array abzurufen. |
+| OutputClaim | extractedClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um das erste Element im JSON-Array. |
 
 Im folgenden Beispiel extrahiert die Anspruchstransformation das erste Element (die E-Mail-Adresse) aus dem JSON-Array `["someone@example.com", "Someone", 6353399]`.
 
@@ -258,8 +258,8 @@ Konvertieren von XML-Daten ins JSON-Format.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Xml | string | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
-| OutputClaim | json | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um die Daten im JSON-Format. |
+| InputClaim | Xml | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
+| OutputClaim | json | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um die Daten im JSON-Format. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">

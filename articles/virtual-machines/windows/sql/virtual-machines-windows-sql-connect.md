@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102087"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918375"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 
@@ -113,7 +113,7 @@ Die Konnektivitätseinstellungen für den virtuellen SQL Server-Computer können
 
 ## <a id="manualtcp"></a> Aktivieren von TCP/IP für die Editionen Developer und Express
 
-Wenn Sie die SQL Server-Konnektivitätseinstellungen ändern, wird das TCP/IP-Protokoll für die SQL Server-Editionen Developer und Express nicht automatisch aktiviert. In den folgenden Schritten wird die manuelle Aktivierung von TCP/IP erläutert, sodass Sie per IP-Adresse eine Remoteverbindung herstellen können.
+Wenn Sie die SQL Server-Konnektivitätseinstellungen ändern, wird das TCP/IP-Protokoll für die SQL Server-Editionen Developer und Express nicht automatisch aktiviert. In den folgenden Schritten wird erläutert, wie TCP/IP manuell aktiviert wird, sodass Sie über die IP-Adresse eine Remoteverbindung herstellen können.
 
 Stellen Sie zunächst mit Remotedesktop eine Verbindung mit dem SQL Server-Computer her.
 
@@ -123,7 +123,7 @@ Aktivieren Sie dann mithilfe des **SQL Server-Konfigurations-Managers** das TCP/
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>Verbinden mit SSMS
+## <a name="connect-with-ssms"></a>Herstellen einer Verbindung mit SSMS
 
 Die folgenden Schritte zeigen, wie Sie eine optionale DNS-Bezeichnung für Ihren virtuellen Azure-Computer erstellen und anschließend eine Verbindung mit SQL Server Management Studio (SSMS) herstellen.
 
@@ -137,7 +137,7 @@ Die folgende Tabelle enthält die Anforderungen für Verbindungen mit SQL Server
 
 | Anforderung | BESCHREIBUNG |
 |---|---|
-| [Aktivieren des SQL Server-Authentifizierungsmodus](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Die SQL Server-Authentifizierung ist für eine Remoteverbindung mit dem virtuellen Computer erforderlich, sofern Sie nicht Active Directory in einem virtuellen Netzwerk konfiguriert haben. |
+| [Aktivieren des SQL Server-Authentifizierungsmodus](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Die SQL Server-Authentifizierung ist für eine Remoteverbindung mit dem virtuellen Computer erforderlich, sofern Sie nicht Active Directory in einem virtuellen Netzwerk konfiguriert haben. |
 | [Erstellen einer SQL-Anmeldung](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Wenn Sie die SQL-Authentifizierung verwenden, benötigen Sie eine SQL-Anmeldung mit einem Benutzernamen und einem Kennwort, die auch über die erforderlichen Berechtigungen für die Zieldatenbank verfügt. |
 | [Aktivieren des TCP/IP-Protokolls](#manualtcp) | SQL Server muss Verbindungen über TCP zulassen. |
 | [Aktivieren von Firewallregeln für den SQL Server-Port](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Die Firewall auf dem virtuellen Computer muss eingehenden Datenverkehr am SQL Server-Port (Standardport: 1433) zulassen. |

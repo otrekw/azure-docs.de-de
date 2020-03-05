@@ -3,16 +3,15 @@ title: Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeits
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c07d14f4a6d29b65a1ffe31fc6eaad18e8fbe26
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170507"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658692"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen
 Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie laufen aus und werden durch Arbeitsmappen ersetzt, die zusätzliche Funktionalität bereitstellen. Dieser Artikel bietet eine Übersicht über den Prozess zum Umwandeln Ihrer vorhandener Ansichten in Arbeitsmappen.

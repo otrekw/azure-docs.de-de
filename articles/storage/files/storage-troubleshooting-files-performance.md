@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708256"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598084"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -22,7 +22,7 @@ In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenha
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Ursache 1: Freigabe, in der Drosselung auftritt
 
-Das standardmäßige Premium-Kontingent für eine Freigabe ist 100 GiB, wodurch 100 IOPS-Grundwerte bereitgestellt werden (mit der Möglichkeit, für eine Stunde auf bis zu 300 zu erweitern). Weitere Informationen zu einer Bereitstellung und deren Beziehung zu IOPS finden Sie im Planungshandbuch im Abschnitt [Bereitgestellte Freigaben](storage-files-planning.md#provisioned-shares).
+Das standardmäßige Premium-Kontingent für eine Freigabe ist 100 GiB, wodurch 100 IOPS-Grundwerte bereitgestellt werden (mit der Möglichkeit, für eine Stunde auf bis zu 300 zu erweitern). Weitere Informationen zu einer Bereitstellung und deren Beziehung zu IOPS finden Sie im Planungshandbuch im Abschnitt [Bereitgestellte Freigaben](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
 
 Um zu prüfen, ob Ihre Dateifreigabe gedrosselt wird, können Sie Azure-Metriken im Portal nutzen.
 
@@ -102,7 +102,7 @@ Dies ist ein bekanntes Problem mit der Implementierung des SMB-Clients unter Lin
 
 - Verteilen Sie die Last auf mehrere virtuelle Computer.
 - Verwenden Sie auf einem virtuellen Computer mehrere Bereitstellungspunkte mit der **nosharesock**-Option, und verteilen Sie die Last auf diese Bereitstellungspunkte.
-- Versuchen Sie die Bereitstellung unter Linux mit der Option **nostrictsync**, um eine SMB-Leerung bei jedem Aufruf von „fsync“ zu vermeiden. Für Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz, kann jedoch zu veralteten Dateimetadaten in der Verzeichnisauflistung (Befehl **ls-l**) führen. Durch direktes Abfragen von Metadaten der Datei (Befehl **stat**) werden die aktuellsten Dateimetadaten zurückgegeben.
+- Versuchen Sie unter Linux, die Einbindung mit der Option **nostrictsync** durchzuführen, um eine SMB-Leerung bei jedem Aufruf von **fsync** zu vermeiden. Für Azure Files beeinträchtigt diese Option nicht die Datenkonsistenz, kann jedoch zu veralteten Dateimetadaten in der Verzeichnisauflistung (Befehl **ls -l**) führen. Durch direktes Abfragen von Metadaten der Datei (Befehl **stat**) werden die aktuellsten Dateimetadaten zurückgegeben.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Hohe Latenzen bei metadatenorientierten hohen Arbeitslasten, die sich aus umfangreichen Öffnen-/Schließen-Vorgängen ergeben.
 

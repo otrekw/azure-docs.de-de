@@ -1,17 +1,17 @@
 ---
-title: GitHub-Aktionen und Azure Kubernetes Service
+title: GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026097"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252378"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -39,7 +39,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 Erstellen Sie eine ACR-Instanz (Azure Container Registry):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Speichern Sie den *loginServer*-Wert der Ausgabe, da er in einem späteren Schri
 
 Verwenden Sie [az ad sp create-for-rbac][az-ad-sp-create-for-rbac], um einen Dienstprinzipal zu erstellen. Beispiel:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Speichern Sie die JSON-Ausgabe, da sie in einem späteren Schritt verwendet wird
 
 Verwenden Sie [az aks show][az-aks-show], um die *ID* Ihres AKS-Clusters anzuzeigen:
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 Verwenden Sie [az acr show][az-acr-show], um die *ID* der ACR anzuzeigen:
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 Verwenden Sie [az role assignment create][az-role-assignment-create], um Zugriff als *Mitwirkender* auf Ihren AKS-Cluster und *AcrPush*-Zugriff auf Ihre ACR zu gewähren.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ Wenn Sie Ihre Änderungen im *master*-Branch in Ihrem Fork zusammenführen, wird
 
 ## <a name="clean-up-your-azure-resources"></a>Bereinigen Ihrer Azure-Ressourcen
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

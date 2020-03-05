@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichungsregionen und Endpunkte – LUIS
 description: Die im Azure-Portal angegebene Region ist dieselbe, in der Sie die LUIS-App veröffentlichen werden, und es wird eine Endpunkt-URL für diese Region generiert.
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: 77fd901790582983d75735ac8b66d59c741ced9e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 097f3078b54b014dc646d144f3532e20236a9e4f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151937"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273407"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel
 

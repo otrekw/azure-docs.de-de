@@ -1,18 +1,17 @@
 ---
 title: Quellen für Daten in Azure Monitor| Microsoft-Dokumentation
 description: Beschreibt die verfügbaren Daten zum Überwachen von Integrität und Leistung Ihrer Azure-Ressourcen und der darauf ausgeführten Anwendungen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467350"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670524"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -30,7 +29,7 @@ Quellen für Überwachungsdaten von Azure-Anwendungen können in Ebenen organisi
 ### <a name="azure"></a>Azure
 Die folgende Tabelle enthält kurze Beschreibungen der Azure-spezifischen Anwendungsebenen. Folgen Sie dem Link, um zu weiteren Informationen in den folgenden Abschnitten zu gelangen.
 
-| Tarif | Beschreibung | Sammlungsmethode |
+| Tarif | BESCHREIBUNG | Sammlungsmethode |
 |:---|:---|:---|
 | [Azure-Mandant](#azure-tenant) | Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory. | Zeigen Sie AAD-Daten im Portal an, oder konfigurieren Sie die Sammlung in Azure Monitor mithilfe einer Diagnoseeinstellung für Mandanten. |
 | [Azure-Abonnement](#azure-subscription) | Daten im Zusammenhang mit der Integrität und Verwaltung von ressourcenübergreifenden Diensten in Ihrem Azure-Abonnement, z.B. Resource Manager und Service Health. | Zeigen Sie die Daten im Portal an, oder konfigurieren Sie die Sammlung in Azure Monitor mithilfe eines Protokollprofils. |
@@ -79,7 +78,7 @@ Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) enthält Service Hea
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) enthält Informationen zur Integrität der Azure-Dienste in Ihrem Abonnement, von denen Ihre Anwendung und Ressourcen abhängen.
 
-| Destination | Beschreibung | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Aktivitätsprotokoll<br>Azure Monitor-Protokolle | Service Health-Datensätze werden im Azure-Aktivitätsprotokoll gespeichert, sodass Sie sie im Azure-Portal anzeigen oder andere Aktivitäten ausführen können, die mit dem Aktivitätsprotokoll möglich sind. | [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](service-notifications.md) |
 
@@ -93,7 +92,7 @@ Metriken und Ressourcenprotokolle enthalten Informationen zum _internen_ Betrieb
 ### <a name="platform-metrics"></a>Plattformmetriken 
 Die meisten Azure-Dienste senden [Plattformmetriken](data-platform-metrics.md), die ihre Leistung und ihren Betrieb widerspiegeln, direkt an die Metrikdatenbank. Die spezifischen [Metriken variieren je nach Ressourcentyp](metrics-supported.md). 
 
-| Destination | BESCHREIBUNG | Verweis |
+| Destination | Beschreibung | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Metriken | Plattformmetriken werden ohne Konfiguration in die Azure Monitor-Metrikdatenbank geschrieben. Greifen Sie über den Metrik-Explorer auf Plattformmetriken zu.  | [Erste Schritte mit dem Azure-Metrik-Explorer](metrics-getting-started.md)<br>[Unterstützte Metriken von Azure Monitor](metrics-supported.md) |
 | Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](resource-logs-collect-workspace.md) |
@@ -154,7 +153,7 @@ Die detaillierte Anwendungsüberwachung in Azure Monitor erfolgt mit [Applicatio
 ### <a name="application-data"></a>Anwendungsdaten
 Wenn Sie Application Insights durch Installation eines Instrumentierungspakets für eine Anwendung aktivieren, werden auf Leistung und Betrieb der Anwendung bezogene Metriken und Protokolle gesammelt. Application Insights speichert die gesammelten Daten auf derselben Azure Monitor-Datenplattform, die auch von anderen Datenquellen verwendet wird. Der Dienst enthält umfassende Tools zum Analysieren der Daten, aber Sie können sie auch mithilfe von Tools wie dem Metrik-Explorer und Log Analytics mit Daten aus anderen Quellen analysieren.
 
-| Destination | Beschreibung | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Operative Daten zu Ihrer Anwendung, einschließlich Seitenaufrufe, Anwendungsanforderungen, Ausnahmen und Ablaufverfolgungen. | [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md) |
 |                    | Informationen zu Abhängigkeiten zwischen Anwendungskomponenten zur Unterstützung der Anwendungszuordnung und Telemetriekorrelation. | [Telemetriekorrelation in Application Insights](../app/correlation.md) <br> [Anwendungszuordnung](../app/app-map.md) |
@@ -201,7 +200,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 ## <a name="other-services"></a>Sonstige Dienste
 Sonstige Dienste in Azure schreiben Daten auf die Azure Monitor-Datenplattform. Dadurch können Sie Daten, die von diesen Diensten gesammelt werden, mit den von Azure Monitor gesammelten Daten analysieren und dieselben Analyse- und Virtualisierungstools nutzen.
 
-| Dienst | Destination | Beschreibung | Verweis |
+| Dienst | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|:---|
 | [Azure Security Center](/azure/security-center/) | Azure Monitor-Protokolle | Azure Security Center speichert die gesammelten Sicherheitsdaten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](/azure/sentinel/) | Azure Monitor-Protokolle | Azure Sentinel speichert die aus verschiedenen Datenquellen gesammelten Daten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Herstellen einer Verbindung mit Datenquellen](/azure/sentinel/quickstart-onboard) |

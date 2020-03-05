@@ -3,17 +3,16 @@ title: Benutzerdefinierte Metriken in Azure Monitor
 description: Erfahren Sie mehr zu benutzerdefinierten Metriken in Azure Monitor und wie diese modelliert werden.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669166"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662347"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -29,7 +28,7 @@ Benutzerdefinierte Metriken können über verschiedene Methoden an Azure Monitor
 
 Wenn Sie benutzerdefinierte Metriken an Azure Monitor senden, muss jeder gemeldete Datenpunkt (oder Wert) die folgenden Informationen enthalten.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 Zum Übermitteln von benutzerdefinierten Metriken an Azure Monitor muss die Entität über ein gültiges Azure Active Directory-Token (Azure AD) im **Bearer**-Header der Anforderung verfügen. Es gibt einige unterstützte Möglichkeiten, einen gültigen Bearertoken zu erhalten:
 1. [Verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Gibt einer Azure-Ressource (z.B. einer VM) eine Identität. Verwaltete Dienstidentität (MSI) gewährt Ressourcen die Berechtigungen zum Durchführen bestimmter Vorgänge. Zum Beispiel erlaubt sie einer Ressource das Ausgeben von Metriken über sich. Einer Ressource oder ihrer MSI kann die Berechtigung **Überwachungsmetriken veröffentlichen** für eine andere Ressource gewährt werden. Mit dieser Berechtigung kann die MSI auch Metriken für andere Ressourcen ausgeben.
 2. [Azure AD-Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) In diesem Szenario können einer AAD-Anwendung oder einem Dienst die Berechtigungen zum Ausgeben von Metriken zu einer Azure-Ressource gewährt werden.
@@ -60,7 +59,7 @@ Jeder Datenpunkt, der an Azure Monitor gesendet wird, muss mit einem Zeitstempel
 ### <a name="namespace"></a>Namespace
 Namespaces sind eine Möglichkeit, ähnliche Metriken zu kategorisieren oder zu gruppieren. Namespaces ermöglichen es Ihnen, Gruppen von Metriken zu isolieren, die unterschiedliche Erkenntnisse oder Leistungsindikatoren erfassen. Sie könnten z.B. über den Namespace **contosomemorymetrics** verfügen, der Metriken zur Arbeitsspeichernutzung verfolgt, um ein Profile Ihrer App zu erstellen. Ein anderer Namespace mit dem Namen **contosoapptransaction** könnte alle Metriken über Benutzertransaktionen in Ihrer Anwendung verfolgen.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 **Name** ist der Name der Metrik, die gemeldet wird. Normalerweise ist der Name ausreichend beschreibend, um zu erkennen, was gemessen wird. Ein Beispiel ist eine Metrik, die die Anzahl der Speicherbytes misst, die auf einem bestimmten virtuellen Computer genutzt werden. Der Metrikname könnte beispielsweise **Verwendete Arbeitsspeicherbytes** lauten.
 
 ### <a name="dimension-keys"></a>Dimensionsschlüssel
@@ -95,14 +94,14 @@ Wenn es z.B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ih
 Als Ergebnis würde die folgende Metrik an Azure Monitor gemeldet werden:
 * Min: 4
 * Max: 16
-* Sum: 40
-* Count: 4
+* Summe: 40
+* Anzahl: 4
 
 Wenn Ihre Anwendung nicht in der Lage ist, vorab die lokale Aggregierung durchzuführen und jede einzelne Stichprobe oder jedes einzelne Ereignis sofort nach der Erfassung ausgeben muss, können Sie die Rohmesswerte ausgeben. So würden Sie z.B. jedes Mal, wenn in Ihrer App eine Anmeldetransaktion stattgefunden hat, eine Metrik mit nur einer einzigen Messung an Azure Monitor übermitteln. Für eine Anmeldetransaktion, die 12 ms dauerte, würden also die folgenden Metriken ausgegeben werden:
 * Min: 12
 * Max: 12
-* Sum: 12
-* Count: 1
+* Summe: 12
+* Anzahl: 1
 
 Dieser Prozess ermöglicht es Ihnen, mehrere Werte für dieselbe Kombination aus Metrik und Dimension während einer bestimmten Minute auszugeben. Azure Monitor aggregiert dann alle für eine bestimmte Minute übermittelten Rohwerte.
 

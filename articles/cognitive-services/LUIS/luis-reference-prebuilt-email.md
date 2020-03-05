@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 6f262752a50b58eae8ffbea81b8e7fc4d8c65b98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464981"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273478"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Vordefinierte E-Mail-Entität für eine LUIS-App
-Die E-Mail-Entität extrahiert die vollständige E-Mail-Adresse aus einer Äußerung. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit E-Mail-Adressen hinzufügen. Die E-Mail-Entität wird nur in der Kultur `en-us` unterstützt. 
+Die E-Mail-Entität extrahiert die vollständige E-Mail-Adresse aus einer Äußerung. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit E-Mail-Adressen hinzufügen. Die E-Mail-Entität wird nur in der Kultur `en-us` unterstützt.
 
 ## <a name="resolution-for-prebuilt-email"></a>Auflösung der vorgefertigten E-Mail-Entität
 
@@ -27,7 +27,7 @@ Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
 `please send the information to patti@contoso.com`
 
-#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
+#### <a name="v3-response"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
@@ -38,7 +38,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
@@ -64,7 +64,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
+#### <a name="v2-response"></a>[V2-Antwort](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veranschaulicht.
 
@@ -81,10 +81,10 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veransc
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-Erfahren Sie mehr zu den [Anzahl](luis-reference-prebuilt-number.md)-, [Ordinal](luis-reference-prebuilt-ordinal.md)- und [Prozentsatzentitäten](luis-reference-prebuilt-percentage.md). 
+Erfahren Sie mehr zu den [Anzahl](luis-reference-prebuilt-number.md)-, [Ordinal](luis-reference-prebuilt-ordinal.md)- und [Prozentsatzentitäten](luis-reference-prebuilt-percentage.md).

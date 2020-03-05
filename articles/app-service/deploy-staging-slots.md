@@ -3,14 +3,14 @@ title: Einrichten von Stagingumgebungen
 description: Hier erfahren Sie, wie Sie Apps in einem produktionsfremden Slot bereitstellen und automatisch in die Produktion überführen. Erhöhen Sie die Zuverlässigkeit, und vermeiden Sie bereitstellungsbedingte Downtime für Apps.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666453"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300859"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -23,7 +23,7 @@ Die Bereitstellung von Anwendungen in einem produktionsfremden Slot hat folgende
 * Wenn Sie eine App zuerst in einem Slot bereitstellen und dann in den Produktionsslot überführen, ist sichergestellt, dass alle Instanzen erst nach einer Anlaufzeit in den Produktionsslot übernommen werden. Dadurch vermeiden Sie Ausfallzeiten bei der Bereitstellung der App. Die Umleitung des Datenverkehrs erfolgt übergangslos, und es gehen keine Anforderungen aufgrund des Tauschs verloren. Der gesamte Workflow kann durch Konfigurieren von [Automatisch tauschen](#Auto-Swap) automatisiert werden, wenn keine Überprüfung vor dem Tausch erforderlich ist.
 * Nach der Überführung enthält der Slot mit der vorherigen Staging-App die vorherige Produktions-App. Wenn die in den Produktionsslot überführten Änderungen nicht Ihren Erwartungen entsprechen, können Sie den gleichen Tausch sofort noch einmal vornehmen, um Ihre „letzte als funktionierend bekannte Website“ zurückzuerhalten.
 
-Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
+Jeder App Service-Plantarif unterstützt eine andere Anzahl von Bereitstellungsslots. Für die Nutzung von Bereitstellungsslots fallen keine zusätzlichen Gebühren an. Informationen zur unterstützten Slotanzahl in Ihrem App-Tarif finden Sie unter [App Service-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 Wenn Sie Ihre App auf einen anderen Tarif skalieren möchten, muss der Zieltarif die Anzahl von Slots unterstützen, die Ihre App bereits verwendet. Falls Ihre App also beispielsweise mehr als fünf Slots besitzt, können Sie sie nicht auf den Tarif **Standard** herunterskalieren, da der Tarif **Standard** nur fünf Bereitstellungsslots unterstützt. 
 
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiieren eines Austauschs mit Vorschau (Austausch mit mehreren Phasen) und Anwenden der Konfiguration des Zielslots auf den Quellslot
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Überführen von Bereitstellungsslots
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

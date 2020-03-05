@@ -1,18 +1,18 @@
 ---
-title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen | Microsoft-Dokumentation
+title: Informationen zu Azure-Point-to-Site-VPN-Verbindungen | VPN Gateway
 description: Dieser Artikel enthält Informationen zu P2S-Verbindungen (Point-to-Site) und erleichtert Ihnen die Entscheidung, welcher P2S-VPN-Gateway-Authentifizierungstyp verwendet werden sollte.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110445"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500602"
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 
@@ -53,14 +53,14 @@ Auf einer hohen Ebene müssen Sie die folgenden Schritte ausführen, um die Azur
 
 1. [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md)
 
-2. [Aktivieren der Azure AD-Authentifizierung im Gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Aktivieren der Azure AD-Authentifizierung im Gateway](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Herunterladen und Konfigurieren von Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Authentifizieren mit Active Directory-Domänenserver (AD)
 
-Die AD-Domänenauthentifizierung ermöglicht Benutzern das Herstellen einer Verbindung mit Azure mit ihren Anmeldeinformationen für die Organisationsdomäne. Dafür ist ein RADIUS-Server erforderlich, der in den AD-Server integriert wird. Organisationen können auch ihre vorhandene RADIUS-Bereitstellung nutzen.   
+Die AD-Domänenauthentifizierung ermöglicht Benutzern das Herstellen einer Verbindung mit Azure mit ihren Anmeldeinformationen für die Organisationsdomäne. Dafür ist ein RADIUS-Server erforderlich, der in den AD-Server integriert wird. Organisationen können auch ihre vorhandene RADIUS-Bereitstellung nutzen.
   
 Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestellt werden. Während der Authentifizierung fungiert das Azure-VPN-Gateway als Vermittler und leitet Authentifizierungsnachrichten zwischen dem RADIUS-Server und dem Gerät weiter, das eine Verbindung herstellt. Die Erreichbarkeit des Gateways durch den RADIUS-Server ist daher wichtig. Wenn sich der RADIUS-Server in der lokalen Umgebung befindet, ist aus Gründen der Erreichbarkeit eine VPN-S2S-Verbindung zwischen Azure und dem lokalen Standort erforderlich.  
   
@@ -156,9 +156,6 @@ Die ZIP-Datei enthält zudem die Werte einiger wichtiger Einstellungen in Azure,
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>Wie konfiguriere ich eine P2S-Verbindung?
 
 Eine P2S-Konfiguration erfordert einige bestimmte Schritte. Die folgenden Artikel enthalten die Schritte, anhand derer Sie eine P2S-Konfiguration durchführen können, und Links zur Konfiguration der VPN-Clientgeräte:
@@ -169,11 +166,9 @@ Eine P2S-Konfiguration erfordert einige bestimmte Schritte. Die folgenden Artike
 
 * [Konfigurieren von OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Entfernen der Konfiguration einer P2S-Verbindung
 
-Eine P2S-Konfiguration kann über die Azure CLI und den folgenden Befehl entfernt werden: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Eine entsprechende Anleitung finden Sie weiter unten in den [häufig gestellten Fragen](#removeconfig).
  
 ## <a name="faqcert"></a>Häufig gestellte Fragen zur nativen Azure-Zertifikatauthentifizierung
 

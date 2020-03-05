@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970501"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298529"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Verschieben von virtuellen Azure IaaS-Computern zwischen Azure Government und öffentlichen Regionen 
 
@@ -100,7 +100,7 @@ Der Mobilitätsdienst muss auf jedem Computer installiert sein, den Sie replizie
     - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
     - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk. 
+    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/?pivot=products&panel=network) zum Netzwerk.
 
 4. [Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in der Zielregion, wenn Sie die Konfiguration vor der endgültigen Verschiebung in die Zielregion testen möchten. Diese Vorgehensweise wird empfohlen, da es so nur zu minimalen Beeinträchtigungen in der Produktionsumgebung kommt.
 

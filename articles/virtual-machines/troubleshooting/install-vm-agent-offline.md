@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059249"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920857"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -105,6 +105,8 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 Wenn Sie den virtuellen Computer mit dem Resource Manager-Bereitstellungsmodell erstellt haben, ist der Vorgang abgeschlossen.
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Verwenden der ProvisionGuestAgent-Eigenschaft für klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Wenn Sie den virtuellen Computer mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie das Azure PowerShell-Modul, um die **ProvisionGuestAgent**-Eigenschaft zu aktualisieren. Die Eigenschaft informiert Azure, dass der VM-Agent auf dem virtuellen Computer installiert ist.
 

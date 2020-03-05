@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749911"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921571"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Die Netzwerkschnittstelle für den virtuellen Windows-Computer in Azure zurücksetzen 
 
@@ -71,6 +71,8 @@ Dieser Artikel zeigt, wie Sie die Netzwerkschnittstelle für Azure-Windows-VMs z
 3. Versuchen Sie RDP auf Ihrem Computer auszuführen.  Wenn Sie möchten, können Sie bei erfolgreicher Ausführung die private IP-Adresse zurück zur ursprünglichen ändern. Andernfalls können Sie sie speichern.
 
 ### <a name="for-classic-vms"></a>Für klassische virtuelle Computer
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Um die Netzwerkschnittstelle zurückzusetzen, gehen Sie folgendermaßen vor:
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/30/2020
-ms.openlocfilehash: 74f69f789ecb0d529e52054eeb1ac7ccb51bd6c2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/03/2020
+ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588824"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271322"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -39,7 +39,7 @@ Azure Search wurde in **Azure Cognitive Search** umbenannt, um die erweiterte (o
 
 + Privater Zugriff auf einen Suchdienst ist über zwei Mechanismen verfügbar (beider zurzeit in der Vorschau):
 
-  + Sie können den Zugriff auf bestimmte IP-Adressen einschränken, indem Sie den Dienst mit der Verwaltungs-REST-API `api-version=2019-10-01-Preview` erstellen. Die Vorschau-API verfügt über neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in der [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Diese Previewfunktion ist in den ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Verwenden der Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+  + Sie können den Zugriff auf bestimmte IP-Adressen einschränken, indem Sie den Dienst mit der Verwaltungs-REST-API `api-version=2019-10-01-Preview` erstellen. Die Vorschau-API verfügt über neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in der [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Diese Previewfunktion ist in den ausgewählten Regionen verfügbar. Weitere Informationen finden Sie unter [Verwenden der Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
   + Sie können einen Azure Search-Dienst bereitstellen (zurzeit über eine Vorschau mit eingeschränktem Zugriff verfügbar), der den privaten Azure-Endpunkt für Verbindungen von Clients im gleichen virtuellen Netzwerk unterstützt. Weitere Informationen finden Sie unter [Erstellen eines privaten Endpunkts für sichere Verbindungen](service-create-private-endpoint.md).
 

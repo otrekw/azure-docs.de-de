@@ -1,19 +1,15 @@
 ---
 title: Untersuchen von .NET-Ablaufverfolgungsprotokollen mit ILogger – Azure Application Insights
 description: Beispiele für die Verwendung des Azure Application Insights-ILogger-Anbieters mit ASP.NET Core- und Konsolenanwendungen.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716024"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192471"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider für .NET Core-ILogger-Protokolle
 
@@ -396,7 +392,7 @@ Wenn Sie beim Debuggen aus Visual Studio doppelte Protokollierung feststellen, l
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Ich habe ein Update auf [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 durchgeführt, und Protokolle aus ILogger werden automatisch erfasst. Wie kann ich dieses Feature vollständig deaktivieren?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Ich habe ein Update auf [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 durchgeführt, und Protokolle aus ILogger werden automatisch erfasst. Wie kann ich dieses Feature vollständig deaktivieren?
 
 Allgemeine Informationen zum Filtern von Protokollen finden Sie im Abschnitt [Steuern des Protokolliergrads](../../azure-monitor/app/ilogger.md#control-logging-level). Zum Deaktivieren von ApplicationInsightsLoggerProvider verwenden Sie `LogLevel.None`:
 
@@ -430,7 +426,7 @@ Bei Verwendung des eigenständigen Pakets wird `TelemetryClient` nicht in den DI
 ```csharp
 public class MyController : ApiController
 {
-   // This telemtryclient can be used to track additional telemetry using TrackXXX() api.
+   // This telemetryclient can be used to track additional telemetry using TrackXXX() api.
    private readonly TelemetryClient _telemetryClient;
    private readonly ILogger _logger;
 

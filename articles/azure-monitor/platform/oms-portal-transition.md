@@ -1,18 +1,17 @@
 ---
 title: Wechsel des OMS-Portals zu Azure | Microsoft-Dokumentation
 description: Das OMS-Portal hat das Ende seines Lebenszyklus erreicht und wechselt mit seiner gesamten Funktionalität zum Azure-Portal. Dieser Artikel enthält Details zu diesem Übergang.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932154"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659253"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -61,7 +60,7 @@ In beiden Fällen muss Ihr Administrator Ihnen die geeignete Rolle aus der folge
 |:---|:---|
 | ReadOnly | Log Analytics-Leser |
 | Mitwirkender | Log Analytics-Mitwirkender |
-| Administrator | Owner (Besitzer) | 
+| Administrator | Besitzer | 
  
 
 ## <a name="new-workspaces"></a>Neue Arbeitsbereiche

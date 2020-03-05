@@ -1,25 +1,21 @@
 ---
 title: Application Insights-Abhängigkeitsdatenmodell von Azure Monitor
 description: Application Insights-Datenmodell für Abhängigkeitstelemetrie
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872637"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671918"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetriedaten zu Abhängigkeiten: Application Insights-Datenmodell
 
 Abhängigkeitstelemetrie (in [Application Insights](../../azure-monitor/app/app-insights-overview.md)) stellt eine Interaktion der überwachten Komponente mit einer Remotekomponente wie SQL oder einem HTTP-Endpunkt dar.
 
-## <a name="name"></a>NAME
+## <a name="name"></a>Name
 
 Name des Befehls, der mit diesem Abhängigkeitsaufruf ausgelöst wird. Niedriger Kardinalitätswert. Beispiele sind der Name einer gespeicherten Prozedur und eine URL-Pfadvorlage.
 
@@ -47,7 +43,7 @@ Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss kleiner als `1000` Ta
 
 Ergebniscode eines Aufrufs einer Abhängigkeit. Beispiele sind SQL-Fehlercode und HTTP-Statuscode.
 
-## <a name="success"></a>Erfolgreich
+## <a name="success"></a>Erfolg
 
 Angabe eines erfolgreichen oder fehlgeschlagenen Aufrufs.
 

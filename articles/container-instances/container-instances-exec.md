@@ -3,12 +3,12 @@ title: Ausführen von Befehlen in einer ausgeführten Containerinstanz
 description: Erfahren Sie, wie ein Befehl in einem Container ausgeführt wird, der zurzeit in Azure Container Instances ausgeführt wird
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: 10d0ea0c2dfa60aad64d0ae11532aff24a7ce773
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481578"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250015"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>Ausführen eines Befehls in einer ausgeführten Azure Container Instances-Instanz
 
@@ -30,8 +30,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 In der folgenden Beispielausgabe wird die Bash-Shell in einem ausgeführten Linux-Container gestartet, der einen Terminalserver bereitstellt, in dem `ls` ausgeführt wird:
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
@@ -42,8 +41,11 @@ Bye.
 
 In diesem Beispiel wird die Eingabeaufforderung in einem ausgeführten Nano Server-Container gestartet:
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```azurecli
+az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```
+
+```output
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
 
@@ -78,7 +80,7 @@ In der Containergruppe *mynginx* befinden sich beispielsweise zwei Container: *n
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
 ```
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 Azure Container Instances unterstützt derzeit den Start eines einzelnen Prozesses mit [az container exec][az-container-exec], und Sie können keine Befehlsargumente übergeben. Sie können beispielsweise keine Befehle wie in `sh -c "echo FOO && echo BAR"` verketten oder `echo FOO` ausführen.
 

@@ -1,18 +1,17 @@
 ---
 title: 'Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie eine Azure Monitor für VMs bereitstellen und konfigurieren. Informieren Sie sich über die Systemanforderungen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400617"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669572"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht
 
@@ -166,7 +165,7 @@ In einer Hybridumgebung können Sie den Dependency-Agent manuell oder automatisc
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuordnungsfeature in einer Hybridumgebung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
+| Verbundene Quelle | Unterstützt | Beschreibung |
 |:--|:--|:--|
 | Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md) benötigen Linux-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |

@@ -3,20 +3,20 @@ title: Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenb
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie den Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840263"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186994"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -24,17 +24,7 @@ ms.locfileid: "76840263"
 
 In Azure Active Directory B2C (Azure AD B2C) ist der Flow für Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC) ein OAuth-Standardauthentifizierungsflow. Bei diesem Flow tauscht eine Anwendung, die auch als die vertrauende Seite bezeichnet wird, gültige Anmeldeinformationen gegen Token aus. Die Anmeldeinformationen enthalten eine Benutzer-ID und ein Kennwort. Die zurückgegebenen Token sind ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken.
 
-Die folgenden Optionen werden im ROPC-Flow unterstützt:
-
-- **Nativer Client:** Die Benutzerinteraktion während der Authentifizierung erfolgt, wenn Code auf einem Gerät auf Benutzerseite ausgeführt wird.
-- **Flow für öffentlichen Client:** Im API-Aufruf werden nur die von einer Anwendung gesammelten Benutzeranmeldeinformationen übermittelt. Die Anmeldeinformationen der Anwendung werden nicht gesendet.
-- **Neue Ansprüche hinzuzufügen**: Der Inhalt des ID-Tokens kann geändert werden, um neue Ansprüche hinzuzufügen.
-
-Folgende Flows werden nicht unterstützt:
-
-- **Server-zu-Server:** Das Identitätsschutzsystem benötigt eine zuverlässige IP-Adresse, die vom Aufrufer (dem nativen Client) im Rahmen der Interaktion erfasst wurde. Bei einem serverseitigen API-Aufruf wird nur die IP-Adresse des Servers verwendet. Wenn zu viele Anmeldungen zu Fehlern führen, sieht das Identitätsschutzsystem eine wiederholte IP-Adresse möglicherweise als Angreifer an.
-- **Einzelseitenanwendung:** eine Front-End-Anwendung, die hauptsächlich in JavaScript geschrieben ist. Häufig wird die Anwendung mithilfe eines Frameworks wie AngularJS, Ember.js oder Durandal geschrieben.
-- **Flow für vertraulichen Client:** Die Anwendungsclient-ID wird überprüft, das Anwendungsgeheimnis wird jedoch nicht überprüft.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

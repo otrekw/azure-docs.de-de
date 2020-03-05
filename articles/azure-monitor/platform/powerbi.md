@@ -1,18 +1,17 @@
 ---
 title: Importieren von Log Analytics-Daten in Power BI | Microsoft Dokumentation
 description: Power BI ist ein cloudbasierter Business Analytics-Dienst von Microsoft, der umfassende Visualisierungen und Berichte zur Analyse verschiedener Datensätze bietet.  In diesem Artikel wird beschrieben, wie Log Analytics-Daten konfiguriert und in Power BI importiert werden und wie die automatische Aktualisierung konfiguriert wird.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394701"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659282"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importieren von Azure Monitor-Protokolldaten in Power BI
 
