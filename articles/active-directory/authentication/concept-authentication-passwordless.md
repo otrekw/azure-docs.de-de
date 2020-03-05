@@ -1,24 +1,24 @@
 ---
-title: Kennwortlose Azure Active Directory-Anmeldung (Vorschauversion)
-description: Informationen zu den Optionen für kennwortlose Anmeldung bei Azure Active Directory mithilfe von FIDO2-Sicherheitsschlüsseln oder der Microsoft Authenticator-App
+title: Kennwortlose Azure Active Directory-Anmeldung (Vorschauversion)
+description: Hier finden Sie Informationen zu den Optionen für kennwortlose Anmeldung bei Azure Active Directory mithilfe von FIDO2-Sicherheitsschlüsseln oder der Microsoft Authenticator-App.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756792"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505756"
 ---
-# <a name="passwordless-authentication-options"></a>Kennwortlose Authentifizierungsoptionen
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
 Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist eine großartige Möglichkeit zum Schutz Ihrer Organisation, aber für Benutzer ist es oft lästig, sich als zusätzliche Sicherheit auch noch ihre Kennwörter merken zu müssen. Kennwortlose Authentifizierungsmethoden sind bequemer, weil das Kennwort entfällt und durch etwas ersetzt wird, das Sie haben, plus etwas, das Sie sind oder das Sie wissen.
 
@@ -52,7 +52,7 @@ Die Authenticator-App wandelt jedes iOS- oder Android-Telefon in sichere kennwor
 
 FIDO2-Sicherheitsschlüssel sind eine Phishing-resistente, standardbasierte Methode zur kennwortlosen Authentifizierung, die in jedem Formfaktor verfügbar sein kann. Fast Identity Online (FIDO) ist ein offener Standard für die kennwortlose Authentifizierung. Dank FIDO können Benutzer und Organisationen den Standard nutzen, um sich ohne Benutzername oder Kennwort mit einem externen Sicherheitsschlüssel oder einem in ein Gerät integrierten Plattformschlüssel bei ihren Ressourcen anzumelden.
 
-In der Public Preview können sich Mitarbeiter mit Sicherheitsschlüsseln bei ihren mit Azure AD verknüpften Windows 10-Geräten anmelden und mit einmaligem Anmelden auf ihre Cloud- und lokalen Ressourcen zugreifen. Benutzer können sich auch bei unterstützten Browsern anmelden. FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sicherheitsbewusst sind oder deren Mitarbeiter nicht bereit oder in der Lage sind, ihr Telefon als zweiten Faktor zu nutzen, oder aber bei denen andere entsprechende Szenarien vorliegen.
+In der Public Preview-Phase können sich Mitarbeiter mit Sicherheitsschlüsseln bei ihren in Azure AD oder Azure AD Hybrid eingebundenen Windows 10-Geräten anmelden und einmaliges Anmelden nutzen, um auf ihre cloudbasierten und lokalen Ressourcen zuzugreifen. Benutzer können sich auch bei unterstützten Browsern anmelden. FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sicherheitsbewusst sind oder deren Mitarbeiter nicht bereit oder in der Lage sind, ihr Telefon als zweiten Faktor zu nutzen, oder aber bei denen andere entsprechende Szenarien vorliegen.
 
 ![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 

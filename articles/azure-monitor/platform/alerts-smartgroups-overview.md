@@ -1,20 +1,18 @@
 ---
 title: Intelligente Gruppen
 description: Intelligente Gruppen sind Aggregationen von Warnungen, die Ihnen helfen, Störungen bei Warnungen zu reduzieren.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552346"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665492"
 ---
 # <a name="smart-groups"></a>Intelligente Gruppen
+
 Eine häufige Herausforderung beim Umgang mit Warnungen ist das Durchsuchen der nicht relevanten Informationen, um die relevanten Warnungen zu ermitteln – intelligente Gruppen sind als Lösung für dieses Problem vorgesehen.  
 
 Intelligente Gruppen werden automatisch mithilfe von Machine Learning-Algorithmen erstellt, um zusammengehörige Warnungen zu kombinieren, die ein einzelnes Problem darstellen.  Wenn eine Warnung erstellt wird, fügt der Algorithmus diese basierend auf Informationen wie bisherigen Mustern, Ähnlichkeit von Eigenschaften und Ähnlichkeit der Struktur einer neuen intelligenten Gruppe oder einer vorhandenen intelligenten Gruppe hinzu. Wenn z. B. „% CPU“ auf mehreren virtuellen Computern in einem Abonnement gleichzeitig Spitzenwerte erreicht, die zu vielen einzelnen Warnungen führen, und wenn solche Warnungen in der Vergangenheit immer wieder zusammen aufgetreten sind, werden diese Warnungen voraussichtlich in einer einzelnen intelligenten Gruppe zusammengefasst, was auf eine mögliche gemeinsame Ursache hindeutet. Das bedeutet, dass intelligente Gruppen für Personen, die Fehlerbehebungen für Warnungen durchführen, nicht nur die Möglichkeit haben, die nicht relevanten Informationen zu reduzieren, indem sie verwandte Warnungen als einzelne aggregierte Einheit verwalten, sondern sie auch zu möglichen gemeinsamen Ursachen für ihre Warnungen führen.
@@ -24,11 +22,12 @@ Derzeit berücksichtigt der Algorithmus nur Warnungen vom gleichen Überwachungs
 Sie können ähnlich wie bei Warnungen die Details der intelligenten Gruppen anzeigen und den Status festlegen. Jede Warnung ist nur Mitglied einer einzigen intelligenten Gruppe. 
 
 ## <a name="smart-group-state"></a>Zustand der intelligenten Gruppe
+
 Der Zustand der intelligenten Gruppe ist ein ähnliches Konzept wie der Warnungszustand, mit dem Sie den Auflösungsprozess auf der Ebene einer intelligenten Gruppe verwalten können. Ähnlich wie beim Warnungszustand befindet sich eine intelligente Gruppe beim Erstellen im Zustand **Neu**, der entweder in **Bestätigt** oder **Geschlossen** geändert werden kann.
 
 Die folgenden Zustände werden für intelligente Gruppen unterstützt.
 
-| State | BESCHREIBUNG |
+| State | Beschreibung |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die intelligente Gruppe überprüft und mit deren Bearbeitung begonnen. |

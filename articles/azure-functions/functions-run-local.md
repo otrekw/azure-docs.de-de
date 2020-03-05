@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208881"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523270"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -42,6 +42,9 @@ Sofern nicht anders angegeben, gelten die Beispiele in diesem Artikel für Versi
 ## <a name="install-the-azure-functions-core-tools"></a>Installieren von Azure Functions Core Tools
 
 [Azure Functions Core Tools] umfasst eine Version der gleichen Runtime, auf der die Azure Functions-Runtime basiert, die Sie auf dem lokalen Entwicklungscomputer ausführen können. Zudem sind Befehle zum Erstellen von Funktionen, Herstellen einer Verbindung mit Azure und Bereitstellen von Functions-Projekten enthalten.
+
+>[!IMPORTANT]
+>Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) muss lokal installiert sein, um von Azure Functions Core Tools aus Veröffentlichungsvorgänge für Azure durchführen zu können.  
 
 ### <a name="v2"></a>Version 2.x und 3.x
 
@@ -291,7 +294,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Sie können diese Optionen im Befehl auch mit folgenden Argumenten angeben:
 
-| Argument     | Beschreibung                            |
+| Argument     | BESCHREIBUNG                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Version 2.x) Generiert dieselben C#-Skriptvorlagen (.csx), die in Version 1.x und im Portal verwendet wurden. |
 | **`--language`** , **`-l`**| Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. Diese Option ist in Version 1.x erforderlich. Verwenden Sie diese Option nicht in Version 2.x, oder wählen Sie eine für die Workerruntime geeignete Sprache. |
@@ -347,7 +350,7 @@ func host start
 
 `func start` unterstützt die folgenden Optionen:
 
-| Option     | BESCHREIBUNG                            |
+| Option     | Beschreibung                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Das aktuelle Projekt wird vor der Ausführung nicht erstellt. Nur für dotnet-Projekte. Standardmäßig ist „false“ festgelegt. Nur Version 2.x. |
 | **`--cert`** | Der Pfad zu einer PFX-Datei, die einen privaten Schlüssel enthält. Nur mit `--useHttps` verwendet. Nur Version 2.x. |
@@ -437,7 +440,7 @@ Sie können eine Funktion auch direkt aufrufen, indem Sie `func run <FunctionNam
 
 `func run` unterstützt die folgenden Optionen:
 
-| Option     | Beschreibung                            |
+| Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--content`** , **`-c`** | Inlineinhalt. |
 | **`--debug`** , **`-d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
@@ -454,6 +457,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Veröffentlichen in Azure
 
 Azure Functions Core Tools unterstützt zwei Arten von Bereitstellungen: die Bereitstellung der Funktionsprojektdateien direkt in Ihrer Funktions-App über [ZIP-Bereitstellung](functions-deployment-technologies.md#zip-deploy) und die [Bereitstellung eines benutzerdefinierten Docker-Containers](functions-deployment-technologies.md#docker-container). Sie müssen bereits [eine Funktions-App im Azure-Abonnement erstellt haben](functions-cli-samples.md#create), für die Sie den Code bereitstellen. Projekte, für die eine Kompilierung erforderlich ist, müssen so erstellt werden, dass die Binärdateien bereitgestellt werden können.
+
+>[!IMPORTANT]
+>Die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) muss lokal installiert sein, um von Core Tools aus Veröffentlichungsvorgänge für Azure durchführen zu können.  
 
 Ein Projektordner kann sprachspezifische Dateien und Verzeichnisse enthalten, die nicht veröffentlicht werden sollen. Ausgeschlossene Elemente werden in einer .funcignore-Datei im Stammprojektordner aufgelistet.     
 
@@ -480,7 +486,7 @@ Die folgenden Veröffentlichungsoptionen gelten für beide Versionen (1.x und 2.
 
 Die folgenden Veröffentlichungsoptionen werden nur in Version 2.x unterstützt:
 
-| Option     | Beschreibung                            |
+| Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`** , **`-o`** |  Veröffentlicht nur die Einstellungen, der Inhalt wird übersprungen. Standard ist die Eingabeaufforderung. |
 |**`--list-ignored-files`** | Zeigt eine Liste mit Dateien an, die bei der Veröffentlichung ignoriert werden (basierend auf der Datei vom Typ „.funcignore“). |

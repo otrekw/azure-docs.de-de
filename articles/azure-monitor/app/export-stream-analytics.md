@@ -1,18 +1,14 @@
 ---
 title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics | Microsoft-Dokumentation
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677951"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664013"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -111,7 +107,7 @@ In diesem Beispiel:
 > 
 
 ## <a name="add-new-output"></a>Hinzufügen einer neuen Ausgabe
-Wählen Sie Ihren Auftrag und dann **Ausgaben**  >  **Hinzufügen** aus.
+Wählen Sie Ihren Auftrag und dann **Ausgaben** > **Hinzufügen** aus.
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -184,7 +180,7 @@ Fügen Sie diese Abfrage ein:
 
 * Diese Abfrage enthält Dimensionseigenschaftswerte, ohne dabei davon abhängig zu sein, dass eine bestimmte Dimension in einem festen Index im Dimensionsarray liegt.
 
-## <a name="run-the-job"></a>Ausführen des Auftrags
+## <a name="run-the-job"></a>Ausführung des Auftrags.
 Sie können ein Datum in der Vergangenheit auswählen, ab dem der Auftrag ausgeführt werden soll. 
 
 ![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/export-stream-analytics/SA008.png)

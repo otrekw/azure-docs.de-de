@@ -3,12 +3,12 @@ title: 'Integration in andere Anwendungen: QnA Maker'
 description: QnA Maker lässt sich in Clientanwendungen wie etwa Chatbots sowie in andere Dienste zur natürlichsprachlichen Verarbeitung wie LUIS (Language Understanding) integrieren.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843388"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300518"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Entwerfen einer Wissensdatenbank für Clientanwendungen
 
@@ -20,7 +20,7 @@ QnA Maker kann in unterhaltungsbasierte Clientanwendungen wie [Microsoft Bot Fra
 
 ## <a name="create-a-bot-without-writing-any-code"></a>Erstellen Sie einen Bot, ohne Code zu schreiben
 
-Erstellen Sie nach dem Veröffentlichen Ihrer Wissensdatenbank auf der Seite **Veröffentlichen** einen Bot, indem Sie die Schaltfläche **Bot erstellen** auswählen. Verwenden Sie das [Bot-Tutorial](../tutorials/create-qna-bot.md), um zu erfahren, was nach dem Auswählen der Schaltfläche geschieht.
+Erstellen Sie nach dem Veröffentlichen Ihrer Wissensdatenbank auf der Seite **Veröffentlichen** einen Bot, indem Sie die Schaltfläche **Bot erstellen** auswählen. Verwenden Sie das [Bot-Tutorial](../Quickstarts/create-publish-knowledge-base.md), um zu erfahren, was nach dem Auswählen der Schaltfläche geschieht.
 
 ## <a name="providing-multi-turn-conversations"></a>Bereitstellen von Unterhaltungen mit mehreren Durchgängen
 

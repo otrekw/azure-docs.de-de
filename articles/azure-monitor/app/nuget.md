@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor Application Insights-NuGet-Pakete
 description: Listen der Azure Monitor Application Insights-NuGet-Pakete für ASP.NET, ASP.NET Core und Python
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406567"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669997"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights-NuGet-Pakete
 
@@ -32,7 +28,7 @@ Nachfolgend finden Sie eine Liste der stabilen NuGet-Releasepakete für Applicat
 
 ## <a name="common-packages-for-aspnet-core"></a>Gängige Pakete für ASP.NET Core
 
-| Paketname | Stabile Version | BESCHREIBUNG | Download |
+| Paketname | Stabile Version | Beschreibung | Download |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights für ASP.NET Core-Webanwendungen. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft.ApplicationInsights | 2.12.0 | Dieses Paket stellt die Kernfunktionalität zum Übertragen aller Application Insights-Telemetrietypen bereit und ist ein abhängiges Paket für alle weitere Application Insights-Pakete. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -78,7 +74,7 @@ Nachfolgend finden Sie eine Liste der stabilen NuGet-Releasepakete für Applicat
 
 ## <a name="status-monitor"></a>Statusmonitor
 
-| Paketname | Stabile Version | BESCHREIBUNG | Download |
+| Paketname | Stabile Version | Beschreibung | Download |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Ermöglicht eine Lauftzeitdatensammlung für x64-Anwendungen. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Ermöglicht eine Lauftzeitdatensammlung für x86-Anwendungen. | [Paket herunterladen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |

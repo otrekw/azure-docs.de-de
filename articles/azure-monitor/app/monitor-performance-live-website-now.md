@@ -1,18 +1,14 @@
 ---
 title: Überwachen einer ASP.NET-Live-Web-App mit Azure Application Insights | Microsoft-Dokumentation
 description: Überwachen Sie die Leistung einer Website, ohne sie erneut bereitzustellen. Funktioniert mit ASP.NET-Web-Apps, die lokal oder auf virtuellen Computern gehostet werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820753"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670048"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 
@@ -145,7 +141,7 @@ Wir verfolgen dieses Problem [hier](https://github.com/Microsoft/ApplicationInsi
 
 * Standardmäßig gibt der Statusmonitor Diagnoseprotokolle an diesem Speicherort aus: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
-* Um ausführliche Protokolle auszugeben, ändern Sie die Konfigurationsdatei `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config`, und fügen Sie in `appsettings` `<add key="TraceLevel" value="All" />` hinzu.
+* Um ausführliche Protokolle auszugeben, ändern Sie die Konfigurationsdatei `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config`, und fügen Sie in `appsettings``<add key="TraceLevel" value="All" />` hinzu.
 Starten Sie dann den Statusmonitor neu.
 
 * Da es sich bei dem Statusmonitor um eine .NET-Anwendung handelt, können Sie auch die [.NET-Ablaufverfolgung durch Hinzufügen der entsprechenden Diagnose zur Konfigurationsdatei](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element) aktivieren. In einigen Szenarien kann es beispielsweise hilfreich sein, durch [Konfigurieren der Netzwerkablaufverfolgung](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) zu erfahren, was auf Netzwerkebene geschieht.

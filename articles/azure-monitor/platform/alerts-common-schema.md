@@ -1,18 +1,15 @@
 ---
 title: Allgemeines Warnungsschema für Azure Monitor-Warnungen
 description: Enthält grundlegende Informationen zum allgemeinen Warnungsschema, zu den Vorteilen der Nutzung und zur Vorgehensweise bei der Aktivierung.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552451"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668178"
 ---
 # <a name="common-alert-schema"></a>Allgemeines Warnungsschema
 
@@ -24,7 +21,7 @@ Mit dem allgemeinen Warnungsschema wird die Benutzeroberfläche für Warnungsben
 
 Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache der Warnung** beschrieben. Diese Instanzen werden im allgemeinen Schema in den folgenden Abschnitten beschrieben:
 * **Zusammenfassung**: Eine Gruppe **standardisierter Felder** (für alle Warnungstypen gleich), die beschreiben, auf **welcher Ressource** sich die Warnung befindet, sowie zusätzliche allgemeine Warnungsmetadaten (z. B. Schweregrad oder Beschreibung). 
-* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zu dem Ereignis enthält, von dem die Warnung generiert wurde. 
+* **Warnungskontext**: Eine Gruppe von Feldern, mit denen die **Ursache der Warnung** beschrieben wird. Die Felder variieren **basierend auf dem Warnungstyp**. Eine Metrikwarnung enthält im Warnungskontext beispielsweise Felder wie den Metriknamen und -wert, während eine Aktivitätsprotokollwarnung Informationen zum Ereignis enthält, von dem die Warnung generiert wurde. 
 
 Die typischen Integrationsszenarien, über die uns von Kunden berichtet wird, umfassen das Routing der Warnungsinstanz an das entsprechende Team anhand eines Verbindungselements (z. B. eine Ressourcengruppe) und die anschließende Bearbeitung durch das zuständige Team. Mit dem allgemeinen Warnungsschema können Sie über Warnungstypen hinweg eine standardisierte Routinglogik verwenden, indem Sie die wichtigen Felder nutzen und die Kontextfelder unverändert lassen, damit diese später von den jeweiligen Teams untersucht werden können.
 
@@ -34,7 +31,7 @@ Dies bedeutet, dass Sie unter Umständen über eine geringere Zahl von Integrati
 
 Das allgemeine Warnungsschema manifestiert sich hauptsächlich in Ihren Warnungsbenachrichtigungen. Hier sind die vorhandenen Verbesserungen aufgeführt:
 
-| Aktion | Verbesserungen|
+| Aktion | Erweiterungen|
 |:---|:---|
 | sms | Eine einheitliche SMS-Vorlage für alle Warnungstypen. |
 | Email | Eine einheitliche und detaillierte E-Mail-Vorlage, mit der Sie Probleme leicht auf einen Blick diagnostizieren können. Mit eingebetteten Deep-Links für die Warnungsinstanz im Portal und die betroffene Ressource wird sichergestellt, dass Sie schnell mit dem Lösungsprozess beginnen können. |

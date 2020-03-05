@@ -1,7 +1,6 @@
 ---
 title: Überwachen von mobilen Apps mit Azure Monitor Application Insights
 description: Dieser Artikel enthält Informationen zum schnellen Einrichten einer mobilen App für die Überwachung mit Azure Monitor Application Insights und App Center.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398882"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660290"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -24,7 +23,7 @@ In diesem Schnellstart erfahren Sie, wie Sie die Instanz von App Center Ihrer Ap
 
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-- ein Azure-Abonnement
+- Ein Azure-Abonnement.
 - Eine iOS-, Android-, Xamarin-, Universal Windows- oder React Native-App
  
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.

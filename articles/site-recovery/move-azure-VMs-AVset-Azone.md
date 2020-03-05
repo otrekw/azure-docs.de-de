@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693186"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298307"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
 Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Was sind Verfügbarkeitszonen in Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)).
@@ -46,7 +46,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 
 3. Installieren Sie alle aktuellen Windows-Updates auf Windows-VMs, damit alle vertrauenswürdigen Stammzertifikate auf den Computern vorhanden sind. Führen Sie in einer nicht verbundenen Umgebung die Standardprozesse für Windows- und Zertifikatupdates in Ihrer Organisation durch.
 
-4. Halten Sie sich bei virtuellen Linux-Computern an die Anleitung des Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.
+4. Befolgen Sie bei virtuellen Linux-Computern die Anleitung Ihres Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.
 5. Vergewissern Sie sich, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für virtuelle Computer zu steuern, die Sie migrieren möchten.
 
 6. Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die Anforderungen unter [Konfigurieren der ausgehenden Netzwerkkonnektivität](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
@@ -70,7 +70,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
     - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
     - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
-   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk.
+   Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/?pivot=products&panel=network) zum Netzwerk.
 
     > [!IMPORTANT]
     > Achten Sie darauf, am Ziel einen zonenredundanten Lastenausgleich zu verwenden. Weitere Informationen finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
@@ -138,7 +138,7 @@ Nach Abschluss des Replikationsauftrags können Sie den Replikationsstatus über
 
 ## <a name="discard-the-resource-in-the-source-region"></a>Verwerfen der Ressourcen in der Quellregion
 
-Navigieren Sie zu dem virtuellen Computer. Wählen Sie **Replikation deaktivieren** aus. Dadurch wird der Prozess zum Kopieren der Daten für den virtuellen Computer beendet.  
+Wechseln Sie zum virtuellen Computer. Wählen Sie **Replikation deaktivieren** aus. Dadurch wird der Prozess zum Kopieren der Daten für den virtuellen Computer beendet.  
 
 > [!IMPORTANT]
 > Führen Sie diesen Schritt aus, damit Ihnen nach der Verschiebung keine Gebühren für die Site Recovery-Replikation in Rechnung gestellt werden. Die Quellreplikationseinstellungen werden automatisch bereinigt. Beachten Sie, dass die im Rahmen der Replikation installierte Site Recovery-Erweiterung nicht entfernt wird und manuell gelöscht werden muss.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612217"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299073"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -59,7 +59,6 @@ Azure AD DS stellt eine verwaltete Domäne bereit, die von Ihren Benutzern, Anw
 
 Mitgliedern der Gruppe der *AAD-DC-Administratoren* werden Berechtigungen für die verwaltete Azure AD DS-Domäne gewährt, mit denen sie Aufgaben wie die folgenden ausführen können:
 
-* Hinzufügen von Computern zur verwalteten Domäne
 * Konfigurieren des integrierten Gruppenrichtlinienobjekts (Group Policy Object, GPO) für die Container *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer) in der verwalteten Domäne
 * Verwalten von DNS in der verwalteten Domäne
 * Erstellen und Verwalten benutzerdefinierter Organisationseinheiten (OEs) in der verwalteten Domäne
@@ -106,7 +105,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstool
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
-1. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer aus dem Serverpool (z. B. *myvm.aaddscontoso.com*) und dann **Weiter** aus.
+1. Wählen Sie auf der Seite **Serverauswahl** den aktuellen virtuellen Computer aus dem Serverpool aus (z. B. *myvm.aaddscontoso.com*), und wählen Sie dann **Weiter** aus.
 1. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**.
 1. Erweitern Sie auf der Seite **Features** den Knoten **Remote Server-Verwaltungstools** und anschließend den Knoten **Rollenverwaltungstools**.
 

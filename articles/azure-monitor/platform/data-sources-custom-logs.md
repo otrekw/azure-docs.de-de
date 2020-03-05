@@ -1,18 +1,17 @@
 ---
 title: Erfassen benutzerdefinierter Protokolle in Azure Monitor | Microsoft-Dokumentation
 description: Azure Monitor kann Ereignisse aus Textdateien auf Windows- und Linux-Computern erfassen.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die in Azure Monitor erstellt werden.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670592"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 
@@ -75,7 +74,7 @@ Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei,
 
 Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Protokolldateien:
 
-| BESCHREIBUNG | `Path` |
+| Beschreibung | `Path` |
 |:--- |:--- |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit der Erweiterung „.txt“ |C:\Logs\\\*.txt |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt |C:\Logs\log\*.txt |

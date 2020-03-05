@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5013457aca99a63808077b86f5674460e83fdc41
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232978"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562138"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Codeeinschränkungen für Orchestratorfunktionen
 
@@ -38,7 +38,7 @@ Die folgende Tabelle zeigt einige Beispiele für APIs, die *nicht* deterministis
 | Blockierende APIs | Das Blockieren von APIs wie `Thread.Sleep` in .NET und ähnlichen APIs kann zu Leistungs- und Skalierungsproblemen bei Orchestratorfunktionen führen und sollte vermieden werden. Im Azure Functions-Verbrauchstarif können sie sogar zu unnötigen Gebühren für die Ausführungszeit führen. | Verwenden Sie Alternativen zum Blockieren von APIs, wenn diese verfügbar sind. Verwenden Sie beispielsweise `CreateTimer`, um Verzögerungen bei der Ausführung der Orchestrierung einzuführen. Verzögerungen durch [permanente Timer](durable-functions-timers.md) zählen nicht zur Ausführungszeit einer Orchestratorfunktion. |
 | Asynchrone APIs | Orchestratorcode darf niemals einen asynchronen Vorgang starten, sofern nicht die `IDurableOrchestrationContext`-API oder die API des `context.df`-Objekts verwendet wird. Beispielsweise können Sie `Task.Run`, `Task.Delay` oder `HttpClient.SendAsync` in .NET oder `setTimeout` und `setInterval` in JavaScript nicht verwenden. Das Durable Task Framework führt Orchestratorcode in einem einzelnen Thread aus. Er kann nicht mit anderen Threads interagieren, die möglicherweise von anderen asynchronen APIs aufgerufen werden. | Eine Orchestratorfunktion sollte ausschließlich dauerhafte asynchrone Aufrufe durchführen. Aktivitätsfunktionen sollten alle anderen asynchronen API-Aufrufe ausführen. |
 | Asynchrone JavaScript-Funktion | JavaScript-Orchestratorfunktionen können nicht als `async` deklariert werden, da bei der Node.js-Runtime nicht garantiert ist, dass asynchrone Funktionen deterministisch sind. | Deklarieren Sie JavaScript-Orchestratorfunktionen als synchrone Generatorfunktionen. |
-| Threading-APIs | Das Durable Task Framework führt Orchestratorcode über einen einzelnen Thread aus und kann nicht mit anderen Threads interagieren. Die Einbringung neuer Threads in die Ausführung einer Orchestrierung kann zu einer nicht deterministischen Ausführung oder zu Deadlocks führen. | Orchestratorfunktionen sollten so gut wie nie Threading-APIs verwenden. Wenn solche APIs erforderlich sind, beschränken Sie die Verwendung ausschließlich auf Aktivitätsfunktionen. |
+| Threading-APIs | Das Durable Task Framework führt Orchestratorcode über einen einzelnen Thread aus und kann nicht mit anderen Threads interagieren. Die Einbringung neuer Threads in die Ausführung einer Orchestrierung kann zu einer nicht deterministischen Ausführung oder zu Deadlocks führen. | Orchestratorfunktionen sollten so gut wie nie Threading-APIs verwenden. Vermeiden Sie also beispielsweise in .NET die Verwendung von `ConfigureAwait(continueOnCapturedContext: false)`. Dadurch wird sichergestellt, dass Aufgabenfortsetzungen im ursprünglichen Synchronisierungskontext (`SynchronizationContext`) der Orchestratorfunktion ausgeführt werden. Wenn solche APIs erforderlich sind, beschränken Sie die Verwendung ausschließlich auf Aktivitätsfunktionen. |
 | Statische Variablen | Die Verwendung nicht konstanter statischer Variablen sollte in Orchestratorfunktionen vermieden werden, da sich ihre Werte im Laufe der Zeit ändern können, was zu einem nicht deterministischen Laufzeitverhalten führt. | Verwenden Sie Konstanten, oder beschränken Sie die Verwendung statischer Variablen auf Aktivitätsfunktionen. |
 | Umgebungsvariablen | Verwenden Sie in Orchestratorfunktionen keine Umgebungsvariablen. Deren Werte können sich im Laufe der Zeit ändern, was zu einem nicht deterministischen Laufzeitverhalten führt. | Auf Umgebungsvariablen darf nur innerhalb von Client- oder Aktivitätsfunktionen verwiesen werden. |
 | Endlosschleifen | Vermeiden Sie Endlosschleifen in Orchestratorfunktionen. Da das Durable Task Framework den Ausführungsverlauf speichert, während die Orchestrierungsfunktion voranschreitet, kann eine Endlosschleife unter Umständen dazu führen, dass für eine Orchestratorinstanz der Arbeitsspeicher nicht mehr ausreicht. | Verwenden Sie für Szenarien mit Endlosschleifen APIs wie beispielsweise `ContinueAsNew` in .NET oder `continueAsNew` in JavaScript, um die Funktionsausführung neu zu starten und den vorherigen Ausführungsverlauf zu verwerfen. |

@@ -1,18 +1,17 @@
 ---
 title: Struktur von Azure Monitor-Protokollen | Microsoft-Dokumentation
 description: Sie benötigen eine Protokollabfrage, um Protokolldaten aus Azure Monitor abzurufen.  In diesem Artikel wird beschrieben, wie neue Protokollabfragen in Azure Monitor verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893636"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662075"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.
@@ -53,7 +52,7 @@ Wenn Sie eine Anwendung in Application Insights erstellen, wird in Azure Monitor
 
 Im Gegensatz zu einem Log Analytics-Arbeitsbereich verwendet eine Application Insights-Anwendung eine festgelegte Gruppe von Tabellen. Sie können andere Datenquellen nicht so konfigurieren, dass diese in die Anwendung schreiben, damit keine weiteren Tabellen erstellt werden können. 
 
-| Table | BESCHREIBUNG | 
+| Tabelle | BESCHREIBUNG | 
 |:---|:---|
 | availabilityResults | Zusammenfassungsdaten aus Verfügbarkeitstests. |
 | browserTimings      | Daten über die Leistung des Clients, z. B. die angefallene Zeit zum Verarbeiten der eingehenden Daten. |
