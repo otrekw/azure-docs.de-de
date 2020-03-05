@@ -540,7 +540,10 @@
         - name: IP-Firewall
           href: firewall-support.md
         - name: Zugriff über virtuelle Netzwerke
+          displayName: service endpoint
           href: vnet-service-endpoint.md
+        - name: Diensttags
+          href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Rollenbasierte Zugriffssteuerung
           displayName: rbac
           href: role-based-access-control.md
@@ -983,6 +986,7 @@
         - name: Konfigurieren der IP-Firewall
           href: how-to-configure-firewall.md
         - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
+          displayName: service endpoints
           href: how-to-configure-vnet-service-endpoint.md
         - name: Konfigurieren des Zugriffs über private Endpunkte
           href: how-to-configure-private-endpoints.md

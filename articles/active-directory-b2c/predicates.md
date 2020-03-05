@@ -3,20 +3,20 @@ title: „Predicates“ und „PredicateValidations“
 titleSuffix: Azure AD B2C
 description: Verhindern mit benutzerdefinierten Richtlinien in Azure Active Directory B2C, dass falsch formatierte Daten dem Azure AD B2C-Mandanten hinzugefügt werden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585763"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187235"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -36,7 +36,7 @@ Das **Predicates**-Element muss direkt nach dem **ClaimsSchema**-Element im [Bui
 
 Das **Predicates**-Element enthält das folgende Element:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | Eine Liste mit Prädikaten. |
 
@@ -50,14 +50,14 @@ Das **Predicate**-Element enthält die folgenden Attribute:
 
 Das **Predicate**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | (Veraltet) Eine Fehlermeldung für Benutzer, wenn die Überprüfung einen Fehler ergibt. |
 | Parameter | 1:1 | Die Parameter für den Methodentyp der Zeichenfolgenüberprüfung. |
 
 Das **Parameters**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Parameter | 1:n | Die Parameter für den Methodentyp der Zeichenfolgenüberprüfung. |
 
@@ -135,7 +135,7 @@ Das **PredicateValidations**-Element muss direkt nach dem **Predicates**-Element
 
 Das **PredicateValidations**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1:n | Eine Liste mit Prädikatüberprüfungen. |
 
@@ -159,7 +159,7 @@ Das **PredicateGroups**-Element enthält das folgende Element:
 
 Das **PredicateGroups**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
 
@@ -172,7 +172,7 @@ Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
 Das **PredicateReferences**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nein | Gibt an, dass der Wert mindestens der Anzahl von Prädikatdefinitionen für die Eingabe entsprechen muss, um angenommen zu werden. Ohne diese Angabe muss der Wert allen Prädikatdefinitionen entsprechen. |
 
