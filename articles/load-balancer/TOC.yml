@@ -6,15 +6,15 @@
       href: load-balancer-overview.md
 - name: Schnellstart
   items:
-    - name: Portal
+    - name: Lastenausgleich erstellen – Portal
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Lastenausgleich erstellen – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Azure PowerShell
+    - name: Lastenausgleich erstellen – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Azure Resource Manager-Vorlage
+    - name: Lastenausgleich erstellen – Vorlage
       href: quickstart-load-balancer-standard-public-template.md
-      displayName: ARM
+  expanded: true
 - name: Tutorials
   items:
     - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer

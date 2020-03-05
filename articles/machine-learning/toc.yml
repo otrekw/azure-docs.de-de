@@ -208,6 +208,9 @@
         - name: Erstellen von Datasets mit Bezeichnungen
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Datenerfassung mit Azure Data Factory
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: DevOps für Datenerfassung
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md
