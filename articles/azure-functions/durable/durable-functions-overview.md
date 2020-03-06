@@ -7,11 +7,11 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756142"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357829"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -50,7 +50,7 @@ Mithilfe von Durable Functions können Sie das Funktionsverkettungsmuster präzi
 
 In diesem Beispiel sind die Werte `F1`, `F2`, `F3` und `F4` die Namen weiterer Funktionen in der gleichen Funktions-App. Sie können die Ablaufsteuerung mithilfe normaler imperativer Codierungskonstrukte implementieren. Der Code wird von oben nach unten ausgeführt. Der Code kann bestehende sprachliche Ablaufsteuerungssemantik wie Bedingungsanweisungen und Schleifen umfassen. Sie können Logik zur Fehlerbehandlung in `try`/`catch`/`finally`-Blöcken einschließen.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 
 Sie können den Parameter `context` verwenden, um andere Funktionen anhand des Namens aufzurufen, Parameter zu übergeben und Funktionsausgaben zurückzugeben. Bei jedem Aufruf von `await` im Code erstellt das Framework von Durable Functions Prüfpunkte für den Status der aktuellen Funktionsinstanz. Wenn der Prozess oder der virtuelle Computer mitten in der Ausführung neu gestartet wird, wird die Funktionsinstanz ab dem vorherigen Aufruf von `await` fortgesetzt. Weitere Informationen finden Sie im nächsten Abschnitt, Muster 2: Auffächern auswärts/einwärts.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -107,7 +107,7 @@ Bei normalen Funktionen kann das Auffächern auswärts erfolgen, indem die Funkt
 
 Die Erweiterung Durable Functions wird diesem Muster mit relativ einfachem Code gerecht:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -136,7 +136,7 @@ Das Auffächern nach außen ist auf mehrere Instanzen der `F2`-Funktion verteilt
 
 Die automatische Prüfpunkterstellung, die beim Aufruf von `await` für `Task.WhenAll` erfolgt, stellt sicher, dass ein potentieller Absturz oder Neustart während der Ausführung keinen Neustart bereits abgeschlossener Aufgaben erfordert.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -218,7 +218,7 @@ Mit ein paar Codezeilen können Sie Durable Functions dazu verwenden, mehrere Mo
 
 Der folgende Code implementiert einen einfachen Monitor:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -248,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,7 +292,7 @@ Sie können das Muster aus diesem Beispiel mithilfe einer Orchestrierungsfunktio
 
 In diesen Beispielen wird ein Genehmigungsprozess erstellt, um das Muster der Benutzerinteraktion zu veranschaulichen:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -321,7 +321,7 @@ public static async Task Run(
 
 Rufen Sie zum Erstellen des permanenten Timers `context.CreateTimer` auf. Die Benachrichtigung wird von `context.WaitForExternalEvent` empfangen. Anschließend wird `Task.WhenAny` aufgerufen, um zu entscheiden, ob eine Eskalation erfolgt (Timeout tritt zuerst auf) oder die Genehmigung verarbeitet wird (Genehmigung wird vor dem Timeout empfangen).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +355,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Ein Ereignis kann auch mithilfe des langlebigen Orchestrierungsclients von einer anderen Funktion in der gleichen Funktions-App ausgelöst werden:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -368,7 +368,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -392,7 +392,7 @@ Das Schwierige an der Implementierung dieses Musters mit normalen, zustandslosen
 
 Sie können [dauerhafte Entitäten](durable-functions-entities.md) verwenden, um dieses Muster problemlos als einzelne Funktion zu implementieren.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -435,7 +435,7 @@ public class Counter
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -461,7 +461,7 @@ module.exports = df.entity(function(context) {
 
 Clients können *Vorgänge* mithilfe der [Entitätsclientbindung](durable-functions-bindings.md#entity-client) für eine Entity-Funktion in eine Warteschlange einreihen.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -481,7 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > Außerdem stehen dynamisch generierte Proxys in .NET für signalisierende Entitäten auf typsichere Weise zur Verfügung. Zusätzlich zur Signalisierung können Clients auch den Zustand einer Entitätsfunktion mithilfe [typsicherer Methoden](durable-functions-bindings.md#entity-client-usage) für die Orchestrierungsclientbindung abfragen.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

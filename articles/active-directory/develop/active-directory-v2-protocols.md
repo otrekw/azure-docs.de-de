@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375778"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0 und OpenID Connect-Protokolle auf der Microsoft Identity Platform
 
@@ -59,7 +59,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
-| value | Beschreibung |
+| value | BESCHREIBUNG |
 | --- | --- |
 | `common` | Ermöglicht Benutzern mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |
 | `organizations` | Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten aus Azure AD die Anmeldung bei der Anwendung. |

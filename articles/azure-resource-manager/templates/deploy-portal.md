@@ -4,11 +4,11 @@ description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Berei
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358294"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
