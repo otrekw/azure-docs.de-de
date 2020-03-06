@@ -17,11 +17,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702129"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365252"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Desktop-App, die Web-APIs aufruft: Überführen in die Produktion
 

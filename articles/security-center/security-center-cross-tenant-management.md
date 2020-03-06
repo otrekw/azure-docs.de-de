@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604256"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919480"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -50,7 +50,7 @@ Die Ansichten und Aktionen sind im Grunde identisch. Im Folgenden finden Sie ein
 - **Umsetzen von Empfehlungen**: Sie können eine [Empfehlung](security-center-recommendations.md) für viele Ressourcen von verschiedenen Mandanten gleichzeitig überwachen und umsetzen. Anschließend können Sie die Sicherheitslücken, die das höchste Risiko darstellen, sofort für alle Mandanten beseitigen.
 - **Verwalten von Warnungen**: Ermitteln Sie [Warnungen](security-center-alerts-overview.md) auf den verschiedenen Mandanten. Ergreifen Sie Maßnahmen für Ressourcen, die nicht mit handlungsrelevanten [Schritten zur Bereinigung](security-center-managing-and-responding-alerts.md) konform sind.
 
-- **Verwalten erweiterter Cloudschutzfeatures und mehr**: Verwalten Sie die verschiedenen Dienste zur Erkennung von und zum Schutz vor Bedrohungen, z.B. [Just-In-Time (JIT)-VM-Zugriff](security-center-just-in-time.md), [adaptive Netzwerkhärtung](security-center-adaptive-network-hardening.md), [adaptive Anwendungssteuerung](security-center-adaptive-application.md) und mehr.
+- **Verwalten erweiterter Cloudschutzfeatures und mehr**: Verwalten Sie die verschiedenen Dienste zum Schutz vor Bedrohungen, z. B. [Just-In-Time (JIT)-VM-Zugriff](security-center-just-in-time.md), [adaptive Netzwerkhärtung](security-center-adaptive-network-hardening.md), [adaptive Anwendungssteuerung](security-center-adaptive-application.md) und mehr.
  
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wird erläutert, wie die mandantenübergreifende Verwaltung in Azure Security Center funktioniert. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:

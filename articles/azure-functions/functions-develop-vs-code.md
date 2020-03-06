@@ -4,11 +4,11 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358033"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -184,7 +184,7 @@ In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufüge
 
 Im Folgenden finden Sie Beispieleingabeaufforderungen zum Definieren einer neuen Ausgabebindung für den Speicher:
 
-| Prompt | value | Beschreibung |
+| Prompt | value | BESCHREIBUNG |
 | -------- | ----- | ----------- |
 | **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
 | **Select binding with direction** (Bindung mit Richtung auswählen) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
@@ -248,7 +248,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | value | Beschreibung |
+    | Prompt | value | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |

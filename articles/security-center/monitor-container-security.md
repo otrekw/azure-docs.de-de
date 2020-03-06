@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431698"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919531"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Überwachen der Sicherheit Ihrer Container
 
@@ -29,7 +29,7 @@ Azure Security Center deckt die folgenden drei Aspekte der Containersicherheit a
 
 - **Härten Ihrer Azure Kubernetes Service-Cluster**: Security Center bietet Empfehlungen, wenn Sicherheitsrisiken in der Konfiguration Ihrer Azure Kubernetes Service-Cluster gefunden werden. Details zu den einzelnen Empfehlungen, die angezeigt werden können, finden Sie in den [Empfehlungen für Kubernetes Service](recommendations-reference.md#recs-containers).
 
-- **Schutz zur Laufzeit**: Wenn Sie den Standard-Tarif von Security Center nutzen, profitieren Sie von einer Echtzeit-Bedrohungserkennung für Ihre auf Containern basierenden Umgebungen. Security Center generiert Warnungen bei verdächtigen Aktivitäten auf Ebene des Hosts und des AKS-Clusters. Details zu relevanten Sicherheitswarnungen, die möglicherweise angezeigt werden, finden Sie in der Referenztabelle für Warnungen in den Abschnitten [Warnungen für Container: Azure Kubernetes Service-Cluster](alerts-reference.md#alerts-akscluster) und [Warnungen für Container: Hostebene](alerts-reference.md#alerts-containerhost).
+- **Schutz zur Laufzeit**: Wenn Sie den Standard-Tarif von Security Center nutzen, profitieren Sie von einem Echtzeit-Bedrohungsschutz für Ihre auf Containern basierenden Umgebungen. Security Center generiert Warnungen bei verdächtigen Aktivitäten auf Ebene des Hosts und des AKS-Clusters. Details zu relevanten Sicherheitswarnungen, die möglicherweise angezeigt werden, finden Sie in der Referenztabelle für Warnungen in den Abschnitten [Warnungen für Container: Azure Kubernetes Service-Cluster](alerts-reference.md#alerts-akscluster) und [Warnungen für Container: Hostebene](alerts-reference.md#alerts-containerhost).
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Überprüfen von ARM-basierten Containerregistrierungen auf Sicherheitsrisiken 
 

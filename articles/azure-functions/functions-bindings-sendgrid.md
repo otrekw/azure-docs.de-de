@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304003"
+ms.locfileid: "78356232"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 
@@ -354,7 +354,7 @@ Mit der [SendGridOutput](https://github.com/Azure/azure-functions-java-library/b
 
 Die folgende Tabelle listet die Bindungskonfigurationseigenschaften auf, die in der Datei *function.json* und dem/r `SendGrid`-Attribut/-Anmerkung verfügbar sind.
 
-| *function.json*-Eigenschaft | Attribute/Annotation-Eigenschaft | Beschreibung | Optional |
+| *function.json*-Eigenschaft | Attribute/Annotation-Eigenschaft | BESCHREIBUNG | Optional |
 |--------------------------|-------------------------------|-------------|----------|
 | type |–| Muss auf `sendGrid` festgelegt sein.| Nein |
 | direction |–| Muss auf `out` festgelegt sein.| Nein |
@@ -389,7 +389,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```  
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------| 
 |from|–|E-Mail-Adresse des Absenders für alle Funktionen.| 
 

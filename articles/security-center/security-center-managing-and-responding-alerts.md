@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615981"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912272"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center
 
@@ -67,7 +67,7 @@ Security Center erfasst, analysiert und vereinigt automatisch Protokolldaten von
 
 1. Die von Security Center vorgeschlagene Wartungsschritte variieren je nach Sicherheitswarnung. Befolgen Sie sie für jede Warnung. 
 
-    In einigen Fällen müssen Sie möglicherweise andere Azure-Steuerelemente oder -Dienste verwenden, um die empfohlene Maßnahme für eine Warnung der Bedrohungserkennung umzusetzen. 
+    In einigen Fällen müssen Sie möglicherweise andere Azure-Steuerelemente oder -Dienste verwenden, um die empfohlene Maßnahme für eine Sicherheitswarnung umzusetzen. 
 
     In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen für bestimmte Ressourcentypen:
     

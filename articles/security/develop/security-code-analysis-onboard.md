@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851501"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197004"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding und Installation
 
@@ -30,24 +30,29 @@ Voraussetzungen für die Einführung der Microsoft-Sicherheitscodeanalyse:
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Onboarding der Erweiterung „Microsoft-Sicherheitscodeanalyse“
 
-- Wenn Sie eines der folgenden Supportangebote nutzen, wenden Sie sich an Ihren Technical Account Manager, um ein Zeitkontingent zu erwerben bzw. bereits erworbene Kontingente zu tauschen und Zugriff auf die Erweiterung zu erhalten:
-  - Unified Support Advanced-Tarif
-  - Unified Support Performance-Tarif
-  - Premier Support für Entwickler
-  - Premier Support für Partner
-  - Premier Support für Unternehmen
-- Wenn Sie einen der folgenden Supportdienste nutzen oder keinen Microsoft-Supportplan besitzen, müssen Sie ein Upgrade auf ein qualifiziertes Supportangebot durchführen:
-  - Azure Support für Partner
-  - Azure Basic Support
-  - Azure Developer Support
-  - Azure Standard Support
-  - Azure Professional Direct
-  - Unified Support Core-Tarif
-- Besuchen Sie unsere [Homepage für Supportdienste](https://www.microsoft.com/enterprise/services/support), um ein qualifiziertes Supportangebot zu erwerben.
-- Nachdem Sie einen Supportvertrag abgeschlossen haben, bitten Sie Ihren Technical Account Manager, Sie beim Einstieg und der Erfassung der erforderlichen Details zu unterstützen.
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Sie interessieren sich für den Kauf der Erweiterung „Microsoft-Sicherheitscodeanalyse“?
 
->[!NOTE]
->Für den Fall, dass Sie über keinen Supportvertrag verfügen, arbeiten wir auch an einem Partnerkaufprogramm, bei dem Sie externe Partner nutzen können, um die Erweiterung ohne Erwerb des Unified Support-Plans zu kaufen. Bitte [senden Sie uns eine E-Mail](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). So können Sie uns mitteilen, dass Sie an dieser Option interessiert sind. Wir melden uns dann bei Ihnen, sobald diese Option verfügbar ist.
+Wenn Sie eines der folgenden Supportangebote nutzen, wenden Sie sich an Ihren Technical Account Manager, um ein Zeitkontingent zu erwerben bzw. bereits erworbene Kontingente zu tauschen und Zugriff auf die Erweiterung zu erhalten:
+
+- Unified Support Advanced-Tarif
+- Unified Support Performance-Tarif
+- Premier Support für Entwickler
+- Premier Support für Partner
+- Premier Support für Unternehmen
+
+Wenn Sie über keine der oben genannten Supportvereinbarungen verfügen, können Sie die Erweiterung von einem unserer Partner erwerben.
+
+**Nächste Schritte:**
+
+Wenden Sie sich an einen Partner aus der untenstehenden Liste, und fragen Sie nach dem Kauf der Erweiterung für die Analyse des Microsoft-Sicherheitscodes.
+
+>**Partner:**
+
+- Zonen – Kontaktinformationen: cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>Partner werden
+
+Mit einer Premier Support für Partner-Vereinbarung möchte das Team für die Analyse des Microsoft-Sicherheitscodes Partner gewinnen. Partner helfen Azure DevOps-Kunden, ihre Entwicklung sicherer zu machen, indem sie die Erweiterung an interessierte Kunden verkaufen, die mit Microsoft keine Supportvereinbarung für Unternehmen abgeschlossen haben. Interessierte Partner können sich [hier](http://www.microsoftpartnersupport.com/msrd/opin) registrieren.
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Installieren der Erweiterung „Microsoft-Sicherheitscodeanalyse“
 
