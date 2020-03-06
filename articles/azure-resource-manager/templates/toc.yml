@@ -1,8 +1,8 @@
-- name: Dokumentation zu Azure Resource Manager-Vorlagen
+- name: Dokumentation zu ARM-Vorlagen
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was sind Azure Resource Manager-Vorlagen?
+    - name: Was sind ARM-Vorlagen?
       href: overview.md
 - name: Schnellstarts
   items:

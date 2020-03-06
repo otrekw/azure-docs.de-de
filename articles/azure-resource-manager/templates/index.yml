@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Resource Manager-Vorlagen
-summary: Die Resource Manager-Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind.
+title: Dokumentation zu ARM-Vorlagen
+summary: Azure Resource Manager-Vorlage sind JSON-Dateien (JavaScript Object Notation), in denen die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind.
 metadata:
-  title: Dokumentation zu Azure Resource Manager
+  title: Dokumentation zu ARM-Vorlagen
   description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen entwickeln und damit Azure-Ressourcen bereitstellen.
   services: azure-resource-manager
   ms.service: azure-resource-manager
@@ -11,15 +11,15 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 0ea805d87db78d0a7fadad0a07e01e9387d568a5
+  ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75469929"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78299243"
 landingContent:
-- title: Informationen zu Azure Resource Manager-Vorlagen
+- title: Über ARM-Vorlagen
   linkLists:
   - linkListType: overview
     links:

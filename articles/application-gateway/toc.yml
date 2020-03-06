@@ -15,7 +15,7 @@
       href: quick-create-powershell.md
     - name: 'Erstellen eines Anwendungsgateways: Azure CLI'
       href: quick-create-cli.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Schützen mit SSL
       href: create-ssl-portal.md
@@ -39,6 +39,8 @@
   items:
     - name: Grundlagen
       items:
+        - name: Application Gateway-Funktionen
+          href: features.md
         - name: Funktionsweise von Application Gateway
           href: how-application-gateway-works.md
         - name: Application Gateway-Komponenten
@@ -75,7 +77,7 @@
           href: application-gateway-probe-overview.md
         - name: Diagnoseprotokolle und Back-End-Integrität
           href: application-gateway-diagnostics.md
-        - name: metrics
+        - name: Metriken
           href: application-gateway-metrics.md
     - name: App Service-Web-App und Unterstützung mehrerer Mandanten
       href: application-gateway-web-app-overview.md
@@ -83,7 +85,7 @@
       href: application-gateway-websocket.md
     - name: Häufig gestellte Fragen
       href: application-gateway-faq.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Hosten einer einzelnen Website
       items:

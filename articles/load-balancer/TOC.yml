@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Lastenausgleich erstellen – PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Lastenausgleich erstellen – Vorlage
+    - name: Lastenausgleich erstellen – ARM-Vorlage
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: Tutorials
