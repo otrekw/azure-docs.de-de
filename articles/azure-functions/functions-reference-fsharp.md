@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356995"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
@@ -177,7 +177,7 @@ Darüber hinaus stehen die folgenden besonderen Assemblys zur Verfügung, auf di
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens darauf verweisen (Beispiel: `#r "MyAssembly.dll"`). Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 
@@ -278,7 +278,7 @@ let mylog(log: ILogger, text: string) =
 
 Die Pfade zur `#load`-Direktive gelten relativ zum Speicherort Ihrer `.fsx`-Datei.
 
-* `#load "logger.fsx"` lädt eine Datei, die sich im Funktionsordner befindet.
+* `#load "logger.fsx"` : Lädt eine Datei, die sich im Funktionsordner befindet.
 * `#load "package\logger.fsx"` lädt eine Datei, die sich im Ordner `package` im Funktionsordner befindet.
 * `#load "..\shared\mylogger.fsx"` lädt eine Datei, die sich im Ordner `shared` auf derselben Ebene wie der Funktionsordner direkt unter `wwwroot` befindet.
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190159"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355975"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -49,7 +49,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 Der folgende Abschnitt enthält eine Übersicht über die Einrichtung der Kopplung zwischen den Namespaces.
 
@@ -107,7 +107,7 @@ Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdef
 
 ## <a name="management"></a>Verwaltung
 
-Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen während des anfänglichen Setups), können Sie die Kopplung der beiden Namespaces jederzeit trennen. Löschen Sie den Alias, falls Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten.
+Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen während des anfänglichen Setups), können Sie die Kopplung der beiden Namespaces jederzeit trennen. Wenn Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten, löschen Sie den Alias.
 
 ## <a name="use-existing-namespace-as-alias"></a>Verwenden des vorhandenen Namespace als Alias
 
@@ -133,7 +133,7 @@ Beachten Sie für diesen Release Folgendes:
 
 3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) werden.
 
-4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten.
+4. Das Synchronisieren von Entitäten kann einige Zeit dauern (etwa eine Minute pro 50 bis 100 Entitäten). Abonnements und Regeln zählen ebenfalls zu den Entitäten.
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 

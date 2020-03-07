@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230569"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357552"
 ---
 # <a name="manage-your-function-app"></a>Verwalten Ihrer Funktions-App 
 
@@ -27,7 +27,7 @@ In diesem Thema erfahren Sie, wie Sie Ihre Funktions-Apps konfigurieren und verw
 
 ## <a name="get-started-in-the-azure-portal"></a>Erste Schritte im Azure-Portal
 
-Wechseln Sie zunächst zum [Azure-Portal], und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
+Wechseln Sie zunächst zum [Azure portal], und melden Sie sich bei Ihrem Azure-Konto an. Geben Sie auf der Suchleiste oben im Portal den Namen der Funktionen-App ein, und wählen Sie sie in der Liste aus. Nach dem Auswählen der Funktionen-App wird die folgende Seite angezeigt:
 
 ![„Übersicht“ für Funktionen-Apps im Azure-Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -149,4 +149,4 @@ Wenn Funktionen einen HTTP-Trigger verwenden, können Sie festlegen, dass Aufruf
 + [Kontinuierliche Bereitstellung für Azure Functions](functions-continuous-deployment.md)
 
 [Azure-Befehlszeilenschnittstelle]: /cli/azure/
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

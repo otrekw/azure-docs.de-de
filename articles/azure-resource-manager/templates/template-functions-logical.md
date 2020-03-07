@@ -4,11 +4,11 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207212"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357359"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -134,7 +134,7 @@ Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft oder nicht. |
 | trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
