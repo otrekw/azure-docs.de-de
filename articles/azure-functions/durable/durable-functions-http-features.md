@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262859"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357801"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -41,11 +41,11 @@ Im Artikel [HTTP-APIs](durable-functions-http-api.md) finden Sie eine vollständ
 
 Die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) macht APIs verfügbar, die zum Generieren praktischer HTTP-Antwortnutzlasten verwendet werden können. Sie kann beispielsweise eine Antwort mit Links zu Verwaltungs-APIs für eine bestimmte Orchestrierungsinstanz erstellen. Im Folgenden finden Sie Beispiele für eine HTTP-Triggerfunktion, die zeigt, wie diese API für eine neue Orchestrierungsinstanz verwendet wird:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ Ab Durable Functions 2.0 können Orchestrierungen mithilfe der [Orchestrierungs
 
 Der folgende Beispielcode zeigt eine Orchestratorfunktion, die eine ausgehende HTTP-Anforderung vornimmt:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Durable Functions bietet native Unterstützung für das Aufrufen von APIs, die A
 
 Der folgende Code ist ein Beispiel für eine .NET-Orchestratorfunktion. Die Funktion nimmt authentifizierte Aufrufe zum Neustart eines virtuellen Computers mithilfe der [Virtual Machines-REST-API](https://docs.microsoft.com/rest/api/compute/virtualmachines) von Azure Resource Manager vor.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
