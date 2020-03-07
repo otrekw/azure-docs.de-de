@@ -4,11 +4,11 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207060"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356355"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -58,7 +58,7 @@ Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| inputString |Ja |string |Der Wert, der als base64-Darstellung zurückgegeben wird. |
+| inputString |Ja |Zeichenfolge |Der Wert, der als base64-Darstellung zurückgegeben wird. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -123,7 +123,7 @@ Konvertiert eine base64-Darstellung in ein JSON-Objekt.
 
 | Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ja |string |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
+| base64Value |Ja |Zeichenfolge |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -188,7 +188,7 @@ Konvertiert eine base64-Darstellung in eine Zeichenfolge.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ja |string |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
+| base64Value |Ja |Zeichenfolge |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -424,7 +424,7 @@ Konvertiert einen Wert in einen Daten-URI.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ja |string |Der Wert, der in einen Daten-URI konvertiert werden soll. |
+| stringToConvert |Ja |Zeichenfolge |Der Wert, der in einen Daten-URI konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -477,9 +477,9 @@ Konvertiert einen als Daten-URI formatierten Wert in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ja |string |Der zu konvertierende Daten-URI-Wert. |
+| dataUriToConvert |Ja |Zeichenfolge |Der zu konvertierende Daten-URI-Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -599,8 +599,8 @@ Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Gro�
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -663,7 +663,7 @@ Gibt das erste Zeichen der Zeichenfolge oder das erste Element des Arrays zurüc
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
@@ -715,9 +715,9 @@ Erstellt eine formatierte Zeichenfolge aus Eingabewerten.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| formatString | Ja | string | Die zusammengesetzte Formatzeichenfolge. |
+| formatString | Ja | Zeichenfolge | Die zusammengesetzte Formatzeichenfolge. |
 | arg1 | Ja | Zeichenfolge, Integer oder boolescher Wert | Der Wert, der in die formatierte Zeichenfolge aufgenommen werden soll. |
 | zusätzliche Argumente | Nein | Zeichenfolge, Integer oder boolescher Wert | Weitere Werte, die in die formatierte Zeichenfolge aufgenommen werden sollen. |
 
@@ -772,10 +772,10 @@ Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf de
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| baseString |Ja |string |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
-| Zusätzliche Parameter nach Bedarf. |Nein |string |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| baseString |Ja |Zeichenfolge |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
+| Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -845,8 +845,8 @@ Gibt die erste Position eines Werts innerhalb einer Zeichenfolge zurück. Bei de
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -904,7 +904,7 @@ Gibt das letzte Zeichen der Zeichenfolge bzw. das letzte Element des Arrays zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
 
@@ -958,8 +958,8 @@ Gibt die letzte Position eines Werts innerhalb einer Zeichenfolge zurück. Bei d
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1017,7 +1017,7 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -1136,7 +1136,7 @@ Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie soll
 
 | Name | type | value |
 | ---- | ---- | ----- |
-| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | Zeichenfolge | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 Im folgenden Beispiel wird die newGuid-Funktion verwendet, um einen eindeutigen Namen für ein Speicherkonto zu erstellen. Diese Vorlage funktioniert möglicherweise in Testumgebungen, in denen das Speicherkonto nur für kurze Zeit vorhanden ist und nicht erneut bereitgestellt wird.
 
@@ -1179,7 +1179,7 @@ Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie soll
 
 | Name | type | value |
 | ---- | ---- | ----- |
-| nameOutput | string | storagenziwvyru7uxie |
+| nameOutput | Zeichenfolge | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
@@ -1190,7 +1190,7 @@ Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der rechtsbündig ausgerichtet werden soll. |
 | totalLength |Ja |INT |Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge. |
@@ -1240,11 +1240,11 @@ Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge du
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| originalString |Ja |string |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
-| oldString |Ja |string |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
-| newString |Ja |string |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
+| originalString |Ja |Zeichenfolge |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
+| oldString |Ja |Zeichenfolge |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
+| newString |Ja |Zeichenfolge |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1363,7 +1363,7 @@ Gibt ein Array mit Zeichenfolgen zurück, das die Teilzeichenfolgen der Eingabez
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| inputString |Ja |string |Die zu teilende Zeichenfolge. |
+| inputString |Ja |Zeichenfolge |Die zu teilende Zeichenfolge. |
 | Trennzeichen |Ja |Zeichenfolge oder Array von Zeichenfolgen |Das Trennzeichen, das zum Teilen der Zeichenfolge verwendet werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
@@ -1422,8 +1422,8 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 
 | Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1478,7 +1478,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-## <a name="string"></a>string
+## <a name="string"></a>Zeichenfolge
 
 `string(valueToConvert)`
 
@@ -1486,7 +1486,7 @@ Konvertiert den angegebenen Wert in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja | Any |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
 
@@ -1557,9 +1557,9 @@ Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition begin
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ja |string |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
+| stringToParse |Ja |Zeichenfolge |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
 | startIndex |Nein |INT |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
 | length |Nein |INT |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. Muss Null (0) oder größer sein. |
 
@@ -1688,7 +1688,7 @@ Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 
 | Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ja |string |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
+| stringToChange |Ja |Zeichenfolge |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1739,7 +1739,7 @@ Konvertiert die angegebene Zeichenfolge in Großbuchstaben.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ja |string |Der Wert, der in Großbuchstaben konvertiert werden soll. |
+| stringToChange |Ja |Zeichenfolge |Der Wert, der in Großbuchstaben konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1790,7 +1790,7 @@ Entfernt alle führenden und nachgestellten Leerzeichen aus der angegebenen Zeic
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ja |string |Der zu kürzende Wert. |
+| stringToTrim |Ja |Zeichenfolge |Der zu kürzende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1834,10 +1834,10 @@ Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministi
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseString |Ja |string |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
-| Zusätzliche Parameter nach Bedarf. |Nein |string |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| baseString |Ja |Zeichenfolge |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
+| Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -1912,10 +1912,10 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ja |string |Die Zeichenfolge mit dem Basis-URI. Achten Sie darauf, das Verhalten bezüglich der Behandlung des nachgestellten Schrägstrichs („/“) zu beobachten, wie im Anschluss auf die folgende Tabelle beschrieben.  |
-| relativeUri |Ja |string |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
+| baseUri |Ja |Zeichenfolge |Die Zeichenfolge mit dem Basis-URI. Achten Sie darauf, das Verhalten bezüglich der Behandlung des nachgestellten Schrägstrichs („/“) zu beobachten, wie im Anschluss auf die folgende Tabelle beschrieben.  |
+| relativeUri |Ja |Zeichenfolge |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
 
 * Wenn **BaseUri** mit einem nachgestellten Schrägstrich endet, ist das Ergebnis einfach **BaseUri**, gefolgt von **relativeUri**.
 
@@ -1994,7 +1994,7 @@ Codiert einen URI.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ja |string |Der zu codierende Wert. |
+| stringToEncode |Ja |Zeichenfolge |Der zu codierende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -2049,7 +2049,7 @@ Gibt eine Zeichenfolge des als URI codierten Werts zurück.
 
 | Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ja |string |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
+| uriEncodedString |Ja |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -2104,7 +2104,7 @@ Gibt den aktuellen datetime-Wert (UTC) im festgelegten Format zurück. Wenn kein
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| format |Nein |string |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Nein |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. Verwenden Sie entweder [Standardformatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder [benutzerdefinierte Formatzeichenfolgen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -2163,9 +2163,9 @@ Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie soll
 
 | Name | type | value |
 | ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
-| utcCustomOutput | string | 3 5 |
+| utcOutput | Zeichenfolge | 20190305T175318Z |
+| utcShortOutput | Zeichenfolge | 03/05/2019 |
+| utcCustomOutput | Zeichenfolge | 3 5 |
 
 Im folgenden Beispiel wird gezeigt, wie ein Wert der Funktion beim Festlegen eines Tagwerts verwendet wird.
 
