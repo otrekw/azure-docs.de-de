@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
 ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978924"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360537"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -32,7 +32,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
 - Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen sind.
 
@@ -125,10 +125,10 @@ Die Anzahl der Sicherheitsregeln, die Sie pro Netzwerksicherheitsgruppe pro Azur
     |Destination     | Wählen Sie als Sicherheitsregeln für ausgehenden Datenverkehr die Optionen **Beliebig**, **Anwendungssicherheitsgruppe**, **IP-Adressen** oder **Virtuelles Netzwerk** aus. Bei der Erstellung einer Sicherheitsregel für eingehenden Datenverkehr gelten die gleichen Optionen, die für **Quelle** genannt wurden.        | Wenn Sie **Anwendungssicherheitsgruppe** wählen, müssen Sie mindestens eine vorhandene Anwendungssicherheitsgruppe auswählen, die sich in derselben Region wie die Netzwerkschnittstelle befindet. Informieren Sie sich über das [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group). Bei Auswahl von **Anwendungssicherheitsgruppe** sollten Sie mindestens eine vorhandene Anwendungssicherheitsgruppe auswählen, die sich in derselben Region wie die Netzwerkschnittstelle befindet. Geben Sie bei Auswahl von **IP-Adressen** Daten unter **Ziel-IP-Adressen/CIDR-Bereiche** an. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben, und die Anzahl, die Sie angeben können, ist begrenzt. Die Auswahl von **Virtuelles Netzwerk** – eines Diensttags – bedeutet, dass Datenverkehr an allen IP-Adressen innerhalb des Adressraums des virtuellen Netzwerks zulässig ist. Wenn die von Ihnen angegebene IP-Adresse einem virtuellen Azure-Computer zugewiesen ist, sollten Sie sicherstellen, dass Sie die private IP-Adresse und nicht die öffentliche IP-Adresse angeben, die dem virtuellen Computer zugewiesen ist. Sicherheitsregeln werden verarbeitet, nachdem Azure die öffentliche IP-Adresse in eine private IP-Adresse für Eingangssicherheitsregeln übersetzt und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt hat. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](virtual-network-ip-addresses-overview-arm.md).        |
     |Zielportbereiche     | Geben Sie einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste von Werten an. | Ähnlich wie bei **Quellportbereiche** können Sie einen einzelnen Port und Bereich oder mehrere angeben, und die Anzahl, die Sie angeben können, ist begrenzt. |
     |Protocol     | Wählen Sie **Alle**, **TCP**, **UDP** oder **ICMP** aus.        |         |
-    |Action     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
+    |Aktion     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
     |Priority     | Geben Sie einen Wert von 100-4096 ein, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist. |Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätsnummern lassen, z.B. 100, 200, 300. Lücken erleichtern das zukünftige Hinzufügen von Regeln, die Sie vielleicht zum Herauf- oder Herabsetzen im Vergleich zu vorhandenen Regeln aufstellen müssen.         |
     |Name     | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe.        |  Der Name kann bis zu 80 Zeichen umfassen. Er muss mit einem Buchstaben oder einer Zahl beginnen, mit einem Buchstaben, einer Zahl oder einem Unterstrich enden und darf nur Buchstaben, Zahlen, Unterstriche, Punkte oder Bindestriche umfassen.       |
-    |Beschreibung     | Eine optionale Beschreibung.        |         |
+    |BESCHREIBUNG     | Eine optionale Beschreibung.        |         |
 
 **Befehle**
 
@@ -254,7 +254,7 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 
 ### <a name="network-security-group"></a>Netzwerksicherheitsgruppe
 
-| Action                                                        |   Name                                                                |
+| Aktion                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   Netzwerksicherheitsgruppe abrufen                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                             |
@@ -264,7 +264,7 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 
 ### <a name="network-security-group-rule"></a>Netzwerksicherheitsgruppen-Regel
 
-| Action                                                        |   Name                                                                |
+| Aktion                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   Regel abrufen                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   Regel erstellen oder aktualisieren                                               |
@@ -272,7 +272,7 @@ Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln
 
 ### <a name="application-security-group"></a>Anwendungssicherheitsgruppe
 
-| Action                                                                     | Name                                                     |
+| Aktion                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP-Konfiguration mit einer Anwendungssicherheitsgruppe verknüpfen|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Sicherheitsregel mit einer Anwendungssicherheitsgruppe verknüpfen    |

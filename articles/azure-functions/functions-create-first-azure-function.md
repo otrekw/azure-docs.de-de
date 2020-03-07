@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: 3e5513d8730f455b220fa480eb99ce9c29216210
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769369"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358345"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -33,7 +33,7 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
+Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
 ## <a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
 

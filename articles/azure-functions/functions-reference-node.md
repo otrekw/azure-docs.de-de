@@ -5,11 +5,11 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
 ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584488"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356802"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -342,7 +342,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft      | Beschreibung                                                    |
+| Eigenschaft      | BESCHREIBUNG                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Ein Objekt, das den Hauptteil der Anforderung enthält.               |
 | _headers_     | Ein Objekt, das die Header der Anforderung enthält.                   |
