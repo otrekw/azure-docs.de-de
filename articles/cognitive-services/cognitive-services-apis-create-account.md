@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362452"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -31,7 +31,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
 1. Dient zum Erstellen einer Ressource.
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Ressource für mehrere Dienste](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
     
     Die Ressource für mehrere Dienste wird im Portal **Cognitive Services** benannt. [Erstellen Sie eine Cognitive Services-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
@@ -43,7 +43,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
     | Textübersetzung  | Bing-Suche v7 <br>(Web, Bild, Neuigkeiten, Video, Visual) | Benutzerdefinierte Bing-Suche | Bing-Entitätssuche            | Bing-Vorschlagssuche |
     | Bing-Rechtschreibprüfung |                                                      |                    |                               |                  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
     Verwenden Sie die folgenden Links, um eine Ressource für die verfügbaren Cognitive Services zu erstellen:
 
@@ -58,7 +58,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
 3. Geben Sie auf der Seite **Erstellen** die folgenden Informationen ein:
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[Ressource für mehrere Dienste](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[Ressource für mehrere Dienste](#tab/multiservice)
 
     |    |    |
     |--|--|
@@ -70,9 +70,9 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
     ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    Klicken Sie auf **Create**.
+    Klicken Sie auf **Erstellen**.
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[Ressource für einen einzelnen Dienst](#tab/singleservice)
 
     |    |    |
     |--|--|
@@ -84,7 +84,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
 
     ![Bildschirm „Ressourcenerstellung“](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    Klicken Sie auf **Create**.
+    Klicken Sie auf **Erstellen**.
 
     ***
 
@@ -113,5 +113,5 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 * [Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)
 * [Was ist Azure Cognitive Services?](Welcome.md)
-* [Unterstützung für natürliche Sprache](language-support.md)
+* [Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)
 * [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md)
