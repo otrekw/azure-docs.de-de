@@ -4,11 +4,11 @@ description: Referenzdokumentation für die host.json-Datei von Azure Functions 
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357609"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -146,7 +146,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 | Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | samplingSettings | – | Siehe [applicationInsights.samplingSettings](#applicationinsightssamplingsettings). |
-| samplingExcludedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
+| samplingExcludedTypes | NULL | Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
 | samplingIncludedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Eine leere Liste gibt an, dass Stichproben für alle Typen erstellt werden sollen. In `samplingExcludedTypes` aufgeführte Typen überschreiben die hier aufgeführten Typen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
 | enableLiveMetrics | true | Aktiviert die Sammlung mit Livemetriken. |
 | enableDependencyTracking | true | Aktiviert die Abhängigkeitsüberwachung. |
@@ -171,7 +171,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 
-|Eigenschaft | Standard | Beschreibung |
+|Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Diese Eigenschaft aktiviert oder deaktiviert erweiterte HTTP-Anforderungsinformationen für HTTP-Trigger: eingehende Anforderungskorrelationsheader, Unterstützung für mehrere Instrumentierungsschlüssel, HTTP-Methoden, Pfade und Antworten. |
 | enableW3CDistributedTracing | true | Diese Eigenschaft aktiviert oder deaktiviert die Unterstützung des W3C-Protokolls für die verteilte Ablaufverfolgung (und aktiviert das alte Korrelationsschema). Sie ist standardmäßig aktiviert, wenn `enableHttpTriggerExtendedInfoCollection` den Wert TRUE aufweist. Wenn `enableHttpTriggerExtendedInfoCollection` den Wert FALSE aufweist, gilt dieses Flag nur für ausgehende Anforderungen, nicht für eingehende Anforderungen. |
@@ -197,10 +197,10 @@ Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen 
 | problemCounterResetInterval | 24:00:00 | Diese Eigenschaft gibt an, wie oft die Problemzähler in einem Zeitraum von 1 Minute bis 7 Tage zurückgesetzt werden. Sobald dieses Intervall erreicht wird, werden alle Problemzähler auf 0 (null) gesetzt. Vorhandene Probleme, die den Schwellenwert für die Momentaufnahmenerstellung bereits erreicht haben, aber noch nicht die Anzahl der Momentaufnahmen in `maximumSnapshotsRequired` generiert haben, sind weiterhin aktiv. |
 | provideAnonymousTelemetry | true | Diese Eigenschaft bestimmt, ob anonyme Nutzungs- und Fehlertelemetriedaten an Microsoft gesendet werden. Diese Telemetrie kann verwendet werden, wenn Sie Microsoft für die Behandlung von Problemen mit dem Momentaufnahmedebugger kontaktieren. Diese Daten werden auch für die Überwachung von Nutzungsmustern verwendet. |
 | reconnectInterval | 00:15:00 | Diese Eigenschaft gibt an, wie oft die Verbindung zum Endpunkt des Momentaufnahmedebuggers wiederhergestellt wird. Das zulässige Intervall liegt zwischen 1 Minute und 1 Tag. |
-| shadowCopyFolder | NULL | Diese Eigenschaft gibt den Ordner für Schattenkopien von Binärdateien an. Wenn sie nicht festgelegt wird, werden die folgenden Umgebungsvariablen der Reihe nach ausprobiert: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
+| shadowCopyFolder | NULL | Diese Eigenschaft gibt den Ordner für Schattenkopien von Binärdateien an. Wenn sie nicht festgelegt wird, werden die folgenden Umgebungsvariablen der Reihe nach versucht: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
 | shareUploaderProcess | true | Wenn diese Eigenschaft den Wert TRUE aufweist, werden Momentaufnahmen für mehrere Apps mit dem gleichen InstrumentationKey-Wert von einer SnapshotUploader-Instanz erfasst und hochgeladen. Wenn der Wert FALSE vorliegt, wird eine eindeutige SnapshotUploader-Instanz für jedes Tupel (ProcessName, InstrumentationKey) verwendet. |
 | snapshotInLowPriorityThread | true | Diese Eigenschaft bestimmt, ob Momentaufnahmen in einem Thread mit niedriger E/A-Priorität verarbeitet werden. Das Erstellen einer Momentaufnahme ist ein schneller Vorgang, aber um eine Momentaufnahme in den Momentaufnahmedebuggerdienst hochzuladen, muss sie erst als Minidump auf den Datenträger geschrieben werden. Dies geschieht im SnapshotUploader-Prozess. Wenn TRUE für diesen Wert festgelegt wird, wird eine niedrige E/A-Priorität zum Schreiben des Minidumps verwendet, sodass der Prozess nicht mit Ihrer Anwendung um Ressourcen konkurriert. Wenn FALSE für diesen Wert festgelegt wird, erfolgt die Erstellung des Minidumps schneller, jedoch wird Ihre Anwendung verlangsamt. |
-| snapshotsPerDayLimit | 30 | Diese Eigenschaft legt die maximal zulässige Anzahl von Momentaufnahmen pro Tag (24 Stunden) fest. Dieser Schwellenwert wird auch für den Application Insights-Dienst festgelegt. Die Uploads sind pro Anwendung auf 50 pro Tag beschränkt (d. h. pro Instrumentierungsschlüssel). Mit diesem Wert wird verhindert, dass zusätzliche Momentaufnahmen erstellt werden, die letztendlich während des Uploads abgelehnt werden. Wenn der Wert 0 (null) festgelegt wird, wird der Schwellenwert vollständig aufgehoben, was nicht empfohlen wird. |
+| snapshotsPerDayLimit | 30 | Diese Eigenschaft legt die maximal zulässige Anzahl von Momentaufnahmen pro Tag (24 Stunden) fest. Dieser Schwellenwert wird auch für den Application Insights-Dienst festgelegt. Die Uploads sind pro Anwendung auf 50 pro Tag beschränkt (d. h. pro Instrumentierungsschlüssel). Mit diesem Wert wird verhindert, dass zusätzliche Momentaufnahmen erstellt werden, die letztendlich während des Uploads abgelehnt werden. Wenn der Wert „0“ (null) festgelegt wird, wird der Schwellenwert vollständig aufgehoben, was nicht empfohlen wird. |
 | snapshotsPerTenMinutesLimit | 1 | Diese Eigenschaft legt die maximal zulässige Anzahl von Momentaufnahmen für einen Zeitraum von 10 Minuten fest. Obwohl es für diesen Wert keine Obergrenze gibt, sollten Sie ihn für Produktionsworkloads nur mit Bedacht erhöhen, da er sich auf die Leistung Ihrer Anwendung auswirken kann. Zwar ist die Erstellung einer Momentaufnahme ein schneller Prozess, jedoch ist das Erstellen eines Minidumps des Snapshots und Hochladen in den Momentaufnahmedebuggerdienst ein deutlich langsamerer Vorgang, der mit Ihrer Anwendung um Ressourcen konkurriert (sowohl CPU- als auch E/A-Ressourcen). |
 | tempFolder | NULL | Diese Eigenschaft legt den Ordner fest, in den Minidumps und Uploaderprotokolldateien geschrieben werden. Wenn kein Wert festgelegt wird, wird *%TEMP%\Dumps* verwendet. |
 | thresholdForSnapshotting | 1 | Diese Eigenschaft gibt an, wie viele Ausnahmen Application Insights ermitteln muss, bevor Momentaufnahmen angefordert werden. |
@@ -268,7 +268,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 }
 ```
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------| 
 |enabled|true|Gibt an, ob die Funktion aktiviert ist. | 
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
@@ -367,7 +367,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 }
 ```
 
-|Eigenschaft  |Standard | BESCHREIBUNG |
+|Eigenschaft  |Standard | Beschreibung |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Der Zeitraum, für den Sperren auf Funktionsebene gelten. Die Sperren werden automatisch verlängert.| 
 |listenerLockPeriod|00:01:00|Der Zeitraum, für den Listenersperren gelten.| 

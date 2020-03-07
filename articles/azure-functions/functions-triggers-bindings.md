@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356872"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -28,10 +28,10 @@ Betrachten Sie die folgenden Beispiele, wie Sie verschiedene Funktionen implemen
 
 | Beispielszenario | Trigger | Eingabebindung | Ausgabebindung |
 |-------------|---------|---------------|----------------|
-| Eine neue Warteschlangennachricht trifft ein, die eine Funktion ausführt, die das Schreiben in eine andere Warteschlange bewirkt. | Warteschlange<sup>*</sup> | *Keine* | Warteschlange<sup>*</sup> |
-|Ein geplanter Auftrag liest den Inhalt von Blob-Speicher und erstellt ein neues Cosmos DB-Dokument. | Timer | Blob Storage | Cosmos DB |
+| Eine neue Warteschlangennachricht trifft ein, die eine Funktion ausführt, die das Schreiben in eine andere Warteschlange bewirkt. | Warteschlange<sup>*</sup> | *None* | Warteschlange<sup>*</sup> |
+|Ein geplanter Auftrag liest den Inhalt von Blob-Speicher und erstellt ein neues Cosmos DB-Dokument. | Zeitgeber | Blob Storage | Cosmos DB |
 |Das Event Grid wird verwendet, um ein Image aus Blob-Speicher und ein Dokument aus Cosmos DB zu lesen, um eine E-Mail zu senden. | Event Grid | BLOB Storage und Cosmos DB | SendGrid |
-| Ein Webhook, der Microsoft Graph verwendet, um ein Excel-Arbeitsblatt zu aktualisieren. | HTTP | *Keine* | Microsoft Graph |
+| Ein Webhook, der Microsoft Graph verwendet, um ein Excel-Arbeitsblatt zu aktualisieren. | HTTP | *None* | Microsoft Graph |
 
 <sup>\*</sup> Stellt verschiedene Warteschlangen dar
 
