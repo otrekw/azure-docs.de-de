@@ -6,8 +6,8 @@
       href: scheduler-intro.md
 - name: Erste Schritte
   items:
-    - name: Erstellen und Verwalten von Aufträgen im Portal
-      href: scheduler-get-started-portal.md
+    - name: Erstellen und Verwalten von Zeitplänen – Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: Migrieren von Scheduler zu Logic Apps
       href: migrate-from-scheduler-to-logic-apps.md
 - name: Konzepte
@@ -30,7 +30,7 @@
           href: scheduler-advanced-complexity.md
         - name: Erstellen und Verwalten von Zeitplänen – Azure PowerShell
           href: scheduler-powershell-reference.md
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Authentifizieren ausgehender Aufrufe
           href: scheduler-outbound-authentication.md
