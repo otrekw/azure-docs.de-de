@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
 ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356253"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 
@@ -293,8 +293,8 @@ Die Abrechnung basiert auf zwei Aspekten: Dauer des Kopiervorgangs und Art der K
 
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
-* Azure Blob Storage: [Skalierbarkeits-und Leistungsziele für Blob Storage](../storage/blobs/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../storage/blobs/storage-performance-checklist.md)
-* Azure Table Storage: [Skalierbarkeits- und Leistungsziele für Table Storage](../storage/tables/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Table Storage](../storage/tables/storage-performance-checklist.md)
+* Azure Blob Storage: [Skalierbarkeits- und Leistungsziele für Blob Storage](../storage/blobs/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: [Skalierbarkeits- und Leistungsziele für Table Storage](../storage/tables/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Table Storage](../storage/tables/storage-performance-checklist.md).
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
 * Azure SQL Data Warehouse: Die Funktion wird in DWUs (Data Warehouse-Einheiten) gemessen. Siehe [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
