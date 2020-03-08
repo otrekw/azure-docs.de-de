@@ -4,11 +4,11 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207280"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357381"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -239,9 +239,9 @@ Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parame
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
