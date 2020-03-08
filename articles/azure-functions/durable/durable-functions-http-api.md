@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769624"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356693"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
 
@@ -82,7 +82,7 @@ Content-Length: 83
 
 Die Antwortnutzlast für die **HTTP 202**-Fälle ist ein JSON-Objekt mit den folgenden Feldern:
 
-| Feld                       | Beschreibung                          |
+| Feld                       | BESCHREIBUNG                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |ID der Orchestrierungsinstanz |
 | **`statusQueryGetUri`**     |Status-URL der Orchestrierungsinstanz |
@@ -144,7 +144,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld                   | Parametertyp  | Beschreibung |
+| Feld                   | Parametertyp  | BESCHREIBUNG |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | ID der Orchestrierungsinstanz |
 | **`showInput`**         | Abfragezeichenfolge    | Dieser Parameter ist optional. Bei Festlegung auf `false` wird die Funktionseingabe nicht die Antwortnutzlast aufgenommen.|
@@ -168,12 +168,12 @@ Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-O
 
 | Feld                 | Datentyp | Beschreibung |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | string    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
+| **`runtimeStatus`**   | Zeichenfolge    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
 | **`input`**           | JSON      | Die JSON-Daten, die zum Initialisieren der Instanz verwendet werden. Dieses Feld lautet `null`, wenn der Abfragezeichenfolgenparameter `showInput` auf `false` festgelegt ist.|
 | **`customStatus`**    | JSON      | Die für den benutzerdefinierten Orchestrierungsstatus verwendeten JSON-Daten. Dieses Feld ist `null`, sofern nichts anderes festgelegt wurde. |
 | **`output`**          | JSON      | Die JSON-Ausgabe der Instanz. Dieses Feld ist `null`, wenn die Instanz nicht den Status „Completed“ (Abgeschlossen) aufweist. |
-| **`createdTime`**     | string    | Der Zeitpunkt, zu dem die Instanz erstellt wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
-| **`lastUpdatedTime`** | string    | Der Zeitpunkt, zu dem die Instanz zuletzt persistent gemacht wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
+| **`createdTime`**     | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz erstellt wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
+| **`lastUpdatedTime`** | Zeichenfolge    | Der Zeitpunkt, zu dem die Instanz zuletzt persistent gemacht wurde. Es wird die erweiterte ISO 8601-Notation verwendet. |
 | **`historyEvents`**   | JSON      | Ein JSON-Array, das den Ausführungsverlauf der Orchestrierung enthält. Dieses Feld ist `null`, sofern der Abfragezeichenfolgen-Parameter `showHistory` auf `true` festgelegt ist. |
 
 Hier sehen Sie ein Beispiel für eine Antwortnutzlast mit dem Ausführungsverlauf der Orchestrierung und den Aktivitätsausgaben (zur besseren Lesbarkeit formatiert):
@@ -272,7 +272,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld                   | Parametertyp  | Beschreibung |
+| Feld                   | Parametertyp  | BESCHREIBUNG |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL             | ID der Orchestrierungsinstanz |
 | **`showInput`**         | Abfragezeichenfolge    | Dieser Parameter ist optional. Bei Festlegung auf `false` wird die Funktionseingabe nicht die Antwortnutzlast aufgenommen.|
@@ -370,7 +370,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld             | Parametertyp  | Beschreibung |
+| Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 
@@ -383,7 +383,7 @@ Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
-| Feld                  | Datentyp | Beschreibung |
+| Feld                  | Datentyp | BESCHREIBUNG |
 |------------------------|-----------|-------------|
 | **`instancesDeleted`** | integer   | Die Anzahl der gelöschten Instanzen. Für eine einzelne Instanz sollte dieser Wert immer `1` sein. |
 
@@ -427,7 +427,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld                 | Parametertyp  | Beschreibung |
+| Feld                 | Parametertyp  | BESCHREIBUNG |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Abfragezeichenfolge    | Filtert die Liste der gelöschten Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`createdTimeTo`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
@@ -483,7 +483,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld             | Parametertyp  | Beschreibung |
+| Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`eventName`**   | URL             | Der Name des Ereignisses, das die Zielorchestrierungsinstanz erwartet. |
@@ -538,7 +538,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld             | Parametertyp  | Beschreibung |
+| Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für die Beendigung der Orchestrierungsinstanz an. |
@@ -587,7 +587,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld             | Parametertyp  | Beschreibung |
+| Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
@@ -629,7 +629,7 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld             | Parametertyp  | Beschreibung |
+| Feld             | Parametertyp  | BESCHREIBUNG |
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL             | Der Name (Typ) der Entität |
 | **`entityKey`**   | URL             | Der Schlüssel (eindeutige ID) der Entität |

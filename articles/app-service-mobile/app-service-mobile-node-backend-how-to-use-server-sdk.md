@@ -7,11 +7,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461452"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356958"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 
@@ -364,7 +364,7 @@ Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azu
 
 | App-Einstellung | azureMobile.js-Einstellung | BESCHREIBUNG | Gültige Werte |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Name der App |string |
+| **MS_MobileAppName** |name |Name der App |Zeichenfolge |
 | **MS_MobileLoggingLevel** |logging.level |Mindestprotokolliergrad für die zu protokollierenden Meldungen. |error, warning, info, verbose, debug, silly |
 | **MS_DebugMode** |debug |Aktiviert oder deaktiviert den Debugmodus. |true, false |
 | **MS_TableSchema** |data.schema |Name des Standardschemas für SQL-Tabellen |string (default: dbo) |

@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261550"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356663"
 ---
 # <a name="durable-orchestrations"></a>Dauerhafte Orchestrierungen
 
@@ -57,7 +57,7 @@ Wenn eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird ei
 
 Das Ereignissourcingverhalten des Durable Task Frameworks ist eng an den von Ihnen geschriebenen Orchestratorfunktionscode gekoppelt. Angenommen, Sie verfügen über eine Orchestratorfunktion zur Verkettung von Aktivitäten wie etwa die folgende Orchestratorfunktion:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -216,7 +216,7 @@ Das Feature „kritischer Abschnitt“ ist auch hilfreich, um Änderungen an dau
 
 Von Orchestratorfunktionen dürfen keine E/A-Vorgänge ausgeführt werden, wie unter [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md) beschrieben. Zur Umgehung dieses Problems wird der Code, der E/A-Vorgänge ausführen muss, in der Regel in eine Aktivitätsfunktion eingeschlossen. Orchestrierungen, die mit externen Systemen interagieren, verwenden häufig Aktivitätsfunktionen, um HTTP-Aufrufe durchzuführen und das Ergebnis an die Orchestrierung zurückzugeben.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Zur Vereinfachung dieses gängigen Musters können Orchestratorfunktionen die Methode `CallHttpAsync` verwenden, um HTTP-APIs direkt aufzurufen.
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,7 +265,7 @@ Weitere Informationen und ausführliche Beispiele finden Sie im Artikel [HTTP-Fe
 
 Es ist nicht möglich, mehrere Parameter direkt an eine Aktivitätsfunktion zu übergeben. Es wird empfohlen, ein Array von Objekten oder zusammengesetzte Objekte zu übergeben.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In .NET können Sie auch Objekte vom Typ [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) verwenden. Das folgende Beispiel verwendet neue Features von [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples), die mit [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) hinzugefügt wurden:
 
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>Orchestrator
 
