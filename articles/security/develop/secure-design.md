@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000969"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299413"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -38,7 +38,7 @@ Verwenden Sie die folgenden Ressourcen während der Trainingsphase, um sich mit 
 
   - Die [Anleitung mit den ersten Schritten für Azure-Entwickler](../../guides/developer/azure-developer-guide.md) enthält wichtige Informationen für Entwickler, die damit beginnen möchten für ihre Entwicklungsanforderungen die Azure-Plattform zu nutzen.
 
-  - In [SDKs und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools) sind die Tools beschrieben, die in Azure verfügbar sind.
+  - In [SDKs und Tools](https://docs.microsoft.com/azure/index?pivot=sdkstools) sind die Tools beschrieben, die in Azure verfügbar sind.
 
   - In [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) werden Tools zur Entwicklungszusammenarbeit bereitgestellt. Zu den Tools gehören leistungsstarke Pipelines, kostenlose Git-Repositorys, konfigurierbare Kanban-Boards und umfangreiche automatisierte und cloudbasierte Auslastungstests.
     Das [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) kombiniert unsere Ressourcen zum Erlernen von DevOps-Praktiken, Git-Versionskontrolle, Agile-Methoden, wie wir bei Microsoft mit DevOps arbeiten und wie Sie Ihren eigenen DevOps-Fortschritt bewerten können.
@@ -126,7 +126,7 @@ Verwenden Sie für die Entwicklung eine sichere Codierungsbibliothek und ein Sof
 Achten Sie darauf, dass Sie die neueste Version Ihres Frameworks und alle Sicherheitsfunktionen verwenden, die im Framework verfügbar sind. Microsoft bietet eine umfassende [Auswahl an Entwicklungstools](https://azure.microsoft.com/product-categories/developer-tools/), mit denen alle Entwickler, die mit einer beliebige Plattform oder Sprache arbeiten, Cloudanwendungen bereitstellen können. Sie können mit der von Ihnen bevorzugten Sprache codieren, indem Sie aus verschiedenen [SDKs](https://azure.microsoft.com/downloads/) wählen.
 Sie können von integrierten Entwicklungsumgebungen (IDEs) mit umfassendem Funktionsumfang sowie von Editoren profitieren, die erweiterte Debuggingfunktionen und integrierten Azure-Support haben.
 
-Microsoft stellt eine Vielzahl von [Sprachen, Frameworks und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) bereit, mit denen Sie Anwendungen in Azure entwickeln können. Ein Beispiel ist [Azure für .NET- und .NET Core-Entwickler](https://docs.microsoft.com/dotnet/azure/). Für jede Sprache und jedes Framework, das wir anbieten, finden Sie Schnellstarts, Tutorials und API-Referenzen, die Ihnen einen schnellen Einstieg ermöglichen.
+Microsoft stellt eine Vielzahl von [Sprachen, Frameworks und Tools](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) bereit, mit denen Sie Anwendungen in Azure entwickeln können. Ein Beispiel ist [Azure für .NET- und .NET Core-Entwickler](https://docs.microsoft.com/dotnet/azure/). Für jede Sprache und jedes Framework, das wir anbieten, finden Sie Schnellstarts, Tutorials und API-Referenzen, die Ihnen einen schnellen Einstieg ermöglichen.
 
 Azure bietet eine Vielzahl von Diensten, die Sie zum Hosten von Websites und Webanwendungen verwenden können. Mit diesen Diensten können Sie in Ihrer bevorzugten Sprache entwickeln, egal, ob dies .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python ist.
 [Azure App Service-Web-Apps](../../app-service/overview.md) (Web-Apps) ist einer dieser Dienste.
@@ -153,7 +153,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Spoofing               | Authentication        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Spoofing               | Authentifizierung        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure.|
 | Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](../fundamentals/encryption-atrest.md) Daten und Daten [während einer Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |

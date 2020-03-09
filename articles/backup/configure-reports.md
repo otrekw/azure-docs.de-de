@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582703"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161200"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -47,6 +47,9 @@ Wählen Sie im Überwachungsabschnitt Ihres Recovery Services-Tresors **Diagnose
 
 Azure Backup bietet auch eine integrierte Azure-Richtlinie, die die Konfiguration der Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich automatisiert. Im folgenden Artikel erfahren Sie, wie Sie diese Richtlinie verwenden: [Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
+> [!NOTE]
+> Nachdem Sie die Diagnose konfiguriert haben, kann es bis zu 24 Stunden dauern, bis der erste Datenpush abgeschlossen ist. Sobald die Daten in den LA-Arbeitsbereich fließen, können Sie möglicherweise nicht sofort Daten in den Berichten anzeigen, da die Daten für den aktuellen angebrochenen Tag nicht in den Berichten angezeigt werden (weitere Details finden Sie [hier](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)). Daher wird empfohlen, erst 2 Tage nach dem Konfigurieren der Tresore zum Senden von Daten an Log Analytics zu beginnen, Berichte anzuzeigen.
+
 3. **Zeigen Sie Berichte im Azure-Portal an:**
 
 Nachdem Sie Ihre Tresore für das Senden von Daten an LA konfiguriert haben, können Sie Ihre Sicherungsberichte anzeigen, indem Sie zum Blatt eines beliebigen Tresors navigieren und auf den Menüpunkt **Sicherungsberichte** klicken. 
@@ -56,7 +59,8 @@ Nachdem Sie Ihre Tresore für das Senden von Daten an LA konfiguriert haben, kö
 Durch Klicken auf diesen Link wird die Arbeitsmappe des Sicherungsberichts geöffnet.
 
 > [!NOTE]
-> Derzeit kann das anfängliche Laden des Berichts bis zu einer Minute dauern.
+> * Derzeit kann das anfängliche Laden des Berichts bis zu einer Minute dauern.
+> * Der Recovery Services-Tresor ist nur ein Einstiegspunkt für Sicherungsberichte. Sobald die Arbeitsmappe „Sicherungsberichte“ über das Blatt eines Tresors geöffnet wird, können Sie über alle Tresore hinweg aggregierte Daten anzeigen (durch Auswahl des entsprechenden Satzes von LA-Arbeitsbereichen).
 
 Nachfolgend finden Sie eine Beschreibung der verschiedenen Registerkarten, die der Bericht enthält:
 

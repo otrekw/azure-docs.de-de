@@ -1,5 +1,6 @@
 ---
-title: Kommunikationssicherheit – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+title: Kommunikationssicherheit für das Microsoft Threat Modeling Tool
+titleSuffix: Azure
 description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 54d34a120c575fd01f746131d909058951d1facf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b861c54cfffe409946a2b23de4c7ccf2cd85433a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839257"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269895"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -46,7 +47,7 @@ ms.locfileid: "73839257"
 | **Komponente**               | Azure Event Hub | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Schritte** | Verwenden Sie SSL/TLS, um AMQP- oder HTTP-Verbindungen mit Event Hub zu schützen. |
 
@@ -57,8 +58,8 @@ ms.locfileid: "73839257"
 | **Komponente**               | Dynamics CRM | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Überprüfen Sie die Dienstkontoberechtigungen, und vergewissern Sie sich, dass die benutzerdefinierten Dienste oder ASP.NET-Seiten die CRM-Sicherheit respektieren. |
 
 ## <a id="sqlserver-factory"></a>Verwenden Sie das Datenverwaltungsgateway, um eine Verbindung zwischen einer lokalen SQL Server-Instanz und Azure Data Factory herzustellen.
@@ -79,7 +80,7 @@ ms.locfileid: "73839257"
 | **Komponente**               | Identity Server | 
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [IdentityServer3 - Keys, Signatures and Cryptography](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) (IdentityServer3: Schlüssel, Signaturen und Kryptografie), [IdentityServer3 - Deployment](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) (IdentityServer3: Bereitstellung) |
 | **Schritte** | Bei Identity Server muss für alle eingehenden Verbindungen standardmäßig HTTPS verwendet werden. Wichtig: Die Kommunikation mit Identity Server darf ausschließlich über geschützte Transportkanäle erfolgen. In bestimmten Bereitstellungsszenarien (etwa bei der SSL-Abladung) kann diese Anforderung gelockert werden. Weitere Informationen finden Sie auf der unter „Referenzen“ angegebenen Seite zur Identity Server-Bereitstellung. |
 
@@ -90,8 +91,8 @@ ms.locfileid: "73839257"
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | <p>Anwendungen, die SSL, TLS oder DTLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Hierzu muss für die Zertifikate Folgendes überprüft werden:</p><ul><li>Domänenname</li><li>Gültigkeitsdaten (Anfangsdatum und Ablaufdatum)</li><li>Sperrstatus</li><li>Verwendung (beispielsweise Serverauthentifizierung bei Servern und Clientauthentifizierung bei Clients)</li><li>Vertrauenskette Zertifikate müssen mit einer Stammzertifizierungsstelle (Certification Authority, CA) verkettet sein, die von der Plattform als vertrauenswürdig eingestuft wird oder vom Administrator explizit konfiguriert wurde.</li><li>Der öffentliche Schlüssel des Zertifikats muss über 2048 Bit lang sein.</li><li>Als Hashalgorithmus muss mindestens SHA256 verwendet werden. |
 
 ## <a id="ssl-appservice"></a>Konfigurieren Sie ein SSL-Zertifikat für eine benutzerdefinierte Domäne in Azure App Service.
@@ -145,7 +146,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [OWASP HTTP Strict Transport Security Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) (OWASP-Cheat Sheet zu HTTP Strict Transport Security) |
 | **Schritte** | <p>Bei HSTS (HTTP Strict Transport Security) handelt es sich um eine optionale Sicherheitserweiterung, die von einer Webanwendung mithilfe eines speziellen Antwortheaders angegeben wird. Wenn ein unterstützter Browser diesen Header empfängt, verhindert er, dass die Kommunikation über HTTP an die angegebene Domäne gesendet wird, und sendet die gesamte Kommunikation stattdessen über HTTPS. Darüber hinaus werden in Browsern auch HTTPS-Clickthrough-Aufforderungen verhindert.</p><p>Zur Implementierung von HSTS muss der folgende Antwortheader global für eine Website konfiguriert werden (entweder im Code oder in der Konfiguration): Strict-Transport-Security: max-age=300; includeSubDomains. HSTS dient zur Abwehr folgender Bedrohungen:</p><ul><li>Ein Benutzer erstellt ein Lesezeichen für https://example.com oder gibt die Adresse manuell ein und wird Opfer eines Man-in-the-Middle-Angriffs: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Eine Webanwendung, die eigentlich als reine HTTPS-Anwendung konzipiert ist, enthält unbeabsichtigt HTTP-Links oder stellt Inhalt über HTTP bereit: HSTS leitet HTTP-Anforderungen für die Zieldomäne automatisch an HTTPS um.</li><li>Bei einem Man-in-the-Middle-Angriff wird versucht, Datenverkehr des betroffenen Benutzers mithilfe eines ungültigen Zertifikats abzufangen (in der Hoffnung, dass der Benutzer das falsche Zertifikat akzeptiert): HSTS lässt nicht zu, dass ein Benutzer die Meldung mit dem Hinweis auf ein ungültiges Zertifikat außer Kraft setzt.</li></ul>|
 
@@ -168,7 +169,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Lokal |
 | **Attribute**              | SQL-Version: MsSQL2016, SQL-Version: MsSQL2012, SQL-Version: MsSQL2014 |
-| **Referenzen**              | [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine (SQL Server-Konfigurations-Manager)](https://msdn.microsoft.com/library/ms191192)  |
+| **Referenzen**              | [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine](https://msdn.microsoft.com/library/ms191192)  |
 | **Schritte** | Die Aktivierung der SSL-Verschlüsselung erhöht die Sicherheit von Daten, die über Netzwerke zwischen Instanzen von SQL Server und Anwendungen übertragen werden. |
 
 ## <a id="comm-storage"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.
@@ -178,7 +179,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Komponente**               | Azure Storage | 
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Azure Storage-Sicherheitsleitfaden: Verschlüsselung auf Transportebene – mithilfe von HTTPS](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
 | **Schritte** | Um die Sicherheit von Azure Storage-Daten während der Übertragung zu gewährleisten, verwenden Sie immer das HTTPS-Protokoll, wenn Sie die REST-APIs aufrufen oder auf gespeicherte Objekte zugreifen. Mit Shared Access Signatures, die zum Delegieren des Zugriffs auf Azure Storage-Objekte verwendet werden können, können Sie außerdem festlegen, dass bei Verwendung von Shared Access Signatures nur das HTTPS-Protokoll verwendet werden darf. So können Sie sicherstellen, dass jeder, der Links mit SAS-Token sendet, das richtige Protokoll verwendet.|
 
@@ -211,7 +212,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **Komponente**               | Azure Storage | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, Windows Phone |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Certificate and Public Key Pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) (Anheften von Zertifikaten und öffentlichen Schlüsseln) |
 | **Schritte** | <p>Das Anheften von Zertifikaten dient zur Abwehr von MITM-Angriffen (Man-in-the-Middle). Beim Anheften wird ein Host mit dem erwarteten X.509-Zertifikat oder öffentlichen Schlüssel verknüpft. Sobald ein Zertifikat oder öffentlicher Schlüssel für einen Host bekannt ist oder angezeigt wird, wird das Zertifikat oder der öffentliche Schlüssel mit dem Host verknüpft (angeheftet). </p><p>Startet ein Angreifer nun einen SSL-MITM-Angriff, unterscheidet sich der Schlüssel des für den Angriff verwendeten Servers beim SSL-Handshake vom Schlüssel des angehefteten Zertifikats, woraufhin die Anforderung verworfen und der MITM-Angriff abgewehrt wird. Das Anheften von Zertifikaten kann durch Implementieren des ServicePointManager-Delegaten `ServerCertificateValidationCallback` erreicht werden.</p>|
 
@@ -288,7 +289,7 @@ namespace CertificatePinningExample
 | **Komponente**               | WCF | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Schritte** | Die Anwendungskonfiguration muss sicherstellen, dass bei jedem Zugriff auf sensible Daten HTTPS verwendet wird.<ul><li>**ERLÄUTERUNG:** Wenn eine Anwendung sensible Informationen enthält und keine Verschlüsselung auf Nachrichtenebene verwendet, darf sie ausschließlich über einen verschlüsselten Transportkanal kommunizieren.</li><li>**EMPFEHLUNGEN:** Stellen Sie sicher, dass der HTTP-Transport deaktiviert ist, und aktivieren Sie stattdessen den HTTPS-Transport. Ersetzen Sie beispielsweise `<httpTransport/>` durch das Tag `<httpsTransport/>`. Verlassen Sie sich nicht auf eine Netzwerkkonfiguration (Firewall), um zu gewährleisten, dass auf die Anwendung nur über einen sicheren Kanal zugegriffen werden kann. In der Theorie darf die Sicherheit der Anwendung nicht vom Netzwerk abhängig sein.</li></ul><p>In der Praxis sind die für den Schutz des Netzwerks zuständigen Personen bei den Sicherheitsanforderungen der Anwendung nicht immer auf dem neuesten Stand.</p>|
 
@@ -299,7 +300,7 @@ namespace CertificatePinningExample
 | **Komponente**               | WCF | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
 | **Schritte** | <ul><li>**ERLÄUTERUNG:** Wenn die Schutzebene auf „none“ festgelegt wird, wird der Nachrichtenschutz deaktiviert. Vertraulichkeit und Integrität werden durch eine geeignete Ebeneneinstellung erreicht.</li><li>**EMPFEHLUNGEN:**<ul><li>`Mode=None`: Deaktiviert den Nachrichtenschutz.</li><li>`Mode=Sign`: Signiert die Nachricht, verschlüsselt sie aber nicht. Empfiehlt sich, wenn Datenintegrität wichtig ist.</li><li>`Mode=EncryptAndSign`: Signiert und verschlüsselt die Nachricht.</li></ul></li></ul><p>Wenn Sie lediglich die Integrität der Informationen gewährleisten müssen und die Vertraulichkeit keine Rolle spielt, können Sie die Verschlüsselung ggf. deaktivieren und Ihre Nachricht nur signieren. Dies ist unter Umständen bei Vorgängen oder Dienstverträgen hilfreich, bei denen Sie den ursprünglichen Absender überprüfen müssen, aber keine sensiblen Daten übertragen werden. Achten Sie beim Verringern der Schutzebene darauf, dass die Nachricht keine personenbezogenen Daten enthält.</p>|
 
@@ -328,7 +329,7 @@ string GetData(int value);
 | **Komponente**               | WCF | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
 | **Schritte** | <ul><li>**ERLÄUTERUNG:** Führen Sie WCF-Dienste nicht unter einem Administratorkonto oder unter einem Konto mit hohen Berechtigungen aus. Andernfalls hat die Kompromittierung eines Diensts weitreichende Auswirkungen.</li><li>**EMPFEHLUNGEN:** Hosten Sie Ihren WCF-Dienst unter Verwendung eines Kontos mit möglichst wenigen Berechtigungen, um die Angriffsfläche Ihrer Anwendung und den potenziellen Schaden eines Angriffs zu minimieren. Sollte das Dienstkonto zusätzliche Zugriffsrechte für Infrastrukturressourcen wie MSMQ, das Ereignisprotokoll, Leistungsindikatoren und das Dateisystem benötigen, müssen für diese Ressourcen entsprechende Berechtigungen gewährt werden, damit der WCF-Dienst erfolgreich ausgeführt werden kann.</li></ul><p>Falls Ihr Dienst im Auftrag des ursprünglichen Aufrufers auf bestimmte Ressourcen zugreifen muss, verwenden Sie Identitätswechsel und Delegierung, um die Identität des Aufrufers für eine nachgelagerte Autorisierungsprüfung weiterzugeben. Verwenden Sie in einem Entwicklungsszenario das lokale Netzwerkdienstkonto. Hierbei handelt es sich um ein spezielles integriertes Konto mit eingeschränkten Berechtigungen. Erstellen Sie in einem Produktionsszenario ein benutzerdefiniertes Domänendienstkonto mit möglichst wenigen Berechtigungen.</p>|
 
@@ -339,7 +340,7 @@ string GetData(int value);
 | **Komponente**               | Web-API | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Enforcing SSL in a Web API Controller](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) (Erzwingen von SSL in einem Web-API-Controller) |
 | **Schritte** | Wenn eine Anwendung sowohl über eine HTTPS-Bindung als auch über eine HTTP-Bindung verfügt, können Clients weiterhin über HTTP auf die Website zugreifen. Stellen Sie daher mithilfe eines Aktionsfilters sicher, dass Anforderungen an geschützte APIs immer über HTTPS abgewickelt werden.|
 
@@ -380,7 +381,7 @@ public class ValuesController : ApiController
 | **Komponente**               | Azure Cache for Redis | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Wann sollte ich den Nicht-SSL-Port für die Verbindungsherstellung mit Redis verwenden?](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
 | **Schritte** | Der Redis-Server bietet keine integrierte SSL-Unterstützung, Azure Cache for Redis dagegen schon. Wenn Sie eine Verbindung mit Azure Cache for Redis herstellen und Ihr Client SSL unterstützt (wie etwa StackExchange.Redis), sollten Sie SSL verwenden. Bei neuen Azure Cache for Redis-Instanzen ist der SSL-fremde Port standardmäßig deaktiviert. Die sicheren Standardeinstellungen sollten nur geändert werden, wenn Redis-Clients auf SSL-Unterstützung angewiesen sind. |
 
@@ -393,8 +394,8 @@ Redis ist für den Zugriff durch vertrauenswürdige Clients in vertrauenswürdig
 | **Komponente**               | Zwischengeschaltetes IoT-Gateway | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Bei IP-basierten Geräten kann das Kommunikationsprotokoll in der Regel in einem SSL-/TLS-Kanal gekapselt werden, um die Daten während der Übertragung zu schützen. Ermitteln Sie bei anderen Protokollen ohne SSL-/TLS-Unterstützung, ob sichere Versionen des Protokolls zur Verfügung stehen, die Sicherheit auf Transport- oder Nachrichtenebene bieten. |
 
 ## <a id="device-cloud"></a>Schützen Sie die Kommunikation zwischen Gerät und Cloudgateway mithilfe von SSL/TLS.
@@ -404,6 +405,6 @@ Redis ist für den Zugriff durch vertrauenswürdige Clients in vertrauenswürdig
 | **Komponente**               | IoT-Cloudgateway | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Choose your Communication Protocol](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) (Auswählen Ihres Kommunikationsprotokolls) |
 | **Schritte** | Schützen Sie HTTP-/AMQP- oder MQTT-Protokolle mithilfe von SSL/TLS. |
