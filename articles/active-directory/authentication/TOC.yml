@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Kennwortschutz für Azure AD
       items:
-        - name: Lokale Integration
-          items:
-            - name: Bereitstellen des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: Konfigurieren des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: Überwachen des Kennwortschutzes für Azure AD
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: Problembehandlung für den Kennwortschutz für Azure AD
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: Häufig gestellte Fragen
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: Versionsverlauf des lokalen Agents
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: Planung und lokale Bereitstellung
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Lokales Aktivieren und Konfigurieren
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: Überwachen von lokalen Bereitstellungen
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Troubleshooting für lokale Bereitstellungen
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: Häufig gestellte Fragen zu lokalen Bereitstellungen
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Versionsverlauf des lokalen Agents
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Smart Lockout für Azure AD
       href: howto-password-smart-lockout.md
     - name: Kennwortlos

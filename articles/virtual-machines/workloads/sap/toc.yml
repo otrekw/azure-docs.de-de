@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: Funktionsprinzipien und Zuständigkeiten
           href: hana-operations-model.md
+        - name: Kompatible Betriebssysteme
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: Aufbau
       items:
         - name: Allgemeine Architektur

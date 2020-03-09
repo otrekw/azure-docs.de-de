@@ -193,10 +193,8 @@
           items:
             - name: Text-to-Speech-REST-API
               href: rest-text-to-speech.md
-        - name: Phongruppennutzung
-          items:
-            - name: Nutzung der Phongruppe für Spracheingabe-API (SAPI)
-              href: sapi-phoneset-usage.md
+        - name: Phonetische SSML-Sätze
+          href: speech-ssml-phonetic-sets.md
     - name: Ressourcen
       items:
         - name: Häufig gestellte Fragen zur Sprachsynthese
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: Abrufen des SDK für sprachaktivierte Geräte
           href: get-speech-devices-sdk.md
-        - name: Versionshinweise
-          href: devices-sdk-release-notes.md
-        - name: Details zu Roobo v1
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Details zu Roobo v2
-          href: speech-devices-sdk-roobo-v2.md
-        - name: Mikrofonspezifikation
     - name: Hardware
       items:
         - name: Empfehlungen zum Mikrofonarray
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1-Kit
+        - name: Details zu Roobo v1
           href: speech-devices-sdk-roobo-v1.md
+        - name: Details zu Roobo v2
+          href: speech-devices-sdk-roobo-v2.md
     - name: Schnellstart
       items:
         - name: Verwenden des Speech Devices SDK

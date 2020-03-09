@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: "Herstellen einer privaten Verbindung mit einem Cosmos\_DB-Konto"
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: Herstellen einer privaten Verbindung mit einer Web-App
+      href: create-private-endpoint-webapp-portal.md
     - name: Deaktivieren von Netzwerkrichtlinien für einen privaten Endpunkt
       href: disable-private-endpoint-network-policy.md
     - name: Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst
