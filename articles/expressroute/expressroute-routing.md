@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048163"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355662"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:

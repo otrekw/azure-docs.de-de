@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082448"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357658"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 
@@ -32,7 +32,7 @@ Sie können verschiedene [Programmiersprachen und Plattformen](sql-database-conn
 
 Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/downloads/) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Sie können auch das Azure-Portal, PowerShell und REST-APIs nutzen, um noch produktiver zu arbeiten.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Der Zugriff auf Azure SQL-Datenbank wird durch Anmeldungen und Firewalls geschützt. Azure SQL-Datenbank unterstützt Benutzer und Anmeldungen mit SQL Server-Authentifizierung sowie [Azure Active Directory-Authentifizierung (AAD)](sql-database-aad-authentication.md). AAD-Anmeldungen sind nur in der verwalteten Instanz verfügbar. 
 

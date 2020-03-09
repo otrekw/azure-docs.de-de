@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373229"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359015"
 ---
 # <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
@@ -64,7 +64,7 @@ Bevor Sie einen TAP für ein virtuelles Netzwerk erstellen können, müssen Sie 
 
 Die Konten, mit denen Sie die TAP-Konfiguration auf Netzwerkschnittstellen anwenden, müssen der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die erforderlichen Aktionen aus der folgenden Tabelle zugewiesen ist:
 
-| Action | Name |
+| Aktion | Name |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Erforderlich, um eine TAP-Ressource für virtuelle Netzwerke zu erstellen, zu aktualisieren, zu lesen und zu löschen |
 | Microsoft.Network/networkInterfaces/read | Erforderlich, um die Netzwerkschnittstellenressource zu lesen, für die der TAP konfiguriert wird |

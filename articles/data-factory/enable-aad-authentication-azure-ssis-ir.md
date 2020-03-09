@@ -12,11 +12,11 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927442"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360433"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Aktivieren der Azure Active Directory-Authentifizierung für Azure-SSIS Integration Runtime
 
