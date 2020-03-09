@@ -5,11 +5,11 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292925"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356763"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -92,7 +92,7 @@ Informationen zur Verwendung von Application Insights finden Sie in der [Applica
 
 Die folgenden Bereiche von Application Insights können bei der Bewertung des Verhaltens, der Leistung und der Fehler in Ihren Funktionen hilfreich sein:
 
-| Registerkarte | Beschreibung |
+| Registerkarte | BESCHREIBUNG |
 | ---- | ----------- |
 | **[Fehler](../azure-monitor/app/asp-net-exceptions.md)** |  Hier können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die benutzerdefinierte Telemetrie für Abhängigkeiten implementieren. |
 | **[Leistung](../azure-monitor/app/performance-counters.md)** | Hier können Sie Leistungsprobleme analysieren. |
@@ -119,7 +119,7 @@ requests
 
 Die verfügbaren Tabellen werden links auf der Registerkarte **Schema** angezeigt. Daten, die durch Funktionsaufrufe generiert wurden, sind in den folgenden Tabellen enthalten:
 
-| Tabelle | Beschreibung |
+| Tabelle | BESCHREIBUNG |
 | ----- | ----------- |
 | **traces** | Protokolle, die von der Laufzeit und durch Funktionscode erstellt wurden. |
 | **requests** | Jeweils eine Anforderung pro Funktionsaufruf. |
