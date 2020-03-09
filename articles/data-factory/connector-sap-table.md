@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926191"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358412"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
 
@@ -75,10 +75,10 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | `type` | Die `type`-Eigenschaft muss auf `SapTable` festgelegt werden. | Ja |
-| `server` | Der Name des Servers, auf dem sich die SAP-Instanz befindet.<br/>Verwenden Sie ihn zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver. | Nein |
+| `server` | Der Name des Servers, auf dem sich die SAP-Instanz befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver. | Nein |
 | `systemNumber` | Die Systemnummer des SAP-Systems.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver.<br/>Zulässiger Wert: Eine zweistellige Dezimalzahl, die als Zeichenfolge angegeben wird. | Nein |
-| `messageServer` | Der Hostname des SAP-Nachrichtenservers.<br/>Verwenden Sie ihn zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
-| `messageServerService` | Der Dienstname oder die Portnummer des Nachrichtenservers.<br/>Verwenden Sie ihn bzw. sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| `messageServer` | Der Hostname des SAP-Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
+| `messageServerService` | Der Dienstname oder die Portnummer des Nachrichtenservers.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `systemId` | Die ID des SAP-Systems, in dem sich die Tabelle befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `logonGroup` | Die Anmeldegruppe für das SAP-System.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Nachrichtenserver. | Nein |
 | `clientId` | Die ID des Clients im SAP-System.<br/>Zulässiger Wert: Eine dreistellige Dezimalzahl, die als Zeichenfolge angegeben wird. | Ja |
@@ -117,7 +117,7 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 }
 ```
 
-### <a name="example-2-connect-to-an-sap-message-server"></a>Beispiel 2: Herstellen einer Verbindung mit einem SAP-Nachrichtenserver
+### <a name="example-2-connect-to-an-sap-message-server"></a>Beispiel 2: Herstellen einer Verbindung mit einem SAP-Nachrichtenserver
 
 ```json
 {
@@ -144,7 +144,7 @@ Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst u
 }
 ```
 
-### <a name="example-3-connect-by-using-snc"></a>Beispiel 3: Herstellen einer Verbindung mithilfe von SNC
+### <a name="example-3-connect-by-using-snc"></a>Beispiel 3: Herstellen einer Verbindung mithilfe von SNC
 
 ```json
 {
@@ -234,14 +234,14 @@ Beim Kopieren von Daten aus einer SAP-Tabelle werden die folgenden Eigenschaften
 
 In `rfcTableOptions` können Sie die folgenden allgemeinen SAP-Abfrageoperatoren zum Filtern von Zeilen verwenden:
 
-| Operator | BESCHREIBUNG |
+| Operator | Beschreibung |
 | :------- | :------- |
-| `EQ` | Ist gleich |
+| `EQ` | Gleich |
 | `NE` | Ungleich |
 | `LT` | Kleiner als |
 | `LE` | Kleiner als oder gleich |
 | `GT` | Größer als |
-| `GE` | Größer oder gleich |
+| `GE` | Größer als oder gleich |
 | `LIKE` | Wie in `LIKE 'Emma%'` |
 
 ### <a name="example"></a>Beispiel
