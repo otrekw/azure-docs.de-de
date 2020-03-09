@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163703"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358445"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -34,7 +34,7 @@ Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede 
 * Beim Microsoft Identity Platform-Endpunkt ist die Anmeldung mit Geschäfts-, Schul- und Unikonten über Azure AD und mit persönlichen Microsoft-Konten (MSA) (z. B. hotmail.com, outlook.com und msn.com) möglich.
 * Für beide Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
 
-Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
+Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
 
 Für den Microsoft Identity Platform-Endpunkt können Sie die Microsoft Authentication Library (MSAL) nutzen, um Zugriff auf die Bereiche für Konsumenten, Weiterbildung und Unternehmen zu erhalten. Der Azure AD v1.0-Endpunkt akzeptiert nur Anmeldungen von Geschäfts-, Schul- und Unikonten.
 
@@ -70,7 +70,7 @@ Für den v1.0-Endpunkt kann eine an Azure AD gesendete OAuth 2.0-Autorisierungsa
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ Für Anwendungen, für die der Microsoft Identity Platform-Endpunkt verwendet wi
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

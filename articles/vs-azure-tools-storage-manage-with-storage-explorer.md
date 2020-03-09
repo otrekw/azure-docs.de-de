@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357029"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -25,23 +25,23 @@ Microsoft Azure Storage-Explorer ist eine eigenständige App, mit der Sie unter 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Storage-Explorer wird von folgenden Windows-Versionen unterstützt:
 
 * Windows 10 (empfohlen)
-* Windows 8
+* Windows 8
 * Windows 7
 
 Für alle Windows-Versionen ist für Storage-Explorer .NET Framework 4.6.2 oder höher erforderlich.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 Storage-Explorer wird von folgenden macOS-Versionen unterstützt:
 
 * macOS 10.12 Sierra und höher
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Storage-Explorer ist für die meisten gängigen Linux-Distributionen im [Snap Store](https://snapcraft.io/storage-explorer) verfügbar. Es wird empfohlen, Snap Store für diese Installation zu verwenden. Das Storage-Explorer-Snap installiert alle Abhängigkeiten und Updates, sobald neue Versionen im Snap Store veröffentlicht werden.
 
@@ -108,7 +108,7 @@ Es gibt mehrere Möglichkeiten des Anfügens an eine Ressource in Storage-Explor
 * [Ressource über Azure AD hinzufügen](#add-a-resource-via-azure-ad). Wenn Sie nur auf Datenebene über Berechtigungen verfügen, wählen Sie diese Option, um einen Blobcontainer oder einen Azure Data Lake Storage Gen2 Blob-Speichercontainer hinzuzufügen.
 * [Verbindungszeichenfolge verwenden](#use-a-connection-string). Wählen Sie diese Option, wenn Sie eine Verbindungszeichenfolge für ein Speicherkonto haben. Storage-Explorer unterstützt sowohl Schlüssel- als auch [Shared Access Signature](storage/common/storage-dotnet-shared-access-signature-part-1.md)-Verbindungszeichenfolgen.
 * [Verwenden eines Shared Access Signature-URIs](#use-a-shared-access-signature-uri). Wenn Sie einen [Shared Access Signature-URI](storage/common/storage-dotnet-shared-access-signature-part-1.md) für einen Blobcontainer, eine Dateifreigabe, eine Warteschlange oder eine Tabelle haben, führen Sie damit das Anfügen an die Ressource durch. Sie können [Storage-Explorer](#generate-a-sas-in-storage-explorer) oder das [Azure-Portal](https://portal.azure.com) verwenden, um einen Shared Access Signature-URI zu erhalten.
-* [Namen und Schlüssel verwenden](#use-a-name-and-key). Wenn Sie einen der Kontoschlüssel für Ihr Speicherkonto kennen, können Sie sich damit schneller verbinden. Suchen Sie Ihre Schlüssel auf der Seite „Speicherkonto“, indem Sie im [Azure-Portal](https://portal.azure.com) **Einstellungen** > **Zugriffsschlüssel** auswählen.
+* [Namen und Schlüssel verwenden](#use-a-name-and-key). Wenn Sie einen der Kontoschlüssel für Ihr Speicherkonto kennen, können Sie sich damit schneller verbinden. Suchen Sie Ihre Schlüssel auf der Seite „Speicherkonto“, indem Sie im [Azure-Portal](https://portal.azure.com)**Einstellungen** > **Zugriffsschlüssel** auswählen.
 * [An lokalen Emulator anfügen](#attach-to-a-local-emulator). Wenn Sie einen der verfügbaren Azure Storage-Emulatoren verwenden, können Sie diese Option nutzen, um sich leichter mit Ihrem Emulator zu verbinden.
 * [Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string). Wählen Sie diese Option, wenn Sie eine Verbindungszeichenfolge für eine CosmosDB-Instanz haben.
 * [Herstellen einer Verbindung mit Azure Data Lake Store über den URI](#connect-to-azure-data-lake-store-by-uri). Wählen Sie diese Option, wenn Sie einen URI für Azure Data Lake Store haben.
@@ -123,7 +123,7 @@ Es gibt mehrere Möglichkeiten des Anfügens an eine Ressource in Storage-Explor
 
 1. Wählen Sie die Option **Ressource über Azure Active Directory (Azure AD) hinzufügen** und klicken Sie auf **Weiter**.
 
-1. Wählen Sie ein Azure-Konto und einen Mandanten aus. Diese Werte müssen Zugriff auf die Speicherressource haben, an die Sie anfügen möchten. Klicken Sie auf **Weiter**.
+1. Wählen Sie ein Azure-Konto und einen Mandanten aus. Diese Werte müssen Zugriff auf die Speicherressource haben, an die Sie anfügen möchten. Wählen Sie **Weiter** aus.
 
 1. Wählen Sie den Ressourcentyp aus, den Sie anfügen möchten. Geben Sie die für das Herstellen der Verbindung erforderlichen Informationen ein. 
 
@@ -155,7 +155,7 @@ Nachdem die Verbindung erfolgreich hinzugefügt wurde, wechselt die Ressourcenst
 
 1. Wählen Sie **SAS-URI (Shared Access Signature) verwenden** aus, und klicken Sie auf **Weiter**.
 
-1. Wählen Sie einen Anzeigenamen für Ihre Verbindung, und geben Sie Ihren Shared Access Signature-URI ein. Der Dienstendpunkt für den Ressourcentyp, den Sie anfügen, sollte automatisch eingetragen werden. Wenn Sie einen benutzerdefinierten Endpunkt verwenden, erfolgt dies möglicherweise nicht. Klicken Sie auf **Weiter**.
+1. Wählen Sie einen Anzeigenamen für Ihre Verbindung, und geben Sie Ihren Shared Access Signature-URI ein. Der Dienstendpunkt für den Ressourcentyp, den Sie anfügen, sollte automatisch eingetragen werden. Wenn Sie einen benutzerdefinierten Endpunkt verwenden, erfolgt dies möglicherweise nicht. Wählen Sie **Weiter** aus.
 
 1. Überprüfen Sie in der **Verbindungszusammenfassung** alle Informationen auf Richtigkeit. Wenn alles stimmt, wählen Sie **Verbinden** aus. Klicken Sie andernfalls auf **Zurück**, um zu den vorherigen Seiten zurückzukehren und falsche Informationen zu korrigieren.
 
