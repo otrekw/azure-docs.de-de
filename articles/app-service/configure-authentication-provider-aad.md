@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842355"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913207"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure AD-Anmeldung
 
@@ -25,6 +25,9 @@ Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizier
 - Vermeiden Sie das Teilen von Berechtigungen zwischen Umgebungen, indem Sie separate App-Registrierungen für gesonderte Bereitstellungsslots verwenden. Wenn Sie neuen Code testen, kann diese Vorgehensweise dabei helfen, Probleme zu verhindern, die sich auf die Produktions-App auswirken können.
 
 ## <a name="express"> </a>Konfigurieren mit Expresseinstellungen
+
+> [!NOTE]
+> Die Option **Express** steht für Government Clouds nicht zur Verfügung. 
 
 1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus.
 2. Wählen Sie im linken Navigationsbereich **Authentifizierung/Autorisierung** > **Ein** aus.
@@ -90,7 +93,7 @@ Führen Sie die folgenden Schritte aus:
 1. Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus.
 1. Wählen Sie in **Verwaltungsmodus** die Option **Erweitert** aus, und konfigurieren Sie die App Service-Authentifizierung gemäß der folgenden Tabelle:
 
-    |Feld|Beschreibung|
+    |Feld|BESCHREIBUNG|
     |-|-|
     |Client-ID| Verwenden Sie die **Anwendungs-ID (Client)** der App-Registrierung. |
     |Zertifikataussteller-ID| Verwenden Sie `https://login.microsoftonline.com/<tenant-id>`, und ersetzen Sie *\<tenant-id* durch die **Verzeichnis-ID (Mandant)** der App-Registrierung. |

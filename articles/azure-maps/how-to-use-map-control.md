@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209816"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913939"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -27,33 +27,34 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 
 2. Laden Sie das Azure Maps Web SDK. Sie können eine dieser beiden Optionen auswählen:
 
-a. Verwenden Sie die global gehostete CDN-Version des Azure Maps Web SDK, indem Sie dem Stylesheet die URL-Endpunkte und Skriptverweise im `<head>`-Element der Datei hinzufügen:
+   1. Verwenden Sie die global gehostete CDN-Version des Azure Maps Web SDK, indem Sie dem Stylesheet die URL-Endpunkte und Skriptverweise im `<head>`-Element der Datei hinzufügen:
 
-```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
-b. Laden Sie den Quellcode des Azure Maps Web SDK lokal mithilfe des NPM-Pakets [azure-maps-control](https://www.npmjs.com/package/azure-maps-control), und hosten Sie es mit Ihrer App. Dieses Paket enthält außerdem TypeScript-Definitionen.
+   1. Laden Sie den Quellcode des Azure Maps Web SDK lokal mithilfe des NPM-Pakets [azure-maps-control](https://www.npmjs.com/package/azure-maps-control), und hosten Sie es mit Ihrer App. Dieses Paket enthält außerdem TypeScript-Definitionen.
 
-> **npm install azure-maps-control**
+      > **npm install azure-maps-control**
 
-Fügen Sie dann dem `<head>`-Element der Datei Verweise auf das Azure Maps-Stylesheet und die Skriptquelle hinzu:
+   Fügen Sie dann dem `<head>`-Element der Datei Verweise auf das Azure Maps-Stylesheet und die Skriptquelle hinzu:
 
-```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+      ```
 
-    >[!Note]
-    > Typescript definitions can be imported into your application by adding the following code:
+    > [!Note]
+    > Sie können TypeScript-Definitionen in Ihre Anwendung importieren, indem Sie den folgenden Code hinzufügen:
+    >
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
 3. Um die Karte so zu rendern, dass sie den gesamten Bereich der Seite ausfüllt, fügen Sie dem `<head>`-Element das folgende `<style>`-Element hinzu.
 
-```HTML
+   ```HTML
     <style>
         html, body {
             margin: 0;
@@ -64,23 +65,23 @@ Fügen Sie dann dem `<head>`-Element der Datei Verweise auf das Azure Maps-Style
             width: 100vw;
         }
     </style>
-```
+   ```
 
 4. Fügen Sie im Seitenbereich ein `<div>`-Element hinzu, und geben Sie ihm die `id`**myMap**.
 
-```HTML
+   ```HTML
     <body>
         <div id="myMap"></div>
     </body>
-```
+   ```
 
 5. Definieren Sie zum Initialisieren des Kartensteuerelements ein neues Skripttag im HTML-Text. Übergeben Sie beim Erstellen einer Instanz der `Map`-Klasse die `id` der Karte `<div>` oder ein `HTMLElement` (z.B. `document.getElementById('myMap')`) als ersten Parameter. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel oder Ihre Azure Active Directory-Anmeldeinformationen (AAD), um die Karte mithilfe der [Authentifizierungsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions) zu authentifizieren. 
 
-Wenn Sie ein Konto erstellen oder Ihren Schlüssel suchen müssen, befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+   Wenn Sie ein Konto erstellen oder Ihren Schlüssel suchen müssen, befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
-Die Option**language** gibt die Sprache an, die für Kartenbeschriftungen und Steuerelemente verwendet werden soll. Weitere Informationen zu unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](supported-languages.md). Wenn Sie einen Abonnementschlüssel für die Authentifizierung nutzen, verwenden Sie folgenden Code:
+   Die Option**language** gibt die Sprache an, die für Kartenbeschriftungen und Steuerelemente verwendet werden soll. Weitere Informationen zu unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](supported-languages.md). Wenn Sie einen Abonnementschlüssel für die Authentifizierung nutzen, verwenden Sie folgenden Code:
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -92,11 +93,11 @@ Die Option**language** gibt die Sprache an, die für Kartenbeschriftungen und St
             }
         });
     </script>
- ```
+    ```
 
-Falls Sie Azure Active Directory (AAD) für die Authentifizierung nutzen, verwenden Sie folgenden Code:
+   Falls Sie Azure Active Directory (AAD) für die Authentifizierung nutzen, verwenden Sie folgenden Code:
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -110,25 +111,25 @@ Falls Sie Azure Active Directory (AAD) für die Authentifizierung nutzen, verwen
             }
         });
     </script>
-```
+   ```
 
-Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
+   Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
     
-Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md) sowie in den [Azure Maps-Beispielen für die Azure AD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
+   Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md) sowie in den [Azure Maps-Beispielen für die Azure AD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
 6. Es kann sinnvoll sein, dem Kopf der Seite die folgenden optionalen Metatagelemente hinzuzufügen:
 
-```HTML
+   ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
     <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
     <!-- Ensures the web page looks good on all screen sizes. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-```
+   ```
 
 7. Im Ergebnis sollte Ihre HTML-Datei ungefähr wie der folgende Code aussehen:
 
-```HTML
+   ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -174,11 +175,11 @@ Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](
         </script>
     </body>
     </html>
- ```
+    ```
 
 8. Öffnen Sie die Datei in Ihrem Webbrowser, und zeigen Sie die gerenderte Karte an. Sie sollte wie die folgende Abbildung aussehen:
 
-![Abbildung der Karte mit gerendertem Ergebnis](./media/how-to-use-map-control/map-of-seattle.png)
+   ![Abbildung der Karte mit gerendertem Ergebnis](./media/how-to-use-map-control/map-of-seattle.png)
 
 ## <a name="localizing-the-map"></a>Lokalisieren der Karte
 

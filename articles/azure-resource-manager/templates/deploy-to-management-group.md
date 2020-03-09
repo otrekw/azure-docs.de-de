@@ -2,19 +2,17 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117036"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228110"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erstellen von Ressourcen auf der Verwaltungsgruppenebene
 
 In der Regel stellen Sie Azure-Ressourcen für eine Ressourcengruppe in Ihrem Azure-Abonnement bereit. Sie können jedoch auch auf der Verwaltungsgruppenebene Ressourcen erstellen. Sie verwenden die Bereitstellungen auf Verwaltungsgruppenebene, um Aktionen durchzuführen, die auf dieser Ebene sinnvoll sind, etwa das Zuweisen von [rollenbasierter Zugriffssteuerung](../../role-based-access-control/overview.md) oder das Anwenden von [Richtlinien](../../governance/policy/overview.md).
-
-Derzeit müssen Sie zum Bereitstellen von Vorlagen auf der Verwaltungsgruppenebene die REST-API verwenden.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
@@ -45,7 +43,16 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
 
-Der Befehl für Bereitstellungen auf Verwaltungsgruppenebene unterscheidet sich von dem Befehl für Ressourcengruppenbereitstellungen.
+Die Befehle für Verwaltungsgruppenbereitstellungen unterscheiden sich von den Befehlen für Ressourcengruppenbereitstellungen.
+
+Verwenden Sie für Azure PowerShell [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment). 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 Verwenden Sie für die REST-API [Bereitstellungen – Erstellen im Verwaltungsgruppenbereich](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
@@ -150,7 +157,7 @@ Im folgenden Beispiel wird der Verwaltungsgruppe eine vorhandene Richtliniendefi
 
 ## <a name="template-sample"></a>Vorlagenbeispiel
 
-* Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung.  Klicken Sie [hier](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+* [Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

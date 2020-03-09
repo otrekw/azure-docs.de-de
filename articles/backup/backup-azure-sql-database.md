@@ -4,11 +4,11 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462590"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392778"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -80,7 +80,7 @@ Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Di
     --- | ---
     Vollständig | Primär
     Differenziell | Primär
-    Protokoll |  Primär
+    Log |  Primär
     Nur vollständig kopieren |  Primär
 
 * **Sicherungseinstellung: Nur sekundär**
@@ -89,8 +89,8 @@ Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Di
 --- | ---
 Vollständig | Primär
 Differenziell | Primär
-Protokoll |  Sekundär
-Nur vollständig kopieren |  Sekundär
+Log |  Secondary
+Nur vollständig kopieren |  Secondary
 
 * **Sicherungseinstellung: Sekundär**
 
@@ -98,8 +98,8 @@ Nur vollständig kopieren |  Sekundär
 --- | ---
 Vollständig | Primär
 Differenziell | Primär
-Protokoll |  Sekundär
-Nur vollständig kopieren |  Sekundär
+Log |  Secondary
+Nur vollständig kopieren |  Secondary
 
 * **Keine Sicherungseinstellung**
 
@@ -107,8 +107,8 @@ Nur vollständig kopieren |  Sekundär
 --- | ---
 Vollständig | Primär
 Differenziell | Primär
-Protokoll |  Sekundär
-Nur vollständig kopieren |  Sekundär
+Log |  Secondary
+Nur vollständig kopieren |  Secondary
 
 ## <a name="set-vm-permissions"></a>Einrichten von Berechtigungen für virtuelle Computer
 

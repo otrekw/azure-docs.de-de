@@ -2,13 +2,13 @@
 title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207807"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664405"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -141,7 +141,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automationAccounts | Ja |
 > | automationAccounts/configurations | Ja |
 > | automationAccounts/jobs | Nein |
+> | automationAccounts/privateEndpointConnectionProxies | Nein |
+> | automationAccounts/privateEndpointConnections | Nein |
+> | automationAccounts/privateLinkResources | Nein |
 > | automationAccounts/runbooks | Ja |
 > | automationAccounts/softwareUpdateConfigurations | Nein |
 > | automationAccounts/webhooks | Nein |
@@ -716,6 +718,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | registries/importImage | Nein |
 > | registries/privateEndpointConnectionProxies | Nein |
 > | registries/privateEndpointConnectionProxies/validate | Nein |
+> | registries/privateEndpointConnections | Nein |
 > | registries/privateLinkResources | Nein |
 > | registries/queueBuild | Nein |
 > | registries/regenerateCredential | Nein |
@@ -1057,6 +1060,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | partnerNamespaces/eventChannels | Nein |
 > | partnerRegistrations | Ja |
 > | partnerTopics | Ja |
+> | partnerTopics/eventSubscriptions | Nein |
 > | systemTopics | Ja |
 > | systemTopics/eventSubscriptions | Nein |
 > | topics | Ja |
@@ -1293,6 +1297,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | getEntities | Nein |
 > | managementGroups | Nein |
+> | managementGroups/settings | Nein |
 > | ressourcen | Nein |
 > | startTenantBackfill | Nein |
 > | tenantBackfillStatus | Nein |
@@ -1554,6 +1559,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | legacyPeerings | Nein |
 > | peerAsns | Nein |
 > | peerings | Ja |
+> | peeringServiceCountries | Nein |
 > | peeringServiceProviders | Nein |
 > | peeringServices | Ja |
 
@@ -1678,13 +1684,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | applications | Ja |
 > | saasresources | Nein |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Löschung des vollständigen Modus |
-> | ------------- | ----------- |
-> | jobcollections | Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2015,6 +2014,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | devices | Ja |
+> | registeredSubscriptions | Nein |
 > | vendors | Nein |
 > | vendors/skus | Nein |
 > | vendors/vnfs | Nein |

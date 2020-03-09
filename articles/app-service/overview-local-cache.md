@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680884"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227883"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
 > [!NOTE]
-> Lokaler Cache wird in Funktions-Apps oder App Service-Apps in Containern nicht unterstützt, z.B. [App Service unter Linux](containers/app-service-linux-intro.md).
+> Lokaler Cache wird in Funktions-Apps oder containerisierten App Service-Apps nicht unterstützt, z. B. in [Windows-Containern](app-service-web-get-started-windows-container.md) oder in [App Service für Linux](containers/app-service-linux-intro.md).
 
 
 Azure App Service-Inhalt wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Dieses Design ist auf den Einsatz mit einer Vielzahl von Apps ausgelegt und weist die folgenden Merkmale auf:  

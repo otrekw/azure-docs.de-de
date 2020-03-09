@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208283"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664498"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -52,7 +52,7 @@ Der Kartenstil **Satellit** ist eine Kombination aus Satellitenbildern und Lufta
 ## <a name="satellite_road_labels"></a>Satellite_Road_Labels
 Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen Satellitenbilder und Luftaufnahmen überlagern.
 
-![Kartenstil „satellite_road_labels“](./media/supported-map-styles/satellite_road_labels.png)
+![Kartenstil „satellite_road_labels“](./media/supported-map-styles/satellite-road-labels.png)
 
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
@@ -61,7 +61,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 ## <a name="grayscale_dark"></a>grayscale_dark
 **grayscale_dark** ist eine dunkle Version des Kartenstils „Straße“.
 
-![Kartenstil „gray_scale“](./media/supported-map-styles/grayscale_dark.png)
+![Kartenstil „gray_scale“](./media/supported-map-styles/grayscale-dark.png)
 
 **Anwendbare APIs:**
 * [Kartenbild](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 ## <a name="grayscale_light"></a>grayscale_light
 **grayscale_light** ist eine helle Version des Stils „Straßenkarte“.
 
-![Kartenstil „grayscale_light“](./media/supported-map-styles/grayscale_light.png)
+![Kartenstil „grayscale_light“](./media/supported-map-styles/grayscale-light.png)
 
 **Anwendbare APIs:**
 * Web-SDK-Kartensteuerelement
@@ -99,6 +99,14 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** ist ein dunkler Kartenstil mit einem höheren Kontrast als bei anderen Stilen.
+
+![Dunkler Kartenstil mit starkem Kontrast](./media/supported-map-styles/high-contrast-dark.png)
+
+**Anwendbare APIs:**
+* Web-SDK-Kartensteuerelement
 
 ## <a name="next-steps"></a>Nächste Schritte
 

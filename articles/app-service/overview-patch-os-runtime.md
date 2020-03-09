@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure App Service das Betriebssystem und Runtimes
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846241"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273638"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -51,7 +51,7 @@ Runtimeupdates und Veraltungen werden hier angekündigt:
 
 ### <a name="new-patch-updates"></a>Neue Patchupdates
 
-Patchupdates für .NET-, PHP-, Java SDK- oder Tomcat/Jetty-Version werden automatisch durch Überschreiben der vorhandenen Installation mit der neuen Version angewendet. Node.js-Patchupdates werden parallel zu den vorhandenen Versionen installiert (ähnlich wie Haupt- und Nebenversionen im nächsten Abschnitt). Neue Python-Patchversionen können manuell über [Websiteerweiterungen](https://www.siteextensions.net/packages?q=Tags%3A%22python%22) parallel zu integrierten Python-Installationen installiert werden.
+Patchupdates für .NET-, PHP-, Java SDK- oder Tomcat/Jetty-Version werden automatisch durch Überschreiben der vorhandenen Installation mit der neuen Version angewendet. Node.js-Patchupdates werden parallel zu den vorhandenen Versionen installiert (ähnlich wie Haupt- und Nebenversionen im nächsten Abschnitt). Neue Python-Patchversionen können manuell über [Websiteerweiterungen](https://azure.microsoft.com/blog/azure-web-sites-extensions/) parallel zu integrierten Python-Installationen installiert werden.
 
 ### <a name="new-major-and-minor-versions"></a>Neue Haupt- und Nebenversionen
 

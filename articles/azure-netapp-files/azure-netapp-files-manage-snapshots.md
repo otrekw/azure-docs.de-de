@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086848"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267897"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
-Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
+Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume manuell erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen. Der Azure NetApp Files-Dienst erstellt Momentaufnahmen von Volumes nicht automatisch.  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
 
@@ -59,7 +59,7 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
         Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
 
     * **Dateipfad**     
-        Geben Sie den Dateipfad an, der zum Erstellen des Exportpfads für das neue Volume verwendet wird. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
+        Geben Sie den Dateipfad zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
         
         Das Einbindungsziel ist der Endpunkt der IP-Adresse des NFS-Diensts. Es wird automatisch generiert.   
         

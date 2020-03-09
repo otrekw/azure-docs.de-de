@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten PHP-Container für 
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671831"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255848"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -39,52 +39,26 @@ Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, 
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Ausführen von Composer
+## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
 
-Kudu führt [Composer](https://getcomposer.org/) nicht standardmäßig aus. Zum Aktivieren der Composer-Automatisierung während der Bereitstellung von Kudu müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen.
+Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
-Wechseln Sie von einem lokalen Terminalfenster aus in das Stammverzeichnis Ihres Repositorys. Befolgen Sie die [Befehlszeilen-Installationsschritte](https://getcomposer.org/download/), um *composer.phar* herunterzuladen.
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
+1. Führen Sie `php composer.phar install` aus.
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `POST_BUILD_SCRIPT_PATH` angegeben.
 
-Führen Sie die folgenden Befehle aus:
+`PRE_BUILD_COMMAND` und `POST_BUILD_COMMAND` sind Umgebungsvariablen, die standardmäßig leer sind. Um Präbuildbefehle auszuführen, definieren Sie `PRE_BUILD_COMMAND`. Um Postbuildbefehle auszuführen, definieren Sie `POST_BUILD_COMMAND`.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+Im folgenden Beispiel werden die beiden Variablen für eine Reihe von Befehlen angegeben, die durch Kommas getrennt sind.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Das Stammverzeichnis Ihres Repositorys enthält jetzt zusätzlich zu *composer.phar*: *.deployment* und *deploy.sh*. Diese Dateien funktionieren sowohl für die Windows- als auch für die Linux-Varianten von App Service.
+Weitere Umgebungsvariablen zum Anpassen der Buildautomatisierung finden Sie unter [Oryx-Konfiguration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Öffnen Sie *deploy.sh*, und suchen Sie den Abschnitt `Deployment`. Ersetzen Sie den ganzen Abschnitt durch den folgenden Code:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Übernehmen Sie alle Ihre Änderungen, und stellen Sie Ihren Code erneut bereit. Composer sollte jetzt als Teil der Bereitstellungsautomatisierung ausgeführt werden.
+Weitere Informationen, wie App Service PHP-Apps in Linux ausführt und erstellt, finden Sie unter [Oryx-Dokumentation: Erkennen und Erstellen von PHP-Apps](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Anpassen des Startvorgangs
 
@@ -230,15 +204,7 @@ Wenn sich eine funktionierende PHP-App in App Service anders verhält oder Fehle
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.
 - Führen Sie Ihre App in App Service im Debugmodus aus. Z. B. können Sie in [Laravel](https://meanjs.org/) Ihre App so konfigurieren, dass sie in der Produktion Debugmeldungen ausgibt, indem Sie [die App-Einstellung `APP_DEBUG` auf `true`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) festlegen.
 
-### <a name="robots933456"></a>robots933456
-
-Möglicherweise wird die folgende Meldung in den Containerprotokollen angezeigt:
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-Diese Meldung können Sie problemlos ignorieren. `/robots933456.txt` ist ein Dummy-URL-Pfad, den App Service verwendet, um zu überprüfen, ob der Container in der Lage ist, Anforderungen zu verarbeiten. Eine 404-Antwort zeigt lediglich an, dass der Pfad nicht vorhanden ist, informiert App Service aber darüber, dass der Container fehlerfrei und bereit ist, um auf Anforderungen zu antworten.
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -246,4 +212,4 @@ Diese Meldung können Sie problemlos ignorieren. `/robots933456.txt` ist ein Dum
 > [Tutorial: PHP-App mit MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service unter Linux – Häufig gestellte Fragen](app-service-linux-faq.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md)

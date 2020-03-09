@@ -3,12 +3,12 @@ title: Ausführen Ihrer App aus einem ZIP-Paket
 description: Hier erfahren Sie, wie Sie das ZIP-Paket Ihrer App mit Unteilbarkeit bereitstellen. Verbessern Sie die Vorhersagbarkeit und Zuverlässigkeit des Verhaltens Ihrer App während der ZIP-Bereitstellung.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946374"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920721"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Direktes Ausführen Ihrer App in Azure App Service aus einem ZIP-Paket
 
@@ -62,6 +62,33 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 Wenn Sie ein aktualisiertes Paket mit dem gleichen Namen in Blob Storage veröffentlichen, müssen Sie Ihre App neu starten, damit das aktualisierte Paket in App Service geladen wird.
+
+### <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
+
+Zur Erhöhung der Sicherheit können Sie Key Vault-Verweise im Zusammenhang mit Ihrer externen URL verwenden. Hierdurch bleibt die ruhende URL verschlüsselt und ermöglicht die Nutzung von Key Vault für die Verwaltung und Rotation von Geheimnissen. Es wird empfohlen, Azure Blob Storage zu verwenden, damit Sie den zugeordneten SAS-Schlüssel problemlos rotieren können. Azure Blob Storage wird ruhend verschlüsselt, wodurch Ihre Anwendungsdaten geschützt bleiben, wenn sie nicht auf App Service bereitgestellt werden.
+
+1. Erstellen Sie eine Azure Key Vault-Instanz.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Fügen Sie Ihre externe URL in Key Vault als geheimen Schlüssel hinzu.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Erstellen Sie die App-Einstellung `WEBSITE_RUN_FROM_PACKAGE`, und legen Sie die Werte als Key Vault-Verweis auf die externe URL fest.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+Weitere Informationen finden Sie in den folgenden Artikeln.
+
+- [Key Vault-Verweise für App Service](app-service-key-vault-references.md)
+- [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

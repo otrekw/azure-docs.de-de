@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649975"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246272"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
 
@@ -20,7 +20,7 @@ Wenn bei einer Runbookaktivität ein Fehler ohne Abbruch auftritt, verarbeitet W
 
 Ihr grafisches Runbook sollte Fehlerbehandlungscode für Ausführungsprobleme enthalten. Wenn Sie die Ausgabe einer Aktivität überprüfen oder einen Fehler behandeln möchten, können Sie eine PowerShell-Codeaktivität verwenden, eine bedingte Logik für den Ausgabelink der Aktivität definieren oder eine andere Methode anwenden.
 
-Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlung erweitert. Sie können Ausnahmen jetzt in Fehler ohne Abbruch ändern und Fehlerlinks zwischen Aktivitäten erstellen. Mithilfe des verbesserten Verfahrens können Sie in Ihren Runbooks Fehler abfangen und erkannte bzw. unerwartete Bedingungen behandeln. 
+Grafische Azure Automation-Runbooks wurden verbessert und um die Fehlerbehandlung erweitert. Sie können Ausnahmen jetzt in Fehler ohne Abbruch ändern und Fehlerlinks zwischen Aktivitäten erstellen. Mithilfe des verbesserten Verfahrens können Sie in Ihren Runbooks Fehler abfangen und erkannte bzw. unerwartete Bedingungen behandeln. 
 
 >[!NOTE]
 >Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
@@ -50,11 +50,11 @@ Es wird empfohlen, ein dediziertes Runbook für die Fehlerbehandlung mit allgeme
 
 Eine Lösung besteht darin, im Runbook über einen Fehlerlink auf eine Aktivität zur Behandlung von Schritt 1 zu verweisen. Das Runbook kann z. B. das Cmdlet **Write-Warning** mit einer Aktivität für Schritt 2 verbinden – z. B. dem Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0).
 
-Sie können dieses Verhalten auch für die Verwendung in vielen Runbooks verallgemeinern, indem Sie diese beiden Aktivitäten in ein separates Runbook für die Fehlerbehandlung einfügen und dabei die zuvor beschriebenen Anweisungen befolgen. Bevor Ihr ursprüngliches Runbook diese Runbooks für die Fehlerbehandlung aufruft, kann es aus den Daten eine benutzerdefinierte Nachricht erstellen und diese als Parameter an das Runbook für die Fehlerbehandlung übergeben.
+Sie können dieses Verhalten auch für die Verwendung in vielen Runbooks verallgemeinern, indem Sie diese beiden Aktivitäten in ein separates Runbook für die Fehlerbehandlung einfügen. Bevor Ihr ursprüngliches Runbook diese Runbooks für die Fehlerbehandlung aufruft, kann es aus den Daten eine benutzerdefinierte Nachricht erstellen und diese als Parameter an das Runbook für die Fehlerbehandlung übergeben.
 
 ## <a name="how-to-use-error-handling"></a>Verwenden der Fehlerbehandlung
 
-Jede Aktivität in Ihrem Runbook weist eine Konfigurationseinstellung auf, die Ausnahmen in Fehler ohne Abbruch umwandelt. Diese Einstellung ist standardmäßig deaktiviert. Es wird empfohlen, diese Einstellung für alle Aktivitäten zu aktivieren, bei denen das Runbook Fehler behandelt. Durch das Aktivieren dieser Konfiguration wird sichergestellt, dass sowohl Fehler mit als auch ohne Abbruch in der Aktivität über einen Fehlerlink als Fehler ohne Abbruch behandelt werden.  
+Jede Aktivität in Ihrem Runbook weist eine Konfigurationseinstellung auf, die Ausnahmen in Fehler ohne Abbruch umwandelt. Diese Einstellung ist standardmäßig deaktiviert. Es wird empfohlen, diese Einstellung für alle Aktivitäten zu aktivieren, bei denen das Runbook Fehler behandelt. Diese Einstellung stellt sicher, dass sowohl Fehler mit als auch ohne Abbruch in der Aktivität über einen Fehlerlink als Fehler ohne Abbruch behandelt werden.  
 
 Nach dem Aktivieren der Konfigurationseinstellung erstellen Sie in Ihrem Runbook eine Aktivität, die den Fehler behandelt. Wenn die Aktivität einen Fehler erzeugt, wird den ausgehenden Fehlerlinks gefolgt. Den regulären Links wird nicht gefolgt, selbst wenn die Aktivität auch eine reguläre Ausgabe erzeugt.<br><br> ![Fehlerlink für Automation-Runbook – Beispiel](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -62,7 +62,7 @@ Im folgenden Beispiel ruft ein Runbook eine Variable ab, die den Computernamen e
 
 Die Aktivität **Get-AutomationVariable** und das Cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) sind so konfiguriert, dass Ausnahmen in Fehler umgewandelt werden. Falls beim Abrufen der Variable oder beim Starten der VM Probleme auftreten, generiert der Code Fehler.<br><br> ![Aktivitätseinstellungen für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
-Fehlerlinks zeigen von diesen Aktivitäten auf eine einzelne Codeaktivität zur **Fehlerverwaltung**. Diese ist mit einem einfachen PowerShell-Ausdruck konfiguriert, der das Schlüsselwort *Throw* verwendet, um die Verarbeitung zu beenden. Außerdem wird mit `$Error.Exception.Message` die Meldung abgerufen, in der die aktuelle Ausnahme beschrieben wird.<br><br> ![Codebeispiel für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Fehlerlinks zeigen von diesen Aktivitäten auf eine einzelne Codeaktivität zur **Fehlerverwaltung**. Diese ist mit einem einfachen PowerShell-Ausdruck konfiguriert, der das Schlüsselwort **throw** verwendet, um die Verarbeitung zu beenden. Außerdem wird mit `$Error.Exception.Message` die Meldung abgerufen, in der die aktuelle Ausnahme beschrieben wird.<br><br> ![Codebeispiel für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
