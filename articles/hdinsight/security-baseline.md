@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589681"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303272"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-Sicherheitsbaseline für HDInsight
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3: Schützen kritischer Webanwendungen
 
-**Leitfaden**: Nicht verfügbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
+**Leitfaden**: Nicht anwendbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -125,7 +125,7 @@ HDInsight-Verwaltungs-IP-Adressen: https://docs.microsoft.com/azure/hdinsight/hd
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7: Verwalten von Datenverkehr für Webanwendungen
 
-**Leitfaden**: Nicht verfügbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
+**Leitfaden**: Nicht anwendbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -331,7 +331,7 @@ Warnungen bei Log Analytics-Protokolldaten:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -491,7 +491,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-use
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -659,7 +659,7 @@ https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overvi
 
 Grundlegendes zur Azure Storage-Kontoverschlüsselung während der Übertragung:
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
-**Verantwortlichkeit**: Kunde
+**Verantwortlichkeit**: Shared
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Verschlüsseln vertraulicher, ruhender Informationen
 
@@ -779,7 +779,7 @@ Wenn Sie über ein Rapid7-, Qualys- oder anderes Abonnement einer Plattform für
 
 Manuelles Installieren des Rapid7-Agents:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Manuelles Installieren des Qualys-Agents:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufragen und zu ermitteln.  Stellen Sie sicher, dass alle in der Umgebung vorhandenen Azure-Ressourcen genehmigt sind.
+Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufragen und zu ermitteln. Stellen Sie sicher, dass alle in der Umgebung vorhandenen Azure-Ressourcen genehmigt sind.
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
+
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 **Leitfaden**: Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur „Verwaltung von Microsoft Azure“ konfigurieren.
 
 
-Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager zu blockieren: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Leitfaden**: Nicht verfügbar. Dies gilt nicht für Azure HDInsight, da Clusterbenutzer (die keine Administratoren sind) keinen Zugriff auf die einzelnen Knoten benötigen, um Aufträge auszuführen. Der Clusteradministrator besitzt root-Zugriff auf alle Clusterknoten.
+**Leitfaden**: Nicht anwendbar. Dies gilt nicht für Azure HDInsight, da Clusterbenutzer (die keine Administratoren sind) keinen Zugriff auf die einzelnen Knoten benötigen, um Aufträge auszuführen. Der Clusteradministrator besitzt root-Zugriff auf alle Clusterknoten.
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Physische oder logische Trennung von Anwendungen mit hohem Risiko
 
-**Leitfaden**: Nicht verfügbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
+**Leitfaden**: Nicht anwendbar. Die Benchmark ist für Azure App Service- oder Computeressourcen vorgesehen, auf denen Webanwendungen gehostet werden.
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht verfügbar. Benutzerdefinierte Images werden für Azure HDInsight nicht verwendet.
+**Leitfaden**: Nicht anwendbar. Benutzerdefinierte Images werden für Azure HDInsight nicht verwendet.
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Leitfaden**: Security Center weist Warnungen einen Schweregrad zu, um Ihnen zu helfen, die Reihenfolge zu priorisieren, in der Sie sich um Warnungen kümmern. So können Sie, sobald eine Ressource gefährdet ist, sofort zu ihr gelangen. Der Schweregrad basiert darauf, wie zuversichtlich Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -1421,3 +1422,7 @@ Weitere Informationen zur Microsoft-Strategie und Durchführung von Red Team- un
 
 **Verantwortlichkeit**: Shared
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
