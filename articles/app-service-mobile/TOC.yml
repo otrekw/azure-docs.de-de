@@ -166,7 +166,7 @@
             - name: Zuordnen Ihrer eigenen benutzerdefinierten Domäne
               href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
             - name: Benutzerdefinierte Domänen mit Traffic Manager
-              href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+              href: ../app-service/configure-domain-traffic-manager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Klonen einer vorhandenen App
           href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
         - name: Virtuelles Azure-Netzwerk

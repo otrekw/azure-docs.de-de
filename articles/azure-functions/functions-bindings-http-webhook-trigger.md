@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 8dbb4ff0c9f8df6609d8447e84dcfe878a954fff
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356104"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -749,7 +749,7 @@ Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service
 
 ## <a name="authorization-keys"></a>Autorisierungsschlüssel
 
-Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTTP-Funktionsendpunkte während der Entwicklung erschwert wird.  Möglicherweise wird von einem HTTP-Standardtrigger verlangt, dass solch ein API-Schlüssel in der Anforderung vorhanden ist. 
+Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTTP-Funktionsendpunkte während der Entwicklung erschwert wird.  Außer wenn die HTTP-Autorisierungsebene für eine HTTP-ausgelöste Funktion auf `anonymous` festgelegt ist, müssen Anforderungen einen API-Schlüssel in der Anforderung enthalten. 
 
 > [!IMPORTANT]
 > Schlüssel helfen zwar Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern, sie sind jedoch nicht als Möglichkeit zum Schützen eines HTTP-Triggers in einer Produktionsumgebung vorgesehen. Weitere Informationen hierzu finden Sie unter [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](#secure-an-http-endpoint-in-production).
@@ -757,14 +757,19 @@ Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTT
 > [!NOTE]
 > In der Functions Laufzeit 1.x können Webhookanbieter Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird. Dieses Thema wird unter [Webhooks und Schlüssel](#webhooks-and-keys) behandelt. Die Functions-Runtime in Version 2.x und höheren Versionen beinhaltet keine integrierte Unterstützung für Webhookanbieter.
 
-Es gibt zwei Arten von Schlüsseln:
+#### <a name="authorization-scopes-function-level"></a>Autorisierungsbereiche (Funktionsebene)
 
-* **Hostschlüssel:** Diese Schlüssel werden von allen Funktionen innerhalb der Funktions-App gemeinsam genutzt. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App.
-* **Funktionsschlüssel:** Diese Schlüssel gelten nur für die Funktionen, für die sie definiert sind. Bei Verwendung als API-Schlüssel ermöglichen diese nur Zugriff auf diese spezielle Funktion.
+Es gibt zwei Autorisierungsbereiche für Schlüssel auf Funktionsebene:
+
+* **Funktion**: Diese Schlüssel gelten nur für die Funktionen, für die sie definiert sind. Bei Verwendung als API-Schlüssel ermöglichen diese nur Zugriff auf diese spezielle Funktion.
+
+* **Host**: Schlüssel mit einem Hostbereich können für den Zugriff auf alle Funktionen in der Funktions-App verwendet werden. Bei Verwendung als API-Schlüssel ermöglichen diese Zugriff auf jede Funktion in der Funktionen-App. 
 
 Jeder Schlüssel ist zu Referenzzwecken benannt. Auf Funktions- und Hostebene gibt es einen Standardschlüssel (mit dem Namen „default“). Funktionsschlüssel haben Vorrang vor Hostschlüsseln. Wenn zwei Schlüssel mit dem gleichen Namen definiert wurden, wird immer der Funktionsschlüssel verwendet.
 
-Jede Funktions-App weist einen speziellen **Hauptschlüssel** auf. Bei diesem Schlüssel handelt es sich um einen Hostschlüssel mit dem Namen `_master`. Er stellt den Administratorzugriff auf Laufzeit-APIs bereit. Dieser Schlüssel kann nicht widerrufen werden. Wenn Sie die Autorisierungsstufe `admin` festlegen, muss für Anforderungen der Hauptschlüssel verwendet werden. Alle anderen Schlüssel führen zu einem Autorisierungsfehler.
+#### <a name="master-key-admin-level"></a>Hauptschlüssel (Administratorebene) 
+
+Jede Funktions-App verfügt außerdem über einen Hostschlüssel auf Administratorebene mit dem Namen `_master`. Zusätzlich zur Bereitstellung des Zugriffs auf Hostebene auf alle Funktionen in der App bietet der Hauptschlüssel auch administrativen Zugriff auf die Laufzeit-REST-APIs. Dieser Schlüssel kann nicht widerrufen werden. Wenn Sie die Autorisierungsstufe `admin` festlegen, muss für Anforderungen der Hauptschlüssel verwendet werden. Alle anderen Schlüssel führen zu einem Autorisierungsfehler.
 
 > [!CAUTION]  
 > Aufgrund der erhöhten Berechtigungen, die der Hauptschlüssel in Ihrer Funktions-App gewährt, sollten Sie diesen Schlüssel nicht für Dritte freigeben oder in nativen Clientanwendungen verteilen. Gehen Sie umsichtig vor, wenn Sie die Autorisierungsstufe „Administrator“ auswählen.
@@ -829,7 +834,7 @@ Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeit
 
 ## <a name="limits"></a>Einschränkungen
 
-Die Länge der HTTP-Anforderung ist auf 100 MB (104.857.600 Bytes) und die URL-Länge auf 4 KB (4.096 Bytes) beschränkt. Diese Grenzwerte werden durch das `httpRuntime`-Element der Datei [Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config) der Runtime angegeben.
+Die Länge der HTTP-Anforderung ist auf 100 MB (104.857.600 Bytes) und die URL-Länge auf 4 KB (4.096 Bytes) beschränkt. Diese Grenzwerte werden durch das `httpRuntime`-Element der Datei [Web.config](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config) der Runtime angegeben.
 
 Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 230 Sekunden abgeschlossen ist, tritt bei [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#timeout).
 

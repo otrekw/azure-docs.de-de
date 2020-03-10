@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584540"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355917"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -63,7 +63,7 @@ Bei Verwendung des Premium-Plans werden Instanzen des Azure Functions-Hosts basi
 
 * Ständig betriebsbereite (warme) Instanzen, um jegliche Kaltstarts zu vermeiden
 * VNet-Konnektivität
-* Unbegrenzte Ausführungsdauer
+* Unbegrenzte Ausführungsdauer (60 Minuten garantiert)
 * Premium-Instanzgrößen (Instanz mit einem Kern, mit zwei Kernen und mit vier Kernen)
 * Besser vorhersagbare Preise
 * App-Zuteilung mit hoher Dichte für Pläne mit mehreren Funktions-Apps

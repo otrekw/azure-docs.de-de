@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486259"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356017"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -220,7 +220,7 @@ Die spezifischen Auswirkungen von erweiterten Sitzungen auf Orchestrator- und En
 
 ### <a name="orchestrator-function-replay"></a>Wiedergabe von Orchestratorfunktionen
 
-Wie zuvor erwähnt, werden Orchestratorfunktionen unter Verwendung der Inhalte der **Verlaufstabelle** wiedergegeben. Standardmäßig wird der Orchestratorfunktionscode immer dann wiedergegeben, wenn ein Batch von Nachrichten aus einer Steuerelement-Warteschlange entfernt wird. Wenn erweiterte Sitzungen aktiviert sind, verbleiben Orchestratorfunktionsinstanzen länger im Arbeitsspeicher, und neue Nachrichten können ohne eine vollständige Verlaufswiedergabe verarbeitet werden.
+Wie zuvor erwähnt, werden Orchestratorfunktionen unter Verwendung der Inhalte der **Verlaufstabelle** wiedergegeben. Standardmäßig wird der Orchestratorfunktionscode immer dann wiedergegeben, wenn ein Batch von Nachrichten aus einer Steuerelement-Warteschlange entfernt wird. Auch wenn Sie das Muster „Auffächern nach außen/innen“ verwenden und den Abschluss aller Aufgaben erwarten (z. B. mit `Task.WhenAll` in .NET oder `context.df.Task.all` in JavaScript), wird es zu Wiedergaben kommen, die auftreten, wenn Batches von Aufgaben im Laufe der Zeit verarbeitet werden. Wenn erweiterte Sitzungen aktiviert sind, verbleiben Orchestratorfunktionsinstanzen länger im Arbeitsspeicher, und neue Nachrichten können ohne eine vollständige Verlaufswiedergabe verarbeitet werden.
 
 Die Leistungsverbesserung erweiterter Sitzungen wird in den folgenden Situationen am häufigsten beobachtet:
 

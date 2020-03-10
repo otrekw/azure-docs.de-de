@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358162"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -104,7 +104,7 @@ Sie können eine externe Paket-URL verwenden, um auf eine Remotepaketdatei (ZIP-
 
 Verwenden Sie ZIP-Bereitstellung, um eine ZIP-Datei mit ihrer Funktions-APP in Azure zu pushen. Optional können Sie die App so festlegen, dass sie [über ein Paket ausgeführt wird](run-functions-from-deployment-package.md), oder Sie können angeben, dass ein [Remotebuild](#remote-build) ausgeführt wird.
 
->__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md) oder [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Standardmäßig verwenden diese Tools ZIP-Bereitstellung und werden [aus dem Paket](run-functions-from-deployment-package.md) ausgeführt. Die Core Tools und die Visual Studio Code-Erweiterung aktivieren bei der Bereitstellung unter Linux die [Remotebuildfunktion](#remote-build). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure) oder über die Befehlszeile mithilfe der [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Standardmäßig verwenden diese Tools ZIP-Bereitstellung und werden [aus dem Paket](run-functions-from-deployment-package.md) ausgeführt. Die Core Tools und die Visual Studio Code-Erweiterung aktivieren bei der Bereitstellung unter Linux die [Remotebuildfunktion](#remote-build). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 >Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Zur Ausführung über ein Paket legen Sie den Wert der Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI. 
 
