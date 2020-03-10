@@ -26,15 +26,9 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'Verwenden von C#'
-          href: image-search-sdk-quickstart.md
-        - name: Verwenden von Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: Verwenden von Python
-          href: image-sdk-python-quickstart.md
-        - name: Verwenden von Java
-          href: image-sdk-java-quickstart.md
-- name: Lernprogramme
+        - name: Clientbibliotheken für die Bing-Bildersuche
+          href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Erstellen einer Webanwendung für die Bildersuche
       href: tutorial-bing-image-search-single-page-app.md
@@ -118,5 +112,5 @@
     - name: Analysen für Bing-Bildersuche-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

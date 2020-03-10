@@ -5,11 +5,11 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485130"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357041"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -73,11 +73,11 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | Beschreibung                                     | type     |
+| Eigenschaft   | BESCHREIBUNG                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
-| MethodName | Der Name der Funktion, die ausgelöst wurde     | string   |
-| RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | string   |
+| MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
+| RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | Zeichenfolge   |
 
 Jeder Triggertyp verfügt über einen anderen Satz von Metadaten. Die `$TriggerMetadata` für `QueueTrigger` enthalten neben anderen Informationen z. B. Werte für `InsertionTime`, `Id` und `DequeueCount`. Weitere Informationen zu den Metadaten von Warteschlangentriggern finden Sie in der [offiziellen Dokumentation zu Warteschlangentriggern](functions-bindings-storage-queue-trigger.md#message-metadata). Sehen Sie in der Dokumentation zu den von Ihnen verwendeten [Triggern](functions-triggers-bindings.md) nach, welche Informationen in den Metadaten der Trigger enthalten sind.
 
@@ -275,7 +275,7 @@ Sie können für Ihre Funktions-Apps eine Reihe unterschiedlicher Trigger und Bi
 Alle Trigger und Bindungen werden im Code als echte Datentypen dargestellt:
 
 * Hashtable
-* string
+* Zeichenfolge
 * byte[]
 * INT
 * double
@@ -298,10 +298,10 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | Objekt (object) |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
-| **`Method`** | Die HTTP-Methode der Anforderung.                                | string                    |
+| **`Method`** | Die HTTP-Methode der Anforderung.                                | Zeichenfolge                    |
 | **`Params`**  | Ein Objekt, das die Routingparameter der Anforderung enthält. | Dictionary<string,string><sup>*</sup> |
 | **`Query`** | Ein Objekt, das die Abfrageparameter enthält.                  | Dictionary<string,string><sup>*</sup> |
-| **`Url`** | Die URL der Anforderung.                                        | string                    |
+| **`Url`** | Die URL der Anforderung.                                        | Zeichenfolge                    |
 
 <sup>*</sup> Bei `Dictionary<string,string>`-Schlüsseln wird nicht zwischen Groß- und Kleinschreibung unterschieden.
 
@@ -312,7 +312,7 @@ Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseCon
 | Eigenschaft      | BESCHREIBUNG                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | Objekt (object)                    |
-| **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | string                    |
+| **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
 | **`Headers`** | Ein Objekt, das die Header der Antwort enthält.               | Wörterbuch oder Hashtabelle   |
 | **`StatusCode`**  | Der HTTP-Statuscode der Antwort.                       | Zeichenfolge oder ganze Zahl             |
 

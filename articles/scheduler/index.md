@@ -1,24 +1,28 @@
 ---
-title: Dokumentation für Azure Scheduler – Tutorials, API-Referenz | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Scheduler Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und aufrufen. Tutorials, API-Referenzen und mehr.
+title: Dokumentation zu Azure Scheduler
+description: Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) in der Cloud erstellen, planen und ausführen
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610337"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898603"
 ---
 # <a name="scheduler-documentation"></a>Dokumentation zu Scheduler
 
-Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in der Cloud planen und automatisch aufrufen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und überwachen.
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
+
+Erfahren Sie mehr über das Erstellen, Planen, Ausführen, Verwalten und Aktualisieren von automatisierten wiederkehrenden Aufträgen in der Cloud. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Aufträge (beispielsweise wiederkehrende Anwendungsaktionen oder routinemäßige Wartungsaufgaben) planen und überwachen.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -40,6 +44,24 @@ Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in de
         </a>
     </li>
     <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Migrieren von Azure Scheduler zu Azure Logic Apps</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=scheduler">
         <div class="cardSize">
             <div class="cardPadding">
@@ -51,24 +73,6 @@ Hier erfahren Sie, wie Sie mithilfe von Scheduler wiederkehrende Aufträge in de
                     </div>
                     <div class="cardText">
                         <h3>Azure Scheduler-Videobibliothek</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit Azure Scheduler</h3>
                     </div>
                 </div>
             </div>

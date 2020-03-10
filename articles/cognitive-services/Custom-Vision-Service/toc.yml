@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: Verbessern der Klassifizierung
       href: getting-started-improving-your-classifier.md
+    - name: Domäne auswählen
+      href: select-domain.md
     - name: Verwenden der Vorhersage-API
       href: use-prediction-api.md
     - name: Verwenden des intelligenten Beschriftungserstellers

@@ -33,7 +33,7 @@
       items:
         - name: .NET Core mit SQL-Datenbank
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET mit SQL DB
+        - name: .NET Framework mit SQL-Datenbank
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP mit MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -87,8 +87,6 @@
           href: networking-features.md
         - name: Application Gateway mit Dienstendpunkten
           href: networking/app-gateway-with-service-endpoints.md
-        - name: Private Endpunkte
-          href: networking/private-endpoint.md
     - name: Eingehende und ausgehende IPs
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network-Integration

@@ -1,41 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zu Windows Virtual Desktop
+summary: Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.
 metadata:
-  title: "Dokumentation zu Windows Virtual\_Desktop | Microsoft-Dokumentation"
-  description: "Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
-  author: Heidilohr
-  manager: lizross
+  title: Dokumentation zu Windows Virtual Desktop
+  description: Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows 10 Enterprise-Mehrbenutzerumgebung.
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
-  ms.date: 02/20/2019
+  manager: lizross
+  author: Heidilohr
   ms.author: helohr
-abstract:
-  description: 'Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.'
-sections:
-  - title: Übersicht
-    items:
-      - type: paragraph
-        text: 'Enthält Informationen zu Windows Virtual Desktop und zur Verwendung. In Tutorials, Leitfäden, Referenzinhalten und mehr wird veranschaulicht, wie Sie Hostpools und Mandanten einrichten und Benutzern Rollen für Ihre Windows Virtual Desktop-Umgebung zuweisen.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-desktop/overview">Was ist Windows Virtual Desktop?</a>
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Es wird beschrieben, wie Sie Windows Virtual Desktop installieren und konfigurieren und anschließend eine Verbindung mit dem Client herstellen.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Erstellen eines Mandanten in Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Erstellen eines Hostpools mit Azure Marketplace</a>
-          - html: <a href="/azure/virtual-desktop/manage-app-groups">Verwalten von App-Gruppen für Windows Virtual Desktop</a>
-          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+  ms.date: 03/06/2020
+  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
+  ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/07/2020
+  ms.locfileid: "78898657"
+landingContent:
+- title: Informationen zu Windows Virtual Desktop
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Windows Virtual Desktop?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Mandanten in Windows Virtual Desktop
+      url: tenant-setup-azure-active-directory.md
+    - text: Erstellen eines Hostpools mit Azure Marketplace
+      url: create-host-pools-azure-marketplace.md
+    - text: Verwalten von App-Gruppen für Windows Virtual Desktop
+      url: manage-app-groups.md
+    - text: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
+      url: create-service-principal-role-powershell.md
+- title: Herstellen einer Verbindung mit Windows Virtual Desktop
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Windows Desktop-Client
+      url: connect-windows-7-and-10.md
+    - text: Webclient
+      url: connect-web.md
+    - text: Android-Client
+      url: connect-android.md
+    - text: macOS-Client
+      url: connect-macos.md
+    - text: iOS-Client
+      url: connect-ios.md
