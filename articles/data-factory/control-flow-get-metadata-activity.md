@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: 9985997ff4bef727676232705297379ccfc179c5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928563"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250276"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -33,7 +33,7 @@ Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
 
 ## <a name="capabilities"></a>Funktionen
 
-Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt 1 MB.
+Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt 2 MB.
 
 >[!NOTE]
 >Bei der Ausführung der Aktivität „Metadaten abrufen“ in einer selbstgehosteten Integration Runtime werden die aktuellen Funktionen unter Version 3.6 oder höher unterstützt.

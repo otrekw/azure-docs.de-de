@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863596"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252034"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
@@ -52,6 +52,14 @@ Das Data Box Edge-Gerät verfügt über zwei 100-240 Volt-Netzteile mit leistung
 <!--## Power consumption statistics
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
+
+## <a name="network-interface-specifications"></a>Netzwerkschnittstellenspezifikationen
+
+Ihr Data Box-Edgegerät verfügt über 6 Netzwerkschnittstellen, PORT1 bis PORT6.
+
+| Spezifikation           | BESCHREIBUNG                 |
+|-------------------------|----------------------------|
+|  Netzwerkschnittstellen    | 2 Netzwerkschnittstellen (1 GbE), 1 davon zur Verwaltung, nicht vom Benutzer konfigurierbar, dient zur erstmaligen Einrichtung Die andere Schnittstelle ist vom Benutzer konfigurierbar, kann für die Datenübertragung verwendet werden und ist standardmäßig als DHCP-Schnittstelle konfiguriert. <br>2 Netzwerkschnittstellen (25 GbE), die auch als 10-GbE-Schnittstellen betrieben werden können. Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden. <br> 2 Netzwerkschnittstellen (25 GbE): Diese Datenschnittstellen können vom Benutzer als DHCP (Standard) oder statisch konfiguriert werden.                  |
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 

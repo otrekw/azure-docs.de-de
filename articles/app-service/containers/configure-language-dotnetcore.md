@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten ASP.NET Core-Contai
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768417"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255909"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer Linux-ASP.NET Core-App für Azure App Service
 
@@ -38,6 +38,28 @@ Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
+
+## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
+
+Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
+1. Ausführen von `dotnet restore`, um NuGet-Abhängigkeiten wiederherzustellen.
+1. Ausführen von `dotnet publish`, um eine Binärdatei für die Produktion zu erstellen.
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `POST_BUILD_SCRIPT_PATH` angegeben.
+
+`PRE_BUILD_COMMAND` und `POST_BUILD_COMMAND` sind Umgebungsvariablen, die standardmäßig leer sind. Um Präbuildbefehle auszuführen, definieren Sie `PRE_BUILD_COMMAND`. Um Postbuildbefehle auszuführen, definieren Sie `POST_BUILD_COMMAND`.
+
+Im folgenden Beispiel werden die beiden Variablen für eine Reihe von Befehlen angegeben, die durch Kommas getrennt sind.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Weitere Umgebungsvariablen zum Anpassen der Buildautomatisierung finden Sie unter [Oryx-Konfiguration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Weitere Informationen, wie App Service ASP.NET Core-Apps in Linux ausführt und erstellt, finden Sie unter [Oryx-Dokumentation: Erkennen und Erstellen von .NET Core-Apps](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
@@ -146,10 +168,12 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Tutorial: ASP.NET Core-App mit SQL-Datenbank](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service unter Linux – Häufig gestellte Fragen](app-service-linux-faq.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md)

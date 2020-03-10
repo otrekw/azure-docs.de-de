@@ -3,12 +3,12 @@ title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Co
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392830"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -112,24 +112,25 @@ Um die Sicherungsdaten als BAK-Dateien und nicht als Datenbank wiederherzustelle
 2. Wählen Sie den Namen der SQL Server-Instanz aus, in der Sie die Sicherungsdateien wiederherstellen möchten.
 3. Geben Sie unter **Zielpfad auf dem Server** den Ordnerpfad auf dem in Schritt 2 ausgewählten Server ein. Dies ist der Speicherort, an dem der Dienst alle erforderlichen Sicherungsdateien sichert. Normalerweise kann über einen Netzwerkfreigabepfad oder den Pfad einer eingebundenen Azure-Dateifreigabe, wenn dieser als Zielpfad angegeben ist, über andere Computer im selben Netzwerk oder mit derselben eingebundenen Azure-Dateifreigabe einfacher auf diese Dateien zugegriffen werden.<BR>
 
->Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist. stellen Sie sicher, dass „NT AUTHORITY\SYSTEM“ auf die Dateifreigabe zugreifen kann. Sie können die unten aufgeführten Schritte ausführen, um die Lese-/Schreibberechtigungen für die auf dem virtuellen Computer bereitgestellten AFS zu erteilen:
->- Führen Sie `PsExec -s cmd` aus, um in die NT AUTHORITY\SYSTEM-Shell zu gelangen.
->   - Führen Sie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` aus.
->   - Überprüfen Sie den Zugriff mit `dir \\<storageacct>.file.core.windows.net\<filesharename>`.
->- Starten Sie eine Wiederherstellung als Dateien aus dem Sicherungstresor unter dem Pfad `\\<storageacct>.file.core.windows.net\<filesharename>`.<BR>
-Sie können Psexec über <https://docs.microsoft.com/sysinternals/downloads/psexec> herunterladen.
+    >Um die Datenbank-Sicherungsdateien auf einer Azure-Dateifreigabe wiederherzustellen, die auf der registrierten Ziel-VM bereitgestellt ist. stellen Sie sicher, dass „NT AUTHORITY\SYSTEM“ auf die Dateifreigabe zugreifen kann. Sie können die unten aufgeführten Schritte ausführen, um die Lese-/Schreibberechtigungen für die auf dem virtuellen Computer bereitgestellten AFS zu erteilen:
+    >
+    >- Führen Sie `PsExec -s cmd` aus, um in die NT AUTHORITY\SYSTEM-Shell zu gelangen.
+    >   - Führen Sie `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` aus.
+    >   - Überprüfen Sie den Zugriff mit `dir \\<storageacct>.file.core.windows.net\<filesharename>`.
+    >- Starten Sie eine Wiederherstellung als Dateien aus dem Sicherungstresor unter dem Pfad `\\<storageacct>.file.core.windows.net\<filesharename>`.<BR>
+    Sie können Psexec über <https://docs.microsoft.com/sysinternals/downloads/psexec> herunterladen.
 
 4. Klicken Sie auf **OK**.
 
-![Auswählen von „Wiederherstellen als Dateien“](./media/backup-azure-sql-database/restore-as-files.png)
+    ![Auswählen von „Wiederherstellen als Dateien“](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. Wählen Sie den **Wiederherstellungspunkt** aus, an dem alle verfügbaren BAK-Dateien wiederhergestellt werden.
 
-![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-sql-database/restore-point.png)
+    ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-sql-database/restore-point.png)
 
 6. Alle Sicherungsdateien, die dem ausgewählten Wiederherstellungspunkt zugeordnet sind, werden im Zielpfad gesichert. Sie können die Dateien mithilfe von SQL Server Management Studio als Datenbank auf jedem Computer wiederherstellen, auf dem sie vorhanden sind.
 
-![Wiederhergestellte Sicherungsdateien im Zielpfad](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![Wiederhergestellte Sicherungsdateien im Zielpfad](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Wiederherstellen eines bestimmten Zeitpunkts
 
@@ -163,6 +164,9 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
 1. Wählen Sie aus der Liste einen Wiederherstellungspunkt aus, und wählen Sie **OK** aus, um die Prozedur der Wiederherstellungspunkte abzuschließen.
 
     ![Auswählen eines vollständigen Wiederherstellungspunkts](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > Standardmäßig werden die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, indem Sie auf **Filter** klicken und einen benutzerdefinierten Bereich auswählen.
 
 1. Aktivieren Sie im Menü **Erweiterte Konfiguration** die Option **Mit NORECOVERY wiederherstellen**, wenn die Datenbank nach der Wiederherstellung nicht in Betrieb gehen werden soll.
 1. Wenn Sie den Speicherort für die Wiederherstellung auf dem Zielserver ändern möchten, geben Sie einen neuen Zielpfad ein.

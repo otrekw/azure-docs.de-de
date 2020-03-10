@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892376"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163929"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 
@@ -38,7 +38,7 @@ Sie können Daten aus einer OData-Quelle in beliebige unterstützte Senkendatens
 Der OData-Connector unterstützt insbesondere Folgendes:
 
 - OData Version 3.0 und 4.0.
-- Kopieren von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **Windows**, **AAD-Dienstprinzipal** und **verwaltete Identitäten für Azure-Ressourcen**.
+- Kopieren von Daten mithilfe eines der folgenden Authentifizierungstypen: **Anonym**, **Standard**, **Windows** und **AAD-Dienstprinzipal**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,11 +54,11 @@ In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie 
 
 Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |Ja |
 | url | Die Stamm-URL des OData-Diensts. |Ja |
-| authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows**, **AadServicePrincipal**, and **ManagedServiceIdentity**. OAuth auf Benutzerbasis wird nicht unterstützt. | Ja |
+| authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows** und **AadServicePrincipal**. OAuth auf Benutzerbasis wird nicht unterstützt. | Ja |
 | userName | Geben Sie **userName** an, wenn Sie die Standard- oder die Windows-Authentifizierung verwenden. | Nein |
 | password | Geben Sie das **password** für das Benutzerkonto an, das Sie für **userName** angegeben haben. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein |
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Nein |

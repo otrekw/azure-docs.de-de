@@ -3,8 +3,8 @@ title: 'Tutorial: Onlinemigration von MySQL zu Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen MySQL-Instanz zu Azure Database for MySQL durchführen.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 77887f440da73436a995e0916c529f9df76e7d6f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50787a5bbfdc9baddfa4307247e8b505be6e3003
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746971"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273239"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
@@ -172,7 +172,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 4. Wählen Sie ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie ein neues.
 
-    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
+    Das virtuelle Netzwerk erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
 
     Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
@@ -224,6 +224,8 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure Database Migration Service die Zieldatenbank standardmäßig aus.
 
     ![Zuordnen zu Zieldatenbanken](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > Sie können in diesem Schritt mehrere Datenbanken auswählen. Beachten Sie jedoch, dass jede Instanz von Azure Database Migration Service bis zu vier Datenbanken für die gleichzeitige Migration unterstützt. Außerdem besteht eine Beschränkung von zwei Instanzen von Azure Database Migration Service pro Region in einem Abonnement. Wenn Sie z. B. 40 Datenbanken migrieren müssen, können Sie jeweils nur acht Datenbanken gleichzeitig migrieren, aber auch nur, wenn Sie zwei Instanzen von Azure Database Migration Service erstellt haben.
 
 3. Klicken Sie auf **Speichern**. Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
 

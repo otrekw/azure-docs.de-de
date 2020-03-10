@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647638"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161873"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -31,7 +31,28 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 
 ## <a name="limits"></a>Einschränkungen
 
-* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien mit einer Größe von mehr als 15 MB zu verarbeiten, unterstützen SFTP-SSH-Aktionen [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md), mit Ausnahme der Aktion „Copy File“ (Datei kopieren), die nur 15 MB große Dateien verarbeiten kann. Die Aktion **Get file content** (Dateiinhalt abrufen) verwendet implizit Nachrichtensegmentierung.
+* SFTP-SSH-Aktionen, die [Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md) unterstützen, können Dateien bis zu einer Größe von 1 GB verarbeiten, während SFTP-SSH-Aktionen, die keine Blockerstellung unterstützen, Dateien bis zu einer Größe von 50 MB verarbeiten können. Obgleich die Standardblockgröße 15 MB beträgt, kann sich diese Größe dynamisch ändern, beginnend mit 5 MB und allmählich ansteigend auf den Maximalwert von 50 MB, basierend auf Faktoren wie Netzwerkwartezeiten, Serverreaktionszeiten usw.
+
+  > [!NOTE]
+  > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+
+  Die Blockgröße ist einer Verbindung zugeordnet, was beduetet, dass Sie dieselbe Verbindung für Aktionen verwenden können, die Blockerstellung unterstützen, und dann für Aktionen, die keine Blockerstellung unterstützen. In diesem Fall liegt die Blockgröße für Aktionen, die keine Blockerstellung unterstützen, zwischen 5 MB und 50 MB. In dieser Tabelle sehen Sie, welche SFTP-SSH-Aktionen Blockerstellung unterstützen:
+
+  | Aktion | Unterstützung für Blockerstellung |
+  |--------|------------------|
+  | **Datei kopieren** | Nein |
+  | **Datei erstellen** | Ja |
+  | **Ordner erstellen** | Nicht verfügbar |
+  | **Datei löschen** | Nicht verfügbar |
+  | **Archiv in Ordner extrahieren** | Nicht verfügbar |
+  | **Dateiinhalte abrufen** | Ja |
+  | **Dateiinhalt anhand des Pfads abrufen** | Ja |
+  | **Dateimetadaten abrufen** | Nicht verfügbar |
+  | **Dateimetadaten anhand des Pfads abrufen** | Nicht verfügbar |
+  | **Dateien im Ordner aufführen** | Nicht verfügbar |
+  | **Datei umbenennen** | Nicht verfügbar |
+  | **Datei aktualisieren** | Nein |
+  |||
 
 * SFTP-SSH-Trigger unterstützen keine Segmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 15 MB oder kleiner sind. Verwenden Sie stattdessen das folgende Muster, um Dateien abzurufen, die größer als 15 MB sind:
 
@@ -46,10 +67,6 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector, bei denen der SFTP-SSH-Connector diese Funktionen bietet:
 
 * Er verwendet die [SSH.NET](https://github.com/sshnet/SSH.NET)-Bibliothek, die eine Open Source-SSH-Bibliothek (Secure Shell) mit Unterstützung für .NET ist.
-
-* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*.
-
-  Um Dateien zu verarbeiten, die größer als 15 MB sind, können Aktionen auf [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Die Aktion „Copy File“ (Datei kopieren) unterstützt jedoch nur 15 MB große Dateien, da diese Aktion keine Nachrichtensegmentierung unterstützt. SFTP-SSH-Trigger unterstützen keine Segmentierung. Um große Dateien hochzuladen, benötigen Sie sowohl Lese- als auch Schreibberechtigungen für den Stammordner auf Ihrem SFTP-Server.
 
 * Er stellt die Aktion **Ordner erstellen** bereit, wodurch ein Ordner unter dem angegebenen Pfad auf dem SFTP-Server erstellt wird.
 

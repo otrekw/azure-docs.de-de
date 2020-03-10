@@ -7,25 +7,25 @@ manager: evansma
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 08/09/2019
+ms.date: 03/02/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9e61cab2782abfc808020f627a6dc4efd0e502c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023734"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254837"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
-Mit Azure Batch können Sie eine große Anzahl von Batchcomputingaufträgen in Azure ausführen und skalieren. Stapelverarbeitungsaufgaben lassen sich direkt auf virtuellen Computern (Knoten) in einem Batch-Pool ausführen, doch Sie können auch einen Batch-Pool zum Ausführen von Aufgaben in Docker-kompatiblen Containern auf den Knoten einrichten. In diesem Artikel wird erläutert, wie Sie einen Pool von Computeknoten erstellen, die das Ausführen von Containeraufgaben unterstützen. Außerdem erfahren Sie, wie Sie anschließend Containeraufgaben im Pool ausführen. 
+Mit Azure Batch können Sie eine große Anzahl von Batchcomputingaufträgen in Azure ausführen und skalieren. Stapelverarbeitungsaufgaben lassen sich direkt auf virtuellen Computern (Knoten) in einem Batch-Pool ausführen, doch Sie können auch einen Batch-Pool zum Ausführen von Aufgaben in Docker-kompatiblen Containern auf den Knoten einrichten. In diesem Artikel wird erläutert, wie Sie einen Pool von Computeknoten erstellen, die das Ausführen von Containeraufgaben unterstützen. Außerdem erfahren Sie, wie Sie anschließend Containeraufgaben im Pool ausführen.
 
 Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -aufträgen vertraut sein. In den Codebeispielen werden der .NET-Batch und Python-SDKs verwendet. Sie können auch andere Batch-SDKs und -Tools, einschließlich des Azure-Portals, verwenden, um containerfähige Batch-Pools zu erstellen und Containeraufgaben auszuführen.
 
 ## <a name="why-use-containers"></a>Gründe für die Verwendung von Containern
 
-Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können beispielsweise einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien. 
+Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können beispielsweise einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 * **Konten**: Sie müssen in Ihrem Azure-Abonnement ein Batch-Konto und optional ein Azure Storage-Konto erstellen.
 
-* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ beschrieben werden. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md). 
+* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ beschrieben werden. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -48,33 +48,37 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 ## <a name="supported-virtual-machine-images"></a>Unterstützte Images virtueller Computer
 
-Sie müssen eines der folgenden unterstützten Windows- oder Linux-Images verwenden, um einen Pool mit VM-Computeknoten für Containerworkloads zu erstellen. Weitere Informationen zu Marketplace-Images, die mit Batch kompatibel sind, finden Sie in der [Liste mit VM-Images](batch-linux-nodes.md#list-of-virtual-machine-images). 
+Sie müssen eines der folgenden unterstützten Windows- oder Linux-Images verwenden, um einen Pool mit VM-Computeknoten für Containerworkloads zu erstellen. Weitere Informationen zu Marketplace-Images, die mit Batch kompatibel sind, finden Sie in der [Liste mit VM-Images](batch-linux-nodes.md#list-of-virtual-machine-images).
 
-### <a name="windows-images"></a>Windows-Images
+### <a name="windows-support"></a>Windows-Unterstützung
 
-Für Windows-Containerworkloads unterstützt Batch derzeit das Image **Windows Server 2016 Datacenter mit Containern** in Azure Marketplace. Nur die Docker-Containerimages werden unter Windows unterstützt.
+Batch unterstützt Windows Server-Images, die Container-Unterstützungsbezeichnungen aufweisen. In der Regel ist an diese Image-SKU-Namen das Suffix `-with-containers` oder `-with-containers-smalldisk` angehängt. Außerdem bezeichnet [die API zum Auflisten aller unterstützten Images in Batch](batch-linux-nodes.md#list-of-virtual-machine-images) eine `DockerCompatible`-Funktion, wenn das Image Docker-Container unterstützt.
 
 Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter Windows ausführen.
 
-### <a name="linux-images"></a>Linux-Images
+### <a name="linux-support"></a>Linux-Unterstützung
 
-Für Linux-Containerworkloads unterstützt Batch derzeit die folgenden von Microsoft Azure Batch in Azure Marketplace veröffentlichten Linux-Images:
+Für Linux-Containerworkloads unterstützt Batch derzeit die folgenden von Microsoft Azure Batch in Azure Marketplace veröffentlichten Linux-Images, ohne dass ein benutzerdefiniertes Image erforderlich ist.
 
-* **CentOS für Azure Batch-Container-Pools**
+#### <a name="vm-sizes-without-rdma"></a>VM-Größen ohne RDMA
 
-* **CentOS (mit RDMA-Treibern) für Azure Batch-Container-Pools**
+- Herausgeber: `microsoft-azure-batch`
+  - Angebot: `centos-container`
+  - Angebot: `ubuntu-server-container`
 
-* **Ubuntu Server für Azure Batch-Container-Pools**
+#### <a name="vm-sizes-with-rdma"></a>VM-Größen mit RDMA
 
-* **Ubuntu Server (mit RDMA-Treibern) für Azure Batch-Container-Pools**
+- Herausgeber: `microsoft-azure-batch`
+  - Angebot: `centos-container-rdma`
+  - Angebot: `ubuntu-server-container-rdma`
 
-Diese Images werden nur für die Verwendung in Azure Batch-Pools unterstützt. Sie bieten:
+Diese Images werden nur für die Verwendung in Azure Batch-Pools unterstützt und sind für die Docker-Containerausführung konzipiert. Sie bieten:
 
-* Eine vorinstallierte [Moby](https://github.com/moby/moby)-Containerlaufzeit 
+* Eine vorinstallierte Docker-kompatible [Moby](https://github.com/moby/moby)-Container-Runtime
 
-* Vorinstallierte NVIDIA GPU-Treiber zum Optimieren der Bereitstellung auf Azure-VMs der N-Serie
+* Vorinstallierte NVIDIA GPU-Treiber und NVIDIA-Container-Runtime zum Optimieren der Bereitstellung auf Azure-VMs der N-Serie
 
-* Die gewünschten Images – mit vorinstallierten RDMA-Treibern oder ohne. Durch diese Treiber wird Poolknoten bei der Bereitstellung in RDMA-fähigen VM-Größen Zugriff auf das RDMA-Netzwerk von Azure gewährt. 
+* Vorinstalliertes/vorkonfiguriertes Image mit Unterstützung für InfiniBand RDMA-VM-Größen für Images mit dem Suffix `-rdma`. Derzeit unterstützen diese Images keine SR-IOV IB/RDMA-VM-Größen.
 
 Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter einer der Linux-Distributionen ausführen, die mit Batch kompatibel sind. Wenn Sie ein eigenes benutzerdefiniertes Linux-Image bereitstellen möchten, finden Sie Anleitungen dazu unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
@@ -128,7 +132,7 @@ new_pool = batch.models.PoolAddParameter(
 
 ### <a name="prefetch-images-for-container-configuration"></a>Vorabrufen von Images für die Containerkonfiguration
 
-Zum Vorabrufen von Containerimages im Pool fügen Sie die Liste der Containerimages (`container_image_names`, in Python) zur `ContainerConfiguration` hinzu. 
+Zum Vorabrufen von Containerimages im Pool fügen Sie die Liste der Containerimages (`container_image_names`, in Python) zur `ContainerConfiguration` hinzu.
 
 Im folgenden grundlegenden Python-Beispiel wird gezeigt, wie ein standardmäßiges Ubuntu-Containerimage aus [Docker Hub](https://hub.docker.com) vorabgerufen wird.
 
@@ -140,7 +144,7 @@ image_ref_to_use = batch.models.ImageReference(
     version='latest')
 
 """
-Specify container configuration, fetching the official Ubuntu container image from Docker Hub. 
+Specify container configuration, fetching the official Ubuntu container image from Docker Hub.
 """
 
 container_conf = batch.models.ContainerConfiguration(
@@ -227,17 +231,17 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 Geben Sie containerspezifische Einstellungen an, wenn Sie eine Containeraufgabe für einen containerfähigen Pool ausführen möchten. Die Einstellungen umfassen das zu verwendende Image, die Registrierung sowie Containerausführungsoptionen.
 
-* Verwenden Sie die `ContainerSettings`-Eigenschaft der Aufgabenklassen zum Konfigurieren containerspezifischer Einstellungen. Diese Einstellungen werden durch die [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings)-Klasse definiert. Beachten Sie, dass die Containeroption `--rm` keine zusätzliche Option `--runtime` erfordert, da dies von Batch übernommen wird. 
+* Verwenden Sie die `ContainerSettings`-Eigenschaft der Aufgabenklassen zum Konfigurieren containerspezifischer Einstellungen. Diese Einstellungen werden durch die [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings)-Klasse definiert. Beachten Sie, dass die Containeroption `--rm` keine zusätzliche Option `--runtime` erfordert, da dies von Batch übernommen wird.
 
 * Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/dotnet/api/microsoft.azure.batch.cloudtask) und die [Auftrags-Manager-Aufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) Containereinstellungen erforderlich. Die [Startaufgabe](/dotnet/api/microsoft.azure.batch.starttask), die [Auftragsvorbereitungsaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask) und die [Auftragsfreigabeaufgabe](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) benötigen jedoch keine Containereinstellungen (diese können in einem Containerkontext oder direkt auf dem Knoten ausgeführt werden).
 
 ### <a name="container-task-command-line"></a>Befehlszeile für Containeraufgaben
 
-Wenn Sie eine Containeraufgabe ausführen, verwendet Batch automatisch den Befehl [docker create](https://docs.docker.com/engine/reference/commandline/create/), um unter Verwendung des in der Aufgabe angegebenen Images einen Container zu erstellen. Anschließend steuert Batch die Aufgabenausführung im Container. 
+Wenn Sie eine Containeraufgabe ausführen, verwendet Batch automatisch den Befehl [docker create](https://docs.docker.com/engine/reference/commandline/create/), um unter Verwendung des in der Aufgabe angegebenen Images einen Container zu erstellen. Anschließend steuert Batch die Aufgabenausführung im Container.
 
 Für eine Containeraufgabe muss genau wie bei containerfremden Batch-Aufgaben eine Befehlszeile festgelegt werden. Da Batch den Container automatisch erstellt, gibt die Befehlszeile nur die Befehle an, die im Container ausgeführt werden sollen.
 
-Wenn das Containerimage für eine Batch-Aufgabe mit einem [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example)-Skript konfiguriert wird, können Sie Ihre Befehlszeile für die Verwendung des Standardeinstiegspunkts konfigurieren oder ihn überschreiben: 
+Wenn das Containerimage für eine Batch-Aufgabe mit einem [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example)-Skript konfiguriert wird, können Sie Ihre Befehlszeile für die Verwendung des Standardeinstiegspunkts konfigurieren oder ihn überschreiben:
 
 * Wenn Sie den Standardeinstiegspunkt des Containerimages verwenden möchten, legen Sie die Aufgabenbefehlszeile auf die leere Zeichenfolge `""` fest.
 
@@ -247,19 +251,19 @@ Bei den Optionen für die Containerausführung ([ContainerRunOptions](/dotnet/ap
 
 ### <a name="container-task-working-directory"></a>Arbeitsverzeichnis für Containeraufgaben
 
-Eine Batch-Containeraufgabe wird in einem Arbeitsverzeichnis des Containers ausgeführt, das stark dem Verzeichnis ähnelt, das Batch für eine reguläre (containerfremde) Aufgabe einrichtet. Beachten Sie, dass sich dieses Arbeitsverzeichnis von [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) (sofern im Image konfiguriert) bzw. vom standardmäßigen Containerarbeitsverzeichnis (`C:\` für Windows-Container, `/` für Linux-Container) unterscheidet. 
+Eine Batch-Containeraufgabe wird in einem Arbeitsverzeichnis des Containers ausgeführt, das stark dem Verzeichnis ähnelt, das Batch für eine reguläre (containerfremde) Aufgabe einrichtet. Beachten Sie, dass sich dieses Arbeitsverzeichnis von [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) (sofern im Image konfiguriert) bzw. vom standardmäßigen Containerarbeitsverzeichnis (`C:\` für Windows-Container, `/` für Linux-Container) unterscheidet.
 
 Für Batch-Containeraufgaben gilt Folgendes:
 
 * Alle Verzeichnisse unter `AZ_BATCH_NODE_ROOT_DIR` auf dem Hostknoten (Stamm der Azure Batch-Verzeichnisse) werden dem Container zugeordnet.
 * Alle Variablen der Aufgabenumgebung werden dem Container zugeordnet.
-* Das Aufgabenarbeitsverzeichnis `AZ_BATCH_TASK_WORKING_DIR` auf dem Knoten wird auf die gleiche Weise festgelegt wie für eine reguläre Aufgabe und im Container zugeordnet. 
+* Das Aufgabenarbeitsverzeichnis `AZ_BATCH_TASK_WORKING_DIR` auf dem Knoten wird auf die gleiche Weise festgelegt wie für eine reguläre Aufgabe und im Container zugeordnet.
 
 Dank dieser Zuordnungen können Containeraufgaben ganz ähnlich verwendet werden wie containerfremde Aufgaben. So können Sie beispielsweise Anwendungen unter Verwendung von Anwendungspaketen installieren, auf Ressourcendateien aus Azure Storage zugreifen, Aufgabenumgebungseinstellungen verwenden und Aufgabenausgabedateien über die Beendigung des Containers hinaus beibehalten.
 
 ### <a name="troubleshoot-container-tasks"></a>Behandeln von Problemen mit Containeraufgaben
 
-Sollte Ihre Containeraufgabe nicht wie erwartet funktionieren, müssen Sie ggf. Informationen zur WORKDIR- oder ENTRYPOINT-Konfiguration des Containerimages abrufen. Führen Sie den Befehl [docker image inspect](https://docs.docker.com/engine/reference/commandline/image_inspect/) aus, um die Konfiguration anzuzeigen. 
+Sollte Ihre Containeraufgabe nicht wie erwartet funktionieren, müssen Sie ggf. Informationen zur WORKDIR- oder ENTRYPOINT-Konfiguration des Containerimages abrufen. Führen Sie den Befehl [docker image inspect](https://docs.docker.com/engine/reference/commandline/image_inspect/) aus, um die Konfiguration anzuzeigen.
 
 Passen Sie ggf. die Einstellungen der Containeraufgabe auf der Grundlage des Images an:
 
@@ -269,7 +273,7 @@ Passen Sie ggf. die Einstellungen der Containeraufgabe auf der Grundlage des Ima
 
 ## <a name="container-task-examples"></a>Beispiele für Containeraufgaben
 
-Der folgende Python-Codeausschnitt zeigt eine einfache Befehlszeile, die in einem Container ausgeführt wird, der auf der Grundlage eines fiktiven, aus Docker Hub gepullten Images erstellt wurde. Hier entfernt die Containeroption `--rm` den Container, nachdem die Aufgabe abgeschlossen ist, und die Option `--workdir` legt ein Arbeitsverzeichnis fest. Die Befehlszeile überschreibt den Einstiegspunkt des Containers mithilfe eines einfachen Shell-Befehls, der eine kleine Datei in das Aufgabenarbeitsverzeichnis auf dem Host schreibt. 
+Der folgende Python-Codeausschnitt zeigt eine einfache Befehlszeile, die in einem Container ausgeführt wird, der auf der Grundlage eines fiktiven, aus Docker Hub gepullten Images erstellt wurde. Hier entfernt die Containeroption `--rm` den Container, nachdem die Aufgabe abgeschlossen ist, und die Option `--workdir` legt ein Arbeitsverzeichnis fest. Die Befehlszeile überschreibt den Einstiegspunkt des Containers mithilfe eines einfachen Shell-Befehls, der eine kleine Datei in das Aufgabenarbeitsverzeichnis auf dem Host schreibt.
 
 ```python
 task_id = 'sampletask'
@@ -298,7 +302,7 @@ TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
 CloudTask containerTask = new CloudTask (
     id: "Task1",
     containerSettings: cmdContainerSettings,
-    commandLine: cmdLine); 
+    commandLine: cmdLine);
 ```
 
 

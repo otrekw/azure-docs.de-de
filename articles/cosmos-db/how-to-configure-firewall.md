@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580680"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162943"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 
@@ -43,20 +43,20 @@ Wenn Sie eine IP-Zugriffssteuerungsrichtlinie programmgesteuert aktivieren, müs
 |US Gov|52.244.48.71|
 |Alle anderen Regionen|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
-Sie können den Zugriff auf das Azure-Portal ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Zugriff über das Azure-Portal zulassen** aktivieren:
+Sie können Anforderungen für den Zugriff auf das Azure-Portal ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Zugriff über das Azure-Portal zulassen** auswählen:
 
 ![Screenshot: Aktivieren des Zugriffs auf das Azure-Portal](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Zulassen von Anforderungen von globalen Azure-Rechenzentren oder anderen Quellen in Azure
 
-Wenn Sie in Diensten, die keine statische IP bereitstellen, z.B. Azure Stream Analytics oder Azure Functions, auf das Azure Cosmos DB-Konto zugreifen, können Sie dennoch den Zugriff über die IP-Firewall einschränken. Um den Zugriff auf das Azure Cosmos DB-Konto von diesen Diensten aus zuzulassen, fügen Sie die IP-Adresse 0.0.0.0 zur Liste der zugelassenen IP-Adressen hinzu. Die Adresse 0.0.0.0 beschränkt Anforderungen für das Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Mit dieser Einstellung ist der Zugriff auf das Azure Cosmos DB-Konto über andere IP-Adressbereiche nicht zulässig.
+Wenn Sie in Diensten, die keine statische IP bereitstellen, z.B. Azure Stream Analytics oder Azure Functions, auf das Azure Cosmos DB-Konto zugreifen, können Sie dennoch den Zugriff über die IP-Firewall einschränken. Sie können den Zugriff über andere Quellen innerhalb von Azure ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Verbindungen aus Azure-Rechenzentren akzeptieren** auswählen:
+
+![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/how-to-configure-firewall/enable-azure-services.png)
+
+Wenn Sie diese Option aktivieren, wird die IP-Adresse `0.0.0.0` zur Liste der zulässigen IP-Adressen hinzugefügt. Die IP-Adresse `0.0.0.0` beschränkt Anforderungen für das Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Mit dieser Einstellung ist der Zugriff auf das Azure Cosmos DB-Konto über andere IP-Adressbereiche nicht zulässig.
 
 > [!NOTE]
 > Über diese Option wird die Firewall so konfiguriert, dass alle von Azure ausgehenden Anforderungen zugelassen werden, einschließlich Anforderungen von den in Azure bereitgestellten Abonnements anderer Kunden. Die Liste der durch diese Option zugelassenen IP-Adressen ist umfangreich, sodass die Wirksamkeit einer Firewallrichtlinie eingeschränkt wird. Verwenden Sie diese Option nur, wenn die Anforderungen nicht von statischen IP-Adressen oder Subnetzen in virtuellen Netzwerken stammen. Durch das Aktivieren dieser Option wird automatisch der Zugriff über das Azure-Portal ermöglicht, da das Azure-Portal in Azure bereitgestellt wird.
-
-Sie können den Zugriff auf das Azure-Portal ermöglichen, indem Sie wie im folgenden Screenshot gezeigt die Option **Verbindungen aus Azure-Rechenzentren akzeptieren** aktivieren:
-
-![Screenshot: Öffnen der Seite „Firewall“ im Azure-Portal](./media/how-to-configure-firewall/enable-azure-services.png)
 
 ### <a name="requests-from-your-current-ip"></a>Anforderungen über Ihre aktuelle IP-Adresse
 

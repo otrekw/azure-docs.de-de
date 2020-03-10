@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392806"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -21,6 +21,7 @@ Weitere Informationen zu Sicherungsprozess und Einschränkungen finden Sie unter
 Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, müssen Sie auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installieren. Wenn Sie die Fehlermeldung **UserErrorSQLNoSysadminMembership** erhalten, bedeutet das, dass Ihre SQL Server-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Einrichten von Berechtigungen für virtuelle Computer](backup-azure-sql-database.md#set-vm-permissions) aus.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Behandlung von Problemen beim Ermitteln und Konfigurieren
+
 Der Prozess des Ermittelns von Datenbanken und Konfigurierens einer Sicherung besteht nach dem Erstellen und Konfigurieren des Recovery Services-Tresors aus zwei Schritten.<br>
 
 ![sql](./media/backup-azure-sql-database/sql.png)
@@ -37,7 +38,23 @@ Wenn die SQL-VM und ihre Instanzen während der Sicherungskonfiguration unter **
 
 Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im neuen Tresor registriert werden kann.  Für die Abmeldung der SQL-VM aus dem Tresor müssen Sie den Schutz aller Datenquellen beenden. Erst danach können Sie die gesicherten Daten löschen. Das Löschen der gesicherten Daten kann nicht rückgängig gemacht werden.  Registrieren Sie die VM in einem neuen Tresor, und versuchen Sie die Sicherung noch einmal, nachdem Sie alles überprüft und alle Vorsichtsmaßnahmen zum Abmelden der SQL-VM getroffen haben.
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>Beheben von Problemen bei der Sicherung und Wiederherstellung  
 
+Gelegentlich können bei Sicherungs- und Wiederherstellungsvorgängen zufällige Ausfälle auftreten, da diese Vorgänge möglicherweise hängen bleiben. Der Grund hierfür kann ein Antivirenprogramm auf Ihrer VM sein. Als bewährte Vorgehensweise werden die folgenden Schritte empfohlen:
+
+1. Schließen Sie die folgenden Ordner von der Antivirenüberprüfung aus:
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    Ersetzen Sie `C:\` durch den Buchstaben Ihres *Systemlaufwerks*.
+
+1. Schließen Sie die folgenden drei Prozesse, die innerhalb einer VM ausgeführt werden, von der Antivirenüberprüfung aus:
+
+    - IaasWLPluginSvc.exe
+    - IaasWorkloadCoordinaorService.exe
+    - TriggerExtensionJob.exe
+
+1. SQL bietet ebenfalls einige Richtlinien für die Arbeit mit Antivirussoftware. Nähere Einzelheiten finden Sie in [diesem Artikel](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server).
 
 ## <a name="error-messages"></a>Fehlermeldungen
 
@@ -149,7 +166,6 @@ Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbindung nicht erreichen. | Die VM benötigt eine ausgehende Verbindung zu den Diensten von Azure Backup, Azure Storage oder Azure Active Directory.| – Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup in den Diensten Azure Backup, Azure Storage oder Azure Active Directory mit dem Diensttag AzureBackup zulassen. Mithilfe folgender [Schritte](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) können Sie den Zugriff erteilen.<br>– Stellen Sie sicher, dass DNS Azure-Endpunkte löst.<br>– Überprüfen Sie, ob sich die VM hinter einem Lastenausgleich befindet, der den Zugriff auf das Internet blockiert. Durch das Zuweisen einer öffentlichen IP-Adresse funktioniert die Ermittlung.<br>– Überprüfen Sie, ob eine Firewall/ein Antivirenprogramm/ein Proxy die Aufrufe der drei oben genannten Dienste blockiert.
-
 
 ## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
 

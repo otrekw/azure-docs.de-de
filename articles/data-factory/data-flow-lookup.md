@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930332"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164677"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory-Mappingdatenfluss: Suchtransformation
 
@@ -36,9 +36,22 @@ Nach Verwendung der Suchtransformation können Sie eine Transformationsaufteilun
 
 ## <a name="first-or-last-value"></a>Erster oder letzter Wert
 
-Sollte Ihre Suche mehrere Übereinstimmungen ergeben haben, können Sie die mehrfachen übereinstimmenden Zeilen verringern, indem Sie entweder den ersten oder den letzten Match auswählen. Hierzu können Sie im Anschluss an Ihre Suche eine Aggregattransformation verwenden.
+Die Suchtransformation wird als linke äußere Verknüpfung implementiert. Sollte Ihre Suche mehrere Übereinstimmungen ergeben, können Sie die mehrfachen übereinstimmenden Zeilen verringern, indem Sie die erste übereinstimmende Zeile, die letzte Übereinstimmung oder eine beliebige zufällige Zeile auswählen.
 
-In diesem Fall wird eine Aggregattransformation namens ```PickFirst``` verwendet, um den ersten Wert aus den Suchübereinstimmungen auszuwählen.
+### <a name="option-1"></a>Option 1:
+
+![Suche nach einzelner Zeile](media/data-flow/singlerowlookup.png "Suche nach einzelner Zeile")
+
+* Übereinstimmung mit mehreren Zeilen: Lassen Sie das Feld leer, wenn eine einzelne übereinstimmende Zeile zurückgegeben werden soll.
+* Übereinstimmung mit: Wählen Sie „Erste Zeile“, letzte oder beliebige Übereinstimmung aus.
+* Sortierbedingungen: Wenn Sie „Erste Zeile“ oder „Letzte Übereinstimmung“ auswählen, erfordert ADF, dass Ihre Daten sortiert sind, damit es eine Logik hinter den Angaben gibt.
+
+> [!NOTE]
+> Verwenden Sie die erste oder letzte Option für die Auswahl der einzelnen Zeile nur dann, wenn Sie steuern müssen, welcher Wert von der Suche zurückgegeben werden soll. Wenn Sie „Beliebige“ oder Suchen mit mehreren Zeilen verwenden, werden diese schneller ausgeführt.
+
+### <a name="option-2"></a>Option 2:
+
+Hierzu können Sie auch im Anschluss an Ihre Suche eine Aggregattransformation verwenden. In diesem Fall wird eine Aggregattransformation namens ```PickFirst``` verwendet, um den ersten Wert aus den Suchübereinstimmungen auszuwählen.
 
 ![Suche: Aggregat](media/data-flow/lookup333.png "Suche: Aggregat")
 

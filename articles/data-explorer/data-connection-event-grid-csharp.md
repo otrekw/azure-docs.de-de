@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0accf502df3616a686a34fc6c96cb2cfc47e6db1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 03963f60cc364dd36ad55c0a28e92e3b585bb38d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667825"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255082"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>Erstellen einer Event Grid-Datenverbindung für Azure Data Explorer mit C#
 
@@ -27,7 +27,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Erstellen eines [Clusters und einer Datenbank](create-cluster-database-csharp.md)
 * Erstellen einer [Tabelle und Spaltenzuordnung](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
@@ -90,9 +90,41 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | tableName | *StormEvents* | Der Name der Zieltabelle in der Zieldatenbank.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | Der Name der Spaltenzuordnung, die mit der Zieltabelle verknüpft ist.|
 | dataFormat | *csv* | Das Datenformat der Nachricht.|
-| eventHubResourceId | *Resource ID* | Die Ressourcen-ID Ihres Event Hubs, in dem Event Grid für das Senden von Ereignissen konfiguriert ist. |
-| storageAccountResourceId | *Resource ID* | Die Ressourcen-ID Ihres Speicherkontos, das die Daten für die Erfassung enthält. |
+| eventHubResourceId | *Ressourcen-ID* | Die Ressourcen-ID Ihres Event Hubs, in dem Event Grid für das Senden von Ereignissen konfiguriert ist. |
+| storageAccountResourceId | *Ressourcen-ID* | Die Ressourcen-ID Ihres Speicherkontos, das die Daten für die Erfassung enthält. |
 | consumerGroup | *$Default* | Die Consumergruppe Ihres Event Hubs.|
-| location | *USA (Mitte)* | Der Speicherort der Datenverbindungsressource.|
+| location | *USA, Mitte* | Der Speicherort der Datenverbindungsressource.|
+
+## <a name="generate-sample-data"></a>Generieren von Beispieldaten
+
+Nachdem nun eine Verbindung zwischen Azure Data Explorer und dem Speicherkonto besteht, können Sie Beispieldaten erstellen und in den Blobspeicher hochladen.
+
+Mit diesem Skript wird ein neuer Container in Ihrem Speicherkonto erstellt, eine vorhandene Datei wird in den Container hochgeladen (als Blob), und anschließend werden die Blobs im Container aufgeführt.
+
+```csharp
+var azureStorageAccountConnectionString=<storage_account_connection_string>;
+
+var containerName=<container_name>;
+var blobName=<blob_name>;
+var localFileName=<file_to_upload>;
+
+// Creating the container
+var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
+var blobClient = azureStorageAccount.CreateCloudBlobClient();
+var container = blobClient.GetContainerReference(containerName);
+container.CreateIfNotExists();
+
+// Set metadata and upload file to blob
+var blob = container.GetBlockBlobReference(blobName);
+blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
+blob.Metadata.Add("kustoIngestionMappingReference", "mapping_v2‬");
+blob.UploadFromFile(localFileName);
+
+// List blobs
+var blobs = container.ListBlobs();
+```
+
+> [!NOTE]
+> Azure Data Explorer löscht die Blobs nach der Erfassung nicht. Behalten Sie die Blobs für drei bis fünf Tage bei, indem Sie den [Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) zum Verwalten von Bloblöschungen verwenden.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

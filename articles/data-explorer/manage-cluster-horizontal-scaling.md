@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560455"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664132"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
@@ -59,13 +59,14 @@ Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er hori
 * Die Anzahl der Clusterinstanzen liegt unter der maximalen Anzahl von Instanzen, die vom Benutzer definiert wurden.
 * Die Cacheauslastung ist länger als eine Stunde sehr hoch.
 * Die CPU-Auslastung ist für mehr als eine Stunde hoch.
+* Die Erfassungsauslastung ist seit über einer Stunde hoch.
 
 > [!NOTE]
 > Die Logik für das Erweitern berücksichtigt derzeit nicht die Metrik zur Erfassungsauslastung. Wenn diese Metrik für Ihren Anwendungsfall wichtig ist, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
 
 **Horizontales Herunterskalieren**
 
-Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er horizontal herunterskaliert, um bei gleichbleibender Leistung die Kosten zu senken. Es werden mehrere Metriken verwendet, um zu überprüfen, ob das horizontale Herunterskalieren des Clusters sicher ist. Die folgenden Regeln werden 7 Tage lang täglich ausgewertet, bevor ein horizontales Herunterskalierung erfolgt:
+Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er horizontal herunterskaliert, um bei gleichbleibender Leistung die Kosten zu senken. Es werden mehrere Metriken verwendet, um zu überprüfen, ob das horizontale Herunterskalieren des Clusters sicher ist. Die folgenden Regeln werden 6 Stunden lang stündlich ausgewertet, bevor eine horizontale Herunterskalierung erfolgt:
 * Die Anzahl der Instanzen liegt über 2 und über der definierten Mindestanzahl von Instanzen.
 * Um sicherzustellen, dass keine Ressourcen überladen werden, müssen die folgenden Metriken überprüft werden, bevor ein horizontales Herunterskalieren erfolgt: 
     * Die Cacheauslastung ist nicht hoch.

@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187679"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273954"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -165,8 +165,9 @@ Die zweiten in Ihrer selbstgehosteten IR ausgeführten Stagingtasks werden nicht
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Derzeit werden nur Datenflusstasks mit Open Database Connectivity (ODBC)-, OLE DB- oder Flatfile-Verbindungs-Managern sowie ODBC-, OLE DB-und Flatfilequellen oder einem OLE DB-Ziel unterstützt. 
+- Derzeit werden nur Datenflusstasks mit Open Database Connectivity-, OLE DB- oder Flatfile-Verbindungs-Managern und ODBC-, OLE DB- oder Flatfilequellen unterstützt. 
 - Derzeit werden nur mit Azure Blob Storage verknüpfte Dienste unterstützt, die mit einer der Authentifizierungen *Kontoschlüssel*, *Shared Access Signature (SAS)-URI* oder *Dienstprinzipal* konfiguriert wurden.
+- *ParameterMapping* in der OLE DB-Quelle wird noch nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Um dies zu veranschaulichen, finden Sie ein Beispielpaket *(ParameterMappingSample.dtsx)* im Ordner *SelfhostedIrProxy/Limitations* in unserem Container in der öffentlichen Vorschau. Geben Sie den folgenden SAS-URI in [Azure Storage-Explorer](https://storageexplorer.com/) ein: *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

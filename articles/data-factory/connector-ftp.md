@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: cf7e5c6ac124945ce3e6cd05585a7997dfe34149
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892680"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252477"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopieren von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -39,6 +39,8 @@ Der FTP-Connector unterstützt insbesondere Folgendes:
 
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **anonymen** Authentifizierung
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md)
+
+Der FTP-Connector unterstützt die Ausführung des FTP-Servers im passiven Modus. Der aktive Modus wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -126,7 +128,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für FTP unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **FtpServerLocation** festgelegt werden. | Ja      |
 | folderPath | Der Pfad zum Ordner. Wenn Sie Platzhalter verwenden möchten, um Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
@@ -248,7 +250,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **FileShare** |Ja |
 | folderPath | Pfad zum Ordner. Platzhalterfilter werden unterstützt. Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: Stammordner/Unterordner/. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Ja |
@@ -293,7 +295,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität: Quellenmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **FileSystemSource** |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Beachten Sie Folgendes: Wenn „recursive“ auf TRUE festgelegt und die Senke ein dateibasierter Speicher ist, wird ein leerer Ordner/Unterordner nicht in die Senke kopiert bzw. nicht in ihr erstellt.<br/>Zulässige Werte sind **true** (Standard) oder **false**. | Nein |

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 70c53ea9a8fc64615a9a493efc42405631a3f06d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 68d5976a5a79dbde88b7f80b02b39793ffc86de9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025162"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254856"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -49,7 +49,12 @@ So zeigen Sie alle Metriken für Batch-Konten an
 3. Wählen Sie eine oder mehrere Metriken aus. Wählen Sie bei Bedarf mithilfe der Dropdownmenüs **Abonnements**, **Ressourcengruppe**, **Ressourcentyp** und **Ressource** zusätzliche Ressourcenmetriken aus.
     * Verwenden Sie für anzahlbasierte Metriken (z.B. „Dedizierte Anzahl von Kernen“ oder „Anzahl der Knoten mit niedriger Priorität“) die Aggregation „Durchschnitt“. Verwenden Sie für ereignisbasierte Metriken (z.B. „Ereignisse zum Abschluss der Größenänderung von Pools“) die Aggregation „Anzahl“.
 
-    ![Batch-Metriken](media/batch-diagnostics/metrics-portal.png)
+> [!WARNING]
+> Verwenden Sie nicht die Aggregation „Summe“, mit der die Werte aller über den Zeitraum des Diagramms empfangenen Datenpunkte addiert werden.
+> 
+> 
+
+    ![Batch metrics](media/batch-diagnostics/metrics-portal.png)
 
 Verwenden Sie zum programmgesteuerten Abrufen von Metriken die Azure Monitor-APIs. Sehen Sie sich beispielsweise die Informationen unter [Retrieve Azure Monitor metrics with .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) (Abrufen von Azure Monitor-Metriken mit .NET) an.
 
@@ -71,7 +76,7 @@ So konfigurieren Sie eine Metrikwarnung im Portal:
 2. Klicken Sie unter **Überwachung** auf **Warnungsregeln** > **Metrikwarnung hinzufügen**.
 3. Wählen Sie eine Metrik, eine Warnungsbedingung (etwa für den Fall, dass eine Metrik während eines Zeitraums einen bestimmten Wert überschreitet) und mindestens eine Benachrichtigung aus.
 
-Sie können auch mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/) eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Übersicht über Warnungen](../azure-monitor/platform/alerts-overview.md).
+Sie können auch mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/) eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Übersicht über Warnungen](../azure-monitor/platform/alerts-overview.md). Wenn Sie auftrags-, task- oder poolspezifische Informationen in Ihre Warnungen einschließen möchten, lesen Sie die Informationen zu Suchabfragen unter [Reagieren auf Ereignisse mit Azure Monitor-Warnungen](../azure-monitor/learn/tutorial-response.md).
 
 ## <a name="batch-diagnostics"></a>Batch-Diagnose
 

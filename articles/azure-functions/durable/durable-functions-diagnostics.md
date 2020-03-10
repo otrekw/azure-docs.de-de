@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356701"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -32,13 +32,13 @@ Jedes Lebenszyklusereignis einer Orchestrierungsinstanz bewirkt, dass in Applica
 * **functionName**: Der Name der Orchestrator- oder Aktivitätsfunktion.
 * **functionType**: Der Typ der Funktion, z. B. **Orchestrator** oder **Activity**.
 * **instanceId**: Die eindeutige ID der Orchestrierungsinstanz.
-* **state**: Der Lebenszyklus-Ausführungsstatus der Instanz. Folgende Werte sind gültig:
+* **state**: Der Lebenszyklus-Ausführungsstatus der Instanz. Gültige Werte:
   * **Scheduled**: Die Ausführung der Funktion wurde geplant, aber noch nicht gestartet.
   * **Started**: Die Ausführung der Funktion wurde gestartet, sie wurde aber noch nicht erwartet oder abgeschlossen.
   * **Awaited**: Der Orchestrator hat Arbeit geplant und wartet darauf, dass sie abgeschlossen wird.
   * **Listening**: Der Orchestrator lauscht auf eine externe Ereignisbenachrichtigung.
   * **Completed**: Die Funktion wurde erfolgreich abgeschlossen.
-  * **Failed**: Bei der Funktion ist ein Fehler aufgetreten.
+  * **Fehler:** Bei der Funktion ist ein Fehler aufgetreten.
 * **reason**: Zusätzliche Daten zum Nachverfolgungsereignis. Wenn eine Instanz beispielsweise auf eine externe Ereignisbenachrichtigung wartet, wird in diesem Feld der Name des Ereignisses angegeben, auf das gewartet wird. Wenn eine Funktion fehlgeschlagen ist, enthält dieses Feld die Fehlerdetails.
 * **isReplay**: Ein boolescher Wert, der angibt, ob das Nachverfolgungsereignis für die wiedergegebene Ausführung bestimmt ist.
 * **extensionVersion**: Die Version der Durable Task-Erweiterung. Diese Versionsinformationen sind besonders wichtig, wenn mögliche Fehler der Erweiterung gemeldet werden. Instanzen mit langer Ausführungsdauer melden unter Umständen mehrere Versionen, wenn während der Ausführung ein Update durchgeführt wird.
@@ -305,7 +305,7 @@ Done!
 ```
 
 > [!NOTE]
-> Die vorherigen C#-Beispiele gelten für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Die vorherigen C#-Beispiele gelten für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ## <a name="custom-status"></a>Benutzerdefinierter Status
 
@@ -328,7 +328,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> Das vorherige C#-Beispiel gilt für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Das vorherige C#-Beispiel gilt für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 

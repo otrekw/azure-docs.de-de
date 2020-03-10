@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungslösung in Az
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513268"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227458"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -24,6 +24,36 @@ Es gibt eine Agent-Problembehandlung für den Hybrid Worker-Agent, mit dem das z
 Sollten Sie Probleme beim Integrieren der Lösung in einen virtuellen Computer haben, suchen Sie auf dem lokalen Computer im Protokoll **Operations Manager** unter **Anwendungs- und Dienstprotokolle** nach Ereignissen mit der Ereignis-ID 4502 und Ereignisdetails, die **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** enthalten.
 
 Der folgende Abschnitt enthält spezifische Fehlermeldungen und passende Lösungsvorschläge. Informationen zu anderen Onboardingproblemen finden Sie unter [Problembehandlung bei der Integration von Lösungen](onboarding.md).
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Szenario: Ersetztes Update wird in der Updateverwaltung als fehlend angezeigt
+
+### <a name="issue"></a>Problem
+
+Alte Updates werden in der Updateverwaltung im Azure-Konto als fehlend angezeigt, selbst wenn sie bereits ersetzt wurden. Ein ersetztes Update ist ein Update, das nicht installiert werden muss, da ein späteres Update, das dasselbe Sicherheitsrisiko korrigiert, verfügbar ist. Die Updateverwaltung ignoriert das ersetzte Update und macht es nicht zugunsten des ersetzenden Updates anwendbar. Informationen zu einem verwandten Problem finden Sie unter [Update ist ersetzt](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="cause"></a>Ursache
+
+Ersetzte Updates werden nicht ordnungsgemäß als abgelehnt angegeben, um sie als nicht zutreffend ansehen zu können.
+
+### <a name="resolution"></a>Lösung
+
+Wenn ein ersetztes Update zu 100 Prozent nicht mehr anwendbar ist, sollten Sie den Genehmigungsstatus dieses Updates in **Abgelehnt** ändern. So legen Sie dies für alle Ihre Updates fest
+
+1. Wählen Sie im Automation-Konto **Updateverwaltung** aus, um den Computerstatus anzuzeigen. Siehe [Anzeigen von Updatebewertungen](../manage-update-multi.md#view-an-update-assessment).
+
+2. Überprüfen Sie das ersetzte Update, um sicherzustellen, dass es zu 100 Prozent nicht anwendbar ist. 
+
+3. Markieren Sie das Update als abgelehnt, außer wenn Sie eine Frage zu dem Update haben. 
+
+4. Wählen Sie „Computer“ aus, und erzwingen Sie in der Spalte „Compliance“ eine erneute Überprüfung auf Compliance. Siehe [Verwalten von Updates für mehrere Computer](../manage-update-multi.md).
+
+5. Wiederholen Sie die obigen Schritte für weitere ersetzte Updates.
+
+6. Führen Sie den Bereinigungs-Assistenten aus, um Dateien aus den abgelehnten Updates zu löschen. 
+
+7. Bereinigen Sie für WSUS alle ersetzten Updates manuell, um die Infrastruktur zu aktualisieren.
+
+8. Wiederholen Sie dieses Verfahren regelmäßig, um das Anzeigeproblem zu korrigieren und den für die Updateverwaltung verwendeten Datenträgerspeicherplatz zu minimieren.
 
 ## <a name="nologs"></a>Szenario: Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt
 
