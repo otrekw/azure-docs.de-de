@@ -1,5 +1,5 @@
 ---
-title: 'Architektur: Globale Übertragungsnetzwerkarchitektur'
+title: 'Architektur: Globale Transitarchitektur'
 titleSuffix: Azure Virtual WAN
 description: Erfahren Sie mehr zur Architektur mit einem globalen Transitnetzwerk für Azure Virtual WAN.
 services: virtual-wan
