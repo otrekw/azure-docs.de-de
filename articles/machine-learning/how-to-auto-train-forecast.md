@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905703"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251850"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -178,13 +178,14 @@ Sehen Sie sich die [Notebooks zum Vorhersagebeispiel](https://github.com/Azure/M
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurieren eines DNN-fähigen Vorhersageexperiments
 
 > [!NOTE]
-> Die DNN-Unterstützung für Vorhersagen beim automatisierten maschinellen Lernen befindet sich in der Vorschauphase.
+> Die DNN-Unterstützung für Vorhersagen beim automatisierten maschinellen Lernen befindet sich in der Vorschauphase und wird für lokale Ausführungen nicht unterstützt.
 
 Um DNNs für die Vorhersage zu nutzen, müssen Sie den Parameter `enable_dnn` in AutoMLConfig auf TRUE festlegen. 
 
-Um DNNs verwenden zu können, wird die Verwendung eines AML-Computeclusters mit GPU-SKUs und mindestens zwei Knoten als Computeziel empfohlen. Weitere Informationen finden Sie in der [Dokumentation zu AML-Compute](how-to-set-up-training-targets.md#amlcompute). Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+Es wird die Verwendung eines AML-Computeclusters mit GPU-SKUs und mindestens zwei Knoten als Computeziel empfohlen. Es wird empfohlen, das Experimenttimeout auf mindestens einige Stunden festzulegen, damit ausreichend Zeit für das DNN-Training zur Verfügung steht.
+Weitere Informationen zu AML-Compute und den VM-Größen mit GPUs finden Sie in den Dokumentationen [AML-Compute](how-to-set-up-training-targets.md#amlcompute) und [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
-Es wird empfohlen, das Experimenttimeout auf mindestens einige Stunden festzulegen, damit ausreichend Zeit für das DNN-Training zur Verfügung steht.
+Ein detailliertes Codebeispiel für die Nutzung von DNNs finden Sie im [Notebook für die Vorhersage der Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
 ### <a name="view-feature-engineering-summary"></a>Anzeigen der Zusammenfassung der Featureentwicklung
 

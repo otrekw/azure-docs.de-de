@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028872"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252526"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
@@ -29,24 +29,22 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 ## <a name="create-a-vm"></a>Erstellen einer VM
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Private Link-Ressource verwendet wird (in diesem Beispiel ein Speicherkonto).
 
-### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Private Link-Ressource verwendet wird.
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
-1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-    | Einstellung | value |
-    | ------- | ----- |
-    | Name | Geben Sie *MyVirtualNetwork* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Location | Wählen Sie **WestCentralUS** aus.|
-    | Subnetzname | Geben Sie *mySubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
-    |||
-1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA, Westen-Mitte      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers

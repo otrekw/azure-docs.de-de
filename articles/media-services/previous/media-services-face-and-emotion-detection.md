@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084619"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919310"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
+
+> [!NOTE]
+> Der **Azure Media-Gesichtserkennung**-Medienprozessor wird eingestellt. Das Einstellungsdatum finden Sie im Thema [Legacykomponenten](legacy-components.md).
 
 ## <a name="overview"></a>Übersicht
 
@@ -65,7 +68,7 @@ Face Detector verwendet Techniken der Fragmentierung (wobei die Metadaten in zei
 ### <a name="input-video"></a>Videoeingang
 [Videoeingang](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
+### <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung ist nur zur Gesichtserkennung bestimmt.
 
 ```json
@@ -137,7 +140,7 @@ Das folgende Beispiel einer JSON-Ausgabe wurde abgeschnitten.
 ### <a name="input-video"></a>Videoeingang
 [Videoeingang](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>Aufgabenkonfiguration (Voreinstellung)
+### <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Wenn Sie eine Aufgabe mit **Azure Media Face Detector**erstellen, müssen Sie eine Konfigurationsvoreinstellung angeben. Die folgende Konfigurationsvoreinstellung gibt an, eine JSON-Datei auf Basis der Emotionenerkennung zu erstellen.
 
 ```json
@@ -164,8 +167,8 @@ Die folgenden Werte werden für Aggregierfenster und Intervalleinstellungen empf
 
 || Standardwerte (s) | Maximum (s) | Minimum (s) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0,25|
-| AggregateEmotionIntervalMs |0,5 |1 |0,25|
+| AggregateEmotionWindowMs |0.5 |2 |0,25|
+| AggregateEmotionIntervalMs |0.5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON-Ausgabe
 JSON-Ausgabe für Emotionsaggregierung (abgeschnitten):

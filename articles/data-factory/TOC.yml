@@ -491,6 +491,8 @@
           href: data-flow-exists.md
         - name: Filtern
           href: data-flow-filter.md
+        - name: Vereinfachen
+          href: data-flow-flatten.md
         - name: Join
           href: data-flow-join.md
         - name: Nachschlagen
@@ -515,8 +517,6 @@
           href: data-flow-unpivot.md
         - name: Fenster
           href: data-flow-window.md
-        - name: Vereinfachen
-          href: data-flow-flatten.md
     - name: Parametrisieren
       items:
         - name: Parametrisieren verknüpfter Dienste

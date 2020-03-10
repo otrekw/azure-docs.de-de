@@ -4,15 +4,15 @@ description: Replizieren Sie Azure Analysis Services-Server mittels horizontalem
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310185"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247987"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -74,19 +74,23 @@ Zur Optimierung der Leistung bei Verarbeitungs- und Abfragevorgängen können Si
 
 ## <a name="monitor-qpu-usage"></a>Überwachen der QPU-Nutzung
 
-Überwachen Sie Ihren Server im Azure-Portal mithilfe von Metriken, um zu ermitteln, ob horizontales Hochskalieren für Ihren Server erforderlich ist. Wenn regelmäßig die QPU-Obergrenze erreicht wird, übersteigt die Anzahl von Abfragen für Ihre Modelle das QPU-Limit für Ihren Tarif. Die Metrik „Warteschlangenlänge für Abfragepoolaufträge“ erhöht sich auch, wenn die Anzahl von Abfragen in der Warteschlange des Abfragethreadpools die verfügbaren QPUs übersteigt. 
+[Überwachen Sie Ihren Server](analysis-services-monitor.md) im Azure-Portal mithilfe von Metriken, um zu ermitteln, ob eine horizontale Skalierung für Ihren Server erforderlich ist. Wenn regelmäßig die QPU-Obergrenze erreicht wird, übersteigt die Anzahl von Abfragen für Ihre Modelle das QPU-Limit für Ihren Tarif. Die Metrik „Warteschlangenlänge für Abfragepoolaufträge“ erhöht sich auch, wenn die Anzahl von Abfragen in der Warteschlange des Abfragethreadpools die verfügbaren QPUs übersteigt. 
 
 Eine weitere gute Metrik zum Überwachen ist die durchschnittliche QPU nach ServerResourceType. Mit dieser Metrik wird die durchschnittliche QPU für den primären Server mit dem Abfragepool verglichen. 
 
 ![Abfragen von Metriken für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>Konfigurieren von QPU nach ServerResourceType
+**Konfigurieren von QPU nach ServerResourceType**
+
 1. Klicken Sie in einem Metrik-Liniendiagramm auf **Metrik hinzufügen**. 
 2. Wählen Sie unter **RESSOURCE** Ihren Server aus. Wählen Sie dann unter **METRIKNAMESPACE** die Option **Standardmetriken für Analysis Services** und unter **METRIK** die Option **QPU** aus, und klicken Sie unter **AGGREGATION** auf **Durchschn**. 
 3. Klicken Sie auf **Teilen anwenden**. 
 4. Wählen Sie unter **WERTE** die Option **ServerResourceType**.  
 
-Weitere Informationen finden Sie unter [Überwachen von Servermetriken](analysis-services-monitor.md).
+### <a name="detailed-diagnostic-logging"></a>Ausführliche Diagnoseprotokollierung
+
+Verwenden Sie Azure Monitor-Protokolle für eine ausführlichere Diagnose der Serverressourcen mit horizontaler Skalierung. Bei Protokollen können Sie mithilfe von Log Analytics-Abfragen QPU und Arbeitsspeicher nach Server und Replikat unterteilen. Weitere Informationen finden Sie in den Beispielabfragen unter [Analysis Services-Diagnoseprotokollierung](analysis-services-logging.md#example-queries).
+
 
 ## <a name="configure-scale-out"></a>Konfigurieren des horizontalen Hochskalierens
 
@@ -127,7 +131,7 @@ Verwenden Sie die **sync**-Operation.
 Rückgabestatuscodes:
 
 
-|Code  |Beschreibung  |
+|Code  |BESCHREIBUNG  |
 |---------|---------|
 |-1     |  Ungültig       |
 |0     | Replikation wird ausgeführt        |
