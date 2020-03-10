@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6dda01543a6a7f447adefcc6cc3cfa3ea5da5492
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048848"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249881"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -47,11 +47,11 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard�
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -68,19 +68,20 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard�
 
 Erstellen Sie ein virtuelles Netzwerk mit zwei virtuellen Computern, und fügen Sie die VMs dem Back-End-Pool Ihres Load Balancers hinzu. 
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
-   
-1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
-   
-   - **Name**: Geben Sie *MyVNet* ein.
-   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
-   - **Subnetz** > **Name**: Geben Sie *MyBackendSubnet* ein.
-   
-1. Klicken Sie auf **Erstellen**.
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-   ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>Erstellen von VMs und Hinzufügen zum Back-End-Pool des Lastenausgleichs
 
@@ -97,7 +98,7 @@ Erstellen Sie ein virtuelles Netzwerk mit zwei virtuellen Computern, und fügen 
 1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
    
    Stellen Sie sicher, dass Folgendes ausgewählt ist:
-   - **Virtuelles Netzwerk**: **MyVNet**
+   - **Virtuelles Netzwerk:** **MyVNet**
    - **Subnetz**: **MyBackendSubnet**
    
 1. Wählen Sie auf der Seite **Öffentliche IP-Adresse erstellen** unter **Öffentliche IP-Adresse** **Neue erstellen**, **Standard** aus, und wählen Sie dann **OK** aus. 
@@ -146,11 +147,11 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel (NSGS) für die virtuellen C
    - **Quelle**: Wählen Sie **Diensttag** aus.  
    - **Quelldiensttag**: Wählen Sie **Internet** aus. 
    - **Zielportbereiche**: Geben Sie *80* ein.
-   - **Protokoll**: Wählen Sie **TCP** aus. 
-   - **Aktion**: Wählen Sie **Zulassen** aus.  
-   - **Priorität**: Geben Sie *100* ein. 
+   - **Protokoll:** Wählen Sie **TCP** aus. 
+   - **Aktion:** Wählen Sie **Zulassen** aus.  
+   - **Priorität:** Geben Sie *100* ein. 
    - **Name**: Geben Sie *MyHTTPRule* ein. 
-   - **Beschreibung:** Geben Sie *Allow HTTP* ein. 
+   - **Beschreibung**: Geben Sie *Allow HTTP* ein. 
    
 1. Wählen Sie **Hinzufügen**. 
    
@@ -189,8 +190,8 @@ Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Inte
 1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyHealthProbe* ein.
-   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
-   - **Port**: Geben Sie *80* ein. 
+   - **Protokoll:** Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
+   - **Port:** Geben Sie *80* ein. 
    - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
    - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
    - **Fehlerschwellenwert**: Geben Sie *2* ein. Dieser Wert gibt die Anzahl aufeinander folgender Testfehler an, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.
@@ -212,8 +213,8 @@ Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Fron
 1. Geben Sie auf der Seite **Lastenausgleichsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyLoadBalancerRule* ein.
-   - **Protokoll**: Wählen Sie **TCP** aus.
-   - **Port**: Geben Sie *80* ein.
+   - **Protokoll:** Wählen Sie **TCP** aus.
+   - **Port:** Geben Sie *80* ein.
    - **Back-End-Port**: Geben Sie *80* ein.
    - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
    - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
@@ -233,7 +234,7 @@ Erstellen Sie eine Netzwerkadressübersetzung-Eingangsregel (NAT) für den Laste
 1. Geben Sie auf der Seite **NAT-Regel für eingehenden Datenverkehr hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyNATRuleVM1* ein.
-   - **Port**: Geben Sie *4221* ein.
+   - **Port:** Geben Sie *4221* ein.
    - **Virtueller Zielcomputer**: Wählen Sie **MyVM1** aus der Dropdownliste aus.
    - **Netzwerk-IP-Konfiguration**: Wählen Sie **ipconfig1** aus der Dropdownliste aus.
    - **Portzuordnung**: Wählen Sie **Benutzerdefiniert** aus.

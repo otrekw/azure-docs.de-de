@@ -1,25 +1,26 @@
 ---
 title: Continuous Integration und Continuous Deployment
-description: Professionelle DevOps-Datenbankumgebung für SQL Data Warehouse mit integrierter Unterstützung für Continuous Integration und Continuous Deployment mithilfe von Azure Pipelines
+description: Professionelle DevOps-Datenbankumgebung für Data Warehousing mit integrierter Unterstützung für Continuous Integration und Continuous Deployment mithilfe von Azure Pipelines
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712984"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195939"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continuous Integration und Continuous Deployment für Azure SQL Data Warehouse
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continuous Integration und Continuous Deployment für Data Warehousing
 
-In diesem einfachen Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) in Azure DevOps integrieren und Azure Pipelines zum Einrichten von Continuous Integration und Continuous Deployment nutzen. Dieses Tutorial ist der zweite Schritt beim Erstellen Ihrer Continuous Integration- und Continuous Deployment-Pipeline mit SQL Data Warehouse. 
+In diesem einfachen Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) in Azure DevOps integrieren und Azure Pipelines zum Einrichten von Continuous Integration und Continuous Deployment nutzen. Dieses Tutorial ist der zweite Schritt beim Erstellen Ihrer Continuous Integration- und Continuous Deployment-Pipeline für Data Warehousing. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -61,7 +62,7 @@ Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erkunden der [Azure SQL Data Warehouse-Architektur](massively-parallel-processing-mpp-architecture.md)
-- Schnelles [Erstellen einer SQL Data Warehouse-Instanz](create-data-warehouse-portal.md)
+- Erkunden der [MPP-Architektur von SQL-Analyse](massively-parallel-processing-mpp-architecture.md)
+- Führen Sie eine schnelle [Erstellung eines SQL-Pools](create-data-warehouse-portal.md) durch.
 - [Laden von Stichprobendaten](sql-data-warehouse-load-sample-databases.md)
 - Ansehen von [Videos](/azure/sql-data-warehouse/sql-data-warehouse-videos)

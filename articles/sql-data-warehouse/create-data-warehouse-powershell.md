@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen eines Warehouse – Azure PowerShell'
-description: Erstellen Sie schnell einen logischen SQL-Datenbankserver, eine Firewallregel auf Serverebene und ein Data Warehouse mit Azure PowerShell.
+title: 'Schnellstart: Erstellen eines Data Warehouse (PowerShell)'
+description: Erstellen Sie mithilfe von Azure PowerShell schnell einen logischen Data Warehouse-Server mit Azure Synapse Analytics und einer Firewallregel auf Serverebene.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461511"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199987"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz mit Azure PowerShell
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen einer Data Warehouse-Instanz mit Azure PowerShell
 
-Erstellen Sie schnell eine Azure SQL Data Warehouse-Instanz mit Azure PowerShell.
+Erstellen Sie ein Azure Synapse Analytics-Data Warehouse, indem Sie einen SQL-Pool mithilfe von Azure PowerShell bereitstellen.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Weitere Informationen finden Sie unter [SQL Data Warehouse – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Wenn Sie eine Warehouse-Instanz erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -78,6 +80,7 @@ Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resourc
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>Erstellen eines logischen Servers
 
 Erstellen Sie mit dem Befehl [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) einen [logischen Azure SQL-Server](../sql-database/sql-database-logical-servers.md). Ein logischer Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden. Im folgenden Beispiel wird in Ihrer Ressourcengruppe ein zufällig benannter Server mit einem Administratorbenutzer namens `ServerAdmin` und dem Kennwort `ChangeYourAdminPassword1` erstellt. Ersetzen Sie ggf. diese vordefinierten Werte.
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> Die SQL-Datenbank und SQL Data Warehouse kommunizieren über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+> SQL-Endpunkte kommunizieren über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 Erforderliche Parameter:
 
 * **RequestedServiceObjectiveName**: Die Menge an [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md), die Sie anfordern. Durch das Erhöhen dieses Werts steigen die Computekosten. Eine Liste der unterstützten Werte finden Sie unter [Grenzwerte für Arbeitsspeicher und Parallelität](memory-concurrency-limits.md).
-* **DatabaseName**: Der Name des SQL Data Warehouse, das Sie erstellen.
+* **DatabaseName**: Der Name der Data Warehouse-Instanz, die Sie erstellen.
 * **ServerName**: Der Name des Servers, den Sie für die Erstellung verwenden.
 * **ResourceGroupName**: Die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet „Get-AzureResource“.
-* **Edition**: Muss für die Erstellung einer SQL Data Warehouse-Instanz auf „DataWarehouse“ festgelegt werden.
+* **Edition**: Muss für die Erstellung einer Data Warehouse-Instanz auf „DataWarehouse“ festgelegt werden.
 
 Optionale Parameter:
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben jetzt ein Data Warehouse sowie eine Firewallregel erstellt, diese mit Ihrem Data Warehouse verbunden und einige Abfragen ausgeführt. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
+Sie haben jetzt ein Data Warehouse sowie eine Firewallregel erstellt, diese mit Ihrem Data Warehouse verbunden und einige Abfragen ausgeführt. Weitere Informationen zum Laden von Daten finden Sie in den Tutorials.
 > [!div class="nextstepaction"]
->[Laden von Daten in SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Laden von Daten in eine Data Warehouse-Instanz](load-data-from-azure-blob-storage-using-polybase.md)

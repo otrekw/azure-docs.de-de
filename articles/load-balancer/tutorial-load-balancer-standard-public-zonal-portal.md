@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225170"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251908"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
 
@@ -50,11 +50,11 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -63,18 +63,24 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
     |Verfügbarkeitszone| Wählen Sie **1**.    |
 3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
 
-   ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen Sie zwei virtuelle Computer in der derselben Zone (Zone 1) für die Region, die dem Back-End-Pool Ihres Lastenausgleichs hinzugefügt werden. Anschließend installieren Sie IIS auf den virtuellen Computern, um das Testen des zonenredundanten Lastenausgleichs zu unterstützen. Wenn eine VM ausfällt, schlägt auch der Integritätstest für die VM in derselben Zone fehl. Der Datenverkehr wird von anderen VMs innerhalb derselben Zone bereitgestellt.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.  Geben Sie die folgenden Werte für das virtuelle Netzwerk ein:
-    - **myVnet**: Der Name des virtuellen Netzwerks.
-    - **myResourceGroupZLB**: Der Name der vorhandenen Ressourcengruppe.
-    - **myBackendSubnet**: Der Subnetzname.
-2. Wählen Sie **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-    ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
+
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupZLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -89,7 +95,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen S
 
 In diesem Abschnitt erstellen Sie über das Azure-Portal NSG-Regeln, um eingehende Verbindungen zuzulassen, für die HTTP und das Microsoft-Remotedesktopprotokoll (RDP) verwendet werden.
 
-1. Wählen Sie im Azure-Portal im Menü ganz links die Option **Alle Ressourcen**. Suchen Sie anschließend nach **myNetworkSecurityGroup**, und wählen Sie das entsprechende angezeigte Ergebnis aus. Es befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
+1. Wählen Sie im Azure-Portal im Menü ganz links die Option **Alle Ressourcen**. Suchen Sie anschließend nach **myNetworkSecurityGroup**, und wählen Sie das entsprechende angezeigte Ergebnis aus. Sie befindet sich unter der Ressourcengruppe **myResourceGroupZLB**.
 2. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln**. Wählen Sie anschließend **Hinzufügen**.
 3. Geben Sie für die Eingangssicherheitsregel **myHTTPRule** die folgenden Werte ein, um eingehende HTTP-Verbindungen über Port 80 zuzulassen:
     - **Service Tag** für **Quelle**

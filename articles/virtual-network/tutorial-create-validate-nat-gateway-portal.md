@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587004"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250819"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit dem Azure-Portal und Testen des NAT-Diensts
 
@@ -36,27 +36,24 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 In den folgenden Abschnitten wird die Konfiguration einer vollständigen Testumgebung und die Durchführung von Tests Schritt für Schritt für Sie beschrieben. Wir beginnen mit der Quelle, für die die NAT-Gatewayressource verwendet wird, die in einem der nachfolgenden Schritte erstellt wird.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
 Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen, damit Sie einen virtuellen Computer bereitstellen und das NAT-Gateway verwenden können.
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus, oder suchen Sie über die Marketplace-Suche nach **Virtuelles Netzwerk**.
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | USA (Ost) 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | Einstellung | value |
-    | ------- | ----- |
-    | Name | Geben Sie **myVNetsource** ein. |
-    | Adressraum | Geben Sie **192.168.0.0/16** ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie „Neu erstellen“ und dann **myResourceGroupNAT** aus. |
-    | Location | Wählen Sie **USA, Osten 2** aus.|
-    | Subnetzname | Geben Sie **mySubnetsource** ein. |
-    | Subnetzadressbereich | Geben Sie **192.168.0.0/24** ein. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
-
-### <a name="create-source-virtual-machine"></a>Erstellen des virtuellen Quellcomputers
+## <a name="create-source-virtual-machine"></a>Erstellen des virtuellen Quellcomputers
 
 Sie erstellen nun einen virtuellen Computer zur Verwendung des NAT-Diensts. Dieser virtuelle Computer verfügt über eine öffentliche IP-Adresse, die als öffentliche IP auf Instanzebene verwendet wird, um den Zugriff auf den virtuellen Computer zu ermöglichen. Der NAT-Dienst erkennt die Flussrichtung und ersetzt in Ihrem Subnetz das Standardziel im Internet. Die öffentliche IP-Adresse des virtuellen Computers wird nicht für ausgehende Verbindungen verwendet.
 
@@ -161,25 +158,25 @@ Der gesamte ausgehende Datenverkehr an Ziele im Internet verwendet jetzt den NAT
 
 Wir erstellen jetzt ein Ziel für den ausgehenden Datenverkehr, der vom NAT-Dienst übersetzt wird, damit Sie einen Test durchführen können.
 
-### <a name="configure-virtual-network-for-destination"></a>Konfigurieren des virtuellen Netzwerks für das Ziel
+
+## <a name="virtual-network-and-parameters-for-destination"></a>Virtuelles Netzwerk und Parameter für das Ziel
 
 Bevor Sie einen virtuellen Computer für das Ziel bereitstellen, müssen Sie ein virtuelles Netzwerk erstellen, in dem der virtuelle Zielcomputer angeordnet werden kann. Unten sind die gleichen Schritte wie für den virtuellen Quellcomputer angegeben, aber es wurden einige kleinere Änderungen zum Verfügbarmachen des Zielendpunkts vorgenommen.
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | USA (Ost) 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | Einstellung | value |
-    | ------- | ----- |
-    | Name | Geben Sie **myVNetdestination** ein. |
-    | Adressraum | Geben Sie **192.168.0.0/16** ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie „Neu erstellen“ und dann **myResourceGroupNAT** aus. |
-    | Location | Wählen Sie **USA, Osten 2** aus.|
-    | Subnetzname | Geben Sie **mySubnetdestination** ein. |
-    | Subnetzadressbereich | Geben Sie **192.168.0.0/24** ein. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>Erstellen des virtuellen Zielcomputers
+## <a name="create-destination-virtual-machine"></a>Erstellen des virtuellen Zielcomputers
 
 1. Wählen Sie links oben im Portal **Ressource erstellen** > **Compute** > **Ubuntu Server 18.04 LTS** aus, oder suchen Sie über die Marketplace-Suche nach **Ubuntu Server 18.04 LTS**.
 

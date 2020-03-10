@@ -3,17 +3,17 @@ title: 'Tutorial: Verringern der Azure-Kosten mit Empfehlungen'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Optimierungsempfehlungen die Azure-Kosten senken können.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 796d843461d5d622988f7992439a7c4426186761
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199958"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245415"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -32,7 +32,7 @@ Empfehlungen sind für eine Vielzahl von Bereichen und Azure-Kontotypen verfügb
 - Subscription
 - Resource group
 
-Sie benötigen aktive virtuelle Computer, die schon mindestens 14 Tage aktiv sind.
+Wenn Sie Ihr Abonnement gerade erst abgeschlossen haben, können Sie Cost Management-Features noch nicht sofort verwenden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können. Sie benötigen außerdem aktive virtuelle Computer, die schon mindestens 14 Tage aktiv sind.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim Azure-Portal an.

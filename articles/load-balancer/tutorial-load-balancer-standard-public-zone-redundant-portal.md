@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732320"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251877"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -69,16 +69,20 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und virtuelle Computer in unterschiedlichen Zonen für die Region und installieren anschließend IIS auf den virtuellen Computern, um den zonenredundanten Lastenausgleich zu testen. Fällt eine Zone aus, tritt infolgedessen ein Fehler beim Integritätstest für die VM in derselben Zone auf, und der Datenverkehr wird weiterhin von VMs in den anderen Zonen verarbeitet.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie ein virtuelles Netzwerk zum Bereitstellen Ihrer Back-End-Server.
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**, und geben Sie folgende Werte für das virtuelle Netzwerk ein:
-    - *myVnet*: Name des virtuellen Netzwerks
-    - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
-    - *myBackendSubnet*: Subnetzname
-2. Klicken Sie auf **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-    ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 

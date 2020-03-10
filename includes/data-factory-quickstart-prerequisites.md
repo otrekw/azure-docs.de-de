@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021210"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164166"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,10 +36,10 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Roles and permissions for Azure Data Factory](../articles/data-factory/concepts-roles-permissions.md) (Rollen und Berechtigungen für Azure Data Factory)
 
 ### <a name="azure-storage-account"></a>Azure-Speicherkonto
-Sie verwenden in diesem Schnellstart ein allgemeines Azure-Speicherkonto (Blobspeicher) als Datenspeicher vom Typ *Quelle* und vom Typ *Ziel*. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, lesen Sie zum Erstellen die Informationen unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-account-create.md). 
+Sie verwenden in diesem Schnellstart ein allgemeines Azure Storage-Konto (Blobspeicher) als Datenspeicher vom Typ *Quelle* und vom Typ *Ziel*. Falls Sie noch nicht über ein allgemeines Azure Storage-Konto verfügen, lesen Sie zum Erstellen die Informationen unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-account-create.md). 
 
 #### <a name="get-the-storage-account-name"></a>Abrufen des Speicherkontonamens
-In dieser Schnellstartanleitung benötigen Sie den Namen Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens für Ihr Speicherkonto: 
+In dieser Schnellstartanleitung benötigen Sie den Namen Ihres Azure Storage-Kontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens für Ihr Speicherkonto: 
 
 1. Navigieren Sie in einem Webbrowser zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
 2. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** und anschließend **Storage** > **Speicherkonten** aus. Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen und die entsprechende Option auswählen.
@@ -50,9 +50,9 @@ Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen u
 #### <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
 In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** in Azure Blob Storage.
 
-1. Wählen Sie auf der Seite „Speicherkonto“ die Optionen **Übersicht** > **Blobs** aus.
-2. Wählen Sie auf der Symbolleiste der Seite *\<Kontoname>*  - **Blobs** die Option **Container** aus.
-3. Geben Sie im Dialogfeld **Neuer Container** als Namen **adftutorial** ein, und klicken Sie auf **OK**. Die Seite *\<Kontoname>*  - **Blobs** wird aktualisiert, woraufhin die Liste der Container den Eintrag **adftutorial** enthält.
+1. Wählen Sie auf der Seite „Speicherkonto“ die Optionen **Übersicht** > **Container** aus.
+2. Wählen Sie in der Symbolleiste der Seite *\<Kontoname>*  - **Container** die Option **Container** aus.
+3. Geben Sie im Dialogfeld **Neuer Container** als Namen **adftutorial** ein, und klicken Sie auf **OK**. Die Seite *\<Kontoname>*  - **Container** wird aktualisiert, woraufhin die Liste der Container den Eintrag **adftutorial** enthält.
 
    ![Liste der Container](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -66,11 +66,11 @@ Jane, Doe
 
 Speichern Sie die Datei im Ordner **C:\ADFv2QuickStartPSH**. (Erstellen Sie den Ordner, falls er noch nicht vorhanden ist.) Kehren Sie dann zum Azure-Portal zurück, und führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie auf der Seite *\<Kontoname>*  - **Blobs**, auf der Sie Ihre Arbeit unterbrochen haben, in der aktualisierten Liste der Container den Eintrag **adftutorial** aus.
+1. Wählen Sie auf der Seite *\<Kontoname>*  - **Container**, auf der Sie Ihre Arbeit unterbrochen haben, in der aktualisierten Liste der Container den Eintrag **adftutorial** aus.
 
    1. Falls Sie das Fenster geschlossen oder zu einer anderen Seite gewechselt haben, melden Sie sich erneut beim [Azure-Portal](https://portal.azure.com) an.
    1. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** und anschließend **Storage** > **Speicherkonten** aus. Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen und die entsprechende Option auswählen.
-   1. Wählen Sie Ihr Speicherkonto und anschließend **Blobs** > **adftutorial** aus.
+   1. Wählen Sie Ihr Speicherkonto und anschließend **Container** > **adftutorial** aus.
 
 2. Wählen Sie auf der Symbolleiste der Seite des Containers **adftutorial** die Option **Hochladen** aus.
 3. Wählen Sie auf der Seite **Blob hochladen** das Feld **Dateien** aus. Navigieren Sie zur Datei **emp.txt**, und wählen Sie dann die Datei aus.

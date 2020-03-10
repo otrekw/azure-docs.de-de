@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.custom: hdinsightactive,mvc
+ms.date: 03/02/2020
+ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327274"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251953"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight
 
@@ -86,7 +86,7 @@ Die ersten Schritte bei der Verwendung von Spark bestehen darin, eine Verbindung
 
 4. Geben Sie Ihre Cluster-URL (in der Form `mysparkcluster.azurehdinsight.net`) in das Textfeld **Server** ein.
 
-5. Wählen Sie unter **Datenverbindungsmodus:** die Option **DirectQuery** aus. Wählen Sie dann **OK**aus.
+5. Wählen Sie unter **Datenverbindungsmodus:** die Option **DirectQuery** aus. Klicken Sie anschließend auf **OK**.
 
     Sie können mit Spark beide Datenkonnektivitätsmodi verwenden. Wenn Sie „DirectQuery“ verwenden, werden Änderungen in Berichten ohne Aktualisierung des gesamten Datasets wiedergegeben. Wenn Sie Daten importieren, müssen Sie das Dataset aktualisieren, um die Änderungen zu sehen. Weitere Informationen dazu, wie und wann Sie „DirectQuery“ verwenden, finden Sie unter [Verwenden von DirectQuery mit Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
@@ -132,43 +132,43 @@ Mit dem Power BI-Dienst können Sie Berichte und Dashboards in Ihrer Organisatio
 
     ![Veröffentlichen aus Power BI Desktop](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Veröffentlichen aus Power BI Desktop")
 
-1. Wählen Sie einen Arbeitsbereich für die Veröffentlichung des Datasets und des Berichts aus, und klicken Sie dann auf **Auswählen**. In der folgenden Abbildung wird die Standardoption **My Workspace** (Mein Arbeitsbereich) ausgewählt.
+1. Wählen Sie einen Arbeitsbereich für die Veröffentlichung des Datasets und des Berichts aus, und wählen Sie dann **Auswählen**. In der folgenden Abbildung wird die Standardoption **My Workspace** (Mein Arbeitsbereich) ausgewählt.
 
-    ![Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts") 
+    ![Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Auswählen eines Arbeitsbereichs zum Veröffentlichen eines Datasets und eines Berichts")
 
-1. Nachdem die Veröffentlichung abgeschlossen ist, klicken Sie auf **Open „BuildingTemperature.pbix“ in Power BI** („BuildingTemperature.pbix“ in Power BI öffnen).
+1. Nachdem die Veröffentlichung abgeschlossen ist, wählen Sie **Open „BuildingTemperature.pbix“ in Power BI** („BuildingTemperature.pbix“ in Power BI öffnen).
 
-    ![Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen") 
+    ![Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Erfolgreiche Veröffentlichung, Klicken zum Eingeben der Anmeldeinformationen")
 
-1. Klicken Sie im Power BI-Dienst auf **Anmeldeinformationen eingeben**.
+1. Wählen Sie im Power BI-Dienst **Anmeldeinformationen eingeben**.
 
     ![Eingeben von Anmeldeinformationen im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Eingeben von Anmeldeinformationen im Power BI-Dienst")
 
-1. Klicken Sie auf **Anmeldeinformationen bearbeiten**.
+1. Wählen Sie **Anmeldeinformationen bearbeiten**.
 
     ![Bearbeiten von Anmeldeinformationen im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Bearbeiten von Anmeldeinformationen im Power BI-Dienst")
 
-1. Geben Sie die Kontoinformationen für die HDInsight-Anmeldung ein, und klicken Sie auf **Anmelden**. Der Standardkontoname lautet *admin*.
+1. Geben Sie die Kontoinformationen für die HDInsight-Anmeldung ein, und wählen Sie **Anmelden**. Der Standardkontoname lautet *admin*.
 
     ![Anmelden beim Spark-Cluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Anmelden beim Spark-Cluster")
 
-1. Navigieren Sie im linken Bereich zu **Arbeitsbereiche** > **Mein Arbeitsbereich** > **BERICHTE**, und klicken Sie auf **BuildingTemperature**.
+1. Navigieren Sie im linken Bereich zu **Arbeitsbereiche** > **Mein Arbeitsbereich** > **BERICHTE**, und wählen Sie **BuildingTemperature**.
 
     ![Bericht aufgeführt in den Berichten im linken Bereich](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Bericht aufgeführt in den Berichten im linken Bereich")
 
     Im linken Bereich sollte unter **DATASETS** außerdem **BuildingTemperature** aufgeführt sein.
 
-    Das in Power BI Desktop erstellte visuelle Element ist nun im Power BI-Dienst verfügbar. 
+    Das in Power BI Desktop erstellte visuelle Element ist nun im Power BI-Dienst verfügbar.
 
-1. Zeigen Sie mit der Maus auf die Visualisierung, und klicken Sie dann auf das Symbol zum Anheften in der rechten oberen Ecke.
+1. Zeigen Sie mit der Maus auf die Visualisierung, und wählen Sie dann das Symbol zum Anheften in der rechten oberen Ecke.
 
     ![Bericht im Power BI-Dienst](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Bericht im Power BI-Dienst")
 
-1. Wählen Sie „Neues Dashboard“, geben Sie den Namen `Building temperature` ein, und klicken Sie dann auf **Anheften**.
+1. Wählen Sie „Neues Dashboard“, geben Sie den Namen `Building temperature` ein, und wählen Sie dann **Anheften**.
 
     ![Anheften an neues Dashboard](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Anheften an neues Dashboard")
 
-1. Klicken Sie im Bericht auf **Zum Dashboard wechseln**.
+1. Wählen Sie im Bericht **Zu Dashboard wechseln**.
 
 Ihr visuelles Element wird an das Dashboard angeheftet. Sie können weitere visuelle Elemente zum Bericht hinzufügen und sie ans gleiche Dashboard anheften. Weitere Informationen zu Berichten und Dashboards finden Sie unter [Berichte in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) und [Einführung in Dashboards für Power BI-Designer](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 

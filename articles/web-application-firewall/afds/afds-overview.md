@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934720"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915638"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
@@ -77,7 +77,7 @@ Sie können benutzerdefinierte WAF-Regeln wie folgt konfigurieren:
 
 ### <a name="azure-managed-rule-sets"></a>Von Azure verwaltete Regelsätze
 
-Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitstellen von Schutz vor allgemeinen Sicherheitsbedrohungen. Da Azure diese Regelsätze verwaltet, werden die Regeln zum Schutz vor neuen Angriffssignaturen aktualisiert, wenn dies erforderlich ist. In der öffentlichen Vorschauversion enthält der von Azure verwaltete Standardregelsatz Regeln für die folgenden Bedrohungskategorien:
+Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitstellen von Schutz vor allgemeinen Sicherheitsbedrohungen. Da Azure diese Regelsätze verwaltet, werden die Regeln zum Schutz vor neuen Angriffssignaturen aktualisiert, wenn dies erforderlich ist. Der von Azure verwaltete Standardregelsatz enthält Regeln für die folgenden Bedrohungskategorien:
 
 - Cross-Site-Scripting
 - Java-Angriffe
@@ -91,6 +91,8 @@ Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitste
 
 Die Versionsnummer des Standardregelsatzes wird erhöht, wenn dem Regelsatz neue Angriffssignaturen hinzugefügt werden.
 Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtlinien aktiviert. Sie können einzelne Regeln im Standardregelsatz deaktivieren bzw. aktivieren, um die Anforderungen Ihrer Anwendungen zu erfüllen. Sie können pro Regel auch bestimmte Aktionen (ALLOW/BLOCK/REDIRECT/LOG) festlegen.
+
+Manchmal ist es erforderlich, bestimmte Anforderungsattribute in einer WAF-Auswertung wegzulassen. Ein gängiges Beispiel sind von Active Directory eingefügte Token, die für die Authentifizierung verwendet werden. Sie können eine Ausschlussliste für eine verwaltete Regel, eine Regelgruppe oder für den gesamten Regelsatz konfigurieren.  
 
 Die Standardaktion ist „BLOCK“ (Blockieren). Darüber hinaus können in der gleichen WAF-Richtlinie auch benutzerdefinierte Regeln konfiguriert werden, wenn Sie eine der vorkonfigurierten Regeln im Standardregelsatz umgehen möchten.
 
