@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759481"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197180"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (früher SQL DW) – Häufig gestellte Fragen
 
@@ -108,7 +108,7 @@ A: Nein. PolyBase interagiert nur mit den Speicherkomponenten.
 
 F: Kann ich eine Verbindung mit HDI herstellen?
 
-A: HDI kann entweder ADLS oder WASB als HDFS-Ebene verwenden. Wenn Sie eine der beiden Komponenten als HDFS-Ebene verwenden, können Sie diese Daten in SQL DW laden. Sie können jedoch keine Pushdown-Berechnung für die HDI-Instanz ausführen. 
+A: HDI kann entweder ADLS oder WASB als HDFS-Ebene verwenden. Wenn Sie über eine der HDFS-Ebenen verfügen, können Sie diese Daten in ein SQL Analytics-Data Warehouse laden. Sie können jedoch keine Pushdown-Berechnung für die HDI-Instanz ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Synapse im Allgemeinen finden Sie auf unserer Seite mit der [Übersicht](sql-data-warehouse-overview-faq.md).

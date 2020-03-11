@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verwalten von Computeressourcen mit Azure Functions'
-description: Es wird beschrieben, wie Sie Azure Functions zum Verwalten der Computevorgänge Ihres Data Warehouse verwenden.
+description: Sie erfahren, wie Sie Azure Functions zum Verwalten der Computevorgänge in Ihrem SQL-Pool in Azure Synapse Analytics verwenden.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693020"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193156"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen mit Azure Functions in Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Verwalten von Computeressourcen mit Azure Functions im SQL-Pool von Azure Synapse Analytics
 
-In diesem Tutorial werden Computeressourcen für ein Data Warehouse mit Azure Functions in Azure SQL Data Warehouse verwaltet.
+In diesem Tutorial werden Computeressourcen für einen SQL-Pool mit Azure Functions in Azure Synapse Analytics verwaltet.
 
-Zum Nutzen einer Azure-Funktionen-App mit SQL Data Warehouse müssen Sie ein [Dienstprinzipalkonto](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) mit Zugriff vom Typ „Mitwirkender“ unter demselben Abonnement wie Ihre Data Warehouse-Instanz erstellen. 
+Zum Nutzen einer Azure-Funktions-App mit SQL-Pool müssen Sie ein [Dienstprinzipalkonto](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) mit Zugriff vom Typ „Mitwirkender“ unter demselben Abonnement wie Ihre SQL-Pool-Instanz erstellen. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Bereitstellen einer zeitgeberbasierten Skalierungsfunktion mit einer Azure Resource Manager-Vorlage
 
 Sie benötigen die folgenden Informationen, um die Vorlage bereitzustellen:
 
-- Name der Ressourcengruppe, in der sich Ihre SQL DW-Instanz befindet
-- Name des logischen Servers, auf dem sich Ihre SQL DW-Instanz befindet
-- Name Ihrer SQL DW-Instanz
+- Name der Ressourcengruppe, in der sich Ihre SQL-Pool-Instanz befindet
+- Name des logischen Servers, auf dem sich Ihre SQL-Pool-Instanz befindet
+- Name Ihrer SQL-Pool-Instanz
 - Mandanten-ID (Verzeichnis-ID) Ihrer Azure Active Directory-Instanz
 - Abonnement-ID 
 - Dienstprinzipal-Anwendungs-ID
@@ -119,17 +119,17 @@ Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Mit diesen
 5. Legen Sie Ihre Vorgangsvariable wie folgt auf das gewünschte Verhalten fest:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -141,30 +141,30 @@ Derzeit sind nur zwei Skalierungsfunktionen in der Vorlage enthalten. Mit diesen
 
 In diesem Abschnitt wird kurz demonstriert, wie Sie eine komplexere Zeitplanung für das Anhalten, Fortsetzen und Skalieren erreichen.
 
-### <a name="example-1"></a>Beispiel 1:
+### <a name="example-1"></a>Beispiel 1:
 
 Tägliches zentrales Hochskalieren um 8:00 Uhr auf DW600 und zentrales Herunterskalieren um 20:00 Uhr auf DW200
 
-| Funktion  | Schedule     | Vorgang                                |
+| Funktion  | Zeitplan     | Vorgang                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-2"></a>Beispiel 2: 
+### <a name="example-2"></a>Beispiel 2: 
 
 Tägliches zentrales Hochskalieren um 8:00 Uhr auf DW1000, zentrales Herunterskalieren auf DW600 um 16:00 Uhr und auf DW200 um 22:00 Uhr
 
-| Funktion  | Schedule     | Vorgang                                |
+| Funktion  | Zeitplan     | Vorgang                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
 | Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-3"></a>Beispiel 3: 
+### <a name="example-3"></a>Beispiel 3: 
 
 Zentrales Hochskalieren um 8:00 Uhr auf DW1000, zentrales Herunterskalieren auf DW600 um 16:00 Uhr an Wochentagen; Anhalten am Freitag um 23:00 Uhr, Fortsetzen am Montag um 7:00 Uhr
 
-| Funktion  | Schedule       | Vorgang                                |
+| Funktion  | Zeitplan       | Vorgang                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -177,7 +177,7 @@ Zentrales Hochskalieren um 8:00 Uhr auf DW1000, zentrales Herunterskalieren auf 
 
 Informieren Sie sich über [Trigger mit Timer](../azure-functions/functions-create-scheduled-function.md) für Azure-Funktionen.
 
-Sehen Sie sich das [Beispielrepository](https://github.com/Microsoft/sql-data-warehouse-samples) für SQL Data Warehouse an.
+Sehen Sie sich das [Beispielrepository](https://github.com/Microsoft/sql-data-warehouse-samples) für den SQL-Pool an.
 
 
 

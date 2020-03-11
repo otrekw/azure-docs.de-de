@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559843"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246189"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datenspeicherung und -eingang in Azure Time Series Insights Preview
 
@@ -162,7 +162,7 @@ Bei der Erstellung einer Time Series Insights Preview-Umgebung mit einer SKU mit
 * Eine Azure Time Series Insights Preview-Umgebung, die für die Speicherung von warmen Daten (Warm Storage) konfiguriert werden kann.
 * Ein Azure Storage-Blobkonto vom Typ „Universell V1“ für die Speicherung von kalten Daten.
 
-Daten im warmen Speicher sind nur über [Zeitreihenabfragen](./time-series-insights-update-tsq.md) und den [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md) verfügbar. 
+Daten im warmen Speicher sind nur über [Zeitreihenabfragen](./time-series-insights-update-tsq.md) und den [Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md) verfügbar. Der warme Speicher enthält aktuelle Daten innerhalb des beim Erstellen der Time Series Insights-Umgebung ausgewählten [Aufbewahrungszeitraums](./time-series-insights-update-plan.md#the-preview-environment).
 
 Time Series Insights Preview speichert kalte Speicherdaten im [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) im Azure-Blobspeicher. Time Series Insights Preview verwaltet diese kalten Speicherdaten exklusiv. Sie können diese Daten jedoch direkt als standardmäßige Parquet-Dateien lesen.
 
@@ -186,12 +186,7 @@ Eine ausführliche Beschreibung des Azure Blobspeichers finden Sie in der [Einf�
 
 Wenn Sie eine Azure Time Series Insights Preview-Umgebung mit nutzungsbasierter Bezahlung erstellen, wird ein Azure Storage-Blobkonto vom Typ „Universell V1“ als langfristiger Speicher für kalte Daten erstellt.  
 
-Azure Time Series Insights Preview veröffentlicht bis zu zwei Kopien jedes Ereignisses in Ihrem Azure-Speicherkonto. In der ersten Kopie sind Ereignisse nach dem Erfassungszeitpunkt sortiert. Diese Ereignisreihenfolge wird **immer beibehalten**, sodass andere Dienste ohne Sequenzierungsprobleme auf Ihre Ereignisse zugreifen können. 
-
-> [!NOTE]
-> Sie können auch Spark, Hadoop oder andere vertraute Tools verwenden, um die unformatierten Parquet-Dateien zu verarbeiten. 
-
-Time Series Insights Preview partitioniert auch die Parquet-Dateien neu, um sie für die Time Series Insights-Abfrage zu optimieren. Diese neu partitionierte Kopie der Daten wird ebenfalls gespeichert. 
+Azure Time Series Insights Preview behält bis zu zwei Kopien jedes Ereignisses in Ihrem Azure Storage-Konto bei. Eine Kopie speichert Ereignisse nach Erfassungszeit, wobei der Zugriff auf Ereignisse in einer zeitlich geordneten Sequenz immer zulässig ist. Im Laufe der Zeit wird in Time Series Insights Preview auch eine neu partitionierte Kopie der Daten erstellt, um die leistungsfähige Time Series Insights-Abfragen zu optimieren. 
 
 Während der öffentlichen Vorschauphase werden Daten mit unbegrenzter Dauer in Ihrem Azure-Speicherkonto gespeichert.
 
@@ -199,15 +194,11 @@ Während der öffentlichen Vorschauphase werden Daten mit unbegrenzter Dauer in 
 
 Um Abfrageleistung und Datenverfügbarkeit sicherzustellen, bearbeiten oder löschen Sie keine Blobs, die von Time Series Insights Preview erstellt werden.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Zugreifen auf und Exportieren von Daten aus Time Series Insights Preview
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Zugreifen auf Daten des kalten Speichers von Time Series Insights Preview 
 
-Sie können auf im Time Series Insights Preview-Explorer gespeicherte Daten zugreifen, um sie in Verbindung mit anderen Diensten zu verwenden. Sie können die Daten z. B. verwenden, um einen Bericht in Power BI zu erstellen oder in Azure Machine Learning Studio ein Machine Learning-Modell zu trainieren. Sie können die Daten auch zum Transformieren, Visualisieren und Modellieren in Ihren Jupyter-Notebooks verwenden.
+Zusätzlich zum Zugriff auf Ihre Daten über den [Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md) und [Time Series-Abfragen](./time-series-insights-update-tsq.md) können Sie auch direkt über die im kalten Speicher gespeicherten Parquet-Dateien auf Ihre Daten zugreifen. Beispielsweise können Sie Daten in einem Jupyter-Notebook lesen, transformieren und bereinigen und dann verwenden, um Ihr Azure Machine Learning-Modell im gleichen Spark-Workflow zu trainieren.
 
-Sie können auf drei allgemeine Arten auf Ihre Daten zugreifen:
-
-* Aus dem Time Series Insights Preview-Explorer. Sie können Daten als CSV-Datei aus dem Explorer exportieren. Weitere Informationen finden Sie unter [Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
-* Aus der Time Series Insights Preview-API unter Verwendung der Abfrage zum Abrufen von Ereignissen. Weitere Informationen zu dieser API finden Sie unter [Zeitreihenabfrage](./time-series-insights-update-tsq.md).
-* Direkt aus einem Azure-Speicherkonto. Sie benötigen Lesezugriff auf das jeweilige Konto, das Sie für den Zugriff auf Ihre Time Series Insights Preview-Daten verwenden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Ihre Speicherkontoressourcen](../storage/blobs/storage-manage-access-to-resources.md).
+Um direkt über Ihr Azure Storage-Konto auf Daten zuzugreifen, benötigen Sie Lesezugriff auf das Konto, das zum Speichern Ihrer Time Series Insights Preview-Daten verwendet wird. Sie können dann ausgewählte Daten basierend auf der Erstellungszeit der Parquet-Datei lesen, die sich im unten im Abschnitt [Parquet-Dateiformat](#parquet-file-format-and-folder-structure) beschriebenen Ordner `PT=Time` befindet.  Weitere Informationen zum Aktivieren des Lesezugriffs auf Ihr Speicherkonto finden Sie unter [Verwalten des Zugriffs auf Ihre Speicherkontoressourcen](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Löschen von Daten
 
@@ -215,21 +206,21 @@ Löschen Sie Ihre Time Series Insights Preview-Daten nicht. Verwalten Sie zugeh�
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet-Dateiformat und Ordnerstruktur
 
-Parquet ist ein spaltenbasiertes Open-Source-Dateiformat, das für effiziente Speicherung und Leistung konzipiert wurde. Aus diesen Gründen wird Parquet von Time Series Insights Preview verwendet. Die Daten werden anhand der Zeitreihen-ID partitioniert, um bei großen Datenmengen eine hohe Abfrageleistung zu erzielen.  
+Parquet ist ein spaltenbasiertes Open-Source-Dateiformat, das für effiziente Speicherung und Leistung konzipiert wurde. Time Series Insights Preview verwendet Parquet, um Time Series-ID-basierte Abfrageleistung im richtigen Maßstab zu ermöglichen.  
 
 Weitere Informationen zum Parquet-Dateityp finden Sie in der [Parquet-Dokumentation](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights Preview speichert wie folgt Kopien Ihrer Daten:
 
-* Die erste, anfängliche Kopie wird anhand des Erfassungszeitpunkts partitioniert und speichert Daten in etwa in der Reihenfolge ihres Eingangs. Die Daten befinden sich im Ordner `PT=Time`:
+* Die erste, anfängliche Kopie wird anhand des Erfassungszeitpunkts partitioniert und speichert Daten in etwa in der Reihenfolge ihres Eingangs. Diese Daten befinden sich im Ordner `PT=Time`:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* Die zweite, neu partitionierte Kopie wird durch Gruppierung von Zeitreihen-IDs partitioniert und befindet sich im Ordner `PT=TsId`:
+* Die zweite, neu partitionierte Kopie wird nach Time Serie-IDs gruppiert und befindet sich im Ordner `PT=TsId`:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-In beiden Fällen entsprechen die Werte für die Uhrzeit der Uhrzeit der Bloberstellung. Daten im Ordner `PT=Time` werden beibehalten. Daten im Ordner `PT=TsId` werden im Lauf der Zeit für Abfragen optimiert und bleiben nicht statisch.
+In beiden Fällen entspricht die time-Eigenschaft der Parquet-Datei der Erstellungszeit des Blobs. Daten im Ordner `PT=Time` werden ohne Änderungen beibehalten, nachdem sie in die Datei geschrieben wurden. Daten im Ordner `PT=TsId` werden im Lauf der Zeit für Abfragen optimiert und sind nicht statisch.
 
 > [!NOTE]
 > * `<YYYY>` entspricht einer vierstelligen Jahresdarstellung.
@@ -239,10 +230,10 @@ In beiden Fällen entsprechen die Werte für die Uhrzeit der Uhrzeit der Blobers
 Time Series Insights Preview-Ereignisse werden dem Inhalt von Parquet-Dateien wie folgt zugeordnet:
 
 * Jedes Ereignis wird einer einzelnen Zeile zugeordnet.
-* Jede Zeile enthält die Spalte **timestamp** mit einem Zeitstempel für das Ereignis. Die timestamp-Eigenschaft ist nie NULL. Ihr Standardwert ist der **Zeitpunkt der Einreihung des Ereignisses in die Warteschlange**, wenn die timestamp-Eigenschaft in der Ereignisquelle nicht angegeben ist. Der Zeitstempel wird immer in UTC angegeben.
-* Jede Zeile enthält eine oder mehrere Spalten mit der Zeitreihen-ID, wie beim Erstellen der Time Series Insights-Umgebung definiert. Der Eigenschaftsname enthält das Suffix `_string`.
+* Jede Zeile enthält die Spalte **timestamp** mit einem Zeitstempel für das Ereignis. Die timestamp-Eigenschaft ist nie NULL. Ihr Standardwert ist der **Zeitpunkt der Einreihung des Ereignisses in die Warteschlange**, wenn die timestamp-Eigenschaft in der Ereignisquelle nicht angegeben ist. Der gespeicherte Zeitstempel wird immer in UTC angegeben.
+* Jede Zeile enthält die TSID-Spalten (Time Series-ID), wie beim Erstellen der Time Series Insights-Umgebung definiert. Der TSID-Eigenschaftsname enthält das Suffix `_string`.
 * Alle anderen als Telemetriedaten gesendeten Eigenschaften werden Spaltennamen zugeordnet, die je nach Eigenschaftstyp auf `_string` (Zeichenfolge), `_bool` (boolesch), `_datetime` (Datum/Uhrzeit) und `_double` (Double) enden.
-* Dieses Zuordnungsschema gilt für die erste Version des Dateiformats, auf das als **V=1** verwiesen wird. Mit der Weiterentwicklung dieses Features wird der Name hochgezählt.
+* Dieses Zuordnungsschema gilt für die erste Version des Dateiformats, auf die als **V=1** verwiesen und die im Basisordner desselben Namens gespeichert wird. Wenn diese Funktion weiterentwickelt wird, kann sich dieses Zuordnungsschema ändern und der Verweisname erhöht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

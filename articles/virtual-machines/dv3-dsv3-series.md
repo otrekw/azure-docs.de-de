@@ -2,17 +2,17 @@
 title: 'Serien Dv3 und Dsv3: Azure Virtual Machines'
 description: Hier finden Sie die Spezifikationen für virtuelle Computer der Dv3-Serie und der Dsv3-Serie.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492615"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164405"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- und Dsv3-Serie
 
@@ -33,6 +33,10 @@ ACU: 160–190
 Storage Premium  Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU: 160–190
 Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|

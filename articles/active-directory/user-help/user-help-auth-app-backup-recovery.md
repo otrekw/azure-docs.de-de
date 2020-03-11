@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063933"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297975"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
 **Anwendungsbereich:**
 
@@ -81,23 +81,41 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>So führen Sie einen zusätzlichen Überprüfungsschritt für persönliche Konten aus
 
-1. Klicken Sie in der Microsoft Authenticator-App auf dem Bildschirm **Konten** auf den Dropdownpfeil neben dem Konto, das Sie wiederherstellen möchten.
+1. Wählen Sie in der Microsoft Authenticator-App auf dem Bildschirm **Konten** das Konto aus, das Sie wiederherstellen möchten. Wählen Sie auf einem Android-Gerät den Pfeil neben dem Konto aus, das Sie wiederherstellen möchten.
 
     ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. Klicken Sie auf **Sign in to recover** (Zur Wiederherstellung anmelden), geben Sie Ihr Kennwort ein, und bestätigen Sie in einem zusätzlichen Überprüfungsschritt Ihre E-Mail-Adresse oder Telefonnummer.
+    Tippen Sie auf einem iOS-Gerät auf das Konto, das Sie wiederherstellen möchten, um die Vollbildansicht des Kontos zu öffnen.
 
-    ![Microsoft Authenticator-App, die die Eingabe der Anmeldeinformationen ermöglicht](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. Melden Sie sich an, um das Konto wiederherzustellen. Wählen Sie auf einem Android-Gerät **Für Wiederherstellung anmelden** aus.
+
+    ![Microsoft Authenticator-App: Eingabe der Anmeldeinformationen unter Android](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    Tippen Sie auf einem iOS-Gerät auf die Kontokachel, die Sie wiederherstellen möchten, und tippen Sie dann auf die Option zum Anmelden und Wiederherstellen. Geben Sie dann Ihr Kennwort ein, und bestätigen Sie in einem zusätzlichen Überprüfungsschritt Ihre E-Mail-Adresse oder Telefonnummer.
+
+    ![Microsoft Authenticator-App: Eingabe der Anmeldeinformationen unter iOS](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>So führen Sie einen zusätzlichen Überprüfungsschritt für Geschäfts-, Schul- oder Unikonten aus
 
-1. Klicken Sie in der Microsoft Authenticator-App auf dem Bildschirm **Konten** auf den Dropdownpfeil neben dem Konto, das Sie wiederherstellen möchten.
+1. Melden Sie sich an, um das Konto wiederherzustellen. Wählen Sie auf einem Android-Gerät **Für Wiederherstellung anmelden** aus.
 
-    ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Microsoft Authenticator-App: Wiederherstellen eines Geschäfts-, Schul- oder Unikontos unter Android](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. Wählen Sie **Scan QR code to recover** (Zur Wiederherstellung QR-Code scannen), und scannen Sie dann den QR-Code.
+    Tippen Sie auf einem iOS-Gerät auf das Konto, das Sie wiederherstellen möchten, um die Vollbildansicht des Kontos zu öffnen.
 
-    ![Microsoft Authenticator-App, die das Scannen des QR-Codes ermöglicht](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![Microsoft Authenticator-App: Wiederherstellen eines Geschäfts-, Schul- oder Unikontos unter iOS](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. Sie können einen QR-Code verwenden, um ein Konto wiederherzustellen. Wählen Sie **Scan QR code to recover** (Zur Wiederherstellung QR-Code scannen), und scannen Sie dann den QR-Code.
+
+    Unter Android:
+
+    ![Microsoft Authenticator-App unter Android, die das Scannen des QR-Codes ermöglicht](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    Unter iOS:
+
+    ![Microsoft Authenticator-App unter iOS, die das Scannen des QR-Codes ermöglicht](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >Weitere Informationen zu QR-Codes und zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifikator-App](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.
@@ -106,19 +124,19 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Beheben von Problemen bei der Sicherung und Wiederherstellung
 
-Es gibt einige Gründe, warum die Sicherung möglicherweise nicht verfügbar ist:
+Es gibt einige Gründe, warum die Sicherung möglicherweise nicht verfügbar ist.
 
-- **Änderung der Betriebssysteme.** Ihre Sicherung wird in der iCloud für iOS und bei Microsofts Cloudspeicheranbieter für Android gespeichert. Dies bedeutet, dass die Sicherung nicht verfügbar ist, wenn Sie zwischen Android- und iOS-Geräten wechseln. Bei einem Wechsel müssen Sie Ihre Konten in der Microsoft Authenticator-App manuell neu erstellen.
+- **Änderung der Betriebssysteme**: Ihre Sicherung wird in der iCloud für iOS und bei Microsofts Cloudspeicheranbieter für Android gespeichert. Dies bedeutet, dass die Sicherung nicht verfügbar ist, wenn Sie zwischen Android- und iOS-Geräten wechseln. Bei einem Wechsel müssen Sie Ihre Konten in der Microsoft Authenticator-App manuell neu erstellen.
 
-- **Netzwerkprobleme:** Wenn netzwerkbezogene Probleme auftreten, stellen Sie sicher, dass Sie mit dem Netzwerk verbunden und ordnungsgemäß bei Ihrem Konto angemeldet sind.
+- **Netzwerkprobleme**: Wenn netzwerkbezogene Probleme auftreten, stellen Sie sicher, dass Sie mit dem Netzwerk verbunden und ordnungsgemäß bei Ihrem Konto angemeldet sind.
 
-- **Kontoprobleme:** Wenn kontobezogene Probleme auftreten, stellen Sie sicher, dass Sie ordnungsgemäß bei Ihrem Konto angemeldet sind. Unter iOS bedeutet dies, dass Sie mit dem gleichen AppleID-Konto wie Ihr iPhone bei iCloud angemeldet sein müssen.
+- **Kontoprobleme**: Wenn kontobezogene Probleme auftreten, stellen Sie sicher, dass Sie ordnungsgemäß bei Ihrem Konto angemeldet sind. Unter iOS bedeutet dies, dass Sie mit dem gleichen AppleID-Konto wie Ihr iPhone bei iCloud angemeldet sein müssen.
 
-- **Versehentliche Löschung.** Möglicherweise haben Sie Ihr Sicherungskonto auf dem alten Gerät oder beim Verwalten des Cloudspeicherkontos gelöscht. In diesem Fall müssen Sie Ihr Konto in der App manuell neu erstellen.
+- **Versehentliche Löschung**: Möglicherweise haben Sie Ihr Sicherungskonto auf dem alten Gerät oder beim Verwalten des Cloudspeicherkontos gelöscht. In diesem Fall müssen Sie Ihr Konto in der App manuell neu erstellen.
 
-- **Vorhandene Microsoft Authenticator-Konten.** Wenn Sie in der Microsoft Authenticator-App bereits Konten eingerichtet haben, kann die App die gesicherten Konten nicht wiederherstellen. Durch das Verhindern der Wiederherstellung wird sichergestellt, dass Ihre Kontodetails nicht mit veralteten Informationen überschrieben werden. In diesem Fall müssen Sie alle vorhandenen Kontoinformationen aus den in der Authenticator-App eingerichteten Konten entfernen, damit Sie die Sicherung wiederherstellen können.
+- **Vorhandene Microsoft Authenticator-Konten**: Wenn Sie in der Microsoft Authenticator-App bereits Konten eingerichtet haben, kann die App die gesicherten Konten nicht wiederherstellen. Durch das Verhindern der Wiederherstellung wird sichergestellt, dass Ihre Kontodetails nicht mit veralteten Informationen überschrieben werden. In diesem Fall müssen Sie alle vorhandenen Kontoinformationen aus den in der Authenticator-App eingerichteten Konten entfernen, damit Sie die Sicherung wiederherstellen können.
 
-- **Die Sicherung ist veraltet.** Wenn Ihre Sicherungsinformationen veraltet sind, werden Sie möglicherweise aufgefordert, die Informationen zu aktualisieren, indem Sie sich erneut bei Ihrem Microsoft-Wiederherstellungskonto anmelden. Bei Ihrem Wiederherstellungskonto handelt es sich um das persönliche Microsoft-Konto, das Sie ursprünglich zum Speichern Ihrer Sicherung verwendet haben. Wenn eine Anmeldung erforderlich ist, wird auf der Menü- oder Aktionsleiste ein roter Punkt angezeigt. Nachdem Sie den roten Punkt ausgewählt haben, werden Sie aufgefordert, sich erneut anzumelden, um Ihre Informationen zu aktualisieren.
+- **Sicherung ist veraltet**: Wenn Ihre Sicherungsinformationen veraltet sind, werden Sie möglicherweise aufgefordert, die Informationen zu aktualisieren, indem Sie sich erneut bei Ihrem Microsoft-Wiederherstellungskonto anmelden. Bei Ihrem Wiederherstellungskonto handelt es sich um das persönliche Microsoft-Konto, das Sie ursprünglich zum Speichern Ihrer Sicherung verwendet haben. Wenn eine Anmeldung erforderlich ist, wird ein roter Punkt im Menü oder in der Aktionsleiste angezeigt, oder es wird ein Ausrufezeichen angezeigt, mit dem Sie aufgefordert werden, sich anzumelden, um die Wiederherstellung aus der Sicherung abzuschließen. Nachdem Sie das Symbol ausgewählt haben, werden Sie aufgefordert, sich erneut anzumelden, um Ihre Informationen zu aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

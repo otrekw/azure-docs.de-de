@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 985417200737e00ddbda4194cf7596b11c74ac10
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153722"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920738"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul „Two-Class Boosted Decision Tree“
 
@@ -38,6 +38,7 @@ Diese Art von Modell kann mithilfe von [Train Model](././train-model.md) (Modell
   
     + **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.
   
+    + **Parameter Range** (Parameterbereich): Wenn Sie sich hinsichtlich der besten Parameter nicht sicher sind, können Sie optimale Parameter mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md) finden. Sie geben einen Wertebereich an, woraufhin das Training über mehrere Einstellungskombinationen iteriert, um die Wertekombination zu bestimmen, die das beste Ergebnis liefert.
   
 3.  Geben Sie unter **Maximum number of leaves per tree** (Maximale Anzahl von Blättern pro Struktur) die maximale Anzahl von Endknoten (Blätter) an, die in einer Struktur erstellt werden können.
   

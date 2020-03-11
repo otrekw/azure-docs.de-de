@@ -3,20 +3,20 @@ title: Anspruchskonfliktlöser in benutzerdefinierten Richtlinien
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Anspruchskonfliktlöser in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
-ms.author: marsma
+ms.date: 03/02/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425645"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189836"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -75,6 +75,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | login |
 | {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
 | {OIDC:scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
+| {OIDC:RedirectUri} |Der Abfragezeichenfolgen-Parameter `redirect_uri`. | https://jwt.ms |
 
 ### <a name="context"></a>Kontext
 
@@ -85,7 +86,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {Context:DateTimeInUtc} |Datum und Uhrzeit in UTC.  | 10/10/2018 12:00:00 PM |
 | {Context:DeploymentMode} |Die Methode zur Richtlinienbereitstellung.  | Bereitstellung |
 | {Context:IPAddress} | Die Benutzer-IP-Adresse. | 11.111.111.11 |
-
+| {Context:KMSI} | Gibt an, ob das Kontrollkästchen [Angemeldet bleiben](custom-policy-keep-me-signed-in.md) aktiviert ist. |  true |
 
 ### <a name="non-protocol-parameters"></a>Nicht-Protokoll-Parameter
 
@@ -116,9 +117,9 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 | {SAML:ForceAuthn} | Der Wert des `ForceAuthN`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung. | True |
 | {SAML:ProviderName} | Der Wert des `ProviderName`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern 
+## <a name="using-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern
 
-Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden: 
+Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden:
 
 | Element | Element | Einstellungen |
 | ----- | ----------------------- | --------|
@@ -134,7 +135,7 @@ Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden:
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile): technisches Profil| `OutputClaim`| 2 |
 
-Einstellungen: 
+Einstellungen:
 1. Die `IncludeClaimResolvingInClaimsHandling`-Metadaten müssen auf `true` festgelegt werden.
 1. Das Eingabe- oder Ausgabeanspruchsattribut `AlwaysUseDefaultValue` muss auf `true` festgelegt werden.
 
@@ -194,7 +195,7 @@ Als Resultat sendet Azure AD B2C die oben genannten Parameter an die HTML-Inhalt
 
 ### <a name="content-definition"></a>Inhaltsdefinition
 
-In einer [ContentDefinition](contentdefinitions.md) `LoadUri` können Sie Anspruchskonfliktlöser senden, um Inhalt von verschiedenen Speicherorten basierend auf den verwendeten Parametern abzurufen. 
+In einer [ContentDefinition](contentdefinitions.md) `LoadUri` können Sie Anspruchskonfliktlöser senden, um Inhalt von verschiedenen Speicherorten basierend auf den verwendeten Parametern abzurufen.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -223,7 +224,7 @@ Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblick
 
 ### <a name="relying-party-policy"></a>Richtlinie für die vertrauende Seite
 
-In einem technischen Profil der Richtlinie für die [vertrauende Seite](relyingparty.md) können Sie die Mandanten-ID oder die Korrelations-ID an die Anwendung der vertrauenden Seite innerhalb des JWT senden. 
+In einem technischen Profil der Richtlinie für die [vertrauende Seite](relyingparty.md) können Sie die Mandanten-ID oder die Korrelations-ID an die Anwendung der vertrauenden Seite innerhalb des JWT senden.
 
 ```XML
 <RelyingParty>

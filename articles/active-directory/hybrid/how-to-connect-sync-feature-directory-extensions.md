@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889821"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917912"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect-Synchronisierung: Verzeichniserweiterungen
-Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Azure AD Graph-API-Verzeichniserweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) oder über [Microsoft Graph](https://developer.microsoft.com/graph/) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) bzw. des [Microsoft Graph-Testers](https://developer.microsoft.com/graph/graph-explorer) anzeigen. Sie können diese Funktion auch zum Erstellen dynamischer Gruppen in Azure AD verwenden.
+Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](https://docs.microsoft.com/graph/extensibility-overview
+) genutzt werden. Sie können die verfügbaren Attribute mithilfe von [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) anzeigen. Sie können diese Funktion auch zum Erstellen dynamischer Gruppen in Azure AD verwenden.
 
 Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
 
@@ -61,16 +62,12 @@ Zum Anzeigen dieser App müssen Sie **Alle Anwendungen** auswählen.
 
 Die Attribute weisen das Präfix **extension \_{ApplicationId}\_** auf. Die Anwendungs-ID (ApplicationId) besitzt für alle Attribute in Ihrem Azure AD-Mandanten den gleichen Wert. Dieser Wert wird für alle anderen Szenarien in diesem Thema benötigt.
 
-## <a name="viewing-attributes-using-graph"></a>Anzeigen von Attributen mit Graph
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Anzeigen von Attributen mit der Microsoft Graph-API
 
-Diese Attribute sind jetzt über die Azure AD Graph-API verfügbar. Sie können sie mithilfe von [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net/) abfragen.
-
-![Azure AD Graph-Explorer](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-Sie können die Attribute auch mithilfe des [Microsoft Graph-Testers](https://developer.microsoft.com/graph/graph-explorer#) über die Microsoft Graph-API abfragen.
+Diese Attribute sind jetzt in [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer#) über die Microsoft Graph-API verfügbar.
 
 >[!NOTE]
-> In Microsoft Graph müssen Sie angeben, dass die Attribute zurückgegeben werden. Wählen Sie explizit Attribute wie das folgende aus: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division.
+> In der Microsoft Graph-API müssen Sie die zurückzugebenden Attribute anfordern. Wählen Sie die Attribute wie folgt explizit aus: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
 > Weitere Informationen finden Sie unter [Microsoft Graph: Verwenden von Abfrageparametern](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

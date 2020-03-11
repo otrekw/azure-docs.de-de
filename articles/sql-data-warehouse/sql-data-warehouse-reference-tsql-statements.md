@@ -1,6 +1,6 @@
 ---
 title: T-SQL-Anweisungen
-description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
+description: Links zur Dokumentation für die in SQL Analytics unterstützten T-SQL-Anweisungen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685518"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198353"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>T-SQL-Anweisungen, die in Azure SQL Data Warehouse unterstützt werden
-Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>In SQL Analytics unterstützte T-SQL-Anweisungen
+Links zur Dokumentation für die in SQL Analytics unterstützten T-SQL-Anweisungen.
 
 ## <a name="data-definition-language-ddl-statements"></a>Anweisungen der Data Definition Language (DDL)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -64,7 +64,7 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 * [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)
 
-## <a name="database-console-commands"></a>Datenbankkonsolenbefehle
+## <a name="database-console-commands"></a>Database Console Commands (Datenbankkonsolenbefehle)
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (Vorschauversion)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
@@ -120,4 +120,4 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Sprachelemente](sql-data-warehouse-reference-tsql-language-elements.md) und [Systemsichten](sql-data-warehouse-reference-tsql-system-views.md).
+Weitere Referenzinformationen finden Sie unter [T-SQL-Sprachelemente in SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md) und [T-SQL-Systemsichten in SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).

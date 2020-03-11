@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087031"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245130"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ Das Verzeichnis `examples/cli-train-deploy` des Projekts enthält die folgenden 
 Das Repository enthält die folgenden Dateien, mit denen das trainierte Modell als Webdienst bereitgestellt wird:
 
 * `aciDeploymentConfig.yml`: Eine Datei für die __Bereitstellungskonfiguration__. Diese Datei definiert die für das Modell erforderliche Hostingumgebung.
-* `inferenceConfig.yml`: Eine Datei für die Rückschlusskonfiguration. Diese Datei definiert die Softwareumgebung, die vom Dienst verwendet wird, um Daten mit dem Modell zu bewerten.
+* `inferenceConfig.yml`: Eine Datei für die __Rückschlusskonfiguration__. Diese Datei definiert die Softwareumgebung, die vom Dienst verwendet wird, um Daten mit dem Modell zu bewerten.
 * `score.py`: Ein Python-Skript, das eingehende Daten akzeptiert, sie mit dem Modell bewertet und dann eine Antwort zurückgibt.
 * `scoring-env.yml`: Die Conda-Abhängigkeiten, die für die Ausführung des Modells und des `score.py`-Skripts erforderlich sind.
 * `testdata.json`: Eine Datendatei, die zum Testen des bereitgestellten Webdiensts verwendet werden kann.
@@ -381,7 +381,7 @@ Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Versi
 
 Die Datei `inferenceConfig.yml` enthält Informationen zur Verwendung des Modells für Rückschlüsse. Sie verweist z. B. auf das Einstiegsskript (`score.py`) und die Softwareabhängigkeiten. 
 
-Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-deployment-artifacts).
+Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 Die `aciDeploymentConfig.yml` beschreibt die zum Hosten des Dienstes verwendete Bereitstellungsumgebung. Die Bereitstellungskonfiguration hängt vom Computetyp ab, den Sie für die Bereitstellung verwenden. In diesem Fall wird eine Azure Container Instance verwendet. Weitere Informationen finden Sie unter [Bereitstellungskonfigurationsschema](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

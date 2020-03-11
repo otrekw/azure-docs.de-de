@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: dc2086223dea9bff311aac9e7d4771b5273f0e91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492551"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226725"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Größen von virtuellen HPC-Computern (High Performance Computing)
 
@@ -46,6 +46,10 @@ VMs der [H-Serie](h-series.md) sind für Anwendungen optimiert, für die Anforde
   
 - **Virtuelles Netzwerk:** Ein [virtuelles Azure-Netzwerk](https://azure.microsoft.com/documentation/services/virtual-network/) ist nicht erforderlich, um die rechenintensiven Instanzen zu verwenden. Für viele Bereitstellungen benötigen Sie jedoch mindestens ein cloudbasiertes virtuelles Azure-Netzwerk oder auch eine Site-to-Site-Verbindung für den Zugriff auf lokale Ressourcen. Erstellen Sie ggf. ein neues virtuelles Netzwerk zum Bereitstellen der Instanzen. Das Hinzufügen rechenintensiver virtueller Computer zu einem virtuellen Netzwerk in einer Affinitätsgruppe wird nicht unterstützt.
 - **Größenanpassung:** Aufgrund der speziellen Hardware können Sie die Größe rechenintensiver Instanzen nur innerhalb der gleichen Größenfamilie (H-Serie oder rechenintensive A-Serie) anpassen. So können Sie beispielsweise die Größe eines virtuellen Computers der H-Serie nur auf eine andere Größe der H-Serie festlegen. Wechsel von einer nicht rechenintensiven Größe zu einer rechenintensiven Größe werden nicht unterstützt.  
+
+> [!NOTE]
+> Die Außerbetriebnahme von A8- bis A11-VMs ist für März 2021 geplant. Weitere Informationen finden Sie im [HPC-Migrationsleitfaden](https://azure.microsoft.com/resources/hpc-migration-guide/).
+
 ## <a name="rdma-capable-instances"></a>RDMA-fähige Instanzen
 
 Eine Teilmenge der rechenintensiven Instanzen (A8, A9, H16r, H16mr, HB und HC) verfügt über eine Netzwerkschnittstelle für RDMA-Verbindungen (Remote Direct Memory Access). Ausgewählte N-Seriengrößen mit dem Zusatz „r“, z. B. die NC24rs-Konfigurationen (NC24rs_v2 und NC24rs_v3), sind ebenfalls RDMA-fähig. Diese Schnittstelle steht zusätzlich zur standardmäßigen Azure-Netzwerkschnittstelle anderer VM-Größen zur Verfügung.
@@ -87,7 +91,7 @@ In bestimmten Bereitstellungen von A8- und A9-Instanzen wird die Erweiterung Hpc
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](/extensions/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic) bereitgestellt wurden.
+  Weitere Informationen finden Sie unter [Erweiterungen und Features für virtuelle Computer](./extensions/overview.md). Erweiterungen können auch für virtuelle Computer verwendet werden, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic) bereitgestellt wurden.
 
 - **RDMA-Netzwerkadressbereich:** Für das RDMA-Netzwerk in Azure wird der Adressbereich 172.16.0.0/16 reserviert. Wenn Sie MPI-Anwendungen auf Instanzen ausführen möchten, die in einem virtuellen Azure-Netzwerk bereitgestellt wurden, vergewissern Sie sich, dass der Adressraum des virtuellen Netzwerks sich nicht mit dem RDMA-Netzwerk überschneidet.
 
@@ -99,7 +103,7 @@ Azure bietet mehrere Optionen zum Erstellen von Clustern von Windows-HPC-VMs, di
 
 - **VM-Skalierungsgruppen**: Stellen Sie bei Verwendung einer VM-Skalierungsgruppe sicher, dass Sie die Bereitstellung auf eine einzelne Platzierungsgruppe beschränken. Legen Sie z. B. in einer Resource Manager-Vorlage die Eigenschaft `singlePlacementGroup` auf `true` fest. 
 
-- **MPI zwischen virtuellen Computern**: Wenn für die MPI-Kommunikation zwischen virtuellen Computern (VMs) erforderlich, dann sollten Sie sicherstellen, dass sich die VMs in der selben Verfügbarkeitsgruppe oder derselben VM-Skalierungsgruppe befinden.
+- **MPI zwischen virtuellen Computern**: Wenn MPI-Kommunikation zwischen virtuellen Computern (VMs) erforderlich ist, sollten Sie sicherstellen, dass sich die VMs in derselben Verfügbarkeitsgruppe oder derselben VM-Skalierungsgruppe befinden.
 
 - **Azure CycleCloud**: Erstellen Sie in [Azure CycleCloud](/azure/cyclecloud/) einen HPC-Cluster zum Ausführen von MPI-Aufträgen auf Windows-Knoten.
 

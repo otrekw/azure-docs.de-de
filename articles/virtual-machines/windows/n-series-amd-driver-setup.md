@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190538"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269437"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows
 
@@ -31,13 +31,20 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 
 | OS | Treiber |
 | -------- |------------- |
-| Windows 10 EVD - Build 1903 <br/><br/>Windows 10 - Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19.Q4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (.exe) |
+| Windows 10 EVD - Build 1903 <br/><br/>Windows 10 - Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+
 
 ## <a name="driver-installation"></a>Treiberinstallation
 
 1. Stellen Sie über Remotedesktop eine Verbindung mit den einzelnen virtuellen Computern der NVv4-Serie her.
 
-1. Laden Sie die Treibersetupdateien herunter, und extrahieren Sie sie. Navigieren Sie zum Ordner, und führen Sie „Setup.exe“ aus, um den unterstützten Treiber für das Windows-Betriebssystem zu installieren.
+2. Wenn Sie Kunde von NVv4 Vorschau sind, beenden Sie die VM, und warten Sie dann, bis sie den Staus „Stopped(Deallocated)“ (Beendet, Zuordnung aufgehoben) aufweist.
+
+3. Starten Sie die VM, und deinstallieren Sie den Vorschautreiber, indem Sie „amdcleanuputility-x64.exe“ im Ordner „...\AMDCleanUninstallUtility“ ausführen. Der genaue Pfad hängt davon ab, wo sich die vorherigen Treiberinstallationsdateien befinden.  
+
+4. Laden Sie den neuesten Treiber herunter, und installieren Sie ihn.
+
+5. Starten Sie die VM neu.
 
 ## <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
 

@@ -2,17 +2,17 @@
 title: 'Mv2-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der Mv2-Serie.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: caa80443a189874bfd699dba412fb749c8711556
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492503"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163895"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -24,6 +24,10 @@ Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
 
+Livemigration: Nicht unterstützt
+
+Updates mit Speicherbeibehaltung: Nicht unterstützt
+
 Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 |Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
@@ -33,7 +37,7 @@ Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-m
 | Standard_M416ms_v2<sup>1, 2</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
 | Standard_M416s_v2<sup>1, 2</sup> | 416 | 5\.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
 
-<sup>1</sup> VMs der Mv2-Serie sind nur als Generation 2 erhältlich. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](/linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images.
+<sup>1</sup> VMs der Mv2-Serie sind nur als Generation 2 erhältlich. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images.
 
 <sup>2</sup> Beachten Sie bei den Größen M416ms_v2 und M416s_v2, dass für das folgende Image nur Anfangsunterstützung verfügbar ist: „GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen.“
 

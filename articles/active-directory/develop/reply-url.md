@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983094"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656737"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Umleitungs-URI/Antwort-URL: Einschränkungen
 
@@ -30,7 +30,7 @@ Ein Umleitungs-URI oder eine Antwort-URL definiert den Ort, an den der Autorisie
 
 Die folgende Tabelle zeigt die maximale Anzahl von Umleitungs-URIs, die Sie beim Registrieren Ihrer App hinzufügen können.
 
-| Angemeldete Konten | Maximale Anzahl von Umleitungs-URIs | Beschreibung |
+| Angemeldete Konten | Maximale Anzahl von Umleitungs-URIs | BESCHREIBUNG |
 |--------------------------|---------------------------------|-------------|
 | Geschäfts-, Schul- oder Unikonten von Microsoft in einem beliebigen Azure Active Directory (Azure AD)-Mandanten eines Unternehmens | 256 | Das Feld `signInAudience` im Anwendungsmanifest ist entweder auf *AzureADMyOrg* oder *AzureADMultipleOrgs* eingestellt |
 | Persönliche Konten sowie Geschäfts-, Schul- und Unikonten von Microsoft | 100 | Das Feld `signInAudience` im Anwendungsmanifest ist auf *AzureADandPersonalMicrosoftAccount* eingestellt |
@@ -54,7 +54,7 @@ Das Azure AD-Anwendungsmodell unterstützt keine Platzhalter-URIs für Apps, die
 > [!NOTE]
 > In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) können Entwickler auf der Benutzeroberfläche keine Platzhalter-URIs hinzufügen. Das Hinzufügen von Platzhalter-URIs für Apps, die Geschäfts-, Schul- oder Unikonten anmelden, wird nur über den App-Manifest-Editor unterstützt. In Zukunft werden bei neuen Apps im Umleitungs-URI keine Platzhalter mehr verwendet werden können. Ältere Anwendungen, die Platzhalter in Umleitungs-URIs enthalten, funktionieren jedoch weiterhin.
 
-Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter einen der folgenden Ansätze wählen.
+Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter den folgenden Ansatz wählen.
 
 ### <a name="use-a-state-parameter"></a>Verwenden eines Statusparameters
 
@@ -70,10 +70,6 @@ Dieser Ansatz ermöglicht Folgendes:
 
 > [!NOTE]
 > Dieser Ansatz ermöglicht einem kompromittierten Client, die im Statusparameter gesendeten zusätzlichen Parameter zu ändern, wodurch der Benutzer zu einer anderen URL umgeleitet wird. Dieser [Open Redirect](https://tools.ietf.org/html/rfc6819#section-4.2.4)-Angriff (Sicherheitsrisiko durch offene Umleitung) ist in RFC 6819 beschrieben. Daher muss der Client diese Parameter schützen, indem er den Status verschlüsselt oder auf andere Weise verifiziert, z.B. durch Überprüfen des Domänennamens im Umleitungs-URI anhand des Tokens.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Hinzufügen von Umleitungs-URIs zu Dienstprinzipalen
-
-Ein weiterer Ansatz ist das Hinzufügen von Umleitungs-URIs zu den [Dienstprinzipalen](app-objects-and-service-principals.md#application-and-service-principal-relationship), die Ihre App-Registrierung in einem beliebigen Azure AD-Mandanten darstellen. Sie können diesen Ansatz verwenden, wenn Sie keinen Statusparameter verwenden können oder wenn Ihr Szenario erfordert, dass Sie für jeden neuen Mandanten, den Sie unterstützen, neue Umleitungs-URIs zur App-Registrierung hinzufügen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

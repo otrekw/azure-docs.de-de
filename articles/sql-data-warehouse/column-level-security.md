@@ -1,5 +1,5 @@
 ---
-title: Was ist die Sicherheit auf Spaltenebene für SQL Data Warehouse?
+title: Was ist die Sicherheit auf Spaltenebene für Azure Synapse?
 description: Mithilfe der Sicherheit auf Spaltenebene können Kunden den Zugriff auf Spalten in Datenbanktabellen basierend auf dem Ausführungskontext oder der Gruppenmitgliedschaft des Benutzers steuern und somit den Entwurf und die Programmierung der Sicherheit in Ihrer Anwendung vereinfachen. Dies ermöglicht das Implementieren von Einschränkungen beim Spaltenzugriff.
 services: sql-data-warehouse
 author: julieMSFT
@@ -7,16 +7,17 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/02/2019
+ms.date: 02/05/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+tags: azure-synapse
+ms.openlocfilehash: aa9791f019436cc5c7effc9bce197d89131a6557
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513047"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199970"
 ---
 # <a name="column-level-security"></a>Sicherheit auf Spaltenebene
 
@@ -24,7 +25,7 @@ Mit der Sicherheit auf Spaltenebene können Kunden den Zugriff auf Tabellenspalt
 
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Nach der Bereitstellung dieses Videos wurde auch [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) in SQL Data Warehouse verfügbar gemacht. 
+Nach der Bereitstellung dieses Videos wurde auch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) in Azure Synapse verfügbar gemacht. 
 
 Sicherheit auf Spaltenebene vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung, indem Sie den Spaltenzugriff einschränken können, um vertrauliche Daten zu schützen. Zum Beispiel können Sie so sicherstellen, dass bestimmte Benutzer nur auf bestimmte Spalten einer Tabelle zugreifen können, die für ihre Abteilung relevant sind. Die Datenbeschränkungszugriffslogik befindet sich auf der Datenbankebene, statt fern der Daten auf einer anderen Anwendungsebene. Die Datenbank wendet die Zugriffsbeschränkungen jedes Mal an, wenn ein Datenzugriff von einer beliebigen Ebene aus versucht wird. Dadurch bietet Ihr gesamtes Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster. Darüber hinaus entfällt dank Sicherheit auf Spaltenebene die Notwendigkeit, Sichten zum Herausfiltern von Spalten einzuführen, um den Benutzern Zugriffsbeschränkungen aufzuerlegen.
 

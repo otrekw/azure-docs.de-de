@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901314"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206111"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Suchen von Gruppenmitgliedern und -besitzern (Vorschau) in Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Suchen von Gruppen und Mitgliedern (Vorschau) in Azure Active Directory
 
 In diesem Artikel erfahren Sie, wie Sie nach Mitgliedern und Besitzern einer Gruppe suchen, und wie Sie Suchfilter im Rahmen der Vorschau der Verbesserung für Gruppen im Azure Active Directory-Portal (Azure AD) verwenden. Es gibt viele Verbesserungen in den Gruppenbenutzeroberflächen, mit denen Sie Ihre Gruppen, einschließlich der Mitglieder und Besitzer, schnell und unkompliziert verwalten können. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -45,7 +45,7 @@ Wenn Probleme auftreten, können Sie wieder zur Legacyoberfläche zurückkehren,
 
 ## <a name="group-search-and-sorting"></a>Suchen und Sortieren bei Gruppen
 
-Die Suche in der Gruppenliste wurde verbessert. Sobald Sie mit der Eingabe einer Suchzeichenfolge beginnen, führt die Suchfunktion automatisch eine `startswith`- und Teilzeichenfolgesuche in der Liste der Gruppennamen durch. Die Teilzeichenfolgesuche wird nur bei ganzen Wörtern durchgeführt und berücksichtigt keine Sonderzeichen.
+Die Suche in der Gruppenliste wurde verbessert. Sobald Sie mit der Eingabe einer Suchzeichenfolge beginnen, führt die Suchfunktion automatisch eine `startswith`- und Teilzeichenfolgesuche in der Liste der Gruppennamen durch. Die Teilzeichenfolgesuche wird nur bei ganzen Wörtern durchgeführt und berücksichtigt keine Sonderzeichen. Bei der Teilzeichenfolgesuche wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ![Neue Teilzeichenfolgesuchen auf der Seite „Alle Gruppen“](./media/groups-members-owners-search/groups-search-preview.png)
 

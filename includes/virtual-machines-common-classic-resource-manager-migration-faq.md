@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068419"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912568"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Wie viel Zeit ist für die Migration erforderlich?
+
+Die Planung und Ausführung der Migration hängt stark von der Komplexität der Architektur ab und kann einige Monate in Anspruch nehmen.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wie lautet die Definition eines neuen Kunden für IaaS-VMs (klassisch)?
+
+Kunden, die im Februar 2020 (einen Monat vor Beginn der Kennzeichnung als veraltet) keine IaaS-VMs (klassisch) in ihren Abonnements hatten, werden als neue Kunden betrachtet. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 
-Nein. Die virtuellen Computer (klassisch) sind vollständig unterstützte Dienste mit allgemeiner Verfügbarkeit. Sie können diese Ressourcen weiterhin verwenden, um Ihre Nutzung von Microsoft Azure zu erweitern.
+Nicht bis zum 1. März 2023 für IaaS-VMs (klassisch). IaaS-VMs (klassisch) sind vollständig unterstützte Dienste mit allgemeiner Verfügbarkeit. Sie können diese Ressourcen weiterhin verwenden, um Ihre Nutzung von Microsoft Azure zu erweitern. Am 1. März 2023 werden diese VMs vollständig außer Betrieb genommen, und alle aktiven oder zugewiesenen VMs werden beendet, und ihre Zuordnung wird aufgehoben. Es ergeben sich keine Auswirkungen auf andere klassische Ressourcen wie Cloud Services (klassisch), Speicherkonten (klassisch) usw.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Was passiert mit meinen VMs, wenn ich für die nahe Zukunft keine Migration plane? 
 
-Die vorhandenen klassischen APIs und das klassische Ressourcenmodell werden nicht eingestellt. In Anbetracht der erweiterten Features, die im Resource Manager-Bereitstellungsmodell zur Verfügung stehen, möchten wir die Migration möglichst einfach gestalten. Wir empfehlen Ihnen dringend, sich über [einige Weiterentwicklungen](../articles/azure-resource-manager/management/deployment-models.md) zu informieren, die Teil von IaaS unter Resource Manager sind.
+Am 1. März 2023 werden IaaS-VMs (klassisch) vollständig außer Betrieb genommen, und alle aktiven oder zugewiesenen VMs werden beendet, und ihre Zuordnung wird aufgehoben. Um Auswirkungen auf das Unternehmen zu vermeiden, wird dringend empfohlen, die Migration bereits heute zu planen und vor dem 1. März 2023 abzuschließen. Die vorhandenen klassischen APIs, die Cloud Services und das Ressourcenmodell werden nicht eingestellt. In Anbetracht der erweiterten Features, die im Resource Manager-Bereitstellungsmodell zur Verfügung stehen, möchten wir die Migration möglichst einfach gestalten. Es wird empfohlen, dass Sie mit der Planung der Migration dieser Ressourcen zu Azure Resource Manager beginnen. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Was bedeutet dieser Migrationsplan für meine vorhandenen Tools? 
 
@@ -37,7 +45,7 @@ Sie können die Migration abbrechen, solange sich die Ressourcen im Zustand „V
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Kann ich für meine Migration einen Rollback durchführen, wenn beim Commitvorgang ein Fehler auftritt? 
 
-Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Forumsbeitrag auf [Microsoft Q&A](https://docs.microsoft.com/answers/index.html).
+Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Wenn weiterhin ein Fehler auftritt, erstellen Sie ein Supportticket.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Muss ich eine weitere ExpressRoute-Verbindung erwerben, wenn ich IaaS unter Resource Manager verwenden muss? 
 

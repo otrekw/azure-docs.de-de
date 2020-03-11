@@ -1,25 +1,25 @@
 ---
 title: Speicher- und Parallelitätsgrenzwerte
-description: Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure SQL Data Warehouse zugewiesen sind.
+description: Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure Synapse Analytics zugewiesen sind.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 73c7b756009035c8592c85bec3a6b7d85d93666c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851280"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200684"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Speicher- und Parallelitätsgrenzwerte – Azure SQL Data Warehouse
-Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure SQL Data Warehouse zugewiesen sind.  
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für Azure Synapse Analytics
+Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure Synapse Analytics zugewiesen sind.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Data Warehouse-Kapazitätseinstellungen
 Die folgenden Tabellen zeigen die maximale Kapazität für das Data Warehouse auf unterschiedlichen Leistungsstufen. Informationen zum Ändern der Leistungsstufe finden Sie unter [Skalieren von Computerressourcen – Portal](quickstart-scale-compute-portal.md).
@@ -52,17 +52,17 @@ Der maximale Servicelevel ist DW30000c mit 60 Serverknoten und einer Verteilung 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Parallelitätshöchstwerte für Workloadgruppen
 Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.md) gilt das Konzept von Parallelitätsslots nicht mehr.  Ressourcen werden pro Anforderung auf der Grundlage eines Prozentsatzes zugeordnet und in der Definition der Workloadgruppe angegeben.  Trotz der Entfernung von Parallelitätsslots gibt es jedoch je nach Dienstebene eine Mindestanzahl von Ressourcen, die pro Abfrage benötigt werden.  In der folgenden Tabelle ist die minimale Menge an Ressourcen definiert, die pro Abfrage auf den einzelnen Dienstebenen und die damit verbundene Parallelität erforderlich ist. 
 
-|Service Level|Maximale Anzahl gleichzeitiger Abfragen|Min. % unterstützt für REQUEST_MIN_RESOURCE_GRANT_PERCENT|
+|Dienstebene|Maximale Anzahl gleichzeitiger Abfragen|Min. % unterstützt für REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
-|DW100c|4|25%|
+|DW100c|4|25 %|
 |DW200c|8|12,5 %|
 |DW300c|12|8 %|
 |DW400c|16|6,25 %|
 |DW500c|20|5 %|
-|DW1000c|32|3 %|
-|DW1500c|32|3 %|
-|DW2000c|48|2%|
-|DW2500c|48|2%|
+|DW1000c|32|3 %|
+|DW1500c|32|3 %|
+|DW2000c|48|2 %|
+|DW2500c|48|2 %|
 |DW3000c|64|1,5 %|
 |DW5000c|64|1,5 %|
 |DW6000c|128|0,75 %|
@@ -73,13 +73,13 @@ Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Parallelitätshöchstwerte für Ressourcenklassen
-Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Verarbeitung zur Verfügung stehen, verfolgt SQL Data Warehouse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
+Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Ausführung zur Verfügung stehen, verfolgt SQL Analytics in Azure Synapse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
 
 **Statische Ressourcenklassen**
 
 Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md).  
 
-| Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „staticrc10“ verwendete Slots | Durch „staticrc20“ verwendete Slots | Durch „staticrc30“ verwendete Slots | Durch „staticrc40“ verwendete Slots | Durch „staticrc50“ verwendete Slots | Durch „staticrc60“ verwendete Slots | Durch „staticrc70“ verwendete Slots | Durch „staticrc80“ verwendete Slots |
+| Dienstebene | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „staticrc10“ verwendete Slots | Durch „staticrc20“ verwendete Slots | Durch „staticrc30“ verwendete Slots | Durch „staticrc40“ verwendete Slots | Durch „staticrc50“ verwendete Slots | Durch „staticrc60“ verwendete Slots | Durch „staticrc70“ verwendete Slots | Durch „staticrc80“ verwendete Slots |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -102,7 +102,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 
 Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md). Dynamische Ressourcenklassen verwenden für alle Servicelevel eine Speicherbelegung von 3-10-22-70 Prozent für die Ressourcenklassen small-medium-large-xlarge.
 
-| Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
+| Dienstebene | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |

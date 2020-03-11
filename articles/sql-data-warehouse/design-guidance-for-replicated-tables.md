@@ -1,6 +1,6 @@
 ---
 title: Entwurfsleitfaden für replizierte Tabellen
-description: Empfehlungen für das Entwerfen von replizierten Tabellen im Azure SQL Data Warehouse-Schema. 
+description: Empfehlungen für das Entwerfen replizierter Tabellen in SQL Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: ff141b0da0eb2fe68bbeccb7e39292a70b7305f0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693045"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194749"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
-Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Anleitung für das Verwenden replizierter Tabellen in SQL Analytics
+Dieser Artikel enthält Empfehlungen für das Entwerfen replizierter Tabellen in Ihrem SQL Analytics-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung in SQL Analytics vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
 
 Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
 
 - Wie groß ist die Tabelle?   
 - Wie oft wird die Tabelle aktualisiert?   
-- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
+- Gibt es in einer SQL Analytics-Datenbank Fakten- und Dimensionstabellen?   
 
 ## <a name="what-is-a-replicated-table"></a>Was ist eine replizierte Tabelle?
 Eine replizierte Tabelle verfügt über eine vollständige Kopie der Tabelle, auf die auf jedem Computeknoten zugegriffen werden kann. Durch das Replizieren einer Tabelle müssen Daten vor einem Join oder einer Aggregation nicht mehr auf Computeknoten übertragen werden. Da die Tabelle über mehrere Kopien verfügt, lässt sich mit replizierten Tabellen am besten arbeiten, wenn die komprimierte Tabelle kleiner als 2 GB ist.  2 GB ist keine harte Grenze.  Wenn die Daten statisch sind und nicht geändert werden, können Sie größere Tabellen replizieren.
 
-Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In SQL Data Warehouse wird die replizierte Tabelle vollständig in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. 
+Im folgenden Diagramm wird eine replizierte Tabelle dargestellt, auf die auf jedem Computeknoten zugegriffen werden kann. In SQL Analytics wird die replizierte Tabelle auf jedem Computeknoten vollständig in eine Verteilungsdatenbank kopiert. 
 
 ![Replizierte Tabelle](media/guidance-for-using-replicated-tables/replicated-table.png "Replizierte Tabelle")  
 
@@ -49,8 +49,8 @@ Die Verwendung einer replizierten Tabelle kann sinnvoll sein, wenn folgende Bedi
 Replizierte Tabellen liefern möglicherweise nicht die optimale Abfrageleistung, wenn folgende Bedingungen zutreffen:
 
 - In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. Vorgänge der Datenbearbeitungssprache (Data Manipulation Language, DML) erfordern das erneute Erstellen der replizierten Tabelle. Ein häufiges Neuerstellen kann zu Leistungseinbußen führen.
-- Das Data Warehouse wird häufig skaliert. Durch das Skalieren des Data Warehouse ändert sich die Anzahl der Computeknoten, was eine Neuerstellung der replizierten Tabelle nach sich zieht.
-- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage Datenverschiebung erfordert, verschiebt SQL Data Warehouse nur Daten für die angeforderten Spalten. 
+- Die SQL Analytics-Datenbank wird häufig skaliert. Durch das Skalieren einer SQL Analytics-Datenbank ändert sich die Anzahl der Computeknoten, was eine Neuerstellung der replizierten Tabelle nach sich zieht.
+- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage eine Datenverschiebung erfordert, verschiebt SQL Analytics nur Daten für die angeforderten Spalten. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Verwenden Sie replizierte Tabellen mit einfachen Abfrageprädikaten
 Bevor Sie sich für das Verteilen oder Replizieren einer Tabelle entscheiden, sollten Sie überlegen, welche Typen von Abfragen Sie für die Tabelle ausführen werden. Gehen Sie nach Möglichkeit wie folgt vor:
@@ -118,11 +118,11 @@ Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstell
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Überlegungen zur Leistung beim Ändern replizierter Tabellen
-SQL Data Warehouse implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung erfolgt, aktualisiert SQL Data Warehouse zuerst die Mastertabelle. Anschließend werden die Tabellen auf jedem Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW400 über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. SQL Data Warehouse unterstützt mit diesem Modell um schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge. 
+SQL Analytics implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung erfolgt, aktualisiert SQL Analytics zuerst die Mastertabelle. Anschließend werden die Tabellen auf jedem Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW400 über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. SQL Analytics unterstützt mit diesem Modell schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge. 
 
 Nach folgenden Vorgängen ist eine Neuerstellung erforderlich:
 - Daten werden geladen oder geändert.
-- Das Data Warehouse wird auf eine andere Ebene skaliert.
+- Die SQL Analytics-Instanz wird auf eine andere Ebene skaliert.
 - Die Tabellendefinition wird aktualisiert.
 
 Nach folgenden Vorgängen ist keine Neuerstellung erforderlich:
@@ -132,7 +132,7 @@ Nach folgenden Vorgängen ist keine Neuerstellung erforderlich:
 Die Neuerstellung erfolgt nicht unmittelbar nach dem Ändern der Daten. Stattdessen wird die Neuerstellung ausgelöst, wenn eine Abfrage zum ersten Mal etwas aus der Tabelle auswählt.  Die Abfrage, die die Neuerstellung ausgelöst hat, liest sofort aus der Masterversion der Tabelle, während die Daten asynchron auf jeden Serverknoten kopiert werden. Solange das Kopieren der Daten noch nicht abgeschlossen ist, verwenden nachfolgende Abfragen weiterhin die Masterversion der Tabelle.  Wenn eine Aktivität an der replizierten Tabelle ausgeführt wird, die eine weitere Neuerstellung erzwingt, wird das Kopieren der Daten für ungültig erklärt, und die nächste Select-Anweisung löst erneutes Kopieren der Daten aus. 
 
 ### <a name="use-indexes-conservatively"></a>Verwenden Sie Indizes zurückhaltend
-Für replizierte Tabellen gelten Standardindizierungsverfahren. SQL Data Warehouse erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.  
+Für replizierte Tabellen gelten Standardindizierungsverfahren. SQL Analytics erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.  
  
 ### <a name="batch-data-loads"></a>Fassen Sie Ladevorgänge in Batches zusammen
 Versuchen Sie beim Laden von Daten in replizierte Tabellen Neuerstellungen zu minimieren, indem Sie die Ladevorgänge in Batches zusammenfassen. Führen Sie alle in Batches zusammengefassten Ladevorgänge aus, bevor die SELECT-Anweisungen ausgeführt werden.
@@ -182,8 +182,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>Nächste Schritte 
 Verwenden Sie zum Erstellen einer replizierten Tabelle eine dieser Anweisungen:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (SQL Analytics)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Einen Überblick über verteilte Tabellen finden Sie unter [Verteilen von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-distribute.md).
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152294"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917406"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 Die **Execute R Script**-Module können mehrere Ausgaben zurückgeben, müssen aber als R-Datenrahmen bereitgestellt werden. Datenrahmen werden aus Gründen der Kompatibilität mit anderen Modulen automatisch in Datasets im Designer konvertiert.
 
 Standardmeldungen und -fehler aus R werden im Protokoll des Moduls zurückgegeben.
+
+Wenn Sie Ergebnisse im R-Skript ausgeben müssen, finden Sie im rechten Panel des Moduls die ausgegebenen Ergebnisse auf der Registerkarte **Outputs+logs** in **70_driver_log**.
 
 ## <a name="sample-scripts"></a>Beispielskripts
 

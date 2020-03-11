@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 02/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8c5db13b343783a86dc04b84e09746bc4406186b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821451"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660698"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Benutzerdefinierte Rollen für Azure-Ressourcen
 
-Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
+Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden.
 
-Benutzerdefinierte Rollen können von Abonnements, die demselben Azure AD-Verzeichnis vertrauen, gemeinsam genutzt werden. Es gilt ein Limit von **5.000** benutzerdefinierte Rollen pro Verzeichnis. (Für spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, beträgt das Limit 2.000 benutzerdefinierte Rollen.) Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
+Benutzerdefinierte Rollen können von Abonnements, die demselben Azure AD-Verzeichnis vertrauen, gemeinsam genutzt werden. Es gilt ein Limit von **5.000** benutzerdefinierte Rollen pro Verzeichnis. (Für spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, beträgt das Limit 2.000 benutzerdefinierte Rollen.) Benutzerdefinierte Rollen können über das Azure-Portal (Vorschau), mit Azure PowerShell, über die Azure CLI oder mithilfe der REST-API erstellt werden.
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
@@ -70,7 +70,7 @@ Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal 
 
 1. Entscheiden Sie, wie Sie die benutzerdefinierte Rolle erstellen möchten.
 
-    Benutzerdefinierte Rollen können mit [Azure PowerShell](custom-roles-powershell.md), der [Azure CLI](custom-roles-cli.md) oder der [REST-API](custom-roles-rest.md) erstellt werden.
+    Benutzerdefinierte Rollen können im [Azure-Portal](custom-roles-portal.md) (Vorschau), mit [Azure PowerShell](custom-roles-powershell.md), [Azure CLI](custom-roles-cli.md) oder der [REST-API](custom-roles-rest.md) erstellt werden.
 
 1. Bestimmen der Berechtigungen, die Sie benötigen
 
@@ -90,12 +90,12 @@ Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden
 
 Eine benutzerdefinierte Rolle hat die folgenden Eigenschaften.
 
-| Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
+| Eigenschaft | Erforderlich | type | Beschreibung |
 | --- | --- | --- | --- |
-| `Name` | Ja | Zeichenfolge | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Abonnementebene handelt, kann eine solche Definition dennoch in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
-| `Id` | Ja | Zeichenfolge | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
-| `IsCustom` | Ja | Zeichenfolge | Gibt an, ob dies eine benutzerdefinierte Rolle ist. Legen Sie für benutzerdefinierte Rollen `true` fest. |
-| `Description` | Ja | Zeichenfolge | Die Beschreibung der benutzerdefinierten Rolle. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 1.024. |
+| `Name` | Ja | String | Der Anzeigename der benutzerdefinierten Rolle. Obwohl es sich bei einer Rollendefinition um eine Ressource auf Abonnementebene handelt, kann eine solche Definition dennoch in mehreren Abonnements verwendet werden, die dasselbe Azure AD-Verzeichnis gemeinsam nutzen. Der Anzeigename muss im Bereich des Azure AD-Verzeichnisses eindeutig sein. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 128. |
+| `Id` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
+| `IsCustom` | Ja | String | Gibt an, ob dies eine benutzerdefinierte Rolle ist. Legen Sie für benutzerdefinierte Rollen `true` fest. |
+| `Description` | Ja | String | Die Beschreibung der benutzerdefinierten Rolle. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 1.024. |
 | `Actions` | Ja | String[] | Ein Array von Zeichenfolgen, das die Verwaltungsvorgänge angibt, deren Ausführung die Rolle zulässt. Weitere Informationen finden Sie unter [Aktionen](role-definitions.md#actions). |
 | `NotActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Verwaltungsvorgänge angibt, die von den zulässigen `Actions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Weitere Informationen finden Sie unter [DataActions](role-definitions.md#dataactions). |
@@ -113,7 +113,6 @@ Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest
 | Anzeigen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/read` | Benutzer, die in einem Bereich zu diesem Vorgang berechtigt sind, können die benutzerdefinierten Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind. Benutzerdefinierte Rollen können bei allen integrierten Rollen für die Zuweisung verfügbar sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell](custom-roles-powershell.md)
-- [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI](custom-roles-cli.md)
+- [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal (Vorschau)](custom-roles-portal.md)
 - [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)
 - [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md)

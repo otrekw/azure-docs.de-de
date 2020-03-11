@@ -1,6 +1,6 @@
 ---
-title: Verbinden mit SSMS
-description: Verwenden Sie SQL Server Management Studio (SSMS), um eine Verbindung mit Azure SQL Data Warehouse herzustellen und das Data Warehouse abzufragen.
+title: Herstellen einer Verbindung mit SSMS
+description: Verwenden Sie SQL Server Management Studio (SSMS), um eine Verbindung mit Azure Synapse Analytics herzustellen und Abfragen auszuführen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2109402a874ff8c722bd05e1e5cb62b461cb2292
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692584"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198620"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit der SQL Data Warehouse-Instanz mit SQL Server Management Studio (SSMS)
+# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Azure Synapse Analytics mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,23 +28,23 @@ ms.locfileid: "73692584"
 > 
 > 
 
-Verwenden Sie SQL Server Management Studio (SSMS), um eine Verbindung mit Azure SQL Data Warehouse herzustellen und das Data Warehouse abzufragen. 
+Verwenden Sie SQL Server Management Studio (SSMS), um in Azure Synapse eine Verbindung mit einem Data Warehouse herzustellen und es abzufragen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine vorhandene SQL Data Warehouse-Instanz. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL Data Warehouse][Create a SQL Data Warehouse].
-* SQL Server Management Studio (SSMS) muss installiert sein. [Installieren Sie SSMS][Install SSMS] kostenlos, falls Sie noch nicht über die Anwendung verfügen.
-* Den vollqualifizierten SQL-Servernamen. Informationen zur Ermittlung finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][Connect to SQL Data Warehouse].
+* Einen vorhandenen SQL-Pool. Informationen zur Erstellung finden Sie unter [Erstellen eines SQL-Pools](sql-data-warehouse-get-started-provision.md).
+* SQL Server Management Studio (SSMS) muss installiert sein. [Installieren Sie SSMS](https://msdn.microsoft.com/library/hh213248.aspx) kostenlos, falls Sie noch nicht über die Anwendung verfügen.
+* Den vollqualifizierten SQL-Servernamen. Informationen zur Ermittlung dieser Informationen finden Sie unter [Herstellen einer Verbindung mit dem SQL-Pool](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Herstellen einer Verbindung mit SQL Data Warehouse
+## <a name="1-connect-to-your-sql-pool"></a>1. Stellen Sie eine Verbindung mit Ihrem SQL-Pool her.
 1. Öffnen Sie SSMS.
-2. Öffnen Sie den Objekt-Explorer. Wählen Sie zu diesem Zweck **Datei** > **Objekt-Explorer verbinden** aus.
+2. Öffnen Sie den Objekt-Explorer, indem Sie **Datei**  > **Objekt-Explorer verbinden** auswählen.
    
-    ![SQL Server-Objekt-Explorer][1]
+    ![SQL Server-Objekt-Explorer](media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Füllen Sie die Felder im Fenster zum Herstellen einer Verbindung mit dem Server aus.
    
-    ![Verbindung mit dem Server herstellen][2]
+    ![Verbindung mit Server herstellen](media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Servername**. Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung**. Wählen Sie SQL **Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
@@ -52,48 +52,27 @@ Für dieses Tutorial benötigen Sie Folgendes:
    * Klicken Sie auf **Verbinden**.
 4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
    
-    ![AdventureWorksDW erkunden][3]
+    ![AdventureWorksDW erkunden](media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 ## <a name="2-run-a-sample-query"></a>2. Ausführen einer Beispielabfrage
 Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben wir eine Abfrage.
 
 1. Klicken Sie mit der rechten Maustaste im SQL Server-Objekt-Explorer auf Ihre Datenbank.
-2. Wählen Sie **Neue Abfrage**aus. Ein neues Abfragefenster wird geöffnet.
+2. Wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.
    
-    ![Neue Abfrage][4]
+    ![Neue Abfrage]( media/sql-data-warehouse-query-ssms/new-query.png)
 3. Kopieren Sie die folgende TSQL-Abfrage in das Abfragefenster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Führen Sie die Abfrage aus. Zu diesem Zweck klicken Sie auf `Execute` oder drücken auf `F5`.
+4. Führen Sie die Abfrage aus, indem Sie auf `Execute` klicken oder die folgende Tastenkombination drücken: `F5`.
    
-    ![Abfrage ausführen][5]
+    ![Abfrage ausführen](media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Sehen Sie sich die Abfrageergebnisse an. In diesem Beispiel weist die Tabelle „FactInternetSales“ 60398 Zeilen auf.
    
-    ![Abfrageergebnisse][6]
+    ![Abfrageergebnisse](media/sql-data-warehouse-query-ssms/results.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][visualizing the data with PowerBI].
-
-Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Authentifizierung finden Sie unter [Authentifizieren für SQL Data Warehouse][Authenticate to SQL Data Warehouse].
-
-<!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-[Install SSMS]: https://msdn.microsoft.com/library/hh213248.aspx
-
-
-<!--Image references-->
-
-[1]: media/sql-data-warehouse-query-ssms/connect-object-explorer.png
-[2]: media/sql-data-warehouse-query-ssms/connect-object-explorer1.png
-[3]: media/sql-data-warehouse-query-ssms/explore-tables.png
-[4]: media/sql-data-warehouse-query-ssms/new-query.png
-[5]: media/sql-data-warehouse-query-ssms/execute-query.png
-[6]: media/sql-data-warehouse-query-ssms/results.png
+Nun da Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren](sql-data-warehouse-get-started-visualize-with-power-bi.md ).
+Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Authentifizierung finden Sie unter [Authentifizieren beim SQL-Pool](sql-data-warehouse-authentication.md).

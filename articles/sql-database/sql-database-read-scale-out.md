@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420734"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206944"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads
 
@@ -35,7 +35,7 @@ Die Funktion der horizontalen Leseskalierung ist bei Datenbanken in den Tarifen 
 Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstellung `ApplicationIntent` in der SQL-Verbindungszeichenfolge eine Verbindung mit dem primären Replikat herstellt, müssen Sie die horizontale Leseskalierung beim Erstellen der Datenbank oder beim Ändern ihrer Konfiguration explizit deaktivieren. Wenn Sie Ihre Datenbank z. B. vom Tarif Standard oder Universell auf den Tarif Premium, Unternehmenskritisch oder Hyperscale umstellen und sicherstellen möchten, dass weiterhin alle Verbindungen zum primären Replikat führen, deaktivieren Sie die horizontale Leseskalierung. Weitere Informationen zum Deaktivieren finden Sie unter [Aktivieren und Deaktivieren der horizontalen Leseskalierung](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Abfragedatenspeicher, erweiterte Ereignisse, SQL Profiler und Überwachungsfeatures werden in den schreibgeschützten Replikaten nicht unterstützt.
+> Abfragedatenspeicher, erweiterte Ereignisse und SQL Profiler werden in den schreibgeschützten Replikaten nicht unterstützt.
 
 ## <a name="data-consistency"></a>Datenkonsistenz
 

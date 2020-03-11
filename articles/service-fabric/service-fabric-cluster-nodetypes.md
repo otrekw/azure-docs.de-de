@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722338"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199715"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen
 
-[VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) sind eine Azure Computeressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, den Sie in einem Azure Service Fabric-Cluster definieren, richtet eine separate Skalierung ein. Die auf jedem virtuellen Computer in der Skalierungsgruppe von der Virtual Machines-Erweiterung *Microsoft.Azure.ServiceFabric* installierte Service Fabric-Laufzeit. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, auf jedem Clusterknoten die ausgeführte Betriebssystem-SKU ändern, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
+[VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets) sind eine Azure Computeressource. Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer als Gruppe bereitzustellen und zu verwalten. Jeder Knotentyp, den Sie in einem Azure Service Fabric-Cluster definieren, richtet genau eine Skalierungsgruppe ein. Mehrere Knotentypen können nicht von derselben Skalierungsgruppe unterstützt werden, und ein Knotentyp darf (in den meisten Fällen) nicht von mehreren Skalierungsgruppen unterstützt werden. Eine Ausnahme bildet die seltene Situation der [vertikalen Skalierung](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) eines Knotentyps, wenn Sie vorübergehend zwei Skalierungsgruppen mit dem gleichen `nodeTypeRef`-Wert haben, während die Replikate aus der ursprünglichen in die aktualisierte Skalierungsgruppe migriert werden.
+
+Die auf jedem virtuellen Computer in der Skalierungsgruppe von der Virtual Machines-Erweiterung *Microsoft.Azure.ServiceFabric* installierte Service Fabric-Laufzeit. Sie können jeden Knotentyp einzeln zentral hoch- oder herunterskalieren, auf jedem Clusterknoten die ausgeführte Betriebssystem-SKU ändern, bei jedem Typ unterschiedliche Portgruppen öffnen und verschiedene Kapazitätsmetriken verwenden.
 
 Die folgende Abbildung zeigt einen Cluster mit den beiden Knotentypen *FrontEnd* und *BackEnd*. Jeder Knotentyp verfügt über fünf Knoten.
 
@@ -72,19 +74,19 @@ Dies sind die Beschreibungen der Eigenschaften:
 
 | **Name** | **Zulässige Werte** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| name | string | Eindeutiger Name für die Erweiterung |
+| name | Zeichenfolge | Eindeutiger Name für die Erweiterung |
 | type | „ServiceFabricLinuxNode“ oder „ServiceFabricWindowsNode“ | Identifiziert das Betriebssystem, in dem Service Fabric gestartet wird. |
 | autoUpgradeMinorVersion | true oder false | Aktivieren des automatischen Upgrades von Nebenversionen der Service Fabric-Laufzeit |
 | publisher | Microsoft.Azure.ServiceFabric | Name des Herausgebers der Service Fabric-Erweiterung |
-| clusterEndpoint | string | URI:PORT zum Verwaltungsendpunkt |
-| nodeTypeRef | string | Name von nodeType |
+| clusterEndpoint | Zeichenfolge | URI:PORT zum Verwaltungsendpunkt |
+| nodeTypeRef | Zeichenfolge | Name von nodeType |
 | durabilityLevel | bronze, silver, gold, platinum | Zulässige Zeitspanne zum Anhalten der unveränderliche Azure-Infrastruktur |
 | enableParallelJobs | true oder false | Aktivieren von Compute-ParallelJobs wie paralleles Entfernen und Neustarten von virtuellen Computern in der gleichen Skalierungsgruppe |
-| nicPrefixOverride | string | Subnetzpräfix, z.B. „10.0.0.0/24“ |
+| nicPrefixOverride | Zeichenfolge | Subnetzpräfix, z.B. „10.0.0.0/24“ |
 | commonNames | string[] | Allgemeine Namen von installierten Clusterzertifikaten |
-| x509StoreName | string | Name des Speichers, in dem sich das installierte Clusterzertifikat befindet |
+| x509StoreName | Zeichenfolge | Name des Speichers, in dem sich das installierte Clusterzertifikat befindet |
 | typeHandlerVersion | 1.1 | Version der Erweiterung. Für klassische Version 1.0 der Erweiterung wird Upgrade auf Version 1.1 empfohlen |
-| dataPath | string | Der Pfad zum Laufwerk, das zum Speichern des Zustands der Service Fabric-Systemdienste und Anwendungsdaten verwendet wird.
+| dataPath | Zeichenfolge | Der Pfad zum Laufwerk, das zum Speichern des Zustands der Service Fabric-Systemdienste und Anwendungsdaten verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

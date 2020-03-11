@@ -1,14 +1,14 @@
 ---
 title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057344"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199698"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -33,6 +33,59 @@ Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden
 In der Regel kann es Benutzern mit entsprechender [rollenbasierter Zugriffssteuerung](../../../role-based-access-control/overview.md) für das Abonnement (also beispielsweise mit der Rolle „Besitzer“) gestattet werden, Änderungs- oder Löschvorgänge für beliebige Ressourcen auszuführen. Dies ist jedoch nicht der Fall, wenn Blueprints im Rahmen einer Zuweisungsbereitstellung eine Sperre anwendet. Wenn die Zuweisung mit der Option **Schreibgeschützt** oder **Nicht löschen** festgelegt wurde, ist selbst der Besitzer des Abonnements nicht in der Lage, die blockierte Aktion für die geschützte Ressource auszuführen.
 
 Diese Sicherheitsmaßnahme schützt die Konsistenz der definierten Blaupause und die Umgebung, die damit erstellt werden soll, vor versehentlichen oder programmgesteuerten Lösch- oder Änderungsvorgängen.
+
+### <a name="assign-at-management-group"></a>Zuweisen in der Verwaltungsgruppe
+
+Eine zusätzliche Option zum Verhindern, dass Abonnementbesitzer die Zuweisung einer Blaupause entfernen, besteht darin, die Blaupause einer Verwaltungsgruppe zuzuweisen. In diesem Szenario haben nur **Besitzer** der Verwaltungsgruppe die erforderlichen Berechtigungen, um die Blaupausenzuweisung zu entfernen.
+
+Um die Blaupause einer Verwaltungsgruppe anstelle eines Abonnements zuzuweisen, ändert sich der REST-API-Aufruf so, dass er wie folgt aussieht:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+Die durch `{assignmentMG}` definierte Verwaltungsgruppe muss entweder innerhalb der Verwaltungsgruppenhierarchie liegen oder dieselbe Verwaltungsgruppe sein, in der die Blaupausendefinition gespeichert ist.
+
+Der Anforderungstext des Blaupausenauftrags sieht wie folgt aus:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+Der Hauptunterschied zwischen diesem Anforderungstext und einem, der einem Abonnement zugewiesen wird, ist die Eigenschaft `properties.scope`. Diese erforderliche Eigenschaft muss auf das Abonnement festgelegt werden, auf das sich die Blaupausenzuweisung bezieht. Das Abonnement muss ein direktes untergeordnetes Element der Verwaltungsgruppenhierarchie sein, in der die Blaupausenzuweisung gespeichert ist.
+
+> [!NOTE]
+> Eine Blaupause, die dem Gültigkeitsbereich der Verwaltungsgruppe zugewiesen wurde, fungiert immer noch als Blaupausenzuweisung auf Abonnementebene. Der einzige Unterschied besteht darin, wo die Blaupausenzuweisung gespeichert wird, um zu verhindern, dass die Abonnementbesitzer die Zuweisung und die damit verbundenen Sperren entfernen können.
 
 ## <a name="removing-locking-states"></a>Entfernen von Sperrzuständen
 
@@ -61,7 +114,7 @@ Die [Eigenschaften von Ablehnungszuweisungen](../../../role-based-access-control
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Ausschließen eines Prinzipals von einer Ablehnungszuweisung
 
-In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen Prinzipal von der [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) auszuschließen, die von der Blaupausenzuweisung erstellt wird. Dies erfolgt in REST-API durch Hinzufügen von bis zu fünf Werten zum Array **excludedPrincipals** in der Eigenschaft **locks**, wenn [die Zuweisung erstellt wird](/rest/api/blueprints/assignments/createorupdate). Dies ist ein Beispiel für einen Anforderungstext, der **excludedPrincipals** enthält:
+In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen Prinzipal von der [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) auszuschließen, die von der Blaupausenzuweisung erstellt wird. Dieser Schritt erfolgt in REST-API durch Hinzufügen von bis zu fünf Werten zum Array **excludedPrincipals** in der Eigenschaft **locks**, wenn [die Zuweisung erstellt wird](/rest/api/blueprints/assignments/createorupdate). Die folgende Zuweisungsdefinition ist ein Beispiel für einen Anforderungstext, der **excludedPrincipals** enthält:
 
 ```json
 {

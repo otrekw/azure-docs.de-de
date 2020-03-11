@@ -9,13 +9,13 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: cb76c7d7804a7d39e8a18c7a4cf41e9b4e0a7593
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 02/27/2020
+ms.openlocfilehash: 0cb76884fd46a45bb45fa3e29a03a6f9dbd0250b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623638"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920296"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Wiederverwenden von Umgebungen für Training und Bereitstellung mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,10 +246,20 @@ Darüber hinaus verwendet der Dienst automatisch eines der Ubuntu Linux-basierte
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
-# Alternatively, you can specify the contents of dockerfile of your base image
-with open("docker_file_of_your_base_image", "r") as f:
-    dockerfile_contents_of_your_base_image=f.read()
-myenv.docker.base_dockerfile=dockerfile_contents_of_your_base_image 
+```
+
+Alternativ können Sie eine benutzerdefinierte Dockerfile angeben. Am einfachsten ist es, von einem der Azure Machine Learning-Basisimages mit dem Docker-Befehl ```FROM``` zu beginnen und dann Ihre eigenen benutzerdefinierten Schritte hinzuzufügen. Verwenden Sie diesen Ansatz, wenn Sie Nicht-Python-Pakete als Abhängigkeiten installieren müssen.
+
+```python
+# Specify docker steps as a string. Alternatively, load the string from a file.
+dockerfile = r"""
+FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+RUN echo "Hello from custom container!"
+"""
+
+# Set base image to None, because the image is defined by dockerfile.
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = dockerfile
 ```
 
 > [!NOTE]

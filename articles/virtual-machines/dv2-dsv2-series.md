@@ -2,17 +2,17 @@
 title: 'Serien Dv2 und Dsv2: Azure Virtual Machines'
 description: Spezifikationen für die VMs der Serien Dv2 und Dsv2
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: cdfb8e333e3834adf242029e9e00eac9cf9abebe
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492411"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164422"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2- und DSv2-Serie
 
@@ -27,6 +27,10 @@ ACU: 210–250
 Storage Premium  Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
@@ -45,6 +49,10 @@ ACU: 210–250
 Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|

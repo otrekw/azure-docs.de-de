@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption (T-SQL)
-description: Transparent Data Encryption (TDE) in SQL Data Warehouse (T-SQL)
+description: Transparent Data Encryption (TDE) in Azure Synapse Analytics (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822603"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195804"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Erste Schritte mit Transparent Data Encryption (TDE)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822603"
 Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ sein, um Transparent Data Encryption (TDE) zu aktivieren.
 
 ## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
-Führen Sie die folgenden Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren:
+Führen Sie die folgenden Schritte zum Aktivieren von TDE aus:
 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* auf dem Server her, auf dem die Datenbank gehostet wird. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Deaktivieren der Verschlüsselung
-Führen Sie die folgenden Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivieren:
+Führen Sie die folgenden Schritte zum Deaktivieren von TDE aus:
 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Ein angehaltenes SQL Data Warehouse muss vor dem Ändern der TDE-Einstellungen fortgesetzt werden.
+> Ein angehaltener SQL-Pool muss vor dem Ändern der TDE-Einstellungen fortgesetzt werden.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Überprüfen der Verschlüsselung
-Führen Sie die folgenden Schritte aus, um den Verschlüsselungsstatus für ein SQL Data Warehouse zu überprüfen:
+Führen Sie zum Überprüfen des Verschlüsselungsstatus die folgenden Schritte aus:
 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* oder einer Instanzdatenbank her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.

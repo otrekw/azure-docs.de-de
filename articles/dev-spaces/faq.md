@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934178"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255729"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Häufig gestellte Fragen zu Azure Dev Spaces
 
@@ -64,6 +64,14 @@ Ja. Sie können Azure Dev Spaces in AKS-Clustern mit [vom API-Server autorisiert
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Kann ich Azure Dev Spaces in AKS-Clustern mit eingeschränktem ausgehenden Datenverkehr für Clusterknoten verwenden?
 
 Ja. Sie können Azure Dev Spaces in AKS-Clustern mit [eingeschränktem ausgehenden Datenverkehr für Clusterknoten][aks-restrict-egress-traffic] verwenden, wenn die korrekten FQDNs zugelassen wurden. Weitere Informationen zur Verwendung eines AKS-Clusters mit eingeschränktem ausgehenden Datenverkehr für Clusterknoten, die für Azure Dev Spaces aktiviert sind, finden Sie [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements).
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kann ich Azure Dev Spaces für RBAC-aktivierte AKS-Cluster verwenden?
+
+Ja, Sie können Azure Dev Spaces für AKS-Cluster mit oder ohne RBAC-Aktivierung verwenden.
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Was geschieht, wenn ich eingehenden Datenverkehr für das Projekt in Visual Studio aktiviere?
+
+Wenn Sie Ihr Projekt mithilfe von Visual Studio vorbereiten, haben Sie die Möglichkeit, eingehenden Datenverkehr für Ihren Dienst zu aktivieren. Durch das Aktivieren von eingehendem Datenverkehr wird ein öffentlicher Endpunkt für den Zugriff auf Ihren Dienst erstellt, wenn er auf Ihrem AKS-Cluster ausgeführt wird. Wenn Sie eingehenden Datenverkehr nicht aktivieren, können Sie nur aus Ihrem AKS-Cluster auf den Dienst zugreifen.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

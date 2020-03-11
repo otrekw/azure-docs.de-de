@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613437"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917304"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager
 
 Für Azure Active Directory Domain Services (AD DS) wird für Kunden, die derzeit das klassische VNET-Modell nutzen, eine einmalige Umstellung auf das Resource Manager-basierte VNET-Modell unterstützt. Von Azure AD DS verwaltete Domänen, die das Resource Manager-Bereitstellungsmodell verwenden, bieten zusätzliche Features wie eine differenzierte Kennwortrichtlinie, Überwachungsprotokolle und einen Kontosperrschutz.
 
 In diesem Artikel werden die Vorteile und Aspekte der Migration und anschließend die erforderlichen Schritte für eine erfolgreiche Migration zu einer vorhandenen Azure AD DS-Instanz beschrieben.
+
+> [!NOTE]
+> Seit 2017 können Azure AD Domain Services in einem Azure Resource Manager-Netzwerk gehostet werden. Seitdem konnten wir mithilfe der modernen Möglichkeiten von Azure Resource Manager einen sichereren Dienst schaffen. Da Azure Resource Manager-Bereitstellungen klassische Bereitstellungen vollständig ersetzen, werden die klassischen Bereitstellungen virtueller Netzwerke mit Azure AD DS am 1. März 2023 eingestellt.
+>
+> Weitere Informationen finden Sie im [offiziellen Hinweis zur Einstellung](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ## <a name="overview-of-the-migration-process"></a>Übersicht über den Migrationsprozess
 

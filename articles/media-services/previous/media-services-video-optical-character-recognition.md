@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084819"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918333"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Verwenden von Azure Media Analytics zum Konvertieren von Textinhalten in Videodateien in digitalen Text  
+
+> [!NOTE]
+> Der Medienprozessor **Azure Media OCR** wird eingestellt. Das Einstellungsdatum finden Sie im Thema [Legacykomponenten](legacy-components.md).
 
 ## <a name="overview"></a>Übersicht
 Wenn Sie Textinhalt aus Ihren Videodateien extrahieren und einen bearbeit- und durchsuchbaren digitalen Text erstellen müssen, sollten Sie Azure Media Analytics OCR (Optical Character Recognition, Optische Zeichenerkennung) verwenden. Dieser Azure-Medienprozessor erkennt Textinhalte in Ihren Videodateien und generiert Textdateien, die Sie nutzen können. Dank der optischen Zeichenerkennung können Sie die Extraktion aussagekräftiger Metadaten aus dem Videosignal Ihrer Medien automatisieren.
@@ -45,7 +48,7 @@ Aufgabenkonfiguration (Voreinstellung). Wenn Sie eine Aufgabe mit **Azure Media 
 ### <a name="attribute-descriptions"></a>Beschreibungen der Attribute
 | Attributname | BESCHREIBUNG |
 | --- | --- |
-|AdvancedOutput| Wenn Sie „AdvancedOutput“ auf TRUE festlegen, enthält die JSON-Ausgabe (zusätzlich zu Ausdrücken und Bereichen) für jedes einzelne Wort Positionsdaten. Wenn Sie diese Details nicht anzeigen möchten, können Sie das Flag auf FALSE festlegen. Der Standardwert ist „false“. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+|AdvancedOutput| Wenn Sie „AdvancedOutput“ auf TRUE festlegen, enthält die JSON-Ausgabe (zusätzlich zu Ausdrücken und Bereichen) für jedes einzelne Wort Positionsdaten. Wenn Sie diese Details nicht anzeigen möchten, können Sie das Flag auf FALSE festlegen. Der Standardwert ist „FALSE“. Weitere Informationen finden Sie in [diesem Blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
 | Sprache |(Optional) Beschreibt die Sprache des Texts, nach dem gesucht wird. Einer der folgenden: AutoDetect (Standard), Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch), Serbisch (lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch, Ungarisch. |
 | TextOrientation |(Optional) Beschreibt die Ausrichtung des Texts, nach dem gesucht wird.  „Left“ bedeutet, dass alle Buchstaben nach links ausgerichtet sind.  Standardtext (z. B. wie in einem Buch) hat die Ausrichtung „Up“.  Einer der folgenden: AutoDetect (Standard), Up, Right, Down, Left. |
 | TimeInterval |(Optional) Beschreibt die Abtastrate.  Standard ist alle 0,5 Sekunden.<br/>JSON-Format – HH:mm:ss.SSS (Standardmäßig 00:00:00.500)<br/>XML-Format – W3C XSD-Dauer, primitiv (Standard PT0.5) |
@@ -112,12 +115,12 @@ Die Ausgabe enthält die folgenden Attribute:
 | width |Breite des Videos in Pixel |
 | height |Höhe des Videos in Pixel |
 | Fragments |Array zeitbasierter Segmente des Videos, in die die Metadaten aufgeteilt werden |
-| Start |Startzeit eines Fragments in Teilstrichen |
+| start |Startzeit eines Fragments in Teilstrichen |
 | duration |Dauer eines Fragments in Teilstrichen |
 | interval |Intervall jedes Ereignisses innerhalb des gegebenen Fragments |
 | events |Array mit Bereichen |
 | region |Objekt, das die erkannten Wörter oder Ausdrücke darstellt |
-| Language |Sprache des Texts innerhalb eines Bereichs |
+| language |Sprache des Texts innerhalb eines Bereichs |
 | orientation |Ausrichtung des Texts innerhalb eines Bereichs |
 | lines |Array von Zeilen des Texts innerhalb eines Bereichs |
 | text |Der tatsächliche Text |

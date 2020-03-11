@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279155"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920041"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -25,14 +25,14 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 
 ## <a name="logs"></a>Protokolle
 
-|Log | Beschreibung |
+|Log | BESCHREIBUNG |
 |----|----|
 | **ApplicationConsole** | Konsolenprotokoll aller Kundenanwendungen. | 
 | **SystemLogs** | Zurzeit befinden sich nur [Spring Cloud-Konfigurationsserver](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in dieser Kategorie. |
 
 ## <a name="metrics"></a>Metriken
 
-Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
 Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md). 
 
@@ -114,7 +114,7 @@ Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalte
 1. Um Anwendungsprotokolle zu überprüfen, suchen Sie nach einem Container mit dem Namen **insights-logs-applicationconsole**.
 1. Um Anwendungsmetriken zu überprüfen, suchen Sie nach einem Container mit dem Namen **insights-metrics-pt1m**.
 
-Weitere Informationen zum Senden von Diagnoseinformationen an ein Speicherkonto finden Sie unter [Speichern und Anzeigen von Diagnosedaten in Azure Storage](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
+Weitere Informationen zum Senden von Diagnoseinformationen an ein Speicherkonto finden Sie unter [Speichern und Anzeigen von Diagnosedaten in Azure Storage](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Verwenden Ihres Event Hubs
 

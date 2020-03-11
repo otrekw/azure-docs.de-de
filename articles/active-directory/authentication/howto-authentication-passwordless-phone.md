@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848475"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227075"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -93,6 +93,10 @@ Endbenutzer, für die MFA über den lokalen Azure MFA-Server einer Organisation 
 ### <a name="device-registration"></a>Geräteregistrierung
 
 Eine der Voraussetzungen für die Erstellung dieser neuen, sicheren Anmeldeinformationen ist, dass das Gerät, auf dem die Microsoft Authenticator-App installiert ist, auch im Azure AD-Mandanten für einen einzelnen Benutzer registriert sein muss. Aufgrund der aktuellen Einschränkungen, die für die Registrierung von Geräten gelten, kann ein Gerät nur in einem einzigen Mandanten registriert werden. Dies bedeutet, dass nur ein Geschäfts-, Schul- oder Unikonto in der Microsoft Authenticator-App für die Anmeldung per Smartphone aktiviert werden kann.
+
+### <a name="intune-mobile-application-management"></a>Verwaltung mobiler Anwendungen in Intune 
+
+Endbenutzer, die einer Richtlinie unterliegen, welche die Verwaltung mobiler Anwendungen (MAM) erfordert, können die kennwortlosen Anmeldeinformationen nicht in der Microsoft Authenticator-App registrieren. 
 
 > [!NOTE]
 > Die Geräteregistrierung ist nicht dasselbe wie die Geräteverwaltung oder „MDM“. Sie ordnet nur eine Geräte-ID und eine Benutzer-ID zusammen im Azure AD-Verzeichnis zu.  

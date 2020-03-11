@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: 81749b8fb8b9e3f1a10b65b758b532773bdebdac
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39d1c0ddb4961800e889346ec110ca629ae73546
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833873"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251566"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -29,3 +29,5 @@ Azure Dedicated Host ist ein Dienst zum Bereitstellen physischer Server, die vir
 - Sie können einen dedizierten Host über [Azure PowerShell](dedicated-hosts-powershell.md), das [Portal](dedicated-hosts-portal.md) und die [Azure-Befehlszeilenschnittstelle](../linux/dedicated-hosts-cli.md) bereitstellen.
 
 - [Hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) finden Sie eine Beispielvorlage, die sowohl Zonen als auch Fehlerdomänen für maximale Resilienz in einer Region verwendet.
+
+- Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](../prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.

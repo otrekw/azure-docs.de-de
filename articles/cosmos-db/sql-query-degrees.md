@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie die SQL-Systemfunktion DEGREES in Azure Cosm
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5f432f5ef57c8eccc0cf629f00d2231364785b9a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d175ba53a71998fc8e7812a1b761f9cd264c38a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871328"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299469"
 ---
 # <a name="degrees-azure-cosmos-db"></a>DEGREES (Azure Cosmos DB)
  Gibt den entsprechenden Winkel in Grad für einen in „rad“ (Bogenmaß) angegebenen Winkel zurück.  
@@ -45,6 +45,10 @@ SELECT DEGREES(PI()/2) AS degrees
 ```json
 [{"degrees": 90}]  
 ```  
+
+## <a name="remarks"></a>Bemerkungen
+
+Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

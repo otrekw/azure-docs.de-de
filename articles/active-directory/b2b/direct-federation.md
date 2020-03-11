@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888888"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161485"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 |     |
@@ -64,6 +64,10 @@ Wenn Sie die Metadaten-URL in den Identitätsanbietereinstellungen angeben, verl
 
 ### <a name="limit-on-federation-relationships"></a>Limit für Verbundbeziehungen
 Derzeit werden maximal 1.000 Verbundbeziehungen unterstützt. Dieses Limit umfasst sowohl [interne Verbünde](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als auch direkte Verbünde.
+
+### <a name="limit-on-multiple-domains"></a>Limit bei mehreren Domänen
+Der direkte Verbund mit mehreren Domänen desselben Mandanten wird derzeit nicht unterstützt.
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kann ich einen direkten Verbund mit einer Domäne einrichten, für die ein nicht verwalteter (per E-Mail verifizierten) Mandant vorhanden ist? 
 Ja. Wenn die Domäne nicht verifiziert wurde und der Mandant keine [Übernahme durch den Administrator](../users-groups-roles/domains-admin-takeover.md) erfahren hat, können Sie einen direkten Verbund mit dieser Domäne einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können den direkten Verbund mit diesen Domänen einrichten. Wenn Sie versuchen, den direkten Verbund mit einer DNS-verifizierten Domäne einzurichten, entweder im Azure-Portal oder über die PowerShell, wird eine Fehlermeldung angezeigt.

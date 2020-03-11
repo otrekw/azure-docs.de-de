@@ -1,30 +1,30 @@
 ---
 title: Überwachen von Workloads – Azure-Portal
-description: Überwachen von Azure SQL Data Warehouse mit dem Azure-Portal
+description: Überwachen von SQL Analytics im Azure-Portal
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/22/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 7e93aee405d8a66d850a4e3f07f2e788f1004ef8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645635"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197228"
 ---
 # <a name="monitor-workload---azure-portal"></a>Überwachen von Workloads – Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Ihre Workload überwachen. Dazu gehört auch das Einrichten von Azure Monitor-Protokollen, um Abfrageausführung und Workloadtrends mit Log Analytics für [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) zu untersuchen.
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Ihre Workload überwachen. Dazu gehört auch das Einrichten von Azure Monitor-Protokollen, um Abfrageausführung und Workloadtrends mit Log Analytics für [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) zu untersuchen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Azure SQL Data Warehouse: Sie sammeln Protokolle für ein SQL Data Warehouse. Wenn Sie noch kein SQL Data Warehouse bereitgestellt haben, finden Sie entsprechende Anweisungen unter [Erstellen eines SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- SQL-Pool: Sie sammeln Protokolle für einen SQL-Pool. Wenn Sie keinen SQL-Pool bereitgestellt haben, lesen Sie die Anleitungen unter [Erstellen eines SQL-Pools](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
@@ -38,9 +38,9 @@ Navigieren Sie im Suchfeld zu den Log Analytics-Arbeitsbereichen, und erstellen 
 
 Weitere Informationen zu Arbeitsbereichen finden Sie in dieser [Dokumentation](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace).
 
-## <a name="turn-on-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen 
+## <a name="turn-on-diagnostic-logs"></a>Aktivieren von Diagnoseprotokollen
 
-Konfigurieren Sie die Diagnoseeinstellungen, um Protokolle von Ihrem SQL Data Warehouse auszugeben. Die Protokolle bestehen aus Ansichten von Telemetriedaten von Ihrem Data Warehouse, die den am häufigsten verwendeten DMVs zur Behandlung von Leistungsproblemen für SQL Data Warehouse entsprechen. Aktuell werden die folgenden Ansichten unterstützt:
+Konfigurieren Sie die Diagnoseeinstellungen, um Protokolle aus Ihrem SQL-Pool auszugeben. Protokolle bestehen aus Telemetriesichten, die den am häufigsten verwendeten Leistungsproblemen bei dynamischen Verwaltungssichten (DMVs) entsprechen. Aktuell werden die folgenden Ansichten unterstützt:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)

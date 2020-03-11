@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526546"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206519"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Bekannte Probleme und Problembehandlung für Azure Data Science Virtual Machine
 
-Dieser Artikel hilft Ihnen, Fehler oder Ausfälle bei der Verwendung von Azure Data Science Virtual Machine zu ermitteln und zu beheben.
+Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, auf die Sie bei der Verwendung der Azure Data Science Virtual Machine stoßen könnten.
 
 ## <a name="python-package-installation-issues"></a>Probleme bei der Installation von Python-Paketen
 
@@ -30,13 +30,18 @@ Verwenden Sie beim Installieren von Paketen `sudo pip install` anstelle von `pip
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Nicht erfolgreiche Datenträgerverschlüsselung in der Ubuntu-DSVM-Instanz
 
-Azure Disk Encryption (ADE) wird aktuell für Ubuntu-DSVM-Instanzen nicht unterstützt. Zur Umgehung dieses Problems können Sie ggf. die [Azure Storage-Verschlüsselung mit kundenseitig verwalteten Schlüsseln konfigurieren](../../storage/common/storage-encryption-keys-portal.md).
+Azure Disk Encryption (ADE) wird aktuell für Ubuntu-DSVM-Instanzen nicht unterstützt. Als Problemumgehung sollten Sie die Konfiguration der [serverseitigen Verschlüsselung von verwalteten Azure-Datenträgern](../../virtual-machines/windows/disk-encryption.md) in Erwägung ziehen.
 
 ## <a name="tool-appears-disabled"></a>Tool anscheinend deaktiviert
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Hyper-V funktioniert in der Windows-DSVM-Instanz nicht
 
-Dies ist zu erwarten, da einige Dienste deaktiviert wurden, um die Leistung beim Start zu verbessern. Öffnen Sie die Suchleiste Ihrer Windows-DSVM-Instanz, geben Sie „Dienste“ ein, und legen Sie alle Hyper-V-Dienste auf „Manuell“ sowie „Hyper-V-Verwaltung für virtuelle Computer" auf „Automatisch“ fest, um sie wieder zu aktivieren.
+Dass Hyper-V unter Windows zunächst nicht funktioniert, ist ein erwartetes Verhalten. Für die Startleistung haben wir einige Dienste deaktiviert. So aktivieren Sie Hyper-V
+
+1. Öffnen Sie die Suchleiste auf Ihrer Windows-DSVM.
+1. Geben Sie „Dienste“ ein.
+1. Legen Sie alle Hyper-V-Dienste auf „Manuell“ fest.
+1. Legen Sie „Verwaltung virtueller Hyper-V-Computer“ auf „Automatisch“ fest.
 
 Ihr Bildschirm sollte dann wie folgt aussehen:
 

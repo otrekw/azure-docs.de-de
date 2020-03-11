@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 072809949badb08e5b1e7078566e289c5a5fecd9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153671"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916726"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul „Zweiklassige Support Vector Machine“
 
@@ -43,6 +43,8 @@ Für diesen Modelltyp wird empfohlen, dass Sie den Datensatz normalisieren, bevo
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.  
+
+    -   **Parameter Range** (Parameterbereich): Wenn Sie sich hinsichtlich der besten Parameter nicht sicher sind, können Sie optimale Parameter mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md) finden. Sie geben einen Wertebereich an, woraufhin das Training über mehrere Einstellungskombinationen iteriert, um die Wertekombination zu bestimmen, die das beste Ergebnis liefert.
 
 3.  Geben Sie für **Anzahl der Iterationen** eine Zahl ein, die die Anzahl der beim Erstellen des Modells verwendeten Iterationen angibt.  
   

@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: Erläuterungen und Beispiele zur Anweisung CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+description: Erläuterungen und Beispiele zur Anweisung CREATE TABLE AS SELECT (CTAS) in SQL Analytics zum Entwickeln von Lösungen
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685869"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195905"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>CREATE TABLE AS SELECT (CTAS) in SQL Analytics
 
-In diesem Artikel wird die T-SQL-Anweisung CREATE TABLE AS SELECT (CTAS) in Azure SQL Data Warehouse zum Entwickeln von Lösungen beschrieben. Der Artikel enthält auch Codebeispiele.
+In diesem Artikel wird die T-SQL-Anweisung CREATE TABLE AS SELECT (CTAS) in SQL Analytics zum Entwickeln von Lösungen beschrieben. Der Artikel enthält auch Codebeispiele.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>Umgehen von nicht unterstützten Funktionen mit CTAS
 
-Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Diese Methode ist häufig sehr hilfreich, da Ihr Code nicht nur konform ist, sondern unter SQL Data Warehouse oft auch schneller ausgeführt wird. Diese Leistung ist auf das vollständig parallelisierte Design zurückzuführen. Mögliche Szenarien:
+Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die nachfolgend aufgeführt sind. Diese Methode kann häufig hilfreich sein, weil Ihr Code nicht nur konform ist, sondern unter SQL Analytics oft auch schneller ausgeführt wird. Diese Leistung ist auf das vollständig parallelisierte Design zurückzuführen. Mögliche Szenarien:
 
 * ANSI JOINS bei UPDATEs
 * ANSI JOINs bei DELETEs
@@ -132,11 +132,11 @@ Mit CTAS können auch einige nicht unterstützte Funktionen umgangen werden, die
 > [!TIP]
 > Denken Sie zuerst an CTAS. Ein Problem mit CTAS zu lösen, ist in der Regel ein guter Ansatz, auch wenn Sie dabei mehr Daten schreiben müssen.
 
-## <a name="ansi-join-replacement-for-update-statements"></a>ANSI-Verknüpfungsersatz für update-Anweisungen
+## <a name="ansi-join-replacement-for-update-statements"></a>ANSI-Verknüpfungsersatz für UPDATE-Anweisungen
 
 Angenommen, Sie stehen vor einem komplexen Update. Bei dem Update werden mehr als zwei Tabellen verknüpft, indem ANSI-Verknüpfungssyntax zum Durchführen des UPDATE- oder DELETE-Vorgangs genutzt wird.
 
-Stellen Sie sich vor, Sie müssen diese Tabelle aktualisieren:
+Stellen Sie sich vor, dass Sie die folgende Tabelle aktualisieren müssen:
 
 ```sql
 CREATE TABLE [dbo].[AnnualCategorySales]
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse unterstützt keine ANSI-Joins in der `FROM`-Klausel einer `UPDATE`-Anweisung, also können Sie das obige Beispiel nicht ohne Änderung verwenden.
+Weil SQL Analytics in der `FROM`-Klausel einer `UPDATE`-Anweisung keine ANSI-Joins unterstützt, können Sie das vorstehende Beispiel nicht ohne Änderung verwenden.
 
 Sie können eine Kombination aus CTAS und einer impliziten Verknüpfung verwenden, um das obige Beispiel zu ersetzen:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI-Verknüpfungsersatz für delete-Anweisungen
 
-Der beste Ansatz zum Löschen von Daten ist in einigen Fällen die Verwendung von CTAS, insbesondere für `DELETE`-Anweisungen, die ANSI-Verknüpfungssyntax verwenden. Der Grund ist, dass SQL Data Warehouse in der `FROM`-Klausel einer `DELETE`-Anweisung keine ANSI-Joins unterstützt. Anstatt die Daten zu löschen, wählen Sie die Daten aus, die Sie behalten möchten.
+Der beste Ansatz zum Löschen von Daten ist in einigen Fällen die Verwendung von CTAS, insbesondere für `DELETE`-Anweisungen, die ANSI-Verknüpfungssyntax verwenden. Der Grund: SQL Analytics unterstützt in der `FROM`-Klausel einer `DELETE`-Anweisung keine ANSI-Joins. Anstatt die Daten zu löschen, wählen Sie die Daten aus, die Sie behalten möchten.
 
 Es folgt ein Beispiel für eine konvertierte `DELETE`-Anweisung:
 
@@ -295,7 +295,7 @@ AS
 SELECT @d*@f as result;
 ```
 
-Beachten Sie, dass für die Spalte „result“ der Datentyp und die NULL-Zulässigkeitswerte des Ausdrucks übernommen werden. Das Übertragen des Datentyps kann zu geringfügigen Abweichungen bei den Werten führen, wenn nicht darauf geachtet wird.
+Beachten Sie, dass die Spalte „result“ (Ergebnis) die Werte des Datentyps und der NULL-Zulässigkeit des Ausdrucks übernimmt. Das Übertragen des Datentyps kann zu geringfügigen Abweichungen bei den Werten führen, wenn nicht darauf geachtet wird.
 
 Testen Sie dieses Beispiel:
 
@@ -307,11 +307,11 @@ SELECT result,result*@d
 from ctas_r;
 ```
 
-Der für „result“ gespeicherte Wert ist anders. Da der in der Spalte „result“ beibehaltene Wert in anderen Ausdrücken verwendet wird, wird der Fehler noch signifikanter.
+Der für „result“ gespeicherte Wert unterscheidet sich. Da der in der Spalte „result“ beibehaltene Wert in anderen Ausdrücken verwendet wird, wird der Fehler noch signifikanter.
 
 ![Screenshot der CTAS-Ergebnisse](media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
-Dies ist für Datenmigrationen wichtig. Auch wenn die zweite Abfrage natürlich genauer ist, liegt ein Problem vor. Die Daten würden sich gegenüber dem Quellsystem unterscheiden, und dies stellt die Integrität der Migration infrage. Dies ist einer der seltenen Fälle, in denen die „falsche“ Antwort eigentlich die richtige Antwort ist!
+Dies ist für Datenmigrationen wichtig. Auch wenn die zweite Abfrage natürlich genauer ist, liegt ein Problem vor. Die Daten würden sich gegenüber dem Quellsystem unterscheiden, und dies stellt die Integrität der Migration infrage. Dies ist einer der seltenen Fällen, in denen die „falsche“ Antwort tatsächlich die richtige ist!
 
 Der Grund für diese Ungleichheit zwischen den beiden Ergebnissen ist die implizite Typumwandlung. Im ersten Beispiel definiert die Tabelle die Spaltendefinition. Beim Einfügen der Zeile tritt eine implizite Typumwandlung auf. Im zweiten Beispiel ist keine implizite Typumwandlung vorhanden, da der Ausdruck den Datentyp der Spalte definiert.
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Sie sehen also, dass die Typkonsistenz und die Pflege der Eigenschaften für die NULL-Zulässigkeit für CTAS eine bewährte Methode für das Engineering sind. Es ist hilfreich, die Integrität in Ihren Berechnungen zu wahren. Außerdem wird so sichergestellt, dass der Partitionswechsel möglich ist.
 
-CTAS ist eine der wichtigsten Anweisungen in SQL Data Warehouse. Machen Sie sich damit eingehend vertraut. Weitere Informationen finden Sie in der [CTAS-Dokumentation](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS ist eine der wichtigsten Anweisungen in SQL Analytics. Machen Sie sich damit eingehend vertraut. Weitere Informationen finden Sie in der [CTAS-Dokumentation](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

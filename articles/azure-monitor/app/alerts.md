@@ -1,21 +1,19 @@
 ---
-title: Einrichten von Warnungen in Azure Application Insights | Microsoft Docs
+title: Einrichten von Warnungen in Azure Application Insights
 description: Legen Sie fest, dass Sie über längere Reaktionszeiten, Ausnahmen und andere Leistungs- oder Nutzungsänderungen in Ihrer Web-App informiert werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678403"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666716"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
+
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder der Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
 
 Application Insights überwacht die Live-App auf einer [Vielzahl von Plattformen][platforms], um Sie bei der Diagnose von Leistungsproblemen und beim Auswerten von Nutzungsmustern zu unterstützen.
@@ -28,6 +26,7 @@ Es gibt mehrere Warnungstypen:
 * Die [**Proaktive Diagnose**](../../azure-monitor/app/proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
 
 ## <a name="set-a-metric-alert"></a>Festlegen einer Metrikwarnung
+
 Öffnen Sie die Registerkarte „Warnungsregeln“, und verwenden Sie dann die Schaltfläche „Hinzufügen“.
 
 ![Klicken Sie auf der Registerkarte „Warnungsregeln“ auf „Warnung hinzufügen“. Legen Sie Ihre App als zu messende Ressource fest, geben Sie einen Namen für die Warnung ein, und wählen Sie eine Metrik.](./media/alerts/01-set-metric.png)
@@ -164,12 +163,12 @@ Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ih
 
 * Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
 
-* Für Warnungen zu allen Application Insights-Metriken (einschließlich Verfügbarkeitsmetriken) sendet die Option **Masse/Gruppe**, falls aktiviert, Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement. Tatsächliche sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen.
+* Für Warnungen zu allen Application Insights-Metriken (einschließlich Verfügbarkeitsmetriken) sendet die Option **Masse/Gruppe**, falls aktiviert, Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement. Tatsächlich sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen.
 
 > [!NOTE]
 > Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
 
-Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit einer der „Mitwirkender/Besitzer/Leser“ konfigurieren (nicht zusammen als eine einzige Option).
+Verwenden Sie die neue Benutzeroberfläche für Warnungen/Warnungen nahezu in Echtzeit, wenn Sie Benutzer basierend auf ihren Rollen benachrichtigen müssen. Mit [Aktionsgruppen](../platform/action-groups.md) können Sie E-Mail-Benachrichtigungen für Benutzer mit den Rollen „Mitwirkender“, „Besitzer“, „Leser“ konfigurieren (nicht kombiniert als eine einzige Option).
 
 ## <a name="automation"></a>Automation
 * [Verwenden von PowerShell zum Automatisieren der Einrichtung von Warnungen](../../azure-monitor/app/powershell-alerts.md)

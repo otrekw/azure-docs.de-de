@@ -1,34 +1,34 @@
 ---
 title: 'Tutorial: Laden von Daten aus Azure Data Lake Storage'
-description: Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage in Azure SQL Data Warehouse.
+description: Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage für SQL Analytics.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300586"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Laden von Daten aus Azure Data Lake Storage in SQL Data Warehouse
-In dieser Anleitung erfahren Sie, wie Sie mithilfe externer PolyBase-Tabellen Daten aus Azure Data Lake Storage in Azure SQL Data Warehouse laden. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung in SQL Data Warehouse importieren. 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Laden von Daten aus Azure Data Lake Storage für SQL Analytics
+In dieser Anleitung erfahren Sie, wie Sie mithilfe externer PolyBase-Tabellen Daten aus Azure Data Lake Storage laden. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung importieren. 
 
 > [!NOTE]  
-> Eine Alternative zum Laden stellt die [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) dar, die sich derzeit in der Public Preview befindet. Wenn Sie Feedback zur COPY-Anweisung geben möchten, senden Sie eine E-Mail an die folgende Verteilerliste: sqldwcopypreview@service.microsoft.com.
+> Eine Alternative zum Laden stellt die [COPY-Anweisung](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) dar, die sich derzeit in der Public Preview befindet.  Die COPY-Anweisung bietet die höchste Flexibilität. Wenn Sie Feedback zur COPY-Anweisung geben möchten, senden Sie eine E-Mail an die folgende Verteilerliste: sqldwcopypreview@service.microsoft.com.
 >
 > [!div class="checklist"]
 
 > * Erstellen Sie die erforderlichen Datenbankobjekte zum Laden von Daten aus Data Lake Storage.
 > * Stellen Sie eine Verbindung mit einem Data Lake Storage-Verzeichnis her.
-> * Laden von Daten in Azure SQL Data Warehouse
+> * Laden Sie Daten in das Data Warehouse.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -37,15 +37,17 @@ Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL S
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine Instanz von Azure SQL Data Warehouse. Siehe [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md).
+* Einen SQL-Pool. Lesen Sie dazu [Erstellen eines SQL-Pools und Abfragen von Daten](create-data-warehouse-portal.md).
 * Ein Data Lake Storage-Konto. Siehe [Erste Schritte mit Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). Für dieses Speicherkonto müssen Sie zum Laden eine der folgenden Anmeldeinformationen konfigurieren oder angeben: Einen Speicherkontoschlüssel, einen Azure Active Directory-Anwendungsbenutzer oder einen AAD-Benutzer, der über die entsprechende RBAC-Rolle für das Speicherkonto verfügt. 
 
-##  <a name="create-a-credential"></a>Erstellen einer Anmeldeinformation
+##  <a name="create-a-credential"></a>Erstellen von Anmeldeinformationen
 Sie können diesen Abschnitt überspringen und mit „Erstellen der externen Datenquelle“ fortfahren, wenn Sie sich mit AAD-Pass-Through authentifizieren. Es ist nicht erforderlich, Anmeldeinformationen für den Geltungsbereich der Datenbank zu erstellen oder anzugeben, wenn Sie AAD-Pass-Through verwenden. Sie sollten aber sicherstellen, dass Ihr AAD-Benutzer über die entsprechende RBAC-Rolle (Storage-Blobdatenleser, Mitwirkender oder Besitzer) für das Speicherkonto verfügt. Weitere Einzelheiten finden Sie [hier](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260). 
 
 Für den Zugriff auf Ihr Data Lake Storage-Konto müssen Sie einen Datenbankhauptschlüssel erstellen, um die geheimen Anmeldeinformationen zu verschlüsseln. Anschließend erstellen Sie datenbankbezogene Anmeldeinformationen für das Speichern Ihres Geheimnisses. Bei der Authentifizierung mittels Dienstprinzipalen (Azure Active Directory-Anwendungsbenutzer) werden die in AAD eingerichteten Dienstprinzipal-Anmeldeinformationen in den datenbankweit gültigen Anmeldeinformationen gespeichert. Sie können den Speicherkontoschlüssel für Gen2 auch in den datenbankweit gültigen Anmeldeinformationen speichern.
 
 Um mithilfe von Dienstprinzipalen eine Verbindung mit Data Lake Storage herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf das Data Lake Storage-Konto gewähren. Anweisungen hierzu finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 unter Verwendung von Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+
+Melden Sie sich bei Ihrem SQL-Pool mit einem Benutzer an, der über Berechtigungen für die Steuerungsebene (CONTROL) verfügt, und führen Sie die folgenden SQL-Anweisungen für Ihre Datenbank aus:
 
 ```sql
 -- A: Create a Database Master Key.
@@ -194,7 +196,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optimieren der Columnstore-Komprimierung
-Standardmäßig speichert SQL Data Warehouse die Tabelle als gruppierten Columnstore-Index. Nach Abschluss eines Ladevorgangs sind einige der Datenzeilen möglicherweise nicht in den Columnstore-Index komprimiert.  Es gibt zahlreiche Gründe, warum dies geschieht. Weitere Informationen finden Sie unter [Verwalten von Columnstore-Indizes](sql-data-warehouse-tables-index.md).
+Tabellen werden standardmäßig als gruppierter Columnstore-Index definiert. Nach Abschluss eines Ladevorgangs sind einige der Datenzeilen möglicherweise nicht in den Columnstore-Index komprimiert.  Es gibt zahlreiche Gründe, warum dies geschieht. Weitere Informationen finden Sie unter [Verwalten von Columnstore-Indizes](sql-data-warehouse-tables-index.md).
 
 Um die Abfrageleistung und die Columnstore-Komprimierung nach dem Ladevorgang zu optimieren, stellen Sie die Tabelle wieder her, um den Columstore-Index zu zwingen alle Zeilen zu komprimieren.
 
@@ -212,19 +214,20 @@ Wenn Sie Einzelspaltenstatistiken für jede Spalte jeder Tabelle erstellen möch
 Das folgende Beispiel ist ein guter Ausgangspunkt zum Erstellen von Statistiken. Es werden Statistiken für einzelne Spalten für jede Spalte in der Dimensionstabelle erstellt sowie für jede verknüpfte Spalte in der Faktentabelle. Sie können später immer Statistiken für einzelne oder mehrere Spalten auf anderen Faktentabellenspalten hinzufügen.
 
 ## <a name="achievement-unlocked"></a>Der Weg ist frei!
-Sie haben erfolgreich Daten in Azure SQL Data Warehouse geladen. Großartig!
+Sie haben Daten erfolgreich in Ihr Data Warehouse geladen. Großartig!
 
 ## <a name="next-steps"></a>Nächste Schritte 
 In diesem Tutorial haben Sie externe Tabellen erstellt, um die Struktur für die in Data Lake Storage Gen1 gespeicherten Daten zu definieren, und dann die PolyBase-Anweisung CREATE TABLE AS SELECT verwendet, um Daten in Ihre Instanz von Data Warehouse zu laden. 
 
 Sie haben folgende Schritte ausgeführt:
 > [!div class="checklist"]
+>
 > * Erstellen der erforderlichen Datenbankobjekte zum Laden aus Data Lake Storage
 > * Herstellen einer Verbindung mit einem Data Lake Storage-Verzeichnis
-> * Laden von Daten in Azure SQL Data Warehouse.
+> * Laden von Daten in das Data Warehouse.
 >
 
-Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-Lösung mit SQL Data Warehouse. Sehen Sie sich unsere Entwicklungsressourcen an.
+Das Laden von Daten ist der erste Schritt bei der Entwicklung einer Data Warehouse-Lösung mit Azure Synapse Analytics. Sehen Sie sich unsere Entwicklungsressourcen an.
 
 > [!div class="nextstepaction"]
-> [Lernen Sie, Tabellen in SQL Data Warehouse zu entwickeln](sql-data-warehouse-tables-overview.md).
+> [Erfahren Sie, wie Tabellen für Data Warehousing entwickelt werden.](sql-data-warehouse-tables-overview.md)

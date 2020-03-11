@@ -3,12 +3,12 @@ title: Einrichten von Azure Active Directory für die Clientauthentifizierung
 description: Hier erfahren Sie, wie Azure Active Directory (Azure AD) für die Authentifizierung von Clients für Service Fabric-Cluster eingerichtet wird.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843819"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193378"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Einrichten von Azure Active Directory für die Clientauthentifizierung
 
@@ -104,7 +104,7 @@ Wenn Sie versuchen, sich in Service Fabric Explorer bei Azure AD anzumelden, wir
 Die Cluster(web)anwendung für Service Fabric Explorer versucht, sich bei Azure AD zu authentifizieren, und gibt im Rahmen der Anforderung die Rückgabe-URL für die Umleitung an. Die URL ist jedoch nicht in der Liste **ANTWORT-URL** der Azure AD-Anwendung enthalten.
 
 #### <a name="solution"></a>Lösung
-Klicken Sie auf der Azure AD-Seite auf **App-Registrierungen**, wählen Sie Ihre Clusteranwendung aus, und klicken Sie dann auf **Antwort-URLs**. Fügen Sie im Bereich **Antwort-URLs** der Liste die URL von Service Fabric Explorer hinzu, oder ersetzen Sie eines der Elemente in der Liste. Speichern Sie die Änderung.
+Wählen Sie auf der Registrierungsseite der Azure AD-App für Ihren Cluster die Option **Authentifizierung**, und fügen Sie unter dem Abschnitt **URIs umleiten** die Service Fabric Explorer-URL zur Liste hinzu. Speichern Sie die Änderung.
 
 ![Antwort-URL der Webanwendung][web-application-reply-url]
 

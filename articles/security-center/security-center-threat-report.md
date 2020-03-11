@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603454"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921248"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center-Bericht mit Bedrohungsinformationen
 In diesem Dokument erfahren Sie, wie Sie anhand von Azure Security Center-Berichten mit Bedrohungsinformationen weitere Informationen zu einer Bedrohung ermitteln können, die eine Sicherheitswarnung generiert hat.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Was ist ein Bericht mit Bedrohungsinformationen?
-Im Zuge der Bedrohungserkennung von Security Center werden Sicherheitsinformationen von Ihren Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen überwacht. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren. Weitere Informationen finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
+Im Zuge des Bedrohungsschutzes von Security Center werden von Ihren Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen stammende Sicherheitsinformationen überwacht. Diese Informationen, bei denen es sich häufig um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren. Weitere Informationen finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
 
 Wenn Security Center eine Bedrohung erkennt, wird eine [Sicherheitswarnung](security-center-managing-and-responding-alerts.md) mit ausführlichen Informationen zu einem bestimmten Ereignis sowie mit Vorschlägen zur Beseitigung generiert. Um die für Incidents zuständigen Teams bei der Untersuchung und Beseitigung von Bedrohungen zu unterstützen, steht in Security Center ein Bericht mit Bedrohungsinformationen zur Verfügung. Dieser enthält unter anderem folgende Informationen zu der erkannten Bedrohung:
 

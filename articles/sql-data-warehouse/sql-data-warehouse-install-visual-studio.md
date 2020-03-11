@@ -1,28 +1,28 @@
 ---
 title: Installieren von Visual Studio 2019
-description: Installieren von Visual Studio und SQL Server Data Tools (SSDT) für Azure SQL Data Warehouse
+description: Installieren von Visual Studio und SQL Server Data Tools (SSDT) für SQL Analytics
 services: sql-data-warehouse
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.workload: azure-vs
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 01/07/2020
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b2b7b2413a187c446aace4eb1e416dea1b4258d3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9ad0f4aedc5a095bfa70dec1b67e52cd4d152e0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750664"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195338"
 ---
-# <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Erste Schritte mit Visual Studio 2019 für SQL Data Warehouse
+# <a name="getting-started-with-visual-studio-2019"></a>Erste Schritte mit Visual Studio 2019
 SQL Server Data Tools (SSDT) von Visual Studio **2019** ist ein einzelnes Tool, mit dem Sie folgende Aufgaben ausführen können:
 
-- Verbinden, Abfragen und Entwickeln von Anwendungen für SQL Data Warehouse 
+- Verbinden, Abfragen und Entwickeln von Anwendungen
 - Nutzen eines Objekt-Explorers, um alle Objekte im Datenmodell visuell zu untersuchen, einschließlich Tabellen, Ansichten, gespeicherten Prozeduren usw.
 - Generieren von T-SQL-DDL-Skripts (Data Definition Language) für die Objekte
 - Entwickeln Ihres Data Warehouse mithilfe eines zustandsbasierten Ansatzes für SSDT-Datenbankprojekte
@@ -34,7 +34,7 @@ Informationen zum Herunterladen und Installieren von Visual Studio **16.3 und h�
 
 ## <a name="unsupported-features-in-ssdt"></a>Nicht unterstützte Funktionen in SSDT
 
-Gelegentlich enthalten Funktionsveröffentlichungen für SQL Data Warehouse keine Unterstützung für SSDT. Die folgenden Funktionen werden derzeit nicht unterstützt:
+Gelegentlich bieten für SQL Analytics veröffentliche Funktionen keine Unterstützung für SSDT. Die folgenden Funk tionen werden derzeit nicht unterstützt:
 
 - [Materialisierte Sichten](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (in Bearbeitung)
 - [Sortierte gruppierte Columnstore-Indizes](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (in Bearbeitung)
@@ -49,16 +49,18 @@ Gelegentlich enthalten Funktionsveröffentlichungen für SQL Data Warehouse kein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie jetzt die neueste Version von SSDT verwenden, sind Sie bereit für die [Verbindungsherstellung][connect] mit SQL Data Warehouse.
+Da Sie jetzt die neueste Version von SSDT verwenden, sind Sie bereit für die [Verbindungsherstellung][connect] mit Ihrem SQL-Pool.
 
 <!--Anchors-->
 
 <!--Image references-->
 
 <!--Articles-->
+
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
+
 [Visual Studio 2019 herunterladen]: https://visualstudio.microsoft.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx

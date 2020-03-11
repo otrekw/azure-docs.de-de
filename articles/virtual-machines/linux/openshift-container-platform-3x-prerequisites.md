@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035470"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255689"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift Container Platform 3.11 in Azure
 
@@ -59,7 +59,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Sie sollten zum Hosten des Schlüsseltresors eine dedizierte Ressourcengruppe verwenden. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden.
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Sie sollten zum Hosten des Schlüsseltresors eine dedizierte Ressourcengruppe verwenden. Diese Gruppe ist von der Ressourcengruppe getrennt, in der die OpenShift-Clusterressourcen bereitgestellt werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe namens *keyvaultrg* am Standort *eastus* erstellt:
 
@@ -102,9 +102,9 @@ OpenShift kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort 
 
 Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp) einen Dienstprinzipal, und geben Sie die Anmeldeinformationen aus, die OpenShift benötigt.
 
-Im folgenden Beispiel wird ein Dienstprinzipal erstellt und mit Berechtigungen vom Typ „Mitwirkender“ für eine Ressourcengruppe namens „openshiftrg“ ausgestattet.
+Im folgenden Beispiel wird ein Dienstprinzipal erstellt und mit Berechtigungen vom Typ „Mitwirkender“ für eine Ressourcengruppe namens *openshiftrg* ausgestattet.
 
-Erstellen Sie zunächst die Ressourcengruppe „openshiftrg“:
+Erstellen Sie zunächst die Ressourcengruppe *openshiftrg*:
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -158,7 +158,7 @@ Sie müssen diese Dateien in Key Vault-Geheimnissen speichern.  Verwenden Sie de
 | routingcertfile  | Routing-CERT-Datei  |
 | routingkeyfile   | Routing-Schlüsseldatei   |
 
-Erstellen Sie die Geheimnisse mithilfe der Azure-Befehlszeilenschnittstelle. Unten ist ein Beispiel aufgeführt.
+Erstellen Sie die Geheimnisse mithilfe der Azure-Befehlszeilenschnittstelle. Unten finden Sie ein Beispiel.
 
 ```bash
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem

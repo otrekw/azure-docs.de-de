@@ -1,6 +1,6 @@
 ---
-title: Collation
-description: In Azure SQL Data Warehouse unterstützte Sortierungstypen
+title: Data Warehouse-Sortierungstypen
+description: Im SQL-Pool von Azure Synapse Analytics unterstützte Sortierungstypen.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
@@ -9,21 +9,22 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 67627e4157c85853cf05dd6b24ced968a9654e62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851790"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198438"
 ---
-# <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Unterstützung der Datenbanksortierung für Azure SQL Data Warehouse
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Unterstützung der Datenbanksortierung im SQL-Pool von Azure Synapse Analytics
 
-Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, wenn Sie eine neue Azure SQL Data Warehouse-Datenbank erstellen. Diese Funktion macht das Erstellen einer neuen Datenbank mit einer der 3.800 unterstützten Datenbanksortierungen für SQL Data Warehouse noch einfacher.
+Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, wenn Sie eine neue SQL-Pool-Datenbank für Azure Synapse erstellen. Diese Funktion macht das Erstellen einer neuen Datenbank mit einer der 3.800 unterstützten Datenbanksortierungen noch einfacher. 
+
 Sortierungen geben das Gebietsschema, die Codepage, die Sortierreihenfolge und Regeln für die Groß-/Kleinschreibung von Zeichen für zeichenbasierte Datentypen an. Nach dem Auswählen erben alle Spalten und Ausdrücke, für die Sortierungsinformationen erforderlich sind, die gewählte Sortierung aus der Datenbankeinstellung. Die Standardvererbung kann durch explizites Angeben einer anderen Sortierung für einen zeichenbasierten Datentyp überschrieben werden.
 
 ## <a name="changing-collation"></a>Ändern der Sortierung
-Aktualisieren Sie zum Ändern der Standardsortierung einfach das Feld „Sortierung“ auf der Bereitstellungsoberfläche.
+Aktualisieren Sie zum Ändern der Standardsortierung das Feld „Sortierung“ auf der Bereitstellungsoberfläche.
 
 Beispiel: Wenn Sie die Standardsortierung so ändern möchten, dass die Groß-/Kleinschreibung beachtet wird, ändern Sie einfach den Namen „SQL_Latin1_General_CP1_CI_AS“ der Sortierung in „SQL_Latin1_General_CP1_CS_AS“. 
 
@@ -100,9 +101,12 @@ Beispiel: Wenn Sie die Standardsortierung so ändern möchten, dass die Groß-/K
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Überprüfen der aktuellen Sortierung
+
 Führen Sie den folgenden T-SQL-Codeausschnitt aus, um die aktuelle Sortierung für die Datenbank zu überprüfen:
+
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-Wird „Collation“ als Eigenschaftenparameter übergeben, gibt die Funktion „DatabasePropertyEx“ die aktuelle Sortierung für die angegebene Datenbank zurück. Weitere Informationen zur Funktion „DatabasePropertyEx“ finden Sie auf MSDN.
+
+Wenn „Collation“ als Eigenschaftenparameter übergeben wird, gibt die Funktion „DatabasePropertyEx“ die aktuelle Sortierung für die angegebene Datenbank zurück. Weitere Informationen finden Sie unter [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603756"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208816"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
@@ -35,7 +35,6 @@ Für eine unter einem Azure-Abonnement aktivierte Azure-Umgebung werden von Azur
 
 > [!NOTE]
 > Um die vollständigen Sicherheitsfeatures nutzen zu können, muss der von Azure Security Center verwendete [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) installiert und [ordnungsgemäß konfiguriert sein, damit Daten an Azure Security Center gesendet werden](security-center-enable-data-collection.md#manual-agent).
-
 
 In den folgenden Abschnitten werden die unterstützten Serverbetriebssysteme aufgelistet, unter denen der von Azure Security Center verwendete [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ausgeführt werden kann.
 
@@ -86,38 +85,6 @@ Unter einem Kundenabonnement werden virtuelle Computer auch im Rahmen einiger ve
 
 Virtuelle Computer, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
-## PaaS-Dienste <a name="paas-services"></a>
-
-Die folgenden Azure-PaaS-Ressourcen werden von Azure Security Center unterstützt:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Speicherkonto
-* App Service
-* Funktion
-* Clouddienst
-* VNet
-* Subnet
-* NIC
-* NSG
-* Batch-Konto
-* Service Fabric-Konto
-* Automation-Konto
-* Load Balancer
-* Suchen,
-* Service Bus-Namespace
-* Stream Analytics
-* Event Hub-Namespace
-* Logik-Apps
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Schlüsseltresor
-
-Weitere Informationen zu den unterstützten Features für die oben aufgeführte Liste mit PaaS-Ressourcen finden Sie unter [PaaS-Dienste – unterstützte Features](security-center-services.md#paas-services).
-
 Der Schutz für virtuelle Computer, die sich in Azure Stack befinden, wird ebenfalls unterstützt. Weitere Informationen zur Integration des Security Centers in Azure Stack finden Sie unter [Integrieren Ihrer Azure Stack-VMs in Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -126,4 +93,4 @@ Der Schutz für virtuelle Computer, die sich in Azure Stack befinden, wird ebenf
 - Erfahren Sie, wie [Daten von Security Center verwaltet und geschützt werden](security-center-data-security.md).
 - Hier erfahren Sie, wie Sie [die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen](security-center-planning-and-operations-guide.md).
 - Erfahren Sie mehr über die [für die verschiedenen Cloudumgebungen verfügbaren Features](security-center-services.md).
-- Erfahren Sie mehr über die [Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center](security-center-alerts-iaas.md).
+- Erfahren Sie mehr zum [Bedrohungsschutz für Windows-und Linux-Computer in Azure Security Center](threat-protection.md#windows-machines).

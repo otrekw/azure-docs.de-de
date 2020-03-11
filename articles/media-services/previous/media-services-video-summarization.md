@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084803"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918313"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung  
- 
+
+> [!NOTE]
+> Der Medienprozessor **Azure Media-Videovorschau** wird eingestellt. Das Einstellungsdatum finden Sie im Thema [Legacykomponenten](legacy-components.md).
+
 ## <a name="overview"></a>Übersicht
 
 Mit dem **Azure Media-Videovorschau**-Medienprozessor können Sie eine Zusammenfassung eines Videos erstellen. Das ist hilfreich für Kunden, die nur eine zusammenfassende Vorschau eines langen Videos ansehen möchten. Kunden möchten zum Beispiel nur eine kurze „Videozusammenfassung“ sehen, wenn sie mit der Maus auf eine Miniaturansicht zeigen. Durch Anpassen der Parameter von **Azure Media-Videovorschau** per Konfigurationsvoreinstellung können Sie die leistungsstarken Technologien des Medienprozessors für das Erkennen und Zusammenfügen von Szenen verwenden, um algorithmisch einen beschreibenden Subclip zu erstellen.  
@@ -56,10 +59,10 @@ Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumb
 
 Derzeit können Sie die folgenden Parameter ändern:
 
-| Param | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
-| outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: „True“ oder „False“. Der Standardwert ist TRUE. |
-| fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: „True“ oder „False“.  Der Standardwert ist TRUE. |
+| outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: „True“ oder „False“. Der Standardwert lautet "True". |
+| fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: „True“ oder „False“.  Der Standardwert lautet "True". |
 | maxMotionThumbnailDurationInSecs |Ganze Zahl, die angibt, wie lange das gesamte fertige Video sein soll.  Der Standardwert hängt von der ursprünglichen Videodauer ab. |
 
 Die folgende Tabelle beschreibt die Standarddauer, wenn **maxMotionThumbnailInSecs** nicht verwendet wird.

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185535"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248684"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -130,9 +130,9 @@ Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve
 
 Sie können Platzhalterzertifikate verwenden, solange der Platzhalter mit der externen URL übereinstimmt. Sie müssen Platzhalterzertifikate für [Platzhalteranwendungen](application-proxy-wildcard.md) verwenden. Wenn Sie das Zertifikat auch zum Zugreifen auf Unterdomänen verwenden möchten, müssen Sie die Unterdomänen-Platzhalter als alternative Antragstellernamen demselben Zertifikat hinzufügen. Ein Zertifikat für *\*.adventure-works.com* funktioniert beispielsweise nur für *\*.apps.adventure-works.com*, wenn Sie *\*.apps.adventure-works.com* als alternativen Antragstellernamen hinzufügen. 
 
-Sie können von Ihrer eigenen Public Key-Infrastruktur (PKI) ausgestellte Zertifikate verwenden, wenn die Zertifikatkette auf Ihren Clientgeräten installiert ist. Mit Intune können diese Zertifikate auf verwalteten Geräten bereitgestellt werden. Bei nicht verwalteten Geräten müssen Sie diese Zertifikate manuell installieren.
+Sie können von Ihrer eigenen Public Key-Infrastruktur (PKI) ausgestellte Zertifikate verwenden, wenn die Zertifikatkette auf Ihren Clientgeräten installiert ist. Mit Intune können diese Zertifikate auf verwalteten Geräten bereitgestellt werden. Bei nicht verwalteten Geräten müssen Sie diese Zertifikate manuell installieren. 
 
-Es ist nicht ratsam, eine private Stammzertifizierungsstelle zu verwenden. Die private Stammzertifizierungsstelle muss ebenfalls per Pushvorgang auf Clientcomputer übertragen werden, und dies ist mit vielen Anforderungen verbunden. 
+Es wird nicht empfohlen, eine private Stammzertifizierungsstelle zu verwenden, da diese ebenfalls per Pushvorgang auf Clientcomputer übermittelt werden muss. Dies kann zu vielen Problemen führen.
 
 ### <a name="certificate-management"></a>Zertifikatverwaltung
 

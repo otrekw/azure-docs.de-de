@@ -1,26 +1,26 @@
 ---
 title: Workloadklassifizierung
-description: Leitfaden zur Verwendung der Klassifizierung, um Parallelität, Priorität und Computeressourcen für Abfragen in Azure SQL Data Warehouse zu verwalten
+description: Leitfaden zur Verwendung der Klassifizierung, um Parallelität, Priorität und Computeressourcen für Abfragen in Azure Synapse Analytics zu verwalten
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/27/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: azure-synapse
+ms.openlocfilehash: f350885c2d25860c7dc83310534ca9d8c9d72555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768828"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191760"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse-Workloadklassifizierung
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics-Workloadklassifizierung
 
-In diesem Artikel wird der SQL Data Warehouse-Workloadklassifizierungsprozess beschrieben, in dem eingehenden Anforderungen eine Ressourcenklasse und eine Priorität zugewiesen wird.
+In diesem Artikel wird der Workloadklassifizierungsprozess beim Zuweisen einer Workloadgruppe und Priorität für eingehende Anforderungen mit SQL Analytics in Azure Synapse erläutert.
 
 ## <a name="classification"></a>Klassifizierung
 
@@ -36,7 +36,7 @@ Nicht alle Anweisungen sind klassifiziert, da sie keine Ressourcen oder Bedeutun
 
 ## <a name="classification-process"></a>Klassifizierungsprozess
 
-Für die Klassifizierung in SQL Data Warehouse werden aktuell mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) Benutzer einer Rolle zugewiesen, der wiederum eine entsprechende Ressourcenklasse zugewiesen ist. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können SQL Data Warehouse-Benutzer Wichtigkeit zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden. 
+Für die Klassifizierung in SQL Analytics werden derzeit Benutzer mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) einer Rolle zugewiesen, der wiederum eine entsprechende Ressourcenklasse zugewiesen wurde. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können SQL Analytics-Benutzer Priorität zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden. 
 
 > [!NOTE]
 > Die Klassifizierung wird für jede Anforderung einzeln ausgewertet. Mehrere Anforderungen in einer einzelnen Sitzung können separat klassifiziert werden.
@@ -45,7 +45,7 @@ Für die Klassifizierung in SQL Data Warehouse werden aktuell mithilfe von [sp_a
 
 Im Rahmen des Klassifizierungsprozesses wird mittels Gewichtung bestimmt, welche Arbeitsauslastungsgruppe zugewiesen wird.  Die Gewichtung funktioniert wie folgt:
 
-|Klassifizierungsparameter |Gewichtung   |
+|Klassifizierungsparameter |Weight   |
 |---------------------|---------|
 |MEMBERNAME:USER      |64       |
 |MEMBERNAME:ROLE      |32       |

@@ -1,19 +1,15 @@
 ---
 title: Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 description: Automatisieren von benutzerdefinierten täglichen, wöchentlichen oder monatlichen Berichten mit Azure Application Insights-Daten
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677626"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655122"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -91,7 +87,7 @@ availabilityResults
 5. Klicken Sie auf die Vorlage **_AppInsights: Geplante Übersicht_** .
 
      > [!NOTE]
-     > Standardmäßig werden Funktionen-Apps mit Runtimeversion 2.x erstellt. Sie müssen [Runtimeversion **1.x** von Azure Functions als Ziel einstellen](https://docs.microsoft.com/azure/azure-functions/set-runtime-version), um die Vorlage „AppInsights: Geplante Übersicht“ zu verwenden.  ![Screenshot: Runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Standardmäßig werden Funktionen-Apps mit Runtimeversion 2.x erstellt. Sie müssen [Runtimeversion](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1.x** von Azure Functions als Ziel wählen, um die Vorlage „AppInsights: Geplante Übersicht“ zu verwenden.  ![Screenshot: Runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 

@@ -1,26 +1,26 @@
 ---
 title: Verwalten und Überwachen der Workloadpriorität
-description: Erfahren Sie, wie Sie die Priorität für die Anforderungsebene in Azure SQL Data Warehouse verwalten und überwachen.
+description: Hier erfahren Sie, wie Sie die Priorität für die Anforderungsebene in Azure Synapse Analytics verwalten und überwachen.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.subservice: workload-management
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 6274bff9f9c57bfb06e58e1c4bfce6b6e265ac62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692710"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195616"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Verwalten und Überwachen der Workloadpriorität in Azure SQL Data Warehouse
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Verwalten und Überwachen der Workloadpriorität in Azure Synapse Analytics
 
-Verwalten und überwachen Sie die Priorität für die Anforderungsebene in Azure SQL Data Warehouse mithilfe von dynamischen Verwaltungssichten (Dynamic Management Views, DMVs) und Katalogsichten.
+Verwalten und überwachen Sie die Priorität für die SQL Analytics-Anforderungsebene in Azure Synapse mithilfe von dynamischen Verwaltungssichten (Dynamic Management Views, DMVs) und Katalogsichten.
 
 ## <a name="monitor-importance"></a>Überwachen der Priorität
 
@@ -39,7 +39,7 @@ Wenn Sie genauer sehen möchten, wie Abfragen geplant werden, verwenden Sie die 
 
 ## <a name="manage-importance-with-catalog-views"></a>Verwalten der Priorität mit Katalogsichten
 
-Die Katalogsicht „sys.workload_management_workload_classifiers“ enthält Informationen zu Klassifizierern in Ihrer Azure SQL Data Warehouse-Instanz. Zum Ausschließen der systemdefinierten Klassifizierer, die Ressourcenklassen zugeordnet werden, führen Sie den folgenden Code aus:
+Die Katalogsicht „sys.workload_management_workload_classifiers“ enthält Informationen zu Klassifizierern. Zum Ausschließen der systemdefinierten Klassifizierer, die Ressourcenklassen zugeordnet werden, führen Sie den folgenden Code aus:
 
 ```sql
 SELECT *

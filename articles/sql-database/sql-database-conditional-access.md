@@ -1,6 +1,6 @@
 ---
 title: Bedingter Zugriff
-description: In diesem Artikel erfahren Sie, wie der bedingte Zugriff für Azure SQL-Datenbank und Data Warehouse konfiguriert wird.
+description: In diesem Artikel erfahren Sie, wie der bedingte Zugriff für Azure SQL-Datenbank und Azure Synapse konfiguriert wird.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,25 +10,26 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 03/29/2019
-ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+tag: azure-synpase
+ms.openlocfilehash: f2431ee7c62079a3691a5ea99e562460df8f9309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827158"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197571"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Bedingter Zugriff (MFA) mit Azure SQL-Datenbank und Data Warehouse  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Bedingter Zugriff (MFA) mit Azure SQL-Datenbank und Azure Synapse Analytics
 
-Azure [SQL-Datenbank](sql-database-technical-overview.md), die [verwaltete Instanz](sql-database-managed-instance.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen den bedingten Zugriff von Microsoft. 
+Azure [SQL-Datenbank](sql-database-technical-overview.md), die [verwaltete Instanz](sql-database-managed-instance.md) und [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen den bedingten Zugriff von Microsoft. 
 
 > [!NOTE]
-> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
+> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und Azure Synapse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf SQL-Datenbank als auch auf Azure Synapse verwiesen wird.
 
 Die folgenden Schritte zeigen, wie die SQL-Datenbank zum Erzwingen einer Richtlinie für bedingten Zugriff konfiguriert wird.  
 
 ## <a name="prerequisites"></a>Voraussetzungen  
-- Sie müssen die SQL-Datenbank oder SQL Data Warehouse zur Unterstützung für die Azure Active Directory-Authentifizierung konfigurieren. Informationen zu den jeweiligen Schritten finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit der SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
+- Sie müssen Ihre SQL-Datenbank oder Ihren SQL-Pool in Azure Synapse zur Unterstützung für die Azure Active Directory-Authentifizierung konfigurieren. Informationen zu den jeweiligen Schritten finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit der SQL-Datenbank oder Azure Synapse](sql-database-aad-authentication-configure.md).  
 - Wenn die mehrstufige Authentifizierung aktiviert ist, müssen Sie eine Verbindung mit einem unterstützten Tool wie der neuesten Version von SSMS herstellen. Weitere Informationen finden Sie unter [Konfigurieren der mehrstufigen Authentifizierung in Azure SQL-Datenbank für SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurieren der Zertifizierungsstelle für Azure SQL DB/DW  
@@ -44,14 +45,14 @@ Die folgenden Schritte zeigen, wie die SQL-Datenbank zum Erzwingen einer Richtli
    Wenn Sie die im dritten Screenshot dargestellte Option **Azure SQL-Datenbank** nicht finden können, führen Sie folgende Schritte aus:   
    - Melden Sie sich über SSMS mit einem AAD-Administratorkonto bei Ihrer Azure SQL DB/DW-Instanz an.  
    - Führen Sie `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER` aus.  
-   - Melden Sie sich bei AAD an und stellen Sie sicher, dass Azure SQL-Datenbank und Data Warehouse in den Anwendungen in AAD aufgeführt sind.  
+   - Melden Sie sich bei AAD an, und überprüfen Sie, ob Azure SQL-Datenbank und Azure Synapse in den Anwendungen in Ihrem AAD aufgeführt sind.  
 
 5. Wählen Sie **Zugriffskontrollen** und **Gewähren**, und aktivieren Sie dann die Richtlinie, die angewendet werden soll. In diesem Beispiel wählen wir **Mehrstufige Authentifizierung anfordern**.  
    ![Auswählen von „Zugriff gewähren“](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Zusammenfassung  
 Die ausgewählte Anwendung (Azure SQL-Datenbank), durch die eine Verbindung mit Azure SQL DB/DW über Azure AD Premium hergestellt werden kann, erzwingt nun die ausgewählte Richtlinie für bedingten Zugriff. Hierfür muss die Option **Mehrstufige Authentifizierung anfordern** aktiviert werden.  
-Bei Fragen zu Azure SQL-Datenbank und Data Warehouse bezüglich der mehrstufigen Authentifizierung wenden Sie sich unter MFAforSQLDB@microsoft.com an uns.  
+Bei Fragen zu Azure SQL-Datenbank und Azure Synapse bezüglich der mehrstufigen Authentifizierung wenden Sie sich unter MFAforSQLDB@microsoft.com an uns.  
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

@@ -1,6 +1,6 @@
 ---
 title: Optimieren von Transaktionen
-description: In diesem Artikel wird beschrieben, wie die Leistung des Transaktionscodes in Azure SQL Data Warehouse optimiert wird und gleichzeitig die Risiken für lange Rollbacks minimiert werden.
+description: Hier erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in SQL Analytics optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692862"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195837"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimieren von Transaktionen in Azure SQL Data Warehouse
-In diesem Artikel wird beschrieben, wie die Leistung des Transaktionscodes in Azure SQL Data Warehouse optimiert wird und gleichzeitig die Risiken für lange Rollbacks minimiert werden.
+# <a name="optimizing-transactions-in-sql-analytics"></a>Optimieren von Transaktionen in SQL Analytics
+Hier erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes in SQL Analytics optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
 
 ## <a name="transactions-and-logging"></a>Transaktionen und Protokollierung
-Transaktionen sind eine wichtige Komponente einer relationalen Datenbank-Engine. Bei SQL Data Warehouse werden Transaktionen während der Änderung von Daten verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne INSERT-, UPDATE- und DELETE-Anweisungen sind Beispiele für implizite Transaktionen. Für explizite Transaktionen wird BEGIN TRAN, COMMIT TRAN oder ROLLBACK TRAN verwendet. Explizite Transaktionen werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen. 
+Transaktionen sind eine wichtige Komponente einer relationalen Datenbank-Engine. Bei SQL Analytics werden Transaktionen während der Datenänderung verwendet. Diese Transaktionen können expliziter oder impliziter Art sein. Einzelne INSERT-, UPDATE- und DELETE-Anweisungen sind Beispiele für implizite Transaktionen. Für explizite Transaktionen wird BEGIN TRAN, COMMIT TRAN oder ROLLBACK TRAN verwendet. Explizite Transaktionen werden normalerweise verwendet, wenn mehrere Änderungsanweisungen zu einer einzelnen atomischen Einheit zusammengefasst werden müssen. 
 
-Azure SQL Data Warehouse speichert Änderungen in Form von Transaktionsprotokollen in der Datenbank. Jede Verteilung verfügt über ein eigenes Transaktionsprotokoll. Schreibvorgänge für Transaktionsprotokolle werden automatisch durchgeführt. Es ist keine Konfiguration erforderlich. Mit diesem Prozess wird der Schreibvorgang zwar sichergestellt, aber er bedeutet auch Mehraufwand für das System. Sie können diese negative Auswirkung reduzieren, indem Sie Code schreiben, der in Bezug auf Transaktionen effektiv ist. Code dieser Art lässt sich grob in zwei Kategorien einteilen.
+SQL Analytics führt mithilfe von Transaktionsprotokollen Änderungen an der Datenbank aus. Jede Verteilung verfügt über ein eigenes Transaktionsprotokoll. Schreibvorgänge für Transaktionsprotokolle werden automatisch durchgeführt. Es ist keine Konfiguration erforderlich. Mit diesem Prozess wird der Schreibvorgang zwar sichergestellt, aber er bedeutet auch Mehraufwand für das System. Sie können diese negative Auswirkung reduzieren, indem Sie Code schreiben, der in Bezug auf Transaktionen effektiv ist. Code dieser Art lässt sich grob in zwei Kategorien einteilen.
 
 * Verwenden von Konstrukten mit minimaler Protokollierung, wann immer möglich
 * Verarbeiten von Daten mit bereichsbezogenen Batches, um einzelne Transaktionen mit langer Ausführungsdauer zu vermeiden
@@ -78,7 +78,7 @@ CTAS und INSERT...SELECT sind jeweils Massenladevorgänge. Beide werden aber dur
 Beachten Sie, dass es sich bei allen Schreibvorgängen zum Aktualisieren von sekundären oder nicht gruppierten Indizes immer um Vorgänge mit vollständiger Protokollierung handelt.
 
 > [!IMPORTANT]
-> SQL Data Warehouse verfügt über 60 Verteilungen. Wenn davon ausgegangen wird, dass alle Zeilen gleichmäßig verteilt und in einer einzelnen Partition angeordnet sind, muss Ihr Batch also mindestens 6.144.000 Zeilen enthalten, damit beim Schreiben in einen gruppierten Columnstore-Index die minimale Protokollierung verwendet wird. Falls die Tabelle partitioniert ist und die eingefügten Zeilen über Partitionsgrenzen hinweg reichen, benötigen Sie bei gleichmäßiger Datenverteilung 6.144.000 Zeilen pro Partitionsgrenze. Für jede Partition in jeder Verteilung muss unabhängig voneinander der Schwellenwert in Höhe von 102.400 Zeilen überschritten werden, damit für den Einfügevorgang in die Verteilung die minimale Protokollierung angewendet wird.
+> Eine SQL Analytics-Datenbank hat 60 Verteilungen. Wenn davon ausgegangen wird, dass alle Zeilen gleichmäßig verteilt und in einer einzelnen Partition angeordnet sind, muss Ihr Batch also mindestens 6.144.000 Zeilen enthalten, damit beim Schreiben in einen gruppierten Columnstore-Index die minimale Protokollierung verwendet wird. Falls die Tabelle partitioniert ist und die eingefügten Zeilen über Partitionsgrenzen hinweg reichen, benötigen Sie bei gleichmäßiger Datenverteilung 6.144.000 Zeilen pro Partitionsgrenze. Für jede Partition in jeder Verteilung muss unabhängig voneinander der Schwellenwert in Höhe von 102.400 Zeilen überschritten werden, damit für den Einfügevorgang in die Verteilung die minimale Protokollierung angewendet wird.
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Data Warehouse-Features zur Workloadverwaltung vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
+> Bei der Neuerstellung großer Tabellen kann die Nutzung von SQL Analytics-Features zur Workloadverwaltung vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Anleitung zum Anhalten und Skalieren
-Mit Azure SQL Data Warehouse können Sie das Data Warehouse bedarfsgesteuert [anhalten, fortsetzen und skalieren](sql-data-warehouse-manage-compute-overview.md). Wenn Sie SQL Data Warehouse anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dieses Rückgängigmachen kann sich auf den Zeitraum auswirken, der für das Anhalten oder Skalieren der Azure SQL Data Warehouse-Datenbank erforderlich ist. 
+Mithilfe von SQL Analytics können Sie Ihren SQL-Pool bei Bedarf [anhalten, fortsetzen und skalieren](sql-data-warehouse-manage-compute-overview.md). Wenn Sie Ihren SQL-Pool anhalten oder skalieren, ist es wichtig zu verstehen, dass alle laufenden Transaktionen sofort beendet werden. Dies führt dazu, dass für alle geöffneten Transaktionen ein Rollback durchgeführt wird. Wenn für Ihre Workload vor dem Anhalte- oder Skaliervorgang eine längere und unvollständige Datenänderung ausgegeben wurde, müssen diese Schritte rückgängig gemacht werden. Dieser Vorgang wirkt sich möglicherweise auf den Zeitraum aus, der zum Anhalten oder Skalieren Ihres SQL-Pools benötigt wird. 
 
 > [!IMPORTANT]
 > Sowohl `UPDATE` als auch `DELETE` sind Vorgänge mit vollständiger Protokollierung. Diese Vorgänge zum Rückgängigmachen und Wiederholen können also deutlich länger dauern als vergleichbare Vorgänge mit minimaler Protokollierung. 
 > 
 > 
 
-Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor SQL Data Warehouse angehalten oder skaliert wird. Allerdings ist dieses Szenario unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
+Die beste Vorgehensweise ist, auf den Abschluss aktiver Datenänderungstransaktionen zu warten, bevor der SQL-Pool angehalten oder skaliert wird. Allerdings ist dieses Szenario unter Umständen nicht immer praktikabel. Sie können folgende Optionen verwenden, um das Risiko eines langen Rollbackvorgangs zu verringern:
 
 * Umschreiben von Vorgängen mit langer Ausführungsdauer mithilfe von [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * Unterteilen des Vorgangs in Blöcke, ausgeführt für jeweils eine Teilmenge der Zeilen
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) .  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).
+Weitere Informationen zu Isolationsstufen und Transaktionsgrenzen finden Sie unter [Transaktionen in SQL Analytics](sql-data-warehouse-develop-transactions.md).  Eine Übersicht über andere bewährte Methoden finden Sie unter [Bewährte Methoden für SQL Data Warehouse](sql-data-warehouse-best-practices.md).
 

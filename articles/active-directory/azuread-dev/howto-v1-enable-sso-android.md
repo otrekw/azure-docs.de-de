@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163531"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190295"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 
@@ -60,7 +60,7 @@ Wenn ein kompatibler Broker auf dem Gerät installiert ist, beispielsweise die M
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>So stellt Microsoft sicher, dass Ihre Anwendung gültig ist
 
-Die Identität einer Anwendung muss durch Aufrufen des Brokers sichergestellt werden. Denn dies ist ausschlaggebend, um Sicherheit bei brokergestützten Anmeldungen zu gewährleisten. Weder iOS noch Android erfordern eindeutige IDs, die nur für eine bestimmte Anwendung gültig sind. Somit können bösartige Anwendungen möglicherweise die ID einer legitimen Anwendung spoofen und die Token empfangen, die für die legitime Anwendung bestimmt sind. Um sicherzustellen, dass Microsoft zur Laufzeit stets mit der richtigen Anwendung kommunizieren, wird der Entwickler aufgefordert, bei der Registrierung seiner Anwendung bei Microsoft einen benutzerdefinierten redirectURI anzugeben. **Im Folgenden wird ausführlich beschrieben, wie Entwickler diesen Umleitung-URI erstellen sollten.** Dieser benutzerdefinierte Umleitungs-URI beinhaltet den Zertifikatfingerabdruck der Anwendung und wird vom Google Play Store als eindeutig für die Anwendung angesehen. Wenn eine Anwendung den Broker aufruft, fordert der Broker das Android-Betriebssystem auf, den Zertifikatfingerabdruck bereitzustellen, mit dem der Broker aufgerufen wurde. Der Broker stellt diesen Zertifikatfingerabdruck für Microsoft beim Aufrufen des Identitätssystems bereit. Wenn der Zertifikatfingerabdruck der Anwendung nicht mit dem Zertifikatfingerabdruck übereinstimmt, der uns vom Entwickler bei der Registrierung bereitgestellt wurde, wird der Zugriff auf die Token für die Ressource verweigert, die von der Anwendung angefordert wird. Durch diese Prüfung wird sichergestellt, dass nur die vom Entwickler registrierte Anwendung Tokens empfängt.
+Die Identität einer Anwendung, die den Broker aufruft, muss sichergestellt werden. Denn dies ist ausschlaggebend, um die Sicherheit bei brokergestützten Anmeldungen zu gewährleisten. Weder iOS noch Android erfordern eindeutige IDs, die nur für eine bestimmte Anwendung gültig sind. Somit können bösartige Anwendungen möglicherweise die ID einer legitimen Anwendung spoofen und die Token empfangen, die für die legitime Anwendung bestimmt sind. Um sicherzustellen, dass Microsoft zur Laufzeit stets mit der richtigen Anwendung kommunizieren, wird der Entwickler aufgefordert, bei der Registrierung seiner Anwendung bei Microsoft einen benutzerdefinierten redirectURI anzugeben. **Im Folgenden wird ausführlich beschrieben, wie Entwickler diesen Umleitung-URI erstellen sollten.** Dieser benutzerdefinierte Umleitungs-URI beinhaltet den Zertifikatfingerabdruck der Anwendung und wird vom Google Play Store als eindeutig für die Anwendung angesehen. Wenn eine Anwendung den Broker aufruft, fordert der Broker das Android-Betriebssystem auf, den Zertifikatfingerabdruck bereitzustellen, mit dem der Broker aufgerufen wurde. Der Broker stellt diesen Zertifikatfingerabdruck für Microsoft beim Aufrufen des Identitätssystems bereit. Wenn der Zertifikatfingerabdruck der Anwendung nicht mit dem Zertifikatfingerabdruck übereinstimmt, der uns vom Entwickler bei der Registrierung bereitgestellt wurde, wird der Zugriff auf die Token für die Ressource verweigert, die von der Anwendung angefordert wird. Durch diese Prüfung wird sichergestellt, dass nur die vom Entwickler registrierte Anwendung Tokens empfängt.
 
 Durch SSO vermittelte Anmeldungen bieten folgende Vorteile:
 

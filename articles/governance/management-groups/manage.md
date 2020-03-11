@@ -3,12 +3,12 @@ title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751235"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267934"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -17,6 +17,12 @@ Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglich
 Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.  Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager-Benutzertoken und der Verwaltungsgruppencache gelten für 30 Minuten, bevor sie gezwungen werden, sich zu aktualisieren.  Nach der Durchführung einer Aktion, wie dem Verschieben einer Verwaltungsgruppe oder eines Abonnements, kann die Anzeige bis zu 30 Minuten dauern.  
+>Um die Updates früher anzuzeigen, müssen Sie Ihr Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>Ändern des Namens einer Verwaltungsgruppe
 
@@ -125,7 +131,7 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 
-Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab.  Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in Powershell für Verwaltungsgruppen.  
+Mit dem Befehl „Get-AzManagementGroup“ rufen Sie alle Gruppen ab.  Im Modul [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) finden Sie die vollständige Liste der GET-Befehle in PowerShell für Verwaltungsgruppen.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup

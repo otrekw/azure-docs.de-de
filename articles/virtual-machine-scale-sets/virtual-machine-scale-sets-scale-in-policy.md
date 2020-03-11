@@ -1,32 +1,32 @@
 ---
 title: Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie benutzerdefinierte Richtlinien für das horizontale Herunterskalieren mit Azure-VM-Skalierungsgruppen verwenden, die die Autoskalierungskonfiguration zum Verwalten der Instanzenzahl verwenden.
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271761"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919837"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Vorschau: Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
 
 Eine Bereitstellung einer VM-Skalierungsgruppe kann basierend auf einem Array von Metriken einschließlich plattform- und benutzerdefinierter Metriken horizontal hoch- oder herunterskaliert werden. Während bei einer horizontalen Skalierung basierend auf dem Skalierungsgruppenmodell neue VMs erstellt werden, wirkt sich das horizontale Herunterskalieren auf die Ausführung virtueller Computer aus, die im Laufe der Entwicklung der Skalierungsgruppenworkload möglicherweise unterschiedliche Konfigurationen und/oder Funktionen aufweisen. 
 
-Mit dem Feature „Horizontales Herunterskalieren“ können Benutzer die Reihenfolge konfigurieren, in der virtuelle Computer horizontal herunterskaliert werden. In der Vorschau werden drei Konfigurationen für horizontales Herunterskalieren eingeführt: 
+Mit dem Feature „Horizontales Herunterskalieren“ können Benutzer die Reihenfolge konfigurieren, in der virtuelle Computer horizontal herunterskaliert werden, indem drei Konfigurationen für horizontales Herunterskalieren verwendet werden. 
 
 1. Standard
 2. NewestVM
 3. OldestVM
-
-***Diese Previewfunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.***
 
 ### <a name="default-scale-in-policy"></a>Standardrichtlinie für das horizontale Herunterskalieren
 
@@ -54,6 +54,17 @@ Eine Richtlinie für horizontales Herunterskalieren ist im VM-Skalierungsgruppen
 
 Eine Richtlinie zum horizontalen Herunterskalieren kann auf folgende Weise für das VM-Skalierungsgruppenmodell definiert werden:
 
+### <a name="azure-portal"></a>Azure-Portal
+ 
+In den folgenden Schritten wird die Richtlinie zum horizontalen Herunterskalieren beim Erstellen einer neuen Skalierungsgruppe definiert. 
+ 
+1. Navigieren Sie zu **VM-Skalierungsgruppen**.
+1. Wählen Sie **+ Hinzufügen** aus, um eine neue Skalierungsgruppe zu erstellen.
+1. Navigieren Sie zur Registerkarte **Skalierung**. 
+1. Suchen Sie den Abschnitt **Richtlinie für horizontales Herunterskalieren**.
+1. Wählen Sie eine Richtlinie zum horizontalen Herunterskalieren aus der Dropdownliste aus.
+1. Wenn Sie die Erstellung der neuen Skalierungsgruppe abgeschlossen haben, wählen Sie die Schaltfläche **Überprüfen und erstellen** aus.
+
 ### <a name="using-api"></a>Verwenden der API
 
 Führen Sie einen PUT-Befehl für die VM-Skalierungsgruppe mit API 2019-03-01 aus:
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Erstellen Sie eine Ressourcengruppe, und erstellen Sie dann eine neue Skalierungsgruppe, für die die Richtlinie für horizontales Herunterskalieren auf *OldestVM* festgelegt ist.
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Im folgenden Beispiel wird eine Richtlinie zum horizontalen Herunterskalieren beim Erstellen einer neuen Skalierungsgruppe hinzugefügt. Erstellen Sie zunächst eine Ressourcengruppe, und erstellen Sie dann eine neue Skalierungsgruppe, für die die Richtlinie für horizontales Herunterskalieren auf *OldestVM* festgelegt ist. 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Verwenden einer Vorlage
@@ -94,6 +132,15 @@ Der gleiche Vorgang wird bei Verwendung von „NewestVM“ in der obigen Richtli
 
 Der Prozess zum Ändern der Richtlinie für das horizontale Herunterskalieren ähnelt dem zur Anwendung der Richtlinie für das horizontale Herunterskalieren. Wenn Sie im obigen Beispiel etwa die Richtlinie von „OldestVM“ in „NewestVM“ ändern möchten, können Sie folgendermaßen vorgehen:
 
+### <a name="azure-portal"></a>Azure-Portal
+
+Sie können die Richtlinie für das horizontale Herunterskalieren einer vorhandenen Skalierungsgruppe über das Azure-Portal ändern. 
+ 
+1. Wählen Sie in einer vorhandenen VM-Skalierungsgruppe im Menü auf der linken Seite **Skalierung** aus.
+1. Wählen Sie die Registerkarte **Horizontales Herunterskalieren** aus.
+1. Wählen Sie eine Richtlinie zum horizontalen Herunterskalieren aus der Dropdownliste aus.
+1. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist. 
+
 ### <a name="using-api"></a>Verwenden der API
 
 Führen Sie einen PUT-Befehl für die VM-Skalierungsgruppe mit API 2019-03-01 aus:
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Aktualisieren Sie die Richtlinie für das horizontale Herunterskalieren einer vorhandenen Skalierungsgruppe:
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Im folgenden finden Sie ein Beispiel für das Aktualisieren der Richtlinie für das horizontale Herunterskalieren einer vorhandenen Skalierungsgruppe: 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Verwenden einer Vorlage
@@ -169,7 +237,7 @@ Für nicht zonale VM-Skalierungsgruppen wählt die Richtlinie den neuesten virtu
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-1. Fehler beim Aktivieren von scaleInPolicy: Wenn Ihnen mit der Fehlermeldung „Member 'scaleInPolicy' für Objekt vom Typ 'properties' nicht gefunden“ ein BadRequest-Fehler gemeldet wird, überprüfen Sie die für die Skalierungsgruppe verwendete API-Version. Für diese Vorschau ist API-Version 2019-03-01 oder höher erforderlich.
+1. Fehler beim Aktivieren von scaleInPolicy: Wenn Ihnen mit der Fehlermeldung „Member 'scaleInPolicy' für Objekt vom Typ 'properties' nicht gefunden“ ein BadRequest-Fehler gemeldet wird, überprüfen Sie die für die Skalierungsgruppe verwendete API-Version. Für dieses Feature ist API-Version 2019-03-01 oder höher erforderlich.
 
 2. Falsche Auswahl von VMs für das horizontale Herunterskalieren: Beachten Sie die obigen Beispiele. Wenn die VM-Skalierungsgruppe eine zonale Bereitstellung ist, wird die Richtlinie für horizontales Herunterskalieren zuerst auf die unausgeglichenen Zonen und dann, sobald die Zonen ausgeglichen sind, auf die Skalierungsgruppe angewendet. Wenn die Reihenfolge des horizontalen Herunterskalierens nicht mit den obigen Beispielen konsistent ist, wenden Sie sich zur Problembehandlung an das VM-Skalierungsgruppenteam.
 

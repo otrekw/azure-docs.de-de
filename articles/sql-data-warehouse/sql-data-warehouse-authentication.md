@@ -1,6 +1,6 @@
 ---
 title: Authentifizierung
-description: Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
+description: Es wird beschrieben, wie Sie die Authentifizierung für Azure Synapse Analytics durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,22 +11,23 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+tag: azure-synapse
+ms.openlocfilehash: 235d13cfd6f33830d832a6a79e3bc1c78bbfe53e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545142"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195973"
 ---
-# <a name="authenticate-to-azure-sql-data-warehouse"></a>Authentifizierung für Azure SQL Data Warehouse
-Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
+# <a name="authenticate-to-azure-synapse-analytics"></a>Authentifizieren bei Azure Synapse Analytics
+Es wird beschrieben, wie Sie die Authentifizierung für SQL Analytics durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 
-Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie zu Authentifizierungszwecken Sicherheitsanmeldeinformationen übergeben. Beim Herstellen einer Verbindung werden bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert.  
+Zum Herstellen einer Verbindung mit einem SQL-Pool müssen Sie Sicherheitsanmeldeinformationen zu Authentifizierungszwecken übergeben. Beim Herstellen einer Verbindung werden bestimmte Verbindungseinstellungen im Rahmen der Einrichtung Ihrer Abfragesitzung konfiguriert.  
 
-Weitere Informationen zur Sicherheit und zum Aktivieren von Verbindungen mit Ihrem Data Warehouse finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md).
+Weitere Informationen zur Sicherheit und zum Aktivieren von Verbindungen mit Ihrem Data Warehouse finden Sie in der Dokumentation zu [Sichern einer Datenbank](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL-Authentifizierung
-Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie die folgenden Informationen angeben:
+Zum Herstellen einer Verbindung mit Ihrem SQL-Pool müssen Sie die folgenden Informationen angeben:
 
 * Vollqualifizierter Servername
 * SQL-Authentifizierung
@@ -34,18 +35,18 @@ Zum Herstellen einer Verbindung mit SQL Data Warehouse müssen Sie die folgenden
 * Kennwort
 * Standarddatenbank (optional)
 
-Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt, nicht mit Ihrer Benutzerdatenbank. Sie haben zwei Möglichkeiten, um eine Verbindung mit Ihrer Benutzerdatenbank herzustellen:
+Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt und nicht mit Ihrer Benutzerdatenbank. Sie haben zwei Möglichkeiten, um eine Verbindung mit Ihrer Benutzerdatenbank herzustellen:
 
 * Geben Sie die Standarddatenbank an, wenn Sie Ihren Server mit dem SQL Server-Objekt-Explorer in SSDT oder SSMS registrieren, oder geben Sie die Datenbank in Ihrer Verbindungszeichenfolge für die Anwendung an. Beziehen Sie für eine ODBC-Verbindung beispielsweise den InitialCatalog-Parameter ein.
 * Markieren Sie die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
 > [!NOTE]
-> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md) .
+> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit einem SQL-Pool über SSDT finden Sie im Artikel [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md).
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Authentifizierung über Azure Active Directory (AAD)
-Die [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure Active Directory-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und andere Microsoft-Dienste an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung bietet einen Ort, an dem die SQL Data Warehouse-Benutzer verwaltet werden und von vereinfacht die Berechtigungsverwaltung. 
+[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit einem SQL-Pool, wozu Identitäten in Azure Active Directory (Azure AD) verwendet werden. Mithilfe der Azure Active Directory-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und andere Microsoft-Dienste an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Azure Synapse-Benutzern und vereinfacht die Berechtigungsverwaltung. 
 
 ### <a name="benefits"></a>Vorteile
 Azure Active Directory bietet folgende Vorteile:
@@ -56,7 +57,7 @@ Azure Active Directory bietet folgende Vorteile:
 * Datenbankberechtigungen können mithilfe externer Gruppen (AAD) verwaltet werden.
 * Das Aktivieren der integrierten Windows-Authentifizierung und andere von Azure Active Directory unterstützte Authentifizierungsformen machen das Speichern von Kennwörtern überflüssig.
 * Eigenständige Datenbankbenutzer werden zum Authentifizieren von Identitäten auf Datenbankebene verwendet.
-* Die tokenbasierte Authentifizierung wird für Anwendungen unterstützt, die sich mit SQL Data Warehouse verbinden.
+* Unterstützt tokenbasierte Authentifizierung für Anwendungen, die eine Verbindung mit dem SQL-Pool herstellen.
 * Die Multi-Factor Authentication über die universelle Active Directory-Authentifizierung wird für verschiedene Tools einschließlich [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) und [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json) unterstützt.
 
 > [!NOTE]
@@ -69,16 +70,16 @@ Befolgen Sie diese Schritte zum Konfigurieren der Azure Active Directory-Authent
 
 1. Erstellen und Auffüllen eines Azure Active Directory-Verzeichnisses
 2. Optional: Zuordnen oder Ändern des aktiven Verzeichnisses, das mit Ihrem Azure-Abonnement derzeit verknüpft ist
-3. Erstellen eines Azure Active Directory-Administrators für Azure SQL Data Warehouse
+3. Erstellen eines Azure Active Directory-Administrators für Azure Synapse
 4. Konfigurieren der Clientcomputer
 5. Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
-6. Herstellen einer Verbindung mit Ihrem Data Warehouse unter Verwendung von Azure AD-Identitäten
+6. Herstellen einer Verbindung mit Ihrem SQL-Pool unter Verwendung von Azure AD-Identitäten
 
 Azure Active Directory-Benutzer werden derzeit nicht im SSDT-Objekt-Explorer angezeigt. Sie können die Benutzer in [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) anzeigen, um dieses Problem zu umgehen.
 
 ### <a name="find-the-details"></a>Suchen der Details
-* Die Schritte zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung sind fast identisch für die Azure SQL-Datenbank und für Azure SQL Data Warehouse. Befolgen Sie die ausführlichen Schritte im Thema [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](../sql-database/sql-database-aad-authentication.md).
+* Die Schritte zum Konfigurieren und Verwenden der Azure Active Directory-Authentifizierung sind fast identisch für die Azure SQL-Datenbank und SQL Analytics in Azure Synapse. Befolgen Sie die ausführlichen Schritte im Thema [Herstellen einer Verbindung mit SQL-Datenbank oder SQL-Pool unter Verwendung der Azure Active Directory-Authentifizierung](../sql-database/sql-database-aad-authentication.md).
 * Erstellen Sie benutzerdefinierte Datenbankrollen, und fügen Sie den Rollen Benutzer hinzu. Weisen Sie anschließend präzise Berechtigungen für die Rollen zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Abfragen Ihres Data Warehouse mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md).
+Informationen zum Abfragen mit Visual Studio und anderen Anwendungen finden Sie unter [Abfragen mit Visual Studio](sql-data-warehouse-query-visual-studio.md).

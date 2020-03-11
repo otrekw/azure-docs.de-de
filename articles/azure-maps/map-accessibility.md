@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672462"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -32,9 +32,11 @@ Das Azure Maps Web SDK enthält zahlreiche Funktionen zur Barrierefreiheit wie d
 Sämtliche Details zur Konformität bei der Barrierefreiheit zu allen Microsoft-Produkten finden Sie [hier](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Suchen Sie nach „Azure Maps Web“, um das spezielle Dokument zum Azure Maps Web SDK zu finden. 
 
 ## <a name="navigating-the-map"></a>Navigieren auf einer Karte
+
 Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neigen der Karte. Im Folgenden werden die verschiedenen Möglichkeiten zum Navigieren auf der Karte erläutert.
 
 **Zoomen der Karte**
+
 - Doppelklicken Sie mit der Maus auf die Karte, um eine Ebene zu vergrößern.
 - Mit einer Maus können Sie die Karte über das Mausrad zoomen.
 - Bei einem Touchscreen können Sie die Karte mit zwei Fingern berühren und diese zusammenführen, um zu vergrößern, und auseinanderführen, um zu verkleinern.
@@ -45,23 +47,46 @@ Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neige
 - Halten Sie die Schaltfläche `Shift` und die linke Maustaste auf der Karte gedrückt, und ziehen Sie einen Bereich der Karte, um die Karte zu vergrößern.
 
 **Schwenken der Karte**
+
 - Halten Sie die linke Maustaste auf der Karte gedrückt, und ziehen Sie sie in eine beliebige Richtung.
 - Berühren Sie bei einem Touchscreen die Karte, und ziehen Sie sie in eine beliebige Richtung.
 - Wenn die Karte den Fokus hat, können Sie sie mit den Pfeiltasten verschieben.
 
 **Drehen der Karte**
+
 - Halten Sie die rechte Maustaste auf der Karte gedrückt, und ziehen Sie sie nach links oder rechts. 
 - Berühren Sie auf einem Touchscreen die Karte mit zwei Fingern, um sie zu drehen.
 - Verwenden Sie bei fokussierter Karte die Tastenkombination UMSCHALTTASTE und NACH-LINKS- oder NACH-RECHTS-TASTE.
 - Verwenden Sie das Drehungssteuerelement mit einer Maus, der Berührungssteuerung oder auf einer Tastatur der TAB- oder EINGABETASTE.
 
 **Neigen der Karte**
+
 - Halten Sie die rechte Maustaste auf der Karte gedrückt, und ziehen Sie sie nach oben oder unten. 
 - Berühren Sie auf einem Touchscreen die Karte mit zwei Fingern, und ziehen Sie diese zusammen nach oben oder unten.
 - Verwenden Sie bei fokussierter Karte die Tastenkombination UMSCHALTTASTE und NACH-OBEN- oder NACH-UNTEN-TASTE. 
 - Verwenden Sie das Neigungssteuerelement mit einer Maus, der Berührungssteuerung oder auf einer Tastatur der TAB- oder EINGABETASTE.
 
-**Ändern des Kartenstils:** Nicht alle Entwickler stellen sämtliche mögliche Kartenstile in ihrer Anwendung zur Verfügung. Der Entwickler kann den Kartenstil programmgesteuert festlegen und ändern. Wenn ein Entwickler das Steuerelement für die Auswahl des Kartenstils anzeigt, kann der Benutzer den Kartenstil mithilfe der Maus, der Berührungssteuerung oder der Tastatur (mit der TAB- oder EINGABETASTE) ändern. Der Entwickler kann angeben, welche Kartenstile über das Auswahlsteuerelement für den Kartenstil verfügbar gemacht werden. 
+## <a name="change-the-map-style"></a>Ändern des Kartenstils
+
+Nicht alle Entwickler stellen in ihrer Anwendung alle möglichen Kartenstile zur Verfügung. Wenn ein Entwickler das Steuerelement für die Auswahl des Kartenstils anzeigt, kann der Benutzer den Kartenstil mithilfe der Maus, der Berührungssteuerung oder der Tastatur (mit der TAB- oder EINGABETASTE) ändern. Der Entwickler kann angeben, welche Kartenstile über das Auswahlsteuerelement für den Kartenstil verfügbar gemacht werden. Der Entwickler kann den Kartenstil auch programmgesteuert festlegen und ändern.
+
+**Verwenden von hohem Kontrast**
+
+- Wenn das Kartensteuerelement geladen wird, prüft es, ob hoher Kontrast aktiviert ist und der Browser dies unterstützt.
+- Das Kartensteuerelement überwacht nicht den kontrastreichen Modus des Geräts. Wenn sich der Gerätemodus ändert, ändert sich die Karte nicht. Daher muss der Benutzer die Karte durch Aktualisieren der Seite neu laden.
+- Wenn hoher Kontrast erkannt wird, schaltet der Kartenstil automatisch auf hohen Kontrast um. Alle integrierten Steuerelemente verwenden daher einen kontrastreichen Stil. Beispielsweise verwenden ZoomControl, PitchControl, CompassControl, StyleControl und andere integrierte Steuerelemente einen kontrastreichen Stil.
+- Es gibt zwei Arten von hohem Kontrast: hell und dunkel. Wenn der Typ des hohen Kontrasts von den Kartensteuerelementen erkannt werden kann, wird das Verhalten der Karte entsprechend angepasst. Bei hell wird der Kartenstil grayscale_light geladen. Wenn der Typ nicht erkannt werden kann oder dunkel ist, wird der Stil high_contrast_dark geladen.
+- Wenn Sie benutzerdefinierte Steuerelemente erstellen, ist es hilfreich zu wissen, ob die integrierten Steuerelemente einen kontrastreichen Stil verwenden. Entwickler können zur Überprüfung dem DIV-Element des Kartencontainers eine CSS-Klasse hinzufügen. Die CSS-Klassen, die hinzugefügt werden, sind `high-contrast-dark` und `high-contrast-light`. Zum Prüfen mit JavaScript verwenden Sie Folgendes:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+oder Folgendes:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Tastenkombinationen
 

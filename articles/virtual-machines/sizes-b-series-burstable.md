@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: a22964b0bfa4e6a46e3c9f31195ea0a6add82646
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492579"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161079"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -24,6 +24,10 @@ Die B-Serie ist in den folgenden VM-Größen erhältlich:
 Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Anfängliche Guthaben | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

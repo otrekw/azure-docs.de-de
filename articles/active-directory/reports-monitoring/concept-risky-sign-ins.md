@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008341"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273836"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal
 
@@ -52,15 +52,15 @@ Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Acti
 
 In allen Editionen von Azure AD stehen Sicherheitsberichte zu riskanten Anmeldungen zur Verfügung. Die Granularitätsebene von Berichten kann für die einzelnen Editionen aber variieren: 
 
-- In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie eine Liste mit riskanten Anmeldungen. 
+- In der **Edition Azure Active Directory Free** erhalten Sie eine Liste mit riskanten Anmeldungen. 
 
 - Darüber hinaus können Sie mit der Edition **Azure Active Directory Premium 1** einige zugrunde liegende Risikoerkennungen untersuchen, die für die einzelnen Berichte erkannt wurden. 
 
 - In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu allen zugrunde liegenden Risikoerkennungen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Bericht „Riskante Anmeldungen“ für Azure AD Free und Azure AD Basic
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Bericht „Riskante Anmeldungen“ für die Edition Azure AD Free
 
-In den Azure AD-Editionen „Free“ und „Basic“ wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Jeder Datensatz enthält die folgenden Attribute:
+In der Edition Azure AD Free wird Ihnen eine Liste mit riskanten Anmeldungen zur Verfügung gestellt, die für Ihre Benutzer erkannt wurden. Jeder Datensatz enthält die folgenden Attribute:
 
 - **Benutzer**: Der Name des Benutzers, der während des Anmeldevorgangs verwendet wurde.
 - **IP**: Die IP-Adresse des Geräts, die für die Verbindung mit Azure Active Directory verwendet wurde.

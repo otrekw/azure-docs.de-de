@@ -1,6 +1,6 @@
 ---
-title: Wiederherstellen einer gelöschten Data Warehouse-Instanz
-description: Anleitung zum Wiederherstellen einer gelöschten Azure SQL Data Warehouse-Instanz.
+title: Wiederherstellen eines gelöschten SQL-Pools
+description: Anleitung zum Wiederherstellen eines gelöschten SQL-Pools
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759651"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196622"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Wiederherstellen einer gelöschten Azure SQL Data Warehouse-Instanz
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Wiederherstellen eines gelöschten SQL-Pools mithilfe von Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine gelöschte SQL Data Warehouse-Instanz über Azure-Portal und PowerShell wiederherstellen:
+In diesem Artikel erfahren Sie, wie Sie einen SQL-Pool über das Azure-Portal oder mithilfe von PowerShell wiederherstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Überprüfen Sie Ihre DTU-Kapazität.** Jede SQL Data Warehouse-Instanz wird von einer SQL Server-Instanz gehostet (z.B. „myserver.database.windows.net“), die über ein Standard-DTU-Kontingent verfügt.  Vergewissern Sie sich, dass die SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
+**Überprüfen Sie Ihre DTU-Kapazität.** Jeder SQL-Pool wird von einer SQL Server-Instanz gehostet (z. B. „myserver.database.windows.net“), die über ein Standard-DTU-Kontingent verfügt.  Vergewissern Sie sich, dass die SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Wiederherstellen einer gelöschten Data Warehouse-Instanz mit PowerShell
 
-Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), um eine gelöschte SQL Data Warehouse-Instanz wiederherzustellen. Wenn der entsprechende logische Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
+Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), um einen gelöschten SQL-Pool wiederherzustellen. Wenn der entsprechende logische Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
 
 1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](https://docs.microsoft.com/powershell/azure/overview).
 2. Öffnen Sie PowerShell.
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![Angeben eines Datenbanknamens](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Wiederherstellen einer vorhandenen Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-active-paused-dw.md)
-- [Geowiederherstellung einer Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-from-geo-backup.md)
+- [Wiederherstellen eines vorhandenen SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
+- [Wiederherstellen aus einem SQL-Pool mit Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)

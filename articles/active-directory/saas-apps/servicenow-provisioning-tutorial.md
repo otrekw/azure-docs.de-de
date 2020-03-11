@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063243"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205100"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -142,7 +142,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * **EntryJoiningPropertyValueIsMissing:** Überprüfen Sie Ihre [Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), um das übereinstimmende Attribut zu identifizieren. Dieser Wert muss bei dem bereitzustellenden Benutzer bzw. der Gruppe vorhanden sein. 
 * Überprüfen Sie die [ServiceNow SOAP-API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html), um alle Anforderungen oder Beschränkungen (z.B. Format für die Angabe des Ländercodes für einen Benutzer) zu verstehen.
 * Bei einigen ServiceNow-Bereitstellungen sind zulässige IP-Bereiche für den Azure AD-Bereitstellungsdienst erforderlich. Die für den Azure AD-Bereitstellungsdienst reservierten IP-Adressbereiche finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519) unter „AzureActiveDirectoryDomainServices“.
-* Das Bereitstellen von Benutzern für die ServiceNow Government-Cloud wird derzeit nicht unterstützt.
+* Bereitstellungsanforderungen werden standardmäßig an https://{Ihren-Instanznamen}.service-now.com/{Tabellenname} gesendet. Wenn Sie eine benutzerdefinierte Mandanten-URL benötigen, können Sie die gesamte URL im Feld „Instanzname“ angeben.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

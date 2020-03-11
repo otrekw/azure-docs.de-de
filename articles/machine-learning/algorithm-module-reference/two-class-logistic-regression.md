@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153688"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916760"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -41,6 +41,8 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.  
+
+    -   **Parameter Range** (Parameterbereich): Wenn Sie sich hinsichtlich der besten Parameter nicht sicher sind, können Sie optimale Parameter mithilfe des Moduls [Tune Model Hyperparameters](tune-model-hyperparameters.md) finden. Sie geben einen Wertebereich an, woraufhin das Training über mehrere Einstellungskombinationen iteriert, um die Wertekombination zu bestimmen, die das beste Ergebnis liefert.
   
 3.  Geben Sie für **Optimization tolerance** (Optimierungstoleranz) einen Schwellenwert an, der bei der Optimierung des Modells verwendet werden soll. Wenn die Verbesserung zwischen Iterationen unter den angegebenen Schwellenwert fällt, gilt der Algorithmus als zu einer Lösung konvergiert, woraufhin das Training beendet wird.  
   

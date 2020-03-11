@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026418"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252348"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Überwachen der Gerätekonnektivität per Azure CLI
 
@@ -33,16 +33,19 @@ Verwenden Sie die IoT-Erweiterung der Azure CLI, um Meldungen anzuzeigen, die Ih
 Führen Sie den folgenden Befehl an der Befehlszeile zum Installieren aus:
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-Überprüfen Sie die Version der Erweiterung, indem Sie Folgendes ausführen: 
+Überprüfen Sie die Version der Erweiterung, indem Sie Folgendes ausführen:
+
 ```cmd/sh
 az --version
 ```
-Sie sollten feststellen, dass die Version der Erweiterung „azure-cli-iot-ext“ 0.8.1 oder höher ist. Führen Sie andernfalls Folgendes aus:
+
+Sie sollten feststellen, dass die Version der Erweiterung „azure-iot“ 0.8.1 oder höher ist. Führen Sie andernfalls Folgendes aus:
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>Verwenden der Erweiterung

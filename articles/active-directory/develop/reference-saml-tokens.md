@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160303"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299753"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD-SAML-Tokenreferenz
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Auth
 ## <a name="claims-in-saml-tokens"></a>Ansprüche in SAML-Token
 
 > [!div class="mx-codeBreakAll"]
-> | Name | Entsprechender JWT-Anspruch | Beschreibung | Beispiel |
+> | Name | Entsprechender JWT-Anspruch | BESCHREIBUNG | Beispiel |
 > | --- | --- | --- | ------------|
 > |Zielgruppe | `aud` |Der vorgesehene Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Authentifizierungszeitpunkt | |Erfasst Datum und Uhrzeit der Authentifizierung. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -156,7 +156,7 @@ Dies ist ein Beispiel eines typischen SAML-Tokens.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-* In den [Richtlinienvorgängen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) und der [Richtlinienentität](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity) von Azure AD Graph finden Sie weitere Informationen zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Azure AD Graph-API.
+* Wenn Sie mehr zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer mithilfe der Microsoft Graph-API erfahren möchten, lesen Sie die [Richtlinienressource](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta).
 * Weitere Informationen und Beispiele zur Verwaltung von Richtlinien über PowerShell-Cmdlets finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
 * Fügen Sie den Token für Ihre Anwendung [benutzerdefinierte und optionale](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Ansprüche hinzu.
 * Verwenden Sie [einmaliges Anmelden (SSO) mit SAML](single-sign-on-saml-protocol.md).

@@ -3,20 +3,20 @@ title: Definieren eines technischen RESTful-Profils in einer benutzerdefinierten
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie ein technisches RESTful-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
-ms.author: marsma
+ms.date: 03/03/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80298ca4df01a93730fc831fc495b3123ead5f97
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585678"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254987"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -125,8 +125,9 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | --------- | -------- | ----------- |
 | ServiceUrl | Ja | Die URL des REST-API-Endpunkts. |
 | AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic`, `Bearer` oder `ClientCertificate`. Der Wert `None` gibt an, dass die REST-API nicht anonym ist. Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe von Clientzertifikatauthentifizierung einschränkt. Nur Dienste mit den richtigen Zertifikaten (z.B. Azure AD B2C) erhalten Zugriff auf Ihre API. Der Wert `Bearer` gibt an, dass die REST-API den Zugriff mithilfe des OAuth2-Bearertokens des Clients beschränkt. |
+| AllowInsecureAuthInProduction| Nein| Gibt an, ob der `AuthenticationType` in der Produktionsumgebung auf `none` festgelegt werden kann (`DeploymentMode` von [TrustFrameworkPolicy](trustframeworkpolicy.md) ist auf `Production` festgelegt oder nicht angegeben). Mögliche Werte: TRUE oder FALSE (Standard). |
 | SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. Die jeweils aufgerufenen HTTP-Verben lauten wie folgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
-| ClaimsFormat | Nein | Gibt das Format für die Ausgabeansprüche an. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Ausgabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Ausgabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Ausgabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Ausgabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. |
+| ClaimsFormat | Nein | Derzeit nicht verwendet, kann ignoriert werden. |
 | ClaimUsedForRequestPayload| Nein | Der Name eines Zeichenfolgenanspruchs, der die an die REST-API zu sendende Nutzlast enthält. |
 | DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Mögliche Werte sind `true` oder `false` (Standardwert). Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Die entsprechenden Informationen finden Sie im Abschnitt [Zurückgegebene Fehlermeldung](#returning-error-message). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
@@ -175,7 +176,7 @@ Das folgende Beispiel zeigt ein technisches Profil mit Standardauthentifizierung
 
 Wenn als Typ der Authentifizierung `ClientCertificate` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) für die Authentifizierung. |
 
@@ -219,7 +220,7 @@ Wenn als Typ der Authentifizierung `Bearer` festgelegt ist, enthält das **Crypt
 
 Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z.B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API einen HTTP-Fehler mit dem Antwort- oder Statuscode „409 Conflict“ (Konflikt) mit folgenden Attributen zurückgeben:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | version | Ja | 1.0.0 |
 | status | Ja | 409 |

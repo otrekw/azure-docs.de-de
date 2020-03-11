@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c738c5b7f233ffa34296eed67eb0f5497f737fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605814"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206672"
 ---
 # <a name="connect-with-the-web-client"></a>Herstellen einer Verbindung mit dem Webclient
 
@@ -41,3 +41,7 @@ Navigieren Sie in einem Browser zum [Windows Virtual Desktop-Webclient](https://
 >Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.
 
 Nach dem Anmelden sollte eine Liste mit Ressourcen angezeigt werden. Sie können Ressourcen starten, indem Sie sie auf der Registerkarte **Alle Ressourcen** wie eine normale App auswählen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zur Verwendung des Webclients finden Sie unter [Erste Schritte mit dem Webclient](https://go.microsoft.com/fwlink/?linkid=2120256).

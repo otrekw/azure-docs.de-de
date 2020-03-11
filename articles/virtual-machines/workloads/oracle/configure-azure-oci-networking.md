@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802206"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302048"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
@@ -35,7 +35,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
 * Um die Verbindung zwischen Azure und OCI herzustellen, benötigen Sie ein aktives Azure-Abonnement und einen aktiven OCI-Mandanten.
 
-* Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Siehe [Einschränkungen der Vorschau](oracle-oci-overview.md#preview-limitations).
+* Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](oracle-oci-overview.md#region-availability).
 
 * Ihr Azure-Abonnement muss für diese Vorschaufunktion aktiviert werden.
 
@@ -63,7 +63,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
     * Fügen Sie den ExpressRoute-Dienstschlüssel in das Feld für den **Anbieterdienstschlüssel** ein.
     * Verwenden Sie den ersten privaten /30-IP-Adressraum, den Sie in einem vorherigen Schritt erstellt haben, für die **Primary BGP IP Address** (Primäre BGP-IP-Adresse) und den zweiten privaten /30-IP-Adressraum für die **Secondary BGP IP Address** (Sekundäre BGP-IP-Adresse).
         * Weisen Sie die erste verwendbare Adresse aus den beiden Adressräumen der Oracle-BGP-IP-Adresse (primär und sekundär) und die zweite Adresse der Kunden-BGP-IP-Adresse zu (aus der Perspektive von FastConnect). Die erste verwendbare IP-Adresse entspricht der zweiten IP-Adresse im /30-Adressraum (die erste IP-Adresse wird von Microsoft reserviert).
-    * Klicken Sie auf **Create**.
+    * Klicken Sie auf **Erstellen**.
 1. Schließen Sie die Verknüpfung von FastConnect mit Virtual Cloud Network im Oracle-Mandanten ab. Verwenden Sie dazu ein DRG (Dynamic Routing Gateway) und eine Routingtabelle.
 1. Navigieren Sie zu Azure, und stellen sicher, dass der **Anbieterstatus** für die ExpressRoute-Verbindung in **Bereitgestellt** geändert und dass der Peeringtyp **Azure, privat** bereitgestellt wurde. Dies ist eine Voraussetzung für die nächsten Schritte.
 

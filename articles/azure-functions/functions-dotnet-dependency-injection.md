@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260082"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915706"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -130,13 +130,13 @@ Wenn Sie einen eigenen Protokollierungsanbieter benötigen, registrieren Sie ein
 
 > [!WARNING]
 > - Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
-> - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden.
+> - Registrieren Sie keine eigene Instanz von `TelemetryConfiguration` oder `TelemetryClient`, wenn Sie die integrierten Application Insights-Funktionen verwenden. Wenn Sie Ihre eigene `TelemetryClient`-Instanz konfigurieren müssen, erstellen Sie eine über die eingefügte `TelemetryConfiguration`, wie in [Überwachen von Azure Functions](./functions-monitoring.md#version-2x-and-later-2) gezeigt.
 
 ## <a name="function-app-provided-services"></a>Dienste, die von Funktions-App bereitgestellt werden
 
 Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienste als Abhängigkeit in Ihrer Anwendung zu verwenden:
 
-|Diensttyp|Gültigkeitsdauer|Beschreibung|
+|Diensttyp|Gültigkeitsdauer|BESCHREIBUNG|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Laufzeitkonfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwortlich für die Bereitstellung der Hostinstanz-ID|

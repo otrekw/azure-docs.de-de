@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die SQL-Systemfunktion StringToArray in Azu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349276"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302915"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Gibt den Ausdruck übersetzt in ein Array zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
@@ -32,7 +32,7 @@ StringToArray(<str_expr>)
   
   Gibt einen Arrayausdruck oder „undefined“ zurück. 
   
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   Geschachtelte Zeichenfolgenwerte müssen in doppelten Anführungszeichen angegeben werden, damit sie gültige JSON-Werte darstellen. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).
   
 ## <a name="examples"></a>Beispiele
@@ -90,6 +90,10 @@ Hier ist das Resultset.
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Bemerkungen
+
+Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

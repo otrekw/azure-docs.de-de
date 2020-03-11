@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e195a93209875b9eabfaa2ad00772281922443c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476113"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917777"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -117,6 +117,7 @@ Ein PRT kann in bestimmten Szenarien einen MFA-Anspruch (Multi-Factor Authentica
    * Da Windows Hello for Business als mehrstufige Authentifizierung gilt, wird der MFA-Anspruch aktualisiert, wenn das PRT selbst aktualisiert wird. Die MFA-Dauer wird also fortlaufend verlängert, wenn sich Benutzer mit Windows Hello for Business anmelden.
 * **MFA während der interaktiven WAM-Anmeldung**: Für eine Tokenanforderung per WAM gilt Folgendes: Wenn ein Benutzer einen MFA-Vorgang durchführen muss, um auf die App zuzugreifen, wird das PRT, das während dieser Interaktion verlängert wird, mit einem MFA-Anspruch versehen.
    * In diesem Fall wird der MFA-Anspruch nicht fortlaufend aktualisiert, und die MFA-Dauer basiert auf der Lebensdauer, die für das Verzeichnis festgelegt ist.
+   * Wenn ein vorheriges vorhandenes primäres Aktualisierungstoken (Primary Refresh Token, PRT) und Aktualisierungstoken (Refresh Token, RT) für den Zugriff auf eine App verwendet werden, werden das PRT und RT als erster Authentifizierungsnachweis angesehen. Ein neues Authentifizierungstoken wird mit einem zweiten Nachweis und gedruckten MFA-Anspruch benötigt. Hierdurch werden auch ein neues PRT und RT ausgestellt.
 * **MFA während der Geräteregistrierung**: Wenn ein Administrator seine Geräteeinstellungen in Azure AD so konfiguriert hat, dass [zum Registrieren von Geräten ein MFA-Vorgang erforderlich ist](device-management-azure-portal.md#configure-device-settings), muss der Benutzer diesen MFA-Vorgang durchführen, um die Registrierung abzuschließen. Während dieses Prozesses erhält das PRT, das für den Benutzer ausgestellt wird, den MFA-Anspruch, der während der Registrierung beschafft wird. Diese Funktion gilt nur für den Benutzer, der den Beitrittsvorgang durchgeführt hat, und nicht für andere Benutzer, die sich an diesem Gerät anmelden.
    * Ähnlich wie bei der interaktiven WAM-Anmeldung wird der MFA-Anspruch nicht fortlaufend aktualisiert, sodass die MFA-Dauer auf der Lebensdauer basiert, die für das Verzeichnis festgelegt ist.
 
@@ -146,8 +147,8 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 | Schritt | BESCHREIBUNG |
 | :---: | --- |
-| Eine Datei | Benutzer geben ihr Kennwort auf der Benutzeroberfläche für die Anmeldung ein. Die Benutzeroberfläche für die Anmeldung (LogonUI) übergibt die Anmeldeinformationen in einem Authentifizierungspuffer an die lokale Sicherheitsautorität, von der sie wiederum intern an CloudAP übergeben werden. CloudAP leitet diese Anforderung an das CloudAP-Plug-In weiter. |
-| b | Das CloudAP-Plug-In initiiert eine Bereichsermittlungsanforderung, um den Identitätsanbieter für den Benutzer zu identifizieren. Wenn für den Mandanten des Benutzers ein Verbundanbieter eingerichtet wurde, gibt Azure AD den Metadatenaustausch-Endpunkt (MEX-Endpunkt) des Verbundanbieters zurück. Wenn nicht, gibt Azure AD den Hinweis zurück, dass der Benutzer verwaltet wird und die Authentifizierung mit Azure AD durchführen kann. |
+| Ein | Benutzer geben ihr Kennwort auf der Benutzeroberfläche für die Anmeldung ein. Die Benutzeroberfläche für die Anmeldung (LogonUI) übergibt die Anmeldeinformationen in einem Authentifizierungspuffer an die lokale Sicherheitsautorität, von der sie wiederum intern an CloudAP übergeben werden. CloudAP leitet diese Anforderung an das CloudAP-Plug-In weiter. |
+| B | Das CloudAP-Plug-In initiiert eine Bereichsermittlungsanforderung, um den Identitätsanbieter für den Benutzer zu identifizieren. Wenn für den Mandanten des Benutzers ein Verbundanbieter eingerichtet wurde, gibt Azure AD den Metadatenaustausch-Endpunkt (MEX-Endpunkt) des Verbundanbieters zurück. Wenn nicht, gibt Azure AD den Hinweis zurück, dass der Benutzer verwaltet wird und die Authentifizierung mit Azure AD durchführen kann. |
 | C | Wenn der Benutzer verwaltet wird, erhält CloudAP die Nonce von Azure AD. Falls der Benutzer Teil eines Verbunds ist, fordert das CloudAP-Plug-In ein SAML-Token mit den Anmeldeinformationen des Benutzers vom Verbundanbieter an. Nach Erhalt des SAML-Tokens fordert es eine Nonce von Azure AD an. |
 | D | Das CloudAP-Plug-In erstellt die Authentifizierungsanforderung mit den Anmeldeinformationen des Benutzers, einer Nonce und einem Brokerbereich, signiert die Anforderung mit dem Geräteschlüssel (dkpriv) und sendet sie an Azure AD. In einer Verbundumgebung nutzt das CloudAP-Plug-In nicht die Anmeldeinformationen des Benutzers, sondern das vom Verbundanbieter zurückgegebene SAML-Token. |
 | E | Azure AD überprüft die Anmeldeinformationen des Benutzers, die Nonce und die Gerätesignatur, stellt sicher, dass das Gerät im Mandanten gültig ist, und stellt das verschlüsselte PRT aus. Zusammen mit dem PRT stellt Azure AD auch einen symmetrischen Schlüssel aus, der als Sitzungsschlüssel bezeichnet wird. Er wird von Azure AD mit dem Transportschlüssel (tkpub) verschlüsselt. Darüber hinaus wird der Sitzungsschlüssel auch in das PRT eingebettet. Dieser Sitzungsschlüssel fungiert als Eigentumsnachweis (Proof-of-Possession, PoP) für nachfolgende Anforderungen mit dem PRT. |
@@ -157,10 +158,10 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 ![PRT-Verlängerung bei nachfolgenden Anmeldungen](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 | :---: | --- |
-| Eine Datei | Benutzer geben ihr Kennwort auf der Benutzeroberfläche für die Anmeldung ein. Die Benutzeroberfläche für die Anmeldung (LogonUI) übergibt die Anmeldeinformationen in einem Authentifizierungspuffer an die lokale Sicherheitsautorität, von der sie wiederum intern an CloudAP übergeben werden. CloudAP leitet diese Anforderung an das CloudAP-Plug-In weiter. |
-| b | Wenn sich der Benutzer bereits vorher am Gerät angemeldet hat, initiiert Windows die zwischengespeicherte Anmeldung und überprüft die Anmeldeinformationen, um die Anmeldung für den Benutzer durchzuführen. Alle vier Stunden initiiert das CloudAP-Plug-In asynchron die PRT-Verlängerung. |
+| Ein | Benutzer geben ihr Kennwort auf der Benutzeroberfläche für die Anmeldung ein. Die Benutzeroberfläche für die Anmeldung (LogonUI) übergibt die Anmeldeinformationen in einem Authentifizierungspuffer an die lokale Sicherheitsautorität, von der sie wiederum intern an CloudAP übergeben werden. CloudAP leitet diese Anforderung an das CloudAP-Plug-In weiter. |
+| B | Wenn sich der Benutzer bereits vorher am Gerät angemeldet hat, initiiert Windows die zwischengespeicherte Anmeldung und überprüft die Anmeldeinformationen, um die Anmeldung für den Benutzer durchzuführen. Alle vier Stunden initiiert das CloudAP-Plug-In asynchron die PRT-Verlängerung. |
 | C | Das CloudAP-Plug-In initiiert eine Bereichsermittlungsanforderung, um den Identitätsanbieter für den Benutzer zu identifizieren. Wenn für den Mandanten des Benutzers ein Verbundanbieter eingerichtet wurde, gibt Azure AD den Metadatenaustausch-Endpunkt (MEX-Endpunkt) des Verbundanbieters zurück. Wenn nicht, gibt Azure AD den Hinweis zurück, dass der Benutzer verwaltet wird und die Authentifizierung mit Azure AD durchführen kann. |
 | D | Falls der Benutzer Teil eines Verbunds ist, fordert das CloudAP-Plug-In ein SAML-Token mit den Anmeldeinformationen des Benutzers vom Verbundanbieter an. Nach Erhalt des SAML-Tokens fordert es eine Nonce von Azure AD an. Wenn der Benutzer verwaltet wird, erhält CloudAP die Nonce direkt von Azure AD. |
 | E | Das CloudAP-Plug-In erstellt die Authentifizierungsanforderung mit den Anmeldeinformationen des Benutzers, einer Nonce und dem vorhandenen PRT, signiert die Anforderung mit dem Sitzungsschlüssel und sendet sie an Azure AD. In einer Verbundumgebung nutzt das CloudAP-Plug-In nicht die Anmeldeinformationen des Benutzers, sondern das vom Verbundanbieter zurückgegebene SAML-Token. |
@@ -173,8 +174,8 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 | Schritt | BESCHREIBUNG |
 | :---: | --- |
-| Eine Datei | Eine Anwendung (z. B. Outlook, OneNote usw.) initiiert das Senden einer Tokenanforderung an WAM. Von WAM erhält das Azure AD-WAM-Plug-In wiederum die Aufforderung, die Tokenanforderung zu verarbeiten. |
-| b | Wenn für die Anwendung bereits ein Aktualisierungstoken verfügbar ist, wird es vom Azure AD-WAM-Plug-In verwendet, um ein Zugriffstoken anzufordern. Um die Gerätebindung nachzuweisen, wird die Anforderung vom WAM-Plug-In mit dem Sitzungsschlüssel signiert. Azure AD überprüft den Sitzungsschlüssel und stellt ein Zugriffstoken und ein neues Aktualisierungstoken mit Verschlüsselung per Sitzungsschlüssel für die App aus. Das WAM-Plug-In fordert das CloudAP-Plug-In auf, die Token zu entschlüsseln. Das CloudAP-Plug-In fordert wiederum das TPM auf, die Entschlüsselung mit dem Sitzungsschlüssel durchzuführen, sodass das WAM-Plug-In beide Token erhält. Als Nächstes stellt das WAM-Plug-In nur das Zugriffstoken für die Anwendung bereit, während es das Aktualisierungstoken per DPAPI wieder verschlüsselt und im eigenen Cache speichert.  |
+| Ein | Eine Anwendung (z. B. Outlook, OneNote usw.) initiiert das Senden einer Tokenanforderung an WAM. Von WAM erhält das Azure AD-WAM-Plug-In wiederum die Aufforderung, die Tokenanforderung zu verarbeiten. |
+| B | Wenn für die Anwendung bereits ein Aktualisierungstoken verfügbar ist, wird es vom Azure AD-WAM-Plug-In verwendet, um ein Zugriffstoken anzufordern. Um die Gerätebindung nachzuweisen, wird die Anforderung vom WAM-Plug-In mit dem Sitzungsschlüssel signiert. Azure AD überprüft den Sitzungsschlüssel und stellt ein Zugriffstoken und ein neues Aktualisierungstoken mit Verschlüsselung per Sitzungsschlüssel für die App aus. Das WAM-Plug-In fordert das CloudAP-Plug-In auf, die Token zu entschlüsseln. Das CloudAP-Plug-In fordert wiederum das TPM auf, die Entschlüsselung mit dem Sitzungsschlüssel durchzuführen, sodass das WAM-Plug-In beide Token erhält. Als Nächstes stellt das WAM-Plug-In nur das Zugriffstoken für die Anwendung bereit, während es das Aktualisierungstoken per DPAPI wieder verschlüsselt und im eigenen Cache speichert.  |
 | C |  Wenn für die Anwendung kein Aktualisierungstoken verfügbar ist, verwendet das Azure AD-WAM-Plug-In das PRT, um ein Zugriffstoken anzufordern. Als Eigentumsnachweis signiert das WAM-Plug-In die Anforderung, die das PRT enthält, mit dem Sitzungsschlüssel. Azure AD überprüft die Sitzungsschlüsselsignatur, indem sie mit dem Sitzungsschlüssel verglichen wird, der in das PRT eingebettet ist. Anschließend wird überprüft, ob das Gerät gültig ist, und für die Anwendung werden ein Zugriffstoken und ein Aktualisierungstoken ausgestellt. Außerdem kann Azure AD ein neues PRT ausstellen (basierend auf dem Aktualisierungszyklus), wobei alle Token mit dem Sitzungsschlüssel verschlüsselt werden. |
 | D | Das WAM-Plug-In fordert das CloudAP-Plug-In auf, die Token zu entschlüsseln. Das CloudAP-Plug-In fordert wiederum das TPM auf, die Entschlüsselung mit dem Sitzungsschlüssel durchzuführen, sodass das WAM-Plug-In beide Token erhält. Als Nächstes stellt das WAM-Plug-In nur das Zugriffstoken für die Anwendung bereit, während es das Aktualisierungstoken per DPAPI wieder verschlüsselt und im eigenen Cache speichert. Das WAM-Plug-In nutzt das Aktualisierungstoken ab jetzt für diese Anwendung. Darüber hinaus gibt das WAM-Plug-In das neue PRT an das CloudAP-Plug-In zurück, von dem das PRT mit Azure AD überprüft wird, bevor der eigene Cache aktualisiert wird. Das CloudAP-Plug-In nutzt ab jetzt das neue PRT. |
 | E | Das neu ausgestellte Zugriffstoken wird für WAM bereitgestellt, von wo es wiederum an die aufrufende Anwendung zurückgegeben wird.|
@@ -185,8 +186,8 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 | Schritt | BESCHREIBUNG |
 | :---: | --- |
-| Eine Datei | Der Benutzer meldet sich mit seinen Anmeldeinformationen an Windows an, um ein PRT zu erhalten. Nachdem der Benutzer den Browser geöffnet hat, werden die URLs vom Browser (bzw. der Erweiterung) aus der Registrierung geladen. |
-| b | Wenn ein Benutzer eine Azure AD-Anmelde-URL öffnet, überprüft der Browser bzw. die Erweiterung die URL mit den URLs aus der Registrierung. Wenn sie übereinstimmen, ruft der Browser den nativen Clienthost für den Tokenabruf auf. |
+| Ein | Der Benutzer meldet sich mit seinen Anmeldeinformationen an Windows an, um ein PRT zu erhalten. Nachdem der Benutzer den Browser geöffnet hat, werden die URLs vom Browser (bzw. der Erweiterung) aus der Registrierung geladen. |
+| B | Wenn ein Benutzer eine Azure AD-Anmelde-URL öffnet, überprüft der Browser bzw. die Erweiterung die URL mit den URLs aus der Registrierung. Wenn sie übereinstimmen, ruft der Browser den nativen Clienthost für den Tokenabruf auf. |
 | C | Der native Clienthost überprüft, ob die URLs zu den Microsoft-Identitätsanbietern gehören (Microsoft-Konto oder Azure AD), extrahiert eine von der URL gesendete Nonce und sendet einen Aufruf zum Beschaffen eines PRT-Cookies an das CloudAP-Plug-In. |
 | D | Das CloudAP-Plug-In erstellt das PRT-Cookie, signiert es mit dem an TPM gebundenen Sitzungsschlüssel und sendet es zurück an den nativen Clienthost. Da das Cookie mit dem Sitzungsschlüssel signiert ist, kann es nicht manipuliert werden. |
 | E | Der native Clienthost gibt dieses PRT-Cookie an den Browser zurück, der es in den Anforderungsheader „x-ms-RefreshTokenCredential“ einfügt und Token von Azure AD anfordert. |

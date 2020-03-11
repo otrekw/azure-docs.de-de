@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589367"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250859"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -71,6 +71,11 @@ Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jed
 Sie können kein registriertes Modell löschen, das in einer aktiven Bereitstellung verwendet wird.
 Weitere Informationen finden Sie im Abschnitt „Registrieren eines Modells“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#registermodel).
 
+### <a name="profile-models"></a>Profilmodelle
+
+Azure Machine Learning kann Ihnen helfen, die CPU- und Arbeitsspeicheranforderungen des Diensts zu verstehen, der bei der Bereitstellung Ihres Modells erstellt wird. Die Profilerstellung testet den Dienst, der Ihr Modell ausführt, und gibt Informationen wie CPU-Auslastung, Speicherauslastung und Antwortlatenz zurück. Sie bietet auch eine CPU- und Speicherempfehlung auf der Grundlage der Ressourcenauslastung.
+Weitere Informationen finden Sie im Abschnitt „Profilerstellung“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#profilemodel).
+
 ### <a name="package-and-debug-models"></a>Packen und Debuggen von Modellen
 
 Vor dem Bereitstellen eines Modells in der Produktion wird es in ein Docker-Image gepackt. In den meisten Fällen erfolgt die Imageerstellung während der Bereitstellung automatisch im Hintergrund. Sie können das Image auch manuell angeben.
@@ -78,10 +83,6 @@ Vor dem Bereitstellen eines Modells in der Produktion wird es in ein Docker-Imag
 Wenn Probleme bei der Bereitstellung auftreten, können Sie ein Modell für Problembehandlung und Debugging in Ihrer lokalen Entwicklungsumgebung bereitstellen.
 
 Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md#registermodel) und [Problembehandlung von Bereitstellungen](how-to-troubleshoot-deployment.md).
-
-### <a name="validate-and-profile-models"></a>Validierung und Profilerstellung von Modellen
-
-Azure Machine Learning kann die Profilerstellung verwenden, um die idealen CPU- und Arbeitsspeichereinstellungen für die Bereitstellung Ihres Modells zu ermitteln. Die Modellvalidierung erfolgt im Rahmen dieses Prozesses unter Verwendung von Daten, die Sie für den Profilerstellungsvorgang bereitstellen.
 
 ### <a name="convert-and-optimize-models"></a>Konvertieren und Optimieren von Modellen
 

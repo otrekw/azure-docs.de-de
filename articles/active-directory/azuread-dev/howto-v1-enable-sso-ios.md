@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163527"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190278"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -109,7 +109,7 @@ Wenn ein kompatibler Broker auf dem Gerät installiert ist (beispielsweise die M
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Gewährleisten der Gültigkeit der Anwendung
 
-Die Identität einer Anwendung muss durch Aufrufen des Brokers sichergestellt werden. Denn dies ist ausschlaggebend, um Sicherheit bei brokergestützten Anmeldungen zu gewährleisten. Weder iOS noch Android erfordern eindeutige IDs, die nur für eine bestimmte Anwendung gültig sind. Somit können bösartige Anwendungen möglicherweise die ID einer legitimen Anwendung spoofen und die Token empfangen, die für die legitime Anwendung bestimmt sind. Um sicherzustellen, dass wir zur Laufzeit stets mit der richtigen Anwendung kommunizieren, fordern wir den Entwickler auf, bei der Registrierung seiner Anwendung bei Microsoft einen benutzerdefinierten redirectURI anzugeben. Im Folgenden wird ausführlich beschrieben, wie Entwickler diesen Umleitungs-URI erstellen sollten. Dieser benutzerdefinierte redirectURI beinhaltet die Paket-ID der Anwendung und wird vom Apple App Store als eindeutig für die Anwendung angesehen. Wenn eine Anwendung den Broker aufruft, fordert der Broker das iOS-Betriebssystem auf, die Paket-ID, die den Broker aufgerufen hat, bereitzustellen. Der Broker stellt diese Paket-ID für Microsoft beim Aufrufen unseres Identitätssystems bereit. Wenn die Paket-ID der Anwendung nicht mit der Paket-ID übereinstimmt, die uns vom Entwickler bei der Registrierung bereitgestellt wurde, verweigern wir den Zugriff auf die Tokens für die Ressource, die von der Anwendung angefordert wird. Durch diese Prüfung wird sichergestellt, dass nur die vom Entwickler registrierte Anwendung Tokens empfängt.
+Die Identität einer Anwendung, die den Broker aufruft, muss sichergestellt werden. Denn dies ist ausschlaggebend, um die Sicherheit bei brokergestützten Anmeldungen zu gewährleisten. Weder iOS noch Android erfordern eindeutige IDs, die nur für eine bestimmte Anwendung gültig sind. Somit können bösartige Anwendungen möglicherweise die ID einer legitimen Anwendung spoofen und die Token empfangen, die für die legitime Anwendung bestimmt sind. Um sicherzustellen, dass wir zur Laufzeit stets mit der richtigen Anwendung kommunizieren, fordern wir den Entwickler auf, bei der Registrierung seiner Anwendung bei Microsoft einen benutzerdefinierten redirectURI anzugeben. Im Folgenden wird ausführlich beschrieben, wie Entwickler diesen Umleitungs-URI erstellen sollten. Dieser benutzerdefinierte redirectURI beinhaltet die Paket-ID der Anwendung und wird vom Apple App Store als eindeutig für die Anwendung angesehen. Wenn eine Anwendung den Broker aufruft, fordert der Broker das iOS-Betriebssystem auf, die Paket-ID, die den Broker aufgerufen hat, bereitzustellen. Der Broker stellt diese Paket-ID für Microsoft beim Aufrufen unseres Identitätssystems bereit. Wenn die Paket-ID der Anwendung nicht mit der Paket-ID übereinstimmt, die uns vom Entwickler bei der Registrierung bereitgestellt wurde, verweigern wir den Zugriff auf die Tokens für die Ressource, die von der Anwendung angefordert wird. Durch diese Prüfung wird sichergestellt, dass nur die vom Entwickler registrierte Anwendung Tokens empfängt.
 
 **Der Entwickler kann entscheiden, ob das SDK den Broker aufrufen oder den nicht brokergestützten Ablauf verwenden soll.** Wenn sich der Entwickler allerdings gegen den brokergestützten Ablauf entscheidet, verzichtet er auf die Vorteile der Nutzung von SSO-Anmeldeinformationen, die der Benutzer möglicherweise bereits auf dem Gerät hinzugefügt hat. Außerdem kann die Anwendung ohne brokergestützte Anmeldung keine der von Microsoft bereitgestellten Geschäftsfunktionen wie etwa den bedingten Zugriff, Intune-Verwaltungsfunktionen und eine zertifikatbasierte Authentifizierung nutzen.
 

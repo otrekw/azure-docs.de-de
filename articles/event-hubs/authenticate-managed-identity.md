@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368529"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251528"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -82,7 +82,10 @@ Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff 
 #### <a name="azuremessagingeventhubs-latest"></a>[Azure.Messaging.EventHubs (neuestes Paket)](#tab/latest)
 Sie können Ihre Webanwendung jetzt starten und für Ihren Browser auf die ASPX-Beispielseite verweisen. Sie finden die Beispielwebanwendung, mit der Daten für Event Hubs-Ressourcen gesendet und empfangen werden, im [GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
 
-Installieren Sie das neueste Paket von [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/), und beginnen Sie mit dem Senden von Ereignissen an Event Hubs mit **EventHubProducerClient** und dem Empfangen von Ereignissen mit **EventHubConsumerClient**.  
+Installieren Sie das neueste Paket von [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/), und beginnen Sie mit dem Senden von Ereignissen an Event Hubs mit **EventHubProducerClient** und dem Empfangen von Ereignissen mit **EventHubConsumerClient**. 
+
+> [!NOTE]
+> Ein Java-Beispiel, in dem eine verwaltete Identität zum Veröffentlichen von Ereignissen für einen Event Hub verwendet wird, finden Sie unter [„Identitätsbeispiel: Veröffentlichen von Ereignissen mit Azure“ auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 Sie können Apache Kafka-Anwendungen verwenden, um mithilfe von mit OAuth verwalteter Identität Nachrichten an Azure Event Hubs zu senden und von diesen zu empfangen. Auf GitHub ist das folgende Beispiele verfügbar: [Event Hubs für Kafka: Senden und Empfangen von Nachrichten mithilfe von mit OAuth verwalteter Identität](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>Beispiele
+- **Azure.Messaging.EventHubs**-Beispiele
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Microsoft.Azure.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
     In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs**-Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
-- [Azure.Messaging.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs**-Bibliothek verwendet wird.
 - [Event Hubs für Kafka: Senden und Empfangen von Nachrichten mithilfe von mit OAuth verwalteter Identität](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

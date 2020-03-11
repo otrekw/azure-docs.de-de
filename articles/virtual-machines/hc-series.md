@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 10c26c738fe51f6e557491475afd0545d3f04ab3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492451"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164779"
 ---
 # <a name="hc-series"></a>HC-Serie
 
@@ -23,6 +23,10 @@ ACU: 297-315
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
+
+Livemigration: Nicht unterstützt
+
+Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 | Size | vCPU | Prozessor | Arbeitsspeicher (GB) | Speicherbandbreite GB/s | Basis-CPU-Frequenz (GHz) | Frequenz für alle Kerne (GHz, Spitze) | Frequenz für Einzelkern (GHz, Spitze) | RDMA-Leistung (Gbit/s) | MPI-Unterstützung | Temporärer Speicher (GB) | Max. Anzahl Datenträger | Max. Ethernet-Karten |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

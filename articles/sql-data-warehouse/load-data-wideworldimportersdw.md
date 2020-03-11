@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Laden von Daten mithilfe von Azure-Portal und SSMS'
-description: In diesem Tutorial werden das Azure-Portal und SQL Server Management Studio verwendet, um das Data Warehouse „WideWorldImportersDW“ aus einem globalen Azure-Blob in Azure SQL Data Warehouse zu laden.
+description: In diesem Tutorial werden das Azure-Portal und SQL Server Management Studio verwendet, um das Data Warehouse „WideWorldImportersDW“ aus einem globalen Azure-Blob in einen SQL-Pool von Azure Synapse Analytics zu laden.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304037"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten in Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Tutorial: Laden von Daten in den SQL-Pool von Azure Synapse Analytics
 
-In diesem Tutorial wird PolyBase zum Laden des Data Warehouse „WideWorldImportersDW“ aus Azure-Blobspeicher in Azure SQL Data Warehouse verwendet. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet:
+In diesem Tutorial wird PolyBase zum Laden des Data Warehouse „WideWorldImportersDW“ aus Azure-Blobspeicher in Ihr Data Warehouse im SQL-Pool von Azure Synapse Analytics verwendet. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet:
 
 > [!div class="checklist"]
-> * Erstellen eines Data Warehouse im Azure-Portal
+> * Erstellen eines Data Warehouse mit dem SQL-Pool im Azure-Portal
 > * Einrichten einer Firewallregel auf Serverebene im Azure-Portal
-> * Herstellen einer Verbindung mit dem Data Warehouse mit SSMS
+> * Herstellen einer Verbindung mit dem SQL-Pool mit SSMS
 > * Erstellen eines festgelegten Benutzers zum Laden von Daten
 > * Erstellen von externen Tabellen, für die Azure-Blobs als Datenquelle verwendet werden
 > * Verwenden der T-SQL-Anweisung CTAS zum Laden von Daten in das Data Warehouse
@@ -43,33 +43,30 @@ Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL S
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen einer leeren SQL Data Warehouse-Instanz
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Erstellen eines leeren Data Warehouse im SQL-Pool
 
-Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Ein SQL-Pool wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Der SQL-Pool wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
-Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
+Führen Sie die folgenden Schritte aus, um einen leeren SQL-Pool zu erstellen. 
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 
-2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **Ausgewählte** die Option **SQL Data Warehouse** aus.
+1. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **Ausgewählte** die Option **Azure Synapse Analytics** aus.
 
-    ![Erstellen eines Data Warehouse](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![Erstellen des SQL-Pools](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. Füllen Sie das SQL Data Warehouse-Formular mit den folgenden Informationen aus:   
+1. Geben Sie die folgenden Informationen in den Abschnitt **Projektdetails** ein:   
 
-   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG | 
-   | ------- | --------------- | ----------- | 
-   | **Datenbankname** | SampleDW | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
+   | Einstellung | Beispiel | BESCHREIBUNG | 
+   | ------- | --------------- | ----------- |
    | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-   | **Ressourcengruppe** | SampleRG | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
-   | **Quelle auswählen** | Leere Datenbank | Gibt an, dass eine leere Datenbank erstellt werden soll. Hinweis: Ein Data Warehouse ist ein Datenbanktyp.|
+   | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
 
-    ![Erstellen eines Data Warehouse](media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
+1. Geben Sie unter **Details zum SQL-Pool** einen Namen für den SQL-Pool an. Wählen Sie dann in der Dropdownliste einen vorhandenen Server aus, oder wählen Sie unter den **Servereinstellungen** die Option **Neu erstellen** aus, um einen neuen Server zu erstellen. Füllen Sie das Formular mit den folgenden Informationen aus: 
 
     | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG | 
     | ------- | --------------- | ----------- |
+    |**Name des SQL-Pools**|SampleDW| Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
     | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). | 
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
     | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
@@ -77,67 +74,52 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
     ![Erstellen eines Datenbankservers](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. Klicken Sie auf **Auswählen**.
+1. **Auswählen der Leistungsebene**. Der Schieberegler ist standardmäßig auf **DW1000c** festgelegt. Bewegen Sie den Schieberegler nach oben oder unten, um die gewünschte Leistungsstufe auszuwählen. 
 
-6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob „Gen1“ oder „Gen2“ für das Data Warehouse verwendet werden soll, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
+    ![Erstellen eines Datenbankservers](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. Wählen Sie für dieses Tutorial die Dienstebene **Gen1** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+1. Legen Sie auf der Seite **Zusätzliche Einstellungen** die Option **Vorhandene Daten verwenden** auf „Keine“ fest, und belassen Sie die **Sortierung** auf dem Standardwert *SQL_Latin1_General_CP1_CI_AS*. 
 
-    ![Konfigurieren der Leistung](media/load-data-wideworldimportersdw/configure-performance.png)
+1. Klicken Sie auf **Überprüfen und erstellen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus, um Ihr Data Warehouse zu erstellen. Sie können den Fortschritt überwachen, indem Sie die Seite **Bereitstellung wird durchgeführt** im Menü **Benachrichtigungen** öffnen. 
 
-8. Klicken Sie auf **Anwenden**.
-9. Wählen Sie auf der Seite „SQL Data Warehouse“ eine **Sortierung** für die leere Datenbank aus. Verwenden Sie für dieses Tutorial den Standardwert. Weitere Informationen über Sortierungen finden Sie unter [Sortierungen](/sql/t-sql/statements/collations).
-
-11. Nachdem Sie das SQL-Datenbank-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten. 
-
-    ![Klicken auf „Erstellen“](media/load-data-wideworldimportersdw/click-create.png)
-
-12. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
-    
      ![Benachrichtigung](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
 
-Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../sql-database/sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients zu erstellen. 
+Der Azure Synapse Analytics-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../sql-database/sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients zu erstellen. 
 
 > [!NOTE]
-> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+> Der SQL-Pool von Azure Synapse Analytics kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
-1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **SampleDW**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **sample-svr.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
 
-2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. Klicken Sie auf den Servernamen, um die Servereinstellungen zu öffnen.
+1. Nachdem die Bereitstellung abgeschlossen ist, suchen Sie im Suchfeld im Navigationsmenü nach Ihrem Poolnamen, und wählen Sie dann die SQL-Poolressource aus. Wählen Sie den Servernamen aus. 
 
-    ![Suchen des Servernamens](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![Navigieren zur Ressource](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. Klicken Sie auf den Servernamen, um die Servereinstellungen zu öffnen.
+1. Wählen Sie den Servernamen aus. 
+    ![Servername](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. Wählen Sie die Option **Firewalleinstellungen anzeigen** aus. Die Seite **Firewalleinstellungen** für den SQL-Poolserver wird geöffnet. 
 
     ![Servereinstellungen](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet. 
+1. Wählen Sie auf der Seite **Firewalls und virtuelle Netzwerke** die Option **Client-IP-Adresse hinzufügen** aus, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
     ![Serverfirewallregel](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+1. Wählen Sie **Speichern** aus. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
 
-5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
-
-6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
-
-Jetzt können Sie mithilfe dieser IP-Adresse eine Verbindung mit dem SQL-Server und den zugehörigen Data Warehouses herstellen. Die Verbindung über SQL Server Management Studio oder ein anderes Tool Ihrer Wahl hergestellt werden. Verwenden Sie zum Herstellen der Verbindung das Serveradministratorkonto, das Sie zuvor erstellt haben.  
+Sie können jetzt mithilfe Ihrer Client-IP-Adresse eine Verbindung mit dem SQL-Server herstellen. Die Verbindung über SQL Server Management Studio oder ein anderes Tool Ihrer Wahl hergestellt werden. Verwenden Sie zum Herstellen der Verbindung das Serveradministratorkonto, das Sie zuvor erstellt haben.  
 
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS** und dann auf **Speichern**, um die Firewall für alle Azure-Dienste zu deaktivieren.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Abrufen des vollqualifizierten Servernamens
 
-Rufen Sie den vollqualifizierten Servernamen für Ihren SQL-Server im Azure-Portal ab. Später verwenden Sie den vollqualifizierten Namen zum Herstellen einer Verbindung mit dem Server.
+Der vollqualifizierte Servername wird verwendet, um eine Verbindung mit dem Server herzustellen. Navigieren Sie im Azure-Portal zu Ihrer SQL-Poolressource, und zeigen Sie unter **Servername** den vollqualifizierten Namen an.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**. In diesem Beispiel lautet der vollqualifizierte Name „mynewserver-20171113.database.windows.net“. 
-
-    ![Verbindungsinformationen](media/load-data-wideworldimportersdw/find-server-name.png)  
+![Servername](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Herstellen einer Verbindung mit dem Server als Serveradministrator
 
@@ -150,8 +132,8 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
     | Einstellung      | Vorgeschlagener Wert | BESCHREIBUNG | 
     | ------------ | --------------- | ----------- | 
     | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
-    | Servername | Der vollqualifizierte Servername | **sample-svr.database.windows.net** ist beispielsweise ein vollqualifizierter Servername. |
-    | Authentication | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
+    | Servername | Der vollqualifizierte Servername | **sqlpoolservername.database.windows.net** ist beispielsweise ein vollqualifizierter Servername. |
+    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
     | Anmeldename | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
     | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
@@ -165,7 +147,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 ## <a name="create-a-user-for-loading-data"></a>Erstellen eines Benutzers zum Laden von Daten
 
-Das Serveradministratorkonto dient zum Ausführen von Verwaltungsvorgänge und eignet sich nicht zum Ausführen von Abfragen für Benutzerdaten. Das Laden von Daten ist ein speicherintensiver Vorgang. Arbeitsspeicher-Höchstwerte werden entsprechend der verwendeten SQL Data Warehouse-Generation, der [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) und der [Ressourcenklasse](resource-classes-for-workload-management.md) definiert. 
+Das Serveradministratorkonto dient zum Ausführen von Verwaltungsvorgänge und eignet sich nicht zum Ausführen von Abfragen für Benutzerdaten. Das Laden von Daten ist ein speicherintensiver Vorgang. Arbeitsspeicher-Höchstwerte werden entsprechend der verwendeten SQL-Pool-Generation, der [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) und der [Ressourcenklasse](resource-classes-for-workload-management.md) definiert. 
 
 Es wird empfohlen, eine Anmeldung und einen Benutzer speziell zum Laden von Daten zu erstellen. Fügen Sie dann den Benutzer für das Laden einer [Ressourcenklasse](resource-classes-for-workload-management.md) hinzu, die eine geeignete maximale Speicherbelegung ermöglicht.
 
@@ -216,7 +198,7 @@ Im ersten Schritt zum Laden von Daten melden Sie sich als „LoaderRC60“ an.
 
 ## <a name="create-external-tables-and-objects"></a>Erstellen von externen Tabellen und Objekten
 
-Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. Informationen zum Übertragen Ihrer Daten in Azure-Blobspeicher oder zum direkten Laden der Daten aus Ihrer Quelle in SQL Data Warehouse finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
+Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. Informationen zum Übertragen Ihrer Daten in Azure-Blobspeicher oder zum direkten Laden der Daten aus Ihrer Quelle in den SQL-Pool finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
 
 Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeben, die Sie laden möchten. Diese Informationen umfassen den aktuellen Speicherort der Daten, das Format des Dateninhalts und die Tabellendefinition für die Daten. Die Daten befinden sich in einem globalen Azure-Blob.
 
@@ -266,7 +248,7 @@ Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeb
     CREATE SCHEMA wwi;
     ```
 
-7. Erstellen von externen Tabellen Die Tabellendefinitionen sind in SQL Data Warehouse gespeichert, aber die Tabellen verweisen auf Daten, die in Azure Blob Storage gespeichert sind. Führen Sie die folgenden T-SQL-Befehle aus, um mehrere externe Tabellen zu erstellen, die alle auf das Azure-Blob verweisen, das Sie zuvor in der externen Datenquelle definiert haben.
+7. Erstellen von externen Tabellen Die Tabellendefinitionen sind in der Datenbank gespeichert, aber die Tabellen verweisen auf Daten, die in Azure Blob Storage gespeichert sind. Führen Sie die folgenden T-SQL-Befehle aus, um mehrere externe Tabellen zu erstellen, die alle auf das Azure-Blob verweisen, das Sie zuvor in der externen Datenquelle definiert haben.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeb
 
     ![Anzeigen externer Tabelle](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>Laden der Daten in das Data Warehouse
+## <a name="load-the-data-into-sql-pool"></a>Laden der Daten in den SQL-Pool
 
-In diesem Abschnitt werden die definierten externen Tabellen verwendet, um die Beispieldaten aus dem Azure-Blob in SQL Data Warehouse zu laden.  
+In diesem Abschnitt werden die definierten externen Tabellen verwendet, um die Beispieldaten aus dem Azure-Blob in den SQL-Pool zu laden.  
 
 > [!NOTE]
 > In diesem Tutorial werden die Daten direkt in die endgültige Tabelle geladen. In einer Produktionsumgebung verwenden Sie normalerweise CREATE TABLE AS SELECT für das Laden in eine Stagingtabelle. Während sich die Daten in der Stagingtabelle befinden, können Sie alle erforderlichen Transformationen durchführen. Zum Anfügen der Daten einer Stagingtabelle an eine Produktionstabelle können Sie die INSERT...SELECT-Anweisung verwenden. Weitere Informationen finden Sie unter [Einfügen von Daten in eine Produktionstabelle](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-Das Skript verwendet die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), um die Daten aus Azure Storage Blob in neue Tabellen in Ihrem Data Warehouse zu laden. CTAS erstellt eine neue Tabelle basierend auf den Ergebnissen einer SELECT-Anweisung. Die neue Tabelle weist die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung auf. Wenn mit der SELECT-Anweisung eine Auswahl aus einer externen Tabelle getroffen wird, importiert SQL Data Warehouse die Daten in eine relationale Tabelle im Data Warehouse. 
+Das Skript verwendet die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), um die Daten aus Azure Storage Blob in neue Tabellen in Ihrem Data Warehouse zu laden. CTAS erstellt eine neue Tabelle basierend auf den Ergebnissen einer SELECT-Anweisung. Die neue Tabelle weist die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung auf. Wenn mit der SELECT-Anweisung eine Auswahl aus einer externen Tabelle getroffen wird, werden die Daten in eine relationale Tabelle im Data Warehouse importiert. 
 
 Mit diesem Skript werden keine Daten in die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sale“ geladen. Diese Tabellen werden in einem späteren Schritt generiert, um sicherzustellen, dass die Tabellen über eine ausreichend große Anzahl von Zeilen verfügen.
 
@@ -704,7 +686,7 @@ Mit diesem Skript werden keine Daten in die Tabellen „wwi.dimension_Date“ un
     ;
     ```
 
-2. Sehen Sie Ihren Daten beim Laden zu. Sie laden mehrere GB an Daten und komprimieren diese in hoch performante gruppierte Columnstore-Indizes. Öffnen Sie ein neues Abfragefenster in „SampleDW“, und führen Sie die folgende Abfrage aus, um den Status des Ladevorgangs anzuzeigen. Nach dem Starten der Abfrage können Sie sich einen Kaffee und einen Imbiss holen, während SQL Data Warehouse einige anstrengende Arbeit erledigt.
+2. Sehen Sie Ihren Daten beim Laden zu. Sie laden mehrere GB an Daten und komprimieren diese in hoch performante gruppierte Columnstore-Indizes. Öffnen Sie ein neues Abfragefenster in „SampleDW“, und führen Sie die folgende Abfrage aus, um den Status des Ladevorgangs anzuzeigen. Nach dem Starten der Abfrage können Sie sich die Zeit mit einem Kaffee vertreiben, während der SQL-Pool seine umfangreichen Aufgaben erledigt.
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ Verwenden Sie die gespeicherten Prozeduren, die Sie zum Generieren von Millionen
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>Auffüllen des replizierten Tabellencaches
-SQL Data Warehouse repliziert eine Tabelle, indem die Daten auf jedem Computeknoten zwischengespeichert werden. Der Cache wird aufgefüllt, wenn eine Abfrage für die Tabelle ausgeführt wird. Aus diesem Grund kann für die erste Abfrage einer replizierten Tabelle zusätzliche Zeit zum Auffüllen des Caches erforderlich sein. Nachdem der Cache aufgefüllt wurde, werden Abfragen für replizierte Tabellen schneller ausgeführt.
+
+Der SQL-Pool repliziert eine Tabelle, indem die Daten auf jedem Computeknoten zwischengespeichert werden. Der Cache wird aufgefüllt, wenn eine Abfrage für die Tabelle ausgeführt wird. Aus diesem Grund kann für die erste Abfrage einer replizierten Tabelle zusätzliche Zeit zum Auffüllen des Caches erforderlich sein. Nachdem der Cache aufgefüllt wurde, werden Abfragen für replizierte Tabellen schneller ausgeführt.
 
 Führen Sie diese SQL-Abfragen aus, um den replizierten Tabellencache auf den Computeknoten aufzufüllen. 
 
@@ -1112,16 +1095,16 @@ In diesem Tutorial haben Sie gelernt, wie ein Data Warehouse und ein Benutzer zu
 
 Sie haben folgende Schritte ausgeführt:
 > [!div class="checklist"]
-> * Erstellen eines Data Warehouse im Azure-Portal
+> * Erstellen eines Data Warehouse mit dem SQL-Pool im Azure-Portal
 > * Einrichten einer Firewallregel auf Serverebene im Azure-Portal
-> * Herstellen einer Verbindung mit dem Data Warehouse mit SSMS
+> * Herstellen einer Verbindung mit dem SQL-Pool mit SSMS
 > * Erstellen eines festgelegten Benutzers zum Laden von Daten
 > * Erstellen externer Tabellen für Daten in Azure Storage Blob
 > * Verwenden der T-SQL-Anweisung CTAS zum Laden von Daten in das Data Warehouse
 > * Anzeigen des Fortschritts beim Laden von Daten
 > * Erstellen von Statistiken für die neu geladenen Daten
 
-Fahren Sie mit der Entwicklungsübersicht fort, um zu erfahren, wie Sie eine vorhandene Datenbank in SQL Data Warehouse migrieren.
+Fahren Sie mit der Entwicklungsübersicht fort, um zu erfahren, wie Sie eine vorhandene Datenbank in den SQL-Pool von Azure Synapse zu migrieren.
 
 > [!div class="nextstepaction"]
->[Entwurfsentscheidungen zum Migrieren einer vorhandenen Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+>[Entwurfsentscheidungen zum Migrieren einer vorhandenen Datenbank in den SQL-Pool](sql-data-warehouse-overview-develop.md)

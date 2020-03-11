@@ -1,25 +1,26 @@
 ---
 title: Dynamische Datenmaskierung
-description: Die dynamische Datenmaskierung schränkt für SQL-Datenbank und Data Warehouse die Offenlegung sensibler Daten ein, indem diese für nicht berechtigte Benutzer maskiert werden.
+description: Die dynamische Datenmaskierung schränkt bei SQL-Datenbank und Data Warehouse die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/04/2019
-ms.openlocfilehash: 149c42829762920583948958da8252a01e35ef1f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/06/2020
+tags: azure-synpase
+ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721913"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192913"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamische Datenmaskierung für Azure SQL-Datenbank und Data Warehouse
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische Datenmaskierung für Azure SQL-Datenbank und Azure Synapse Analytics
 
 Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. 
 
@@ -29,7 +30,7 @@ Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand me
 
 ## <a name="dynamic-data-masking-basics"></a>Grundlegendes zur dynamischen Datenmaskierung
 
-Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf dem Konfigurationsblatt oder auf dem Blatt mit den Einstellungen für Ihre SQL-Datenbank-Instanz ein. Diese Funktion kann nicht über das Portal für SQL DW festgelegt werden (verwenden Sie stattdessen PowerShell oder die REST-API).
+Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf dem Konfigurationsblatt oder auf dem Blatt mit den Einstellungen für Ihre SQL-Datenbank-Instanz ein. Diese Funktion kann nicht über das Portal für Azure Synapse festgelegt werden (verwenden Sie stattdessen PowerShell oder die REST-API).
 
 ### <a name="dynamic-data-masking-permissions"></a>Berechtigungen für die dynamische Datenmaskierung
 

@@ -3,20 +3,20 @@ title: Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter unter Verwen
 titleSuffix: Azure AD B2C
 description: Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a745f83dcceef25634032cbe6fdb971f4f533ce
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 67fe9ef4ad2b025d11f88976973658c9cd8ae693
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850609"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187949"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -103,11 +103,11 @@ Sie müssen das erstellte Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 Wenn Sie möchten, dass sich Benutzer mit einem Salesforce-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
-Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen.
+Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen. Weitere Informationen finden Sie unter [Definieren eines technischen SAML-Profils](saml-technical-profile.md).
 
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
-2. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
-3. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
+1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
     ```XML
     <ClaimsProvider>
@@ -142,14 +142,32 @@ Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es 
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. Ändern Sie den Wert von **PartnerEntity** in die Salesforce-Metadaten-URL, die Sie zuvor kopiert haben.
-5. Ändern Sie den Wert beider Instanzen von **StorageReferenceId** in den Namen des Schlüssels Ihres Signaturzertifikats. Beispiel: B2C_1A_SAMLSigningCert.
+1. Ändern Sie den Wert von **PartnerEntity** in die Salesforce-Metadaten-URL, die Sie zuvor kopiert haben.
+1. Ändern Sie den Wert beider Instanzen von **StorageReferenceId** in den Namen des Schlüssels Ihres Signaturzertifikats. Beispiel: B2C_1A_SAMLSigningCert.
+1. Suchen Sie den Abschnitt `<ClaimsProviders>`, und fügen Sie den folgenden XML-Codeausschnitt hinzu. Wenn Ihre Richtlinie das technische `SM-Saml-idp`-Profil bereits enthält, fahren Sie mit dem nächsten Schritt fort. Weitere Informationen finden Sie unter [Sitzungsverwaltung für einmaliges Anmelden](custom-policy-reference-sso.md).
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+1. Speichern Sie die Datei .
 
 ### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 

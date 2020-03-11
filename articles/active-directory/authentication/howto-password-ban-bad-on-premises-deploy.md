@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4a3eb121b68311084fd516c6abb7e00ad70eba8b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888962"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226832"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -106,6 +106,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    * Jeder dieser Dienste kann nur Kennwortrichtlinien für eine einzelne Gesamtstruktur bereitstellen. Der Hostcomputer muss einer Domäne in dieser Gesamtstruktur angehören. Stamm- und untergeordnete Domänen werden unterstützt. Sie benötigen eine Netzwerkverbindung zwischen mindestens einem Domänencontroller in jeder Domäne der Gesamtstruktur und dem Kennwortschutzcomputer.
    * Sie können den Proxydienst zu Testzwecken auf einem Domänencontroller ausführen. Aber dieses Domänencontrollers muss dann über eine Internetverbindung verfügen, was möglicherweise ein Sicherheitsrisiko darstellt. Es wird empfohlen, diese Konfiguration nur zu Testzwecken zu verwenden.
    * Es wird empfohlen, mindestens zwei Proxyserver aus Gründen der Redundanz einzusetzen. Siehe [Hochverfügbarkeit](howto-password-ban-bad-on-premises-deploy.md#high-availability).
+   * Das Ausführen des Proxydiensts auf einem schreibgeschützten Domänencontroller wird nicht unterstützt.
 
 1. Installieren Sie den Azure AD-Kennwortschutz-Proxydienst mithilfe des Softwareinstallationsprogramms `AzureADPasswordProtectionProxySetup.exe`.
    * Nach der Softwareinstallation ist kein Neustart erforderlich. Die Softwareinstallation lässt sich mit Standard-MSI-Prozeduren automatisieren, z.B.:
@@ -133,11 +134,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Dieses Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie benötigen außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen.
+     Dieses Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie benötigen außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Dieses Cmdlet muss außerdem mit einem Konto mit lokalen Administratorrechten ausgeführt werden.
 
      Nachdem dieser Befehl ein Mal für einen Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
 
-      Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Informationen finden Sie unten in den Kommentaren.
+      Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Einzelheiten finden Sie unten in den Kommentaren.
 
      * Interaktiver Authentifizierungsmodus:
 
@@ -179,11 +180,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
 
 1. Registrieren Sie die Gesamtstruktur.
-   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren.
+   * Initialisieren Sie die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen, um unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` mit Azure zu kommunizieren.
 
       Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten.  Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
-      Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Informationen finden Sie unten in den Kommentaren.
+      Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht. Weitere Einzelheiten finden Sie unten in den Kommentaren.
 
      * Interaktiver Authentifizierungsmodus:
 
@@ -266,7 +267,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    Der Proxydienst unterstützt nicht die Verwendung von spezifischen Anmeldeinformationen für das Herstellen einer Verbindung mit einem HTTP-Proxy.
 
 1. Optional: Konfigurieren Sie den Proxydienst für Kennwortschutz so, dass er an einem bestimmten Port lauscht.
-   * Die DC-Agent-Software für Kennwortschutz auf den Domänencontrollern verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Proxydienst an jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst jedoch so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist.
+   * Die DC-Agent-Software für Kennwortschutz auf den Domänencontrollern verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Proxydienst an jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist.
       * <a id="static" /></a>Verwenden Sie das Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`, um den Dienst für die Ausführung unter einem statischen Port zu konfigurieren.
 
          ```powershell
@@ -343,6 +344,8 @@ Für die Bereitstellung des Azure AD-Kennwortschutzes in mehreren Gesamtstruktur
 ## <a name="read-only-domain-controllers"></a>Schreibgeschützte Domänencontroller
 
 Änderungen/Festlegungen von Kennwörtern werden auf schreibgeschützten Domänencontrollern (RODCs) nicht verarbeitet und gespeichert. Sie werden an nicht schreibgeschützte Domänencontroller weitergeleitet. Eine Installation der DC-Agent-Software auf RODCs ist daher nicht erforderlich.
+
+Das Ausführen des Proxydiensts auf einem schreibgeschützten Domänencontroller wird nicht unterstützt.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

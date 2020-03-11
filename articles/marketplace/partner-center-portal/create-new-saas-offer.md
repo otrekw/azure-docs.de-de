@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705818"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208864"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -134,16 +134,7 @@ Die Testversion ist eine hervorragende Möglichkeit, Ihr Angebot potenziellen Ku
 
 Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung zu konfigurieren, in der Kunden Ihr Angebot während eines festen Zeitraums testen können. 
 
-### <a name="type-of-test-drive"></a>Typ der Testversion
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Eine Bereitstellungsvorlage, die alle Azure-Ressourcen enthält, aus denen Ihre Lösung besteht. In den für dieses Szenario geeigneten Produkten werden nur Azure-Ressourcen verwendet.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft hostet und verwaltet den Testversionsdienst (einschließlich Bereitstellung) für ein Business Central-Enterprise Resource Planning-System (Finanzen, Betrieb, Lieferkette, CRM usw.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft hostet und verwaltet den Testversionsdienst (einschließlich Bereitstellung) für ein Customer Engagement-System (Vertrieb, Kundendienst, Projektservice, Vor-Ort-Service usw.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Microsoft hostet und verwaltet den Testversionsdienst (einschließlich Bereitstellung) für ein Finance and Operations-Enterprise Resource Planning-System (Finanzen, Betrieb, Fertigung, Lieferkette usw.). 
-- **[Logik-App](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Eine Bereitstellungsvorlage, die alle komplexen Lösungsarchitekturen umfasst. Alle benutzerdefinierten Produkte sollten mit diesem Testversionstyp genutzt werden.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : Ein eingebetteter Link zu einem benutzerdefinierten Dashboard. Für Produkte, mit denen ein interaktives Power BI-Visual veranschaulicht werden soll, sollte dieser Testversionstyp verwendet werden. Sie müssen hier lediglich Ihre eingebettete Power BI-URL hochladen.
-
-#### <a name="additional-test-drive-resources"></a>Zusätzliche Ressourcen zu Testversionen
+#### <a name="test-drive-resources"></a>Testversionen von Ressourcen
 - [Test Drive Technical Best Practices](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) (Bewährte technische Methoden für Testversionen, in englischer Sprache)
 - [Testversion: Marketing und Best Practices](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Test Drives](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (Testversionen, Informationsblatt in englischer Sprache)
@@ -234,7 +225,7 @@ Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschli
 - **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
 - **Zusammenfassung** (erforderlich): Geben Sie eine kurze Beschreibung Ihres Angebots ein, die in den Suchergebnissen für Marketplace-Liste(n) verwendet werden soll. In diesem Feld können bis zu 100 Zeichen Text eingegeben werden.
 - **Beschreibung:** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Übersicht über die Marketplace-Liste(n) angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben.
-In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+In dieses Feld können einschließlich Markup bis zu 3.000 Textzeichen eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Suchbegriffe**: Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in dem/den Marketplace(s) nach Ihrem Angebot suchen können.
 - **Anweisungen für den Einstieg** (erforderlich): Erläutern Sie potenziellen Kunden, wie die App konfiguriert und mit ihrer Verwendung begonnen wird.  Diese Schnellstartanleitung kann Links zu ausführlicherer Onlinedokumentation enthalten. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden.
 
@@ -290,7 +281,7 @@ Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
 #### <a name="files-and-images"></a>Files and Images (Dateien und Bilder)
 
 - **Dokumente** (erforderlich): Fügen Sie zugehörige Marketingdokumente im PDF-Format für Ihr Angebot hinzu, mindestens ein (1) und maximal drei (3) Dokumente pro Angebot.
-- **Bilder** (optional): In dem/den Marketplace(s) können Logobilder Ihres Angebots an mehreren Stellen angezeigt werden, wobei die folgenden Größen erforderlich sind. „Small: 48 x 48 pixels“  _(Klein: 48 x 48 Pixel) (erforderlich),_ „Medium: 90 x 90 pixels“ (Mittel: 90 x 90 Pixel), „Large: 216 x 216 pixels“  _(Groß: 216 x 216 Pixel) (erforderlich),_ „Wide: 255 x 115 pixels“ (Breit: 255 x 115 Pixel) und „Hero: 815 x 290 pixels“ (Hero: 815 x 290 Pixel). Alle Bilder müssen das PNG-Format aufweisen.
+- **Bilder** (optional): In dem/den Marketplace(s) können Logobilder Ihres Angebots an mehreren Stellen angezeigt werden, wobei die folgenden Größen erforderlich sind. „Small: 48 x 48 pixels“  _(Klein: 48 x 48 Pixel) (erforderlich),_ „Medium: 90 x 90 pixels“  _(Medium: 90 x 90 Pixel) (erforderlich),_ „Large: 216 x 216 pixels“  _(Groß: 216 x 216 Pixel) (erforderlich),_ „Wide: 255 x 115 pixels“ (Breit: 255 x 115 Pixel) und „Hero: 815 x 290 pixels“ (Hero: 815 x 290 Pixel). Alle Bilder müssen das PNG-Format aufweisen.
 - **Screenshots** (erforderlich): Fügen Sie Screenshots hinzu, um Ihr Angebot zu veranschaulichen. Es können maximal fünf (5) Screenshots hinzugefügt werden. Ihre Größe sollte 1280 x 720 Pixel betragen. Alle Bilder müssen das PNG-Format aufweisen.
 - **Videos** (optional): Fügen Sie Links zu Videos hinzu, um Ihr Angebot zu veranschaulichen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos hinzufügen. Es muss das PNG-Format und eine Größe von 1280 x 720 Pixel aufweisen. Sie können bis zu vier Videos pro Angebot anzeigen.
 

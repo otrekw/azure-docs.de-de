@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300067"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
@@ -78,7 +78,7 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 
 **Tabelle 3: Nur in v2.0 enthaltene optionale Ansprüche**
 
-| JWT-Anspruch     | Name                            | Beschreibung                                | Notizen |
+| JWT-Anspruch     | Name                            | BESCHREIBUNG                                | Notizen |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-Adresse                      | Die IP-Adresse, von der aus sich der Client angemeldet hat.   |       |
 | `onprem_sid`  | Lokale Sicherheits-ID |                                             |       |
@@ -96,7 +96,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 
 **Tabelle 4: Werte zum Konfigurieren optionaler Ansprüche**
 
-| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | BESCHREIBUNG |
+| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | Beschreibung |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |             
@@ -122,7 +122,7 @@ Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
 > [!IMPORTANT]
-> Zugriffstoken werden **immer** mit dem Manifest der Ressource und nicht des Clients generiert.  Daher entspricht die Ressource in der Anforderung `...scope=https://graph.microsoft.com/user.read...` dem Graph.  Folglich wird das Zugriffstoken unter Verwendung des Graph-Manifests und nicht des Clientmanifests erstellt.  Wenn Sie das Manifest für Ihre Anwendung ändern, hat das daher keinen Einfluss auf die Token für den Graph.  Um zu überprüfen, ob Ihre Änderungen an `accessToken` wirksam sind, fordern Sie ein Token für Ihre Anwendung, aber keine andere App an.  
+> Zugriffstoken werden **immer** mit dem Manifest der Ressource und nicht des Clients generiert.  In der Anforderung `...scope=https://graph.microsoft.com/user.read...` ist die Ressource also die Microsoft Graph-API.  Folglich wird das Zugriffstoken unter Verwendung des Microsoft Graph-API-Manifests und nicht des Clientmanifests erstellt.  Eine Änderung des Manifests für Ihre Anwendung führt niemals dazu, dass Token für die Microsoft Graph-API anders aussehen.  Um zu überprüfen, ob Ihre Änderungen an `accessToken` wirksam sind, fordern Sie ein Token für Ihre Anwendung, aber keine andere App an.  
 
 Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläche oder das Anwendungsmanifest konfigurieren.
 
@@ -186,7 +186,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name        | type                       | BESCHREIBUNG                                           |
+| Name        | type                       | Beschreibung                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -349,7 +349,7 @@ In diesem Abschnitt können Sie ein Szenario durchgehen, um zu erfahren, wie Sie
 Es sind mehrere Optionen für das Aktualisieren der Eigenschaften in der Identitätskonfiguration einer Anwendung zum Aktivieren und Konfigurieren optionaler Ansprüche verfügbar:
 -    Sie können die Benutzeroberfläche **Tokenkonfiguration (Vorschau)** verwenden (siehe Beispiel unten).
 -    Sie können das **Manifest** verwenden (siehe Beispiel unten). Lesen Sie zuerst das Dokument [Grundlegendes zum Azure AD-Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest), um eine Einführung in das Manifest zu erhalten.
--   Sie können zum Aktualisieren Ihrer Anwendung auch eine Anwendung schreiben, die die [Graph-API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) nutzt. Der Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) im Graph-API-Referenzhandbuch kann beim Konfigurieren der optionalen Ansprüche hilfreich sein.
+-   Sie können zum Aktualisieren Ihrer Anwendung auch eine Anwendung schreiben, die die [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) nutzt. Der Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) im Referenzhandbuch zur Microsoft Graph-API kann beim Konfigurieren der optionalen Ansprüche hilfreich sein.
 
 **Beispiel:** Im folgenden Beispiel verwenden Sie die Benutzeroberfläche **Tokenkonfiguration (Vorschau)** und das **Manifest**, um den Zugriffs-, ID-und SAML-Token optionale Ansprüche hinzuzufügen, die für Ihre Anwendung vorgesehen sind. Verschiedene optionale Ansprüche wurden den einzelnen Tokentypen hinzugefügt, die von der Anwendung empfangen werden können:
 -    Die ID-Token enthalten jetzt den UPN für Verbundbenutzer in vollständiger Form (`<upn>_<homedomain>#EXT#@<resourcedomain>`).

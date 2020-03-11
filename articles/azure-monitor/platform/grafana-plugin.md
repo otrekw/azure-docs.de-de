@@ -1,18 +1,15 @@
 ---
 title: Überwachen von Azure-Diensten und -Anwendungen mit Grafana
 description: Es wird beschrieben, wie Sie Azure Monitor- und Application Insights-Daten weiterleiten, um sie in Grafana anzuzeigen.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/06/2017
-ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552102"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672207"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -94,7 +91,7 @@ Nach der erfolgreichen Anmeldung sollte zu sehen sein, dass das Azure Monitor-Da
 4. Wählen Sie die Azure Monitor-Datenquelle aus, die Sie konfiguriert haben.
    * Wählen Sie **Azure Monitor** im Dropdownmenü „Dienst“ aus, um Azure Monitor-Metrikdaten zu sammeln. Es wird eine Liste der Selektoren angezeigt wird, in der Sie die Ressourcen und die Metrik auswählen können, die in diesem Diagramm überwacht werden sollen. Verwenden Sie den Namespace **Microsoft.Compute/VirtualMachines**, um Metriken von einem virtuellen Computer zu sammeln. Nachdem Sie die virtuellen Computer und die Metriken ausgewählt haben, können Sie damit beginnen, die Daten im Dashboard anzuzeigen.
      ![Grafana-Diagrammkonfiguration für Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Sammeln von Azure Monitor-Protokolldaten: Wählen Sie **Azure Log Analytics** in der Dropdownliste mit Diensten aus. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können eine bereits erstellte Protokollabfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe,** **Tabelle** aus, und starten Sie die Abfrage.
+   * Sammeln von Azure Monitor-Protokolldaten: Wählen Sie **Azure Log Analytics** in der Dropdownliste mit Diensten aus. Wählen Sie den Arbeitsbereich aus, den Sie abfragen möchten, und legen Sie den Text der Abfrage fest. Sie können eine bereits erstellte Protokollabfrage hierhin kopieren oder eine neue Abfrage erstellen. Während Sie die Abfrage eingeben, wird IntelliSense aktiv und schlägt Optionen zur automatischen Vervollständigung vor. Wählen Sie den Visualisierungstyp **Zeitreihe** **Tabelle** aus, und starten Sie die Abfrage.
     
      > [!NOTE]
      >

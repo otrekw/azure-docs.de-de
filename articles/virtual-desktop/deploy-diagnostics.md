@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368851"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273102"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -128,10 +128,9 @@ Bevor Sie mit der Bereitstellung des Diagnosetools fortfahren, sollten Sie über
 So stellen Sie sicher, dass Ihre App-Registrierung API-Berechtigungen besitzt
 
 1. Öffnen Sie einen Browser, und stellen Sie mit Ihrem Administratorkonto eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/) her.
-2. Wechseln Sie zu **App-Registrierungen**, und suchen Sie nach ihrer Azure AD-App-Registrierung.
-
-      ![Die Seite „API-Berechtigungen“.](media/api-permissions-page.png)
-
+2. Wechseln Sie zu **Azure Active Directory**.
+3. Navigieren Sie zu **App-Registrierungen**, und wählen Sie **Alle Anwendungen** aus.
+4. Suchen Sie nach Ihrer Azure AD-App-Registrierung mit dem gleichen App-Namen, den Sie in Schritt 5 von [Erstellen einer Azure Active Directory-App-Registrierung](deploy-diagnostics.md#create-an-azure-active-directory-app-registration) eingegeben haben.
 
 ### <a name="review-your-log-analytics-workspace"></a>Überprüfen Ihres Log Analytics-Arbeitsbereichs
 
@@ -143,7 +142,7 @@ So stellen Sie sicher, dass Ihr Log Analytics-Arbeitsbereich über die vorkonfig
 4. Stellen Sie sicher, dass die folgenden Indikatoren vorkonfiguriert sind:
 
    - LogicalDisk(\*)\\%Freier Speicher: Zeigt die Menge des freien Speicherplatzes des gesamten nutzbaren Speicherplatzes auf dem Datenträger als Prozentsatz an.
-   - LogicalDisk(C:)\\Durchschn. Warteschlangenlänge des Datenträgers: Die Länge der Datenübertragungsanforderung für Ihr Laufwerk „C“. Der Wert sollte nicht länger als für einen kurzen Zeitraum 2 überschreiten.
+   - LogicalDisk(C:)\\Durchschn. Warteschlangenlänge des Datenträgers: Die Länge der Datenübertragungsanforderung für Ihr Laufwerk „C“. Der Wert sollte 2 nicht länger als für einen kurzen Zeitraum überschreiten.
    - Arbeitsspeicher(\*)\\Verfügbare MB: Der verfügbare Arbeitsspeicher für das System in MB.
    - Prozessorinformationen(\*)\\Prozessorzeit: der Prozentsatz der verstrichenen Zeit, die der Prozessor mit dem Ausführen eines nicht im Leerlauf befindlichen Threads verbringt.
    - Benutzereingabeverzögerung pro Sitzung(\*)\\Maximale Eingabeverzögerung

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: cfe5ea47ad2cbed7bd2779ee535d7bef447475e5
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500347"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183294"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -45,6 +45,10 @@ Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben könne
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+## <a name="february-2020"></a>Februar 2020
+
+Einige Analytics-Medienprozessoren werden außer Betrieb genommen. Die entsprechenden Termine finden Sie im Thema [Legacykomponenten](legacy-components.md).
 
 ## <a name="september-2019"></a>September 2019
 
@@ -228,7 +232,7 @@ Media Services ist jetzt in den folgenden Datencentern live: Brasilien, Süden, 
 
 ## <a id="september_changes_15"></a>Release von September 2015
 Media Services bietet jetzt die Möglichkeit zum Schutz von Video on Demand-Streams und Livestreams mit der modularen DRM-Technologie Widevine. Folgende Partner für Bereitstellungsdienste können Sie bei der Übermittlung von Widevine-Lizenzen unterstützen:
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 

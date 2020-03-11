@@ -1,23 +1,23 @@
 ---
-title: Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
+title: Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines im Azure Machine Learning-Designer erneut trainieren können.
+description: Erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines im Azure Machine Learning-Designer erneut trainieren können (Vorschau).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311868"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268496"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Erneutes Trainieren von Modellen mit Azure Machine Learning-Designer (Vorschau)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 In dieser Anleitung erfahren Sie, wie Sie Azure Machine Learning-Designer zum erneuten Trainieren eines Machine Learning-Modells verwenden. Außerdem geht es darum, wie Sie veröffentlichte Pipelines zum Automatisieren von Machine Learning-Workflows für das erneute Trainieren verwenden.
 
@@ -69,11 +69,11 @@ Der Designer speichert alle Pipelineausgaben, einschließlich trainierter Modell
 
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
-1. Wählen Sie im Einstellungsbereich die Option **Ausgaben** aus.
+1. Wählen Sie im Einstellungsbereich die Option **Ausgaben und Protokolle** aus.
 
-1. Wählen Sie **Trained_model** aus, um das Modell herunterzuladen.
+1. Klicken Sie auf das Symbol **Ausgabe anzeigen**, und folgen Sie den Anweisungen im Popupfenster, um das trainierte Modell zu finden.
 
-![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/download-model.png)
+![Screenshot, der zeigt, wie das trainierte Modell heruntergeladen wird](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Erstellen eines Pipelineparameters
 
@@ -119,7 +119,7 @@ Verwenden Sie die folgenden Schritte, um die Ausführung eines Pipelineendpunkte
 
 1. Wählen Sie die Pipeline aus, die Sie ausführen möchten.
 
-1. Klicken Sie auf **Run** (Ausführen).
+1. Klicken Sie auf **Submit** (Senden).
 
 1. Im Einrichtungsdialogfeld können Sie einen neuen Wert für den Eingabedatenpfad angeben, der auf Ihr neues Dataset verweist.
 
@@ -127,7 +127,9 @@ Verwenden Sie die folgenden Schritte, um die Ausführung eines Pipelineendpunkte
 
 ### <a name="submit-runs-with-code"></a>Übermitteln von Ausführungen mit Code
 
-Abhängig von Ihrer Entwicklungsumgebung gibt es mehrere Möglichkeiten, programmgesteuert auf Ihren REST-Endpunkt zuzugreifen. Auf der Registerkarte **Nutzen** Ihrer Pipeline finden Sie Codebeispiele, die veranschaulichen, wie Sie Pipelineausführungen mit Parametern übermitteln.
+Den REST-Endpunkt einer veröffentlichten Pipeline finden Sie im Übersichtsbereich. Durch den Aufruf des Endpunkts können Sie die veröffentlichte Pipeline neu trainieren.
+
+Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen REST-Aufruf auszuführen. Weitere Informationen zum Einrichten der Authentifizierung für Ihren Arbeitsbereich und zum Erstellen eines parametrisierten REST-Aufrufes finden Sie im folgenden [Tutorialabschnitt](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

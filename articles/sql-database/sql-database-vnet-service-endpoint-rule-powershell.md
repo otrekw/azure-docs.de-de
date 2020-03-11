@@ -1,6 +1,6 @@
 ---
 title: PowerShell für VNET-Endpunkte und -Regeln für Einzel- und Pooldatenbanken
-description: Stellt PowerShell-Skripts zum Erstellen und Verwalten von virtuellen Dienstendpunkten für Ihre Instanzen von Azure SQL-Datenbank und Azure SQL Data Warehouse bereit.
+description: Stellt PowerShell-Skripts zum Erstellen und Verwalten von virtuellen Dienstendpunkten für Ihre Instanzen von Azure SQL-Datenbank und Azure Synapse bereit.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 76c4ea6c3fc5f415316e2b5cfcdf80c0681cc3f6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+tags: azure-synapse
+ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422496"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191859"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Mit PowerShell:  Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
 
-*VNET-Regeln* sind eine Firewallsicherheitsfunktion, die steuert, ob der Datenbankserver für Ihre Einzeldatenbanken und Ihren Pool für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-technical-overview.md) oder für Ihre Datenbanken in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden.
+*VNET-Regeln* sind ein Firewallsicherheitsfeature, das steuert, ob der Datenbankserver für Ihre Einzeldatenbanken und Ihren Pool für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-technical-overview.md) oder für Ihre Datenbanken in [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden.
 
 > [!IMPORTANT]
-> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Dieser Artikel gilt *nicht* für die Bereitstellungsoption **Verwaltete Instanz** in Azure SQL-Datenbank, da dieser kein Dienstendpunkt zugeordnet ist.
+> Dieser Artikel gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse in Azure Synapse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf SQL-Datenbank als auch auf Azure Synapse verwiesen wird. Dieser Artikel gilt *nicht* für die Bereitstellungsoption **Verwaltete Instanz** in Azure SQL-Datenbank, da dieser kein Dienstendpunkt zugeordnet ist.
 
 Dieser Artikel stellt ein PowerShell-Skript bereit, das folgende Vorgänge ausführt, und erläutert dieses:
 
@@ -38,7 +39,7 @@ Gründe für das Erstellen einer Regel werden hier erläutert: [Virtuelle Dienst
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 ## <a name="major-cmdlets"></a>Wichtige Cmdlets
 

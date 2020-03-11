@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152464"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918494"
 ---
 # <a name="add-rows-module"></a>Modul „Add Rows“ (Hinzufügen von Zeilen)
 
@@ -32,7 +32,7 @@ Die Verkettung von Zeilen ist in folgenden Szenarien nützlich:
 
 Um Zeilen aus zwei Datasets zu verketten, müssen die Zeilen exakt das gleiche Schema haben. Das heißt, dass die Anzahl der Spalten und der Datentyp in den Spalten identisch sein müssen.
 
-1.  Ziehen Sie das Modul **Add Rows** (Zeilen hinzufügen) in Ihre Pipeline. Sie finden es unter **Datentransformation** in der Kategorie **Manipulate** (Bearbeiten).
+1.  Ziehen Sie das Modul **Add Rows** (Zeilen hinzufügen) in Ihre Pipeline. Sie finden es unter **Datentransformation**.
 
 2. Verbinden Sie die Datasets mit den beiden Eingabeports. Das Dataset, das Sie anfügen möchten, muss mit dem zweiten (rechten) Port verbunden werden. 
   

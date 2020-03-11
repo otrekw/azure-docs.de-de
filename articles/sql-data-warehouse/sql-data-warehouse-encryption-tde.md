@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption (Portal)
-description: Transparent Data Encryption (TDE) in SQL Data Warehouse
+description: Transparent Data Encryption (TDE) in Azure Synapse Analytics
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4435c5f246d6dd20fd0b2c560634f6980d6aa2ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c121f9c16895a749922525d1ba85ee2c2e60cfb0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685781"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195855"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Erste Schritte mit Transparent Data Encryption (TDE) in SQL Data Warehouse
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Erste Schritte mit Transparent Data Encryption (TDE)
 > [!div class="op_single_selector"]
 > * [Sicherheitsübersicht](sql-data-warehouse-overview-manage-security.md)
 > * [Authentifizierung](sql-data-warehouse-authentication.md)
@@ -31,7 +31,7 @@ ms.locfileid: "73685781"
 Sie müssen Administrator oder ein Mitglied der Rolle „dbmanager“ sein, um Transparent Data Encryption (TDE) zu aktivieren.
 
 ## <a name="enabling-encryption"></a>Aktivieren der Verschlüsselung
-Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren:
+Führen Sie zum Aktivieren von TDE die folgenden Schritte aus:
 
 1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com)
 2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen** .
@@ -41,7 +41,7 @@ Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu aktivieren
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Deaktivieren der Verschlüsselung
-Führen Sie diese Schritte aus, um TDE für ein SQL Data Warehouse zu deaktivieren:
+Führen Sie zum Deaktivieren von TDE die folgenden Schritte aus:
 
 1. Öffnen Sie die Datenbank im [Azure-Portal](https://portal.azure.com)
 2. Klicken Sie im Datenbank-Blatt auf die Schaltfläche **Einstellungen** .

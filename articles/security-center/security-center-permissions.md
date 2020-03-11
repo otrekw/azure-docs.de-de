@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201641"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921316"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
@@ -39,17 +39,17 @@ Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
 ## <a name="roles-and-allowed-actions"></a>Rollen und zulässige Aktionen
 
-In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security Center aufgeführt. Mit „X“ wird angegeben, dass die Aktion für die jeweilige Rolle zulässig ist.
+In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security Center aufgeführt.
 
-| Role | Sicherheitsrichtlinie bearbeiten | Sicherheitsempfehlungen für eine Ressource anwenden | Warnungen und Empfehlungen verwerfen | Warnungen und Empfehlungen anzeigen |
+| Role | Sicherheitsrichtlinie bearbeiten | Sicherheitsempfehlungen für eine Ressource anwenden</br> (einschließlich „Quick Fix!“) | Warnungen und Empfehlungen verwerfen | Warnungen und Empfehlungen anzeigen |
 |:--- |:---:|:---:|:---:|:---:|
-| Besitzer des Abonnements | X | X | X | X |
-| Mitwirkender des Abonnements | -- | X | X | X |
-| Ressourcengruppenbesitzer | -- | X | -- | X |
-| Ressourcengruppenmitwirkender | -- | X | -- | X |
-| Leser | -- | -- | -- | X |
-| Sicherheitsadministrator | X | -- | X | X |
-| Sicherheitsleseberechtigter | -- | -- | -- | X |
+| Besitzer des Abonnements | ✔ | ✔ | ✔ | ✔ |
+| Mitwirkender des Abonnements | -- | ✔ | ✔ | ✔ |
+| Ressourcengruppenbesitzer | -- | ✔ | -- | ✔ |
+| Ressourcengruppenmitwirkender | -- | ✔ | -- | ✔ |
+| Leser | -- | -- | -- | ✔ |
+| Sicherheitsadministrator | ✔ | -- | ✔ | ✔ |
+| Sicherheitsleseberechtigter | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > Es empfiehlt sich, den Benutzern eine Rolle zuzuweisen, die jeweils nur so viele Berechtigungen umfasst wie für die Erfüllung ihrer Aufgaben erforderlich sind. Weisen Sie die Rolle „Leser“ etwa Benutzern zu, die nur Informationen zur Sicherheitsintegrität einer Ressource anzeigen, aber keine Aktionen durchführen müssen (also beispielsweise keine Empfehlungen umsetzen oder Richtlinien bearbeiten).

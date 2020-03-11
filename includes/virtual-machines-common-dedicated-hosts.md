@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013793"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246202"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
@@ -98,6 +98,8 @@ Der Hostpreis wird anhand der VM-Familie, dem Typ (Hardwaregröße) und der Regi
 Softwarelizenzierung, Speicher und Netzwerknutzung werden separat vom Host und den VMs abgerechnet. An diesen abrechenbaren Elementen finden keine Änderungen statt.
 
 Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
+
+Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.
  
 ## <a name="vm-families-and-hardware-generations"></a>VM-Familien und Hardwaregenerationen
 
@@ -115,7 +117,7 @@ Dedizierte Hosts unterstützen die folgenden SKUs bzw. Typen:  DSv3_Type1 und ES
 
 Azure überwacht und verwaltet den Integritätsstatus Ihrer Hosts. Die folgenden Zustände werden zurückgegeben, wenn Sie Ihren Host abfragen:
 
-| Integritätsstatus   | Beschreibung       |
+| Integritätsstatus   | BESCHREIBUNG       |
 |----------|----------------|
 | Host verfügbar     | Es liegen keine bekannten Probleme mit dem Host vor.   |
 | Host wird untersucht  | Es liegen einige Probleme mit dem Host vor, die derzeit untersucht werden. Dies ist ein erforderlicher Übergangszustand, in dem Azure versucht, den Umfang und die Ursache des identifizierten Problems zu identifizieren. Auf dem Host ausgeführte virtuelle Computer können beeinträchtigt werden. |

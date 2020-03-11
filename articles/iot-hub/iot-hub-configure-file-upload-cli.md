@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302524"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurieren von IoT Hub-Dateiuploads mit der Azure CLI
 
@@ -29,7 +29,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Einen Azure IoT Hub. Wenn Sie über keinen IoT Hub verfügen, können Sie mit dem [`az iot hub create`-Befehl](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) oder [über das Portal](iot-hub-create-through-portal.md) einen IoT Hub erstellen.
 
-* Azure Storage-Konto Wenn Sie über kein Azure Storage-Konto verfügen, verwenden Sie die Informationen unter [Azure CLI: Verwalten von Speicherkonten](../storage/common/storage-azure-cli.md#manage-storage-accounts), oder nutzen Sie das Portal zum [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md).
+* Azure Storage-Konto Wenn Sie über kein Azure Storage Konto verfügen, können Sie über die Azure CLI ein Konto erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Anmelden und Festlegen Ihres Azure-Kontos
 

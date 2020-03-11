@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152158"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921367"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen)
 
@@ -55,6 +55,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
     + **Single Parameter** (Einzelner Parameter): Wählen Sie diese Option, wenn Sie wissen, wie Sie das Modell konfigurieren möchten, und geben Sie eine bestimmte Menge von Werten als Argumente an.
 
+    + **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.   
 
 5. **Number of decision trees** (Anzahl von Entscheidungsbäumen): Geben Sie die maximale Anzahl von Entscheidungsbäumen ein, die im Ensemble erstellt werden können. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie möglicherweise eine bessere Abdeckung, allerdings verlängert sich dadurch ggf. die Trainingsdauer.
 

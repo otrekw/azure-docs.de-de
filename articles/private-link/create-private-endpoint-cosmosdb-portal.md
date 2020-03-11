@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028577"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252599"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link
 
@@ -25,26 +25,22 @@ Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Private Link-Ressource verwendet wird (in diesem Beispiel ein Azure Cosmos-Konto).
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
+In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | USA, Westen-Mitte     |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
-    | Einstellung | value |
-    | ------- | ----- |
-    | Name | Geben Sie *MyVirtualNetwork* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Location | Wählen Sie **WestCentralUS** aus.|
-    | Subnetzname | Geben Sie *mySubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
-    |||
-
-1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>Erstellen des virtuellen Computers
 

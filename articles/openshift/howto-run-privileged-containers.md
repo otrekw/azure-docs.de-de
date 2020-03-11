@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro, openshift, aquasec, twistlock, red hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069754"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271376"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Ausführen von privilegierten Containern in einem Azure Red Hat OpenShift-Cluster
 
@@ -121,17 +121,24 @@ Legen Sie beim Bereitstellen von Enforcern die folgenden Felder fest:
 
 Die grundlegenden Anweisungen, die wir hier ändern, finden Sie in der [Dokumentation zur Prisma Cloud-Bereitstellung](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html).
 
-Starten per Erstellung eines neuen OpenShift-Projekts
+Beginnen Sie mit der Installation des Tools `twistcli`, wie in den Abschnitten „Installieren von Prisma Cloud“ und „Herunterladen von Prisma Cloud-Software“ beschrieben.
+
+Erstellen eines neuen OpenShift-Projekts
 ```
 oc new-project twistlock
 ```
 
-Sie können der Dokumentation bis zum Abschnitt „Install Console“ (Konsole installieren) folgen. Verwenden Sie die Prisma Cloud-Containerregistrierung, anstatt eine interne zu erstellen.
+Überspringen Sie den optionalen Abschnitt „Pushen der Prisma Cloud-Images in eine private Registrierung“. Bei Azure Red Hat Openshift wird es nicht funktionieren. Verwenden Sie stattdessen die Onlineregistrierung.
+
+Sie können der offiziellen Dokumentation folgen und dabei die unten beschriebenen Korrekturen vornehmen.
+Beginnen Sie mit dem Abschnitt „Installieren der Konsole“.
 
 ### <a name="install-console"></a>Installieren der Konsole
 
 Bei `oc create -f twistlock_console.yaml` in Schritt 2 erhalten Sie beim Erstellen des Namespace einen Fehler.
 Diesen können Sie ignorieren. Der Namespace wurde zuvor mit dem Befehl `oc new-project` erstellt.
+
+Verwenden Sie `azure-disk` für den Speichertyp.
 
 ### <a name="create-an-external-route-to-console"></a>Erstellen einer externen Route zur Konsole
 

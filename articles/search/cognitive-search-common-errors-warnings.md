@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838546"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913479"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -32,7 +32,7 @@ Die Indizierung wird von Warnungen nicht beendet, aber Warnungen weisen auf Bedi
 
 Ab API-Version `2019-05-06` sind Indexerfehler und -warnungen auf der Elementebene strukturiert, sodass Ursachen und weiterführende Schritte besser verständlich sind. Sie enthalten die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Beispiel |
+| Eigenschaft | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | Schlüssel | Die Dokument-ID des Dokuments, das von dem Fehler oder der Warnung betroffen ist. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | Der Vorgangsname, der beschreibt, wo der Fehler oder die Warnung aufgetreten ist. Dies wird durch die folgende Struktur generiert: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
@@ -152,9 +152,9 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Error: Dokument konnte nicht indiziert werden, da die zu indizierenden Indexerdaten ungültig waren.
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Error: Das Dokument konnte nicht indiziert werden, da einige Daten des Dokuments nicht zulässig waren.
 
-Das Dokument wurde gelesen und verarbeitet, konnte jedoch aufgrund eines Konflikts zwischen der Konfiguration der Indexfelder und der Art der vom Indexer extrahierten Daten nicht dem Suchindex hinzugefügt werden. Möglich sind folgende Ursachen:
+Das Dokument wurde vom Indexer gelesen und verarbeitet, konnte jedoch aufgrund eines Konflikts zwischen der Konfiguration der Indexfelder und den vom Indexer extrahierten und verarbeiteten Daten nicht zum Suchindex hinzugefügt werden. Möglich sind folgende Ursachen:
 
 | `Reason` | Details/Beispiel
 | --- | ---
@@ -166,12 +166,11 @@ Das Dokument wurde gelesen und verarbeitet, konnte jedoch aufgrund eines Konflik
 
 Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) und [Datentypzuordnung für Indexer](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search), um sicherzustellen, dass Sie das Indexschema ordnungsgemäß erstellen und geeignete [Indexerfeldzuordnungen](search-indexer-field-mappings.md) eingerichtet haben. Die Fehlermeldung enthält Details, anhand derer die Quelle des Konflikts ermittelt werden kann.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Error: Die integrierte Änderungsnachverfolgungs-Richtlinie kann nicht verwendet werden, da die Tabelle einen zusammengesetzten Primärschlüssel aufweist.
 
 Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Error: Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
 

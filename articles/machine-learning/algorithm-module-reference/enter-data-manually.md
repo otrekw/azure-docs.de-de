@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152345"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268776"
 ---
 # <a name="enter-data-manually-module"></a>Modul „Enter Data Manually“ (Manuelles Eingeben von Daten)
 
@@ -36,13 +36,13 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
   
 2.  Wählen Sie für **DataFormat** eine der folgenden Optionen aus. Diese Optionen bestimmen, wie die von Ihnen bereitgestellten Daten analysiert werden sollen. Die Anforderungen für jedes Format sind sehr unterschiedlich, weshalb Sie die entsprechenden Themen unbedingt lesen sollten.  
   
-    -   **ARFF**. Steht für „Attribute-Relation File Format“ und wird von Weka verwendet.   
+    -   **ARFF**: Steht für „Attribute-Relation File Format“ und wird von Weka verwendet.   
   
-    -   **CSV**. Format mit durch Trennzeichen getrennte Werte. Weitere Informationen finden Sie unter [Convert to CSV](./convert-to-csv.md) (Konvertieren in das CSV-Format).  
+    -   **CSV**: Format mit durch Trennzeichen getrennte Werte. Weitere Informationen finden Sie unter [Convert to CSV](./convert-to-csv.md) (Konvertieren in das CSV-Format).  
   
-    -   **SVMLight**. Ein Format, das von Vowpal Wabbit und anderen Frameworks für maschinelles Lernen verwendet wird.  
+    -   **SVMLight**: Ein Format, das von Vowpal Wabbit und anderen Frameworks für maschinelles Lernen verwendet wird.  
   
-    -   **TSV**. Format mit per Tabulator getrennten Werten.
+    -   **TSV**: Format mit per Tabulator getrennten Werten.
 
      Wenn Sie ein Format wählen und keine Daten bereitstellen, die den Formatvorgaben entsprechen, tritt ein Laufzeitfehler auf.
   
@@ -89,11 +89,9 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
         |0,00016|0,004|0,999961|0,00784|1|  
         |0|0,004|0,999955|0,008615|1|  
   
-4.  Drücken Sie nach jeder Zeile die EINGABETASTE, um eine neue Zeile zu beginnen.  
-  
-     **Drücken Sie unbedingt nach der letzten Zeile die EINGABETASTE.** 
+4.  Drücken Sie nach jeder Zeile die EINGABETASTE, um eine neue Zeile zu beginnen.      
      
-     Wenn Sie mehrmals die EINGABETASTE drücken, um mehrere leere nachstehende Zeilen hinzuzufügen, wird die letzte leere Zeile beschnitten entfernt, aber andere leere Zeilen werden als fehlende Werte behandelt.  
+     Wenn Sie mehrmals die EINGABETASTE drücken, um mehrere leere Zeilen am Ende hinzuzufügen, werden die leeren Zeilen zugeschnitten entfernt.  
   
      Wenn Sie Zeilen mit fehlenden Werten erstellen, können Sie diese später jederzeit wieder herausfiltern.  
   

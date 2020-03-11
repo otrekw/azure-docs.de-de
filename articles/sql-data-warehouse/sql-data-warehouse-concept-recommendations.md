@@ -1,32 +1,30 @@
 ---
-title: SQL Data Warehouse-Empfehlungen
-description: Erfahren Sie mehr über SQL Data Warehouse-Empfehlungen und wie sie erzeugt werden
+title: SQL Analytics-Empfehlungen
+description: Hier erfahren Sie etwas über SQL Analytics-Empfehlungen und wie sie erzeugt werden.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/05/2018
+ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a93339b99c6591ee9ed615c032d0eac58a372fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: azure-synapse
+ms.openlocfilehash: 5471236c09737eeef2d4cb7542c245d3087e726c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827499"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195956"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse-Empfehlungen
+# <a name="sql-analytics-recommendations"></a>SQL Analytics-Empfehlungen
 
-Dieser Artikel beschreibt die Empfehlungen, die SQL Data Warehouse mit dem Azure Advisor unterbreitet.  
+In diesem Artikel werden die SQL Analytics-Empfehlungen beschrieben, die durch Azure Advisor bereitgestellt werden.  
 
-SQL Data Warehouse bietet Empfehlungen, um sicherzustellen, dass Ihr Data Warehouse konsistent für Leistung optimiert ist. Data Warehouse-Empfehlungen sind eng in den [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) integriert, um Sie direkt im [Azure-Portal](https://aka.ms/Azureadvisor) mit bewährten Methoden vertraut zu machen. Auf täglicher Basis analysiert SQL Data Warehouse den aktuellen Zustand Ihres Data Warehouse, sammelt Telemetriedaten und unterbreitet Empfehlungen für Ihre aktive Workload. Die unterstützten Data Warehouse-Empfehlungsszenarien werden im Folgenden zusammen mit der Anwendung empfohlener Aktionen beschrieben.
+SQL Analytics bietet Empfehlungen, um sicherzustellen, dass Ihr Data Warehouse-Workload für Leistung konsistent optimiert wird. Empfehlungen sind in den [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) eng integriert, um Sie direkt im [Azure-Portal](https://aka.ms/Azureadvisor) mit bewährten Methoden vertraut zu machen. SQL Analytics sammelt Telemetrie- und Oberflächenempfehlungen für Ihre aktive Workload in einem täglichen Rhythmus. Die unterstützten Empfehlungsszenarien werden im Folgenden zusammen mit der Anwendung empfohlener Aktionen beschrieben.
 
-Wenn Sie uns Feedback zum SQL Data Warehouse Advisor geben möchten oder Probleme auftreten, wenden Sie sich an [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com).   
-
-Klicken Sie [hier](https://aka.ms/Azureadvisor), um zu erfahren, welche Empfehlungen Sie heute erhalten! Dieses Feature ist zurzeit nur auf Gen2-Data Warehouses anwendbar. 
+Sie können noch heute [Ihre Empfehlungen überprüfen](https://aka.ms/Azureadvisor)! Dieses Feature ist zurzeit nur auf Gen2-Data Warehouses anwendbar. 
 
 ## <a name="data-skew"></a>Datenschiefe
 
@@ -36,7 +34,7 @@ Datenschiefe kann eine zusätzliche Datenverschiebung oder Ressourcenengpässe b
 
 ## <a name="no-or-outdated-statistics"></a>Keine oder veraltete Statistiken
 
-Suboptimale Statistiken können die Abfrageleistung erheblich beeinträchtigen, weil sie dazu führen können, dass der Abfrageoptimierer von SQL Data Warehouse suboptimale Abfragepläne generiert. Die folgende Dokumentation beschreibt die bewährten Methoden zum Erstellen und Aktualisieren von Statistiken:
+Suboptimale Statistiken können die Abfrageleistung erheblich beeinträchtigen, weil sie dazu führen können, dass der SQL-Abfrageoptimierer suboptimale Abfragepläne generiert. Die folgende Dokumentation beschreibt die bewährten Methoden zum Erstellen und Aktualisieren von Statistiken:
 
 - [Erstellen und Aktualisieren von Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 

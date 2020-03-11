@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170042"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921061"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
@@ -26,12 +26,33 @@ Event Grid sendet jedes Ereignis standardmäßig einzeln an Abonnenten. Der Abon
 
 Es gibt zwei Einstellungen für die Batchübermittlung:
 
-* **Max events per batch** (Maximale Anzahl der Ereignisse pro Batch) bezeichnet die maximale Anzahl der Ereignisse, die Event Grid pro Batch übermittelt. Diese Zahl wird nie überschritten, jedoch können weniger Ereignisse übermittelt werden, wenn keine anderen Ereignisse zum Zeitpunkt der Veröffentlichung verfügbar sind. Event Grid verzögert Ereignisse nicht, um ein Batch zu erstellen, wenn weniger Ereignisse verfügbar sind. Der Wert muss zwischen 1 und 5.000 liegen.
-* **Preferred batch size in kilobytes** (Bevorzugte Batchgröße in Kilobyte) bezeichnet die Zielgrenze für die Batchgröße in Kilobyte. Ähnlich wie bei der maximalen Anzahl von Ereignissen, kann die Batchgröße kleiner sein, wenn nicht mehr Ereignisse zum Zeitpunkt der Veröffentlichung vorhanden sind. Es ist möglich, dass ein Batch die bevorzugte Batchgröße überschreitet, *wenn* ein einzelnes Ereignis größer als die bevorzugte Batchgröße ist. Wenn die bevorzugte Größe beispielsweise 4 KB ist und ein Ereignis mit 10 KB an Event Grid gepusht wird, wird das Ereignis mit 10 KB dennoch in einem eigenen Batch übermittelt, anstatt gelöscht zu werden.
+* **Maximale Anzahl von Ereignissen pro Batch** bezeichnet die maximale Anzahl der Ereignisse, die Event Grid pro Batch übermittelt. Diese Zahl wird nie überschritten, jedoch können weniger Ereignisse übermittelt werden, wenn keine anderen Ereignisse zum Zeitpunkt der Veröffentlichung verfügbar sind. Event Grid verzögert Ereignisse nicht, um ein Batch zu erstellen, wenn weniger Ereignisse verfügbar sind. Der Wert muss zwischen 1 und 5.000 liegen.
+* **Bevorzugte Batchgröße in KB** bezeichnet die Obergrenze für die Batchgröße in Kilobyte. Ähnlich wie bei der maximalen Anzahl von Ereignissen, kann die Batchgröße kleiner sein, wenn nicht mehr Ereignisse zum Zeitpunkt der Veröffentlichung vorhanden sind. Es ist möglich, dass ein Batch die bevorzugte Batchgröße überschreitet, *wenn* ein einzelnes Ereignis größer als die bevorzugte Batchgröße ist. Wenn die bevorzugte Größe beispielsweise 4 KB ist und ein Ereignis mit 10 KB an Event Grid gepusht wird, wird das Ereignis mit 10 KB dennoch in einem eigenen Batch übermittelt, anstatt gelöscht zu werden.
 
 Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehlszeilenschnittstelle, PowerShell oder über SDKs konfiguriert.
 
+### <a name="azure-portal"></a>Azure-Portal: 
 ![Einstellungen der Batchübermittlung](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+Wenn Sie ein Ereignisabonnement erstellen, verwenden Sie die folgenden Parameter: 
+
+- **max-events-per-batch**: maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
+- **preferred-batch-size-in-kilobytes**: bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Weitere Informationen zur Verwendung von Azure CLI mit Event Grid finden Sie unter [Weiterleiten von Speicherereignissen an den Webendpunkt mit Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Wiederholungszeitplan und Dauer
 
@@ -39,7 +60,7 @@ Event Grid wartet nach der Zustellung einer Nachricht 30 Sekunden auf eine Antwo
 
 - 10 Sekunden
 - 30 Sekunden
-- 1 Minute
+- 1 Minute
 - 5 Minuten
 - 10 Minuten
 - 30 Minuten

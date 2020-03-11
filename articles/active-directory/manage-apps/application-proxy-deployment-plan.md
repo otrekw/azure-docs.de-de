@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033644"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248358"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -68,7 +68,7 @@ Die folgenden grundlegenden Anforderungen müssen erfüllt sein, um den Azure AD
 
 * **Diensteinschränkungen**: Zum Schutz vor übermäßigem Ressourcenverbrauch durch einzelne Mandanten gelten bestimmte Drosselungsgrenzwerte pro Anwendung und Mandant. Die Grenzwerte finden Sie unter [Dienst- und andere Einschränkungen für Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Die Drosselungsgrenzwerte basieren auf einem Richtwert, der weit über dem typischen Nutzungsvolumen liegt und für die meisten Bereitstellungen ausreichend Puffer bietet.
 
-* **Öffentliches Zertifikat**: Wenn Sie benutzerdefinierte Domänennamen verwenden, müssen Sie ein öffentliches Zertifikat beschaffen, das von einer anderen vertrauenswürdigen Zertifizierungsstelle als Microsoft ausgestellt wurde. Je nach den Anforderungen Ihrer Organisation kann die Beschaffung eines Zertifikats einige Zeit dauern. Wir empfehlen Ihnen daher, sich so früh wie möglich darum zu kümmern. Für den Azure-Anwendungsproxy werden Zertifikate vom Typ „Standard“, [„Platzhalter“](application-proxy-wildcard.md) oder „SAN-basiert“ unterstützt.
+* **Öffentliches Zertifikat**: Wenn Sie benutzerdefinierte Domänennamen verwenden, müssen Sie ein SSL-Zertifikat beschaffen. Je nach den Anforderungen Ihrer Organisation kann die Beschaffung eines Zertifikats einige Zeit dauern. Wir empfehlen Ihnen daher, sich so früh wie möglich darum zu kümmern. Für den Azure-Anwendungsproxy werden Zertifikate vom Typ „Standard“, [„Platzhalter“](application-proxy-wildcard.md) oder „SAN-basiert“ unterstützt. Weitere Einzelheiten finden Sie unter [Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
 
 * **Domänenanforderungen**: Das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) erfordert, dass der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, in Domänen eingebunden sind und derselben Domäne oder vertrauenswürdigen Domänen angehören.
 Ausführliche Informationen zu diesem Thema finden Sie unter [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md). Der Connectordienst wird im Kontext des lokalen Systems ausgeführt und sollte nicht für die Verwendung einer benutzerdefinierten Identität konfiguriert werden.
@@ -93,8 +93,8 @@ Erstellen Sie eine Bestandsliste mit allen relevanten Anwendungen, die per Anwen
 
 | Informationstyp| Zu erfassende Information |
 |---|---|
-| Service Type| Beispiel:  SharePoint, SAP, CRM, benutzerdefinierte Webanwendung, API |
-| Anwendungsplattform | Beispiel:  Windows IIS, Apache für Linux, Tomcat, NGINX |
+| Diensttyp| Beispiel: SharePoint, SAP, CRM, benutzerdefinierte Webanwendung, API |
+| Anwendungsplattform | Beispiel: Windows IIS, Apache für Linux, Tomcat, NGINX |
 | Domänenmitgliedschaft| Vollqualifizierter Domänenname (FQDN) des Webservers |
 | Speicherort der Anwendung | Ort des Webservers bzw. der Farm in Ihrer Infrastruktur |
 | Interner Zugriff | Die genaue URL für den internen Zugriff auf die Anwendung. <br> Bei einer Farm: Welche Art von Lastenausgleich wird verwendet? <br> Nutzt die Anwendung nicht nur eigene Inhalte, sondern auch aus anderen Quellen?<br> Ermitteln Sie, ob die Anwendung über WebSockets betrieben wird. |
@@ -103,7 +103,7 @@ Erstellen Sie eine Bestandsliste mit allen relevanten Anwendungen, die per Anwen
 | Authentifizierungsart| Die Authentifizierungsart, die von der Anwendung unterstützt wird, z. B. Einfach, Integrierte Windows-Authentifizierung, Formularbasiert, Headerbasiert und Ansprüche. <br>Wenn die Anwendung für die Ausführung unter einem bestimmten Domänenkonto konfiguriert ist, sollten Sie sich den vollqualifizierten Domänennamen (FQDN) des Dienstkontos notieren.<br> Notieren Sie sich bei „SAML-basiert“ den Bezeichner und die Antwort-URLs. <br> Bei „Headerbasiert“: die Anbieterlösung und die spezifische Anforderung für den Umgang mit der Authentifizierungsart. |
 | Name der Connectorgruppe | Der logische Name für die Gruppe mit den Connectors, die angegeben werden, um die Kommunikation und das einmalige Anmelden für diese Back-End-Anwendung bereitzustellen. |
 | Benutzer-/Gruppenzugriff | Die Benutzer oder Benutzergruppen, denen externer Zugriff auf die Anwendung gewährt wird. |
-| Weitere Anforderungen | Notieren Sie sich alle zusätzlichen Anforderungen in Bezug auf den Remotezugriff oder die Sicherheit, die bei der Veröffentlichung der Anwendung berücksichtigt werden sollten. |
+| Zusätzliche Anforderungen | Notieren Sie sich alle zusätzlichen Anforderungen in Bezug auf den Remotezugriff oder die Sicherheit, die bei der Veröffentlichung der Anwendung berücksichtigt werden sollten. |
 
 Sie können dieses [Arbeitsblatt für den Anwendungsbestand](https://aka.ms/appdiscovery) herunterladen, um eine Bestandsübersicht für Ihre Apps zu erstellen.
 
@@ -121,7 +121,7 @@ Für die folgenden Bereiche sollten Sie die geschäftlichen Anforderungen Ihrer 
 
 * Administratoren können den Lebenszyklus von Benutzerzuweisungen zu Anwendungen, die per Anwendungsproxy veröffentlicht werden, definieren und überwachen.
 
-**Sicherheit**
+**Security**
 
 * Nur Benutzer, die Anwendungen über die Gruppenmitgliedschaft oder individuell zugewiesen sind, können auf diese Anwendungen zugreifen.
 

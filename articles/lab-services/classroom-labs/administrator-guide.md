@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 638a90615d248b3c2829770432dd6a08eb4bb2fb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 318f16df6ac10be5909b255f2f1988be028d0eef
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771733"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162422"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
-IT-Administratoren, die die Cloudressourcen einer Organisation verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für Ihre Organisation einzurichten. Administratoren oder Dozenten erstellen Classroom-Labs im Lab-Konto. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
+IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem ein Lab-Konto eingerichtet wurde, erstellen Administratoren oder Lehrkräfte Classroom-Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
 
 ![Allgemeine Übersicht über Azure-Ressourcen in einem Lab-Konto](../media/administrator-guide/high-level-view.png)
 
@@ -30,14 +30,14 @@ IT-Administratoren, die die Cloudressourcen einer Organisation verwalten, sind i
 - Ihr Lab-Konto und die Shared Image Gallery können in derselben Ressourcengruppe sein. In diesem Diagramm befinden Sie sich in verschiedenen Ressourcengruppen. 
 
 ## <a name="subscription"></a>Subscription
-Ihre Organisation besitzt mindestens ein Azure-Abonnement. Ein Abonnement wird verwendet, um die Abrechnung und Sicherheit für alle darin verwendeten Azure Ressourcen/Dienste, einschließlich Lab-Konten, zu verwalten.
+Ihre Universität besitzt mindestens ein Azure-Abonnement. Ein Abonnement wird verwendet, um die Abrechnung und Sicherheit für alle darin verwendeten Azure Ressourcen/Dienste, einschließlich Lab-Konten, zu verwalten.
 
 Die Beziehung zwischen einem Lab-Konto und seinem Abonnement ist aus folgenden Gründen wichtig:
 
 - Die Abrechnung wird über das Abonnement gemeldet, das das Lab-Konto enthält.
-- Sie können Benutzern im Azure Active Directory (AD)-Mandanten, der dem Abonnement zugeordnet ist, den Zugriff auf Azure Lab Services gewähren. Sie können den Benutzer entweder als Lab-Kontobesitzer/-mitwirkenden oder als Classroom-Lab-Ersteller hinzufügen.
+- Sie können Benutzern im AD-Mandanten (Azure Active Directory) des Abonnements Zugriff auf Azure Lab Services gewähren. Sie können den Benutzer als Lab-Kontobesitzer/-mitwirkenden, als Classroom-Lab-Ersteller oder als Classroom-Lab-Besitzer hinzufügen.
 
-Classroom-Labs und deren virtuelle Computer (Virtual Machines, VMs) werden vollständig für Sie verwaltet. Insbesondere werden sie innerhalb eines dedizierten Abonnements gehostet, das im Besitz von Azure Lab Services ist.
+Classroom-Labs und ihre VMs werden für Sie in einem Abonnement gehostet und verwaltet, das sich im Besitz von Azure Lab Services befindet.
 
 ## <a name="resource-group"></a>Resource group
 Ein Abonnement enthält mindestens eine Ressourcengruppe. Ressourcengruppen werden verwendet, um logische Gruppierungen von Azure-Ressourcen zu erstellen, die innerhalb der selben Lösung verwendet werden.  
@@ -46,46 +46,53 @@ Wenn Sie ein Lab-Konto erstellen, müssen Sie die Ressourcengruppe konfigurieren
 
 Eine Ressourcengruppe ist auch erforderlich, wenn Sie eine [Shared Image Gallery](#shared-image-gallery) erstellen. Sie können Ihr Lab-Konto und die Shared Image Gallery in zwei separaten Ressourcengruppen platzieren, was typisch ist, wenn Sie den Imagekatalog über verschiedene Lösungen hinweg teilen möchten. Oder Sie können sie in derselben Ressourcengruppe platzieren.
 
-Wenn Sie ein Lab-Konto erstellen und automatisch eine Shared Image Gallery erstellen und gleichzeitig anfügen, werden das Lab-Konto und die Shared Image Gallery standardmäßig in separaten Ressourcengruppen erstellt. Dieses Verhalten zeigt sich bei Verwendung der in diesem Tutorial beschriebenen Schritte: [Konfigurieren einer Shared Image Gallery zum Zeitpunkt der Lab-Kontoerstellung](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). Das Image zu Beginn dieses Artikels verwendet ebenfalls diese Konfiguration. 
+Wenn Sie ein Lab-Konto erstellen, können Sie automatisch gleichzeitig eine Shared Image Gallery erstellen und anfügen.  Diese Option führt dazu, dass das Lab-Konto und die freigegebene Shared Image Gallery in separaten Ressourcengruppen erstellt werden. Dieses Verhalten zeigt sich bei Verwendung der in diesem Tutorial beschriebenen Schritte: [Konfigurieren einer Shared Image Gallery zum Zeitpunkt der Lab-Kontoerstellung](how-to-attach-detach-shared-image-gallery.md#configure-at-the-time-of-lab-account-creation). Das Image zu Beginn dieses Artikels verwendet ebenfalls diese Konfiguration. 
 
-Wir empfehlen, im Voraus Zeit in die Planung der Struktur Ihrer Ressourcengruppen zu investieren, da es nach dem Erstellen einer Ressourcengruppe nicht mehr möglich ist, die Ressourcengruppe eines Lab-Kontos oder der Shared Image Gallery zu ändern. Wenn Sie die Ressourcengruppe für diese Ressourcen ändern müssen, müssen Sie Ihr Lab-Konto und/oder die Shared Image Gallery löschen und neu erstellen.
+Wir empfehlen, im Voraus Zeit in die Planung der Struktur Ihrer Ressourcengruppen zu investieren, da es nach dem Erstellen einer Ressourcengruppe *nicht* mehr möglich ist, die Ressourcengruppe eines Lab-Kontos oder der Shared Image Gallery zu ändern. Wenn Sie die Ressourcengruppe für diese Ressourcen ändern müssen, müssen Sie Ihr Lab-Konto und/oder die Shared Image Gallery löschen und neu erstellen.
 
 ## <a name="lab-account"></a>Lab-Konto
-Ein Lab-Konto dient als Container für ein oder mehrere Classroom-Labs. Beim Einstieg in Azure Lab Services ist es üblich, nur ein einzelnes Lab-Konto zu haben. Wenn sich Ihre Lab-Nutzung steigert, können Sie später immer noch weitere Lab-Konten erstellen.
+Ein Lab-Konto dient als Container für mindestens ein Classroom-Lab. Beim Einstieg in Azure Lab Services ist es üblich, nur ein einzelnes Lab-Konto zu haben. Wenn sich Ihre Lab-Nutzung steigert, können Sie später immer noch weitere Lab-Konten erstellen.
 
 In der folgenden Liste werden Szenarien hervorgehoben, in denen mehr als ein Lab-Konto von Vorteil sein kann:
 
 - **Verwalten verschiedener Richtlinienanforderungen über Classroom-Labs hinweg** 
-
-    Wenn Sie ein Lab-Konto einrichten, legen Sie Richtlinien fest, die für alle Classroom-Labs unter dem Lab-Konto gelten, wie:
+    
+    Wenn Sie ein Lab-Konto einrichten, legen Sie Richtlinien fest, die für *alle* Classroom-Labs unter dem Lab-Konto gelten, wie:
     - Das virtuelle Azure-Netzwerk mit freigegebenen Ressourcen, auf die das Classroom-Lab zugreifen kann. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf ein freigegebenes Dataset in einem virtuellen Netzwerk benötigen.
-    - Die VM-Images, die von den Classroom-Labs zum Erstellen virtueller Computer verwendet werden können. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf das Marketplace-Image der [Data Science VM für Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) benötigen.  
-
+    - Die VM-Images, die von den Classroom-Labs zum Erstellen virtueller Computer verwendet werden können. Beispielsweise können Sie über eine Reihe von Classroom-Labs verfügen, die Zugriff auf das Marketplace-Image der [Data Science VM für Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) benötigen. 
+    
     Wenn Sie über Classroom-Labs verfügen, die eindeutige Richtlinienanforderungen besitzen, kann es vorteilhaft sein, separate Lab-Konten zu erstellen, um diese Classroom-Labs getrennt zu verwalten.
-- **Einschränken des Zugriffs auf bestimmte Classroom-Labs durch Lab-Ersteller**  
 
-    Wenn ein Benutzer als Lab-Ersteller hinzugefügt wird, erhält er Zugriff auf alle Classroom-Labs innerhalb des Lab-Kontos, einschließlich der Labs, die von anderen Lab-Erstellern erstellt werden. Um Lab-Ersteller auf die Verwaltung bestimmter Labs zu beschränken, können Sie separate Lab-Konten erstellen, um den Umfang Ihres Zugriffs einzuschränken. Beispielsweise können Sie ein separates Lab-Konto für jede Abteilung innerhalb einer Universität erstellen. Beispiel: Ein Lab-Konto für die Naturwissenschaftsabteilung und ein anderes für die Mathematikabteilung usw.   
 - **Separates Budget nach Lab-Konto**
-
-    Anstatt alle Classroom-Kosten für ein einzelnes Lab-Konto melden zu lassen, benötigen Sie möglicherweise ein eindeutiger aufgeschlüsseltes Budget. Wenn Sie mit dem Beispiel aus dem vorangehenden Aufzählungspunkt fortfahren, können Sie ein Lab-Konto für jede Universitätsabteilung erstellen, um das Budget entsprechend zu trennen. Mithilfe von Azure Cost Management können Sie dann die Kosten für jedes einzelne Lab-Konto anzeigen.
-- **Isolieren von Pilot-Labs von aktiven Labs**
-
-    Möglicherweise gibt es Fälle, in denen Sie Richtlinienänderungen als Pilot in ein Lab-Konto übertragen möchten, ohne dass sich diese potenziell auf aktive Labs auswirken. In dieser Art von Szenario ermöglicht Ihnen das Erstellen eines separaten Lab-Kontos für Pilotzwecke, Änderungen zu isolieren. 
+  
+    Anstatt alle Classroom-Kosten für ein einzelnes Lab-Konto melden zu lassen, benötigen Sie möglicherweise ein eindeutiger aufgeschlüsseltes Budget. Sie können z. B. Lab-Konten für den mathematischen Fachbereich, den Informatikfachbereich usw. Ihrer Universität erstellen, um das Budget fachbereichsübergreifend zu trennen.  Mithilfe von [Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview) können Sie dann die Kosten für jedes einzelne Lab-Konto anzeigen.
+    
+- **Isolieren von Pilot-Labs von aktiven/Produktions-Labs**
+  
+    Möglicherweise gibt es Fälle, in denen Sie Richtlinienänderungen als Pilot in ein Lab-Konto übertragen möchten, ohne dass sich diese potenziell auf aktive/Produktions-Labs auswirken. In dieser Art von Szenario ermöglicht Ihnen das Erstellen eines separaten Lab-Kontos für Pilotzwecke, Änderungen zu isolieren. 
 
 ## <a name="classroom-lab"></a>Classroom-Lab
-Ein Classroom-Lab enthält mindestens einen virtuellen Computer, der jeweils einem bestimmten Schüler zugewiesen ist. Generell können Sie von Folgendem ausgehen:
+Ein Classroom-Lab enthält virtuelle Computer, die jeweils einem einzelnen Studenten zugewiesen sind. Generell können Sie von Folgendem ausgehen:
 
 - Vorhandensein eines Classroom-Labs für jeden Kurs.
-- Erstellen einer neuen Gruppe von Classroom-Labs pro Semester (oder für jeden Zeitraum, über den Ihr Kurs angeboten wird). Typischerweise würden Sie für Kurse, die dieselben Anforderungen an das Image haben, eine [Shared Image Gallery](#shared-image-gallery) verwenden, um Images zwischen Labs und über Semester hinweg zu teilen.
+- Erstellen Sie jedes Semester einen neuen Satz von Classroom-Labs (oder für jeden Zeitraum, in dem Ihr Kurs angeboten wird). In der Regel sollten Sie für Kurse, die über die gleichen Imageanforderungen verfügen, eine [Shared Image Gallery](#shared-image-gallery) verwenden, um Images für Labs und semesterweise wiederzuverwenden.
 
 Beachten Sie die folgenden Punkte, wenn Sie ermitteln, wie Sie Ihre Classroom-Labs strukturieren möchten:
 
-- **Alle VMs innerhalb eines Classroom-Labs werden mit demselben veröffentlichten Image bereitgestellt**. Hieraus resultiert, dass Sie, wenn Sie einen Kurs haben, für den verschiedene Lab-Images gleichzeitig veröffentlicht werden müssen, für jeden Kurs gesonderte Classroom-Labs erstellen müssen.
-- **Das Nutzungskontingent wird auf Lab-Ebene festgelegt und gilt für alle Benutzer innerhalb des Labs**. Beispielsweise können Sie über eine Gruppe von Dozenten verfügen, die Zugriff auf die VMs eines Kurses benötigen, um sich auf den Unterricht vorzubereiten, aber die Dozenten benötigen nur ein 10-Stunden-Kontingent, während bei dem Kurs eingeschriebene Schüler ein Kontingent von 40 Stunden benötigen. Um unterschiedliche Kontingente für Benutzer festzulegen, müssen Sie gesonderte Classroom-Labs erstellen. Es ist jedoch möglich, auch nach dem Festlegen des Kontingents einem bestimmten Benutzer noch weitere Stunden hinzuzufügen.
-- **Der Zeitplan für das Starten oder Herunterfahren wird auf Lab-Ebene festgelegt und gilt für alle virtuellen Computer innerhalb des Labs**. Ähnlich wie bei dem vorherigen Punkt, müssen Sie, wenn Sie unterschiedliche Zeitpläne für Benutzer festlegen müssen, gesonderte Classroom-Labs erstellen. 
+- **Alle VMs innerhalb eines Classroom-Labs werden mit demselben veröffentlichten Image bereitgestellt**. 
+
+    Hieraus resultiert, dass Sie, wenn Sie einen Kurs haben, für den verschiedene Lab-Images gleichzeitig veröffentlicht werden müssen, für jeden Kurs gesonderte Classroom-Labs erstellen müssen.
+  
+- **Das Nutzungskontingent wird auf Lab-Ebene festgelegt und gilt für alle Benutzer innerhalb des Labs**. 
+    
+    Um unterschiedliche Kontingente für Benutzer festzulegen, müssen Sie gesonderte Classroom-Labs erstellen. Es ist jedoch möglich, auch nach dem Festlegen des Kontingents einem bestimmten Benutzer noch weitere Stunden hinzuzufügen.
+  
+- **Der Zeitplan für das Starten oder Herunterfahren wird auf Lab-Ebene festgelegt und gilt für alle virtuellen Computer innerhalb des Labs**. 
+
+    Ähnlich wie bei dem vorherigen Punkt, müssen Sie, wenn Sie unterschiedliche Zeitpläne für Benutzer festlegen müssen, gesonderte Classroom-Labs erstellen. 
 
 ## <a name="shared-image-gallery"></a>Shared Image Gallery
-Eine Shared Image Gallery einem Lab-Konto angefügt und dient als zentrales Repository zum Speichern von Images. Ein Image wird im Katalog gespeichert, wenn sich ein Dozent entschließt, vom virtuellen Vorlagencomputer eines Classroom-Labs aus zu speichern. Jedes Mal, wenn der Dozent Änderungen an der Vorlagen-VM vornimmt und speichert, werden neue Versionen des Images gespeichert, während die vorherigen Versionen erhalten bleiben.
+Eine Shared Image Gallery einem Lab-Konto angefügt und dient als zentrales Repository zum Speichern von Images. Ein Image wird im Katalog gespeichert, wenn sich ein Dozent entschließt, vom virtuellen Vorlagencomputer eines Classroom-Labs aus zu exportieren. Jedes Mal, wenn der Dozent Änderungen an der Vorlagen-VM vornimmt und sie exportiert, werden neue Versionen des Images gespeichert, während die vorherigen Versionen erhalten bleiben.
 
 Kursleiter können eine Imageversion aus der Shared Image Gallery veröffentlichen, wenn sie ein neues Classroom-Lab erstellen. Zwar kann der Katalog mehrere Versionen eines Images speichern, doch können Dozenten während der Erstellung eines Labs nur die letzte Version auswählen.
 
@@ -93,13 +100,13 @@ Shared Image Gallery ist eine optionale Ressource, die Sie möglicherweise nicht
 
 - **Ermöglicht Ihnen das Speichern und Verwalten von Versionen eines Vorlagen-VM-Images**.
 
-    Dies ist hilfreich, wenn Sie ein benutzerdefiniertes Image erstellen oder Änderungen (Software, Konfiguration usw.) an einem Image aus dem öffentlichen Marketplace-Katalog vornehmen.  Beispielsweise ist es für Dozenten üblich, dass für sie unterschiedliche Software/Tools installiert werden müssen. Statt von Schülern zu fordern, dass sie diese Voraussetzungen selbst installieren, können verschiedene Versionen des Vorlagen-VM-Images in einer Shared Image Gallery gespeichert werden. Diese Imageversionen können dann zum Erstellen neuer Classroom-Labs verwendet werden.
+    Dies ist hilfreich, um ein benutzerdefiniertes Image zu erstellen oder Änderungen (Software, Konfiguration usw.) an einem Image aus dem öffentlichen Marketplace-Katalog vorzunehmen.  Beispielsweise ist es für Dozenten üblich, dass für sie unterschiedliche Software/Tools installiert werden müssen. Statt von Studenten zu fordern, dass sie diese Voraussetzungen selbst installieren, können verschiedene Versionen des Vorlagen-VM-Images in eine Shared Image Gallery exportiert werden. Diese Imageversionen können dann zum Erstellen neuer Classroom-Labs verwendet werden.
 - **Aktiviert die Freigabe\Wiederverwendung von Vorlagen-VM-Images in Classroom-Labs**.
 
-    Dies verhindert, dass Sie jedes Mal, wenn Sie ein neues Classroom-Lab erstellen, ein Image von Grund auf neu konfigurieren müssen. Wenn z. B. mehrere Kurse angeboten werden, die dasselbe Image benötigen, muss dieses Bild nur einmal erstellt und in der Shared Image Gallery gespeichert werden, damit es von Classroom-Labs gemeinsam verwendet werden kann.
+    Sie können ein Image speichern und wiederverwenden, sodass Sie das Image nicht jedes Mal neu konfigurieren müssen, wenn Sie ein neues Classroom-Lab erstellen. Wenn z. B. mehrere Kurse angeboten werden, die dasselbe Image benötigen, muss dieses Bild nur einmal erstellt und in die Shared Image Gallery exportiert werden, damit es von Classroom-Labs gemeinsam verwendet werden kann.
 - **Gewährleistet die Imageverfügbarkeit durch Replikation**.
 
-    Wenn Sie aus einem Classroom-Lab heraus in der Shared Image Gallery speichern, wird Ihr Image automatisch in andere Regionen innerhalb desselben geografischen Raums repliziert. Sollte es in einer Region zu einem Ausfall kommen, bleibt das Veröffentlichen der Vorlagen-VM in Ihrem Classroom-Lab davon unbeeinträchtigt, indem ein Imagereplikat auf einer anderen Region verwendet wird. Darüber hinaus hilft es bei der Leistung in Szenarien mit mehreren VM-Veröffentlichungen, indem diese verteilt unter Verwendung unterschiedlicher Replikate erfolgt.
+    Wenn Sie aus einem Classroom-Lab heraus in der Shared Image Gallery speichern, wird Ihr Image automatisch in andere [Regionen innerhalb desselben geografischen Raums](https://azure.microsoft.com/global-infrastructure/regions/) repliziert. Sollte es in einer Region zu einem Ausfall kommen, ist das Veröffentlichen des Image in Ihrem Classroom-Lab davon nicht betroffen, weil ein Imagereplikat auf einer anderen Region verwendet werden kann.  Das Veröffentlichen von VMs aus mehreren Replikaten kann auch die Leistung verbessern.
 
 Um freigegebene Images logisch zu gruppieren, haben Sie mehrere Optionen:
 
@@ -111,22 +118,25 @@ Beim Einstieg in Azure Lab Services wird empfohlen, dass Sie Benennungskonventio
 
 | Ressourcentyp | Role | Vorgeschlagenes Muster | Beispiele |
 | ------------- | ---- | ----------------- | -------- | 
-| Resource group | Enthält mindestens ein Lab-Konto und mindestens eine Shared Image Gallery. | \<Kurzname der Organisation\>-\<Umgebung\>-rg<ul><li>**Kurzname der Organisation** identifiziert den Namen der Organisation, die von der Ressourcengruppe unterstützt wird.</li><li>**Umgebung** identifiziert die Umgebung für die Ressource, z. B. Test oder Produktion.</li><li>**rg** steht für den Ressourcentyp: Ressourcengruppe.</li></ul> | contosouniversitätlabs-rg<br/>contosouniversitätlabs-test-rg<br/>contosouniversitätlabs-prod-rg |
-| Lab-Konto | Enthält mindestens ein Lab. | \<Kurzname der Organisation\>-\<Umgebung\>-lk<ul><li>**Kurzname der Organisation** identifiziert den Namen der Organisation, die von der Ressourcengruppe unterstützt wird.</li><li>**Umgebung** identifiziert die Umgebung für die Ressource, z. B. Test oder Produktion.</li><li>**lk** steht für den Ressourcentyp: Lab-Konto.</li></ul> | contosouniversitätlabs-lk<br/>matheabtlabs-lk<br/>naturwissenschaftabtlabs-test-lk<br/>naturwissenschaftabtlabs-prod-lk |
+| Resource group | Enthält mindestens ein Lab-Konto und mindestens eine Shared Image Gallery. | \<Kurzname der Organisation\>-\<Umgebung\>-rg<ul><li>**Kurzname der Organisation** identifiziert den Namen der Organisation, die von der Ressourcengruppe unterstützt wird.</li><li>**Umgebung** identifiziert die Umgebung für die Ressource, z. B. Pilot oder Produktion.</li><li>**rg** steht für den Ressourcentyp: Ressourcengruppe.</li></ul> | contosouniversitätlabs-rg<br/>contosouniversitylabs-pilot-rg<br/>contosouniversitätlabs-prod-rg |
+| Lab-Konto | Enthält mindestens ein Lab. | \<Kurzname der Organisation\>-\<Umgebung\>-lk<ul><li>**Kurzname der Organisation** identifiziert den Namen der Organisation, die von der Ressourcengruppe unterstützt wird.</li><li>**Umgebung** identifiziert die Umgebung für die Ressource, z. B. Pilot oder Produktion.</li><li>**lk** steht für den Ressourcentyp: Lab-Konto.</li></ul> | contosouniversitätlabs-lk<br/>matheabtlabs-lk<br/>sciencedeptlabs-pilot-la<br/>naturwissenschaftabtlabs-prod-lk |
 | Classroom-Lab | Enthält mindestens eine VM. |\<Kursname\>-\<Zeitrahmen\>-\<Dozentenbezeichner\><ul><li>**Kursname** identifiziert den Namen des Kurs, der von dem Lab unterstützt wird.</li><li>**Zeitrahmen** identifiziert den Zeitrahmen, in dem der Kurs angeboten wird.</li>**Dozentenbezeichner** identifiziert den Dozenten, der Besitzer des Labs ist.</li></ul> | CS1234-Herbst2019-KatrinKöhler<br/>CS1234-Frühling2019-KatrinKöhler | 
 | Shared Image Gallery | Enthält mindestens eine VM-Imageversion. | \<Kurzname der Organisation\>Katalog | contosouniversitätlabskatalog |
 
 Weitere Informationen zur Benennung anderer Azure-Ressourcen finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/naming-conventions).
 
 ## <a name="regions-or-locations"></a>Regionen oder Standorte
-Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region oder einen Standort des Rechenzentrums angeben, in dem die Ressource gehostet werden soll. Hier finden Sie weitere Details dazu, wie sich Region/Standort auf jede der folgenden Ressourcen auswirkt, die in Ihrer Lab Services-Bereitstellung verwendet werden:
+Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region (oder einen Standort) des Rechenzentrums angeben, in dem die Ressource gehostet werden soll. Hier finden Sie weitere Details dazu, wie sich die Region auf jede der folgenden Ressourcen auswirkt, die in Ihrer Lab-Bereitstellung verwendet werden:
 
 - **Ressourcengruppe**
 
     Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
 - **Lab-Konto oder Classroom-Lab**
 
-    Der Standort des Lab-Kontos zeigt die Region für diese Ressource an. In dem Lab-Konto erstellte Classroom-Labs können in jeder Region desselben geografischen Raums bereitgestellt werden. Die spezifische Region, in der die VMs des Labs bereitgestellt werden, wird automatisch auf Grundlage der zu diesem Zeitpunkt in der Region verfügbaren Kapazität ausgewählt.  
+    Der Standort des Lab-Kontos zeigt die Region für diese Ressource an.  
+    
+    Bei Classroom-Labs wählt Azure Lab Services automatisch die Region aus, in der die einzelnen Labs basierend auf der verfügbaren Kapazität bereitgestellt werden.  Azure Lab Services sucht insbesondere in [Regionen, die sich im gleichen geografischen Raum wie das Lab-Konto befinden](https://azure.microsoft.com/global-infrastructure/regions), nach Verfügbarkeit. 
+    
     Wenn ein Administrator den Erstellern von Labs gestattet, den Standort ihrer Classroom-Labs auszuwählen, basieren die zur Auswahl stehenden Standorte auf der zum Zeitpunkt der Erstellung des Labs verfügbaren regionalen Kapazität.
 
     Der Standort des Classroom-Labs bestimmt außerdem die VM-Computegrößen, die für die Auswahl zur Verfügung stehen. Bestimmte Computegrößen sind nur innerhalb bestimmter Regionen verfügbar.
@@ -134,7 +144,7 @@ Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region oder
 
     Die Region zeigt die Quellregion an, in der die erste Imageversion gespeichert wird, bevor sie automatisch in Zielregionen repliziert wird.
     
-Eine allgemeine Regel ist es, die Region/den Standort einer Ressource auf eine/n festzulegen, die/der ihren Benutzern am nächsten liegt. Bei Classroom-Labs bedeutet dies, das Classroom-Lab in maximaler Nähe zu Ihren Schülern zu erstellen. Für Onlinekurse, bei denen Schüler sich weltweit verteilt aufhalten, müssen Sie nach Ihrem Ermessen verfahren, um ein Classroom-Lab zu erstellen, das zentral angesiedelt ist. Alternativ können Sie einen Kurs auch in mehrere Classroom-Labs aufteilen, basierend auf der jeweiligen Region Ihrer Schüler.
+Eine allgemeine Regel ist es, die Region einer Ressource auf eine Region festzulegen, die ihren Benutzern am nächsten liegt. Bei Classroom-Labs bedeutet dies, das Classroom-Lab in maximaler Nähe zu Ihren Schülern zu erstellen. Für Onlinekurse, bei denen Schüler sich weltweit verteilt aufhalten, müssen Sie nach Ihrem Ermessen verfahren, um ein Classroom-Lab zu erstellen, das zentral angesiedelt ist. Alternativ können Sie einen Kurs auch in mehrere Classroom-Labs aufteilen, basierend auf der jeweiligen Region Ihrer Schüler.
 
 ## <a name="vm-sizing"></a>Festlegen der VM-Größe
 Wenn Administratoren oder Ersteller von Labs ein Classroom-Lab erstellen, können Sie unter den folgenden VM-Größen auswählen, basierend auf den Anforderungen für Ihren Kurs. Denken Sie daran, dass die Computegrößen, die verfügbar sind, von der Region abhängen, in der sich Ihr Lab-Konto befindet:
@@ -150,16 +160,46 @@ Wenn Administratoren oder Ersteller von Labs ein Classroom-Lab erstellen, könne
 | Mittlere GPU (Visualisierung) | <ul><li>12 Kerne</li><li>112 GB RAM</li></ul> | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
 
 ## <a name="manage-identity"></a>Verwalten der Identität
-Es gibt zwei Arten von Rollen, die ein Lab-Kontoadministrator haben kann:
+Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) können die folgenden Rollen zugewiesen werden, um Zugriff auf Lab-Konten und Classroom-Labs zu gestatten:
 
-- **Besitzer**
+- **Lab-Kontobesitzer**
 
-    Ein Administrator, dem die Rolle **Besitzer** zugewiesen ist, besitzt Vollzugriff auf das Lab-Konto, einschließlich dem Recht, anderen Benutzern den Zugriff auf das Lab-Konto zu gewähren, sowie Ersteller von Labs hinzuzufügen. Der Administrator, der das Lab-Konto erstellt, wird standardmäßig als Besitzer hinzugefügt.
-- **Mitwirkender**
+    Der Administrator,der das Lab-Konto erstellt, wird der Rolle **Besitzer** des Lab-Kontos automatisch hinzugefügt.  Ein Administrator, dem die Rolle **Besitzer** zugewiesen wurde, kann folgende Aktionen ausführen:
+     - Ändern der Einstellungen des Lab-Kontos.
+     - Gestatten des Zugriffs auf das Lab-Konto für anderen Administratoren als Besitzer oder Mitwirkende. 
+     - Gestatten des Zugriffs auf Classroom-Labs für Lehrkräfte als Ersteller, Besitzer oder Mitwirkende.
+     - Erstellen und Verwalten aller Classroom-Labs im Lab-Konto.
 
-    Ein Administrator, dem die Rolle „Mitwirkender“ zugewiesen ist, kann Lab-Kontoeinstellungen ändern, kann aber anderen Benutzern keinen Zugriff gewähren; auch kann er keine Ersteller von Labs hinzufügen.
+- **Mitwirkender des Lab-Kontos**
 
-Wenn Sie einem Lab eine Shared Image Gallery anfügen, erhalten sowohl der Administrator als auch die Ersteller des Labs automatisch den Zugriff, sodass sie Images in dem Katalog anzeigen und speichern können. 
+    Ein Administrator, dem die Rolle **Mitwirkender** zugewiesen wurde, kann folgende Aktionen ausführen:
+    - Ändern der Einstellungen des Lab-Kontos.
+    - Erstellen und Verwalten aller Classroom-Labs im Lab-Konto.
+    
+    Sie können anderen Benutzern jedoch *nicht* Zugriff auf Lab-Konten oder Classroom-Labs erteilen.
+
+- **Ersteller eines Classroom-Labs**
+
+    Zum Erstellen von Classroom-Labs in einem Lab-Konto muss eine Lehrkraft Mitglied der Rolle **Lab-Ersteller** sein.  Wenn eine Lehrkraft ein Classroom-Lab erstellt, wird sie automatisch als Besitzer des Labs hinzugefügt.  Weitere Informationen finden Sie im Tutorial zum [Hinzufügen eines Benutzers zur Rolle **Lab-Ersteller**](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#add-a-user-to-the-lab-creator-role). 
+
+- **Besitzer\Mitwirkender des Classroom-Labs**
+  
+    Eine Lehrkraft kann die Einstellungen eines Classroom-Labs anzeigen und ändern, wenn sie Mitglied der Rolle **Besitzer** oder **Mitwirkender** des Labs ist. Sie muss außerdem Mitglied der Rolle **Leser** des Lab-Kontos sein.
+
+    Ein wichtiger Unterschied zwischen den Rollen **Besitzer** und **Mitwirkender** eines Labs besteht darin, dass ein Mitwirkender anderen Benutzern *keinen* Zugriff auf die Verwaltung des Labs erteilen kann. Nur Besitzer können anderen Benutzern Zugriff auf die Verwaltung des Labs erteilen.
+    
+    Außerdem können Lehrkräfte *keine* neuen Classroom-Labs erstellen, es sei denn, sie sind auch Mitglied der Rolle **Lab-Ersteller**.
+
+- **Shared Image Gallery**
+    
+    Wenn Sie eine Shared Image Gallery an ein Lab-Konto anfügen, erhalten Besitzer/Mitwirkende des Labs sowie Ersteller/Besitzer/Mitwirkende des Labs automatisch Zugriff, sodass sie Images im Katalog anzeigen und speichern können. 
+
+Im folgenden finden Sie einige Tipps zum Zuweisen von Rollen:
+   - In der Regel sollten nur Administratoren Mitglieder der Rollen **Besitzer** oder **Mitwirkender** eines Lab-Kontos sein. Möglicherweise verfügen Sie über mehrere Besitzer/Mitwirkende.
+
+   - Um einer Lehrkraft die Möglichkeit zum Erstellen neuer Classroom-Labs und Verwalten der Labs zu bieten, die sie erstellen, müssen Sie nur Zugriff auf die Rolle **Lab-Ersteller** zuweisen.
+   
+   - Um einer Lehrkraft die Möglichkeit zu geben, bestimmte Classrom-Labs zu verwalten, aber *nicht* die Möglichkeit, neue Labs zu erstellen, sollten Sie für jedes der Classroom-Labs, das die Lehrkraft verwalten soll, die Rolle **Besitzer** oder **Mitwirkender** zuweisen.  Sie können beispielsweise einem Professor und seinem Assistenten den Mitbesitz eines Classroom-Labs erlauben.  Weitere Informationen zum [Hinzufügen eines Benutzers als Besitzer zu einem Classroom-Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-add-user-lab-owner) finden Sie im Leitfaden.
 
 ## <a name="pricing"></a>Preise
 
@@ -176,7 +216,7 @@ Um Imageversionen zu speichern, verwendet eine Shared Image Gallery standardmä�
 
 
 ### <a name="replication-and-network-egress-charges"></a>Kosten für Replikation und ausgehende Netzwerkdaten
-Wenn Sie eine Imageversion mittels einer Vorlagen-VM eines Classroom-Labs speichern, speichert Lab Services diese zuerst in einer Quellregion und repliziert die Quellimageversion dann automatisch in eine oder mehrere Zielregionen. Es ist wichtig zu beachten, dass Azure Lab Services die Quellimageversion automatisch in alle Zielregionen innerhalb des geografischen Raums repliziert, in dem sich das Classroom-Lab befindet. Wenn sich Ihr Classroom-Lab beispielsweise im geografischen Raum der USA befindet, wird eine Imageversion in jede der acht Regionen repliziert, die innerhalb der USA bestehen.
+Wenn Sie eine Imageversion mittels einer Vorlagen-VM eines Classroom-Labs speichern, speichert Azure Lab Services diese zuerst in einer Quellregion und repliziert die Quellimageversion dann automatisch in mindestens eine Zielregion. Es ist wichtig zu beachten, dass Azure Lab Services die Quellimageversion automatisch in alle [Zielregionen innerhalb des geografischen Raums](https://azure.microsoft.com/global-infrastructure/regions/) repliziert, in dem sich das Classroom-Lab befindet. Wenn sich Ihr Classroom-Lab beispielsweise im geografischen Raum der USA befindet, wird eine Imageversion in jede der acht Regionen repliziert, die innerhalb der USA vorhanden sind.
 
 Eine Gebühr für ausgehenden Netzwerkdatenverkehr fällt an, wenn eine Imageversion aus der Quellregion in zusätzliche Zielregionen repliziert wird. Die Höhe der berechneten Gebühr basiert auf der Größe der Imageversion, wenn die Daten des Images anfänglich ausgehend aus der Quellregion übertragen werden.  Details zu den Preisen finden Sie im folgenden Artikel: [Bandbreite: Preisübersicht](https://azure.microsoft.com/pricing/details/bandwidth/).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467406"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262235"
 ---
 Azure Managed Disks (verwaltete Azure-Datenträger) stellt derzeit vier Datenträgertypen bereit, wobei jeder Typ auf bestimmte Kundenszenarien ausgerichtet ist.
 
@@ -40,8 +40,8 @@ Wenn Sie einen Ultra-Datenträger bereitstellen, können Sie die Kapazität und 
 Einige Hauptfunktionen von Ultra-Datenträgern sind:
 
 - Datenträgerkapazität: Die Kapazität von Ultra-Datenträgern reicht von 4 GiB bis 64 TiB.
-- Datenträger-IOPS: Ultra-Datenträger unterstützen IOPS-Limits von 300 IOPS/GiB bis hin zu maximal 160.000 IOPS pro Datenträger. Um die bereitgestellten IOPS-Werte zu erreichen, stellen Sie sicher, dass der IOPS-Wert für den ausgewählten Datenträger unter dem IOPS-Limit für den virtuellen Computer liegt. Der kleinste IOPS-Wert pro Datenträger beträgt 2 IOPS/GiB mit einem Gesamtmindestwert von 100 IOPS. Wenn Sie also beispielsweise über einen 4-GiB-Ultra-Datenträger verfügen, stehen Ihnen anstelle von acht IOPS mindestens 100 IOPS zur Verfügung.
-- Datenträgerdurchsatz: Mit Ultra-Datenträgern beträgt das Durchsatzlimit für einen einzelnen Datenträger 256 KiB/s für jeden bereitgestellten IOPS-Wert bis zu maximal 2000 MB/s pro Datenträger (dabei ist 1 MB/s = 10^6 Byte pro Sekunde). Der Mindestdurchsatz pro Datenträger beträgt 4KiB/s für jeden bereitgestellten IOPS-Wert mit einem Gesamtmindestwert von 1 MB/s.
+- Datenträger-IOPS: Ultra-Datenträger unterstützen IOPS-Limits von 300 IOPS/GiB bis hin zu maximal 160.000 IOPS pro Datenträger. Um die bereitgestellten IOPS-Werte zu erreichen, stellen Sie sicher, dass der IOPS-Wert für den ausgewählten Datenträger unter dem IOPS-Limit für den virtuellen Computer liegt. Der kleinste garantierte IOPS-Wert pro Datenträger beträgt 2 IOPS/GiB mit einem Gesamtmindestwert von 100 IOPS. Wenn Sie also beispielsweise über einen 4-GiB-Ultra-Datenträger verfügen, stehen Ihnen anstelle von acht IOPS mindestens 100 IOPS zur Verfügung.
+- Datenträgerdurchsatz: Mit Ultra-Datenträgern beträgt das Durchsatzlimit für einen einzelnen Datenträger 256 KiB/s für jeden bereitgestellten IOPS-Wert bis zu maximal 2000 MB/s pro Datenträger (dabei ist 1 MB/s = 10^6 Byte pro Sekunde). Der garantierte Mindestdurchsatz pro Datenträger beträgt 4 KiB/s für jeden bereitgestellten IOPS-Wert mit einem Gesamtmindestwert von 1 MB/s.
 - Ultra-Datenträger unterstützen die Anpassung der Datenträgerleistungsattribute (IOPS und Durchsatz) zur Laufzeit, ohne den Datenträger vom virtuellen Computer zu trennen. Nachdem ein Vorgang zur Größenänderung der Datenträgerleistung auf einem Datenträger gestartet wurde, kann es bis zu einer Stunde dauern, bis die Änderung tatsächlich wirksam wird. Innerhalb von 24 Stunden kann die Leistung bis zu viermal angepasst werden. Es kann vorkommen, dass ein Leistungsanpassungsvorgang aufgrund von unzureichender Kapazität der Leistungsbandbreite nicht erfolgreich ist.
 
 ### <a name="disk-size"></a>Datenträgergröße

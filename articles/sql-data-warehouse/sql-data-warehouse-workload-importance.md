@@ -1,26 +1,26 @@
 ---
 title: Workloadpriorität
-description: Anleitung zum Festlegen der Priorität von Abfragen in Azure SQL Data Warehouse
+description: Leitfaden zum Festlegen der Priorität für SQL Analytics-Abfragen in Azure Synapse Analytics
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351422"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191767"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Workloadpriorität für Azure SQL Data Warehouse
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics-Workloadpriorität
 
-In diesem Artikel wird erläutert, wie sich die Workloadpriorität auf die Ausführungsreihenfolge von SQL Data Warehouse-Anforderungen auswirkt.
+In diesem Artikel wird erläutert, wie sich die Workloadpriorität auf die Ausführungsreihenfolge von SQL Analytics-Anforderungen in Azure Synapse auswirken kann.
 
 ## <a name="importance"></a>Wichtigkeit
 
@@ -38,7 +38,7 @@ Neben dem oben beschriebenen herkömmlichen Prioritätsszenario mit Vertriebs- u
 
 ### <a name="locking"></a>Sperren
 
-Der Zugriff auf Sperren für Lese- und Schreibaktivitäten ist ein Bereich, in dem natürliche Konflikte entstehen. Aktivitäten wie [Partitionswechsel](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) oder [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) erfordern Sperren mit erhöhten Rechten.  Ohne Workloadpriorität optimiert SQL Data Warehouse den Durchsatz. Die Optimierung des Durchsatzes bedeutet, dass Anforderungen in der Warteschlange Anforderungen mit höheren Sperranforderungen umgehen können, die vorher in die Anforderungswarteschlange aufgenommen wurden, wenn ausgeführte Anforderungen und Anforderungen in der Warteschlange die gleichen Sperranforderungen und Ressourcen aufweisen. Sobald die Workloadpriorität für Anforderungen mit höheren Sperranforderungen angewendet wurde, werden Anforderungen mit höherer Priorität vor Anforderungen mit niedriger Priorität ausgeführt.
+Der Zugriff auf Sperren für Lese- und Schreibaktivitäten ist ein Bereich, in dem natürliche Konflikte entstehen. Aktivitäten wie [Partitionswechsel](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) oder [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) erfordern Sperren mit erhöhten Rechten.  Ohne Workloadpriorität optimiert SQL Analytics in Azure Synapse den Durchsatz. Die Optimierung des Durchsatzes bedeutet, dass Anforderungen in der Warteschlange Anforderungen mit höheren Sperranforderungen umgehen können, die vorher in die Anforderungswarteschlange aufgenommen wurden, wenn ausgeführte Anforderungen und Anforderungen in der Warteschlange die gleichen Sperranforderungen und Ressourcen aufweisen. Sobald die Workloadpriorität für Anforderungen mit höheren Sperranforderungen angewendet wurde, werden Anforderungen mit höherer Priorität vor Anforderungen mit niedriger Priorität ausgeführt.
 
 Betrachten Sie das folgenden Beispiel:
 
@@ -50,7 +50,7 @@ Wenn die Abfragen „Q2“ und „Q3“ dieselbe Priorität aufweisen und „Q1�
 
 ### <a name="non-uniform-requests"></a>Nicht einheitliche Anforderungen
 
-Die Priorität ist auch zum Erfüllen von Abfrageanforderungen in Szenarios nützlich, in denen Anforderungen mit verschiedenen Ressourcenklassen übermittelt werden.  Wie bereits erwähnt, optimiert SQL Data Warehouse den Durchsatz bei gleicher Priorität. Wenn Anforderungen mit gemischten Größen (z. B. „smallrc“ oder „mediumrc“) in die Warteschlange eingereiht werden, wählt SQL Data Warehouse die erste eingegangene Anforderung aus, die von den verfügbaren Ressourcen abgedeckt werden kann. Wenn die Workloadpriorität angewendet wird, wird als Nächstes die Anforderung mit der höchsten Priorität geplant.
+Die Priorität ist auch zum Erfüllen von Abfrageanforderungen in Szenarios nützlich, in denen Anforderungen mit verschiedenen Ressourcenklassen übermittelt werden.  Wie bereits erwähnt, optimiert SQL Analytics in Azure Synapse den Durchsatz bei gleicher Priorität. Wenn Anforderungen mit gemischten Größen (z. B. „smallrc“ oder „mediumrc“) in die Warteschlange eingereiht werden, wählt SQL Analytics die erste eingegangene Anforderung aus, die von den verfügbaren Ressourcen abgedeckt werden kann. Wenn die Workloadpriorität angewendet wird, wird als Nächstes die Anforderung mit der höchsten Priorität geplant.
   
 Betrachten Sie das folgende Beispiel für DW500c:
 
@@ -63,7 +63,7 @@ Da die Abfrage „Q5“ die Klasse „mediumrc“ aufweist, erfordert sie zwei P
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [Workloadklassifizierung](sql-data-warehouse-workload-classification.md).  
+- Weitere Informationen zur Workloadklassifizierung finden Sie unter [Workloadklassifizierung](sql-data-warehouse-workload-classification.md).  
 - Lesen Sie für die Erstellung eines Workloadklassifizierers den Schnellstart [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md). 
 - Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
 - Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) anzeigen.

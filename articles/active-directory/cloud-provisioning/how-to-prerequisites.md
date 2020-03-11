@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909039"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298648"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -26,7 +26,7 @@ Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active 
 ## <a name="cloud-provisioning-agent-requirements"></a>Anforderungen des Agents für die Cloudbereitstellung
 Für die Verwendung der Azure AD Connect-Cloudbereitstellung benötigen Sie Folgendes:
     
-- ein globales Administratorkonto für Ihren Azure AD-Mandanten
+- Ein globales Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
 - einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher
 - lokale Firewallkonfigurationen
 
@@ -39,6 +39,10 @@ Im Weiteren finden Sie schrittweise Anleitungen für diese Voraussetzungen.
 
 1. Erstellen Sie in Ihrem Azure AD-Mandanten ein auf die Cloud beschränktes globales Administratorkonto. Auf diese Weise können Sie die Konfiguration Ihres Mandanten verwalten, wenn Ihre lokalen Dienste ausfallen oder nicht verfügbar sind. Erfahren Sie, wie Sie ein [auf die Cloud beschränktes globales Administratorkonto hinzufügen](../active-directory-users-create-azure-portal.md). Die Ausführung dieses Schritts ist äußerst wichtig, damit sichergestellt ist, dass Sie für Ihren Mandanten nicht gesperrt werden.
 1. Fügen Sie Ihrem Azure AD-Mandanten mindestens einen [benutzerdefinierten Domänennamen](../active-directory-domains-add-azure-portal.md) hinzu. Ihre Benutzer können sich mit einem dieser Domänennamen anmelden.
+
+### <a name="in-your-directory-in-active-directory"></a>In Ihrem Verzeichnis in Active Directory
+
+Führen Sie das [IdFix-Tool](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) aus, um die Verzeichnisattribute für die Synchronisierung vorzubereiten.
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 

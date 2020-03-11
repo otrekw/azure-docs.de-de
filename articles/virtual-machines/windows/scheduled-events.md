@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772632"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920660"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -56,18 +56,19 @@ Der Azure-Metadatendienst macht Informationen zu ausgeführten virtuellen Comput
 ### <a name="endpoint-discovery"></a>Endpunktermittlung
 Für virtuelle Computer in VNETs ist der Metadatendienst über eine statische, nicht routingfähige IP-Adresse (`169.254.169.254`) verfügbar. Der vollständige Endpunkt für die neueste Version von Scheduled Events ist wie folgt: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt wird (Standard für Clouddienste und klassische virtuelle Computer), ist zusätzliche Logik erforderlich, um die zu verwendende IP-Adresse zu ermitteln. In diesem Beispiel erfahren Sie, wie Sie [den Hostendpunkt ermitteln](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="version-and-region-availability"></a>Version und regionale Verfügbarkeit
-Der Dienst Geplante Ereignisse ist versionsspezifisch. Versionen sind obligatorisch, und die aktuelle Version ist `2017-11-01`.
+Der Dienst Geplante Ereignisse ist versionsspezifisch. Versionen sind obligatorisch, und die aktuelle Version ist `2019-01-01`.
 
 | Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - |
+| 2019-01-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für EventType „Terminate“ von VM-Skalierungsgruppen hinzugefügt |
 | 2017-11-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
 | 2017-08-01 | Allgemeine Verfügbarkeit | All | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
-| 2017-03-01 | Vorschau | All |<li>Erste Veröffentlichung
+| 2017-03-01 | Vorschau | All |<li>Erste Veröffentlichung |
 
 > [!NOTE] 
 > In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
@@ -92,7 +93,7 @@ Sie können geplante Ereignisse abfragen, indem Sie einfach folgenden Aufruf aus
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01 -H @{"Metadata"="true"}
+curl http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 -H @{"Metadata"="true"}
 ```
 
 Eine Antwort enthält ein Array geplanter Ereignisse. Ein leeres Array bedeutet, dass derzeit keine Ereignisse geplant sind.
@@ -103,7 +104,7 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -115,10 +116,10 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 DocumentIncarnation ist ein ETag und bietet eine einfache Möglichkeit, um zu untersuchen, ob sich die Ereignisnutzlast seit der letzten Abfrage geändert hat.
 
 ### <a name="event-properties"></a>Ereigniseigenschaften
-|Eigenschaft  |  Beschreibung |
+|Eigenschaft  |  BESCHREIBUNG |
 | - | - |
 | EventId | Global eindeutiger Bezeichner für dieses Ereignis <br><br> Beispiel: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Der Prozessor und die Netzwerkverbindung werden möglicherweise angehalten, es gibt jedoch keine Auswirkungen auf den Arbeitsspeicher oder geöffnete Dateien. <li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Spot-VM wird gelöscht (kurzlebige Datenträger gehen verloren).|
+| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Der Prozessor und die Netzwerkverbindung werden möglicherweise angehalten, es gibt jedoch keine Auswirkungen auf den Arbeitsspeicher oder geöffnete Dateien. <li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Spot-VM wird gelöscht (kurzlebige Datenträger gehen verloren). <li> `Terminate`: Das Löschen des virtuellen Computers ist geplant. |
 | ResourceType | Typ der Ressource, auf die sich dieses Ereignis auswirkt <br><br> Werte: <ul><li>`VirtualMachine`|
 | Ressourcen| Liste von Ressourcen, auf die sich dieses Ereignis auswirkt. Diese Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | Ereignisstatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ähnliche Statusangaben werden niemals bereitgestellt. Das Ereignis wird nicht mehr zurückgegeben, nachdem es abgeschlossen ist.
@@ -133,6 +134,7 @@ Jedes Ereignis erfolgt dem Zeitplan nach, basierend auf dem Ereignistyp, eine Mi
 | Reboot | 15 Minuten |
 | Erneute Bereitstellung | 10 Minuten |
 | Preempt | 30 Sekunden |
+| Terminate | [Vom Benutzer konfigurierbar](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 bis 15 Minuten |
 
 ### <a name="event-scope"></a>Ereignisbereich     
 Geplante Ereignisse werden übermittelt an:
@@ -160,7 +162,7 @@ Im Folgenden finden Sie den in der `POST`-Anforderung erwarteten JSON-Code. Die 
 
 #### <a name="powershell"></a>PowerShell
 ```
-curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' -Uri http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -206,7 +208,7 @@ function Handle-ScheduledEvents($scheduledEvents)
 
 # Set up the scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
-$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-11-01' -f $localHostIP 
+$scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2019-01-01' -f $localHostIP 
 
 # Get events
 $scheduledEvents = Get-ScheduledEvents $scheduledEventURI

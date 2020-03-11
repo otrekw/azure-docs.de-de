@@ -10,28 +10,36 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 257b33802ea95138ef8149ef9302b14ca379e7ac
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721216"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195552"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Überwachen des Gen2-Cache
-In der Gen2-Speicherarchitektur werden die am häufigsten abgefragten Columnstore-Segmente automatisch in einem Cache eingeordnet, der sich auf NVMe-basierten SSDs befindet, die für Gen2-Data Warehouses entwickelt wurden. Es wird eine bessere Leistung erreicht, wenn bei Ihren Abfragen Segmente abgerufen werden, die sich im Cache befinden. In diesem Artikel wird beschrieben, wie eine langsame Abfrageleistung überwacht und behoben wird, indem bestimmt wird, ob die Workload den Gen2-Cache optimal nutzt.  
+
+In diesem Artikel wird beschrieben, wie eine langsame Abfrageleistung überwacht und behoben wird, indem bestimmt wird, ob die Workload den Gen2-Cache optimal nutzt.
+
+In der Gen2-Speicherarchitektur werden die am häufigsten abgefragten Columnstore-Segmente automatisch in einem Cache eingeordnet, der sich auf NVMe-basierten SSDs befindet, die für Gen2-Data Warehouses entwickelt wurden. Es wird eine bessere Leistung erreicht, wenn bei Ihren Abfragen Segmente abgerufen werden, die sich im Cache befinden.
+ 
 ## <a name="troubleshoot-using-the-azure-portal"></a>Behandeln von Problemen über das Azure-Portal
-Mithilfe von Azure Monitor können Sie Metriken des Gen2-Cache anzeigen, um Probleme mit der Abfrageleistung zu beheben. Klicken Sie zunächst im Azure-Portal auf „Monitor“:
 
-![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
+Mithilfe von Azure Monitor können Sie Metriken des Gen2-Cache anzeigen, um Probleme mit der Abfrageleistung zu beheben. Wechseln Sie zunächst zum Azure-Portal, und klicken Sie auf **Monitor**, **Metriken** und **+ Bereich auswählen**:
 
-Wählen Sie die Schaltfläche „Metriken“ aus, und geben Sie die Informationen für **Abonnement**, **Ressourcen** **gruppe**, **Ressourcentyp** und **Ressourcenname** für Ihr Data Warehouse an.
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-0.png)
 
-Die wesentlichen Metriken für die Problembehandlung des Gen2-Cache sind **Prozentsatz der Cachetreffer** und **Cacheverwendung in Prozent**. Konfigurieren Sie das Azure-Metrikdiagramm so, dass diese beiden Metriken angezeigt werden.
+Verwenden Sie die Such- und Dropdownleisten zum Suchen nach Ihrem Data Warehouse. Wählen Sie dann „Übernehmen“ aus.
 
-![Cachemetriken](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-1.png)
 
+Die wesentlichen Metriken für die Problembehandlung des Gen2-Cache sind **Prozentsatz der Cachetreffer** und **Cacheverwendung in Prozent**. Wählen Sie **Prozentsatz der Cachetreffer** aus, und klicken Sie auf die Schaltfläche **Metrik hinzufügen**, um **Cacheverwendung in Prozent** hinzuzufügen. 
+
+![Cachemetriken](./media/sql-data-warehouse-cache-portal/cache-2.png)
 
 ## <a name="cache-hit-and-used-percentage"></a>Prozentsatz der Cachetreffer und Cacheverwendung in Prozent
+
 In der folgenden Matrix sind Szenarien basierend auf den Werten der Cachemetriken beschrieben:
 
 |                                | **Hoher Prozentsatz der Cachetreffer** | **Niedriger Prozentsatz der Cachetreffer** |

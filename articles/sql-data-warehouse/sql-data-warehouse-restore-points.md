@@ -1,6 +1,6 @@
 ---
 title: Benutzerdefinierte Wiederherstellungspunkte
-description: Vorgehensweise beim Erstellen eines Wiederherstellungspunkts für Azure SQL Data Warehouse.
+description: Vorgehensweise zum Erstellen eines Wiederherstellungspunkts für den SQL-Pool
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759600"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198265"
 ---
 # <a name="user-defined-restore-points"></a>Benutzerdefinierte Wiederherstellungspunkte
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell und Azure-Portal einen neuen benutzerdefinierten Wiederherstellungspunkt für Azure SQL Data Warehouse erstellen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell und dem Azure-Portal einen neuen benutzerdefinierten Wiederherstellungspunkt für einen SQL-Pool in Azure Synapse Analytics erstellen.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Erstellen benutzerdefinierter Wiederherstellungspunkte mit PowerShell
 
@@ -62,9 +62,9 @@ Benutzerdefinierte Wiederherstellungspunkte können auch mit dem Azure-Portal er
 
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com/)-Konto an.
 
-2. Navigieren Sie zu der SQL Data Warehouse-Instanz, für die Sie einen Wiederherstellungspunkt erstellen möchten.
+2. Navigieren Sie zu dem SQL-Pool, für den Sie einen Wiederherstellungspunkt erstellen möchten.
 
-3. Wählen Sie im linken Bereich **Übersicht** aus, und wählen Sie **+ Neuer Wiederherstellungspunkt** aus. Wenn die Schaltfläche „Neuer Wiederherstellungspunkt“ nicht aktiviert ist, stellen Sie sicher, dass Data Warehouse nicht angehalten ist.
+3. Wählen Sie im linken Bereich **Übersicht** aus, und wählen Sie **+ Neuer Wiederherstellungspunkt** aus. Wenn die Schaltfläche „Neuer Wiederherstellungspunkt“ nicht aktiviert wird, stellen Sie sicher, dass der SQL-Pool nicht angehalten wird.
 
     ![Neuer Wiederherstellungspunkt](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Benutzerdefinierte Wiederherstellungspunkte können auch mit dem Azure-Portal er
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Wiederherstellen einer vorhandenen Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-active-paused-dw.md)
-- [Wiederherstellen einer gelöschten Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-deleted-dw.md)
-- [Geowiederherstellung einer Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-from-geo-backup.md)
+- [Wiederherstellen eines vorhandenen SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
+- [Wiederherstellen eines gelöschten SQL-Pools](sql-data-warehouse-restore-deleted-dw.md)
+- [Wiederherstellen aus einem SQL-Pool mit Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)
 

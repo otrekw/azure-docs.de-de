@@ -5,23 +5,23 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6acf66e01c4f7b4bd2735687f542a0dbf472cfb4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500192"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246544"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
-Eine bewährte Methode in Azure Automation ist das Erstellen von wiederverwendbaren, modularen Runbooks mit einer diskreten Funktion, die von anderen Runbooks aufgerufen wird. Ein übergeordnetes Runbook ruft häufig untergeordnete Runbooks zum Durchführen erforderlicher Funktionen auf. Zum Aufrufen eines untergeordneten Runbooks stehen zwei Methoden zur Auswahl, die sich erheblich unterscheiden. Machen Sie sich daher zunächst mit diesen Unterschieden vertraut, um die beste Methode für Ihre Szenarien bestimmen zu können.
+Eine bewährte Methode in Azure Automation ist das Erstellen von wiederverwendbaren, modularen Runbooks mit einer diskreten Funktion, die von anderen Runbooks aufgerufen wird. Ein übergeordnetes Runbook ruft häufig untergeordnete Runbooks zum Durchführen erforderlicher Funktionen auf. Es gibt zwei Möglichkeiten, ein untergeordnetes Runbook aufzurufen. Dabei gibt es deutliche Unterschiede, die Sie verstehen sollten, um feststellen zu können, welches für Ihre Szenarien am besten geeignet ist.
 
 >[!NOTE]
->Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Eine Anleitung für die Installation des Az-Moduls auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
+>Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>Aufrufen eines untergeordneten Runbooks mittels Inlineausführung
 
-Um ein Runbook inline über ein anderes Runbook aufzurufen, verwenden Sie den Namen des Runbooks und geben Werte für die zugehörigen Parameter wie bei einer Aktivität oder einem Cmdlet an.  Alle Runbooks im selben Automation-Konto können auf diese Weise von allen anderen Runbooks verwendet werden. Das übergeordnete Runbook wartet auf den Abschluss des untergeordneten Runbooks, bevor es mit der nächsten Zeile fortfährt, und sämtliche Ausgaben werden direkt an das übergeordnete Runbook zurückgegeben.
+Um ein Runbook inline in einem anderen Runbook aufzurufen, verwenden Sie den Namen des Runbooks und geben Werte für die zugehörigen Parameter wie bei einer Aktivität oder einem Cmdlet an. Alle Runbooks im selben Automation-Konto können auf diese Weise von allen anderen Runbooks verwendet werden. Das übergeordnete Runbook wartet auf den Abschluss des untergeordneten Runbooks, bevor es mit der nächsten Zeile fortfährt, und sämtliche Ausgaben werden direkt an das übergeordnete Runbook zurückgegeben.
 
 Wenn Sie ein Runbook inline aufrufen, wird es im selben Auftrag ausgeführt wie das übergeordnete Runbook. Das untergeordnete Runbook wird nicht im Auftragsverlauf angezeigt. Sämtliche Ausnahmen und Datenstromausgaben des untergeordneten Runbooks sind dem übergeordneten Runbook zugeordnet. Dieses Verhalten führt zu weniger Aufträgen und erleichtert die Nachverfolgung und Problembehandlung.
 
@@ -41,7 +41,7 @@ Wann ist die Veröffentlichungsreihenfolge relevant?
 
 Die Veröffentlichungsreihenfolge von Runbooks spielt nur für PowerShell-Workflow- und grafische PowerShell-Workflow-Runbooks eine Rolle.
 
-Wenn Ihr Runbook ein untergeordnetes grafisches Runbook oder ein untergeordnetes PowerShell-Workflow-Runbook mit Inlineausführung aufruft, verwendet es den Namen des Runbooks. Der Name muss mit „.\\“ beginnen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet.
+Wenn Ihr Runbook ein untergeordnetes grafisches Runbook oder ein untergeordnetes PowerShell-Workflow-Runbook mit Inlineausführung aufruft, verwendet es den Namen des Runbooks. Der Name muss mit **.\\** beginnen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet.
 
 ### <a name="example"></a>Beispiel
 
@@ -64,11 +64,11 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > Wenn Ihr Runbook ein untergeordnetes Runbook mit dem Cmdlet **Start-AzAutomationRunbook** und dem Parameter *Wait* aufruft und das untergeordnete Runbook ein Objektergebnis erzeugt, tritt möglicherweise ein Fehler auf. Informationen zur Umgehung dieses Fehlers finden Sie unter [Szenario: Objektverweis wurde nicht auf eine Objektinstanz festgelegt](troubleshoot/runbooks.md#child-runbook-object). Dort erfahren Sie, wie Sie die Logik zum Abfragen der Ergebnisse unter Verwendung des Cmdlets [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) implementieren.
 
-Sie können **Start-AzAutomationRunbook** verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi. Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der untergeordnete Auftrag für das untergeordnete Runbook erstellt wird. Im zweiten Modus, den Ihr Skript durch Angabe des Parameters *Wait* aktiviert, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
+Sie können **Start-AzAutomationRunbook** verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi. Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der Auftrag für das untergeordnete Runbook erstellt wird. Im zweiten Modus, den Ihr Skript durch Angabe des Parameters *Wait* aktiviert, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
 
-Der Auftrag eines mit einem Cmdlet gestarteten untergeordneten Runbooks wird in einem Auftrag ausgeführt, der vom Auftrag des übergeordneten Runbooks getrennt ist. Im Vergleich zum Inlinestart des Runbooks führt dieses Verhalten zu mehr Aufträgen und erschwert deren Nachverfolgung. Das übergeordnete Runbook kann mehrere untergeordnete Runbooks asynchron starten, ohne auf ihren Abschluss zu warten. Für diese parallele Ausführung, bei der untergeordnete Runbooks inline aufgerufen werden, muss das übergeordnete Runbook das Schlüsselwort [Parallel](automation-powershell-workflow.md#parallel-processing) verwenden.
+Der Auftrag eines mit einem Cmdlet gestarteten untergeordneten Runbooks wird getrennt vom Auftrag des übergeordneten Runbooks ausgeführt. Im Vergleich zum Inlinestart des Runbooks führt dieses Verhalten zu mehr Aufträgen und erschwert deren Nachverfolgung. Das übergeordnete Runbook kann mehrere untergeordnete Runbooks asynchron starten, ohne auf ihren Abschluss zu warten. Für diese parallele Ausführung, bei der untergeordnete Runbooks inline aufgerufen werden, muss das übergeordnete Runbook das Schlüsselwort [Parallel](automation-powershell-workflow.md#parallel-processing) verwenden.
 
-Die Ausgabe untergeordneter Runbooks wird aufgrund des Timings nicht zuverlässig an das übergeordnete Runbook zurückgegeben. Darüber hinaus können Variablen wie „$VerbosePreference“, „$WarningPreference“ und andere möglicherweise nicht an die untergeordneten Runbooks weitergegeben werden. Zur Vermeidung dieser Probleme können die untergeordneten Runbooks mithilfe von **Start-AzAutomationRunbook** und dem Parameter *Wait* als separate Automation-Aufträge gestartet werden. Durch diese Technik wird das übergeordnete Runbook blockiert, bis das untergeordnete Runbook abgeschlossen wurde.
+Die Ausgabe untergeordneter Runbooks wird aufgrund des Timings nicht zuverlässig an das übergeordnete Runbook zurückgegeben. Darüber hinaus können Variablen wie *$VerbosePreference*, *$WarningPreference* und andere möglicherweise nicht an die untergeordneten Runbooks weitergegeben werden. Zur Vermeidung dieser Probleme können die untergeordneten Runbooks mithilfe von **Start-AzAutomationRunbook** und dem Parameter *Wait* als separate Automation-Aufträge gestartet werden. Durch diese Technik wird das übergeordnete Runbook blockiert, bis das untergeordnete Runbook abgeschlossen wurde.
 
 Wenn das wartende übergeordnete Runbook nicht blockiert werden soll, können Sie das untergeordnete Runbook mithilfe von **Start-AzAutomationRunbook** ohne den Parameter *Wait* starten. In diesem Fall muss Ihr Runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) verwenden, um auf den Auftragsabschluss zu warten. Zum Abrufen der Ergebnisse müssen zudem [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) und [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) verwendet werden.
 

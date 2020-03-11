@@ -2,17 +2,17 @@
 title: DC-Serie – Azure Virtual Machines
 description: Spezifikationen für die VMs der DC-Serie.
 services: virtual-machines
-author: jonbeck7
+author: susaxen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: c4e141b7854925f5d12afce19481a6e9c2f8dd1d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599611"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205924"
 ---
 # <a name="preview-dcv2-series"></a>Vorschau: DCv2-Serie
 
@@ -25,6 +25,10 @@ Storage Premium Unterstützt*
 
 Storage Premium-Zwischenspeicherung: Unterstützt*
 
+Livemigration: Nicht unterstützt
+
+Updates mit Speicherbeibehaltung: Nicht unterstützt
+
 \* Außer für Standard_DC8_v2
 
 
@@ -32,12 +36,14 @@ Storage Premium-Zwischenspeicherung: Unterstützt*
 | Size             | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
-| Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4\.000/32 (43)                                                            | 3200/48                                   | 2                                            |
-| Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8\.000/64 (86)                                                            | 6400/96                                   | 2                                            |
-| Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16.000/128 (172)                                                         | 12800/192                                 | 2                                            |
+| Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
+| Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
+| Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - Virtuelle Computer der DCv2-Serie sind [VMs der Generation 2](./linux/generation-2.md#creating-a-generation-2-vm) und unterstützen nur `Gen2`-Images.
-
+- Zurzeit nur in „Vereinigtes Königreich, Süden“ verfügbar.
+- Vorherige Generation vertraulicher Compute-VMs: [DC-Serie](sizes-previous-gen.md)
+- Erstellen von DCv2-VMs mithilfe des Azure-Portals [Erstellen einer VM: Portal](./linux/quick-create-portal.md)
 
 
 

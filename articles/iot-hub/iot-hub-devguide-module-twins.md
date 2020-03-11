@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807424"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303595"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -176,7 +176,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
   - Eigenschaften
 
-    | NAME | Wert |
+    | Name | value |
     | --- | --- |
     $content-type | Anwendung/json |
     $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
@@ -236,11 +236,15 @@ Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendu
 
 Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
-* Alle Schlüssel in JSON-Objekten sind UTF-8 UNICODE-Zeichenfolgen mit 64 Bytes, bei denen die Groß- und Kleinschreibung berücksichtigt werden muss. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.` und `$` gehören nicht zu den zulässigen Zeichen.
+* **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8 UNICODE-Zeichenfolgen mit 64 Bytes, bei denen die Groß- und Kleinschreibung berücksichtigt werden muss. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.` und `$` gehören nicht zu den zulässigen Zeichen.
 
-* Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig. Der maximale Wert für ganze Zahlen ist 4503599627370495 und der minimale Wert für ganze Zahlen ist -4503599627370496.
+* **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
 
-* Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
+    * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
+
+    * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 512 Bytes haben.
+
+* **Tiefe**: Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 5 haben. Das folgende Objekt ist z.B. gültig:
 
     ```json
     {
@@ -262,13 +266,21 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
     }
     ```
 
-* Alle Zeichenfolgenwerte können höchstens 512Byte lang sein.
-
 ## <a name="module-twin-size"></a>Größe des Modulzwillings
 
-IoT Hub erzwingt eine Größenbeschränkung von 8 KB auf den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB auf die Werte `properties/desired` und `properties/reported`. Diese Summen schließen keine schreibgeschützten Elemente ein.
+IoT Hub erzwingt eine Größenbeschränkung von 8 KB auf den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB auf die Werte `properties/desired` und `properties/reported`. In diesen Summen sind keine schreibgeschützten Elemente wie `$etag`, `$version` und `$metadata/$lastUpdated` enthalten.
 
-Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
+Die Größe von Zwillingen wird folgendermaßen berechnet:
+
+* Für jede Eigenschaft im JSON-Dokument berechnet IoT Hub kumulativ und addiert die Länge des Eigenschaftenschlüssels und Eigenschaftswerts.
+
+* Eigenschaftenschlüssel werden als UTF8-codierte Zeichenfolgen betrachtet.
+
+* Einfache Eigenschaftswerte werden als UTF8-codierte Zeichenfolgen, numerische Werte (8 Bytes) oder boolesche Werte (4 Bytes) betrachtet.
+
+* Die Größe der UTF8-codierten Zeichenfolgen wird berechnet, indem alle Zeichen gezählt werden – ausgenommen UNICODE-Steuerzeichen (Segmente C0 und C1).
+
+* Komplexe Eigenschaftswerte (geschachtelte Objekte) werden basierend auf der Aggregatgröße der darin enthaltenen Eigenschaftenschlüssel und Eigenschaftswerte berechnet.
 
 IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
 

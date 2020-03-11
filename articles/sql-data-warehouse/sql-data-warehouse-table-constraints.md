@@ -1,6 +1,6 @@
 ---
 title: Primärschlüssel, Fremdschlüssel und eindeutiger Schlüssel
-description: Unterstützung von Tabellenconstraints in Azure SQL Data Warehouse
+description: Unterstützung von Tabellenconstraints in SQL Analytics in Azure Synapse Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685491"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198132"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Primärschlüssel, Fremdschlüssel und eindeutiger Schlüssel in Azure SQL Data Warehouse
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Primärschlüssel, Fremdschlüssel und eindeutiger Schlüssel in SQL Analytics
 
-Erfahren Sie mehr über Tabellenconstraints in Azure SQL Data Warehouse, einschließlich Primärschlüssel, Fremdschlüssel und eindeutigem Schlüssel.
+Hier erfahren Sie mehr über Tabellenconstraints in SQL Analytics, einschließlich Primärschlüssel, Fremdschlüssel und eindeutigem Schlüssel.
 
 ## <a name="table-constraints"></a>Tabellenconstraints 
-Azure SQL Data Warehouse unterstützt diese Tabellenconstraints: 
+SQL Analytics unterstützt diese Tabellenconstraints: 
 - PRIMARY KEY wird nur unterstützt, wenn sowohl NONCLUSTERED als auch NOT ENFORCED verwendet werden.    
 - Der UNIQUE-Constraint wird nur unterstützt, wenn NOT ENFORCED verwendet wird.   
 
-Die FOREIGN KEY-Constraint wird in Azure SQL Data Warehouse nicht unterstützt.  
+Der FOREIGN KEY-Constraint wird in SQL Analytics nicht unterstützt.  
 
-## <a name="remarks"></a>Anmerkungen
-Mit einem Primärschlüssel und/oder einem eindeutigen Schlüssel kann die Data Warehouse-Engine einen optimalen Ausführungsplan für eine Abfrage erstellen.  Alle Werte in einer Primärschlüsselspalte oder einer Spalte für einen eindeutigen Constraint müssen eindeutig sein. 
+## <a name="remarks"></a>Bemerkungen
+Mit einem Primärschlüssel und/oder einem eindeutigen Schlüssel kann die SQL Analytics-Engine einen optimalen Ausführungsplan für eine Abfrage erstellen.  Alle Werte in einer Primärschlüsselspalte oder einer Spalte für einen eindeutigen Constraint müssen eindeutig sein. 
 
-Nach dem Erstellen einer Tabelle mit Hauptschlüssel- oder Eindeutig-Constraint in Azure Data Warehouse müssen die Benutzer sicherstellen, dass alle Werte in den betreffenden Spalten eindeutig sind.  Eine Verletzung dieser Bedingung kann dazu führen, dass die Abfrage ungenaue Ergebnisse zurückgibt.  Dieses Beispiel zeigt, wie eine Abfrage ungenaue Ergebnisse zurückgeben kann, falls die Hauptschlüsselspalte oder die Spalte mit dem Eindeutig-Contraint doppelte Werte enthält.  
+Nach dem Erstellen einer Tabelle mit Hauptschlüssel oder eindeutigem Constraint in SQL Analytics müssen die Benutzer sicherstellen, dass alle Werte in den betreffenden Spalten eindeutig sind.  Eine Verletzung dieser Bedingung kann dazu führen, dass die Abfrage ungenaue Ergebnisse zurückgibt.  Dieses Beispiel zeigt, wie eine Abfrage ungenaue Ergebnisse zurückgeben kann, falls die Hauptschlüsselspalte oder die Spalte mit dem Eindeutig-Contraint doppelte Werte enthält.  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>Beispiele
-Erstellen einer Data Warehouse-Tabelle mit einem Primärschlüssel: 
+Erstellen einer SQL Analytics-Tabelle mit einem Primärschlüssel: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Erstellen einer Data Warehouse-Tabelle mit einem Eindeutig-Constraint:
+Erstellen einer SQL Analytics-Tabelle mit einem eindeutigen Constraint:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Erstellen der Tabellen für das Data Warehouse werden im nächsten Schritt Daten in die Tabelle geladen. Ein Tutorial zum Laden von Daten finden Sie unter [Laden von Daten in SQL Data Warehouse](load-data-wideworldimportersdw.md).
+Nach dem Erstellen der Tabellen für Ihre SQL Analytics-Datenbank werden im nächsten Schritt Daten in die Tabelle geladen. Ein Tutorial zum Laden von Daten finden Sie unter [Laden von Daten in SQL Analytics-Datenbanken](load-data-wideworldimportersdw.md).

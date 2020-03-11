@@ -2,17 +2,17 @@
 title: 'Dav4- und Dasv4-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die virtuellen Computer der Dav4- und Dasv4-Serie.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: f371281e4072902f9946eb9fd107b68a1e4bf4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492651"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162178"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- und Dasv4-Serie
 
@@ -25,6 +25,10 @@ ACU: 230 – 260
 Storage Premium Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Dasv4-Serie. Für Dasv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav4-Serie.
 
@@ -48,6 +52,10 @@ ACU:  230 – 260
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
+
+Livemigration: Unterstützt
+
+Updates mit Speicherbeibehaltung: Unterstützt
 
 Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Dasv4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
 

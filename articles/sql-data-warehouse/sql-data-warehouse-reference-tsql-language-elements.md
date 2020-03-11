@@ -1,6 +1,6 @@
 ---
 title: T-SQL-Sprachelemente
-description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
+description: Links zur Dokumentation für die in SQL Analytics unterstützten T-SQL-Anweisungen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692523"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198421"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>T-SQL-Sprachelemente, die in Azure SQL Data Warehouse unterstützt werden
-Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Sprachelemente.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>In SQL Analytics unterstützte T-SQL-Sprachelemente
+Links zur Dokumentation für die in SQL Analytics unterstützten T-SQL-Sprachelemente.
 
 ## <a name="core-elements"></a>Kernelemente
 * [Syntaxkonventionen](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -30,7 +30,7 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [Konstanten](https://msdn.microsoft.com/library/ms179899.aspx)
 * [Datentypen](https://msdn.microsoft.com/library/ms187752.aspx)
 * [EXECUTE](https://msdn.microsoft.com/library/ms188332.aspx)
-* [Ausdrücke](https://msdn.microsoft.com/library/ms190286.aspx)
+* [Ausdrücken](https://msdn.microsoft.com/library/ms190286.aspx)
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [Problemumgehung für die IDENTITY-Eigenschaft](https://msdn.microsoft.com/library/ms186775.aspx)
 * [PRINT](https://msdn.microsoft.com/library/ms176047.aspx)
@@ -53,11 +53,11 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [- (Negativ)](https://msdn.microsoft.com/library/ms189480.aspx)
 * [- (Subtraktion)](https://msdn.microsoft.com/library/ms189518.aspx)
 * [* (Multiplikation)](https://msdn.microsoft.com/library/ms176019.aspx)
-* [/ (Division)](https://msdn.microsoft.com/library/ms175009.aspx)
+* [/ (Dividieren)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Platzhalterzeichen für den Abgleich
-* [= (Gleich)](https://msdn.microsoft.com/library/ms175118.aspx)
+* [= (Ist gleich)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [&gt; (Größer als)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [&lt; (Kleiner als)](https://msdn.microsoft.com/library/ms179873.aspx)
 * [&gt;= (Größer als oder gleich)](https://msdn.microsoft.com/library/ms181567.aspx)
@@ -278,5 +278,5 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Transact-SQL-Themen](sql-data-warehouse-reference-tsql-statements.md) und [Systemsichten](sql-data-warehouse-reference-tsql-system-views.md).
+Weitere Referenzinformationen finden Sie unter [T-SQL-Anweisungen in SQL Analytics](sql-data-warehouse-reference-tsql-statements.md) und [T-SQL-Systemsichten in SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
 

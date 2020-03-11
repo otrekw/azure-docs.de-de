@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263998"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192199"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit
 Azure Spring Cloud ermöglicht das Protokollstreaming in der Azure-Befehlszeilenschnittstelle, um Anwendungskonsolenprotokolle in Echtzeit für die Problembehandlung zu erhalten. Sie können auch [Protokolle und Metriken mit Diagnoseeinstellungen analysieren](./diagnostic-services.md).
@@ -20,6 +20,9 @@ Azure Spring Cloud ermöglicht das Protokollstreaming in der Azure-Befehlszeilen
 
 * Installieren Sie die [Azure CLI-Erweiterung](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) für Spring Cloud (mindestens Version 0.2.0).
 * Eine Instanz von **Azure Spring Cloud** mit einer laufenden Anwendung, z. B. der [Spring Cloud-App](./spring-cloud-quickstart-launch-app-cli.md).
+
+> [!NOTE]
+>  Die ASC CLI-Erweiterung wird von Version 0.2.0 auf 0.2.1 aktualisiert. Diese Änderung wirkt sich auf die Syntax des Befehls für das Protokollstreaming aus: `az spring-cloud app log tail` wird ersetzt durch: `az spring-cloud app logs`. Der Befehl `az spring-cloud app log tail` wird in einer zukünftigen Version als veraltet markiert. Wenn Sie Version 0.2.0 verwendet haben, können Sie ein Upgrade auf 0.2.1 durchführen. Entfernen Sie zunächst mithilfe des Befehls `az extension remove -n spring-cloud` die alte Version.  Installieren Sie dann Version 0.2.1 mit dem folgenden Befehl: `az extension add -n spring-cloud`.
 
 ## <a name="use-cli-to-tail-logs"></a>Verwenden der Befehlszeilenschnittstelle zum Verfolgen von Protokollen
 
@@ -33,7 +36,7 @@ In den folgenden Beispielen werden die Ressourcengruppen- und Dienstnamen in den
 ### <a name="tail-log-for-app-with-single-instance"></a>Protokollfragment für eine App mit einer einzelnen Instanz
 Wenn eine App mit dem Namen „auth-service“ nur über eine Instanz verfügt, können Sie das Protokoll der App-Instanz mit dem folgenden Befehl anzeigen:
 ```
-az spring-cloud app log tail -n auth-service
+az spring-cloud app logs -n auth-service
 ```
 Damit werden die Protokolle zurückgegeben:
 ```
@@ -66,7 +69,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 Anschließend können Sie Protokolle einer App-Instanz mit der Option `-i/--instance` streamen:
 
 ```
-az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
+az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
 Sie können auch Details zu App-Instanzen im Azure-Portal anzeigen.  Nachdem Sie im linken Navigationsbereich Ihres Azure Spring Cloud-Diensts **Apps** ausgewählt haben, wählen Sie **App-Instanzen** aus.
@@ -75,11 +78,11 @@ Sie können auch Details zu App-Instanzen im Azure-Portal anzeigen.  Nachdem Sie
 Standardmäßig gibt `az spring-cloud ap log tail` nur vorhandene Protokolle aus, die an die App-Konsole gestreamt werden, und wird dann beendet. Wenn Sie neue Protokolle streamen möchten, fügen Sie „-f“ („--follow“) an:  
 
 ```
-az spring-cloud app log tail -n auth-service -f
+az spring-cloud app logs -n auth-service -f
 ``` 
 So überprüfen Sie alle unterstützten Protokollierungsoptionen
 ``` 
-az spring-cloud app log tail -h 
+az spring-cloud app logs -h 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

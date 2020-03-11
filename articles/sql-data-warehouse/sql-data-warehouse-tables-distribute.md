@@ -1,6 +1,6 @@
 ---
 title: Entwurfsleitfaden für verteilte Tabellen
-description: Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
+description: Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049127"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199443"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Leitfaden für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse
-Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Leitfaden für das Entwerfen verteilter Tabellen in SQL Analytics
+Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in SQL Analytics.
 
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie unter [Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und -verschiebung in SQL Analytics vertraut sind.  Weitere Informationen finden Sie unter [SQL Analytics – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Was ist eine verteilte Tabelle?
 Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich sind die Zeilen jedoch in 60 Verteilungen gespeichert. Die Zeilen werden mit einem Hash- oder Roundrobinalgorithmus verteilt.  
@@ -34,7 +34,7 @@ Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren D
 
 - Wie groß ist die Tabelle?   
 - Wie oft wird die Tabelle aktualisiert?   
-- Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
+- Gibt es in einer SQL Analytics-Datenbank Fakten- und Dimensionstabellen?   
 
 
 ### <a name="hash-distributed"></a>Hashverteilung
@@ -42,7 +42,7 @@ Bei einer Tabelle mit Hashverteilung werden Tabellenzeilen mithilfe einer determ
 
 ![Verteilte Tabelle](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Verteilte Tabelle")  
 
-Da identische Werte per Hash immer der gleichen Verteilung zugewiesen werden, sind die Zeilenpositionen im Data Warehouse bekannt. SQL Data Warehouse nutzt dieses Wissen, um Datenverschiebungen während Abfragen zu minimieren, was der Abfrageleistung zugutekommt. 
+Da identische Werte per Hash immer der gleichen Verteilung zugewiesen werden, sind die Zeilenpositionen in SQL Analytics bekannt. SQL Analytics nutzt dieses Wissen, um Datenverschiebungen während Abfragen zu minimieren, was der Abfrageleistung zugutekommt. 
 
 Tabellen mit Hashverteilung eignen sich gut für umfangreiche Faktentabellen in einem Sternschema. Sie können sehr viele Zeilen umfassen und trotzdem eine hohe Leistung bieten. Es gibt natürlich einige Entwurfsaspekte, die dazu beitragen, die Leistung zu erreichen, für die das verteilte System konzipiert ist. Einer dieser Aspekte, der auch in diesem Artikel beschrieben wird, ist die Wahl einer geeigneten Verteilungsspalte. 
 
@@ -65,7 +65,7 @@ Geeignete Szenarien für die Verwendung der Roundrobinverteilung in einer Tabell
 - Wenn das Join weniger signifikant als andere Joins in der Abfrage ist
 - Wenn die Tabelle eine temporäre Stagingtabelle ist
 
-Im [Tutorial: Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) wird anhand eines Beispiels das Laden von Daten in eine Roundrobin-Stagingtabelle gezeigt.
+Im [Tutorial: Laden der Daten in das Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) wird anhand eines Beispiels das Laden von Daten in eine Roundrobin-Stagingtabelle in SQL Analytics gezeigt.
 
 
 ## <a name="choosing-a-distribution-column"></a>Wählen einer Verteilungsspalte
@@ -109,7 +109,7 @@ Wählen Sie zur Erzielung einer ausgeglichenen parallelen Verarbeitung eine Vert
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Wählen Sie eine Verteilungsspalte, die Datenverschiebungen minimiert.
 
-Zur Ermittlung des korrekten Abfrageergebnisses werden Daten ggf. zwischen Computeknoten verschoben. Zu Datenverschiebungen kommt es in der Regel, wenn Abfragen über Joins und Aggregationen für verteilte Tabellen verfügen. Die Wahl einer Verteilungsspalte, die zur Minimierung von Datenverschiebungen beiträgt, ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz.
+Zur Ermittlung des korrekten Abfrageergebnisses werden Daten ggf. zwischen Computeknoten verschoben. Zu Datenverschiebungen kommt es in der Regel, wenn Abfragen über Joins und Aggregationen für verteilte Tabellen verfügen. Die Wahl einer Verteilungsspalte, die zur Minimierung von Datenverschiebungen beiträgt, ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Analytics-Datenbank.
 
 Zur Minimierung von Datenverschiebungen muss die Verteilungsspalte folgende Kriterien erfüllen:
 
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Verwenden Sie zum Erstellen einer verteilten Tabelle eine der folgenden Anweisungen:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

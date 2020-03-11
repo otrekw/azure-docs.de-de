@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314945"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920364"
 ---
 # <a name="permutation-feature-importance"></a>Permutation Feature Importance (PFI)
 
-In diesem Artikel wird beschrieben, wie das Modul „Permutation Feature Importance“ im Azure Machine Learning-Designer eingesetzt werden kann, um einen Satz mit Bewertungen der Featurerelevanz für Ihr Dataset zu berechnen. Sie können anhand dieser Bewertungen die besten Features zur Verwendung in einem Modell bestimmen.
+In diesem Artikel wird beschrieben, wie das Modul „Permutation Feature Importance“ im Azure Machine Learning-Designer (Vorschau) eingesetzt werden kann, um einen Satz mit Bewertungen der Featurerelevanz für Ihr Dataset zu berechnen. Sie können anhand dieser Bewertungen die besten Features zur Verwendung in einem Modell bestimmen.
 
 In diesem Modul werden Featurewerte Spalte für Spalte nach dem Zufallsprinzip neu angeordnet. Vor und nach diesem Vorgang wird die Leistung des Modells gemessen. Sie können hierbei eine der Standardmetriken zum Messen der Leistung auswählen.
 
@@ -46,7 +46,7 @@ Um einen Satz mit Featurebewertungen zu generieren, müssen Sie bereits über ei
 
     -   **Klassifizierung**
 
-        Accuracy, Precision, Recall, Average Log Loss  
+        Accuracy, Precision, Recall  
 
     -   **Regression**
 

@@ -3,21 +3,21 @@ title: Konfigurieren von Azure AD B2C als SAML-IDP für Ihre Anwendungen
 title-suffix: Azure AD B2C
 description: Konfigurieren von Azure AD B2C für die Bereitstellung von SAML-Protokollassertionen für Ihre Anwendungen (Dienstanbieter). Azure AD B2C fungiert als einzelner Identitätsanbieter (Identity Provider, IdP) für Ihre SAML-Anwendung.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
-ms.author: marsma
+ms.date: 02/27/2020
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647600"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189649"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -63,7 +63,7 @@ Wenn Sie noch nicht über einen SAML-Dienstanbieter und einen zugehörigen Metad
 
 ## <a name="1-set-up-certificates"></a>1. Einrichten von Zertifikaten
 
-Um eine Vertrauensstellung zwischen Ihrem Dienstanbieter und Azure AD B2C zu erstellen, müssen Sie X509-Zertifikate und deren private Schlüssel bereitstellen.
+Um eine Vertrauensstellung zwischen Ihrem Dienstanbieter und Azure AD B2C zu erstellen, müssen Sie X509-Web-App-Zertifikate bereitstellen.
 
 * **Dienstanbieterzertifikate**
   * Zertifikat mit einem privaten Schlüssel, das in Ihrer Web-App gespeichert ist. Dieses Zertifikat wird von Ihrem Dienstanbieter zum Signieren der an Azure AD B2C gesendeten SAML-Anforderung verwendet. Azure AD B2C liest den öffentlichen Schlüssel aus den Dienstanbietermetadaten, um die Signatur zu überprüfen.
@@ -142,11 +142,11 @@ Sie können den Wert der `IssuerUri`-Metadaten ändern. Dies ist der Aussteller-
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml"/>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-sp"/>
     </TechnicalProfile>
 
     <!-- Session management technical profile for SAML based tokens -->
-    <TechnicalProfile Id="SM-Saml">
+    <TechnicalProfile Id="SM-Saml-sp">
       <DisplayName>Session Management Provider</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
     </TechnicalProfile>

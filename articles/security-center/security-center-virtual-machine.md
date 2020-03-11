@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603364"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921503"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center und Azure Virtual Machines
 Mit [Azure Security Center](https://azure.microsoft.com/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -33,7 +33,7 @@ Mit Security Center können Sie die Daten von virtuellen Computern in Azure sch�
 * Empfehlungen zum Endpunktschutz
 * Überprüfung der Datenträgerverschlüsselung
 * Sicherheitsrisikobewertung und -lösung
-* Bedrohungserkennung
+* Aus Features zum Schutz vor Bedrohungen stammende Sicherheitswarnungen
 
 Security Center ermöglicht nicht nur den Schutz Ihrer Azure-VMs, sondern stellt auch Möglichkeiten für die Sicherheitsüberwachung und -verwaltung von Clouddiensten, App Services, virtuellen Netzwerken und vielem mehr bereit. 
 
@@ -64,7 +64,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Wenn Se
 
 Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sicherheitsstatus Ihrer Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine bestimmte Empfehlung darstellt. Die Tabelle unten enthält einige Beispiele für Empfehlungen für Azure-VMs. Es ist jeweils angegeben, was durchgeführt wird, wenn Sie ein Empfehlung anwenden. Wenn Sie eine Empfehlung auswählen, erhalten Sie Informationen dazu, wie Sie die Empfehlung in Security Center implementieren.
 
-| Empfehlung | BESCHREIBUNG |
+| Empfehlung | Beschreibung |
 | --- | --- |
 | Sammlung von Daten für Abonnements aktivieren |Empfiehlt Ihnen, in der Sicherheitsrichtlinie die Datensammlung für alle Abonnements und alle virtuellen Computer in Ihren Abonnements zu aktivieren. |
 | Betriebssystem-Sicherheitsrisiken beheben |Empfiehlt Ihnen, Ihre Betriebssystemkonfigurationen an den empfohlenen Konfigurationsregeln zu orientieren und z.B. nicht zuzulassen, dass Kennwörter gespeichert werden. |

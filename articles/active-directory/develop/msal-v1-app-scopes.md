@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085680"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299829"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
@@ -25,7 +25,7 @@ OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine Azure AD-Web-API-Anwe
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf bestimmte OAuth2-Berechtigungen einer v1.0-Anwendung angefordert wird
 
-Um Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z.B. Azure AD-Graph unter https://graph.windows.net) ) abzurufen, müssen Sie Geltungsbereiche erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die entsprechende Ressource verketten.
+Zum Abrufen von Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z. B. die Microsoft Graph-API unter https://graph.microsoft.com) ) müssen Sie Geltungsbereiche erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die entsprechende Ressource verketten.
 
 Beispiel für den Zugriff auf eine v1. 0-Web-API im Auftrag des Benutzers mit dem App-ID-URI `ResourceId`:
 
@@ -37,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Wenn Sie mit MSAL.NET für Azure AD unter Verwendung der Azure AD-Graph-API (https:\//graph.windows.net/) Lese- und Schreibvorgänge ausführen möchten, müssen Sie wie im folgenden Beispiel eine Liste von Geltungsbereichen erstellen:
+Wenn Sie mit MSAL.NET für Azure AD Lese- und Schreibvorgänge über die Microsoft Graph-API (https:\//graph.microsoft.com/) ausführen möchten, müssen Sie wie in den folgenden Beispielen eine Liste von Geltungsbereichen erstellen:
 
 ```csharp
-string ResourceId = "https://graph.windows.net/";
+string ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.windows.net/";
+var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

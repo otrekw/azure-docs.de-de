@@ -1,6 +1,6 @@
 ---
 title: Wiederherstellung einer Data Warehouse-Instanz von einer Geosicherung
-description: Anleitung für die Geowiederherstellung einer Azure SQL Data Warehouse-Instanz.
+description: Leitfaden für die Geowiederherstellung eines SQL-Pools
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 624c6665e70802907be8a41015b78d36cca7df1c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759617"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198346"
 ---
-# <a name="geo-restore-azure-sql-data-warehouse"></a>Geowiederherstellung einer Azure SQL Data Warehouse-Instanz
+# <a name="geo-restore-for-sql-pool"></a>Geowiederherstellung für SQL-Pool
 
-In diesem Artikel erfahren Sie, wie Sie Ihr Data Warehouse aus einer Geosicherung über Azure-Portal und PowerShell wiederherstellen.
+In diesem Artikel erfahren Sie, wie Sie Ihren SQL-Pool aus einer Geosicherung über das Azure-Portal und PowerShell wiederherstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Überprüfen Sie Ihre DTU-Kapazität.** Jede SQL Data Warehouse-Instanz wird von einer SQL Server-Instanz gehostet (z.B. „myserver.database.windows.net“), die über ein Standard-DTU-Kontingent verfügt. Vergewissern Sie sich, dass die SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
+**Überprüfen Sie Ihre DTU-Kapazität.** Jeder SQL-Pool wird von einer SQL Server-Instanz gehostet (z. B. „myserver.database.windows.net“), die über ein Standard-DTU-Kontingent verfügt. Vergewissern Sie sich, dass die SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Wiederherstellen von einer geografischen Azure-Region mithilfe von PowerShell
 
@@ -74,20 +74,27 @@ Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldate
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Wiederherstellen von einer geografischen Azure-Region über das Azure-Portal
 
-Führen Sie die unten beschriebenen Schritte aus, um eine Azure SQL Data Warehouse-Instanz aus einer Geosicherung wiederherzustellen:
+Führen Sie die folgenden Schritte aus, um einen SQL-Pool aus einer Geosicherung wiederherzustellen:
 
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com/)-Konto an.
-1. Klicken Sie auf **+ Ressource erstellen**, suchen Sie nach SQL Data Warehouse,und klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **+ Ressource erstellen**. 
 
-    ![Neues Data Warehouse](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Geben Sie auf der Registerkarte **Grundlagen** die angeforderten Informationen ein, und klicken Sie auf **Weiter: Zusätzliche Einstellungen**.
+![Neues Data Warehouse](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-    ![Grundlagen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. Wählen Sie für den Parameter **Vorhandenen Daten verwenden** die Option **Sicherung** aus, und wählen Sie dann die entsprechende Sicherung aus den Scrolldownoptionen aus. Klicken Sie auf **Überprüfen und erstellen**.
+3. Klicken Sie auf **Datenbanken** und dann auf „** Azure Synapse Analytics (vormals SQL DW) **“.
+
+![Neues DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+
+4. Geben Sie auf der Registerkarte **Grundlagen** die angeforderten Informationen ein, und klicken Sie auf **Weiter: Zusätzliche Einstellungen**.
+
+![Grundlagen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+
+5. Wählen Sie für den Parameter **Vorhandenen Daten verwenden** die Option **Sicherung** aus, und wählen Sie dann die entsprechende Sicherung aus den Scrolldownoptionen aus. Klicken Sie auf **Überprüfen und erstellen**.
  
-   ![Sicherung](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. Nachdem das Data Warehouse wieder hergestellt wurde, überprüfen Sie, ob der **Status** „Online“ lautet.
+![Sicherung](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+6. Nachdem das Data Warehouse wieder hergestellt wurde, überprüfen Sie, ob der **Status** „Online“ lautet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Wiederherstellen einer vorhandenen Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-active-paused-dw.md)
-- [Wiederherstellen einer gelöschten Azure SQL Data Warehouse-Instanz](sql-data-warehouse-restore-deleted-dw.md)
+- [Wiederherstellen eines vorhandenen SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
+- [Wiederherstellen eines gelöschten SQL-Pools](sql-data-warehouse-restore-deleted-dw.md)

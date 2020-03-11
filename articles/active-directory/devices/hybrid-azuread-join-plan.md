@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591607"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255013"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -79,6 +79,8 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 - Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
 - Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen bzw. obligatorischen Profilen verwenden.
+
+- Das Server Core-Betriebssystem unterstützt jeden Geräteregistrierungstyp.
 
 ### <a name="os-imaging-considerations"></a>Überlegungen zur Erstellung von Betriebssystemimages
 - Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.

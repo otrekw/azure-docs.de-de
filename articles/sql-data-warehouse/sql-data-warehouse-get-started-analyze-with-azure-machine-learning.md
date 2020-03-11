@@ -1,22 +1,23 @@
 ---
 title: Analysieren von Daten mit Azure Machine Learning
-description: Azure Machine Learning wird verwendet, um ein Predictive Machine Learning-Modell basierend auf in Azure SQL Data Warehouse gespeicherten Daten zu erstellen.
+description: Verwenden Sie Azure Machine Learning, um ein Predictive Machine Learning-Modell basierend auf in Azure Synapse gespeicherten Daten zu erstellen.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721284"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195888"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analysieren von Daten mit Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721284"
 > 
 > 
 
-In diesem Tutorial wird Azure Machine Learning verwendet, um ein Predictive Machine Learning-Modell basierend auf in Azure SQL Data Warehouse gespeicherten Daten zu erstellen. Es wird eine gezielte Marketingkampagne für Adventure Works, einen Fahrradladen, erstellt und dabei vorhergesagt, ob ein Kunde ein Fahrrad kauft.
+In diesem Tutorial wird Azure Machine Learning verwendet, um ein Predictive Machine Learning-Modell basierend auf in Azure Synapse gespeicherten Daten zu erstellen. Es wird eine gezielte Marketingkampagne für Adventure Works, einen Fahrradladen, erstellt und dabei vorhergesagt, ob ein Kunde ein Fahrrad kauft.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ In diesem Tutorial wird Azure Machine Learning verwendet, um ein Predictive Mach
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durchlaufen dieses Tutorials benötigen Sie Folgendes:
 
-* Für eine SQL Data Warehouse-Instanz werden AdventureWorksDW-Beispieldaten vorab geladen. Informationen zur Bereitstellung finden Sie unter [Erstellen eines SQL Data Warehouse](create-data-warehouse-portal.md). Wählen Sie die Option zum Laden der Beispieldaten. Wenn Sie bereits über ein Data Warehouse verfügen, aber noch keine Beispieldaten besitzen, können Sie [Beispieldaten manuell laden](sql-data-warehouse-load-sample-databases.md).
+* Für eine SQL-Pool-Instanz werden AdventureWorksDW-Beispieldaten vorab geladen. Informationen zur Bereitstellung finden Sie unter [Erstellen eines SQL-Pools](create-data-warehouse-portal.md). Wählen Sie die Option zum Laden der Beispieldaten. Wenn Sie bereits über ein Data Warehouse verfügen, aber noch keine Beispieldaten besitzen, können Sie [Beispieldaten manuell laden](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. Abrufen von Daten
 Die Daten befinden sich in der Sicht „dbo.vTargetMail“ in der AdventureWorksDW-Datenbank. Gehen Sie wie folgt vor, um diese Daten zu lesen:
@@ -46,7 +47,7 @@ Die Daten befinden sich in der Sicht „dbo.vTargetMail“ in der AdventureWorks
 2. Klicken Sie unten links im Bildschirm auf **+ Neu**, und wählen Sie **Leeres Experiment** aus.
 3. Geben Sie einen Namen für Ihr Experiment ein: Gezieltes Marketing.
 4. Ziehen Sie unter **Dateneingabe und -ausgabe** das Modul **Import Data** aus dem Modulbereich in den Zeichenbereich.
-5. Geben Sie im Eigenschaftenbereich ausführliche Informationen zu Ihrer SQL Data Warehouse-Datenbank ein.
+5. Geben Sie im Bereich „Eigenschaften“ die Details Ihres SQL-Pools an.
 6. Geben Sie die **Datenbankabfrage** zum Lesen der für Sie interessanten Daten an.
 
 ```sql
@@ -128,7 +129,7 @@ Ihrem Testdatensatz werden zwei weitere Spalten hinzugefügt.
 * Bewertete Wahrscheinlichkeiten: Die Wahrscheinlichkeit, dass es sich bei einem Kunden um einen Fahrradkäufer handelt.
 * Bewertete Beschriftungen: die vom Modell vorgenommene Klassifizierung – Fahrradkäufer (1) oder kein Fahrradkäufer (0). Der Wahrscheinlichkeitsschwellenwert für die Beschriftung ist auf 50 Prozent festgelegt, kann aber angepasst werden.
 
-Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie mit diesem Modell Vorhersagen für neue Kunden treffen und das Modell als Webdienst veröffentlichen oder Ergebnisse zurück in SQL Data Warehouse schreiben.
+Durch einen Vergleich der Spalte „BikeBuyer“ (tatsächliche Werte) mit „Bewertete Beschriftungen“ (Vorhersage) können Sie die Leistung des Modells ermitteln. Als Nächstes können Sie mit diesem Modell Vorhersagen für neue Kunden treffen und das Modell als Webdienst veröffentlichen oder Ergebnisse zurück in Azure Synapse schreiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Erstellen von vorhersehbaren Machine Learning-Vorhersagemodellen finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/).

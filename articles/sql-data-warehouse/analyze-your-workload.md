@@ -1,30 +1,30 @@
 ---
 title: Analysieren Ihrer Workload
-description: Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
+description: Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure Synapse Analytics kennen.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693118"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199994"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analysieren Ihrer Workload in Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analysieren Ihrer Workload in Azure Synapse Analytics
 
-Techniken zum Analysieren Ihrer Workload in Azure SQL Data Warehouse.
+Lernen Sie Techniken zum Analysieren Ihrer SQL Analytics-Workload in Azure Synapse Analytics kennen.
 
 ## <a name="resource-classes"></a>Ressourcenklassen
 
-SQL Data Warehouse bietet Ressourcenklassen zum Zuweisen von Systemressourcen zu Abfragen.  Weitere Informationen zu Ressourcenklassen finden Sie unter [Ressourcenklassen und Workloadverwaltung](resource-classes-for-workload-management.md).  Abfragen warten, wenn die einer Abfrage zugeordnete Ressourcenklasse mehr Ressourcen benötigt, als zurzeit verfügbar sind.
+SQL Analytics bietet Ressourcenklassen zum Zuweisen von Systemressourcen zu Abfragen.  Weitere Informationen zu Ressourcenklassen finden Sie unter [Ressourcenklassen und Workloadverwaltung](resource-classes-for-workload-management.md).  Abfragen warten, wenn die einer Abfrage zugeordnete Ressourcenklasse mehr Ressourcen benötigt, als zurzeit verfügbar sind.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Erkennung von Abfragen in der Warteschlange und andere DMVs
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse verfügt über die folgenden Wartetypen:
+SQL Analytics verfügt über die folgenden Wartetypen:
 
 * **LocalQueriesConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich außerhalb des Parallelitätsslot-Frameworks befinden. DMV-Abfragen und Systemfunktionen wie `SELECT @@VERSION` sind Beispiele für lokale Abfragen.
 * **UserConcurrencyResourceType:** Bezieht sich auf Abfragen, die sich innerhalb des Parallelitätsslot-Frameworks befinden. Abfragen für Endbenutzertabellen sind ein Beispiel für die Verwendung dieses Ressourcentyps.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Analytics](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

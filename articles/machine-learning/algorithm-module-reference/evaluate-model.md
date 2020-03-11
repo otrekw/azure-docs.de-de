@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 02/24/2020
+ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137546"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917430"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -25,7 +25,8 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
  Die Metriken, die vom Modul **Evaluate Model** zurückgegeben werden, hängen vom Typ des Modells ab, das Sie auswerten möchten:  
   
 -   **Klassifizierungsmodelle**    
--   **Regressionsmodelle**    
+-   **Regressionsmodelle**  
+-   **Clusteringmodelle**  
 
 
 > [!TIP]
@@ -72,7 +73,7 @@ Das Modell oder die Daten, die an den linken Port angefügt wurden, werden zuers
 
 So stellt beispielsweise die folgende Abbildung einen Vergleich der Ergebnisse zweier Clusteringmodelle dar, die anhand derselben Daten, aber mit unterschiedlichen Parametern erstellt wurden.  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 Da es sich um ein Clusteringmodell handelt, sind die Auswertungsergebnisse anders als wenn Sie Ergebnisse zweier Regressionsmodelle vergleichen oder zwei Klassifizierungsmodelle miteinander vergleichen. Die Gesamtpräsentation ist jedoch identisch. 
 
@@ -82,10 +83,11 @@ Dieser Abschnitt beschreibt die Metriken, die für die bestimmten Arten von Mode
 
 + [Klassifizierungsmodelle](#metrics-for-classification-models)
 + [Regressionsmodelle](#metrics-for-regression-models)
++ [Clusteringmodelle](#metrics-for-clustering-models)
 
 ### <a name="metrics-for-classification-models"></a>Metriken für Klassifizierungsmodelle
 
-Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen erfasst. Wenn Sie Modelle vergleichen, werden sie anhand der Metrik eingestuft, die Sie für die Auswertung auswählen.  
+Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen erfasst.
   
 -   **Accuracy** (Treffergenauigkeit) misst die Güte eines Klassifizierungsmodells als das Verhältnis der wahren Ergebnisse zur Gesamtheit der Fälle.  
   
@@ -105,7 +107,7 @@ Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen er
  
 Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass sie die Fehlerquote schätzen.  Ein Modell passt gut zu den Daten, wenn der Unterschied zwischen beobachteten und vorhergesagten Werten gering ist. Wenn Sie sich jedoch das Muster der Residuen (die Differenz zwischen einem beliebigen vorhergesagten Punkt und seinem entsprechenden Istwert) ansehen, können Sie viel über eine mögliche Verzerrung im Modell erfahren.  
   
- Die folgenden Metriken werden für die Auswertung von Regressionsmodellen herangezogen. Wenn Sie Modelle vergleichen, werden sie nach der Metrik eingestuft, die Sie für die Auswertung auswählen.  
+ Die folgenden Metriken werden für die Auswertung von Regressionsmodellen herangezogen.
   
 - **Mean absolute error (MAE)** (mittlerer absoluter Fehler) misst, wie nah die Vorhersagen an den tatsächlichen Ergebnissen sind, weshalb ein niedrigerer Wert besser ist.  
   
@@ -118,6 +120,30 @@ Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass si
 
   
 - **Coefficient of determination** (Bestimmtheitsmaß), oft auch als R<sup>2</sup> bezeichnet, stellt die Vorhersagekraft des Modells als Wert von 0 bis 1 dar. 0 bedeutet, dass das Modell zufällig ist (also nichts erklärt). 1 bedeutet, dass es eine perfekte Anpassung gibt. Bei der Interpretation der R<sup>2</sup>-Werte ist jedoch Vorsicht geboten, da niedrige Werte völlig normal und hohe Werte verdächtig sein können.
+
+###  <a name="metrics-for-clustering-models"></a>Metriken für Clusteringmodelle
+
+Da sich Clusteringmodelle in vielerlei Hinsicht deutlich von Klassifizierungs- und Regressionsmodellen unterscheiden, gibt [Evaluate Model](evaluate-model.md) (Modell bewerten) auch eine andere Menge an Statistiken für Clusteringmodelle zurück.  
+  
+ Die für ein Clusteringmodell zurückgegebene Statistik beschreibt, wie viele Datenpunkte jedem Cluster zugeordnet wurden, wie groß die Trennung zwischen den Clustern ist und wie eng die Datenpunkte innerhalb jedes Clusters gebündelt sind.  
+  
+ Die Statistiken für das Clusteringmodell werden über das gesamte Dataset gemittelt, wobei clusterbezogene Statistiken in zusätzlichen Zeilen enthalten sind.  
+  
+Die folgenden Metriken werden für die Auswertung von Clusteringmodellen herangezogen.
+    
+-   Die Werte in der Spalte **Average Distance to Other Center** (Durchschnittlicher Abstand zum anderen Zentrum) geben an, wie nahe jeder Punkt im Cluster im Durchschnitt an den Schwerpunkten aller anderen Cluster liegt.   
+
+-   Die Werte in der Spalte **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum) stellen die Nähe aller Punkte in einem Cluster zum Schwerpunkt dieses Clusters dar.  
+  
+-   Die Spalte **Number of Points** (Anzahl der Punkte) zeigt, wie viele Datenpunkte jedem Cluster zugewiesen wurden, sowie die Gesamtanzahl der Datenpunkte in jedem Cluster.  
+  
+     Wenn die Anzahl der den Clustern zugeordneten Datenpunkte geringer ist als die Gesamtanzahl der verfügbaren Datenpunkte, bedeutet dies, dass die Datenpunkte keinem Cluster zugeordnet werden konnten.  
+  
+-   Die Werte in der Spalte **Maximal Distance to Cluster Center** (Maximaler Abstand zum Clusterzentrum) stellen die Summe der Abstände zwischen jedem Punkt und dem Schwerpunkt des Clusters des betreffenden Punkts dar.  
+  
+     Wenn dieser Wert hoch ist, kann dies bedeuten, dass der Cluster weit verstreut ist. Überprüfen Sie diese Statistik zusammen mit **Average Distance to Cluster Center** (Durchschnittlicher Abstand zum Clusterzentrum), um die Streuung des Clusters zu bestimmen.   
+
+-   Der Wert **Combined Evaluation** (Kombinierte Bewertung) am Ende jedes Ergebnisabschnitts listet die gemittelten Werte für die in diesem bestimmten Modell erstellten Cluster auf.  
   
 
 ## <a name="next-steps"></a>Nächste Schritte

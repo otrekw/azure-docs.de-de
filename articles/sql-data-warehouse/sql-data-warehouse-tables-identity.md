@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Ersatzschlüsseln mit IDENTITY
-description: Empfehlungen und Beispiele zum Erstellen von Ersatzschlüsseln für Tabellen in Azure SQL Data Warehouse mithilfe der IDENTITY-Eigenschaft
+description: Empfehlungen und Beispiele zum Erstellen von Ersatzschlüsseln für Tabellen in SQL Analytics mithilfe der Eigenschaft IDENTITY.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692467"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199426"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Erstellen von Ersatzschlüsseln mit IDENTITY in Azure SQL Data Warehouse
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Erstellen von Ersatzschlüsseln in SQL Analytics mit IDENTITY
 
-Empfehlungen und Beispiele zum Erstellen von Ersatzschlüsseln für Tabellen in Azure SQL Data Warehouse mithilfe der IDENTITY-Eigenschaft
+Empfehlungen und Beispiele zum Erstellen von Ersatzschlüsseln für Tabellen in SQL Analytics mithilfe der Eigenschaft IDENTITY.
 
 ## <a name="what-is-a-surrogate-key"></a>Was ist ein Ersatzschlüssel?
 
-Ein Ersatzschlüssel für eine Tabelle ist eine Spalte mit einem eindeutigen Bezeichner für jede Zeile. Der Schlüssel wird nicht aus den Tabellendaten generiert. Datenmodellierer erstellen häufig Ersatzschlüssel in ihren Tabellen, während sie Data Warehouse-Modelle erstellen. Mit der IDENTITY-Eigenschaft können Sie dies einfach und effektiv durchführen, ohne die Leistung beim Laden zu beeinträchtigen.  
+Ein Ersatzschlüssel für eine Tabelle ist eine Spalte mit einem eindeutigen Bezeichner für jede Zeile. Der Schlüssel wird nicht aus den Tabellendaten generiert. Datenmodellierer erstellen beim Entwerfen von SQL Analytics-Modellen häufig Ersatzschlüssel in ihren Tabellen. Mit der IDENTITY-Eigenschaft können Sie dies einfach und effektiv durchführen, ohne die Leistung beim Laden zu beeinträchtigen.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Erstellen einer Tabelle mit einer IDENTITY-Spalte
 
-Die IDENTITY-Eigenschaft wurde so entwickelt, dass sie über alle Verteilungen im Data Warehouse horizontal hochskaliert werden kann. Aus diesem Grund ist die Implementierung von IDENTITY auf das Erreichen dieser Ziele ausgerichtet.
+Die IDENTITY-Eigenschaft wurde so entwickelt, dass sie über alle Verteilungen in der SQL Analytics-Datenbank aufskaliert werden kann. Aus diesem Grund ist die Implementierung von IDENTITY auf das Erreichen dieser Ziele ausgerichtet.
 
 Sie können beim Erstellen einer Tabelle definieren, dass diese die IDENTITY-Eigenschaft hat, indem Sie Syntax verwenden, die der folgenden Anweisung ähnelt:
 
@@ -50,7 +50,7 @@ Im restlichen Abschnitt werden die Feinheiten der Implementierung hervorgehoben,
 
 ### <a name="allocation-of-values"></a>Zuordnung von Werten
 
-Die IDENTITY-Eigenschaft garantiert nicht die Reihenfolge, in der die Ersatzwerte zugeordnet sind. Dies spiegelt das Verhalten von SQL Server und Azure SQL-Datenbank wieder. Allerdings ist in Azure SQL Data Warehouse die Abwesenheit einer Garantie ausgeprägter.
+Die IDENTITY-Eigenschaft garantiert nicht die Reihenfolge, in der die Ersatzwerte zugeordnet sind. Dies spiegelt das Verhalten von SQL Server und Azure SQL-Datenbank wieder. Allerdings ist in SQL Analytics das Fehlen einer Garantie deutlicher.
 
 Dies wird in folgendem Beispiel veranschaulicht:
 
@@ -88,11 +88,11 @@ Der Wertebereich für den Datentyp ist gleichmäßig auf die Verteilungen vertei
 Wenn eine vorhandene Identitätsspalte in einer neuer Tabelle ausgewählt ist, erbt die neue Spalte die IDENTITY-Eigenschaft, es sei denn, eine der folgenden Bedingungen trifft zu:
 
 - Die SELECT-Anweisung enthält einen Join.
-- Mehrere SELECT-Anweisungen werden mithilfe von UNION verknüpft.
+- Mehrere SELECT-Anweisungen sind mit UNION verknüpft.
 - Die IDENTITY-Spalte ist mehr als einmal in der Auswahlliste aufgeführt.
 - Die IDENTITY-Spalte ist Teil eines Ausdrucks.
 
-Wenn eine dieser Bedingungen zutrifft, wird die Spalte als NOT NULL erstellt, statt die IDENTITY-Eigenschaft zu erben.
+Falls eine dieser Bedingungen erfüllt ist, wird die Spalte mit NOT NULL erstellt, anstatt die IDENTITY-Eigenschaft zu erben.
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) folgt dem gleichen SQL Server-Verhalten wie SELECT
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explizites Einfügen von Werten in eine IDENTITY-Spalte
 
-SQL Data Warehouse unterstützt `SET IDENTITY_INSERT <your table> ON|OFF`-Syntax. Mit dieser Syntax können Sie explizit Werte in die IDENTITY-Spalte einfügen.
+SQL Analytics unterstützt die Syntax `SET IDENTITY_INSERT <your table> ON|OFF`. Mit dieser Syntax können Sie explizit Werte in die IDENTITY-Spalte einfügen.
 
 Viele Datenmodellierer verwenden vordefinierte negative Werte für bestimmte Zeilen in ihren Dimensionen. Die Zeile „-1“ oder „unbekannter Member“ ist ein Beispiel.
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Aktuell ist es nicht möglich, `CREATE TABLE AS SELECT` zu verwenden, wenn Sie Daten mit einer IDENTITY-Spalte in eine Tabelle laden.
 >
 
-Weitere Informationen zum Laden von Daten finden Sie unter [Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse](design-elt-data-loading.md) und [Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse](guidance-for-loading-data.md).
+Weitere Informationen zum Laden von Daten finden Sie unter [Entwerfen von ELT-Prozessen für SQL Analytics](design-elt-data-loading.md) und [Bewährte Methoden zum Laden von Daten](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systemsichten
 
@@ -195,7 +195,7 @@ Die IDENTITY-Eigenschaft kann in folgenden Fällen nicht verwendet werden:
 - Wenn die Spalte auch der Verteilungsschlüssel ist
 - Wenn die Tabelle eine externe Tabelle ist
 
-Die folgenden verwandten Funktionen werden in SQL Data Warehouse nicht unterstützt:
+Die folgenden verwandten Funktionen werden in SQL Analytics nicht unterstützt:
 
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

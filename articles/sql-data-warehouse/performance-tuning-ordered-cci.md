@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685990"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200548"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
-Wenn Benutzer eine Columnstore-Tabelle in Azure SQL Data Warehouse abfragen, überprüft der Optimierer die minimalen und maximalen Werte, die in den einzelnen Segmenten gespeichert sind.  Segmente, die sich außerhalb der Grenzen des Abfrageprädikats befinden, werden nicht vom Datenträger in den Arbeitsspeicher gelesen.  Die Leistung einer Abfrage kann gesteigert werden, wenn die Anzahl der zu lesenden Segmente und deren Gesamtgröße gering ist.   
+Wenn Benutzer eine Columnstore-Tabelle in SQL Data Analytics abfragen, überprüft der Optimierer die minimalen und maximalen Werte, die in den einzelnen Segmenten gespeichert sind.  Segmente, die sich außerhalb der Grenzen des Abfrageprädikats befinden, werden nicht vom Datenträger in den Arbeitsspeicher gelesen.  Die Leistung einer Abfrage kann gesteigert werden, wenn die Anzahl der zu lesenden Segmente und deren Gesamtgröße gering ist.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Vergleich sortierter und nicht sortierter gruppierter Columnstore-Indizes 
-Standardmäßig erstellt eine interne Komponente (Index-Generator) für jede Azure Data Warehouse-Tabelle, die ohne Indexoption erstellt wurde, einen nicht geordneten gruppierten Columnstore-Index (CCI).  Die Daten den einzelnen Spalten werden in einem separaten CCI-Zeilengruppensegment komprimiert.  Für den Wertebereich jedes Segments gibt es Metadaten, sodass Segmente, die sich außerhalb der Grenzen des Abfrageprädikats befinden, während der Abfrageausführung nicht von der Festplatte gelesen werden.  CCI bietet den höchsten Grad an Datenkomprimierung und verringert die Größe der zu lesenden Segmente, damit Abfragen schneller ausgeführt werden. Da der Index-Generator die Daten jedoch nicht sortiert, bevor er sie in Segmente komprimiert, können Segmente mit überlappenden Wertebereichen auftreten, was dazu führt, dass Abfragen mehr Segmente vom Datenträger lesen muss und die Fertigstellung länger dauert.  
+Standardmäßig erstellt eine interne Komponente (Index-Generator) für jede SQL Analytics-Tabelle, die ohne Indexoption erstellt wurde, einen nicht geordneten gruppierten Columnstore-Index (CCI).  Die Daten den einzelnen Spalten werden in einem separaten CCI-Zeilengruppensegment komprimiert.  Für den Wertebereich jedes Segments gibt es Metadaten, sodass Segmente, die sich außerhalb der Grenzen des Abfrageprädikats befinden, während der Abfrageausführung nicht von der Festplatte gelesen werden.  CCI bietet den höchsten Grad an Datenkomprimierung und verringert die Größe der zu lesenden Segmente, damit Abfragen schneller ausgeführt werden. Da der Index-Generator die Daten jedoch nicht sortiert, bevor er sie in Segmente komprimiert, können Segmente mit überlappenden Wertebereichen auftreten, was dazu führt, dass Abfragen mehr Segmente vom Datenträger lesen muss und die Fertigstellung länger dauert.  
 
-Beim Erstellen einer geordneten CCI-Tabelle sortiert die Azure SQL Data Warehouse-Engine die vorhandenen Daten im Arbeitsspeicher nach den Sortierschlüsseln, bevor der Index-Generator sie in Indexsegmente komprimiert.  Bei sortierten Daten wird die Überlappung von Segmenten verringert, sodass Abfragen Segmente effizienter entfernen können und somit eine schnellere Leistung aufweisen, da die Anzahl der Segmente, die vom Datenträger gelesen werden sollen, kleiner ist.  Die Überlappung von Segmenten lässt sich vermeiden, wenn alle Daten im Arbeitsspeicher gleichzeitig sortiert werden.  Aufgrund der großen Datenmenge in Data Warehouse-Tabellen kommt dieses Szenario nicht häufig vor.  
+Beim Erstellen einer geordneten CCI-Tabelle sortiert die SQL Analytics-Engine die vorhandenen Daten im Arbeitsspeicher nach den Sortierschlüsseln, bevor der Index-Generator sie in Indexsegmente komprimiert.  Bei sortierten Daten wird die Überlappung von Segmenten verringert, sodass Abfragen Segmente effizienter entfernen können und somit eine schnellere Leistung aufweisen, da die Anzahl der Segmente, die vom Datenträger gelesen werden sollen, kleiner ist.  Die Überlappung von Segmenten lässt sich vermeiden, wenn alle Daten im Arbeitsspeicher gleichzeitig sortiert werden.  Aufgrund der großen Datenmenge in SQL Analytics-Tabellen kommt dieses Szenario nicht oft vor.  
 
 Wenn Sie die Segmentbereiche für eine Spalte überprüfen möchten, führen Sie diesen Befehl mit dem Tabellen- und Spaltennamen aus:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> In einer sortierten CCI-Tabelle werden die neuen Daten aus dem gleichen Batch von DML- oder Datenladevorgängen innerhalb dieses Batches sortiert, es findet jedoch keine globale Sortierung aller Daten in der Tabelle statt.  Benutzer können die geordnete CCI-Tabelle neu erstellen (REBUILD), um alle Daten in der Tabelle zu sortieren.  In Azure SQL Data Warehouse ist die Neuerstellung (REBUILD) des Columnstore-Indexes ein Offlinevorgang.  Bei einer partitionierten Tabelle erfolgt die Neuerstellung (REBUILD) der Partitionen nacheinander.  Die Daten in der Partition, die neu erstellt wird, sind „offline“ und nicht verfügbar, bis die Neuerstellung (REBUILD) für diese Partition beendet ist. 
+> In einer sortierten CCI-Tabelle werden die neuen Daten aus dem gleichen Batch von DML- oder Datenladevorgängen innerhalb dieses Batches sortiert, es findet jedoch keine globale Sortierung aller Daten in der Tabelle statt.  Benutzer können die geordnete CCI-Tabelle neu erstellen (REBUILD), um alle Daten in der Tabelle zu sortieren.  In SQL Analytics ist die Neuerstellung des Columnstore-Indexes ein Offlinevorgang.  Bei einer partitionierten Tabelle erfolgt die Neuerstellung (REBUILD) der Partitionen nacheinander.  Die Daten in der Partition, die neu erstellt wird, sind „offline“ und nicht verfügbar, bis die Neuerstellung (REBUILD) für diese Partition beendet ist. 
 
 ## <a name="query-performance"></a>Abfrageleistung
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Sortieren Sie die Daten vorab nach den Sortierschlüsseln, bevor Sie sie in Azure SQL Data Warehouse-Tabellen laden.
+- Sortieren Sie die Daten vorab nach den Sortierschlüsseln, bevor Sie sie in SQL Analytics-Tabellen laden.
 
 
 Im Folgenden finden Sie ein Beispiel für eine Verteilung einer geordneten CCI-Tabelle ohne Segmentüberlappungen, bei dem die oben genannten Empfehlungen beachtet wurden. Die geordnete CCI-Tabelle wird in einer DWU1000c-Datenbank über CTAS aus einer Heaptabelle mit 20 GB mithilfe von MAXDOP 1 und xlargerc erstellt.  Die CCI-Tabelle wird in einer BIGINT-Spalte ohne Duplikate sortiert.  
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht für SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).

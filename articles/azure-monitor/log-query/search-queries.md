@@ -1,18 +1,17 @@
 ---
 title: Suchabfragen in Azure Monitor-Protokollen | Microsoft-Dokumentation
 description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten bei der Verwendung der Suche in Azure Monitor-Suchabfragen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932998"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660239"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Suchabfragen in Azure Monitor-Protokollen
 Azure Monitor-Protokollabfragen können entweder mit einem Tabellennamen oder einem Suchbefehl beginnen. Dieses Tutorial behandelt suchbasierte Abfragen. Jede Methode bringt ihre eigenen Vorteile mit sich.
@@ -95,7 +94,7 @@ Sie können auch alles in eine Tabelle mit nur einem Platzhalter (`search in (Ev
 > [!TIP]
 > Mit `search *` können Sie zwar jede Spalte aus jeder Tabelle abrufen, allerdings sollten Sie den Bereich Ihrer Abfragen immer auf bestimmte Tabellen beschränken. Abfragen ohne Bereichseinschränkung können sehr lange dauern und möglicherweise zu viele Ergebnisse zurückgeben.
 
-## <a name="add-and--or-to-search-queries"></a>Hinzufügen von *and*/*or* zu Suchabfragen
+## <a name="add-and--or-to-search-queries"></a>Hinzufügen von *and* / *or* zu Suchabfragen
 Verwenden Sie **and**, um nach Datensätzen zu suchen, die mehrere Benennungen enthalten:
 
 ```Kusto

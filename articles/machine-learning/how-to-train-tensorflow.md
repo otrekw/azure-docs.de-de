@@ -1,5 +1,5 @@
 ---
-title: Trainieren eines neuronalen Netzwerks mit TensorFlow
+title: Trainieren und Bereitstellen eines TensorFlow-Modells
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie TensorFlow-Trainingsskripts mithilfe von Azure Machine Learning bedarfsorientiert ausführen.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114373"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228305"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bedarfsorientiertes Erstellen eines TensorFlow-Deep Learning-Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>Bereitstellung
+## <a name="deploy-a-tensorflow-model"></a>Bereitstellen eines TensorFlow-Modells
 
 Das soeben registrierte Modell kann genauso eingesetzt werden wie jedes andere registrierte Modell in Azure Machine Learning, unabhängig davon, welchen Estimator Sie für das Training verwendet haben. Die Schrittanleitung zur Bereitstellung enthält einen Abschnitt zur Registrierung von Modellen, aber Sie können direkt zu [Erstellen eines Computeziels](how-to-deploy-and-where.md#choose-a-compute-target) für die Bereitstellung springen, da Sie bereits über ein registriertes Modell verfügen.
 
-### <a name="preview-no-code-model-deployment"></a>(Vorschau) Modellimplementierung ohne Code
+## <a name="preview-no-code-model-deployment"></a>(Vorschau) Modellimplementierung ohne Code
 
 Anstelle der traditionellen Bereitstellungsroute können Sie auch die Bereitstellung ohne Code (Vorschau) für TensorFlow verwenden. Indem Sie Ihr Modell wie oben gezeigt mit den Parametern `model_framework`, `model_framework_version` und `resource_configuration` registrieren, können Sie einfach die statische Funktion `deploy()` verwenden, um Ihr Modell bereitzustellen.
 

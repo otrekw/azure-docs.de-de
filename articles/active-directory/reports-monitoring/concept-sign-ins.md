@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429740"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656603"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -101,59 +101,90 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
-Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie geeignet ist. Filtern Sie die Anmeldedaten anschließend mit dem Datumsfeld als Standardfilter. Azure AD bietet eine breite Palette an zusätzlichen Filtern, die Sie festlegen können.
+Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie geeignet ist. Filtern Sie die Anmeldedaten anschließend mit dem Datumsfeld als Standardfilter. Azure AD bietet eine breite Palette zusätzlicher Filter, die Sie festlegen können:
 
 ![Anmeldeaktivität](./media/concept-sign-ins/04.png "Anmeldeaktivität")
 
-Mit dem Filter **Benutzer** können Sie den Namen oder den Dienstprinzipalnamen (UPN) des gewünschten Benutzers angeben.
+**Anforderungs-ID-** : ID der Anforderung, die Sie interessiert.
 
-Mit dem Filter **Anwendung** können Sie den Namen der gewünschten Anwendung angeben.
+**Benutzer**: Name oder Benutzerprinzipalname des Benutzers, der Sie interessiert.
 
-Für den Filter **Anmeldestatus** können Sie eine der folgenden Optionen auswählen:
+**Anwendung**: Name der Zielanwendung.
+ 
+**Status**: der Anmeldestatus, der Sie interessiert:
 
-- All
 - Erfolg
+
 - Fehler
 
-Mit dem Filter **Bedingter Zugriff** können Sie den Richtlinienstatus des bedingten Zugriffs für die Anmeldung auswählen:
+- Unterbrochen
 
-- All
-- Nicht angewendet
+
+**IP-Adresse**: IP-Adresse des Geräts, mit dem die Verbindung mit Ihrem Mandanten hergestellt wird.
+
+**Standort**: Standort, von dem aus die Verbindung eingeleitet wurde:
+
+- City
+
+- Bundesland/Kanton
+
+- Land/Region
+
+
+**Ressource**: Name des Diensts, der für die Anmeldung verwendet wird.
+
+
+**Ressourcen-ID**: ID des Diensts, der für die Anmeldung verwendet wird.
+
+
+**Client-App**: Typ der Client-App, die zum Herstellen einer Verbindung mit Ihrem Mandanten verwendet wird:
+
+![Client-App-Filter](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Name|Moderne Authentifizierung|BESCHREIBUNG|
+|---|:-:|---|
+|Authentifiziertes SMTP| |Wird von POP- und IMAP-Clients zum Senden von E-Mails verwendet.|
+|AutoErmittlung| |Wird von Outlook- und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und eine Verbindung damit herzustellen.|
+|Exchange ActiveSync| |Dieser Filter zeigt alle Anmeldeversuche, bei denen das EAS-Protokoll versucht wurde.|
+|Browser|![Prüfen](./media/concept-sign-ins/check.png)|Zeigt alle Anmeldeversuche von Benutzern über Webbrowser|
+|Exchange ActiveSync| | Zeigt alle Anmeldeversuche von Benutzern mit Client-Apps, die Exchange ActiceSync zur Herstellung einer Verbindung mit Exchange Online verwenden|
+|Exchange Online PowerShell| |Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Exchange-Webdienste| |Eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird.|
+|IMAP4| |Älterer E-Mail-Client, der IMAP zum Abrufen von E-Mails verwendet.|
+|MAPI über HTTP| |Wird von Outlook 2010 und höher verwendet.|
+|Mobile Apps und Desktop-Apps|![Prüfen](./media/concept-sign-ins/check.png)|Zeigt alle Anmeldeversuche von Benutzern mithilfe von mobilen Anwendungen und Desktopclients.|
+|Offlineadressbuch| |Eine Kopie der Adressenlistensammlungen, die von Outlook heruntergeladen und verwendet werden.|
+|Outlook Anywhere (RPC über HTTP)| |Wird bis Outlook 2016 verwendet.|
+|Outlook-Dienst| |Wird von der Mail- und Kalender-App für Windows 10 verwendet.|
+|POP3| |Älterer E-Mail-Client, der POP3 zum Abrufen von E-Mails verwendet.|
+|Reporting Web Services| |Wird zum Abrufen von Berichtsdaten in Exchange Online verwendet.|
+|Andere Clients| |Zeigt alle Anmeldeversuche von Benutzern, bei denen die Client-App nicht inbegriffen oder unbekannt ist.|
+
+
+
+**Betriebssystem**: das Betriebssystem, das auf dem Gerät ausgeführt wird, mit dem die Anmeldung bei Ihrem Mandanten erfolgt. 
+
+
+**Gerätebrowser**: Wenn die Verbindung in einem Browser eingeleitet wurde, können Sie in diesem Feld nach Browsername filtern.
+
+
+**Korrelations-ID**: Korrelations-ID der Aktivität.
+
+
+**Bedingter Zugriff**: Status der angewendeten Regeln für bedingten Zugriff
+
+- Nicht angewendet 
+
 - Erfolg
+
 - Fehler
 
-Mit dem Filter **Datum** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
-Mögliche Werte:
 
-- 1 Monat
-- 7 Tage
-- 24 Stunden
-- Benutzerdefiniertes Zeitintervall
 
-Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese automatisch in die Filterliste aufgenommen. Wenn Sie Ihrer Liste also beispielsweise das Feld **Client-App** hinzufügen, erhalten Sie auch eine weitere Filteroption, mit der Sie folgende Filter festlegen können:  
-![Anmeldeaktivität](./media/concept-sign-ins/12.png "Anmeldeaktivität")
 
-- **Browser**  
-    Dieser Filter zeigt alle Ereignisse an, bei denen Anmeldeversuche mithilfe von Browserflows ausgeführt wurden.
-- **Exchange ActiveSync (unterstützt)**  
-    Dieser Filter zeigt alle Anmeldeversuche mit dem Exchange ActiveSync (EAS)-Protokoll von unterstützten Plattformen wie iOS, Android und Windows Phone an.
-- **Exchange ActiveSync (nicht unterstützt)**  
-    Dieser Filter zeigt alle Anmeldeversuche mit dem EAS-Protokoll von nicht unterstützten Plattformen wie Linux-Distributionen.
-- **Mobile Apps und Desktopclients** Dieser Filter zeigt alle Anmeldeversuche an, die keine Browserflows verwendet haben. Dabei kann es sich beispielsweise um mobile Apps von einer beliebigen Plattform (mithilfe eines beliebigen Protokolls) oder um Apps auf Desktopclients wie Office unter Windows oder MacOS handeln.
-  
-- **Andere Clients**
-    - **IMAP**  
-        Älterer E-Mail-Client, der IMAP zum Abrufen von E-Mails verwendet.
-    - **MAPI**  
-        Office 2013 mit aktivierter ADAL und Verwendung von MAPI.
-    - **Alte Office-Clients**  
-        Office 2013 in der Standardkonfiguration, bei der MAPI verwendet wird und ADAL nicht aktiviert ist, oder Office 2016 mit deaktivierter ADAL.
-    - **POP**  
-        Älterer E-Mail-Client, der POP3 zum Abrufen von E-Mails verwendet.
-    - **SMTP**  
-        Älterer E-Mail-Client, der SMTP zum Senden von E-Mails verwendet.
+
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 

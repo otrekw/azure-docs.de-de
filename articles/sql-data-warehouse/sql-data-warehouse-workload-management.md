@@ -1,22 +1,22 @@
 ---
 title: Verwalten von Arbeitsauslastungen
-description: Leitfaden zum Implementieren der Workloadverwaltung in Azure SQL Data Warehouse.
+description: Leitfaden zum Implementieren der Workloadverwaltung in Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935409"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197656"
 ---
 # <a name="what-is-workload-management"></a>Worum geht es bei der Workloadverwaltung?
 
@@ -36,11 +36,11 @@ Die Leistungskapazität eines Data Warehouse richtet sich nach den [Data Warehou
 
 
 ## <a name="workload-management-concepts"></a>Workloadverwaltungskonzepte
-In der Vergangenheit haben Sie die Abfrageleistung von SQL Data Warehouse über [Ressourcenklassen](resource-classes-for-workload-management.md) verwaltet.  Mithilfe von Ressourcenklassen konnte einer Abfrage Arbeitsspeicher basierend auf der Rollenmitgliedschaft zugewiesen werden.  Die größte Herausforderung bei Ressourcenklassen war, dass nach der Konfiguration keine Governance oder Fähigkeit zum Steuern der Workload bestand.  
+In der Vergangenheit haben Sie für SQL Analytics in Azure Synapse die Abfrageleistung über [Ressourcenklassen](resource-classes-for-workload-management.md) verwaltet.  Mithilfe von Ressourcenklassen konnte einer Abfrage Arbeitsspeicher basierend auf der Rollenmitgliedschaft zugewiesen werden.  Die größte Herausforderung bei Ressourcenklassen war, dass nach der Konfiguration keine Governance oder Fähigkeit zum Steuern der Workload bestand.  
 
 Wenn Sie z.B. eine Ad-hoc-Benutzerrollenmitgliedschaft für „smallrc“ gewährten, konnte dieser Benutzer 100 % des Arbeitsspeichers im System belegen.  Bei Ressourcenklassen gibt es keine Möglichkeit, Ressourcen zu reservieren und sicherzustellen, dass Ressourcen für kritische Workloads verfügbar sind.
 
-Die Workloadverwaltung in SQL Data Warehouse umfasst drei grundlegende Konzepte: [Workloadklassifizierung](sql-data-warehouse-workload-classification.md), [Workloadpriorität](sql-data-warehouse-workload-importance.md) und [Workloadisolation](sql-data-warehouse-workload-isolation.md).  Mit diesen Funktionen können Sie besser steuern, wie Systemressourcen von der Workload genutzt werden.
+Die SQL Analytics-Workloadverwaltung in Azure Synapse besteht aus drei grundlegenden Konzepten: [Workloadklassifizierung](sql-data-warehouse-workload-classification.md), [Workloadpriorität](sql-data-warehouse-workload-importance.md) und [Workloadisolation](sql-data-warehouse-workload-isolation.md).  Mit diesen Funktionen können Sie besser steuern, wie Systemressourcen von der Workload genutzt werden.
 
 Die Workloadklassifizierung ist das Konzept, bei dem eine Anforderung einer Arbeitsauslastungsgruppe zugewiesen wird und Prioritätsstufen festgelegt werden.  Bisher erfolgte diese Zuweisung über die Rollenmitgliedschaft mithilfe von [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  Dies ist nun über [CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) möglich.  Die Klassifizierungsfunktion bietet einen umfassenderen Satz von Optionen, wie z.B. Bezeichnung, Sitzung und Zeit zum Klassifizieren von Anforderungen.
 

@@ -2,20 +2,20 @@
 title: UserJourneys | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das UserJourneys-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/04/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ec2d24c399e44bf973fc1ee78466dbee26f0394
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983179"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226992"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -25,13 +25,13 @@ User Journeys geben explizite Pfade an, über die eine Richtlinie einer Anwendun
 
 Diese User Journeys können als Vorlagen gesehen werden, die verfügbar sind, um die Grundbedürfnisse der verschiedenen vertrauenden Seiten der Interessengemeinschaft abzudecken. User Journeys unterstützen die Definition des Teils der vertrauenden Seite einer Richtlinie. Eine Richtlinie kann mehrere User Journeys definieren. Jede User Journey besteht aus einer Sequenz von Orchestrierungsschritten.
 
-Ein **UserJourneys**-Element wird unter dem allgemeinsten Element der Richtliniendatei hinzugefügt, um die von der Richtlinie unterstützten User Journeys zu definieren. 
+Ein **UserJourneys**-Element wird unter dem allgemeinsten Element der Richtliniendatei hinzugefügt, um die von der Richtlinie unterstützten User Journeys zu definieren.
 
 Das **UserJourneys**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| UserJourney | 1:n | Eine User Journey, die alle für den Benutzerflow erforderlichen Konstrukte definiert. | 
+| UserJourney | 1:n | Eine User Journey, die alle für den Benutzerflow erforderlichen Konstrukte definiert. |
 
 Das **UserJourney**-Element enthält das folgende Attribut:
 
@@ -41,7 +41,7 @@ Das **UserJourney**-Element enthält das folgende Attribut:
 
 Das **UserJourney**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1:n | Eine Orchestrierungssequenz, die für eine erfolgreiche Transaktion durchlaufen werden muss. Jede User Journey besteht aus einer geordneten List von Orchestrierungsschritten, die nacheinander ausgeführt werden. Wenn ein Schritt fehlschlägt, schlägt die Transaktion fehl. |
 
@@ -49,7 +49,7 @@ Das **UserJourney**-Element enthält die folgenden Elemente:
 
 Eine User Journey wird als Orchestrierungssequenz dargestellt, die für eine erfolgreiche Transaktion durchlaufen werden muss. Wenn ein Schritt fehlschlägt, schlägt die Transaktion fehl. Diese Orchestrierungsschritte verweisen sowohl auf die Bausteine als auch auf die Anspruchsanbieter, die in der Richtliniendatei zugelassen werden. Jeder Orchestrierungsschritt, der für das Anzeigen oder Rendern einer Benutzeroberfläche verantwortlich ist, verfügt auch über einen Verweis auf den Bezeichner für die entsprechende Inhaltsdefinition.
 
-Orchestrierungsschritte können anhand von Voraussetzungen, die im OrchestrationSteps-Element definiert werden, bedingungsabhängig ausgeführt werden. Beispielsweise können Sie konfigurieren, dass ein Orchestrierungsschritt nur ausgeführt wird, wenn bestimmte Ansprüche vorhanden sind oder aber ein Anspruch dem angegebenen Wert entspricht oder nicht. 
+Orchestrierungsschritte können anhand von Voraussetzungen, die im OrchestrationSteps-Element definiert werden, bedingungsabhängig ausgeführt werden. Beispielsweise können Sie konfigurieren, dass ein Orchestrierungsschritt nur ausgeführt wird, wenn bestimmte Ansprüche vorhanden sind oder aber ein Anspruch dem angegebenen Wert entspricht oder nicht.
 
 Ein **OrchestrationSteps**-Element wird als Teil der Richtlinie hinzugefügt, um die geordnete Liste der Orchestrierungsschritte festzulegen. Dieses Element ist erforderlich.
 
@@ -57,50 +57,50 @@ Das **OrchestrationSteps**-Element enthält das folgende Element:
 
 | Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1:n | Ein geordneter Orchestrierungsschritt. | 
+| OrchestrationStep | 1:n | Ein geordneter Orchestrierungsschritt. |
 
 Das **OrchestrationStep**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| `Order` | Ja | Die Reihenfolge der Orchestrierungsschritte. | 
-| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> | 
-| ContentDefinitionReferenceId | Nein | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem Orchestrierungsschritt zugeordnet ist. In der Regel wird der Bezeichner für den Verweis auf die Inhaltsdefinition im selbstbestätigten technischen Profil definiert. Jedoch gibt es einige Fälle, in denen Azure AD B2C etwas ohne technisches Profil anzeigen muss. Hier sind zwei Beispiele: Wenn der Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` ist, muss Azure AD B2C die Auswahl des Identitätsanbieters auch ohne technisches Profil anzeigen. | 
+| `Order` | Ja | Die Reihenfolge der Orchestrierungsschritte. |
+| `Type` | Ja | Der Typ des Orchestrierungsschritts. Mögliche Werte: <ul><li>**ClaimsProviderSelection:** Gibt an, dass der Orchestrierungsschritt verschiedene Anspruchsanbieter darstellt, von denen der Benutzer einen auswählen kann.</li><li>**CombinedSignInAndSignUp:** Gibt an, dass der Orchestrierungsschritt eine kombinierte Seite für die Anmeldung eines Social Media-Anbieters und die Registrierung eines lokalen Kontos darstellt.</li><li>**ClaimsExchange:** Gibt an, dass der Orchestrierungsschritt Ansprüche mit einem Anspruchsanbieter austauscht.</li><li>**Getclaims:** Gibt an, dass der Orchestrierungsschritt die Eingabeansprüche liest.</li><li>**SendClaims:** Gibt an, dass der Orchestrierungsschritt die Ansprüche an die vertrauende Seite mit einem Token übermittelt, das von einem Anspruchsaussteller ausgestellt wurde.</li></ul> |
+| ContentDefinitionReferenceId | Nein | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem Orchestrierungsschritt zugeordnet ist. In der Regel wird der Bezeichner für den Verweis auf die Inhaltsdefinition im selbstbestätigten technischen Profil definiert. Jedoch gibt es einige Fälle, in denen Azure AD B2C etwas ohne technisches Profil anzeigen muss. Hier sind zwei Beispiele: Wenn der Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignInAndSignUp` ist, muss Azure AD B2C die Auswahl des Identitätsanbieters auch ohne technisches Profil anzeigen. |
 | CpimIssuerTechnicalProfileReferenceId | Nein | Der Typ des Orchestrierungsschritts ist `SendClaims`. Diese Eigenschaft definiert den Bezeichner für das technische Profil des Anspruchsanbieters, der das Token für die vertrauende Seite ausstellt.  Wenn sie nicht vorhanden ist, wird kein Token für die vertrauende Seite erstellt. |
 
 
 Das **OrchestrationStep**-Element kann die folgenden Elemente enthalten:
 
 | Element | Vorkommen | Beschreibung |
-| ------- | ----------- | ----------- | 
-| Preconditions | 0:n | Eine Liste von Voraussetzungen, die für die Ausführung des Orchestrierungsschritts erfüllt sein müssen. | 
-| ClaimsProviderSelections | 0:n | Eine Liste von Auswahloptionen für Anspruchsanbieter für den Orchestrierungsschritts. | 
-| ClaimsExchanges | 0:n | Eine Liste von Anspruchsaustauschvorgängen für den Orchestrierungsschritt. | 
+| ------- | ----------- | ----------- |
+| Preconditions | 0:n | Eine Liste von Voraussetzungen, die für die Ausführung des Orchestrierungsschritts erfüllt sein müssen. |
+| ClaimsProviderSelections | 0:n | Eine Liste von Auswahloptionen für Anspruchsanbieter für den Orchestrierungsschritts. |
+| ClaimsExchanges | 0:n | Eine Liste von Anspruchsaustauschvorgängen für den Orchestrierungsschritt. |
 
 ### <a name="preconditions"></a>Preconditions
 
 Das **Preconditions**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
-| ------- | ----------- | ----------- | 
-| Precondition | 1:n | Abhängig vom verwendeten technischen Profil, wird der Client entweder gemäß der Anspruchsanbieterauswahl weitergeleitet oder ein Serveraufruf wird zum Austauschen von Ansprüchen ausgeführt. | 
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Precondition | 1:n | Abhängig vom verwendeten technischen Profil, wird der Client entweder gemäß der Anspruchsanbieterauswahl weitergeleitet oder ein Serveraufruf wird zum Austauschen von Ansprüchen ausgeführt. |
 
 
 #### <a name="precondition"></a>Precondition
 
 Das **Precondition**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für diese Voraussetzung ausgeführt werden soll. Dieser Wert kann **ClaimsExist** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn die angegebenen Ansprüche in den aktuellen Ansprüchen des Benutzers vorhanden sind. Alternativ kann der Wert **ClaimEquals** sein, wodurch festgelegt wird, dass die Aktionen durchgeführt werden sollen, wenn der angegebene Anspruch vorhanden ist und sein Wert dem angegebenen Wert gleicht. |
-| `ExecuteActionsIf` | Ja | Verwenden Sie einen booleschen Test (TRUE oder FALSE), um zu entscheiden, ob die Aktionen in der Voraussetzung ausgeführt werden sollen. | 
+| `ExecuteActionsIf` | Ja | Verwenden Sie einen booleschen Test (TRUE oder FALSE), um zu entscheiden, ob die Aktionen in der Voraussetzung ausgeführt werden sollen. |
 
 Das **Precondition**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | value | 1:n | Ein ClaimTypeReferenceId-Wert, der abgefragt werden soll. Ein anderes Wertelement enthält den Wert, der überprüft werden soll.</li></ul>|
-| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Voraussetzungen innerhalb eines Orchestrierungsschritts TRUE ergibt. Wenn der Wert von `Action` auf `SkipThisOrchestrationStep` festgelegt ist, wird das zugeordnete `OrchestrationStep`-Element nicht ausgeführt. | 
+| Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Voraussetzungen innerhalb eines Orchestrierungsschritts TRUE ergibt. Wenn der Wert von `Action` auf `SkipThisOrchestrationStep` festgelegt ist, wird das zugeordnete `OrchestrationStep`-Element nicht ausgeführt. |
 
 #### <a name="preconditions-examples"></a>Beispiele für Voraussetzungen
 
@@ -151,7 +151,7 @@ Mit einem Preconditions-Element können mehrere Voraussetzungen überprüft werd
       <Value>email</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
-  </Preconditions>      
+  </Preconditions>
   <ClaimsExchanges>
     <ClaimsExchange Id="SelfAsserted-SocialEmail" TechnicalProfileReferenceId="SelfAsserted-SocialEmail" />
   </ClaimsExchanges>
@@ -164,21 +164,21 @@ Ein Orchestrierungsschritt vom Typ `ClaimsProviderSelection` oder `CombinedSignI
 
 Das **ClaimsProviderSelections**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1:n | Stellt die Liste von Anspruchsanbietern bereit, die ausgewählt werden können.|
 
-Das **ClaimsProviderSelections**-Element enthält die folgenden Attribute: 
+Das **ClaimsProviderSelections**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| DisplayOption| Nein | Steuert das Verhalten in dem Fall, wenn nur eine Anspruchsanbieterauswahl verfügbar ist. Mögliche Werte: `DoNotShowSingleProvider` (Standard), der Benutzer wird sofort an den Verbundidentitätsanbieter umgeleitet. Oder `ShowSingleProvider` Azure AD B2C präsentiert die Anmeldeseite mit der Auswahl eines einzelnen Identitätsanbieters. Um dieses Attribut zu verwenden, muss die [Version der Inhaltsdefinition](page-layout.md)  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` und höher lauten.| 
+| DisplayOption| Nein | Steuert das Verhalten in dem Fall, wenn nur eine Anspruchsanbieterauswahl verfügbar ist. Mögliche Werte: `DoNotShowSingleProvider` (Standard), der Benutzer wird sofort an den Verbundidentitätsanbieter umgeleitet. Oder `ShowSingleProvider` Azure AD B2C präsentiert die Anmeldeseite mit der Auswahl eines einzelnen Identitätsanbieters. Um dieses Attribut zu verwenden, muss die [Version der Inhaltsdefinition](page-layout.md)  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` und höher lauten.|
 
-Das **ClaimsProviderSelection**-Element enthält die folgenden Attribute: 
+Das **ClaimsProviderSelection**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Nein | Der Bezeichner des Anspruchsaustauschs, der im nächsten Orchestrierungsschritt der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das ValidationClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. | 
+| TargetClaimsExchangeId | Nein | Der Bezeichner des Anspruchsaustauschs, der im nächsten Orchestrierungsschritt der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das ValidationClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
 | ValidationClaimsExchangeId | Nein | Der Bezeichner des Anspruchsaustauschs, der im aktuellen Orchestrierungsschritt zur Validierung der Auswahl des Anspruchsanbieters ausgeführt wird. Dieses oder das TargetClaimsExchangeId-Attribut muss angegeben werden, aber nicht beide. |
 
 ### <a name="claimsproviderselection-example"></a>Beispiel für das ClaimsProviderSelection-Element
@@ -195,7 +195,7 @@ Im folgenden Orchestrierungsschritt kann der Benutzer auswählen, ob er sich üb
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
     </ClaimsProviderSelections>
     <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange" 
+    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
                     TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
     </ClaimsExchanges>
 </OrchestrationStep>
@@ -224,11 +224,11 @@ Das **ClaimsExchanges**-Element enthält das folgende Element:
 
 | Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 1:n | Abhängig vom verwendeten technischen Profil, wird der Client entweder gemäß des ClaimsProviderSelection-Elements weitergeleitet oder ein Serveraufruf wird zum Austauschen von Ansprüchen ausgeführt. | 
+| ClaimsExchange | 1:n | Abhängig vom verwendeten technischen Profil, wird der Client entweder gemäß des ClaimsProviderSelection-Elements weitergeleitet oder ein Serveraufruf wird zum Austauschen von Ansprüchen ausgeführt. |
 
 Das **ClaimsExchange**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Id | Ja | Ein Bezeichner für den Schritt mit dem Anspruchsaustausch. Der Bezeichner wird verwendet, um in der Richtlinie auf den Anspruchsaustausch eines Schritts für die Auswahl des Anspruchsanbieters zu verweisen. | 
+| Id | Ja | Ein Bezeichner für den Schritt mit dem Anspruchsaustausch. Der Bezeichner wird verwendet, um in der Richtlinie auf den Anspruchsaustausch eines Schritts für die Auswahl des Anspruchsanbieters zu verweisen. |
 | TechnicalProfileReferenceId | Ja | Der Bezeichner des technischen Profils, das ausgeführt werden soll. |
