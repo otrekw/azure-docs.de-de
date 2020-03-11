@@ -1,21 +1,22 @@
 ---
-title: Erste Schritte mit benutzerdefinierten Richtlinien – Azure Active Directory B2C
+title: Erste Schritte mit benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
 description: Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
-ms.author: marsma
+ms.date: 02/28/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: dc87628d8b47435012c3d20ec2e72ac186983555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114036"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189326"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ ms.locfileid: "77114036"
 
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
-- Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md) aus, um eine Facebook-Anwendung zu konfigurieren.
+- Führen Sie die Schritte unter [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md) aus, um eine Facebook-Anwendung zu konfigurieren. Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
 
 ## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
 
@@ -221,6 +222,8 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 1. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
+
+Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Soziale Medien-Verbundanmeldung in einer benutzerdefinierten Richtlinie aktivieren können.
 
 1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
 

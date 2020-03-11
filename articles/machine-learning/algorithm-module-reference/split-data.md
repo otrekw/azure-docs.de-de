@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153739"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268536"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
 
@@ -84,6 +84,26 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 
     Basierend auf dem angegebenen regulären Ausdruck wird das Dataset in zwei Sätze von Zeilen unterteilt: Zeilen mit Werten, die mit dem Ausdruck übereinstimmen, und alle übrigen Zeilen. 
 
+Die folgenden Beispiele zeigen, wie ein Dataset mit der Option **Regulärer Ausdruck** geteilt werden kann. 
+
+### <a name="single-whole-word"></a>Einzelnes ganzes Wort 
+
+In diesem Beispiel werden in das erste Dataset alle Zeilen eingefügt, die den Text `Gryphon` in der Spalte `Text` enthalten, und weitere Zeilen in die zweite Ausgabe von **Split Data** (Daten aufteilen) eingefügt:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>TEILZEICHENFOLGE
+
+In diesem Beispiel wird nach der angegebenen Zeichenfolge an einer beliebigen Position innerhalb der zweiten Spalte des Datasets gesucht, die hier durch den Indexwert 1 gekennzeichnet ist. Bei der Übereinstimmung muss die Groß-/Kleinschreibung beachtet werden.
+
+```text
+(\1) ^[a-f]
+```
+
+Das erste Ergebnisdataset enthält jede Zeile, in der die Indexspalte mit einem der folgenden Buchstaben beginnt: `a`, `b`, `c`, `d`, `e`, `f`. Alle anderen Zeilen werden zur zweiten Ausgabe weitergeleitet.
+
 ## <a name="relative-expression-split"></a>Aufteilen nach relativen Ausdrücken
 
 1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.
@@ -92,26 +112,46 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
   
 3. Geben Sie im Textfeld **Relational expression** (Relationaler Ausdruck) einen Ausdruck ein, durch den ein Vergleichsvorgang für eine einzelne Spalte durchgeführt wird:
 
-
- - Numerische Spalte:
-    - Die Spalte enthält Ziffern jedes numerischen Datentyps einschließlich der Datums-/Uhrzeitdatentypen.
-
-    - Im Ausdruck kann auf maximal einen Spaltennamen verwiesen werden.
-
-    - Verwenden Sie das kaufmännische Und-Zeichen (&) für den AND-Vorgang und den senkrechten Strich (|) für den OR-Vorgang.
-
-    - Folgende Operatoren werden unterstützt: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - Vorgänge können nicht mithilfe von `(` und `)` gruppiert werden.
-
- - Zeichenfolgenspalte: 
-    - Folgende Operatoren werden unterstützt: `==`, `!=`
-
-
+   Für die **numerische Spalte**:
+   - Die Spalte enthält Ziffern jedes numerischen Datentyps einschließlich der Datums- und Uhrzeitdatentypen.
+   - Im Ausdruck kann auf maximal einen Spaltennamen verwiesen werden.
+   - Verwenden Sie für die UND-Verknüpfung das kaufmännische Und-Zeichen `&`. Verwenden Sie für die ODER-Verknüpfung den senkrechten Strich `|`.
+   - Folgende Operatoren werden unterstützt: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - Vorgänge können nicht mithilfe von `(` und `)` gruppiert werden.
+   
+   Für die **Zeichenfolgenspalte**:
+   - Folgende Operatoren werden unterstützt: `==`, `!=`.
 
 4. Ausführen der Pipeline.
 
     Durch den Ausdruck wird das Dataset in zwei Sätzen von Zeilen unterteilt: Zeilen mit Werten, die die Bedingung erfüllen, und alle übrigen Zeilen.
+
+Die folgenden Beispiele zeigen, wie ein Dataset mit der Option **Relativer Ausdruck** im Modul **Split Data** (Daten aufteilen) geteilt werden kann:  
+
+### <a name="using-calendar-year"></a>Verwenden des Kalenderjahrs
+
+Ein gängiges Szenario ist das Aufteilen eines Datasets nach Jahren. Der folgende Ausdruck wählt alle Zeilen aus, in denen die Werte in der Spalte `Year` größer sind als `2010`.
+
+```text
+\"Year" > 2010
+```
+
+Der Datumsausdruck muss alle Datumskomponenten berücksichtigen, die in der Datenspalte enthalten sind, und das Format der Datumsangaben in der Datenspalte muss konsistent sein. 
+
+In einer Datumsspalte mit dem Format `mmddyyyy` sollte der Ausdruck z. B. etwa wie folgt lauten:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Verwenden von Spaltenindizes
+
+Der folgende Ausdruck veranschaulicht die Verwendung des Spaltenindexes, um alle Zeilen in der ersten Spalte des Datasets auszuwählen, die Werte kleiner gleich 30, jedoch ungleich 20 enthalten.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebo
 description: Erstellen Sie ein neues Projekt in Azure Notebooks (Vorschauversion), das mit einem bestimmten Satz installierter Pakete und Startskripts konfiguriert wird.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 999133dd7d9d792956f9a2c93ec218e458c921e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647066"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196840"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebooks (Vorschauversion)
 
@@ -51,11 +51,14 @@ Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks
 
 1. Der Befehl **+ Hinzufügen** erstellt einen Schritt, der durch einen Vorgang und eine Zieldatei definiert ist, die Sie aus den Dateien in Ihrem Projekt auswählen. Die folgenden Operationen werden unterstützt:
 
-    | Vorgang | BESCHREIBUNG |
-    | --- | --- |
-    | Requirements.txt | Die Abhängigkeiten von Python-Projekten sind in einer Datei „requirements.txt“ definiert. Wählen Sie mit dieser Option die entsprechende Datei aus der Dateiliste des Projekts aus, und wählen Sie in dem zusätzlichen Dropdownfeld, das angezeigt wird, auch die Python-Version aus. Wählen Sie ggf. **Abbrechen** aus, um zum Projekt zurückzukehren, laden Sie die Datei hoch oder erstellen Sie sie, und kehren Sie dann zu **Projekteinstellungen** > **Umgebung** zurück, und erstellen Sie den neuen Schritt. Wenn dieser Schritt implementiert ist, bewirkt das Ausführen eines Notebooks im Projekt die automatische Ausführung von `pip install -r <file>` |
-    | Shellskript | Verwenden Sie diese Option, um ein Bash-Shellskript festzulegen (normalerweise eine Datei mit der Erweiterung *.sh*), die alle Befehle enthält, die Sie in der Umgebung initialisieren möchten. |
-    | Environment.yml | Ein Python-Projekt, das Conda für die Verwaltung der Umgebung einsetzt, verwendet eine Datei *environments.yml* zum Beschreiben der Abhängigkeiten. Wählen Sie für diese Option die entsprechende Datei in der Dateiliste des Projekts aus. |
+   | Vorgang | BESCHREIBUNG |
+   | --- | --- |
+   | Requirements.txt | Die Abhängigkeiten von Python-Projekten sind in einer Datei „requirements.txt“ definiert. Wählen Sie mit dieser Option die entsprechende Datei aus der Dateiliste des Projekts aus, und wählen Sie in dem zusätzlichen Dropdownfeld, das angezeigt wird, auch die Python-Version aus. Wählen Sie ggf. **Abbrechen** aus, um zum Projekt zurückzukehren, laden Sie die Datei hoch oder erstellen Sie sie, und kehren Sie dann zu **Projekteinstellungen** > **Umgebung** zurück, und erstellen Sie den neuen Schritt. Wenn dieser Schritt implementiert ist, bewirkt das Ausführen eines Notebooks im Projekt die automatische Ausführung von `pip install -r <file>` |
+   | Shellskript | Verwenden Sie diese Option, um ein Bash-Shellskript festzulegen (normalerweise eine Datei mit der Erweiterung *.sh*), die alle Befehle enthält, die Sie in der Umgebung initialisieren möchten. |
+   | Environment.yml | Ein Python-Projekt, das Conda für die Verwaltung der Umgebung einsetzt, verwendet eine Datei *environments.yml* zum Beschreiben der Abhängigkeiten. Wählen Sie für diese Option die entsprechende Datei in der Dateiliste des Projekts aus. |
+
+   > [!WARNING]
+   > Da es sich hierbei um einen in der Entwicklung befindlichen Vorschaudienst handelt, gibt es derzeit ein bekanntes Problem, das dazu führt, dass die Einstellung `Environment.yml` wie erwartet auf Ihr Projekt angewendet wird. Die angegebene Umgebungsdatei wird vom Projekt und den darin enthaltenen Jupyter-Notebooks momentan nicht geladen.
 
 1. Um einen Setupschritt zu entfernen, wählen Sie das **X** rechts neben dem Schritt aus.
 

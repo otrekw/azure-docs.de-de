@@ -4,12 +4,12 @@ description: Enthält Informationen zu Problembehandlungsschritten, mit denen Si
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295962"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -44,19 +44,19 @@ Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](back
 
 Leistungsengpässe auf dem Computer, der gesichert wird, können Verzögerungen verursachen. Die Fähigkeit des Computers, vom Datenträger zu lesen oder darauf zu schreiben, und die verfügbare Bandbreite zum Senden von Daten über das Netzwerk können beispielsweise für Engpässe sorgen.
 
-Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemmonitor](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon).
+Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemmonitor](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon).
 
 Hier sind einige Leistungsindikatoren und Bereiche angegeben, die bei der Diagnose von Engpässen, um optimale Sicherungen zu erzielen, hilfreich sein können.
 
 | Leistungsindikator | Status |
 | --- | --- |
-| Logical Disk(Physical Disk)--%idle |• 100% Leerlauf bis 50% Leerlauf = fehlerfrei</br>• 49 % Leerlauf bis 20 % Leerlauf = Warnung oder Überwachung</br>• 19% Leerlauf bis 0% Leerlauf = kritisch oder außerhalb der Spezifikation |
-| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write |• 0,001 ms bis 0,015 ms = fehlerfrei</br>• 0,015 ms bis 0,025 ms = Warnung oder Überwachung</br>• 0,026ms oder mehr = kritisch oder außerhalb der Spezifikation |
+| Logical Disk(Physical Disk)--%idle |* 100 % Leerlauf bis 50 % Leerlauf = fehlerfrei</br>* 49 % Leerlauf bis 20 % Leerlauf = Warnung oder Überwachung</br>* 19 % Leerlauf bis 0 % Leerlauf = kritisch oder außerhalb der Spezifikation |
+| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write |* 0,001 ms bis 0,015 ms = fehlerfrei</br>* 0,016 ms bis 0,025 ms = Warnung oder Überwachung</br>* 0,026 ms oder mehr = kritisch oder außerhalb der Spezifikation |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (für alle Instanzen) |80 Anforderungen über einen Zeitraum von mehr als 6 Minuten |
-| Memory--Pool Non Paged Bytes |• Weniger als 60% des Pools verbraucht = fehlerfrei<br>• 61 % bis 80 % des Pools verbraucht = Warnung oder Überwachung</br>• Mehr als 80% des Pools verbraucht = kritisch oder außerhalb der Spezifikation |
-| Memory--Pool Paged Bytes |• Weniger als 60% des Pools verbraucht = fehlerfrei</br>• 61 % bis 80 % des Pools verbraucht = Warnung oder Überwachung</br>• Mehr als 80% des Pools verbraucht = kritisch oder außerhalb der Spezifikation |
-| Memory--Available Megabytes |• 50% freier Arbeitsspeicher oder mehr = fehlerfrei</br>• 25 % freier Arbeitsspeicher = Überwachung</br>• 10 % freier Arbeitsspeicher = Warnung</br>• Weniger als 100MB oder 5% freier Arbeitsspeicher verfügbar = kritisch oder außerhalb der Spezifikation |
-| Processor--\%Processor Time (alle Instanzen) |• Weniger als 60% verbraucht = fehlerfrei</br>• 61 % bis 90 % verbraucht = Überwachung oder Achtung</br>• 91% - 100% verbraucht = kritisch |
+| Memory--Pool Non Paged Bytes |* Weniger als 60 % des Pools verbraucht = fehlerfrei<br>* 61 % bis 80 % des Pools verbraucht = Warnung oder Überwachung</br>* Mehr als 80 % des Pools verbraucht = kritisch oder außerhalb der Spezifikation |
+| Memory--Pool Paged Bytes |* Weniger als 60 % des Pools verbraucht = fehlerfrei</br>* 61 % bis 80 % des Pools verbraucht = Warnung oder Überwachung</br>* Mehr als 80 % des Pools verbraucht = kritisch oder außerhalb der Spezifikation |
+| Memory--Available Megabytes |* 50 % freier Arbeitsspeicher oder mehr = fehlerfrei</br>* 25 % freier Arbeitsspeicher = Überwachung</br>* 10 % freier Arbeitsspeicher = Warnung</br>* Weniger als 100 MB oder 5 % freier Arbeitsspeicher verfügbar = kritisch oder außerhalb der Spezifikation |
+| Processor--\%Processor Time (alle Instanzen) |* Weniger als 60 % verbraucht = fehlerfrei</br>* 61 % bis 90 % verbraucht = Überwachung oder Achtung</br>* 91 % bis 100 % verbraucht = kritisch |
 
 > [!NOTE]
 > Wenn Sie feststellen, dass die Infrastruktur die Ursache ist, empfehlen wir, die Datenträger in regelmäßigen Abständen für eine bessere Leistung zu defragmentieren.

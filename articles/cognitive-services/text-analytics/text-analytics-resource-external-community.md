@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558825"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251310"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service
 
@@ -33,7 +33,11 @@ ms.locfileid: "68558825"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (MSDN blog) (Standpunktanalyse mit Dynamics 365 CRM Online (MSDN-Blog))](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI blog: Extraction of key phrases from Facebook messages: [Part 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) and [Part 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487) (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): Teil 1 und Teil 2).
++ Power BI-Blog: Extraction of key phrases from Facebook messages: [Part 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) and [Part 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487) (Power BI-Blog: Schlüsselbegriffserkennung bei Facebook-Nachrichten): Teil 1 und Teil 2).
+
++ [Identify the sentiment of comments in a Yammer group with MS Flow (Microsoft tech community)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure) (Identifizieren der Stimmung von Kommentaren in einer Yammer-Gruppe mit MS Flow (Microsoft Tech Community))
+
+
 
 ## <a name="videos"></a>Videos
 

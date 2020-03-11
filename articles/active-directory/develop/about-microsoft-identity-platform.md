@@ -12,18 +12,18 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161425"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300212"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Entwicklung der Microsoft Identity Platform
 
 Microsoft Identity Platform ist eine Weiterentwicklung der Azure AD-Entwicklerplattform (Azure Active Directory). Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen Benutzer angemeldet werden, sowie das Abrufen von Token zum Aufrufen von APIs, etwa Microsoft Graph oder von Entwicklern erstellten APIs. Die Plattform umfasst einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration (über ein Entwicklerportal und eine Anwendungs-API), eine vollständige Entwicklerdokumentation, Schnellstartbeispiele, Codebeispiele, Tutorials, Schrittanleitungen und weitere Inhalte für Entwickler. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
 
-Bisher haben die meisten Entwickler mit der Azure AD v1.0-Plattform gearbeitet, um (von Azure AD bereitgestellte) Geschäfts-, Schul- und Unikonten zu authentifizieren, indem sie Token vom Azure AD v1.0-Endpunkt angefordert, die Azure AD-Authentifizierungsbibliothek (ADAL), das Azure-Portal für die Anwendungsregistrierung und -konfiguration und die Azure AD Graph-API für die programmgesteuerte Anwendungskonfiguration verwendet haben.
+Bisher haben die meisten Entwickler mit der Azure AD v1.0-Plattform gearbeitet, um (von Azure AD bereitgestellte) Geschäfts-, Schul- oder Unikonten zu authentifizieren, indem sie Token vom Azure AD v1.0-Endpunkt angefordert, die Azure AD-Authentifizierungsbibliothek (ADAL), das Azure-Portal für die Anwendungsregistrierung und -konfiguration und die Microsoft Graph-API für die programmgesteuerte Anwendungskonfiguration verwendet haben.
 
 Dank der einheitlichen Microsoft Identity Platform-Instanz (v2.0) können Sie einmalig Code schreiben und beliebige Microsoft-Identitäten in Ihrer Anwendung authentifizieren. Für verschiedene Plattformen wird die Verwendung der vollständig unterstützten Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für die Identity Platform-Endpunkte empfohlen. MSAL ist einfach zu verwenden und bietet Benutzern hervorragende Funktionen für einmaliges Anmelden (SSO). Sie ist auf hohe Zuverlässigkeit und Leistung ausgelegt und wurde unter Verwendung von Microsoft Secure Development Lifecycle (SDL) entwickelt. Sie können Ihre Anwendung so konfigurieren, dass sie beim Aufrufen von APIs die inkrementelle Zustimmung nutzt. Dadurch wird eine Zustimmung für invasivere Geltungsbereiche erst angefordert, wenn dies durch die Anwendungsnutzung zur Laufzeit erforderlich wird.  MSAL unterstützt darüber hinaus Azure Active Directory B2C, sodass Ihre Kunden ihre bevorzugten Identitäten für soziale Netzwerke, Unternehmen oder lokale Konten nutzen können, um mit einmaligem Anmelden Zugriff auf Ihre Anwendungen und APIs zu erhalten.
 
@@ -49,7 +49,7 @@ Die Seite **[App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=208390
 
 Zur Integration von Azure AD B2C (für die Authentifizierung von Social Media- oder lokalen Identitäten) müssen Sie Ihre Anwendung bei einem Azure AD B2C-Mandanten registrieren. Diese Funktion ist ebenfalls Bestandteil des Microsoft Azure-Portals.
 
-Die **Anwendungs-API in Microsoft Graph** ist derzeit als Vorschauversion verfügbar. Verwenden Sie diese API, um Ihre in Microsoft Identity Platform integrierten Anwendungen programmgesteuert für die Authentifizierung beliebiger Microsoft-Identitäten zu konfigurieren. Bis diese API jedoch allgemein verfügbar wird, sollten Sie die Azure AD Graph 1.6-API und das Anwendungsmanifest verwenden.
+Verwenden Sie die [Anwendungs-API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0), um Ihre in Microsoft Identity Platform integrierten Anwendungen programmgesteuert für die Authentifizierung beliebiger Microsoft-Identitäten zu konfigurieren.
 
 ### <a name="msal-libraries"></a>MSAL-Bibliotheken
 

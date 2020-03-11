@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710702"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190771"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Anwenden von Machine Learning-Modellen in Azure Functions mit Python und TensorFlow
 
@@ -59,7 +59,7 @@ In diesem Artikel wird beschrieben, wie Sie Python, TensorFlow und Azure Functio
 Navigieren Sie zum Ordner *start*, und führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren. Achten Sie darauf, dass Sie Python 3.7 verwenden. Diese Version wird von Azure Functions unterstützt.
 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ Führen Sie den folgenden Befehl aus, wenn über Python das venv-Paket auf Ihrer
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     func new --name classify --template "HTTP trigger"
     ```
 
-    Mit diesem Befehl wird ein Ordner erstellt, der mit dem Namen der Funktion *classify* übereinstimmt. In diesem Ordner befinden sich zwei Dateien: *\_\_init\_\_.py* enthält den Funktionscode, und *function.json* enthält eine Beschreibung des Triggers der Funktion sowie der zugehörigen Eingabe- und Ausgabebindungen. Ausführlichere Informationen zum Inhalt dieser Dateien finden Sie unter [Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure: Untersuchen des Dateiinhalts](functions-create-first-function-python.md#optional-examine-the-file-contents).
+    Mit diesem Befehl wird ein Ordner erstellt, der mit dem Namen der Funktion *classify* übereinstimmt. In diesem Ordner befinden sich zwei Dateien: *\_\_init\_\_.py* enthält den Funktionscode, und *function.json* enthält eine Beschreibung des Triggers der Funktion sowie der zugehörigen Eingabe- und Ausgabebindungen. Ausführliche Informationen zum Inhalt dieser Dateien finden Sie in der Python-Schnellstartanleitung unter [(Optional) Untersuchen des Dateiinhalts](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents).
 
 
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
@@ -158,19 +158,19 @@ Zum Ändern der `classify`-Funktion zum Klassifizieren eines Bilds anhand des In
 
 1. Führen Sie im Ordner *start* den folgenden Befehl aus, um die Modelldateien in den Ordner *classify* zu kopieren. Stellen Sie sicher, dass Sie `\*` in den Befehl einfügen. 
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ Zum Ändern der `classify`-Funktion zum Klassifizieren eines Bilds anhand des In
 
 1. Führen Sie im Ordner *start* den folgenden Befehl aus, um eine Datei mit Hilfscode in den Ordner *classify* zu kopieren:
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ Der Ordner *frontend* des Repositorys enthält eine einfache App, mit der das Au
 
 1. Starten Sie einen HTTP-Server mit Python:
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

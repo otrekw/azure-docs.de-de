@@ -1,20 +1,19 @@
 ---
 title: Visualisieren von Apache Hive-Daten mit Power BI – Azure HDInsight
 description: Erfahren Sie, wie Sie Microsoft Power BI verwenden, um von Azure HDInsight verarbeitete Hive-Daten zu visualisieren.
-keywords: hdinsight, hadoop, hive, interactive query, interactive hive, LLAP, odbc
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529538"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267796"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Visualisieren von Apache Hive-Daten mit Microsoft Power BI mithilfe von ODBC in Azure HDInsight
 
@@ -33,9 +32,9 @@ Die Informationen gelten auch für den neuen Clustertyp [Interactive Query](../i
 
 Bevor Sie diesen Artikel durchgehen können, benötigen Sie Folgendes:
 
-* **HDInsight-Cluster**. Bei dem Cluster kann es sich entweder um einen HDInsight-Cluster mit Hive oder um einen neu veröffentlichten Interactive Query-Cluster handeln. Informationen zum Erstellen von Clustern finden Sie unter [Cluster erstellen](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* HDInsight-Cluster. Bei dem Cluster kann es sich entweder um einen HDInsight-Cluster mit Hive oder um einen neu veröffentlichten Interactive Query-Cluster handeln. Informationen zum Erstellen von Clustern finden Sie unter [Cluster erstellen](apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Sie können eine Kopie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen.
+* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/). Sie können eine Kopie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen.
 
 ## <a name="create-hive-odbc-data-source"></a>Erstellen einer Hive ODBC-Datenquelle
 
@@ -53,7 +52,7 @@ Die Hive-Tabelle **hivesampletable** ist in allen HDInsight-Clustern enthalten.
 
 1. Wählen Sie im Dialogfeld **Daten abrufen** links die Option **Andere** und rechts die Option **ODBC** aus, und wählen Sie anschließend unten **Verbinden** aus.
 
-1. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen aus. Wählen Sie dann **OK**aus.
+1. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen aus. Klicken Sie anschließend auf **OK**.
 
 1. Bei der ersten Verwendung wird das Dialogfeld **ODBC-Treiber** geöffnet. Wählen Sie im linken Menü die Option **Standard oder Benutzerdefiniert** aus. Wählen Sie anschließend **Verbinden** aus, um den **Navigator** zu öffnen.
 
@@ -73,7 +72,7 @@ Fahren Sie ab der vorherigen Prozedur fort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Power BI visualisieren.  Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, wie Sie Daten aus HDInsight mithilfe von Power BI visualisieren.  Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Verwenden von Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers](./apache-hadoop-connect-excel-hive-odbc-driver.md).

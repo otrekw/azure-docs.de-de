@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585984"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248846"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -69,7 +69,7 @@ Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht i
 
 Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure AD eine Vielzahl von Authentifizierungsprotokollen – einschließlich der Legacyauthentifizierung. Der Begriff *Legacyauthentifizierung* bezieht sich auf eine Authentifizierungsanforderung von:
 
-- älteren Office-Clients, die keine moderne Authentifizierung verwenden (z. B. ein Office 2010-Client)
+- Clients, die keine moderne Authentifizierung verwenden (z. B. ein Office 2010-Client)
 - jedem Client, der ältere E-Mail-Protokolle wie IMAP, SMTP oder POP3 verwendet
 
 Der Großteil aller gefährdenden Anmeldeversuche erfolgt über Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung. Selbst wenn Sie in Ihrem Verzeichnis eine MFA-Richtlinie aktiviert haben, kann sich ein Angreifer mit einem älteren Protokoll authentifizieren und die mehrstufige Authentifizierung umgehen. 

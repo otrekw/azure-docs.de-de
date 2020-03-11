@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225180"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249866"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
@@ -47,11 +47,11 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
@@ -83,9 +83,9 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 2. Klicken Sie unter **Einstellungen** auf **Integritätstests** und anschließend auf **Hinzufügen**.
 3. Verwenden Sie folgende Werte, um den Integritätstest zu erstellen:
      
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myHealthProbe* ein. |
+    | Name | Geben Sie *myHealthProbe* ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
     | Port | Geben Sie *80* ein.|
     | Intervall | Geben Sie für das **Intervall** den Wert *15* (Sekunden zwischen Testversuchen) ein. |
@@ -101,9 +101,9 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln** und anschließend auf **Hinzufügen**.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *myHTTPRule* ein. |
+    | Name | Geben Sie *myHTTPRule* ein. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie *80* ein.|
     | Back-End-Port | Geben Sie *80* ein. |
@@ -116,22 +116,20 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle Computer für den Back-End-Pool des Load Balancers und installieren anschließend IIS auf den virtuellen Computern, um den Load Balancer zu testen.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
-2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | NAME | Geben Sie *myVNet* ein. |
-    | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
-    | Location | Wählen Sie **Europa, Westen** aus.|
-    | Subnetzname | Geben Sie *myBackendSubnet* ein. |
-    | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
-    
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<Ressourcengruppenname>**  | myResourceGroupSLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<VNET-Name>** | myVNet          |
+| **\<Regionsname>**          | Europa, Westen      |
+| **\<IPv4-Adressraum>**   | 10.1.0.0\16          |
+| **\<Subnetzname>**          | mySubnet        |
+| **\<Subnetzadressbereich>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -150,7 +148,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
    
    - Stellen Sie sicher, dass Folgendes ausgewählt ist:
        - **Virtuelles Netzwerk:** **myVnet**
-       - **Subnetz**: **myBackendSubnet**
+       - **Subnetz:** **myBackendSubnet**
        - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen** und anschließend im Fenster **Öffentliche IP-Adresse erstellen** unter **SKU** die Option **Standard** und unter **Verfügbarkeitszone** die Option **Zonenredundant** aus.
       
    - Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. 
@@ -164,7 +162,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
 1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest. 
 1. Klicken Sie auf **Überprüfen + erstellen**.   
 1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
-1. Erstellen Sie mithilfe der entsprechenden Schritte zwei weitere virtuelle Computer (*myVM2* und *myVM3*) mit einer öffentlichen IP-Adresse für eine Standard-SKU in der **Verfügbarkeitszone** **2** bzw. **3**. (Verwenden Sie ansonsten die gleichen Einstellungen wie für *myVM1*.)  
+1. Erstellen Sie mithilfe der entsprechenden Schritte zwei weitere virtuelle Computer (*myVM2* und *myVM3*) mit einer öffentlichen IP-Adresse für eine Standard-SKU in der **Verfügbarkeitszone** **2** bzw. **3**. (Verwenden Sie ansonsten die gleichen Einstellungen wie für *myVM1*.)  
 
 ### <a name="create-network-security-group-rule"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel
 

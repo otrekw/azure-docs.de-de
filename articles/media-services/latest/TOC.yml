@@ -206,11 +206,15 @@
   items:
     - name: Erste Schritte
       items:
+        - name: 'Erstellen eines Kontos: Portal'
+          href: create-account-portal.md
         - name: 'Erstellen eines Kontos: CLI'
           href: create-account-cli-how-to.md
           displayName: storage
         - name: 'Zurücksetzen der Kontoanmeldeinformationen: CLI'
           href: cli-reset-account-credentials.md
+        - name: 'Zugriff auf APIs: Portal'
+          href: access-api-portal.md
         - name: 'Datenzugriffs-API: CLI'
           href: access-api-cli-how-to.md
         - name: 'Skalieren reservierter Einheiten für Medien: CLI'

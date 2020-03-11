@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Clus
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639053"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251794"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -38,7 +38,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Wichtige Aspekte und Richtlinien
@@ -93,7 +93,7 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -799,7 +799,7 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -845,7 +845,7 @@ Nach dem Erstellen eines Service Fabric-Clusters können Sie einen Clusterknoten
 
 [Exportieren Sie eine Vorlagen- und Parameterdatei](#export-the-template-for-the-resource-group) aus der Ressourcengruppe für die jüngste Bereitstellung.  Öffnen Sie die Datei *parameters.json*.  Wenn Sie den Cluster mithilfe der [Beispielvorlage][template] aus diesem Tutorial bereitgestellt haben, enthält der Cluster drei Knotentypen.  
 
-Die Größe der VMs im zweiten Knotentyp wird im Parameter *vmNodeType1Size* festgelegt.  Ändern Sie den Wert des Parameters *vmNodeType1Size* von „Standard_D2_V2“ in [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), wodurch die Ressourcen jeder VM-Instanz verdoppelt werden.
+Die Größe der VMs im zweiten Knotentyp wird im Parameter *vmNodeType1Size* festgelegt.  Ändern Sie den Wert des Parameters *vmNodeType1Size* von „Standard_D2_V2“ in [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), wodurch die Ressourcen jeder VM-Instanz verdoppelt werden.
 
 Die VM-SKU für alle drei Knotentypen wird im Parameter *vmImageSku* festgelegt.  Auch hier sollten Sie mit Vorsicht an das Ändern der VM-SKU eines Knotentyps herangehen, und es wird für den primären Knotentyp auch nicht empfohlen.
 
@@ -856,7 +856,7 @@ Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.js
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 

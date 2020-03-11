@@ -1,36 +1,36 @@
 ---
 title: Azure HDInsight-Verwaltungs-IP-Adressen
-description: Hier erfahren Sie, von welchen IP-Adressen Sie eingehenden Datenverkehr zulassen müssen, um Netzwerksicherheitsgruppen und benutzerdefinierte Routen für virtuelle Netzwerke mit Azure HDInsight richtig zu konfigurieren.
-author: hol82
-ms.author: hol
-ms.reviewer: hrasheed
+description: Erfahren Sie, von welchen IP-Adressen Sie eingehenden Datenverkehr zulassen müssen, um Netzwerksicherheitsgruppen und benutzerdefinierte Routen für virtuelle Netzwerke mit Azure HDInsight richtig zu konfigurieren.
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929880"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271803"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
 > [!Important]
 > In den meisten Fällen können Sie jetzt das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen verwenden, statt IP-Adressen manuell hinzuzufügen. Neue Regionen werden nur für Diensttags hinzugefügt und die statischen IP-Adressen werden schließlich eingestellt.
 
-Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (UDRs) zum Steuern von eingehendem Datenverkehr verwenden, müssen Sie sicherstellen, dass Ihr Cluster mit kritischen Azure-Integritäts- und -Verwaltungsdiensten kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige davon gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
+Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (User-Defined Routes, UDRs) zum Steuern von eingehendem Datenverkehr auf Ihrem HDInsight-Cluster verwenden, müssen Sie sicherstellen, dass der Cluster mit kritischen Integritäts- und Verwaltungsdiensten von Azure kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
 
 In den folgenden Abschnitten werden die spezifischen IP-Adressen erläutert, die zugelassen werden müssen.
 
 ## <a name="azure-dns-service"></a>Azure DNS-Dienst
 
-Wenn Sie den von Azure bereitgestellten DNS-Dienst verwenden, müssen Sie den Zugriff von __168.63.129.16__ an Port 53 zulassen. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Überspringen Sie diesen Schritt, wenn Sie das benutzerdefinierte DNS verwenden.
+Wenn Sie den von Azure bereitgestellten DNS-Dienst verwenden, müssen Sie den Zugriff von __168.63.129.16__ an Port 53 zulassen. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Überspringen Sie diesen Schritt, wenn Sie ein benutzerdefiniertes DNS verwenden.
 
 ## <a name="health-and-management-services-all-regions"></a>Integritäts- und Verwaltungsdienste: Alle Regionen
 
-Lassen Sie Datenverkehr von den folgenden IP-Adressen für Azure HDInsight-Integritäts- und -Verwaltungsdienste zu, die für alle Azure-Regionen gelten:
+Lassen Sie Datenverkehr von den folgenden IP-Adressen für Integritäts- und Verwaltungsdienste von Azure HDInsight zu, die für alle Azure-Regionen gelten:
 
 | Quell-IP-Adresse | Destination  | Direction |
 | ---- | ----- | ----- |
@@ -84,8 +84,9 @@ Informationen zu den IP-Adressen, die für Azure Government verwendet werden, fi
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
-Wenn Sie benutzerdefinierte Routen (User-Defined Routes, UDRs) verwenden, sollten Sie eine Route angeben und ausgehenden Datenverkehr vom VNET an die oben genannten IP-Adressen zulassen und den nächsten Hop dabei auf „Internet“ festlegen.
+Wenn Sie benutzerdefinierte Routen (User-Defined Routes, UDRs) verwenden, sollten Sie eine Route angeben und ausgehenden Datenverkehr vom virtuellen Netzwerk an die oben genannten IP-Adressen zulassen und den nächsten Hop dabei auf „Internet“ festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster](hdinsight-create-virtual-network.md)
+* [Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight](hdinsight-service-tags.md)

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298818"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -31,7 +31,7 @@ Beachten Sie Folgendes, bevor Sie dieses Tutorial durchführen:
 3. Stellen Sie sicher, dass „ms-ds-consistencyGUID“ für die Objekte im Pilotbereich aufgefüllt ist, damit bei der Cloudbereitstellung ein Hard Match (genaue Übereinstimmung) für die Objekte erzielt wird. 
 
    > [!NOTE]
-   > Beachten Sie, dass die Azure AD Connect-Synchronisierung *ms-ds-consistencyGUID* für Gruppenobjekte nicht standardmäßig auffüllt. Führen Sie die Schritte in [diesem Blogbeitrag](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) aus, um *ms-ds-consistencyGUID* für Gruppenobjekte aufzufüllen.
+   > Beachten Sie, dass die Azure AD Connect-Synchronisierung *ms-ds-consistencyGUID* für Gruppenobjekte nicht standardmäßig auffüllt.
 
 4. Dies ist ein erweitertes Szenario. Halten Sie sich genau an die in diesem Tutorial beschriebenen Schritte.
 
@@ -119,7 +119,7 @@ Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) au
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 1. Melden Sie sich bei dem Server an, den Sie mit den Berechtigungen eines Unternehmensadministrators verwenden werden.  Wenn Sie das Tutorial [Grundlegende Active Directory-Umgebung](tutorial-basic-ad-azure.md) ausführen, ist dies der Server CP1.
-2. Laden Sie den Agent für die Azure AD Connect-Cloudbereitstellung [hier](https://go.microsoft.com/fwlink/?linkid=2109037) herunter.
+2. Laden Sie den Agent für die Azure AD Connect-Cloudbereitstellung herunter. Eine entsprechende Anleitung finden Sie [hier](how-to-install.md#install-the-agent).
 3. Führen Sie den Azure AD Connect-Cloudbereitstellungs-Agent aus (AADConnectProvisioningAgent.Installer).
 3. **Akzeptieren** Sie auf dem Begrüßungsbildschirm die Lizenzbedingungen, und klicken Sie auf **Installieren**.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install1.png)</br>

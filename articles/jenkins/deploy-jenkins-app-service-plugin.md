@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Jenkins-Plug-In für Azure App Service zu
 keywords: Jenkins, Azure, DevOps, App Service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158519"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251460"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -67,7 +67,7 @@ Um Ihr Projekt in Web Apps bereitzustellen, können Sie Ihre Buildartefakte per 
 Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Service-Plan und eine Web-App zum Ausführen der Java-App.
 
 
-1. Erstellen Sie mit dem [Azure CLI-Befehl](/cli/azure/appservice/plan#az-appservice-plan-create) `az appservice plan create` einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Mit gemeinsamen Ressourcen können Sie beim Hosten mehrerer Apps Kosten sparen.
+1. Erstellen Sie mit dem [Azure CLI-Befehl](/cli/azure/appservice/plan#az-appservice-plan-create) `az appservice plan create` einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Mit gemeinsamen Ressourcen können Sie beim Hosten mehrerer Apps Kosten sparen.
 2. Erstellen Sie eine Web-App. Sie können dafür entweder das [Azure-Portal](/azure/app-service/configure-common) oder den folgenden Azure CLI-Befehl `az` verwenden:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -207,10 +207,13 @@ Geben Sie als **Docker registry URL** (URL für die Docker-Registrierung) die UR
 ### <a name="for-azure-app-service-on-linux"></a>Für Azure App Service unter Linux
 
 1. Führen Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle aus, um Ihre Web-App zu überprüfen:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Die folgende Meldung wird angezeigt:
+    
     ```CLI
     ["calculator"]
     ```
@@ -231,7 +234,7 @@ Wenn bei den Jenkins-Plug-Ins Fehler auftreten, melden Sie das Problem auf der [
 
 In diesem Tutorial haben Sie das Jenkins-Plug-In für Azure App Service für die Bereitstellung in Azure verwendet.
 
-Es wurde Folgendes vermittelt:
+Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Konfigurieren von Jenkins zum Bereitstellen in Azure App Service per Dateiupload 

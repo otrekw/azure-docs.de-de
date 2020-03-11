@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705531"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202507"
 ---
-Datenträgerbursting ist zurzeit eine Previewfunktion für SSD Premium-Datenträger. Bursting wird für SSD Premium-Datenträger mit Größen bis einschließlich 512 GiB (P20 oder niedriger) unterstützt. Diese Datenträgergrößen unterstützen das Bursting nach dem Prinzip des bestmöglichen Aufwands und nutzen ein Guthabensystem zum Verwalten von Bursts. Das Guthaben wird in einem Burstbucket gesammelt, wenn der Datenverkehr unter dem bereitgestellten Leistungsziel für die Datenträgergröße liegt, und verbraucht, wenn der Datenverkehr das Ziel übersteigt. Der Datenverkehr des Datenträgers wird auf IOPS und Bandbreite im bereitgestellten Ziel nachverfolgt.
+Datenträgerbursting ist zurzeit eine Previewfunktion für SSD Premium-Datenträger. Bursting wird für SSD Premium-Datenträger mit Größen bis einschließlich 512 GiB (P20 oder niedriger) unterstützt. Diese Datenträgergrößen unterstützen das Bursting nach dem Prinzip des bestmöglichen Aufwands und nutzen ein Guthabensystem zum Verwalten von Bursts. Das Guthaben wird in einem Burstbucket gesammelt, wenn der Datenverkehr unter dem bereitgestellten Leistungsziel für die Datenträgergröße liegt, und verbraucht, wenn der Datenverkehr das Ziel übersteigt. Der Datenverkehr des Datenträgers wird auf IOPS und Bandbreite im bereitgestellten Ziel nachverfolgt. Das Datenträgerbursting umgeht keine Größenbeschränkungen für virtuelle Computer hinsichtlich IOPS oder Durchsatz.
 
 Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden:
 

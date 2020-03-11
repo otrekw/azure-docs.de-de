@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500567"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272200"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -42,6 +42,7 @@ Servicepläne:
 - **Azure Database for PostgreSQL**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für PostgreSQL-Datenbankserver ab.
 - **Azure Database for MariaDB**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den MariaDB-Datenbankserver ab.
 - **Azure Data Explorer**: Eine Reservierung beinhaltet die Markupgebühren. Sie deckt keine mit den Clustern verbundenen Compute-, Netzwerk- oder Speichergebühren ab.
+- **Azure Cache for Redis**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt keine Netzwerk- oder Speichergebühren im Zusammenhang mit den Redis-Cache-Instanzen ab.
 - **Verwaltete SSD Premium-Datenträger**: Eine Reservierung gilt für eine angegebene Datenträger-SKU. 
 
 Softwarepläne:

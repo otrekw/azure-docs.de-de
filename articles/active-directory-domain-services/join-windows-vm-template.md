@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613763"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298733"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -34,7 +34,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
-* Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
+* Ein Benutzerkonto, das Teil der von Azure AD DS verwalteten Domäne ist.
 
 ## <a name="azure-resource-manager-template-overview"></a>Übersicht über Azure Resource Manager-Vorlagen
 
@@ -94,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
     | Präfix der DNS-Bezeichnung          | Geben Sie einen DNS-Namen für die VM ein, z. B. *myvm*. |
     | Größe des virtuellen Computers                   | Geben Sie eine VM-Größe an, z. B. *Standard_DS2_v2*. |
     | Domäne für den Beitritt            | Der DNS-Name der mit Azure AD DS verwalteten Domäne, z. B. *aadds.contoso.com*. |
-    | Domänenbenutzername           | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
+    | Domänenbenutzername           | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Teil der von Azure AD DS verwalteten Domäne sein. |
     | Domänenkennwort           | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |
     | Optionaler OU-Pfad          | Die benutzerdefinierte Organisationseinheit, der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird die VM der Standardorganisationseinheit *AAD DC-Computer* hinzugefügt. |
     | Administratorbenutzername der VM         | Geben Sie ein lokales Administratorkonto an, das für die VM erstellt werden soll. |
@@ -104,7 +104,7 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
 
 > [!WARNING]
 > **Behandeln Sie Kennwörter mit Vorsicht.**
-> Die Vorlagenparameterdatei fordert das Kennwort für ein Benutzerkonto an, das Mitglied der Gruppe *Azure AD DC-Administratoren* ist. Geben Sie in diese Datei keine Werte manuell ein, und machen Sie sie auf Dateifreigaben oder anderen freigegebenen Speicherorten zugänglich.
+> Die Vorlagenparameterdatei fordert das Kennwort für ein Benutzerkonto an, das Teil der von Azure AD DS verwalteten Domäne ist. Geben Sie in diese Datei keine Werte manuell ein, und machen Sie sie auf Dateifreigaben oder anderen freigegebenen Speicherorten zugänglich.
 
 Es dauert einige Minuten, bis die Bereitstellung erfolgreich abgeschlossen ist. Anschließend ist die Windows-VM erstellt und in die mit Azure AD DS verwaltete Domäne eingebunden. Mithilfe von Domänenkonten ist die Verwaltung oder Anmeldung bei der VM möglich.
 
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in 
     | Resource group            | Wählen Sie die Ressourcengruppe mit Ihrer vorhandenen VM aus. |
     | Location                  | Wählen Sie den Standort Ihrer vorhandenen VM aus. |
     | VM-Liste                   | Geben Sie die durch Trennzeichen getrennte Liste mit den vorhandenen VMs ein, die in die mit Azure AD DS verwaltete Domäne eingebunden werden sollen, z. B. *myVM1,myVM2*. |
-    | Benutzername für Domänenbeitritt     | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
+    | Benutzername für Domänenbeitritt     | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Teil der von Azure AD DS verwalteten Domäne sein. |
     | Benutzerkennwort für Domänenbeitritt | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |
     | Optionaler OU-Pfad          | Die benutzerdefinierte Organisationseinheit, der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird die VM der Standardorganisationseinheit *AAD DC-Computer* hinzugefügt. |
 
@@ -131,7 +131,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in 
 
 > [!WARNING]
 > **Behandeln Sie Kennwörter mit Vorsicht.**
-> Die Vorlagenparameterdatei fordert das Kennwort für ein Benutzerkonto an, das Mitglied der Gruppe *Azure AD DC-Administratoren* ist. Geben Sie in diese Datei keine Werte manuell ein, und machen Sie sie auf Dateifreigaben oder anderen freigegebenen Speicherorten zugänglich.
+> Die Vorlagenparameterdatei fordert das Kennwort für ein Benutzerkonto an, das Teil der von Azure AD DS verwalteten Domäne ist. Geben Sie in diese Datei keine Werte manuell ein, und machen Sie sie auf Dateifreigaben oder anderen freigegebenen Speicherorten zugänglich.
 
 Es dauert einige Augenblicke, bis die Bereitstellung erfolgreich abgeschlossen ist. Anschließend sind die angegebenen Windows-VMs in die mit Azure AD DS verwaltete Domäne eingebunden. Über Domänenkonten ist dann die Verwaltung oder Anmeldung möglich.
 

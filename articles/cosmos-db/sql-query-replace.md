@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2cb7d82efd010fd7c3395a4f6a9217370d9e5779
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302201"
 ---
 # <a name="replace-azure-cosmos-db"></a>REPLACE (Azure Cosmos DB)
  Ersetzt alle Vorkommen eines angegebenen Zeichenfolgenwerts durch einen anderen Zeichenfolgenwert.  
@@ -40,10 +40,10 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
   
 ## <a name="examples"></a>Beispiele
   
-  Das folgende Beispiel veranschaulicht die Verwendung von `REPLACE` in einer Abfrage.  
+  Das folgende Beispiel zeigt, wie `REPLACE` in einer Abfrage verwendet wird.  
   
 ```sql
-SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
+SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```  
   
  Hier ist das Resultset.  
@@ -51,6 +51,10 @@ SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```json
 [{"replace": "This is a desk"}]  
 ```  
+
+## <a name="remarks"></a>Bemerkungen
+
+Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

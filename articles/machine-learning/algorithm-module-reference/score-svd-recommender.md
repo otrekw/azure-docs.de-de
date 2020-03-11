@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314350"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920347"
 ---
 # <a name="score-svd-recommender"></a>Bewerten des SVD-Empfehlungsmoduls
 
-In diesem Artikel wird die Verwendung des Moduls Score SVD Recommender im Azure Machine Learning-Designer beschrieben. Verwenden Sie dieses Modul zum Erstellen von Vorhersagen mit einem trainierten Empfehlungsmodell, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.
+In diesem Artikel wird die Verwendung des Moduls „Score SVD Recommender“ (SVD-Empfehlungsmodul bewerten) im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Verwenden Sie dieses Modul zum Erstellen von Vorhersagen mit einem trainierten Empfehlungsmodell, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.
 
 Das SVD-Empfehlungsmodel kann zwei verschiedene Arten von Vorhersagen generieren:
 
@@ -91,7 +91,7 @@ Zum Empfehlen von Elementen für Benutzer geben Sie eine Liste von Benutzern und
 
 5. **Maximum number of items to recommend to a user** (Maximale Anzahl von Elementen, die einem Benutzer empfohlen werden sollen): Geben Sie die Anzahl von Elementen ein, die für jeden Benutzer zurückgegeben werden sollen. Standardmäßig werden fünf Elemente empfohlen.
 
-6. **Minimum size of the recommendation pool per user** (Minimale Größe des Empfehlungspools pro Benutzer): Geben Sie einen Wert ein, der angibt, wie viele vorherige Empfehlungen erforderlich sind. Standardmäßig ist dieser Parameter auf **2** festgelegt. Das bedeutet, dass das Element von mindestens zwei anderen Benutzern empfohlen worden sein muss.
+6. **Minimum size of the recommendation pool per user** (Minimale Größe des Empfehlungspools pro Benutzer): Geben Sie einen Wert ein, der angibt, wie viele vorherige Empfehlungen erforderlich sind. Standardmäßig ist dieser Parameter auf „2“ festgelegt. Das bedeutet, dass das Element von mindestens zwei anderen Benutzern empfohlen worden sein muss.
 
    Verwenden Sie diese Option nur im Auswertungsmodus. Die Option ist nicht verfügbar, wenn Sie **From All Items** (Aus allen Elementen) oder **From Unrated Items (to suggest new items to users)** (Aus nicht bewerteten Elementen (zum Vorschlagen neuer Elemente für Benutzer)) auswählen.
 

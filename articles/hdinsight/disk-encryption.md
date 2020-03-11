@@ -6,90 +6,97 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/06/2019
-ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: c22ee0ef0393c0dae64674d18bae5a2e92969b4c
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846066"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206055"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln
 
-Azure HDInsight unterstützt die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Daten auf verwalteten Datenträgern und Ressourcendatenträgern, die an virtuelle HDInsight-Clustercomputer angefügt sind. Diese Art der Verschlüsselung wird auch als BYOK-Verschlüsselung (Bring Your Own Key) bezeichnet. Dank dieses Features können Sie die Verschlüsselungsschlüssel, mit denen ruhende Daten in Ihren HDInsight-Clustern geschützt werden, mithilfe von Azure Key Vault verwalten. Ihre Cluster verfügen möglicherweise über mindestens ein angefügtes Azure Storage-Konto, bei dem die Verschlüsselungsschlüssel auch von Microsoft oder kundenseitig verwaltet werden können, der Verschlüsselungsdienst ist jedoch anders.
-
-In diesem Dokument wird nicht auf Daten eingegangen, die in Ihrem Azure Storage-Konto gespeichert sind. Weitere Informationen zu ASE finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
+Azure HDInsight unterstützt die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Daten auf verwalteten Datenträgern und Ressourcendatenträgern, die an virtuelle HDInsight-Clustercomputer angefügt sind. Dank dieses Features können Sie die Verschlüsselungsschlüssel, mit denen ruhende Daten in Ihren HDInsight-Clustern geschützt werden, mithilfe von Azure Key Vault verwalten. 
 
 Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) von Azure geschützt. Die Daten auf diesen Datenträgern werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie kundenseitig verwaltete Schlüssel für HDInsight aktivieren, stellen Sie die Verschlüsselungsschlüssel für HDInsight bereit, um diese Schlüssel mithilfe von Azure Key Vault zu verwenden und zu verwalten.
+
+In diesem Dokument wird nicht auf Daten eingegangen, die in Ihrem Azure Storage-Konto gespeichert sind. Weitere Informationen zur Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md). Ihre Cluster verfügen möglicherweise über mindestens ein angefügtes Azure Storage-Konto, bei dem die Verschlüsselungsschlüssel auch von Microsoft oder kundenseitig verwaltet werden können, der Verschlüsselungsdienst ist jedoch anders.
+
+## <a name="introduction"></a>Einführung
 
 Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln ist ein Prozess mit nur einem Schritt, der bei der Clustererstellung ohne zusätzliche Kosten ausgeführt wird. Sie müssen bei der Erstellung Ihres Clusters lediglich HDInsight als verwaltete Identität bei Azure Key Vault registrieren und den Verschlüsselungsschlüssel hinzufügen.
 
 Sowohl Ressourcendatenträger als auch verwaltete Datenträger auf den einzelnen Knoten des Clusters werden mit einem symmetrischen Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) verschlüsselt. Der DEK wird mit dem Schlüssel für die Schlüsselverschlüsselung (Key Encryption Key, KEK) aus Ihrem Schlüsseltresor geschützt. Die Ver- und Entschlüsselung wird vollständig von Azure HDInsight übernommen.
 
-Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azure-Portal oder die Azure CLI verwenden. Beim Rotieren eines Schlüssels beginnt der HDInsight-Cluster innerhalb weniger Minuten mit der Verwendung des neuen Schlüssels. Aktivieren Sie die Schlüsselschutzfunktion „Soft Delete“ (Vorläufig löschen) zum Schutz vor Ransomware und versehentlichem Löschen. Schlüsseltresore ohne diese Schutzfunktion werden nicht unterstützt.
+Wenn die Schlüsseltresor-Firewall für den Schlüsseltresor aktiviert ist, in dem der Schlüssel für die Datenträgerverschlüsselung gespeichert ist, müssen die IP-Adressen der regionalen HDInsight-Ressourcenanbieter für die Region, in der der Cluster bereitgestellt wird, der Konfiguration für die Schlüsseltresor-Firewall hinzugefügt werden. Dies ist erforderlich, weil HDInsight kein vertrauenswürdiger Azure Key Vault-Dienst ist.
+
+Sie können für das sichere Rotieren der Schlüssel im Schlüsseltresor das Azure-Portal oder die Azure CLI verwenden. Beim Rotieren eines Schlüssels beginnt der HDInsight-Cluster innerhalb weniger Minuten mit der Verwendung des neuen Schlüssels. Aktivieren Sie die Schlüsselschutzfunktion [Vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md) zum Schutz vor Ransomware und versehentlichem Löschen. Schlüsseltresore ohne diese Schutzfunktion werden nicht unterstützt.
+
+|Clustertyp |Betriebssystemdatenträger (verwalteter Datenträger) |Datenträger für Daten (verwalteter Datenträger) |Temporärer Datenträger (lokale SSD) |
+|---|---|---|---|
+|Kafka, HBase mit beschleunigten Schreibvorgängen|SSE-Verschlüsselung|SSE-Verschlüsselung + optionale CMK-Verschlüsselung|Optionale CMK-Verschlüsselung|
+|Alle anderen Cluster (Spark, Interactive, Hadoop, HBase ohne beschleunigte Schreibvorgänge)|SSE-Verschlüsselung|–|Optionale CMK-Verschlüsselung|
 
 ## <a name="get-started-with-customer-managed-keys"></a>Erste Schritte mit von Kunden verwalteten Schlüsseln
 
 Die Erstellung eines HDInsight-Clusters mit aktiviertem kundenseitig verwaltetem Schlüssel umfasst folgende Schritte:
 
 1. Erstellen verwalteter Identitäten für Azure-Ressourcen
-2. Einrichten von Azure Key Vault mit den Schlüsseln
-3. Erstellen eines HDInsight-Clusters mit aktiviertem kundenseitig verwaltetem Schlüssel
-4. Rotieren des Verschlüsselungsschlüssels
+1. Azure Key Vault erstellen
+1. Erstellen eines Schlüssels
+1. Erstellen einer Zugriffsrichtlinie
+1. Erstellen eines HDInsight-Clusters mit aktiviertem kundenseitig verwaltetem Schlüssel
+1. Rotieren des Verschlüsselungsschlüssels
 
 ## <a name="create-managed-identities-for-azure-resources"></a>Erstellen verwalteter Identitäten für Azure-Ressourcen
 
-Erstellen Sie für die Authentifizierung bei Key Vault mit dem [Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md) oder der [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) eine benutzerseitig zugewiesene verwaltete Identität. Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](hdinsight-managed-identities.md). Achten Sie darauf, die Ressourcen-ID der verwalteten Identität zu speichern, da Sie sie später zur Key Vault-Zugriffsrichtlinie hinzufügen.
+Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, um sich bei Key Vault zu authentifizieren.
 
-## <a name="set-up-the-key-vault-and-keys"></a>Einrichten von Key Vault und Schlüsseln
+Die einzelnen Schritte finden Sie unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](hdinsight-managed-identities.md). Achten Sie darauf, die Ressourcen-ID der verwalteten Identität zu speichern, da Sie sie später zur Key Vault-Zugriffsrichtlinie hinzufügen.
 
-HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltresor besitzen, können Sie Ihre Schlüssel in Azure Key Vault importieren. Denken Sie daran, dass für die Schlüssel „Vorläufig löschen“ aktiviert sein muss. Die Funktion für vorläufiges Löschen ist über REST, .NET/C#, PowerShell und die Azure-Befehlszeilenschnittstelle verfügbar.
+## <a name="create-azure-key-vault"></a>Azure Key Vault erstellen
 
-1. Befolgen Sie zum Erstellen eines neuen Schlüsseltresors die Schnellstartanleitung für [Azure Key Vault](../key-vault/key-vault-overview.md). Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/about-keys-secrets-and-certificates.md).
+Erstellen eines Schlüsseltresors Die einzelnen Schritte finden Sie unter [Erstellen eines Tresors](../key-vault/quick-create-portal.md).
 
-1. Aktivieren Sie „soft-delete“ (Vorläufiges Löschen) für den Schlüsseltresor mithilfe des CLI-Befehls [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update).
+HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltresor besitzen, können Sie Ihre Schlüssel in Azure Key Vault importieren. Denken Sie daran, dass für den Schlüsseltresor das **vorläufige Löschen** aktiviert sein muss. Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/about-keys-secrets-and-certificates.md).
 
-    ```azurecli
-    az keyvault update --name <Key Vault Name> --enable-soft-delete
-    ```
+## <a name="create-key"></a>Erstellen eines Schlüssels
 
-1. Erstellen Sie Schlüssel.
-
-    a. Wählen Sie zum Erstellen eines neuen Schlüssels **Generieren/Importieren** im Menü **Schlüssel** unter **Einstellungen** aus.
+1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Schlüssel** >  **+ Generieren/Importieren**.
 
     ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/disk-encryption/create-new-key.png "Generieren eines neuen Schlüssels in Azure Key Vault")
 
-    b. Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
+1. Geben Sie einen Namen an, und wählen Sie dann **Erstellen** aus. Behalten Sie den standardmäßigen **Schlüsseltyp** (Option **RSA**) bei.
 
     ![Generieren des Schlüsselnamens](./media/disk-encryption/create-key.png "Generieren des Schlüsselnamens")
 
-    c. Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
+1. Wenn Sie zur Seite **Schlüssel** zurückkehren, wählen Sie den erstellten Schlüssel aus.
 
     ![Key Vault-Schlüsselliste](./media/disk-encryption/key-vault-key-list.png)
 
-    d. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des HDInsight-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
+1. Wählen Sie die Version aus, um die Seite **Schlüsselversion** zu öffnen. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des HDInsight-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
 
     ![Abrufen des Schlüsselbezeichners](./media/disk-encryption/get-key-identifier.png)
 
-1. Fügen Sie eine verwaltete Identität zur Key Vault-Zugriffsrichtlinie hinzu.
+## <a name="create-access-policy"></a>Erstellen einer Zugriffsrichtlinie
 
-    a. Erstellen Sie eine neue Azure Key Vault-Zugriffsrichtlinie.
+1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Zugriffsrichtlinien** >  **+ Zugriffsrichtlinie hinzufügen**.
 
-    ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/add-key-vault-access-policy.png)
+    ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/key-vault-access-policy.png)
 
-    b. Wählen Sie unter **Prinzipal auswählen** die von Ihnen erstellte benutzerseitig zugewiesene verwaltete Identität aus.
+1. Geben Sie auf der Seite **Zugriffsrichtlinie hinzufügen** die folgenden Informationen an:
+
+    |Eigenschaft |BESCHREIBUNG|
+    |---|---|
+    |Schlüsselberechtigungen|Wählen Sie **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen** aus.|
+    |Berechtigungen für Geheimnis|Wählen Sie **Abrufen**, **Festlegen** und **Löschen** aus.|
+    |Prinzipal auswählen|Wählen Sie die benutzerseitig zugewiesene verwaltete Identität aus, die Sie zuvor erstellt haben.|
 
     ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-    c. Aktivieren Sie unter **Schlüsselberechtigungen** die Optionen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen**.
+1. Wählen Sie **Hinzufügen**.
 
-    ![Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 1](./media/disk-encryption/add-key-vault-access-policy-keys.png "Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 1")
-
-    d. Aktivieren Sie unter **Berechtigungen für Geheimnis** die Optionen **Abrufen**, **Festlegen** und **Löschen**.
-
-    ![Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 2](./media/disk-encryption/add-key-vault-access-policy-secrets.png "Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 2")
-
-    e. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
     ![Speichern einer Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -99,7 +106,7 @@ Sie können nun einen neuen HDInsight-Cluster erstellen. Der kundenseitig verwal
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Geben Sie während der Clustererstellung die vollständige Schlüssel-URL (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
+Geben Sie während der Clustererstellung den vollständigen **Schlüsselbezeichner** (einschließlich Schlüsselversion) an. Beispiel: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Darüber hinaus müssen Sie die verwaltete Identität dem Cluster zuweisen und den Schlüssel-URI angeben.
 
 ![Neuen Cluster erstellen](./media/disk-encryption/create-cluster-portal.png)
 
@@ -123,7 +130,7 @@ In manchen Szenarien müssen unter Umständen die vom HDInsight-Cluster verwende
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Um den Schlüssel zu rotieren, müssen Sie über die vollständige URL des neuen Schlüssels verfügen (siehe Schritt 3 unter [Einrichten des Schlüsseltresors und der Schlüssel](#set-up-the-key-vault-and-keys)). Wechseln Sie anschließend im Portal zum Abschnitt mit den HDInsight-Clustereigenschaften, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
+Zum Rotieren des Schlüssels benötigen Sie die Basis-URI des Schlüsseltresors. Wechseln Sie anschließend im Portal zum Abschnitt mit den HDInsight-Clustereigenschaften, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
 
 ![Rotieren des Schlüssels für die Datenträgerverschlüsselung](./media/disk-encryption/change-key.png)
 
@@ -162,7 +169,7 @@ Wenn der Cluster den Zugriff auf den Schlüssel verliert, werden im Apache Ambar
 
 **Wie kann ich den Cluster wiederherstellen, wenn die Schlüssel gelöscht werden?**
 
-Da nur Schlüssel unterstützt werden, für die „Soft Delete“ (Vorläufig löschen) aktiviert ist, sollte der Cluster wieder Zugriff auf die Schlüssel erlangen, wenn die Schlüssel im Schlüsseltresor wiederhergestellt werden. Informationen zum Wiederherstellen eines Azure Key Vault-Schlüssels finden Sie unter [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) oder [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+Da nur Schlüssel unterstützt werden, für die „vorläufiges Löschen“ aktiviert ist, sollte der Cluster wieder Zugriff auf die Schlüssel erlangen, wenn die Schlüssel im Schlüsseltresor wiederhergestellt werden. Informationen zum Wiederherstellen eines Azure Key Vault-Schlüssels finden Sie unter [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) oder [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
 
 **Welche Arten von Datenträgern werden verschlüsselt? Werden Betriebssystemdatenträger/Ressourcendatenträger ebenfalls verschlüsselt?**
 
@@ -178,4 +185,5 @@ Kundenseitig verwaltete Schlüssel von HDInsight stehen in allen öffentlichen u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über die Unternehmenssicherheit in Azure HDInsight](./domain-joined/hdinsight-security-overview.md)
+* Weitere Informationen zu Azure Key Vault finden Sie unter [Was ist Azure Key Vault](../key-vault/key-vault-overview.md).
+* [Übersicht über die Unternehmenssicherheit in Azure HDInsight](./domain-joined/hdinsight-security-overview.md).

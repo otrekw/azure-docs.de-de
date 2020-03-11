@@ -1,18 +1,18 @@
 ---
 title: Apache Spark und Hive – Hive Warehouse Connector – Azure HDInsight
 description: Es wird beschrieben, wie Sie Apache Spark und Apache Hive unter Azure HDInsight per Hive Warehouse Connector integrieren.
-author: nakhanha
-ms.author: nakhanha
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/02/2020
+ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744875"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252403"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
 
@@ -54,17 +54,17 @@ Kopieren Sie die Knoteninformationen aus der Datei `/etc/hosts` auf headnode0 Ih
 
 #### <a name="from-your-interactive-query-cluster"></a>In Ihrem Interactive Query-Cluster
 
-1. Navigieren Sie mithilfe von `https://LLAPCLUSTERNAME.azurehdinsight.net` zur Apache Ambari-Startseite des Clusters, wobei `LLAPCLUSTERNAME` der Name Ihres Interactive Query-Clusters ist.
+1. Navigieren Sie mithilfe von `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` zur Apache Ambari-Hive-Seite des Clusters, wobei `LLAPCLUSTERNAME` der Name Ihres Interactive Query-Clusters ist.
 
-1. Navigieren Sie zu **Hive** > **CONFIGS** > **Advanced** > **Advanced hive-site** > **hive.zookeeper.quorum**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Navigieren Sie zu **Advanced** > **General** > **hive.metastore.uris**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
-1. Navigieren Sie zu **Hive** > **CONFIGS** > **Advanced** > **General** > **hive.metastore.uris**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Navigieren Sie zu **Advanced** > **Advanced hive-site** > **hive.zookeeper.quorum**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
 #### <a name="from-your-apache-spark-cluster"></a>In Ihrem Apache Spark-Cluster
 
-1. Navigieren Sie mithilfe von `https://SPARKCLUSTERNAME.azurehdinsight.net` zur Apache Ambari-Startseite des Clusters, wobei `SPARKCLUSTERNAME` der Name Ihres Apache Spark-Clusters ist.
+1. Navigieren Sie mithilfe von `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` zur Apache Ambari-Hive-Seite des Clusters, wobei `SPARKCLUSTERNAME` der Name Ihres Apache Spark-Clusters ist.
 
-1. Navigieren Sie zu **Hive** > **CONFIGS** > **Advanced** > **Advanced hive-interactive-site** > **hive.llap.daemon.service.hosts**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `@llap0`.
+1. Navigieren Sie zu **Advanced** > **Advanced hive-interactive-site** > **hive.llap.daemon.service.hosts**, und notieren Sie sich den Wert. Der Wert kann wie folgt lauten: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Konfigurieren von Einstellungen des Spark-Clusters
 
@@ -174,7 +174,7 @@ Spark verfügt nicht über native Unterstützung für das Schreiben in verwaltet
     ```scala
     hive.table("sampletable_colorado").show()
     ```
-    
+
     ![Hive Warehouse Connector – Anzeigen der Hive-Tabelle](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Schreibvorgänge per strukturiertem Stream
@@ -261,5 +261,5 @@ Drücken Sie **STRG+C**, um netcat in der zweiten SSH-Sitzung zu beenden. Verwen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von Interactive Query mit HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Verwenden von Interactive Query mit HDInsight](./apache-interactive-query-get-started.md)
 * [Beispiele für die Interaktion mit Hive Warehouse Connector per Zeppelin, Livy, spark-submit und pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

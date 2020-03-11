@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 33624ab800bd1155b52efbc05f317122a99bb479
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118098"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205819"
 ---
-Rufen Sie das Azure-Portal auf, und [erstellen Sie eine Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer). Geben Sie im Bereich **Erstellen** die folgenden Informationen an:
+Navigieren Sie zum Azure-Portal, und <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="Erstellen einer neuen Formularerkennungsressource" target="_blank">erstellen Sie eine neue Formularerkennungsressource<span class="docon docon-navigate-external x-hidden-focus"></span></a>. Geben Sie im Bereich **Erstellen** die folgenden Informationen an:
 
 |    |    |
 |--|--|

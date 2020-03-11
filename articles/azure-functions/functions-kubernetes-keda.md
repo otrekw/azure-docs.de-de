@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549035"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301674"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions in Kubernetes mit KEDA
 
@@ -20,7 +20,7 @@ Die Azure Functions-Runtime bietet Flexibilität im Hinblick auf Art und Ort des
 
 Der Azure Functions-Dienst besteht aus zwei Komponenten: einer Runtime und einem Skalierungscontroller.  Die Functions-Runtime führt Ihren Code aus.  Die Runtime enthält Logik zum Auslösen, Protokollieren und Verwalten von Funktionsausführungen.  Die Azure Functions-Runtime kann *überall* ausgeführt werden.  Die andere Komponente ist ein Skalierungscontroller.  Der Skalierungscontroller überwacht die Rate der Ereignisse, die Ihre Funktion nutzen möchten, und skaliert proaktiv die Anzahl von Instanzen, die Ihre App ausführen.  Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
-Die Kubernetes-basierte Version stellt die Functions-Runtime in einem [Docker-Container](functions-create-function-linux-custom-image.md) bereit, während die ereignisgesteuerte Skalierung über KEDA erfolgt.  KEDA kann eine zentrale Herunterskalierung auf 0 Instanzen (wenn keine Ereignisse stattfinden) und eine zentrale Hochskalierung auf bis zu *n* Instanzen durchführen. Zu diesem Zweck macht KEDA benutzerdefinierte Metriken für die automatische Kubernetes-Skalierung (automatische horizontale Podskalierung) verfügbar.  Durch Verwendung von Functions-Container mit KEDA können serverlose Funktionen in jedem Kubernetes-Cluster repliziert werden.  Diese Funktionen können auch mithilfe des Features für [virtuelle AKS-Knoten (Azure Kubernetes Service)](../aks/virtual-nodes-cli.md) für serverlose Infrastrukturen bereitgestellt werden.
+Die Kubernetes-basierte Version stellt die Functions-Runtime in einem [Docker-Container](functions-create-function-linux-custom-image.md) bereit, während die ereignisgesteuerte Skalierung über KEDA erfolgt.  KEDA kann eine horizontale Herunterskalierung auf 0 Instanzen (wenn keine Ereignisse stattfinden) und eine horizontale Hochskalierung auf bis zu *n* Instanzen durchführen. Zu diesem Zweck macht KEDA benutzerdefinierte Metriken für die automatische Kubernetes-Skalierung (automatische horizontale Podskalierung) verfügbar.  Durch Verwendung von Functions-Container mit KEDA können serverlose Funktionen in jedem Kubernetes-Cluster repliziert werden.  Diese Funktionen können auch mithilfe des Features für [virtuelle AKS-Knoten (Azure Kubernetes Service)](../aks/virtual-nodes-cli.md) für serverlose Infrastrukturen bereitgestellt werden.
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>Verwalten von KEDA und Functions in Kubernetes
 
@@ -41,7 +41,7 @@ func init --docker-only
 Um ein Image zu erstellen und Ihre Funktionen in Kubernetes bereitzustellen, führen Sie den folgenden Befehl aus:
 
 > [!NOTE]
-> Die Core Tools nutzen die Docker-Befehlszeilenschnittstelle, um das Image zu erstellen und zu veröffentlichen. Stellen Sie sicher, dass bereits ein Docker installiert und über `docker login` mit Ihrem Konto verbunden ist.
+> Die Core Tools verwenden die Docker-Befehlszeilenschnittstelle, um das Image zu erstellen und zu veröffentlichen. Stellen Sie sicher, dass bereits ein Docker installiert und über `docker login` mit Ihrem Konto verbunden ist.
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>

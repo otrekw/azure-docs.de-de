@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313908"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920795"
 ---
 # <a name="train-svd-recommender"></a>Train SVD Recommender
 
-In diesem Artikel wird die Verwendung des Moduls Train SVD Recommender im Azure Machine Learning-Designer beschrieben. Verwenden Sie dieses Modul, um ein Empfehlungsmodell zu trainieren, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.  
+In diesem Artikel wird die Verwendung des Moduls „Train SVD Recommender“ im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Verwenden Sie dieses Modul, um ein Empfehlungsmodell zu trainieren, das auf dem SVD-Algorithmus (Singular Value Decomposition, Singulärwertzerlegung) basiert.  
 
 Das Modul „Train SVD Recommender“ liest ein Dataset mit „user-item-rating-Tripeln“ (dreiteiliges Element mit „Benutzer-Element-Bewertung“). Es gibt ein trainiertes SVD-Empfehlungsmodul zurück. Mithilfe des trainierten Modells können Sie dann Bewertungen vorhersagen oder Empfehlungen generieren, indem Sie das Modul [Score SVD Recommender](score-svd-recommender.md) verwenden.  
 
@@ -48,14 +48,11 @@ Bevor Sie das Modul verwenden können, müssen Ihre Eingabedaten das Format aufw
 + Die zweite Spalte enthält Elementbezeichner.
 + Die dritte Spalte enthält die Bewertung für das Benutzer-Element-Paar. Alle Werte müssen numerisch sein.  
 
-Das Dataset mit **Restaurantbewertungen** im Azure Machine Learning-Designer (unter **Saved Datasets** (Gespeicherte Datasets) und dann **Samples** (Beispiele)) veranschaulicht das erwartete Format:
+Das Dataset mit **Filmbewertungen** im Azure Machine Learning-Designer (wählen Sie **Datasets** und dann **Beispiele**) veranschaulicht das erwartete Format:
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Filmbewertungen](media/module/movie-ratings-dataset.png)
 
-In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer zwei separate Restaurants bewertet hat. 
+In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer mehrere Filme bewertet hat. 
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 

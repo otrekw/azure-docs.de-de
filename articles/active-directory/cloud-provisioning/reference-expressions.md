@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d250377e15b957c10322dbba9ca587dd58944ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794976"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298614"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Cloudbereitstellung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. 
@@ -34,9 +34,9 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
-  2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel:  „USA“
-  3. Andere Funktionen Beispiel:  FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel:  „Unternehmensname: \\"Contoso\\""
+  2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel: „USA“
+  3. Andere Funktionen Beispiel: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
+* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: „Unternehmensname: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 | Liste der Funktionen | BESCHREIBUNG |
@@ -87,10 +87,10 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-   | **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
+   | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+   | **Suffix** |Erforderlich |String |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -117,7 +117,7 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 
 ---
 
-### <a name="cbool"></a>CBool
+### <a name="cbool"></a>ZBool
 **Beschreibung:**  
 Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert.
 
@@ -179,7 +179,7 @@ Das Ausgabeformat dieser Funktion wird von Azure Active Directory als DN-Attribu
 Gibt „48656C6C6F20776F726C6421“ zurück.
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Anzahl
 **Beschreibung:**  
 Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
 
@@ -231,7 +231,7 @@ Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links
 Falls der DN „cn=Joe,ou=…“ lautet, wird „Joe“ zurückgegeben.
 
 ---
-### <a name="error"></a>Error
+### <a name="error"></a>Fehler
 **Beschreibung:**  
 Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
 
@@ -243,18 +243,18 @@ Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzu
 Wenn das accountName-Attribut nicht vorhanden ist, wird ein Fehler für das Objekt ausgegeben.
 
 ---
-### <a name="formatdatetime"></a>FormatDateTime
+### <a name="formatdatetime"></a>FormatDatumZeit
 **Funktion:**<br> FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
 
 **Beschreibung:**<br> Konvertiert eine Datumszeichenfolge aus einem Format in ein anderes Format.
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-   | **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-   | **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
+   | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+   | **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+   | **Ausgabeformat** |Erforderlich |String |Format des Ausgabedatums. |
 
 ---
 ### <a name="guid"></a>Guid
@@ -352,7 +352,7 @@ Die umgekehrte Funktion heißt „IsNullOrEmpty“.
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>Element
 **Beschreibung:**  
 Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
 
@@ -392,10 +392,10 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-   | **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+   | **Trennzeichen** |Erforderlich |String |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
+   | **source1 … sourceN** |Erforderlich, unterschiedlich oft |String |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 ---
 ### <a name="left"></a>Left
@@ -429,11 +429,11 @@ Gibt `Joh` zurück.
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
+   | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs. |
    | **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
-   | **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
+   | **length** |Erforderlich |integer |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -443,19 +443,19 @@ Gibt `Joh` zurück.
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
+   | **Quelle** |Erforderlich |String | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
 ---
-### <a name="not"></a>not
+### <a name="not"></a>Not
 **Funktion:**<br> Not(Quelle)
 
 **Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
    | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind TRUE oder FALSE. |
 
@@ -497,15 +497,15 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
-   | **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-   | **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
-   | **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
-   | **Ersatzwert** |Optional |Zeichenfolge |Neuer Wert, durch den der alte Wert ersetzt wird. |
-   | **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das als Ersatzwert verwendet werden soll. |
-   | **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
+   | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
+   | **AlterWert** |Optional |String |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
+   | **RegexMuster** |Optional |String |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
+   | **RegexGruppenname** |Optional |String |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
+   | **Ersatzwert** |Optional |String |Neuer Wert, durch den der alte Wert ersetzt wird. |
+   | **Ersatzattributname** |Optional |String |Name des Attributs, das als Ersatzwert verwendet werden soll. |
+   | **Vorlage** |Optional |String |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -522,9 +522,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
+   | **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |String | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
 
 ---
@@ -535,9 +535,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-  | NAME | Erforderlich/wiederholt | type | Notizen |
+  | Name | Erforderlich/wiederholt | type | Notizen |
   |--- | --- | --- | --- |
-  | **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]** -Objekt |
+  | **[appRoleAssignments]** |Erforderlich |String |**[appRoleAssignments]** -Objekt |
 
 ---
 ### <a name="split"></a>Split
@@ -547,10 +547,10 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
-   | **Trennzeichen** |Erforderlich |Zeichenfolge |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
+   | **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
+   | **Trennzeichen** |Erforderlich |String |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
@@ -568,24 +568,24 @@ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Siche
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
+   | **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
 
 ---
-### <a name="switch"></a>Switch
+### <a name="switch"></a>Schalter
 **Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
 **Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern.
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
-   | **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
-   | **key** |Erforderlich |Zeichenfolge |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
-   | **value** |Erforderlich |Zeichenfolge |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
+   | **Quelle** |Erforderlich |String |Der zu überprüfende **Quellwert**. |
+   | **defaultValue** |Optional |String |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
+   | **key** |Erforderlich |String |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
+   | **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -595,10 +595,10 @@ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Siche
 
 **Parameter:**<br> 
 
-   | NAME | Erforderlich/wiederholt | type | Notizen |
+   | Name | Erforderlich/wiederholt | type | Notizen |
    | --- | --- | --- | --- |
-   | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-   | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+   | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+   | **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 
@@ -609,14 +609,14 @@ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Siche
 
 **Parameter:**<br> 
 
-  | NAME | Erforderlich/wiederholt | type | Notizen |
+  | Name | Erforderlich/wiederholt | type | Notizen |
   | --- | --- | --- | --- |
-  | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
-  | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+  | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
+  | **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 
-### <a name="trim"></a>Trim
+### <a name="trim"></a>Glätten
 **Beschreibung:**  
 Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
 
@@ -631,7 +631,7 @@ Gibt „test“ zurück.
 Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
 
 ---
-### <a name="word"></a>Word
+### <a name="word"></a>Wort
 **Beschreibung:**  
 Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.
 
@@ -786,5 +786,5 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was bedeutet Bereitstellung?](what-is-provisioning.md)
-- [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
+- [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)

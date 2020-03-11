@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766437"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655751"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Spring Boot-App
 
@@ -21,9 +21,9 @@ Die Spring Boot-Bibliotheken für die Featureverwaltung erweitern das Framework 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- Ein unterstütztes [Java Development Kit-SDK](https://docs.microsoft.com/java/azure/jdk) mit Version 8.
-- [Apache Maven](https://maven.apache.org/download.cgi) Version 3.0 oder höher
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Ein unterstütztes [Java Development Kit-SDK](https://docs.microsoft.com/java/azure/jdk) mit Version 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) Version 3.0 oder höher
 
 ## <a name="create-an-app-configuration-instance"></a>Erstellen einer App Configuration-Instanz
 
@@ -42,14 +42,14 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Navigieren Sie zu <https://start.spring.io/>.
 
-2. Verwenden Sie die folgenden Optionen:
+1. Verwenden Sie die folgenden Optionen:
 
-   - Generieren Sie ein **Maven**-Projekt mit **Java**.
-   - Geben Sie eine **Spring Boot**-Version ab 2.0 an.
-   - Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.  In diesem Artikel werden `com.example` und `demo` verwendet.
-   - Fügen Sie die Abhängigkeit **Spring Web** hinzu.
+   * Generieren Sie ein **Maven**-Projekt mit **Java**.
+   * Geben Sie eine **Spring Boot**-Version ab 2.0 an.
+   * Geben Sie Namen für die **Gruppe** und das **Artefakt** für Ihre Anwendung an.  In diesem Artikel werden `com.example` und `demo` verwendet.
+   * Fügen Sie die Abhängigkeit **Spring Web** hinzu.
 
-3. Wählen Sie nach Angabe der vorherigen Optionen die Option **Projekt generieren** aus. Laden Sie das Projekt nach entsprechender Aufforderung auf Ihren lokalen Computer herunter.
+1. Wählen Sie nach Angabe der vorherigen Optionen die Option **Projekt generieren** aus. Laden Sie das Projekt nach entsprechender Aufforderung auf Ihren lokalen Computer herunter.
 
 ## <a name="add-feature-management"></a>Hinzufügen der Featureverwaltung
 
@@ -57,20 +57,41 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 1. Öffnen Sie die Datei *pom.xml* in einem Text-Editor, und fügen Sie der Abhängigkeitenliste (`<dependencies>`) Folgendes hinzu:
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
         }
     }
     ```
+
 1. Erstellen Sie eine neue Java-Datei mit dem Namen *MessageProperties.java* im Paketverzeichnis Ihrer App.
 
     ```java
@@ -131,7 +153,7 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
     }
     ```
 
-1. Erstellen Sie im Paketverzeichnis Ihrer App eine neue Java-Datei mit dem Namen *HelloController.java*. 
+1. Erstellen Sie im Paketverzeichnis Ihrer App eine neue Java-Datei mit dem Namen *HelloController.java*.
 
     ```java
     package com.example.demo;
@@ -220,36 +242,36 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
     ```
 
-6. Erstellen Sie unter `static` einen neuen Ordner namens „CSS“ und in diesem Ordner eine neue CSS-Datei namens *main.css*.
+1. Erstellen Sie unter `static` einen neuen Ordner namens „CSS“ und in diesem Ordner eine neue CSS-Datei namens *main.css*.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
@@ -284,6 +306,6 @@ Verwenden Sie [Spring Initializr](https://start.spring.io/), um ein neues Spring
 
 In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher erstellt und diesen zur Verwaltung von Features in einer Spring Boot-Web-App über die [Feature-Manager-Bibliotheken](https://go.microsoft.com/fwlink/?linkid=2074664) verwendet.
 
-- Weitere Informationen über die [Featureverwaltung](./concept-feature-management.md)
-- [Verwalten von Featureflags](./manage-feature-flags.md)
-- [Verwenden von Featureflags in einer Spring Boot Core-App](./use-feature-flags-spring-boot.md).
+* Weitere Informationen über die [Featureverwaltung](./concept-feature-management.md)
+* [Verwalten von Featureflags](./manage-feature-flags.md)
+* [Verwenden von Featureflags in einer Spring Boot Core-App](./use-feature-flags-spring-boot.md).

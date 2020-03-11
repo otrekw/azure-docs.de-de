@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152192"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912788"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
 In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
@@ -51,17 +51,15 @@ Seit Jahren entwickeln Statistiker immer ausgereiftere Methoden für Regression.
 
 Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells mit unterschiedlichen Optionen:
 
-+ [Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs](#bkmk_GradientDescent)
++ [Anpassen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate](#create-a-regression-model-using-ordinary-least-squares)
+
+    Für kleine Datasets empfiehlt sich die Methode der kleinsten Quadrate. Diese sollte ähnliche Ergebnisse wie Excel liefern.
+    
++ [Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs](#create-a-regression-model-using-online-gradient-descent)
 
     Der Gradientenabstieg ist eine bessere Verlustfunktion für Modelle, die komplexer sind oder angesichts der Anzahl von Variablen zu wenig Trainingsdaten haben.
 
-
-
-+ [Anpassen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate](#bkmk_OrdinaryLeastSquares)
-
-    Für kleine Datasets empfiehlt sich die Methode der kleinsten Quadrate. Diese sollte ähnliche Ergebnisse wie Excel liefern.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a> Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
 
 1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
@@ -86,7 +84,7 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 8. Ausführen der Pipeline.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Ergebnisse für das Modell der kleinsten Quadrate
+### <a name="results-for-ordinary-least-squares-model"></a>Ergebnisse für das Modell der kleinsten Quadrate
 
 Nach Abschluss des Trainings:
 
@@ -94,7 +92,7 @@ Nach Abschluss des Trainings:
 + Um Vorhersagen zu treffen, verbinden Sie das trainierte Modell mit dem Modul [Score Model](./score-model.md) (Bewerten des Modells) sowie mit einem Dataset mit neuen Werten. 
 
 
-## <a name="bkmk_GradientDescent"></a> Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
 
 1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
@@ -105,6 +103,8 @@ Nach Abschluss des Trainings:
 3. Geben Sie für **Create trainer mode** (Trainermodus erstellen) an, ob Sie das Modell mit einem vordefinierten Parametersatz trainieren möchten oder ob Sie es mithilfe eines Parameter-Sweeps optimieren möchten.
 
     + **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Netzwerk der linearen Regression konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.
+    
+    + **Parameter Range** (Parameterbereich): Wählen Sie diese Option, wenn Sie nicht sicher sind, welche Parameter am besten geeignet sind, und einen Parametersweep ausführen möchten. Wählen Sie einen Wertebereich aus, über den iteriert werden soll. Anschließend iteriert das Modul [Tune Model Hyperparameters](tune-model-hyperparameters.md) über alle möglichen Kombinationen der von Ihnen angegebenen Einstellungen, um die Hyperparameter zur Erzielung der optimalen Ergebnisse zu bestimmen.  
 
    
 4. Geben Sie für **Learning rate** (Lernrate) die Anfangslernrate für die stochastische Gradientenabstiegsoptimierung an.
@@ -133,7 +133,7 @@ Nach Abschluss des Trainings:
 
 13. Ausführen der Pipeline.
 
-## <a name="results-for-online-gradient-descent"></a>Ergebnisse für den Onlinegradientenabstieg
+### <a name="results-for-online-gradient-descent"></a>Ergebnisse für den Onlinegradientenabstieg
 
 Nach Abschluss des Trainings:
 

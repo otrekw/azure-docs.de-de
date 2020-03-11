@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651952"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303119"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Datenerfassung in Azure Machine Learning
 
@@ -55,7 +55,7 @@ Diese Schritte und das folgende Diagramm veranschaulichen den Workflow von Azure
 
 ## <a name="use-the-python-sdk"></a>Verwenden des Python SDK 
 
-Mit dem [Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) können Sie Datenerfassungsaufgaben in eine [Azure Machine Learning-Pipeline](how-to-create-your-first-pipeline.md) integrieren.
+Mit dem [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) können Sie Datenerfassungsaufgaben in eine [Azure Machine Learning-Pipeline](how-to-create-your-first-pipeline.md) integrieren.
 
 In der folgenden Tabelle sind die Vor- und Nachteile der Verwendung des SDK und eines ML-Pipelineschritts für Aufgaben der Datenerfassung zusammengefasst.
 
@@ -71,4 +71,5 @@ In der folgenden Abbildung besteht die Azure Machine Learning-Pipeline aus zwei 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Erfahren Sie, wie Sie eine Datenerfassungspipeline für Machine Learning mit [Azure Data Factory](how-to-data-ingest-adf.md) erstellen.
 * Erfahren Sie, wie Sie mit [Azure-Pipelines](how-to-cicd-data-ingestion.md) die Entwicklungslebenszyklen Ihrer Datenerfassungspipelines automatisieren und verwalten können.

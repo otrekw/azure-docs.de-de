@@ -1,6 +1,6 @@
 ---
 title: LiveEvent-Typen in Azure Media Services | Microsoft-Dokumentation
-description: 'In Azure Media Services gibt es zwei Arten von Liveereignissen: Livecodierung und Pass-Through. Dieser Artikel enthält eine detaillierte Tabelle, in der Liveereignistypen verglichen werden.'
+description: In Azure Media Services kann ein Liveereignis entweder auf eine *Pass-Through*- oder *Livecodierung* festgelegt werden. Dieser Artikel enthält eine detaillierte Tabelle, in der Liveereignistypen verglichen werden.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543051"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244639"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
-In Azure Media Services gibt es zwei Arten von [Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents): Livecodierung und Pass-Through. 
+In Azure Media Services kann ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
+
+In diesem Artikel werden die Features der Liveereignistypen verglichen.
 
 ## <a name="types-comparison"></a>Typenvergleich 
 

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650912"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298183"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle
 
@@ -28,6 +28,8 @@ Die Azure CLI ist die Befehlszeilenumgebung von Azure und dient zum Verwalten vo
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+## <a name="install-the-azure-cli-locally"></a>Lokales Installieren der Azure-Befehlszeilenschnittstelle
+
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens die Version 2.0.46 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um Ihre Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen, müssen Sie sich anmelden und authentifizieren. Bei Verwendung von Azure Cloud Shell ist dieser Schritt nicht erforderlich. Führen Sie `az login` aus, um sich bei der Azure-Befehlszeilenschnittstelle anzumelden, und authentifizieren Sie sich im Browserfenster:
@@ -36,11 +38,13 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen, müssen Sie sich
 az login
 ```
 
+Weitere Informationen zur Authentifizierung mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
+
 ## <a name="authorize-access-to-blob-storage"></a>Autorisieren des Zugriffs auf Blobspeicher
 
 Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle autorisiert werden. Hierzu können Sie entweder Azure AD-Anmeldeinformationen oder den Speicherkonto-Zugriffsschlüssel verwenden. Es wird empfohlen, Azure AD-Anmeldeinformationen zu verwenden. In diesem Artikel wird die Autorisierung von Blobspeichervorgängen mithilfe von Azure AD gezeigt.
 
-Bei Azure CLI-Befehlen für blobspeicherbezogene Datenvorgänge können Sie mithilfe des Parameters `--auth-mode` die Art der Autorisierung für einen Vorgang angeben. Legen Sie den Parameter `--auth-mode` auf `login` fest, um die Autorisierung mit Azure AD-Anmeldeinformationen zu verwenden. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mithilfe der Azure-Befehlszeilenschnittstelle](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Bei Azure CLI-Befehlen für blobspeicherbezogene Datenvorgänge können Sie mithilfe des Parameters `--auth-mode` die Art der Autorisierung für einen Vorgang angeben. Legen Sie den Parameter `--auth-mode` auf `login` fest, um die Autorisierung mit Azure AD-Anmeldeinformationen zu verwenden. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Der Parameter `--auth-mode` wird nur von blobspeicherbezogenen Datenvorgängen unterstützt. Bei Verwaltungsvorgängen wie etwa dem Erstellen einer Ressourcengruppe oder eines Speicherkontos werden automatisch Azure AD-Anmeldeinformationen für die Autorisierung verwendet.
 
@@ -149,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcen in der Ressourcengruppe, einschließlich des in dieser Schnellstartanleitung erstellten Speicherkontos, nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group). Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
+Wenn Sie die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen einschließlich des Speicherkontos löschen möchten, löschen Sie die Ressourcengruppe mithilfe des Befehls [az group delete](/cli/azure/group). Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
 az group delete \

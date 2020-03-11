@@ -9,31 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07859299805c5f7be869350adbdbfa675775888c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404809"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656941"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Office 365-Gruppen in Azure Active Directory (Vorschau)
 
-Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Office 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
+Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Office 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Weitere Informationen zur Unterstützung von Office 365-Apps finden Sie unter [Office 365-Unterstützung für Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
 > [!IMPORTANT]
-> Die Verwendung von Azure AD-Vertraulichkeitsbezeichnungen für Office 365-Gruppen erfordert eine Azure Active Directory Premium P1-Lizenz.
-
-## <a name="group-settings-controlled-by-labels"></a>Von Bezeichnungen gesteuerte Gruppeneinstellungen
-
-Es gibt zwei Einstellungen, die einer Bezeichnung zugeordnet werden können:
-
-- **Datenschutz:** Administratoren können der Bezeichnung eine Datenschutzeinstellung zuweisen, um zu steuern, ob eine Gruppe öffentlich oder privat ist.
-- **Gastzugriff**: Administratoren können die Gastrichtlinie für alle Gruppen durchsetzen, denen die Bezeichnung zugewiesen ist. Diese Richtlinie gibt an, ob Gäste als Mitglieder hinzugefügt werden können. Wenn die Gastrichtlinie für eine Bezeichnung konfiguriert ist, erlauben alle Gruppen, denen Sie die Bezeichnung zuweisen, nicht, dass die Einstellung „AllowToAddGuests“ geändert wird.
+> Um dieses Feature zu konfigurieren, muss mindestens eine aktive Azure Active Directory Premium P1-Lizenz in Ihrer Azure AD-Organisation vorhanden sein.
 
 ## <a name="enable-sensitivity-label-support-in-powershell"></a>Aktivieren der Unterstützung von Vertraulichkeitsbezeichnungen in PowerShell
 
@@ -87,11 +80,11 @@ Das ist alles. Sie haben das Feature aktiviert und können veröffentlichte Beze
 
 1. Speichern Sie die Änderungen, und wählen Sie **Erstellen** aus.
 
-Ihre Gruppe wird erstellt, und die mit der ausgewählten Bezeichnung verbundenen Richtlinien werden dann automatisch durchgesetzt.
+Ihre Gruppe wird erstellt, und die mit der ausgewählten Bezeichnung verbundenen Standort- und Gruppeneinstellungen werden automatisch durchgesetzt.
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Zuweisen einer Bezeichnung zu einer vorhandenen Gruppe im Azure-Portal
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem globalen Administrator- oder Gruppenadministratorkonto oder als Gruppenbesitzer an.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Gruppenadministratorkonto oder als Gruppenbesitzer an.
 1. Wählen Sie **Gruppen** aus.
 1. Wählen Sie auf der Seite **Alle Gruppen** die Gruppe aus, die Sie bezeichnen möchten.
 1. Wählen Sie auf der Seite der ausgewählten Gruppe **Eigenschaften** und anschließend eine Vertraulichkeitsbezeichnung aus der Liste aus.
@@ -109,22 +102,9 @@ Ihre Gruppe wird erstellt, und die mit der ausgewählten Bezeichnung verbundenen
 1. Wählen Sie **Entfernen**.
 1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Office 365-App-Unterstützung für Vertraulichkeitsbezeichnungen
-
-Die folgenden Office 365-Apps und -Dienste unterstützen die Vertraulichkeitsbezeichnungen in dieser Vorschau:
-
-- Azure AD Admin Center
-- Microsoft 365 Compliance Center
-- SharePoint
-- Outlook im Web
-- Teams
-- SharePoint Admin Center
-
-Weitere Informationen zur Unterstützung von Office 365-Apps finden Sie unter [Office 365-Unterstützung für Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
-
 ## <a name="using-classic-azure-ad-classifications"></a>Verwenden klassischer Azure AD-Klassifizierungen
 
-Nachdem Sie dieses Feature aktiviert haben, unterstützt Office 365 die „klassischen“ Klassifizierungen für neue Gruppen nicht mehr. Klassische Klassifizierungen sind die alten Klassifizierungen, die Sie durch Definieren von Werten für die `ClassificationList`-Einstellung in Azure AD PowerShell eingerichtet haben. Wenn dieses Feature aktiviert ist, werden diese Klassifizierungen nicht auf Gruppen angewendet.
+Nachdem Sie diese Funktion aktiviert haben, werden die „klassischen“ Klassifizierungen für Gruppen nur in vorhandenen Gruppen und Standorten angezeigt. Sie sollten sie nur dann für neue Gruppen verwenden, wenn Sie Gruppen in Apps erstellen, die keine Vertraulichkeitsbezeichnung unterstützen. Ihr Administrator kann sie bei Bedarf später in Vertraulichkeitsbezeichnungen umwandeln. Klassische Klassifizierungen sind die alten Klassifizierungen, die Sie durch Definieren von Werten für die `ClassificationList`-Einstellung in Azure AD PowerShell eingerichtet haben. Wenn dieses Feature aktiviert ist, werden diese Klassifizierungen nicht auf Gruppen angewendet.
 
 ## <a name="troubleshooting-issues"></a>Fragen zur Problembehandlung
 
@@ -136,9 +116,7 @@ Die Option „Vertraulichkeitsbezeichnung“ wird nur für Gruppen angezeigt, we
 1. Das Feature ist aktiviert, „EnableMIPLabels“ ist in PowerShell auf „True“ festgelegt.
 1. Die Gruppe ist eine Office 365-Gruppe.
 1. Der Mandant verfügt über eine Active Azure Active Directory Premium P1-Lizenz.
-1. Der aktuell angemeldete Benutzer hat Zugriff auf veröffentlichte Bezeichnungen.
 1. Der aktuell angemeldete Benutzer verfügt über ausreichende Berechtigungen, um Bezeichnungen zuzuweisen. Der Benutzer muss entweder ein globaler Administrator, ein Gruppenadministrator oder der Gruppenbesitzer sein.
-1. Dem aktuell angemeldeten Benutzer ist eine Office 365-Lizenz zugewiesen. Weitere Informationen zu den Lizenzanforderungen finden Sie unter [Vertraulichkeitsbezeichnungen in Office-Apps](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
 Stellen Sie sicher, dass alle Bedingungen erfüllt sind, damit Sie einer Gruppe Bezeichnungen zuweisen können.
 
@@ -149,7 +127,7 @@ Wenn die gesuchte Bezeichnung nicht in der Liste enthalten ist, kann dies einen 
 - Die Bezeichnung wird möglicherweise nicht im Microsoft 365 Compliance Center veröffentlicht. Dies könnte auch für Bezeichnungen gelten, die nicht mehr veröffentlicht werden. Weitere Informationen erhalten Sie von Ihrem Administrator.
 - Die Bezeichnung kann veröffentlicht werden, ist aber für den angemeldeten Benutzer nicht verfügbar. Weitere Informationen zum Zugriff auf die Bezeichnung erhalten Sie von Ihrem Administrator.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>Wie kann ich die Bezeichnung einer Gruppe ändern?
+### <a name="how-to-change-the-label-on-a-group"></a>Ändern der Bezeichnung einer Gruppe
 
 Bezeichnungen können jederzeit mit denselben folgenden Schritten wie bei der Zuweisung eines Bezeichners zu einer bestehenden Gruppe ausgetauscht werden:
 

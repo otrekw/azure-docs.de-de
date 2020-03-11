@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148930"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274163"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(VERALTET) Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
@@ -28,9 +28,9 @@ In diesem Artikel wird erläutert, wie Sie Azure Container Registry (ACR) mit ei
 > * Hochladen eines Images in Azure Container Registry
 > * Ausführen eines Containerimages aus Azure Container Registry
 
-Zum Ausführen der Schritte in diesem Tutorial benötigen Sie einen ACS-DC/OS-Cluster. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
+Sie benötigen einen ACS DC/OS-Cluster, um die Schritte in diesem Tutorial auszuführen. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 Nach der Erstellung der Registrierung gibt die Azure-Befehlszeilenschnittstelle Daten ähnlich den folgenden aus. Notieren Sie die Werte für `name` und `loginServer`, diese werden in späteren Schritten verwendet.
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -91,9 +91,9 @@ Rufen Sie zunächst den vollqualifizierten Domänennamen (FQDN) des DC/OS-Master
 FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Erstellen Sie eine SSH-Verbindung mit dem Master (oder dem ersten Master) des DC/OS-basierten Clusters. Aktualisieren Sie den Benutzernamen, wenn ein nicht standardmäßiger Wert bei der Erstellung des Clusters verwendet wurde.
+Erstellen Sie eine SSH-Verbindung mit dem Master (oder dem ersten Master) des DC/OS-basierten Clusters. Aktualisieren Sie den Benutzernamen, wenn ein kein Standardwert für die Erstellung des Clusters verwendet wurde.
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 Erstellen Sie eine komprimierte Datei, die die Authentifizierungswerte der Containerregistrierung enthält.
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 Kopieren Sie diese Datei in den freigegebenen Speicher des Clusters. Durch diesen Schritt wird die Datei auf allen Knoten des DC/OS-Clusters verfügbar.
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ Erstellen Sie über einen Entwicklungscomputer oder ein anderes System, auf dem 
 
 Erstellen Sie einen Container aus dem Ubuntu-Image.
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-Erfassen Sie dann den Container in einem neuen Image. Der Imagename muss den `loginServer`-Namen der Containerregistrierung mit dem Format `loginServer/imageName` enthalten.
+Erfassen Sie dann den Container in einem neuen Image. Der Imagename muss den Namen des Anmeldeservers (`loginServer`) der Containerregistrierung im Format `loginServer/imageName` enthalten.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 Melden Sie sich bei Azure Container Registry an. Ersetzen Sie den Namen durch den loginServer-Namen, „--username“ durch den Namen der Containerregistrierung und „--password“ durch eines der bereitgestellten Kennwörter.
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 Laden Sie schließlich das Image in die ACR-Registrierung hoch. In diesem Beispiel wird ein Image mit dem Namen „dcos-demo“ hochgeladen.
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,7 +189,7 @@ Um ein Image aus der ACR-Registrierung zu verwenden, erstellen Sie die Datei *ac
 
 Stellen Sie die Anwendung über die DC/OS-Befehlszeilenschnittstelle bereit.
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 

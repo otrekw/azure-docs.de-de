@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552020"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194636"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Schritte zum Migrieren zur Azure-Erstellungsressource
 
@@ -32,7 +32,10 @@ Wenn Sie kein Azure-Abonnement haben, [registrieren Sie sich](https://azure.micr
 
 ## <a name="access-the-migration-process"></a>Zugang zum Migrationsprozess
 
-Sie werden wöchentlich aufgefordert, Ihre Apps zu migrieren. Sie können dieses Fenster abbrechen, ohne eine Migration vorzunehmen. Wenn Sie eine Migration vor dem nächsten geplanten Zeitraum vornehmen möchten, können Sie den Migrationsprozess über das **Schloss**-Symbol auf der oberen Symbolleiste des LUIS-Portals beginnen.
+Sie werden wöchentlich aufgefordert, Ihre Apps zu migrieren. Sie können dieses Fenster abbrechen, ohne eine Migration vorzunehmen. Wenn Sie eine Migration vor dem nächsten geplanten Zeitraum vornehmen möchten, können Sie den Migrationsvorgang über das Symbol **Azure** auf der oberen Symbolleiste des LUIS-Portals beginnen.
+
+> [!div class="mx-imgBorder"]
+> ![Migrationssymbol](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>App-Besitzer beginnt den Migrationsprozess
 

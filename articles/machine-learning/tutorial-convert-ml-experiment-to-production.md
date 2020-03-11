@@ -7,20 +7,21 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 7f5e24261fd5d006004a51186e22f6bfe1b8ab32
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589180"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301844"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Tutorial: Konvertieren von ML-Experimentcode in Produktionscode
 
-Für ein Projekt für maschinelles Lernen (Machine Learning) sind Experimente erforderlich, bei denen Hypothesen mit flexiblen Tools wie Jupyter Notebook und realen Datasets überprüft werden. Wenn das Modell für die Produktion bereit ist, sollte der Modellcode in einem Repository für Produktionscode platziert werden. In einigen Fällen muss der Modellcode in Python-Skripts konvertiert werden, damit er in ein Repository für Produktionscode eingefügt werden kann. In diesem Tutorial geht es um einen empfohlenen Ansatz für den Export von Experimentcode in Python-Skripts.  
+Für ein Projekt für maschinelles Lernen (Machine Learning) sind Experimente erforderlich, bei denen Hypothesen mit flexiblen Tools wie Jupyter Notebook und realen Datasets überprüft werden. Wenn das Modell für die Produktion bereit ist, sollte der Modellcode in einem Repository für Produktionscode platziert werden. In einigen Fällen muss der Modellcode in Python-Skripts konvertiert werden, damit er in ein Repository für Produktionscode eingefügt werden kann. In diesem Tutorial geht es um einen empfohlenen Ansatz für den Export von Experimentcode in Python-Skripts.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Bereinigen von unwichtigem Code
 > * Umgestalten von Jupyter Notebook-Code in Funktionen
 > * Erstellen von Python-Skripts für verwandte Aufgaben
@@ -41,7 +42,7 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
- 
+
 X, y = load_diabetes(return_X_y=True)
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -64,13 +65,15 @@ joblib.dump(value=reg, filename=model_name)
 ## <a name="refactor-code-into-functions"></a>Umgestalten von Code in Funktionen
 
 Als zweite Maßnahme muss der Jupyter-Code in Funktionen umgestaltet werden. Die Umgestaltung von Code in Funktionen vereinfacht die Komponententests und verbessert die Verwaltbarkeit des Codes. In diesem Abschnitt gestalten Sie Folgendes um:
+
 - Notebook „Diabetes Ridge Regression Training“ (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Notebook „Diabetes Ridge Regression Scoring“ (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Umgestalten des Notebooks „Diabetes Ridge Regression Training“ in Funktionen
+
 Führen Sie unter `experimentation/Diabetes Ridge Regression Training.ipynb` die folgenden Schritte aus:
 
-1. Erstellen Sie eine Funktion mit dem Namen `train_model`, bei der die Parameter `data` und `alpha` verwendet werden und ein Modell zurückgegeben wird. 
+1. Erstellen Sie eine Funktion mit dem Namen `train_model`, bei der die Parameter `data` und `alpha` verwendet werden und ein Modell zurückgegeben wird.
 1. Kopieren Sie den Code, der sich unter den Überschriften „Train Model on Training Set“ (Modell mit Trainingssatz trainieren) und „Validate Model on Validation Set“ (Modell mit Validierungssatz überprüfen) befindet, in die Funktion `train_model`.
 
 Die Funktion `train_model` sollte wie der folgende Code aussehen:
@@ -106,7 +109,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -147,7 +150,7 @@ def main():
 
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -163,6 +166,7 @@ main()
 ```
 
 ### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Umgestalten des Notebooks „Diabetes Ridge Regression Scoring“ in Funktionen
+
 Führen Sie unter `experimentation/Diabetes Ridge Regression Scoring.ipynb` die folgenden Schritte aus:
 
 1. Erstellen Sie eine neue Funktion mit dem Namen `init`, für die keine Parameter verwendet werden und nichts zurückgegeben wird.
@@ -212,6 +216,7 @@ request_header = {}
 prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
+
 Mit dem obigen Code werden die Variablen `raw_data` und `request_header` festgelegt, die Funktion `run` mit `raw_data` und `request_header` wird aufgerufen, und die Vorhersagen werden ausgegeben.
 
 Nach der Umgestaltung sollte `experimentation/Diabetes Ridge Regression Scoring.ipynb` wie der folgende Code ohne Markdown aussehen:
@@ -242,11 +247,14 @@ print("Test result: ", prediction)
 ```
 
 ## <a name="combine-related-functions-in-python-files"></a>Kombinieren verwandter Funktionen in Python-Dateien
+
 Als dritte Maßnahme müssen die verwandten Funktionen in Python-Dateien zusammengeführt werden, um die Wiederverwendung von Code zu vereinfachen. In diesem Abschnitt erstellen Sie Python-Dateien für die folgenden Notebooks:
+
 - Notebook „Diabetes Ridge Regression Training“ (`experimentation/Diabetes Ridge Regression Training.ipynb`)
 - Notebook „Diabetes Ridge Regression Scoring“ (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Erstellen einer Python-Datei für das Notebook „Diabetes Ridge Regression Training“
+
 Konvertieren Sie Ihr Notebook in ein ausführbares Skript, indem Sie an einer Eingabeaufforderung die folgende Anweisung ausführen, für die das nbconvert-Paket und der Pfad `experimentation/Diabetes Ridge Regression Training.ipynb` verwendet werden:
 
 ```
@@ -274,7 +282,7 @@ def train_model(data, alpha):
 def main():
     model_name = "sklearn_regression_model.pkl"
     alpha = 0.5
-    
+
     X, y = load_diabetes(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -292,6 +300,7 @@ main()
 Die Datei `train.py`, die sich im Verzeichnis `diabetes_regression/training` des MLOpsPython-Repositorys befindet, unterstützt Befehlszeilenargumente (`build_id`, `model_name` und `alpha`). Die Unterstützung für Befehlszeilenargumente kann Ihrer Datei `train.py` hinzugefügt werden, um dynamische Modellnamen und `alpha`-Werte zu unterstützen, aber für die erfolgreiche Ausführung des Codes ist dies nicht erforderlich.
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Erstellen einer Python-Datei für das Notebook „Diabetes Ridge Regression Scoring“
+
 Konvertieren Sie Ihr Notebook in ein ausführbares Skript, indem Sie an einer Eingabeaufforderung die folgende Anweisung ausführen, für die das nbconvert-Paket und der Pfad `experimentation/Diabetes Ridge Regression Scoring.ipynb` verwendet werden:
 
 ```
@@ -344,11 +353,13 @@ def init():
 ```
 
 ## <a name="create-unit-tests-for-each-python-file"></a>Erstellen von Komponententests für jede Python-Datei
+
 Als vierte Maßnahme müssen Komponententests für jede Python-Datei erstellt werden, um den Code stabiler zu machen und die Verwaltung zu vereinfachen. In diesem Abschnitt erstellen Sie einen Komponententest für eine der Funktionen in `train.py`.
 
-`train.py` enthält zwei Funktionen: `train_model` und `main`. Für jede Funktion wird ein Komponententest benötigt, aber wir erstellen nur einen Komponententest für die Funktion `train_model`, indem wir das Pytest-Framework in diesem Tutorial verwenden.  Pytest ist nicht das einzige Python-Framework für Komponententests, aber eines der am häufigsten verwendeten. Weitere Informationen finden Sie unter [Pytest](https://pytest.org).
+`train.py` enthält zwei Funktionen: `train_model` und `main`. Für jede Funktion wird ein Komponententest benötigt, aber wir erstellen nur einen Komponententest für die Funktion `train_model`, indem wir das Pytest-Framework in diesem Tutorial verwenden. Pytest ist nicht das einzige Python-Framework für Komponententests, aber eines der am häufigsten verwendeten. Weitere Informationen finden Sie unter [Pytest](https://pytest.org).
 
 Ein Komponententest enthält normalerweise drei Hauptaktionen:
+
 - Objekt anordnen: Erstellen und Einrichten der benötigten Objekte
 - Aktion für ein Objekt durchführen
 - Erwartetes Ergebnis bestätigen
@@ -379,29 +390,40 @@ class TestTrain:
 ```
 
 ## <a name="use-your-own-model-with-mlopspython-code-template"></a>Verwenden Ihres eigenen Modells mit MLOpsPython-Codevorlage
-Wenn Sie die Schritte in diesem Leitfaden ausgeführt haben, verfügen Sie über Skripts, die mit den Skripts zum Trainieren, Bewerten und Testen im MLOpsPython-Repository korrelieren.  Anhand der folgenden Schritte wird basierend auf der obigen Struktur beschrieben, was erforderlich ist, um diese Dateien für Ihr eigenes Machine Learning-Projekt zu nutzen:  
 
-1.  Befolgen der Anleitung im Leitfaden zu den ersten Schritten
-2.  Ersetzen des Trainingscodes
-3.  Ersetzen des Bewertungscodes
-4.  Aktualisieren des Evaluierungscodes
+Wenn Sie die Schritte in diesem Leitfaden ausgeführt haben, verfügen Sie über Skripts, die mit den Skripts zum Trainieren, Bewerten und Testen im MLOpsPython-Repository korrelieren.  Anhand der folgenden Schritte wird basierend auf der obigen Struktur beschrieben, was erforderlich ist, um diese Dateien für Ihr eigenes Machine Learning-Projekt zu nutzen:
+
+1. Befolgen der Anweisungen im [Leitfaden zu den ersten Schritten](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) für MLOpsPython
+2. Befolgen der [Bootstrapanweisungen](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) für MLOpsPython, um Ihren Projektausgangspunkt zu erstellen
+3. Ersetzen des Trainingscodes
+4. Ersetzen des Bewertungscodes
+5. Aktualisieren des Evaluierungscodes
 
 ### <a name="follow-the-getting-started-guide"></a>Befolgen der Anleitung im Leitfaden zu den ersten Schritten
-Das Befolgen der Anleitung im Leitfaden zu den ersten Schritten ist erforderlich, um die unterstützende Infrastruktur und die Pipelines für die Ausführung von MLOpsPython bereitzustellen.  Unsere Empfehlung lautet, den MLOpsPython-Code erst einmal unverändert bereitzustellen, bevor Sie Ihren eigenen Code einfügen, um sicherzustellen, dass die Struktur und die Pipeline richtig funktionieren.  Es ist auch ratsam, sich mit der Codestruktur des Repositorys vertraut zu machen.
+Das Befolgen der Anweisungen im [Leitfaden zu den ersten Schritten](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) ist erforderlich, um die unterstützende Infrastruktur und die Pipelines für die Ausführung von MLOpsPython bereitzustellen.
+
+### <a name="follow-the-bootstrap-instructions"></a>Befolgen der Bootstrapanweisungen
+
+Der [Leitfaden für das Bootstrapping auf der Grundlage des MLOpsPython-Repositorys](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) unterstützt Sie bei der schnellen Vorbereitung des Repositorys für Ihr Projekt.
+
+**Hinweis:** Da der Ordner „diabetes_regression“ durch das Bootstrapskript in den Projektnamen Ihrer Wahl umbenannt wird, geben wir im Zusammenhang mit Pfaden `[project name]` für Ihr Projekt an.
 
 ### <a name="replace-training-code"></a>Ersetzen des Trainingscodes
-Das Ersetzen des Codes, der zum Trainieren des Modells verwendet wird, und das Entfernen oder Ersetzen der entsprechenden Komponententests muss durchgeführt werden, damit die Lösung mit Ihrem eigenen Code funktioniert.  Führen Sie die folgenden Schritte aus:
 
-1. Ersetzen Sie `diabetes_regression\training\train.py`. Mit diesem Skript wird Ihr Modell lokal oder in der Azure ML-Compute-Umgebung trainiert.
-1. Entfernen oder ersetzen Sie die Komponententests für das Training in `tests/unit/code_test.py`.
+Das Ersetzen des Codes, der zum Trainieren des Modells verwendet wird, und das Entfernen oder Ersetzen der entsprechenden Komponententests muss durchgeführt werden, damit die Lösung mit Ihrem eigenen Code funktioniert. Führen Sie die folgenden Schritte aus:
+
+1. Ersetzen Sie `[project name]/training/train.py`. Mit diesem Skript wird Ihr Modell lokal oder in der Azure ML-Compute-Umgebung trainiert.
+1. Entfernen oder ersetzen Sie die Komponententests für das Training in `[project name]/training/test_train.py`.
 
 ### <a name="replace-score-code"></a>Ersetzen des Bewertungscodes
-Damit das Modell über Funktionen für Rückschlüsse in Echtzeit verfügt, muss der Bewertungscode ersetzt werden. Der Bewertungscode wird von der MLOpsPython-Vorlage zum Bereitstellen des Modells verwendet, um die Echtzeitbewertung für ACI, AKS oder Web-Apps zu ermöglichen.  Ersetzen Sie `diabetes_regression/scoring/score.py`, wenn Sie die Bewertung beibehalten möchten.
+
+Damit das Modell über Funktionen für Rückschlüsse in Echtzeit verfügt, muss der Bewertungscode ersetzt werden. Der Bewertungscode wird von der MLOpsPython-Vorlage zum Bereitstellen des Modells verwendet, um die Echtzeitbewertung für ACI, AKS oder Web-Apps zu ermöglichen. Ersetzen Sie `[project name]/scoring/score.py`, wenn Sie die Bewertung beibehalten möchten.
 
 ### <a name="update-evaluation-code"></a>Aktualisieren des Evaluierungscodes
-Das evaluate_model-Skript wird von der MLOpsPython-Vorlage verwendet, um die Leistung des neu trainierten Modells und des aktuellen Produktionsmodells basierend auf dem „Mean Squared Error“ (Mittlerer quadratischer Fehler) zu vergleichen. Wenn die Leistung des neu trainierten Modells besser als die des aktuellen Produktionsmodells ist, wird der Betrieb der Pipelines fortgesetzt. Andernfalls werden die Pipelines angehalten. Ersetzen Sie alle Instanzen von `mse` in `diabetes_regression/evaluate/evaluate_model.py` durch die gewünschte Metrik, um die Evaluierung beizubehalten. 
 
-Um die Evaluierung zu entfernen, müssen Sie die DevOps-Pipelinevariable `RUN_EVALUATION` in `.pipelines\diabetes_regression-variables` auf `false` festlegen.
+Das evaluate_model-Skript wird von der MLOpsPython-Vorlage verwendet, um die Leistung des neu trainierten Modells und des aktuellen Produktionsmodells basierend auf dem „Mean Squared Error“ (Mittlerer quadratischer Fehler) zu vergleichen. Wenn die Leistung des neu trainierten Modells besser als die des aktuellen Produktionsmodells ist, wird der Betrieb der Pipelines fortgesetzt. Andernfalls werden die Pipelines abgebrochen. Ersetzen Sie alle Instanzen von `mse` in `[project name]/evaluate/evaluate_model.py` durch die gewünschte Metrik, um die Evaluierung beizubehalten.
+
+Um die Evaluierung zu entfernen, müssen Sie die DevOps-Pipelinevariable `RUN_EVALUATION` in `.pipelines/[project name]-variables-template.yml` auf `false` festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

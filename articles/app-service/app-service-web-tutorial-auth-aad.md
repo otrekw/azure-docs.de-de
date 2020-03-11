@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561755"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226301"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -237,7 +237,7 @@ Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informatio
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Front-End-App
 
-Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich.
+Führen Sie die gleichen Schritte für die Back-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich.
 
 Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, können Sie trotzdem noch nicht auf die Daten der Back-End-App zugreifen, da Sie noch drei weitere Schritte ausführen müssen:
 

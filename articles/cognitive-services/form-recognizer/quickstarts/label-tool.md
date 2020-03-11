@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485351"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205820"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -35,12 +35,19 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
 
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
-1. Installieren Sie zunächst Docker auf einem Hostcomputer. Bei dem Hostcomputer kann es sich um Ihren lokalen Computer ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/) oder [Linux](https://docs.docker.com/install/)) handeln. Alternativ dazu können Sie auch einen Docker-Hostingdienst in Azure verwenden, z. B. [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index) oder einen auf einer [Azure Stack-Instanz bereitgestellten](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes-Cluster. Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
+1. Installieren Sie zunächst Docker auf einem Hostcomputer. In dieser Anleitung wird veranschaulicht, wie Sie den lokalen Computer als Host verwenden. Wenn Sie einen Docker-Hostingdienst in Azure verwenden möchten, hilft Ihnen die Anleitung zum [Bereitstellen des Tools für die Beschriftung von Beispielen](../deploy-label-tool.md) weiter. 
+
+   Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
 
     | Container | Minimum | Empfohlen|
     |:--|:--|:--|
     |Tool für die Beschriftung von Beispielen|2 Kerne, 4 GB Arbeitsspeicher|4 Kerne, 8 GB Arbeitsspeicher|
-    
+
+   Installieren Sie Docker auf Ihrem Computer, indem Sie die passenden Anweisungen für Ihr Betriebssystem befolgen: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/).
+
 1. Rufen Sie mit dem `docker pull`-Befehl den Container für das Tool für die Beschriftung von Beispielen ab.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Klicken Sie im linken Bereich auf **OCR in allen Dateien ausführen**, um Textla
 
 ### <a name="apply-labels-to-text"></a>Anwenden von Beschriftungen auf Text
 
-Als Nächstes erstellen Sie Beschriftungen und wenden sie auf die Textelemente an, die das Modell erkennen soll.
+Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textelemente an, die das Modell erkennen soll.
 
-1. Verwenden Sie zuerst den Bearbeitungsbereich des Editors, um die Beschriftungen zu erstellen, die Sie identifizieren möchten.
+1. Verwenden Sie zuerst den Bearbeitungsbereich des Editors, um die Tags zu erstellen, die Sie identifizieren möchten.
+  1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
+  1. Geben Sie den Tagnamen ein.
+  1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
 1. Klicken und ziehen Sie im Hauptbereich des Editors, um ein oder mehrere Wörter in den markierten Textelementen auszuwählen.
+1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Tags mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
+    > [!Tip]
+    > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.
+    > * Sie können auf jedes ausgewählte Element nur ein Tag anwenden.
+    > * Jedes Tag kann nur einmal pro Seite angewendet werden. Wenn ein Wert in demselben Formular mehrfach erscheint, sollten Sie für jede Instanz andere Tags erstellen. Beispiel: „rechnung 1“, „rechnung 2“ usw.
+    > * Tags können nicht seitenübergreifend genutzt werden.
+    > * Beschriften Sie Werte so, wie sie im Formular vorkommen. Versuchen Sie nicht, einen Wert mit zwei unterschiedlichen Tags in zwei Teile zu unterteilen. Ein Adressfeld sollte beispielsweise auch dann nur mit einem Tag beschriftet werden, wenn es über mehrere Zeilen verläuft.
+    > * Fügen Sie in Ihre beschrifteten Felder keine Schlüssel ein, sondern nur die Werte.
+    > * Die Tabellendaten sollten automatisch erkannt werden und sind in der fertigen JSON-Ausgabedatei enthalten. Falls das Modell nicht Ihre gesamten Tabellendaten erkennen kann, können Sie diese Felder auch manuell beschriften. Verwenden Sie für jede Zelle der Tabelle eine andere Beschriftung. Falls Ihre Formulare über Tabellen mit unterschiedlicher Anzahl von Zeilen verfügen, sollten Sie sicherstellen, dass Sie mindestens ein Formular mit der größtmöglichen Tabelle beschriften.
 
-    > [!NOTE]
-    > Derzeit kann Text nicht seitenübergreifend ausgewählt werden.
-1. Klicken Sie auf die Beschriftung, die Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Sie können jedem ausgewählten Textelement nur eine Beschriftung zuweisen, und jede Beschriftung kann nur ein Mal pro Seite angewendet werden.
-
-    > [!TIP]
-    > Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Beschriftungen zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
 
 Führen Sie die oben genannten Schritte aus, um fünf Ihrer Formulare zu beschriften, und fahren Sie dann mit dem nächsten Schritt fort.
 

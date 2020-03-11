@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration (CI
 keywords: Jenkins, Azure, DevOps, virtueller Computer, CI/CD
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606377"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192607"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -96,9 +96,9 @@ Als Erstes müssen zwei Jenkins-Plug-Ins konfiguriert werden: **NodeJS** und **V
 5. Klicken Sie auf **Trigger release in TFS/Team Services** (Release in TFS/Team Services auslösen). Geben Sie den URI für Ihre Azure DevOps Services-Organisation ein wie z.B. **https://{your-organization-name}.visualstudio.com**.
 6. Geben Sie den **Projektnamen** ein.
 7. Wählen Sie einen Namen für die Releasepipeline aus. (Sie können diese Releasepipeline später in Azure DevOps Services erstellen.)
-8. Wählen Sie die Anmeldeinformationen für die Verbindung mit Ihrer Azure DevOps Services- oder Team Foundation Server-Umgebung aus:
+8. Wählen Sie die Anmeldeinformationen für die Verbindung mit Ihrer Azure DevOps Services- oder Azure DevOps Server-Umgebung aus:
    - Lassen Sie bei Verwendung von Azure DevOps Services das Feld **Benutzername** leer. 
-   - Geben Sie bei Verwendung einer lokale Version von Team Foundation Server einen Benutzernamen und ein Kennwort ein.    
+   - Geben Sie bei Verwendung einer lokalen Version von Azure DevOps Server einen Benutzernamen und ein Kennwort ein.    
    ![Konfigurieren von Jenkins-Postbuildaktionen](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Speichern Sie das Jenkins-Projekt.
 

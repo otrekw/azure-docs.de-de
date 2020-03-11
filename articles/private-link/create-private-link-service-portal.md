@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191105"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252551"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
 
@@ -29,21 +29,22 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Erstellen Sie zunächst ein virtuelles Netzwerk. Erstellen Sie anschließend einen internen Lastenausgleich für die Verwendung mit dem Private Link-Dienst.
 
-### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Darüber hinaus erstellen Sie das Subnetz zum Hosten des Lastenausgleichs, der auf den Private Link-Dienst zugreift.
 
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein, bzw. wählen Sie sie aus:
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<Ressourcengruppenname>**  | myResourceGroupLB |
+| **\<VNET-Name>** | myVNet          |
+| **\<Regionsname>**          | USA (Ost) 2      |
+| **\<IPv4-Adressraum>**   | 10.3.0.0\16          |
+| **\<Subnetzname>**          | myBackendSubnet        |
+| **\<Subnetzadressbereich>** | 10.3.0.0\24          |
 
-   - **Name**: Geben Sie **myVNet** ein.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie **myResourceGroupLB** ein, und wählen Sie **OK** aus.
-   - **Subnetz** > **Name**: Geben Sie **myBackendSubnet** ein.
-
-1. Klicken Sie auf **Erstellen**.
-
-   ![Erstellen eines virtuellen Netzwerks](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
 

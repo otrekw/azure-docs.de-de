@@ -4,17 +4,17 @@ description: In diesem Artikel wird erläutert, wie Partner Features von Azure C
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117591"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245476"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -140,18 +140,14 @@ Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer,
 
 Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt.
 
-Öffnen Sie **Kostenverwaltung + Abrechnung**, und wählen Sie das relevante Abrechnungskonto für die Microsoft Partner-Vereinbarung aus, um Kosten für den Kundenmandanten anzuzeigen.
 
-![Auswählen eines Abrechnungskontos](./media/get-started-partners/select-billing-account.png)
+### <a name="view-customer-costs"></a>Anzeigen der Kundenkosten
 
-Klicken Sie unter **Abrechnung** auf **Azure-Abonnements**, und wählen Sie dann einen Kunden aus.
-
-![Auswählen eines Azure-Abonnementkunden](./media/get-started-partners/subscriptions-select-customer.png)
-
-Klicken Sie auf **Kostenanalyse**, und überprüfen Sie die Kosten.
-Kostenanalyse, Budgets und Warnungen sind für die Abonnement- und Ressourcengruppen-RBAC-Bereiche für nutzungsbasierte Kosten verfügbar.
+Öffnen Sie zum Anzeigen der Kosten für den Kundenmandanten **Kostenverwaltung + Abrechnung**. Wählen Sie **Kostenanalyse** aus, und legen Sie den Bereich auf das Abonnement des Kundenmandanten fest, um mit der Kostenüberprüfung zu beginnen.
 
 ![Anzeigen der Kostenanalyse als Kunde ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+
+Kostenanalyse, Budgets und Warnungen sind für die Abonnement- und Ressourcengruppen-RBAC-Bereiche für nutzungsbasierte Kosten verfügbar.
 
 In amortisierten Ansichten und für tatsächlichen Koste für reservierte Instanzen in den RBAC-Bereichen werden keine Gebühren angezeigt. Kosten für reservierte Instanzen werden nur in Abrechnungsbereichen angezeigt, in denen die Einkäufe getätigt wurden.
 

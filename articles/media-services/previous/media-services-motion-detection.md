@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083754"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913003"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
+
+> [!NOTE]
+> Der **Azure Media Motion Detector**-Medienprozessor wird eingestellt. Das Einstellungsdatum finden Sie im Thema [Legacykomponenten](legacy-components.md).
  
 ## <a name="overview"></a>Übersicht
 
@@ -42,7 +45,7 @@ Wenn Sie eine Aufgabe mit **Azure Media Motion Detector**erstellen, müssen Sie 
 ### <a name="parameters"></a>Parameter
 Sie können die folgenden Parameter verwenden:
 
-| NAME | Optionen | BESCHREIBUNG | Standard |
+| Name | Tastatur | Beschreibung | Standard |
 | --- | --- | --- | --- |
 | sensitivityLevel |String: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
 | frameSamplingValue |Positive ganze Zahl |Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw. |1 |
@@ -95,7 +98,7 @@ Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in ein
 
 In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 
-| Element | BESCHREIBUNG |
+| Element | Beschreibung |
 | --- | --- |
 | version |Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2. |
 | timescale |„Ticks“ pro Sekunde des Videos. |

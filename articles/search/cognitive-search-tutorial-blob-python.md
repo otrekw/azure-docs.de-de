@@ -1,97 +1,130 @@
 ---
-title: 'Tutorial: Erstellen eines Skillsets in Python mit REST-APIs'
+title: 'Tutorial: Python und KI über Azure-Blobs'
 titleSuffix: Azure Cognitive Search
-description: Detailliertes Beispiel für KI-basierte Datenextraktion, Verarbeitung natürlicher Sprache und Bildverarbeitung in Azure Cognitive Search unter Verwendung eines Jupyter Python-Notebooks. Extrahierte Daten werden indiziert und lassen sich einfach abfragen.
+description: Hier finden Sie ein ausführliches Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache auf der Grundlage von Blobspeicherinhalten mit einem Jupyter Python-Notebook und den Azure Cognitive Search-REST-APIs.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/26/2020
+ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472399"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194053"
 ---
-# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Tutorial: Erstellen einer Pipeline für die KI-Anreicherung mit REST und Python
+# <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von Python und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
-In diesem Tutorial werden die Fähigkeiten für die Programmierung von Datenanreicherungen in Azure Cognitive Search mithilfe von *kognitiven Qualifikationen* vermittelt. Qualifikationen werden durch die Verarbeitung von natürlicher Sprache und Bildanalysefunktionen in Cognitive Services unterstützt. Durch die Zusammenstellung und Konfiguration von Qualifikationsgruppen können Sie Text und Textdarstellungen eines Bilds oder einer gescannten Dokumentdatei extrahieren. Sie können außerdem Sprachen, Entitäten, Schlüsselbegriffe und mehr erkennen. Das Ergebnis sind umfangreiche zusätzliche Inhalte in einem Suchindex, die mit KI-Anreicherungen in einer Indizierungspipeline erstellt wurden. 
+Wenn Sie in Azure-Blobspeicher über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann Bilder verarbeiten. In diesem Python-Tutorial steht aber Text im Mittelpunkt, um unter Verwendung der Spracherkennung und der Verarbeitung natürlicher Sprache neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
 
-In diesem Tutorial verwenden Sie Python für die folgenden Aufgaben:
+In diesem Tutorial werden Python und die [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) verwendet, um folgende Aufgaben durchzuführen:
 
 > [!div class="checklist"]
-> * Erstellen einer Indizierungspipeline, die Beispieldaten auf dem Weg in einen Index anreichert
-> * Anwenden von integrierten Qualifikationen: Entitätserkennung, Spracherkennung, Textbearbeitung und Schlüsselbegriffserkennung
-> * Erfahren Sie, wie Qualifikationen miteinander verkettet werden, indem die Eingänge den Ausgängen in einer Qualifikationsgruppe zugeordnet werden
-> * Ausführen von Anforderungen und Überprüfen von Ergebnissen
-> * Zurücksetzen des Index und der Indexer für die weitere Entwicklung
+> * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, HTML-, DOCX- oder PPTX-Format) in Azure Blob Storage.
+> * Erstellen Sie eine Pipeline, die Text extrahiert und Sprache, Entitäten sowie Schlüsselbegriffe erkennt.
+> * Definieren Sie einen Index zum Speichern der Ausgabe (Rohinhalte sowie von der Pipeline generierte Name/Wert-Paare).
+> * Führen Sie die Pipeline aus, um Transformationen und Analysen zu starten und den Index zu erstellen und zu laden.
+> * Erkunden Sie Ergebnisse per Volltextsuche und umfangreicher Abfragesyntax.
 
-Die Ausgabe ist ein für die Volltextsuche geeigneter Suchindex in Azure Cognitive Search. Sie können den Index mit weiteren Standardfunktionen erweitern, wie etwa [Synonymen](search-synonyms.md), [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Analysetools](search-analyzers.md) und [Filtern](search-filters.md). 
-
-In diesem Tutorial wird der kostenlose Dienst verwendet. Die Anzahl kostenloser Transaktionen ist allerdings auf 20 Dokumente pro Tag beschränkt. Wenn Sie dieses Tutorial mehrmals am selben Tag ausführen möchten, löschen Sie den Indexer, um den Zähler zurückzusetzen.
-
-> [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
->
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial werden die folgenden Dienste, Tools und Daten verwendet. 
-
-+ [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten. Stellen Sie sicher, dass sich das Speicherkonto in der gleichen Region befindet wie Azure Cognitive Search.
-
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section) mit Python 3.x und Jupyter Notebooks.
-
-+ Die [Beispieldaten](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) bestehen aus einem kleinen Satz Dateien verschiedenen Typs. 
-
-+ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
-
-## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
-
-Für die Interaktion mit dem Azure Cognitive Search-Dienst benötigen Sie die Dienst-URL und einen Zugriffsschlüssel. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
-
-1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
-
-1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
-
-![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
-
-Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
-
-## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
-
-Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Cognitive Search-Indexers](search-indexer-overview.md) stammen. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
-
-1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), navigieren Sie zu Ihrem Azure-Speicherkonto, klicken Sie auf **BLOBs** und dann auf **+ Container**.
-
-1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
-
-1. Öffnen Sie den Container nach der Erstellung, und wählen Sie in der Befehlsleiste die Option **Hochladen**, um die Beispieldateien hochzuladen, die Sie in einem vorherigen Schritt heruntergeladen haben.
-
-   ![Quelldateien in Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
-
-1. Nachdem die Beispieldateien geladen wurden, rufen Sie den Containernamen und eine Verbindungszeichenfolge für Ihren Blobspeicher ab. Dazu können Sie im Azure-Portal zu Ihrem Speicherkonto navigieren. Klicken Sie auf **Zugriffsschlüssel**, und kopieren Sie dann das Feld **Verbindungszeichenfolge**.
-
-Die Verbindungszeichenfolge hat folgendes Format: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
-
-Halten Sie die Verbindungszeichenfolge bereit. Sie benötigen sie in einem späteren Schritt.
-
-Es gibt andere Möglichkeiten zum Angeben der Verbindungszeichenfolge, etwa das Bereitstellen einer Shared Access Signature (SAS). Weitere Informationen über Anmeldeinformationen für Datenquellen finden Sie unter [Indizieren von Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
-
-## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
++ [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
++ [Anaconda 3.7](https://www.anaconda.com/distribution/#download-section)
++ [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst 
 
 > [!Note]
-> In diesem Artikel wird beschrieben, wie Sie eine Datenquelle, einen Index, einen Indexer und eine Qualifikationsgruppe mithilfe einer Reihe von Python-Skripts erstellen. Das vollständige Notebook-Beispiel können Sie unter [azure-search-python-samples repository](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment) herunterladen.
+> In diesem Tutorial können Sie den kostenlosen Dienst verwenden. Der kostenlose Suchdienst ist auf drei Indizes, drei Indexer und drei Datenquellen beschränkt. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich zunächst, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
+
+## <a name="download-files"></a>Herunterladen von Dateien
+
+1. Öffnen Sie [diesen OneDrive-Ordner](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), und klicken Sie links oben auf **Herunterladen**, um die Dateien auf Ihren Computer zu kopieren. 
+
+1. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie **Alle extrahieren** aus. Es stehen 14 Dateien verschiedener Art zur Verfügung. In dieser Übung werden sieben davon verwendet.
+
+## <a name="1---create-services"></a>1\. Erstellen der Dienste
+
+In diesem Tutorial werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services auf dem Back-End für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Dieses Tutorial bleibt unter der kostenlosen Zuteilung von 20 Transaktionen pro Indexer pro Tag für Cognitive Services. Aus diesem Grund müssen Sie nur den Such- und den Speicherdienst erstellen.
+
+Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Ressourcengruppe, um eine möglichst große Nähe zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
+
+### <a name="start-with-azure-storage"></a>Azure Storage
+
+1. [Melden Sie sich beim Azure-Portal](https://portal.azure.com/) an, und klicken Sie auf **+ Ressource erstellen**.
+
+1. Suchen Sie nach *Speicherkonto*, und wählen Sie das Speicherkonto-Angebot von Microsoft aus.
+
+   ![Erstellen eines Speicherkontos](media/cognitive-search-tutorial-blob/storage-account.png "Speicherkonto erstellen")
+
+1. Auf der Registerkarte „Grundlagen“ sind folgende Angaben erforderlich. Übernehmen Sie bei allen anderen Optionen die Standardeinstellungen.
+
+   + **Ressourcengruppe**. Sie können entweder eine vorhandene Ressourcengruppe auswählen oder eine neue Ressourcengruppe erstellen. Verwenden Sie jedoch für alle Dienste die gleiche Gruppe, um die Dienste gemeinsam verwalten zu können.
+
+   + **Speicherkontoname**: Falls Sie über mehrere Ressourcen des gleichen Typs verfügen, geben Sie zur Unterscheidung den Typ und die Region an (Beispiel: *blobstoragewestus*). 
+
+   + **Standort**. Wählen Sie nach Möglichkeit den gleichen Standort aus, der auch für Azure Cognitive Search und Cognitive Services verwendet wird. Bei Verwendung eines einzelnen Standorts fallen keine Bandbreitengebühren an.
+
+   + **Kontoart**: Verwenden Sie die Standardeinstellung *StorageV2 (allgemein, Version 2)* .
+
+1. Klicken Sie zum Erstellen des Diensts auf **Überprüfen + erstellen**.
+
+1. Klicken Sie nach der Erstellung auf **Go to the resource** (Zur Ressource), um die Übersichtsseite zu öffnen.
+
+1. Klicken Sie auf den Dienst **Blobs**.
+
+1. Klicken Sie auf **+ Container**, um einen Container zu erstellen, und nennen Sie ihn *cog-search-demo*.
+
+1. Wählen Sie *cog-search-demo* aus, und klicken Sie auf **Hochladen**, um den Ordner zu öffnen, in dem Sie die Downloaddateien gespeichert haben. Wählen Sie alle Dateien aus, bei denen es sich nicht um Bilddateien handelt. Es müssen sieben Dateien sein. Klicken Sie auf **OK**, um die Dateien hochzuladen.
+
+   ![Hochladen der Beispieldateien](media/cognitive-search-tutorial-blob/sample-files.png "Hochladen der Beispieldateien")
+
+1. Rufen Sie eine Verbindungszeichenfolge ab, bevor Sie Azure Storage verlassen, um in Azure Cognitive Search eine Verbindung herstellen zu können. 
+
+   1. Kehren Sie zur Übersichtsseite Ihres Speicherkontos zurück. (Wir haben *blobstoragewestus* als Beispiel verwendet.) 
+   
+   1. Wählen Sie im linken Navigationsbereich die Option **Zugriffsschlüssel** aus, und kopieren Sie eine der Verbindungszeichenfolgen. 
+
+   Die Verbindungszeichenfolge ist eine URL, die in etwa wie folgt aussieht:
+
+      ```http
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      ```
+
+1. Speichern Sie die Verbindungszeichenfolge im Editor. Sie wird später bei der Einrichtung der Datenquellenverbindung benötigt.
+
+### <a name="cognitive-services"></a>Cognitive Services
+
+Die KI-Anreicherung basiert auf Cognitive Services (einschließlich Textanalyse und maschinellem Sehen für die Verarbeitung von natürlicher Sprache und Bildern). Bei der Erstellung eines echten Prototyps oder Projekts würden Sie an dieser Stelle Cognitive Services bereitstellen (in der gleichen Region wie Azure Cognitive Search), um eine Verknüpfung mit Indizierungsvorgängen zu ermöglichen.
+
+In dieser Übung können Sie die Ressourcenbereitstellung allerdings überspringen, da Azure Cognitive Search im Hintergrund eine Verbindung mit Cognitive Services herstellen kann und 20 kostenlose Transaktionen pro Indexerausführung ermöglicht. Da in diesem Tutorial sieben Transaktionen verwendet werden, ist die kostenlose Zuteilung ausreichend. Planen Sie bei umfangreicheren Projekten die Bereitstellung von Cognitive Services im S0-Tarif (nutzungsbasierte Bezahlung). Weitere Informationen finden Sie unter [Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search](cognitive-search-attach-cognitive-services.md).
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Die dritte Komponente, Azure Cognitive Search, können Sie [im Portal erstellen](search-create-service-portal.md). Im Rahmen dieser exemplarischen Vorgehensweise können Sie den Free-Tarif verwenden. 
+
+Erfassen Sie genau wie bei Azure Blob Storage den Zugriffsschlüssel. Wenn Sie später mit der Strukturierung von Anforderungen beginnen, müssen Sie den Endpunkt und den Administrator-API-Schlüssel für die Authentifizierung der jeweiligen Anforderung angeben.
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Abrufen eines Administrator-API-Schlüssels und einer URL für Azure Cognitive Search
+
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts den Namen Ihres Suchdiensts ab. Sie können den Dienstnamen anhand der Endpunkt-URL überprüfen. Wenn Ihre Endpunkt-URL z.B. `https://mydemo.search.windows.net` lautet, ist der Name des Diensts `mydemo`.
+
+2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
+
+   Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
+
+   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
+
+## <a name="2---start-a-notebook"></a>2\. Starten eines Notebooks
+
+Verwenden Sie zum Erstellen des Notebooks die folgende Anleitung, oder laden Sie aus dem [Repository „Azure-Search-python-samples“](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment) ein fertiges Notebook herunter.
 
 Verwenden Sie Anaconda Navigator zum Starten von Jupyter Notebook, und erstellen Sie ein neues Python 3-Notebook.
-
-## <a name="connect-to-azure-cognitive-search"></a>Herstellen einer Verbindung mit Azure Cognitive Search
 
 Führen Sie in Ihrem Notebook das folgende Skript aus, um die Bibliotheken zum Verwenden von JSON und Formulieren von HTTP-Anforderungen zu laden.
 
@@ -101,7 +134,7 @@ import requests
 from pprint import pprint
 ```
 
-Definieren Sie nun die Namen für die Datenquelle, den Index, den Indexer und die Qualifikationsgruppe. Führen Sie das folgende Skript aus, um die Namen für dieses Tutorial einzurichten.
+Definieren Sie in demselben Notebook die Namen für die Datenquelle, den Index, den Indexer und die Qualifikationsgruppe. Führen Sie das folgende Skript aus, um die Namen für dieses Tutorial einzurichten.
 
 ```python
 # Define the names for the data source, skillset, index and indexer
@@ -110,9 +143,6 @@ skillset_name = "cogsrch-py-skillset"
 index_name = "cogsrch-py-index"
 indexer_name = "cogsrch-py-indexer"
 ```
-
-> [!Tip]
-> Ein kostenloser Dienst ist auf drei Indizes, Indexer und Datenquellen beschränkt. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Stellen Sie sicher, dass Sie Platz zum Erstellen neuer Objekte haben, bevor wir fortfahren.
 
 Ersetzen Sie im folgenden Skript die Platzhalter für Ihren Suchdienst (YOUR-SEARCH-SERVICE-NAME) und Ihren Admin-API-Schlüssel (YOUR-ADMIN-API-KEY). Führen Sie dann das Skript aus, um den Suchdienstendpunkt einzurichten.
 
@@ -126,11 +156,15 @@ params = {
 }
 ```
 
-## <a name="create-a-data-source"></a>Erstellen einer Datenquelle
+## <a name="3---create-the-pipeline"></a>3\. Erstellen der Pipeline
 
-Jetzt, da Ihre Dienste und Datenquellen vorbereitet sind, beginnen Sie damit, die Komponenten Ihrer Indizierungspipeline zusammenzustellen. Beginnen Sie mit einem Datenquellenobjekt, das Azure Cognitive Search darüber informiert, wie die externen Quelldaten abgerufen werden.
+In Azure Cognitive Search erfolgt die KI-Verarbeitung während der Indizierung (oder Datenerfassung). In diesem Teil der exemplarischen Vorgehensweise werden vier Objekte erstellt: Datenquelle, Indexdefinition, Skillset und Indexer. 
 
-Ersetzen Sie im folgenden Skript den Platzhalter YOUR-BLOB-RESOURCE-CONNECTION-STRING durch die Verbindungszeichenfolge für das im vorherigen Schritt erstellte Blob. Führen Sie dann das Skript aus, um eine Datenquelle mit dem Namen `cogsrch-py-datasource` zu erstellen.
+### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle
+
+Ein [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/create-data-source) stellt die Verbindungszeichenfolge für den Blobcontainer mit den Dateien bereit.
+
+Ersetzen Sie im folgenden Skript den Platzhalter YOUR-BLOB-RESOURCE-CONNECTION-STRING durch die Verbindungszeichenfolge für das im vorherigen Schritt erstellte Blob. Ersetzen Sie den Platzhaltertext für den Container. Führen Sie dann das Skript aus, um eine Datenquelle mit dem Namen `cogsrch-py-datasource` zu erstellen.
 
 ```python
 # Create a data source
@@ -143,7 +177,7 @@ datasource_payload = {
         "connectionString": datasourceConnectionString
     },
     "container": {
-        "name": "basic-demo-data-pr"
+        "name": "<YOUR-BLOB-CONTAINER-NAME>"
     }
 }
 r = requests.put(endpoint + "/datasources/" + datasource_name,
@@ -157,19 +191,18 @@ Die Anforderung sollte die erfolgreiche Ausführung durch Rückgabe von Statusco
 
 ![Datenquellenkachel im Portal](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Datenquellenkachel im Portal")
 
-## <a name="create-a-skillset"></a>Erstellen eines Skillsets
+### <a name="step-2-create-a-skillset"></a>Schritt 2: Erstellen eines Skillsets
 
 In diesem Schritt definieren Sie eine Reihe von Anreicherungsschritten, die auf Ihre Daten angewandt werden sollen. Jeder Anreicherungsschritt wird als *Qualifikation* und der Satz von Anreicherungsschritten als *Qualifikationsgruppe* bezeichnet. In diesem Tutorial werden für die Qualifikationsgruppe [integrierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) verwendet:
+
++ [Entitätserkennung](cognitive-search-skill-entity-recognition.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
 
 + [Spracherkennung](cognitive-search-skill-language-detection.md), um die Sprache der Inhalte zu bestimmen.
 
 + [Text unterteilen](cognitive-search-skill-textsplit.md), um große Inhalte vor dem Aufrufen der Schlüsselbegriffserkennungs-Qualifikation in kleinere Stücke aufzuteilen. Die Schlüsselbegriffserkennung akzeptiert Eingaben von 50.000 Zeichen oder weniger. Für einige der Beispieldateien ist eine Aufteilung erforderlich, um diesen Grenzwert zu erfüllen.
 
-+ [Entitätserkennung](cognitive-search-skill-entity-recognition.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
-
 + [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), um die wichtigsten Schlüsselbegriffe herauszuziehen. 
 
-### <a name="python-script"></a>Python-Skript
 Führen Sie das folgende Skript aus, um eine Qualifikationsgruppe mit dem Namen `cogsrch-py-skillset` zu erstellen.
 
 ```python
@@ -270,7 +303,7 @@ Ausgaben können einem Index zugeordnet, als Eingabe einer Downstream-Qualifikat
 
 Weitere Informationen zu den Grundlagen von Qualifikationsgruppen finden Sie unter [How to define a skillset](cognitive-search-defining-skillset.md) (Definieren von Qualifikationsgruppen).
 
-## <a name="create-an-index"></a>Erstellen eines Index
+### <a name="step-3-create-an-index"></a>Schritt 3: Erstellen eines Index
 
 In diesem Abschnitt definieren Sie das Indexschema, indem Sie die Felder angeben, die in den durchsuchbaren Index aufgenommen werden, und die Suchattribute für die einzelnen Felder festlegen. Felder besitzen einen Typ und können Attribute annehmen, die bestimmen, wie das Feld verwendet wird (durchsuchbar, sortierbar usw.). Feldname in einem Index müssen nicht exakt mit den Feldnamen in der Quelle übereinstimmen. In einem späteren Schritt fügen Sie in einem Indexer Feldzuordnungen hinzu, um die Quell- und Zielfelder zu verbinden. Definieren Sie für diesen Schritt den Index mit Feldbenennungskonventionen, die für Ihre Suchanwendung angemessen sind.
 
@@ -338,9 +371,11 @@ Die Anforderung sollte die erfolgreiche Ausführung durch Rückgabe von Statusco
 
 Weitere Informationen zum Definieren eines Index finden Sie unter [Index erstellen (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Erstellen eines Indexers, Zuordnen von Feldern und Ausführen von Transformationen
+### <a name="step-4-create-and-run-an-indexer"></a>Schritt 4: Erstellen und Ausführen eines Indexers
 
-Bisher haben Sie eine Datenquelle, eine Qualifikationsgruppe und einen Index erstellt. Diese drei Komponenten werden Teil eines [Indexers](search-indexer-overview.md), der jedes einzelne Stück per Pull in einen einzelnen mehrstufigen Vorgang herunterlädt. Um diese Objekte in einem Indexer zusammenzuführen, müssen Sie Feldzuordnungen definieren.
+Ein [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) steuert die Pipeline. Die drei bereits erstellten Komponenten (Datenquelle, Skillset und Index) sind Eingaben für einen Indexer. Durch die Erstellung des Indexers in Azure Cognitive Search wird die gesamte Pipeline aktiviert. 
+
+Um diese Objekte in einem Indexer zusammenzuführen, müssen Sie Feldzuordnungen definieren.
 
 + fieldMappings werden vor der Qualifikationsgruppe verarbeitet, und die Quellfelder der Datenquelle werden Zielfeldern in einem Index zugeordnet. Wenn die Feldnamen und -typen auf beiden Seiten gleich sind, ist keine Zuordnung erforderlich.
 
@@ -401,14 +436,14 @@ r = requests.put(endpoint + "/indexers/" + indexer_name,
 print(r.status_code)
 ```
 
-Die Anforderung sollte schnell Statuscode 201 zurückgeben, die Verarbeitung kann jedoch einige Minuten dauern. Das Dataset ist zwar klein, aber Analysequalifikationen, z. B. Bildanalyse, sind rechenintensiv und nehmen Zeit in Anspruch.
+Die Anforderung sollte nach kurzer Zeit den Statuscode 201 zurückgeben, aber die Verarbeitung kann einige Minuten dauern. Das Dataset ist zwar klein, aber Analysequalifikationen, z. B. Bildanalyse, sind rechenintensiv und nehmen Zeit in Anspruch.
 
-Verwenden Sie das Skript zum [Überprüfen des Indexerstatus](#check-indexer-status) im nächsten Abschnitt, um zu ermitteln, wann der Indexerprozess abgeschlossen ist.
+Sie können den [Indexerstatus überwachen](#check-indexer-status), um zu ermitteln, wann der Indexer ausgeführt wird oder der Vorgang abgeschlossen wurde.
 
 > [!TIP]
 > Die Pipeline wird durch Erstellen eines Indexers aufgerufen. Wenn beim Zugriff auf die Daten, dem Zuordnen von Ein- und Ausgaben oder der Reihenfolge der Vorgänge Probleme auftreten, äußern sie sich in dieser Phase. Um die Pipeline mit Code- oder Skriptänderungen auszuführen, müssen Sie möglicherweise zuerst Objekte löschen. Weitere Informationen finden Sie unter [Reset and re-run](#reset) (Zurücksetzen und erneut Ausführen).
 
-#### <a name="explore-the-request-body"></a>Untersuchen des Anforderungstexts
+#### <a name="about-the-request-body"></a>Informationen zum Anforderungstext
 
 Das Skript legt `"maxFailedItems"` auf -1 fest, was die Indexengine anweist, Fehler beim Datenimport zu ignorieren. Dies ist nützlich, weil die Demodatenquelle nur wenige Dokumente enthält. Für eine größere Datenquelle sollten Sie den Wert größer als 0 festlegen.
 
@@ -418,7 +453,7 @@ Wenn die Inhalte extrahiert werden, können Sie `imageAction` darauf festlegen, 
 
 <a name="check-indexer-status"></a>
 
-## <a name="check-indexer-status"></a>Überprüfen des Indexerstatus
+## <a name="4---monitor-indexing"></a>4\. Überwachen der Indizierung
 
 Nachdem der Indexer definiert wurde, wird er automatisch ausgeführt, wenn Sie die Anforderung senden. Abhängig von den kognitiven Qualifikationen, die Sie definiert haben, kann die Indizierung länger als erwartet dauern. Führen Sie das folgende Skript aus, um herauszufinden, wann die Indexerverarbeitung abgeschlossen ist.
 
@@ -433,18 +468,18 @@ pprint(json.dumps(r.json(), indent=1))
 
 ![Indexererstellung](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexererstellung")
 
-Warnungen sind bei bestimmten Kombinationen aus Quelldatei und Qualifikation häufig und weisen nicht immer auf ein Problem hin. In diesem Tutorial sind die Warnungen unbedenklich. Beispielsweise wird für eine der JPEG-Dateien, die keinen Text enthält, die Warnung im folgenden Screenshot angegeben.
+Warnungen sind bei bestimmten Kombinationen aus Quelldatei und Qualifikation häufig und weisen nicht immer auf ein Problem hin. Viele Warnungen sind unbedenklich. Wenn Sie beispielsweise eine JPEG-Datei indizieren, die nicht über Text verfügt, wird eine Warnung wie im folgenden Screenshot angezeigt.
 
 ![Exemplarische Indexerwarnung](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Exemplarische Indexerwarnung")
 
-## <a name="query-your-index"></a>Abfragen Ihres Index
+## <a name="5---search"></a>5\. Suchen
 
 Führen Sie nach dem Abschluss der Indizierung Abfragen aus, die die Inhalte einzelner Felder zurückgeben. Standardmäßig gibt Azure Cognitive Search die 50 besten Ergebnisse zurück. Die Beispieldaten sind klein, so dass die Standardeinstellung gut funktioniert. Beim Arbeiten mit größeren Datensets müssen Sie jedoch möglicherweise Parameter in die Abfragezeichenfolge aufnehmen, um mehr Ergebnisse zurückzugeben. Eine entsprechende Anleitung finden Sie unter [Arbeiten mit Suchergebnissen in Azure Search](search-pagination-page-layout.md).
 
-Fragen Sie als Überprüfungsschritt den Index nach allen Feldern ab.
+Zeigen Sie zur Überprüfung alle Felder für die Indexdefinition an.
 
 ```python
-# Query the index for all fields
+# Query the service for the index definition
 r = requests.get(endpoint + "/indexes/" + index_name,
                  headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
@@ -477,19 +512,13 @@ Sie können GET oder POST verwenden, abhängig von der Komplexität und Länge d
 
 ## <a name="reset-and-rerun"></a>Zurücksetzen und erneut ausführen
 
-In den frühen experimentellen Phasen der Pipelineentwicklung besteht der praktikabelste Ansatz für den Übergang von einer Entwurfsphase zur nächsten darin, die Objekte aus Azure Cognitive Search zu löschen und Ihrem Code zu erlauben, sie neu zu erstellen. Ressourcennamen sind eindeutig. Wenn Sie ein Objekt löschen, können Sie es unter dem gleichen Namen neu erstellen.
+In den frühen experimentellen Phasen der Entwicklung besteht der praktikabelste Ansatz für den Übergang von einer Entwurfsphase zur nächsten darin, die Objekte aus Azure Cognitive Search zu löschen und Ihrem Code zu erlauben, sie neu zu erstellen. Ressourcennamen sind eindeutig. Wenn Sie ein Objekt löschen, können Sie es unter dem gleichen Namen neu erstellen.
 
-So indizieren Sie Ihre Dokumente mit den neuen Definitionen erneut:
-
-1. Löschen Sie den Index, um persistente Daten zu entfernen. Löschen Sie den Indexer, um ihn für Ihren Dienst neu zu erstellen.
-2. Ändern Sie die Qualifikationsgruppe und die Indexdefinitionen.
-3. Führen Sie eine Neuerstellung eines Index und des Indexers für den Dienst aus, um die Pipeline auszuführen.
-
-Sie können das Portal verwenden, um Indizes, Indexer und Qualifikationsgruppen zu löschen. Wenn Sie den Indexer löschen, können Sie optional auch den Index, die Qualifikationsgruppen und die Datenquelle löschen.
+Sie können das Portal verwenden, um Indizes, Indexer, Datenquellen und Qualifikationsgruppen zu löschen. Wenn Sie den Indexer löschen, können Sie optional auch den Index, die Qualifikationsgruppen und die Datenquelle löschen.
 
 ![Löschen von Suchobjekten](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Löschen von Suchobjekten im Portal")
 
-Sie können sie auch mithilfe eines Skripts löschen. Mit dem folgenden Skript wird die zuvor erstellte Qualifikationsgruppe gelöscht. Sie können die Anforderung mühelos so ändern, dass der Index, der Indexer oder die Datenquelle gelöscht wird.
+Sie können sie auch mithilfe eines Skripts löschen. Das folgende Skript veranschaulicht, wie ein Skillset gelöscht wird. 
 
 ```python
 # delete the skillset
@@ -498,7 +527,7 @@ r = requests.delete(endpoint + "/skillsets/" + skillset_name,
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-In dem Maß, da Ihr Code reift, kann es sinnvoll sein, die Neuerstellungsstrategie neu zu definieren. Weitere Informationen finden Sie unter [Neuerstellen eines Indexes](search-howto-reindex.md).
+Nach erfolgreichem Löschen wird der Statuscode 204 zurückgegeben.
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
@@ -510,11 +539,13 @@ Ferner haben Sie erfahren, wie die Ergebnisse getestet werden und das System fü
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit zur Bereinigung des Systems nach einem Tutorial besteht im Löschen der Ressourcengruppe, die den Azure Cognitive Search-Dienst und den Azure Blob-Dienst enthält. Unter der Annahme, dass Sie beide Dienste in der gleichen Gruppe platziert haben, löschen Sie einfach die Ressourcengruppe, um endgültig ihren gesamten Inhalt zu löschen, einschließlich der Dienste und aller gespeicherten Inhalte, die Sie für dieses Tutorial erstellt haben. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ der einzelnen Dienste.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, ist es ratsam, nach Abschluss eines Projekts die nicht mehr benötigten Ressourcen zu entfernen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+
+Ressourcen können im Portal über den Link „Alle Ressourcen“ oder „Ressourcengruppen“ im linken Navigationsbereich gesucht und verwaltet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Anpassen oder Erweitern der Pipeline mit benutzerdefinierten Qualifikationen. Das Erstellen einer benutzerdefinierten Qualifikation die Sie einer Qualifikationsgruppe hinzufügen, ermöglicht Ihnen, eigene, von Ihnen selbst erstellte Text- oder Bildanalysen einzubeziehen.
+Nachdem Sie sich nun mit allen Objekten einer KI-Anreicherungspipeline vertraut gemacht haben, können Sie sich weiter über Skillsetdefinitionen und einzelne Qualifikationen informieren.
 
 > [!div class="nextstepaction"]
-> [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
+> [Erstellen eines Skillsets](cognitive-search-defining-skillset.md)

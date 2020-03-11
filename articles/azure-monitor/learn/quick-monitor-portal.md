@@ -1,19 +1,18 @@
 ---
 title: Überwachen Ihrer ASP.NET-Web-App mit Azure Application Insights | Microsoft-Dokumentation
 description: Dieser Artikel bietet Informationen zum schnellen Einrichten einer ASP.NET-Web-App für die Überwachung mit Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900486"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661702"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 
@@ -69,7 +68,7 @@ Sie können jetzt Application Insights im Azure-Portal öffnen, um verschiedene 
 
     ![Anwendungszuordnung](media/quick-monitor-portal/05-appmap.png)
 
-3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-viewinlogs-icon.png) **In Protokollen anzeigen (Analytics)** . Dadurch wird **Protokolle (Analytics)** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie für eine der Anwendungskomponenten auf das **App-Analyse**-Symbol ![Anwendungszuordnung](media/quick-monitor-portal/app-viewinlogs-icon.png) **In Protokollen anzeigen (Analytics)** . Dadurch wird **Protokolle (Analytics)** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 

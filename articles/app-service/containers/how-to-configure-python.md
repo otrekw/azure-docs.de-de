@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922272"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913853"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -47,6 +47,28 @@ Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
+
+## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
+
+Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+
+1. Ausführen eines benutzerdefinierten Skripts, falls durch `PRE_BUILD_SCRIPT_PATH` angegeben
+1. Ausführen von `pip install -r requirements.txt`
+1. Wenn sich *manage.py* im Stammverzeichnis des Repositorys befindet, wird *manage.py collectstatic* ausgeführt. Ist `DISABLE_COLLECTSTATIC` allerdings auf `true` festgelegt, wird dieser Schritt übersprungen.
+1. Ausführen eines benutzerdefinierten Skripts, falls durch `POST_BUILD_SCRIPT_PATH` angegeben
+
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND` und `DISABLE_COLLECTSTATIC` sind Umgebungsvariablen, die standardmäßig leer sind. Um Präbuildbefehle auszuführen, definieren Sie `PRE_BUILD_COMMAND`. Um Postbuildbefehle auszuführen, definieren Sie `POST_BUILD_COMMAND`. Wenn Sie bei der Erstellung von Django-Apps die Ausführung von „collectstatic“ deaktivieren möchten, legen Sie `DISABLE_COLLECTSTATIC=true` fest.
+
+Im folgenden Beispiel werden die beiden Variablen für eine Reihe von Befehlen angegeben (mit Kommas als Trennzeichen):
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Weitere Umgebungsvariablen zum Anpassen der Buildautomatisierung finden Sie unter [Oryx-Konfiguration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Weitere Informationen zur Ausführung und Erstellung von Python-Apps in Linux durch App Service finden Sie unter [Oryx-Dokumentation: Erkennen und Erstellen von Python-Apps](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
 
 ## <a name="container-characteristics"></a>Eigenschaften von Containern
 

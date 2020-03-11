@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150679"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920398"
 ---
 # <a name="normalize-data-module"></a>Modul „Normalize Data“ (Normalisieren von Daten)
 
@@ -104,7 +104,7 @@ Das Modul **Normalize Data** generiert zwei Ausgaben:
 
 - Wählen Sie zum Speichern der Transformation, damit Sie dieselbe Normalisierungsmethode auf ein anderes Dataset anwenden können, das Modul aus, und wählen Sie **Dataset registrieren** unter der Registerkarte **Ausgaben** im rechten Fensterbereich aus.
 
-    Sie können anschließend die gespeicherten Transformationen aus der Gruppe **Transforms** im linken Navigationsbereich laden und sie auf ein Dataset mit dem gleichen Schema anwenden, indem Sie [./Apply Transformation](apply-transformation.md) (Transformation anwenden) verwenden.  
+    Sie können anschließend die gespeicherten Transformationen aus der Gruppe **Transforms** im linken Navigationsbereich laden und sie auf ein Dataset mit dem gleichen Schema anwenden, indem Sie [Apply Transformation](apply-transformation.md) (Transformation anwenden) verwenden.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

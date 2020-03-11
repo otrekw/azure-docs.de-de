@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 960c6cbe6b60ad477f630b14ce0953601e71c34e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349810"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303782"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
  Gibt einen booleschen Wert zurück, der anzeigt, ob der angegebene Ausdruck ein Grundtyp ist (Zeichenfolge, boolesch, numerisch oder NULL).  
@@ -53,8 +53,12 @@ SELECT
 [{"isPrim1": true, "isPrim2": true, "isPrim3": true, "isPrim4": true, "isPrim5": false, "isPrim6": false, "isPrim7": false}]  
 ```  
 
+## <a name="remarks"></a>Bemerkungen
+
+Diese Systemfunktion profitiert von einem [Bereichsindex](index-policy.md#includeexclude-strategy).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Funktionen für die Typüberprüfung in Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [Funktionen für die Typüberprüfung in Azure Cosmos DB](sql-query-type-checking-functions.md)
 - [Systemfunktionen in Azure Cosmos DB](sql-query-system-functions.md)
 - [Einführung in Azure Cosmos DB](introduction.md)

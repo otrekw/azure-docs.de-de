@@ -13,82 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715272"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197146"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
 Azure Load Balancer Standard unterstützt Szenarien mit [Verfügbarkeitszonen](../availability-zones/az-overview.md). Mit Load Balancer Standard können Sie die Verfügbarkeit in Ihrem End-to-End-Szenario optimieren, indem Sie Ressourcen mit Zonen abstimmen und auf mehrere Zonen verteilen.  Unter [Verfügbarkeitszonen](../availability-zones/az-overview.md) erfahren Sie, was Verfügbarkeitszonen sind und welche Regionen derzeit Verfügbarkeitszonen unterstützen. Außerdem finden Sie dort Informationen zu weiteren zugehörigen Konzepten und Produkten. Verfügbarkeitszonen und Load Balancer Standard bilden einen umfassenden und flexiblen Featuresatz für unterschiedlichste Szenarien.  Lesen Sie dieses Dokument, um diese [Konzepte](#concepts) und die [Entwurfsanleitung](#design) für das grundlegende Szenario zu verstehen.
 
->[!IMPORTANT]
->Informationen zu verwandten Themen finden Sie unter [Verfügbarkeitszonen](../availability-zones/az-overview.md), einschließlich aller regionsspezifischen Informationen.
-
 ## <a name="concepts"></a> Auf den Load Balancer angewendete Verfügbarkeitszonenkonzepte
 
-Es gibt keine direkte Beziehung zwischen Load Balancer-Ressourcen und der tatsächlichen Infrastruktur; durch Erstellen einer Load Balancer-Instanz wird keine Instanz erstellt. Load Balancer-Ressourcen sind Objekte, in denen Sie ausdrücken können, wie Azure seine vorgefertigte mehrinstanzenfähige Infrastruktur programmieren sollte, um das Szenario zu erzielen, das Sie erstellen möchten.  Dies ist im Kontext von Verfügbarkeitszonen relevant, da eine einzelne Load Balancer-Ressource die Programmierung der Infrastruktur in mehreren Verfügbarkeitszonen steuern kann, während ein zonenredundanter Dienst aus Kundensicht als einzelne Ressource erscheint.  
-
-Eine Load Balancer-Ressource selbst ist regional und nie zonal.  Ein VNet und ein Subnetz sind auch immer regional und nie zonal. Die Granularität der verfügbaren Konfigurationsoptionen wird durch die jeweilige Konfiguration von Front-End, Regel und Back-End-Pooldefinition eingeschränkt.
-
+Eine Load Balancer-Ressource selbst ist regional und nie zonal. Die Granularität der verfügbaren Konfigurationsoptionen wird durch die jeweilige Konfiguration von Front-End, Regel und Back-End-Pooldefinition eingeschränkt.
 Im Kontext von Verfügbarkeitszonen werden das Verhalten und die Eigenschaften einer Load Balancer-Regel als „zonenredundant“ oder „zonal“ beschrieben.  „Zonenredundant“ und „zonal“ beschreiben die Zonalität einer Eigenschaft.  Im Kontext des Load Balancers bezieht sich „zonenredundant“ immer auf *mehrere Zonen*, und „zonal“ bedeutet, dass der Dienst in einer *einzelnen Zone* isoliert wird.
-
 Der öffentliche und der interne Load Balancer unterstützen zonenredundante und zonengebundene Szenarien, und beide können Datenverkehr nach Bedarf zonenübergreifend weiterleiten (*zonenübergreifender Lastenausgleich*). 
 
 ### <a name="frontend"></a>Front-End
 
 Ein Load Balancer-Front-End ist eine Front-End-IP-Konfiguration, die entweder auf eine öffentliche IP-Adressressource oder auf eine private IP-Adresse innerhalb des Subnetzes einer virtuellen Netzwerkressource verweist.  Es bildet den Lastenausgleichsendpunkt, in dem Ihr Dienst verfügbar gemacht wird.
+Eine Load Balancer-Ressource kann gleichzeitig Regeln mit zonalen und zonenredundanten Front-Ends enthalten. Wenn einer Zone eine öffentliche IP-Ressource oder eine private IP-Adresse zugesichert wurde, ist die Zonalität (oder deren Fehlen) nicht veränderbar.  Wenn Sie die Zonalität eines Front-Ends mit öffentlicher IP-Ressource oder privater IP-Adresse ändern oder weglassen möchten, müssen Sie die öffentliche IP-Adresse in der entsprechenden Zone neu erstellen.  Verfügbarkeitszonen haben keine Auswirkungen auf die Einschränkungen für mehrere Front-Ends. Weitere Informationen hierzu finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](load-balancer-multivip-overview.md).
 
-Eine Load Balancer-Ressource kann gleichzeitig Regeln mit zonalen und zonenredundanten Front-Ends enthalten. 
+#### <a name="zone-redundant"></a>Zonenredundant 
 
-Wenn einer Zone eine öffentliche IP-Ressource oder eine private IP-Adresse zugesichert wurde, ist die Zonalität (oder deren Fehlen) nicht veränderbar.  Wenn Sie die Zonalität eines Front-Ends mit öffentlicher IP-Ressource oder privater IP-Adresse ändern oder weglassen möchten, müssen Sie die öffentliche IP-Adresse in der entsprechenden Zone neu erstellen.  Verfügbarkeitszonen haben keine Auswirkungen auf die Einschränkungen für mehrere Front-Ends. Weitere Informationen hierzu finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](load-balancer-multivip-overview.md).
-
-#### <a name="zone-redundant-by-default"></a>Standardmäßige Zonenredundanz
-
-In einer Region mit Verfügbarkeitszonen ist ein Front-End mit Load Balancer Standard standardmäßig zonenredundant.  „Zonenredundant“ bedeutet, dass alle eingehenden oder ausgehenden Datenströme durch mehrere Verfügbarkeitszonen in einer Region gleichzeitig unter Verwendung einer einzelnen IP-Adresse bereitgestellt werden. DNS-Redundanzschemas sind nicht erforderlich. Eine einzelne Front-End-IP-Adresse kann Zonenausfälle überstehen und verwendet werden, um alle (nicht betroffenen) Back-End-Pool-Elemente unabhängig von der Zone zu erreichen. Der Datenpfad bleibt im Falle eines Ausfalls einzelner oder mehrerer Verfügbarkeitszonen verfügbar, solange noch eine einzelne fehlerfreie Zone in der Region vorhanden ist. Die einzelne IP-Adresse des Front-Ends wird gleichzeitig durch mehrere unabhängige Infrastrukturbereitstellungen in mehreren Verfügbarkeitszonen bedient.  Dies bedeutet keinen störungsfreien Datenpfad, aber alle Wiederholungen oder Wiederherstellungen sind in anderen Zonen erfolgreich, die nicht von dem Zonenausfall betroffen sind.   
-
-Der folgende Auszug veranschaulicht, wie Sie eine zonenredundante öffentliche IP-Adresse für Ihre öffentliche Load Balancer Standard-Instanz definieren. Wenn Sie vorhandene Resource Manager-Vorlagen in Ihrer Konfiguration verwenden, fügen Sie diesen Vorlagen den Abschnitt **sku** hinzu.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Der folgende Auszug veranschaulicht, wie Sie eine zonenredundante Front-End-IP-Adresse für Ihre interne Load Balancer Standard-Instanz definieren. Wenn Sie vorhandene Resource Manager-Vorlagen in Ihrer Konfiguration verwenden, fügen Sie diesen Vorlagen den Abschnitt **sku** hinzu.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Die obigen Auszüge sind keine vollständigen Vorlagen, sondern veranschaulichen lediglich, wie Eigenschaften für Verfügbarkeitszonen ausgedrückt werden.  Diese Anweisungen müssen in Ihre Vorlagen integriert werden.
+In einer Region mit Verfügbarkeitszonen kann ein Front-End mit Load Balancer Standard zonenredundant sein.  „Zonenredundant“ bedeutet, dass alle eingehenden oder ausgehenden Datenströme durch mehrere Verfügbarkeitszonen in einer Region gleichzeitig unter Verwendung einer einzelnen IP-Adresse bereitgestellt werden. DNS-Redundanzschemas sind nicht erforderlich. Eine einzelne Front-End-IP-Adresse kann Zonenausfälle überstehen und verwendet werden, um alle (nicht betroffenen) Back-End-Pool-Elemente unabhängig von der Zone zu erreichen. Der Datenpfad bleibt im Falle eines Ausfalls einzelner oder mehrerer Verfügbarkeitszonen verfügbar, solange noch eine einzelne fehlerfreie Zone in der Region vorhanden ist. Die einzelne IP-Adresse des Front-Ends wird gleichzeitig durch mehrere unabhängige Infrastrukturbereitstellungen in mehreren Verfügbarkeitszonen bedient.  Dies bedeutet keinen störungsfreien Datenpfad, aber alle Wiederholungen oder Wiederherstellungen sind in anderen Zonen erfolgreich, die nicht von dem Zonenausfall betroffen sind.   
 
 #### <a name="optional-zone-isolation"></a>Optionale Zonenisolation
 
@@ -101,49 +50,6 @@ Wenn Sie diese Konzepte (zonenredundant und zonal für dasselbe Back-End) mische
 Für ein öffentliches Load Balancer-Front-End fügen Sie der öffentlichen IP-Ressource, auf die die von der entsprechenden Regel verwendete Front-End-IP-Konfiguration verweist, einen Parameter vom Typ *zones* hinzu.
 
 Für ein internes Load Balancer-Front-End fügen Sie der internen Load Balancer-Front-End-IP-Konfiguration einen *zones*-Parameter hinzu. Das zonale Front-End bewirkt, dass der Load Balancer eine IP-Adresse in einem Subnetz einer bestimmten Zone zusichert.
-
-Der folgende Auszug veranschaulicht, wie Sie eine zonale öffentliche Standard-IP-Adresse in der Verfügbarkeitszone 1 definieren. Wenn Sie vorhandene Resource Manager-Vorlagen in Ihrer Konfiguration verwenden, fügen Sie diesen Vorlagen den Abschnitt **sku** hinzu.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Der folgende Auszug veranschaulicht, wie Sie ein internes Load Balancer Standard-Front-End in der Verfügbarkeitszone 1 definieren. Wenn Sie vorhandene Resource Manager-Vorlagen in Ihrer Konfiguration verwenden, fügen Sie diesen Vorlagen den Abschnitt **sku** hinzu. Definieren Sie außerdem die Eigenschaft **zones** in der Front-End-IP-Konfiguration für die untergeordnete Ressource.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Die obigen Auszüge sind keine vollständigen Vorlagen, sondern veranschaulichen lediglich, wie Eigenschaften für Verfügbarkeitszonen ausgedrückt werden.  Diese Anweisungen müssen in Ihre Vorlagen integriert werden.
 
 ### <a name="cross-zone-load-balancing"></a>Zonenübergreifender Lastenausgleich
 
@@ -201,14 +107,6 @@ Vermeiden Sie unbeabsichtigte zonenübergreifende Abhängigkeiten, die die durch
   - Kann Ihre Anwendung sicher konvergieren, wenn eine Zone zurückkehrt?
 
 Informationen zur Verbesserung der Resilienz Ihrer Anwendung in Ausfallszenarien finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns/).
-
-### <a name="zonalityguidance"></a> „Zonenredundant“ im Vergleich zu „zonal“
-
-Zonenredundanz kann mit einer zonenunabhängigen Option zur Vereinfachung beitragen und bietet gleichzeitig eine Resilienzoption mit einer einzelnen IP-Adresse für den Dienst.  Sie kann wiederum die Komplexität reduzieren.  Zonenredundanz bietet auch zonenübergreifende Mobilität und kann sicher auf Ressourcen in jeder Zone verwendet werden.  Darüber hinaus ist sie in Regionen ohne Verfügbarkeitszonen zukunftssicher, was den Änderungsaufwand verringern kann, wenn Verfügbarkeitszonen in einer Region verfügbar werden.  Die Konfigurationssyntax für zonenredundante IP-Adressen oder Front-Ends ist in allen Regionen verwendbar – auch in Regionen ohne Verfügbarkeitszonen. Eine Zone wird nicht innerhalb der Eigenschaft „zones:“ der Ressource angegeben.
-
-„Zonal“ kann eine explizite Zusicherung für eine Zone bieten, die explizit von der Integrität der Zone abhängig ist. Die Erstellung einer Load Balancer-Regel mit einem Front-End (zonale IP-Adresse oder zonaler interner Load Balancer) kann insbesondere wünschenswert sein, wenn es sich bei Ihrer angefügten Ressource um einen zonalen virtuellen Computer in der gleichen Zone handelt.  Vielleicht muss für Ihre Anwendung aber auch vorab explizit bekannt sein, in welcher Zone sich eine Ressource befindet, und Sie möchten explizit über die Verfügbarkeit in separaten Zonen nachdenken.  Sie können wählen, mehrere zonale Front-Ends für einen End-to-End-Dienst über Zonen verteilt verfügbar zu machen (d.h. pro Zone zonale Front-Ends für mehrere zonale VM-Skalierungsgruppen).  Wenn Ihre zonalen Front-Ends öffentliche IP-Adressen sind, können Sie diese mehreren zonale Front-Ends zum Verfügbarmachen des Diensts mit [Traffic Manager](../traffic-manager/traffic-manager-overview.md) verwenden.  Sie können mit mehreren zonalen Front-Ends auch pro Zone mit Überwachungslösungen von Drittanbietern Einblicke in Integrität und Leistung erzielen und den gesamten Dienst mit einem zonenredundanten Front-End verfügbar machen. Sie sollten zonale Ressourcen nur mit zonalen Front-Ends bedienen, die an derselben Zone ausgerichtet sind, und potenziell schädliche zonenübergreifende Szenarios für zonale Ressourcen vermeiden.  Zonale Ressourcen sind nur in Regionen mit Verfügbarkeitszonen vorhanden.
-
-Ohne Kenntnis der Dienstarchitektur gibt es keine Faustregel, welche Option die bessere Wahl ist.  Informationen zur Verbesserung der Resilienz Ihrer Anwendung in Ausfallszenarien finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md)

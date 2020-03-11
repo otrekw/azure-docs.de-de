@@ -1,18 +1,18 @@
 ---
 title: Übersicht über die Unternehmenssicherheit in Azure HDInsight
 description: Erfahren Sie mehr über die verschiedenen Methoden zur Sicherstellung der Unternehmenssicherheit in Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122113"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267718"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -28,7 +28,7 @@ Eine Art der Betrachtung der Unternehmenssicherheit unterteilt Sicherheitslösun
 
 ### <a name="perimeter-security"></a>Umgebungssicherheit
 
-Die Umgebungssicherheit in HDInsight wird mithilfe von [virtuellen Netzwerken](../hdinsight-plan-virtual-network-deployment.md) erreicht. Ein Unternehmensadministrator kann einen Cluster in einem virtuellen Netzwerk (VNET) erstellen und den Zugriff auf das virtuelle Netzwerk mithilfe von Netzwerksicherheitsgruppen (NSG) beschränken. Es können nur die zulässigen IP-Adressen in den eingehenden NSG-Regeln mit dem HDInsight-Cluster kommunizieren. Diese Konfiguration bietet Umgebungssicherheit.
+Die Umgebungssicherheit in HDInsight wird mithilfe von [virtuellen Netzwerken](../hdinsight-plan-virtual-network-deployment.md) erreicht. Ein Unternehmensadministrator kann einen Cluster in einem virtuellen Netzwerk (VNET) erstellen und den Zugriff auf das virtuelle Netzwerk mithilfe von Netzwerksicherheitsgruppen (NSG) einschränken. Es können nur die zulässigen IP-Adressen in den eingehenden NSG-Regeln mit dem HDInsight-Cluster kommunizieren. Diese Konfiguration bietet Umgebungssicherheit.
 
 Alle Cluster, die in einem VNET bereitgestellt werden, verfügen auch über einen privaten Endpunkt, der sich auf eine private IP-Adresse innerhalb des VNET auflöst, um privaten HTTP-Zugriff auf die Clustergateways zu ermöglichen.
 
@@ -36,13 +36,13 @@ Alle Cluster, die in einem VNET bereitgestellt werden, verfügen auch über eine
 
 Das [Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md) von HDInsight unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Die Active Directory-Integration wird durch die Verwendung von [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) erreicht. Mit diesen Funktionen können Sie einen HDInsight-Cluster erstellen, der in eine verwaltete Active Directory-Domäne eingebunden ist. Sie können dann eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die eine Authentifizierung und Anmeldung am Cluster durchführen können.
 
-In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie sich mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Apache Ambari Views, ODBC, JDBC, PowerShell und REST-APIs authentifizieren, um mit dem Cluster zu interagieren. 
+In dieser Konfiguration können sich Mitarbeiter des Unternehmens mit ihren Domänenanmeldeinformationen bei den Clusterknoten anmelden. Darüber hinaus können sie sich mit ihren Domänenanmeldeinformationen auch bei anderen genehmigten Endpunkten wie Apache Ambari Views, ODBC, JDBC, PowerShell und REST-APIs authentifizieren, um mit dem Cluster zu interagieren.
 
 ### <a name="authorization"></a>Authorization
 
 In den meisten Unternehmen hat es sich bewährt, dass nicht jeder Mitarbeiter Zugriff auf alle Unternehmensressourcen hat. Analog dazu kann der Administrator für die Clusterressourcen Richtlinien für die rollenbasierte Zugriffssteuerung definieren. Dies ist nur in den ESP-Clustern verfügbar.
 
-Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (RBAC) konfigurieren, um Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit diesen Plug-Ins in Apache Ranger zu sichern. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
+Der Hadoop-Administrator kann die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) konfigurieren, um Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) und [Kafka](apache-domain-joined-run-kafka.md) mit diesen Plug-Ins in Apache Ranger zu schützen. Durch die Konfiguration von RBAC-Richtlinien können Sie Berechtigungen einer Rolle in der Organisation zuordnen. Diese Abstraktionsebene erleichtert die Sicherstellung, dass Personen nur über die Berechtigungen verfügen, die sie zur Erfüllung ihrer beruflichen Aufgaben benötigen. Mit Ranger können Sie auch den Datenzugriff von Mitarbeitern und alle Änderungen an den Zugriffssteuerungsrichtlinien überwachen.
 
 So kann der Administrator etwa [Apache Ranger](https://ranger.apache.org/) zum Festlegen von Zugriffssteuerungsrichtlinien für Hive konfigurieren. Diese Funktionalität gewährleistet die Filterung auf Zeilen- und Spaltenebene (Datenmaskierung) und filtert die sensiblen Daten von nicht autorisierten Benutzern.
 
@@ -50,9 +50,9 @@ So kann der Administrator etwa [Apache Ranger](https://ranger.apache.org/) zum F
 
 Die Überwachung des gesamten Zugriffs auf die Clusterressourcen und der Daten ist erforderlich, um unbefugten oder versehentlichen Zugriff auf die Ressourcen nachzuverfolgen. Dies ist ebenso wichtig wie der Schutz der HDInsight-Clusterressourcen vor nicht autorisierten Benutzern und das Sichern von Daten.
 
-Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Außerdem kann er sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen, die an von Apache Ranger unterstützten Endpunkten vorgenommen werden, und entsprechende Berichte erstellen. 
+Der Administrator kann sämtliche Zugriffe auf die Ressourcen und Daten des HDInsight-Clusters anzeigen und entsprechende Berichte erstellen. Außerdem kann er sämtliche Änderungen an den Zugriffssteuerungsrichtlinien anzeigen, die an von Apache Ranger unterstützten Endpunkten vorgenommen werden, und entsprechende Berichte erstellen.
 
-Aktivieren Sie [Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing), und zeigen Sie die Tabellen mit Überwachungsdatensätzen an, um auf Überwachungsprotokolle von Apache Ranger und Ambari sowie SSH-Zugriffsprotokolle zuzugreifen.
+[Aktivieren Sie Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing), und zeigen Sie die Tabellen mit Überwachungsdatensätzen an, um auf Überwachungsprotokolle von Apache Ranger und Ambari sowie auf SSH-Zugriffsprotokolle zuzugreifen.
 
 ### <a name="encryption"></a>Verschlüsselung
 
@@ -62,7 +62,7 @@ Beide Datenspeicher für HDInsight-Cluster – Azure Blob Storage und Azure Data
 
 ### <a name="compliance"></a>Kompatibilität
 
-Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formalen Zertifizierungen, Nachweisen, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
+Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen – etwa auf formalen Zertifizierungen, Nachweisen, Validierungen, Autorisierungen und Bewertungen unabhängiger externer Prüfungsgesellschaften sowie auf Vertragsänderungen, Selbstbewertungen und Kundenleitfäden von Microsoft. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
 
 ## <a name="shared-responsibility-model"></a>Modell der gemeinsamen Zuständigkeit
 

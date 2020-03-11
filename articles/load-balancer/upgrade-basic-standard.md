@@ -7,20 +7,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616748"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659950"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
 [Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
-Ein Upgrade umfasst zwei Phasen:
+Ein Upgrade umfasst drei Phasen:
 
 1. Migrieren der Konfiguration
 2. Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
+3. Erstellen einer Ausgangsregel auf dem Load Balancer für ausgehende Verbindungen
 
 Dieser Artikel behandelt die Migration einer Konfiguration. Die Vorgehensweise zu Hinzufügen virtueller Computer zu Back-End-Pools kann abhängig von Ihrer spezifischen Umgebung variieren. Einige generelle Empfehlungen dazu finden Sie jedoch [hier](#add-vms-to-backend-pools-of-standard-load-balancer).
 
@@ -82,7 +83,7 @@ So führen Sie das Skript aus
     **Beispiel**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Hinzufügen virtueller Computer zu Back-End-Pools von Load Balancer Standard
@@ -108,6 +109,12 @@ In den folgenden Szenarien wird gezeigt, wie Sie virtuelle Computer zu Back-End-
 
 * **Erstellen neuer virtueller Computer, um sie den Back-End-Pools der neu erstellten öffentlichen Load Balancer Standard-Instanz hinzuzufügen:**
     * Weitere Informationen zum Erstellen eines virtuellen Computers sowie zum Zuordnen des virtuellen Computers zu Load Balancer Standard finden Sie [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Erstellen einer Ausgangsregel für ausgehende Verbindungen
+
+Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration), um eine Ausgangsregel zu erstellen, die Ihnen Folgendes ermöglicht:
+* Eine ausgehende NAT von Grund auf neu definieren
+* Das Verhalten einer vorhandenen NAT für ausgehenden Datenverkehr skalieren und optimieren
 
 ## <a name="common-questions"></a>Häufig gestellte Fragen
 

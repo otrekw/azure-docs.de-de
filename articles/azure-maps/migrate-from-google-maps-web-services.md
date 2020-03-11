@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086189"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913817"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrieren von Webdiensten aus Google Maps
 
@@ -24,21 +24,24 @@ Die folgende Tabelle enthält die Dienst-APIs von Azure Maps, die über ähnlich
 
 | Google Maps-Dienst-API | Azure Maps-Dienst-API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Wegbeschreibungen              | [Route](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Entfernungsmatrix         | [Routenmatrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Geocodierung               | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Suche nach Orten           | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                             |
-| AutoVervollständigen von Orten      | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Statische Karte              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Zeitzone               | [Zeitzone](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Wegbeschreibungen              | [Route](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Entfernungsmatrix         | [Routenmatrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Geocodierung               | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Suche nach Orten           | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| AutoVervollständigen von Orten      | [Suchen,](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Ausrichtung an Straße            | Weitere Informationen finden Sie im Abschnitt [Berechnen von Routen und Wegbeschreibungen](#calculate-routes-and-directions).            |
+| Geschwindigkeitsbegrenzungen            | Weitere Informationen finden Sie unter [Umgekehrte Geocodierung einer Koordinate](#reverse-geocode-a-coordinate).                  |
+| Statische Karte              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Zeitzone               | [Zeitzone](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 Die folgenden Dienst-APIs stehen in Azure Maps derzeit nicht zur Verfügung:
 
 - Elevation
 - Geolocation
-- Ortsdetails und Ortsfotos. Telefonnummern und Website-URL stehen in der Azure Maps-Such-API zur Verfügung.
+- Details zu Orten und Fotos: Telefonnummern und Website-URL stehen in der Azure Maps-Such-API zur Verfügung.
 - Karten-URLs
-- Straßen. Daten zur Geschwindigkeitsbegrenzung sind über die Routen-API und die API für die umgekehrte Geocodierung in Azure Maps verfügbar.
+- Nächstgelegene Straßen: Diese Information kann wie [hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+) beschrieben über das Web-SDK ermittelt werden, sie steht aktuell jedoch nicht als Dienst zur Verfügung.
 - Statische Straßenansicht
 
 Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse sind:
@@ -176,8 +179,8 @@ Berechnen Sie Routen und Wegbeschreibungen mithilfe von Azure Maps. Azure Maps v
 
 Der Routenplanungsdienst von Azure Maps stellt die folgenden APIs zum Berechnen von Routen bereit:
 
-- [**Berechnen der Route:** ](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. Verwenden Sie POST-Anforderungen, wenn Sie eine große Anzahl von Wegpunkten angeben oder viele der Routenoptionen verwenden. Durch die Verwendung von POST wird sichergestellt, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht.
-- [**Batchroute:** ](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview) Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden parallel auf dem Server verarbeitet. Nach Abschluss der Verarbeitung kann das vollständige Resultset heruntergeladen werden.
+- [**Berechnen der Route:** ](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. POST-Anforderungen werden empfohlen, wenn eine große Anzahl von Wegpunkten angegeben wird oder wenn viele der Routenoptionen verwendet werden, um sicherzustellen, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht. Für die POST-Anforderung im Zusammenhang mit der Routenbeschreibung in Azure Maps steht eine Option zur Verfügung, die Tausende unterstützende Punkte ([SupportingPoints](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)) akzeptiert und diese verwendet, um eine logische Route zwischen ihnen zu erstellen (Ausrichtung an Straße). 
+- [**Batchroute:** ](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview) Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
 - [**Mobilitätsdienste:** ](https://docs.microsoft.com/rest/api/maps/mobility) Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
 
 In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichbaren API-Parametern in Azure Maps gegenübergestellt:
@@ -245,7 +248,7 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
-> Im Kachelsystem von Azure Maps sind die Kacheln doppelt so groß wie die in Google Maps verwendeten Kartenkacheln. Aus diesem Grund ist der Wert der Zoomstufe in Azure Maps im Vergleich zu Google Maps um eine Zoomstufe niedriger. Verringern Sie zur Kompensierung die Zoomstufe in den Anforderungen, die Sie migrieren.
+> Im Kachelsystem von Azure Maps sind die Kacheln doppelt so groß wie die in Google Maps verwendeten Kartenkacheln. Aus diesem Grund ist der Wert der Zoomebene in Azure Maps im Vergleich zu Google Maps um eine Zoomebene niedriger. Verringern Sie zur Kompensierung die Zoomstufe in den Anforderungen, die Sie migrieren.
 
 Weitere Informationen finden Sie in der [Schrittanleitung zur Rendering-API für Kartenbilder](how-to-render-custom-data.md).
 
@@ -306,21 +309,21 @@ In Azure Maps muss die Stecknadelposition im Format „Längengrad Breitengrad�
 
 `iconType` gibt die Art der zu erstellenden Stecknadel an. Die folgenden Werte sind möglich:
 
-- `default`: Das Standardsymbol für Stecknadeln.
+- `default`: das Standardsymbol für Pins.
 - `none`: Es wird kein Symbol angezeigt, sondern nur Bezeichnungen gerendert.
-- `custom`: Gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Stecknadelposition hinzugefügt werden.
-- `{udid}`: Eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
+- `custom`: gibt an, dass ein benutzerdefiniertes Symbol verwendet werden soll. Eine URL, die auf das Symbolbild verweist, kann am Ende des Parameters `pins` nach den Informationen zur Pinposition hinzugefügt werden.
+- `{udid}`: eine Unique Data ID (UDID) für ein Symbol, das in der Azure Maps-Datenspeicher-Plattform gespeichert ist.
 
 Fügen Sie Stecknadelstile im Format `optionNameValue` hinzu. Trennen Sie mehrere Stile jeweils durch einen senkrechten Strich (\|). Beispiel: `iconType|optionName1Value1|optionName2Value2`. Optionsname und -wert werden nicht voneinander getrennt. Verwenden Sie die folgenden Stiloptionsnamen für die Gestaltung von Markern:
 
-- `al`: Gibt die Deckkraft (Alpha) des Markers an. Wählen Sie eine Zahl zwischen 0 und 1 aus.
-- `an`: Gibt den Stecknadelanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
-- `co`: Die Farbe der Stecknadel. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
-- `la`: Gibt den Bezeichnungsanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
-- `lc`: Die Farbe der Bezeichnung. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
-- `ls`: Die Größe der Bezeichnung in Pixel. Wählen Sie eine Zahl größer Null aus.
-- `ro`: Ein Wert in Grad, um den das Symbol gedreht werden soll. Wählen Sie eine Zahl zwischen -360 und 360 aus.
-- `sc`: Ein Skalierungswert für das Stecknadelsymbol. Wählen Sie eine Zahl größer Null aus.
+- `al`: gibt die Deckkraft (Alpha) des Markers an. Wählen Sie eine Zahl zwischen 0 und 1 aus.
+- `an`: gibt den Pinanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
+- `co`: die Farbe des Pins. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
+- `la`: gibt den Bezeichnungsanker an. Geben Sie x- und y-Pixelwerte im Format „x y“ an.
+- `lc`: die Farbe der Bezeichnung. Geben Sie eine hexadezimale 24-Bit-Farbe an: `000000` bis `FFFFFF`.
+- `ls`: die Größe der Bezeichnung in Pixel. Wählen Sie eine Zahl größer Null aus.
+- `ro`: ein Wert in Grad, um den das Symbol gedreht werden soll. Wählen Sie eine Zahl zwischen -360 und 360 aus.
+- `sc`: ein Skalierungswert für das Pinsymbol. Wählen Sie eine Zahl größer Null aus.
 
 Geben Sie Bezeichnungswerte für jede Stecknadelposition an. Diese Vorgehensweise ist effizienter als einen einzelnen Bezeichnungswert auf alle Marker in der Positionsliste anzuwenden. Der Bezeichnungswert kann eine Zeichenfolge mit mehreren Zeichen sein. Schließen Sie die Zeichenfolge in einfache Anführungszeichen ein, um sicherzustellen, dass sie nicht mit einem Stil- oder Positionswert verwechselt wird.
 
@@ -365,7 +368,7 @@ Fügen Sie Pfadstile im Format `optionName:value` hinzu, und trennen Sie sie jew
 - `geodesic`: gibt an, ob der Pfad eine Linie sein soll, die der Erdkrümmung folgt.
 - `weight`: die Stärke der Pfadlinie in Pixel.
 
-Fügen Sie der Karte im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 sowie der Längengrad -100 und der Breitengrad 50 verwendet.
+Fügen Sie der Karte im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 und Längengrad: –100, Breitengrad: 50 verwendet.
 
 ```
 &path=color:0xFF000088|weight:4|45,-110|50,-100
@@ -394,7 +397,7 @@ Fügen Sie Pfadstile mit dem Format `optionNameValue` hinzu. Trennen Sie mehrere
 - `lw`: die Breite der Linie in Pixel.
 - `ra`: gibt einen Kreisradius in Metern an.
 
-Fügen Sie im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 sowie der Längengrad -100 und der Breitengrad 50 verwendet.
+Fügen Sie im URL-Parameter eine rote Linie mit Deckkraft und Pixelstärke zwischen den Koordinaten hinzu. Im folgenden Beispiel hat die Linie eine Deckkraft von 50 Prozent und eine Stärke von vier Pixeln. Als Koordinaten werden der Längengrad -110 und der Breitengrad 45 und Längengrad: –100, Breitengrad: 50 verwendet.
 
 ```
 &path=lcFF0000|la.5|lw4||-110 45|-100 50

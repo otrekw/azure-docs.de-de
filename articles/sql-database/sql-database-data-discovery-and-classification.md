@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717680"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191944"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL-Datenbank und Azure Synapse Analytics: Datenermittlung und -klassifizierung
 
 Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Berichten** sensibler Daten in Ihren Datenbanken.
 
@@ -32,7 +33,7 @@ Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Fi
 Datenermittlung und -klassifizierung ist Teil des Angebots [Advanced Data Security (ADS)](sql-database-advanced-data-security.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL ADS-Portal möglich.
 
 > [!NOTE]
-> Dieses Dokument bezieht sich auf Azure SQL-Datenbank und Azure SQL Data Warehouse. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
+> Dieses Dokument bezieht sich auf Azure SQL-Datenbank und Azure Synapse. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf SQL-Datenbank als auch auf Azure Synapse verwiesen wird. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
 
@@ -138,7 +139,7 @@ Weitere Informationen zu [RBAC für Azure Resources](https://docs.microsoft.com/
 
 ## <a id="subheading-5"></a>Verwalten von Klassifizierungen
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle Klassifizierungen für die gesamte Datenbank abrufen.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle 
 - Entfernen der Klassifizierung aus einer oder mehreren Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG LÖSCHEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[REST-APIs](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[REST-APIs](#tab/azure-rest-api)
 Sie können zudem REST-APIs verwenden, um Klassifizierungen und Empfehlungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
 
 - [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
@@ -159,7 +160,7 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen und Empfehlungen pro
 - [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) listet die derzeitigen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 - [Empfohlene nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) listet die empfohlenen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell-Cmdlet](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell-Cmdlet](#tab/azure-powelshell)
 Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azure SQL-Datenbank und verwaltete Instanzen zu verwalten.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>PowerShell-Cmdlet für Azure SQL-Datenbank

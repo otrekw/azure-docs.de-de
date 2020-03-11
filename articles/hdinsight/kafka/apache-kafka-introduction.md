@@ -1,27 +1,27 @@
 ---
 title: Einführung in Apache Kafka in HDInsight – Azure
 description: Hier finden Sie Informationen zu Apache Kafka in HDInsight. Es wird beschrieben, worum es sich handelt, welche Funktion erfüllt wird und wo Sie Beispiele und Informationen zu den ersten Schritten finden.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 06/13/2019
-ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560098"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672173"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Was ist Apache Kafka in Azure HDInsight?
 
-[Apache Kafka](https://kafka.apache.org) ist eine verteilte Open Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. Kafka verfügt auch über Nachrichtenbrokerfunktionen, die einer Nachrichtenwarteschlange ähneln, über die Sie benannte Datenströme veröffentlichen und diese abonnieren können. 
+[Apache Kafka](https://kafka.apache.org) ist eine verteilte Open Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. Kafka verfügt auch über Nachrichtenbrokerfunktionen, die einer Nachrichtenwarteschlange ähneln, über die Sie benannte Datenströme veröffentlichen und diese abonnieren können.
 
 Dies sind spezifische Merkmale von Kafka in HDInsight:
 
-* Es ist ein verwalteter Dienst, der einen vereinfachten Konfigurationsprozess bereitstellt. Das Ergebnis ist eine von Microsoft getestete und unterstützte Konfiguration.
+* Es ist ein verwalteter Dienst, der einen vereinfachten Konfigurationsprozess bietet. Das Ergebnis ist eine von Microsoft getestete und unterstützte Konfiguration.
 
 * Microsoft bietet eine 99,9%ige Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für die Kafka-Betriebszeit. Weitere Informationen finden Sie im Dokument [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
@@ -29,7 +29,7 @@ Dies sind spezifische Merkmale von Kafka in HDInsight:
 
     Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 
-* Kafka wurde mit einer einzelnen dimensionalen Ansicht eines Racks entworfen. Azure trennt ein Rack in zwei Dimensionen – Updatedomänen (UD) und Fehlerdomänen (FD). Microsoft stellt Tools bereit, die Kafka-Partitionen und -Replikate UDs und FDs übergreifend ausgleichen. 
+* Kafka wurde mit einer einzelnen dimensionalen Ansicht eines Racks entworfen. Azure trennt ein Rack in zwei Dimensionen – Updatedomänen (UD) und Fehlerdomänen (FD). Microsoft stellt Tools bereit, die Kafka-Partitionen und -Replikate UDs und FDs übergreifend ausgleichen.
 
     Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](apache-kafka-high-availability.md).
 
@@ -41,15 +41,15 @@ Dies sind spezifische Merkmale von Kafka in HDInsight:
 
     Weitere Informationen finden Sie unter [Analysieren von Protokollen für Apache Kafka in HDInsight](apache-kafka-log-analytics-operations-management.md).
 
-### <a name="apache-kafka-on-hdinsight-architecture"></a>Architektur von Apache Kafka in HDInsight
+## <a name="apache-kafka-on-hdinsight-architecture"></a>Architektur von Apache Kafka in HDInsight
 
 Das folgende Diagramm zeigt eine typische Kafka-Konfiguration, für die Consumergruppen, Partitionierung und Replikation verwendet werden, um eine parallele Ablesung von Ereignissen mit Fehlertoleranz zu ermöglichen:
 
 ![Diagramm zur Kafka-Clusterkonfiguration](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
 
-Apache ZooKeeper verwaltet den Zustand des Kafka-Clusters. ZooKeeper ist für gleichzeitige, robuste Transaktionen mit geringer Latenz konzipiert. 
+Apache ZooKeeper verwaltet den Zustand des Kafka-Clusters. ZooKeeper ist für gleichzeitige, robuste Transaktionen mit geringer Latenz konzipiert.
 
-Kafka speichert Datensätze (Daten) in **Themen**. Datensätze werden von **Producern** erstellt und von **Consumern** genutzt. Producer senden Datensätze an Kafka-**Broker**. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker. 
+Kafka speichert Datensätze (Daten) in **Themen**. Datensätze werden von **Producern** erstellt und von **Consumern** genutzt. Producer senden Datensätze an Kafka-**Broker**. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker.
 
 Themen partitionieren Datensätze Broker übergreifend. Bei der Nutzung von Datensätzen können Sie bis zu einen Consumer pro Partition einsetzen, um parallele Verarbeitung der Daten zu erzielen.
 
@@ -59,35 +59,17 @@ Die Replikation wird genutzt, um die Partitionen auf Knoten zu duplizieren und f
 
 Im Folgenden sind allgemeine Aufgaben und Muster aufgelistet, die mithilfe von Kafka in HDInsight ausgeführt werden können:
 
-* **Replikation von Apache Kafka-Daten:** Kafka verfügt über das MirrorMaker-Hilfsprogramm, mit dem Daten zwischen Kafka-Clustern repliziert werden.
-
-    Informationen zur Verwendung von MirrorMaker finden Sie unter [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](apache-kafka-mirroring.md).
-
-* **Veröffentlichen-Abonnieren-Messagingmuster:** Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren.
-
-    Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
-
-* **Streamverarbeitung:** Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Streamverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5 und 3.6) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen.
-
-    Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
-
-* **Horizontale Skalierung:** Bei Kafka werden Streams über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen.
-
-    Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
-
-* **Geordnete Bereitstellung:** In jeder Partition werden die Datensätze im Stream in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden.
-
-    Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
-
-## <a name="use-cases"></a>Anwendungsfälle
-
-* **Messaging:** Da das Veröffentlichen-Abonnieren-Messagingmuster unterstützt wird, wird Kafka häufig als Nachrichtenbroker genutzt.
-
-* **Aktivitätsüberwachung:** Da Kafka die geordnete Protokollierung von Datensätzen unterstützt, kann die Anwendung zum Nachverfolgen und Neuerstellen von Aktivitäten verwendet werden. Beispiele hierfür sind Benutzeraktionen auf einer Website oder in einer Anwendung.
-
-* **Aggregation**: Mit der Datenstromverarbeitung können Sie Informationen aus unterschiedlichen Datenströmen aggregieren, um die Informationen zu operativen Daten zu kombinieren und zu zentralisieren.
-
-* **Transformation:** Mit der Datenstromverarbeitung können Sie Daten aus mehreren Eingabethemen zu einem oder mehreren Ausgabethemen kombinieren und erweitern.
+|Zweck |Beschreibung |
+|---|---|
+|Replikation von Apache Kafka-Daten|Kafka verfügt über das MirrorMaker-Hilfsprogramm, mit dem Daten zwischen Kafka-Clustern repliziert werden. Informationen zur Verwendung von MirrorMaker finden Sie unter [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](apache-kafka-mirroring.md).|
+|Veröffentlichen-Abonnieren-Messagingmuster|Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
+|Datenstromverarbeitung|Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Streamverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5 und 3.6) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
+|Horizontale Skalierung|Bei Kafka werden Streams über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
+|Geordnete Bereitstellung|In jeder Partition werden die Datensätze im Stream in der Reihenfolge gespeichert, in der sie empfangen wurden. Indem ein Consumerprozess pro Partition zugeordnet wird, können Sie sicherstellen, dass die Datensätze in der richtigen Reihenfolge verarbeitet werden. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
+|Nachrichten|Da das Veröffentlichen-Abonnieren-Messagingmuster unterstützt wird, wird Kafka häufig als Nachrichtenbroker genutzt.|
+|Aktivitätsüberwachung|Da Kafka die geordnete Protokollierung von Datensätzen unterstützt, kann die Anwendung zum Nachverfolgen und Neuerstellen von Aktivitäten verwendet werden. Beispiele hierfür sind Benutzeraktionen auf einer Website oder in einer Anwendung.|
+|Aggregation|Mit der Datenstromverarbeitung können Sie Informationen aus unterschiedlichen Datenströmen aggregieren, um die Informationen zu operativen Daten zu kombinieren und zu zentralisieren.|
+|Transformation|Mit der Datenstromverarbeitung können Sie Daten aus mehreren Eingabethemen zu einem oder mehreren Ausgabethemen kombinieren und erweitern.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212498"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298087"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
  Um unbeaufsichtigte PowerShell-Tasks zu automatisieren, muss ein Dienstprinzipal auf dem verwalteten Analysis Services-Server über die Rechte eines **Serveradministrators** verfügen. In diesem Artikel wird beschrieben, wie Sie auf einem Azure AS-Server einen Dienstprinzipal zur Serveradministratorrolle hinzufügen. Sie können dies mithilfe von SQL Server Management Studio oder einer Resource Manager-Vorlage durchführen.
- 
-> [!NOTE]
-> Bei Servervorgängen, für die Azure PowerShell-Cmdlets verwendet werden, muss der Dienstprinzipal außerdem zur Rolle **Besitzer** für die Ressource in der [rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)](../role-based-access-control/overview.md) gehören. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Bevor Sie diese Aufgabe ausführen, muss ein Dienstprinzipal in Azure Active Directory registriert sein.
@@ -96,6 +93,24 @@ Mit der folgenden Resource Manager-Vorlage wird ein Analysis Services-Server mit
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Verwenden von verwalteten Identitäten
+
+Eine verwaltete Identität kann auch der Liste der Analysis Services-Administratoren hinzugefügt werden. Beispielsweise ist es möglich, dass Sie über eine [Logik-App mit einer vom System zugewiesenen verwalteten Identität](../logic-apps/create-managed-service-identity.md) verfügen und dieser die Möglichkeit geben, Ihren Analysis Services-Server zu verwalten.
+
+Im Azure-Portal und den APIs werden verwaltete Identitäten überwiegend über ihre Dienstprinzipalobjekt-ID identifiziert. Analysis Services erfordert jedoch, dass sie über ihre Client-ID identifiziert werden. Zum Abrufen der Client-ID für einen Dienstprinzipal können Sie die Azure-Befehlszeilenschnittstelle verwenden:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+Alternativ können Sie auch PowerShell verwenden:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+Mit dieser Client-ID können Sie dann in Verbindung mit der Mandanten-ID der Liste der Analysis Services Administratoren die verwaltete Identität hinzuzufügen, wie oben beschrieben.
 
 ## <a name="related-information"></a>Verwandte Informationen
 

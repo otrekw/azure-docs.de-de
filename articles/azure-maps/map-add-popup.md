@@ -3,18 +3,18 @@ title: Hinzufügen eines Popups zu einem Punkt auf einer Karte | Microsoft Azure
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK einem Punkt ein Popup hinzufügen.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 07/29/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 588de08666930937c3ad965b2609f8e207b75eca
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933353"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208847"
 ---
 # <a name="add-a-popup-to-the-map"></a>Hinzufügen eines Popupfensters zu der Karte
 
@@ -80,26 +80,163 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Hinzufügen eines Popupfensters mit Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Sehen Sie sich bei <a href='https://codepen.io'>CodePen</a> die Informationen unter <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a> (Hinzufügen eines Popupfensters mit Azure Maps) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) an.
+<iframe height='500' scrolling='no' title='Hinzufügen eines Popupfensters mit Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Sehen Sie sich bei <a href='https://codepen.io'>CodePen</a> die Informationen unter <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a> (Hinzufügen eines Popupfensters mit Azure Maps) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) an.
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Wiederverwenden eines Popups für mehrere Punkte
 
-Wenn Sie viele Punkte verwenden und immer nur ein Popup anzeigen möchten, sollten Sie am besten ein Popup erstellen und wiederverwenden. Durch die Wiederverwendung des Popup wird die Anzahl der von der Anwendung erstellten DOM-Elemente erheblich reduziert, wodurch eine bessere Leistung erzielt werden kann. Im folgenden Beispiel werden drei Punktfeatures erstellt. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
+Es gibt Fälle, in denen die beste Vorgehensweise darin besteht, ein Popup zu erstellen und wiederzuverwenden. Es kann beispielsweise sein, dass Sie eine große Anzahl von Punkten haben und nur ein Popup auf einmal anzeigen möchten. Durch Wiederverwenden des Popups wird die Anzahl der von der Anwendung erstellten DOM-Elemente erheblich reduziert, wodurch eine bessere Leistung erzielt werden kann. Im folgenden Beispiel werden drei Punktfeatures erstellt. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Wiederverwenden eines Popups für mehrere Stecknadeln' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informationen hierzu finden Sie unter <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a> (Wiederverwenden eines Popups mit mehreren Stecknadeln) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Wiederverwenden eines Popups für mehrere Stecknadeln' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Informationen hierzu finden Sie unter <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a> (Wiederverwenden eines Popups mit mehreren Stecknadeln) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customizing-a-popup"></a>Anpassen eines Popups
 
-Standardmäßig hat das Popup einen weißen Hintergrund, einen Zeigerpfeil unten und eine Schaltfläche „Schließen“ in der oberen rechten Ecke. Das folgende Beispiel ändert die Hintergrundfarbe mit der Option `fillColor` des Popups in Schwarz. Die Schaltfläche „Schließen“ wird entfernt, indem die Option `CloseButton` auf „false“ gesetzt wird. Der HTML-Inhalt des Popups wird von den Rändern des Popups aus mit 10 Pixeln aufgefüllt. Der Text ist weiß, damit er auf dem schwarzen Hintergrund gut sichtbar ist.  
+Standardmäßig hat das Popup einen weißen Hintergrund, unten einen Zeigerpfeil und rechts oben die Schaltfläche „Schließen“. Das folgende Beispiel ändert die Hintergrundfarbe mit der Option `fillColor` des Popups in Schwarz. Die Schaltfläche „Schließen“ wird entfernt, indem die Option `CloseButton` auf „false“ gesetzt wird. Der HTML-Inhalt des Popups wird von den Rändern des Popups aus mit 10 Pixeln aufgefüllt. Der Text ist weiß, damit er auf dem schwarzen Hintergrund gut sichtbar ist.  
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Benutzerdefiniertes Popup" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Benutzerdefiniertes Popup" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>Angepasste Popups</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="add-popup-templates-to-the-map"></a>Hinzufügen von Popupvorlagen zur Karte
+
+Popupvorlagen erleichtern das Erstellen datengesteuerter Layouts für Popups. In den folgenden Abschnitten wird gezeigt, wie mithilfe verschiedener Popupvorlagen formatierter Inhalt unter Verwendung von Eigenschaften von Features generiert wird.
+
+### <a name="string-template"></a>String-Vorlage
+
+Die String-Vorlage ersetzt Platzhalter durch Werte der Eigenschaften des Features. Den Eigenschaften des Features muss kein Wert des Typs „String“ zugewiesen werden. `value1` enthält z. B. eine ganze Zahl. Diese Werte werden dann an die Content-Eigenschaft von `popupTemplate` weitergegeben. 
+
+Die Option `numberFormat` gibt das anzuzeigende Format der Zahl an. Wenn `numberFormat` nicht angegeben ist, verwendet der Code das Datumsformat in den Popupvorlagen. Die Option `numberFormat` formatiert Zahlen mithilfe der Funktion [Number.toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString). Um große Zahlen zu formatieren, empfiehlt es sich, die Option `numberFormat` mit Funktionen aus [NumberFormat.format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format) zu verwenden. Im folgenden Codeausschnitt wird beispielsweise `maximumFractionDigits` verwendet, um die Anzahl der Nachkommastellen auf zwei zu begrenzen.
+
+> [!Note]
+> Es gibt nur eine Möglichkeit, wie die String-Vorlage Bilder rendern kann. Zunächst muss die String-Vorlage ein Imagetag enthalten. Der Wert, der an das Imagetag übergeben wird, muss eine URL zu einem Bild sein. Dann muss für die String-Vorlage in `HyperLinkFormatOptions` der Wert `isImage` auf TRUE festgelegt werden. Die Option `isImage` gibt an, dass der Link für ein Bild bestimmt ist. Der Link wird in ein Imagetag geladen. Wenn auf den Link geklickt wird, wird das Bild geöffnet.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+    title: 'Template 1 - String template',
+    value1: 1.2345678,
+    value2: {
+        subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    popupTemplate: {
+        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+        numberFormat: {
+            maximumFractionDigits: 2
+        }
+    }
+}),
+```
+
+### <a name="propertyinfo-template"></a>PropertyInfo-Vorlage
+
+Die PropertyInfo-Vorlage zeigt die verfügbaren Eigenschaften des Features an. Die Option `label` gibt den Text an, der dem Benutzer angezeigt werden soll. Wenn `label` nicht angegeben ist, wird der Link angezeigt. Wenn der Link ein Bild ist, wird der dem Tag „alt“ zugewiesene Wert angezeigt. `dateFormat` gibt das Format des Datums an. Wenn das Datumsformat nicht angegeben ist, wird das Datum als Zeichenfolge gerendert. Die Option `hyperlinkFormat` rendert klickbare Links. Ähnlich kann die Option `email` verwendet werden, um klickbare E-Mail-Adressen zu rendern.
+
+Bevor die PropertyInfo-Vorlage dem Endbenutzer die Eigenschaften anzeigt, prüft sie rekursiv, ob die Eigenschaften tatsächlich für dieses Feature definiert sind. Sie ignoriert auch die Anzeige von Stil- und Titeleigenschaften. Beispielsweise werden `color`, `size`, `anchor`, `strokeOpacity` und `visibility` nicht angezeigt. Sobald die Überprüfung des Eigenschaftspfads im Back-End erfolgt ist, zeigt die PropertyInfo-Vorlage den Inhalt in einem Tabellenformat an.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+    title: 'Template 2 - PropertyInfo',
+    createDate: new Date(),
+    dateNumber: 1569880860542,
+    url: 'https://aka.ms/AzureMapsSamples',
+    email: 'info@microsoft.com',
+    popupTemplate: {
+        content: [{
+    propertyPath: 'createDate',
+    label: 'Created Date'
+    },
+    {
+    propertyPath: 'dateNumber',
+    label: 'Formatted date from number',
+    dateFormat: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    }
+    },
+    {
+    propertyPath: 'url',
+    label: 'Code samples',
+    hideLabel: true,
+    hyperlinkFormat: {
+        lable: 'Go to code samples!',
+        target: '_blank'
+    }
+    },
+    {
+    propertyPath: 'email',
+    label: 'Email us',
+    hideLabel: true,
+    hyperlinkFormat: {
+        target: '_blank',
+        scheme: 'mailto:'
+        }
+    }
+        ]
+    }
+}),
+
+```
+
+### <a name="multiple-content-templates"></a>Mehrere Inhaltsvorlagen
+
+Ein Feature kann Inhalt auch unter Verwendung einer Kombination aus String-Vorlage und PropertyInfo-Vorlage anzeigen. In diesem Fall rendert die String-Vorlage Platzhalterwerte auf weißem Hintergrund.  Außerdem rendert die PropertyInfo-Vorlage ein Bild in voller Breite innerhalb einer Tabelle. Die Eigenschaften in diesem Beispiel ähneln den Eigenschaften, die wir in den vorherigen Beispielen erläutert haben.
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+    title: 'Template 3 - Multiple content template',
+    value1: 1.2345678,
+    value2: {
+    subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
+    popupTemplate: {
+    content: [
+      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+      [{
+        propertyPath: 'imageLink',
+        label: 'Image',
+        hideImageLabel: true,
+        hyperlinkFormat: {
+          isImage: true
+        }
+      }]
+    ],
+    numberFormat: {
+      maximumFractionDigits: 2
+    }
+    }
+    }),
+]);
+```
+
+### <a name="points-without-a-defined-template"></a>Punkte ohne definierte Vorlage
+
+Wenn die Popup-Vorlage nicht als String-Vorlage, als PropertyInfo-Vorlage oder als eine Kombination aus beiden definiert ist, verwendet sie die Standardeinstellungen. Wenn `title` und `description` die einzigen zugewiesenen Eigenschaften sind, zeigt die Popupvorlage einen weißen Hintergrund und rechts oben eine Schaltfläche zum Schließen. Auf kleinen und mittelgroßen Bildschirmen zeigt sie unten einen Pfeil. Die Standardeinstellungen werden innerhalb einer Tabelle für alle Eigenschaften außer `title` und `description` gezeigt. Auch wenn Sie auf die Standardeinstellungen zurückgreifen, kann die Popupvorlage weiterhin programmgesteuert bearbeitet werden. Wenn Benutzer beispielsweise die Linkerkennung ausschalten, gelten für andere Eigenschaften weiterhin die Standardeinstellungen.
+
+Klicken Sie im CodePen auf die Punkte auf der Karte. Für jede der folgenden Popupvorlagen gibt es einen Punkt auf der Karte: String-Vorlage, PropertyInfo-Vorlage und Vorlage für mehrere Inhalte. Es gibt auch drei Punkte, die zeigen, wie Vorlagen mit den Standardeinstellungen gerendert werden.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="reuse-popup-template"></a>Wiederverwenden von Popupvorlagen
+
+Popupvorlagen können ebenso wie Popups wiederverwendet werden. Dieser Ansatz ist nützlich, wenn Sie jeweils nur eine Popupvorlage für mehrere Punkte anzeigen möchten. Durch Wiederverwendung der Popupvorlage wird die Anzahl der von der Anwendung erstellten DOM-Elemente reduziert, was wiederum die Leistung Ihrer Anwendung verbessert. Im folgenden Beispiel wird die gleiche Popupvorlage für drei Punkte verwendet. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="popup-events"></a>Popup-Ereignisse
@@ -108,7 +245,7 @@ Popups können geöffnet, geschlossen und gezogen werden. Die Popup-Klasse stell
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Popup-Ereignisse" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Popup-Ereignisse" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>Popup-Ereignisse</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

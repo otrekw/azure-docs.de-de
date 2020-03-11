@@ -2,13 +2,13 @@
 title: Tagunterstützung für Ressourcen
 description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207926"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657572"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](tag-resources.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt. Sie können die Kosten nach Tags in der [Cost Management-Kostenanalyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) und den [Azure-Abrechnungen und täglichen Nutzungsdaten](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md) anzeigen.
@@ -116,8 +116,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
@@ -136,7 +136,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
@@ -292,6 +291,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | automationAccounts | Ja | Ja |
 > | automationAccounts/configurations | Ja | Ja |
 > | automationAccounts/jobs | Nein | Nein |
+> | automationAccounts/privateEndpointConnectionProxies | Nein | Nein |
+> | automationAccounts/privateEndpointConnections | Nein | Nein |
+> | automationAccounts/privateLinkResources | Nein | Nein |
 > | automationAccounts/runbooks | Ja | Ja |
 > | automationAccounts/softwareUpdateConfigurations | Nein | Nein |
 > | automationAccounts/webhooks | Nein | Nein |
@@ -711,6 +713,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | registries/importImage | Nein | Nein |
 > | registries/privateEndpointConnectionProxies | Nein | Nein |
 > | registries/privateEndpointConnectionProxies/validate | Nein | Nein |
+> | registries/privateEndpointConnections | Nein | Nein |
 > | registries/privateLinkResources | Nein | Nein |
 > | registries/queueBuild | Nein | Nein |
 > | registries/regenerateCredential | Nein | Nein |
@@ -1052,6 +1055,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | partnerNamespaces/eventChannels | Nein | Nein |
 > | partnerRegistrations | Ja | Ja |
 > | partnerTopics | Ja | Ja |
+> | partnerTopics/eventSubscriptions | Nein | Nein |
 > | systemTopics | Ja | Ja |
 > | systemTopics/eventSubscriptions | Nein | Nein |
 > | topics | Ja | Ja |
@@ -1288,6 +1292,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | getEntities | Nein | Nein |
 > | managementGroups | Nein | Nein |
+> | managementGroups/settings | Nein | Nein |
 > | ressourcen | Nein | Nein |
 > | startTenantBackfill | Nein | Nein |
 > | tenantBackfillStatus | Nein | Nein |
@@ -1395,15 +1400,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | netAppAccounts | Ja | Nein |
 > | netappaccounts/capacitypools | Ja | Nein |
 > | netappaccounts/capacitypools/volumes | Ja | Nein |
-> | netappaccounts/capacitypools/volumes/mounttargets | Ja | Nein |
-> | netappaccounts/capacitypools/volumes/snapshots | Ja | Nein |
-
-## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | NotebookProxies | Nein | Nein |
+> | netappaccounts/capacitypools/volumes/snapshots | Nein | Nein |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1495,6 +1492,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > Für Azure Front Door Service können Sie beim Erstellen von Ressourcen zwar Tags anwenden, aber das Aktualisieren und Hinzufügen von Tags wird derzeit nicht unterstützt.
 
 
+## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | Nein | Nein |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1556,6 +1560,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | legacyPeerings | Nein | Nein |
 > | peerAsns | Nein | Nein |
 > | peerings | Ja | Ja |
+> | peeringServiceCountries | Nein | Nein |
 > | peeringServiceProviders | Nein | Nein |
 > | peeringServices | Ja | Ja |
 
@@ -1680,13 +1685,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | applications | Ja | Ja |
 > | saasresources | Nein | Nein |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | Ja | Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2026,6 +2024,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | devices | Ja | Ja |
+> | registeredSubscriptions | Nein | Nein |
 > | vendors | Nein | Nein |
 > | vendors/skus | Nein | Nein |
 > | vendors/vnfs | Nein | Nein |

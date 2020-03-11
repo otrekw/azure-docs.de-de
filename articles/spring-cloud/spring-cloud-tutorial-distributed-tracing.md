@@ -6,22 +6,22 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277488"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273212"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud
 
-Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in Azure [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
+Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
 
 In diesem Artikel wird Folgendes behandelt:
 
 > [!div class="checklist"]
 > * Aktivieren der verteilten Ablaufverfolgung im Azure-Portal.
-> * Hinzufügen von Azure Spring Cloud Sleuth zu Ihrer Anwendung.
+> * Hinzufügen von Spring Cloud Sleuth zu Ihrer Anwendung.
 > * Anzeigen von Abhängigkeitszuordnungen für Ihre Microserviceanwendungen.
 > * Suchen nach Ablaufverfolgungsdaten mit unterschiedlichen Filtern.
 
@@ -39,7 +39,7 @@ Um dieses Tutorial abzuschließen, benötigen Sie einen Azure Spring Cloud-Diens
 
    Nach dieser Änderung kann der Zipkin-Sender an das Internet senden.
 
-1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](spring-cloud-tutorial-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Azure Spring Cloud Sleuth-Abhängigkeit einzufügen:
+1. Überspringen Sie diesen Schritt, wenn Sie die [Anleitung zum Vorbereiten einer Azure Spring Cloud-Anwendung](spring-cloud-tutorial-prepare-app-deployment.md) befolgt haben. Wechseln Sie andernfalls zu Ihrer lokalen Entwicklungsumgebung, und bearbeiten Sie die Datei „pom.xml“, um die folgende Spring Cloud Sleuth-Abhängigkeit einzufügen:
 
     ```xml
     <dependencyManagement>

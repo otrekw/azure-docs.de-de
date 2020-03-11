@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566113"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207029"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importieren von HSM-geschützten Schlüsseln in Key Vault (Vorschauversion)
 
@@ -67,7 +67,7 @@ In der folgenden Tabelle sind die Voraussetzungen für die Verwendung von BYOK i
 
 ## <a name="supported-key-types"></a>Unterstützte Schlüsseltypen
 
-|Schlüsselname|Schlüsseltyp|Schlüsselgröße|Origin|BESCHREIBUNG|
+|Schlüsselname|Schlüsseltyp|Schlüsselgröße|Origin|Beschreibung|
 |---|---|---|---|---|
 |Schlüsselaustauschschlüssel (Key Exchange Key, KEK)|RSA| 2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Azure Key Vault-HSM|Ein durch HSM gestütztes RSA-Schlüsselpaar, das in Azure Key Vault generiert wurde|
 |Zielschlüssel|RSA|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der Schlüssel, der an das Azure Key Vault-HSM übertragen werden soll|
@@ -89,6 +89,9 @@ Für den KEK gilt Folgendes:
 - Es muss sich um einen RSA-HSM-Schlüssel handeln (2.048 Bit, 3.072 Bit oder 4.096 Bit).
 - Er muss im selben Schlüsseltresor generiert werden, in den Sie den Zielschlüssel importieren möchten.
 - Die zulässigen Schlüsselvorgänge müssen auf `import` festgelegt sein.
+
+> [!NOTE]
+> Der KEK muss als einzigen zulässigen Schlüsselvorgang „import“ aufweisen. „import“ schließt sich mit allen anderen wichtigen Vorgängen gegenseitig aus.
 
 Verwenden Sie den Befehl [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create), um den KEK mit auf `import` festgelegten Schlüsselvorgängen zu erstellen. Notieren Sie die Schlüssel-ID (`kid`), die vom folgenden Befehl zurückgegeben wird. (Sie verwenden den `kid`-Wert in [Schritt 3](#step-3-generate-and-prepare-your-key-for-transfer).)
 
@@ -115,7 +118,7 @@ Informieren Sie sich in der Dokumentation Ihres HSM-Anbieters darüber, wie Sie 
 > [!NOTE] 
 > Das Importieren von RSA-Schlüsseln mit 1.024 Bit wird nicht unterstützt. Derzeit wird das Importieren eines EC-Schlüssels (Elliptic Curve, elliptische Kurve) nicht unterstützt.
 > 
-> **Bekanntes Problem:** Beim Importieren eines RSA-Zielschlüssels mit 4K aus SafeNet Luna-HSMs tritt ein Fehler auf. Wenn dieses Problem gelöst ist, wird der vorliegende Artikel aktualisiert.
+> **Bekanntes Problem:** Das Importieren eines RSA 4K-Zielschlüssels von SafeNet Luna HSMs wird nur mit Firmware 7.4.0 oder höher unterstützt.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Schritt 4: Übertragen des Schlüssels an Azure Key Vault
 

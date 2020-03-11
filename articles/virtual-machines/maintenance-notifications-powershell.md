@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121839"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916081"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Behandeln von geplanten Wartungen mithilfe von PowerShell
 
 **Dieser Artikel gilt für virtuelle Computer, auf denen sowohl Linux als auch Windows ausgeführt wird.**
 
-Sie können mithilfe von Azure PowerShell prüfen, wann die [Wartung](maintenance-notifications.md) Ihrer virtuellen Computer geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) unter Verwendung des Parameters `-status` ermittelt werden.
+Sie können mithilfe von Azure PowerShell ermitteln, wann die [Wartung](maintenance-notifications.md) für VMs geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) unter Verwendung des Parameters `-status` ermittelt werden.
   
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung für den virtuellen Computer geplant, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
@@ -29,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeben: 
 
-| value | Beschreibung   |
+| value | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>Klassische Bereitstellungen
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 Wenn Sie ältere virtuelle Computer besitzen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden, können Sie mit PowerShell virtuelle Computer abfragen und die Wartung initiieren.
 

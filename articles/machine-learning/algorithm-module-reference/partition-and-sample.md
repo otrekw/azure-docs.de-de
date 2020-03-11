@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152124"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268699"
 ---
 # <a name="partition-and-sample-module"></a>Modul „Partition and Sample“
 
@@ -154,9 +154,9 @@ Diese Option wird verwendet, wenn Sie ein Dataset in mehrere Partitionen unterte
 
 5. Wenn Sie mit mehreren Partitionen arbeiten, müssen Sie dem Modul **Partition and Sample** zusätzliche Instanzen hinzufügen, um jede Partition verarbeiten zu können.
 
-    Angenommen beispielsweise, Sie haben Patienten zuvor in vier Folds nach Alter partitioniert. Um mit jedem einzelnen Fold arbeiten zu können, benötigen Sie vier Kopien des Moduls **Partition and Sample**, und in jeder Kopie wählen Sie einen anderen Fold aus, wie unten gezeigt wird. Es ist nicht richtig, die Ausgabe **Assign to Folds** (Zu Folds zuweisen) direkt zu verwenden.  
+    Beispielsweise ist das Modul **Partition und Sample** in der zweiten Zeile auf **Assign to Folds** (Zu Folds zuweisen) festgelegt, und die Module in der dritten Zeile sind auf **Pick Fold** (Fold auswählen) festgelegt.   
 
-    [![Partition and Sample](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![Partition und Beispiel](./media/module/partition-and-sample.png)
 
 5. Ausführen der Pipeline.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604065"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918756"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -39,7 +39,7 @@ Damit Sie diese Herausforderungen in Bezug auf den Schutz bewältigen können, w
 
 -   **Erhöhung des Sicherheitsstatus**: Mit Security Center wird Ihre Umgebung bewertet, damit Sie den Status Ihrer Ressourcen verstehen können und ob sie sicher sind oder nicht.
 
--   **Schutz vor Bedrohungen**: Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen und Warnungen zur Bedrohungserkennung aus.
+-   **Schutz vor Bedrohungen**: Security Center bewertet Ihre Workloads und löst Empfehlungen zur Vermeidung von Bedrohungen sowie Sicherheitswarnungen aus.
 
 -   **Schnellerer Aufbau des Schutzes**: In Security Center werden alle Vorgänge mit Cloudgeschwindigkeit durchgeführt. Aufgrund der nativen Integration ist die Bereitstellung von Security Center einfach, und Sie erhalten eine automatische Bereitstellung und den Schutz durch Azure-Dienste.
 
@@ -51,7 +51,7 @@ Da Security Center ein nativer Teil von Azure ist, werden PaaS-Dienste in Azure 
 
 Darüber hinaus werden mit Security Center auch Server und virtuelle Computer, die nicht zu Azure gehören, in der Cloud und lokal geschützt. Dies ist sowohl für Windows- als auch für Linux-Server möglich, indem der Microsoft Monitoring Agent darauf installiert wird. Virtuelle Azure-Computer werden in Security Center automatisch bereitgestellt.
 
-Die über die Agents und über Azure erfassten Ereignisse werden im Sicherheitsanalysemodul korreliert, um für Sie maßgeschneiderte Empfehlungen (Aufgaben zur Erhöhung der Sicherheit) und Warnungen zur Bedrohungserkennung bereitstellen zu können. Sie sollten sich an diese Empfehlungen halten, um dafür zu sorgen, dass Ihre Workloads geschützt sind. Es ist ratsam, die Warnungen schnellstmöglich zu untersuchen, um sicherzustellen, dass es für Ihre Workloads nicht zu schädlichen Angriffen kommt.
+Die über die Agents und über Azure erfassten Ereignisse werden im Sicherheitsanalysemodul korreliert, um maßgeschneiderte Empfehlungen zur Verbesserung der Workloadsicherheit (Härtung) sowie Sicherheitswarnungen bereitzustellen. Es ist ratsam, die Warnungen schnellstmöglich zu untersuchen, um sicherzustellen, dass es für Ihre Workloads nicht zu schädlichen Angriffen kommt.
 
 Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Security Center-Kategorie dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Die integrierte Initiative enthält nur Überwachungsrichtlinien. Weitere Informationen zu Security Center-Richtlinien in Azure Policy finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
@@ -107,9 +107,9 @@ Der Bedrohungsschutz von Security Center enthält eine Fusion-Schrittfolgenanaly
 
 ![Security Center-Empfehlung zu Angriffen](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integration in Microsoft Defender Advanced Threat Protection
 
-Bei Security Center erhalten Sie standardmäßig eine native Integration in Windows Defender Advanced Threat Protection. Dies bedeutet, dass Ihre virtuellen Windows-Computer und -Server ohne Konfigurationsaufwand vollständig in die Empfehlungen und Bewertungen von Security Center integriert werden. Die erweiterte Bedrohungserkennung wird auch für virtuelle Linux-Computer und -Server standardmäßig angeboten.
+Security Center beinhaltet die automatische native Integration in Microsoft Defender Advanced Threat Protection. Dies bedeutet, dass Ihre virtuellen Windows- und Linux-Computer ohne Konfigurationsaufwand vollständig in die Empfehlungen und Bewertungen von Security Center integriert sind.
 
 Außerdem können Sie mit Security Center die Anwendungssteuerungsrichtlinien in Serverumgebungen automatisieren. Mit den adaptiven Anwendungssteuerungen in Security Center können Sie das End-to-End-App-Whitelisting für Ihre Windows-Server nutzen. Sie müssen keine Regeln erstellen und keine Prüfung auf Verstöße durchführen. Dies wird alles automatisch für Sie erledigt.
 
@@ -129,7 +129,7 @@ Security Center enthält Funktionen, mit denen Sie eine automatische Klassifizie
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Schützen von IoT und Hybridcloudworkloads
 
-Azure Security Center für IoT (Internet of Things, Internet der Dinge) vereinfacht den Schutz von Hybridworkloads durch eine einheitliche Sichtbarkeit und Konfiguration, adaptiven Schutz vor Bedrohungen, intelligente Bedrohungserkennung und Gegenmaßnahmen für Workloads, die am Edge, lokal, in Azure oder in anderen Clouds ausgeführt werden. Weitere Informationen finden Sie in der [Dokumentation zu Azure Security Center für IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+Azure Security Center für IoT (Internet of Things, Internet der Dinge) vereinfacht den Schutz von Hybridworkloads durch eine einheitliche Sichtbarkeit und Konfiguration, adaptiven Schutz vor Bedrohungen, intelligenten Bedrohungsschutz und Gegenmaßnahmen für Workloads, die im Edgebereich, lokal, in Azure oder in anderen Clouds ausgeführt werden. Weitere Informationen finden Sie in der [Dokumentation zu Azure Security Center für IoT](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Schnellerer Aufbau des Schutzes
 
@@ -146,6 +146,5 @@ Umfassende Protokollsammlung: Protokolle von Windows und Linux werden im Sicherh
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
-- Der Security Center-Tarif „Free“ wird mit Ihrem Azure-Abonnement aktiviert. Um die Vorteile der erweiterten Funktionen für die Sicherheitsverwaltung und Erkennung von Bedrohungen nutzen zu können, müssen Sie ein Upgrade auf den Tarif „Standard“ durchführen. Der Tarif „Standard“ kann kostenlos getestet werden. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-- Wenn Sie jetzt zum Aktivieren von Security Center Standard bereit sind, hilft Ihnen die Beschreibung der Schritte unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md) weiter.
-
+- Der kostenlose Security Center-Tarif wird mit Ihrem Azure-Abonnement aktiviert. Wenn Sie die Vorteile der erweiterten Funktionen für Sicherheitsverwaltung und Bedrohungsschutz nutzen möchten, ist ein Upgrade auf den Tarif „Standard“ erforderlich. Der Tarif „Standard“ kann 30 Tage lang kostenlos getestet werden. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Wenn Sie Security Center Standard jetzt aktivieren möchten, helfen Ihnen die Informationen unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md) weiter.

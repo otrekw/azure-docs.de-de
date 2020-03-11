@@ -4,12 +4,12 @@ description: Erstellen einer über HTTP ausgelösten, serverlosen PowerShell-Fun
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533375"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196534"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Tutorial: Verwenden einer über HTTP ausgelösten Azure-Funktion zum Erstellen einer Containergruppe
 
@@ -30,9 +30,9 @@ Folgendes wird vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Voraussetzungen für die Installation und Verwendung von Visual Studio Code mit Azure Functions auf Ihrem Betriebssystem finden Sie unter [Erstellen Ihrer ersten PowerShell-Funktion in Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites).
+Die Voraussetzungen für die Installation und Verwendung von Visual Studio Code mit Azure Functions auf Ihrem Betriebssystem finden Sie unter [Konfigurieren Ihrer Umgebung](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment).
 
-In einigen Schritten in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diese Schritte verwenden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+In einigen Schritten in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diese Schritte verwenden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="create-a-basic-powershell-function"></a>Erstellen einer einfachen PowerShell-Funktion
 
@@ -193,7 +193,7 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure-Funktion erstellt, die über eine HTTP-Anforderung die Bereitstellung einer Containergruppe auslöst. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Azure-Funktion erstellt, die über eine HTTP-Anforderung die Bereitstellung einer Containergruppe auslöst. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Verwenden von Visual Studio Code mit der Azure Functions-Erweiterung, um eine einfache über HTTP ausgelöste PowerShell-Funktion zu erstellen

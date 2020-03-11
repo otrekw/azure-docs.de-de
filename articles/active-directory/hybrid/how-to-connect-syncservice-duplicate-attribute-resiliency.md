@@ -16,15 +16,15 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348814"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298342"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitätssynchronisierung und Resilienz bei doppelten Attributen
-Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und **ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
+Die Resilienz bei doppelten Attributen ist ein Feature von Azure Active Directory, das der Beseitigung von Konflikten zwischen **UserPrincipalName** und SMTP-**ProxyAddress** dient, die beim Ausführen eines Synchronisierungstools von Microsoft auftreten können.
 
 Die beiden Attribute müssen generell für alle Objekte des Typs **User**, **Group** oder **Contact** eines bestimmten Azure Active Directory-Mandanten eindeutig sein.
 
@@ -40,7 +40,10 @@ Beim Versuch, ein neues Objekt mit einem UPN- oder ProxyAddress-Wert bereitzuste
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Verhalten mit Resilienz bei doppelten Attributen
 Das Bereitstellen oder Aktualisieren eines Objekts mit doppeltem Attribut ist nicht einfach ohne Erfolg. Stattdessen wird das doppelte Attribut, das gegen die Eindeutigkeitsanforderung verstößt, von Azure Active Directory isoliert. Ist dieses Attribut für die Bereitstellung erforderlich (wie etwa im Falle von UserPrincipalName), weist der Dienst einen Platzhalterwert zu. Diese temporären Werte weisen folgendes Format auf:  
-„***\<OriginalPräfix>+\<4-stelligeZahl>\@\<AnfangsdomäneMandant>.onmicrosoft.com***“.  
+_**\<Originalpräfix>+\<4-stelligeZahl>\@\<AnfangsdomäneMandant>.onmicrosoft.com**_ .
+
+Der Prozess für die Resilienz von Attributen verarbeitet nur UPN- und SMTP-**ProxyAddress**-Werte.
+
 Ist das Attribut nicht erforderlich (etwa im Falle von **ProxyAddress**), wird das Konfliktattribut einfach von Azure Active Directory unter Quarantäne gestellt, und die Objekterstellung oder -aktualisierung wird fortgesetzt.
 
 Im Falle einer Attributisolierung werden Informationen zum Konflikt in der gleichen Fehlerbericht-E-Mail gesendet, die auch im Rahmen des alten Verhaltens verwendet wurde. Diese Informationen werden aber nur einmal (zum Zeitpunkt der Isolierung) in den Fehlerbericht aufgenommen und in zukünftigen E-Mails nicht immer wieder erneut protokolliert. Da der Export für das Objekt erfolgreich war, protokolliert der Synchronisierungsclient keinen Fehler, und es wird in den folgenden Synchronisierungszyklen nicht erneut versucht, die Erstellung/Aktualisierung durchzuführen.

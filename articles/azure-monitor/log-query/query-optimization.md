@@ -1,18 +1,17 @@
 ---
 title: Optimieren von Protokollabfragen in Azure Monitor
 description: Bewährte Methoden für das Optimieren von Protokollabfragen in Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2019
-ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2019
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648834"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269058"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -64,7 +63,7 @@ Einige der Abfragebefehle und -funktionen bewirken eine hohe CPU-Auslastung. Die
 
 Diese Funktionen bewirken eine CPU-Auslastung proportional zur Anzahl der verarbeiteten Zeilen. Die effizienteste Optimierung besteht darin, frühzeitig in der Abfrage WHERE-Bedingungen hinzuzufügen, mit denen so viele Datensätze wie möglich herausgefiltert werden können, bevor die CPU-intensive Funktion ausgeführt wird.
 
-Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erzielt, allerdings ist die zweite wesentlich effizienter, da mit der [where]()-Bedingung vor der Analyse viele Datensätze ausgeschlossen werden:
+Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erzielt, allerdings ist die zweite wesentlich effizienter, da mit der [where](/azure/kusto/query/whereoperator)-Bedingung vor der Analyse viele Datensätze ausgeschlossen werden:
 
 ```Kusto
 //less efficient
@@ -259,8 +258,41 @@ by Computer
 ) on Computer
 ```
 
+Ein weiteres Beispiel für diesen Fehler ist das Ausführen der Zeitbereichsfilterung unmittelbar nach einer [union](/azure/kusto/query/unionoperator?pivots=azuremonitor)-Anweisung über mehrere Tabellen. Beim Ausführen der union-Anweisung sollte jede Unterabfrage einen Bereich aufweisen. Sie können eine [let](/azure/kusto/query/letstatement)-Anweisung verwenden, um Bereichskonsistenz zu gewährleisten.
+
+Mit der folgenden Abfrage werden beispielsweise alle Daten in den Tabellen *Heartbeat* und *Perf* und nicht nur der letzte Tag überprüft:
+
+```Kusto
+Heartbeat 
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| where TimeGenerated > ago(1d)
+| summarize min(TimeGenerated) by Computer
+```
+
+Diese Abfrage sollte folgendermaßen korrigiert werden:
+
+```Kusto
+let MinTime = ago(1d);
+Heartbeat 
+| where TimeGenerated > MinTime
+| summarize arg_min(TimeGenerated,*) by Computer
+| union (
+    Perf 
+    | where TimeGenerated > MinTime
+    | summarize arg_min(TimeGenerated,*) by Computer) 
+| summarize min(TimeGenerated) by Computer
+```
+
+Die Messung ist immer größer als die tatsächlich angegebene Zeit. Wenn der Filter für die Abfrage z. B. 7 Tage beträgt, überprüft das System möglicherweise 7,5 oder 8,1 Tage. Das liegt daran, dass die Daten vom System in Blöcke mit variabler Größe partitioniert werden. Um sicherzustellen, dass alle relevanten Datensätze überprüft werden, wird die gesamte Partition überprüft, die mehrere Stunden und auch mehr als einen Tag umfassen kann.
+
+Es gibt mehrere Fälle, in denen das System keine genaue Messung des Zeitbereichs liefern kann. Dies geschieht meistens, wenn die Abfrage weniger als einen Tag umfasst, oder bei Abfragen mit mehreren Arbeitsbereichen.
+
+
 > [!IMPORTANT]
-> Dieser Indikator ist für regionsübergreifende Abfragen nicht verfügbar.
+> Dieser Indikator zeigt nur Daten an, die im unmittelbaren Cluster verarbeitet werden. Bei einer Abfrage in mehreren Regionen würde nur eine der Regionen dargestellt. Bei einer Abfrage in mehreren Arbeitsbereichen sind möglicherweise nicht alle Arbeitsbereiche enthalten.
 
 ## <a name="age-of-processed-data"></a>Alter der verarbeiteten Daten
 Azure Data Explorer verwendet mehrere Speicherebenen: In-Memory, lokale SSD-Datenträger und wesentlich langsamere Azure-Blobs. Je neuer die Daten sind, desto höher ist die Wahrscheinlichkeit, dass sie auf einer leistungsfähigeren Ebene mit geringerer Latenz gespeichert sind, wodurch Abfragedauer und CPU-Auslastung reduziert werden. Abgesehen von den Daten selbst verfügt das System auch über einen Cache für Metadaten. Je älter die Daten sind, desto geringer ist die Wahrscheinlichkeit, dass deren Metadaten im Cache gespeichert sind.
@@ -275,7 +307,7 @@ Hier einige Beispiele für solche Fälle:
 
 Sehen Sie sich die Beispiele und Hinweise im vorherigen Abschnitt an, da sie auch in diesem Fall zutreffen.
 
-## <a name="number-of-regions"></a>Anzahl von Regionen
+## <a name="number-of-regions"></a>Number of regions (Anzahl von Regionen)
 Es gibt mehrere Situationen, in denen eine einzelne Abfrage über verschiedene Regionen ausgeführt werden kann:
 
 - Wenn mehrere Arbeitsbereiche explizit aufgelistet sind und sich diese in verschiedenen Regionen befinden.
@@ -285,7 +317,7 @@ Für eine regionsübergreifende Abfrageausführung muss das System im Back-End g
 Wenn es keinen wirklichen Grund für das Durchsuchen all dieser Regionen gibt, sollten Sie den Bereich so anpassen, dass er weniger Regionen umfasst. Wenn der Ressourcenbereich minimiert ist, aber dennoch viele Bereiche verwendet werden, kann eine Fehlkonfiguration die Ursache sein. Beispielsweise werden Überwachungsprotokolle und Diagnoseeinstellungen an verschiedene Arbeitsbereiche in unterschiedlichen Regionen gesendet oder es sind mehrere Konfigurationen für Diagnoseeinstellungen vorhanden. 
 
 > [!IMPORTANT]
-> Dieser Indikator ist für regionsübergreifende Abfragen nicht verfügbar.
+> Wenn eine Abfrage über mehrere Regionen ausgeführt wird, sind die CPU- und Datenmessungen nicht exakt, und die Messungen werden nur für eine der Regionen dargestellt.
 
 ## <a name="number-of-workspaces"></a>Anzahl von Arbeitsbereichen
 Arbeitsbereiche sind logische Container, die zum Trennen und Verwalten von Protokolldaten verwendet werden. Das Back-End optimiert die Platzierung von Arbeitsbereichen in physischen Clustern innerhalb der ausgewählten Region.
@@ -301,7 +333,7 @@ Für eine regions- und clusterübergreifende Ausführung von Abfragen muss das S
 > In einigen Szenarien mit mehreren Arbeitsbereichen sind die CPU- und Datenmessungen nicht exakt und die Messungen werden nur für wenige der Arbeitsbereiche dargestellt.
 
 ## <a name="parallelism"></a>Parallelität
-Azure Monitor-Protokolle verwendet große Azure Data Explorer-Cluster zum Ausführen von Abfragen, und diese Cluster sind unterschiedlich groß. Das System skaliert die Cluster automatisch gemäß der Platzierungslogik und Kapazität von Arbeitsbereichen.
+Azure Monitor-Protokolle verwendet große Azure Data Explorer-Cluster zum Ausführen von Abfragen, und diese Cluster sind unterschiedlich groß und können bis zu Dutzende von Rechenknoten umfassen. Das System skaliert die Cluster automatisch gemäß der Platzierungslogik und Kapazität von Arbeitsbereichen.
 
 Zum effizienten Ausführen einer Abfrage wird sie basierend auf den Daten, die für die Verarbeitung benötigt werden, partitioniert und an Computeknoten verteilt. In einigen Situationen kann dies vom System nicht effizient durchgeführt werden. Dadurch kann es zu einer langen Abfragedauer kommen. 
 

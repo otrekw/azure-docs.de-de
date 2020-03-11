@@ -2,33 +2,31 @@
 title: 'Azure- und Dynamics 365-Beratungsdienstangebot: Voraussetzungen | Azure Marketplace'
 description: Voraussetzungen für ein Azure- oder Dynamics 365-Beratungsdienstangebot im Cloud-Partnerportal.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818119"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268278"
 ---
 # <a name="consulting-service-prerequisites"></a>Voraussetzungen für Beratungsdienst
 
 Lesen Sie die Beschreibung und Anforderungen für diesen Angebotstyp unter [Beratungsdienste für Azure Marketplace und AppSource](../../consulting-services.md).  Die folgenden Arten von Beratungsdiensten weisen zusätzliche Anforderungen auf:
 
-|     Angebotstyp   |    Anforderung   |
-|     ----------   |    -----------   |
-| Microsoft Azure | Partner müssen über eine Silber- oder Goldzertifizierung für die Kompetenz [Cloudplattform](https://partner.microsoft.com/membership/cloud-platform-competency) verfügen. |
-| Dynamics 365 for Customer Engagement | Partner müssen über eine Silber- oder Gold-Zertifizierung für die [Cloud Customer Relationship Management-Kompetenz](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency) verfügen. |
-| Dynamics 365 for Finance and Operations | Partner müssen über eine Silber- oder Goldzertifizierung für die Kompetenz [Enterprise Resource Planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) verfügen. Partner müssen zudem in den vorangegangenen 12 Monaten einen Mindestumsatz von 25.000 US-Dollar für Cloudvorgänge generiert haben. |
-| Dynamics 365 Business Central | Partner müssen für mindestens einen Kunden als Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Digital Partner of Record (DPOR) fungiert haben. <br/> Informationen dazu, wie man ein CSP wird, finden Sie unter [Erste Schritte als Cloudlösungsanbieter](https://partner.microsoft.com/cloud-solution-provider/get-started). <br/> Die DPOR-Anforderungen finden Sie in der entsprechenden [Übersicht](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1). |
-|  Power BI  | Lassen Sie sich auf der Seite eintragen, auf der unsere Power BI-Partner vorgestellt werden. Weitere Informationen finden Sie auf der Seite mit den [Kriterien für Lösungspartner](https://powerbi.microsoft.com/become-a-partner). |
-|  PowerApps       | Partner müssen auf der Seite [Vorstellung unserer Partnerlösungen](https://powerapps.microsoft.com/partner-showcase) eine Lösung veröffentlicht haben. |
-|  |  |
-
+| Angebotstyp | Anforderung |
+|---------|---------|
+| Dynamics 365 Sales <br> Dynamics 365 Marketing <br> Dynamics 365 Customer Service <br> Dynamics 365 Field Service <br> Dynamics 365 Human Resources |   Muss in der [Kompetenz Cloud Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) für die Customer Engagement-Option als „Gold“ oder „Silber“ zertifiziert sein.    | 
+| Dynamics 365 Finance <br> Dynamics 365 Supply Chain Management <br> Dynamics 365 Commerce <br> Dynamics 365 Human Resources <br> Dynamics 365 Project Service Automation |  Muss in der [Kompetenz Cloud Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) für die Unified Operations-Option als „Gold“ oder „Silber“ zertifiziert sein.       |
+| Dynamics 365 Customer Insights | Es muss mindestens eine erfolgreiche Produktionsimplementierung von [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) mit mindestens 5 Measures und 5 Segmenten vorhanden sein. |
+| Dynamics 365 Business Central | Muss in der [Kompetenz Enterprise Resource Planning](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) als „Gold“ oder „Silber“ zertifiziert und der Cloudlösungsanbieter für mindestens 3 Geschäftskunden sein. <br> <br> oder <br> <br> Muss eine [Business Central-Anwendung bei AppSource](https://appsource.microsoft.com/) veröffentlicht haben. |
+| Power BI | Muss im [Power BI-Partnershowcase](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=) aufgeführt sein.|
+|Power Apps | Muss für erweiterte Vorteile im [Power Apps Partnership Program](https://aka.ms/PowerAppsPartner) berechtigt sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

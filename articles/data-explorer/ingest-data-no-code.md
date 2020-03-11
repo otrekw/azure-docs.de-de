@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erfassen von Überwachungsdaten ohne Code: Azure Data Explorer'
+title: 'Tutorial: Erfassen von Überwachungsdaten in Azure Data Explorer ohne Code'
 description: In diesem Tutorial wird beschrieben, wie Sie Überwachungsdaten in Azure Data Explorer erfassen, ohne Code verwenden zu müssen, und diese Daten dann abfragen.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986205"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198047"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Tutorial: Erfassen und Abfragen von Überwachungsdaten in Azure Data Explorer 
 
@@ -43,7 +43,7 @@ Unten können Sie die Daten anzeigen, die von den Diagnosemetriken und -protokol
 
 Azure-Diagnosemetriken und -protokolle und Aktivitätsprotokolle werden von einem Azure-Dienst ausgegeben und liefern Daten zum Betrieb dieses Diensts. 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
 #### <a name="example"></a>Beispiel
 
 Diagnosemetriken werden mit einem Aggregationsintervall von einer Minute aggregiert. Hier sehen ein Beispiel für ein Azure Data Explorer-Metrikereignisschema zur Abfragedauer:
@@ -77,7 +77,7 @@ Diagnosemetriken werden mit einem Aggregationsintervall von einer Minute aggregi
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
 #### <a name="example"></a>Beispiel
 
 Hier sehen Sie ein Beispiel für ein [Protokoll der Erfassung von Diagnosedaten](using-diagnostic-logs.md#diagnostic-logs-schema) von Azure Data Explorer:
@@ -133,7 +133,7 @@ Hier sehen Sie ein Beispiel für ein [Protokoll der Erfassung von Diagnosedaten]
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 #### <a name="example"></a>Beispiel
 
 Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die einen Einblick in die Vorgänge geben, die mit Ressourcen in Ihrem Abonnement ausgeführt werden. Hier sehen Sie ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs:
@@ -210,7 +210,7 @@ Die Struktur der Azure Monitor-Protokolle ist nicht tabellarisch. Sie bearbeiten
 
 Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabellen in der Azure Data Explorer-Datenbank zu erstellen.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>Erstellen von Tabellen für die Diagnosemetriken
 
 1. Erstellen Sie in der Datenbank *TestDatabase* eine Tabelle mit dem Namen *DiagnosticMetrics*, um die Diagnosemetrik-Datensätze zu speichern. Verwenden Sie den folgenden `.create table`-Steuerungsbefehl:
@@ -235,7 +235,7 @@ Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabelle
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>Erstellen von Tabellen für die Diagnoseprotokolle 
 
 1. Erstellen Sie in der Datenbank *TestDatabase* eine Tabelle mit dem Namen *DiagnosticLogs*, um die Diagnoseprotokoll-Datensätze zu speichern. Verwenden Sie den folgenden `.create table`-Steuerungsbefehl:
@@ -258,7 +258,7 @@ Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabelle
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>Erstellen von Tabellen für die Aktivitätsprotokolle 
 
 1. Erstellen Sie eine Tabelle mit dem Namen *ActivityLogs* in der Datenbank *TestDatabase*, um Aktivitätsprotokoll-Datensätze zu erhalten. Führen Sie zum Erstellen der Tabelle die folgende Azure Data Explorer-Abfrage aus:
@@ -284,7 +284,7 @@ Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabelle
 
  Da das Datenformat `json` lautet, ist eine Datenzuordnung erforderlich. Mit der `json`-Zuordnung wird jeder JSON-Pfad einem Tabellenspaltennamen zugeordnet.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>Zuordnen von Diagnosemetriken und -protokollen zur Tabelle
 
 Verwenden Sie die folgende Abfrage, um die Daten der Diagnosemetrik- und -protokolldaten der Tabelle zuzuordnen:
@@ -293,7 +293,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Diagnosemetrik- und -protok
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>Zuordnen von Aktivitätsprotokollen zur Tabelle
 
 Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der Tabelle zuzuordnen:
@@ -305,7 +305,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>Erstellen der Updaterichtlinie für Metrik- und Protokolldaten
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>Erstellen einer Datenaktualisierungsrichtlinie für Diagnosemetriken
 
 1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Sammlung an Diagnosemetrikdatensätzen so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -333,7 +333,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>Erstellen einer Datenaktualisierungsrichtlinie für Diagnoseprotokolle
 
 1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Sammlung an Diagnoseprotokolldatensätzen so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Sie aktivieren Datenerfassungsprotokolle in einem Azure Data Explorer-Cluster und verwenden das [Erfassungsprotokollschema](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema). Sie erstellen eine Tabelle für erfolgreiche und für fehlgeschlagene Datenerfassung. Für die erfolgreiche Erfassung bleiben einige der Felder leer (z. B. ErrorCode). Verwenden Sie den Operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -366,7 +366,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>Erstellen einer Datenaktualisierungsrichtlinie für Aktivitätsprotokolle
 
 1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Sammlung an Aktivitätsprotokolldatensätzen so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -425,7 +425,7 @@ Mit Azure-Diagnoseeinstellungen können Metriken und Protokolle in ein Speicherk
 
 Jetzt müssen Sie für Ihre Diagnosemetriken und -protokolle und Aktivitätsprotokolle eine Verbindung mit dem Event Hub herstellen.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>Verbinden von Diagnosemetriken und Protokollen mit Ihrem Event Hub
 
 Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Mehrere Ressourcentypen unterstützen Diagnosedaten, z. B. Event Hubs-Namespace, Azure Key Vault, Azure IoT Hub und Azure Data Explorer-Cluster. In diesem Tutorial verwenden wir einen Azure Data Explorer-Cluster als Ressource. Wir überprüfen die Protokolle für Abfrageleistungsmetriken und Erfassungsergebnisse.
@@ -452,7 +452,7 @@ Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Mehr
 
 1. Wählen Sie **Speichern** aus.
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Verbinden von Aktivitätsprotokollen mit Ihrem Event Hub
 
 1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Aktivitätsprotokoll**.
@@ -501,7 +501,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnosemetriken und -protokolle
 
     ![Event Hub-Datenverbindung](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Diagnosemetriken/Diagnoseprotokolle](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. Verwenden Sie im Fenster **Datenverbindung** die folgenden Einstellungen:
 
@@ -528,7 +528,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnosemetriken und -protokolle
 
 1. Klicken Sie auf **Erstellen**.  
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 
 1. Verwenden Sie im Fenster **Datenverbindung** die folgenden Einstellungen:
 
@@ -560,7 +560,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnosemetriken und -protokolle
 
 Sie verfügen nun über eine Pipeline, durch die Daten fließen. Da die Erfassung über den Cluster standardmäßig fünf Minuten dauert, sollten Sie den Datenfluss einige Minuten lang zulassen, bevor Sie mit dem Abfragen beginnen.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Diagnosemetriken](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>Abfragen der Tabelle für Diagnosemetriken
 
 Mit der folgenden Abfrage werden Daten zur Abfragedauer aus den Datensätzen von Diagnosemetrikdaten in Azure Data Explorer analysiert:
@@ -579,7 +579,7 @@ Abfrageergebnisse:
 |   | 00:06.156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>Abfragen der Tabelle für Diagnoseprotokolle
 
 Diese Pipeline erzeugt Datenerfassungen über einen Event Hub. Sie überprüfen die Ergebnisse dieser Datenerfassungen.
@@ -599,7 +599,7 @@ Abfrageergebnisse:
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
+# <a name="activity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>Abfragen der Tabelle für Aktivitätsprotokolle
 
 Mit der folgenden Abfrage werden die Daten aus den Datensätzen von Aktivitätsprotokollen in Azure Data Explorer analysiert:

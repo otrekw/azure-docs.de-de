@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3006450fe530d3e6271ad624c6f246213cab6569
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 79225d4dfe9e53da6936f8647c9f5a1dff0b4909
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272459"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301471"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -24,7 +24,7 @@ Unternehmensadministratoren haben die meisten Berechtigungen bei der Verwaltung 
 
 ## <a name="update-user-state-from-pending-to-active"></a>Aktualisieren des Benutzerstatus von „Ausstehend“ in „Aktiv“
 
-Wenn neue Kontobesitzer (Account Owners, AO) erstmals zu einer Azure EA-Registrierung hinzugefügt werden, wird ihr Status als _Ausstehend_ angezeigt. Wenn ein neuer Kontobesitzer die Begrüßungs-E-Mail für die Aktivierung erhält, kann er sich anmelden, um sein Konto zu aktivieren. Nach Aktivierung des Kontos wird der Kontostatus von _Ausstehend_ in _Aktiv_ geändert. Der Kontobesitzer muss die Warnmeldung lesen und auf **Weiter** klicken. Neue Benutzer werden möglicherweise aufgefordert, ihren Vor- und Nachnamen einzugeben, um ein Commerce-Konto zu erstellen. In dem Fall müssen die erforderlichen Informationen hinzugefügt werden, damit der Vorgang fortgesetzt und das Konto aktiviert werden kann.
+Wenn neue Kontobesitzer (Account Owners, AO) erstmals zu einer Azure EA-Registrierung hinzugefügt werden, wird ihr Status als _Ausstehend_ angezeigt. Wenn ein neuer Kontobesitzer die Begrüßungs-E-Mail für die Aktivierung erhält, kann er sich anmelden, um sein Konto zu aktivieren. Nach Aktivierung des Kontos wird der Kontostatus von _Ausstehend_ in _Aktiv_ geändert. Der Kontobesitzer muss die Warnmeldung lesen und die Option **Weiter** auswählen. Neue Benutzer werden möglicherweise aufgefordert, ihren Vor- und Nachnamen einzugeben, um ein Commerce-Konto zu erstellen. In dem Fall müssen die erforderlichen Informationen hinzugefügt werden, damit der Vorgang fortgesetzt und das Konto aktiviert werden kann.
 
 ## <a name="add-a-department-admin"></a>Hinzufügen eines Abteilungsadministrators
 
@@ -39,11 +39,11 @@ Unternehmensadministratoren können Abteilungen unter der Registrierung vorhande
 ### <a name="to-associate-an-account-to-a-department"></a>So ordnen Sie ein Konto einer Abteilung zu
 
 1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf **Abteilung**.
-1. Zeigen Sie auf die Zeile mit dem gewünschten Konto, und klicken Sie rechts auf das Stiftsymbol.
-1. Wählen Sie im Dropdownmenü die gewünschte Abteilung aus.
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+1. Wählen Sie **Abteilung** aus.
+1. Zeigen Sie auf die Zeile mit dem Konto, und wählen Sie rechts das Stiftsymbol aus.
+1. Wählen Sie im Dropdownmenü die Abteilung aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="department-spending-quotas"></a>Ausgabenkontingente für Abteilungen
 
@@ -54,13 +54,13 @@ Der Abteilungsadministrator kann das Ausgabenkontingent zwar anzeigen, aber nur 
 ### <a name="enterprise-administrator-to-set-the-quota"></a>Als Unternehmensadministrator können Sie das Kontingent wie folgt festlegen:
 
  1. Öffnen Sie das Azure EA-Portal.
- 1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
- 1. Klicken Sie auf die Registerkarte **Abteilung**.
- 1. Klicken Sie auf die gewünschte Abteilung.
- 1. Klicken Sie im Abschnitt mit den Abteilungsdetails auf das Stiftsymbol, oder klicken Sie auf die Schaltfläche **+ Abteilung hinzufügen**, um ein Ausgabenkontingent zusammen mit einer neuen Abteilung hinzuzufügen.
+ 1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+ 1. Wählen Sie die Registerkarte **Abteilung** aus.
+ 1. Wählen Sie die Abteilung aus.
+ 1. Wählen Sie im Abschnitt mit den Abteilungsdetails das Stiftsymbol oder das Symbol **+ Abteilung hinzufügen** aus, um zusammen mit einer neuen Abteilung ein Ausgabenkontingent hinzuzufügen.
  1. Geben Sie in den Abteilungsdetails ein Ausgabenkontingent in der Währung der Registrierung in das entsprechende Feld ein. (Der angegebene Betrag muss größer Null sein.)
     - Bei dieser Gelegenheit können Sie auch den Abteilungsnamen und die Kostenstelle bearbeiten.
- 1. Klicken Sie auf **Speichern**.
+ 1. Wählen Sie **Speichern** aus.
 
 Das Ausgabenkontingent für die Abteilung wird nun auf der Registerkarte „Abteilung“ in der Abteilungsliste angezeigt. Am Ende des aktuellen Prepaidtarifs behält das Azure EA-Portal die Ausgabenkontingente für die nächste Laufzeit des Prepaidtarifs bei.
 
@@ -69,8 +69,8 @@ Die Höhe des Abteilungskontingents ist unabhängig vom aktuellen Mindestverbrau
 ### <a name="department-administrator-to-view-the-quota"></a>Als Abteilungsadministrator können Sie das Kontingent wie folgt anzeigen:
 
 1. Öffnen Sie das Azure EA-Portal.
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Abteilung**, und sehen Sie sich die Abteilungsliste mit den Ausgabenkontingenten an.
+1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+1. Wählen Sie die Registerkarte **Abteilung** aus, und sehen Sie sich die Abteilungsliste mit den Ausgabenkontingenten an.
 
 Wenn Sie ein indirekter Kunde sind, müssen die Kostenfeatures von Ihrem Channelpartner aktiviert werden.
 
@@ -88,27 +88,27 @@ Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerro
 
 ## <a name="add-an-azure-ea-account"></a>Hinzufügen eines Azure EA-Kontos
 
-Das Azure EA-Konto ist eine Organisationseinheit im Azure EA-Portal, die zum Verwalten von Abonnements und auch zur Berichterstellung verwendet wird. Für den Zugriff auf Azure-Dienste und ihre Verwendung müssen Sie ein Konto erstellen oder erstellen lassen.
+Das Azure EA-Konto ist eine Organisationseinheit im Azure EA Portal. Sie wird zur Abonnementverwaltung und auch für die Berichterstellung verwendet. Für den Zugriff auf Azure-Dienste und ihre Verwendung müssen Sie ein Konto erstellen oder erstellen lassen.
 
 Weitere Informationen zu Azure-Konten finden Sie unter „Hinzufügen eines Kontos“.
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test-Angebot
 
-Als Azure-Unternehmensadministrator können Sie Kontobesitzern in Ihrer Organisation nun die Erstellung von Abonnements auf der Grundlage des EA Dev/Test-Angebots ermöglichen. Aktivieren Sie hierzu im Azure EA-Portal das Kontrollkästchen „Dev/Test“ für den Kontobesitzer.
+Als Azure-Unternehmensadministrator können Sie Kontobesitzern in Ihrer Organisation die Erstellung von Abonnements auf Grundlage des EA Dev/Test-Angebots ermöglichen. Wählen Sie hierfür im Azure EA Portal das Feld „Dev/Test“ für den Kontobesitzer aus.
 
-Informieren Sie anschließend den Kontobesitzer, dass er nun die EA Dev/Test-Abonnements einrichten kann, die der für seine Teams von Dev/Test-Abonnenten benötigt.
+Informieren Sie anschließend den Kontobesitzer, dass er nun die EA Dev/Test-Abonnements einrichten kann, die er für seine Teams mit den Dev/Test-Abonnenten benötigt.
 
-Mit diesem Angebot können aktive Visual Studio-Abonnenten Entwicklungs- und Testworkloads in Azure zu speziellen Dev/Test-Tarifen ausführen und dabei auf den vollständigen Katalog von Dev/Test-Images zugreifen (einschließlich Windows 8.1 und Windows 10).
+Dank dieses Angebots können aktive Visual Studio-Abonnenten Entwicklungs- und Testworkloads in Azure zu speziellen Dev/Test-Tarifen ausführen. Es besteht Zugriff auf den vollständigen Katalog mit Dev/Test-Images, einschließlich Windows 8.1 und Windows 10.
 
 ### <a name="to-set-up-the-enterprise-devtest-offer"></a>So richten Sie das Enterprise Dev/Test-Angebot ein:
 
 1. Melden Sie sich als Unternehmensadministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
+1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
 1. Klicken Sie auf die Registerkarte **Konto**.
-1. Klicken Sie auf die Zeile für das Konto, unter dem Sie den Dev/Test-Zugriff aktivieren möchten.
-1. Klicken Sie rechts neben der Zeile auf das Stiftsymbol.
+1. Wählen Sie die Zeile für das Konto aus, unter dem Sie den Dev/Test-Zugriff aktivieren möchten.
+1. Wählen Sie das Stiftsymbol rechts neben der Zeile aus.
 1. Aktivieren Sie das Kontrollkästchen „Dev/Test“.
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 Wenn ein Benutzer über das Azure EA-Portal als Kontobesitzer hinzugefügt wird, werden alle dem Kontobesitzer zugeordneten Azure-Abonnements, die entweder auf dem Dev/Test-Angebot mit nutzungsbasierter Zahlung oder auf den Angeboten mit monatlichem Guthaben für Visual Studio-Abonnenten basieren, in das EA Dev/Test-Angebot konvertiert. Abonnements, die auf anderen Angebotstypen (beispielsweise nutzungsbasierte Zahlung) basieren und dem Kontobesitzer zugeordnet sind, werden in Microsoft Azure Enterprise-Angebote konvertiert.
 
@@ -116,7 +116,7 @@ Das Dev/Test-Angebot gilt derzeit nicht für Azure Government-Kunden.
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Übertragen eines Unternehmenskontos in eine neue Registrierung
 
-Bei einer Kontoübertragung wird ein Kontobesitzer von einer Registrierung zu einer anderen verschoben. Alle zugehörigen Abonnements des Kontobesitzers werden zur Zielregistrierung verschoben. Dies wird ausgeführt, wenn Sie über mehrere aktive Registrierungen verfügen und nur ausgewählte Kontobesitzer verschieben möchten.
+Bei einer Kontoübertragung wird ein Kontobesitzer von einer Registrierung zu einer anderen verschoben. Alle zugehörigen Abonnements des Kontobesitzers werden zur Zielregistrierung verschoben. Verwenden Sie eine Kontoübertragung, wenn Sie über mehrere aktive Registrierungen verfügen und nur ausgewählte Kontobesitzer verschieben möchten.
 
 Dieser Abschnitt dient nur zu Informationszwecken, da die Aktion von einem Unternehmensadministrator nicht durchgeführt werden kann. Es ist eine Supportanfrage erforderlich, um ein Unternehmenskonto in eine neue Registrierung zu übertragen.
 
@@ -139,7 +139,7 @@ Andere Punkte, die vor einer Kontoübertragung zu beachten sind:
 - Bei der Kontoübertragung werden alle Dienste und Abonnements des spezifischen Kontos übertragen.
 - Nach Abschluss der Übertragung wird das übertragene Konto unter der Quellregistrierung als inaktiv und unter der Zielregistrierung als aktiv angezeigt.
 - Im Konto wird das Enddatum angezeigt, das das effektive Übertragungsdatum für die Quellregistrierung und das Startdatum für die Zielregistrierung darstellt.
-- Jegliche Nutzung, die für das Konto vor dem effektiven Übertragungsdatum erfolgt ist, verbleibt unter der Quellregistrierung.
+- Jegliche Nutzung, die für das Konto vor dem tatsächlichen Übertragungsdatum erfolgt ist, verbleibt unter der Quellregistrierung.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Übertragen einer Unternehmensregistrierung in eine neue Registrierung
@@ -148,7 +148,7 @@ Eine Registrierungsübertragung wird in folgenden Fällen in Betracht gezogen:
 
 - Die Verpflichtungslaufzeit einer aktuellen Registrierung ist abgelaufen.
 - Eine Registrierung befindet sich im Status abgelaufen/verlängert und eine neue Vereinbarung wird ausgehandelt.
-- Wenn Sie über mehrere Registrierungen verfügen und alle Konten und Abrechnungen in einer einzigen Registrierung konsolidieren möchten.
+- Sie verfügen über mehrere Registrierungen und möchten alle Konten und Abrechnungen in einer einzigen Registrierung kombinieren.
 
 Dieser Abschnitt dient nur zu Informationszwecken, da die Aktion von einem Unternehmensadministrator nicht durchgeführt werden kann. Es ist eine Supportanfrage erforderlich, um eine Unternehmensregistrierung in eine neue Registrierung zu übertragen.
 
@@ -158,8 +158,8 @@ Wenn Sie die Übertragung einer gesamten Unternehmensregistrierung in eine Regis
 - Der Registrierungsstatus wird auf _Übertragen_ festgelegt. Die übertragene Registrierung ist nur für Berichte zum Nutzungsverlauf verfügbar.
 - Einer übertragenen Registrierung können Sie keine Rollen oder Abonnements hinzufügen. Der Status „Übertragen“ verhindert eine zusätzliche Nutzung in Bezug auf die Registrierung.
 - Verbleibendes Guthaben in Bezug auf den Mindestverbrauch im Vertrag geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
--   Wenn die Registrierung, von der aus Sie die Übertragung durchführen, über RI-Käufe verfügt, verbleibt die Gebühr für RI-Käufe in der Quellregistrierung. Sämtliche RI-Vorteile werden jedoch in die neue Registrierung übertragen und stehen dort zur Verfügung.
--   Die einmalige Gebühr für Marketplace-Käufe sowie feste Monatsgebühren, die ggf. bereits für die alte Registrierung angefallen sind, werden nicht in die neue Registrierung übertragen. Verbrauchsbasierte Marketplace-Gebühren werden übertragen.
+-    Wenn die Registrierung, von der aus Sie die Übertragung durchführen, über RI-Käufe verfügt, verbleibt die Gebühr für RI-Käufe in der Quellregistrierung. Sämtliche RI-Vorteile werden aber in die neue Registrierung übertragen und stehen dort zur Verfügung.
+-    Die einmalige Gebühr für Marketplace-Käufe sowie feste Monatsgebühren, die ggf. bereits für die alte Registrierung angefallen sind, werden nicht in die neue Registrierung übertragen. Verbrauchsbasierte Marketplace-Gebühren werden übertragen.
 
 ### <a name="effective-transfer-date"></a>Effektives Übertragungsdatum
 
@@ -195,7 +195,7 @@ Das Azure EA-Portal kann Abonnements von einem Kontobesitzer auf einen anderen �
 
 ## <a name="subscription-transfer-effects"></a>Auswirkungen der Abonnementübertragung
 
-Wenn ein Azure-Abonnement an ein Konto im gleichen Azure Active Directory-Mandanten übertragen wird, behalten alle Benutzer, Gruppen und Dienstprinzipale ihren Zugriff, die über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten.
+Wenn ein Azure-Abonnement an ein Konto desselben Azure Active Directory-Mandanten übertragen wird, behalten alle Benutzer, Gruppen und Dienstprinzipale, die über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten, ihre Zugriffsberechtigung.
 
 So zeigen Sie Benutzer mit RBAC-Zugriff auf das Abonnement an:
 
@@ -203,7 +203,7 @@ So zeigen Sie Benutzer mit RBAC-Zugriff auf das Abonnement an:
 2. Wählen Sie das anzuzeigende Abonnement und dann **Zugriffssteuerung (IAM)** aus.
 3. Wählen Sie **Rollenzuweisungen** aus. Auf der Seite „Rollenzuweisungen“ werden alle Benutzer mit RBAC-Zugriff auf das Abonnement aufgelistet.
 
-Wenn das Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen wird, _verlieren_ alle Benutzer, Gruppen und Dienstprinzipale ihren Zugriff, die über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten. Auch wenn kein RBAC-Zugriff vorhanden ist, ist der Zugriff auf das Abonnement unter Umständen über Sicherheitsmechanismen verfügbar, wie u. a.:
+Wenn das Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen wird, _verlieren_ alle Benutzer, Gruppen und Dienstprinzipale ihren Zugriff, die über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten. Auch wenn kein RBAC-Zugriff vorhanden ist, ist der Zugriff auf das Abonnement unter Umständen über Sicherheitsmechanismen verfügbar, z. B.:
 
 - Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../../cloud-services/cloud-services-certs-create.md).
 - Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../../storage/common/storage-account-overview.md).
@@ -214,18 +214,20 @@ Der neue Besitzer sollte sich überlegen, ob er die dem Dienst zugeordneten Gehe
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus.
 3. Wählen Sie die Ressource.
-4. Klicken Sie auf der Ressourcenseite auf **Einstellungen**, um vorhandene Geheimnisse anzuzeigen und zu aktualisieren.
+4. Wählen Sie auf der Ressourcenseite die Option **Einstellungen** aus, um vorhandene Geheimnisse anzuzeigen und zu aktualisieren.
 
 ## <a name="delete-subscription"></a>Löschen eines Abonnements
 
-So löschen Sie ein Abonnement, für das Sie als Kontobesitzer fungieren:
+Löschen Sie ein Abonnement, für das Sie als Kontobesitzer fungieren, wie folgt:
 
 1. Melden Sie sich mit den Anmeldeinformationen Ihres Kontos beim Azure-Portal an.
 1. Wählen Sie im Menü „Hub“ die Option **Abonnements** aus.
-1. Wählen Sie links oben auf der Seite auf der Registerkarte „Abonnements“ das Abonnement aus, das Sie kündigen möchten, und klicken Sie auf **Cancel Sub** (Abo kündigen), um die Registerkarte für die Kündigung zu öffnen.
-1. Geben Sie den Abonnementnamen ein, wählen Sie einen Kündigungsgrund aus, und klicken Sie auf die Schaltfläche **Cancel Sub** (Abo kündigen).
+1. Wählen Sie links oben auf der Seite auf der Registerkarte „Abonnements“ das Abonnement aus, das Sie kündigen möchten, und wählen Sie **Cancel Sub** (Abo kündigen) aus, um die Registerkarte für die Kündigung zu öffnen.
+1. Geben Sie den Abonnementnamen ein, wählen Sie einen Kündigungsgrund aus, und wählen Sie die Schaltfläche **Cancel Sub** (Abo kündigen) aus.
 
-Beachten Sie, dass Abonnements nur von Kontoadministratoren gekündigt werden können.
+Abonnements können nur von Kontoadministratoren gekündigt werden.
+
+Weitere Informationen finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription).
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 
@@ -234,8 +236,8 @@ Eine Kontoentfernung kann nur für aktive Konten ohne aktive Abonnements durchge
 1. Wählen Sie im Enterprise Portal im linken Navigationsbereich die Option **Verwalten** aus.
 1. Klicken Sie auf die Registerkarte **Konto**.
 1. Wählen Sie in der Kontotabelle das Konto aus, das Sie löschen möchten.
-1. Klicken Sie auf der rechten Seite der Kontozeile auf das X-Symbol.
-1. Wenn unter dem Konto keine aktiven Abonnements mehr vorhanden sind, klicken Sie unter der Kontozeile auf die Schaltfläche **Ja**, um die Kontoentfernung zu bestätigen.
+1. Wählen Sie rechts von der Zeile „Konto“ das Symbol „X“ aus.
+1. Wenn unter dem Konto keine aktiven Abonnements mehr vorhanden sind, können Sie unter der Kontozeile die Schaltfläche **Ja** auswählen, um die Kontoentfernung zu bestätigen.
 
 ## <a name="update-notification-settings"></a>Aktualisierung der Benachrichtigungseinstellungen
 
@@ -251,11 +253,11 @@ So zeigen Sie die aktuellen Benachrichtigungseinstellungen an:
 
 So fügen Sie einen Kontakt hinzu:
 
-1. Klicken Sie auf **Kontakt hinzufügen**.
+1. Wählen Sie **+ Kontakt hinzufügen** aus.
 2. Geben Sie die E-Mail-Adresse ein, und bestätigen Sie sie.
-3. Klicken Sie auf **Speichern**.
+3. Wählen Sie **Speichern** aus.
 
-Der neue Benachrichtigungskontakt wird im Abschnitt **Benachrichtigungskontakt** angezeigt. Zum Ändern der Benachrichtigungshäufigkeit wählen Sie den Benachrichtigungskontakt aus, und klicken Sie auf das Stiftsymbol rechts neben der ausgewählten Zeile. Legen Sie die Häufigkeit auf **Täglich**, **Wöchentlich**, **Monatlich** oder **Keine** fest.
+Der neue Benachrichtigungskontakt wird im Abschnitt **Benachrichtigungskontakt** angezeigt. Wählen Sie zum Ändern der Benachrichtigungshäufigkeit den Benachrichtigungskontakt und das Stiftsymbol rechts neben der ausgewählten Zeile aus. Legen Sie die Häufigkeit auf **Täglich**, **Wöchentlich**, **Monatlich** oder **Keine** fest.
 
 Sie können das _bevorstehende Enddatum des Abdeckungszeitraums_ unterdrücken und deaktivieren und die _Bereitstellung von Lebenszyklusbenachrichtigungen zu bevorstehenden Daten aufheben_. Durch das Deaktivieren von Lebenszyklusbenachrichtigungen werden Benachrichtigungen über den Abdeckungszeitraum und das Enddatum der Vereinbarung unterdrückt.
 
@@ -265,23 +267,23 @@ Partneradministratoren können im Azure EA-Portal andere Partneradministratoren
 
 ### <a name="add-a-partner-administrator"></a>Hinzufügen eines Partneradministrators
 
-Klicken Sie zum Anzeigen einer Liste aller Registrierungen, die der gleichen Partnerorganisation zugeordnet sind wie der aktuelle Benutzer, auf die Registerkarte **Registrierung**, und wählen Sie ein gewünschtes Registrierungsfeld aus.
+Wählen Sie zum Anzeigen einer Liste mit allen Registrierungen, die derselben Partnerorganisation wie der aktuelle Benutzer zugeordnet sind, die Registerkarte **Registrierung** und dann ein gewünschtes Registrierungsfeld aus.
 
 1. Melden Sie sich als Partneradministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Partner**.
-1. Klicken Sie auf **+ Administrator hinzufügen**, und geben Sie die E-Mail-Adresse, den Benachrichtigungskontakt und Benachrichtigungsdetails an.
-1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+1. Wählen Sie die Registerkarte **Partner** aus.
+1. Wählen Sie **+ Administrator hinzufügen** aus, und geben Sie die E-Mail-Adresse, den Benachrichtigungskontakt und die Benachrichtigungsdetails an.
+1. Wählen Sie **Hinzufügen**.
 
 ### <a name="remove-a-partner-administrator"></a>Entfernen eines Partneradministrators
 
-Klicken Sie zum Anzeigen einer Liste aller Registrierungen, die der gleichen Partnerorganisation zugeordnet sind wie der aktuelle Benutzer, auf die Registerkarte **Registrierung**, und wählen Sie ein gewünschtes Registrierungsfeld aus.
+Wählen Sie zum Anzeigen einer Liste mit allen Registrierungen, die derselben Partnerorganisation wie der aktuelle Benutzer zugeordnet sind, die Registerkarte **Registrierung** und dann ein gewünschtes Registrierungsfeld aus.
 
 1. Melden Sie sich als Partneradministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Partner**.
+1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+1. Wählen Sie die Registerkarte **Partner** aus.
 1. Wählen Sie im Administratorabschnitt die entsprechende Zeile für den Administrator aus, den Sie entfernen möchten.
-1. Klicken Sie rechts auf das X-Symbol.
+1. Wählen Sie rechts das Symbol „X“ aus.
 1. Bestätigen Sie den Löschvorgang.
 
 ## <a name="manage-partner-notifications"></a>Verwalten von Partnerbenachrichtigungen
@@ -291,12 +293,12 @@ Partneradministratoren können die Häufigkeit verwalten, mit der sie Nutzungsbe
 Wenn ein Benutzer keine Benachrichtigung erhält, überprüfen Sie anhand der folgenden Schritte, ob die Benachrichtigungseinstellungen des Benutzers korrekt sind.
 
 1. Melden Sie sich beim Azure EA-Portal als Partneradministrator an.
-2. Klicken Sie auf **Verwalten** und anschließend auf die Registerkarte **Partner**.
+2. Wählen Sie **Verwalten** und dann die Registerkarte **Partner** aus.
 3. Sehen Sie sich im Administratorabschnitt die Administratorliste an.
-4. Zeigen Sie zum Bearbeiten von Benachrichtigungseinstellungen auf den entsprechenden Administrator, und klicken Sie auf das Stiftsymbol.
-5. Aktualisieren Sie nach Bedarf die Benachrichtigungshäufigkeit und die Lebenszyklusbenachrichtigungen.
-6. Fügen Sie bei Bedarf einen Kontakt hinzu, und klicken Sie auf **Hinzufügen**.
-7. Klicken Sie auf **Speichern**.
+4. Zeigen Sie zum Bearbeiten von Benachrichtigungseinstellungen auf den entsprechenden Administrator, und wählen Sie das Stiftsymbol aus.
+5. Erhöhen Sie je nach Bedarf die Benachrichtigungshäufigkeit und die Lebenszyklusbenachrichtigungen.
+6. Fügen Sie bei Bedarf einen Kontakt hinzu, und wählen Sie **Hinzufügen** aus.
+7. Wählen Sie **Speichern** aus.
 
 ![Beispiel für Feld „Kontakt hinzufügen“ ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
 
@@ -307,15 +309,15 @@ Partneradministratoren können eine Liste mit allen ihren direkten und indirekte
 ### <a name="view-a-list-of-enrollments"></a>Anzeigen einer Liste mit Registrierungen
 
 1. Melden Sie sich als Partneradministrator an.
-1. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwalten**.
-1. Klicken Sie auf die Registerkarte **Registrierung**.
-1. Wählen Sie das Feld für die gewünschte Registrierung aus.
+1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Verwalten** aus.
+1. Wählen Sie die Registerkarte **Registrierung** aus.
+1. Wählen Sie das Feld für die Registrierung aus.
 
-Im oberen Bereich wird weiterhin eine Ansicht aller Registrierungen mit Feldern für die einzelnen Registrierungen angezeigt. Darüber hinaus können Sie zwischen Registrierungen navigieren, indem Sie links auf der Seite auf die aktuelle Registrierungsnummer klicken. Daraufhin wird ein Popupfenster angezeigt, in dem Sie Registrierungen durchsuchen oder eine andere Registrierung auswählen können, indem Sie auf das entsprechende Feld klicken.
+Im oberen Bereich wird weiterhin eine Ansicht aller Registrierungen mit Feldern für die einzelnen Registrierungen angezeigt. Darüber hinaus können Sie zwischen Registrierungen navigieren, indem Sie links auf der Seite die aktuelle Registrierungsnummer auswählen. Daraufhin wird ein Popupfenster angezeigt, über das Sie Registrierungen durchsuchen oder eine andere Registrierung auswählen können, indem Sie das entsprechende Feld auswählen.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-Angebot
 
-Das Azure Sponsorship-Angebot ist ein eingeschränktes gesponsertes Microsoft Azure-Konto. Es ist per E-Mail-Einladung nur für bestimmte, von Microsoft ausgewählte Kunden verfügbar. Wenn Sie zur Nutzung des Microsoft Azure Sponsorship-Angebots berechtigt sind, erhalten Sie eine E-Mail-Einladung für Ihre Konto-ID.
+Das Azure Sponsorship-Angebot ist ein eingeschränktes gesponsertes Microsoft Azure-Konto. Es ist nur per E-Mail-Einladung für bestimmte Kunden verfügbar, die von Microsoft ausgewählt wurden. Wenn Sie zur Nutzung des Microsoft Azure Sponsorship-Angebots berechtigt sind, erhalten Sie eine E-Mail-Einladung für Ihre Konto-ID.
 
 Sollten Sie weitere Informationen benötigen, erstellen Sie eine [Supportanfrage für die Sponsorship-Aktivierung](https://aka.ms/azrsponsorship).
 
@@ -326,7 +328,7 @@ Azure-Unternehmensbenutzer können von der Authentifizierung per Microsoft-Konto
 Vorbereitung:
 
 1. Fügen Sie dem Azure EA-Portal das Geschäfts-, Schul- oder Unikonto in den benötigten Rollen hinzu.
-1. Sollten Fehler auftreten, ist das Konto in Active Directory möglicherweise nicht gültig.  Azure verwendet den Benutzerprinzipalnamen (User Principal Name, UPN), und dieser entspricht nicht immer der E-Mail-Adresse.
+1. Sollten Fehler auftreten, ist das Konto in Active Directory möglicherweise nicht gültig.  Azure verwendet den Benutzerprinzipalnamen (User Principal Name, UPN), und dieser ist nicht immer mit der E-Mail-Adresse identisch.
 1. Authentifizieren Sie sich beim Azure EA-Portal mit dem Geschäfts-, Schul- oder Unikonto.
 
 ### <a name="to-convert-subscriptions-from-microsoft-accounts-to-work-or-school-accounts"></a>So stellen Sie Abonnements von Microsoft-Konten auf Geschäfts-, Schul- oder Unikonten um:
@@ -346,7 +348,7 @@ Pro Abonnement ist immer nur ein einzelner Kontobesitzer zulässig.  Weitere Rol
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kann ein Azure-Kontobesitzer unter mehreren Abteilungen aufgeführt werden?
 
-Ein Kontobesitzer kann immer nur einer einzelnen Abteilung zugeordnet sein.  Dadurch wird eine ordnungsgemäße Überwachung und Zuordnung von Kosten/Ausgaben im Zusammenhang mit der entsprechenden Abteilung unter der EA-Registrierung im Azure EA-Portal sichergestellt.
+Nein. Ein Kontobesitzer kann immer nur einer einzelnen Abteilung zugeordnet sein. Durch diese Richtlinie wird eine korrekte Überwachung und Zuordnung von Kosten und Ausgaben im Zusammenhang mit der entsprechenden Abteilung unter der EA-Registrierung im Azure EA Portal sichergestellt.
 
 ### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Kann ein Azure-Kontobesitzer als Sicherheitsgruppe aufgeführt werden?
 
@@ -356,13 +358,13 @@ Nein. Bei einem Abonnementbesitzer muss es sich um eine eindeutige Authentifizie
 
 Ein Azure-Kontobesitzer kann eine unbegrenzte Anzahl von Abonnements erstellen und verwalten.
 
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Wie kann ich auf alle Abonnements meiner Organisation zugreifen bzw. alle Abonnements meiner Organisation anzeigen?
+### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Wie kann ich auf alle Abonnements meiner Organisation zugreifen bzw. diese anzeigen?
 
 Hierzu muss aktuell eine Richtlinie verwendet werden. Ihr Konto muss also für jedes erstellte Abonnement mithilfe des rollenbasierten Zugriffs einer Abonnementrolle hinzugefügt werden.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Wo kann ich ein Abonnement erstellen?
 
-Wenn Sie ein Abonnement für ein EA-Angebot (Enterprise Azure) erstellen möchten, muss Ihr Konto zunächst im Azure EA-Portal durch den Administrator Ihrer EA-Registrierung der Rolle „Kontobesitzer“ hinzugefügt werden. Anschließend müssen Sie sich beim Azure EA-Portal anmelden, um Ihre Berechtigung zum Erstellen von Abonnements für den EA-Angebotstyp zu erhalten. Das erste EA-Abonnement sollte über den Link „+ Abonnement hinzufügen“ auf der Registerkarte „Abonnement“ des EA-Portals erstellt werden.  Sobald Ihr Konto allerdings über die nötige Berechtigung verfügt, ist es unter Umständen einfacher, Abonnements unter „portal.azure.com“ auf der Registerkarte „Abonnement“ (links oben auf der Seite) zu erstellen, da Sie Ihr Abonnement dort in einem einzelnen Schritt erstellen und umbenennen können.
+Wenn Sie ein Abonnement für ein EA-Angebot (Enterprise Azure) erstellen möchten, muss Ihr Konto zunächst im Azure EA Portal durch den Administrator Ihrer EA-Registrierung der Rolle „Kontobesitzer“ hinzugefügt werden. Anschließend müssen Sie sich beim Azure EA Portal anmelden, um Ihre Berechtigung zum Erstellen von Abonnements für den EA-Angebotstyp zu erhalten. Das erste EA-Abonnement sollte über den Link „+ Abonnement hinzufügen“ auf der Registerkarte „Abonnement“ des EA Portals erstellt werden.  Sobald Ihr Konto allerdings über die nötige Berechtigung verfügt, ist es unter Umständen einfacher, Abonnements unter „portal.azure.com“ auf der Registerkarte „Abonnement“ (links oben auf der Seite) zu erstellen, da Sie Ihr Abonnement dort in einem einzelnen Schritt erstellen und umbenennen können.
 
 ### <a name="who-can-create-a-subscription"></a>Wer kann ein Abonnement erstellen?
 

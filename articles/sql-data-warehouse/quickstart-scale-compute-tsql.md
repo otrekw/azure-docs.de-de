@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Skalieren von Computeressourcen – T-SQL '
-description: Skalieren Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL und SQL Server Management Studio (SSMS). Skalieren Sie Computeressourcen zentral hoch, um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen.
+title: Skalieren von Computeressourcen in Azure Synapse Analytics – T-SQL
+description: Skalieren Sie Computeressourcen in Azure Synapse Analytics mithilfe von T-SQL und SQL Server Management Studio (SSMS). Skalieren Sie Computeressourcen zentral hoch, um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685943"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200402"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure Synapse Analytics mithilfe von T-SQL
 
-Skalieren Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL und SQL Server Management Studio (SSMS). [Skalieren Sie Computeressourcen zentral hoch](sql-data-warehouse-manage-compute-overview.md), um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen. 
+Skalieren Sie Computeressourcen in Azure Synapse Analytics (ehemals SQL DW) mithilfe von T-SQL und SQL Server Management Studio (SSMS). [Skalieren Sie Computeressourcen zentral hoch](sql-data-warehouse-manage-compute-overview.md), um eine bessere Leistung zu erzielen, oder skalieren Sie sie zentral herunter, um Kosten einzusparen. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -30,7 +30,7 @@ Laden Sie die aktuelle Version von [SQL Server Management Studio](/sql/ssms/down
  
 ## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
 
-Verwenden Sie den [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md), um ein Data Warehouse namens **mySampleDataWarehouse** zu erstellen. Schließen Sie den Schnellstart ab, um sicherzustellen, dass Sie über eine Firewallregel verfügen und mit Ihrem Data Warehouse in SQL Server Management Studio eine Verbindung herstellen können.
+Verwenden Sie den [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md), um ein Data Warehouse namens **mySampleDataWarehouse** zu erstellen. Schließen Sie die Schnellstartanleitung ab, um sicherzustellen, dass Sie über eine Firewallregel verfügen und in SQL Server Management Studio eine Verbindung mit Ihrem Data Warehouse herstellen können.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Herstellen einer Verbindung mit dem Server als Serveradministrator
 
@@ -40,28 +40,28 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
 
-   | Einstellung       | Empfohlener Wert | BESCHREIBUNG | 
+   | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
-   | Servername | Der vollqualifizierte Servername | Beispiel: **mynewserver-20171113.database.windows.net**. |
-   | Authentication | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
-   | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie bei der Servererstellung angegeben haben. |
-   | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+   | Servername | Der vollqualifizierte Servername | Beispiel: **mySampleDataWarehouseservername.database.windows.net**. |
+   | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
+   | Anmeldename | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie bei der Servererstellung angegeben haben. |
+   | Kennwort | Das Kennwort für das Serveradministratorkonto | Das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
-    ![Verbindung mit dem Server herstellen](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![Herstellen der Verbindung mit dem Server](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
+3. Klicken Sie auf **Verbinden**. Das Fenster „Objekt-Explorer“ wird in SSMS geöffnet.
 
-5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken**. Erweitern Sie dann **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
+4. Erweitern Sie im Objekt-Explorer den Eintrag **Datenbanken**. Erweitern Sie dann **mySampleDataWarehouse**, um die Objekte in Ihrer neuen Datenbank anzuzeigen.
 
-    ![Datenbankobjekte](media/create-data-warehouse-portal/connected.png) 
+    ![Datenbankobjekte](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>Anzeigen des Dienstziels
 Die Einstellung des Dienstziels enthält die Anzahl der Data Warehouse-Einheiten für das Data Warehouse. 
 
 So zeigen Sie die aktuellen Data Warehouse-Einheiten für Ihr Data Warehouse an
 
-1. Erweitern Sie unterhalb der Verbindung mit **mynewserver 20171113.database.windows.net** den Knoten **Systemdatenbanken**.
+1. Erweitern Sie unter der Verbindung mit **mySampleDataWarehouseservername.database.windows.net** den Knoten **Systemdatenbanken**.
 2. Klicken Sie mit der rechten Maustaste auf **master** und dann auf **Neue Abfrage**. Ein neues Abfragefenster wird geöffnet.
 3. Führen Sie die folgende Abfrage aus, um eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“ zu treffen. 
 
@@ -80,11 +80,10 @@ So zeigen Sie die aktuellen Data Warehouse-Einheiten für Ihr Data Warehouse an
 
 4. Die folgenden Ergebnisse zeigen, dass für **mySampleDataWarehouse** ein Dienstziel von DW400 besteht. 
 
-    ![Anzeigen der aktuellen DWUs](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![iew-current-dwu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>Skalieren von Computeressourcen
-Sie können in SQL Data Warehouse Computeressourcen durch Anpassen der Data Warehouse-Einheiten (DWUs) erhöhen oder verringern. Mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) wurde **mySampleDataWarehouse** erstellt und mit 400 DWUs initialisiert. In den folgenden Schritten werden die DWUs für **mySampleDataWarehouse** angepasst.
+In Azure Synapse können Computeressourcen durch Anpassen von Data Warehouse-Einheiten erhöht oder verringert werden. Mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) wurde **mySampleDataWarehouse** erstellt und mit 400 DWUs initialisiert. In den folgenden Schritten werden die DWUs für **mySampleDataWarehouse** angepasst.
 
 So ändern Sie Data Warehouse-Einheiten
 
@@ -93,8 +92,7 @@ So ändern Sie Data Warehouse-Einheiten
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>Überwachen der Skalierungsänderungsanforderung
@@ -113,7 +111,7 @@ So fragen Sie den Status der Dienstobjektänderung ab:
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ Mit einem angehaltenen Data Warehouse kann über T-SQL keine Verbindung hergeste
 
 ## <a name="check-operation-status"></a>Überprüfen des Vorgangsstatus
 
-Um Informationen über verschiedene Verwaltungsvorgänge für SQL Data Warehouse zurückzugeben, führen Sie die folgende Abfrage in der DMV [dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) aus. Beispielsweise werden der Vorgang und der Status des Vorgangs („IN_PROGRESS“ oder „COMPLETED“) zurückgegeben.
+Führen Sie in der dynamischen Verwaltungssicht [dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) die folgende Abfrage aus, um Informationen zu verschiedenen Verwaltungsvorgängen für Ihre Azure Synapse-Instanz zurückzugeben. Beispielsweise werden der Vorgang und der Status des Vorgangs („IN_PROGRESS“ oder „COMPLETED“) zurückgegeben.
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie Computeressourcen für Ihr Data Warehouse skalieren. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
+In diesem Artikel haben Sie gelernt, wie Sie Computeressourcen für Ihr Data Warehouse skalieren. Weitere Informationen zu Azure Synapse finden Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
->[Laden von Daten in SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Tutorial: Laden des Datasets „New York Taxis“](load-data-from-azure-blob-storage-using-polybase.md)

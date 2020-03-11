@@ -1,6 +1,6 @@
 ---
 title: Partitionieren von Tabellen
-description: Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in Azure SQL Data Warehouse
+description: Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in SQL-Analyse
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 25485502ff1ae6858ee7d0f840c22940dc3ab9b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685420"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192148"
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>Partitionieren von Tabellen in SQL Data Warehouse
-Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in Azure SQL Data Warehouse
+# <a name="partitioning-tables-in-sql-analytics"></a>Partitionieren von Tabellen in SQL-Analyse
+Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in SQL-Analyse.
 
 ## <a name="what-are-table-partitions"></a>Was sind Tabellenpartitionen?
-Durch Tabellenpartitionen können Sie Ihre Daten in kleinere Gruppen von Daten unterteilen. In den meisten Fällen werden Tabellenpartitionen in einer Datumsspalte erstellt. Das Partitionieren wird für alle SQL Data Warehouse-Tabellentypen unterstützt, z.B. gruppierter Columnstore, gruppierter Index und Heap. Außerdem wird die Partitionierung für alle Verteilungstypen unterstützt, z.B. Hash- oder Roundrobin-Verteilung.  
+Durch Tabellenpartitionen können Sie Ihre Daten in kleinere Gruppen von Daten unterteilen. In den meisten Fällen werden Tabellenpartitionen in einer Datumsspalte erstellt. Das Partitionieren wird für alle Tabellentypen in SQL-Analyse unterstützt, einschließlich der Typen gruppierter Columnstore, gruppierter Index und Heap. Außerdem wird die Partitionierung für alle Verteilungstypen unterstützt, z.B. Hash- oder Roundrobin-Verteilung.  
 
 Durch die Partitionierung können sich Vorteile für die Wartung und die Abfrageleistung ergeben. Ob sich Vorteile für beide oder nur einen dieser Punkte ergeben, hängt davon ab, wie Daten geladen werden und ob dieselbe Spalte für beide Zwecke genutzt werden kann. Die Partitionierung kann nämlich nur für eine Spalte durchgeführt werden.
 
 ### <a name="benefits-to-loads"></a>Vorteile für Lasten
-Der Hauptvorteil der Partitionierung in SQL Data Warehouse ist die Verbesserung der Effizienz und Leistung beim Laden von Daten, indem Partitionen gelöscht, gewechselt und zusammengeführt werden. In den meisten Fällen werden Daten nach einer Datumsspalte partitioniert, die eng an die Reihenfolge gebunden ist, mit der die Daten in die Datenbank geladen werden. Einer der größten Vorteile bei der Verwendung von Partitionen zum Verwalten von Daten ist die Vermeidung der Transaktionsprotokollierung. Das schlichte Einfügen, Aktualisieren oder Löschen von Daten kann zwar der einfachste Ansatz sein, aber wenn Sie etwas Planung und Arbeit investieren, kann die Leistung durch die Verwendung der Partitionierung während des Ladevorgangs erheblich verbessert werden.
+Der Hauptvorteil der Partitionierung in SQL-Analyse ist die Verbesserung der Effizienz und Leistung beim Laden von Daten, indem Partitionen gelöscht, gewechselt und zusammengeführt werden. In den meisten Fällen werden Daten nach einer Datumsspalte partitioniert, die eng an die Reihenfolge gebunden ist, mit der die Daten in die Datenbank geladen werden. Einer der größten Vorteile bei der Verwendung von Partitionen zum Verwalten von Daten ist die Vermeidung der Transaktionsprotokollierung. Das schlichte Einfügen, Aktualisieren oder Löschen von Daten kann zwar der einfachste Ansatz sein, aber wenn Sie etwas Planung und Arbeit investieren, kann die Leistung durch die Verwendung der Partitionierung während des Ladevorgangs erheblich verbessert werden.
 
 Sie können den Partitionswechsel einsetzen, um einen Abschnitt einer Tabelle schnell zu entfernen oder auszutauschen.  So kann beispielsweise eine Umsatzfaktentabelle erstellt werden, die nur Daten für die letzten 36 Monate enthält. Am Monatsende wird jeweils der älteste Verkaufsdatenmonat aus der Tabelle gelöscht.  Sie können eine delete-Anweisung verwenden, um jeweils die Daten für den ältesten Monat zu löschen. Das Löschen einer großen Datenmenge Zeile für Zeile mit einer delete-Anweisung kann aber zu lange dauern und das Risiko für große Transaktionen erhöhen, deren Rollback sehr viel Zeit in Anspruch nimmt, wenn es zu Fehlern kommt. Ein wesentlich besserer Ansatz besteht darin, die älteste Partition der Daten zu löschen. Während das Löschen der einzelnen Zeilen Stunden dauern kann, werden für das Löschen einer gesamten Partition meist nur wenige Sekunden benötigt.
 
@@ -37,10 +37,10 @@ Die Partitionierung kann auch verwendet werden, um die Abfrageleistung zu verbes
 ## <a name="sizing-partitions"></a>Anpassen der Größe von Partitionen
 Die Partitionierung kann zwar verwendet werden, um die Leistung in einigen Szenarien zu verbessern, aber das Erstellen einer Tabelle mit **zu vielen** Partitionen kann die Leistung unter Umständen beeinträchtigen.  Dies gilt besonders für gruppierte Columnstore-Tabellen. Es muss klar sein, wann sich der Einsatz der Partitionierung anbietet und wie viele Partitionen erstellt werden sollten, damit die Partitionierung hilfreich ist. Es gibt keine genaue Vorgabe, welche Anzahl von Partitionen zu hoch ist. Dies hängt von Ihren Daten und außerdem davon ab, wie viele Partitionen gleichzeitig geladen werden. Ein erfolgreiches Partitionierungsschema hat normalerweise Dutzende bis Hunderte von Partitionen, nicht Tausende.
 
-Beim Erstellen von Partitionierungen für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden. Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich. Bereits vor der Erstellung von Partitionen teilt SQL Data Warehouse jede Tabelle auf 60 verteilte Datenbanken auf. Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt. Für dieses Beispiel bedeutet dies Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und SQL Data Warehouse 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind). Wenn eine Tabelle weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen. Weitere Informationen finden Sie im Artikel zur [Indizierung](sql-data-warehouse-tables-index.md), in dem Abfragen erläutert werden, die die Qualität von gruppierten Columnstore-Indizes bewerten können.
+Beim Erstellen von Partitionierungen für **gruppierte Columnstore**-Tabellen ist es wichtig zu beachten, wie viele Zeilen zu jeder Partition gehören werden. Für eine optimale Komprimierung und Leistung von gruppierten Columnstore-Tabellen sind mindestens 1 Million Zeilen pro Verteilung und Partition erforderlich. Bereits vor der Erstellung von Partitionen teilt SQL-Analyse jede Tabelle auf 60 verteilte Datenbanken auf. Jegliche Partitionierungen, die einer Tabelle hinzugefügt werden, werden zusätzlich zu den im Hintergrund erstellten Verteilungen durchgeführt. Für dieses Beispiel bedeutet dies Folgendes: Wenn die Umsatzfaktentabelle 36 Monatspartitionen enthält und eine SQL-Analyse-Datenbank 60 Verteilungen umfasst, muss die Umsatzfaktentabelle mindestens 60 Millionen Zeilen pro Monat umfassen (oder 2,1 Milliarden Zeilen, wenn alle Monate aufgefüllt sind). Wenn eine Tabelle weniger Zeilen als das empfohlene Minimum an Zeilen pro Partition enthält, sollten Sie die Verwendung von weniger Partitionen erwägen, um die Anzahl von Zeilen pro Partition zu erhöhen. Weitere Informationen finden Sie im Artikel zur [Indizierung](sql-data-warehouse-tables-index.md), in dem Abfragen erläutert werden, die die Qualität von gruppierten Columnstore-Indizes bewerten können.
 
 ## <a name="syntax-differences-from-sql-server"></a>Syntaxunterschiede zu SQL Server
-SQL Data Warehouse bietet eine einfachere Möglichkeit zum Definieren von Partitionen als SQL Server. Partitionierungsfunktionen und -schemen werden in SQL Data Warehouse nicht so wie in SQL Server verwendet. Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren. Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und SQL Data Warehouse unterstützen eine Partitionsspalte pro Tabelle, und es kann sich um eine Bereichspartition handeln. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
+SQL-Analyse bietet eine einfachere Möglichkeit zum Definieren von Partitionen als SQL Server. Partitionierungsfunktionen und -schemas werden in SQL-Analyse nicht so wie in SQL Server verwendet. Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren. Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und SQL-Analyse unterstützen eine Partitionsspalte pro Tabelle, und es kann sich um eine Bereichspartition handeln. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
 
 Im folgenden Beispiel wird mit der [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)-Anweisung die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
 
@@ -69,12 +69,12 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>Migrieren der Partitionierung von SQL Server
-Gehen Sie einfach wie folgt vor, um SQL Server-Partitionsdefinitionen zu SQL Data Warehouse zu migrieren:
+So migrieren Sie SQL Server-Partitionsdefinitionen zu SQL-Analyse
 
-- Entfernen Sie das SQL Server- [Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
+- Entfernen Sie das SQL Server-[Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql).
 - Fügen Sie die Definition der [Partitionsfunktion](/sql/t-sql/statements/create-partition-function-transact-sql) zu CREATE TABLE hinzu.
 
-Wenn Sie eine partitionierte Tabelle von einer SQL Server-Instanz migrieren, können Sie mit dem unten angegebenen SQL-Code die Anzahl von Zeilen in jeder Partition ermitteln. Beachten Sie Folgendes: Wenn für SQL Data Warehouse die gleiche Partitionierungsgranularität verwendet wird, verringert sich die Anzahl von Zeilen pro Partition um den Faktor 60.  
+Wenn Sie eine partitionierte Tabelle von einer SQL Server-Instanz migrieren, können Sie mit dem unten angegebenen SQL-Code die Anzahl von Zeilen in jeder Partition ermitteln. Beachten Sie Folgendes: Wenn für SQL-Analyse die gleiche Partitionierungsgranularität verwendet wird, verringert sich die Anzahl von Zeilen pro Partition um den Faktor 60.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -111,7 +111,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="partition-switching"></a>Partitionswechsel
-SQL Data Warehouse unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql)-Anweisung ausgeführt.
+SQL-Analyse unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql)-Anweisung ausgeführt.
 
 Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, tritt ein Fehler beim Partitionswechsel auf, da die Partitionsmetadaten nicht synchronisiert werden.
 
@@ -171,7 +171,7 @@ Der folgende Split-Befehl erhält eine Fehlermeldung:
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Nur leere Partitionen können aufgeteilt werden, wenn ein Columnstore-Index für die Tabelle vorhanden ist. Deaktivieren Sie ggf. den Columnstore-Index vor Ausgabe der ALTER PARTITION-Anweisung, und erstellen Sie dann nach Abschluss von ALTER PARTITION den Columnstore-Index neu.
+Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Wenn ein columnstore-Index für die Tabelle vorhanden ist, können nur leere Partitionen aufgeteilt werden. Deaktivieren Sie ggf. den Columnstore-Index vor Ausgabe der ALTER PARTITION-Anweisung, und erstellen Sie dann nach Abschluss von ALTER PARTITION den Columnstore-Index neu.
 
 Sie können aber auch `CTAS` zum Erstellen einer neuen Datentabelle verwenden.
 
@@ -227,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Laden neuer Daten in Partitionen, die Daten enthalten, in einem Schritt
-Das Laden von Daten in Partitionen mit Partitionswechsel ist eine praktische Möglichkeit, neue Daten in einer Tabelle zu platzieren, die für Benutzer nicht sichtbar ist.  Es kann für stark ausgelastete Systeme eine Herausforderung sein, den mit dem Partitionswechsel verbundenen Sperrkonflikt zu verarbeiten.  Um die vorhandenen Daten in einer Partition zu löschen, wurde früher ein `ALTER TABLE`-Befehl benötigt, um die Daten auszutauschen.  Anschließend wurde ein weiterer `ALTER TABLE`-Befehl benötigt, um die neuen Daten einzulesen.  In SQL Data Warehouse wird die `TRUNCATE_TARGET`-Option im Befehl `ALTER TABLE` unterstützt.  Mit `TRUNCATE_TARGET` überschreibt der `ALTER TABLE`-Befehl vorhandene Daten in der Partition mit neuen Daten.  Nachfolgend sehen Sie ein Beispiel, das mit `CTAS` eine neue Tabelle mit den vorhandenen Daten erstellt, neue Daten einfügt, dann alle Daten wieder in die Zieltabelle umschaltet und die vorhandenen Daten überschreibt.
+Das Laden von Daten in Partitionen mit Partitionswechsel ist eine praktische Möglichkeit, neue Daten in einer Tabelle zu platzieren, die für Benutzer nicht sichtbar ist.  Es kann für stark ausgelastete Systeme eine Herausforderung sein, den mit dem Partitionswechsel verbundenen Sperrkonflikt zu verarbeiten.  Um die vorhandenen Daten in einer Partition zu löschen, wurde früher ein `ALTER TABLE`-Befehl benötigt, um die Daten auszutauschen.  Anschließend wurde ein weiterer `ALTER TABLE`-Befehl benötigt, um die neuen Daten einzulesen.  In SQL-Analyse wird die `TRUNCATE_TARGET`-Option im Befehl `ALTER TABLE` unterstützt.  Mit `TRUNCATE_TARGET` überschreibt der `ALTER TABLE`-Befehl vorhandene Daten in der Partition mit neuen Daten.  Nachfolgend sehen Sie ein Beispiel, das mit `CTAS` eine neue Tabelle mit den vorhandenen Daten erstellt, neue Daten einfügt, dann alle Daten wieder in die Zieltabelle umschaltet und die vorhandenen Daten überschreibt.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -328,7 +328,7 @@ Um ein **Rosten** der Tabellendefinition in Ihrem Quellcodeverwaltungssystem zu 
     DROP TABLE #partitions;
     ```
 
-Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch und die Partitionierungsgrenzwerte können sich mit der Zeit dynamisch mit dem Warehouse entwickeln.
+Bei diesem Ansatz bleibt der Code in der Quellcodeverwaltung statisch, und die Partitionierungsgrenzwerte können sich mit der Zeit dynamisch mit der Datenbank entwickeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Entwickeln von Tabellen finden Sie in den Artikeln zur [Tabellenübersicht](sql-data-warehouse-tables-overview.md).

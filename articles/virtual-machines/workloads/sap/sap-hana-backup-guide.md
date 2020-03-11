@@ -3,58 +3,83 @@ title: Sicherungsanleitung für SAP HANA in Azure Virtual Machines | Microsoft-D
 description: In der Sicherungsanleitung für SAP HANA werden die beiden wichtigsten Sicherungsmöglichkeiten für SAP HANA auf virtuellen Azure-Computern beschrieben.
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermanndms
+author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/05/2018
-ms.author: hermannd
-ms.openlocfilehash: 8de83cbb7060e6ca5390720a4a241be71bb9dc92
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/01/2020
+ms.author: juergent
+ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617424"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255234"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
 ## <a name="getting-started"></a>Erste Schritte
 
-In der Sicherungsanleitung für SAP HANA auf virtuellen Azure-Computern (Azure Virtual Machines) werden nur Azure-spezifische Themen beschrieben. Informationen zu allgemeinen Aspekten der SAP HANA-Sicherung finden Sie in der Dokumentation zu SAP HANA (siehe _Dokumentation zur SAP HANA-Sicherung_ weiter unten in diesem Artikel).
+In der Sicherungsanleitung für SAP HANA auf virtuellen Azure-Computern (Azure Virtual Machines) werden nur Azure-spezifische Themen beschrieben. Informationen zu allgemeinen Aspekten der SAP HANA-Sicherung finden Sie in der Dokumentation zu SAP HANA. Wir erwarten, dass Sie mit den grundsätzlichen Sicherungsstrategien für Datenbanken sowie den Gründen und Motiven für eine zuverlässige und effektive Sicherungsstrategie vertraut sind. Außerdem sollten Sie mit den Anforderungen Ihres Unternehmens an das Sicherungsverfahren, der Aufbewahrungsdauer der Sicherungen und dem Wiederherstellungsverfahren vertraut sein.
 
-Der Schwerpunkt dieses Artikels liegt auf den zwei wichtigsten Sicherungsmöglichkeiten für SAP HANA auf virtuellen Azure-Computern:
+SAP HANA wird offiziell von verschiedenen Azure-VM-Typen, z.B der Azure M-Serie, unterstützt. Eine vollständige Liste der für SAP HANA zertifizierten Azure-VMs und Einheiten für SAP HANA (große Instanzen) finden Sie unter [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) (Zertifizierte IaaS-Plattformen). Microsoft Azure bietet eine Reihe von Einheiten, in denen SAP HANA nicht virtualisiert auf physischen Servern läuft. Dieser Dienst heißt [HANA (große Instanzen)](hana-overview-architecture.md). In diesem Leitfaden werden Sicherungsprozesse und Tools für HANA (große Instanzen) nicht behandelt. Wir beschränken uns auf virtuelle Azure-Computer. Einzelheiten zu Sicherungs-/Wiederherstellungsverfahren für HANA (große Instanzen) finden Sie im Artikel [Sichern und Wiederherstellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore).
 
+Der Schwerpunkt dieses Artikels liegt auf drei Sicherungsmöglichkeiten für SAP HANA auf virtuellen Azure-Computern:
+
+- HANA-Sicherung per [Azure Backup-Dienste](https://docs.microsoft.com/azure/backup/backup-overview) 
 - HANA-Sicherung im Dateisystem eines virtuellen Azure-Computers mit Linux (siehe [SAP HANA-Azure-Sicherung auf Dateiebene](sap-hana-backup-file-level.md))
-- HANA-Sicherung basierend auf Speichermomentaufnahmen per manueller Nutzung der Azure Storage Blob-Momentaufnahmenfunktion oder des Azure Backup-Diensts (siehe [SAP HANA backup based on storage snapshots](sap-hana-backup-storage-snapshots.md) (SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen))
+- HANA-Sicherung basierend auf Speichermomentaufnahmen per manueller Nutzung der Azure Storage Blob-Momentaufnahmenfunktion oder des Azure Backup-Diensts
 
-SAP HANA verfügt über eine Sicherungs-API, sodass Sicherungstools von Drittanbietern direkt in SAP HANA integriert werden können. (Dies wird im Rahmen dieser Anleitung nicht beschrieben.) Basierend auf dieser API ist derzeit keine direkte Integration von SAP HANA in den Azure Backup-Dienst möglich.
 
-SAP HANA wird offiziell von verschiedenen Azure-VM-Typen, z.B der Azure M-Serie, unterstützt. Eine vollständige Liste der für SAP HANA zertifizierten Azure-VMs finden Sie unter [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) (Zertifizierte IaaS-Plattformen). Dieser Artikel wird aktualisiert, wenn neue Angebote für SAP HANA in Azure verfügbar sind.
+SAP HANA verfügt über eine Sicherungs-API, sodass Sicherungstools von Drittanbietern direkt in SAP HANA integriert werden können. Produkte wie der Azure Backup-Dienst oder [Commvault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) nutzen diese proprietäre Schnittstelle, um SAP HANA-Datenbank- oder -Redo-Log-Sicherungen auszulösen. 
 
-Für Azure ist auch eine SAP HANA-Hybridlösung verfügbar, bei der SAP HANA nicht virtualisiert auf physischen Servern ausgeführt wird. In dieser Azure-Sicherungsanleitung für SAP HANA wird aber eine reine Azure-Umgebung beschrieben, in der SAP HANA auf einer Azure-VM ausgeführt wird (nicht die Ausführung von SAP HANA auf &quot;großen Instanzen&quot;). Weitere Informationen zu dieser Sicherungslösung auf &quot;großen Instanzen&quot; basierend auf Speichermomentaufnahmen finden Sie unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](hana-overview-architecture.md).
 
-Allgemeine Informationen zu SAP-Produkten, die in Azure unterstützt werden, finden Sie im [SAP-Hinweis 1928533](https://launchpad.support.sap.com/#/notes/1928533).
+Informationen dazu, wie Sie herausfinden können, welche SAP-Software in Azure unterstützt wird, finden Sie im Artikel [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure).
 
-Die folgenden drei Abbildungen enthalten eine Übersicht über die SAP HANA-Sicherungsoptionen unter Verwendung der derzeitigen nativen Azure-Funktionen sowie drei potenzielle zukünftige Sicherungsszenarien. In den verwandten Artikeln [SAP HANA Azure Backup on file level](sap-hana-backup-file-level.md) (SAP HANA-Sicherung mit Azure auf Dateiebene) und [SAP HANA backup based on storage snapshots](sap-hana-backup-storage-snapshots.md) (SAP HANA-Sicherung basierend auf Speichermomentaufnahmen) werden diese Optionen ausführlicher beschrieben, z.B. Größen- und Leistungsaspekte für SAP HANA-Sicherungen mit mehreren Terabyte.
+## <a name="azure-backup-service"></a>Azure Backup-Dienst
 
-![Abbildung mit Darstellung von zwei Möglichkeiten zum Speichern des aktuellen VM-Status](media/sap-hana-backup-guide/image001.png)
+Im ersten gezeigten Szenario werden der Azure Backup-Dienst und die SAP HANA-Schnittstelle `backint` verwendet, um eine Streamingsicherung einer SAP HANA-Datenbank durchzuführen. Alternativ können Sie auch eine allgemeinere Funktion des Azure Backup-Diensts einsetzen, um eine anwendungskonsistente Datenträger-Momentaufnahme zu erstellen und diese in den Azure Backup-Dienst übertragen zu lassen.
 
-In dieser Abbildung ist die Möglichkeit zum Speichern des aktuellen VM-Status dargestellt – entweder per Azure Backup-Dienst oder manueller Momentaufnahme von VM-Datenträgern. Bei diesem Ansatz ist keine Verwaltung von SAP HANA-Sicherungen erforderlich. Die Herausforderung besteht beim Szenario mit Datenträger-Momentaufnahmen darin, die Konsistenz des Dateisystems und einen anwendungskonsistenten Datenträgerzustand zu erreichen. Auf die Konsistenz wird weiter unten in diesem Artikel im Abschnitt _SAP HANA-Datenkonsistenz beim Aufnehmen von Speichermomentaufnahmen_ eingegangen. Funktionen und Einschränkungen des Azure Backup-Diensts in Bezug auf SAP HANA-Sicherungen werden ebenfalls später in diesem Artikel beschrieben.
+Azure Backup ist eine integrierte und zertifizierte Sicherungslösung für SAP HANA, die die proprietäre SAP HANA-Schnittstelle [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) verwendet. Weitere Einzelheiten zur Lösung, ihren Fähigkeiten und den Azure-Regionen, in denen sie verfügbar ist, finden Sie im Artikel [Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Einzelheiten und grundsätzliche Informationen zum Azure Backup-Dienst für HANA finden Sie im Artikel [Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines](https://docs.microsoft.com/azure/backup/sap-hana-db-about). 
 
-![Abbildung mit Optionen zur Erstellung einer SAP HANA-Dateisicherung auf der VM](media/sap-hana-backup-guide/image002.png)
+Die zweite Möglichkeit, den Azure Backup-Dienst zu nutzen, ist die Erstellung einer anwendungskonsistenten Sicherung mithilfe von Datenträger-Momentaufnahmen von Azure Storage Premium. Andere für HANA zertifizierte Azure-Speicher wie [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd) und [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) unterstützen diese Art von Momentaufnahmen über den Azure Backup-Dienst nicht. Lesen Sie diese Artikel:
 
-In dieser Abbildung sind Optionen zum Erstellen einer SAP HANA-Dateisicherung auf der VM und zum anschließenden Speichern der HANA-Sicherungsdateien an einem anderen Speicherort mit unterschiedlichen Tools dargestellt. Zum Erstellen einer HANA-Sicherung ist mehr Zeit als bei einer Sicherungslösung mit Momentaufnahmen erforderlich, aber hinsichtlich der Integrität und Konsistenz ergeben sich Vorteile. Weitere Details finden Sie weiter unten in diesem Artikel.
+- [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+- [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
 
-![Abbildung mit einem potenziellen Szenario für die zukünftige SAP HANA-Sicherung](media/sap-hana-backup-guide/image003.png)
+Diese Abfolge von Aktivitäten ergibt sich:
 
-In dieser Abbildung ist ein potenzielles Szenario für eine zukünftige SAP HANA-Sicherung dargestellt. Wenn für SAP HANA das Erstellen von Sicherungen über den Sekundärbereich einer Replikation möglich wäre, wären zusätzliche Optionen für Sicherungsstrategien vorhanden. Dies ist laut einem Beitrag im SAP HANA-Wiki nicht möglich:
+- Azure Backup muss ein Skript vor dem Erstellen einer Momentaufnahme ausführen, das die Anwendung, in diesem Fall SAP HANA, in einen konsistenten Zustand versetzt.
+- Sobald dieser konsistente Zustand bestätigt ist, führt Azure Backup die Datenträger-Momentaufnahmen aus.
+- Nach Abschluss der Momentaufnahmen macht Azure Backup die im Skript vor dem Erstellen einer Momentaufnahme durchgeführte Aktivität rückgängig.
+- Nach erfolgreicher Ausführung streamt Azure Backup die Daten in den Azure Backup-Tresor.
 
-_&quot;Ist es möglich, Sicherungen im Sekundärbereich zu erstellen?_
+Bei SAP HANA verwenden die meisten Kunden für die Volumes mit dem SAP HANA-Redo-Log die Azure-Schreibbeschleunigung. Der Azure Backup-Dienst schließt diese Volumes automatisch aus den Momentaufnahmen aus. Dieser Ausschluss beeinträchtigt nicht die Fähigkeit zur Wiederherstellung von HANA. Allerdings würde es die Möglichkeit der Wiederherstellung bei fast allen anderen von SAP unterstützten DBMS verhindern.
 
-_Nein. Derzeit können Sie Sicherungen von Daten und Protokollen nur im Primärbereich erstellen. Wenn die automatische Sicherung von Protokollen aktiviert ist, werden die Protokollsicherungen nach der Übernahme in den Sekundärbereich dort automatisch geschrieben.&quot;_
+Die Schattenseite dieser Möglichkeit ist die Tatsache, dass Sie Ihr eigenes Skript zur Ausführung vor und nach Erstellung der Momentaufnahme entwickeln müssen. Das vor Erstellung der Momentaufnahme ausgeführte Skript muss eine HANA-Momentaufnahme erstellen und etwaige Ausnahmefälle behandeln. Dagegen muss das nach der Erstellung der Momentaufnahme ausgeführte Skript die HANA-Momentaufnahme wieder löschen. Wenn Sie weitere Informationen zur erforderlichen Logik benötigen, beginnen Sie mit [SAP-Supporthinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883). Die Überlegungen im Abschnitt zur „SAP HANA-Datenkonsistenz bei der Erstellung von Speichermomentaufnahmen“ in diesem Artikel gelten in vollem Umfang für diese Art der Sicherung.
+
+> [!NOTE]
+> Auf Momentaufnahmen von Datenträgern basierende Sicherungen für SAP HANA in Bereitstellungen, in denen mehrere Datenbankcontainer genutzt werden, erfordern mindestens die Version HANA 2.0 SP04.
+> 
+
+Weitere Informationen zu Speichermomentaufnahmen finden Sie weiter unten in diesem Dokument.
+
+![Abbildung mit Darstellung von zwei Möglichkeiten zum Speichern des aktuellen VM-Status](media/sap-hana-backup-guide/azure-backup-service-for-hana.png)
+
+## <a name="other-hana-backup-methods"></a>Andere HANA-Sicherungsmethoden
+Es gibt drei weitere Sicherungsmethoden, die in Erwägung gezogen werden können:
+
+- Sichern mithilfe einer NFS-Freigabe, die auf Azure NetApp Files (ANF) basiert. ANF bietet seinerseits die Möglichkeit, Momentaufnahmen der Volumes zu erstellen, auf denen Sie Sicherungen speichern. Angesichts des Durchsatzes, den Sie letztlich zum Schreiben der Sicherungen benötigen, könnte diese Lösung kostspielig werden. Die Einrichtung ist jedoch einfach, da HANA die Sicherungen direkt in die native NFS-Freigabe in Azure schreiben kann.
+- Ausführen der HANA-Sicherung mittels an VM angefügter Datenträger des Typs „SSD Standard“ oder „Azure Storage Premium“. Im nächsten Schritt können Sie diese Sicherungsdateien in Azure Blob Storage kopieren. Diese Strategie könnte wirtschaftlich attraktiv sein.
+- Ausführen der HANA-Sicherung mittels an VM angefügter Datenträger des Typs „SSD Standard“ oder „Azure Storage Premium“. Im nächsten Schritt wird regelmäßig eine Momentaufnahme des Datenträgers erstellt. Nach der ersten Momentaufnahme können inkrementelle Momentaufnahmen verwendet werden, um Kosten zu senken.
+
+![Abbildung mit Optionen zur Erstellung einer SAP HANA-Dateisicherung auf der VM](media/sap-hana-backup-guide/other-hana-backup-paths.png)
+
+In dieser Abbildung sind Optionen zum Erstellen einer SAP HANA-Dateisicherung auf der VM und zum anschließenden Speichern der HANA-Sicherungsdateien an einem anderen Speicherort mit unterschiedlichen Tools dargestellt. Allerdings weisen alle Lösungen, die nicht mit einem Sicherungsdienst eines Drittanbieters oder dem Azure-Backup-Dienst verbunden sind, mehrere gemeinsame Hürden auf. Einige von ihnen können aufgelistet werden, wie z. B. die Verwaltung der Aufbewahrung, der automatische Wiederherstellungsprozess und die Bereitstellung einer automatischen Zeitpunktwiederherstellung, wie sie von Azure Backup oder anderen spezialisierten Sicherungsprogrammen und -diensten von Drittanbietern angeboten werden. Viele dieser Dienste von Drittanbietern können in Azure ausgeführt werden. 
+
 
 ## <a name="sap-resources-for-hana-backup"></a>SAP-Ressourcen für die HANA-Sicherung
 
@@ -68,169 +93,59 @@ _Nein. Derzeit können Sie Sicherungen von Daten und Protokollen nur im Primärb
 - Häufig gestellte Fragen zur SAP HANA-Datenbank und zu Speichermomentaufnahmen im [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883)
 - Ungeeignete Netzwerkdateisysteme für Sicherung und Wiederherstellung im [SAP-Hinweis 1820529](https://launchpad.support.sap.com/#/notes/1820529)
 
-### <a name="why-sap-hana-backup"></a>Gründe für SAP HANA-Sicherungen
-
-Bei Azure-Speicher erhalten Sie standardmäßig Verfügbarkeit und Zuverlässigkeit (weitere Informationen zum Azure-Speicher unter [Einführung in Microsoft Azure Storage](../../../storage/common/storage-introduction.md)).
-
-Die Mindestvoraussetzung für die &quot;Sicherung&quot; ist die Verwendung der Azure-SLAs und die Aufbewahrung der SAP HANA-Daten- und -Protokolldateien auf Azure VHDs, die an die SAP HANA-Server-VM angefügt sind. Bei diesem Ansatz sind VM-Ausfälle abgedeckt, aber keine potenziellen Beschädigungen der SAP HANA-Daten- und -Protokolldateien oder logische Fehler wie das versehentliche Löschen von Daten oder Dateien. Sicherungen sind auch aus Konformitäts- oder Rechtsgründen erforderlich. Kurz gesagt: Für SAP HANA-Sicherungen besteht immer eine Notwendigkeit.
-
 ### <a name="how-to-verify-correctness-of-sap-hana-backup"></a>Sicherstellen der Korrektheit von SAP HANA-Sicherungen
-Bei Verwendung von Speichermomentaufnahmen wird die Durchführung einer Testwiederherstellung auf einem anderen System empfohlen. Bei diesem Ansatz kann sichergestellt werden, dass eine Sicherung korrekt ist und die internen Prozesse für die Sicherung und Wiederherstellung wie erwartet funktionieren. Dies stellt im lokalen Bereich eine größere Herausforderung dar, ist aber in der Cloud deutlich einfacher erreichbar, indem die benötigten Ressourcen zu diesem Zweck vorübergehend bereitgestellt werden.
+Unabhängig von Ihrer Sicherungsmethode ist die Durchführung einer Testwiederherstellung auf einem anderen System eine absolute Notwendigkeit. Bei diesem Ansatz kann sichergestellt werden, dass eine Sicherung korrekt ist und die internen Prozesse für die Sicherung und Wiederherstellung wie erwartet funktionieren. Während die Wiederherstellung von Sicherungen aufgrund der erforderlichen lokalen Infrastruktur eine Hürde darstellen könnte, ist sie in der Cloud viel einfacher zu bewerkstelligen, indem die dafür notwendigen Ressourcen zeitweilig zur Verfügung gestellt werden. Es stimmt, dass mit HANA Tools zur Verfügung gestellt werden, mit denen sich Sicherungsdateien auf ihre Wiederherstellbarkeit überprüfen lassen. Der Zweck häufiger Wiederherstellungsübungen besteht jedoch darin, den Prozess einer Datenbankwiederherstellung zu testen und das Betriebspersonal darin zu schulen.
 
-Beachten Sie, dass es nicht ausreicht, eine einfache Wiederherstellung durchzuführen und zu überprüfen, ob HANA betriebsbereit ist. Im Idealfall sollten Sie eine Überprüfung auf die Konsistenz von Tabellen durchführen, um sich zu vergewissern, dass die wiederhergestellte Datenbank fehlerfrei ist. SAP HANA verfügt über mehrere Arten von Konsistenzprüfungen, die im [SAP-Hinweis 1977584](https://launchpad.support.sap.com/#/notes/1977584) beschrieben werden.
+Beachten Sie, dass es nicht ausreicht, eine einfache Wiederherstellung durchzuführen und zu überprüfen, ob HANA betriebsbereit ist. Sie müssen eine Überprüfung der Konsistenz von Tabellen durchführen, um sich zu vergewissern, dass die wiederhergestellte Datenbank fehlerfrei ist. SAP HANA verfügt über mehrere Arten von Konsistenzprüfungen, die im [SAP-Hinweis 1977584](https://launchpad.support.sap.com/#/notes/1977584) beschrieben werden.
 
 Informationen zur Überprüfung der Konsistenz von Tabellen finden Sie außerdem auf der SAP-Website unter [Table and Catalog Consistency Checks](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b) (Konsistenzprüfungen für Tabellen und Kataloge).
-
-Für Standarddateisicherungen ist eine Testwiederherstellung nicht erforderlich. Es gibt zwei SAP HANA-Tools, mit denen Sie überprüfen können, welche Sicherung für die Wiederherstellung verwendet werden kann: hdbbackupdiag und hdbbackupcheck. Weitere Informationen zu diesen Tools finden Sie unter [Manually Checking Whether a Recovery is Possible](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) (Manuelles Überprüfen, ob eine Wiederherstellung möglich ist).
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>Vor- und Nachteile einer HANA-Sicherung gegenüber einer Speichermomentaufnahme
 
 Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die Speichermomentaufnahme. Die Vor- und Nachteile werden aufgeführt, damit Benutzer je nach Situation und verfügbarer Speichertechnologie ermitteln können, welches Verfahren am besten geeignet ist (siehe [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie)).
 
-Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Konsistenz des Dateisystems garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) (Verwenden von Blob-Momentaufnahmen mit PowerShell)). Im nächsten Abschnitt (_Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_) werden einige Aspekte dieser Funktion beschrieben.
+Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Dateisystemkonsistenz auf mehreren Datenträgern garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) [Verwenden von Blob-Momentaufnahmen mit PowerShell]). 
 
 Darüber hinaus muss ein Verständnis der Abrechnungsaspekte vorhanden sein, wenn häufig mit Blob-Momentaufnahmen gearbeitet wird, wie in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Grundlegendes zu anfallenden Kosten für Momentaufnahmen) – das ist nicht so selbsterklärend wie bei virtuellen Azure-Datenträgern.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen
 
-Die Konsistenz von Dateisystemen und Anwendungen ist beim Erstellen von Momentaufnahmen ein komplexes Problem. Die einfachste Möglichkeit zur Verhinderung von Problemen ist das Herunterfahren von SAP HANA oder sogar des gesamten virtuellen Computers. Das Herunterfahren ist vielleicht für eine Demonstration oder einen Prototyp – oder ggf. auch ein Entwicklungssystem – machbar, aber es ist keine Option für ein Produktionssystem.
+Wie zuvor dokumentiert, ist die Beschreibung der Azure Backup-Sicherungsfunktionen zum Erstellen von Momentaufnahmen sowie der Dateisystem- und Anwendungskonsistenz bei der Erstellung von Speichermomentaufnahmen obligatorisch. Die einfachste Möglichkeit zur Verhinderung von Problemen ist das Herunterfahren von SAP HANA oder sogar des gesamten virtuellen Computers. Dies ist etwas, das für eine Produktionsinstanz nicht machbar ist.
 
-Für Azure sollte bedacht werden, dass bei der Azure-Funktion zum Erstellen von Blob-Momentaufnahmen keine Konsistenz des Dateisystems garantiert wird. Unter Verwendung der SAP HANA-Momentaufnahmenfunktion funktioniert dies aber, solange nur ein virtueller Datenträger beteiligt ist. Aber auch bei nur einem Datenträger müssen zusätzliche Elemente überprüft werden. Der [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883) enthält wichtige Informationen zu SAP HANA-Sicherungen mithilfe von Speichermomentaufnahmen. Beispielsweise wird erwähnt, dass es beim XFS-Dateisystem erforderlich ist, **xfs\_freeze** auszuführen, bevor eine Speichermomentaufnahme gestartet wird, um die Konsistenz sicherzustellen (Details zu **xfs\_freeze** finden Sie unter „[xfs\_freeze(8) – Linux man page](https://linux.die.net/man/8/xfs_freeze)“).
+> [!NOTE]
+> Auf Momentaufnahmen von Datenträgern basierende Sicherungen für SAP HANA in Bereitstellungen, in denen mehrere Datenbankcontainer genutzt werden, erfordern mindestens die Version HANA 2.0 SP04.
+> 
 
-Das Thema Konsistenz wird noch komplexer, wenn ein Dateisystem mehrere Datenträger bzw. Volumes umfasst. Beispielsweise bei Verwendung von mdadm oder LVM und Striping. Der oben erwähnte SAP-Hinweis enthält die folgenden Informationen:
-
-_&quot;Beachten Sie aber, dass über das Speichersystem die E/A-Konsistenz sichergestellt werden muss, wenn eine Speichermomentaufnahme pro SAP HANA-Datenvolume erstellt wird. Die Erstellung von Momentaufnahmen für ein Datenvolume, das spezifisch für den SAP HANA-Dienst ist, muss also ein atomischer Vorgang sein.&quot;_
+Azure Storage bietet keine Dateisystemkonsistenz auf mehreren Datenträgern oder Volumes, die während der Erstellung der Momentaufnahme an eine VM angefügt sind. Das bedeutet, dass die Anwendungskonsistenz während der Momentaufnahme von der Anwendung, in diesem Fall SAP HANA selbst, gewährleistet werden muss. Der [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883) enthält wichtige Informationen zu SAP HANA-Sicherungen mithilfe von Speichermomentaufnahmen. Beispielsweise ist es beim XFS-Dateisystem erforderlich, **xfs\_freeze** auszuführen, bevor eine Speichermomentaufnahme gestartet wird, um Anwendungskonsistenz zu ermöglichen (Details zu **xfs\_freeze** finden Sie unter [xfs\_freeze(8) – Linux man page](https://linux.die.net/man/8/xfs_freeze)).
 
 Angenommen, ein XFS-Dateisystem umfasst vier virtuelle Azure-Datenträger. Mit den folgenden Schritten wird eine konsistente Momentaufnahme bereitgestellt, die den HANA-Datenbereich darstellt:
 
-- Vorbereiten der HANA-Momentaufnahme
-- Einfrieren des Dateisystems (z.B. per **xfs\_freeze**)
-- Erstellen aller erforderlichen Blob-Momentaufnahmen in Azure
-- Aufheben des Einfrierens des Dateisystems
-- Bestätigen der HANA-Momentaufnahme
+1. Vorbereiten der Erstellung einer Momentaufnahme von HANA-Daten
+1. Einfrieren der Dateisysteme aller Datenträger/Volumes (verwenden Sie z. B. **xfs\_freeze**)
+1. Erstellen aller erforderlichen Blob-Momentaufnahmen in Azure
+1. Aufheben des Einfrierens des Dateisystems
+1. Bestätigen der Momentaufnahme der HANA-Daten (löscht die Momentaufnahme)
 
-Die Empfehlung besteht darin, das obige Verfahren unabhängig vom Dateisystem sicherheitshalber in allen Fällen zu verwenden. Oder wenn es sich um einen Einzeldatenträger oder Striping mit mdadm oder LVM über mehrere Datenträger handelt.
+Wenn Sie die Azure Backup-Funktion zur Durchführung anwendungskonsistenter Momentaufnahmensicherungen verwenden, muss in Schritt 1 das vor der Momentaufnahme auszuführende Skript von Ihnen programmiert/geschrieben werden. Der Azure Backup-Dienst führt die Schritte 2 und 3 aus. Die Schritte 4 und 5 müssen von Ihrem Code im nach der Momentaufnahme auszuführenden Skript erneut bereitgestellt werden. Wenn Sie nicht den Azure Backup-Dienst nutzen, müssen Sie auch die Schritte 2 und 3 selbst programmieren/schreiben.
+Weitere Informationen zum Erstellen von Momentaufnahmen von HANA-Daten finden Sie in den folgenden Artikeln:
+
+- [HANA data snapshots] (Momentaufnahmen von HANA-Daten) (https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/ac114d4b34d542b99bc390b34f8ef375.html
+- Weitere Informationen zum Ausführen von Schritt 1 finden Sie im Artikel [Create a Data Snapshot (Native SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) (Erstellen einer Momentaufnahme von Daten [Native SQL]). 
+- Details zum bedarfsabhängigen Bestätigen/Löschen von Momentaufnahmen von HANA-Daten in Schritt 5 finden Sie im Artikel [Create a Data Snapshot (Native SQL)](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.04/en-US/9fd1c8bb3b60455caa93b7491ae6d830.html) (Erstellen einer Momentaufnahme von Daten [Native SQL]). 
 
 Es ist wichtig, die HANA-Momentaufnahme zu bestätigen. Aufgrund des &quot;Copy-on-Write&quot;-Vorgangs ist für SAP HANA in diesem Vorbereitungsmodus für Momentaufnahmen ggf. kein zusätzlicher Datenträger-Speicherplatz erforderlich. Das Starten neuer Sicherungen ist ebenfalls erst möglich, nachdem die SAP HANA-Momentaufnahme bestätigt wurde.
 
-Für den Azure Backup-Dienst werden Azure-VM-Erweiterungen verwendet, um für die Konsistenz des Dateisystems zu sorgen. Diese VM-Erweiterungen sind für die alleinige Nutzung nicht verfügbar. Die SAP HANA-Konsistenz muss trotzdem verwaltet werden. Weitere Informationen finden Sie im verwandten Artikel [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](sap-hana-backup-file-level.md).
 
 ### <a name="sap-hana-backup-scheduling-strategy"></a>Strategie für die Zeitplanung für SAP HANA-Sicherungen
 
-Der SAP HANA-Artikel [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie) enthält einen einfachen Plan zur Durchführung von Sicherungen:
+Der SAP HANA-Artikel [Planning Your Backup and Recovery Strategy](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) (Planen Ihrer Sicherungs- und Wiederherstellungsstrategie) enthält einen einfachen Sicherungsplan. Setzen Sie bei der Definition der Sicherungs-/Wiederherstellungsstrategie und des Prozesses für SAP HANA auf die SAP-Dokumentation rund um HANA und Ihre Erfahrungen mit anderen Datenbank-Managementsystemen. Die Reihenfolge der verschiedenen Arten von Backups und die Aufbewahrungsdauer hängen stark von den SLAs ab, die Sie bieten müssen.
 
-- Speichermomentaufnahme (täglich)
-- Vollständige Datensicherung im Datei- oder Bacint-Format (einmal pro Woche)
-- Automatische Sicherungen von Protokollen
-
-Sie können auch vollständig auf Speichermomentaufnahmen verzichten. Diese können durch HANA-Deltasicherungen ersetzt werden, z.B. inkrementelle oder differenzielle Sicherungen (siehe [Delta Backups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm) (Deltasicherungen)).
-
-Der Leitfaden zur HANA-Administration enthält eine Liste mit Beispielen. Es wird vorgeschlagen, dass anhand der folgenden Sicherungssequenz der SAP HANA-Stand eines bestimmten Zeitpunkts wiederhergestellt wird:
-
-1. Vollständige Datensicherung
-2. Differenzielle Sicherung
-3. Inkrementelle Sicherung 1
-4. Inkrementelle Sicherung 2
-5. Protokollsicherungen
-
-Im Hinblick auf einen genauen Zeitplan, mit dem Zeitpunkt und Häufigkeit eines bestimmten Typs von Sicherung bestimmt werden, kann keine allgemeine Richtlinie aufgestellt werden. Dies ist kundenspezifisch und hängt davon ab, wie viele Datenänderungen im System vorgenommen werden. Eine grundlegende Empfehlung von SAP, die als allgemeingültige Richtlinie angesehen werden kann, ist die Erstellung einer vollständigen HANA-Sicherung pro Woche.
-Informationen zu Protokollsicherungen finden Sie in der SAP HANA-Dokumentation zu [Log Backups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm) (Protokollsicherungen).
-
-Darüber hinaus empfiehlt SAP eine Überprüfung des Sicherungskatalogs, um zu verhindern, dass dieser sehr umfangreich wird (siehe [Housekeeping for Backup Catalog and Backup Storage](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm) (Housekeeping für Sicherungskatalog und Sicherungsspeicher)).
-
-### <a name="sap-hana-configuration-files"></a>SAP HANA-Konfigurationsdateien
-
-Wie in den häufig gestellten Fragen im [SAP-Hinweis 1642148](https://launchpad.support.sap.com/#/notes/1642148) beschrieben, sind die SAP HANA-Konfigurationsdateien nicht Teil einer HANA-Standardsicherung. Diese Dateien sind für die Wiederherstellung eines Systems nicht unbedingt erforderlich. Die HANA-Konfiguration kann nach der Wiederherstellung manuell geändert werden. Falls Sie die gleiche benutzerdefinierte Konfiguration während des Wiederherstellungsprozesses erhalten möchten, müssen Sie die HANA-Konfigurationsdateien separat sichern.
-
-Falls HANA-Standardsicherungen in einem dedizierten HANA-Sicherungsdateisystem erstellt werden, können die Konfigurationsdateien auch in dasselbe Sicherungsdateisystem kopiert werden, und anschließend können alle Daten zusammen auf das endgültige Speicherziel kopiert werden, z.B. einen „kalten“ Blobspeicher.
-
-### <a name="sap-hana-cockpit"></a>SAP HANA Cockpit
-
-SAP HANA Cockpit ermöglicht die Überwachung und Verwaltung von SAP HANA per Browser. Die Anwendung ermöglicht die Behandlung von SAP HANA-Sicherungen, sodass sie als Alternative zu SAP HANA Studio und ABAP DBACOCKPIT eingesetzt werden kann (weitere Informationen unter [SAP HANA Cockpit](https://help.sap.com/saphelp_hanaplatform/helpdata/en/73/c37822444344f3973e0e976b77958e/content.htm)).
-
-![Abbildung: SAP HANA Cockpit-Bildschirm für die Datenbankverwaltung](media/sap-hana-backup-guide/image004.png)
-
-In dieser Abbildung sind der SAP HANA-Bildschirm für die Datenbankverwaltung und links die Kachel für die Sicherung dargestellt. Die Kachel für die Sicherung wird angezeigt, wenn der Benutzer für sein Anmeldekonto über die erforderlichen Berechtigungen verfügt.
-
-![Sicherungen können in SAP HANA Cockpit verfolgt werden, während sie durchgeführt werden](media/sap-hana-backup-guide/image005.png)
-
-Sicherungen können in SAP HANA Cockpit verfolgt werden, während sie durchgeführt werden, und nach Abschluss des Vorgangs sind alle Sicherungsdetails verfügbar.
-
-![Beispiel: Verwendung von Firefox auf einer Azure SLES 12-VM mit Gnome-Desktop](media/sap-hana-backup-guide/image006.png)
-
-Die obigen Screenshots wurden auf einer Azure-Windows-VM erstellt. Dies ist ein Beispiel für die Verwendung von Firefox auf einer Azure SLES 12-VM mit Gnome-Desktop. Sie sehen die Option zum Definieren von SAP HANA-Sicherungszeitplänen in SAP HANA Cockpit. Außerdem ist erkennbar, dass als Präfix für die Sicherungsdateien Datum und Uhrzeit vorgeschlagen werden. In SAP HANA Studio lautet das Standardpräfix &quot;COMPLETE\_DATA\_BACKUP&quot;, wenn eine vollständige Dateisicherung durchgeführt wird. Die Verwendung eines eindeutigen Präfix ist zu empfehlen.
 
 ### <a name="sap-hana-backup-encryption"></a>SAP HANA-Sicherungsverschlüsselung
 
-SAP HANA ermöglicht die Verschlüsselung von Daten und Protokollen. Wenn SAP HANA-Daten und -Protokolle nicht verschlüsselt werden, sind auch die Sicherungen nicht verschlüsselt. Der Kunde kann eine Drittanbieterlösung verwenden, um die SAP HANA-Sicherungen zu verschlüsseln. Weitere Informationen zur SAP HANA-Verschlüsselung finden Sie unter [Data and Log Volume Encryption](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/01f36fbb5710148b668201a6e95cf2/content.htm) (Verschlüsselung von Daten- und Protokollvolumes).
+SAP HANA ermöglicht die Verschlüsselung von Daten und Protokollen. Wenn SAP HANA-Daten und -Protokolle nicht verschlüsselt werden, sind standardmäßig auch die Sicherungen nicht verschlüsselt. SAP HANA bietet jedoch eine separate Sicherungsverschlüsselung an, die unter [SAP HANA-Sicherungsverschlüsselung](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/5f837a57ce5e468d9db21c8683bc84da.html) dokumentiert ist. Wenn Sie ältere Versionen von SAP HANA nutzen, müssen Sie möglicherweise prüfen, ob die Verschlüsselung von Sicherungen bereits Teil der gebotenen Funktionalität war.  
 
-In Microsoft Azure kann ein Kunde zum Verschlüsseln die IaaS-VM-Verschlüsselungsfunktion verwenden. Beispielsweise können dedizierte Datenträger verwendet werden, die an die VM angefügt sind. Sie werden zum Speichern von SAP HANA-Sicherungen genutzt, und anschließend werden Kopien dieser Datenträger erstellt.
-
-Der Azure Backup-Dienst kann verschlüsselte VMs/Datenträger verarbeiten (siehe [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](../../../backup/backup-azure-vms-encryption.md)).
-
-Eine weitere Möglichkeit ist die Verwendung der SAP HANA-VM und ihrer Datenträger ohne Verschlüsselung und die Speicherung der SAP HANA-Sicherungsdateien in einem Speicherkonto, für das die Verschlüsselung aktiviert wurde (siehe [Azure Storage Service Encryption für ruhende Daten](../../../storage/common/storage-service-encryption.md)).
-
-## <a name="test-setup"></a>Testeinrichtung
-
-### <a name="test-virtual-machine-on-azure"></a>Testen des virtuellen Computers in Azure
-
-Für die folgenden Sicherungs- und Wiederherstellungstests wurde eine SAP HANA-Installation in einer Azure GS5-VM verwendet. Für VMs der M-Serie gilt das gleiche Prinzip.
-
-![Abbildung: Ausschnitt aus der Übersicht im Azure-Portal für die HANA-Test-VM](media/sap-hana-backup-guide/image007.png)
-
-Diese Abbildung enthält einen Ausschnitt aus der Übersicht im Azure-Portal für die HANA-Test-VM.
-
-### <a name="test-backup-size"></a>Testen der Sicherungsgröße
-
-![Abbildung wurde unter Verwendung der Sicherungskonsole in HANA Studio erstellt und zeigt die Sicherungsdateigröße von 229 GB für den HANA-Indexserver](media/sap-hana-backup-guide/image008.png)
-
-Eine Testtabelle wurde mit Daten gefüllt, um für die Datensicherung eine Gesamtgröße von über 200 GB zu erzielen und realistische Leistungsdaten zu erhalten. Diese Abbildung wurde unter Verwendung der Sicherungskonsole in HANA Studio erstellt und zeigt die Sicherungsdateigröße von 229 GB für den HANA-Indexserver. Für die Tests wurde das Standardpräfix „COMPLETE_DATA_BACKUP“ für Sicherungen in SAP HANA Studio verwendet. In echten Produktionssystemen sollte ein nützlicheres Präfix festgelegt werden. In SAP HANA Cockpit wird Datum/Uhrzeit vorgeschlagen.
-
-### <a name="test-tool-to-copy-files-directly-to-azure-storage"></a>Testtool zum direkten Kopieren von Dateien in den Azure-Speicher
-
-Zum direkten Übertragen von SAP HANA-Sicherungsdateien in Azure Blob Storage oder auf Azure-Dateifreigaben wurde das Tool blobxfer verwendet. Es unterstützt beide Ziele und kann aufgrund seiner Befehlszeilenschnittstelle leicht in Automatisierungsskripts integriert werden. Das Tool blobxfer ist auf [GitHub](https://github.com/Azure/blobxfer) verfügbar.
-
-### <a name="test-backup-size-estimation"></a>Testen der Schätzung der Sicherungsgröße
-
-Es ist wichtig, die Größe der Sicherungen von SAP HANA zu schätzen. Mit dieser Schätzung wird die Leistung verbessert, indem die maximale Sicherungsdateigröße für eine Reihe von Sicherungsdateien definiert wird. Der Grund hierfür ist die Parallelität während eines Kopiervorgangs für Dateien. (Dies wird weiter unten in diesem Artikel näher erläutert.) Sie müssen auch entscheiden, ob eine vollständige Sicherung oder eine Deltasicherung (inkrementell oder differenziell) durchgeführt werden soll.
-
-Glücklicherweise gibt es eine einfache SQL-Anweisung, mit der die Größe von Sicherungsdateien geschätzt werden kann: **select \* from M\_BACKUP\_SIZE\_ESTIMATIONS** (siehe [Estimate the Space Needed in the File System for a Data Backup](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm) (Schätzen des Speicherplatzes, der im Dateisystem für eine Datensicherung benötigt wird)).
-
-![Ausgabe dieser SQL-Anweisung stimmt fast genau mit der tatsächlichen Größe der vollständigen Datensicherung auf dem Datenträger überein](media/sap-hana-backup-guide/image009.png)
-
-Für das Testsystem stimmt die Ausgabe dieser SQL-Anweisung fast genau mit der tatsächlichen Größe der vollständigen Datensicherung auf dem Datenträger überein.
-
-### <a name="test-hana-backup-file-size"></a>Testen der Größe der HANA-Sicherungsdatei
-
-![Über die Sicherungskonsole von HANA Studio können Sie die maximal zulässige Größe für HANA-Sicherungsdateien festlegen](media/sap-hana-backup-guide/image010.png)
-
-Über die Sicherungskonsole von HANA Studio können Sie die maximal zulässige Größe für HANA-Sicherungsdateien festlegen. In der Beispielumgebung ermöglicht es diese Funktion, dass Sie anstelle einer Sicherungsdatei mit 230 GB mehrere kleine Sicherungsdateien erhalten. Eine geringere Dateigröße hat eine erhebliche Auswirkung auf die Leistung (siehe verwandten Artikel [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](sap-hana-backup-file-level.md)).
-
-## <a name="summary"></a>Zusammenfassung
-
-Basierend auf den Testergebnissen sind in den folgenden Tabellen die Vor- und Nachteile von Lösungen aufgeführt, die zum Sichern einer auf Azure-VMs ausgeführten SAP HANA-Datenbank verwendet werden.
-
-**Sichern von SAP HANA im Dateisystem und anschließendes Kopieren von Sicherungsdateien auf das endgültige Sicherungsziel**
-
-|Lösung                                           |Vorteile                                 |Nachteile                                  |
-|---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Aufbewahren von HANA-Sicherungen auf VM-Datenträgern                      |Kein zusätzlicher Verwaltungsaufwand     |Belegt lokalen VM-Datenträger-Speicherplatz           |
-|Tool blobxfer zum Kopieren von Sicherungsdateien in Blobspeicher |Parallelität beim Kopieren von mehreren Dateien, Nutzung von „kaltem“ Blobspeicher möglich | Zusätzlicher Wartungsaufwand für das Tool und benutzerdefinierte Skripterstellung | 
-|Blob-Kopiervorgang per PowerShell oder CLI                    |Kein zusätzliches Tool erforderlich, Einsatz von Azure PowerShell oder CLI möglich |Manueller Prozess, Kunde muss sich um Skripterstellung und Verwaltung von kopierten Blobs für die Wiederherstellung kümmern|
-|Kopieren auf NFS-Freigabe                                  |Nachverarbeitung von Sicherungsdateien auf einer anderen VM ohne Auswirkung auf den HANA-Server|Langsamer Kopiervorgang|
-|blobxfer-Kopiervorgang für Azure-Dateidienst                |Belegt keinen Speicherplatz auf lokalen VM-Datenträgern|Keine direkte Schreibunterstützung durch HANA-Sicherung, derzeitige Größenbeschränkung der Dateifreigabe von 5 TB|
-|Azure Backup-Agent                                 | Bevorzugte Lösung         | Derzeit nicht unter Linux verfügbar    |
-
-
-
-**SAP HANA-Sicherung basierend auf Speichermomentaufnahmen**
-
-|Lösung                                           |Vorteile                                 |Nachteile                                  |
-|---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Azure Backup-Dienst                               | VM-Sicherung basierend auf Blob-Momentaufnahmen | Wenn die Wiederherstellung auf Dateiebene nicht verwendet wird, ist die Erstellung einer neuen VM für den Wiederherstellungsprozess erforderlich, wofür ein neuer SAP HANA-Lizenzschlüssel benötigt wird|
-|Manuelle Blob-Momentaufnahmen                              | Flexible Erstellung und Wiederherstellung von bestimmten VM-Datenträgern ohne Änderung der eindeutigen VM-ID|Manuelle Schritte, die vom Kunden durchgeführt werden müssen|
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Unter [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](sap-hana-backup-file-level.md) wird die dateibasierte Sicherung beschrieben.
-* In [SAP HANA backup based on storage snapshots](sap-hana-backup-storage-snapshots.md) (SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen) wird die auf Speichermomentaufnahmen basierende Sicherungsoption behandelt.
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588738"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246028"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
@@ -32,27 +32,24 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen, damit Sie einen virtuellen Computer bereitstellen und das NAT-Gateway verwenden können.  
+Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen, damit Sie einen virtuellen Computer bereitstellen und das NAT-Gateway verwenden können.
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus, oder suchen Sie über die Marketplace-Suche nach **Virtuelles Netzwerk**.
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+| Parameter                   | value                |
+|-----------------------------|----------------------|
+| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
+| **\<VNET-Name>** | myVNet          |
+| **\<Regionsname>**          | USA (Ost) 2      |
+| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
+| **\<Subnetzname>**          | mySubnet        |
+| **\<Subnetzadressbereich>** | 192.168.0.0\24          |
 
-    | Einstellung | value |
-    | ------- | ----- |
-    | Name | Geben Sie **myVNet** ein. |
-    | Adressraum | Geben Sie **192.168.0.0/16** ein. |
-    | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie „Neu erstellen“ und dann **myResourceGroupNAT** aus. |
-    | Location | Wählen Sie **USA, Osten 2** aus.|
-    | Subnetzname | Geben Sie **mySubnet** ein. |
-    | Subnetzadressbereich | Geben Sie **192.168.0.0/24** ein. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>Erstellen eines virtuellen Computers zur Verwendung des NAT-Gateways
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Erstellen eines virtuellen Computers zur Verwendung des NAT-Gateways
 
 Sie erstellen nun einen virtuellen Computer zur Verwendung des NAT-Diensts. Dieser virtuelle Computer verfügt über eine öffentliche IP-Adresse, die als öffentliche IP auf Instanzebene verwendet wird, um den Zugriff auf den virtuellen Computer zu ermöglichen. Der NAT-Dienst erkennt die Flussrichtung und ersetzt in Ihrem Subnetz das Standardziel im Internet. Die öffentliche IP-Adresse des virtuellen Computers wird nicht für ausgehende Verbindungen verwendet.
 

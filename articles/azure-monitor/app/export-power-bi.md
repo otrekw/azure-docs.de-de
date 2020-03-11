@@ -1,18 +1,14 @@
 ---
 title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Dokumentation
 description: Analytics-Abfragen können in Power BI angezeigt werden.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668008"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663996"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -123,7 +119,7 @@ Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedate
 
 ### <a name="get-the-adapter"></a>Abrufen des Adapters
 1. Melden Sie sich bei [Power BI](https://app.powerbi.com/) an.
-2. Öffnen Sie **Daten abrufen** ![Screenshot des GetData-Symbols in der unteren linken Ecke](./media/export-power-bi/001.png), **Dienste**.
+2. Öffnen Sie **Daten abrufen** ![Screenshot des GetData-Symbols in der unteren linken Ecke](./media/export-power-bi/001.png) und dann **Dienste**.
 
     ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/export-power-bi/002.png)
 

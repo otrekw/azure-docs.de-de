@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768457"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301000"
 ---
 ## <a name="prepare-your-web-app"></a>Vorbereiten Ihrer Web-App
 
-Um ein benutzerdefiniertes SSL-Zertifikat (Drittanbieterzertifikat oder App Service-Zertifikat) an Ihre Web-App zu binden, muss Ihr [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) den Tarif **Basic**, **Standard**, **Premium** oder **App Service (isoliert)** aufweisen. Stellen Sie in diesem Schritt sicher, dass sich Ihre Web-App im richtigen Tarif befindet.
+Wenn Sie benutzerdefinierte Sicherheitsbindungen erstellen oder Clientzertifikate für Ihre App Service-App aktivieren möchten, müssen Sie über einen [App-Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) im Tarif **Basic**, **Standard**, **Premium** oder **I** verfügen. Stellen Sie in diesem Schritt sicher, dass sich Ihre Web-App im richtigen Tarif befindet.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

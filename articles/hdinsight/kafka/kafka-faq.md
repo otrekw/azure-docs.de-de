@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530934"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206978"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Häufig gestellte Fragen zu Apache Kafka in Azure HDInsight
 
@@ -50,7 +50,7 @@ Durch Verwenden von [Enterprise-Sicherheitspaket (ESP)](../domain-joined/apache-
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Werden meine Daten verschlüsselt? Kann ich meine eigenen Schlüssel verwenden?
 
-Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie SSL selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Bring Your Own Key für Apache Kafka in Azure HDInsight](apache-kafka-byok.md).
+Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie SSL selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Wie verbinde ich Clients mit meinem Cluster?
 

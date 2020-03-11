@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276926"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161719"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Tutorial: Schritt-für-Schritt-Anleitung zum Erstellen einer neuen Android-App mit Azure Spatial Anchors
 
@@ -111,7 +111,7 @@ Fügen Sie anschließend die folgenden Membervariablen in Ihrer `MainActivity`-K
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=52-57)]
 
-Fügen Sie als Nächstes der `onCreate()`-Methode von `app\java\<PackageName>\MainActivity` den folgenden Code hinzu. Mit diesem Code wird der Listener `handleTap()` eingebunden, der erkennt, wenn der Benutzer auf den Bildschirm Ihres Geräts tippt. Wenn das Tippen auf einer Oberfläche der realen Welt erfolgt, die von der Nachverfolgungsfunktion von ARCore bereits erkannt wurde, wird der Listener ausgeführt.
+Fügen Sie als Nächstes den folgenden Code in die Methode `app\java\<PackageName>\MainActivity` `onCreate()` ein. Mit diesem Code wird der Listener `handleTap()` eingebunden, der erkennt, wenn der Benutzer auf den Bildschirm Ihres Geräts tippt. Wenn das Tippen auf einer Oberfläche der realen Welt erfolgt, die von der Nachverfolgungsfunktion von ARCore bereits erkannt wurde, wird der Listener ausgeführt.
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=68-74,85&highlight=6-7)]
 
@@ -123,13 +123,13 @@ Führen Sie für Ihre App eine [erneute Bereitstellung](#trying-it-out) auf Ihre
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Anfügen eines lokalen Azure-Raumankers
 
-Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf Azure Spatial Anchors Version 1.3.0 ausgerichtet ist. Es sollte aber auch funktionieren, wenn Sie auf eine der neueren Versionen von Azure Spatial Anchors verweisen.
+Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf die Version 2.2.0 von Azure Spatial Anchors ausgerichtet ist. Es sollte aber auch funktionieren, wenn Sie auf eine der neueren Versionen von Azure Spatial Anchors verweisen. Die Versionshinweise finden Sie [hier](https://github.com/Azure/azure-spatial-anchors-samples/releases).
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Workloadklassifizierers – T-SQL '
+title: 'Schnellstart: Erstellen eines Workloadklassifizierers – T-SQL'
 description: Verwenden Sie T-SQL, um einen Workloadklassifizierer mit hoher Wichtigkeit zu erstellen.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.custom: azure-synapse
+ms.openlocfilehash: 9f15317141e56614cf6fe04f46ff478a73266775
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646292"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200497"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Schnellstart: Erstellen eines Workloadklassifizierers mit T-SQL
 
@@ -24,7 +25,7 @@ In dieser Schnellstartanleitung erstellen Sie in kurzer Zeit einen Workloadklass
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Wenn Sie eine SQL Data Warehouse-Instanz erstellen, wird unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Weitere Informationen finden Sie unter [SQL Data Warehouse – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Das Erstellen einer SQL-Analyse-Instanz in Azure Synapse Analytics führt möglicherweise zu einem neuen abrechenbaren Dienst.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
@@ -108,5 +109,5 @@ Führen Sie die folgenden Schritte aus, um Ressourcen zu bereinigen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sie haben nun einen Workloadklassifizierer erstellt. Führen Sie einige Abfragen als TheCEO durch, um zu ermitteln, welche Leistung erzielt wird. Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
-- Weitere Informationen zur Workloadverwaltung für Azure SQL Data Warehouse finden Sie unter [Workloadpriorität für SQL Data Warehouse](sql-data-warehouse-workload-importance.md) und [SQL Data Warehouse-Workloadklassifizierung](sql-data-warehouse-workload-classification.md).
-- Sehen Sie sich die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) an.
+- Weitere Informationen zur SQL-Analyse-Workloadverwaltung finden Sie unter [Workloadpriorität für SQL Data Warehouse](sql-data-warehouse-workload-importance.md) sowie unter [SQL Data Warehouse-Workloadklassifizierung](sql-data-warehouse-workload-classification.md).
+- Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

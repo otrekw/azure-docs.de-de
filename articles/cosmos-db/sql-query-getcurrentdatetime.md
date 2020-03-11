@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351024"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303901"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  Gibt den aktuellen UTC-Datums-/Uhrzeitwert (koordinierte Weltzeit) als ISO 8601-Zeichenfolge zurück.
@@ -25,7 +25,7 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Rückgabetypen
   
-  Gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.sssZ` zurück. Die Entsprechungen sind:
+  Gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert im Format `YYYY-MM-DDThh:mm:ss.fffffffZ` zurück. Die Entsprechungen sind:
   
   |||
   |-|-|
@@ -36,16 +36,18 @@ GetCurrentDateTime ()
   |hh|zweistellige Stundenzahl (00 bis 23)|
   |MM|zweistellige Minutenzahl (00 bis 59)|
   |ss|zweistellige Sekundenzahl (00 bis 59)|
-  |.sss|dreistellige dezimale Bruchteile einer Sekunde|
+  |.fffffff|siebenstellige Sekundenbruchteile|
   |Z|UTC-Kennzeichner||
   
   Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
   GetCurrentDateTime() ist eine nichtdeterministische Funktion. 
   
   Das zurückgegebene Ergebnis entspricht UTC (koordinierte Weltzeit).
+
+  Die Genauigkeit beträgt 7 Ziffern mit einer Genauigkeit von 100 Nanosekunden.
 
 ## <a name="examples"></a>Beispiele
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

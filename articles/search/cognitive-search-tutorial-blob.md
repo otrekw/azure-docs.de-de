@@ -1,34 +1,43 @@
 ---
-title: 'Tutorial: Extrahieren von Text und Struktur aus JSON-Blobs'
+title: 'Tutorial: REST und KI über Azure-Blobs'
 titleSuffix: Azure Cognitive Search
-description: Hier wird Schritt für Schritt ein Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache anhand des Inhalts von JSON-Blobs mit Postman und den Azure Cognitive Search-Rest-APIs erläutert.
+description: Hier finden Sie ein ausführliches Beispiel für die Textextraktion und die Verarbeitung natürlicher Sprache auf der Grundlage von Blobspeicherinhalten mit Postman und den Azure Cognitive Search-REST-APIs.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113661"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190721"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Tutorial: Extrahieren von Text und Struktur aus JSON-Blobs in Azure mit REST-APIs (Azure Cognitive Search)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von REST und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
-Wenn Sie in Azure-Blobspeicher über unstrukturierte Text- oder Bildinhalte verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilddateien (JPG, PNG, TIFF) verarbeiten, dieses Tutorial konzentriert sich jedoch auf wortbasierte Inhalte, um mithilfe von Spracherkennung und Textanalyse neue Felder und Informationen zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
+Wenn Sie in Azure Blob Storage über unstrukturierten Text oder Bilder verfügen, können Sie mithilfe einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) Informationen extrahieren und neue Inhalte erstellen, die für die Volltextsuche oder in Knowledge Mining-Szenarien verwendet werden können. Eine Pipeline kann zwar Bilder verarbeiten, in diesem REST-Tutorial steht jedoch Text im Mittelpunkt, um unter Verwendung der Spracherkennung und der Verarbeitung natürlicher Sprache neue Felder zu erstellen, die Sie in Abfragen, Facetten und Filtern nutzen können.
+
+In diesem Tutorial werden Postman und die [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) verwendet, um folgende Aufgaben auszuführen:
 
 > [!div class="checklist"]
-> * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, MD-, DOCX- oder PPTX-Format) in Azure Blob Storage.
+> * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, HTML-, DOCX- oder PPTX-Format) in Azure Blob Storage.
 > * Erstellen Sie eine Pipeline, die Text extrahiert und Sprache, Entitäten sowie Schlüsselbegriffe erkennt.
 > * Definieren Sie einen Index zum Speichern der Ausgabe (Rohinhalte sowie von der Pipeline generierte Name/Wert-Paare).
 > * Führen Sie die Pipeline aus, um Transformationen und Analysen zu starten und den Index zu erstellen und zu laden.
 > * Erkunden Sie Ergebnisse per Volltextsuche und umfangreicher Abfragesyntax.
 
-Für diese exemplarische Vorgehensweise benötigen Sie mehrere Dienste sowie die [Postman-Desktop-App](https://www.getpostman.com/) oder ein anderes Webtesttool zum Ausführen von Rest-API-Aufrufen. 
-
 Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
++ [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
++ [Postman-Desktop-App](https://www.getpostman.com/)
++ [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst 
+
+> [!Note]
+> In diesem Tutorial können Sie den kostenlosen Dienst verwenden. Der kostenlose Suchdienst ist auf drei Indizes, drei Indexer und drei Datenquellen beschränkt. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich zunächst, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
 ## <a name="download-files"></a>Herunterladen von Dateien
 
@@ -38,7 +47,9 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 
 ## <a name="1---create-services"></a>1\. Erstellen der Dienste
 
-In dieser exemplarischen Vorgehensweise werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Die drei Dienste sollten nach Möglichkeit in der gleichen Region und Ressourcengruppe erstellt werden, um einen möglichst geringen Abstand zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
+In diesem Tutorial werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services auf dem Back-End für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Dieses Tutorial bleibt unter der kostenlosen Zuteilung von 20 Transaktionen pro Indexer und Tag für Cognitive Services. Aus diesem Grund müssen Sie nur den Such- und den Speicherdienst erstellen.
+
+Erstellen Sie diese beiden Dienste nach Möglichkeit in der gleichen Region und Ressourcengruppe, um einen möglichst geringen Abstand zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
 
 ### <a name="start-with-azure-storage"></a>Azure Storage
 
@@ -102,9 +113,9 @@ Erfassen Sie genau wie bei Azure Blob Storage den Zugriffsschlüssel. Wenn Sie s
 
 2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-    Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
+   Rufen Sie auch den Abfrageschlüssel ab. Es empfiehlt sich, Abfrageanforderungen mit schreibgeschütztem Zugriff auszugeben.
 
-![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Abrufen des Dienstnamens sowie der Administrator- und Abfrageschlüssel](media/search-get-started-nodejs/service-name-and-keys.png)
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel im Header erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung sendet, und dem Dienst, der sie verarbeitet.
 
@@ -475,29 +486,25 @@ Zur Erinnerung: Wir haben Blobinhalte als Grundlage verwendet, bei denen das ges
    cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
    ```
 
-Diese Abfragen veranschaulichen einige Verwendungsmöglichkeiten für die Abfragesyntax und die Filter für neue Felder, die von der kognitiven Suche erstellt wurden. Weitere Abfragebeispiele finden Sie in den [Beispielen des Artikels „Search Documents (Azure Search Service REST API)“](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Durchsuchen von Dokumenten (REST-API für Azure Search-Dienst)) sowie unter [Abfragebeispiele mit „einfacher“ Suchsyntax in Azure Search](search-query-simple-examples.md) und unter [Abfragebeispiele, die „vollständige“ Lucene-Suchsyntax verwenden (erweiterte Abfragen in Azure Search)](search-query-lucene-examples.md).
+Diese Abfragen veranschaulichen einige der Verwendungsmöglichkeiten von Abfragesyntax und Filtern für neue Felder, die von Cognitive Search erstellt werden. Weitere Abfragebeispiele finden Sie unter [Beispiele](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) im Artikel „Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)“, unter [Erstellen einer einfachen Abfrage in Azure Search](search-query-simple-examples.md) sowie unter [Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)](search-query-lucene-examples.md).
 
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Zurücksetzen und erneut ausführen
 
-In den frühen experimentellen Phasen der Pipelineentwicklung besteht der praktikabelste Ansatz für den Übergang von einer Entwurfsphase zur nächsten darin, die Objekte aus Azure Cognitive Search zu löschen und Ihrem Code zu erlauben, sie neu zu erstellen. Ressourcennamen sind eindeutig. Wenn Sie ein Objekt löschen, können Sie es unter dem gleichen Namen neu erstellen.
+In den frühen experimentellen Phasen der Entwicklung besteht der praktikabelste Ansatz für den Übergang von einer Entwurfsphase zur nächsten darin, die Objekte aus Azure Cognitive Search zu löschen und Ihrem Code zu erlauben, sie neu zu erstellen. Ressourcennamen sind eindeutig. Wenn Sie ein Objekt löschen, können Sie es unter dem gleichen Namen neu erstellen.
 
-So indizieren Sie Ihre Dokumente mit den neuen Definitionen erneut:
+Sie können das Portal verwenden, um Indizes, Indexer, Datenquellen und Qualifikationsgruppen zu löschen. Wenn Sie den Indexer löschen, können Sie optional auch den Index, die Qualifikationsgruppen und die Datenquelle löschen.
 
-1. Löschen Sie den Indexer, den Index und das Skillset.
-2. Ändern Sie Objekte.
-3. Führen Sie auf der Grundlage Ihres Diensts eine Neuerstellung durch, um die Pipeline auszuführen. 
+![Löschen von Suchobjekten](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Löschen von Suchobjekten im Portal")
 
-Zum Löschen von Indizes, Indexern und Skillsets können Sie entweder das Portal oder **DELETE** mit URLs für die jeweiligen Objekte verwenden. Der folgende Befehl löscht einen Indexer:
+Alternativ können Sie **DELETE** verwenden und URLs für jedes Objekt angeben. Der folgende Befehl löscht einen Indexer:
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 Nach erfolgreichem Löschen wird der Statuscode 204 zurückgegeben.
-
-In dem Maß, da Ihr Code reift, kann es sinnvoll sein, die Neuerstellungsstrategie neu zu definieren. Weitere Informationen finden  Sie unter [Neuerstellen eines Indexes](search-howto-reindex.md).
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
@@ -509,11 +516,13 @@ Ferner haben Sie erfahren, wie die Ergebnisse getestet werden und das System fü
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit zur Bereinigung des Systems nach einem Tutorial besteht im Löschen der Ressourcengruppe, die den Azure Cognitive Search-Dienst und den Azure Blob-Dienst enthält. Unter der Annahme, dass Sie beide Dienste in der gleichen Gruppe platziert haben, löschen Sie nun einfach die Ressourcengruppe, um endgültig ihren gesamten Inhalt zu löschen, einschließlich der Dienste und aller gespeicherten Inhalte, die Sie für dieses Tutorial erstellt haben. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ der einzelnen Dienste.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, ist es ratsam, nach Abschluss eines Projekts die nicht mehr benötigten Ressourcen zu entfernen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
+
+Ressourcen können im Portal über den Link „Alle Ressourcen“ oder „Ressourcengruppen“ im linken Navigationsbereich gesucht und verwaltet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Anpassen oder Erweitern der Pipeline mit benutzerdefinierten Qualifikationen. Das Erstellen einer benutzerdefinierten Qualifikation die Sie einer Qualifikationsgruppe hinzufügen, ermöglicht Ihnen, eigene, von Ihnen selbst erstellte Text- oder Bildanalysen einzubeziehen. 
+Nachdem Sie sich nun mit allen Objekten einer KI-Anreicherungspipeline vertraut gemacht haben, können Sie sich weiter über Skillsetdefinitionen und einzelne Qualifikationen informieren.
 
 > [!div class="nextstepaction"]
-> [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
+> [Erstellen eines Skillsets](cognitive-search-defining-skillset.md)

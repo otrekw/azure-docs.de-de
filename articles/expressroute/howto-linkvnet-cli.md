@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076540"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206961"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe der CLI
 
 In diesem Artikel können Sie virtuelle Netzwerke (VNETs) mithilfe der CLI mit Azure-ExpressRoute-Verbindungen verknüpfen. Um mithilfe der Azure CLI eine Verknüpfung durchzuführen, müssen die virtuellen Netzwerke mit dem Resource Manager-Bereitstellungsmodell erstellt werden. Sie können Teil desselben Abonnements sein oder zu einem anderen Abonnement gehören. Wenn Sie eine andere Methode für die Verbindung Ihres VNET mit einer ExpressRoute-Verbindung verwenden möchten, können Sie einen Artikel aus der folgenden Liste auswählen:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -155,15 +155,17 @@ Der Bereich von *RoutingWeight* liegt zwischen 0 und 32.000. Der Standardwert is
 ## <a name="configure-expressroute-fastpath"></a>Konfigurieren von ExpressRoute FastPath 
 Sie können [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) aktivieren, wenn Ihre ExpressRoute-Leitung auf [ExpressRoute Direct](expressroute-erdirect-about.md) festgelegt ist und Ihr virtuelles Netzwerkgateway den Typ „Höchstleistung“ oder „ErGw3AZ“ hat. FastPath verbessert die Leistung von Datenpfaden (Pakete pro Sekunde und Verbindungen pro Sekunde) zwischen Ihrem lokalen und Ihrem virtuellen Netzwerk. 
 
-> [!NOTE] 
-> Wenn Sie bereits eine virtuelle Netzwerkverbindung haben, aber FastPath noch nicht aktiviert ist, müssen Sie die virtuelle Netzwerkverbindung löschen und eine neue erstellen. 
-> 
->  
+**Konfigurieren von FastPath für eine neue Verbindung**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
+**Aktualisieren einer vorhandenen Verbindung zum Aktivieren von FastPath**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

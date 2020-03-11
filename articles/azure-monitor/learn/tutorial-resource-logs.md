@@ -1,18 +1,17 @@
 ---
 title: Sammeln von Ressourcenprotokollen von einer Azure-Ressource und Analysieren der Protokolle mit Azure Monitor
 description: 'Tutorial: Konfigurieren von Diagnoseeinstellungen zum Sammeln von Ressourcenprotokollen von einer Azure-Ressource in einem Log Analytics-Arbeitsbereich, wo diese per Protokollabfrage analysiert werden können.'
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532613"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269195"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource
 
@@ -47,7 +46,7 @@ Ein Log Analytics-Arbeitsbereich in Azure Monitor sammelt und indiziert Protokol
    - **Abonnement**: Wählen Sie das Abonnement aus, in dem der Arbeitsbereich gespeichert werden soll. Hierbei muss es sich nicht um dasselbe Abonnement handeln, in dem sich die überwachte Ressource befindet.
    - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder klicken Sie auf **Neu erstellen**, um eine zu erstellen. Hierbei muss es sich nicht um dieselbe Ressourcengruppe handeln, in der sich die überwachte Ressource befindet.
    - **Standort**: Wählen Sie eine Azure-Region aus, oder erstellen Sie einen neuen Standort. Hierbei muss es sich nicht um denselben Standort handeln, in dem sich die überwachte Ressource befindet.
-   - **Tarif:** Wählen Sie *Free* aus – in diesem Tarif werden Daten sieben Tage lang aufbewahrt. Sie können den Tarif später ändern. Klicken Sie auf den Link **Log Analytics-Preise**, um mehr über die verschiedenen Tarife zu erfahren.
+   - **Tarif:** Wählen Sie *Nutzungsbasierte Zahlung* aus. Sie können den Tarif später ändern. Klicken Sie auf den Link **Log Analytics-Preise**, um mehr über die verschiedenen Tarife zu erfahren.
 
     ![Neuer Arbeitsbereich](media/tutorial-resource-logs/new-workspace.png)
 

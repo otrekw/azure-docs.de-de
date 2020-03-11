@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 17d86f25de6eecee535d6f812f4ef0b078a4b6db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752496"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656006"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer Java Spring-App
 
@@ -43,9 +43,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), bevor Sie mit diesem Tutorial beginnen.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Ein unterstütztes [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) mit Version 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) Version 3.0 oder höher
 
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
@@ -56,10 +56,10 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), bev
 1. Wählen Sie in der Ergebnisliste links **Key Vault** aus.
 1. Wählen Sie unter **Schlüsseltresore** die Option **Hinzufügen** aus.
 1. Geben Sie auf der rechten Seite unter **Schlüsseltresor erstellen** die folgenden Informationen ein:
-    - Wählen Sie die Option **Abonnement** aus, um ein Abonnement auszuwählen.
-    - Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    - Unter **Schlüsseltresorname** müssen Sie einen eindeutigen Namen eingeben. Geben Sie für dieses Tutorial **Contoso-vault2** ein.
-    - Wählen Sie in der Dropdownliste **Region** einen Ort aus.
+    * Wählen Sie die Option **Abonnement** aus, um ein Abonnement auszuwählen.
+    * Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
+    * Unter **Schlüsseltresorname** müssen Sie einen eindeutigen Namen eingeben. Geben Sie für dieses Tutorial **Contoso-vault2** ein.
+    * Wählen Sie in der Dropdownliste **Region** einen Ort aus.
 1. Übernehmen Sie für die anderen Optionen unter **Schlüsseltresor erstellen** die Standardwerte.
 1. Klicken Sie auf **Erstellen**.
 
@@ -74,9 +74,9 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 1. Wählen Sie auf den Key Vault-Eigenschaftenseiten die Option **Geheimnisse** aus.
 1. Wählen Sie die Option **Generieren/Importieren** aus.
 1. Geben Sie im Bereich **Geheimnis erstellen** die folgenden Werte ein:
-    - **Uploadoptionen**: Geben Sie **Manuell** ein.
-    - **Name**: Geben Sie **Nachricht** ein.
-    - **Value**: Geben Sie **Hallo von Key Vault** ein.
+    * **Uploadoptionen**: Geben Sie **Manuell** ein.
+    * **Name**: Geben Sie **Nachricht** ein.
+    * **Value**: Geben Sie **Hallo von Key Vault** ein.
 1. Übernehmen Sie für die anderen Eigenschaften unter **Geheimnis erstellen** die Standardwerte.
 1. Klicken Sie auf **Erstellen**.
 
@@ -87,10 +87,10 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 1. Wählen Sie **Konfigurations-Explorer** aus.
 
 1. Wählen Sie **+ Erstellen** > **Schlüsseltresorverweis** aus, und geben Sie dann die folgenden Werte an:
-    - **Key**: Wählen Sie **/application/config.keyvaultmessage** aus.
-    - **Bezeichnung:** Lassen Sie diesen Wert leer.
-    - **Abonnement**, **Ressourcengruppe** und **Schlüsseltresor**: Geben Sie die Werte ein, die den Werten des im vorherigen Abschnitt erstellten Schlüsseltresors entsprechen.
-    - **Geheimnis**: Wählen Sie das Geheimnis mit dem Namen **Nachricht** aus, das Sie im vorherigen Abschnitt erstellt haben.
+    * **Key**: Wählen Sie **/application/config.keyvaultmessage** aus.
+    * **Bezeichnung:** Lassen Sie diesen Wert leer.
+    * **Abonnement**, **Ressourcengruppe** und **Schlüsseltresor**: Geben Sie die Werte ein, die den Werten des im vorherigen Abschnitt erstellten Schlüsseltresors entsprechen.
+    * **Geheimnis**: Wählen Sie das Geheimnis mit dem Namen **Nachricht** aus, das Sie im vorherigen Abschnitt erstellt haben.
 
 ## <a name="connect-to-key-vault"></a>Verbindung mit Key Vault herstellen
 
@@ -119,8 +119,15 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
 1. Führen Sie den folgenden Befehl aus, um dem Dienstprinzipal den Zugriff auf Ihren Schlüsseltresor zu erlauben:
 
+    ```console
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+
+1. Führen Sie den folgenden Befehl aus, um Ihre Objekt-ID abzurufen, und fügen Sie sie anschließend zu App Configuration hinzu.
+
+    ```console
+    az ad sp show --id <clientId-of-your-service-principal>
+    az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
 1. Erstellen Sie die folgenden Umgebungsvariablen, und verwenden Sie dabei die Werte für den Dienstprinzipal, die im vorherigen Schritt angezeigt wurden:
@@ -130,7 +137,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     * **AZURE_TENANT_ID**: *tenantId*
 
 > [!NOTE]
-> Diese Key Vault-Anmeldeinformationen werden nur innerhalb der Anwendung verwendet. Ihre Anwendung authentifiziert sich mit diesen Anmeldeinformationen direkt bei Key Vault. Sie werden nie an den App Configuration-Dienst übermittelt.
+> Diese Key Vault-Anmeldeinformationen werden nur innerhalb Ihrer Anwendung verwendet.  Ihre Anwendung authentifiziert sich mit diesen Anmeldeinformationen direkt (ohne Beteiligung des App Configuration-Diensts) bei Key Vault.  Key Vault sorgt für die Authentifizierung Ihrer Anwendung und Ihres App Configuration-Diensts, ohne Schlüssel weiterzugeben oder offenzulegen.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualisieren des Codes für die Verwendung eines Key Vault-Verweises
 
@@ -157,17 +164,73 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
     }
     ```
 
+1. Erstellen Sie eine neue Datei mit dem Namen *AzureCredentials.java*, und fügen Sie den folgenden Code hinzu:
+
+    ```java
+    package com.example;
+
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.identity.EnvironmentCredentialBuilder;
+    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+
+    public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
+
+        @Override
+        public TokenCredential getKeyVaultCredential(String uri) {
+            return getCredential();
+        }
+
+        @Override
+        public TokenCredential getAppConfigCredential(String uri) {
+            return getCredential();
+        }
+
+        private TokenCredential getCredential() {
+            return new EnvironmentCredentialBuilder().build();
+        }
+
+    }
+    ```
+
+1. Erstellen Sie eine neue Datei mit dem Namen *AppConfiguration.java*. Fügen Sie den folgenden Code hinzu:
+
+    ```java
+    package com.example;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class AppConfiguration {
+
+        @Bean
+        public AzureCredentials azureCredentials() {
+            return new AzureCredentials();
+        }
+    }
+    ```
+
+1. Erstellen Sie im Verzeichnis „META-INF“ Ihrer Ressourcen eine neue Datei namens *spring.factories*, und fügen Sie Folgendes hinzu:
+
+    ```factories
+    org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+    com.example.AppConfiguration
+    ```
+
 1. Erstellen Sie Ihre Spring Boot-Anwendung mit Maven, und führen Sie sie aus. Beispiel:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
+
 1. Nachdem Ihre Anwendung ausgeführt wird, testen Sie sie mit *cURL*. Beispiel:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
+
     Es wird die Nachricht angezeigt, die Sie im App Configuration-Speicher eingegeben haben. Darüber hinaus wird die Nachricht angezeigt, die Sie in Key Vault eingegeben haben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

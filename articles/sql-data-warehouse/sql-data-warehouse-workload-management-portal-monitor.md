@@ -7,24 +7,24 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193797"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals (Vorschau)
-In diesem Artikel wird erläutert, wie Sie die Ressourcenverwendung und Abfrageaktivität der [Arbeitsauslastungsgruppe](sql-data-warehouse-workload-isolation.md#workload-groups) überwachen. Ausführliche Informationen zum Konfigurieren des Azure-Metrik-Explorers finden Sie im Artikel [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).  Ausführliche Informationen zum Überwachen der Systemressourcenverwendung finden Sie in der Dokumentation zur Überwachung von Azure SQL Data Warehouse im Abschnitt [Ressourcenverwendung](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization).
+In diesem Artikel wird erläutert, wie Sie die Ressourcenverwendung und Abfrageaktivität der [Arbeitsauslastungsgruppe](sql-data-warehouse-workload-isolation.md#workload-groups) überwachen. Ausführliche Informationen zum Konfigurieren des Azure-Metrik-Explorers finden Sie im Artikel [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).  Ausführliche Informationen zum Überwachen der Systemressourcenverwendung finden Sie in der Dokumentation zur Überwachung von Azure Synapse Analytics im Abschnitt [Ressourcenverwendung](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization).
 Zum Überwachen der Arbeitsauslastungsverwaltung werden zwei verschiedene Kategorien von Arbeitsauslastungsgruppen-Metriken bereitgestellt: Ressourcenzuordnung und Abfrageaktivität.  Diese Metriken können nach Arbeitsauslastungsgruppen aufgeteilt und gefiltert werden.  Die Metriken können danach aufgeteilt und gefiltert werden, ob sie systemdefiniert sind (Ressourcenklassen-Arbeitsauslastungsgruppen) oder benutzerdefiniert (vom Benutzer mit [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)-Syntax erstellt).
 
 ## <a name="workload-management-metric-definitions"></a>Metrikdefinitionen der Arbeitsauslastungsverwaltung
 
-|Metrikname                    |Beschreibung  |Aggregationstyp |
+|Metrikname                    |BESCHREIBUNG  |Aggregationstyp |
 |-------------------------------|-------------|-----------------|
 |Effektives Ressourcenlimit (Prozent) | *Effektives Ressourcenlimit (Prozent)* ist eine feste Beschränkung des Prozentsatzes der Ressourcen, auf die die Arbeitsauslastungsgruppe zugreifen kann, unter Berücksichtigung des Wertes, der anderen Arbeitsauslastungsgruppen für *Effektive Mindestanzahl von Ressourcen (Prozent)* zugeordnet ist. Die Metrik *Effektives Ressourcenlimit (Prozent)* wird mithilfe des `CAP_PERCENTAGE_RESOURCE`-Parameters in der [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)-Syntax konfiguriert.  Der effektive Wert wird hier beschrieben.<br><br>Wenn beispielsweise eine Arbeitsauslastungsgruppe `DataLoads` mit `CAP_PERCENTAGE_RESOURCE` = 100 erstellt wird und eine andere Arbeitsauslastungsgruppe mit einem effektiven minimalen Ressourcenprozentsatz von 25 %, beträgt der Wert von *Effektives Ressourcenlimit (Prozent)* für die Arbeitsauslastungsgruppe `DataLoads` 75 %.<br><br>*Effektives Ressourcenlimit (Prozent)* bestimmt die obere Grenze der Parallelität (und somit des potenziellen Durchsatzes), die eine Arbeitsauslastungsgruppe erreichen kann.  Wenn zusätzlicher Durchsatz erforderlich ist, der über den derzeit von der Metrik *Effektives Ressourcenlimit (Prozent)* gemeldeten Durchsatz hinausgeht, erhöhen Sie entweder `CAP_PERCENTAGE_RESOURCE`, verringern Sie `MIN_PERCENTAGE_RESOURCE` anderer Arbeitsauslastungsgruppen, oder skalieren Sie die Instanz zentral hoch, um weitere Ressourcen hinzuzufügen.  Das Verringern von `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kann zwar die Parallelität erhöhen, erhöht aber nicht unbedingt den Gesamtdurchsatz.| Min, Avg, Max |
 |Effektive Mindestanzahl von Ressourcen (Prozent) |*Effektive Mindestanzahl von Ressourcen (Prozent)* ist der Mindestprozentsatz von Ressourcen, die unter Berücksichtigung des Dienstebenenminimums für die Arbeitsauslastungsgruppe reserviert und isoliert sind.  Die Metrik „Effektive Mindestanzahl von Ressourcen (Prozent)“ wird mithilfe des `MIN_PERCENTAGE_RESOURCE`-Parameters in der [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)-Syntax konfiguriert.  Der effektive Wert wird [hier](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) beschrieben.<br><br>Verwenden Sie den Aggregationstyp „Sum“, wenn diese Metrik ungefiltert und nicht aufgeteilt ist, um die gesamte auf dem System konfigurierte Arbeitsauslastungsisolation zu überwachen.<br><br>*Effektive Mindestanzahl von Ressourcen (Prozent)* bestimmt die untere Grenze der garantierten Parallelität (und somit des garantierten Durchsatzes), die eine Arbeitsauslastungsgruppe erreichen kann.  Wenn zusätzliche garantierte Ressourcen benötigt werden, die über den derzeit von der Metrik *Effektive Mindestanzahl von Ressourcen (Prozent)* gemeldeten Wert hinausgehen, erhöhen Sie den für die Arbeitsauslastungsgruppe konfigurierten `MIN_PERCENTAGE_RESOURCE`-Parameter.  Das Verringern von `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kann zwar die Parallelität erhöhen, erhöht aber nicht unbedingt den Gesamtdurchsatz. |Min, Avg, Max|

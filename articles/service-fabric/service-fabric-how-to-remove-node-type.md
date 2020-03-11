@@ -1,29 +1,23 @@
 ---
-title: Entfernen eines Knotentyps in Azure Service Fabric
+title: Entfernen eines Knotentyps in Azure Service Fabric | Microsoft-Dokumentation
 description: Erfahren Sie, wie ein Knotentyp aus einem in Azure ausgeführten Service Fabric-Cluster entfernt wird.
+author: inputoutputcode
+manager: sridmad
 ms.topic: conceptual
-ms.date: 02/14/2019
-ms.openlocfilehash: f3dc3210fdb436038174bb8d9347424f14d3faa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/21/2020
+ms.author: chrpap
+ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464497"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661975"
 ---
-# <a name="remove-a-service-fabric-node-type"></a>Entfernen eines Service Fabric-Knotentyps
+# <a name="how-to-remove-a-service-fabric-node-type"></a>Entfernen eines Knotentyps in Service Fabric
 In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster skalieren, indem Sie einen vorhandenen Knotentyp aus einem Cluster entfernen. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle seine Knoten entfernen.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Verwenden Sie [Remove-AzServiceFabricNodeType](https://docs.microsoft.com/powershell/module/az.servicefabric/remove-azservicefabricnodetype), um einen Service Fabric-Knotentyp zu entfernen.
-
-Die folgenden drei Vorgänge treten beim Aufruf von „Remove-AzServiceFabricNodeType“ auf:
-1.  Die VM-Skalierungsgruppe hinter dem Knotentyp wird gelöscht.
-2.  Der Knotentyp wird aus dem Cluster entfernt.
-3.  Für alle Knoten in diesen Knotentyp wird der gesamte Zustand für diesen Knoten aus dem System entfernt. Wenn Dienste auf diesem Knoten vorhanden sind, werden sie zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
-
 > [!WARNING]
-> Es wird nicht empfohlen, regelmäßig „Remove-AzServiceFabricNodeType“ zu verwenden, um einen Knotentyp aus einem Produktionscluster zu entfernen. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
+> Es wird nicht empfohlen, diesen Ansatz regelmäßig zu befolgen, um einen Knotentyp aus einem Produktionscluster zu entfernen. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
 
 ## <a name="durability-characteristics"></a>Dauerhaftigkeitsmerkmale
 Bei der Verwendung von „Remove-AzServiceFabricNodeType“ wird die Sicherheit über die Geschwindigkeit gestellt. Der Knotentyp muss aus den folgenden Gründen die [Dauerhaftigkeitsstufe](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) „Silber“ oder „Gold“ aufweisen:
@@ -31,43 +25,154 @@ Bei der Verwendung von „Remove-AzServiceFabricNodeType“ wird die Sicherheit 
 - Die Dauerhaftigkeit von Typ „Silber“ und „Gold“ fängt alle Änderungen an der Skalierungsgruppe ab.
 - Mit „Gold“ erhalten Sie außerdem Kontrolle über die Azure-Updates, die im Hintergrund der Skalierungsgruppe erfolgen.
 
-Service Fabric „orchestriert“ die zugrunde liegenden Änderungen und Updates, damit keine Daten verloren gehen. Wenn Sie einen Knoten mit der Dauerhaftigkeit „Bronze“ entfernen, können Sie jedoch Zustandsinformationen verlieren. Wenn Sie einen primären Knotentyp entfernen und Ihre Anwendung zustandslos ist, ist „Bronze“ akzeptabel. Wenn Sie zustandsbehaftete Workloads in der Produktion ausführen, sollte die Mindestkonfiguration „Silber“ sein. Analog dazu sollte für Produktionsszenarien der primären Knotentyp immer „Silber“ oder „Gold“ sein.
+Service Fabric „orchestriert“ die zugrunde liegenden Änderungen und Updates, damit keine Daten verloren gehen. Wenn Sie einen Knotentyp mit der Dauerhaftigkeit „Bronze“ entfernen, können jedoch Zustandsinformationen verloren gehen. Wenn Sie einen primären Knotentyp entfernen und Ihre Anwendung zustandslos ist, ist „Bronze“ akzeptabel. Wenn Sie zustandsbehaftete Workloads in der Produktion ausführen, sollte die Mindestkonfiguration „Silber“ sein. Analog dazu sollte für Produktionsszenarien der primären Knotentyp immer „Silber“ oder „Gold“ sein.
 
 ### <a name="more-about-bronze-durability"></a>Weitere Informationen zur Dauerhaftigkeitsstufe „Bronze“
 
 Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp sofort aus. Service Fabric fängt keine Knotenupdates von VM-Skalierungsgruppen vom Typ „Bronze“ ab, daher fallen alle virtuellen Computer sofort aus. Wenn zustandsbehaftete Elemente auf diesen Knoten vorhanden waren, gehen die Daten verloren. Selbst als zustandslose Elemente nehmen alle Knoten in Service Fabric am Ring teil, sodass eine ganze Umgebung verloren gehen kann, was den Cluster selbst destabilisieren könnte.
 
-## <a name="recommended-node-type-removal-process"></a>Empfohlener Knotentypen-Entfernungsvorgang
+## <a name="remove-a-non-primary-node-type"></a>Entfernen eines nicht primären Knotentyps
 
-Führen Sie das Cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Die Ausführung des Cmdlets nimmt einige Zeit in Anspruch.  Nachdem alle virtuellen Computer ausgeschaltet sind (dargestellt als „Inaktiv“), zeigt „fabric:/System/InfrastructureService/[Knotentypname]“ einen Fehlerstatus an.
+1. Berücksichtigen Sie diese Voraussetzungen, bevor Sie den Prozess starten.
 
-```powershell
-$groupname = "mynodetype"
-$nodetype = "nt2vm"
-$clustername = "mytestcluster"
+    - Der Cluster ist fehlerfrei.
+    - Nach dem Entfernen des Knotentyps ist weiterhin ausreichend Kapazität vorhanden, z. B. für die Anzahl der Knoten zum Platzieren der erforderlichen Anzahl von Replikaten.
 
-Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+2. Verschieben Sie alle Dienste, die bei Verwenden des Knotentyps Platzierungseinschränkungen aufweisen, aus dem Knotentyp heraus.
 
-Connect-ServiceFabricCluster -ConnectionEndpoint mytestcluster.eastus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <thumbprint> `
-          -FindType FindByThumbprint -FindValue <thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
-```
+    - Ändern Sie das Anwendungs-/Dienstmanifest so, dass es nicht mehr auf den Knotentyp verweist.
+    - Stellen Sie die Änderung bereit.
 
-Anschließend können Sie die Clusterressource aktualisieren, um den Knotentyp zu entfernen. Sie können entweder die Bereitstellung per ARM-Vorlage verwenden oder die Clusterressource über [Azure Resource Manager](https://resources.azure.com) bearbeiten. Dadurch wird ein Clusterupgrade gestartet, bei dem der Dienst „fabric:/System/InfrastructureService/[Knotentypname]“ mit dem Fehlerzustand entfernt wird.
+    Überprüfen Sie dann, ob Folgendes zutrifft:
+    - Alle oben geänderten Dienste werden nicht mehr auf dem Knoten ausgeführt, der zum Knotentyp gehört.
+    - Alle Dienste sind fehlerfrei.
 
-Die Knoten werden im Service Fabric Explorer auch weiterhin als „Inaktiv“ angezeigt. Führen Sie [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) auf allen Knoten aus, die entfernt werden sollen.
+3. Heben Sie die Markierung des Knotentyps als nicht primär auf (für nicht primäre Knotentypen überspringen).
 
+    - Bestimmen Sie die für die Bereitstellung verwendete Azure Resource Manager-Vorlage.
+    - Ermitteln Sie den Abschnitt, der sich auf den Knotentyp im Abschnitt „Service Fabric“ bezieht.
+    - Ändern Sie die IsPrimary-Eigenschaft in FALSE. ** Entfernen Sie in dieser Aufgabe nicht den Abschnitt, der sich auf den Knotentyp bezieht.
+    - Stellen Sie die geänderte Azure Resource Manager-Vorlage bereit. ** Je nach Clusterkonfiguration kann dieser Schritt einige Zeit in Anspruch nehmen.
+    
+    Überprüfen Sie dann, ob Folgendes zutrifft:
+    - Der Abschnitt „Service Fabric“ im Portal besagt, dass der Cluster bereit ist.
+    - Der Cluster ist fehlerfrei.
+    - Keine der Knoten, die zum Knotentyp gehören, sind als Seedknoten markiert.
 
-```powershell
-$nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
+4. Deaktivieren Sie Daten für den Knotentyp.
 
-Foreach($node in $nodes)
-{
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -TimeoutSec 300 -Force 
-}
-```
+    Stellen Sie mithilfe von PowerShell eine Verbindung mit dem Cluster her, und führen Sie den folgenden Schritt aus.
+    
+    ```powershell
+    $nodeType = "" # specify the name of node type
+    $nodes = Get-ServiceFabricNode
+    
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Disable-ServiceFabricNode -Intent RemoveNode -NodeName $node.NodeName -Force
+      }
+    }
+    ```
+
+    - Warten Sie für die Dauerhaftigkeit „Bronze“, bis alle Knoten im Zustand „Deaktiviert“ sind.
+    - Für die Dauerhaftigkeit „Silber“ und „Gold“ wechseln einige Knoten in den Zustand „Deaktiviert“. Der Rest wechselt in den Zustand „Wird deaktiviert“. Überprüfen Sie die Registerkarte „Details“ der Knoten im deaktivierten Zustand. Wenn alle Knoten bei der Sicherstellung des Quorums für die Infrastrukturdienstpartitionen hängen bleiben, können Sie sicher fortfahren.
+
+5. Beenden Sie Daten für den Knotentyp.
+
+    Stellen Sie mithilfe von PowerShell eine Verbindung mit dem Cluster her, und führen Sie den folgenden Schritt aus.
+    
+    ```powershell
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Start-ServiceFabricNodeTransition -Stop -OperationId (New-Guid) -NodeInstanceId $node.NodeInstanceId -NodeName $node.NodeName -StopDurationInSeconds 10000
+      }
+    }
+    ```
+    
+    Warten Sie, bis alle Knoten für den Knotentyp als „Ausgefallen“ markiert sind.
+    
+6. Entfernen Sie Daten für den Knotentyp.
+
+    Stellen Sie mithilfe von PowerShell eine Verbindung mit dem Cluster her, und führen Sie den folgenden Schritt aus.
+    
+    ```powershell
+    foreach($node in $nodes)
+    {
+      if ($node.NodeType -eq $nodeType)
+      {
+        $node.NodeName
+     
+        Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+      }
+    }
+    ```
+
+    Warten Sie, bis alle Knoten aus dem Cluster entfernt wurden. Die Knoten sollten nicht in SFX angezeigt werden.
+
+7. Entfernen Sie den Knotentyp aus dem Abschnitt „Service Fabric“.
+
+    - Bestimmen Sie die für die Bereitstellung verwendete Azure Resource Manager-Vorlage.
+    - Ermitteln Sie den Abschnitt, der sich auf den Knotentyp im Abschnitt „Service Fabric“ bezieht.
+    - Entfernen Sie den Abschnitt, der dem Knotentyp entspricht.
+    - Für Cluster mit der Dauerhaftigkeit „Silber“ und höher aktualisieren Sie die Clusterressource in der Vorlage und konfigurieren die Integritätsrichtlinien so, dass der Zustand von fabric:/Systemanwendungen ignoriert wird, indem Sie `applicationDeltaHealthPolicies` wie unten angegeben hinzufügen. Die folgende Richtlinie sollte bestehende Fehler ignorieren, aber keine neuen Integritätsfehler zulassen. 
+ 
+ 
+     ```json
+    "upgradeDescription":  
+    { 
+      "forceRestart": false, 
+      "upgradeReplicaSetCheckTimeout": "10675199.02:48:05.4775807", 
+      "healthCheckWaitDuration": "00:05:00", 
+      "healthCheckStableDuration": "00:05:00", 
+      "healthCheckRetryTimeout": "00:45:00", 
+      "upgradeTimeout": "12:00:00", 
+      "upgradeDomainTimeout": "02:00:00", 
+      "healthPolicy": { 
+        "maxPercentUnhealthyNodes": 100, 
+        "maxPercentUnhealthyApplications": 100 
+      }, 
+      "deltaHealthPolicy":  
+      { 
+        "maxPercentDeltaUnhealthyNodes": 0, 
+        "maxPercentUpgradeDomainDeltaUnhealthyNodes": 0, 
+        "maxPercentDeltaUnhealthyApplications": 0, 
+        "applicationDeltaHealthPolicies":  
+        { 
+            "fabric:/System":  
+            { 
+                "defaultServiceTypeDeltaHealthPolicy":  
+                { 
+                        "maxPercentDeltaUnhealthyServices": 0 
+                } 
+            } 
+        } 
+      } 
+    },
+    ```
+
+    Stellen Sie die geänderte Azure Resource Manager-Vorlage bereit. ** Dieser Schritt dauert eine Weile, in der Regel bis zu zwei Stunden. Durch dieses Upgrade ändern sich die Einstellungen für InfrastructureService. Daher ist ein Neustart des Knotens erforderlich. In diesem Fall wird `forceRestart` ignoriert. 
+    Der Parameter `upgradeReplicaSetCheckTimeout` gibt die maximale Zeit an, die Service Fabric wartet, bis sich eine Partition in einem sicheren Zustand befindet, sofern dies noch nicht der Fall ist. Sobald die Sicherheitsprüfungen für alle Partitionen eines Knotens absolviert sind, fährt Service Fabric mit dem Upgrade auf diesem Knoten fort.
+    Der Wert für den Parameter `upgradeTimeout` kann auf 6 Stunden verkürzt werden, aber für maximale Sicherheit sollten 12 Stunden gewählt werden.
+
+    Überprüfen Sie dann, ob Folgendes zutrifft:
+    - Service Fabric-Ressource wird im Portal als „bereit“ angezeigt.
+
+8. Entfernen Sie alle Verweise auf die Ressourcen im Zusammenhang mit dem Knotentyp.
+
+    - Bestimmen Sie die für die Bereitstellung verwendete Azure Resource Manager-Vorlage.
+    - Entfernen Sie die VM-Skalierungsgruppe und andere Ressourcen im Zusammenhang mit dem Knotentyp aus der Vorlage.
+    - Stellen Sie die Änderungen bereit.
+
+    Führen Sie dann folgende Schritte aus:
+    - Warten Sie, bis die Bereitstellung abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über die [Dauerhaftigkeitsmerkmale](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) eines Clusters.

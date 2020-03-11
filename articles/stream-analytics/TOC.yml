@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: "Authentifizieren mit einer verwalteten Identität: Power\_BI"
           href: powerbi-output-managed-identity.md
+        - name: Verschlüsseln Ihrer Daten
+          href: data-protection.md
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Verwenden der API für IoT Edge-Aufträge
           href: stream-analytics-cicd-api.md
+        - name: Exportieren und Bereitstellen mit Azure Resource Manager
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: Installieren von Tools

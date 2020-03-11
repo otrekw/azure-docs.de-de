@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604792"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661838"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
 
@@ -38,16 +38,17 @@ Azure Security Center überwacht die folgenden Azure-Ressourcen:
 * Virtuelle Computer (Virtual Machines, VMs) (auch [Clouddienste](../cloud-services/cloud-services-choose-me.md))
 * VM-Skalierungsgruppen
 * Virtuelle Azure-Netzwerke
+* Container
 * Azure SQL-Dienst
 * Azure-Speicherkonto
 * Azure-Web-Apps (in [App Service-Umgebung](../app-service/environment/intro.md))
 * Partnerlösungen, die in Ihr Azure-Abonnement integriert sind, z.B. die Firewall einer Webanwendung auf virtuellen Computern und in einer App Service-Umgebung
 
-Darüber hinaus können Nicht- Azure-Computer (einschließlich lokaler) auch von Azure Security Center überwacht werden (sowohl [Windows-Computer](./quick-onboard-windows-computer.md) als auch [Linux-Computer](./quick-onboard-linux-computer.md) werden unterstützt)
+Darüber hinaus können Nicht-Azure-Computer (einschließlich lokale Computer) auch mit Azure Security Center überwacht werden. Es werden sowohl [Windows-Computer](./quick-onboard-windows-computer.md) als auch [Linux-Computer](./quick-onboard-linux-computer.md) unterstützt.
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Wie kann ich den aktuellen Sicherheitsstatus meiner Azure-Ressourcen anzeigen?
-Auf der Seite **Security Center – Übersicht** wird der Gesamtsicherheitsstatus Ihrer Umgebung aufgegliedert nach Compute, Netzwerk, Speicher und Daten und Anwendungen angezeigt. Jeder Ressourcentyp hat einen Indikator, der kennzeichnet, ob irgendwelche möglichen Sicherheitsrisiken festgestellt wurden. Wenn Sie auf die einzelnen Kacheln klicken, wird eine Liste mit von Security Center erkannten Sicherheitsproblemen sowie ein Bestand an Ressourcen in Ihrem Abonnement angezeigt.
+Auf der Seite **Security Center – Übersicht** wird der Gesamtsicherheitsstatus Ihrer Umgebung aufgegliedert nach Compute, Netzwerk, Speicher und Daten und Anwendungen angezeigt. Jeder Ressourcentyp verfügt über einen Indikator, der ermittelte Sicherheitsrisiken anzeigt. Wenn Sie auf die einzelnen Kacheln klicken, wird eine Liste mit von Security Center erkannten Sicherheitsproblemen sowie ein Bestand an Ressourcen in Ihrem Abonnement angezeigt.
 
 
 

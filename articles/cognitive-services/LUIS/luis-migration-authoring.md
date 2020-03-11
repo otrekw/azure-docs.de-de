@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891744"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194508"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -80,7 +80,7 @@ Nach dem Migrationsprozess sind Ihre sämtlichen LUIS-Apps einer einzigen LUIS-E
 
 Sie können weitere Erstellungsressourcen erstellen und diese im _LUIS-Portal_ über die Seite **Verwalten -> Azure-Ressourcen** zuweisen.
 
-Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im _Azure-Portal_ zur **Zugriffssteuerung (IAM)** -Seite für diese Ressource wechseln. Weitere Informationen finden Sie unter [Nach dem Migrationsprozess: Hinzufügen von Mitwirkenden zu Ihrer Erstellungsressource](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im _Azure-Portal_ zur **Zugriffssteuerung (IAM)** -Seite für diese Ressource wechseln. Weitere Informationen finden Sie unter [Hinzufügen von Mitwirkendenzugriff](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
 |Portal|Zweck|
 |--|--|
@@ -104,12 +104,20 @@ Der App-Besitzer muss [Ihre E-Mail-Adresse als Projektmitarbeiter zur Azure-Erst
 
 Nach dem Migrationsvorgang sind alle Apps, die Sie besitzen, auf der Seite **Meine Apps** des LUIS-Portals verfügbar.
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Beheben von Problemen beim Migrationsprozess für die LUIS-Dokumenterstellung
 
-* LUIS-Erstellungsschlüssel sind im LUIS-Portal erst sichtbar, nachdem der Migrationsvorgang abgeschlossen wurde. Wenn Sie die Erstellungsschlüssel erstellen, beispielsweise mit der LUIS-Befehlszeilenschnittstelle, muss der Benutzer den Migrationsvorgang trotzdem abschließen.
+* LUIS-Erstellungsschlüssel sind im LUIS-Portal erst sichtbar, nachdem der Migrationsvorgang abgeschlossen wurde. Wenn Sie die Erstellungsschlüssel erstellen, beispielsweise über die LUIS-Befehlszeilenschnittstelle, muss der Benutzer den Migrationsvorgang trotzdem im LUIS-Portal abschließen.
 * Wenn ein migrierter Benutzer seiner Azure-Ressource einen nicht migrierten Benutzer als Mitwirkenden hinzufügt, hat der nicht migrierte Benutzer bis zur eigenen Migration keinen Zugriff auf die Apps.
 * Wenn ein nicht migrierter Benutzer keine Apps besitzt, sondern ein Projektmitarbeiter von Apps anderer Besitzt ist und die Besitzer den Migrationsprozess durchlaufen haben, muss dieser Benutzer migrieren, um Zugriff auf die Apps zu erhalten.
 * Wenn ein nicht migrierter Benutzer seiner App einen anderen migrierten Benutzer als Projektmitarbeiter hinzugefügt hat, tritt ein Fehler auf, da Sie einer App keinen migrierten Benutzer als Projektmitarbeiter hinzufügen können. Der nicht migrierte Benutzer muss dann den Migrationsprozess durchlaufen und eine Azure-Ressource erstellen und dieser Ressource den migrierten Benutzer als Mitwirkenden hinzufügen.
+
+In den folgenden Fällen tritt während der Migration ein Fehler auf:
+* Ihr Abonnement ist nicht autorisiert, Cognitive Services-Ressourcen zu erstellen.
+* Die Migration wirkt sich negativ auf eine Anwendungsruntime aus. Während der Migration werden Projektmitarbeiter aus Ihren Apps entfernt, und Sie werden als Projektmitarbeiter aus anderen Apps entfernt. Durch diesen Vorgang werden die von Ihnen zugewiesenen Schlüssel ebenfalls entfernt. Die Migration wird blockiert, wenn Sie Schlüssel in anderen Apps zugewiesen haben. Entfernen Sie vor der Migration den Schlüssel, den Sie zugewiesen haben. Wenn Sie wissen, dass der von Ihnen zugewiesene Schlüssel in der Runtime nicht verwendet wird, müssen Sie ihn entfernen, damit die Migration fortgesetzt werden kann.
+
+Greifen Sie auf die Azure-Ressourcenliste Ihrer App im folgenden URL-Format zu:
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

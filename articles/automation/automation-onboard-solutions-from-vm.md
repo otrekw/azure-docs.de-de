@@ -2,15 +2,15 @@
 title: Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren, die Bestandteil von Azure Automation sind.
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421824"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299524"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -22,13 +22,17 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-the-solutions"></a>Aktivieren der Lösungen
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer. Wählen Sie unter **VORGÄNGE** **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Beim Onboarding einer Lösung von einer VM aus benötigen Sie die Berechtigung `Microsoft.OperationalInsights/workspaces/read`, um zu ermitteln, ob die VM in einen Arbeitsbereich integriert ist. Weitere Informationen zu allgemein benötigten zusätzlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Onboarding von Computern](automation-role-based-access-control.md#onboarding).
+Aktivieren Sie zuerst eine oder alle drei der Lösungen auf Ihrer VM:
 
-Um die Lösung nur für die VM zu aktivieren, stellen sicher, dass **Für diesen virtuellen Computer aktivieren** ausgewählt ist. Um mehrere Computer in die Lösung zu integrieren, wählen Sie **Für virtuelle Computer in diesem Abonnement aktivieren** und dann **Klicken, um zu aktivierende Computer auszuwählen** aus. Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich die Option **Virtuelle Computer** aus, oder suchen Sie auf der **Startseite** nach **Virtuelle Computer**, und wählen Sie diese Option aus.
+2. Wählen Sie die VM aus, für die Sie eine Lösung aktivieren möchten.
+3. Wählen Sie auf der Seite der VM unter **Vorgänge** eine der Optionen **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Beim Onboarding einer Lösung von einer VM aus benötigen Sie die Berechtigung `Microsoft.OperationalInsights/workspaces/read`, um zu ermitteln, ob die VM in einen Arbeitsbereich integriert ist. Weitere Informationen zu den weiteren erforderlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Onboarding von Computern](automation-role-based-access-control.md#onboarding).
+
+Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
 
 Wählen Sie den Azure Log Analytics-Arbeitsbereich sowie das Automation-Konto und dann **Aktivieren** aus, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
-![Integrieren der Updateverwaltungslösung](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Integrieren der Updateverwaltungslösung](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die Dropdownlisten für Log Analytics-Arbeitsbereich und Automation-Konto sind deaktiviert, da diese Lösungen denselben Arbeitsbereich und dasselbe Automation-Konto verwenden wie die zuvor aktivierte Lösung.
 
@@ -37,7 +41,7 @@ Navigieren Sie zu den anderen Lösungen, und wählen Sie **Aktivieren** aus. Die
 
 ## <a name="scope-configuration"></a>Bereichskonfiguration
 
-Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. Wählen Sie in Ihrem Automation-Konto unter **ZUGEHÖRIGE RESSOURCEN** die Option **Arbeitsbereich** aus, um auf die Bereichskonfigurationen zuzugreifen. Wählen Sie im Arbeitsbereich unter **ARBEITSBEREICHSDATENQUELLEN** die Option **Bereichskonfigurationen** aus.
+Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. Wählen Sie in Ihrem Automation-Konto unter **Zugehörige Ressourcen** die Option **Arbeitsbereich** aus, um auf die Bereichskonfigurationen zuzugreifen. Wählen Sie im Arbeitsbereich unter **Arbeitsbereichsdatenquellen** die Option **Bereichskonfigurationen** aus.
 
 Falls der ausgewählte Arbeitsbereich nicht die Lösungen „Updateverwaltung“ und „Änderungsnachverfolgung“ enthält, werden die folgenden Bereichskonfigurationen erstellt:
 
@@ -91,9 +95,9 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
-* Zeitpläne für Updates: Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
+* Zeitpläne für Updates: Diese weisen Namen auf, die den erstellten Updatebereitstellungen entsprechen.
 
-* Für die Lösung erstellte Hybrid Worker-Gruppen: Jede wird ähnlich wie „machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8“ benannt.
+* Für die Lösung erstellte Hybrid Worker-Gruppen: Diese erhalten Namen ähnlich „machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8“.
 
 Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
@@ -115,5 +119,7 @@ So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
 Fahren Sie mit den Tutorials fort, um mehr über die Verwendung der Lösungen zu erfahren:
 
 * [Tutorial: Verwalten von Updates für den virtuellen Computer](automation-tutorial-update-management.md)
+
 * [Tutorial: Identifizieren von Software auf einem virtuellen Computer](automation-tutorial-installed-software.md)
+
 * [Tutorial: Problembehandlung bei Änderungen auf einem virtuellen Computer](automation-tutorial-troubleshoot-changes.md)

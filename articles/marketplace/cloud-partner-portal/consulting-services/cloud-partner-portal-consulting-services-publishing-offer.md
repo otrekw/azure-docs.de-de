@@ -6,18 +6,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819188"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268309"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- und Dynamics 365-Beratungsdienstangebot
 
-In diesem Artikel wird erläutert, wie Sie ein Beratungsdienstangebot im Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> oder in <a href="https://appsource.microsoft.com">AppSource</a> veröffentlichen. Lösungen, die auf Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a> und <a href="https://powerapps.microsoft.com">PowerApps</a> basieren, können in AppSource aufgeführt werden. Andere Angebote, die auf anderen Microsoft <a href="https://azure.microsoft.com/services">Azure-Diensten</a> basieren, können im Azure Marketplace aufgeführt werden.
+In diesem Artikel wird erläutert, wie Sie ein Beratungsdienstangebot im Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> oder in <a href="https://appsource.microsoft.com">AppSource</a> veröffentlichen. Lösungen, die auf Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a> und <a href="https://powerapps.microsoft.com">Power Apps</a> basieren, können in AppSource aufgeführt werden. Andere Angebote, die auf anderen Microsoft <a href="https://azure.microsoft.com/services">Azure-Diensten</a> basieren, können im Azure Marketplace aufgeführt werden.
 
 ## <a name="publishing-benefits"></a>Vorteile der Veröffentlichung
 
@@ -35,11 +35,13 @@ In diesem Abschnitt werden die Elemente für ein Veröffentlichen eines Beratung
 - [Voraussetzungen für Beratungsdienst](./cpp-consulting-service-prerequisites.md): Hier sind die Anforderungen aufgeführt, die zum Veröffentlichen eines Beratungsdienstangebots für die folgenden Anwendungen erfüllt sein müssen:
  
     - Microsoft Azure
-    - Dynamics 365 for Customer Engagement 
-    - Dynamics 365 for Finance and Operations 
+    - Dynamics 365 Customer Engagement 
+    - Dynamics 365 Finance and Operations 
+    - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
-    - PowerApps
+    - Power Apps
+    - Power Automate
 - [Erstellen eines neuen Angebots](./cpp-consulting-service-create-offer.md): Hier sind die Schritte aufgeführt, die erforderlich sind, um einen Eintrag für ein Beratungsdienstangebot über das Cloud-Partnerportal zu erstellen:
     - [Definieren der Angebotseinstellungen](./cpp-consulting-service-define-offer-settings.md).
     - [Eingeben der Details der digitalen Ladenzeile und Festlegen, ob im Azure Marketplace oder in AppSource veröffentlicht werden soll.](./cpp-consulting-service-storefront-details.md)
