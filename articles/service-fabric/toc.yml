@@ -19,7 +19,7 @@
           href: service-fabric-quickstart-java-spring-boot.md
         - name: Bereitstellen einer Reliable Services-Anwendung
           href: service-fabric-quickstart-java-reliable-services.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Bereitstellen einer .NET-App
       items:
@@ -121,7 +121,7 @@
       href: service-fabric-content-roadmap.md
     - name: Anwendungsszenarien
       href: service-fabric-application-scenarios.md
-    - name: Architecture
+    - name: Aufbau
       href: service-fabric-architecture.md
     - name: Sicherheit
       items:
@@ -145,7 +145,7 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (Vorschau)
               href: service-fabric-docker-compose.md
-            - name: Ressourcenkontrolle
+            - name: Ressourcengovernance
               href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
@@ -177,7 +177,7 @@
           items:
             - name: Übersicht über Reliable Actors
               href: service-fabric-reliable-actors-introduction.md
-            - name: Architecture
+            - name: Aufbau
               href: service-fabric-reliable-actors-platform.md
             - name: Implementieren von Funktionen auf Dienstebene
               href: service-fabric-reliable-actors-using.md
@@ -280,7 +280,7 @@
               href: service-fabric-cluster-nodetypes.md
             - name: Aktualisieren von Clustern in Azure
               href: service-fabric-cluster-upgrade.md
-            - name: Skalieren
+            - name: Skalierung
               href: service-fabric-cluster-scaling.md
             - name: Clusternetzwerkmuster
               href: service-fabric-patterns-networking.md
@@ -290,13 +290,13 @@
               href: service-fabric-standalone-clusters-overview.md
             - name: Aktualisieren von eigenständigen Clustern
               href: service-fabric-cluster-upgrade-standalone.md
-            - name: Skalieren
+            - name: Skalierung
               href: service-fabric-cluster-scaling-standalone.md
         - name: Clusterressourcen-Manager
           items:
             - name: Übersicht über den Clusterressourcen-Manager
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: Architecture
+            - name: Aufbau
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: Beschreiben eines Clusters
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Ausbalancieren eines Clusters
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Subclustering
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Drosselung
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Dienstverschiebung
@@ -324,7 +326,7 @@
               href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: Überwachung und Diagnose
       items:
-        - name: Übersicht zur Überwachung
+        - name: Übersicht über die Überwachung
           href: service-fabric-diagnostics-overview.md
         - name: Anwendungsüberwachung
           href: service-fabric-diagnostics-event-generation-app.md
@@ -653,7 +655,7 @@
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: Entfernen eines Knotentyps
                   href: service-fabric-how-to-remove-node-type.md
-            - name: Upgrade
+            - name: Aktualisieren
               items:
                 - name: Aktualisieren der Service Fabric-Version
                   href: service-fabric-cluster-upgrade-version-azure.md
@@ -691,7 +693,7 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: Skalieren
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: Upgrade
+            - name: Aktualisieren
               items:
                 - name: Aktualisieren der Service Fabric-Version
                   href: service-fabric-cluster-upgrade-windows-server.md

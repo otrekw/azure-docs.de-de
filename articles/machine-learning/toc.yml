@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: End-to-End-Beispiele für MLOps
       href: 'https://github.com/microsoft/MLOps'
+    - name: Designerpipelines
+      href: samples-designer.md
 - name: Konzepte
   items:
     - name: Arbeitsbereich
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: Trainieren von Modellen
       items:
-        - name: Verwenden des Designers
-          displayName: sample designer experiments
-          items:
-            - name: Preisprognose
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: Preisprognose (erweitert)
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: Einkommensprognose
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: Kreditrisikoprognose (erweitert)
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: Änderungsprognose
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: Vorhersage von Flugverspätungen
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: Textklassifizierung
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: Verwenden von Kalkulatoren für Machine Learning
           items:
             - name: Erstellen von Kalkulatoren im Training

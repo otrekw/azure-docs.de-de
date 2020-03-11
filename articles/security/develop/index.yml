@@ -3,7 +3,7 @@ title: Dokumentation zur sicheren Entwicklung
 summary: Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln und bereitstellen.
 metadata:
   title: Dokumentation zur sicheren Entwicklung in Microsoft Azure
-  description: Es wird beschrieben, wie Sie in Azure sichere Apps entwickeln.
+  description: Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln.
   services: security
   ms.service: security
   ms.subservice: develop
@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/24/2019
-  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
+  ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72934063"
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "78970016"
 landingContent:
 - title: Entwickeln von sicheren Beispiel-Apps
   linkLists:

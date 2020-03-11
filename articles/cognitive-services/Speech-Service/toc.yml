@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: Verwenden komprimierter Audioeingabeformate
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: Verwenden komprimierter Audioeingabeformate (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: Verwenden komprimierter Audioeingabeformate (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: Anpassung
       items:
         - name: Vorbereiten von Daten
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: Erstellen von menschenmarkierten Transkriptionen
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Benutzerdefinierte Schlüsselworterkennung
+          href: speech-devices-sdk-create-kws.md
     - name: Verweis
       items:
         - name: "Speech\_SDK-APIs"
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: Aufnehmen von Sprachbeispielen
               href: record-custom-voice-samples.md
-            - name: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: Benutzerdefinierte Schlüsselworterkennung
-              href: speech-devices-sdk-create-kws.md
         - name: Audio Content Creation
           items:
             - name: Audio Content Creation
@@ -413,6 +409,12 @@
           items:
             - name: Häufig gestellte Fragen zu Sprachassistenten
               href: faq-voice-assistants.md
+    - name: Benutzerdefiniertes Schlüsselwort
+      items:
+        - name: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: Benutzerdefinierte Schlüsselworterkennung
+          href: speech-devices-sdk-create-kws.md
 - name: Hosting
   expanded: false
   items:
@@ -445,8 +447,6 @@
           href: ship-application.md
     - name: Schnellstart
       items:
-        - name: Erstellen eines Projekts
-          href: quickstarts/create-project.md
         - name: Einrichten des Speech SDK
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'

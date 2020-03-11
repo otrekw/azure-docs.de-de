@@ -223,6 +223,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics-Abfragesprache
   items:
+    - name: Übersicht über die Stream Analytics-Abfragesprache
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: Integrierte Funktionen
       items:
         - name: Übersicht über integrierte Funktionen

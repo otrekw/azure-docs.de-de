@@ -251,8 +251,8 @@
       items:
         - name: Verwenden der Befehlszeilenschnittstelle
           href: create-cli-complete.md
-        - name: Verwenden einer Vorlage
-          displayName: 'Azure Resource Manager, ARM'
+        - name: Verwenden einer ARM-Vorlage
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: REST-API
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: Portal
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: Vorlage
+            - name: ARM-Vorlage
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: Fehlercodes
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Migrieren von der klassischen Bereitstellung zum Azure Resource Manager
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: Mithilfe der Azure-Befehlszeilenschnittstelle
               href: image-builder.md
-            - name: Vorlagenreferenz
+            - name: ARM-Vorlagenreferenz
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: Entwickeln für Imagekataloge
               href: image-builder-gallery.md
             - name: Aktualisieren eines vorhandenen Images
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: Trennen eines Datenträgers
           href: detach-disk.md
-        - name: Bereitstellen von Datenträgern mit Vorlage
+        - name: Bereitstellen von Datenträgern mit einer ARM-Vorlage
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: Aktivieren freigegebener Datenträger
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: Ressourcen
   items:
-    - name: Verfassen von Vorlagen
+    - name: Erstellen von ARM-Vorlagen
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

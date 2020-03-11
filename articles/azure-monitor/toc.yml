@@ -213,6 +213,8 @@
               items:
                 - name: Clientseitiges JavaScript
                   href: app/javascript.md
+                - name: Quellzuordnungsdatei für JavaScript
+                  href: app/source-map-support.md
             - name: Application Insights-API-Zusammenfassung
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: Migrieren von Verwaltungsereignissen zu Aktivitätsprotokollwarnungen
               href: platform/migrate-management-alerts.md
+            - name: Webhookschema
+              href: platform/activity-log-alerts-webhook.md
         - name: Warnungen zur Dienstintegrität im Aktivitätsprotokoll
           items:
             - name: Anzeigen von Benachrichtigungen
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: Integrieren des allgemeinen Warnungsschemas mit Logic Apps
               href: platform/alerts-common-schema-integrations.md
-            - name: Webhookschema
-              href: platform/activity-log-alerts-webhook.md
             - name: Verhalten von SMS-Benachrichtigungen
               href: platform/alerts-sms-behavior.md
             - name: Ratenbegrenzung für Benachrichtigungen
