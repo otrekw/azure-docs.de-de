@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 316b28faa458b03431cb48f02a8087116415b061
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075902"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304190"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -34,7 +34,7 @@ Mit Ausgangsregeln können Sie steuern:
 - Wie [ausgehende SNAT-Ports](load-balancer-outbound-connections.md#snat) zugeordnet werden
 - Welche Protokolle zum Übersetzen ausgehenden Datenverkehrs verwendet werden
 - Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert (4-120 Minuten)
-- Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird (in der Public Preview) 
+- Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird
 
 Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md) beschriebene [Szenario 2](load-balancer-outbound-connections.md#lb). Die Rangfolge der Szenarien bleibt unverändert.
 
@@ -95,7 +95,7 @@ Verwenden Sie den folgenden Parameter, um dieses Leerlauftimeout auf 1 Stunde fe
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a> Aktivieren der TCP-Zurücksetzung bei Leerlauftimeout (Vorschau)
+### <a name="tcprst"></a> <a name="tcpreset"></a> Aktivieren der TCP-Zurücksetzung bei Leerlauftimeout
 
 Das Standardverhalten von Load Balancer ist es, den Datenfluss allmählich zu entfernen, wenn das Leerlauftimeout für ausgehenden Datenverkehr erreicht wurde.  Mit dem Parameter „enableTCPReset“ können Sie ein besser vorhersagbares Anwendungsverhalten aktivieren und steuern, ob bidirektionale TCP-Zurücksetzung (TCP RST) außerhalb des Leerlauftimeouts für ausgehenden Datenverkehr gesendet wird. 
 
@@ -103,7 +103,7 @@ Verwenden Sie den folgenden Parameter, um die TCP-Zurücksetzung für eine Ausga
 
            "enableTcpReset": true
 
-Unter [TCP-Zurücksetzung bei Leerlauftimeout (Vorschau)](https://aka.ms/lbtcpreset) finden Sie weitere Informationen, unter anderem zur regionalen Verfügbarkeit.
+Unter [TCP-Zurücksetzung bei Leerlauftimeout](https://aka.ms/lbtcpreset) finden Sie weitere Informationen, unter anderem zur regionalen Verfügbarkeit.
 
 ### <a name="proto"></a> Unterstützen von TCP- und UDP-Transportprotokollen mit einer einzigen Regel
 
@@ -206,7 +206,6 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
 - Die maximale Anzahl von verwendbaren kurzlebigen Ports pro Front-End-IP-Adresse beträgt 64.000.
 - Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt ist 4 bis 120 Minuten (240 bis 7200 Sekunden).
 - Load Balancer unterstützt kein ICMP für die NAT ausgehenden Datenverkehrs.
-- Sie können Ausgangsregeln im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
 - Ausgangsregeln können nur auf die primäre IP-Konfiguration einer NIC angewandt werden.  Es werden mehrere NICs unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte

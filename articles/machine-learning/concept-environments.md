@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: 8906299cc9e2c000dab2ac9d2a345d9aaf238260
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045861"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302768"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Was sind Azure Machine Learning-Umgebungen?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning-Umgebungen geben die Python-Pakete, Umgebungsvariablen und Softwareeinstellungen bezüglich Ihrer Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker). Dabei handelt es sich um verwaltete und versionsverwaltete Entitäten innerhalb Ihres Machine Learning-Arbeitsbereichs, die reproduzierbare, überprüfbare und portierbare Machine Learning-Workflows über verschiedene Computeziele hinweg ermöglichen.
+Azure Machine Learning-Umgebungen geben die Python-Pakete, Umgebungsvariablen und Softwareeinstellungen bezüglich Ihrer Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker). Die Umgebungen sind verwaltete und versionsverwaltete Entitäten innerhalb Ihres Machine Learning-Arbeitsbereichs, die reproduzierbare, überprüfbare und portierbare Machine Learning-Workflows über verschiedene Computeziele hinweg ermöglichen.
 
 Sie können ein `Environment`-Objekt auf Ihrem lokalen Computer verwenden, um Folgendes zu erreichen:
 * Entwickeln Sie Ihr Trainingsskript.
@@ -57,6 +57,45 @@ Bestimmte Codebeispiele finden Sie im Abschnitt „Erstellen einer Umgebung“ u
 * Sie können Docker-Images automatisch aus Ihren Umgebungen erstellen.
 
 Codebeispiele finden Sie im Abschnitt „Verwalten von Umgebungen“ unter [Wiederverwenden von Umgebungen für Training und Bereitstellung](how-to-use-environments.md#manage-environments).
+
+## <a name="environment-building-caching-and-reuse"></a>Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen
+
+Der Azure Machine Learning-Dienst erstellt Umgebungsdefinitionen in Docker-Images und Conda-Umgebungen. Außerdem werden die Umgebungen zwischengespeichert, sodass sie bei späteren Trainingsdurchläufen und Bereitstellungen von Dienstendpunkten wiederverwendet werden können.
+
+### <a name="building-environments-as-docker-images"></a>Erstellen von Umgebungen als Docker-Images
+
+Normalerweise ruft der Azure Machine Learning-Dienst beim ersten Übermitteln einer Ausführung in einer Umgebung eine [ACR-Buildaufgabe](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) in der Azure Container Registry (ACR) auf, die dem Arbeitsbereich zugeordnet ist. Das erstellte Docker-Image wird dann in der ACR des Arbeitsbereichs zwischengespeichert. Zu Beginn der Ausführung wird das Image vom Computeziel abgerufen.
+
+Die Imageerstellung besteht aus zwei Schritten:
+
+ 1. Herunterladen eines Basisimages und Ausführen beliebiger Docker-Schritte
+ 2. Erstellen einer Conda-Umgebung gemäß den in der Umgebungsdefinition angegebenen Conda-Abhängigkeiten.
+
+Der zweite Schritt entfällt, wenn Sie [vom Benutzer verwaltete Abhängigkeiten](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py) angeben. In diesem Fall sind Sie für die Installation von Python-Paketen verantwortlich, indem Sie diese in Ihr Basisimage einbeziehen oder im ersten Schritt benutzerdefinierte Docker-Schritte festlegen. Sie sind auch dafür verantwortlich, den richtigen Speicherort für die ausführbare Python-Datei anzugeben.
+
+### <a name="image-caching-and-reuse"></a>Zwischenspeicherung und Wiederverwendung von Images
+
+Wenn Sie dieselbe Umgebungsdefinition für eine weitere Ausführung verwenden, verwendet der Azure Machine Learning-Dienst das zwischengespeicherte Image aus der ACR des Arbeitsbereichs wieder. 
+
+Um die Details eines zwischengespeicherten Images anzuzeigen, verwenden Sie die Methode [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-).
+
+Um zu bestimmen, ob ein zwischengespeichertes Image wiederverwendet oder ein neues erstellt werden soll, berechnet der Dienst [einen Hashwert](https://en.wikipedia.org/wiki/Hash_table) aus der Umgebungsdefinition und vergleicht ihn mit den Hashwerten bestehender Umgebungen. Der Hash basiert auf:
+ 
+ * Eigenschaftswert des Basisimages
+ * Eigenschaftswert für benutzerdefinierte Docker-Schritte
+ * Liste der Python-Pakete in der Conda-Definition
+ * Liste der Pakete in der Spark-Definition 
+
+Der Hash hängt nicht vom Namen oder der Version der Umgebung ab. Änderungen der Umgebungsdefinition, z. B. das Hinzufügen oder Entfernen eines Python-Pakets oder die Änderung der Paketversion, führen zu einer Änderung des Hashwerts und lösen eine Neuerstellung des Images aus. Wenn Sie jedoch Ihre Umgebung einfach umbenennen oder eine neue Umgebung mit den genauen Eigenschaften und Paketen einer vorhandenen Umgebung erstellen, bleibt der Hashwert unverändert und das zwischengespeicherte Image wird verwendet.
+
+Betrachten Sie das folgende Diagramm, das drei Umgebungsdefinitionen zeigt. Zwei von ihnen haben unterschiedliche Namen und Versionen, aber ein identisches Basisimage und identische Python-Pakete. Sie haben denselben Hashwert und entsprechen daher demselben zwischengespeicherten Image. Die dritte Umgebung weist verschiedene Python-Pakete und -Versionen auf und entspricht daher einem anderen zwischengespeicherten Image.
+
+![Diagramm zur Zwischenspeicherung der Umgebung als Docker-Images](./media/concept-environments/environment-caching.png)
+
+Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, die zum Zeitpunkt der Erstellung der Umgebung installiert war. Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstellung des Images zu erzwingen, z. B. ```numpy==1.18.1```. Beachten Sie, dass neue Abhängigkeiten, einschließlich geschachtelter Abhängigkeiten, installiert werden, die ein zuvor funktionierendes Szenario unterbrechen könnten
+
+> [!WARNING]
+>  Die Methode [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) erstellt das zwischengespeicherte Image neu, mit dem möglichen Nebeneffekt, dass losgelöste Pakete aktualisiert werden und die Reproduzierbarkeit für alle Umgebungsdefinitionen, die diesem zwischengespeicherten Image entsprechen, unterbrochen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

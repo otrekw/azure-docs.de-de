@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895998"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914312"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Verwenden von Azure Media Content Moderator, um nicht jugendfreie und rassistische Inhalte zu erkennen 
+
+> [!NOTE]
+> Der **Azure Media Content Moderator**-Medienprozessor wird eingestellt. Das Einstellungsdatum finden Sie im Thema [Legacykomponenten](legacy-components.md).
 
 ## <a name="overview"></a>Übersicht
 Mit dem Medienprozessor (MP) von **Azure Media Content Moderator** können Sie die hardwareunterstützte Moderation für Ihre Videos verwenden. Sie möchten beispielsweise nicht jugendfreie und rassistische Inhalte in Videos erkennen und die gekennzeichneten Inhalte von Ihren menschlichen Moderationsteams überprüfen lassen.
@@ -57,7 +60,7 @@ Die JSON-Ausgabe enthält die folgenden Elemente:
 
 ### <a name="fragments-json-elements"></a>JSON-Elemente für Fragmente
 
-|Element|BESCHREIBUNG|
+|Element|Beschreibung|
 |---|---|
 | start |Die Startzeit des ersten Ereignisses in „Ticks“. |
 | duration |Die Länge des Fragments in „Ticks“. |
@@ -71,7 +74,7 @@ Die JSON-Ausgabe enthält die folgenden Elemente:
 | reviewRecommended | `true` oder `false` je nachdem, ob **AdultScore** oder **RacyScore** die internen Schwellenwerte überschreiten. |
 | adultScore | Die Zuverlässigkeitsbewertung für nicht jugendfreie Inhalte auf einer Skala von 0,00 bis 0,99. |
 | racyScore | Die Zuverlässigkeitsbewertung für rassistische Inhalte auf einer Skala von 0,00 bis 0,99. |
-| index | Der Index des Frames auf einer Skala vom ersten bis zum letzten Frameindex. |
+| Index | Der Index des Frames auf einer Skala vom ersten bis zum letzten Frameindex. |
 | timestamp | Der Speicherort des Frames in „Ticks“. |
 | shotIndex | Der Index der übergeordneten Aufnahme. |
 

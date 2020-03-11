@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610997"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302881"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
@@ -98,12 +98,13 @@ Um Streaminglocators basierend auf dem zugeordneten Medienobjektnamen abzurufen,
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 * [Medienobjekte](assets-concept.md)
 * [Streamingrichtlinien](streaming-policy-concept.md)
 * [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md)
+* [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
+[Erstellen eines Streaminglocators und von URLs](create-streaming-locator-build-url.md)

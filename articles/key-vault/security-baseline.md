@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9b767693691557f684bee59aa1764395dc42bffe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302847"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-Sicherheitsbaseline für Key Vault
 
@@ -110,11 +110,9 @@ Einrichten von Advanced Threat Protection für Azure Key Vault: https://docs.mic
 **Anleitung:** Verwenden Sie für Ressourcen, die Zugriff auf Ihre Azure Key Vault-Instanzen benötigen, Azure-Diensttags für Azure Key Vault, um Netzwerkzugriffssteuerungen für Netzwerksicherheitsgruppen oder Azure Firewall zu definieren. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. „ApiManagement“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
 
-Übersicht über Azure-Diensttags:
+Übersicht über Azure-Diensttags: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-https://docs.microsoft.com/azure/virtual-network/service-tags-overview
-
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -133,7 +131,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Policy-Beispiele:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#networ
+https://docs.microsoft.com/azure/governance/policy/samples
 
 Schnellstart: Definieren und Zuweisen einer Blaupause im Portal:
 
@@ -223,7 +221,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -294,7 +292,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -309,15 +307,11 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 (Get-AzResource -ResourceId [KeyVaultResourceID]).Properties.AccessPolicies
 
-Registrieren einer Anwendung mit Azure Active Directory:
+Registrieren einer Anwendung mit Azure Active Directory: https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
+Schützen des Zugriffs auf einen Schlüsseltresor: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-Schützen des Zugriffs auf einen Schlüsseltresor:
-
-https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
-
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -376,12 +370,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Verwenden dedizierter Computer (Arbeitsstationen mit privilegiertem Zugriff) für alle administrativen Aufgaben
 
-**Anleitung:** Verwenden Sie eine Arbeitsstation mit privilegiertem Zugriff (Privileged Access Workstation, PAW) mit Azure Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration Key Vault-fähiger Ressourcen konfiguriert ist.
-
+**Anleitung:** Verwenden Sie eine Arbeitsstation mit privilegiertem Zugriff (Privileged Access Workstation, PAW) mit Azure Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration Key Vault-fähiger Ressourcen konfiguriert ist. 
 
 Privileged Access Workstations: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -391,32 +385,20 @@ Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung: ht
 
 **Anleitung:** Verwenden Sie Azure Active Directory Privileged Identity Management (AAD PIM) für die Generierung von Protokollen und Warnungen bei verdächtigen oder sicherheitsrelevanten Aktivitäten in der Umgebung. Verwenden Sie AAD-Risikoerkennungen, um Warnungen und Berichte zum Verhalten von Risikobenutzern anzuzeigen. Wenn Sie eine zusätzliche Protokollierung benötigen, senden Sie die Risikoerkennungswarnungen von Azure Security Center an Azure Monitor, und konfigurieren Sie mithilfe von Aktionsgruppen benutzerdefinierte Warnungen/Benachrichtigungen.
 
-
 Aktivieren Sie Advanced Threat Protection (ATP) für Azure Key Vault, um Warnungen für verdächtige Aktivitäten zu generieren.
 
-
-Bereitstellen von Azure AD Privileged Identity Management (PIM):
-
-https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Bereitstellen von Azure AD Privileged Identity Management (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
 Einrichten von Advanced Threat Protection für Azure Key Vault (Vorschau): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
+Warnungen für Azure Key Vault (Vorschau): https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Warnungen für Azure Key Vault (Vorschau):
+Azure Active Directory-Risikoerkennungen: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-
-Azure Active Directory-Risikoerkennungen:
-
-https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Erstellen und Verwalten von Aktionsgruppen im Azure-Portal: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
-Erstellen und Verwalten von Aktionsgruppen im Azure-Portal:
-
-https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
-
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -426,7 +408,8 @@ https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -434,9 +417,11 @@ Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? h
 
 **Anleitung:** Verwenden Sie Azure Active Directory (AAD) als zentrales Authentifizierungs- und Autorisierungssystem für Azure-Ressourcen wie Key Vault. Dies ermöglicht der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) die Verwaltung vertraulicher Ressourcen.
 
+ 
+
 Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -445,12 +430,16 @@ Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory: https:/
 **Anleitung:** Überprüfen Sie die Azure Active Directory-Protokolle (AAD), um veraltete Konten mit administrativen Azure Key Vault-Rollen zu ermitteln. Verwenden Sie zusätzlich AAD-Zugriffsüberprüfungen, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen, die für den Zugriff auf Azure Key Vault verwendet werden könnten, und Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff sollte regelmäßig überprüft werden (z. B. alle 90 Tage), um sicherzustellen, dass nur die richtigen Benutzer weiterhin Zugriff haben.
 
 
-Dokumentation zu Azure Active Directory-Berichten und -Überwachung: https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Dokumentation zu Azure Active Directory-Berichten und -Überwachung:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-Was sind Azure AD-Zugriffsüberprüfungen? https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+Was sind Azure AD-Zugriffsüberprüfungen?
 
-**Azure Security Center-Überwachung:** Ja
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -460,7 +449,7 @@ Was sind Azure AD-Zugriffsüberprüfungen? https://docs.microsoft.com/azure/act
 
 Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Migrieren aus der alten Key Vault-Lösung: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution       
+Migrieren aus der alten Key Vault-Lösung: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 **Azure Security Center-Überwachung:** Ja
 
@@ -468,19 +457,15 @@ Migrieren aus der alten Key Vault-Lösung: https://docs.microsoft.com/azure/azur
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
-**Anleitung:** Verwenden Sie die Features Azure Active Directory Identity Protection und Risikoerkennung, um automatisierte Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Ihren durch Azure Key Vault geschützten Ressourcen zu konfigurieren. Sie sollten automatisierte Antworten über Azure Sentinel aktivieren, um die Sicherheitsmaßnahmen Ihrer Organisation zu implementieren.
-
+**Anleitung:** Verwenden Sie die Features Azure Active Directory Identity Protection und Risikoerkennung, um automatisierte Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Ihren durch Azure Key Vault geschützten Ressourcen zu konfigurieren. Sie sollten automatisierte Antworten über Azure Sentinel aktivieren, um die Sicherheitsmaßnahmen Ihrer Organisation zu implementieren. 
 
 Bericht „Risikoanmeldungen“ im Azure Active Directory-Portal: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
 Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
+Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Ausführen des Onboardings für Azure Sentinel:
-
-https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -501,10 +486,10 @@ Unterstützte Dienste und Szenarien bei allgemeiner Verfügbarkeit: https://docs
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
 
-**Anleitung:** Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen zu Ressourcen, für die Azure Key Vault aktiviert wurde, speichern oder verarbeiten.
-
+**Anleitung:** Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen zu Ressourcen, für die Azure Key Vault aktiviert wurde, speichern oder verarbeiten. 
 
 Verwenden von Tags zum Organisieren von Azure-Ressourcen: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -514,15 +499,14 @@ Verwenden von Tags zum Organisieren von Azure-Ressourcen: https://docs.microsoft
 
 **Anleitung:** Sie können den Zugriff auf Azure Key Vault schützen, indem Sie VNET-Dienstendpunkte verwenden, die zum Einschränken des Zugriffs auf bestimmte Subnetze konfiguriert sind.
 
-
 Nachdem Firewallregeln in Kraft sind, können Sie Vorgänge auf der Datenebene von Azure Key Vault nur ausführen, wenn Ihre Anforderungen aus zulässigen Subnetzen oder IP-Adressbereichen stammen. Dies gilt auch für den Zugriff auf Azure Key Vault aus dem Azure-Portal. Obwohl Sie im Azure-Portal zu einem Schlüsseltresor navigieren können, können Sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn Ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Azure Key Vault-Auswahl und andere Azure-Dienste aus. Sie können möglicherweise eine Liste von Schlüsseltresoren anzeigen, aber keine Schlüssel auflisten, wenn Firewallregeln Ihren Clientcomputer blockieren.
-
 
 Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
 VNET-Dienstendpunkte für Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -536,16 +520,17 @@ Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken: https://d
 
 Azure Key Vault-Protokollierung: https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
+
 **Azure Security Center-Überwachung:** Ja
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Anleitung:** Der gesamte Datenverkehr zu Azure Key Vault für Authentifizierung, Verwaltung und Datenebenenzugriff wird verschlüsselt und über den HTTPS-Port 443 gesendet. (Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an.)
-
+**Anleitung:** Der gesamte Datenverkehr zu Azure Key Vault für Authentifizierung, Verwaltung und Datenebenenzugriff wird verschlüsselt und über den HTTPS-Port 443 gesendet. (Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an.) 
 
 Zugreifen auf Azure Key Vault hinter einer Firewall: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -632,7 +617,7 @@ Azure Key Vault-Analyse-Lösung in Azure Monitor: https://docs.microsoft.com/azu
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -646,13 +631,13 @@ Azure Key Vault-Analyse-Lösung in Azure Monitor: https://docs.microsoft.com/azu
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Verwenden eines Risikobewertungsprozesses, um die Behebung von erkannten Sicherheitsrisiken zu priorisieren
 
-**Anleitung:** Verwenden Sie die Standardrisikobewertungen (Secure Score), die von Azure Security Center bereitgestellt werden.
+**Leitfaden**: Verwenden Sie die Standardrisikobewertungen (Secure Score), die von Azure Security Center bereitgestellt werden.
 
 Verbessern des Secure Score in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -710,9 +695,9 @@ Verwenden von Tags zum Organisieren von Azure-Ressourcen: https://docs.microsoft
 
 ### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Verwalten eines Bestands genehmigter Azure-Ressourcen und Softwaretitel
 
-**Anleitung:** Definieren Sie eine Liste der genehmigte Azure-Ressourcen und der genehmigten Software für Computeressourcen.
+**Leitfaden**: Definieren Sie eine Liste mit den genehmigten Azure-Ressourcen und der genehmigten Software für Computeressourcen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -729,15 +714,16 @@ Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung: h
 
 Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Testers: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Überwachen auf nicht genehmigte Softwareanwendungen innerhalb von Computeressourcen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -751,9 +737,9 @@ Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure 
 
 ### <a name="68-use-only-approved-applications"></a>6.8: Ausschließliche Verwendung genehmigter Anwendungen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -768,6 +754,7 @@ Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung: h
 
 Azure Policy-Beispiele: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -776,13 +763,14 @@ Azure Policy-Beispiele: https://docs.microsoft.com/azure/governance/policy/sampl
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
 ### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: Einschränken der Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager über Skripts
 
-**Anleitung:** Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager einzuschränken, indem Sie „Zugriff blockieren“ für die App zur Verwaltung von Microsoft Azure konfigurieren. Dies kann das Erstellen und Ändern von Ressourcen innerhalb einer Hochsicherheitsumgebung (z. B. mit Key Vault-Konfiguration) verhindern.
+**Leitfaden**: Verwenden Sie den bedingten Azure-Zugriff, um die Möglichkeiten der Benutzer zur Interaktion mit Azure Resource Manager (ARM) einzuschränken, indem Sie „Zugriff blockieren“ für die App zur Verwaltung von Microsoft Azure konfigurieren. Dies kann das Erstellen und Ändern von Ressourcen innerhalb einer Hochsicherheitsumgebung (z. B. mit Key Vault-Konfiguration) verhindern.
+
 
 Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
@@ -792,9 +780,9 @@ Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff: https://d
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -814,19 +802,31 @@ Verwalten des Zugriffs auf die Azure-Verwaltung mit bedingtem Zugriff: https://d
 
 **Anleitung:** Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.KeyVault“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure Key Vault-Instanzen zu erstellen. Sie können auch integrierte Azure Policy-Definitionen für Azure Key Vault verwenden, z. B.:
 
-- Key Vault-Objekte müssen wiederherstellbar sein
-- Bereitstellen von Diagnoseeinstellungen für Key Vault im Log Analytics-Arbeitsbereich
-- Diagnoseprotokolle in Key Vault sollten aktiviert sein.
-- Key Vault sollte einen VNET-Dienstendpunkt verwenden.
-- Bereitstellen von Diagnoseeinstellungen für Key Vault in Event Hub
+
+Key Vault-Objekte müssen wiederherstellbar sein
+
+Bereitstellen von Diagnoseeinstellungen für Key Vault im Log Analytics-Arbeitsbereich
+
+Diagnoseprotokolle in Key Vault sollten aktiviert sein.
+
+Key Vault sollte einen VNET-Dienstendpunkt verwenden.
+
+Bereitstellen von Diagnoseeinstellungen für Key Vault in Event Hub
+
 
 Nutzen Sie die Empfehlungen von Azure Security Center als Konfigurationsbaseline für den Schutz Ihrer Azure Key Vault-Instanzen.
 
-Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Anzeigen verfügbarer Azure Policy-Aliase:
 
-**Azure Security Center-Überwachung:** Ja
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+
+
+Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -834,7 +834,7 @@ Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung: h
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -859,15 +859,15 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
-**Anleitung:** Wenn Sie für Ihre Ressourcen mit aktiviertem Azure Key Vault benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure DevOps oder Azure Repos, um Code sicher zu speichern und zu verwalten.
+**Leitfaden**: Wenn Sie für Ihre Ressourcen mit aktiviertem Azure Key Vault benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
 
 Speichern von Code in Azure DevOps: 
@@ -879,15 +879,15 @@ Dokumentation zu Azure Repos:
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -901,15 +901,15 @@ Konfigurieren und Verwalten von Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -923,7 +923,7 @@ Umsetzen von Empfehlungen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -931,7 +931,7 @@ https://docs.microsoft.com/azure/security-center/security-center-remediate-recom
 
 **Anleitung:** Nicht zutreffend. Diese Benchmark ist für Computeressourcen vorgesehen.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -987,7 +987,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
   
  Einrichten von Credential Scanner: https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -997,9 +997,9 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Verwenden einer zentral verwalteten Antischadsoftware
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen. Microsoft kümmert sich um Antischadsoftware für die zugrunde liegende Plattform.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen. Microsoft kümmert sich um Antischadsoftware für die zugrunde liegende Plattform.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -1013,15 +1013,15 @@ Inhalte, die in nicht für Compute ausgelegte Azure-Ressourcen wie Azure Key Vau
 
 Grundlegendes zu Microsoft Antimalware für Azure Cloud Services und Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>Schritt 8.3: Sicherstellen der Aktualisierung von Antischadsoftware und Signaturen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen. Microsoft kümmert sich um Antischadsoftware für die zugrunde liegende Plattform.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen. Microsoft kümmert sich um Antischadsoftware für die zugrunde liegende Plattform.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -1049,6 +1049,7 @@ Sichern per Key Vault verwalteter Speicherkonten: https://docs.microsoft.com/pow
 Sichern von Key Vault-Geheimnissen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
 Aktivieren von Azure Backup: https://docs.microsoft.com/azure/backup
+
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -1104,11 +1105,12 @@ Wiederherstellen von Key Vault-Geheimnissen: https://docs.microsoft.com/powershe
 
 **Anleitung:** Stellen Sie sicher, dass das vorläufige Löschen für Azure Key Vault aktiviert ist. Vorläufiges Löschen ermöglicht die Wiederherstellung gelöschter Schlüsseltresore und Tresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate. 
 
+
 Verwenden des vorläufigen Löschens für Azure Key Vault: 
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center-Überwachung:** Derzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -1165,13 +1167,13 @@ Informationen finden Sie in der folgenden Veröffentlichung des NIST: Guide to T
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Angeben von Kontaktdaten für Sicherheitsvorfälle und Konfigurieren von Warnungsbenachrichtigungen für Sicherheitsvorfälle
 
-**Anleitung:** Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Daten zugegriffen haben.  Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
+**Leitfaden**: Microsoft kontaktiert Sie unter den für Sicherheitsvorfälle angegebenen Kontaktdaten, wenn das Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Daten zugegriffen haben.  Überprüfen Sie die Vorfälle anschließend, um sicherzustellen, dass die Probleme behoben wurden.
 
 
 
@@ -1179,7 +1181,7 @@ Festlegen der Kontaktinformationen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -1199,7 +1201,7 @@ Streamen von Warnungen in Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -1213,7 +1215,7 @@ Konfigurieren von „Workflowautomatisierung“ und Logic Apps:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -1239,3 +1241,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Verantwortlichkeit**: Shared
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](https://docs.microsoft.com/azure/security/benchmarks/overview).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
