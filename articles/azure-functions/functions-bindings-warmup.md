@@ -38,7 +38,7 @@ Beachten Sie, dass der Trigger für die Aufwärmphase nur während der horizonta
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die auf jeder neuen Instanz ausgeführt wird, wenn diese Ihrer App hinzugefügt wird. Ein Attribut des Rückgabewerts ist nicht erforderlich.
 
@@ -73,7 +73,7 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 
 Das folgende Beispiel zeigt einen Trigger für die Aufwärmphase in einer *function.json*-Datei und eine [C#-Skriptfunktion](functions-reference-csharp.md), die auf jeder neuen Instanz ausgeführt wird, wenn diese Ihrer App hinzugefügt wird.
@@ -105,7 +105,7 @@ public static void Run(ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt einen Trigger für die Aufwärmphase in einer *function.json*-Datei und eine [JavaScript-Funktion](functions-reference-node.md), die auf jeder neuen Instanz ausgeführt wird, wenn diese Ihrer App hinzugefügt wird.
 
@@ -136,7 +136,7 @@ module.exports = async function (context, warmupContext) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Das folgende Beispiel zeigt einen Trigger für die Aufwärmphase in einer *function.json*-Datei und eine [Python-Funktion](functions-reference-python.md), die auf jeder neuen Instanz ausgeführt wird, wenn diese Ihrer App hinzugefügt wird.
 
@@ -169,7 +169,7 @@ def main(warmupContext: func.Context) -> None:
     logging.info('Function App instance is warm 🌞🌞🌞')
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Das folgende Beispiel zeigt einen Aufwärmtrigger, der immer ausgeführt wird, wenn Ihrer App eine neue Instanz hinzugefügt wird.
 
@@ -188,7 +188,7 @@ public void run( ExecutionContext context) {
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) ist das `WarmupTrigger`-Attribut für die Konfiguration der Funktion verfügbar.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In diesem Beispiel wird veranschaulicht, wie das [Aufwärmphase](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)-Attribut verwendet wird.
 
@@ -205,19 +205,19 @@ Beachten Sie, dass Ihre Funktion ```Warmup``` heißen muss, und pro App kann nur
 
 Ein vollständiges Beispiel finden Sie unter [Triggerbeispiel](#trigger---example).
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Attribute werden von Python nicht unterstützt.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Der Trigger für die Aufwärmphase wird in Java nicht als Attribut unterstützt.
 

@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964103"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191028"
 ---
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
 
-Azure Functions Core Tools arbeitet mit Visual Studio Code zusammen, um das lokale Ausführen und Debuggen von Azure Functions-Projekten zu ermöglichen.  
+Azure Functions Core Tools arbeitet mit Visual Studio Code zusammen, um das lokale Ausführen und Debuggen von Azure Functions-Projekten zu ermöglichen. Ausführliche Informationen zum Debuggen in Visual Studio Code finden Sie unter [Lokales Debuggen von PowerShell Azure Functions](../articles/azure-functions/functions-debug-powershell-local.md). 
 
-1. Wenn Sie Ihre Funktion debuggen möchten, fügen Sie im Funktionscode einen Aufruf des Cmdlets [`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) vor der Stelle ein, an der Sie den Debugger anfügen möchten. Drücken Sie anschließend F5, um das Funktions-App-Projekt zu starten und den Debugger anzufügen. Die Ausgabe der Core Tools wird im Bereich **Terminal** angezeigt.
+1. Drücken Sie F5, um das Funktions-App-Projekt zu starten. Die Ausgabe der Core Tools wird im Bereich **Terminal** angezeigt.
 
 1. Kopieren Sie im Bereich **Terminal** den URL-Endpunkt Ihrer über HTTP ausgelösten Funktion.
 
@@ -38,9 +38,6 @@ Azure Functions Core Tools arbeitet mit Visual Studio Code zusammen, um das loka
 
     ![Funktionsausführung im Bereich „Terminal“](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. Wenn Sie das Debuggen beenden möchten, drücken Sie STRG+C zum Beenden der Core Tools.
+1. Drücken Sie nach Abschluss des Vorgangs **STRG+C**, um Core Tools zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
-
-> [!NOTE]
-> Denken Sie daran, alle Aufrufe von `Wait-Debugger` zu entfernen, bevor Sie Ihre Funktionen in Azure veröffentlichen. 

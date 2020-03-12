@@ -65,7 +65,7 @@ Sie müssen über ein Azure Cosmos DB-Konto verfügen, für das die SQL-API verw
 
 Ersetzen Sie den vorhandenen Funktionscode durch den folgenden Code in Ihrer gewählten Sprache:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Ersetzen Sie die vorhandene C#-Funktion durch den folgenden Code:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Ersetzen Sie die vorhandene JavaScript-Funktion durch den folgenden Code:
 

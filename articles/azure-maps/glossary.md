@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198240"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657043"
 ---
 # <a name="glossary"></a>Glossar
 
 Die folgende Liste enthält Beschreibungen gängiger Begriffe, die im Zusammenhang mit Azure Maps-Diensten verwendet werden.
 
-## <a name="a"></a>A
+## <a name="a"></a>Ein
 
 <a name="address-validation"></a> **Adressüberprüfung**: Der Vorgang, bei dem das Vorhandensein einer Adresse überprüft wird.
 
@@ -47,7 +47,7 @@ Die folgende Liste enthält Beschreibungen gängiger Begriffe, die im Zusammenha
 
 <a name="asynchronous-request"></a> **Asynchrone Anforderung**: Eine HTTP-Anforderung, die eine Verbindung öffnet, eine Anforderung an den Server sendet, der einen Bezeichner für die asynchrone Anforderung zurückgibt, und anschließend die Verbindung schließt. Der Server fährt mit der Verarbeitung der Anforderung fort, während der Benutzer den Status mithilfe des Bezeichners überprüfen kann. Wenn die Verarbeitung der Anforderung abgeschlossen ist, kann der Benutzer die Antwort dann herunterladen. Diese Art von Anforderung wird bei Prozessen mit langer Ausführungsdauer verwendet.
 
-<a name="autocomplete"></a> **AutoVervollständigen**: Ein Feature in einer Anwendung, das den Rest eines Wortes, das ein Benutzer gerade eingibt, vorhersagt. 
+<a name="autocomplete"></a> **AutoVervollständigen**: Ein Feature in einer Anwendung, das den Rest eines Worts vorhersagt, das ein Benutzer gerade eingibt. 
 
 <a name="autosuggest"></a> **Vorschlagssuche**: Ein Feature in einer Anwendung, das die logischen Möglichkeiten für die Benutzereingabe vorhersagt.
 

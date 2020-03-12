@@ -217,8 +217,8 @@ Sie können verschiedene [Web-APIs](WebAPI.md) auch direkt zum Testen der Interp
 
 * [http://localhost:8000/interpret?query=papers by susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
 * [http://localhost:8000/interpret?query=papers by susan t d&complete=1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
-* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
-* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
+* [http://localhost:8000/evaluate?expr=Composite(Author.Name== 'susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
+* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name== 'susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
 Außerhalb von Azure ist [`kes.exe host_service`](CommandLine.md#host_service-command) auf Indizes von bis zu 10.000 Objekten beschränkt. Andere Grenzwerte enthalten eine API-Rate von 10 Anforderungen pro Sekunde und insgesamt 1.000 Anforderungen, bevor der Prozess automatisch beendet wird. Um diese Einschränkungen zu umgehen, führen Sie den Befehl von einer [Windows-VM in Azure](../../../articles/virtual-machines/windows/quick-create-portal.md) aus, oder führen Sie mit dem [`kes.exe deploy_service`](CommandLine.md#deploy_service-command)-Befehl eine Bereitstellung für einen Azure-Clouddienst durch. Weitere Informationen finden Sie unter „Bereitstellen des Diensts“.
 
