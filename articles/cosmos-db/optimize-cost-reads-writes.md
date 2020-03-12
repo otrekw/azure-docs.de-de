@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bbdd1bedb7b9a9f00a0b65ccc4c108ba6fd2638c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754929"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398942"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Optimieren der Lese- und Schreibkosten in Azure Cosmos DB
 
@@ -29,14 +29,6 @@ Sie brauchen nicht über die Unterscheidung der Anforderungseinheiten für Lese-
 |100 KB |10 RUs |50 RUs |
 
 Das Lesen eines Elements mit einer Größe von 1 KB kostet eine Anforderungseinheit (1 RU). Das Schreiben eines Elements mit einer Größe von 1 KB kostet fünf Anforderungseinheiten (5 RUs). Die Kosten für Lese- und Schreibvorgänge sind anwendbar, wenn Sie die standardmäßige [Konsistenzebene „Sitzung“](consistency-levels.md) verwenden.  Die Überlegungen in Bezug auf Anforderungseinheiten (RUs) enthalten folgende Aspekte: Elementgröße, Anzahl der Eigenschaften, Datenkonsistenz, indizierte Eigenschaften, Indizierung und Abfragemuster.
-
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>Normalisierte Kosten für 1 Million Lese- und Schreibvorgänge
-
-Die Bereitstellung von 1.000 RUs/Sek. entspricht 3,6 Mio. RUs/Stunde und kostet 0,08 US-Dollar pro Stunde (in den USA und Europa). Für ein Element mit 1 KB können Sie mit diesem bereitgestellten Durchsatz pro Stunde 3,6 Mio. Lesevorgänge oder 0,72 Mio. Schreibvorgänge ausführen (Rechenvorgang: `3.6 million RU / 5`). Normalisiert auf eine Million Lese- und Schreibvorgänge würden die Kosten 0,022 US-Dollar für 1 Mio. Lesevorgänge (Rechenvorgang: 0,08 US-Dollar/3,6 Millionen) und 0,111 US-Dollar für 1 Mio. Schreibvorgänge (Rechenvorgang: 0,08 US-Dollar/0,72 Millionen) betragen.
-
-## <a name="number-of-regions-and-the-request-units-cost"></a>Anzahl der Regionen und Kosten der Anforderungseinheiten
-
-Die Kosten für Schreibvorgänge sind konstant, und zwar unabhängig von der Anzahl der Regionen, die mit dem Azure Cosmos-Konto verknüpft sind. Das heißt, ein Schreibvorgang für 1 KB kostet fünf RUs, unabhängig von der Anzahl der Regionen, die dem Konto zugeordnet sind. Eine nicht unerhebliche Menge von Ressourcen wird für das Replizieren, Akzeptieren und Verarbeiten des Replikationsdatenverkehrs für jede Region aufgewendet. Ausführliche Informationen zur Kostenoptimierung bei mehreren Regionen finden Sie im Artikel [Optimieren der Kosten bei Cosmos-Konten mit mehreren Regionen](optimize-cost-regions.md).
 
 ## <a name="optimize-the-cost-of-writes-and-reads"></a>Optimieren der Kosten für Schreib- und Lesevorgänge
 

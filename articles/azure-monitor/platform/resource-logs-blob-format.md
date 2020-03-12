@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b90b6f8eabbda229fbed4dcef6a5d863ea721faf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659134"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096781"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Plattformprotokolle, die in einem Speicherkonto archiviert werden
 
 > [!WARNING]
-> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](resource-logs-collect-storage.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](activity-log-export.md) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren.
+> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](resource-logs-collect-storage.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](resource-logs-collect-storage.md) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren.
 >
 
 ## <a name="what-changed"></a>Änderung

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979721"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927563"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -27,7 +27,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Machine Learning-Ress
 
 ### <a name="amlcomputejobevents-table"></a>Tabelle „AmlComputeJobEvents“
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | TimeGenerated | Zeitpunkt, zu dem der Protokolleintrag generiert wurde |
 | Vorgangsname | Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
@@ -56,7 +56,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Machine Learning-Ress
 
 ### <a name="amlcomputeclusterevents-table"></a>Tabelle „AmlComputeClusterEvents“
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | TimeGenerated | Zeitpunkt, zu dem der Protokolleintrag generiert wurde |
 | Vorgangsname | Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
@@ -99,7 +99,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Machine Learning-Ress
 
 ### <a name="amlcomputeclusternodeevents-table"></a>Tabelle „AmlComputeClusterNodeEvents“
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | TimeGenerated | Zeitpunkt, zu dem der Protokolleintrag generiert wurde |
 | Vorgangsname | Name des Vorgangs, der dem Protokollereignis zugeordnet ist |
@@ -128,7 +128,7 @@ In den folgenden Tabellen sind die für Azure Machine Learning gesammelten Metri
 
 **Modell**
 
-| Metrik | Einheit | Beschreibung |
+| Metrik | Einheit | BESCHREIBUNG |
 | ----- | ----- | ----- |
 | Model deploy failed (Fehler bei der Modellimplementierung) | Anzahl | Die Anzahl der fehlerhaften Modellimplementierungen |
 | Model deploy started (Gestartete Modellimplementierungen) | Anzahl | Die Anzahl der gestarteten Modellimplementierungen |
@@ -140,7 +140,7 @@ In den folgenden Tabellen sind die für Azure Machine Learning gesammelten Metri
 
 Kontingentinformationen gelten nur für Azure Machine Learning Compute.
 
-| Metrik | Einheit | Beschreibung |
+| Metrik | Einheit | BESCHREIBUNG |
 | ----- | ----- | ----- |
 | Active cores (Aktive Kerne) | Anzahl | Die Anzahl der aktiven Compute-Kerne |
 | Active nodes (Aktive Knoten) | Anzahl | Die Anzahl der aktiven Knoten |
@@ -158,7 +158,7 @@ Kontingentinformationen gelten nur für Azure Machine Learning Compute.
 
 Die folgenden Dimensionen sind Dimensionen, mit denen Kontingentmetriken gefiltert werden können:
 
-| Dimension | Metrik(en) verfügbar mit | Beschreibung |
+| Dimension | Metrik(en) verfügbar mit | BESCHREIBUNG |
 | ---- | ---- | ---- |
 | Clustername | All quota metrics (Alle Kontingentmetriken) | Der Name der Compute-Instanz |
 | Vm Family Name (Name der VM-Familie) | Quota utilization percentage (Prozentsatz der Kontingentnutzung) | Der Name der vom Cluster verwendeten VM-Familie |
@@ -168,7 +168,7 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Kontingentmetriken gefilte
 
 Informationen zu Trainingsausführungen
 
-| Metrik | Einheit | Beschreibung |
+| Metrik | Einheit | BESCHREIBUNG |
 | ----- | ----- | ----- |
 | Completed runs (Abgeschlossene Ausführungen) | Anzahl | Die Anzahl der abgeschlossenen Ausführungen |
 | Failed runs (Ausführungen mit Fehlern) | Anzahl | Die Anzahl der Ausführungen mit Fehlern |
@@ -176,7 +176,7 @@ Informationen zu Trainingsausführungen
 
 Die folgenden Dimensionen sind Dimensionen, mit denen Ausführungsmetriken gefiltert werden können:
 
-| Dimension | Beschreibung |
+| Dimension | BESCHREIBUNG |
 | ---- | ---- |
 | ComputeType | Der für die Ausführung verwendete Computetyp |
 | PipelineStepType | Der Typ des [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)-Objekts, das in der Ausführung verwendet wurde |
@@ -185,7 +185,7 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Ausführungsmetriken gefil
 
 Gültige Werte für die RunType-Dimension sind:
 
-| value | Beschreibung |
+| Wert | BESCHREIBUNG |
 | ----- | ----- |
 | Experiment | Nicht-Pipelineausführungen |
 | PipelineRun | Eine Pipelineausführung, die das übergeordnete Element einer Schrittausführung (StepRun) ist |

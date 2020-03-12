@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718350"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081776"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -42,8 +42,8 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 |Max. Bildhöhe/-breite in Pixel|Unbegrenzt|Unbegrenzt|
 |Maximale Bildgröße (Upload des Trainingsbilds) |6 MB|6 MB|
 |Maximale Bildgröße (Vorhersage)|4 MB|4 MB|
-|Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|200|200|
-|Maximale Anzahl von Tags pro Klassifizierungsimage|30|30|
+|Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|300|300|
+|Maximale Anzahl von Tags pro Klassifizierungsimage|100|100|
 
 > [!NOTE]
 > Bilder unter 256 Pixel werden akzeptiert, jedoch hochskaliert.

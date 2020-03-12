@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 6ff12122d541a9dbb160a424e0d11cf03fdcb9fe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 51fa6d4859eb4b7f059b499ba73d84d9fc65e6f6
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970226"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398988"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
+- [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
 - Xamarin-Workload für Visual Studio (siehe [Installieren von Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
 - iOS- oder Android-Emulator für Visual Studio
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (optional)
@@ -107,7 +107,7 @@ Die App erfordert ein Azure-Dienstprinzipalkonto, um Dienste in Ihrem Azure-Abon
 
 Sie können einen Dienstprinzipal wie im Folgenden beschrieben mit Azure Cloud Shell oder mit der Azure CLI erstellen. Melden Sie sich zunächst an, und wählen Sie das gewünschte Abonnement aus.
 
-```console
+```azurecli
 az login
 az account list
 az account set --subscription "<subscription name or subscription id>"
@@ -115,7 +115,7 @@ az account set --subscription "<subscription name or subscription id>"
 
 Erstellen Sie anschließend Ihren Dienstprinzipal. (Dieser Vorgang kann einige Zeit dauern.)
 
-```console
+```azurecli
 az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongPassword>
 ```
 

@@ -3,12 +3,12 @@ title: Konformität mithilfe von Azure Policy
 description: Zuweisen integrierter Richtlinien in Azure Policy, um die Konformität Ihrer Azure-Containerregistrierungen zu überwachen
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921713"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330735"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Überwachen der Konformität von Azure-Containerregistrierungen mithilfe von Azure Policy
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Führen Sie dann [az policy state list](/cli/azure/policy/state#az-policy-assignment-list) aus, um den Konformitätszustand für alle Ressourcen einer bestimmten Richtlinien-ID im JSON-Format zurückzugeben:
+Führen Sie dann [az policy state list](/cli/azure/policy/state#az-policy-state-list) aus, um den Konformitätszustand für alle Ressourcen einer bestimmten Richtlinien-ID im JSON-Format zurückzugeben:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Sie können [az policy state list](/cli/azure/policy/state#az-policy-assignment-list) auch ausführen, um den Konformitätszustand einer bestimmten Registrierungsressource (z.B. *myregistry*) im JSON-Format zurückzugeben:
+Sie können [az policy state list](/cli/azure/policy/state#az-policy-state-list) auch ausführen, um den Konformitätszustand einer bestimmten Registrierungsressource (z.B. *myregistry*) im JSON-Format zurückzugeben:
 
 ```azurecli
 az policy state list \

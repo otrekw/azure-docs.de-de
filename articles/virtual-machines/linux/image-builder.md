@@ -6,13 +6,13 @@ ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: imaging
+ms.openlocfilehash: 15a3b39b1466ffec87971b8f054ca916567d89d7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695430"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944954"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Linux-Computers mit Azure Image Builder
 
@@ -22,12 +22,12 @@ In diesem Artikel erfahren Sie, wie Sie ein benutzerdefiniertes Linux-Image mit 
 - Shell (inline): führt spezifische Befehle aus. In diesem Beispiel schließen die Inline-Befehle das Erstellen eines Verzeichnisses und das Aktualisieren des Betriebssystems ein.
 - Datei: kopiert eine [Datei von GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) in ein Verzeichnis auf dem virtuellen Computer.
 
-Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert beträgt 240 Minuten, und Sie können die Buildzeit vergrößern, um Builds mit längerer Ausführungsdauer zuzulassen.
+Sie können auch `buildTimeoutInMinutes` angeben. Der Standardwert ist 240 Minuten, und Sie können die Buildzeit vergrößern, um zeitintensive Builds zuzulassen.
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json). 
 
 > [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
+> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrieren des Features
@@ -215,7 +215,7 @@ cat helloImageTemplateLinux.json
 
 Weitere ausführliche Informationen zu dieser JSON-Datei finden Sie unter [Image Builder-Vorlagenreferenz](image-builder-json.md).
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie fertig sind, können Sie die Ressourcen löschen.
 

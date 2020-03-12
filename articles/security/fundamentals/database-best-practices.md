@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928004"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943661"
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
 In diesem Artikel werden bewährte Methoden für die Datenbanksicherheit beschrieben.
@@ -72,7 +72,7 @@ Bei Verwendung der SQL Server-Authentifizierung ist Folgendes erforderlich:
 
 - Sie verwalten die sicheren Anmeldeinformationen selbst.
 - Sie schützen die Anmeldeinformationen in der Verbindungszeichenfolge.
-- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [Gewusst wie: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
+- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [Vorgehensweise: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory-Authentifizierung*
 Die [Azure Active Directory](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten zentral verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung.
@@ -120,7 +120,7 @@ Da ein autorisierter Benutzer, wie beispielsweise ein Sicherheits- oder Datenban
 Es gibt noch weitere Möglichkeiten zum Absichern Ihrer Daten:
 
 - [Verschlüsselung auf Zellenebene](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) werden bestimmte Spalten oder sogar Zellen, die Daten enthalten, mit unterschiedlichen Verschlüsselungsschlüsseln verschlüsselt.
-- Mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) können Clients vertrauliche Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für die Datenbank-Engine (SQL-Datenbank oder SQL Server) jemals offenzulegen. Zu diesem Zweck ermöglicht Always Encrypted eine Trennung zwischen den Besitzern der Daten (die diese anzeigen dürfen) und den Personen, die die Daten verwalten (aber ansonsten keinen Zugriff haben).
+- Mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) können Clients vertrauliche Daten in Clientanwendungen verschlüsseln, ohne die Verschlüsselungsschlüssel für die Datenbank-Engine (SQL-Datenbank oder SQL Server) jemals offenzulegen. Daher bietet Always Encrypted eine Trennung zwischen denjenigen, die die Daten besitzen (und sie ansehen können) und denjenigen, die die Daten verwalten, (aber keinen Zugriff haben sollten).
 - Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Kunden den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt. (Beispielmerkmale sind eine Gruppenmitgliedschaft und ein Ausführungskontext.)
 
 Organisationen, die keine Verschlüsselung auf Datenbankebene verwenden, sind möglicherweise anfälliger für Angriffe, die in SQL-Datenbanken gespeicherte Daten kompromittieren.
@@ -166,10 +166,6 @@ Wenn Sie diese Funktionen aktivieren, werden Sie bei Folgendem unterstützt:
 - Erkennen von und Reagieren auf Bedrohungen.
 
 Darüber hinaus integriert die Bedrohungserkennung Warnungen in das Azure Security Center, damit Sie an einer Stelle einen Überblick über den Sicherheitsstatus Ihrer Azure-Ressourcen erhalten.
-
-## <a name="enable-feature-restrictions"></a>Aktivieren der Featureeinschränkungen
-
-Die in Ihren Datenbanken enthaltenen Daten können Angreifern über Angriffsvektoren zugänglich gemacht werden, die Datenbankfehler und Abfrageausführungszeiten nutzen. Azure SQL-Datenbank bietet eine Reihe von Featureeinschränkungsmechanismen zum Schutz Ihrer Datenbank. Weitere Informationen finden Sie unter [Einschränkungen für SQL-Datenbankfeatures](/azure/sql-database/sql-database-feature-restrictions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](best-practices-and-patterns.md).

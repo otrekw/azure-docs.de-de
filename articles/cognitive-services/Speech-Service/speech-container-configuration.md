@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816576"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037325"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurieren von Containern für den Speech-Dienst
 
@@ -50,9 +50,9 @@ Diese Einstellung finden Sie hier:
 
 - Azure-Portal: Übersicht über **Speech** mit der Bezeichnung `Endpoint`
 
-| Erforderlich | NAME | Datentyp | BESCHREIBUNG |
+| Erforderlich | Name | Datentyp | BESCHREIBUNG |
 | -------- | ---- | --------- | ----------- |
-| Ja | `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
+| Ja | `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -78,10 +78,10 @@ Die Speech-Standardcontainer verwenden keine Eingabe- oder Ausgabeeinbindungen z
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](speech-container-howto.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht.
 
-| Optional | NAME | Datentyp | BESCHREIBUNG |
+| Optional | Name | Datentyp | BESCHREIBUNG |
 | -------- | ---- | --------- | ----------- |
-| Nicht zulässig | `Input` | Zeichenfolge | Wird von Speech-Standardcontainern nicht verwendet. Benutzerdefinierte Speech-Container verwenden [Volumebereitstellungen](#volume-mount-settings).                                                                                    |
-| Optional | `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output` |
+| Nicht zulässig | `Input` | String | Wird von Speech-Standardcontainern nicht verwendet. Benutzerdefinierte Speech-Container verwenden [Volumebereitstellungen](#volume-mount-settings).                                                                                    |
+| Optional | `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Einstellungen für Volumebereitstellungen
 
@@ -130,7 +130,7 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 Im Folgenden finden Sie Docker-Beispiele für den Speech-Container.
 
-## <a name="speech-to-texttabstt"></a>[Spracherkennung](#tab/stt)
+## <a name="speech-to-text"></a>[Spracherkennung](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>Einfaches Beispiel für Spracherkennung
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>Einfaches Beispiel für benutzerdefinierte Spracherkennung
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[Sprachsynthese](#tab/tss)
+## <a name="text-to-speech"></a>[Sprachsynthese](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>Einfaches Beispiel für Sprachsynthese
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>Einfaches Beispiel für benutzerdefinierte Sprachsynthese
 

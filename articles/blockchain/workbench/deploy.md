@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Previ
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189201"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943202"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -58,7 +58,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
     ![Erstellen der Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | Einstellung | Beschreibung  |
+    | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Ressourcenpräfix | Kurzer eindeutiger Bezeichner für Ihre Bereitstellung. Dieser Wert wird als Grundlage bei der Benennung von Ressourcen verwendet. |
     | VM-Benutzername | Der Benutzername wird als Administrator für alle virtuellen Computer (VMs) verwendet. |
@@ -69,7 +69,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
     | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
-    | Location | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
+    | Position | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 
 1. Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
@@ -81,7 +81,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
     ![Erweiterte Einstellungen für ein neues Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-new.png)
 
-    | Einstellung | Beschreibung  |
+    | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
     | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
@@ -135,7 +135,7 @@ Wenn die Bereitstellung der Blockchain Workbench abgeschlossen ist, sind Ihre Bl
 
     ![Zusammenfassung zum App-Dienst](media/deploy/app-service.png)
 
-Informationen zum Verknüpfen eines benutzerdefinierten Domänennamens mit Blockchain Workbench finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Informationen zum Verknüpfen eines benutzerdefinierten Domänennamens mit Blockchain Workbench finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../../app-service/configure-domain-traffic-manager.md).
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD-Konfigurationsskript
 

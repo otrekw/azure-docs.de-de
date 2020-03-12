@@ -12,17 +12,6 @@
       href: quick-create-powershell.md
     - name: Erstellen eines virtuellen Netzwerks – Azure CLI
       href: quick-create-cli.md
-    - name: NAT
-      items:
-        - name: "Erstellen einer NAT\_Gateway-Instanz: Portal"
-          href: quickstart-create-nat-gateway-portal.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: PowerShell"
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: CLI"
-          href: quickstart-create-nat-gateway-cli.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: Tutorials
   items:
@@ -36,6 +25,15 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT
       items:
+        - name: "Erstellen einer NAT\_Gateway-Instanz: Portal"
+          href: quickstart-create-nat-gateway-portal.md
+        - name: "Erstellen einer NAT\_Gateway-Instanz: PowerShell"
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: "Erstellen einer NAT\_Gateway-Instanz: CLI"
+          href: quickstart-create-nat-gateway-cli.md
+        - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
         - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: Portal"
           href: tutorial-create-validate-nat-gateway-portal.md
         - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"

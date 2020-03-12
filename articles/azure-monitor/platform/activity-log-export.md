@@ -8,11 +8,11 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668960"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096133"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
@@ -117,12 +117,12 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Eigenschaft | Erforderlich | Beschreibung |
+    | Eigenschaft | Erforderlich | BESCHREIBUNG |
     | --- | --- | --- |
     | Name |Ja |Name des Protokollprofils. |
     | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
     | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge im Format `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
+    | Position |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
     | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen im Speicherkonto (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
     | Category |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind _Write_, _Delete_ und _Action_. |
 

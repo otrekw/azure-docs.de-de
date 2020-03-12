@@ -1,26 +1,17 @@
 ---
 title: Erstellen einer Linux-Umgebung mit der Azure CLI
 description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine NIC, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-CLI von Grund auf neu erstellen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 56b476c431ed8b41f04b1a1c11c730e5260ade8d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036544"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969562"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer vollständigen Linux-VM mit der Azure CLI
 Um schnell einen virtuellen Computer (VM) in Azure zu erstellen, können Sie einen einzelnen Azure CLI-Befehl mit Standardwerten verwenden, um alle erforderlichen unterstützenden Ressourcen zu erstellen. Ressourcen wie ein virtuelles Netzwerk, eine öffentliche IP-Adresse und Regeln für Netzwerksicherheitsgruppen werden automatisch erstellt. Um mehr Kontrolle über Ihre Umgebung in der Produktionsumgebung zu erhalten, können Sie diese Ressourcen im Voraus erstellen und Ihre virtuellen Computer ihnen dann hinzufügen. Dieser Artikel führt Sie schrittweise durch das Erstellen eines virtuellen Computers und der einzelnen unterstützenden Ressourcen.
@@ -436,7 +427,7 @@ Ausgabe:
 ```
 
 
-## <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
+## <a name="create-an-availability-set"></a>Verfügbarkeitsgruppe erstellen
 Mit Verfügbarkeitsgruppen können die virtuellen Computer auf Fehler- und Updatedomänen verteilt werden. Obwohl Sie derzeit nur eine VM erstellen können, wird empfohlen, mit Verfügbarkeitsgruppen zu arbeiten, um künftige Erweiterungen zu erleichtern. 
 
 Durch Fehlerdomänen wird eine Gruppe virtueller Computer definiert, die eine Stromquelle und einen Netzwerkswitch gemeinsam nutzen. Die innerhalb der Verfügbarkeitsgruppe konfigurierten virtuellen Computer werden standardmäßig auf bis zu drei Fehlerdomänen verteilt. Dadurch wirkt sich ein Hardwareproblem in einer dieser Fehlerdomänen nicht auf jeden virtuellen Computer aus, auf dem Ihre App ausgeführt wird.

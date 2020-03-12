@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888785"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672236"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
 
@@ -356,7 +356,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    - Lösung: Deaktivieren Sie TPM auf Geräten mit diesem Fehler. Windows 10 Version 1809 erkennt automatisch TPM-Fehler und schließt die Hybrid-Azure AD-Einbindung ohne Verwendung des TPM ab.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
    - Ursache: TPM wurde gesperrt.
-   - Lösung: Transient error. (Vorübergehender Fehler.) Warten Sie die Abkühlzeit ab. Der Einbindungsversuch sollte nach einiger Zeit erfolgreich sein. Weitere Informationen finden Sie im Artikel [TPM-Grundlagen](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - Lösung: Transient error. (Vorübergehender Fehler.) Warten Sie die Abkühlzeit ab. Der Einbindungsversuch sollte nach einiger Zeit erfolgreich sein. Weitere Informationen finden Sie im Artikel [TPM-Grundlagen](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>Netzwerkfehler
 

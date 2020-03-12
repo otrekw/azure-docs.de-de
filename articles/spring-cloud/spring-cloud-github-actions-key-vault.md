@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: efe8c1a2726054c54934926f652e338797d4efa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776147"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945464"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
 Ein Schlüsseltresor ist ein sicherer Ort zum Speichern von Schlüsseln. Unternehmensbenutzer müssen Anmeldeinformationen für CI/CD-Umgebungen im von ihnen kontrollierten Bereich speichern. Der Schlüssel zum Abrufen von Anmeldeinformationen im Schlüsseltresor muss auf den Ressourcenbereich beschränkt sein.  Er ermöglicht nur den Zugriff auf den Schlüsseltresorbereich und nicht auf den gesamten Azure-Bereich. Somit ist er vergleichbar mit einem Schlüssel, der nur ein bestimmtes Schließfach öffnet (im Gegensatz zu einem Hauptschlüssel, mit dem sämtliche Türen in einem Gebäude geöffnet werden können). Er ermöglicht das Abrufen eines Schlüssels mithilfe eines anderen Schlüssels, was in einem CI/CD-Workflow hilfreich ist. 
@@ -32,7 +32,6 @@ Ergebnisse:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -49,7 +48,7 @@ Navigieren Sie im Azure-Portal zum Dashboard **Key Vault**, klicken Sie auf das 
 
 Kopieren Sie den Anmeldeinformationsnamen (beispielsweise `azure-cli-2020-01-19-04-39-02`). Öffnen Sie das Menü **Zugriffsrichtlinien**, und klicken Sie auf den Link **+ Zugriffsrichtlinie hinzufügen**.  Wählen Sie unter **Vorlage** die Option `Secret Management` und anschließend **Prinzipal** aus. Fügen Sie den Anmeldeinformationsnamen in das Eingabefeld unter **Prinzipal**/**Auswählen** ein:
 
- ![Auswählen](./media/github-actions/key-vault2.png)
+ ![Select](./media/github-actions/key-vault2.png)
 
  Klicken Sie im Dialogfeld **Zugriffsrichtlinie hinzufügen** auf die Schaltfläche **Hinzufügen**, und klicken Sie anschließend auf **Speichern**.
 
@@ -69,7 +68,6 @@ Ergebnisse:
     "tenantId": "<GUID>",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"

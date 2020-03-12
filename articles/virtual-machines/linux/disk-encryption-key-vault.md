@@ -1,18 +1,18 @@
 ---
 title: Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption
 description: Dieser Artikel enthält Schritte zum Erstellen und Konfigurieren eines Schlüsseltresors für die Verwendung mit Azure Disk Encryption.
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 90306c55d976670f432d146d94764c4d90b8667d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a818d9fe9707d1789fbe8e77489fc380fd2c92dd
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829963"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970623"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption
 

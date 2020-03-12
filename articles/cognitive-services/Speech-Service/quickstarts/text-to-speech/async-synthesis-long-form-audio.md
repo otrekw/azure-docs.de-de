@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919344"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331075"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Schnellstart: Asynchrone Synthese für lange Audioinhalte in Python (Vorschau)
 
@@ -30,7 +30,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Python 2.7.x oder 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnement und ein Abonnementschlüssel für den Spracherkennungsdienst. [Erstellen Sie ein Azure-Konto](../../get-started.md#new-resource) und [eine Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure), um den Schlüssel zu erhalten. Stellen Sie beim Erstellen der Speech-Ressource sicher, dass als Tarif **S0** und als Standort eine [unterstützte Region](../../regions.md#standard-and-neural-voices) festgelegt ist.
+* Ein Azure-Abonnement und ein Abonnementschlüssel für den Spracherkennungsdienst. [Erstellen Sie ein Azure-Konto](../../get-started.md#new-resource) und [eine Speech-Ressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource), um den Schlüssel zu erhalten. Stellen Sie beim Erstellen der Speech-Ressource sicher, dass als Tarif **S0** und als Standort eine [unterstützte Region](../../regions.md#standard-and-neural-voices) festgelegt ist.
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 

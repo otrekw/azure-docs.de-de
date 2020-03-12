@@ -3,12 +3,12 @@ title: Tasks mit mehreren Schritten zum Erstellen, Testen und Patchen eines Imag
 description: Diese Artikel ist eine Einführung in Tasks mit mehreren Schritten, ein Feature von ACR Tasks in Azure Container Registry, das taskbasierte Workflows bereitstellt, um Containerimages in der Cloud zu erstellen, zu testen und zu patchen.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945662"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399703"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
@@ -95,8 +95,11 @@ az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.co
 
 Wenn Sie den Task ausführen, sollte die Ausgabe den Status jedes in der YAML-Datei definierten Schritts zeigen. In der folgenden Ausgabe werden die Schritt als `acb_step_0` und `acb_step_1` angezeigt.
 
-```console
-$ az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```azurecli
+az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
+```
+
+```output
 Sending context to registry: myregistry...
 Queued a run with ID: yd14
 Waiting for an agent...

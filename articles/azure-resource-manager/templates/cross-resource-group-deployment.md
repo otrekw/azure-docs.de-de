@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen über die Abonnement- und Ressourcengruppe
 description: Hier wird gezeigt, wie während der Bereitstellung mehrere Azure-Abonnements und -Ressourcengruppen als Ziel festgelegt werden.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250602"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944035"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment `
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-```powershell
+```output
  Name             Type                       Value
  ===============  =========================  ==========
  parentRG         String                     Parent resource group is parentGroup

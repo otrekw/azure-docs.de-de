@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172828"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673236"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -30,7 +30,7 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 
 - **Schutz aller Konfigurationen von Azure Virtual Machines**: Recovery Services-Tresore schützen Resource Manager-basierte VMs, einschließlich Premium-Datenträger, verwalteter Datenträger und verschlüsselter VMs. Durch die Durchführung eines Upgrades eines Sicherungstresors auf einen Recovery Services-Tresor erhalten Sie die Möglichkeit, ein Upgrade für Ihre Service Manager-basierten VMs auf Resource Manager-basierte VMs durchzuführen. Während des Upgrades des Tresors können Sie die Wiederherstellungspunkte für Ihre Service Manager-basierten VMs beibehalten und den Schutz für die aktualisierten (Resource Manager-fähigen) VMs konfigurieren. [Weitere Informationen](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Sofortige Wiederherstellung für IaaS-VMs**: Durch Recovery Services-Tresore können Sie Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt. Die sofortige Wiederherstellung für IaaS-VMs ist für Windows- und Linux-VMs verfügbar. [Weitere Informationen](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Sofortige Wiederherstellung für IaaS-VMs**: Durch Recovery Services-Tresore können Sie Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt. Die sofortige Wiederherstellung für IaaS-VMs ist für Windows- und Linux-VMs verfügbar. [Weitere Informationen](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Verwalten von Recovery Services-Tresoren im Portal
 
@@ -77,4 +77,4 @@ Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, 
 Verwenden Sie die folgenden Artikel für:</br>
 [Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
 [Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>
-[Sichern eines Windows Server-Computers](backup-configure-vault.md)
+[Sichern eines Windows Server-Computers](backup-windows-with-mars-agent.md)

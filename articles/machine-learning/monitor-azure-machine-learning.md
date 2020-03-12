@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845745"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399096"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 
@@ -62,7 +62,7 @@ Sie können auf Warnungen für Azure Machine Learning zugreifen, indem Sie **War
 
 In der folgenden Tabelle sind allgemeine und empfohlene Metrikwarnungsregeln für Azure Machine Learning aufgeführt:
 
-| Warnungstyp | Bedingung | Beschreibung |
+| Warnungstyp | Bedingung | BESCHREIBUNG |
 |:---|:---|:---|
 | Model Deploy Failed (Fehler bei der Modellimplementierung) | Aggregationstyp: Total (Gesamt), Operator: Größer als, Schwellenwert: 0 | Mindestens eine Modellimplementierung ist fehlgeschlagen. |
 | Quota Utilization Percentage (Prozentsatz der Kontingentnutzung) | Aggregationstyp: Average (Mittelwert), Operator: Größer als, Schwellenwert: 90| Trifft zu, wenn die Kontingentnutzung größer als 90 % ist. |
@@ -85,7 +85,7 @@ Weitere Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [
 
 Sie können die folgenden Protokolle für Azure Machine Learning konfigurieren:
 
-| Category | Beschreibung |
+| Category | BESCHREIBUNG |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
@@ -100,7 +100,7 @@ Um Azure Monitor Log Analytics verwenden zu können, müssen Sie eine Diagnoseko
 
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat. In Azure Machine Learning werden Daten in den folgenden Tabellen gespeichert:
 
-| Tabelle | Beschreibung |
+| Tabelle | BESCHREIBUNG |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |

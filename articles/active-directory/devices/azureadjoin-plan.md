@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512418"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672697"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -59,7 +59,7 @@ Azure AD Join kann sowohl in verwalteten Umgebungen als auch in Verbundumgebunge
 
 ### <a name="managed-environment"></a>Verwaltete Umgebung
 
-Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) oder [Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
+Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) oder [Passthrough-Authentifizierung](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) mit dem nahtlosen einmaligen Anmelden (Seamless Single Sign On, Seamless SSO) bereitgestellt werden.
 
 In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung konfigurieren.
 
@@ -78,7 +78,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren
 Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. 
 
 >[!NOTE]
-> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
+> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smartcards und zertifikatbasierte Authentifizierung
@@ -91,7 +91,7 @@ Zum Einbinden von Geräten in Azure AD können Sie keine Smartcards oder zertifi
 
 Bei der Erstellung von Benutzern in:
 
-- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) mit Azure AD synchronisieren. 
+- **Lokalem Active Directory** müssen Sie die Benutzer mithilfe von [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) mit Azure AD synchronisieren. 
 - **Azure AD** ist keine zusätzliche Einrichtung erforderlich.
 
 Lokale UPNs, die sich von Azure AD-UPNs unterscheiden, werden auf in Azure AD eingebundenen Geräten nicht unterstützt. Wenn Ihre Benutzer einen lokalen UPN verwenden, sollten Sie auf die Verwendung ihres primären UPN in Azure AD umstellen.
@@ -127,9 +127,9 @@ Werten Sie bei Verwendung von Gruppenrichtlinien die MDM-Richtlinienparität mit
 - Sind die nicht unterstützten Richtlinien für in Azure AD eingebundene Geräte oder für Benutzer erforderlich?
 - Sind die nicht unterstützten Richtlinien in einer cloudbasierten Bereitstellung anwendbar?
 
-Wenn Ihre MDM-Lösung nicht über den Azure AD-App-Katalog verfügbar ist, können Sie die Lösung gemäß der unter [Azure Active Directory-Integration von MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) beschriebenen Vorgehensweise hinzufügen. 
+Wenn Ihre MDM-Lösung nicht über den Azure AD-App-Katalog verfügbar ist, können Sie die Lösung gemäß der unter [Azure Active Directory-Integration von MDM](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) beschriebenen Vorgehensweise hinzufügen. 
 
-Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen zur Co-Verwaltung für Windows 10-Geräte finden Sie unter [Was ist Co-Verwaltung?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
+Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen zur Co-Verwaltung für Windows 10-Geräte finden Sie unter [Was ist Co-Verwaltung?](/configmgr/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
 
 **Empfehlung:** Ziehen Sie für in Azure AD eingebundene Geräte nur die mobile Geräteverwaltung (MDM) in Betracht.
 
@@ -155,7 +155,7 @@ Wenn Ihre Apps benutzerdefiniert sind und/oder lokal gehostet werden, müssen Si
 - Damit die integrierte Windows-Authentifizierung funktioniert 
 - Um den Benutzern ein SSO-Erlebnis ohne Eingabeaufforderung zu bieten. 
 
-Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
+Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
 **Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z.B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
 
@@ -163,7 +163,7 @@ Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem A
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -171,7 +171,7 @@ Ihre Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jewe
 
 ### <a name="printers"></a>Drucker
 
-Für Drucker müssen Sie [Hybrid Cloud Print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) zur Erkennung von Druckern auf in Azure AD eingebundenen Geräten bereitstellen. 
+Für Drucker müssen Sie [Hybrid Cloud Print](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) zur Erkennung von Druckern auf in Azure AD eingebundenen Geräten bereitstellen. 
 
 Drucker können in einer reinen Cloudumgebung nicht automatisch erkannt werden, aber Ihre Benutzer können auch den UNC-Pfad von Druckern verwenden, um sie direkt hinzuzufügen. 
 
@@ -183,15 +183,15 @@ In Azure AD eingebundene Geräte unterstützen keine lokalen Anwendungen, die Co
 
 ### <a name="remote-desktop-services"></a>Remotedesktopdienste
 
-Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc).
+Um eine Remotedesktopverbindung mit einem in Azure AD eingebundenen Gerät herstellen zu können, muss der Hostcomputer entweder in Azure AD oder Azure AD Hybrid eingebunden sein. Eine Remotedesktopverbindung über ein nicht verbundenes oder Nicht-Windows-Gerät wird nicht unterstützt. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einem in Azure AD eingebundenen Remote-PC](/windows/client-management/connect-to-remote-aadj-pc).
 
 ## <a name="understand-your-provisioning-options"></a>Grundlegendes zu Ihren Bereitstellungsoptionen
 
 Sie können Azure AD Join mithilfe der folgenden Methoden bereitstellen:
 
-- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
-- **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-bulk-enroll).
+- **Self-Service auf der Windows-Willkommensseite/in den Windows-Einstellungen**: Im Self-Service-Modus durchlaufen die Benutzer den Azure AD-Einbindungsprozess entweder auf der Windows-Willkommensseite (Windows Out-of-Box-Experience, OOBE) oder in den Windows-Einstellungen. Weitere Informationen finden Sie unter [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](/azure/active-directory/user-help/user-help-join-device-on-network). 
+- **Windows Autopilot**: Windows Autopilot ermöglicht die Vorkonfiguration von Geräten, um auf der Windows-Willkommensseite für ein möglichst reibungsloses Benutzererlebnis bei einer Azure AD-Einbindung zu sorgen. Weitere Informationen finden Sie in der [Übersicht über Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot). 
+- **Massenregistrierung**: Die Massenregistrierung ermöglicht eine vom Administrator gesteuerte Azure AD-Einbindung mithilfe eines Massenbereitstellungstools zum Konfigurieren von Geräten. Weitere Informationen finden Sie unter [Massenregistrierung für Windows-Geräte](/intune/windows-bulk-enroll).
  
 Hier finden Sie einen Vergleich dieser drei Methoden: 
  
@@ -296,7 +296,7 @@ Sie können diese Implementierung nutzen, um [die Verwendung verwalteter Geräte
 
 > [!div class="nextstepaction"]
 > [Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite](azuread-joined-devices-frx.md)
-> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

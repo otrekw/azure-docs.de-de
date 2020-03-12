@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670626"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894811"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -24,10 +24,10 @@ Diese Schnellstartanleitung führt Sie durch die notwendigen Schritte, um das Ap
 
 So führen Sie diesen Schnellstart durch:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- [Installieren Sie Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) mit den folgenden Workloads:
   - ASP.NET und Webentwicklung
   - Azure-Entwicklung
-- [Installieren Sie das .NET Core 2.0 SDK](https://www.microsoft.com/net/core).
+- [Installieren Sie das .NET Core 2.0 SDK](https://dotnet.microsoft.com/download).
 - Sie benötigen ein Azure-Abonnement und eine vorhandene .NET Core-Webanwendung.
 
 Wenn Sie keine ASP.NET Core-Webanwendung haben, können Sie anhand unserer detaillierten Anleitung [eine ASP.NET Core-App erstellen und Application Insights hinzufügen](../../azure-monitor/app/asp-net-core.md).
@@ -49,7 +49,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
     Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-   | Einstellungen        |  value           | Beschreibung  |
+   | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. Sie können eine neue Ressourcengruppe erstellen oder eine bereits vorhandene Ressourcengruppe verwenden. |

@@ -2,21 +2,22 @@
 title: Voraussetzungen für Azure Disk Encryption mit Azure AD-App (vorheriges Release)
 description: Dieser Artikel enthält die Voraussetzungen für die Verwendung von Microsoft Azure Disk Encryption für IaaS-VMs.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1b9df750886af050163a85e2c6a3539bd63c733
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457197"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970580"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption mit Azure AD (vorherige Version)
 
-Beim neuen Release von Azure Disk Encryption muss kein Azure AD-Anwendungsparameter (Azure Active Directory) mehr angegeben werden, um die VM-Datenträgerverschlüsselung zu aktivieren. Sie müssen beim neuen Release während des Schritts zum Aktivieren der Verschlüsselung keine Azure AD-Anmeldeinformationen mehr angeben. Alle neuen virtuellen Computer müssen mit dem neuen Release und ohne die Azure AD-Anwendungsparameter verschlüsselt werden. Eine Anleitung zum Aktivieren der VM-Datenträgerverschlüsselung mit dem neuen Release finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md). Virtuelle Computer, die bereits mit Azure AD-Anwendungsparametern verschlüsselt wurden, werden weiterhin unterstützt und sollten weiterhin mit der AAD-Syntax gepflegt werden.
+Beim neuen Release von Azure Disk Encryption muss kein Azure AD-Anwendungsparameter (Azure Active Directory) mehr angegeben werden, um die VM-Datenträgerverschlüsselung zu aktivieren. Sie müssen beim neuen Release während des Schritts zum Aktivieren der Verschlüsselung keine Azure AD-Anmeldeinformationen mehr angeben. Alle neuen virtuellen Computer müssen mit dem neuen Release und ohne die Azure AD-Anwendungsparameter verschlüsselt werden. Eine Anleitung zum Aktivieren der VM-Datenträgerverschlüsselung mit dem neuen Release finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md). Virtuelle Computer, die bereits mit Azure AD-Anwendungsparametern verschlüsselt wurden, werden weiterhin unterstützt und sollten weiterhin mit der AAD-Syntax gepflegt werden.
 
 Dieser Artikel ergänzt [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md) um zusätzliche Anforderungen und Voraussetzungen für Azure Disk Encryption mit Azure AD (vorheriges Release).
 
@@ -59,7 +60,7 @@ Weitere Informationen finden Sie unter [Erstellen und Konfigurieren eines Schlü
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorherige Version)](disk-encryption-key-vault-aad.md)
-- [Aktivieren von Azure Disk Encryption mit Azure AD auf Linux-VMs (vorherige Version)](disk-encryption-linux-aad.md)
-- [Voraussetzungen für Azure Disk Encryption mit CLI-Skript](https://github.com/ejarvi/ade-cli-getting-started)
-- [Voraussetzungen für Azure Disk Encryption mit PowerShell-Skript](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption mit Azure AD (vorheriges Release)](disk-encryption-key-vault-aad.md)
+- [Aktivieren von Azure Disk Encryption mit Azure AD auf Linux-VMs (vorheriges Release)](disk-encryption-linux-aad.md)
+- [CLI-Skript für die Voraussetzungen für Azure Disk Encryption](https://github.com/ejarvi/ade-cli-getting-started)
+- [PowerShell-Skript für die Voraussetzungen für Azure Disk Encryption](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

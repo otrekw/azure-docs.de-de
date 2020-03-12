@@ -1,25 +1,17 @@
 ---
 title: Bereitstellen von IBM DB2 pureScale in Azure
 description: Erfahren Sie, wie Sie eine Beispielarchitektur bereitstellen, die vor Kurzem zum Migrieren eines Unternehmens von der IBM DB2-Umgebung unter z/OS zu IBM DB2 pureScale in Azure verwendet wurde.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291548"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968891"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Bereitstellen von IBM DB2 pureScale in Azure
 
@@ -79,7 +71,7 @@ Das GitHub-Repository enthält „DB2server.rsp“, eine Antwortdatei (RSP), mit
 > [!NOTE]
 > Eine Beispielantwortdatei („DB2server.rsp“) befindet sich im [DB2onAzure](https://aka.ms/db2onazure)-Repository auf GitHub. Wenn Sie diese Datei verwenden, müssen Sie sie bearbeiten, bevor sie in Ihrer Umgebung funktionieren kann.
 
-| Anzeigename               | Feld                                        | value                                                                                                 |
+| Anzeigename               | Feld                                        | Wert                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Willkommen                   |                                              | Neue Installation                                                                                           |
 | Produkt auswählen          |                                              | DB2 Version 11.1.3.3. Server-Editionen mit DB2 pureScale                                              |

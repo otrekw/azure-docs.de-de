@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 10/11/2019
-ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/05/2020
+ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301657"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402822"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-Integration für Azure Machine Learning
 
@@ -41,7 +41,7 @@ Einen Leitfaden zur Verwendung der Git-CLI finden Sie [hier](https://guides.gith
 
 Wenn Sie einen Trainingslauf vom Python SDK oder der Machine Learning-CLI übermitteln, werden die zum Trainieren des Modells erforderlichen Dateien in Ihren Arbeitsbereich hochgeladen. Wenn der `git`-Befehl in Ihrer Entwicklungsumgebung verfügbar ist, wird er vom Uploadvorgang verwendet, um zu überprüfen, ob die Dateien in einem Git-Repository gespeichert sind. Ist dies der Fall, werden die Informationen aus Ihrem Git-Repository ebenfalls als Bestandteil des Trainingslaufs hochgeladen. Diese Informationen sind in den folgenden Eigenschaften für den Trainingslauf gespeichert:
 
-| Eigenschaft | Git-Befehl zum Abrufen des Werts | Beschreibung |
+| Eigenschaft | Git-Befehl zum Abrufen des Werts | BESCHREIBUNG |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Der URI, von dem Ihr Repository geklont wurde. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Der URI, von dem Ihr Repository geklont wurde. |

@@ -3,12 +3,12 @@ title: Speichern von Helm-Diagrammen
 description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524630"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398961"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
@@ -41,7 +41,7 @@ Sie können zum Hosten von Helm-Charts in Azure Container Registry entweder Helm
 - Eine **Azure Container Registry**-Instanz in Ihrem Azure-Abonnement. Erstellen Sie bei Bedarf eine Registrierung im [Azure-Portal](container-registry-get-started-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
 - **Version 3.0.0 oder höher des Helm-Clients:** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install].
 - **Ein Kubernetes-Cluster**, in dem Sie später ein Helm-Chart installieren. Erstellen Sie bei Bedarf einen [Azure Kubernetes Service-Cluster][aks-quickstart]. 
-- **Version 2.0.71 oder höher der Azure-Befehlszeilenschnittstelle:** Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+- **Version 2.0.71 oder höher der Azure-Befehlszeilenschnittstelle:** Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Allgemeiner Workflow
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 Nach einem erfolgreichen Push ähnelt die Ausgabe der folgenden:
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 Die Ausgabe (in diesem Beispiel abgekürzt) zeigt `application/vnd.cncf.helm.config.v1+json` als `configMediaType` an:
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 Wenn keine Versionsnummer angegeben ist, wird die *aktuelle* Version verwendet. Helm gibt ausführliche Informationen zum Chart zurück, wie in der folgenden verkürzten Ausgabe dargestellt ist:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 Befolgen Sie während der Installation die Anweisungen in der Befehlsausgabe, um die URLs und die Anmeldeinformationen für WordPress anzuzeigen. Sie können auch den Befehl `kubectl get pods` ausführen, um die im Helm-Chart bereitgestellten Kubernetes-Ressourcen anzuzeigen:
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -277,7 +277,7 @@ az acr repository delete --name mycontainerregistry --image helm/wordpress:lates
 
 - Eine **Azure Container Registry**-Instanz in Ihrem Azure-Abonnement. Erstellen Sie bei Bedarf eine Registrierung im [Azure-Portal](container-registry-get-started-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
 - **Version 2.11.0 oder höher des Helm-Clients (keine RC-Version):** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Darüber hinaus benötigen Sie einen Helm-Server (Tiller), der in einem Kubernetes-Cluster initialisiert wird. Erstellen Sie bei Bedarf einen [Azure Kubernetes Service-Cluster][aks-quickstart]. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install-v2].
-- **Azure CLI-Version 2.0.46 oder höher** : Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+- **Azure CLI-Version 2.0.46 oder höher** : Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Allgemeiner Workflow
 
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 Geben Sie `ls` ein, um das heruntergeladene Chart aufzulisten, und notieren Sie sich die im Dateinamen enthaltene WordPress-Version. Durch den Befehl `helm fetch stable/wordpress` wird keine bestimmte Version angegeben. Daher wurde die *aktuelle* Version abgerufen. In der folgenden Beispielausgabe weist das WordPress-Chart die Version *8.1.0* auf:
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 Nach kurzer Zeit meldet die Azure-Befehlszeilenschnittstelle, dass das Chart gespeichert wurde, wie in der folgenden Beispielausgabe gezeigt wird:
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 Das Wordpress-Diagramm, das im vorherigen Schritt mithilfe von Push übertragen wurde, wird aufgelistet, wie in der folgenden Beispielausgabe gezeigt wird:
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 Wenn keine Versionsnummer angegeben ist, wird die *aktuelle* Version verwendet. Helm Gibt ausführliche Informationen zu Ihrem Diagramm zurück, wie in der folgenden verkürzten Beispielausgabe gezeigt wird:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ Während des Installationsprozesses werden die folgenden Schritte ausgeführt:
 
 Befolgen Sie während der Installation die Anweisungen in der Befehlsausgabe, um die URLs und die Anmeldeinformationen für WordPress anzuzeigen. Sie können auch den Befehl `kubectl get pods` ausführen, um die im Helm-Chart bereitgestellten Kubernetes-Ressourcen anzuzeigen:
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

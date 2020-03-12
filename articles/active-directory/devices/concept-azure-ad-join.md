@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512197"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672681"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
@@ -45,9 +45,9 @@ Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud
 
 Die Anmeldung bei in Azure AD eingebundenen Geräten erfolgt über ein Azure AD-Organisationskonto. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf [Richtlinien für den bedingten Zugriff](../conditional-access/overview.md), die auf die Geräteidentität angewandt werden, weiter eingeschränkt werden.
 
-Administratoren können in Azure AD eingebundene Geräte mithilfe von MDM-Tools (mobile Geräteverwaltung) wie Microsoft Intune oder in Szenarien für die Co-Verwaltung mithilfe von Microsoft Endpoint Configuration Manager schützen und weiter steuern. Diese Tools bieten eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität, Softwareinstallationen und Softwareupdates. Administratoren können Organisationsanwendungen unter Verwendung von Configuration Manager zum [Verwalten von Apps aus dem Microsoft Store für Unternehmen und Bildungseinrichtungen](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business) für in Azure AD eingebundene Geräte zur Verfügung stellen.
+Administratoren können in Azure AD eingebundene Geräte mithilfe von MDM-Tools (mobile Geräteverwaltung) wie Microsoft Intune oder in Szenarien für die Co-Verwaltung mithilfe von Microsoft Endpoint Configuration Manager schützen und weiter steuern. Diese Tools bieten eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität, Softwareinstallationen und Softwareupdates. Administratoren können Organisationsanwendungen unter Verwendung von Configuration Manager zum [Verwalten von Apps aus dem Microsoft Store für Unternehmen und Bildungseinrichtungen](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business) für in Azure AD eingebundene Geräte zur Verfügung stellen.
 
-Die Einbindung in Azure AD kann über Self-Service-Optionen wie z. B. Windows-Willkommensseite, Massenregistrierung oder[Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot) durchgeführt werden.
+Die Einbindung in Azure AD kann über Self-Service-Optionen wie z. B. Windows-Willkommensseite, Massenregistrierung oder[Windows Autopilot](/intune/enrollment-autopilot) durchgeführt werden.
 
 Bei in Azure AD eingebundenen Geräten kann weiterhin der Zugriff über einmaliges Anmelden für lokale Ressourcen beibehalten werden, wenn diese sich im Netzwerk der Organisation befinden. Geräte, die in Azure AD eingebunden sind, können weiterhin bei lokalen Servern authentifiziert werden, z. B. für Datei-, Druck- und anderen Anwendungen.
 
@@ -74,8 +74,8 @@ Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elem
 
 Azure AD Join kann mit einer der folgenden Methoden bereitgestellt werden:
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [Massenbereitstellung](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [Massenbereitstellung](/intune/windows-bulk-enroll)
 - [Self-service-Erfahrung](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

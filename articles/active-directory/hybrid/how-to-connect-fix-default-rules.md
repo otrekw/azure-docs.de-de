@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067630"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036978"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigieren von geänderten Standardregeln in Azure AD Connect
 
@@ -34,7 +34,7 @@ Seit Version 1.3.7.0 von Azure AD Connect ist es nun einfach, geänderte Standar
 
 Im Editor werden alle geänderten Standardregeln mit einem Warnsymbol vor dem Namen angezeigt.
 
-![Symbol "Warnung"](media/how-to-connect-fix-default-rules/default2.png)
+![Warnungssymbol](media/how-to-connect-fix-default-rules/default2.png)
 
  Eine deaktivierte Regel mit dem gleichen Namen wird ebenfalls aufgeführt (dies ist unbearbeitete Standardregel).
 
@@ -73,7 +73,7 @@ Wenn die Erweiterungen nicht funktionieren, versuchen Sie, zwei neue Synchronisi
 #### <a name="add-an-inbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für eingehenden Datenverkehr
 Eine Synchronisierungsregel für eingehenden Datenverkehr bedeutet, dass die Quelle für das Attribut ein Connectorbereich und das Ziel der Metaverse ist. Wenn beispielsweise ein neuer Attributfluss vom lokalen Active Directory nach Azure Active Directory eingerichtet werden soll, erstellen Sie eine neue Synchronisierungsregel für eingehenden Datenverkehr. Starten Sie den **Synchronisierungsregel-Editor**, wählen Sie **Eingehend** als Richtung aus, und wählen Sie **Neue Regel hinzufügen** aus. 
 
- !Synchronization Rules Editor](media/how-to-connect-fix-default-rules/default3a.png)
+ ![Synchronisierungsregel-Editor](media/how-to-connect-fix-default-rules/default3a.png)
 
 Benennen Sie die Regel nach Ihren eigenen Namenskonventionen. Hier verwenden wir **Custom In from AD - User**. Das heißt, dass es sich um eine benutzerdefinierte Regel für eingehenden Datenverkehr aus dem Active Directory-Connectorbereich zum Metaverse handelt.   
 

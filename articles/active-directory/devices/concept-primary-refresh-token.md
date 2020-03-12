@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917777"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672645"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -33,7 +33,7 @@ Die folgenden Windows-Komponenten spielen beim Anfordern und Verwenden eines PRT
 * **Azure AD-CloudAP-Plug-In**: Ein Azure AD-spezifisches Plug-In, das auf dem CloudAP-Framework basiert und mit dem die Anmeldeinformationen von Benutzern für Azure AD während der Windows-Anmeldung überprüft werden.
 * **Azure AD-WAM-Plug-In**: Ein Azure AD-spezifisches Plug-In, das auf dem WAM-Framework basiert und mit dem SSO für Anwendungen ermöglicht wird, für die Azure AD für die Authentifizierung genutzt wird.
 * **Dsreg**: Eine Azure AD-spezifische Komponente unter Windows 10, mit der der Prozess der Geräteregistrierung für alle Gerätezustände verarbeitet wird.
-* **Trusted Platform Module** (TPM): Ein TPM ist eine in ein Gerät integrierte Hardwarekomponente, mit der hardwarebasierte Sicherheitsfunktionen für Benutzer- und Gerätegeheimnisse bereitgestellt werden. Weitere Informationen finden Sie im Artikel [Trusted Platform Module – Technologieübersicht](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview).
+* **Trusted Platform Module** (TPM): Ein TPM ist eine in ein Gerät integrierte Hardwarekomponente, mit der hardwarebasierte Sicherheitsfunktionen für Benutzer- und Gerätegeheimnisse bereitgestellt werden. Weitere Informationen finden Sie im Artikel [Trusted Platform Module – Technologieübersicht](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
 ## <a name="what-does-the-prt-contain"></a>Was enthält das PRT?
 
@@ -48,7 +48,7 @@ Ein PRT ist ein nicht transparentes Blob, das von Azure AD gesendet wird und des
 
 ## <a name="how-is-a-prt-issued"></a>Wie wird ein PRT ausgestellt?
 
-Die Geräteregistrierung ist eine Voraussetzung für die gerätebasierte Authentifizierung in Azure AD. Ein PRT wird für Benutzer nur auf registrierten Geräten ausgestellt. Ausführlichere Informationen zur Geräteregistrierung finden Sie im Artikel [Windows Hello for Business und Geräteregistrierung](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Während der Geräteregistrierung werden mit der dsreg-Komponente zwei Sätze mit kryptografischen Schlüsselpaaren generiert:
+Die Geräteregistrierung ist eine Voraussetzung für die gerätebasierte Authentifizierung in Azure AD. Ein PRT wird für Benutzer nur auf registrierten Geräten ausgestellt. Ausführlichere Informationen zur Geräteregistrierung finden Sie im Artikel [Windows Hello for Business und Geräteregistrierung](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration). Während der Geräteregistrierung werden mit der dsreg-Komponente zwei Sätze mit kryptografischen Schlüsselpaaren generiert:
 
 * Geräteschlüssel (dkpub/dkpriv)
 * Transportschlüssel (tkpub/tkpriv)
@@ -158,7 +158,7 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 ![PRT-Verlängerung bei nachfolgenden Anmeldungen](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 | :---: | --- |
 | Ein | Benutzer geben ihr Kennwort auf der Benutzeroberfläche für die Anmeldung ein. Die Benutzeroberfläche für die Anmeldung (LogonUI) übergibt die Anmeldeinformationen in einem Authentifizierungspuffer an die lokale Sicherheitsautorität, von der sie wiederum intern an CloudAP übergeben werden. CloudAP leitet diese Anforderung an das CloudAP-Plug-In weiter. |
 | B | Wenn sich der Benutzer bereits vorher am Gerät angemeldet hat, initiiert Windows die zwischengespeicherte Anmeldung und überprüft die Anmeldeinformationen, um die Anmeldung für den Benutzer durchzuführen. Alle vier Stunden initiiert das CloudAP-Plug-In asynchron die PRT-Verlängerung. |

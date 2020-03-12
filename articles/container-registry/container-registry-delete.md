@@ -3,12 +3,12 @@ title: Löschen von Bildressourcen
 description: Erfahren Sie mehr über die effektive Verwaltung der Registrierungsgröße durch das Löschen von Containerimagedaten mithilfe von Azure CLI-Befehlen.
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 8d20bf2be1d472855c3e67dd79ea1725c152e3d2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455268"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403341"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Löschen von Containerimages in Azure Container Registry mithilfe von Azure CLI
 
@@ -43,9 +43,12 @@ Verwenden Sie zum Löschen nach Tag [az acr repository delete][az-acr-repository
 Beispiel: Löschen des Images „acr-helloworld:latest“ aus der Registrierung „myregistry“:
 
 ```azurecli
-$ az acr repository delete --name myregistry --image acr-helloworld:latest
+az acr repository delete --name myregistry --image acr-helloworld:latest
+```
+
+```output
 This operation will delete the manifest 'sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108' and all the following images: 'acr-helloworld:latest', 'acr-helloworld:v3'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n):
 ```
 
 > [!TIP]
@@ -57,8 +60,11 @@ Ein [Manifest Digest](container-registry-concepts.md#manifest-digest) kann einem
 
 Zum Löschen nach Digest listen Sie zuerst die Manifest-Digests für das Repository mit den zu löschenden Bildern auf. Beispiel:
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -86,10 +92,13 @@ az acr repository delete --name <acrName> --image <repositoryName>@<digest>
 
 So löschen Sie beispielsweise das letzte Manifest, das in der vorherigen Ausgabe (mit dem Tag „v2“):
 
-```console
-$ az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
+```azurecli
+az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
+```
+
+```output
 This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57' and all the following images: 'acr-helloworld:v2'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 Das Image `acr-helloworld:v2` und alle eindeutigen Ebenendaten dieses Images werden aus der Registrierung gelöscht. Wenn ein Manifest mehreren Tags zugeordnet ist, werden alle zugeordneten Tags ebenfalls gelöscht.
@@ -148,8 +157,12 @@ Wie im Abschnitt [Manifest-Digest](container-registry-concepts.md#manifest-diges
 1. Pushen Sie das Image *acr-helloworld* mit dem Tag **latest** (neueste):`docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Überprüfen Sie die Manifeste für das Repository *acr-helloworld*:
 
-   ```console
-   $ az acr repository show-manifests --name myregistry --repository acr-helloworld
+   ```azurecli
+   az acr repository show-manifests --name myregistry --repository acr-helloworld
+   
+   ```
+   
+   ```output
    [
      {
        "digest": "sha256:d2bdc0c22d78cde155f53b4092111d7e13fe28ebf87a945f94b19c248000ceec",
@@ -165,8 +178,11 @@ Wie im Abschnitt [Manifest-Digest](container-registry-concepts.md#manifest-diges
 1. Pushen Sie das Image *acr-helloworld* mit dem Tag **latest** (neueste):`docker push myregistry.azurecr.io/acr-helloworld:latest`
 1. Überprüfen Sie die Manifeste für das Repository *acr-helloworld*:
 
-   ```console
-   $ az acr repository show-manifests --name myregistry --repository acr-helloworld
+   ```azurecli
+   az acr repository show-manifests --name myregistry --repository acr-helloworld
+   ```
+   
+   ```output
    [
      {
        "digest": "sha256:7ca0e0ae50c95155dbb0e380f37d7471e98d2232ed9e31eece9f9fb9078f2728",

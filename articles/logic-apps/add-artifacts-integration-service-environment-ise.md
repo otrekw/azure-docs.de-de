@@ -1,27 +1,32 @@
 ---
-title: Hinzufügen von Artefakten zu Integrationsdienstumgebungen
+title: Hinzufügen von Ressourcen zu Integrationsdienstumgebungen
 description: Hinzufügen von Logik-Apps, Integrationskonten, benutzerdefinierten Connectors und verwalteten Connectors zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191670"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127291"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Artefakten zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Ressourcen zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
-Fügen Sie nach der Erstellung einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) Artefakte wie Logik-Apps, Integrationskonten und Connectors hinzu, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können. Beispielsweise werden verwaltete ISE-Connectors, die nach dem Erstellen der ISE verfügbar werden, nicht automatisch im Logik-App-Designer angezeigt. Bevor Sie diese ISE-Connectors verwenden können, müssen Sie [diese Connectors manuell Ihrer ISE hinzufügen und bereitstellen](#add-ise-connectors-environment), damit Sie im Logik-App-Designer angezeigt werden.
+Fügen Sie nach dem Erstellen einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) Ressourcen wie Logik-Apps, Integrationskonten und Connectors hinzu, damit diese auf die Ressourcen in Ihrem virtuellen Azure-Netzwerk zugreifen können. Beispielsweise werden verwaltete ISE-Connectors, die nach dem Erstellen der ISE verfügbar werden, nicht automatisch im Logik-App-Designer angezeigt. Bevor Sie diese ISE-Connectors verwenden können, müssen Sie [diese Connectors manuell Ihrer ISE hinzufügen und bereitstellen](#add-ise-connectors-environment), damit Sie im Logik-App-Designer angezeigt werden.
+
+> [!IMPORTANT]
+> Damit Logik-Apps und Integrationskonten in einer ISE zusammenarbeiten können, muss jeweils *dieselbe ISE* als Speicherort genutzt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die ISE, die Sie für die Ausführung Ihrer Logik-Apps erstellt haben. Besitzen Sie keine ISE, [erstellen Sie zuerst eine](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+* Zum Erstellen, Hinzufügen oder Aktualisieren von Ressourcen, die in einer ISE bereitgestellt werden, muss Ihnen eine der Rollen „Besitzer“ oder „Mitwirkender“ für diese ISE zugewiesen sein, oder Sie benötigen Berechtigungen, die Sie über das mit der ISE verknüpfte Azure-Abonnement oder die Azure-Ressourcengruppe geerbt haben. Personen, die nicht über die Rollen „Besitzer“ oder „Mitwirkender“ oder über geerbte Berechtigungen verfügen, kann eine der Rollen „Mitwirkender für Integrationsdienstumgebungen“ oder „Entwickler für Integrationsdienstumgebungen“ zugewiesen werden. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../role-based-access-control/overview.md).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -49,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
 1. Fahren Sie wie gewohnt mit der [Erstellung Ihrer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) fort.
 
-   Informationen zu den Unterschieden, wie Trigger und Aktionen funktionieren und wie sie bezeichnet werden, wenn Sie eine Integrationsdienstumgebung verwenden, im Vergleich zum globalen Logic Apps-Dienst, finden Sie unter [„Isoliert“ gegenüber „Global“ in der Übersicht zur Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference).
+   Informationen zu den Unterschieden in der Funktionsweise und Bezeichnung von Triggern und Aktionen in einer Integrationsdienstumgebung im Vergleich zum mehrinstanzenfähigen Logic Apps-Dienst finden Sie unter [Isoliert im Vergleich zu mehrinstanzenfähig](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference) in der Übersicht zur Integrationsdienstumgebung.
 
 1. Informationen zum Verwalten von Logik-Apps und API-Verbindungen in Ihrer ISE finden Sie unter [Manage your integration service environment (ISE) in Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md) (Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps).
 
@@ -82,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, d
 
 1. [Verknüpfen Sie Ihre Logik-App wie gewohnt mit Ihrem Integrationskonto.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)
 
-1. Fügen Sie Ihrem Integrationskonto anschließend Artefakte hinzu, etwa [Parteien](../logic-apps/logic-apps-enterprise-integration-partners.md) und [Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md).
+1. Fügen Sie Ihrem Integrationskonto anschließend Ressourcen hinzu, etwa [Parteien](../logic-apps/logic-apps-enterprise-integration-partners.md) und [Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md).
 
 1. Informationen zum Verwalten von Integrationskonten in Ihrer ISE finden Sie unter [Manage your integration service environment (ISE) in Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md) (Verwalten Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps.)
 

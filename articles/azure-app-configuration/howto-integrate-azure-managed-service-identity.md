@@ -7,12 +7,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 957fef32702f35b4b509d829eba6a41914c4fc53
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: ff69262a89d8112419ffe62cd391d003cb21adc1
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205856"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967574"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 
@@ -239,8 +239,6 @@ Navigieren Sie in einem Browser zu Ihrer Web-App, um sicherzustellen, dass der I
 ```bash
 http://<app_name>.azurewebsites.net
 ```
-
-![In App Service ausgeführte App](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
 ## <a name="use-managed-identity-in-other-languages"></a>Verwenden einer verwalteten Identität in anderen Sprachen
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606574"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117265"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk: Sicherheit und Schutz von Daten
 
@@ -34,7 +34,7 @@ Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Datenträgerl�
 
 ## <a name="security-features"></a>Sicherheitsfeatures
 
-Data Box-Datenträger sind eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind. 
+Data Box-Datenträger sind eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind.
 
 ### <a name="data-box-disk-protection"></a>Schutz des Data Box-Datenträgers
 
@@ -48,7 +48,7 @@ Data Box-Datenträger werden mithilfe der folgenden Features geschützt:
 
 Die Daten, die für Data Box-Datenträger übertragen werden (ein- und ausgehend), werden mithilfe der folgenden Features geschützt:
 
-- Ununterbrochene BitLocker-Verschlüsselung der Daten. 
+- Ununterbrochene BitLocker-Verschlüsselung der Daten.
 - Sicheres Löschen der Daten vom Datenträger, nachdem der Datenupload in Azure abgeschlossen ist. Das Löschen der Daten wird gemäß NIST-Standards (800-88r1) durchgeführt.
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts
@@ -56,10 +56,9 @@ Die Daten, die für Data Box-Datenträger übertragen werden (ein- und ausgehend
 Der Data Box-Dienst wird mithilfe der folgenden Features geschützt.
 
 - Für den Zugriff auf den Data Box-Datenträgerdienst muss Ihre Organisation über ein Azure-Abonnement verfügen, das den Dienst für Data Box-Datenträger umfasst. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können.
-- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
+- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
 - Für Data Box-Datenträger wird ein Datenträger-Hauptschlüssel gespeichert, der zum Entsperren von Datenträgern des Diensts verwendet wird. 
-- Beim Data Box-Datenträgerdienst werden die Auftragsdetails und der Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht. 
-
+- Beim Data Box-Datenträgerdienst werden die Auftragsdetails und der Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht.
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 

@@ -15,11 +15,11 @@ ms.date: 02/16/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aefd7a55090da7f55404d6f551ab61268582ff5a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039648"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096141"
 ---
 # <a name="configure-a-load-balancer-for-an-availability-group-on-azure-sql-server-vms"></a>Konfigurieren einer Load Balancer-Instanz für eine Verfügbarkeitsgruppe in Azure auf Azure SQL Server-VMs
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
@@ -75,7 +75,7 @@ Erstellen Sie zuerst den Load Balancer.
    | **Ressourcengruppe** |Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server-Instanzen befinden. |
    | **Location** |Wählen Sie die Azure-Region aus, in der sich die SQL Server-Instanzen befinden. |
 
-6. Klicken Sie auf **Create**. 
+6. Klicken Sie auf **Erstellen**. 
 
 Azure erstellt den Load Balancer. Der Load Balancer gehört zu einem bestimmten Netzwerk, Subnetz, einer bestimmten Ressourcengruppe und einem bestimmten Standort. Überprüfen Sie nach Abschluss des Vorgangs die Einstellungen für den Load Balancer in Azure. 
 
@@ -142,7 +142,7 @@ Mit den Lastenausgleichsregeln wird konfiguriert, wie der Load Balancer Datenver
    | **Port** |*1433* |
    | **Back-End-Port** |*1433*. Dieser Wert wird ignoriert, da diese Regel **Floating IP (Direct Server Return)** verwendet. |
    | **Test** |Verwenden Sie den Namen des Tests, den Sie für diesen Load Balancer erstellt haben. |
-   | **Sitzungspersistenz** |**Keine** |
+   | **Sitzungspersistenz** |**None** |
    | **Leerlaufzeitüberschreitung (Minuten)** |*4* |
    | **Floating IP (Direct Server Return)** |**Aktiviert** |
 
@@ -161,7 +161,7 @@ Die Ressourcengruppe verfügt nun also über einen mit beiden SQL Server-Compute
 > 
 
 ## <a name="configure-the-cluster-to-use-the-load-balancer-ip-address"></a>Konfigurieren des Clusters, von dem die IP-Adresse des Load Balancers verwendet werden soll
-Als Nächstes wird der Listener für den Cluster konfiguriert und online geschaltet. Gehen Sie wie folgt vor: 
+Als Nächstes wird der Listener für den Cluster konfiguriert und online geschaltet. Gehen Sie folgendermaßen vor: 
 
 1. Erstellen Sie den Verfügbarkeitsgruppenlistener für den Failovercluster. 
 
@@ -246,7 +246,7 @@ Um einem Load Balancer über das Azure-Portal eine IP-Adresse hinzuzufügen, geh
     |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
     |**Sitzungspersistenz** |Keine
     |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
-    |**Floating IP (Direct Server Return)** | Enabled
+    |**Floating IP (Direct Server Return)** | Aktiviert
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurieren der Verfügbarkeitsgruppe zur Verwendung der neuen IP-Adresse
 
@@ -295,7 +295,7 @@ Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteil
    |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
    |**Sitzungspersistenz** |Keine
    |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
-   |**Floating IP (Direct Server Return)** | Enabled
+   |**Floating IP (Direct Server Return)** | Aktiviert
 
 Wiederholen Sie diese Schritte für den Lastenausgleich in den anderen Verfügbarkeitsgruppen, die Teil der verteilten Verfügbarkeitsgruppe sind.
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315831"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942548"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge
 
@@ -52,8 +52,8 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
 - Folgende Entwicklungsressourcen sind installiert:
 
-    - [Visual Studio Code](https://code.visualstudio.com/).
-    - [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+    - [Visual Studio Code](https://code.visualstudio.com/)
+    - [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
     - [Azure IoT Edge-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Möglicherweise müssen Sie ein Konto erstellen, um die Software herunterzuladen und zu installieren.
@@ -63,7 +63,7 @@ Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. Azure Container Registry und Docker Hub sind zwei gängige Docker-Registrierungsdienste, die in der Cloud verfügbar sind. In diesem Artikel wird Container Registry verwendet.
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie **Ressource erstellen > Container > Containerregistrierung** aus. Klicken Sie auf **Create**.
+2. Wählen Sie **Ressource erstellen > Container > Containerregistrierung** aus. Klicken Sie auf **Erstellen**.
 3. Stellen Sie Folgendes bereit:
 
    1. Einen eindeutigen **Registrierungsnamen** in Azure, der 5 bis 50 alphanumerische Zeichen umfasst.
@@ -93,7 +93,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
 
 1. Wählen Sie in Visual Studio Code die Optionen **Ansicht > Befehlspalette** aus, um die VS Code-Befehlspalette zu öffnen.
 2. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus, und befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
-3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen:
+3. Geben Sie in der Befehlspalette den folgenden Befehl ein, und führen Sie ihn aus: **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen:
 
     1. Wählen Sie den Ordner aus, in dem die Projektmappe erstellt werden soll.
     2. Geben Sie einen Namen für Ihre Projektmappe ein, oder übernehmen Sie den Standardnamen **EdgeSolution**.

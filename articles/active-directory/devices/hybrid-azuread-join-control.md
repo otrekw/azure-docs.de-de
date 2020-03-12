@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512090"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672425"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -82,13 +82,13 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
 Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Das SCP-Objekt definiert die Autoritätsquelle für Geräteobjekte. Dabei kann es sich um die lokale Umgebung oder um Azure AD handeln. Wenn der clientseitige SCP für AD FS konfiguriert ist, wird die Quelle für Geräteobjekte als Azure AD eingerichtet.
 
 > [!NOTE]
-> Wenn Sie den clientseitigen SCP nicht auf Ihren AD FS-Servern konfigurieren konnten, wird die Quelle für Geräteidentitäten als lokal betrachtet. AD FS beginnt dann nach Ablauf des im Attribut „MaximumInactiveDays“ der AD FS-Geräteregistrierung festgelegten Zeitraums mit dem Löschen von Geräteobjekten aus dem lokalen Verzeichnis. AD FS-Geräteregistrierungsobjekte können mithilfe des [Cmdlets „Get-AdfsDeviceRegistration“](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps) gefunden werden.
+> Wenn Sie den clientseitigen SCP nicht auf Ihren AD FS-Servern konfigurieren konnten, wird die Quelle für Geräteidentitäten als lokal betrachtet. AD FS beginnt dann nach Ablauf des im Attribut „MaximumInactiveDays“ der AD FS-Geräteregistrierung festgelegten Zeitraums mit dem Löschen von Geräteobjekten aus dem lokalen Verzeichnis. AD FS-Geräteregistrierungsobjekte können mithilfe des [Cmdlets „Get-AdfsDeviceRegistration“](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps) gefunden werden.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrollierte Überprüfung von Azure AD Hybrid Join für kompatible Windows-Geräte
 
 Zur Registrierung von kompatiblen Windows-Geräten müssen Organisationen [Microsoft Workplace Join für Computer installieren, auf denen nicht Windows 10 ausgeführt wird](https://www.microsoft.com/download/details.aspx?id=53554) (verfügbar im Microsoft Download Center).
 
-Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
+Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [Microsoft Endpoint Configuration Manager](/configmgr/) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
 
 Das Installationsprogramm erstellt einen geplanten Task für das System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch Azure AD verknüpft die Aufgabe das Gerät unter Verwendung der Benutzeranmeldeinformationen mit Azure AD.
 

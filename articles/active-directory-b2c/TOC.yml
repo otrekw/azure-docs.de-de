@@ -182,9 +182,13 @@
             - name: Anpassen der Benutzeroberfläche
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: Anpassen der Sprache
+              href: custom-policy-localization.md
             - name: Benutzerdefinierte E-Mail
               href: custom-email.md
               displayName: verification
+            - name: Deaktivieren der E-Mail-Überprüfung
+              href: custom-policy-disable-email-verification.md
             - name: Aktivieren von JavaScript
               href: javascript-samples.md
             - name: Kennwortkomplexität

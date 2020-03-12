@@ -3,18 +3,18 @@ title: Erstellen eines Images mithilfe von Cloud Native Buildpacks
 description: Verwenden Sie den Befehl „az acr pack build“, um ein Containerimage aus einer App zu erstellen und ohne Dockerfile an Azure Container Registry zu überführen.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456121"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087071"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Erstellen und Übertragen eines Images aus einer App mithilfe eines Cloud Native-Buildpacks
 
 Der Azure CLI-Befehl `az acr pack build` verwendet das [`pack`](https://github.com/buildpack/pack)-CLI-Tool von [Buildpacks](https://buildpacks.io/), um eine App zu erstellen und das Image mithilfe von Push in eine Azure-Containerregistrierung zu übertragen. Diese Funktion bietet eine Option für das schnelle Erstellen eines Containerimages aus dem Quellcode Ihrer Anwendung in Node.js, Java und anderen Sprachen ohne Dockerfile-Definition.
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.70 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.70 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -30,7 +30,7 @@ Geben Sie beim Ausführen des Befehls `az acr pack build` mindestens Folgendes a
 * Einen der [unterstützten Kontextspeicherorte](container-registry-tasks-overview.md#context-locations) für ACR Tasks (z. B. ein lokales Verzeichnis, ein GitHub-Repository oder ein Remotetarball)
 * Den Namen eines Buildpack-Generatorimages, das für Ihre Anwendung geeignet ist. Azure Container Registry speichert Generatorimages wie `cloudfoundry/cnb:0.0.34-cflinuxfs3` zwischen, um das Erstellen zu beschleunigen.  
 
-Der Befehl `az acr pack build` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-overview.md#view-task-logs)).
+Der Befehl `az acr pack build` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-logs.md)).
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Beispiel: Erstellen eines Node.js-Images mit dem Cloud Foundry-Generator
 

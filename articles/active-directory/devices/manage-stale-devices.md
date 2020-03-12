@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538804"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672303"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -57,7 +57,7 @@ Sie haben zwei Möglichkeiten, um den Wert des Aktivitätszeitstempels abzurufen
 
     ![Aktivitätszeitstempel](./media/manage-stale-devices/01.png)
 
-- Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
+- Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0)
 
     ![Aktivitätszeitstempel](./media/manage-stale-devices/02.png)
 
@@ -129,11 +129,11 @@ Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effiz
 
 Eine typische Routine umfasst die folgenden Schritte:
 
-1. Herstellen einer Verbindung mit Azure Active Directory über das Cmdlet [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
+1. Herstellen einer Verbindung mit Azure Active Directory über das Cmdlet [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)
 1. Abrufen der Liste mit den Geräten
-1. Deaktivieren Sie das Gerät, indem Sie das Cmdlet [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) verwenden. 
+1. Deaktivieren Sie das Gerät, indem Sie das Cmdlet [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) verwenden. 
 1. Warten Sie unabhängig von der ausgewählten Anzahl von Tagen vor dem Löschen des Geräts die Toleranzperiode ab.
-1. Entfernen Sie das Gerät mit dem Cmdlet [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
+1. Entfernen Sie das Gerät mit dem Cmdlet [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0).
 
 ### <a name="get-the-list-of-devices"></a>Abrufen der Liste mit den Geräten
 

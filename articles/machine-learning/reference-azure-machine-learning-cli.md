@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 11/05/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845163"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402490"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein erg�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
@@ -311,7 +311,7 @@ Wenn Sie den Befehl `az ml environment scaffold` verwendet haben, wird eine `azu
 
 In der folgenden Tabelle ist jedes Feld der obersten Ebene in der JSON-Datei, sein Typ und eine Beschreibung aufgeführt. Wenn ein Objekttyp mit einer Klasse aus dem Python-SDK verknüpft ist, gibt es eine lose 1:1-Übereinstimmung zwischen den einzelnen JSON-Feldern und dem öffentlichen Variablennamen in der Python-Klasse. In einigen Fällen wird das Feld möglicherweise eher einem Konstruktorargument als einer Klassenvariablen zugeordnet. Das Feld `environmentVariables` wird z. B. der Variablen `environment_variables` in der [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)-Klasse zugeordnet.
 
-| JSON-Feld | type | Beschreibung |
+| JSON-Feld | type | BESCHREIBUNG |
 |---|---|---|
 | `name` | `string` | Der Name der Umgebung. Beginnen Sie den Namen nicht mit **Microsoft** oder **AzureML**. |
 | `version` | `string` | Die Version der Umgebung. |

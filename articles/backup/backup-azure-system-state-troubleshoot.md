@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme bei der Systemstat
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583298"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969580"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -137,7 +137,7 @@ Wenn bei dem Auftrag ein Fehler auftritt, ist dies ein Hinweis auf ein Problem v
 
 | Symptom | Lösung
 | -- | --
-| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | - Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax).
+| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: Fehler bei der Sicherung: Das Schattenkopievolume konnte nicht wachsen, weil auf Volumes mit Systemdateien nicht genügend Speicherplatz verfügbar war. <br/><br/> - In Volsnap-Systemereignisprotokollen ist das folgende Fehler-/Warnungsprotokoll vorhanden: „Es steht nicht genügend Speicherplatz auf Volume "C:" zur Verfügung, um den Schattenkopiespeicher für Schattenkopien von "C:" zu erhöhen. Möglicherweise werden aufgrund dieses Fehlers alle Schattenkopien auf Volume "C:" gelöscht.“ | - Geben Sie Speicherplatz auf dem im Ereignisprotokoll angegebenen Volume frei, damit genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers verfügbar ist, während die Sicherung ausgeführt wird. <br/><br/> - Beim Konfigurieren des Speicherplatzes für Schattenkopien kann die für Schattenkopien verwendete Speicherplatzgröße eingeschränkt werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage).
 
 ### <a name="efi-partition-locked"></a>Gesperrte EFI-Partition
 

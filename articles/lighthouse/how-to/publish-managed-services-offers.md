@@ -3,12 +3,12 @@ title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketpl
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 841cb52791709be5649d66b72f5c18ef35b740ef
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155246"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328941"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -36,7 +36,7 @@ Wenn ein Kunde Ihr Angebot hinzufügt, kann er bestimmte Abonnements oder Ressou
 
 Geben Sie im Abschnitt **Angebotseinstellungen** Folgendes ein:
 
-|Feld  |Beschreibung  |
+|Feld  |BESCHREIBUNG  |
 |---------|---------|
 |**Angebots-ID**     | Ein eindeutiger Bezeichner für Ihr Angebot (innerhalb Ihres Herausgeberprofils). Diese ID kann nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und darf höchstens 50 Zeichen lang sein. Denken Sie daran, dass die Angebots-ID an Stellen wie in Produkt-URLs und Abrechnungsberichten möglicherweise für Kunden sichtbar ist. Sobald Sie das Angebot veröffentlichen, können Sie diesen Wert nicht mehr ändern.        |
 |**Herausgeber-ID**     | Die Herausgeber-ID, die dem Angebot zugeordnet wird. Wenn Sie über mehr als eine Herausgeber-ID verfügen, können Sie die für dieses Angebot zu verwendende auswählen.       |
@@ -54,7 +54,7 @@ Wählen Sie im Abschnitt für Pläne **Neuer Plan** aus. Geben Sie dann eine **P
 
 Füllen Sie als die folgenden Abschnitte im Abschnitt **Plandetails** aus:
 
-|Feld  |Beschreibung  |
+|Feld  |BESCHREIBUNG  |
 |---------|---------|
 |**Titel**     | Anzeigename für den anzuzeigenden Plan. Die maximale Länge beträgt 50 Zeichen.        |
 |**Zusammenfassung**     | Eine kurze Beschreibung des Plans für die Anzeige unterhalb des Titels. Die maximale Länge beträgt 100 Zeichen.        |
@@ -101,7 +101,7 @@ Im Abschnitt **Marketplace** stellen Sie den Text und die Bilder bereit, die Kun
 
 Vervollständigen Sie im Abschnitt **Übersicht** die folgenden Felder:
 
-|Feld  |Beschreibung  |
+|Feld  |BESCHREIBUNG  |
 |---------|---------|
 |**Titel**     |  Der Titel des Angebots, meist der lange, formelle Name. Dieser Titel wird im Marketplace gut sichtbar angezeigt. Die maximale Länge beträgt 50 Zeichen. In den meisten Fällen entspricht dieser Wert dem **Namen**, den Sie im Abschnitt **Angebotseinstellungen** eingegeben haben.       |
 |**Zusammenfassung**     | Kurze Beschreibung des Zwecks oder der Funktion Ihres Angebots. Diese wird in der Regel unterhalb des Titels angezeigt. Die maximale Länge beträgt 100 Zeichen.        |
@@ -155,9 +155,6 @@ Nachdem ein Kunde Ihr Angebot hinzugefügt hat, kann er [bestimmte Abonnements o
 > Die Delegierung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
 Nachdem der Kunde ein Abonnement (oder eine oder mehrere Ressourcengruppen innerhalb eines Abonnements) delegiert hat, wird der Ressourcenanbieter **Microsoft.ManagedServices** für dieses Abonnement registriert, und Benutzer in Ihrem Mandanten können gemäß den Autorisierungen in Ihrem Angebot auf die delegierten Ressourcen zugreifen.
-
-> [!NOTE]
-> Derzeit können Abonnements (oder Ressourcengruppen innerhalb eines Abonnements) nicht delegiert werden, wenn das Abonnement Azure Databricks verwendet. Ebenso ist es nicht möglich, Databricks-Arbeitsbereiche in diesem Abonnement zu erstellen, wenn ein Abonnement (oder eine Ressourcengruppe innerhalb eines Abonnements) bereits delegiert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

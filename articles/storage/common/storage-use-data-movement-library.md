@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509001"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942908"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Übertragen von Daten mit der Datenverschiebungsbibliothek
 
@@ -42,7 +42,7 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 1. Rufen Sie die [.NET Core-Installationsanleitung](https://www.microsoft.com/net/core) auf, um .NET Core zu installieren. Wählen Sie bei der Auswahl Ihrer Umgebung die Befehlszeilenoption.
 2. Erstellen Sie über die Befehlszeile ein Verzeichnis für das Projekt. Navigieren Sie zu diesem Verzeichnis, und geben Sie dann `dotnet new console -o <sample-project-name>` ein, um ein C#-Konsolenprojekt zu erstellen.
 3. Öffnen Sie dieses Verzeichnis in Visual Studio Code. Dieser Schritt kann schnell über die Befehlszeile ausgeführt werden, indem Sie `code .` in Windows eingeben.
-4. Installieren Sie die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) über Visual Studio Code Marketplace. Starten Sie Visual Studio Code neu.
+4. Installieren Sie die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) über Visual Studio Code Marketplace. Starten Sie Visual Studio Code neu.
 5. An diesem Punkt sehen Sie zwei Eingabeaufforderungen. Eine dient zum Hinzufügen von „erforderlichen Ressourcen zum Erstellen und Debuggen“. Klicken Sie auf „Ja“. Eine andere Eingabeaufforderung dient zum Wiederherstellen nicht aufgelöster Abhängigkeiten. Klicken Sie auf „Wiederherstellen“.
 6. Ändern Sie `launch.json` unter `.vscode`, um ein externes Terminal als Konsole zu verwenden. Diese Einstellung sollte als `"console": "externalTerminal"` gelesen werden.
 7. Mit Visual Studio Code können Sie .NET Core-Anwendungen debuggen. Klicken Sie auf `F5`, um die Anwendung auszuführen, und stellen Sie sicher, dass das Setup funktioniert. „Hello World!“ muss auf der Konsole ausgegeben werden.

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+manager: lizross
+ms.openlocfilehash: a2ff3f6fa9896e45ecd6ab40d40d46a046edf1cb
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607325"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127390"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop
 
@@ -30,7 +31,7 @@ Windows Virtual Desktop kann nur vollständige Desktops für Windows 7 virtualis
 
 Auch wenn automatische DPI-Skalierung nicht unterstützt wird, können Sie die Auflösung auf dem virtuellen Computer manuell ändern, indem Sie mit der rechten Maustaste auf das Symbol im Remote Desktop-Client klicken und **Auflösung** auswählen.
 
-## <a name="error-cant-access-the-remote-desktop-user-group"></a>Fehler Auf die Remote Desktop-Benutzergruppe kann nicht zugegriffen werden
+## <a name="error-cant-access-the-remote-desktop-user-group"></a>Error: Auf die Remote Desktop-Benutzergruppe kann nicht zugegriffen werden
 
 Wenn Windows Virtual Desktop Sie oder die Anmeldeinformationen Ihrer Benutzer in der Remote Desktop-Benutzergruppe nicht finden kann, wird möglicherweise eine der folgenden Fehlermeldungen angezeigt:
 

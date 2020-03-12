@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108218"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674357"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
@@ -76,7 +76,7 @@ Falls Sie dies noch nicht getan haben, öffnen Sie ein Azure [Cloud Shell-Fenste
 
 Hier sind die vom Skript erstellten Ressourcen. *enriched* bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. *original* bedeutet, dass die Ressource für Nachrichten vorgesehen ist, die nicht angereichert werden.
 
-| Name | value |
+| Name | Wert |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | Containername | original  |
@@ -102,7 +102,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity.
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that
 #   don't have to be globally unique.
@@ -258,7 +258,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Nachrichtenrouting ist konfigur
 
 2. Fügen Sie diese Werte zur Liste für den Endpunkt „ContosoStorageEndpointEnriched“ hinzu.
 
-   | Key | value | Endpunkt (Dropdownliste) |
+   | Schlüssel | Wert | Endpunkt (Dropdownliste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -296,7 +296,7 @@ Sie können eine Resource Manager-Vorlage zum Erstellen und Konfigurieren der Re
 
    Hier sind die Ressourcen, die durch das Laden der Vorlage erstellt werden. **enriched** bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. **original** bedeutet, dass die Ressource für Nachrichten vorgesehen ist, die nicht angereichert werden. Dabei handelt es sich um dieselben Werte, die im Azure CLI-Skript verwendet werden.
 
-   | Name | value |
+   | Name | Wert |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | Containername | original  |

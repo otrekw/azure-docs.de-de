@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838377"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328828"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -124,8 +124,8 @@ Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie ver
 4. Für die Video Indexer-Authentifizierung bei der Media Services-API muss eine AD-Anwendung erstellt werden. Die folgenden Schritte leiten Sie durch den Azure AD-Authentifizierungsvorgang, der in [Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals](../previous/media-services-portal-get-started-with-aad.md) beschrieben wird:
 
     1. Wählen Sie im neuen Media Services-Konto **API-Zugriff** aus.
-    2. Wählen Sie die [Dienstprinzipalauthentifizierung](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication) aus.
-    3. Rufen Sie die Client-ID und das Clientgeheimnis ab, wie beschrieben in [Abrufen der Client-ID und des geheimen Clientschlüssels](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret).
+    2. Wählen Sie die [Dienstprinzipalauthentifizierung](../previous/media-services-portal-get-started-with-aad.md) aus.
+    3. Abrufen der Client-ID und des geheimen Clientschlüssels
 
         Nachdem Sie **Einstellungen**->**Schlüssel** ausgewählt, eine **Beschreibung** hinzugefügt und auf **Speichern** geklickt haben, werden die Schlüsselwerte aufgefüllt.
 

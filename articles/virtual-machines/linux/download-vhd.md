@@ -1,25 +1,17 @@
 ---
 title: Herunterladen einer Linux-VHD von Azure
 description: Laden Sie eine Linux-VHD mithilfe der Azure-Befehlszeilenschnittstelle und dem Azure-Portal herunter.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 257f3f723fc8a971b8253699f4beb002cf46ce52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036289"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968800"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -54,7 +46,7 @@ Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, führen Sie die
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-Um die VHD-Datei als Datenträger für eine neue Instanz eines vorhandenen virtuellen Computers oder Datenträgers für Daten zu verwenden, führen Sie folgende Schritte aus:
+Um die VHD als Datenträger eine neue Instanz einer vorhandenen VM oder eines vorhandenen Datenträgers zu verwenden, führen Sie die folgenden Schritte durch:
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2.  Wählen Sie im linken Menü **Virtual Machines** aus.

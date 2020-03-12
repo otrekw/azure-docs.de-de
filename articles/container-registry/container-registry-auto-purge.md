@@ -3,12 +3,12 @@ title: Bereinigen von Tags und Manifesten
 description: Verwenden Sie einen Bereinigungsbefehl zum Löschen mehrerer Tags und Manifeste aus einer Azure-Containerregistrierung, basierend auf dem Alter und einem Tagfilter, und planen Sie optional Bereinigungsvorgänge.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923107"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087327"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung
 
@@ -16,7 +16,7 @@ Wenn Sie eine Azure-Containerregistrierung als Teil eines Entwicklungsworkflows 
 
 Der Befehl `acr purge` wird zurzeit in einem öffentlichen Containerimage (`mcr.microsoft.com/acr/acr-cli:0.1`) verteilt, das aus Quellcode im Repository [acr-cli](https://github.com/Azure/acr-cli) auf GitHub erstellt wurde.
 
-Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die ACR-Aufgabenbeispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.69 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install]. 
+Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die ACR-Aufgabenbeispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.69 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install]. 
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -33,7 +33,7 @@ Der Containerbefehl `acr purge` löscht Images nach Tag in einem Repository, die
 > [!NOTE]
 > `acr purge` löscht kein Imagetag oder Repository, wo das Attribut `write-enabled` auf `false` festgelegt ist. Informationen hierzu finden Sie unter [Sperren von Containerimages in einer Azure-Containerregistrierung](container-registry-image-lock.md).
 
-`acr purge` ist darauf ausgelegt, als Containerbefehl in einer [ACR-Aufgabe](container-registry-tasks-overview.md) ausgeführt zu werden, sodass er sich automatisch bei der Registrierung authentifiziert, in der die Aufgabe ausgeführt wird, und dort Aktionen ausführt. Die Aufgabenbeispiele in diesem Artikel verwenden den [Befehlsalias](container-registry-tasks-reference-yaml.md#aliases) `acr purge` anstelle eines vollqualifizierten Containerimagebefehls.
+`acr purge` ist darauf ausgelegt, als Containerbefehl in einer [ACR-Aufgabe](container-registry-tasks-overview.md) ausgeführt zu werden, sodass er sich automatisch bei der Registrierung authentifiziert, in der die Aufgabe ausgeführt wird, und dort Aktionen ausführt. Die Aufgabenbeispiele in diesem Artikel verwenden den [Befehlsalias](container-registry-tasks-reference-yaml.md#aliases)`acr purge` anstelle eines vollqualifizierten Containerimagebefehls.
 
 Geben Sie beim Ausführen des Befehls `acr purge` mindestens Folgendes an:
 
@@ -47,7 +47,7 @@ Geben Sie beim Ausführen des Befehls `acr purge` mindestens Folgendes an:
 
 Zur Anzeige weiterer Parameter führen Sie `acr purge --help` aus. 
 
-Der Befehl `acr purge` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-overview.md#view-task-logs)).
+Der Befehl `acr purge` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-logs.md)).
 
 ### <a name="run-in-an-on-demand-task"></a>Ausführen einer bedarfsgesteuerten Aufgabe
 

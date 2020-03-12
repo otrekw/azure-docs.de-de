@@ -1,25 +1,26 @@
 ---
-title: Ausgehende Authentifizierung – Azure Scheduler
+title: Ausgehende Authentifizierung
 description: Hier erhalten Sie Informationen zum Einrichten oder Entfernen der ausgehenden Authentifizierung für Azure Scheduler
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300843"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898514"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ausgehende Authentifizierung für Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 Azure Scheduler-Aufträge müssen möglicherweise Dienste aufrufen, die eine Authentifizierung verlangen, z.B. andere Azure-Dienste, Salesforce.com, Facebook und sichere benutzerdefinierte Websites. Der aufgerufene Dienst kann festlegen, ob dem Scheduler-Auftrag Zugriff auf die angeforderten Ressourcen gewährt werden soll. 
 
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
 * [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler-REST-API](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
 * [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)

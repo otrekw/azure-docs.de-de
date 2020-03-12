@@ -7,43 +7,19 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 76139716fe11536faa0ff792185ba1643801c641
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 89aa78e0d26598eacf436ca88cc6c5549f91d2fc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649011"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673224"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
 
-Es gibt zwei Varianten der Nutzung von Azure App Service. 
+Es gibt zwei Varianten der Nutzung von Azure App Service.
 
-1. Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen, mit Ausnahme von Isoliert
-2. Die App Service-Umgebung (App Service Environment, ASE), die in Ihrem VNET bereitgestellt wird und Apps im Tarif „App Service (isoliert)“ unterstützt
-
-In diesem Dokument wird das VNET-Integrationsfeature verwendet, das für die Verwendung im mehrinstanzenfähigen App Service vorgesehen ist. In der [App Service-Umgebung][ASEintro] befindet sich Ihre App bereits in einem VNET und benötigt das VNET-Integrationsfeature nicht, um Ressourcen in demselben VNET zu erreichen. Ausführliche Informationen zu allen Netzwerkfunktionen von App Service finden Sie unter [App Service networking features](networking-features.md) (App Service-Netzwerkfunktionen).
-
-Die VNET-Integration ermöglicht Ihrer Web-App den Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, gewährt aber keinen eingehenden privaten Zugriff auf Ihre Web-App aus dem VNET. Privater Websitezugriff bezieht sich darauf, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. aus einem virtuellen Azure-Netzwerk heraus. Die VNET-Integration dient nur zum Ausführen ausgehender Aufrufe von Ihrer App in Ihr VNET. Die VNET-Integrationsfunktion verhält sich unterschiedlich, wenn Sie mit VNETs in derselben Region und mit VNETs in anderen Regionen verwendet wird. Die VNET-Integrationsfunktion weist zwei Variationen auf.
-
-1. Regionale VNET-Integration: Beim Herstellen einer Verbindung mit Resource Manager-VNETs in derselben Region müssen Sie über ein dediziertes Subnetz im VNET verfügen, das Sie integrieren. 
-2. VNET-Integration mit erforderlichem Gateway: Wenn eine Verbindung mit VNETs in anderen Regionen oder mit einem klassischen VNET in derselben Region hergestellt wird, benötigen Sie ein Virtual Network Gateway, das im Ziel-VNET bereitgestellt wird.
-
-Für die Funktionen für die VNET-Integration gilt Folgendes:
-
-* Sie erfordern einen Tarifplan des Typs Standard, Premium, PremiumV2 oder Elastisch Premium. 
-* Sie unterstützen TCP und UDP.
-* Sie funktionieren mit App Service-Apps und Funktions-Apps.
-
-Einige Dinge werden von der VNET-Integration nicht unterstützt, z.B.:
-
-* Bereitstellung eines Laufwerks
-* AD-Integration 
-* NetBios
-
-Die VNET-Integration mit erforderlichem Gateway ermöglicht nur den Zugriff auf Ressourcen im Ziel-VNET oder in Netzwerken, die mit dem Ziel-VNET über Peering oder VPNs verbunden sind. Die VNET-Integration mit erforderlichem Gateway ermöglicht keinen Zugriff auf Ressourcen, die über ExpressRoute-Verbindungen verfügbar sind oder mit Dienstendpunkten funktionieren. 
-
-Unabhängig von der verwendeten Version erhält Ihre Web-App durch die VNET-Integration Zugriff auf Ressourcen in Ihrem virtuellen Netzwerk, es wird aber kein eingehender privater Zugriff auf Ihre Web-App aus dem virtuellen Netzwerk gewährt. Privater Websitezugriff bezieht sich darauf, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z.B. aus einem virtuellen Azure-Netzwerk heraus. Die VNET-Integration dient nur zum Ausführen ausgehender Aufrufe von Ihrer App in Ihr VNET. 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>Aktivieren der VNET-Integration 
 
@@ -71,69 +47,7 @@ Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit
 
 ## <a name="regional-vnet-integration"></a>Regionale VNET-Integration
 
-Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
-
-* Ressourcen im VNET in derselben Region, in die sie integriert sind. 
-* Ressourcen in VNETs, die über Peering mit Ihrem VNET verbunden sind und sich in derselben Region befinden.
-* Durch Dienstendpunkte geschützte Dienste.
-* Ressourcen über ExpressRoute-Verbindungen.
-* Ressourcen im VNET, mit dem Sie verbunden sind.
-* Ressourcen über Verbindungen mit Peering, einschließlich ExpressRoute-Verbindungen.
-* Private Endpunkte. 
-
-Wenn Sie VNET-Integration mit VNETs in der gleichen Region verwenden, können Sie die folgenden Azure-Netzwerkfunktionen nutzen:
-
-* Netzwerksicherheitsgruppen (NSGs): Sie können ausgehenden Datenverkehr mit einer Netzwerksicherheitsgruppe blockieren, die sich in Ihrem Integrationssubnetz befindet. Die Regeln für eingehenden Datenverkehr gelten nicht, da Sie die VNET-Integration nicht verwenden können, um eingehenden Zugriff auf Ihre Web-App bereitzustellen.
-* Routingtabellen (UDRs): Sie können eine Routingtabelle im Integrationssubnetz platzieren, um ausgehenden Datenverkehr an beliebige gewünschte Ziele zu senden. 
-
-Standardmäßig leitet Ihre App nur RFC1918-Datenverkehr in das VNET weiter. Wenn Sie den gesamten ausgehenden Datenverkehr an das VNET weiterleiten möchten, wenden Sie die App-Einstellung WEBSITE_VNET_ROUTE_ALL auf Ihre App an. So konfigurieren Sie die App-Einstellung:
-
-1. Navigieren Sie in Ihrem App-Portal zur Konfigurationsbenutzeroberfläche. Wählen Sie **Neue Anwendungseinstellung** aus.
-1. Geben Sie im Feld „Name“ **WEBSITE_VNET_ROUTE_ALL** und im Feld „Wert“ den Wert **1** ein.
-
-   ![Angeben der Anwendungseinstellung][4]
-
-1. Klicken Sie auf **OK**.
-1. Wählen Sie **Speichern** aus.
-
-Wenn Sie den gesamten ausgehenden Datenverkehr in Ihr VNET weiterleiten, unterliegt der den NSGs und UDRs, die auf Ihr Integrationssubnetz angewendet werden. Wenn Sie den gesamten ausgehenden Datenverkehr in das VNET weiterleiten, sind Ihre ausgehenden Adressen weiterhin die ausgehenden Adressen, die in ihren App-Eigenschaften aufgeführt werden, es sei denn, Sie stellen Routen bereit, um den Datenverkehr an andere Ziele zu senden. 
-
-Es gibt einige Einschränkungen bei der Verwendung der VNET-Integration in VNETs in derselben Region:
-
-* Sie können nicht über Verbindungen mit globalem Peering auf Ressourcen zugreifen.
-* Die Funktion ist nur bei neueren App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen.
-* Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
-* Die Funktion kann nicht für Apps im Plan „App Service (isoliert)“ in einer App Service-Umgebung verwendet werden.
-* Für das Feature ist ein nicht genutztes Subnetz vom Typ /27 mit 32 Adressen oder höher in einem Resource Manager-VNET erforderlich.
-* Die App und das VNET müssen sich in der gleichen Region befinden.
-* Ein VNET mit einer integrierten App kann nicht gelöscht werden. Entfernen Sie die Integration, bevor Sie das VNET löschen. 
-* Sie können eine Integration nur in VNETs in demselben Abonnement wie die Web-App ausführen.
-* Sie können nur eine regionale VNET-Integration pro App Service-Plan verwenden. Mehrere Apps im gleichen App Service-Plan können das gleiche VNET verwenden. 
-* Sie können das Abonnement einer App oder eines App Service-Plans nicht ändern, solange eine App vorhanden ist, die eine regionale VNet-Integration verwendet.
-
-Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Wenn Sie Ihre App auf fünf Instanzen skalieren, werden fünf Adressen verwendet. Da die Subnetzgröße nach der Zuweisung nicht geändert werden kann, müssen Sie ein Subnetz verwenden, das für die Aufnahme jedweder Skalierung Ihrer App groß genug ist. Die empfohlene Größe ist A /26 mit 64 Adressen. A /26 mit 64 Adressen unterstützt einen App Service Premium-Plan mit 30 Instanzen. Wenn Sie einen App Service-Plan zentral hoch- oder herunterskalieren, benötigen Sie für einen kurzen Zeitraum doppelt so viele Adressen. 
-
-Wenn Sie möchten, dass Ihre Apps in einem anderen App Service-Plan ein VNET erreichen, das bereits mit Apps in einem anderen App Service-Plan verbunden ist, müssen Sie ein anderes Subnetz auswählen. Es darf nicht das Subnetz sein, das von der bereits vorhandenen VNET-Integration verwendet wird.  
-
-Dieses Feature befindet sich für Linux in der Vorschauphase. Die Linux-Form der Funktion unterstützt nur Aufrufe von RFC 1918-Adressen (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-app-for-containers"></a>Web-App für Container
-
-Wenn Sie App Service unter Linux mit den integrierten Images verwenden, funktioniert die regionale VNET-Integration ohne zusätzliche Änderungen. Wenn Sie Web-App für Container verwenden, müssen Sie Ihr Docker-Image ändern, um die VNET-Integration zu verwenden. Verwenden Sie in Ihrem Docker-Image die Umgebungsvariable PORT als Hauptlauschport des Webservers, anstatt eine hartcodierte Portnummer zu verwenden. Die Umgebungsvariable PORT wird von der App Service-Plattform automatisch beim Start des Containers festgelegt. Wenn Sie SSH verwenden, muss der SSH-Daemon so konfiguriert sein, dass er auf den Port mit der Nummer lauscht, die in der SSH_PORT-Umgebungsvariablen angegeben ist, wenn regionale VNET-Integration verwendet wird.  Die VNET-Integration mit erforderlichem Gateway unter Linux wird nicht unterstützt. 
-
-### <a name="service-endpoints"></a>Dienstendpunkte
-
-Die regionale VNET-Integration ermöglicht es Ihnen, Dienstendpunkte zu verwenden.  Um Dienstendpunkte mit Ihrer App zu verwenden, stellen Sie über die regionale VNET-Integration eine Verbindung mit einem ausgewählten VNET her, und konfigurieren Sie dann Dienstendpunkte in dem für die Integration verwendeten Subnetz. 
-
-### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-
-Mit Netzwerk Sicherheitsgruppen können Sie eingehenden und ausgehenden Datenverkehr an Ressourcen in einem VNET blockieren. Eine Web-App, die regionale VNET-Integration verwendet, kann eine [Netzwerksicherheitsgruppe][VNETnsg] verwenden, um ausgehenden Datenverkehr an Ressourcen in Ihrem VNET oder im Internet zu blockieren. Zum Blockieren von Datenverkehr an öffentliche Adressen muss die Anwendungseinstellung WEBSITE_VNET_ROUTE_ALL auf 1 festgelegt werden. Die Regeln für eingehenden Datenverkehr in einer NSG gelten nicht für Ihre App, weil sich die VNET-Integration nur auf ausgehenden Datenverkehr von Ihrer App auswirkt. Um den eingehenden Datenverkehr für Ihre Web-App zu steuern, verwenden Sie das Feature „Zugriffseinschränkungen“. Eine NSG, die auf Ihr Integrationssubnetz angewendet wird, ist unabhängig von den Routen, die auf Ihr Integrationssubnetz angewendet werden, wirksam. Wenn WEBSITE_VNET_ROUTE_ALL auf 1 festgelegt wurde und Sie über keine Routen verfügen, die sich auf den Datenverkehr der öffentlichen Adresse in Ihrem Integrationssubnetz auswirken, unterliegt der gesamte ausgehende Datenverkehr den NSGs, die Ihrem Integrationssubnetz zugewiesen sind. Wenn WEBSITE_VNET_ROUTE_ALL nicht festgelegt wird, werden NSGs nur auf RFC1918-Datenverkehr angewendet.
-
-### <a name="routes"></a>Routen
-
-Routingtabellen ermöglichen das Weiterleiten von ausgehendem Datenverkehr von Ihrer App an beliebige Ziele. Routingtabellen wirken sich standardmäßig nur auf Datenverkehr mit dem Ziel RFC1918 aus.  Wenn Sie WEBSITE_VNET_ROUTE_ALL auf 1 festlegen, sind alle ausgehenden Aufrufe betroffen. Routen, die für Ihr Integrationssubnetz festgelegt werden, wirken sich nicht auf Antworten auf eingehende App-Anforderungen aus. Gängige Ziele können Firewallgeräte oder Gateways beinhalten. Wenn Sie den gesamten ausgehenden Datenverkehr lokal weiterleiten möchten, können Sie eine Routingtabelle verwenden, um den gesamten ausgehenden Datenverkehr an das ExpressRoute-Gateway zu senden. Wenn Sie Datenverkehr nicht an ein Gateway weiterleiten, müssen Sie unbedingt Routen im externen Netzwerk festlegen, über die Antworten zurückgesendet werden.
-
-BGP-Routen (Border Gateway Protocol) wirken sich ebenfalls auf den App-Datenverkehr aus. Wenn Sie über BGP-Routen von einem ExpressRoute-Gateway verfügen, ist der ausgehende Datenverkehr Ihrer App betroffen. BGP-Routen wirken sich standardmäßig nur auf Datenverkehr mit dem Ziel RFC1918 aus. Wenn WEBSITE_VNET_ROUTE_ALL auf 1 festgelegt ist, kann der gesamte ausgehende Datenverkehr von ihren BGP-Routen betroffen sein. 
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ### <a name="how-regional-vnet-integration-works"></a>Funktionsweise der regionalen VNET-Integration
 
@@ -230,72 +144,8 @@ Bei der VNET-Integration, die ein Gateway erfordert, fallen drei Gebühren an:
 * Kosten für VPN Gateway: Für das VNET-Gateway, das für das Point-to-Site-VPN erforderlich ist, fallen Kosten an. Die Details finden Sie auf der Seite [VPN Gateway – Preise][VNETPricing].
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Die Funktion ist zwar einfach einzurichten, aber dies bedeutet nicht, dass für Ihre Benutzeroberfläche keinerlei Probleme auftreten. Falls beim Zugreifen auf den gewünschten Endpunkt Probleme auftreten, können Sie einige Hilfsprogramme verwenden, um die Verbindung über die App-Konsole zu testen. Sie können zwei Konsolen verwenden. Eine ist die Kudu-Konsole, und die andere ist die Konsole im Azure-Portal. Greifen Sie in der App auf „Tools -> Kudu“ zu, um zur Kudu-Konsole zu gelangen. Sie können auch die Kudo-Konsole unter „[sitename].scmn.azurewebsites.net“ erreichen. Wechseln Sie nach dem Laden der Website zur Konsolenregisterkarte „Debuggen“. Um auf die über das Azure-Portal gehostete Konsole zuzugreifen, greifen Sie in der App auf „Tools“ -> „Konsole“ zu. 
 
-#### <a name="tools"></a>Tools
-Die Tools **ping**, **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole. Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen „nameresolver.exe“ hinzugefügt. Die Syntax ist:
-
-    nameresolver.exe hostname [optional: DNS Server]
-
-Sie können **nameresolver** verwenden, um die Hostnamen zu überprüfen, von denen Ihre App abhängig ist. So können Sie testen, ob für das DNS etwas falsch konfiguriert ist oder ob ggf. kein Zugriff auf Ihren DNS-Server besteht. Den von Ihrer App verwendeten DNS-Server können Sie in der Konsole in den Umgebungsvariablen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER einsehen.
-
-Mit dem nächsten Tool können Sie die TCP-Verbindung mit einer Host/Port-Kombination testen. Dieses Tool hat den Namen **tcpping** und die folgende Syntax:
-
-    tcpping.exe hostname [optional: port]
-
-Das **tcpping**-Hilfsprogramm teilt Ihnen mit, ob Sie einen bestimmten Host und Port erreichen können. Es kann nur unter folgenden Bedingungen erfolgreich ausgeführt werden: Eine Anwendung lauscht auf der Host- und Portkombination, und von Ihrer App aus ist Netzwerkzugriff auf den angegebenen Host und Port möglich.
-
-#### <a name="debugging-access-to-vnet-hosted-resources"></a>Debuggen des Zugriffs auf im VNET gehostete Ressourcen
-Es kann verschiedene Ursachen haben, warum Ihre App einen bestimmten Host und Port nicht erreichen kann. In den meisten Fällen liegt eine der drei folgenden Ursachen vor:
-
-* **Eine Firewall.** Falls eine Firewall den Zugriff verhindert, wird das TCP-Timeout ausgelöst. Das TCP-Timeout entspricht hier 21 Sekunden. Überprüfen Sie die Verbindung mithilfe des **tcpping**-Tools. TCP-Timeouts können zwar auch zahlreiche andere Ursachen haben, es empfiehlt sich allerdings, bei der Firewall zu beginnen. 
-* **Kein DNS-Zugriff.** Das DNS-Timeout beträgt drei Sekunden pro DNS-Server. Wenn Sie zwei DNS-Server besitzen, beträgt das Timeout 6 Sekunden. Überprüfen Sie mithilfe des nameresolver-Tools, ob DNS funktioniert. Zur Erinnerung: Das nslookup-Tool kann nicht verwendet werden, da es nicht das DNS verwendet, mit dem Ihr VNET konfiguriert ist. Dieses Problem kann darauf zurückzuführen sein, dass eine Firewall oder Netzwerksicherheitsgruppe den Zugriff auf das DNS blockiert.
-
-Sollte das Problem weiterhin bestehen, überprüfen Sie zunächst Folgendes: 
-
-**Regionale VNET-Integration**
-* Ist Ihr Ziel eine Nicht-RFC1918-Adresse, und Sie haben WEBSITE_VNET_ROUTE_ALL nicht auf 1 festgelegt?
-* Blockiert eine Netzwerksicherheitsgruppe ausgehenden Datenverkehr aus Ihrem Integrationssubnetz?
-* Bei einer Verbindung über ExpressRoute oder ein VPN: Ist Ihr lokales Gateway zum Zurückleiten von Datenverkehr an Azure konfiguriert? Wenn Sie die Endpunkte in Ihrem VNET erreichen können, aber nicht lokal, überprüfen Sie Ihre Routen.
-* Verfügen Sie über ausreichende Berechtigungen, um Delegierung für das Integrationssubnetz festzulegen? Während der Konfiguration der regionalen VNET-Integration wird das Integrationssubnetz an Microsoft.Web delegiert. Das Subnetz wird von der Benutzeroberfläche der VNet-Integration automatisch an Microsoft.Web delegiert. Wenn Ihr Konto nicht über ausreichende Netzwerkberechtigungen verfügt, um Delegierung festzulegen, benötigen Sie eine Person, die in Ihrem Integrationssubnetz Attribute festlegen kann, um das Subnetz zu delegieren. Wenn Sie das Subnetz für die Integration manuell delegieren möchten, wechseln Sie zur Benutzeroberfläche des Azure Virtual Network-Subnetzes, und legen Sie Delegierung für Microsoft.Web fest. 
-
-**VNET-Integration, die ein Gateway erfordert**
-* Liegt der Point-to-Site-Adressbereich in den RFC 1918-Bereichen (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
-* Wird im Portal angezeigt, dass das Gateway ausgeführt wird? Fahren Sie das Gateway hoch, wenn es heruntergefahren ist.
-* Werden Zertifikate als synchronisiert angezeigt, oder vermuten Sie, dass die Netzwerkkonfiguration geändert wurde?  Wenn Ihre Zertifikate nicht synchronisiert sind oder Sie vermuten, dass an Ihrer VNET-Konfiguration eine Änderung vorgenommen wurde, die nicht mit Ihren ASPs synchronisiert wurde, klicken Sie auf „Netzwerk synchronisieren“.
-* Bei einer Verbindung über ein VPN: Ist Ihr lokales Gateway zum Zurückleiten von Datenverkehr an Azure konfiguriert? Wenn Sie die Endpunkte in Ihrem VNET erreichen können, aber nicht lokal, überprüfen Sie Ihre Routen.
-* Versuchen Sie, ein Koexistenzgateway zu verwenden, das sowohl Point-to-Site als auch ExpressRoute unterstützt? Koexistenzgateways werden bei der VNET-Integration nicht unterstützt. 
-
-Das Debuggen von Netzwerkproblemen ist eine Herausforderung, da Sie nicht sehen können, was den Zugriff auf eine bestimmte Host:Port-Kombination blockiert. Mögliche Ursachen sind:
-
-* Aktivierte Firewall auf Ihrem Host, die den Zugriff auf den Anwendungsport über Ihren Punkt-zu-Standort-IP-Bereich verhindert Gegebenenfalls erforderlicher öffentlicher Zugriff für die Durchquerung von Subnetzen
-* Zielhost ist ausgefallen
-* Anwendung ist nicht verfügbar
-* Falsche IP-Adresse oder falscher Hostname
-* Ihre Anwendung lauscht über andere Ports als von Ihnen erwartet. Sie können Ihre Prozess-ID auf den lauschenden Port festlegen, indem Sie auf dem Endpunkthost „netstat -aon“ verwenden. 
-* Netzwerksicherheitsgruppen sind so konfiguriert, dass der Zugriff auf Ihren Anwendungshost und -port aus Ihrem Punkt-zu-Standort-IP-Bereich verhindert wird
-
-Denken Sie daran, dass Sie nicht wissen, welche Adresse Ihre App tatsächlich verwendet. Es kann sich um eine beliebige Adresse im Integrationssubnetz oder Point-to-Site-Adressbereich handeln. Sie müssen daher den Zugriff vom gesamten Adressbereich zulassen. 
-
-Weitere Debugschritte:
-
-* Stellen Sie eine Verbindung mit einer VM im VNET her, und versuchen Sie, die Ressource host:port von dort aus zu erreichen. Um den TCP-Zugriff zu testen, verwenden Sie den PowerShell-Befehl **test-netconnection**. Die Syntax ist:
-
-      test-netconnection hostname [optional: -Port]
-
-* Rufen Sie eine Anwendung auf einer VM auf, und testen Sie den Zugriff auf den jeweiligen Host und Port über die Konsole der App mit **tcpping**.
-
-#### <a name="on-premises-resources"></a>Lokale Ressourcen ####
-
-Wenn Ihre App eine Ressource lokal nicht erreichen kann, überprüfen Sie, ob Sie die Ressource über Ihr VNET erreichen können. Verwenden Sie den PowerShell-Befehl **test-netconnection**, um den TCP-Zugriff zu überprüfen. Wenn Ihre VM die lokale Ressource nicht erreichen kann, ist Ihre VPN- oder ExpressRoute-Verbindung möglicherweise nicht richtig konfiguriert.
-
-Wenn die im VNET gehostete VM auf ein lokales System zugreifen kann, die App jedoch nicht, trifft wahrscheinlich einer der folgenden Gründe zu:
-
-* Die Routen sind in Ihrem lokalen Gateway nicht mit Ihren Subnetz- oder Point-to-Site-Adressbereichen konfiguriert.
-* Die Netzwerksicherheitsgruppen blockieren den Zugriff auf den Point-to-Site-IP-Bereich.
-* Die lokalen Firewalls blockieren den Datenverkehr des Point-to-Site-IP-Bereichs.
-* Sie versuchen, eine RFC 1918-fremde Adresse mit der Funktion für die regionale VNET-Integration zu erreichen.
-
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="automation"></a>Automation
 
@@ -328,7 +178,6 @@ Für die VNET-Integration mit erforderlichem Gateway können Sie App Service mit
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
 [2]: ./media/web-sites-integrate-with-vnet/vnetint-addvnet.png
 [3]: ./media/web-sites-integrate-with-vnet/vnetint-classic.png
-[4]: ./media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 [5]: ./media/web-sites-integrate-with-vnet/vnetint-regionalworks.png
 [6]: ./media/web-sites-integrate-with-vnet/vnetint-gwworks.png
 
@@ -340,7 +189,6 @@ Für die VNET-Integration mit erforderlichem Gateway können Sie App Service mit
 [VNETPricing]: https://azure.microsoft.com/pricing/details/vpn-gateway/
 [DataPricing]: https://azure.microsoft.com/pricing/details/data-transfers/
 [V2VNETP2S]: https://azure.microsoft.com/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/
-[ASEintro]: environment/intro.md
 [ILBASE]: environment/create-ilb-ase.md
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
@@ -348,6 +196,5 @@ Für die VNET-Integration mit erforderlichem Gateway können Sie App Service mit
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
-[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566491"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127898"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -76,13 +77,13 @@ Befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit dem Azure Mark
 
 Alle Werte in diesem Abschnitt müssen den Informationen entsprechen, die Sie beim ersten Erstellen des Hostpools und der Sitzungshost-VMs angegeben haben, mit Ausnahme von *Standarddesktopbenutzer*:
 
-1.  Wählen Sie unter *Abonnement* das Abonnement aus, in dem Sie den Hostpool anfänglich erstellt haben.
-2.  Wählen Sie als *Ressourcengruppe* die Ressourcengruppe aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-3.  Wählen Sie unter *Region* die Region aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
-4.  Geben Sie unter *Hostpoolname* den Namen des vorhandenen Hostpools ein.
-5.  Wählen Sie als *Desktoptyp* den Typ aus, der mit dem vorhandenen Hostpool übereinstimmt.
-6.  Geben Sie für *Standarddesktopbenutzer* eine mit Trennzeichen getrennte Liste mit allen zusätzlichen Benutzern ein, denen Sie erlauben möchten, sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anzumelden und auf einen Desktop zuzugreifen. Geben Sie also beispielsweise „user3@contoso.com,user4@contoso.com“ ein, um user3@contoso.com und user4@contoso.com Zugriff zu gewähren.
-7.  Wählen Sie **Weiter: Virtuellen Computer konfigurieren** aus.
+1.    Wählen Sie unter *Abonnement* das Abonnement aus, in dem Sie den Hostpool anfänglich erstellt haben.
+2.    Wählen Sie als *Ressourcengruppe* die Ressourcengruppe aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
+3.    Wählen Sie unter *Region* die Region aus, in der sich die Sitzungshost-VMs des vorhandenen Hostpools befinden.
+4.    Geben Sie unter *Hostpoolname* den Namen des vorhandenen Hostpools ein.
+5.    Wählen Sie als *Desktoptyp* den Typ aus, der mit dem vorhandenen Hostpool übereinstimmt.
+6.    Geben Sie für *Standarddesktopbenutzer* eine mit Trennzeichen getrennte Liste mit allen zusätzlichen Benutzern ein, denen Sie erlauben möchten, sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anzumelden und auf einen Desktop zuzugreifen. Geben Sie also beispielsweise „user3@contoso.com,user4@contoso.com“ ein, um user3@contoso.com und user4@contoso.com Zugriff zu gewähren.
+7.    Wählen Sie **Weiter: Virtuellen Computer konfigurieren** aus.
 
 >[!NOTE]
 >Mit Ausnahme von *Standarddesktopbenutzer* müssen alle Felder exakt mit den Informationen übereinstimmen, die im vorhandenen Hostpool konfiguriert sind. Jegliche Abweichung führt zur Erstellung eines neuen Hostpools.

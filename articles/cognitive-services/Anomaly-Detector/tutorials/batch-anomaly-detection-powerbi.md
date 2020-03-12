@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1d1f71ed56138f2c799c7410508c0bc4899e7887
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448850"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402650"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -29,13 +29,13 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Visualisieren von Anomalien, die in Ihren Daten gefunden wurden, einschließlich erwarteter und beobachteter Werte, und Bestimmen von Grenzen für die Erkennung von Anomalien
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
+* [Ein Azure-Abonnement](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), kostenlos verfügbar.
 * Eine Excel-Datei (.xlsx) mit Datenpunkten in einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962).
+* Sobald Sie über Ihr Azure-Abonnement verfügen, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Erstellen einer Textanalyseressource"  target="_blank"> erstellen Sie eine Textanalyseressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. 
+    * Sie benötigen den Schlüssel und den Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Textanalyse-API zu verbinden. Dies geschieht später in der Schnellstartanleitung.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
 
 ## <a name="load-and-format-the-time-series-data"></a>Laden und Formatieren der Zeitreihendaten
 
@@ -143,7 +143,7 @@ Beginnen Sie auf dem Hauptbildschirm von Power BI mit dem Verwenden der oben ers
 
 Fügen Sie die folgenden Felder aus der **aufgerufenen Funktion** dem Feld **Werte** des Diagramms hinzu. Erstellen Sie Ihr Diagramm anhand des folgenden Screenshots.
 
-    * value
+    * Wert
     * UpperMargins
     * LowerMargins
     * ExpectedValues

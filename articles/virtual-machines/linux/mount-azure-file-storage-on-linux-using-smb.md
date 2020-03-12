@@ -1,24 +1,18 @@
 ---
 title: Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 description: Bereitstellen von Azure File Storage auf virtuellen Linux-Computern per SMB mithilfe der Azure-Befehlszeilenschnittstelle
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035659"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944614"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 

@@ -14,41 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162445"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082794"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Bereitstellen von Spot-VMs mithilfe einer Resource Manager-Vorlage
 
 Mithilfe von [Spot-VMs](spot-vms.md) können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
-Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
+Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
 Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](spot-vms.md#pricing).
 
 > [!IMPORTANT]
 > Spot-Instanzen sind zurzeit als Public Preview verfügbar.
-> Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
+## <a name="use-a-template"></a>Verwenden einer Vorlage
 
-
-## <a name="use-a-template"></a>Verwenden einer Vorlage 
-
-Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. Fügen Sie die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` zu Ihrer Vorlage hinzu: 
+Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. Fügen Sie die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` zu Ihrer Vorlage hinzu:
 
 ```json
-                "priority": "Spot",
-                "evictionPolicy": "Deallocate",
-                "billingProfile": {
-                    "maxPrice": -1
-                }
+"priority": "Spot",
+"evictionPolicy": "Deallocate",
+"billingProfile": {
+    "maxPrice": -1
+}
 ```
-
-
 
 In der folgenden Beispielvorlage wurden die Eigenschaften für eine Spot-VM hinzugefügt. Ersetzen Sie die Ressourcennamen durch Ihre eigenen und `<password>` durch das Kennwort für das lokale Administratorkonto auf der VM.
 
@@ -163,7 +160,7 @@ In der folgenden Beispielvorlage wurden die Eigenschaften für eine Spot-VM hinz
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
-                }               
+                }
             }
         },
         {

@@ -1,21 +1,19 @@
 ---
 title: Abrufen von Azure-VM-Nutzungsdaten mithilfe der REST-API
 description: Verwenden Sie die Azure-REST-APIs zum Sammeln von Nutzungsmetriken für einen virtuellen Computer.
-services: virtual-machines
 author: rloutlaw
-ms.reviewer: routlaw
-manager: gwallace
-ms.service: load-balancer
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035806"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944750"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Abrufen von VM-Nutzungsmetriken mithilfe der REST-API
 
@@ -38,11 +36,11 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
 
 ### <a name="uri-parameters"></a>URI-Parameter
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | :--- | :---------- |
 | subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | resourceGroupName | Name der Azure-Ressourcengruppe, die der Ressource zugeordnet ist. Dieser Wert kann über die Azure Resource Manager-API, die Befehlszeilenschnittstelle oder das Portal abgerufen werden. |

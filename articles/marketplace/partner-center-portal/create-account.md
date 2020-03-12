@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Partner Center erstellen.
-author: ChJenk
+author: qianw211
 manager: evansma
-ms.author: v-chjen
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 09/26/2019
-ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 03/10/2020
+ms.openlocfilehash: 59f37585dfea08e9343cf052f680fd6e9531852b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838755"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968828"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -50,7 +50,7 @@ Verwenden Sie diese Methode, wenn Sie mit Partner Center noch nicht vertraut sin
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Registrieren auf der Partner Center-Registrierungsseite
 
-Rufen Sie die Informationen auf der Registrierungsseite [**Willkommen bei Microsoft Partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) auf, und registrieren Sie sich dort für ein Konto.
+Rufen Sie die Informationen auf der Registrierungsseite [**Willkommen bei Microsoft Partner Center**](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) auf, und registrieren Sie sich dort für ein Konto.
 
 ### <a name="sign-in-with-a-work-account"></a>Anmelden mit einem Geschäftskonto
 

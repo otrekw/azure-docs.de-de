@@ -7,18 +7,19 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905199"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127485"
 ---
 # <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Problembehandlung für das Windows Virtual Desktop-Verwaltungstool
 
 In diesem Artikel werden Probleme, die bei der Bereitstellung des Windows Virtual Desktop-Verwaltungstools auftreten können, und deren Behebung beschrieben.
 
-## <a name="error-management-tool-services-configured-but-automated-setup-fails"></a>Fehler Verwaltungstooldienste konfiguriert, aber automatisiertes Setup schlägt fehl
+## <a name="error-management-tool-services-configured-but-automated-setup-fails"></a>Error: Verwaltungstooldienste konfiguriert, aber automatisiertes Setup schlägt fehl
 
 Wenn Sie die Dienste für das Verwaltungstool erfolgreich eingerichtet haben, das automatisierte Setup jedoch fehlschlägt, wird die folgende Fehlermeldung angezeigt:
 
@@ -38,7 +39,7 @@ So beheben Sie dieses Problem:
 3. Rufen Sie die Windows Virtual Desktop-Einwilligungsseite auf und stellen Sie sicher, dass Server- und Client-Apps Konsens haben.
 4. Arbeiten Sie das Tutorial [Bereitstellen eines Verwaltungstools](manage-resources-using-ui.md) durch, wenn das Problem weiterhin besteht, und stellen Sie das Tool erneut bereit.
 
-## <a name="error-job-with-specified-id-already-exists"></a>Fehler Auftrag mit der angegebenen ID bereits vorhanden
+## <a name="error-job-with-specified-id-already-exists"></a>Error: Auftrag mit der angegebenen ID bereits vorhanden
 
 Wenn der Benutzer die Fehlermeldung sieht, dass der Auftrag mit der angegebenen ID bereits vorhanden ist, liegt dies daran, dass er beim Bereitstellen der Vorlage keinen eindeutigen Namen im Parameter "Anwendungsname" bereitgestellt hat.
 

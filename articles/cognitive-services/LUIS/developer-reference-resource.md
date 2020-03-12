@@ -3,12 +3,12 @@ title: Entwicklerressourcen – Language Understanding
 description: SDKs, REST-APIs und CLI unterstützen Sie beim Entwickeln von LUIS-Anwendungen (Language Understanding) in Ihrer Programmiersprache. Verwalten Sie Ihre Azure-Ressourcen und LUIS-Vorhersagen.
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152685"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391938"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST- und CLI-Entwicklerressourcen für LUIS (Language Understanding)
 
@@ -109,7 +109,7 @@ Bot Framework bietet [verschiedene Tools](https://github.com/microsoft/botbuilde
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu allgemeinen [HTTP-Fehlercodes](luis-reference-response-codes.md)
-* [Referenzdokumentation](https://docs.microsoft.com/azure/index#pivot=sdkstools) für alle APIs und SDKs
+* [Referenzdokumentation](https://docs.microsoft.com/azure/index) für alle APIs und SDKs
 * [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) und [Azure Bot Service](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [Cognitive-Container](../cognitive-services-container-support.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920092"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673374"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Algorithmen und Module – Referenz für Azure Machine Learning-Designer (Vorschau)
 
@@ -41,7 +41,7 @@ Hilfe beim Auswählen von Algorithmen finden Sie unter:
 
 ## <a name="machine-learning-algorithms"></a>Machine Learning-Algorithmen
 
-| Funktionalität | Beschreibung | Modul |
+| Funktionalität | BESCHREIBUNG | Modul |
 | --- |--- | --- |
 | Regression | Sagen Sie einen Wert vorher. | [Regression bei verstärktem Entscheidungsbaum](boosted-decision-tree-regression.md) <br/> [Entscheidungswaldregression](decision-forest-regression.md) <br/> [Lineare Regression](linear-regression.md)  <br/> [Regression mit neuronalen Netzwerken](neural-network-regression.md)  <br/> |
 | Clustering | Gruppieren Sie Daten.| [K-Means-Clustering](k-means-clustering.md)
@@ -49,7 +49,7 @@ Hilfe beim Auswählen von Algorithmen finden Sie unter:
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Module zum Entwickeln und Auswerten von Modellen
 
-| Funktionalität | Beschreibung | Modul |
+| Funktionalität | BESCHREIBUNG | Modul |
 | --- |--- | --- |
 | Modelltraining | Führen Sie Daten über den Algorithmus aus. |  [Trainieren des Clusteringmodells](train-clustering-model.md) <br/> [Train Model](train-model.md) (Modell trainieren)  <br/> [Tune Model Hyperparameters](tune-model-hyperparameters.md) |
 | Modellbewertung und -auswertung | Bewerten Sie die Genauigkeit des trainierten Modells | [Anwenden der Transformation](apply-transformation.md) <br/> [Assign Data to Clusters](assign-data-to-clusters.md) (Zuweisen von Daten zu Clustern) <br/> [Cross Validate Model](cross-validate-model.md) <br/> [Auswertungsmodell](evaluate-model.md) <br/> [Score Model](score-model.md) (Modell bewerten) |
@@ -57,7 +57,7 @@ Hilfe beim Auswählen von Algorithmen finden Sie unter:
 | R-Sprache | Schreiben Sie Code, und betten Sie ihn in ein Modul ein, um R in Ihre Pipeline zu integrieren. | [Ausführen von R-Skripts](execute-r-script.md) |
 | Textanalyse | Stellen Sie spezielle Berechnungstools zum Arbeiten mit strukturiertem und unstrukturiertem Text bereit. | [Extrahieren von N-Gramm-Funktionen aus Text](extract-n-gram-features-from-text.md) <br/> [Feature Hashing](feature-hashing.md) <br/> [Vorverarbeiten von Text](preprocess-text.md) |
 | Empfehlung | Erstellen Sie Empfehlungsmodelle. | [Evaluate Recommender](evaluate-recommender.md) <br/> [Score SVD Recommender](score-svd-recommender.md) <br/> [Train SVD Recommender](train-SVD-recommender.md) |
-| Anomalieerkennung | Erstellen Sie Modelle zur Erkennung von Anomalien. | [PCA-basierte Anomalieerkennung](pca-based-anomaly-detection.md) <br/> [Train Anomaly Detection Model](train-anomaly-detection-model.md) (Anomalieerkennungsmodell trainieren) |
+
 
 ## <a name="error-messages"></a>Fehlermeldungen
 

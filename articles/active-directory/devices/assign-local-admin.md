@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379659"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672729"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -24,7 +24,7 @@ Um ein Windows-Gerät verwalten zu können, müssen Sie Mitglied der lokalen Adm
 
 In diesem Artikel wird erläutert, wie die Aktualisierung der Mitgliedschaft funktioniert und wie Sie sie während der Einbindung in Azure AD anpassen können. Der Inhalt dieses Artikels gilt nicht für eine **hybride** Azure AD-Einbindung.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Wenn Sie mithilfe einer Azure AD-Einbindung eine Verbindung zwischen einem Windows-Gerät und Azure AD herstellen, fügt Azure AD die folgenden Sicherheitsprinzipale zur lokalen Administratorgruppe auf dem Gerät hinzu:
 
@@ -68,8 +68,8 @@ Geräteadministratoren werden allen in Azure AD eingebundenen Geräten zugewiese
 
 Azure AD fügt den Benutzer, der die Azure AD-Einbindung durchführt, der Administratorgruppe auf dem Gerät hinzu. Wenn Sie verhindern möchten, dass reguläre Benutzer lokale Administratoren werden, haben Sie folgende Optionen:
 
-- [Windows Autopilot:](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) Mit Windows Autopilot können Sie verhindern, dass ein primärer Benutzer, der die Einbindung ausführt, lokaler Administrator wird. Das können Sie durch [Erstellen eines Autopilot-Profils](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile) erreichen.
-- [Massenregistrierung:](https://docs.microsoft.com/intune/windows-bulk-enroll) Eine im Kontext einer Massenregistrierung durchgeführte Azure AD-Einbindung erfolgt im Kontext eines automatisch erstellten Benutzers. Benutzer, die sich nach der Einbindung eines Geräts anmelden, werden nicht zur Administratorgruppe hinzugefügt.   
+- [Windows Autopilot:](/windows/deployment/windows-autopilot/windows-10-autopilot) Mit Windows Autopilot können Sie verhindern, dass ein primärer Benutzer, der die Einbindung ausführt, lokaler Administrator wird. Das können Sie durch [Erstellen eines Autopilot-Profils](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile) erreichen.
+- [Massenregistrierung:](/intune/windows-bulk-enroll) Eine im Kontext einer Massenregistrierung durchgeführte Azure AD-Einbindung erfolgt im Kontext eines automatisch erstellten Benutzers. Benutzer, die sich nach der Einbindung eines Geräts anmelden, werden nicht zur Administratorgruppe hinzugefügt.   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>Manuelles Erhöhen der Berechtigungen eines Benutzers auf einem Gerät 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192051"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671874"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -30,12 +30,12 @@ Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azu
 
 Weitere Informationen zum Verwenden und Konfigurieren von durch die App erzwungenen Einschränkungen finden Sie in den folgenden Artikeln:
 
-- [Aktivieren des eingeschränkten Zugriffs mit SharePoint Online](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [Aktivieren des eingeschränkten Zugriffs mit SharePoint Online](/sharepoint/control-access-from-unmanaged-devices)
 - [Aktivieren des eingeschränkten Zugriffs mit Exchange Online](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>Anwendungssteuerung für bedingten Zugriff
 
-App-Steuerung für bedingten Zugriff verwendet eine Reverseproxyarchitektur und ist in bedingten Azure AD-Zugriff eindeutig integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nachdem Sie die Bedingungen festgelegt haben, können Sie die Benutzer an [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) weiterleiten, wo Sie Daten mit der App-Steuerung für bedingten Zugriff schützen können, indem Sie Zugriffs- und Sitzungssteuerelemente anwenden.
+App-Steuerung für bedingten Zugriff verwendet eine Reverseproxyarchitektur und ist in bedingten Azure AD-Zugriff eindeutig integriert. Bedingter Azure AD-Zugriff ermöglicht Ihnen das Erzwingen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Bedingungen. Die Bedingungen definieren, auf wen (Benutzer oder Benutzergruppe), auf was (welche Cloud-Apps) und wo (welche Orte und Netzwerke) eine Richtlinie für bedingten Zugriff angewendet wird. Nachdem Sie die Bedingungen festgelegt haben, können Sie die Benutzer an [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) weiterleiten, wo Sie Daten mit der App-Steuerung für bedingten Zugriff schützen können, indem Sie Zugriffs- und Sitzungssteuerelemente anwenden.
 
 Mit der App-Steuerung für bedingten Zugriff können Benutzerzugriffe auf Apps und Sitzungen auf der Grundlage von Zugriffs- und Sitzungsrichtlinien in Echtzeit überwacht und gesteuert werden. Zugriffs- und Sitzungsrichtlinien werden im Cloud App Security-Portal verwendet, um Filter weiter zu verfeinern und Aktionen festzulegen, die für einen Benutzer ausgeführt werden sollen. Mithilfe von Zugriffs- und Sitzungsrichtlinien können Sie die folgenden Aktionen ausführen:
 
@@ -46,7 +46,7 @@ Mit der App-Steuerung für bedingten Zugriff können Benutzerzugriffe auf Apps u
 - Zugriff blockieren: Sie können den Zugriff für bestimmte Apps und Benutzer abhängig von mehreren Risikofaktoren differenziert blockieren. Sie können sie z. B. blockieren, wenn sie Clientzertifikate als eine Form der Geräteverwaltung verwenden.
 - Benutzerdefinierte Aktivitäten blockieren: Einige Apps werden in eindeutigen Szenarien verwendet, die Risiken bergen, wie z. B. das Senden von Nachrichten mit vertraulichen Inhalten in Apps wie Microsoft Teams oder Slack. In diesen Szenarien können Sie Nachrichten auf vertrauliche Inhalte überprüfen und in Echtzeit blockieren.
 
-Weitere Informationen finden Sie im Artikel [Bereitstellen der App-Steuerung für bedingten Zugriff für ausgewählte Apps](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad).
+Weitere Informationen finden Sie im Artikel [Bereitstellen der App-Steuerung für bedingten Zugriff für ausgewählte Apps](/cloud-app-security/proxy-deployment-aad).
 
 ## <a name="sign-in-frequency-preview"></a>Anmeldehäufigkeit (Vorschau)
 

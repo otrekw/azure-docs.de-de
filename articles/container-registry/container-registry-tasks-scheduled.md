@@ -3,12 +3,12 @@ title: Tutorial – Planen eines ACR Tasks
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task nach einem definierten Zeitplan auszuführen, indem Sie einen oder mehrere Zeitgebertrigger festlegen.
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617446"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402881"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Ausführen eines ACR Tasks nach einem definierten Zeitplan
 
@@ -25,7 +25,7 @@ Das Planen eines Tasks ist für Szenarien wie die folgenden nützlich:
 * Ausführen einer Containerworkload für geplante Wartungsarbeiten. Führen Sie beispielsweise eine containerisierte Anwendung aus, um nicht benötigte Images aus Ihrer Registrierung zu entfernen.
 * Führen Sie während des Arbeitstages im Rahmen Ihrer Liveüberwachung eine Reihe von Tests an einem Produktionsimage durch.
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist die Version 2.0.68 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist die Version 2.0.68 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 
 ## <a name="about-scheduling-a-task"></a>Informationen zum Planen eines Tasks
@@ -56,8 +56,11 @@ az acr task create \
 
 Führen Sie den Befehl [az acr task show][az-acr-task-show] aus, um zu sehen, ob der Timertrigger konfiguriert ist. Standardmäßig ist auch der Trigger für die Aktualisierung des Basisimages aktiviert.
 
-```console
-$ az acr task show --name mytask --registry registry --output table
+```azurecli
+az acr task show --name mytask --registry registry --output table
+```
+
+```output
 NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 --------  ----------  --------  -------------------     -----------------
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
@@ -71,7 +74,7 @@ az acr task run --name mytask --registry myregistry
 
 Wenn der Container erfolgreich ausgeführt wird, ist die Ausgabe ähnlich wie folgt:
 
-```console
+```output
 Queued a run with ID: cf2a
 Waiting for an agent...
 2019/06/28 21:03:36 Using acb_vol_2ca23c46-a9ac-4224-b0c6-9fde44eb42d2 as the home volume
@@ -92,7 +95,7 @@ az acr task list-runs --name mytask --registry myregistry --output table
 
 Wenn der Zeitgeber erfolgreich ist, lautet die Ausgabe wie folgt:
 
-```console
+```output
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  -------- ----------  ---------  ---------  --------------------  ----------
 [...]
@@ -201,7 +204,7 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
 Führen Sie die folgenden Befehle aus, um alle Ressourcen zu entfernen, die Sie im Rahmen dieser Tutorialreihe erstellt haben (einschließlich der Containerregistrierung(en), der Containerinstanz, des Schlüsseltresors und des Dienstprinzipals):
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```

@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448091"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898370"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Bezeichnen einer durch maschinelles Lernen erworbenen Entität in einer Beispieläußerung
 
@@ -86,7 +86,7 @@ Entitätsrollen werden mithilfe der Entitätspalette beschriftet.
 1. Wählen Sie auf der Detailseite der Absicht die **Entitätspalette** aus der Kontext-Symbolleiste aus.
 1. Wenn die Entitätspalette offen ist, wählen Sie aus der Liste die gewünschte Entität aus.
 1. Wechseln Sie zur **Entitätsprüfung**, und wählen Sie eine vorhandene Rolle aus, oder erstellen Sie eine neue Rolle.
-1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle. 
+1. Beschriften Sie in der Beispieläußerung den Text mit der Entitätsrolle.
 
 ## <a name="unlabel-entities"></a>Entitäten ohne Bezeichnung
 

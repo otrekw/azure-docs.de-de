@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687614"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126515"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Einführung in Azure App Service unter Linux
 
@@ -42,7 +42,7 @@ App Service unter Linux unterstützt eine Reihe von integrierten Images, um die 
 * Grundlegende Konsole
 * SSH
 
-## <a name="scaling"></a>Skalieren
+## <a name="scaling"></a>Skalierung
 
 * Kunden können Web-Apps zentral hoch- und herunterskalieren, indem sie den Tarif ihres [App Service-Plans](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json) ändern.
 
@@ -91,7 +91,7 @@ Weitere Informationen zu App Service für Linux finden Sie in den folgenden Them
 * [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Continuous Deployment mit Web-App für Container](app-service-linux-ci-cd.md)
 
-In [unserem Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview) können Sie Fragen stellen und Antworten auf Probleme erhalten.
+In [unserem Forum](https://docs.microsoft.com/answers/topics/azure-webapps.html) können Sie Fragen stellen und Antworten auf Probleme erhalten.
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

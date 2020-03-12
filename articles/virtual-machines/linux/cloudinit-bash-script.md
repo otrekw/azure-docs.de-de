@@ -1,28 +1,20 @@
 ---
 title: Verwenden von cloud-init zum Ausführen von Bash-Skripts auf einer Linux-VM in Azure
 description: Erfahren Sie, wie Sie cloud-init zum Ausführen eines Bash-Skripts auf einer Linux-VM während der Erstellung mithilfe der Azure CLI verwenden.
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e18b740b9b656236bd1958dd191bc9b02283d67
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036795"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969211"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Verwenden von cloud-init zum Ausführen von Bash-Skripts auf einer Linux-VM in Azure
-In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Ausführen eines vorhandenen Bash-Skripts auf einem virtuellen Linux-Computer (VM) oder in VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktion von cloud-init in Azure und zu den unterstützten Linux-Distributionen finden Sie unter [Übersicht über cloud-init](using-cloud-init.md).
+In diesem Artikel wird gezeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Ausführen eines vorhandenen Bash-Skripts auf einem virtuellen Linux-Computer (VM) oder in VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure verwenden. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
 
 ## <a name="run-a-bash-script-with-cloud-init"></a>Ausführen von Bash-Skripts mit cloud-init
 Mit cloud-Init müssen Sie Ihre vorhandenen Skripts nicht in eine Cloudkonfiguration konvertieren, da cloud-init verschiedene Eingabetypen akzeptiert, zu denen auch Bash-Skripts gehören.

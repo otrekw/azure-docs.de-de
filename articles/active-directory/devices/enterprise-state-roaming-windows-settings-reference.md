@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194329"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672627"
 ---
-# <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen: Referenz
+# <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 
 Die folgende Liste enthält die Einstellungen, für die unter Windows 10 Roaming verwendet oder eine Sicherung erstellt wird. 
 
@@ -52,7 +52,7 @@ Die folgenden Einstellungsgruppen sind für Endbenutzer verfügbar, um die Einst
 ![Synchronisieren Ihrer Einstellungen](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 zusammen mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge-Browsers finden Sie im Artikel [Microsoft Edge-Synchronisierung](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
+> Dieser Artikel bezieht sich auf den älteren HTML-basierten Microsoft Edge-Browser, der im Juli 2015 zusammen mit Windows 10 veröffentlicht wurde. Der Artikel gilt nicht für den neuen Chromium-basierten Microsoft Edge-Browser, der am 15. Januar 2020 veröffentlicht wurde. Weitere Informationen zum Synchronisierungsverhalten des neuen Microsoft Edge-Browsers finden Sie im Artikel [Microsoft Edge-Synchronisierung](/deployedge/microsoft-edge-enterprise-sync).
 
 Die Synchronisierung der Einstellungsgruppe des Microsoft Edge-Browsers (Favoriten, Leseliste) kann von Endbenutzern über das Einstellungsmenü des Microsoft Edge-Browsers aktiviert oder deaktiviert werden.
 

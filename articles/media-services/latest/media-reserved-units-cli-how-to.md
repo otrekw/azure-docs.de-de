@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102948"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970779"
 ---
 # <a name="scaling-media-processing"></a>Skalieren der Medienverarbeitung
 
@@ -46,8 +46,6 @@ Im Rest des Artikels wird veranschaulicht, wie Sie [Media Services v3 CLI](https
 
 > [!NOTE]
 > Für die Audioanalyse- und Videoanalyseaufträge, die von Media Services v3 oder Video Indexer ausgelöst werden, wird dringend empfohlen, Ihr Konto mit zehn S3-MRUs bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
->
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von anderen v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 

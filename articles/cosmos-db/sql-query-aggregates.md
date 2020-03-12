@@ -1,17 +1,17 @@
 ---
 title: Aggregatfunktionen in Azure Cosmos DB
 description: Informationen zur Syntax von SQL-Aggregatfunktionen und Typen von Aggregatfunktionen, die von Azure Cosmos DB unterstützt werden.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871838"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897831"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Aggregatfunktionen in Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Aggregatfunktionen führen eine Berechnung für eine Gruppe von Werten in der SE
     FROM Families f
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -39,7 +39,7 @@ Sie können auch nur den skalaren Wert des Aggregats zurückgeben, indem Sie das
     FROM Families f
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ Sie können auch Aggregationen mit Filtern kombinieren. Bei der folgenden Abfrag
     WHERE f.address.state = "WA"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [ 1 ]
@@ -67,8 +67,8 @@ Die SQL-API unterstützt die folgenden Aggregatfunktionen. SUM und AVG werden f�
 |-------|-------------|
 | COUNT | Gibt die Anzahl der Elemente im Ausdruck zurück. |
 | SUM   | Gibt die Summe aller Werte im Ausdruck zurück. |
-| MIN   | Gibt den Mindestwert im Ausdruck zurück. |
-| MAX   | Gibt den maximalen Wert im Ausdruck zurück. |
+| MIN   | Gibt den kleinsten Wert im Ausdruck zurück. |
+| MAX   | Gibt den größten Wert im Ausdruck zurück. |
 | DURCHSCHN.   | Gibt den Durchschnitt aller Werte im Ausdruck zurück. |
 
 Sie können auch die Ergebnisse einer Array-Iteration aggregieren.

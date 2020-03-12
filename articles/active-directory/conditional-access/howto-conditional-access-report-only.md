@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186083"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671857"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus (Vorschauversion)
 
@@ -48,8 +48,8 @@ Gehen Sie wie folgt vor, um das Ergebnis einer Richtlinie im reinen Berichtsmodu
 
 Damit Sie die aggregierten Auswirkungen von Richtlinien für bedingten Zugriff mithilfe der neuen Arbeitsmappe für Erkenntnisse zum bedingten Zugriff anzeigen können, müssen Sie Azure Monitor in Azure AD integrieren und die Anmeldeprotokolle exportieren. Zum Einrichten dieser Integration müssen Sie zwei Schritte ausführen: 
 
-1. [Registrieren Sie sich für ein Azure Monitor-Abonnement, und erstellen Sie einen Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-1. [Exportieren Sie die Anmeldeprotokolle aus Azure AD in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
+1. [Registrieren Sie sich für ein Azure Monitor-Abonnement, und erstellen Sie einen Arbeitsbereich](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Exportieren Sie die Anmeldeprotokolle aus Azure AD in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
 Weitere Informationen zur Preisgestaltung für Azure Monitor finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). Ressourcen zum Schätzen von Kosten, zum Festlegen eines Tageslimits oder zum Anpassen des Datenaufbewahrungszeitraums finden Sie im Artikel [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment).
 

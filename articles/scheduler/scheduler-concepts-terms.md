@@ -1,26 +1,27 @@
 ---
-title: Konzepte, Terminologie und Entitäten – Microsoft Azure Scheduler | Microsoft-Dokumentation
+title: Konzepte, Bedingungen und Entitäten
 description: Informationen über die Konzepte, Terminologie und Entitätshierarchie (einschließlich Aufträge und Auftragssammlungen) in Microsoft Azure Scheduler
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300950"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898568"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 ## <a name="entity-hierarchy"></a>Entitätshierarchie
 
@@ -245,7 +246,7 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 },
 ```
 
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
@@ -275,7 +276,7 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 },
 ```
 
-| Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
 | **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
@@ -319,11 +320,9 @@ Beispiel:
 }
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
-* [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
 * [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
-* [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)
 * [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
 * [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
+* [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)

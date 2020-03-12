@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912153"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402788"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Einstellung von TLS 1.0 und 1.1 in IoT Hub und Device Provisioning Service
 
-Zur Bereitstellung einer erstklassigen Verschlüsselung wechseln IOT Hub und Device Provisioning Service (DPS) zu Transport Layer Security (TLS) 1.2 als Verschlüsselungsmechanismus der Wahl für IOT-Geräte und-Dienste. TLS 1.0 und TLS 1.1 sowie einige nicht empfohlene Legacyverschlüsselungen werden daher ab dem **1. Juli 2020** nicht mehr unterstützt.
-
-
-## <a name="impact"></a>Auswirkung
-Basierend auf den spezifischen Situationen und Konfigurationen der Kunden hat die Einstellung der Unterstützung von TLS 1.0 und 1.1 und nicht empfohlenen Legacyverschlüsselungen eine erhebliche Auswirkung auf ihre IoT-Geräte und -Dienste, die mit dem IoT Hub oder DPS kommunizieren. In einigen Fällen können Geräte und Dienste, die mit diesen Änderungen nicht kompatibel sind, nach dem oben erwähnten Stichtag keine Verbindung mit dem IoT Hub oder DPS herstellen.
-
+Zur Bereitstellung einer erstklassigen Verschlüsselung wechseln IOT Hub und Device Provisioning Service (DPS) zu Transport Layer Security (TLS) 1.2 als Verschlüsselungsmechanismus der Wahl für IOT-Geräte und-Dienste. 
 
 ## <a name="supported-ciphers"></a>Unterstützte Verschlüsselungen
 

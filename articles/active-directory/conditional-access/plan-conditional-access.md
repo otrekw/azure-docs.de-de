@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468436"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671831"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen Ihrer Bereitstellung für bedingten Zugriff in Azure Active Directory
 
@@ -163,13 +163,13 @@ Der Testplan ist wichtig, um die erwarteten Ergebnisse mit den tatsächlichen Er
 
 |Richtlinie |Szenario |Erwartetes Ergebnis | Ergebnis |
 |---|---|---|---|
-|[Anfordern der MFA, wenn nicht bei der Arbeit](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Ein autorisierter Benutzer meldet sich bei der *App* an, während er sich an einem vertrauenswürdigen Ort/bei der Arbeit befindet.|Der Benutzer wird nicht zur Verwendung der MFA aufgefordert.| |
-|[Anfordern der MFA, wenn nicht bei der Arbeit](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Ein autorisierter Benutzer meldet sich bei der *App* an, während er sich nicht an einem vertrauenswürdigen Ort/bei der Arbeit befindet.|Der Benutzer wird zur Verwendung der MFA aufgefordert und kann sich erfolgreich anmelden.| |
-|[Anfordern der MFA für Administratoren](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Ein globaler Administrator meldet sich bei der *App* an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
-|[Riskante Anmeldungen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Ein Benutzer meldet sich bei der *App* über einen [Tor-Browser](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook) an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
-|[Geräteverwaltung](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein autorisiertes Gerät anzumelden.|Der Zugriff wird gewährt.| |
-|[Geräteverwaltung](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein nicht autorisiertes Gerät anzumelden.|Der Zugriff wird blockiert.| |
-|[Kennwortänderung für riskante Benutzer](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|Ein autorisierter Benutzer versucht, sich mit gefährdeten Anmeldeinformationen anzumelden (Anmeldung mit hohem Risiko).|Der Benutzer wird aufgefordert, das Kennwort zu ändern, oder der Zugriff wird blockiert (auf der Grundlage Ihrer Richtlinie).| |
+|[Anfordern der MFA, wenn nicht bei der Arbeit](/azure/active-directory/conditional-access/untrusted-networks)|Ein autorisierter Benutzer meldet sich bei der *App* an, während er sich an einem vertrauenswürdigen Ort/bei der Arbeit befindet.|Der Benutzer wird nicht zur Verwendung der MFA aufgefordert.| |
+|[Anfordern der MFA, wenn nicht bei der Arbeit](/azure/active-directory/conditional-access/untrusted-networks)|Ein autorisierter Benutzer meldet sich bei der *App* an, während er sich nicht an einem vertrauenswürdigen Ort/bei der Arbeit befindet.|Der Benutzer wird zur Verwendung der MFA aufgefordert und kann sich erfolgreich anmelden.| |
+|[Anfordern der MFA für Administratoren](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|Ein globaler Administrator meldet sich bei der *App* an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
+|[Riskante Anmeldungen](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|Ein Benutzer meldet sich bei der *App* über einen [Tor-Browser](/azure/active-directory/active-directory-identityprotection-playbook) an.|Der Administrator wird zur Verwendung der MFA aufgefordert.| |
+|[Geräteverwaltung](/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein autorisiertes Gerät anzumelden.|Der Zugriff wird gewährt.| |
+|[Geräteverwaltung](/azure/active-directory/conditional-access/require-managed-devices)|Ein autorisierter Benutzer versucht, sich über ein nicht autorisiertes Gerät anzumelden.|Der Zugriff wird blockiert.| |
+|[Kennwortänderung für riskante Benutzer](/azure/active-directory/identity-protection/howto-user-risk-policy)|Ein autorisierter Benutzer versucht, sich mit gefährdeten Anmeldeinformationen anzumelden (Anmeldung mit hohem Risiko).|Der Benutzer wird aufgefordert, das Kennwort zu ändern, oder der Zugriff wird blockiert (auf der Grundlage Ihrer Richtlinie).| |
 
 ### <a name="configure-the-policy"></a>Konfigurieren der Richtlinie
 

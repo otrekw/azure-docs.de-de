@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 1eff8bbd7ce601a0145bb3c6c05bc09ee0024daf
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 19a35a6586b04818c09190899714345d21e0088d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196755"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330752"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Schnellstart: Verwalten von Blobs per Python v12 SDK
 
@@ -103,7 +103,7 @@ Azure Blob Storage ist für die Speicherung großer Mengen unstrukturierter Date
 
 Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
-![Diagramm der Blob Storage-Architektur](./media/storage-blob-introduction/blob1.png)
+![Diagramm der Blob Storage-Architektur](./media/storage-blobs-introduction/blob1.png)
 
 Verwenden Sie die folgenden Python-Klassen zur Interaktion mit diesen Ressourcen:
 

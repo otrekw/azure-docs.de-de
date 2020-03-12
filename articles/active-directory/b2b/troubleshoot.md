@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c7c0a4567da11b10b9a0571656103ef2f17c7da4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399057"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
@@ -102,7 +102,6 @@ Ab dem 18. November 2019 ist für Gastbenutzer in Ihrem Verzeichnis (Benutzerkon
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In einem Mandanten der Azure-Cloud für US-Behörden kann ich keinen Gastbenutzer der B2B-Zusammenarbeit einladen
 
 Innerhalb der Azure-Cloud für US-Behörden wird die B2B-Zusammenarbeit derzeit nur zwischen Mandanten unterstützt, die sich in der Azure-Cloud für US-Behörden befinden und die B2B-Zusammenarbeit unterstützen. Wenn Sie einen Benutzer zu einem Mandanten einladen, der nicht zur Azure-Cloud für US-Behörden gehört oder die B2B-Zusammenarbeit noch nicht unterstützt, wird eine Fehlermeldung angezeigt. Weitere Einzelheiten und Informationen zu Einschränkungen finden Sie unter [Azure Active Directory Premium P1 und P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

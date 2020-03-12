@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 51bf005bdad4197120fed96894ac1cdd150738ee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75935215"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079818"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>Auswählen eines Spracherkennungsmodus
 
@@ -33,7 +33,7 @@ Am Ende einer erkannten Äußerung hält der Dienst die Verarbeitung von Audioda
 Weitere Informationen zur Verwendung der `RecognizeOnceAsync`-Funktion finden Sie in der [Dokumentation zum .NET-Sprach-SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync).
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -72,7 +72,7 @@ Weitere Sprachen finden Sie in der [Referenzdokumentation für das Sprach-SDK](s
 
 ## <a name="continuous"></a>Fortlaufend
 
-Wenn Sie eine langfristige Erkennung benötigen, verwenden Sie die Start- und entsprechenden Stoppfunktionen für fortlaufende Erkennung. Die Startfunktion wird gestartet und verarbeitet fortlaufend alle Äußerungen, bis Sie die Stoppfunktion aufrufen oder eine zu lange Schweigephase aufgetreten ist. Wenn Sie den kontinuierlichen Modus verwenden, stellen Sie sicher, dass Sie sich bei den verschiedenen Ereignissen registrieren, die ausgelöst werden können. Beispielsweise wird das „Erkannt“-Ereignis ausgelöst, wenn Spracherkennung auftritt. Um die Erkennung zu verarbeiten, muss ein Ereignishandler vorhanden sein. Das Limit von 10 Minuten der gesamten Spracherkennungszeit pro Sitzung wird durch den Spracherkennungsdienst erzwungen.
+Wenn Sie eine langfristige Erkennung benötigen, verwenden Sie die Start- und entsprechenden Stoppfunktionen für fortlaufende Erkennung. Die Startfunktion wird gestartet und verarbeitet fortlaufend alle Äußerungen, bis Sie die Stoppfunktion aufrufen oder eine zu lange Schweigephase aufgetreten ist. Wenn Sie den kontinuierlichen Modus verwenden, stellen Sie sicher, dass Sie sich bei den verschiedenen Ereignissen registrieren, die ausgelöst werden können. Beispielsweise wird das „Erkannt“-Ereignis ausgelöst, wenn Spracherkennung auftritt. Um die Erkennung zu verarbeiten, muss ein Ereignishandler vorhanden sein.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -88,10 +88,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end
