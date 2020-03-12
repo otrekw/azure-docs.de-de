@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770318"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082913"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -34,7 +34,7 @@ Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastu
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bestimmen, ob erweiterte Metriken aktiviert sind
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Wählen Sie unter **Virtuelle Computer** eine VM aus, und klicken Sie unter **Überwachung** auf **Metriken**. Eine Liste der verfügbaren Metriken wird angezeigt.
 3. Wählen Sie einige Metriken aus, und die Daten für diese Metriken werden in einem Diagramm angezeigt.  
     ![Beispielmetrik: CPU-Auslastung in Prozent für den Host](./media/azure-vm-extended-metrics/metric01.png)

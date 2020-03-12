@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle
-description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle. Leiten Sie, abhängig von den Eigenschaften in der Nachricht, entweder an ein Speicherkonto oder an eine Service Bus Warteschlange weiter.
+description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mithilfe der Azure-Befehlszeilenschnittstelle. Führen Sie je nach den Eigenschaften in der Nachricht entweder die Weiterleitung an ein Speicherkonto oder an eine Service Bus-Warteschlange durch.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 340ea35bc3ed0c889a1a851da47f7e955116e103
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 056dac7977115f97892d8dbfde0710e00237804e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084464"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674340"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -55,7 +55,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity. 
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that 
 #   don't have to be globally unique.
@@ -155,7 +155,7 @@ Verwenden Sie [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-en
 
 Richten Sie zuerst den Endpunkt für das Speicherkonto und anschließend die Route ein. 
 
-Dabei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
+Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **storageConnectionString**: Dieser Wert wird aus dem Speicherkonto abgerufen, das im vorherigen Skript eingerichtet wurde. Er wird beim Nachrichtenrouting verwendet, um auf das Speicherkonto zuzugreifen.
 
@@ -175,7 +175,7 @@ Dabei handelt es sich um die Variablen, die vom Skript verwendet werden und in d
 
 **endpointName**: Der Name zur Identifizierung des Endpunkts. 
 
-**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Das bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
+**enabled**: Dieses Feld ist standardmäßig auf `true` festgelegt. Dies bedeutet, dass die Nachrichtenroute nach der Erstellung aktiviert werden soll.
 
 **condition**: Die Abfrage, mit der nach den Nachrichten gefiltert wird, die an diesen Endpunkt gesendet wurden. Die Abfragebedingung für die Nachrichten, die an den Speicher weitergeleitet werden, lautet `level="storage"`.
 
@@ -257,7 +257,7 @@ sbqConnectionString=$(az servicebus queue authorization-rule keys list \
 echo "service bus queue connection string = " $sbqConnectionString
 ```
 
-Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Dabei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
+Richten Sie nun den Routingendpunkt und die Nachrichtenroute für die Service Bus-Warteschlange ein. Hierbei handelt es sich um die Variablen, die vom Skript verwendet werden und in der Cloud Shell-Sitzung festgelegt werden müssen:
 
 **endpointName**: Der Name zur Identifizierung des Endpunkts. 
 

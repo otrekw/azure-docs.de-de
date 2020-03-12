@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 44d1c6e5b119ae0639398c8be69ab7fb0d50fcf4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772194"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944269"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -48,7 +48,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial d
 
 In diesem Tutorial wird ein Azure Functions-Modul verwendet, um Daten an den SQL Server zu senden. Um ein IoT Edge-Modul mit Azure Functions zu entwickeln, installieren Sie die folgenden zusätzlichen Voraussetzungen auf Ihrem Entwicklungscomputer:
 
-* [C#-Erweiterung für Visual Studio Code (unterstützt von OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
+* [C#-Erweiterung für Visual Studio Code (unterstützt von OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 ## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
@@ -65,7 +65,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 
 3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge ein: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein (beispielsweise **SqlSolution**), oder übernehmen Sie den Standardnamen. |
@@ -210,7 +210,7 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 
 2. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge ein: IoT Edge-Modul hinzufügen** ein. Geben Sie in der Befehlspalette folgende Informationen an, um ein neues Modul hinzuzufügen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Select deployment template file (Bereitstellungsvorlagendatei auswählen) | Die Befehlspalette hebt die Datei „deployment.template.json“ in Ihrem aktuellen Projektmappenordner hervor. Wählen Sie diese Datei aus.  |
    | Select module template (Modulvorlage auswählen) | Wählen Sie **Module from Azure Marketplace** (Modul aus dem Azure Marketplace) aus. |

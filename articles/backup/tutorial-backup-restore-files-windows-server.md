@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie den MARS-Agent (Microsoft 
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171824"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672944"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz
 
@@ -21,7 +21,7 @@ Azure Backup ermöglicht die Wiederherstellung einzelner Elemente aus Sicherunge
 > * Wählen Sie einen Wiederherstellungspunkt
 > * Wiederherstellen von Elementen aus einem Wiederherstellungspunkt
 
-In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte zum [Sichern einer Windows Server-Instanz in Azure](backup-configure-vault.md) ausgeführt haben und über mindestens eine Sicherung Ihrer Windows Server-Dateien in Azure verfügen.
+In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte zum [Sichern einer Windows Server-Instanz in Azure](backup-windows-with-mars-agent.md) ausgeführt haben und über mindestens eine Sicherung Ihrer Windows Server-Dateien in Azure verfügen.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Initiieren der Wiederherstellung einzelner Elemente
 

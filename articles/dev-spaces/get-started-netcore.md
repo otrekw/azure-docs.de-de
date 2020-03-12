@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine .NET Core-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252421"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942497"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und .NET Core mit Azure Dev Spaces
 
@@ -81,7 +81,7 @@ Geben Sie den folgenden Azure CLI-Befehl ein. Verwenden Sie dabei die Ressourcen
 VS Code bietet .NET Core- und Node.js-Entwicklern umfangreiche Features wie etwa Kubernetes-Debugging.
 
 1. Installieren Sie [VS Code](https://code.visualstudio.com/Download), falls Sie noch nicht darüber verfügen.
-1. Laden Sie die [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)- und [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)-Erweiterung herunter, und installieren Sie sie. Klicken Sie auf der Marketplace-Seite der Erweiterung für jede Erweiterung auf „Installieren“. Wiederholen Sie diesen Vorgang in VS Code.
+1. Laden Sie die [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)- und [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)-Erweiterung herunter, und installieren Sie sie. Klicken Sie auf der Marketplace-Seite der Erweiterung für jede Erweiterung auf „Installieren“. Wiederholen Sie diesen Vorgang in VS Code.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Erstellen einer Web-App, die in einem Container ausgeführt wird
 
