@@ -1,18 +1,17 @@
 ---
 title: Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor
 description: Informationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für das Verschlüsseln von Daten in Ihren Log Analytics-Arbeitsbereichen mithilfe eines Azure Key Vault-Schlüssels.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620306"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208558"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
 
@@ -185,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -199,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-„principalId“ ist eine GUID, die vom verwalteten Identitätsdienst für die *Cluster*-Ressource generiert wird.
+„principal-id“ ist eine GUID, die vom Dienst für verwaltete Identitäten für die *Clusterressource* generiert wird.
 
 > [!IMPORTANT]
-> Kopieren Sie den Wert „cluster-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
+> Kopieren Sie den Wert „principal-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
 
 
 ### <a name="grant-key-vault-permissions"></a>Erteilen von Key Vault-Berechtigungen
@@ -214,7 +213,7 @@ Aktualisieren Sie Ihre Key Vault-Instanz mit einer neuen Zugriffsrichtlinie, um
 Öffnen Sie Ihre Key Vault-Instanz im Azure-Portal, und klicken Sie auf „Zugriffsrichtlinien“ und dann auf „+ Zugriffsrichtlinie hinzufügen“, um eine neue Richtlinie mit den folgenden Einstellungen zu erstellen:
 
 - Schlüsselberechtigungen: Wählen Sie die Berechtigungen „Abrufen“, „Schlüssel packen“ und „Schlüssel entpacken“ aus.
-- Prinzipal auswählen: Geben Sie den Cluster-ID-Wert ein, der in der Antwort des vorherigen Schritts zurückgegeben wurde.
+- Prinzipal auswählen: Geben Sie den Wert von „principal-id“ ein, der in der Antwort des vorherigen Schritts zurückgegeben wurde.
 
 ![Erteilen von Key Vault-Berechtigungen](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -529,10 +528,10 @@ Die Identität wird der *Clusterressource* zum Zeitpunkt der Erstellung zugewies
   "location": "region-name"
 }
 ```
-„principalId“ ist eine GUID, die vom verwalteten Identitätsdienst generiert wurde.
+„principle-id“ ist eine GUID, die vom Dienst für verwaltete Identitäten generiert wurde.
 
 > [!IMPORTANT]
-> Kopieren Sie den Wert „cluster-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
+> Kopieren Sie den Wert von „principle-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Zuordnen einer Komponente zu einer *Clusterressource* mithilfe der API für [Komponenten: Erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
