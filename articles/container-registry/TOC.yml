@@ -80,6 +80,8 @@
           items:
             - name: Einschränken des Zugriffs mit dem virtuellen Netzwerk (Vorschau)
               href: container-registry-vnet.md
+            - name: "Integration in den Azure\_Private\_Link (Vorschau)"
+              href: container-registry-private-link.md
             - name: Zugriff hinter einer Firewall
               href: container-registry-firewall-access-rules.md
             - name: Authentifizierung
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: Inhaltsvertrauensstellung
               href: container-registry-content-trust.md
-            - name: Imageüberprüfung mit Security Center (Vorschauversion)
+            - name: Imageüberprüfung mit Security Center
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Verschlüsseln von Registrierungsdaten (Vorschau)
+              href: container-registry-customer-managed-keys.md
         - name: Registrierungen und anderen Azure-Dienste
           expanded: false
           items:

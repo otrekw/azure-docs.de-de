@@ -102,6 +102,8 @@
     - name: Analysieren
       href: cdn-log-analysis.md
       items:
+        - name: Unformatierte HTTP-Protokolle
+          href: enable-raw-logs.md
         - name: Azure-Diagnoseprotokolle
           href: cdn-azure-diagnostic-logs.md
         - name: Analysetools für Azure CDN aus Verizon

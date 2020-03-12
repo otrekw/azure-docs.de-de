@@ -10,6 +10,8 @@
   items:
     - name: "Einrichten einer Azure\_RHEL-VM-Verfügbarkeitsgruppe mit STONITH"
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: "Konfigurieren von Verfügbarkeitsgruppenlistenern für SQL\_Server auf virtuellen RHEL-Computern in Azure"
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

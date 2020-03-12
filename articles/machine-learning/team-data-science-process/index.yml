@@ -1,37 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Team Data Science-Prozess – Dokumentation
+summary: Hier erhalten Sie Informationen zur Verwendung des Team Data Science-Prozesses. Dabei handelt es sich um eine flexible, iterative Data Science-Methodik für Predictive Analytics-Lösungen und intelligente Anwendungen.
 metadata:
   title: Team Data Science-Prozess – Dokumentation
-  description: 'Hier erhalten Sie Informationen zur Verwendung des Team Data Science-Prozesses. Dabei handelt es sich um eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.'
-  services: machine-learning
-  author: marktab
+  description: Hier erhalten Sie Informationen zur Verwendung des Team Data Science-Prozesses. Dabei handelt es sich um eine flexible, iterative Data Science-Methodik für Predictive Analytics-Lösungen und intelligente Anwendungen.
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/10/2020
+  author: marktab
   ms.author: marktab
-abstract:
-  description: 'Der Team Data Science-Prozess ist eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Informationen zum Team Data Science-Prozess:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">Übersicht</a>
-          - html: <a href="lifecycle">Lebenszyklus</a>
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie den Team Data Science-Prozess in verschiedenen Szenarien verwenden:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">Spark mit PySpark und Scala</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">Hive mit HDInsight Hadoop</a>
-          - html: <a href="walkthroughs-azure-data-lake">U-SQL mit Azure Data Lake</a>
-          - html: '<a href="walkthroughs-sql-server">R, Python und T-SQL mit SQL Server</a>'
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL und Python mit SQL DW</a>
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79087378"
+landingContent:
+- title: Informationen zum Prozess
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist der Team Data Science-Prozess (TDSP)?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Prozesslebenszyklus
+      url: lifecycle.md
+    - text: Geschäftliche Aspekte
+      url: lifecycle-business-understanding.md
+    - text: Datenerfassung
+      url: lifecycle-data.md
+- title: Planen und Entwickeln eines Projekts
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Projektplanung
+      url: team-data-science-process-project-templates.md
+    - text: Agile Entwicklung
+      url: agile-development.md
