@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 38ffd4931f318b15f1ac06fcfd742bde8e5c6838
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a127c8c77f97708729cf91d6ced214e98924fb6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772968"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943012"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -65,7 +65,7 @@ Ein Entwicklungscomputer:
   * Stellen Sie sicher, dass Ihr Entwicklungscomputer geschachtelte Virtualisierung unterstützt. Diese Funktion ist zum Ausführen einer Containerengine erforderlich, die Sie im nächsten Abschnitt installieren.
 * Die meisten Betriebssysteme, unter denen eine Container-Engine ausgeführt werden kann, können zum Entwickeln von IoT Edge-Modulen für Linux-Geräte genutzt werden. In diesem Tutorial wird ein Windows-Computer verwendet, aber es wird auf die bekannten Unterschiede unter MacOS oder Linux hingewiesen.
 * Installieren Sie [Git](https://git-scm.com/), damit Sie später im Tutorial die Pakete mit den Modulvorlagen per Pullvorgang abrufen können.  
-* [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
 Ein Azure IoT Edge-Gerät unter Linux:
@@ -127,7 +127,7 @@ Für dieses Tutorial nutzen wir die C#-Modulvorlage, weil sie die am häufigsten
 
 Wählen Sie in der Befehlspalette von Visual Studio Code die Option **Azure IoT Edge: Neue IoT Edge-Projektmappe** ein. Folgen Sie den Aufforderungen, und verwenden Sie die folgenden Werte, um Ihre Projektmappe zu erstellen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |

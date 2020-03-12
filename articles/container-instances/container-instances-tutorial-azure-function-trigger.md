@@ -4,12 +4,12 @@ description: Erstellen einer über HTTP ausgelösten, serverlosen PowerShell-Fun
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196534"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331024"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Tutorial: Verwenden einer über HTTP ausgelösten Azure-Funktion zum Erstellen einer Containergruppe
 
@@ -42,7 +42,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie das Projekt mit dem Namen *my
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Aktivieren einer von Azure verwalteten Identität in der Funktions-App
 
-Aktivieren Sie jetzt eine vom System zugewiesene [verwaltete Identität](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) in ihrer Funktions-App. Der PowerShell-Host, auf dem die App ausgeführt wird, kann sich automatisch mit dieser Identität authentifizieren, sodass Funktionen Aktionen für Azure-Dienste ausführen können, für die der Identität Zugriff gewährt wurde. In diesem Tutorial erteilen Sie der verwalteten Identität Berechtigungen zum Erstellen von Ressourcen in der Ressourcengruppe der Funktions-App. 
+Aktivieren Sie jetzt eine vom System zugewiesene [verwaltete Identität](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) in ihrer Funktions-App. Der PowerShell-Host, auf dem die App ausgeführt wird, kann sich automatisch mit dieser Identität authentifizieren, sodass Funktionen Aktionen für Azure-Dienste ausführen können, für die der Identität Zugriff gewährt wurde. In diesem Tutorial erteilen Sie der verwalteten Identität Berechtigungen zum Erstellen von Ressourcen in der Ressourcengruppe der Funktions-App. 
 
 Rufen Sie zunächst mit dem Befehl [az group show][az-group-show] die ID der Ressourcengruppe der Funktions-App ab, und speichern Sie sie in einer Umgebungsvariable. Dieses Beispiel setzt voraus, dass Sie den Befehl in einer Bash-Shell ausführen.
 

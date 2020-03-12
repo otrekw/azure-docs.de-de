@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274163"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402068"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(VERALTET) Verwenden von ACR mit einem DC/OS-Cluster zum Bereitstellen Ihrer Anwendung
 
@@ -101,7 +101,7 @@ Führen Sie den folgenden Befehl für die Anmeldung bei Azure Container Registry
 
 Mit diesem Befehl wird der Authentifizierungswert lokal unter dem Pfad `~/.docker` gespeichert.
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry.azurecr.io
 ```
 

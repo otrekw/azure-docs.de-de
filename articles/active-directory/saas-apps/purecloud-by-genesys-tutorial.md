@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242439"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897785"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit PureCloud by Genesys
 
@@ -123,9 +123,9 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
 1. Darüber hinaus wird von der PureCloud by Genesys-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden, wie in der folgenden Tabelle gezeigt. Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ---------------| --------------- |
-    | Email | user.userprinicipalname |
+    | Email | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
@@ -172,11 +172,11 @@ In diesem Abschnitt richten Sie B. Simon für die Verwendung des einmaligen Anm
 
 1. Wählen Sie oben **Admin** aus, und navigieren Sie unter **Integrations** (Integrationen) zu **Single Sign-on** (Einmaliges Anmelden).
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. Wechseln Sie zur Registerkarte **ADFS/Azure AD (Premium)** , und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. Wählen Sie **Browse** (Durchsuchen) aus, um das aus dem Azure-Portal heruntergeladene Base-64-codierte Zertifikat unter **ADFS Certificate** (ADFS-Zertifikat) hochzuladen.
 
@@ -186,7 +186,7 @@ In diesem Abschnitt richten Sie B. Simon für die Verwendung des einmaligen Anm
 
     d. Wechseln Sie für den Wert **Relying Party Identifier** (Bezeichner der vertrauenden Seite) zum Azure-Portal. Wählen Sie dann auf der Anwendungsintegrationsseite für **PureCloud by Genesys** die Registerkarte **Eigenschaften** aus, und kopieren Sie den Wert **Anwendungs-ID**. Fügen Sie ihn in das Feld **Relying Party Identifier** (Bezeichner der vertrauenden Seite) ein.
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. Wählen Sie **Speichern** aus.
 
@@ -200,17 +200,17 @@ Damit sich Azure AD-Benutzer bei PureCloud by Genesys anmelden können, müss
 
 1. Wählen Sie oben **Admin** aus, und navigieren Sie unter **People & Permissions** (Personen und Berechtigungen) zu **People** (Personen).
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. Wählen Sie auf der Seite **People** (Personen) die Option **Add Person** (Person hinzufügen) aus.
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. Führen Sie im Dialogfeld **Add People to the Organization** (Personen der Organisation hinzufügen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![Einmaliges Anmelden konfigurieren](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. Geben Sie im Feld **Full Name** (Vollständiger Name) den Namen eines Benutzers ein. Beispiel:  **B.simon**
+    a. Geben Sie im Feld **Full Name** (Vollständiger Name) den Namen eines Benutzers ein. Beispiel: **B.simon**
 
     b. Geben Sie im Feld **Email** (E-Mail) die E-Mail-Adresse des Benutzers ein. Beispiel: **b.simon\@contoso.com**
 
