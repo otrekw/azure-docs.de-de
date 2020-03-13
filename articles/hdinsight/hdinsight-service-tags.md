@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435426"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117241"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight
 
@@ -40,7 +40,7 @@ Die einfachste Möglichkeit, Diensttags mit Ihrem HDInsight-Cluster zu verwenden
 
 1. Wählen Sie in der Dropdownliste **Quelldiensttag** den Eintrag **HDInsight** aus.
 
-    ![Azure-Portal: Hinzufügen des Diensttags](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure-Portal: Hinzufügen des Diensttags](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 Dieses Tag enthält die IP-Adressen von Integritäts- und Verwaltungsdiensten für alle Regionen, in denen HDInsight verfügbar ist. Dadurch wird sichergestellt, dass der Cluster unabhängig vom Erstellungsort mit den erforderlichen Integritäts- und Verwaltungsdiensten kommunizieren kann.
 
@@ -76,6 +76,7 @@ Wenn Sie die zweite Option für die Verwendung von Diensttags bevorzugen und Ihr
 | Azure Government | USDoD, Mitte   | HDInsight.USDoDCentral |
 | &nbsp; | US Gov Texas | HDInsight.USGovTexas |
 | &nbsp; | USDoD, Osten | HDInsight.USDoDEast |
+| &nbsp; | US Gov Arizona | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Verwenden von mehreren regionalen Diensttags
 
