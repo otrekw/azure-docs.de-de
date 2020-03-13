@@ -117,18 +117,12 @@
   items:
     - name: Clustervorgänge
       items:
-        - name: Erstellen eines AKS-Clusters
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: Skalieren eines AKS-Clusters
           href: scale-cluster.md
         - name: Aktualisieren eines AKS-Clusters
           href: upgrade-cluster.md
         - name: Verarbeiten von Betriebssystemupdates für Knoten
           href: node-updates-kured.md
-        - name: Löschen eines AKS-Clusters
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: Integrieren eines ACR mit einem AKS-Cluster
           href: cluster-container-registry-integration.md
         - name: Erstellen von virtuellen Knoten

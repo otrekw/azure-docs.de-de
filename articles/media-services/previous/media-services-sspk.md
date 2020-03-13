@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301385"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096712"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit 
 ## <a name="overview"></a>Übersicht
@@ -29,7 +29,7 @@ Nachfolgend finden Sie eine allgemeine Architektur. IIS Smooth Streaming Porting
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Beschreibung
+## <a name="description"></a>BESCHREIBUNG
 SSPK ist zu Bedingungen lizenziert, die einen großen Mehrwert für Ihr Unternehmen schaffen. Die SSPK-Lizenz umfasst:
 
 * Smooth Streaming Porting Kit-Quelle in C++ 
@@ -91,10 +91,10 @@ Lizenznehmer von SSPK-Lizenzen (Interim und final) können sich bei technischen 
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
+* Guangzhou Shikun Electronics., Ltd.
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
