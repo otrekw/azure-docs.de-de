@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196478"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672967"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
@@ -124,7 +124,7 @@ Für den Offlinesicherungsvorgang mithilfe von MARS und Azure Data Box ist es er
 
 1. Vergewissern Sie sich, dass Sie alle vorherigen Installationen des MARS-Agents deinstalliert haben.
 1. Laden Sie die aktuelle Version des MARS-Agents von [dieser Seite](https://aka.ms/azurebackup_agent) herunter.
-1. Führen Sie *MARSAgentInstaller.exe* aus, und führen Sie *nur* die Schritte zum [Installieren und Registrieren des Agents](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent)auf dem Recovery Services-Tresor aus, in dem Ihre Sicherungen gespeichert werden sollen.
+1. Führen Sie *MARSAgentInstaller.exe* aus, und führen Sie *nur* die Schritte zum [Installieren und Registrieren des Agents](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)auf dem Recovery Services-Tresor aus, in dem Ihre Sicherungen gespeichert werden sollen.
 
    > [!NOTE]
    > Der Recovery Services-Tresor muss sich im selben Abonnement wie der Azure Data Box-Auftrag befinden.
@@ -307,7 +307,7 @@ Führen Sie auf dem Server, den Sie für die Offlinesicherung konfigurieren möc
     >[!NOTE]
     > Führen Sie einen der folgenden Aktionen aus, um die Azure-Benutzer-ID zu ermitteln:
     >
-    >* Führen Sie in PowerShell mit Azure-Verbindung den Befehl `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` aus.
+    >* Führen Sie in PowerShell mit Azure-Verbindung den Befehl `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` aus.
     > * Gehen Sie zum Registrierungspfad *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup* mit dem Namen *CurrentUserId*.
 
 6. Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt hinzugefügte Zeichenfolge, und wählen Sie **Ändern** aus. Geben Sie als Wert den Fingerabdruck des Zertifikats an, das Sie in Schritt 2 exportiert haben. Klicken Sie auf **OK**.

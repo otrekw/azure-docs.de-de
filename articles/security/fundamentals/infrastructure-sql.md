@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727100"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942951"
 ---
 # <a name="azure-sql-database-security-features"></a>Sicherheitsfeatures für Azure SQL-Datenbank    
 Azure SQL-Datenbank stellt einen relationalen Datenbankdienst in Azure bereit. Zum Schutz von Kundendaten und zum Bereitstellen verlässlicher Sicherheitsfeatures, die Kunden von einem relationalen Datenbankdienst erwarten, verfügt SQL-Datenbank über eigene Sicherheitsfunktionen. Diese Funktionen bauen auf den Steuerelementen auf, die von Azure geerbt werden.
@@ -75,7 +75,7 @@ Die Isolation des Stammbetriebssystem von den Gast-VMs und der Gast-VMs voneinan
 ### <a name="types-of-rules-on-firewalls"></a>Arten von Regeln in Firewalls
 Eine Regel wird wie folgt definiert:
 
-{Security Response Center-IP (SRC), SRC-Port, Ziel-IP, Zielport, Zielprotokoll, Ein/Aus, Zustandsbehaftet/Zustandslos, zustandsbehaftetes Flow Timeout}.
+{SRC-IP, SRC-Port, Ziel-IP, Zielport, Zielprotokoll, Ein/Aus, Zustandsbehaftet/Zustandslos, Zustandsbehaftetes Flow Timeout}.
 
 SYN-Pakete (Synchronous Idle Character) können nur empfangen oder gesendet werden, wenn eine der Regeln dies zulässt. Azure verwendet zustandslose Regeln für TCP, wobei das Prinzip darin besteht, dass nur alle Nicht-SYN-Pakete in einen oder aus einem virtuellen Computer zugelassen werden. Die Voraussetzung für dieses Sicherheitsmodell ist, dass ein beliebiger Host-Stack tolerant gegenüber der Missachtung eines SYN-Pakets kann, wenn zuvor kein SYN-Paket erkannt wurde. Das TCP-Protokoll selbst ist zustandsbehaftet und erreicht in Kombination mit der zustandslosen SYN-basierten Regel das allgemeine Verhalten einer zustandsbehafteten Implementierung.
 
@@ -99,10 +99,8 @@ In den folgenden Artikeln erfahren Sie mehr über die Sicherung der Azure-Infras
 - [Verfügbarkeit der Azure-Infrastruktur](infrastructure-availability.md)
 - [Komponenten und Grenzen des Azure-Informationssystems](infrastructure-components.md)
 - [Azure-Netzwerkarchitektur](infrastructure-network.md)
-- [Azure production network (Azure-Produktionsnetzwerk)](production-network.md)
+- [Azure-Produktionsnetzwerk](production-network.md)
 - [Produktionsvorgänge und Verwaltung von Azure](infrastructure-operations.md)
 - [Azure-Infrastrukturüberwachung](infrastructure-monitoring.md)
 - [Integrität der Azure-Infrastruktur](infrastructure-integrity.md)
 - [Schutz der Azure-Kundendaten](protection-customer-data.md)
-
-

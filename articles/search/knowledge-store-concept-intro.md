@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988633"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942994"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
 
@@ -147,3 +147,13 @@ Am einfachsten lassen sich angereicherte Dokumente über das [Portal](knowledge-
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Wissensspeichers mithilfe von Postman und REST](knowledge-store-create-rest.md)
+
+Hier finden Sie weitere Informationen zu Projektionen, den Funktionen und der Art und Weise, wie Sie [diese in einem Skillset definieren](knowledge-store-projection-overview.md).
+
+> [!div class="nextstepaction"]
+> [Projektionen in einem Wissensspeicher](knowledge-store-projection-overview.md)
+
+Für ein Tutorial zu erweiterten Projektionskonzepten wie Aufteilen in Slices, Inlinestrukturierung und Beziehungen behandelt beginnen Sie mit [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md).
+
+> [!div class="nextstepaction"]
+> [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md)

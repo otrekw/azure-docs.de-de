@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441968"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943681"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>Wissensspeicherprojektionen: Strukturieren und Exportieren von Anreicherungen
 
@@ -671,7 +671,13 @@ Beim Definieren einer Projektion treten einige Probleme häufiger auf, die zu un
 
 Die Beispiele in diesem Artikel veranschaulichen allgemeine Muster zum Erstellen von Projektionen. Wenn Sie sich ausführlich mit den Konzepten vertraut gemacht haben, verfügen Sie über bessere Voraussetzungen für das Erstellen von Projektionen für Ihr spezielles Szenario.
 
-Wenn Sie Wissensspeicherdefinitionen durchlaufen, sollten Sie als nächsten Schritt die inkrementelle Anreicherung in Erwägung ziehen. Die inkrementelle Anreicherung basiert auf dem Caching, mit dem Sie alle Anreicherungen wiederverwenden können, die nicht anderweitig von einer Skillsetänderung betroffen sind. Dies ist besonders nützlich für Pipelines, die OCR- und Bildanalysen enthalten.
+Wenn Sie neue Features erkunden, sollten Sie die inkrementelle Anreicherung als nächsten Schritt in Betracht ziehen. Die inkrementelle Anreicherung basiert auf dem Caching, mit dem Sie alle Anreicherungen wiederverwenden können, die nicht anderweitig von einer Skillsetänderung betroffen sind. Dies ist besonders nützlich für Pipelines, die OCR- und Bildanalysen enthalten.
 
 > [!div class="nextstepaction"]
 > [Einführung in die inkrementelle Anreicherung und das Zwischenspeichern](cognitive-search-incremental-indexing-conceptual.md)
+
+Hier finden Sie eine Übersicht über Projektionen, erfahren mehr über Funktionen wie Gruppen und Aufteilung, und darüber, wie Sie [diese in einem Fähigkeiten definieren](knowledge-store-projection-overview.md).
+
+> [!div class="nextstepaction"]
+> [Projektionen in einem Wissensspeicher](knowledge-store-projection-overview.md)
+
