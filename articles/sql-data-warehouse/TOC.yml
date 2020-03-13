@@ -81,7 +81,7 @@
               href: ../sql-database/sql-database-private-endpoint-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: VNET-Dienstendpunkte
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
-        - name: Authentication
+        - name: Authentifizierung
           items:
             - name: Übersicht
               href: sql-data-warehouse-authentication.md
@@ -94,7 +94,7 @@
         - name: Zugriffssteuerung
           items:
             - name: Übersicht
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Sicherheit auf Spaltenebene
               href: column-level-security.md
             - name: Sicherheit auf Zeilenebene
@@ -251,7 +251,7 @@
       items:
         - name: Übersicht
           href: sql-data-warehouse-overview-integrate.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Sicher
       items:
