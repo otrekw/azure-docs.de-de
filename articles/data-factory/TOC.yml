@@ -392,14 +392,22 @@
       items:
         - name: Kopieren von Daten mit der Copy-Aktivität
           href: copy-activity-overview.md
+        - name: Überwachen der Kopieraktivität
+          href: copy-activity-monitoring.md
         - name: Löschen von Dateien mit der Delete-Aktivität
           href: delete-activity.md
         - name: Tool zum Kopieren von Daten
           href: copy-data-tool.md
         - name: Unterstützung für Format und Komprimierung
           href: supported-file-formats-and-compression-codecs.md
-        - name: Leistung und Optimierung
-          href: copy-activity-performance.md
+        - name: Handbuch zur Leistung und Optimierung der Kopieraktivität
+          items:
+            - name: Leitfaden zu Leistung und Skalierbarkeit
+              href: copy-activity-performance.md
+            - name: Behandeln von Leistungsproblemen
+              href: copy-activity-performance-troubleshooting.md
+            - name: Leistungsfeatures
+              href: copy-activity-performance-features.md
         - name: Beibehalten von Metadaten und ACLs
           href: copy-activity-preserve-metadata.md
         - name: Schema- und Typzuordnung
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: Blog
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 'Stellen Sie eine Frage: MSDN-Forum'
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 'Stellen Sie eine Frage: Stack Overflow'

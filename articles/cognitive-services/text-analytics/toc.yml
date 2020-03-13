@@ -50,6 +50,8 @@
       href: named-entity-types.md
     - name: Sprach- und Regionsunterstützung
       href: language-support.md
+    - name: Textversätze
+      href: concepts/text-offsets.md
 - name: Anleitungen
   items:
     - name: Aufrufen der Textanalyse-API

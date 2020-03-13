@@ -161,6 +161,9 @@
         - name: Katalogdaten
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: Herunterladen von Notebooks
+          displayName: export
+          href: download-notebooks-data.md
 - name: Verweis
   items:
     - name: 'Algorithmen und Module: Referenz'
