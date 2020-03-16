@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0809a7a92108f62c7f6cbef741c7bd5c6661e591
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3f20533316049568d24a613322c63f1a888866df
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262750"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668723"
 ---
-|Name |Beschreibung |Richtlinien |Version |
+|Name |BESCHREIBUNG |Richtlinien |Version |
 |---|---|---|---|
 |[Linux-VMs überwachen, auf denen die angegebenen Anwendungen nicht installiert sind](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |Diese Initiative sorgt für die Bereitstellung der erforderlichen Richtlinienkomponenten und überwacht Linux-VMs, auf denen die angegebenen Anwendungen nicht installiert sind. Weitere Informationen zu Richtlinien für die Gastkonfiguration finden Sie unter https://aka.ms/gcpol. |2 |1.1.0 |
 |[Linux-VMs überwachen, auf denen die angegebenen Anwendungen installiert sind](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |Diese Initiative sorgt für die Bereitstellung der erforderlichen Richtlinienkomponenten und überwacht Linux-VMs, auf denen die angegebenen Anwendungen installiert sind. Weitere Informationen zu Richtlinien für die Gastkonfiguration finden Sie unter https://aka.ms/gcpol. |2 |1.1.0 |

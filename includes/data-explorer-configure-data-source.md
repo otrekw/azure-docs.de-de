@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581972"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305045"
 ---
 ## <a name="configure-the-data-source"></a>Konfigurieren der Datenquelle
 
@@ -29,7 +29,7 @@ Sie können den Dienstprinzipal im [Azure-Portal](#azure-portal) oder mit der [A
 
 1. Befolgen Sie zum Erstellen des Dienstprinzipals die Anweisungen in der [Dokumentation zum Azure-Portal](/azure/active-directory/develop/howto-create-service-principal-portal).
 
-    1. Weisen Sie im Abschnitt [Zuweisen der Anwendung zu einer Rolle](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) den Rollentyp **Leser** zu Ihrem Azure Data Explorer-Cluster zu.
+    1. Weisen Sie im Abschnitt [Zuweisen der Anwendung zu einer Rolle](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) den Rollentyp **Leser** zu Ihrem Azure Data Explorer-Cluster zu.
 
     1. Kopieren Sie im Abschnitt [Abrufen von Werten für die Anmeldung](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) die drei in den Schritten behandelten Eigenschaftswerte: **Verzeichnis-ID** (Mandanten-ID), **Anwendungs-ID** und **Kennwort**.
 
@@ -103,7 +103,7 @@ Nachdem Sie jetzt über einen Dienstprinzipal verfügen, fügen Sie ihn der Roll
 
 1. Navigieren Sie im Azure-Portal zum Azure Data Explorer-Cluster, und wählen Sie **Abfrage** aus.
 
-    ![Abfragen](media/data-explorer-configure-data-source/query.png)
+    ![Abfrage](media/data-explorer-configure-data-source/query.png)
 
 1. Führen Sie den folgenden Befehl im Abfragefenster aus. Verwenden Sie die Anwendungs-ID und die Mandanten-ID aus dem Azure-Portal oder der Befehlszeilenschnittstelle.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc5e251fee00ee22edb2261c1abd8404714834ba
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168316"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668774"
 ---
 ## <a name="authentication"></a>Authentifizierung
 
@@ -22,7 +22,7 @@ Jede Anforderung erfordert einen Autorisierungsheader. Diese Tabelle zeigt, welc
 
 Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren Abonnementschlüssel angeben. Beispiel:
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -34,7 +34,7 @@ Um ein Zugriffstoken abzurufen, müssen Sie eine Anforderung an den `issueToken`
 
 Der `issueToken`-Endpunkt hat folgendes Format:
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
 ```
 
@@ -62,7 +62,7 @@ Der Antworttext enthält das Zugriffstoken im JWT-Format (JSON Web Token).
 
 Dieses Beispiel stellt ein einfaches PowerShell-Skript zum Abrufen eines Zugriffstokens dar. Ersetzen Sie `YOUR_SUBSCRIPTION_KEY` durch Ihren Abonnementschlüssel für den Speech-Dienst. Achten Sie darauf, dass Sie den richtigen Endpunkt für die Region Ihres Abonnements verwenden. In diesem Beispiel ist das „USA, Westen“.
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -81,7 +81,7 @@ $OAuthToken
 
 cURL ist ein Befehlszeilentool, das in Linux (und im Windows-Subsystem für Linux) zur Verfügung steht. Dieser cURL-Befehl veranschaulicht, wie Sie ein Zugriffstoken abrufen. Ersetzen Sie `YOUR_SUBSCRIPTION_KEY` durch Ihren Abonnementschlüssel für den Speech-Dienst. Achten Sie darauf, dass Sie den richtigen Endpunkt für die Region Ihres Abonnements verwenden. In diesem Beispiel ist das „USA, Westen“.
 
-```cli
+```console
 curl -v -X POST
  "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -93,7 +93,7 @@ curl -v -X POST
 
 Diese C#-Klasse veranschaulicht, wie Sie ein Zugriffstoken abrufen. Übergeben Sie Ihren Abonnementschlüssel für den Speech-Dienst beim Instanziieren der Klasse. Wenn Ihr Abonnement sich nicht in der Region „USA, Westen“ befindet, ändern Sie den Wert von `FetchTokenUri` so, dass er der Region Ihres Abonnements entspricht.
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

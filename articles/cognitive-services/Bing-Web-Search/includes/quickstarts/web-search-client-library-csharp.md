@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6ba6aab1a1b4a78af1a991cbf74083a41f0c0306
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651778"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924898"
 ---
 Die Clientbibliothek für die Bing-Websuche erleichtert die Integration der Bing-Websuche in Ihre C#-Anwendung. In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Client instanziieren, eine Anforderung senden und die Antwort ausgeben.
 
@@ -422,3 +422,4 @@ Denken Sie daran, nach dem Fertigstellen dieses Projekts Ihren Abonnementschlüs
 
 > [!div class="nextstepaction"]
 > [Cognitive Services SDK-Beispiele für Node.js](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+                                    

@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4f7357c79b9a6a57d7ede7342408d519d2278cbe
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f11fdf61bd9382cdf7956426871ce562e2a88038
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78261982"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668846"
 ---
 |Name |BESCHREIBUNG |Richtlinien |Version |
 |---|---|---|---|
@@ -22,7 +22,7 @@ ms.locfileid: "78261982"
 |[\[Vorschau\]: PCI v3.2.1:2018-Kontrollen überwachen und bestimmte VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/PCIv3_2_1_2018_audit.json) |Diese Initiative umfasst Überwachungsrichtlinien und Bereitstellungsrichtlinien zur VM-Erweiterung, die eine Teilmenge der PCI v3.2.1:2018-Kontrollen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/pciv321-init. |39 |1.0.0-preview |
 |[\[Vorschau\]: SWIFT CSP-CSCF v2020-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/SWIFTv2020_audit.json) |Diese Initiative umfasst Überwachungsrichtlinien und Bereitstellungsrichtlinien für VM-Erweiterungen, die eine Teilmenge der SWIFT CSP-CSCF v2020-Kontrollen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/SWIFT-blueprint. |71 |1.0.0-preview |
 |[\[Vorschau\]: UK OFFICIAL- und UK NHS-Kontrollen überwachen und bestimmte VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ukofficial_audit.json) |Diese Initiative umfasst Richtlinien, die eine Teilmenge der UK OFFICIAL- und UK NHS-Kontrollen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/ukofficial-blueprint und https://aka.ms/uknhs-blueprint. |66 |2.0.0-preview |
-|[Azure Security Benchmark-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Diese Initiative umfasst Überwachungsrichtlinien und Bereitstellungsrichtlinien für VM-Erweiterungen, die eine Teilmenge der Azure Security Benchmark-Empfehlungen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/azsecbm. |137 |1.0.0-preview |
+|[Azure Security Benchmark-Empfehlungen überwachen und spezifische unterstützende VM-Erweiterungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Diese Initiative umfasst Überwachungsrichtlinien und Bereitstellungsrichtlinien für VM-Erweiterungen, die eine Teilmenge der Azure Security Benchmark-Empfehlungen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/azsecbm. |148 |2.0.0-preview |
 |[FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Diese Initiative umfasst Überwachungsrichtlinien und Bereitstellungsrichtlinien für VM-Erweiterungen, die eine Teilmenge der FedRAMP H-Kontrollen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/fedramph-blueprint. |80 |2.0.0-preview |
 |[HITRUST/HIPAA-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Diese Initiative umfasst Richtlinien, die eine Teilmenge der HITRUST/HIPAA-Kontrollen abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Überwachung von Kontrollen der Motion Picture Association of America (MPAA) und Bereitstellung bestimmter VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Diese Initiative umfasst Richtlinien, die eine Teilmenge der Kontrollen der Motion Picture Association of America (MPAA) abdecken. Zusätzliche Richtlinien werden in zukünftigen Versionen hinzugefügt. Weitere Informationen finden Sie unter https://aka.ms/mpaa-blueprint. |45 |1.0.0-preview |

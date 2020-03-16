@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3c839bb09d9934749c34ddd561dc3db613df4c87
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 29aa4c105ace101fad798b31a1ab2510d3726664
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78262176"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668759"
 ---
-|Name |Beschreibung |Auswirkungen |Version |GitHub |
+|Name |BESCHREIBUNG |Auswirkungen |Version |GitHub |
 |---|---|---|---|---|
 |[Konfigurieren Sie die Zeitzone auf Windows-Computern.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Diese Richtlinie erstellt eine Gastkonfigurationszuweisung, um die angegebene Zeitzone auf virtuellen Windows-Computern festzulegen. |deployIfNotExists |1.0.0-preview |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json)
 |[Voraussetzungen für die Überwachung von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Diese Richtlinie erstellt eine Gastkonfigurationszuweisung, um virtuelle Linux-Computer zu überwachen, die Remoteverbindungen von Konten ohne Kennwörter zulassen. Außerdem erstellt sie eine systemseitig zugewiesene verwaltete Identität und stellt die VM-Erweiterung für die Gastkonfiguration bereit. Diese Richtlinie darf nur zusammen mit der entsprechenden Überwachungsrichtlinie in einer Initiative verwendet werden. Weitere Informationen zu Richtlinien für die Gastkonfiguration finden Sie unter https://aka.ms/gcpol. |deployIfNotExists |1.1.0-preview |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json)
