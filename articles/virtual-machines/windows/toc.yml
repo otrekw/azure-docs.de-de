@@ -639,8 +639,10 @@
           href: snapshot-copy-managed-disk.md
         - name: Reservieren von Datenträgerspeicher
           href: disks-reserved-capacity.md
-        - name: Erstellen einer inkrementellen Momentaufnahme
+        - name: 'Erstellen einer inkrementellen Momentaufnahme: PowerShell'
           href: disks-incremental-snapshots.md
+        - name: 'Erstellen einer inkrementellen Momentaufnahme: Portal'
+          href: disks-incremental-snapshots-portal.md
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
         - name: Migration und Konvertierung

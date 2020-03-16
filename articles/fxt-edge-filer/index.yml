@@ -1,42 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure FXT Edge Filer-Dokumentation
+summary: Der Azure FXT Edge Filer-Hybridspeichercache ist ein Hybridsystem aus Hardware und Software, das den Datenzugriff für dateibasierte, leseintensive HPC-Workflows (High Performance Computing) beschleunigt.
 metadata:
   title: Azure FXT Edge Filer-Dokumentation
   description: Verwenden von Azure FXT Edge Filer als Cachingebene für leseintensive HPC-Tasks (High Performance Computing)
-  author: ekpgh
   ms.service: fxt-edge-filer
   ms.topic: landing-page
-  ms.date: 07/10/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Der Azure FXT Edge Filer-Hybridspeichercache ist ein Hybridsystem aus Hardware und Software, das den Datenzugriff für dateibasierte, leseintensive HPC-Workflows (High Performance Computing) beschleunigt. Ein Cluster von mindestens drei Azure FXT Edge Filer-Geräten kann die Speicherleistung für lokale NAS-Systeme (NetApp oder Dell EMC Isilon), Cloudspeicher oder eine Kombination verschiedener Lösungen verbessern.'
-sections:
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-install">Installieren der Azure FXT Edge Filer-Hardware</a>
-          - html: <a href="fxt-network-power">Herstellen von Netzwerkverbindungen für Azure FXT Edge Filer</a>
-          - html: <a href="fxt-node-password">Festlegen von Stammkennwörtern für die Hardwareknoten</a>
-          - html: <a href="fxt-cluster-create">Erstellen des Clusters für den Hybridspeichercache</a>
-          - html: <a href="fxt-add-nodes">Hinzufügen von Clusterknoten</a>
-          - html: <a href="fxt-add-storage">Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace</a>
-          - html: <a href="fxt-configure-network">Konfigurieren der Netzwerkeinstellungen des Clusters</a>
-  - title: Anleitungen
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-mount-clients">Verbinden von Clients mit dem Azure FXT Edge Filer-Cluster</a>
-          - html: <a href="fxt-monitor">Überwachen von Azure FXT Edge Filer</a>
-          - html: <a href="fxt-power-off">Sicheres Ausschalten eines Hardwareknotens</a>
-  - title: Ressourcen
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="fxt-specs">Hardwarespezifikationen</a>
-          - html: <a href="fxt-additional-doc">Zusätzliche Dokumentation</a>
-          - html: <a href="fxt-support-ticket">Öffnen eines Supporttickets</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bf1ab34e0ac7477133933886bb07d16f4574c788
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79298851"
+landingContent:
+- title: Informationen zu Azure FXT Edge Filer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure FXT Edge Filer?
+      url: fxt-overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. Installieren der Hardware
+      url: fxt-install.md
+    - text: 2. Anschließen der Kabel
+      url: fxt-network-power.md
+    - text: 3. Festlegen von Hardwarekennwörtern
+      url: fxt-node-password.md
+    - text: 4. Erstellen eines Clusters
+      url: fxt-cluster-create.md
+    - text: 5. Hinzufügen von Clusterknoten
+      url: fxt-add-nodes.md
+    - text: 6. Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace
+      url: fxt-add-storage.md
+    - text: 7. Konfigurieren der Netzwerkeinstellungen des Clusters
+      url: fxt-configure-network.md
+- title: Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einbinden von Clients auf dem Cluster
+      url: fxt-mount-clients.md
+    - text: Hardwarestatus überwachen
+      url: fxt-monitor.md
+    - text: Sicheres Ausschalten der Hardware
+      url: fxt-power-off.md
+- title: Ressourcen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Hardwarespezifikationen
+      url: fxt-specs.md
+    - text: Zusätzliche Dokumentation
+      url: fxt-additional-doc.md

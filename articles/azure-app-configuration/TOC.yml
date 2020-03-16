@@ -64,8 +64,6 @@
   items:
     - name: Schlüssel-Wert-Speicherung
       href: concept-key-value.md
-    - name: Verschlüsseln mithilfe von kundenseitig verwalteten Schlüsseln
-      href: concept-customer-managed-keys.md
     - name: Point-in-Time-Momentaufnahme
       href: concept-point-time-snapshot.md
     - name: Funktionsverwaltung
@@ -74,8 +72,12 @@
       href: concept-github-action.md
     - name: Behandlung von Ereignissen
       href: concept-app-configuration-event.md
-    - name: Authentifizierung
+    - name: Sicherheit
       items:
+        - name: Verschlüsseln mithilfe von kundenseitig verwalteten Schlüsseln
+          href: concept-customer-managed-keys.md
+        - name: Schützen Ihres Konfigurationsspeichers mithilfe privater Endpunkte
+          href: concept-private-endpoint.md
         - name: Integrieren mit verwalteter Azure-Identität
           href: howto-integrate-azure-managed-service-identity.md
         - name: Aktivieren des Zugriffs mit Azure Active Directory Access

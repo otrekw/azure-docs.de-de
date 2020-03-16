@@ -8,7 +8,7 @@
       items:
         - name: Migrieren zu Virtual WAN
           href: migrate-from-hub-spoke-topology.md
-        - name: Globale Übertragungsnetzwerkarchitektur
+        - name: Globale Transitarchitektur
           href: virtual-wan-global-transit-network-architecture.md
 - name: Tutorials
   items:
@@ -28,6 +28,8 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec-Richtlinien
       href: virtual-wan-ipsec.md
+    - name: Übersicht über Point-to-Site-VPN
+      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
@@ -56,6 +58,10 @@
           href: certificates-point-to-site.md
         - name: "Konfigurieren eines Azure\_AD-Mandanten für das Benutzer-VPN"
           href: openvpn-azure-ad-tenant.md
+        - name: "Konfigurieren eines Always\_On-VPN-Benutzertunnels"
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: "Konfigurieren eines Always\_On-VPN-Gerätetunnels"
+          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
         - name: Aktivieren von Multi-Factor Authentication (MFA) für das Benutzer-VPN
           href: openvpn-azure-ad-mfa.md
         - name: "Konfigurieren der Azure\_AD-Authentifizierung für Benutzer-VPN"
@@ -91,7 +97,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Einschränkungen bei Abonnements und Diensten
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Preisrechner
