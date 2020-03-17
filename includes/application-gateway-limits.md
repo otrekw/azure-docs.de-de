@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054947"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305023"
 ---
 | Resource | Standard/maximales Limit | Hinweis |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054947"
 | Front-End-Ports |100<sup>1</sup> | |
 | Back-End-Adresspools |100<sup>1</sup> | |
 | Back-End-Server pro Pool |1\.200 | |
-| HTTP-Listener |100<sup>1</sup> | |
+| HTTP-Listener |200<sup>1</sup> |Beschränkt auf 100 aktive Listener, die Datenverkehr weiterleiten. Aktive Listener = Gesamtanzahl von Listenern - nicht aktive Listener.<br>Wenn eine Standardkonfiguration innerhalb einer Routingregel zur Weiterleitung von Datenverkehr (z. B. mit einem Listener, einem Back-End-Pool und HTTP-Einstellungen) festgelegt ist, dann zählt dies ebenfalls als Listener.|
 | HTTP-Lastenausgleichsregeln |100<sup>1</sup> | |
 | Back-End-HTTP-Einstellungen |100<sup>1</sup> | |
 | Instanzen pro Gateway |V1 SKU – 32<br>V2 SKU – 125 | |
