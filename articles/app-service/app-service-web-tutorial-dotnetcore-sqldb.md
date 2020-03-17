@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 3ad011529f8b4be90fc0c108a2049c30d1c69302
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500073"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897314"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service
 
@@ -39,7 +39,7 @@ Folgendes wird vermittelt:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Installation von Git](https://git-scm.com/)
-* [Installieren von .NET Core](https://www.microsoft.com/net/core/)
+* [Installation des .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>Erstellen einer lokalen .NET Core-App
 

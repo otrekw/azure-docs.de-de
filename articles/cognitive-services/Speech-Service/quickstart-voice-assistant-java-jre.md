@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119674"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330827"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Schnellstart: Erstellen eines Sprach-Assistenten mit dem Speech SDK – Java (Vorschauversion)
 
 Schnellstartanleitungen sind auch für [Spracherkennung](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre), [Sprachsynthese](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) und [Sprachübersetzung](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre) verfügbar.
 
-In diesem Artikel erstellen Sie eine Java-Konsolenanwendung unter Verwendung des [Azure Cognitive Services Speech SDK](speech-sdk.md). Die Anwendung stellt eine Verbindung mit einem zuvor erstellten Bot her, der für die Verwendung des Direct Line Speech-Kanals konfiguriert ist, sendet eine Sprachanforderung und gibt eine Sprachantwortaktivität zurück (sofern konfiguriert). Die Anwendung wird mit dem Maven-Paket für das Speech SDK sowie mit der Eclipse Java-IDE unter Windows, Ubuntu Linux oder macOS erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
+In diesem Artikel erstellen Sie eine Java-Konsolenanwendung unter Verwendung des [Azure Cognitive Services Speech SDK](speech-sdk.md). Die Anwendung stellt eine Verbindung mit einem zuvor erstellten Bot her, der für die Verwendung des Direct Line Speech-Kanals konfiguriert ist, sendet eine Sprachanforderung und gibt eine Sprachantwortaktivität zurück (sofern konfiguriert). Die Anwendung wird mit dem Maven-Paket für das Speech SDK sowie mit der Eclipse Java-IDE unter Windows, Linux oder macOS erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-- Betriebssystem: Windows (64 Bit), Ubuntu Linux 16.04/18.04 (64 Bit) oder macOS (ab Version 10.13)
+- Betriebssystem: Windows (64 Bit), Ubuntu Linux 16.04/18.04 (64 Bit), RHEL/CentOS 8 (x64) oder macOS (ab Version 10.13)
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) oder [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 - Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Beziehen Sie einen kostenlosen Schlüssel](get-started.md), oder erstellen Sie einen im [Azure-Portal](https://portal.azure.com).
@@ -42,6 +42,17 @@ Vergewissern Sie sich bei Verwendung von Ubuntu 16.04/18.04, dass die folgenden
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+Unter RHEL/CentOS 8:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 Vergewissern Sie sich bei Verwendung von Windows (64 Bit), dass Microsoft Visual C++ Redistributable für Ihre Plattform installiert ist:
 

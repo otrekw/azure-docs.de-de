@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382795"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943095"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Tutorial: Erstellen einer Webseite mit dem Rechtschreibprüfungsclient
 
@@ -29,7 +29,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Rechtschreibprüfungs-API. Falls Sie noch nicht über einen solchen Schlüssel verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) registrieren.
+Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die Bing-Rechtschreibprüfungs-API. Falls Sie keinen besitzen, können Sie im Azure-Portal eine [Bing-Rechtschreibprüfung-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7) erstellen. Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) verwenden.
 
 ## <a name="create-a-new-web-page"></a>Erstellen einer neuen Webseite
 

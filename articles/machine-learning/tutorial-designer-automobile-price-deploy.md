@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: aeccd604a4dae3b2ca83f5b599d9a6857acee34a
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933988"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037195"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 
 1. Wählen Sie über der Pipelinecanvas **Rückschlusspipeline erstellen** > **Echtzeit-Rückschlusspipeline** aus.
 
-    ![Screenshot: Position der Schaltfläche „Pipeline erstellen“](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
+    ![Screenshot: Position der Schaltfläche „Pipeline erstellen“](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
     Ihre Pipeline sollte nun wie folgt aussehen: 
 
@@ -56,7 +56,7 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
     > Die **Webdiensteingabe** erwartet das gleiche Datenschema wie die Trainingsdaten, die zum Erstellen der Vorhersagepipeline verwendet wurden. In diesem Szenario ist der Preis im Schema enthalten. Der Preis wird bei der Vorhersage jedoch nicht als Faktor verwendet.
     >
 
-1. Wählen Sie **Ausführen** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
+1. Wählen Sie **Übermitteln** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
 
 1. Klicken Sie auf **Bereitstellen**.
 
@@ -123,4 +123,4 @@ Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt testen, ind
 In diesem Tutorial wurden die wichtigsten Schritte zum Erstellen, Bereitstellen und Verwenden eines Machine Learning-Modells im Designer vermittelt. Weitere Informationen zur Verwendung des Designers für andere Arten von Aufgaben finden Sie in unseren anderen Beispielpipelines.
 
 > [!div class="nextstepaction"]
-> [Beispiel für die Kreditrisikoklassifizierung](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [Designer-Beispiele](samples-designer.md)

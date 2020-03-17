@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448897"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402670"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Tutorial: Anomalieerkennung für Streamingdaten mit Azure Databricks
 
@@ -40,12 +40,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Ausführen der Anomalieerkennung für Tweets
 
 > [!Note]
-> Dieses Tutorial erläutert einen Ansatz zum Implementieren der empfohlenen [Lösungsarchitektur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) für die Anomalieerkennungs-API.
+> * Dieses Tutorial erläutert einen Ansatz zum Implementieren der empfohlenen [Lösungsarchitektur](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) für die Anomalieerkennungs-API.
+> * Dieses Tutorial kann nicht mit einer kostenlosen Testversion für die Anomalieerkennungs-API oder Azure Databricks abgeschlossen werden. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-> [!Note]
-> Dieses Tutorial kann nicht mit einem Schlüssel einer kostenlosen Testversion für die Anomalieerkennungs-API abgeschlossen werden. Navigieren Sie vor dem Erstellen des Clusters zu Ihrem Profil, und legen Sie für Ihr Abonnement die **nutzungsbasierte Bezahlung** fest, um für die Erstellung des Azure Databricks-Clusters ein kostenloses Konto zu verwenden. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/).
+Erstellen Sie ein [Azure-Abonnement](https://azure.microsoft.com/free/), wenn Sie noch keins besitzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +51,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Die [Verbindungszeichenfolge](../../../event-hubs/event-hubs-get-connection-string.md) für den Zugriff auf den Event Hubs-Namespace. Die Verbindungszeichenfolge sollte ungefähr das folgende Format aufweisen:
 
-    [https://login.microsoftonline.com/consumers/](`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`). 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`. 
 
 - Den Namen der SAS-Richtlinie und den Richtlinienschlüssel für Event Hubs.
 
@@ -163,11 +161,11 @@ In diesem Tutorial verwenden Sie die [Anomalieerkennungs-APIs von Azure Cognitiv
 
 4. Geben Sie im Dialogfeld **Erstellen** die folgenden Werte an:
 
-    |value |BESCHREIBUNG  |
+    |Wert |BESCHREIBUNG  |
     |---------|---------|
     |Name     | Ein Name für die Anomalieerkennungsressource        |
     |Subscription     | Das Azure-Abonnement, dem die Ressource zugeordnet wird        |
-    |Location     | Ein Azure-Standort        |
+    |Position     | Ein Azure-Standort        |
     |Tarif     | Ein Tarif für den Dienst. Weitere Informationen zu den Preisen für die Anomalieerkennung finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
     |Resource group     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene auswählen möchten.        |
 

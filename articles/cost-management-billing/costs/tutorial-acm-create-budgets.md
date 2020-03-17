@@ -4,17 +4,17 @@ description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten fü
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251170"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128357"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -54,7 +54,7 @@ Weitere Informationen zum Zuweisen der Berechtigung für Cost Management-Daten f
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-- Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+- Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Erstellen eines Budgets im Azure-Portal
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Erstellen eines Budgets mit einer Azure Resource Manager-Vorlage
 
-Sie können mit einer Azure Resource Manager-Vorlage ein Budget erstellen. Die Vorlage dient Ihnen als Hilfe beim Erstellen eines Budgets unter einer Ressourcengruppe. Die Vorlage unterstützt nur Enterprise Agreement-Kunden.
+Sie können mit einer Azure Resource Manager-Vorlage ein Budget erstellen. Die Vorlage dient Ihnen als Hilfe beim Erstellen eines Budgets unter einer Ressourcengruppe. 
 
 Wählen Sie die folgende Abbildung aus, um sich am Azure-Portal anzumelden und die Vorlage zu öffnen:
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359251"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Was ist Virtual Network NAT (Public Preview)?
 
@@ -192,13 +192,13 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feed
 
 ## <a name="limitations"></a>Einschränkungen
 
-- NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
-- Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.
-- Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
-- NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
+* NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
+* Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
+* Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
+* NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
-- [Schlagen Sie bei UserVoice die nächsten Entwicklungsschritte vor](https://aka.ms/natuservoice).
-- [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
+* Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
+* [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
+* [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).

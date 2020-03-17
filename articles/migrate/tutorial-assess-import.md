@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902535"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079865"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Bewerten von Servern anhand von importierten Daten
 
@@ -109,7 +109,7 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **IP-Adresse** | Nein | Serveradresse
 **Kerne** | Ja | Anzahl von Prozessorkernen, die dem Server zugeordnet sind
 **Memory** | Ja | Gesamter Arbeitsspeicher, der dem Server zugeordnet ist (in MB)
-**OS name** (Betriebssystemname) | Ja | Serverbetriebssystem
+**OS name** (Betriebssystemname) | Ja | Serverbetriebssystem <br/> Betriebssystemnamen, die den Namen in [dieser Liste](#supported-operating-system-names) entsprechen oder diese Namen enthalten, werden von der Bewertung erkannt.
 **Betriebssystemversion** | Nein | Betriebssystemversion des Servers
 **Anzahl der Datenträger** | Nein | Nicht erforderlich, wenn Details zu den einzelnen Datenträgern angegeben werden.
 **Disk 1 size** (Größe von Datenträger 1)  | Nein | Die maximale Größe des Datenträgers (in GB).<br/>Sie können Details zu weiteren Datenträgern hinzufügen, indem Sie in der Vorlage [Spalten hinzufügen](#add-multiple-disks). Es ist möglich, bis zu acht Datenträger hinzuzufügen.

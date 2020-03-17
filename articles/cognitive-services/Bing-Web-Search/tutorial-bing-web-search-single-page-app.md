@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986660"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943875"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
@@ -37,8 +37,7 @@ Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.
 Folgende Voraussetzungen müssen erfüllt sein, damit die App ausgeführt werden kann:
 
 * Node.js 8 oder höher
-* Abonnementschlüssel
-
+* Abonnementschlüssel für die Bing-Suche-API. Wenn Sie noch keinen besitzen, [erstellen Sie eine Ressource für Bing-Suche v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) verwenden.
 ## <a name="get-the-source-code-and-install-dependencies"></a>Abrufen des Quellcodes und Installieren von Abhängigkeiten
 
 Der erste Schritt besteht darin, das Repository mit dem Quellcode der Beispiel-App zu klonen.
@@ -82,7 +81,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |-----------|-------------|
 | `query` | Ein Textfeld zur Eingabe einer Abfragezeichenfolge. |
 | `where` | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache). |
@@ -386,7 +385,7 @@ Einige Renderingfunktionen akzeptieren nur den Parameter `item`. Andere Funktion
 
 Folgende Kontextargumente sind verfügbar:
 
-| Parameter  | Beschreibung |
+| Parameter  | BESCHREIBUNG |
 |------------|-------------|
 | `section` | Der Ergebnisbereich (`pole`, `mainline` oder `sidebar`), in dem das Element angezeigt wird. |
 | `index`<br>`count` | Verfügbar, wenn durch das `RankingResponse`-Element angegeben wird, dass alle Ergebnisse einer Collection angezeigt werden sollen. Andernfalls wird `undefined` verwendet. Der Index des Elements innerhalb seiner Auflistung und die Gesamtzahl von Elementen in dieser Auflistung. Sie können mit diesen Informationen beispielsweise die Ergebnisse nummerieren oder für das erste und letzte Ergebnis unterschiedlichen HTML-Code erzeugen. |

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524375"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897692"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -127,6 +127,9 @@ Nehmen Sie in *Web.config* nacheinander folgende Änderungen vor:
 
 - Suchen Sie nach der Verbindungszeichenfolge `MyDbConnection`, und ersetzen Sie den Wert `connectionString` durch `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Ersetzen Sie die Platzhalter _\<server-name>_ und _\<db-name>_ durch Ihren Servernamen bzw. durch Ihren Datenbanknamen.
 
+> [!NOTE]
+> Der von Ihnen eben registrierte SQL-Authentifizierungsanbieter (SqlAuthenticationProvider) basiert auf der zuvor installierten AppAuthentication-Bibliothek. Standardmäßig wird eine systemseitig zugewiesene Identität verwendet. Um eine benutzerseitig zugewiesene Identität zu nutzen, müssen Sie eine zusätzliche Konfiguration bereitstellen. Lesen Sie die Informationen zur [Unterstützung der Verbindungszeichenfolge](../key-vault/service-to-service-authentication.md#connection-string-support) für die AppAuthentication-Bibliothek.
+
 Das ist alles, was Sie benötigen, um eine Verbindung mit SQL-Datenbank herzustellen. Beim Debuggen in Visual Studio verwendet Ihr Code den Azure AD-Benutzer, den Sie unter [Einrichten von Visual Studio](#set-up-visual-studio) konfiguriert haben. Sie richten den SQL-Datenbank-Server später ein, um eine Verbindung von der verwalteten Identität ihrer App Service-App zuzulassen.
 
 Drücken Sie `Ctrl+F5`, um die App erneut auszuführen. Die gleiche CRUD-App in Ihrem Browser stellt nun unter Verwendung der Azure AD-Authentifizierung eine Direktverbindung mit der Azure SQL-Datenbank her. Dieses Setup ermöglicht das Ausführen von Datenbankmigrationen über Visual Studio.
@@ -189,6 +192,9 @@ Drücken Sie `Ctrl+F5`, um die App erneut auszuführen. Die gleiche CRUD-App in 
 
 Als Nächstes konfigurieren Sie Ihre App Service-App so, dass sie beim Herstellen der Verbindung mit SQL-Datenbank eine vom System zugewiesene verwaltete Identität verwendet.
 
+> [!NOTE]
+> Die Anweisungen in diesem Abschnitt gelten zwar für eine systemseitig zugewiesene Identität, eine benutzerseitig zugewiesene Identität kann jedoch genauso einfach verwendet werden. Dazu müssen Sie `az webapp identity assign command` ändern, um die gewünschte benutzerseitig zugewiesene Identität zuzuweisen. Stellen Sie dann beim Erstellen des SQL-Benutzers sicher, dass Sie den Namen der benutzerseitig zugewiesenen Identitätsressource anstelle des Websitenamens verwenden.
+
 ### <a name="enable-managed-identity-on-app"></a>Aktivieren einer verwalteten Identität für die App
 
 Verwenden Sie den Befehl [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) in Cloud Shell, um eine verwaltete Identität für Ihre Azure-App zu aktivieren. Ersetzen Sie im folgenden Befehl den Platzhalter *\<app-name>* .
@@ -237,9 +243,12 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Da er vom System zugewiesen wird, ist er immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
+*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Wird die Identität vom System zugewiesen, ist der Name immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
 
 Geben Sie `EXIT` ein, um zur Cloud Shell-Eingabeaufforderung zurückzukehren.
+
+> [!NOTE]
+> Die Back-End-Dienste verwalteter Identitäten [verwalten darüber hinaus einen Tokencache](overview-managed-identity.md#obtain-tokens-for-azure-resources), der das Token für eine Zielressource nur bei Ablauf aktualisiert. Wenn Sie beim Konfigurieren der Berechtigungen für SQL-Datenbank einen Fehler machen und die Berechtigungen ändern möchten, *nachdem* Sie versucht haben, mit Ihrer App ein Token abzurufen, erhalten Sie tatsächlich erst dann ein neues Token mit den aktualisierten Berechtigungen, wenn das zwischengespeicherte Token abläuft.
 
 ### <a name="modify-connection-string"></a>Ändern der Verbindungszeichenfolge
 

@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121079"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945367"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Private Link für Azure SQL-Datenbank und Data Warehouse (Vorschauversion)
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Private Link für Azure SQL-Datenbank und Data Warehouse
 
 Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../virtual-network/virtual-networks-overview.md) und Subnetz. 
 
@@ -145,7 +145,7 @@ Das Ergebnis zeigt, dass eine einzelne IP-Adresse aktiv ist. Diese entspricht de
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Überprüfen der Konnektivität mithilfe von SQL Server Management Studio (SSMS)
 > [!NOTE]
->Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients. Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche schlagen entwurfsbedingt fehl.
+> Verwenden Sie den **vollqualifizierten Domänennamen** (Fully Qualified Domain Name, FQDN) des Servers in Verbindungszeichenfolgen für Ihre Clients. Alle direkt für die IP-Adresse vorgenommenen Anmeldeversuche schlagen fehl. Dieses Verhalten ist entwurfsbedingt, da ein privater Endpunkt Datenverkehr an das SQL-Gateway in der Region weiterleitet und der FQDN angegeben werden muss, damit Anmeldungen erfolgreich sind.
 
 Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindung mit der SQL-Datenbank-Instanz](sql-database-connect-query-ssms.md) aus. Nachdem Sie mithilfe von SSMS eine Verbindung mit der SQL-Datenbank-Instanz hergestellt haben, führen Sie die folgende Abfrage aus, um sich zu vergewissern, dass für die Verbindung die private IP-Adresse des virtuellen Azure-Computers verwendet wird:
 
@@ -153,8 +153,9 @@ Führen Sie die Schritte zur [Verwendung von SSMS zum Herstellen einer Verbindun
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> In der Vorschauversion wird für Verbindungen mit dem privaten Endpunkt nur **Proxy** als [Verbindungsrichtlinie](sql-database-connectivity-architecture.md#connection-policy) unterstützt.
+
+## <a name="limitations"></a>Einschränkungen 
+Für Verbindungen mit dem privaten Endpunkt wird nur **Proxy** als [Verbindungsrichtlinie](sql-database-connectivity-architecture.md#connection-policy) unterstützt.
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk (VNET) mit Peering 

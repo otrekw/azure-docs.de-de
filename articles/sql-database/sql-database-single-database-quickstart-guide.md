@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 4332d57c8d5587a34ba3a593deb9bd635132b03d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6070b53e5f906bc378402d98275b8f798f57b505
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820951"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674425"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Erste Schritte mit Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -34,10 +34,8 @@ Dieser Abschnitt enthält eine Übersicht über die verfügbaren Artikel für de
 
 Sie können PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ihre Datenbank zu erstellen, zu konfigurieren und zu skalieren.
 
-- [Verwenden von PowerShell zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel für einen SQL-Datenbankserver](scripts/sql-database-create-and-configure-database-powershell.md)
-- [Verwenden der CLI zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md)
-- [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [Überwachen und Skalieren einer einzelnen SQL­-Datenbank über die Befehlszeilenschnittstelle](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [Erstellen und Konfigurieren einer Einzeldatenbank mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) oder der [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md)
+- [Aktualisieren Ihrer Einzeldatenbank und Skalieren von Ressourcen mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) oder der [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md)
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrieren zu einer Einzeldatenbank mit minimaler Downtime
 
@@ -58,4 +56,4 @@ In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über Azure
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden eines Singleton in Azure SQL-Datenbank](sql-database-howto-single-database.md).
 - Sehen Sie sich weitere Beispielskripts für [PowerShell](sql-database-powershell-samples.md) und die [Azure-Befehlszeilenschnittstelle](sql-database-cli-samples.md) an.
 - Informieren Sie sich ausführlicher über die [Verwaltungs-API](sql-database-single-databases-manage.md), die Sie zum Konfigurieren Ihrer Datenbanken verwenden können.
-- [Identifizieren der richtigen Azure SQL Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).
+- [Identifizieren der richtigen Azure SQL-Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/)

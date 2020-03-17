@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272399"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037256"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -30,8 +30,8 @@ Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (P
 1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
 
    Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
-1. Geben Sie eine neue Auftragsnummer in das Feld  **Auftragsnummer** ein.
-1. Wählen Sie  **Speichern** aus, um die Änderung zu übermitteln.
+1. Geben Sie eine neue Auftragsnummer in das Feld **Auftragsnummer** ein.
+1. Wählen Sie **Speichern** aus, um die Änderung zu übermitteln.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>So aktualisieren Sie die Azure Marketplace-Auftragsnummer:
 
@@ -41,8 +41,8 @@ Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (P
 1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
 
    Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
-1. Geben Sie eine neue Auftragsnummer in das Feld  **Auftragsnummer** ein.
-1. Wählen Sie  **Speichern** aus, um die Änderung zu übermitteln.
+1. Geben Sie eine neue Auftragsnummer in das Feld **Auftragsnummer** ein.
+1. Wählen Sie **Speichern** aus, um die Änderung zu übermitteln.
 
 ## <a name="cadence-of-azure-enterprise-billing"></a>Zahlungsintervall der Azure Enterprise-Abrechnung
 

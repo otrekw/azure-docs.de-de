@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657740"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673321"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
+
+## <a name="march-2020"></a>März 2020
+
+### <a name="agents"></a>Agents
+Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung.
+
+- [Übersicht über Azure Monitor-Agents](platform/agents-overview.md): Die Tabellen wurden neu strukturiert, um die individuellen Features der einzelnen Agents deutlicher zu machen.
+- [Übersicht zur Azure-Diagnoseerweiterung](platform/diagnostics-extension-overview.md): Vollständig überarbeitet.
+- [Sammeln von Daten aus der Azure-Diagnoseerweiterung in Azure Monitor-Protokollen](platform/diagnostics-extension-logs.md): Zur Aktualisierung und Verdeutlichung allgemein überarbeitet.
+- [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](platform/diagnostics-extension-windows-install.md): Neuer Artikel. 
+- [Schema der Diagnoseerweiterung für Windows](platform/diagnostics-extension-schema-windows.md): Neu strukturiert.
+- [Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs](platform/diagnostics-extension-stream-event-hubs.md): Vollständig überarbeitet und aktualisiert.
+- [Speichern und Anzeigen von Diagnosedaten in Azure Storage](platform/diagnostics-extension-to-storage.md) Vollständig überarbeitet und aktualisiert.
+- [Log Analytics-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md): Verdeutlichung der Beziehung mit dem Log Analytics-Agent.
+- [Log Analytics-VM-Erweiterung für Linux](../virtual-machines/extensions/oms-linux.md): Verdeutlichung der Beziehung mit dem Log Analytics-Agent.
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Verbindungszeichenfolgen](app/sdk-connection-string.md): Neuer Artikel.
+
+### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen
+
+#### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
+- [Integrieren von Azure Active Directory in Azure Kubernetes Service](../aks/azure-ad-integration.md): Es wurde ein Hinweis für die Erstellung einer Clientanwendung zur Unterstützung eines RBAC-fähigen Clusters für die Unterstützung von Azure Monitor für Container hinzugefügt.
+
+#### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
+- [Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)](insights/vminsights-ga-release-faq.md): Die Informationen zur Speicherung der Leistungsdaten wurden geändert.
+
+#### <a name="office-365"></a>Office 365
+- [Office 365-Verwaltungslösung in Azure (Vorschau)](insights/solution-office-365.md): Das Veraltungsdatum wurde aktualisiert.
+
+
+### <a name="logs"></a>Protokolle
+- [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Neuer Artikel.
+- [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](platform/manage-cost-storage.md): Verbesserte Beispielabfragen zum besseren Verständnis Ihrer Nutzung.
+
+### <a name="metrics"></a>Metriken
+- [Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken](platform/metrics-supported-export-diagnostic-settings.md): Ein Abschnitt zum Ändern des Verhaltens für NULL-Werte und Nullwerte wurde hinzugefügt.
+
+
+### <a name="visualizations"></a>Visualisierungen
+Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
+
+- [Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen](platform/view-designer-conversion-overview.md): Neuer Artikel.
+- [Umwandlung von Azure Monitor-Ansichts-Designer in Arbeitsmappen – Optionen](platform/view-designer-conversion-options.md): Neuer Artikel.
+- [Umwandlung von Azure Monitor-Ansichts-Designer-Kacheln](platform/view-designer-conversion-tiles.md): Neuer Artikel.
+- [Umwandlung von Azure Monitor-Ansichts-Designer in Arbeitsmappen – Zusammenfassung und Zugriff](platform/view-designer-conversion-access.md): Neuer Artikel.
+- [Umwandlung von Ansichts-Designer in Arbeitsmappen – häufige Aufgaben](platform/view-designer-conversion-tasks.md): Neuer Artikel.
+- [Beispiele für die Ansicht-Designer-Umwandlung](platform/view-designer-conversion-examples.md): Neuer Artikel.
+
+
+
 
 ## <a name="january-2020"></a>Januar 2020
 
@@ -43,14 +97,14 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 ### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
-- [Konfigurieren der Datensammlung des Azure Monitor für Container-Agents](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config): In diesem Artikel wurden Details zum Upgraden des Agents auf Azure Red Hat OpenShift sowie zusätzliche Informationen zur Unterscheidung der Methoden zum Upgraden des Agents hinzugefügt.
-- [Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts): In diesem Artikel wurden Informationen überarbeitet und die Schritte aktualisiert, mit denen unter Verwendung von Warnungen für den Arbeitsbereichskontext eine Warnung für im Arbeitsbereich gespeicherte Leistungsdaten erstellt wird.
-- [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze): In diesem Artikel wurde sowohl die Übersicht als auch der Analyseabschnitt im Hinblick auf die Unterstützung von Windows-Kubernetes-Clustern aktualisiert.
-- [Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup): In diesem Artikel wurden Details zum Upgraden des Agents auf Azure Red Hat OpenShift sowie zusätzliche Informationen zur Unterscheidung der Methoden zum Upgraden des Agents hinzugefügt.
-- [Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup): Dieser Artikel wurde mit der zusätzlichen Unterstützung von „secure port: 10250“ für cAdvisor von Kubelet aktualisiert.
-- [Verwalten des Agents für Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
-- [Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
-- [Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
+- [Konfigurieren der Datensammlung des Azure Monitor für Container-Agents](insights/container-insights-agent-config.md): In diesem Artikel wurden Details zum Upgraden des Agents auf Azure Red Hat OpenShift sowie zusätzliche Informationen zur Unterscheidung der Methoden zum Upgraden des Agents hinzugefügt.
+- [Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container](insights/container-insights-alerts.md): In diesem Artikel wurden Informationen überarbeitet und die Schritte aktualisiert, mit denen unter Verwendung von Warnungen für den Arbeitsbereichskontext eine Warnung für im Arbeitsbereich gespeicherte Leistungsdaten erstellt wird.
+- [Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container](insights/container-insights-analyze.md): In diesem Artikel wurde sowohl die Übersicht als auch der Analyseabschnitt im Hinblick auf die Unterstützung von Windows-Kubernetes-Clustern aktualisiert.
+- [Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container](insights/container-insights-azure-redhat-setup.md): In diesem Artikel wurden Details zum Upgraden des Agents auf Azure Red Hat OpenShift sowie zusätzliche Informationen zur Unterscheidung der Methoden zum Upgraden des Agents hinzugefügt.
+- [Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container](insights/container-insights-hybrid-setup.md): Dieser Artikel wurde mit der zusätzlichen Unterstützung von „secure port: 10250“ für cAdvisor von Kubelet aktualisiert.
+- [Verwalten des Agents für Azure Monitor für Container](insights/container-insights-manage-agent.md): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
+- [Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container](insights/container-insights-prometheus-integration.md): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
+- [Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken](insights/container-insights-update-metrics.md): In diesem Artikel wurden Details im Zusammenhang mit dem Verhalten und der Konfiguration der Metrikerfassung mit Azure Red Hat OpenShift im Vergleich zu anderen Arten von Kubernetes-Clustern aktualisiert.
 
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270013"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851141"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Tutorial: Verwenden von C# und KI zum Generieren von durchsuchbarem Inhalt über Azure-Blobs
 
@@ -49,7 +49,7 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 
 In diesem Tutorial werden Azure Cognitive Search für Indizierungsvorgänge und Abfragen, Cognitive Services auf dem Back-End für die KI-Anreicherung und Azure Blob Storage für die Datenbereitstellung verwendet. Dieses Tutorial bleibt unter der kostenlosen Zuteilung von 20 Transaktionen pro Indexer pro Tag für Cognitive Services. Aus diesem Grund müssen Sie nur den Such- und den Speicherdienst erstellen.
 
-Erstellen Sie diese beiden Dienste nach Möglichkeit in der gleichen Region und Ressourcengruppe, um einen möglichst geringen Abstand zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
+Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Ressourcengruppe, um eine möglichst große Nähe zu erreichen und die Verwaltung zu vereinfachen. In der Praxis kann sich Ihr Azure Storage-Konto in einer beliebigen Region befinden.
 
 ### <a name="start-with-azure-storage"></a>Azure Storage
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>Erstellen eines Clients
 
-Erstellen Sie unter „Main“ eine Instanz der `SearchServiceClient`-Klasse.
+Erstellen Sie unter `Main` eine Instanz der `SearchServiceClient`-Klasse.
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > Die `SearchServiceClient`-Klasse verwaltet die Verbindungen mit Ihrem Suchdienst. Um zu vermeiden, dass zu viele Verbindungen geöffnet werden, sollten Sie nur eine Instanz von `SearchServiceClient` in Ihrer Anwendung freigeben, sofern dies möglich ist. Die zugehörigen Methoden sind threadsicher und ermöglichen diese Freigabe.
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>Hinzufügen einer Funktion zum Beenden des Programms während eines Fehlers
+
+Dieses Tutorial soll die einzelnen Schritte der Indizierungspipeline veranschaulichen. Bei einem kritischen Problem, das verhindert, dass das Programm die Datenquelle, das Skillset, den Index oder den Indexer erstellt, wird eine Fehlermeldung ausgegeben und das Programm beendet, sodass der Fehler ermittelt und behoben werden kann.
+
+Fügen Sie `ExitProgram` zu `Main` hinzu, um Szenarien zu behandeln, in denen das Programm beendet werden muss.
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3\. Erstellen der Pipeline
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 Bei einer erfolgreichen Anforderung gibt die Methode die Datenquelle zurück, die erstellt wurde. Wenn ein Problem mit der Anforderung auftritt, z. B. ein ungültiger Parameter vorhanden ist, löst die Methode eine Ausnahme aus.
 
-Fügen Sie nun unter „Main“ eine Zeile zum Aufrufen der Funktion `CreateOrUpdateDataSource` hinzu, die Sie gerade hinzugefügt haben.
+Fügen Sie nun unter `Main` eine Zeile zum Aufrufen der Funktion `CreateOrUpdateDataSource` hinzu, die Sie gerade hinzugefügt haben.
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-Fügen Sie „Main“ die unten angegebenen Zeilen hinzu.
+Fügen Sie `Main` die folgenden Zeilen hinzu.
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 Sie werden während der Tests möglicherweise feststellen, dass Sie mehr als einmal versuchen, den Index zu erstellen. Aus diesem Grund sollten Sie vor dem Versuch, den Index zu erstellen, überprüfen, ob er nicht bereits vorhanden ist.
 
-Fügen Sie „Main“ die unten angegebenen Zeilen hinzu.
+Fügen Sie `Main` die folgenden Zeilen hinzu.
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-Fügen Sie „Main“ die unten angegebenen Zeilen hinzu.
+Fügen Sie `Main` die folgenden Zeilen hinzu.
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 Warnungen sind bei bestimmten Kombinationen aus Quelldatei und Qualifikation häufig und weisen nicht immer auf ein Problem hin. Im Rahmen dieses Tutorials sind die Warnungen gutartig (z.B. keine Texteingaben aus den JPEG-Dateien).
 
-Fügen Sie „Main“ die unten angegebenen Zeilen hinzu.
+Fügen Sie `Main` die folgenden Zeilen hinzu.
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ Sie können nach dem Abschluss der Indizierung Abfragen ausführen, die die Inha
 
 Fragen Sie als Überprüfungsschritt den Index nach allen Feldern ab.
 
-Fügen Sie „Main“ die unten angegebenen Zeilen hinzu.
+Fügen Sie `Main` die folgenden Zeilen hinzu.
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Fügen Sie „Main“ den unten angegebenen Code hinzu. Mit dem ersten try-catch-Vorgang wird die Indexdefinition mit Name, Typ und Attributen der einzelnen Felder zurückgegeben. Der zweite Vorgang ist eine parametrisierte Abfrage, bei der mit `Select` angegeben wird, welche Felder in die Ergebnisse einbezogen werden sollen, z. B. `organizations`. Mit der Suchzeichenfolge `"*"` wird der gesamte Inhalt eines einzelnen Felds zurückgegeben.
+Fügen Sie `Main` den folgenden Code hinzu. Mit dem ersten try-catch-Vorgang wird die Indexdefinition mit Name, Typ und Attributen der einzelnen Felder zurückgegeben. Der zweite Vorgang ist eine parametrisierte Abfrage, bei der mit `Select` angegeben wird, welche Felder in die Ergebnisse einbezogen werden sollen, z. B. `organizations`. Mit der Suchzeichenfolge `"*"` wird der gesamte Inhalt eines einzelnen Felds zurückgegeben.
 
 ```csharp
 //Verify content is returned after indexing is finished

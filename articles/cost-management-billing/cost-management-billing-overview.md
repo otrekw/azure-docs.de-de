@@ -8,16 +8,16 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 1c6f03663a7487e814272c6296f6e7862c65c806
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769888"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970117"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Was ist die Azure-Kostenverwaltung und -Abrechnung?
 
-Bei Azure-Produkten und -Diensten bezahlen Sie nur für die tatsächliche Nutzung. Wenn Sie Azure-Ressourcen erstellen und verwenden, werden Ihnen diese Ressourcen in Rechnung gestellt. Mit den Features der Azure-Kostenverwaltung und -Abrechnung können Sie Verwaltungsaufgaben für die Abrechnung ausführen und den Abrechnungszugriff auf Kosten verwalten. Darüber hinaus können Sie Azure-Ausgaben überwachen und steuern sowie die Nutzung von Azure-Ressourcen optimieren.
+Bei Azure-Produkten und -Diensten bezahlen Sie nur für die tatsächliche Nutzung. Wenn Sie Azure-Ressourcen erstellen und verwenden, werden Ihnen diese Ressourcen in Rechnung gestellt. Mit den Features der Azure-Kostenverwaltung und -Abrechnung können Sie Verwaltungsaufgaben für die Abrechnung ausführen und den Abrechnungszugriff auf Kosten verwalten. Darüber hinaus können Sie mit den Features Azure-Ausgaben überwachen und steuern sowie die Nutzung von Azure-Ressourcen optimieren.
 
 ## <a name="understand-azure-billing"></a>Grundlegendes zur Azure-Abrechnung
 

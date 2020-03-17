@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448786"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943906"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -34,7 +34,7 @@ Die folgenden Aufgaben werden beschrieben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) erfahren Sie, wie Sie einen Schlüssel erhalten.
+- Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Sie müssen im Azure-Portal eine [Ressource für die benutzerdefinierte Bing-Suche erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch), um einen Schlüssel zu erhalten. Sie können auch einen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services) verwenden.
 - Falls Sie Visual Studio 2017 oder höher noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden.
 
 ## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
@@ -60,11 +60,11 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 Um Ergebnisse von bestimmten Websites oder URLs einzuschließen, fügen Sie diese der Registerkarte **Aktiv** hinzu.
 
-1.  Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
+1.       Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
 
     ![Screenshot der Registerkarte „Aktiv“ des Definitions-Editors](../media/customSrchEditor.png)
 
-2.  Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
+2.       Um zu bestätigen, dass Ihre Instanz Ergebnisse zurückgibt, geben Sie eine Abfrage im Vorschaubereich auf der rechten Seite ein. Bing gibt nur Ergebnisse für öffentliche Websites zurück, die Bing indiziert hat.
 
 ## <a name="add-blocked-entries"></a>Hinzufügen blockierter Einträge
 

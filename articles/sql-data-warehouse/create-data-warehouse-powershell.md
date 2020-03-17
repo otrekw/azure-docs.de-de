@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen eines Data Warehouse (PowerShell)'
-description: Erstellen Sie mithilfe von Azure PowerShell schnell einen logischen Data Warehouse-Server mit Azure Synapse Analytics und einer Firewallregel auf Serverebene.
+title: Erstellen und Abfragen eines Synapse-SQL-Pools mit Azure PowerShell
+description: Erstellen Sie mithilfe von Azure PowerShell schnell einen logischen Server für einen Synapse-SQL-Pool mit einer Firewallregel auf Serverebene.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199987"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130293"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen einer Data Warehouse-Instanz mit Azure PowerShell
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools mit Azure PowerShell
 
-Erstellen Sie ein Azure Synapse Analytics-Data Warehouse, indem Sie einen SQL-Pool mithilfe von Azure PowerShell bereitstellen.
+Erstellen Sie mithilfe von Azure PowerShell einen Synapse-SQL-Pool (Data Warehouse) in Azure Synapse Analytics.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-> [!NOTE]
-> Wenn Sie eine Warehouse-Instanz erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> [!IMPORTANT]
+> Wenn Sie einen SQL-Pool erstellen, wird dadurch unter Umständen auch ein neuer abrechenbarer Dienst erstellt.  Weitere Informationen finden Sie unter [Azure Synapse Analytics – Preise](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurieren einer Serverfirewallregel
 
-Erstellen Sie mit dem Befehl [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) eine [Firewallregel für Azure SQL auf Serverebene](../sql-database/sql-database-firewall-configure.md). Eine Firewallregel auf Serverebene lässt zu, dass eine externe Anwendung wie SQL Server Management Studio oder das SQLCMD-Hilfsprogramm über die Firewall des SQL Data Warehouse-Diensts eine Verbindung mit einer SQL Data Warehouse-Instanz herstellt. Im folgenden Beispiel wird die Firewall nur für andere Azure-Ressourcen geöffnet. Ändern Sie die IP-Adresse in eine für Ihre Umgebung geeignete Adresse, um die externe Konnektivität zu ermöglichen. Verwenden Sie 0.0.0.0 als IP-Startadresse und 255.255.255.255 als Endadresse, wenn Sie alle IP-Adressen öffnen möchten.
+Erstellen Sie mit dem Befehl [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) eine [Firewallregel für Azure SQL auf Serverebene](../sql-database/sql-database-firewall-configure.md). Eine Firewallregel auf Serverebene lässt zu, dass eine externe Anwendung wie SQL Server Management Studio oder das SQLCMD-Hilfsprogramm über die Firewall des SQL-Pooldiensts eine Verbindung mit einem SQL-Pool herstellt. 
+
+Im folgenden Beispiel wird die Firewall nur für andere Azure-Ressourcen geöffnet. Ändern Sie die IP-Adresse in eine für Ihre Umgebung geeignete Adresse, um die externe Konnektivität zu ermöglichen. Verwenden Sie 0.0.0.0 als IP-Startadresse und 255.255.255.255 als Endadresse, wenn Sie alle IP-Adressen öffnen möchten.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
-Dieses Beispiel erstellt ein Data Warehouse mit den zuvor definierten Variablen.  Das Dienstziel wird als DW100c angegeben. Dies ist ein kostengünstiger Ausgangspunkt für Ihr Data Warehouse. 
+## <a name="create-a-sql-pool"></a>Erstellen eines SQL-Pools
+Das folgende Beispiel erstellt einen SQL-Pool mit den zuvor definierten Variablen.  Das Dienstziel wird als DW100c angegeben. Dies ist ein kostengünstiger Ausgangspunkt für Ihren SQL-Pool. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 Erforderliche Parameter:
 
 * **RequestedServiceObjectiveName**: Die Menge an [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md), die Sie anfordern. Durch das Erhöhen dieses Werts steigen die Computekosten. Eine Liste der unterstützten Werte finden Sie unter [Grenzwerte für Arbeitsspeicher und Parallelität](memory-concurrency-limits.md).
-* **DatabaseName**: Der Name der Data Warehouse-Instanz, die Sie erstellen.
+* **DatabaseName**: Der Name des SQL-Pools, den Sie erstellen
 * **ServerName**: Der Name des Servers, den Sie für die Erstellung verwenden.
 * **ResourceGroupName**: Die Ressourcengruppe, die Sie verwenden. Verwenden Sie zum Abrufen der in Ihrem Abonnement verfügbaren Ressourcengruppen das Cmdlet „Get-AzureResource“.
-* **Edition**: Muss für die Erstellung einer Data Warehouse-Instanz auf „DataWarehouse“ festgelegt werden.
+* **Edition**: Muss für die Erstellung eines SQL-Pools auf „DataWarehouse“ festgelegt werden.
 
 Optionale Parameter:
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben jetzt ein Data Warehouse sowie eine Firewallregel erstellt, diese mit Ihrem Data Warehouse verbunden und einige Abfragen ausgeführt. Weitere Informationen zum Laden von Daten finden Sie in den Tutorials.
-> [!div class="nextstepaction"]
->[Laden von Daten in eine Data Warehouse-Instanz](load-data-from-azure-blob-storage-using-polybase.md)
+Sie haben jetzt einen SQL-Pool sowie eine Firewallregel erstellt, diese mit Ihrem SQL-Pool verbunden und einige Abfragen ausgeführt. Weitere Informationen finden Sie im Artikel zum [Laden von Daten in den SQL-Pool](load-data-from-azure-blob-storage-using-polybase.md).

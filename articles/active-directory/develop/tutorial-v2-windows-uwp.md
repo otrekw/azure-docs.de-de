@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701177"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129881"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -33,6 +33,9 @@ Am Ende dieser Anleitung kann Ihre Anwendung eine geschützte API sowohl mit per
 >[!NOTE]
 > Für diesen Leitfaden ist Visual Studio mit einer installierten Entwicklung für die Universelle Windows-Plattform erforderlich. Im Artikel [Vorbereiten](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) finden Sie Anweisungen zum Herunterladen und Konfigurieren von Visual Studio für die Entwicklung der Apps der Universellen Windows-Plattform.
 
+>[!NOTE]
+> Wenn Sie mit Microsoft Identity Platform noch nicht vertraut sind, wird empfohlen, mit dem Schnellstart [Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)](quickstart-v2-uwp.md) zu beginnen.
+
 ## <a name="how-this-guide-works"></a>Funktionsweise dieser Anleitung
 
 ![Zeigt, wie die in diesem Tutorial generierte Beispiel-App funktioniert](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
@@ -43,7 +46,7 @@ In diesem Leitfaden wird eine UWP-Beispielanwendung erstellt, mit der die Micros
 
 In dieser Anleitung wird das folgende NuGet-Paket verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL)|
 
@@ -399,7 +402,7 @@ Es werden Benutzerprofilinformationen angezeigt, die vom Microsoft Graph-API-Auf
 
 Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, werden im Feld **Tokeninformationen** angezeigt:
 
-|Eigenschaft  |Format  |Beschreibung |
+|Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |`Token Expires` |`DateTime` |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|

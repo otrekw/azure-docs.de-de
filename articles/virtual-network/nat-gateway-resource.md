@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304122"
+ms.locfileid: "78359092"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen (Public Preview)
 
@@ -321,7 +321,7 @@ Das Leerlauftimeout kann für alle Datenflüsse von vier Minuten (Standard) auf 
 
 Die folgenden Zeitgeber werden für die Freigabe von SNAT-Ports verwendet:
 
-| Zeitgeber | value |
+| Zeitgeber | Wert |
 |---|---|
 | TCP FIN (TCP-Beendigung) | 60 Sekunden |
 | TCP RST (TCP-Zurücksetzung) | 10 Sekunden |
@@ -335,7 +335,7 @@ Ein SNAT-Port ist für eine IP-Zieladresse und den entsprechenden Zielport nach 
 ## <a name="limitations"></a>Einschränkungen
 
 - NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
-- Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.
+- Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
 - Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
 - NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 
@@ -352,7 +352,7 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feed
 * Informieren Sie sich über [Virtual Network NAT](nat-overview.md).
 * Informieren Sie sich über [Metriken und Warnungen für NAT-Gatewayressourcen](nat-metrics.md).
 * Informieren Sie sich über die [Problembehandlung im Zusammenhang mit der Azure Virtual Network NAT-Konnektivität](troubleshoot-nat.md).
-* [Schlagen Sie bei UserVoice die nächsten Entwicklungsschritte vor](https://aka.ms/natuservoice).
+* [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
 * [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 * Tutorial zur Überprüfung des NAT-Gateways
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
@@ -365,7 +365,7 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feed
 * Informieren Sie sich über die NAT-Gatewayressourcen-API:
   - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway):
 * Informieren Sie sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md).
 * Informieren Sie sich über [Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
 * Informieren Sie sich über [Verfügbarkeitszonen und Load Balancer Standard](../load-balancer/load-balancer-standard-availability-zones.md).

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 701ae5e70612b89c28e3092571e26e4f06389af0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924611"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946148"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Tutorial: Übertragen von Daten mit Azure Data Box Edge
 
@@ -69,7 +69,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
    
     f. Je nachdem, ob Sie eine SMB-Freigabe oder eine NFS-Freigabe erstellt haben, führen Sie einen der folgenden Schritte aus: 
      
-    - **SMB-Freigabe**: Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer anlegen, geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Nachdem Sie hier die Berechtigungen zugewiesen haben, können Sie den Datei-Explorer verwenden, um diese zu ändern.
+    - **SMB-Freigabe**: Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer anlegen, geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Die Änderung der Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
 
         Wenn Sie für diese Freigabedaten das Kontrollkästchen **Nur Lesevorgänge zulassen** aktivieren, können Sie Benutzer angeben, die nur über Lesezugriff verfügen.
 
@@ -114,7 +114,7 @@ Verbinden Sie sich auf Ihrem Windows Server-Client, der mit Ihrem Data Box Edge-
 
 3. Wählen Sie auf der Tastatur „Windows + R“ aus.
 
-4. Geben Sie im Fenster **Ausführen** `\\<device IP address>` an, und wählen Sie anschließend **OK** aus.  
+4. Geben Sie im Fenster **Ausführen**`\\<device IP address>` an, und wählen Sie anschließend **OK** aus.  
    Der Datei-Explorer wird geöffnet. Die von Ihnen erstellten Freigaben sollten jetzt als Ordner angezeigt werden. Doppelklicken Sie im Datei-Explorer auf eine Freigabe (einen Ordner), um den Inhalt anzuzeigen.
  
     ![Herstellen einer Verbindung mit einer SMB-Freigabe](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)
@@ -145,7 +145,7 @@ Führen Sie auf dem mit Ihrem Data Box Edge-Gerät verbundenen Linux-Client die 
 
 > [!NOTE] 
 > Für dieses Release gelten folgende Einschränkungen:
-> - Das Umbenennen einer Datei, die in den Freigaben erstellt wurde, wird nicht unterstützt. 
+> - Das Umbenennen einer Datei nach ihrer Erstellung in der Freigabe wird nicht unterstützt. 
 > - Durch das Löschen einer Datei aus einer Freigabe wird der Eintrag im Speicherkonto nicht gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte

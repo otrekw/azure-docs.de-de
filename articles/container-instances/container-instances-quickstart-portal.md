@@ -1,20 +1,15 @@
 ---
 title: 'Schnellstart: Bereitstellen von Docker-Containern in einer Containerinstanz – Portal'
 description: In diesem Schnellstart verwenden Sie das Azure-Portal, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533530"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087978"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe des Azure-Portals
 
@@ -40,15 +35,16 @@ Geben Sie auf der Seite **Allgemeine Informationen** die folgenden Werte in die 
 
 * Ressourcengruppe: **Neue erstellen** > `myresourcegroup`
 * Containername: `mycontainer`
-* Containerimage: `mcr.microsoft.com/azuredocs/aci-helloworld`
+* Imagequelle: **Schnellstartimages**
+* Containerimage: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![Konfigurieren grundlegender Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-03]
 
-Verwenden Sie für diesen Schnellstart die Standardeinstellung für **Imagetyp** mit **Öffentlich** bei, um das öffentliche Microsoft-Image `aci-helloworld` bereitzustellen. Dieses Linux-Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
+Verwenden Sie für diesen Schnellstart die Standardeinstellungen, um das öffentliche Microsoft-Image `aci-helloworld` bereitzustellen. Dieses Linux-Beispielimage verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient. Sie können auch eigene Containerimages verwenden, die in Azure Container Registry, Docker Hub oder anderen Registrierungen gespeichert sind.
 
 Geben Sie auf der Seite **Netzwerk** eine **DNS-Namensbezeichnung** für Ihren Container an. Der Name muss in der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ihr Container ist öffentlich unter `<dns-name-label>.<region>.azurecontainer.io` erreichbar. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
 
-![Konfigurieren einer neuen Containerinstanz im Azure-Portal][aci-portal-04]
+![Konfigurieren von Netzwerkeinstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-04]
 
 Behalten Sie für die anderen Einstellungen die Standardwerte bei, und klicken Sie auf **Überprüfen + Erstellen**.
 

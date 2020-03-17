@@ -3,12 +3,12 @@ title: Übersicht über Azure-Status | Microsoft-Dokumentation
 description: Eine globale Ansicht der Integrität von Azure-Diensten
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654153"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898338"
 ---
 # <a name="azure-status-overview"></a>Azure-Statusübersicht
 
@@ -26,7 +26,7 @@ Die Azure-Statusseite wird bei Änderung der Integrität von Azure-Diensten in E
 
 Während die Azure-Statusseite immer die aktuellen Integritätsinformationen anzeigt, finden Sie ältere Ereignisse auf der [Azure Status-Verlaufsseite](https://status.azure.com/status/history/).
 
-Dort werden Ereignisse angezeigt, die bis zu 90 Tage zurückliegen, einschließlich einer vorläufigen Ursache, Entschärfung und nächsten Schritten für Azure.
+Auf der Statusverlaufsseite werden Ereignisse angezeigt, die bis zu 365 Tage zurückliegen – angefangen mit Ereignissen, die im November 2019 veröffentlicht wurden. Die Informationen umfassen eine vorläufige Ursache, eine Risikominderung sowie nächste Schritte für Azure.
 
 ## <a name="rss-feed"></a>RSS-Feed
 

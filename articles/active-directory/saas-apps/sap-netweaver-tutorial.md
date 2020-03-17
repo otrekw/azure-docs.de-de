@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103368"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP NetWeaver
 
@@ -177,7 +177,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     b. Wählen Sie in der Liste **Transformation** die Option **ExtractMailPrefix()** aus.
 
-    c. Wählen Sie in der Liste **Parameter 1** die Option **user.userprinicipalname**.
+    c. Wählen Sie in der Liste **Parameter 1** die Option **user.userprincipalname** aus.
 
     d. Klicken Sie auf **Speichern**.
 
@@ -199,7 +199,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
     1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
     1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -225,51 +225,51 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 2. Wechseln Sie zum Konfigurieren von Endpunkten für vertrauenswürdige Identitätsanbieter Provider (Azure AD) zur Registerkarte **Trusted Providers** (Vertrauenswürdige Anbieter).
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
 3. Wählen Sie **Hinzufügen** und dann im Kontextmenü **Metadatendatei hochladen** aus.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
 
 4. Laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
 5. Geben Sie im nächsten Bildschirm den Aliasnamen ein. Geben Sie z. B. „aadsts“ ein, und wählen Sie **Next** (Weiter) aus, um den Vorgang fortzusetzen.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
 6. Stellen Sie sicher, dass Ihr **Digest Algorithm** (Digest-Algorithmus) **SHA-256** lautet und keine Änderungen erfordert. Wählen Sie dann **Weiter** aus.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
 7. Verwenden Sie für **Single Sign-On Endpoints** (Endpunkte für einmaliges Anmelden) die Option **HTTP POST**, und klicken Sie zum Fortfahren auf **Weiter**.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
 8. Verwenden Sie für **Single Logout Endpoints** (Endpunkte für einmaliges Abmelden) die Option **HTTPRedirect**, und klicken Sie zum Fortfahren auf **Weiter**.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
 9. Wählen Sie unter **Artifact Endpoints** (Artefaktendpunkte) zum Fortfahren **Weiter** aus.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
 10. Klicken Sie unter **Authentication Requirements** (Authentifizierungsanforderungen) auf **Fertig stellen**.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Wechseln Sie zur Registerkarte **Trusted Provider** > **Identity Federation** (Vertrauenswürdige Anbieter > Identitätsverbund) (unten auf dem Bildschirm). Klicken Sie auf **Edit**.
+11. Wechseln Sie zur Registerkarte **Trusted Provider** > **Identity Federation** (Vertrauenswürdige Anbieter > Identitätsverbund) (unten auf dem Bildschirm). Klicken Sie auf **Bearbeiten**.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
 12. Klicken Sie auf der Registerkarte **Identity Federation** (Identitätsverbund) (im Fenster unten) auf **Add** (Hinzufügen).
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
 13. Wählen Sie im Popupfenster unter **Supported NameID formats** (Unterstützte Formate für die Namens-ID) die Option **Unspecified** (Nicht angegeben) aus, und klicken Sie auf „OK“.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
 14. Beachten Sie, dass die Werte **user ID Source** (Benutzer-ID-Quelle) und **user ID mapping mode** (Zuordnungsmodus für Benutzer-ID) die Verbindung zwischen SAP-Benutzern und Azure AD-Ansprüchen festlegen.  
 
@@ -277,29 +277,29 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
     a. Screenshot von „NameID details“ (Details zur Namens-ID) in SAP
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/nameiddetails.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/nameiddetails.png)
 
     b. Screenshot der erforderlichen Ansprüche aus Azure AD
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/claimsaad1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/claimsaad1.png)
 
     #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Szenario: Auswählen der SAP-Benutzer-ID basierend auf der konfigurierten E-Mail-Adresse in SU01. In diesem Fall sollte die E-Mail-ID in SU01 für jeden Benutzer konfiguriert werden, der SSO benötigt.
 
     a.  Screenshot von „NameID details“ (Details zur Namens-ID) in SAP
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
     b. Screenshot der erforderlichen Ansprüche aus Azure AD
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/claimsaad2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/claimsaad2.png)
 
 15. Klicken Sie auf **Save** (Speichern) und dann auf **Enable** (Aktivieren), um den Identitätsanbieter zu aktivieren.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/configuration1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/configuration1.png)
 
 16. Klicken Sie auf **OK**, wenn Sie dazu aufgefordert werden.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/configuration2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/configuration2.png)
 
     ### <a name="create-sap-netweaver-test-user"></a>Erstellen eines SAP NetWeaver-Testbenutzers
 
@@ -320,7 +320,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 2. Über die obige URL sollten Sie zum unten gezeigten Bildschirm gelangen. Wenn Sie die unten abgebildete Seite erreichen können, wurde die Einrichtung des einmaligen Anmeldens von Azure AD erfolgreich abgeschlossen.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/testingsso.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/testingsso.png)
 
 3. Wenn Sie zur Eingabe von Benutzername und Kennwort aufgefordert werden, führen Sie eine Diagnose des Problems durch. Aktivieren Sie dazu die Ablaufverfolgung mithilfe der folgenden URL.
 
@@ -332,17 +332,17 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 2. Navigieren Sie zu SPRO, und suchen Sie nach **Activate and Maintain services** (Dienste aktivieren und verwalten).
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth01.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth01.png)
 
 3. In diesem Beispiel möchten wir mit OAuth eine Verbindung zwischen dem OData-Dienst (`DAAG_MNGGRP`) und dem einmaligen Anmelden von Azure AD herstellen. Verwenden Sie die technische Dienstnamensuche für den Dienst `DAAG_MNGGRP`, und aktivieren Sie ihn, falls er noch nicht aktiv ist (grüner Status (`green`) auf der Registerkarte mit den ICF-Knoten). Vergewissern Sie sich, dass der Systemalias (das verbundene Back-End-System, auf dem der Dienst tatsächlich ausgeführt wird) korrekt ist.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth02.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth02.png)
 
     * Klicken Sie als Nächstes auf der oberen Symbolleiste auf **OAuth**, und weisen Sie `scope` zu. Behalten Sie dabei den angegebenen Standardnamen bei.
 
 4. In unserem Beispiel wird der Bereich `DAAG_MNGGRP_001` verwendet. Er wird auf der Grundlage des Dienstnamens generiert, indem automatisch eine Zahl hinzugefügt wird. Der Bericht `/IWFND/R_OAUTH_SCOPES` kann verwendet werden, um den Namen des Bereichs zu ändern oder manuell zu erstellen.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth03.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
     > Die Meldung `soft state status is not supported` kann ignoriert werden, da dies kein Problem darstellt. Ausführlichere Informationen finden Sie [hier](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true).
@@ -364,23 +364,23 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 
 2. Navigieren Sie zum T-Code **SOAUTH2**, geben Sie die Beschreibung ein, und klicken Sie auf **Next** (Weiter).
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth04.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth04.png)
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth05.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth05.png)
 
 3. Wählen Sie in der Dropdownliste das bereits hinzugefügte Element **SAML2 IdP – Azure AD** aus, und speichern Sie.
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth06.png)
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth07.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth07.png)
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth08.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth08.png)
 
 4. Klicken Sie in der Bereichszuweisung auf **Add** (Hinzufügen), um den zuvor erstellten Bereich hinzuzufügen: `DAAG_MNGGRP_001`
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth09.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth09.png)
 
-    ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth10.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapnetweaver-tutorial/oauth10.png)
 
 5. Klicken Sie auf **Finish** (Fertig stellen).
 

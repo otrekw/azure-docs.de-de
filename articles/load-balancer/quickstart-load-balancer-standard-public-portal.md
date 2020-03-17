@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251860"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898830"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -34,12 +34,12 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-load-balancer"></a>Einrichten einer Load Balancer-Instanz
 
-In diesem Abschnitt erstellen Sie eine Load Balancer-Instanz für den Lastenausgleich virtueller Computer. Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. Wenn Sie eine öffentliche Load Balancer-Instanz erstellen, müssen Sie für diesen auch eine neue öffentliche IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*.
+In diesem Abschnitt erstellen Sie eine Load Balancer-Instanz für den Lastenausgleich virtueller Computer. Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. Wenn Sie eine öffentliche Load Balancer-Instanz erstellen, müssen Sie für diese auch eine neue öffentliche IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*.
 
 1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
@@ -78,7 +78,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
 2. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen** aus.
     
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *myHealthProbe* ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
@@ -95,7 +95,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 2. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
     
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *myHTTPRule* ein. |
     | Protocol | Wählen Sie **TCP** aus. |

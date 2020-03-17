@@ -1,7 +1,7 @@
 ---
-title: Erstellen Ihres ersten Experiments mit automatisiertem ML
+title: Erstellen von Klassifizierungsmodellen mit automatisiertem maschinellem Lernen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie ein Klassifizierungsmodell mit automatisiertem maschinellen Lernen (ML) im Machine Learning-Studio trainieren und bereitstellen.
+description: Hier erfahren Sie, wie Sie Klassifizierungsmodelle über die Oberfläche für automatisiertes maschinelles Lernen (automatisiertes ML) von Azure Machine Learning trainieren und bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048283"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129661"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie Ihr erstes Experiment mit automatisiertem ML im Azure Machine Learning-Studio erstellen, ohne eine einzige Codezeile schreiben zu müssen. In diesem Beispiel wird ein Klassifizierungsmodell erstellt, mit dem vorhergesagt werden kann, ob ein Kunde Festgeld bei der Bank anlegt.
+In diesem Tutorial erfahren Sie, wie Sie unter Verwendung der Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning ein einfaches Klassifizierungsmodell erstellen, ohne eine einzige Codezeile zu schreiben. Dieses Klassifizierungsmodell sagt vorher, ob ein Kunde Festgeld bei einer Bank anlegt.
 
 Mit automatisiertem maschinellen Lernen können Sie zeitintensive Aufgaben automatisieren. Beim automatisierten maschinellen Lernen werden viele Kombinationen von Algorithmen und Hyperparametern schnell durchlaufen, um basierend auf einer von Ihnen ausgewählten Erfolgsmetrik das beste Modell zu ermitteln.
 
@@ -42,7 +42,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Azure Machine Learning-Arbeitsbereich ist eine grundlegende Cloudressource zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen. Er verknüpft Ihr Azure-Abonnement und Ihre Ressourcengruppe mit einem einfach nutzbaren Objekt im Dienst. 
 
-Sie erstellen einen Arbeitsbereich im Azure Machine Learning-Studio, einer webbasierten Konsole zum Verwalten Ihrer Azure-Ressourcen.
+Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Konsole zum Verwalten Ihrer Azure-Ressourcen.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Sie erstellen einen Arbeitsbereich im Azure Machine Learning-Studio, einer webba
 
 ## <a name="create-and-run-the-experiment"></a>Erstellen und Ausführen des Experiments
 
-Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte im Azure Machine Learning-Studio aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler aller Qualifikationen. Das Azure Machine Learning-Studio wird in Internet Explorer-Browsern nicht unterstützt.
+Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über Azure Machine Learning unter https://ml.azure.com aus. Hierbei handelt es sich um eine konsolidierte Weboberfläche mit Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler jeglicher Qualifikation. Diese Oberfläche wird in Internet Explorer-Browsern nicht unterstützt.
 
-1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
+1. Melden Sie sich unter https://ml.azure.com bei Azure Machine Learning an.
 
 1. Wählen Sie Ihr Abonnement und den erstellten Arbeitsbereich aus.
 
@@ -63,13 +63,13 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 
    Wenn Sie zum ersten Mal ein Experiment für automatisiertes ML ausführen, werden eine leere Liste und Links zur Dokumentation angezeigt.
 
-   ![Azure Machine Learning Studio](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![Seite für die ersten Schritte](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. Wählen Sie **Neue automatisierte ML-Ausführung** aus. 
 
 1. Erstellen Sie ein neues Dataset, indem Sie im Dropdown **+ Dataset erstellen** die Option **Aus lokalen Dateien** auswählen. 
 
-    1. Geben Sie Ihrem Dataset im Formular **Grundlegende Informationen** einen Namen, und geben Sie optional eine Beschreibung an. Für automatisiertes maschinelles Lernen in Azure Machine Learning Studio werden derzeit nur tabellarische Datasets unterstützt, daher sollte der Datasettyp standardmäßig auf „Tabellarisch“ festgelegt sein.
+    1. Geben Sie Ihrem Dataset im Formular **Grundlegende Informationen** einen Namen, und geben Sie optional eine Beschreibung an. Die Oberfläche für automatisiertes maschinelles Lernen unterstützt derzeit nur TabularDatasets. Der Datasettyp muss daher standardmäßig auf *Tabellarisch* festgelegt sein.
 
     1. Wählen Sie links unten die Option **Weiter** aus.
 
@@ -87,7 +87,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
        
     1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
-        Feld|Beschreibung| Wert für das Tutorial
+        Feld|BESCHREIBUNG| Wert für das Tutorial
         ---|---|---
         Dateiformat|Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.| Durch Trennzeichen getrennt
         Trennzeichen|Mindestens ein&nbsp;Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text-Datenströmen oder anderen Datenströmen. |Komma
@@ -112,7 +112,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
     1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
     1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
 
-        Feld | Beschreibung | Wert für das Tutorial
+        Feld | BESCHREIBUNG | Wert für das Tutorial
         ----|---|---
         Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|automl-compute
         Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
@@ -133,7 +133,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
         >[!NOTE]
         > Für dieses Tutorial legen Sie keine Metrikbewertung oder maximale Anzahl von Kernen pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
    
-        Zusätzliche&nbsp;Konfigurationen|Beschreibung|Wert&nbsp;für&nbsp;das Tutorial
+        Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
         ------|---------|---
         Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|AUC_weighted
         Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
@@ -163,9 +163,9 @@ Nachfolgend werden die Registerkarten **Modelldetails** und **Visualisierungen**
 
 ![Details zur Iterationsausführung](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>Bereitstellen des Modells
+## <a name="deploy-the-best-model"></a>Bereitstellen des besten Modells
 
-Durch die Verwendung von automatisiertem maschinellen Lernen im Azure Machine Learning-Studio können Sie das beste Modell in wenigen Schritten als Webdienst bereitstellen. Bei der Bereitstellung handelt es sich um die Integration des Modells, sodass neue Daten vorhergesagt und potenzielle Verkaufschancen identifiziert werden können. 
+Über die Oberfläche für automatisiertes maschinelles Lernen können Sie in wenigen Schritten das beste Modell als Webdienst bereitstellen. Bei der Bereitstellung handelt es sich um die Integration des Modells, sodass neue Daten vorhergesagt und potenzielle Verkaufschancen identifiziert werden können. 
 
 In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
 
@@ -177,7 +177,7 @@ Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_wei
 
 1. Füllen Sie den Bereich **Modell bereitstellen** wie folgt aus:
 
-    Feld| value
+    Feld| Wert
     ----|----
     „Deployment name“ (Bereitstellungsname)| my-automl-deploy
     „Deployment description“ (Bereitstellungsbeschreibung)| „Meine erste Bereitstellung eines automatisierten Machine Learning-Experiments“
@@ -201,9 +201,9 @@ Bereitstellungsdateien sind größer als Daten- und Experimentdateien, sodass ih
 
 ### <a name="delete-the-deployment-instance"></a>Löschen der Bereitstellungsinstanz
 
-Löschen Sie nur die Bereitstellungsinstanz aus dem Azure Machine Learning-Studio, wenn Sie die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen beibehalten möchten. 
+Löschen Sie nur die Bereitstellungsinstanz aus Azure Machine Learning unter https://ml.azure.com/, wenn Sie die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen behalten möchten. 
 
-1. Wechseln Sie zum [Azure Machine Learning-Studio](https://ml.azure.com/). Navigieren Sie zu Ihrem Arbeitsbereich, und wählen Sie links unter dem Bereich **Ressourcen** die Option **Endpunkte** aus. 
+1. Navigieren Sie zu Azure Machine Learning unter https://ml.azure.com/. Navigieren Sie zu Ihrem Arbeitsbereich, und wählen Sie links unter dem Bereich **Ressourcen** die Option **Endpunkte** aus. 
 
 1. Wählen Sie die zu löschende Bereitstellung aus, und klicken Sie auf **Delete** (Löschen). 
 
@@ -215,15 +215,15 @@ Löschen Sie nur die Bereitstellungsinstanz aus dem Azure Machine Learning-Studi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie im Azure Machine Learning-Studio ein Klassifizierungsmodell erstellt und bereitgestellt. Weitere Informationen und nächste Schritte finden Sie in diesen Artikeln:
+In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie über die Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning ein Klassifizierungsmodell erstellt und bereitgestellt. Weitere Informationen und nächste Schritte finden Sie in diesen Artikeln:
 
 > [!div class="nextstepaction"]
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Weitere Informationen zur [Featurebereitstellung](how-to-create-portal-experiments.md#featurization)
-+ Weitere Informationen zur [Datenprofilerstellung](how-to-create-portal-experiments.md#profile).
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
-+ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).
++ Weitere Informationen zu Klassifizierungsmetriken und -diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification). Weitere Informationen zur Merkmalserstellung finden Sie [hier](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Weitere Informationen zur [Datenprofilerstellung](how-to-use-automated-ml-for-ml-models.md#profile).
+
 
 >[!NOTE]
 > Dieses Bank Marketing-Dataset wird unter der [Creative Commons (CCO: Public Domain)-Lizenz](https://creativecommons.org/publicdomain/zero/1.0/) zur Verfügung gestellt. Alle Rechte in den einzelnen Inhalten der Datenbank sind gemäß der [Database Contents License](https://creativecommons.org/publicdomain/zero/1.0/) lizenziert und auf [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) verfügbar. Dieses Dataset war ursprünglich in der [UCI Machine Learning Database](https://archive.ics.uci.edu/ml/datasets/bank+marketing) verfügbar.<br><br>

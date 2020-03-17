@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367031"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
 
@@ -271,7 +271,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 10. Konfigurieren Sie AzureCP in der lokalen SharePoint-Farm, oder konfigurieren Sie eine andere benutzerdefinierte Anspruchsanbieterlösung.  In diesem Beispiel wird AzureCP verwendet.
 
     > [!NOTE]
-    > Hinweis: AzureCP ist kein Produkt von Microsoft, und Microsoft bietet keinen technischen Support für das Produkt. Laden Sie AzureCP unter https://yvand.github.io/AzureCP/ herunter, installieren Sie die Lösung in Ihrer lokalen SharePoint-Farm, und konfigurieren Sie sie entsprechend. 
+    > Hinweis: AzureCP ist kein Produkt von Microsoft, und Microsoft bietet keinen technischen Support für das Produkt. Laden Sie AzureCP von [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) herunter, installieren Sie die Lösung in Ihrer lokalen SharePoint-Farm, und konfigurieren Sie sie entsprechend. 
 
 11. **Gewähren des Zugriffs auf die Azure Active Directory-Sicherheitsgruppe in der lokalen SharePoint-Instanz:** Den Gruppen muss Zugriff auf die Anwendung in der lokalen SharePoint-Instanz gewährt werden.  Gehen Sie wie folgt vor, um die Berechtigungen für den Zugriff auf die Webanwendung festzulegen.
 

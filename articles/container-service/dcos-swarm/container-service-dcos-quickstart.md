@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278504"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399230"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(VERALTET) Bereitstellen eines DC/OS-Clusters
 
@@ -22,7 +22,7 @@ DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure 
 
@@ -128,19 +128,19 @@ Der Standardplanungsmechanismus für einen Cluster mit ACS-DC/OS-Cluster ist Mar
 
 Führen Sie den folgenden Befehl aus, um die Ausführung der Anwendung auf dem DC/OS-Cluster zu planen.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Um den Bereitstellungsstatus der App anzuzeigen, führen Sie den folgenden Befehl aus.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Wenn der Spaltenwert **Warten** von *TRUE* auf *FALSE* wechselt, wurde die Anwendungsbereitstellung abgeschlossen.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie ein DC/OS-Cluster entwickelt und einen einfachen Docker-Container auf dem Cluster ausgeführt. Weitere Informationen zu Azure Container Service erhalten Sie in den ACS-Tutorials.
+In diesem Schnellstart haben Sie einen DC/OS-Cluster bereitgestellt und einen einfachen Docker-Container im Cluster ausgeführt. Weitere Informationen zu Azure Container Service erhalten Sie in den ACS-Tutorials.
 
 > [!div class="nextstepaction"]
 > [Verwalten eines ACS-DC/OS-Clusters](container-service-dcos-manage-tutorial.md)

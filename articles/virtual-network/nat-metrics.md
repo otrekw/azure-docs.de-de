@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 268f5f5b7bf1bed27a01085974bea72af6a84f3b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304054"
+ms.locfileid: "78359078"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriken für Azure Virtual Network NAT
 
@@ -38,16 +38,16 @@ Azure Virtual Network NAT-Gatewayressourcen bieten mehrdimensionale Metriken. D
 
 Für NAT-Gatewayressourcen stehen in Azure Monitor die folgenden mehrdimensionalen Metriken zur Verfügung:
 
-| Metrik | Beschreibung | Empfohlene Aggregation | Dimensionen |
+| Metrik | BESCHREIBUNG | Empfohlene Aggregation | Dimensionen |
 |---|---|---|---|
-| Byte | Verarbeitete Bytes (ein- und ausgehend) | Summe | Richtung (eingehend, ausgehend), Protokoll (6 TCP, 17 UDP) |
-| Pakete | Verarbeitete Pakete (ein- und ausgehend) | Summe | Richtung (eingehend, ausgehend), Protokoll (6 TCP, 17 UDP) |
-| Verworfene Pakete | Pakete, die vom NAT-Gateway verworfen wurden | Summe | / |
-| Anzahl von SNAT-Verbindungen | Statusübergänge pro Intervall | Summe | Verbindungsstatus, Protokoll (6 TCP, 17 UDP) |
-| Gesamtanzahl von SNAT-Verbindungen | Aktuell aktive SNAT-Verbindungen (~ verwendete SNAT-Ports) | Summe | Protokolle (6 TCP, 17 UDP) |
+| Byte | Verarbeitete Bytes (ein- und ausgehend) | SUM | Richtung (eingehend, ausgehend), Protokoll (6 TCP, 17 UDP) |
+| Pakete | Verarbeitete Pakete (ein- und ausgehend) | SUM | Richtung (eingehend, ausgehend), Protokoll (6 TCP, 17 UDP) |
+| Verworfene Pakete | Pakete, die vom NAT-Gateway verworfen wurden | SUM | / |
+| Anzahl von SNAT-Verbindungen | Statusübergänge pro Intervall | SUM | Verbindungsstatus, Protokoll (6 TCP, 17 UDP) |
+| Gesamtanzahl von SNAT-Verbindungen | Aktuell aktive SNAT-Verbindungen (~ verwendete SNAT-Ports) | SUM | Protokolle (6 TCP, 17 UDP) |
 
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 
 Warnungen für Metriken können in Azure Monitor für jede der obigen [Metriken](#metrics) konfiguriert werden.
 
@@ -57,8 +57,10 @@ Resource Health wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Virtual Network NAT](nat-overview.md).
-- Informieren Sie sich über [NAT-Gatewayressourcen](nat-gateway-resource.md).
-- Informieren Sie sich über [Azure Monitor](../azure-monitor/overview.md).
-- Informieren Sie sich über die [Problembehandlung im Zusammenhang mit der Azure Virtual Network NAT-Konnektivität](troubleshoot-nat.md).
+* Informieren Sie sich über [Virtual Network NAT](nat-overview.md).
+* Informieren Sie sich über [NAT-Gatewayressourcen](nat-gateway-resource.md).
+* Informieren Sie sich über [Azure Monitor](../azure-monitor/overview.md).
+* Informieren Sie sich über die [Problembehandlung im Zusammenhang mit der Azure Virtual Network NAT-Konnektivität](troubleshoot-nat.md).
+* [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
+
 

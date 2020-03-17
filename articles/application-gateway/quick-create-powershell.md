@@ -6,50 +6,53 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c3fac7aecaf37b5822ad6e8c655867f6f2c683c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872705"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399560"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway mithilfe von Azure PowerShell
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie mit Azure PowerShell schnell ein Anwendungsgateway erstellen können.  Testen Sie das Anwendungsgateway, nachdem Sie es erstellt haben, um sicherzustellen, dass es richtig funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
+In dieser Schnellstartanleitung verwenden Sie Azure PowerShell, um ein Anwendungsgateway zu erstellen. Anschließend testen Sie es, um sicherzustellen, dass es ordnungsgemäß funktioniert. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Das Anwendungsgateway leitet den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen in einem Back-End-Pool weiter. Sie weisen den Ports Listener zu, erstellen Regeln und fügen Ressourcen zu einem Back-End-Pool hinzu. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, einer Routingregel für grundlegende Anforderungen und zwei virtuellen Computern im Back-End-Pool verwendet.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Für diese Schnellstartanleitung kann auch die [Azure-Befehlszeilenschnittstelle](quick-create-cli.md) oder das [Azure-Portal](quick-create-portal.md) verwendet werden.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-### <a name="azure-powershell-module"></a>Azure PowerShell-Modul
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Azure PowerShell 1.0.0 oder höher](/powershell/azure/install-az-ps) (bei lokaler Ausführung von Azure PowerShell)
 
-Wenn Sie Azure PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden.
+## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 
-1. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. 
-2. Führen Sie `Login-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
-### <a name="resource-group"></a>Resource group
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. In diesem Beispiel erstellen Sie mit dem Cmdlet [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) wie folgt eine neue Ressourcengruppe: 
+In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
+
+Verwenden Sie das Cmdlet `New-AzResourceGroup`, um eine neue Ressourcengruppe zu erstellen: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
-
-### <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
+## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
 Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich.  Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.  Sie können entweder ein neues Subnetz für Application Gateway erstellen oder ein bereits vorhandenes verwenden. In diesem Beispiel erstellen Sie zwei Subnetze: eines für das Anwendungsgateway und eines für die Back-End-Server. Je nach Anwendungsfall können Sie die Front-End-IP-Adresse von Application Gateway als öffentliche oder als private IP-Adresse konfigurieren. In diesem Beispiel verwenden Sie eine öffentliche Front-End-IP-Adresse.
 
-1. Erstellen Sie durch Aufrufen von [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig) die Subnetzkonfigurationen.
-2. Erstellen Sie durch Aufrufen von [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork) das virtuelle Netzwerk mit den Subnetzkonfigurationen. 
-3. Erstellen Sie durch Aufrufen von [New-AzPublicIpAddress](/powershell/module/Az.network/new-Azpublicipaddress) die öffentliche IP-Adresse. 
+1. Erstellen Sie die Subnetzkonfigurationen mithilfe von `New-AzVirtualNetworkSubnetConfig`.
+2. Erstellen Sie das virtuelle Netzwerk mit den Subnetzkonfigurationen mithilfe von `New-AzVirtualNetwork`. 
+3. Erstellen Sie die öffentliche IP-Adresse mithilfe von `New-AzPublicIpAddress`. 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -75,9 +78,9 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Erstellen der IP-Konfigurationen und des Front-End-Ports
 
-1. Erstellen Sie mit [New-AzApplicationGatewayIPConfiguration](/powershell/module/Az.network/new-Azapplicationgatewayipconfiguration) die Konfiguration, die das zuvor erstellte Subnetz dem Anwendungsgateway zuweist. 
-2. Erstellen Sie mit [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/Az.network/new-Azapplicationgatewayfrontendipconfig) die Konfiguration, die die zuvor erstellte öffentliche IP-Adresse dem Anwendungsgateway zuweist. 
-3. Verwenden Sie [New-AzApplicationGatewayFrontendPort](/powershell/module/Az.network/new-Azapplicationgatewayfrontendport), um Port 80 für den Zugriff auf das Anwendungsgateway festzulegen.
+1. Erstellen Sie mithilfe von `New-AzApplicationGatewayIPConfiguration` die Konfiguration, die das von Ihnen erstellte Subnetz dem Anwendungsgateway zuordnet. 
+2. Erstellen Sie mithilfe von `New-AzApplicationGatewayFrontendIPConfig` die Konfiguration, die die zuvor erstellte öffentliche IP-Adresse dem Anwendungsgateway zuordnet. 
+3. Weisen Sie mithilfe von `New-AzApplicationGatewayFrontendPort` den Port 80 für den Zugriff auf das Anwendungsgateway zu.
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -96,8 +99,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Erstellen des Back-End-Pools
 
-1. Erstellen Sie mit [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) den Back-End-Pool für das Anwendungsgateway. Der Back-End-Pool ist vorerst leer. Wenn Sie im nächsten Abschnitt die Netzwerkadapter für den Back-End-Server erstellen, fügen Sie sie dem Back-End-Pool hinzu.
-2. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
+1. Erstellen Sie mithilfe von `New-AzApplicationGatewayBackendAddressPool` den Back-End-Pool für das Anwendungsgateway. Der Back-End-Pool ist vorerst leer. Wenn Sie im nächsten Abschnitt die Netzwerkadapter für den Back-End-Server erstellen, fügen Sie sie dem Back-End-Pool hinzu.
+2. Konfigurieren Sie mithilfe von `New-AzApplicationGatewayBackendHttpSetting` die Einstellungen für den Back-End-Pool.
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -116,8 +119,8 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 Azure erfordert einen Listener, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. Azure erfordert auch eine Regel für den Listener, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. 
 
-1. Erstellen Sie mit [New-AzApplicationGatewayHttpListener](/powershell/module/Az.network/new-Azapplicationgatewayhttplistener) einen Listener mit der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. 
-2. Erstellen Sie mit *New-AzApplicationGatewayRequestRoutingRule* eine Regel mit dem Namen [rule1](/powershell/module/Az.network/new-Azapplicationgatewayrequestroutingrule). 
+1. Erstellen Sie mithilfe von `New-AzApplicationGatewayHttpListener` einen Listener mit der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. 
+2. Erstellen Sie mithilfe von `New-AzApplicationGatewayRequestRoutingRule` eine Regel mit dem Namen *rule1*. 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -137,8 +140,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 Nachdem Sie nun die erforderlichen unterstützenden Ressourcen erstellt haben, erstellen Sie das Anwendungsgateway:
 
-1. Verwenden Sie [New-AzApplicationGatewaySku](/powershell/module/Az.network/new-Azapplicationgatewaysku) zum Angeben von Parametern für das Anwendungsgateway.
-2. Verwenden Sie [New-AzApplicationGateway](/powershell/module/Az.network/new-Azapplicationgateway) zum Erstellen des Anwendungsgateways.
+1. Geben Sie mithilfe von `New-AzApplicationGatewaySku` Parameter für das Anwendungsgateway an.
+2. Erstellen Sie mithilfe von `New-AzApplicationGateway` das Anwendungsgateway.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -165,12 +168,12 @@ Erstellen Sie nach der Erstellung der Application Gateway-Instanz die virtuellen
 
 #### <a name="create-two-virtual-machines"></a>Erstellen von zwei virtuellen Computern
 
-1. Rufen Sie die kürzlich erstellte Application Gateway-Back-End-Poolkonfiguration mit [Get-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/get-Azapplicationgatewaybackendaddresspool) ab.
-2. Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/Az.network/new-Aznetworkinterface) eine Netzwerkschnittstelle. 
-3. Erstellen Sie mit [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig) eine VM-Konfiguration.
-4. Erstellen Sie mit [New-AzVM](/powershell/module/Az.compute/new-Azvm) den virtuellen Computer.
+1. Rufen Sie mithilfe von `Get-AzApplicationGatewayBackendAddressPool` die soeben erstellte Application Gateway-Back-End-Poolkonfiguration ab.
+2. Erstellen Sie mithilfe von `New-AzNetworkInterface` eine Netzwerkschnittstelle.
+3. Erstellen Sie mithilfe von `New-AzVMConfig` eine VM-Konfiguration.
+4. Erstellen Sie mithilfe von `New-AzVM` den virtuellen Computer.
 
-Wenn Sie das folgende Codebeispiel zum Erstellen der virtuellen Computer ausführen, werden Sie von Azure zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie als Benutzername *azureuser* und als Kennwort *Azure123456!* ein:
+Wenn Sie das folgende Codebeispiel zum Erstellen der virtuellen Computer ausführen, werden Sie von Azure zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie *azureuser* als Benutzername und ein Kennwort ein:
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -223,7 +226,7 @@ for ($i=1; $i -le 2; $i++)
 
 IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, Sie haben die Installation in dieser Schnellstartanleitung aber ausgeführt, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat. Testen des Anwendungsgateways mit IIS:
 
-1. Führen Sie [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) aus, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. 
+1. Führen Sie `Get-AzPublicIPAddress` aus, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. 
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Wenn Sie den Browser aktualisieren, sollte der Name des virtuellen Computers angezeigt werden. Eine gültige Antwort bestätigt, dass das Anwendungsgateway erfolgreich erstellt wurde und eine Verbindung mit dem Back-End herstellen kann.
 
 ```azurepowershell-interactive
@@ -235,9 +238,9 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die mit dem Anwendungsgateway erstellten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe. Beim Entfernen der Ressourcengruppe werden auch das Anwendungsgateway und alle zugehörigen Ressourcen entfernt. 
+Wenn Sie die mit dem Anwendungsgateway erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Wenn Sie die Ressourcengruppe löschen, werden auch das Anwendungsgateway und alle zugehörigen Ressourcen entfernt. 
 
-Rufen Sie das Cmdlet [Remove-AzResourceGroup](/powershell/module/Az.resources/remove-Azresourcegroup) wie folgt auf, um die Ressourcengruppe zu entfernen:
+Rufen Sie zum Löschen der Ressourcengruppe das Cmdlet `Remove-AzResourceGroup` auf:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

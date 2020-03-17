@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701329"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126641"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -30,6 +30,9 @@ Diese Anleitung veranschaulicht das Implementieren der Anmeldung bei Microsoft m
 Am Ende dieser Anleitung kann Ihre Anwendung Anmeldungen von persönlichen Konten (etwa outlook.com und live.com) akzeptieren. Darüber hinaus können sich Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen, die in Microsoft Identity Platform integriert wurden, bei Ihrer App anmelden.
 
 > Für diesen Leitfaden wird Microsoft Visual Studio 2019 benötigt.  Sie haben beides nicht?  Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
+
+>[!NOTE]
+> Wenn Sie mit Microsoft Identity Platform noch nicht vertraut sind, wird empfohlen, mit dem Schnellstart [Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md) zu beginnen.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 
@@ -41,7 +44,7 @@ Die erstellte Beispielanwendung basiert auf dem Szenario, in dem Sie den Browser
 
 In dieser Anleitung werden die folgenden Bibliotheken verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, die einer Anwendung das Verwenden von OpenIDConnect für die Authentifizierung ermöglicht|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, die einer Anwendung das Beibehalten der Benutzersitzung mithilfe von Cookies ermöglicht|
@@ -425,7 +428,7 @@ Um die Benutzeransprüche anzuzeigen, wählen Sie den Link zum Navigieren zur Co
 
 Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit den grundlegenden Eigenschaften des Benutzers sehen:
 
-|Eigenschaft |value |Beschreibung |
+|Eigenschaft |Wert |BESCHREIBUNG |
 |---|---|---|
 |**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
 |**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername|

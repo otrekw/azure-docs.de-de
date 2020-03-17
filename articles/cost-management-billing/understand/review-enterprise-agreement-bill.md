@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270190"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898648"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -118,7 +118,7 @@ In der folgenden Tabelle werden die Begriffe und Beschreibungen auf der Rechnung
 
 Dieser Abschnitt gilt nur für Azure-Kunden in Australien, Japan oder Singapur.
 
-Vergleichen Sie Ihren Azure Marketplace-Gesamtbetrag unter **Berichte** > **Nutzungszusammenfassung** im Enterprise-Portal mit Ihrer Marketplace-Rechnung. Die Marketplace-Rechnung enthält nur Azure Marketplace-Käufe und -Nutzung. Die Beträge der **Nutzungszusammenfassung** schließen keine Steuern ein.
+Vergleichen Sie Ihren Azure Marketplace-Gesamtbetrag unter **Berichte** > **Nutzungszusammenfassung** im Enterprise-Portal mit Ihrer Marketplace-Rechnung. Die Marketplace-Rechnung enthält nur Azure Marketplace-Käufe und -Nutzung. Die Beträge unter **Nutzungszusammenfassung** enthalten bereits eine Steuer, die vom Herausgeber festgelegt wird.
 
 Melden Sie sich beim [Enterprise Portal](https://ea.azure.com) an, und wählen Sie **Berichte** aus. Wechseln Sie in der rechten oberen Ecke der Registerkarte die Ansicht von **M** zu **C**, und passen Sie den Zeitraum entsprechend der Rechnung an.  
 

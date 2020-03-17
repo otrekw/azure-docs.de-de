@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200913"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942582"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Behandeln von Azure-Zahlungsproblemen
 
 Unter Umständen tritt ein Problem oder ein Fehler auf, wenn Sie versuchen, die Zahlungsinformationen zum Konto im Microsoft Azure-Portal oder im Azure-Kontocenter zu aktualisieren.
 
 Wählen Sie zum Beheben des Problems unten den Artikel aus, in dem der aufgetretene Fehler am ehesten beschrieben wird.
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>Meine Kreditkarte wurde abgelehnt, als ich mich für Azure registrieren wollte.
+
+Informationen zur Problembehandlung bei einer abgelehnten Karte finden Sie unter [Beheben von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung](troubleshoot-declined-card.md).
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Anzeigen von Abonnements in meinem Konto zum Aktualisieren der Zahlungsmethode nicht möglich
+
+Möglicherweise verwenden Sie eine E-Mail-ID, die sich von der für die Abonnements verwendeten E-Mail-ID unterscheidet.
+
+Informationen zur Problembehebung finden Sie unter [Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal oder das Azure-Kontocenter](no-subscriptions-found.md).
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>Virtuelle Kredit- oder Debitkarten oder Prepaid-Kreditkarten oder -Debitkarten können nicht als Zahlungsmethode verwendet werden.
+
+*   Virtuelle Kreditkarten oder Prepaid-Kreditkarten werden als Zahlungsmittel für Azure-Abonnements nicht akzeptiert.
+*   Debitkarten werden als Zahlungsmittel für Azure-Abonnements nicht akzeptiert.
+
+Weitere Informationen finden Sie unter [Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung](troubleshoot-declined-card.md).
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Entfernen einer Kreditkarte aus einer gespeicherten Zahlungsmethode nicht möglich
 
@@ -33,19 +50,11 @@ Wenn eine vorhandene Karte gelöscht werden muss, muss dem Abonnement entweder e
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Löschen einer alten Zahlungsmethode nach dem Hinzufügen einer neuen Zahlungsmethode nicht möglich
 
-Das neue Zahlungsmittel ist unter Umständen nicht mit dem Abonnement verknüpft. Informationen dazu, wie Sie dem Abonnement das Zahlungsinstrument zuordnen, finden Sie unter [Hinzufügen, Aktualisieren oder Entfernen einer Kredit- oder Debitkarte für Azure](change-credit-card.md).
-
-Informationen zur Problembehandlung bei einer abgelehnten Karte finden Sie unter [Beheben von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung](troubleshoot-declined-card.md).
+Das neue Zahlungsmittel ist unter Umständen nicht mit dem Abonnement verknüpft. Informationen dazu, wie Sie dem Abonnement das Zahlungsinstrument zuordnen, finden Sie unter [Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure](change-credit-card.md).
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Zahlungsmethode kann aufgrund der Fehlermeldung *Löschen der Zahlungsmethode nicht möglich* nicht gelöscht werden
 
 Dies tritt wegen eines ausstehenden Betrags auf. Begleichen Sie alle ausstehenden Beträge, bevor Sie die Zahlungsmethode löschen.
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Anzeigen von Abonnements in meinem Konto zum Aktualisieren der Zahlungsmethode nicht möglich
-
-Möglicherweise verwenden Sie eine E-Mail-ID, die sich von der für die Abonnements verwendeten E-Mail-ID unterscheidet.
-
-Informationen zur Problembehebung finden Sie unter [Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal oder das Azure-Kontocenter](no-subscriptions-found.md).
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Die Zahlung für ein Abonnement kann nicht ausgeführt werden
 

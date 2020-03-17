@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772874"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897757"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP Fiori
 
@@ -173,7 +173,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     1. Wählen Sie in der Liste **Transformation** den Eintrag **ExtractMailPrefix()** aus.
 
-    1. Wählen Sie in der Liste **Parameter 1** den Eintrag **user.userprinicipalname** aus.
+    1. Wählen Sie in der Liste **Parameter 1** die Option **user.userprincipalname** aus.
 
     1. Wählen Sie **Speichern** aus.
 
@@ -199,7 +199,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -231,15 +231,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Optionen „Add and Upload Metadata File“ (Metadatendatei hinzufügen und Metadatendatei hochladen) in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
 
-1. Laden Sie die Metadatendatei hoch, die Sie im Azure-Portal heruntergeladen haben. Klicken Sie auf **Weiter**.
+1. Laden Sie die Metadatendatei hoch, die Sie im Azure-Portal heruntergeladen haben. Wählen Sie **Weiter** aus.
 
     ![Auswählen der Metadatendatei, die in SAP hochgeladen werden soll](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. Geben Sie auf der nächsten Seite im Feld **Alias** den Aliasnamen ein, beispielsweise **aadsts**. Klicken Sie auf **Weiter**.
+1. Geben Sie auf der nächsten Seite im Feld **Alias** den Aliasnamen ein, beispielsweise **aadsts**. Wählen Sie **Weiter** aus.
 
     ![Feld „Alias“ in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-1. Stellen Sie sicher, dass der Wert im Feld **Digest Algorithm** (Digestalgorithmus) **SHA-256** lautet. Klicken Sie auf **Weiter**.
+1. Stellen Sie sicher, dass der Wert im Feld **Digest Algorithm** (Digestalgorithmus) **SHA-256** lautet. Wählen Sie **Weiter** aus.
 
     ![Überprüfen des Werts für Digestalgorithmus in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 

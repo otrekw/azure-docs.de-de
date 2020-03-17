@@ -1,6 +1,6 @@
 ---
 title: Red Hat-Workloads in Azure – Übersicht | Microsoft-Dokumentation
-description: Informationen über die in Azure verfügbaren Red Hat-Produktangebote
+description: Hier finden Sie Informationen zu den in Azure verfügbaren Red Hat-Produktangeboten.
 services: virtual-machines-linux
 author: asinn826
 manager: borisb2015
@@ -9,47 +9,56 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 718447e1dbf597af4349eab0be78a2bb544dec90
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920551"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970169"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-Workloads in Azure
+
 Red Hat-Workloads werden in einer Reihe von Angeboten in Azure unterstützt. Red Hat Enterprise Linux-Images (RHEL) gehören ebenso wie die Red Hat Update Infrastructure (RHUI) zum Kern von RHEL-Workloads.
 
-## <a name="red-hat-enterprise-linux-rhel-images"></a>RHEL-Images (Red Hat Enterprise Linux)
-Azure bietet eine umfassende Palette an RHEL-Images. Diese Images werden über zwei verschiedene Lizenzierungsmodelle zur Verfügung gestellt: nutzungsbasierte Bezahlung (Pay-As-You-Go, PAYG) und Nutzung eigener Abonnements (Bring-Your-Own-Subscription, BYOS). Neue RHEL-Images werden bei Erscheinen neuer RHEL-Versionen in Azure veröffentlicht und während ihres gesamten Lebenszyklus bei Bedarf aktualisiert.
+## <a name="red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux-Images
 
-### <a name="pay-as-you-go-payg-images"></a>PAYG-Images (Pay-As-You-Go, nutzungsbasierte Bezahlung)
-Azure bietet eine Vielzahl von RHEL-PAYG-Images. Diese Images umfassen die Berechtigung zur ordnungsgemäßen Nutzung von RHEL und sind einer Updatequelle (Red Hat Update Infrastructure) zugeordnet. Für diese Images wird eine Premiumgebühr für die RHEL-Berechtigung und -Updates berechnet. Folgende RHEL-PAYG-Imagevarianten sind verfügbar:
-* RHEL Standard
+Azure bietet eine umfassende Palette an RHEL-Images. Diese Images werden über zwei verschiedene Lizenzierungsmodelle zur Verfügung gestellt: nutzungsbasierte Bezahlung und Nutzung eigener Abonnements (Bring-Your-Own-Subscription, BYOS). Neue RHEL-Images werden bei Erscheinen neuer RHEL-Versionen in Azure veröffentlicht und während ihres gesamten Lebenszyklus bei Bedarf aktualisiert.
+
+### <a name="pay-as-you-go-images"></a>Images mit nutzungsbasierter Bezahlung
+
+Azure bietet eine Reihe von RHEL-Images mit nutzungsbasierter Bezahlung. Diese Images umfassen die Berechtigung zur ordnungsgemäßen Nutzung von RHEL und sind einer Updatequelle (Red Hat Update Infrastructure) zugeordnet. Bei diesen Images wird eine Premiumgebühr für die RHEL-Berechtigung und -Updates berechnet. Folgende RHEL-Imagevarianten mit nutzungsbasierter Bezahlung sind verfügbar:
+
+* RHEL-Standardimages
 * RHEL für SAP
 * RHEL für SAP mit Hochverfügbarkeits- und Updatediensten
 
-Die Verwendung von PAYG-Images empfiehlt sich, wenn Sie sich keine Gedanken um die separate Bezahlung der entsprechenden Anzahl von Abonnements machen möchten.
+Die Verwendung von Images mit nutzungsbasierter Bezahlung empfiehlt sich, wenn Sie sich keine Gedanken um die separate Bezahlung der entsprechenden Anzahl von Abonnements machen möchten.
 
-### <a name="red-hat-gold-images-rhel-byos"></a>Red Hat Gold-Images (`rhel-byos`)
-Azure bietet auch Red Hat Gold-Images an. Diese Images eignen sich für Kunden, die bereits über Red Hat-Abonnements verfügen und diese in Azure verwenden möchten. Sie müssen Ihre vorhandenen Red Hat-Abonnements für Red Hat Cloud Access aktivieren, bevor Sie sie in Azure nutzen können. Der Zugriff auf diese Images wird automatisch gewährt, wenn Ihre Red Hat-Abonnements für Cloud Access aktiviert sind und die Qualifizierungsanforderungen erfüllen. Mit diesen Images können Kunden eine doppelte Fakturierung vermeiden, die bei PAYG-Images auftreten kann.
-* [Lesen Sie, wie Sie Ihre Red Hat-Abonnements für Cloud Access mit Azure aktivieren.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)
-* [Erfahren Sie, wie Sie Red Hat Gold-Images über das Azure-Portal, die CLI oder ein PowerShell-Cmdlet suchen.](./byos.md)
+### <a name="red-hat-gold-images"></a>Red Hat Gold-Images
+
+Azure bietet auch Red Hat Gold-Images (`rhel-byos`). Diese Images eignen sich für Kunden, die bereits über Red Hat-Abonnements verfügen und diese in Azure verwenden möchten. Ihre vorhandenen Red Hat-Abonnements müssen für Red Hat Cloud Access aktiviert werden, um sie in Azure nutzen zu können. Der Zugriff auf diese Images wird automatisch gewährt, wenn Ihre Red Hat-Abonnements für Cloud Access aktiviert sind und die Qualifizierungsanforderungen erfüllen. Mit diesen Images können Kunden eine doppelte Abrechnung vermeiden, wie sie bei der Verwendung von Images mit nutzungsbasierter Bezahlung auftreten kann.
+* Informationen zum Aktivieren von Red Hat-Abonnements für Cloud Access mit Azure finden Sie [hier](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
+* Wie Sie Red Hat Gold-Images über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell-Cmdlet finden, erfahren Sie [hier](./byos.md).
 
 > [!NOTE]
-> Hinweis zur doppelten Fakturierung: Als doppelte Fakturierung wird eine Situation bezeichnet, in der ein Benutzer zweimal für RHEL-Abonnements bezahlt. Diese Situation tritt gewöhnlich dann auf, wenn ein Kunde „subscription-manager“ verwendet, um eine Berechtigung an eine RHEL-PAYG-VM anzufügen. Wenn ein Kunde beispielsweise „subscription-manager“ verwendet, um eine Berechtigung für SAP-Pakete an ein RHEL-PAYG-Image anzufügen, wird dieser Kunde indirekt doppelt belastet, weil er zweimal für RHEL bezahlt: einmal über die PAYG-Premiumgebühr und einmal über sein SAP-Abonnement. Dies passiert bei BYOS-Benutzern nicht.
+> Als doppelte Fakturierung wird eine Situation bezeichnet, in der ein Benutzer zweimal für RHEL-Abonnements bezahlt. Dieser Fall tritt in der Regel ein, wenn ein Kunde den Red Hat-Abonnement-Manager verwendet, um eine Berechtigung an einen virtuellen RHEL-Computer mit nutzungsbasierter Bezahlung anzufügen. Wenn ein Kunde also beispielsweise den Abonnement-Manager verwendet, um eine Berechtigung für SAP-Pakete an ein RHEL-Image mit nutzungsbasierter Bezahlung anzufügen, kommt es indirekt zu einer doppelten Abrechnung, da der Kunde zweimal für RHEL bezahlt: einmal über die Premiumgebühr der nutzungsbasierten Bezahlung und einmal über das SAP-Abonnement. Bei Benutzern von BYOS-Images passiert das nicht.
 
 ### <a name="generation-2-images"></a>Images der Generation 2
-Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computer der 1. Generation einige neuere Features. Details finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Der Hauptunterschied aus der Perspektive eines RHEL-Images besteht darin, dass VMs der Generation 2 eine UEFI statt einer BIOS-Firmwareschnittstelle verwenden und beim Start eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Record (MBR) nutzen. Dadurch können Betriebssystemdatenträger u. a. größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](../../mv2-series.md) nur mit Images der Generation 2 ausgeführt.
 
-RHEL-Images der Generation 2 sind im Marketplace verfügbar. Suchen Sie in der Image-SKU nach „Gen2“, wenn Sie alle Images mit der Azure CLI auflisten. Navigieren Sie beim Bereitstellen des virtuellen Computers zur Registerkarte „Erweitert“, um einen virtuellen Computer der Generation 2 bereitzustellen.
+Virtuelle Computer der 2. Generation bieten im Vergleich zu virtuellen Computern der 1. Generation einige neuere Features. Weitere Informationen finden Sie in der [Dokumentation zur 2. Generation](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Der Hauptunterschied aus Sicht eines RHEL-Images besteht darin, dass virtuelle Computer der 2. Generation eine UEFI anstelle einer BIOS-Firmwareschnittstelle verwenden. Außerdem nutzen sie beim Systemstart eine GUID-Partitionstabelle (GPT) anstelle eines Master Boot Records (MBR). Dank der Verwendung einer GPT können unter anderem Betriebssystemdatenträger größer als 2 TB sein. Darüber hinaus werden [virtuelle Computer der Mv2-Serie](../../mv2-series.md) nur mit Images der Generation 2 ausgeführt.
 
-## <a name="red-hat-update-infrastructure-rhui"></a>Red Hat Update Infrastructure (RHUI)
-Azure stellt die Red Hat Update Infrastructure nur für PAYG-RHEL-VMs bereit. Die RHUI ist im Grunde ein Spiegel der Red Hat-CDNs, es kann aber nur über die Azure-PAYG-RHEL-VMs darauf zugegriffen werden. Je nachdem, welches RHEL-Image Sie bereitgestellt haben, erhalten Sie Zugriff auf die geeigneten Pakete. Ein RHEL für SAP-Image beispielsweise erhält neben den grundlegenden RHEL-Paketen auch Zugriff auf die SAP-Pakete.
+RHEL-Images der 2. Generation sind im Azure Marketplace verfügbar. Suchen Sie in der Liste mit allen Images, die bei Verwendung der Azure-Befehlszeilenschnittstelle angezeigt wird, nach „gen2“ in der Image-SKU. Navigieren Sie im Rahmen des VM-Bereitstellungsprozesses zur Registerkarte **Erweitert**, um einen virtuellen Computer der 2. Generation bereitzustellen.
+
+## <a name="red-hat-update-infrastructure"></a>Red Hat-Updateinfrastruktur
+
+Azure stellt die Red Hat-Updateinfrastruktur nur für virtuelle RHEL-Computer mit nutzungsbasierter Bezahlung bereit. Bei der RHUI handelt es sich im Grunde um eine Spiegelung der Red Hat-CDNs, der Zugriff darauf ist aber nur über die virtuellen RHEL-Computer mit nutzungsbasierter Bezahlung möglich. Sie haben Zugriff auf die entsprechenden Pakete (abhängig vom bereitgestellten RHEL-Image). So hat beispielsweise ein RHEL für SAP-Image neben den grundlegenden RHEL-Paketen auch Zugriff auf die SAP-Pakete.
 
 ### <a name="rhui-update-behavior"></a>Updateverhalten der RHUI
-RHEL-Images, die mit der RHUI verbunden sind, werden standardmäßig auf die neueste Nebenversion von RHEL aktualisiert, wenn ein `yum update`-Vorgang ausgeführt wird. Das bedeutet, dass eine VM mit RHEL 7.4 auf RHEL 7.7 aktualisiert wird, wenn ein `yum update`-Vorgang auf der VM ausgeführt wird. Dies ist ein beabsichtigtes Verhalten. Dieses Upgradeverhalten kann jedoch eingeschränkt werden, indem Benutzer von regulären RHEL-Repositorys zu [EUS-Repositorys (Extended Update Support)](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms) wechseln.
+
+RHEL-Images, die mit der RHUI verbunden sind, werden standardmäßig auf die neueste Nebenversion von RHEL aktualisiert, wenn ein Vorgang vom Typ `yum update` ausgeführt wird. Das bedeutet, dass ein virtueller Computer mit RHEL 7.4 auf RHEL 7.7 aktualisiert wird, wenn auf dem virtuellen Computer ein Vorgang vom Typ `yum update` ausgeführt wird. Dieses Verhalten ist für die RHUI beabsichtigt. Wenn Sie das Upgradeverhalten anpassen möchten, können Sie von regulären RHEL-Repositorys zu [EUS-Repositorys (Extended Update Support)](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms) wechseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Erfahren Sie mehr über [RHEL-Images in Azure](./redhat-images.md).
-* Erfahren Sie mehr über die [Red Hat Update Infrastructure](./redhat-rhui.md).
-* Erfahren Sie mehr über das [Angebot für Red Hat Gold-Images (`rhel-byos`)](./byos.md).
+* Erfahren Sie mehr über die [Red Hat-Updateinfrastruktur](./redhat-rhui.md).
+* Erfahren Sie mehr über das [Angebot für Red Hat Gold-Images (`rhel-byos`)](./byos.md).

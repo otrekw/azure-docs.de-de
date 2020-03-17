@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252211"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096700"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 
@@ -40,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lieber lokal installieren und verwenden möchten, benötigen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.30. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die Befehlszeilenschnittstelle lieber lokal installieren und verwenden möchten, benötigen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.30. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. Klicken Sie auf [**App-Registrierungen**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
  4. Klicken Sie auf **Neue Registrierung**.
  5. Geben Sie unter **Name** einen Namen ein (beispielsweise `<resourceGroupName>-app`), und wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
- 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
- 7. Wählen Sie **Zertifikate und Geheimnisse** aus, und klicken Sie auf **Neuer geheimer Clientschlüssel**.
+ 6. Wählen Sie den Anwendungstyp **Web** aus, geben Sie eine Anmelde-URL ein (beispielsweise http://localhost) ), und klicken Sie auf „Hinzufügen“. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein. Klicken Sie anschließend auf **Registrieren**.
+ 7. Wählen Sie **Zertifikate und Geheimnisse** für Ihre neue App-Registrierung aus, und klicken Sie auf **Neuer geheimer Clientschlüssel**.
  8. Geben Sie eine Beschreibung für einen neuen Schlüssel (geheimer Clientschlüssel) ein, wählen Sie **Läuft nie ab** aus, und klicken Sie auf **Hinzufügen**.
  9. Notieren Sie sich den Wert des Geheimnisses. Er dient als Kennwort für den Dienstprinzipal.
 10. Wählen Sie **Übersicht**. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (Anmelde-ID in den folgenden Schritten) des Dienstprinzipals verwendet.
@@ -569,12 +569,14 @@ Für den Endpunkt der Verfügbarkeitsgruppe wird aktuell keine AD-Authentifizier
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 Beenden Sie die SQL CMD-Sitzung mithilfe des Befehls `exit`, und kehren Sie zu Ihrer SSH-Sitzung zurück.
@@ -623,6 +625,7 @@ Beenden Sie die SQL CMD-Sitzung mithilfe des Befehls `exit`, und kehren Sie zu 
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Erstellen des Datenbankspiegelungs-Endpunkte auf allen Replikaten
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>Erstellen der Verfügbarkeitsgruppe
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Erstellen einer SQL Server-Anmeldung für Pacemaker
@@ -688,9 +693,12 @@ Erstellen Sie in allen SQL Server-Instanzen eine SQL-Anmeldung für Pacemaker. 
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung verwendeten Anmeldeinformationen. 
@@ -733,6 +741,7 @@ Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung 
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. Führen Sie auf dem primären Replikat sowie auf jedem der sekundären Replikate das folgende Transact-SQL-Skript aus:
@@ -742,6 +751,7 @@ Speichern Sie in allen SQL Server-Instanzen die für die SQL Server-Anmeldung 
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. Nachdem die sekundären Replikate verknüpft wurden, können Sie sie im SSMS-Objekt-Explorer anzeigen, indem Sie den Knoten **Hochverfügbarkeit mit Always On** erweitern:
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>Sicherstellen, dass die Datenbank auf den sekundären Servern erstellt wird
@@ -805,7 +816,6 @@ Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>Erstellen einer virtuellen IP-Ressource
@@ -946,7 +956,6 @@ Wir führen ein Testfailover durch, um uns zu vergewissern, dass die bisherige K
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>Testen des Fencings
@@ -975,7 +984,7 @@ Weitere Informationen zum Testen eines Fence-Geräts finden Sie in [diesem Red 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie einen Verfügbarkeitsgruppenlistener für Ihre in Azure erstellten SQL Server-Instanzen verwenden möchten, müssen Sie zuerst einen Lastenausgleich erstellen und konfigurieren.
+Wenn Sie einen Verfügbarkeitsgruppenlistener für Ihre SQL Server-Instanzen verwenden möchten, müssen Sie einen Lastenausgleich erstellen und konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Erstellen und Konfigurieren des Load Balancers im Azure-Portal](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [Tutorial: Konfigurieren von Verfügbarkeitsgruppenlistenern für SQL Server auf virtuellen RHEL-Computern in Azure](sql-server-linux-rhel-ha-listener-tutorial.md)

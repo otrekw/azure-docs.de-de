@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931830"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851421"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Durchführen der Überwachung per Azure CLI
 
@@ -35,6 +35,7 @@ Unabhängig davon, ob Sie die CLI lokal oder in der Cloud Shell ausführen, soll
 In diesem Abschnitt starten Sie eine Instanz der Azure Cloud Shell. Falls Sie die CLI lokal nutzen, können Sie zum Abschnitt [Vorbereiten von zwei CLI-Sitzungen](#prepare-two-cli-sessions) springen.
 
 Starten Sie die Cloud Shell wie folgt:
+
 1. Wählen Sie im Azure-Portal oben rechts in der Menüleiste die Schaltfläche **Cloud Shell** aus. 
 
     ![Schaltfläche „Cloud Shell“ im Azure-Portal](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ Starten Sie die Cloud Shell wie folgt:
     > [!NOTE]
     > Falls Sie die Cloud Shell bisher noch nicht verwendet haben, werden Sie zum Erstellen von Speicher aufgefordert, der für die Nutzung der Cloud Shell erforderlich ist.  Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Microsoft Azure Files-Freigabe erstellt werden sollen. 
 
-1. Wählen Sie in der Dropdownliste **Umgebung auswählen** Ihre bevorzugte CLI-Umgebung aus. In dieser Schnellstartanleitung wird die **Bash**-Umgebung verwendet. Alle folgenden CLI-Befehle funktionieren auch in der PowerShell-Umgebung. 
+2. Wählen Sie in der Dropdownliste **Umgebung auswählen** Ihre bevorzugte CLI-Umgebung aus. In dieser Schnellstartanleitung wird die **Bash**-Umgebung verwendet. Alle folgenden CLI-Befehle funktionieren auch in der PowerShell-Umgebung. 
 
     ![Auswählen der CLI-Umgebung](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Vorbereiten von zwei CLI-Sitzungen
+
 In diesem Abschnitt bereiten Sie zwei Azure CLI-Sitzungen vor. Bei Verwendung der Cloud Shell führen Sie die beiden Sitzungen in separaten Browsertabs aus. Wenn Sie einen lokalen CLI-Client nutzen, führen Sie zwei separate CLI-Instanzen aus. Sie verwenden die erste Sitzung als simuliertes Gerät und die zweite Sitzung zum Überwachen und Senden von Nachrichten. Wählen Sie zum Ausführen eines Befehls die Option **Kopieren** aus, um einen Codeblock aus dieser Schnellstartanleitung zu kopieren und in Ihre Shell-Sitzung einzufügen. Anschließend können Sie den Befehl dann ausführen.
 
 Für die Nutzung der Azure CLI müssen Sie bei Ihrem Azure-Konto angemeldet sein. Die gesamte Kommunikation zwischen Ihrer Azure CLI-Shell-Sitzung und Ihrem IoT-Hub wird authentifiziert und verschlüsselt. Für diese Schnellstartanleitung ist daher keine weitere Authentifizierung, z. B. per Verbindungszeichenfolge, wie bei einem echten Gerät erforderlich.
 
-1. Führen Sie den Befehl [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) aus, um Ihrer CLI-Shell die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
+*  Führen Sie den Befehl [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) aus, um Ihrer CLI-Shell die Microsoft Azure IoT-Erweiterung für die Azure CLI hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    Nachdem Sie die Azure IoT-Erweiterung installiert haben, müssen Sie sie in Cloud Shell-Sitzungen nicht erneut installieren. 
+   
+   Nachdem Sie die Azure IoT-Erweiterung installiert haben, müssen Sie sie in Cloud Shell-Sitzungen nicht erneut installieren. 
 
-1. Öffnen Sie eine zweite CLI-Sitzung.  Wählen Sie bei Verwendung der Cloud Shell die Option **Neue Sitzung öffnen** aus. Öffnen Sie eine zweite Instanz, falls Sie die CLI lokal nutzen. 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![Öffnen einer neuen Cloud Shell-Sitzung](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  Öffnen Sie eine zweite CLI-Sitzung.  Wählen Sie bei Verwendung der Cloud Shell die Option **Neue Sitzung öffnen** aus. Öffnen Sie eine zweite Instanz, falls Sie die CLI lokal nutzen. 
+
+    >[!div class="mx-imgBorder"]
+    >![Öffnen einer neuen Cloud Shell-Sitzung](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 In diesem Abschnitt verwenden Sie die Azure CLI zum Erstellen einer Ressourcengruppe und eines IoT-Hubs.  Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Ein IoT-Hub fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten. 

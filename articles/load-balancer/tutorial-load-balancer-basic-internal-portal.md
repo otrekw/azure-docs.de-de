@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453518"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096119"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
@@ -89,7 +89,7 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
    
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
@@ -121,10 +121,10 @@ Zum Verteilen von Datenverkehr auf die VMs nutzt der Load Balancer einen Back-En
 1. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyBackendPool* ein.
-   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus.
-   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet** aus.
+   - **Verknüpft mit**: Wählen Sie im Dropdownmenü **Virtueller Computer** aus.
    
-1. Wählen Sie **Zielnetzwerk-IP-Konfiguration hinzufügen**. 
+   
+1. Wählen Sie **Virtueller Computer** aus. 
    1. Fügen Sie **MyVM1** und **MyVM2** dem Back-End-Pool hinzu.
    2. Öffnen Sie nach dem Hinzufügen eines Computers jeweils die Dropdownliste, und wählen Sie die **Netzwerk-IP-Konfiguration** aus. 
    

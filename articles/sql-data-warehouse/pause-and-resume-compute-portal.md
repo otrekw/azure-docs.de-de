@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Anhalten und Fortsetzen von Computeressourcen – Azure-Portal '
+title: Anhalten und Fortsetzen von Computeressourcen im Synapse-SQL-Pool über das Azure-Portal
 description: Verwenden Sie das Azure-Portal, um Computeressourcen für den SQL-Pool anzuhalten und Kosten zu sparen. Setzen Sie die Computeressourcen fort, wenn Sie das Data Warehouse verwenden möchten.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,18 +11,16 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 49684e6844c2d9f58e9b750b12991428218e4426
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3a131c1ebbf2a69f1c738cbc3421635406500d3c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200612"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130364"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen im SQL-Pool von Azure Synapse Analytics über das Azure-Portal
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen im Synapse-SQL-Pool über das Azure-Portal
 
-Verwenden Sie das Azure-Portal, um Computeressourcen für den SQL-Pool anzuhalten und Kosten zu sparen. [Setzen Sie die Computeressourcen fort](sql-data-warehouse-manage-compute-overview.md), wenn Sie das Data Warehouse verwenden möchten.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Mit dem Azure-Portal können Sie die Computeressourcen des Synapse-SQL-Pools (Data Warehouse) anhalten und fortsetzen Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -34,7 +32,9 @@ Verwenden Sie [Erstellen und Verbinden – Portal](create-data-warehouse-portal
 
 ## <a name="pause-compute"></a>Anhalten von Computeressourcen
 
-Um Kosten zu sparen, können Sie Computeressourcen bei Bedarf anhalten und fortsetzen. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Computeressourcen werden Ihnen nicht in Rechnung gestellt, während die Datenbank angehalten ist. Allerdings wird Ihnen der Speicherplatz weiter in Rechnung gestellt. 
+Um Kosten zu senken, können Sie Computeressourcen bei Bedarf anhalten und fortsetzen. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. 
+>[!NOTE]
+>Computeressourcen werden Ihnen nicht in Rechnung gestellt, während die Datenbank angehalten ist. Allerdings wird Ihnen der Speicherplatz weiter in Rechnung gestellt. 
 
 Führen Sie die folgenden Schritte aus, um einen SQL-Pool anzuhalten:
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um einen SQL-Pool fortzusetzen:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Ihnen werden Gebühren für Ihre Data Warehouse-Einheiten und die in Ihrem Data Warehouse gespeicherte Daten in Rechnung gestellt. Diese Compute- und Speicherressourcen werden separat in Rechnung gestellt. 
+Ihnen werden Gebühren für Data Warehouse-Einheiten und die in Ihrem SQL-Pool gespeicherten Daten in Rechnung gestellt. Diese Compute- und Speicherressourcen werden separat in Rechnung gestellt. 
 
 - Wenn Sie die Daten im Speicher beibehalten möchten, halten Sie die Computeressourcen an.
 - Wenn künftig keine Gebühren mehr anfallen sollen, können Sie den SQL-Pool löschen. 
@@ -95,14 +95,15 @@ Führen Sie die folgenden Schritte aus, um Ressourcen nach Wunsch zu bereinigen.
 
 2. Wenn Sie den SQL-Pool entfernen möchten, damit keine Gebühren für Compute- oder Speicherressourcen anfallen, klicken Sie auf **Löschen**.
 
-3. Wenn Sie die von Ihnen erstellte SQL Server-Instanz entfernen möchten, klicken Sie auf **sqlpoolservername.database.windows.net** und anschließend auf **Löschen**.  Seien Sie bei diesem Löschvorgang vorsichtig, da beim Löschen des Servers auch alle Datenbanken gelöscht werden, die dem Server zugewiesen sind.
+3. Wenn Sie die von Ihnen erstellte SQL Server-Instanz entfernen möchten, klicken Sie auf **sqlpoolservername.database.windows.net** und anschließend auf **Löschen**.  
 
-4. Zum Entfernen der Ressourcengruppe klicken Sie auf **myResourceGroup**, und klicken Sie dann auf **Ressourcengruppe löschen**.
+   > [!CAUTION]
+   > Seien Sie bei diesem Löschvorgang vorsichtig, da beim Löschen des Servers auch alle Datenbanken gelöscht werden, die dem Server zugewiesen sind.
+
+5. Zum Entfernen der Ressourcengruppe klicken Sie auf **myResourceGroup**, und klicken Sie dann auf **Ressourcengruppe löschen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben die Computeressourcen für Ihren SQL-Pool angehalten und fortgesetzt. Informationen zu den nächsten Schritten finden Sie im Tutorial zum Laden von Daten.
+Sie haben die Computeressourcen für Ihren SQL-Pool angehalten und fortgesetzt. Im nächsten Artikel finden Sie weitere Informationen zum [Laden von Daten in den SQL-Pool](load-data-from-azure-blob-storage-using-polybase.md). Weitere Informationen zum Verwalten von Computefunktionen finden Sie im Artikel [Verwalten von Computeressourcen im Azure Synapse Analytics-Data Warehouse](sql-data-warehouse-manage-compute-overview.md). 
 
-> [!div class="nextstepaction"]
-> [Tutorial: Laden des Datasets „New York Taxis“](load-data-from-azure-blob-storage-using-polybase.md)

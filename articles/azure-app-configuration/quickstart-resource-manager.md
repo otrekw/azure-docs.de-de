@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274509"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126384"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Schnellstart: Automatisierte VM-Bereitstellung mit App Configuration und Resource Manager-Vorlage
 
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen mithilfe von PowerShell-Cmdlets oder -Skripts. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Azure PowerShell und Azure Resource Manager-Vorlagen verwenden, um einen Azure App Configuration-Speicher bereitzustellen. Anschließend wird beschrieben, wie Sie die Schlüsselwerte im Speicher zum Bereitstellen einer VM verwenden.
 
 Sie nutzen die erforderliche Vorlage, um einen App Configuration-Speicher zu erstellen, und fügen dem Speicher dann Schlüsselwerte hinzu, indem Sie das Azure-Portal oder die Azure CLI verwenden. In der primären Vorlage wird auf vorhandene Schlüsselwertkonfigurationen aus einem vorhandenen Konfigurationsspeicher verwiesen. Die abgerufenen Werte werden verwendet, um Eigenschaften der Ressourcen festzulegen, die von der Vorlage erstellt werden (in diesem Beispiel eine VM).
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -85,7 +89,7 @@ Bevor Sie Schlüsselwerte auf die VM anwenden können, müssen Sie über einen v
       },
       "skuName": {
         "type": "string",
-        "defaultValue": "free",
+        "defaultValue": "standard",
         "metadata": {
           "description": "Specifies the SKU of the app configuration store."
         }
@@ -138,7 +142,7 @@ Sie können einen App Configuration-Speicher erstellen, indem Sie eine Azure Res
 
 1. Wählen Sie **Konfigurations-Explorer** > **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-   |Key|value|
+   |Schlüssel|Wert|
    |-|-|
    |windowsOsVersion|2019-Datacenter|
    |diskSizeGB|1023|
@@ -332,7 +336,7 @@ Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit ein
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('windowsOSVersionParameters')).value]",
+                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -340,7 +344,7 @@ Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit ein
                     },
                     "dataDisks": [
                         {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('diskSizeGBParameters')).value]",
+                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
                             "lun": 0,
                             "createOption": "Empty"
                         }
@@ -408,7 +412,7 @@ Nachdem Sie dem Speicher Schlüsselwerte hinzugefügt haben, können Sie mit ein
 
    Ersetzen Sie die Parameterwerte in der Vorlage durch die folgenden Werte:
 
-   |Parameter|value|
+   |Parameter|Wert|
    |-|-|
    |adminPassword|Ein Administratorkennwort für den virtuellen Computer.|
    |appConfigStoreName|Der Name Ihres Azure App Configuration-Speichers.|

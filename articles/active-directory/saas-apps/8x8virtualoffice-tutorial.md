@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49c2b445af9acb0761d01b731250e068cb96a36
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562315"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit 8x8
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie 8x8 in Azure Active Directory (Azure A
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei 8x8 anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -86,20 +86,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL in einem der folgenden Formate ein:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://sso.8x8.com/saml2`
 
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
-
-    |||
-    |-|-|
-    | `https://sso.8x8.com/saml2`|
-    | `https://sso.8x8pilot.com/saml2`|
-
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://sso.8x8.com/saml2`.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer. Sie verwenden das Zertifikat später in diesem Tutorial im Abschnitt **Konfigurieren des einmaligen Anmeldens für 8x8**.
 
@@ -151,9 +140,15 @@ Der nächste Teil des Tutorials hängt von der Art Ihres 8x8-Abonnements ab:
 
 1. Klicken Sie auf der Startseite auf **Identity Management** (Identitätsverwaltung).
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
+
 1. Aktivieren Sie **Single Sign On (SSO)** (Einmaliges Anmelden (SSO)), und wählen Sie dann **Microsoft Azure AD** aus.
 
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
+
 1. Kopieren Sie die drei URLs und das Signaturzertifikat von der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** in Azure AD in den Abschnitt **Microsoft Azure AD SAML Settings** (Microsoft Azure AD-SAML-Einstellungen) in 8x8 Configuration Manager.
+
+    ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
     a. Kopieren Sie den Wert der **Anmelde-URL** in **IDP Login URL** (IDP-Anmelde-URL).
 
@@ -171,15 +166,27 @@ Der nächste Teil des Tutorials hängt von der Art Ihres 8x8-Abonnements ab:
 
 1. Wählen Sie im Anwendungsbereich die Option **Virtual Office Account Mgr** (Virtual Office-Konto-Manager) aus.
 
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
+
 1. Wählen Sie das Konto **Business** (Unternehmen) aus, und klicken Sie anschließend auf die Schaltfläche **Sign In** (Anmelden).
+
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
 1. Klicken Sie auf der Menüleiste auf die Registerkarte **ACCOUNTS** (Konten).
 
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+
 1. Klicken Sie in der Liste unter „Accounts“ (Konten) auf **Single Sign On** (Einmaliges Anmelden).
+
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
 1. Wählen Sie als Authentifizierungsmethode die Option **Einmaliges Anmelden** aus, und klicken Sie anschließend auf **SAML**.
 
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+
 1. Führen Sie im Abschnitt **SAML Single Sign-On** die folgenden Schritte aus:
+
+    ![App-seitige Konfiguration](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
     a. Fügen Sie im Textfeld **Sign-In URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -205,7 +212,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „8x8“ klicken, sollten Sie automa
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

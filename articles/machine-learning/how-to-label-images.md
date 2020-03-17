@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772447"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898699"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
 
@@ -58,6 +58,16 @@ Azure aktiviert die Schaltfläche **Senden**, wenn Sie alle Bilder auf der Seite
 
 Nach der Übermittlung von Tags für die vorliegenden Daten aktualisiert Azure die Seite mit einer neuen Gruppe von Bildern aus der Arbeitswarteschlange.
 
+### <a name="assisted-machine-learning"></a>Unterstütztes Machine Learning 
+
+Machine Learning-Algorithmen können während einer Klassifizierungsaufgabe mit mehreren Klassen oder mehreren Beschriftungen ausgelöst werden. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
+
+* Nach der Kennzeichnung einiger Bilder wird am oberen Bildschirmrand neben dem Projektnamen unter Umständen **Gruppierte Aufgaben** angezeigt.  Das bedeutet, dass Bilder gruppiert werden, um ähnliche Bilder auf der gleichen Seite darzustellen.  Wechseln Sie in diesem Fall zu einer der Ansichten mit mehreren Bildern, um von der Gruppierung zu profitieren.  
+
+* Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Bilder werden dann mit einer von einem Machine Learning-Klassifizierungsmodell vorgeschlagenen Bezeichnung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Bilder verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt gekennzeichnet sind.  Wenn diese Bezeichnungen angezeigt werden, korrigieren Sie falsche Bezeichnungen, bevor Sie die Seite übermitteln.  
+
+Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
+
 ## <a name="tag-images-for-multi-class-classification"></a>Taggen von Bildern für die Klassifizierung mit mehreren Klassen
 
 Wenn Ihr Projekt vom Typ „Bildklassifizierung mit mehreren Klassen“ ist, weisen Sie dem gesamten Bild ein einzelnes Tag zu. Die Anweisungen stehen jederzeit auf der Seite **Anweisungen** unter **Detaillierte Anweisungen anzeigen** zur Verfügung.
@@ -81,6 +91,7 @@ Wenn Sie einen Fehler korrigieren möchten, klicken Sie auf das Symbol **X**, um
 ![Screenshot: Mehrere Markierungsaufhebungen](./media/how-to-label-images/multiple-deselection.png)
 
 Azure aktiviert die Schaltfläche **Senden** erst, nachdem Sie mindestens ein Tag auf jedes Bild angewandt haben. Wählen Sie **Übermitteln** aus, um Ihre Arbeit zu speichern.
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Taggen von Bildern und Angeben von Begrenzungsrahmen für die Objekterkennung
 

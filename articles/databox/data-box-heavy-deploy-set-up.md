@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514424"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117254"
 ---
 ::: zone target = "docs"
 
@@ -100,7 +100,7 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
 Gehen Sie wie folgt vor, um die Netzwerkverkabelung für einen der Knoten des Geräts vorzunehmen:
 
-1. Verbinden Sie den Hostcomputer über ein Cat 6-Netzwerkkabel vom Typ RJ45 (blaues Kabel in der Abbildung) mit dem 1-GBit/s-Verwaltungsanschluss.
+1. Verbinden Sie den Hostcomputer über ein Cat 6-Netzwerkkabel vom Typ RJ45 (Kabel oben rechts in der Abbildung, angeschlossen an den Anschluss MGMT) mit dem 1-GBit/s-Verwaltungsanschluss.
 2. Verwenden Sie das QSFP+-Kupferkabel (Glasfaser oder Kupfer), um mindestens eine Netzwerkschnittstelle mit 40 GBit/s (bevorzugt gegenüber 1 GBit/s) für die Datenübertragung anzuschließen. Verwenden Sie bei Verwendung eines 10-GBit/s-Switchs ein SFP+-Kabel mit einem QSFP+-auf-SFP+-Adapter (QSA-Adapter), um die 40-GBit/s-Netzwerkschnittstelle für die Datenübertragung anzuschließen.
 
     ![Data Box Heavy: verkabelte Anschlüsse](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278353"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402814"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit Azure Container Service ist die Bereitstellung eines produktionsfertigen DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung eines einfachen Workloads aufgeführt.
+DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendungen bereit. Mit Azure Container Service ist die Bereitstellung eines produktionsfertigen DC/OS-Clusters schnell und einfach. In diesem Schnellstart werden die notwendigen grundlegenden Schritte zum Bereitstellen eines DC/OS-Clusters und zur Ausführung einer einfachen Workload aufgeführt.
 
 > [!div class="checklist"]
 > * Erstellen eines ACS-DC/OS-Clusters
@@ -30,7 +30,7 @@ DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendung
 > * Grundlegende DC/OS-Verwaltung
 > * Löschen des DC/OS-Clusters
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 ## <a name="create-dcos-cluster"></a>Erstellen eines DC/OS-Clusters
 
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 Um den SSH-Tunnel zu erstellen, führen Sie den folgenden Befehl aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Wenn Port 80 bereits verwendet wird, löst der Befehl einen Fehler aus. Aktualisieren Sie den getunnelten Port auf einen wie `85:localhost:80`, der aktuell nicht verwendet wird. 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 Bevor die CLI mit dem Cluster verwendet werden kann, muss sie für die Verwendung des SSH-Tunnels konfiguriert werden. Führen Sie hierzu den folgenden Befehl aus, und passen Sie gegebenenfalls den Port an.
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ Der Standardplanungsmechanismus für einen Cluster mit ACS-DC/OS-Cluster ist Mar
 
 Führen Sie den folgenden Befehl aus, um die Ausführung der Anwendung auf dem DC/OS-Cluster zu planen.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Um den Bereitstellungsstatus der App anzuzeigen, führen Sie den folgenden Befehl aus.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Wenn der Spaltenwert **TASKS** von *0/1* auf *1/1* wechselt, wurde die Anwendungsbereitstellung abgeschlossen.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ Im vorherigen Beispiel wurde eine Einzelinstanzanwendung erstellt. Um diese Bere
 
 Aktualisieren Sie die Anwendung mit dem Befehl `dcos marathon app update`.
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 Um den Bereitstellungsstatus der App anzuzeigen, führen Sie den folgenden Befehl aus.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Wenn der Spaltenwert **TASKS** von *1/3* auf *3/1* wechselt, wurde die Anwendungsbereitstellung abgeschlossen.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ Erstellen Sie eine Datei mit dem Namen **nginx-public.json** und kopieren Sie de
 
 Führen Sie den folgenden Befehl aus, um die Ausführung der Anwendung auf dem DC/OS-Cluster zu planen.
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 Rufen Sie die öffentliche IP-Adresse der öffentlichen DC/OS Cluster-Agents ab.
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

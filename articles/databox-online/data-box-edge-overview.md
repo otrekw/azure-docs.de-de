@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: f463e8883efd5e2dfc4d7fff80912c193665b850
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300977"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399804"
 ---
-# <a name="what-is-azure-stack-edge"></a>Was ist Azure Stack Edge? 
+# <a name="what-is-azure-stack-edge"></a>Was ist Azure Stack Edge?
 
 [!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
 
-Azure Stack Edge ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge-Lösung, ihre Vorteile, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können. 
+Azure Stack Edge ist ein KI-fähiges Edgecomputinggerät mit Netzwerkfunktionen für die Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Azure Stack Edge-Lösung, ihre Vorteile, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können.
 
-Azure Stack Edge ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet. 
+Azure Stack Edge ist eine HaaS-Lösung (Hardware-as-a-Service). Microsoft liefert Ihnen ein cloudseitig verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Netzwerkspeichergateways bietet.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -37,7 +37,6 @@ Dies sind die verschiedenen Szenarien, in denen Azure Stack Edge für schnelle M
     - Analysieren von und Reagieren auf IoT-Ereignisse. 
 
 - **Übertragen von Daten über das Netzwerk an Azure**: Verwenden Sie Azure Stack Edge, um Daten einfach und schnell nach Azure zu übertragen. Dadurch werden weitere Berechnungen und Analysen oder eine Archivierung ermöglicht. 
-
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
 
@@ -55,13 +54,13 @@ Azure Stack Edge bietet die folgenden Funktionen:
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
 |Verschlüsselung    | BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
 |Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
-
+|ExpressRoute | Sicherheit durch ExpressRoute hinzugefügt. Verwenden Sie die Peeringkonfiguration, wenn Datenverkehr von lokalen Geräten an die Cloudspeicherendpunkte über ExpressRoute geleitet wird. Weitere Informationen finden Sie unter [ExpressRoute-Übersicht](../expressroute/expressroute-introduction.md).
 
 ## <a name="components"></a>Komponenten
 
 Die Azure Stack Edge-Lösung umfasst die Azure Stack Edge-Ressource, ein physisches Azure Stack Edge-Gerät und eine lokale Webbenutzeroberfläche.
 
-* **Physisches Azure Stack Edge-Gerät**: Ein von Microsoft bereitgestellter 1U-Rackserver, der konfiguriert werden kann, um Daten an Azure zu senden. 
+* **Physisches Azure Stack Edge-Gerät**: Ein von Microsoft bereitgestellter 1U-Rackserver, der konfiguriert werden kann, um Daten an Azure zu senden.
     
 * **Azure Stack Edge-Ressource:** Eine Ressource im Azure-Portal, mit der Sie ein Azure Stack Edge-Gerät über eine zentrale Webbenutzeroberfläche verwalten können, auf die von verschiedenen geografischen Standorten aus zugegriffen werden kann. Verwenden Sie die Azure Stack Edge-Ressource, um Ressourcen zu erstellen und zu verwalten, Geräte und Warnungen anzuzeigen und zu verwalten sowie Freigaben zu verwalten.  
 
@@ -75,22 +74,16 @@ Die Azure Stack Edge-Lösung umfasst die Azure Stack Edge-Ressource, ein physisc
 
     Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten Ihres Azure Stack Edge-Geräts](data-box-edge-manage-access-power-connectivity-mode.md).
 
-
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
 Das physische Azure Stack Edge-Gerät, die Azure-Ressource und das Zielspeicherkonto, an das Sie Daten übertragen, müssen sich nicht in derselben Region befinden.
 
 - **Ressourcenverfügbarkeit**: Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge kann auch in der Azure Government-Cloud bereitgestellt werden. Weitere Informationen finden Sie unter [What is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (Was ist Azure Government?).
     
-- **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung. 
-
+- **Zielspeicherkonten**: Die Speicherkonten, in denen die Daten gespeichert werden, sind in allen Azure-Regionen verfügbar. Die Regionen, in denen die Speicherkonten Azure Stack Edge-Daten speichern, sollten sich in der Nähe des Gerätestandorts befinden, um optimale Leistung zu erzielen. Ein weit entfernt vom Gerät befindliches Speicherkonto führt zu langen Wartezeiten und einer langsameren Leistung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sehen Sie sich die [Azure Stack Edge-Systemanforderungen](data-box-edge-system-requirements.md) an.
 - Machen Sie sich mit den [Einschränkungen für Azure Stack Edge](data-box-edge-limits.md) vertraut.
 - Stellen Sie [Azure Stack Edge](data-box-edge-deploy-prep.md) im Azure-Portal bereit.
-
-
-
-

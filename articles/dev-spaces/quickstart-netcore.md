@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine .NET Core-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f3e91ec11e054e0a069eb97a3700b051476be0a1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6593cc3d5926fae05b2afd1e926552a2996ae885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251983"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943704"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio Code und .NET Core: Azure Dev Spaces
 
@@ -30,7 +30,7 @@ Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit Folgende
 
 - Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Installation von Visual Studio Code](https://code.visualstudio.com/download).
-- Installation der Erweiterungen [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) und [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) für Visual Studio Code.
+- Installation der Erweiterungen [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) und [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) für Visual Studio Code.
 - Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) muss installiert sein.
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
@@ -110,6 +110,9 @@ Mit diesem Befehl wird Ihr Dienst in Azure Dev Spaces im Debugmodus erstellt und
 > Falls in der *Befehlspalette* keine Azure Dev Spaces-Befehle angezeigt werden, sollten Sie überprüfen, ob die [Visual Studio Code-Erweiterung für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) installiert wurde. Vergewissern Sie sich auch, dass Sie das Verzeichnis *dev-spaces/samples/dotnetcore/getting-started/webfrontend* in Visual Studio Code geöffnet haben.
 
 Wenn Sie die öffentliche URL öffnen, sehen Sie, dass der Dienst ausgeführt wird.
+
+> [!Note]
+> Zuerst wird für die öffentliche URL möglicherweise ein Fehler vom Typ *Ungültiges Gateway* angezeigt. Warten Sie einige Sekunden, bevor Sie die Webseite aktualisieren. Anschließend sollten Sie sehen, dass Ihr Dienst ausgeführt wird.
 
 Klicken Sie auf *Debuggen* und dann auf *Debuggen beenden*, um den Debugger zu beenden.
 

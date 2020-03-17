@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827108"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087180"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
@@ -58,7 +58,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
     ![Suchen des Abfrage-Editors](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-4. Geben Sie auf der **Anmeldeseite** unter **SQL Server-Authentifizierung** die **Anmelde-ID** und das **Kennwort** des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde. Wählen Sie dann **OK**aus.
+4. Geben Sie auf der **Anmeldeseite** unter **SQL Server-Authentifizierung** die **Anmelde-ID** und das **Kennwort** des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde. Klicken Sie anschließend auf **OK**.
 
     ![Anmelden](./media/sql-database-connect-query-portal/login-menu.png)
 
@@ -86,7 +86,7 @@ Wenn Sie einen Azure Active Directory-Administrator (Azure AD) konfigurieren, k�
 
 7. Wählen Sie im Menü **SQL Server** die Option **SQL-Datenbanken** und anschließend Ihre SQL-Datenbank aus.
 
-8. Wählen Sie im Menü **SQL-Datenbank** die Option **Abfrage-Editor (Vorschau)** aus. Auf der **Anmeldeseite** wird für Azure AD-Administratoren unter **Active Directory-Authentifizierung** eine Meldung mit dem Hinweis angezeigt, dass sie angemeldet wurden. Wählen Sie dann die Schaltfläche **Als *\<Benutzer- oder Gruppen-ID> fortsetzen*** aus.
+8. Wählen Sie im Menü **SQL-Datenbank** die Option **Abfrage-Editor (Vorschau)** aus. Auf der **Anmeldeseite** wird für Azure AD-Administratoren unter **Active Directory-Authentifizierung** eine Meldung mit dem Hinweis angezeigt, dass sie angemeldet wurden. Wählen Sie dann die Schaltfläche **Als** *\<Benutzer- oder Gruppen-ID> fortsetzen* aus.
 
 ## <a name="view-data"></a>Anzeigen von Daten
 
@@ -167,6 +167,8 @@ Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 
 * Der Abfrage-Editor verwendet die Ports 443 und 1443 zum Kommunizieren.  Stellen Sie sicher, dass Sie ausgehenden HTTPS-Datenverkehr auf diesen Ports aktiviert haben. Sie müssen auch Ihre ausgehende IP-Adresse den Firewallzulassungsregeln des Servers hinzufügen, um auf Ihre Datenbanken und Data Warehouses zugreifen zu können.
 
+* Der Abfrage-Editor kann mit Private Link verwendet werden, ohne dass die Client-IP-Adresse in der Firewall von SQL-Datenbank hinzugefügt werden muss.
+
 * Durch Drücken von F5 wird die Seite des Abfrage-Editors aktualisiert, und aktuell bearbeitete Abfragen gehen verloren.
 
 * Das Herstellen einer Verbindung mit der `master`-Datenbank wird vom Abfrage-Editor nicht unterstützt.
@@ -176,6 +178,8 @@ Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 * Der Abfrage-Editor unterstützt für geografische Datentypen nur die zylindrische Projektion.
 
 * Für Datenbanktabellen und -sichten ist keine IntelliSense-Unterstützung vorhanden. Der Editor unterstützt aber das automatische Vervollständigen von Namen, die bereits eingegeben wurden.
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte
