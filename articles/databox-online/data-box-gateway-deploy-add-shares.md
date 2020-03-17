@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400643"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942531"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Tutorial: Übertragen von Daten mit Azure Data Box Gateway
 
@@ -61,7 +61,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
    
     5. Dieser Schritt hängt davon ab, ob Sie eine SMB- oder NFS-Freigabe erstellen.
      
-    - **SMB-Freigabe:** Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer erstellen, geben Sie einen Wert für **Benutzername** und **Kennwort** ein, und**** bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Nachdem Sie die Berechtigungen hier zugewiesen haben, können Sie sie mithilfe des Datei-Explorers ändern.
+    - **SMB-Freigabe:** Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer erstellen, geben Sie einen Wert für **Benutzername** und **Kennwort** ein, und**bestätigen Sie dann das Kennwort**. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Die Änderung der Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
     
         ![Hinzufügen einer SMB-Freigabe](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
