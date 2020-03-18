@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851932"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087012"
 ---
 # <a name="job-and-task-error-checking"></a>Überprüfung auf Auftrags- und Taskfehler
 
@@ -47,16 +47,16 @@ Wenn ein Auftragsvorbereitungstask für einen Auftrag angegeben wird, wird eine 
 
 Die Taskinstanzen für die Auftragsvorbereitung sollten überprüft werden, um festzustellen, ob Fehler aufgetreten sind:
 - Wenn ein Auftragsvorbereitungstask ausgeführt wird, dann wird der Task, der den Auftragsvorbereitungstask ausgelöst hat, in einen [Zustand](https://docs.microsoft.com/rest/api/batchservice/task/get#taskstate) von `preparing` versetzt. Wenn der Auftragsvorbereitungstask dann fehlschlägt, kehrt der auslösende Task in den Zustand `active` zurück und wird nicht ausgeführt.  
-- Alle Instanzen des Auftragsvorbereitungstasks, die ausgeführt wurden, können mithilfe der API zum [Auflisten des Vorbereitungs- und Freigabetaskstatus](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) aus dem Auftrag abgerufen werden. Wie bei jedem Task sind für die Eigenschaften wie `failureInfo`, `exitCode` und `result` [Ausführungsinformationen](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) verfügbar.
+- Alle Instanzen des Auftragsvorbereitungstasks, die ausgeführt wurden, können mithilfe der API zum [Auflisten des Vorbereitungs- und Freigabetaskstatus](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) aus dem Auftrag abgerufen werden. Wie bei jedem Task sind für die Eigenschaften wie `failureInfo`, `exitCode` und `result`[Ausführungsinformationen](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) verfügbar.
 - Wenn Auftragsvorbereitungstasks fehlschlagen, werden die auslösenden Auftragstasks nicht ausgeführt, der Auftrag wird nicht abgeschlossen und ist blockiert. Der Pool kann ungenutzt bleiben, wenn es keine anderen Aufträge mit Tasks gibt, die geplant werden können.
 
 ### <a name="job-release-tasks"></a>Tasks zur Auftragsfreigabe
 
 Wenn ein Auftragsfreigabetask für einen Auftrag angegeben ist, wird beim Beenden eines Auftrags eine Instanz des Auftragsfreigabetasks auf jedem der Poolknoten ausgeführt, auf denen ein Auftragsvorbereitungstask ausgeführt wurde.  Die Taskinstanzen für die Auftragsfreigabe sollten überprüft werden, um festzustellen, ob Fehler aufgetreten sind:
-- Alle Instanzen des Auftragsfreigabetasks, die ausgeführt wurden, können mithilfe der API zum [Auflisten des Vorbereitungs- und Freigabetaskstatus](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) aus dem Auftrag abgerufen werden. Wie bei jedem Task sind für die Eigenschaften wie `failureInfo`, `exitCode` und `result` [Ausführungsinformationen](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) verfügbar.
+- Alle Instanzen des Auftragsfreigabetasks, die ausgeführt wurden, können mithilfe der API zum [Auflisten des Vorbereitungs- und Freigabetaskstatus](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus) aus dem Auftrag abgerufen werden. Wie bei jedem Task sind für die Eigenschaften wie `failureInfo`, `exitCode` und `result`[Ausführungsinformationen](https://docs.microsoft.com/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) verfügbar.
 - Wenn mindestens eine Auftragsfreigabetask fehlschlägt, wird der Auftrag dennoch beendet und wechselt in den Status `completed`.
 
-## <a name="tasks"></a>Tasks
+## <a name="tasks"></a>Aufgaben
 
 Auftragstasks können aus mehreren Gründen fehlschlagen:
 
@@ -72,6 +72,17 @@ In allen Fällen müssen die folgenden Eigenschaften auf Fehler und Informatione
 Die Auswirkungen von Taskfehlern auf den Auftrag und alle Taskabhängigkeiten müssen berücksichtigt werden.  Die [exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions)-Eigenschaft kann für einen Task angegeben werden, um eine Aktion für Abhängigkeiten und für den Auftrag zu konfigurieren.
 - Für Abhängigkeiten steuert [dependencyAction-](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction), ob die vom fehlgeschlagenen Task abhängigen Tasks blockiert sind oder ausgeführt werden.
 - Für den Auftrag steuert [jobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction), ob der fehlgeschlagene Task dazu führt, dass der Auftrag deaktiviert, beendet oder unverändert gelassen wird.
+
+### <a name="task-command-line-failures"></a>Fehler bei Taskbefehlszeilen
+
+Wird die Taskbefehlszeile ausgeführt, wird die Ausgabe in `stderr.txt` und `stdout.txt` geschrieben. Außerdem kann die Anwendung in anwendungsspezifische Protokolldateien schreiben.
+
+Wenn der Poolknoten, auf dem ein Task ausgeführt wurde, noch vorhanden ist, können die Protokolldateien abgerufen und angezeigt werden. Beispielsweise listet das Azure-Portal die Protokolldateien für einen Task oder einen Poolknoten auf und kann diese anzeigen. Mit mehreren APIs können auch Taskdateien aufgelistet und abgerufen werden, z. B. [Get from Task](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask).
+
+Da Pools und Poolknoten häufig kurzlebig sind und Knoten ständig hinzugefügt und gelöscht werden, empfiehlt es sich, Protokolldateien persistent zu speichern. [Taskausgabedateien](https://docs.microsoft.com/azure/batch/batch-task-output-files) sind eine bequeme Möglichkeit, Protokolldateien in Azure Storage zu speichern.
+
+### <a name="output-file-failures"></a>Fehler bei Ausgabedateien
+Bei jedem Dateiupload schreibt Batch zwei Protokolldateien in den Computeknoten: `fileuploadout.txt` und `fileuploaderr.txt`. Sie können diese Protokolldateien überprüfen, um weitere Informationen zu einem bestimmten Fehler zu erhalten. In Fällen, in denen nie versucht wurde, die Datei hochzuladen, da z. B. der Task selbst nicht ausgeführt werden konnte, sind diese Protokolldateien nicht vorhanden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

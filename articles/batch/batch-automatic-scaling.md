@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200094"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086256"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -128,7 +128,7 @@ Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassu
 | $NetworkInBytes |Die Anzahl der eingehenden Byte |
 | $NetworkOutBytes |Die Anzahl der ausgehenden Byte |
 | $SampleNodeCount |Die Anzahl der Computeknoten |
-| $ActiveTasks |Die Anzahl der Aufgaben, die zur Ausführung bereit sind, aber noch nicht ausgeführt werden. Die Anzahl der $ActiveTasks umfasst alle Aufgaben, die sich im aktiven Zustand befinden und deren Abhängigkeiten erfüllt wurden. Alle Aufgaben, die sich nicht im aktiven Zustand befinden, deren Abhängigkeiten aber nicht erfüllt wurden, werden aus der Anzahl der $ActiveTasks ausgeschlossen.|
+| $ActiveTasks |Die Anzahl der Aufgaben, die zur Ausführung bereit sind, aber noch nicht ausgeführt werden. Die Anzahl der $ActiveTasks umfasst alle Aufgaben, die sich im aktiven Zustand befinden und deren Abhängigkeiten erfüllt wurden. Alle Aufgaben, die sich nicht im aktiven Zustand befinden, deren Abhängigkeiten aber nicht erfüllt wurden, werden aus der Anzahl der $ActiveTasks ausgeschlossen. Bei einem Task mit mehreren Instanzen umfasst „$ActiveTasks“ die Anzahl der für den Task festgelegten Instanzen.|
 | $RunningTasks |Die Anzahl der Aufgaben, die sich in einem Ausführungszustand befinden |
 | $PendingTasks |Die Summe aus $ActiveTasks und $RunningTasks. |
 | $SucceededTasks |Die Anzahl der Aufgaben, die erfolgreich abgeschlossen wurden |
@@ -149,7 +149,7 @@ Folgende Typen werden in einer Formel unterstützt:
 * double
 * doubleVec
 * doubleVecList
-* string
+* Zeichenfolge
 * timestamp – „timestamp“ ist eine Verbundstruktur, die folgende Member enthält:
 
   * year
@@ -200,7 +200,7 @@ Beim Testen von „double“ mit einem ternären Operator (`double ? statement1 
 ## <a name="functions"></a>Functions
 Zum Definieren einer Formel für die automatische Skalierung stehen folgende vordefinierte **Funktionen** zur Verfügung.
 
-| Funktion | Rückgabetyp | Beschreibung |
+| Funktion | Rückgabetyp | BESCHREIBUNG |
 | --- | --- | --- |
 | avg(doubleVecList) |double |Der Durchschnittswert aller Werte in der doubleVecList wird zurückgegeben. |
 | len(doubleVecList) |double |Die Länge des Vektors, der aus der doubleVecList erstellt wurde, wird zurückgegeben. |
@@ -295,7 +295,7 @@ Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch 
 <table>
   <tr>
     <th>Metrik</th>
-    <th>Beschreibung</th>
+    <th>BESCHREIBUNG</th>
   </tr>
   <tr>
     <td><b>Ressource</b></td>

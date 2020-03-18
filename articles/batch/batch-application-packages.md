@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cad3b3b01a98462e37a4b4b96ba02a1b61a5f62
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025927"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086226"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
 
@@ -90,13 +90,11 @@ Der Batch-Dienst verwendet das zugeordnete Speicherkonto zum Speichern Ihrer Anw
 
 Es wird empfohlen, ein Speicherkonto *speziell* für die Verwendung mit Ihrem Batch-Konto zu erstellen und hier auszuwählen. Nachdem Sie ein Speicherkonto erstellt haben, können Sie es im Fenster **Speicherkonto** mit Ihrem Batch-Konto verknüpfen.
 
-> [!NOTE] 
-> In einem Azure Storage-Konto, das mit [Firewallregeln](../storage/common/storage-network-security.md) konfiguriert ist, können derzeit keine Anwendungspakete verwendet werden.
-> 
+> [!IMPORTANT] 
+> - In einem Azure Storage-Konto, das mit [Firewallregeln](../storage/common/storage-network-security.md) konfiguriert ist, können derzeit keine Anwendungspakete verwendet werden.
+> - Ein Azure Storage-Konto, dessen **hierarchischer Namespace** auf **Aktiviert** festgelegt ist, kann nicht für Anwendungspakete verwendet werden.
 
 Der Batch-Dienst verwendet das Azure Storage-Konto, um Ihre Anwendungspakete als Blockblobs zu speichern. Blockblobdaten werden [in der üblichen Höhe in Rechnung gestellt][storage_pricing], und die Größe jedes Pakets darf die maximale Blockblobgröße nicht überschreiten. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage](../storage/blobs/scalability-targets.md). Beachten Sie unbedingt Größe und Anzahl der Anwendungspakete, und entfernen Sie in regelmäßigen Abständen veraltete Pakete, um Kosten zu minimieren.
-> 
-> 
 
 ### <a name="view-current-applications"></a>Anzeigen aktueller Anwendungen
 Klicken Sie zum Anzeigen der Anwendungen in Ihrem Batch-Konto im linken Menü auf das Menüelement **Anwendungen**, während Ihr **Batch-Konto** angezeigt wird.
