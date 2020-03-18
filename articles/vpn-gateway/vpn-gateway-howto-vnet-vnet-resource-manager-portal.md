@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654740"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674151"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -75,16 +75,16 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
 
 - **Einstellungen für das virtuelle Netzwerk**
     - **Name**: VNet1
-    - **Adressraum:** 10.11.0.0/16
+    - **Adressraum:** 10.1.0.0/16
     - **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
     - **Ressourcengruppe**: TestRG1
     - **Standort**: East US
     - **Subnetz**
         - **Name**: FrontEnd
-        - **Adressbereich**: 10.11.0.0/24
+        - **Adressbereich**: 10.1.0.0/24
     - **Gatewaysubnetz**:
         - **Name**: *GatewaySubnet* wird automatisch eingetragen
-        - **Adressbereich**: 10.11.255.0/27
+        - **Adressbereich**: 10.1.255.0/27
 
 - **Einstellungen des Gateways für virtuelle Netzwerke**
     - **Name**: VNet1GW
@@ -127,12 +127,7 @@ Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Eins
 ### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="add-additional-address-space-and-create-subnets"></a>Hinzufügen weiterer Adressräume und Erstellen von Subnetzen
-Sie können dem VNet nach dem Erstellen weitere Adressräume hinzufügen und Subnetze erstellen.
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
-
-## <a name="create-a-virtual-network-gateway"></a>Erstellen eines Gateways für das virtuelle Netzwerk
+## <a name="create-the-vnet1-gateway"></a>Erstellen des Net1-Gateways
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#example-settings) verwenden.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -143,7 +138,7 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>Erstellen und Konfigurieren von VNet4
-Nachdem Sie VNet1 konfiguriert haben, erstellen Sie VNet4, indem Sie die vorherigen Schritte wiederholen und die Werte durch VNet4-Werte ersetzen. Sie können mit dem Konfigurieren von VNet4 beginnen, auch wenn die Erstellung des virtuellen Netzwerkgateways für VNet1 noch nicht abgeschlossen ist. Achten Sie bei Verwendung eigener Werte darauf, dass sich die Adressräume nicht mit anderen VNETs überschneiden, mit denen Sie eine Verbindung herstellen möchten.
+Nachdem Sie VNet1 konfiguriert haben, erstellen Sie VNet4 und das VNet4-Gateway, indem Sie die vorherigen Schritte wiederholen und die Werte durch VNet4-Werte ersetzen. Sie können mit dem Konfigurieren von VNet4 beginnen, auch wenn die Erstellung des virtuellen Netzwerkgateways für VNet1 noch nicht abgeschlossen ist. Achten Sie bei Verwendung eigener Werte darauf, dass sich die Adressräume nicht mit anderen VNETs überschneiden, mit denen Sie eine Verbindung herstellen möchten.
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>Konfigurieren der VNet1-Gatewayverbindung
 Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und VNet4 können Sie die Verbindungen für das virtuelle Netzwerkgateway erstellen. In diesem Abschnitt erstellen Sie eine Verbindung von „VNet1“ zu „VNet4“. Diese Schritte gelten nur für VNets in demselben Abonnement. Wenn sich Ihre VNETs in unterschiedlichen Abonnements befinden, müssen Sie [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) zum Herstellen der Verbindung verwenden. Wenn Ihre VNETs in verschiedenen Ressourcengruppen in demselben Abonnement enthalten sind, können Sie sie jedoch mithilfe des Portals verbinden.
@@ -153,7 +148,7 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für VNet1 und
    ![Seite „Verbindungen“](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "Seite „Verbindungen“")
 2. Wählen Sie **+Hinzufügen** aus, um die Seite **Verbindung hinzufügen** zu öffnen.
 
-   ![Verbindung hinzufügen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "Verbindung hinzufügen")
+   ![Verbindung hinzufügen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "Verbindung hinzufügen")
 3. Geben Sie auf der Seite **Verbindung hinzufügen** die Werte zum Herstellen der Verbindung ein:
 
    - **Name**: Geben Sie einen Namen für Ihre Verbindung ein. Beispiel: *VNet1toVNet4*.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: f3ce439f3e8c2290539e088402c2636974d37821
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430407"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898848"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von Azure Managed Disks
 
@@ -72,6 +72,7 @@ Vorerst gelten für vom Kunden verwaltete Schlüssel die folgenden Einschränkun
 - Alle Ressourcen, die sich auf Ihre vom Kunden verwalteten Schlüssel (Azure Key Vaults, Datenträgerverschlüsselungssätze, VMs, Datenträger und Momentaufnahmen) beziehen, müssen sich im selben Abonnement und in derselben Region befinden.
 - Mit vom Kunden verwalteten Schlüsseln verschlüsselte Datenträger, Momentaufnahmen und Images können nicht in ein anderes Abonnement verschoben werden.
 - Wenn Sie das Azure-Portal verwenden, um den Datenträgerverschlüsselungssatz zu erstellen, können Sie derzeit keine Momentaufnahmen verwenden.
+- Verwaltete Datenträger, die mithilfe von kundenseitig verwalteten Schlüsseln verschlüsselt werden, können nicht auch mit Azure Disk Encryption verschlüsselt werden.
 
 ### <a name="powershell"></a>PowerShell
 

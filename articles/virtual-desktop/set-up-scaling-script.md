@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367252"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127539"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
@@ -37,7 +38,7 @@ Während der Spitzenauslastung überprüft der Auftrag die aktuelle Anzahl von S
 >[!NOTE]
 >*SessionThresholdPerCPU* schränkt die Anzahl der Sitzungen auf dem virtuellen Computer nicht ein. Dieser Parameter legt nur fest, wann neue VMs gestartet werden müssen, um einen Lastenausgleich für die Verbindungen auszuführen. Wenn Sie die Anzahl der Sitzungen einschränken möchten, müssen Sie die Anweisungen zu [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) befolgen, um den Parameter *MaxSessionLimit* entsprechend zu konfigurieren.
 
-Außerhalb der Spitzenauslastungszeiten ermittelt der Auftrag, welche Sitzungshost-VMs heruntergefahren werden sollten. Dies wird basierend auf dem Parameter *MinimumNumberOfRDSH* durchgeführt. Mit dem Auftrag werden die Sitzungshost-VMs auf den Ausgleichsmodus festgelegt, um zu verhindern, dass neue Sitzungen eine Verbindung mit den Hosts herstellen. Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf einen positiven Wert (nicht null) festlegen, fordert das Skript alle derzeit angemeldeten Benutzer per Benachrichtigung auf, ihre Änderungen zu speichern. Anschließend wird so lange gewartet, wie dies in der Konfiguration angegeben ist, und anschließend wird für die Benutzer das Abmelden erzwungen. Nachdem alle Benutzersitzungen einer Sitzungshost-VM abgemeldet wurden, wird die VM über das Skript heruntergefahren.
+Außerhalb der Spitzenauslastungszeiten ermittelt der Auftrag, welche Sitzungshost-VMs heruntergefahren werden sollten. Dies wird basierend auf dem Parameter *MinimumNumberOfRDSH* durchgeführt. Mit dem Auftrag werden die Sitzungshost-VMs auf den Ausgleichsmodus festgelegt, um zu verhindern, dass neue Sitzungen eine Verbindung mit den Hosts herstellen. Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf einen positiven Wert (nicht null) festlegen, fordert der Auftrag alle derzeit angemeldeten Benutzer über eine Benachrichtigung auf, ihre Änderungen zu speichern. Anschließend wird so lange gewartet, wie dies in der Konfiguration angegeben ist, und anschließend wird für die Benutzer das Abmelden erzwungen. Nachdem alle Benutzersitzungen einer Sitzungshost-VM abgemeldet wurden, wird die VM über den Auftrag heruntergefahren.
 
 Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf null festlegen, wird die Abmeldung von Benutzersitzungen durch den Auftrag gemäß der Einstellung für die Sitzungskonfiguration in den angegebenen Gruppenrichtlinien verwaltet. Um diese Gruppenrichtlinien anzuzeigen, wechseln Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Terminaldienste** > **Terminalserver** > **Sitzungszeitlimits**. Wenn aktive Sitzungen auf einer Sitzungshost-VM ausgeführt werden, wird die Sitzungshost-VM vom Auftrag weiterhin ausgeführt. Falls keine aktiven Sitzungen vorhanden sind, wird die Sitzungshost-VM über den Auftrag heruntergefahren.
 
@@ -83,7 +84,9 @@ Zunächst benötigen Sie ein Azure Automation-Konto zum Ausführen des PowerShel
 3. Führen Sie das folgende Cmdlet aus, um das Skript zum Erstellen des Azure Automation-Kontos herunterzuladen:
 
      ```powershell
-     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     Set-Location -Path "c:\temp"
+     $uri = "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1"
+     Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
 4. Führen Sie das folgende Cmdlet aus, um das Skript auszuführen und das Azure Automation-Konto zu erstellen:
@@ -175,9 +178,9 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
 
      $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
 
-     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you'd like to scale"
 
-     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
 
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
 
@@ -203,7 +206,7 @@ Abschließend müssen Sie die Azure-Logik-App erstellen und einen Ausführungsze
 
      $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
 
-     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
      .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
        -AADTenantID $aadTenantId `

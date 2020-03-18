@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5a6a96f478c4402a830cc522657f56cfd11fa56f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821826"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096870"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -65,7 +65,7 @@ Wenn der maximal unterstützte Aufbewahrungszeitraum für die Point-in-Time-Wied
 |:---------------------------------------------| :-------------- | :----------------|
 | Automatisches Failover                           |     Nein          |      Ja         |
 | Gleichzeitiges Failover für mehrere Datenbanken  |     Nein          |      Ja         |
-| Aktualisieren der Verbindungszeichenfolge nach einem Failover      |     Ja         |      Nein          |
+| Benutzer muss Verbindungszeichenfolge nach einem Failover aktualisieren      |     Ja         |      Nein          |
 | Unterstützung verwalteter Instanzen                   |     Nein          |      Ja         |
 | Kann sich in der selben Region wie die primäre Instanz befinden             |     Ja         |      Nein          |
 | Mehrere Replikate                            |     Ja         |      Nein          |

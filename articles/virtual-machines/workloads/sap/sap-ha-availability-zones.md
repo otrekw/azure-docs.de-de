@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291497"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675612"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -118,6 +118,9 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
 - Die dritte Zone wird verwendet, um das SBD-Gerät zu hosten, falls Sie einen [SUSE Linux Pacemaker-Cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) oder zusätzliche Anwendungsinstanzen erstellen.
 - Für Laufzeitkonsistenz für unternehmenskritische Prozesse können Sie versuchen, bestimmte Batchaufträge und Benutzer mithilfe von SAP Batch Server-Gruppen, SAP-Anmeldegruppen oder RFC-Gruppen direkt zu Anwendungsinstanzen in derselben Zone wie die aktive DBMS-Instanz zu leiten. Im Fall eines zonalen Failovers müssen Sie diese Gruppen jedoch manuell in Instanzen verschieben, die auf VMs in der Zone mit der aktiven DB-VM ausgeführt werden.  
 - Möglicherweise sollten Sie ruhende Dialoginstanzen in jeder Zone bereitstellen. Auf diese Weise findet eine sofortige Rückkehr zur vorherigen Ressourcenkapazität statt, wenn eine Zone, die von Ihren Anwendungsinstanzen verwendet wird, außer Betrieb ist.
+
+> [!IMPORTANT]
+> In diesem Aktiv/Aktiv-Szenario werden zusätzliche Gebühren für Bandbreite von Microsoft ab 01.04.2020 angekündigt. Lesen Sie das Dokument [Preisdetails zur Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/). Die Datenübertragung zwischen der SAP-Anwendungsschicht und der SAP-DBMS-Schicht ist recht kostenintensiv. Daher kann das Aktiv/Aktiv-Szenario erheblich zu den Kosten beitragen. Kehren Sie regelmäßig zu diesem Artikel zurück, um sich über die genauen Kosten zu informieren. 
 
 
 ## <a name="activepassive-deployment"></a>Aktiv/Passiv-Bereitstellung

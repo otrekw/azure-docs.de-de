@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367214"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127414"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -65,7 +66,7 @@ Sitzungshost-VMs können auf unterschiedliche Weise erstellt werden. Das Windows
 
 Die Vorlage „Windows Virtual Desktop – Provision a host pool“ (Windows Virtual Desktop – Bereitstellen eines Hostpools“) ist im Azure Marketplace verfügbar.
 
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Error: Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt
+### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Error: Beim Verwenden eines Links von GitHub wird die Meldung „Create a free account“ (Kostenloses Konto erstellen) angezeigt.
 
 ![Screenshot: Kostenloses Konto erstellen](media/be615904ace9832754f0669de28abd94.png)
 
@@ -216,7 +217,7 @@ Beispiel für unformatierten Fehler:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Error: DeploymentFailed – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen
 
-![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen](media/64870370bcbe1286906f34cf0a8646ab.png)
+![Screenshot: Bereitstellungsfehler – PowerShell DSC Configuration „FirstSessionHost“ wurde mit Fehlern abgeschlossen.](media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Beispiel für unformatierten Fehler:
 

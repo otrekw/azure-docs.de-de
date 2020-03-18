@@ -1,23 +1,18 @@
 ---
-title: Bereitstellen von dedizierten Azure-Hosts über das Azure-Portal
-description: Stellen Sie VMs auf dedizierten Hosts über das Azure-Portal bereit.
-services: virtual-machines-windows
+title: Bereitstellen von dedizierten Azure-Hosts über das Portal
+description: Bereitstellen von VMs auf dedizierten Hosts über das Portal.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: aa19c343e003bf1cd55e3d12b18e595113a7189e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b6f5e155b76535c4d9e0080983d5f54cec3adb01
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833950"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086948"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs auf dedizierten Hosts über das Portal
 
@@ -40,6 +35,25 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 1. Wenn eine Meldung über die erfolgreiche Validierung angezeigt wird, wählen Sie **Erstellen** aus.
 
+## <a name="add-an-existing-vm"></a>Hinzufügen einer vorhandenen VM 
+
+Sie können einem dedizierten Host eine vorhandene VM hinzufügen, aber die VM muss zunächst beendet bzw. ihre Zuordnung aufgehoben werden. Stellen Sie vor dem Verschieben einer VM auf einen dedizierten Host sicher, dass die VM-Konfiguration unterstützt wird:
+
+- Die VM-Größe muss sich in derselben Größenfamilie wie der dedizierte Host befinden. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
+- Die VM muss sich in derselben Region wie der dedizierte Host befinden.
+- Die VM darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie die VM aus der Näherungsplatzierungsgruppe, bevor Sie sie auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer VM aus einer Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group).
+- Die VM darf sich nicht in einer Verfügbarkeitsgruppe befinden.
+- Wenn sich die VM in einer Verfügbarkeitszone befindet, muss es sich um dieselbe Verfügbarkeitszone wie die Hostgruppe handeln. Die Verfügbarkeitszoneneinstellungen für die VM und die Hostgruppe müssen identisch sein.
+
+Verschieben Sie die VM mithilfe des [Portals](https://portal.azure.com) auf einen dedizierten Host.
+
+1. Öffnen Sie die Seite für die VM.
+1. Wählen Sie **Beenden** aus, um die VM zu beenden bzw. ihre Zuordnung aufzuheben.
+1. Wählen Sie im Menü auf der linken Seite die Option **Konfiguration** aus.
+1. Wählen Sie eine Hostgruppe und einen Host aus den Dropdownmenüs aus.
+1. Wählen Sie im oberen Bereich der Seite **Speichern** aus, wenn Sie fertig sind.
+1. Nachdem die VM dem Host hinzugefügt wurde, klicken Sie im linken Menü auf **Übersicht**.
+1. Wählen Sie oben auf der Seite **Starten** aus, um die VM neu zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

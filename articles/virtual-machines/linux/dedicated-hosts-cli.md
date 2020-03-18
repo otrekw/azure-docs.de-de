@@ -1,20 +1,17 @@
 ---
-title: Bereitstellen von dedizierten Azure-Hosts über die Befehlszeilenschnittstelle
+title: Bereitstellen von Linux-VMs auf dedizierten Hosts mit der CLI
 description: Stellen Sie VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle bereit.
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483481"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127697"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Bereitstellen von VMs auf dedizierten Hosts über die Azure-Befehlszeilenschnittstelle
  
@@ -27,7 +24,7 @@ Stellen Sie sicher, dass mindestens Version 2.0.70 der Azure-Befehlszeilenschni
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3, ESv3, FSv2, LSv2 und MSv2. 
+- Die verfügbaren Größen und Hardwaretypen für dedizierte Hosts variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
  
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen 
@@ -80,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Erstellen eines Hosts 
 
-Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Die folgenden SKU-Werte werden unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
+Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 

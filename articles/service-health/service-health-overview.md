@@ -3,12 +3,12 @@ title: Übersicht über Service Health | Microsoft-Dokumentation
 description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuellen und zukünftigen Problemen und Wartungen der Azure-Dienste betroffen sind.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654017"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898436"
 ---
 # <a name="service-health-overview"></a>Service Health-Übersicht
 
@@ -16,11 +16,12 @@ Service Health bietet Ihnen ein anpassbares Dashboard, das die Integrität Ihrer
 
 ## <a name="service-health-events"></a>Service Health-Ereignisse
 
-Service Health verfolgt drei Typen von Integritätsereignissen nach, die sich auf Ihre Ressourcen auswirken könnten:
+Service Health verfolgt vier Typen von Integritätsereignissen nach, die sich auf Ihre Ressourcen auswirken könnten:
 
 1. **Dienstprobleme**: Probleme in den Azure-Diensten, die Sie momentan betreffen. 
 2. **Geplante Wartung**: Anstehende Wartung, die sich in der Zukunft auf die Verfügbarkeit Ihrer Dienste auswirken kann.  
 3. **Integritätsempfehlungen**: Änderungen in Azure-Diensten, die Ihre Aufmerksamkeit erfordern. Beispielsweise, wenn Azure-Funktionen veraltet sind oder Sie ein Nutzungskontingent überschreiten.
+4. **Sicherheitsempfehlungen (Vorschau)** : Sicherheitsbezogene Benachrichtigungen, die sich auf die Verfügbarkeit Ihrer Azure-Dienste auswirken können.
 
 > [!NOTE]
 > Um Service Health-Ereignisse anzuzeigen, [müssen Benutzer über die Rolle „Leser“](../role-based-access-control/role-assignments-portal.md) für ein Abonnement verfügen.
@@ -43,7 +44,7 @@ Wählen Sie die Registerkarte **Potenzielle Auswirkung** aus, um die spezifische
 
 ## <a name="get-links-and-downloadable-explanations"></a>Abrufen von Links und herunterladbaren Erläuterungen 
 
-Sie können einen Link für das Problem abrufen, den Sie in Ihrem Problemverwaltungssystem verwenden können. Sie können PDF- und manchmal CSV-Dateien herunterladen, die Sie für Personen freigeben können, die keinen Zugriff auf das Azure-Portal haben.   
+Sie können einen Link für das Problem abrufen, den Sie in Ihrem Problemverwaltungssystem verwenden können. Sie können PDF- und manchmal CSV-Dateien herunterladen, die Sie für Personen freigeben können, die keinen Zugriff auf das Azure-Portal besitzen.   
 
 ![Verwalten von Dienstproblemen – Problemverwaltung](./media/service-health-overview/azure-service-health-overview-3.png)
 

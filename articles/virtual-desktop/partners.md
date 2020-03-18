@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+manager: lizross
+ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201780"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127574"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -159,7 +160,7 @@ Als zertifizierter Integrationspartner unterstützt Liquit die Umstellung auf di
 
 Login VSI ist ein Windows Virtual Desktop-VASP (Value-Added Service Provider) und ein Microsoft-Partner, der Software für Anwendungsleistungstests in Windows Virtual Desktop-Umgebungen bereitstellt. Kunden, die ihre lokalen Geschäftsdienste in Windows Virtual Desktop verlagern, verwenden Login VSI Enterprise Edition, um optimale Leistung, Skalierbarkeit und Verfügbarkeit der Betriebssysteme Windows 10 Enterprise Multisession, Windows 10 Enterprise und Windows 7 auszuwerten und zu verwalten, unter denen ihre unternehmenskritischen Anwendungen ausgeführt werden.
 
-- [Zur Partnerwebsite](https://www.loginvsi.com).
+- [Zur Partnerwebsite](https://www.loginvsi.com/use-cases-initiatives/windows-virtual-desktop).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -188,7 +189,7 @@ In Verbindung mit Windows Virtual Desktop verringert Cloudpaging die Kosten weit
 
 PolicyPak Software ist ein Windows Virtual Desktop-Partner, der die gesamte Einstellungsverwaltung für Anwendungen, Desktop-, Browser-, Java-und Sicherheitseinstellungen ausführt. PolicyPak gewährleistet die Konformität von Desktop-, System- und Sicherheitseinstellungen. PolicyPak erhöht den Wert von Windows Virtual Desktop durch das Hinzufügen einer Reihe von Komponenten, um die integrierte Verwaltung von Windows zu verbessern. Verwenden Sie Ihre vorhandene Active Directory-Gruppenrichtlinie und/oder Windows Intune, um die Einstellungen von PolicyPak bereitzustellen und die Verwaltung von Windows 10-Computern durch Administratoren zu verbessern. 
 
-Die wichtigsten Anwendungsfälle für PolicyPak sind das Entfernen lokaler Administratorrechte und Überwinden von UAC-Eingabeaufforderungen, Blockieren von Ransomware, Verwalten mehrerer Browser, Verwalten der Enterprise- und Kompatibilitätsmodi von Internet Explorer, Verringern der Anzahl der GPOs, Verwalten von Windows 10-Dateizuordnungen, Verwalten des Windows 10-Startmenüs und der Taskleiste sowie Verwalten von Windows 10-Funktionen und optionalen Funktionen.  
+Die wichtigsten Anwendungsfälle für PolicyPak sind das Entfernen lokaler Administratorrechte und Überwinden von UAC-Eingabeaufforderungen, Blockieren von Ransomware, Verwalten mehrerer Browser, Verwalten der Enterprise- und Kompatibilitätsmodi von Internet Explorer, Verringern der Anzahl der GPOs, Verwalten von Windows 10-Dateizuordnungen, Verwalten des Windows 10-Startmenüs und der Taskleiste sowie Verwalten von Windows 10-Funktionen und optionalen Funktionen.  
 
 - [Zur Partnerwebsite](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
@@ -253,6 +254,16 @@ Tricerat bietet eine überragende Druckverwaltungslösung für Windows Virtual D
 Mit Tricerat ist der Druckvorgang in Windows Virtual Desktop und anderen Umgebungen nahtlos integriert. Mit der Tricerat-Software können Administratoren problemlos lokale Drucker mit der Cloud verbinden und die Druckverwaltung im Unternehmen somit von herkömmlichen Umgebungen auf neue, moderne Arbeitsbereiche ausweiten.
 
 - [Zur Partnerwebsite](https://www.tricerat.com/microsoft-printing).
+
+## <a name="vast-limits"></a>vast limits
+
+![vast limits-Logo](./media/partners/vast-limits.png)
+
+vast limits, das uberAgent-Unternehmen, bietet Sichtbarkeit in Windows Virtual Desktop-Bereitstellungen. Es erstellt Software für die Unternehmens-Enterprise IT, da es weiß, wie IT-Experten denken und welche Tools sie benötigen. Die Produkte unterstützen IT-Experten dabei, effizienter zu sein, indem sie ihnen genau das zur Verfügung stellen, was Sie benötigen, um ihre Arbeit zu erledigen. Nicht mehr und nicht weniger.
+
+Bei uberAgent handelt es sich um ein Überwachungs- und Analyseprodukt, das für Endbenutzercomputing konzipiert ist und nicht nur Daten erfasst – es stellt Kunden die Informationen zur Verfügung, die relevant sind. uberAgent verfügt über eigene Metriken, die wichtige Aspekte der Benutzererfahrung, Anwendungsleistung und Endpunktsicherheit abdecken und Sie über alles informieren, was Sie zu Ihren Windows Virtual Desktop-VMs wissen müssen, ohne die Benutzerdichte Ihrer Systeme zu beeinträchtigen. uberAgent vereinfacht die Problembehandlung, hilft bei der Dimensionierung und bietet umfassende Informationen, die für die Informationssicherheit wesentlich sind.
+
+- [Zur Partnerwebsite wechseln](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
 
 ## <a name="workspot"></a>Workspot
 

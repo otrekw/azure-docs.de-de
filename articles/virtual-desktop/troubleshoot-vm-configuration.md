@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367163"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127589"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -298,7 +299,7 @@ Wenn das Betriebssystem Microsoft Windows 10 ist, fahren Sie mit den folgenden A
 
 ## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert
 
-Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administratorkonto anmelden, erhalten Sie möglicherweise folgende Benachrichtigung: „Der Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert. Die Remotedesktopdienste können in X Tagen nicht mehr ausgeführt werden. Geben Sie mit dem Server-Manager auf dem Verbindungsbrokerserver einen Remotedesktop-Lizenzierungsmodus an.“
+Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administratorkonto anmelden, erhalten Sie möglicherweise folgende Benachrichtigung: „Der Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert. Die Remotedesktopdienste können in X Tagen nicht mehr ausgeführt werden. Geben Sie mit dem Server-Manager auf dem Verbindungsbrokerserver einen Remotedesktop-Lizenzierungsmodus an.“
 
 Wenn das Zeitlimit abgelaufen ist, wird die folgende Fehlermeldung angezeigt: „Die Verbindung mit der Remotesitzung wurde getrennt, da keine Remotedesktop-Clientzugriffslizenzen für diesen Computer vorhanden sind.“
 

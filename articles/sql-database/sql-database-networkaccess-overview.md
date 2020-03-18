@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251905"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945392"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251905"
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für **verwaltete Azure SQL-Datenbank-Instanzen**. Weitere Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
-Wenn Sie eine neue Azure SQL Server-Instanz im [Azure-Portal](sql-database-single-database-get-started.md) erstellen, ist das Ergebnis ein öffentlicher Endpunkt im Format *IhrServername.database.windows.net*. Der gesamte Zugriff auf den öffentlichen Endpunkt wird standardmäßig verweigert. Sie können dann die folgenden Netzwerkzugriffssteuerungen verwenden, um den Zugriff auf die SQL-Datenbank selektiv über den öffentlichen Endpunkt zuzulassen.
+Wenn Sie eine neue Azure SQL Server-Instanz im [Azure-Portal](sql-database-single-database-get-started.md) erstellen, ist das Ergebnis ein öffentlicher Endpunkt im Format *IhrServername.database.windows.net*.
+
+Sie können die folgenden Netzwerkzugriffssteuerungen verwenden, um den Zugriff auf die SQL-Datenbank selektiv über den öffentlichen Endpunkt zuzulassen:
 - Azure-Dienste zulassen: Bei einer Festlegung auf „Ein“ können andere Ressourcen innerhalb der Azure-Grenze (z. B. ein virtueller Azure-Computer) auf die SQL-Datenbank zugreifen.
 
 - IP-Firewallregeln: Verwenden Sie dieses Feature, um Verbindungen von einer bestimmten IP-Adresse explizit zuzulassen (z. B. von lokalen Computern).
 
+Sie können den privaten Zugriff auf die SQL-Datenbank auch aus [virtuellen Netzwerken](../virtual-network/virtual-networks-overview.md) wie folgt zulassen:
 - Virtual Network-Firewallregeln: Verwenden Sie dieses Feature, um Datenverkehr von einem bestimmten virtuellen Netzwerk innerhalb der Azure-Grenze zuzulassen.
 
+- Private Link: Verwenden Sie dieses Feature zum Erstellen eines privaten Endpunkts für Azure SQL Server innerhalb eines bestimmten Virtual Network.
+
+
+
+Im folgenden Video finden Sie eine Übersicht über diese Zugriffssteuerungen und ihre Aufgaben:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>Azure-Dienste zulassen 
 Diese Einstellung wird während der Erstellung einer neuen Azure SQL Server-Instanz im [Azure-Portal](sql-database-single-database-get-started.md) deaktiviert.
 
- ![Screenshot: Erstellen eines neuen Servers][1]
+
 
 Sie können diese Einstellung auch über den Bereich „Firewall“ wie folgt ändern, nachdem die Azure SQL Server-Instanz erstellt wurde.
   
@@ -129,6 +138,9 @@ Regeln für virtuelle Netzwerke stellen eine einfachere Alternative zum Einricht
 > [!NOTE]
 > Azure SQL-Datenbank wird noch nicht in einem Subnetz unterstützt. Wenn sich Ihr Azure SQL-Datenbank-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befände, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrer SQL-Datenbank-Instanz kommunizieren. In diesem Fall könnten Ihre virtuellen Computer mit der SQL-Datenbank-Instanz kommunizieren, ohne dass VNET-Regeln oder IP-Regeln erforderlich sind.
 
+## <a name="private-link"></a>Private Link 
+Private Link ermöglicht das Herstellen von Verbindungen mit Azure SQL Server über einen **privaten Endpunkt**. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) und Subnetz.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Einen Schnellstart zum Erstellen einer IP-Firewallregel auf Serverebene finden Sie unter [Erstellen einer Azure SQL-Datenbank-Instanz](sql-database-single-database-get-started.md).
@@ -146,3 +158,4 @@ Regeln für virtuelle Netzwerke stellen eine einfachere Alternative zum Einricht
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

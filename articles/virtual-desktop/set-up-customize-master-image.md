@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 867b327ac25d51cd3955e622da9d8067ae6d9ae9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368796"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127725"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -184,7 +185,7 @@ Dieser Abschnitt gilt nur, wenn das Masterimage lokal erstellt wurde.
 
 In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](/azure/javascript/tutorial-vscode-static-website-node-03) verwenden, um ein Konto zu erstellen.
 
-1. Konvertieren Sie das VM-Image (VHD) in „Fixed“ (Fest), falls Sie dies noch nicht getan haben. Wenn Sie das Image nicht in „Fixed“ (Fest) konvertieren, ist die Imageerstellung nicht erfolgreich.
+1. Konvertieren Sie das VM-Image (VHD) in „Fixed“ (Fest), falls dies noch nicht geschehen ist. Wenn Sie das Image nicht in „Fixed“ (Fest) konvertieren, ist die Imageerstellung nicht erfolgreich.
 
 2. Laden Sie die VHD in einen Blobcontainer in Ihrem Speicherkonto hoch. Sie können den Upload mit dem [Storage-Explorer-Tool](https://azure.microsoft.com/features/storage-explorer/) schnell durchführen. Weitere Informationen zum Storage-Explorer-Tool finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 

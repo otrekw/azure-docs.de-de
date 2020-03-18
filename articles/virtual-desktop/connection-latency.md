@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: 7ef35bdf6c7470d425826d7a30755cc216e69158
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+manager: lizross
+ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164068"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128194"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Ermitteln der Verbindungswartezeit für Benutzer in Windows Virtual Desktop
 
@@ -22,7 +23,7 @@ Mit dem [Tool „Einschätzung der Servicequalität für Windows Virtual Desktop
 
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
-Windows Virtual Desktop verwendet den Azure Traffic Manager, der den Standort des DNS-Servers des Benutzers prüft, um die nächstgelegene Windows Virtual Desktop-Dienstinstanz zu finden. Administratoren wird empfohlen, diesen Standort zu überprüfen, bevor sie den Standort für die virtuellen Computer auswählen.
+Windows Virtual Desktop verwendet den Azure Traffic Manager, der den Standort des DNS-Servers des Benutzers prüft, um die nächstgelegene Windows Virtual Desktop-Dienstinstanz zu finden. Administratoren wird empfohlen, diesen Standort zu überprüfen, bevor sie den Standort für die VMs auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

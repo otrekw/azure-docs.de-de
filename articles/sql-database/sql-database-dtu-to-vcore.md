@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/08/2019
-ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/09/2020
+ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811275"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945401"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrieren vom DTU-basierten Modell zum V-Kern-basierten Modell
 
@@ -37,15 +37,15 @@ Die folgende Tabelle enthält eine Anleitung für spezifische Migrationsszenarie
 |---|---|---|---|
 |Standard|Allgemeiner Zweck|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
 |Premium|Unternehmenskritisch|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
-|Standard|Unternehmenskritisch|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
+|Standard|Unternehmenskritisch|Aktualisieren|Sekundäre Einheit muss zuerst migriert werden|
 |Unternehmenskritisch|Standard|Downgrade|Primäre Einheit muss zuerst migriert werden|
 |Premium|Allgemeiner Zweck|Downgrade|Primäre Einheit muss zuerst migriert werden|
-|Allgemeiner Zweck|Premium|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
+|Allgemeiner Zweck|Premium|Aktualisieren|Sekundäre Einheit muss zuerst migriert werden|
 |Unternehmenskritisch|Allgemeiner Zweck|Downgrade|Primäre Einheit muss zuerst migriert werden|
-|Allgemeiner Zweck|Unternehmenskritisch|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
+|Allgemeiner Zweck|Unternehmenskritisch|Aktualisieren|Sekundäre Einheit muss zuerst migriert werden|
 ||||
 
-\* Auf der Standardebene wird für jeweils 100 DTUs mindestens ein V-Kern benötigt. Auf der Premiumebene wird für jeweils 125 DTUs mindestens ein V-Kern benötigt.
+\* Als Faustregel gilt: Auf der Standardebene wird für jeweils 100 DTUs mindestens ein V-Kern benötigt. Auf der Premium-Ebene wird für jeweils 125 DTUs mindestens ein virtueller Kern benötigt. Weitere Informationen finden Sie unter [Auf virtuellen Kernen basierendes Erwerbsmodell](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
 ## <a name="migrate-failover-groups"></a>Migrieren von Failovergruppen
 

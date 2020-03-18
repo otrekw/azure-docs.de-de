@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367236"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127555"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
 
@@ -24,7 +25,7 @@ Sie benötigen den Namen der Remotesitzung, um Grafikleistungsindikatoren zu ide
 
 1. Öffnen Sie die Windows-Eingabeaufforderung aus der Remotesitzung.
 2. Führen Sie den Befehl **qwinsta** aus, und suchen Sie den Namen Ihrer Sitzung.
-    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird das gleiche Suffix angehängt, das auch Ihr Sitzungsname hat (z.B. “rdp-tcp 37”).
+    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird die gleiche Nummer als Suffix vorangestellt, die Ihrem Sitzungsnamen vorangestellt ist, z. B. „rdp-tcp 37“.
     - Wenn die Sitzung auf einem virtuellen Computer gehostet wird, der virtuelle Grafikprozessoren (vGPU) unterstützt: Ihre Instanz jedes Leistungsindikators wird auf dem Server und nicht auf Ihrem virtuellen Computer gespeichert. Ihre Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
 
 >[!NOTE]
@@ -71,7 +72,7 @@ Wenn der Wert des Leistungsindikators „Ausgabeframes/Sekunde“ dem des Leistu
 
 Weitere Informationen zum Diagnostizieren von Problemen im Zusammenhang mit einer App finden Sie unter [Leistungsindikatoren für verzögerte Benutzereingabe](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Beispielsweise erfordern Aufgaben wie das Ansehen eines Videos eine volle Eingangsbildrate von 30 Frames/Sekunde, aber weniger rechenintensive Aufgaben wie das seltene Bearbeiten eines Dokuments führen ohne Beeinträchtigung der Benutzerfreundlichkeit zu einem viel niedrigeren Wert für die Eingangsbildrate in Frames/Sekunde.
+Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Beispielsweise erfordern Aufgaben wie das Ansehen eines Videos eine volle Eingangsbildrate von 30 Frames/Sekunde, aber weniger rechenintensive Aufgaben wie das seltene Bearbeiten eines Dokuments führen ohne Beeinträchtigung der Benutzerfreundlichkeit zu einem viel niedrigeren Wert für die Eingangsbildrate in Frames/Sekunde.
 
 ### <a name="addressing-poor-frame-quality"></a>Behandeln von schlechter Framequalität
 

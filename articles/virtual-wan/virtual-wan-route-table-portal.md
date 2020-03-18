@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612359"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402942"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
 
-In diesem Artikel erfahren Sie, wie Sie Datenverkehr von einer Niederlassung (lokaler Standort) steuern, die über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) und den Virtual WAN-Hub mit einem Spoke-VNET verbunden ist.
+In diesem Artikel erfahren Sie, wie Sie Datenverkehr von einer Niederlassung (lokaler Standort) steuern, die über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) und den Virtual WAN-Hub mit einem virtuellen Spoke-Netzwerk (VNET) verbunden ist.
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -29,15 +29,16 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 
     * Sie haben der Netzwerkschnittstelle des virtuellen Netzwerkgeräts eine private IP-Adresse zugewiesen.
 
-    * Das virtuelle Netzwerkgerät wird nicht im virtuellen Hub bereitgestellt. Es muss in einem gesonderten VNET bereitgestellt werden.
+    * Das virtuelle Netzwerkgerät wird nicht im virtuellen Hub bereitgestellt. Es muss in einem gesonderten virtuellen Netzwerk bereitgestellt werden.
 
-    *  Mit dem VNET des virtuellen Netzwerkgeräts kann mindestens ein virtuelles Netzwerk verbunden sein. In diesem Artikel wird dieses VNET als „Indirektes Spoke-VNET“ bezeichnet. Diese VNETs können mithilfe von VNET-Peering mit dem VNET des virtuellen Netzwerkgeräts verbunden werden. Die VNET-Peeringlinks sind in der Abbildung oben als schwarze Pfeile zwischen VNET 1, VNET 2 und NVA-VNET dargestellt.
-*  Sie haben 2 VNETs erstellt. Diese werden als Spoke-VNETs verwendet.
+    *  Mit dem virtuellen Netzwerk des virtuellen Netzwerkgeräts kann mindestens ein virtuelles Netzwerk verbunden sein. In diesem Artikel wird dieses virtuelle Netzwerk als „indirektes Spoke-VNET“ bezeichnet. Diese virtuellen Netzwerke können mithilfe von VNET-Peering mit dem VNET des virtuellen Netzwerkgeräts verbunden werden. Die VNET-Peeringlinks sind in der Abbildung oben als schwarze Pfeile zwischen VNET 1, VNET 2 und NVA-VNET dargestellt.
+*  Sie haben zwei virtuelle Netzwerke erstellt. Diese werden als Spoke-VNETs verwendet.
 
-    * In diesem Artikel sind die VNET-Spoke-Adressräume wie folgt: VNet1: 10.0.2.0/24 und VNET2: 10.0.3.0/24. Informationen zum Erstellen eines VNET finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md).
+    * Die VNET-Spoke-Adressräume lauten wie folgt: VNet1: 10.0.2.0/24 und VNET2: 10.0.3.0/24. Informationen zum Erstellen eines virtuellen Netzwerks finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md).
 
     * Stellen Sie sicher, dass in den VNETs keine Gateways für virtuelle Netzwerke vorhanden sind.
-    * Bei dieser Konfiguration benötigen diese VNETs kein Gatewaysubnetz.
+
+    * Die VNETs erfordern kein Gatewaysubnetz.
 
 ## <a name="signin"></a>1. Anmelden
 
@@ -45,7 +46,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 ## <a name="vwan"></a>2. Erstellen eines virtuellen WAN
 
-Erstellen Sie ein virtuelles WAN. Für diese Übung können Sie die folgenden Werte verwenden:
+Erstellen Sie ein virtuelles WAN. Verwenden Sie die folgenden Beispielwerte:
 
 * **Name des virtuellen WAN:** myVirtualWAN
 * **Ressourcengruppe:** testRG
@@ -55,7 +56,7 @@ Erstellen Sie ein virtuelles WAN. Für diese Übung können Sie die folgenden We
 
 ## <a name="hub"></a>3. Erstellen eines Hubs
 
-Erstellen Sie den Hub. Für diese Übung können Sie die folgenden Werte verwenden:
+Erstellen Sie den Hub. Verwenden Sie die folgenden Beispielwerte:
 
 * **Standort:** USA (Westen)
 * **Name:** westushub
@@ -65,7 +66,7 @@ Erstellen Sie den Hub. Für diese Übung können Sie die folgenden Werte verwend
 
 ## <a name="route"></a>4. Erstellen und Anwenden einer Routingtabelle für einen Hub
 
-Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Für diese Übung können Sie die folgenden Werte verwenden:
+Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Verwenden Sie die folgenden Beispielwerte:
 
 * **Spoke-VNet-Adressräume:** (VNET1 und VNET2) 10.0.2.0/24 und 10.0.3.0/24
 * **Private IP-Adressen der Netzwerkschnittstelle der DMZ des virtuellen Netzwerkgeräts:** 10.0.4.5
@@ -79,17 +80,17 @@ Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Für diese Übu
 
 ## <a name="connections"></a>5. Herstellen der VNET-Verbindungen
 
-Stellen Sie eine VNET-Verbindung zwischen jedem indirekten Spoke-VNET (VNET1 und VNET2) und dem Hub her. Die VNET-Verbindungen sind in der Abbildung oben durch blaue Pfeile dargestellt. Erstellen Sie anschließend eine VNET-Verbindung vom NVA-VNET zum Hub (schwarzer Pfeil in der Abbildung). 
+Stellen Sie eine VNET-Verbindung zwischen jedem indirekten Spoke-VNET (VNET1 und VNET2) und dem Hub her. Die VNET-Verbindungen sind in der Abbildung oben durch blaue Pfeile dargestellt. Erstellen Sie anschließend eine VNET-Verbindung vom NVA-VNET zum Hub (schwarzer Pfeil in der Abbildung).
 
  Für diesen Schritt können Sie die folgenden Werte verwenden:
 
-| VNet-Name| Verbindungsname|
+| Name des virtuellen Netzwerks| Verbindungsname|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-Wiederholen Sie das folgende Verfahren für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
+Wiederholen Sie das folgende Verfahren für jedes virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen möchten.
 
 1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtuelle Netzwerkverbindungen**.
 2. Klicken Sie auf der Seite für die VNET-Verbindung auf **+Add connection** (+Verbindung hinzufügen).

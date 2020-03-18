@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661293"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080307"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -279,6 +279,9 @@ Beim Entwerfen der Infrastruktur für SAP in Azure müssen Sie einige Mindestanf
 Die [Azure NetApp Files-Durchsatzlimits](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) pro 1 TiB an Volumekontingent lauten:
 - Storage Premium-Tarif: 64 MIB/s  
 - Storage Ultra-Tarif: 128 MIB/s  
+
+> [!IMPORTANT]
+> Unabhängig von der Kapazität, die Sie auf einem einzelnen NFS-Volume bereitstellen, wird erwartet, dass der Durchsatz im Bereich von 1,2 bis 1,4 GB/Sek. Bandbreite von einem Consumer in einem virtuellen Computer genutzt wird. Dies hat mit der zugrundeliegenden Architektur des ANF-Angebots und den damit verbundenen Einschränkungen der Linux-Sitzungen bezüglich NFS zu tun. Die Leistungs- und Durchsatzzahlen, die im Artikel [Ergebnisse des Leistungsbenchmarktests für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks) beschrieben werden, wurden für ein gemeinsam genutztes NFS-Volume mit mehreren Client-VMs und daher mit mehreren Sitzungen durchgeführt. Dieses Szenario unterscheidet sich von dem Szenario, das wird in SAP messen. Dabei messen wir den Durchsatz von einer einzelnen VM für ein NFS-Volume, das unter ANF gehostet wird.
 
 Um die SAP-Mindestanforderungen für den Durchsatz für Daten und Protokolle und die Richtlinien für `/hana/shared` zu erfüllen, werden folgende Größen empfohlen:
 

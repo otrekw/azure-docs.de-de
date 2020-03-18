@@ -2,17 +2,18 @@
 title: Azure Disk Encryption mit Azure AD-Apps für Linux-IaaS-VMs (früheres Release)
 description: Dieser Artikel enthält eine Anleitung zur Aktivierung von Microsoft Azure Disk Encryption für virtuelle Linux-IaaS-Computer.
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d41f2138a453e4a34354c10bbebad41724a18d1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457483"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970606"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Aktivieren von Azure Disk Encryption mit Azure AD auf Linux-VMs (vorheriges Release)
 
@@ -35,7 +36,7 @@ Erstellen Sie eine [Momentaufnahme](snapshot-copy-managed-disk.md), und erstelle
 
  
 
-## <a name="bkmk_RunningLinux"> </a> Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computer
+## <a name="bkmk_RunningLinux"> </a> Aktivieren der Verschlüsselung auf einer vorhandenen oder aktuell ausgeführten IaaS-Linux-VM
 
 In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie die Azure Resource Manager-Vorlage, PowerShell-Cmdlets oder Azure CLI-Befehle verwenden. 
 
@@ -45,7 +46,7 @@ In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie die Az
 >Das Verschlüsseln bzw. Deaktivieren der Verschlüsselung kann dazu führen, dass die VM neu gestartet wird. 
 >
 
-### <a name="bkmk_RunningLinuxCLI"> </a>Aktivieren der Verschlüsselung auf einem vorhandenen oder aktuell ausgeführten virtuellen Linux-Computer mit der Azure CLI 
+### <a name="bkmk_RunningLinuxCLI"> </a>Aktivieren der Verschlüsselung auf einer vorhandenen oder aktuell ausgeführten Linux-VM mit der Azure CLI 
 Sie können die Datenträgerverschlüsselung auf Ihrer verschlüsselten VHD aktivieren, indem Sie das Befehlszeilentool [Azure CLI 2.0](/cli/azure) installieren und verwenden. Azure PowerShell kann mit [Azure Cloud Shell](../../cloud-shell/overview.md) im Browser verwendet oder auf dem lokalen Computer installiert und in einer beliebigen PowerShell-Sitzung verwendet werden. Verwenden Sie die folgenden CLI-Befehle, um die Verschlüsselung auf vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computern in Azure zu aktivieren:
 
 Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren.
@@ -77,7 +78,7 @@ Verwenden Sie den Befehl [az vm encryption enable](/cli/azure/vm/encryption#az-v
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
      ```
 
-### <a name="bkmk_RunningLinuxPSH"> </a>Aktivieren der Verschlüsselung auf einem vorhandenen oder aktuell ausgeführten virtuellen Linux-Computer mit PowerShell
+### <a name="bkmk_RunningLinuxPSH"> </a> Aktivieren der Verschlüsselung auf einer vorhandenen oder aktuell ausgeführten Linux-VM mit PowerShell
 Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren. Erstellen Sie eine [Momentaufnahme](../../backup/backup-azure-vms-encryption.md), oder sichern Sie den virtuellen Computer mit [Azure Backup](snapshot-copy-managed-disk.md), bevor die Datenträger verschlüsselt werden. Der Parameter „-skipVmBackup“ ist bereits in den PowerShell-Skripts zum Verschlüsseln einer ausgeführten Linux-VM angegeben.
 
 - **Verschlüsseln einer ausgeführten VM mit einem geheimen Clientschlüssel:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet Set-AzVMDiskEncryptionExtension aus. Die Ressourcengruppe, die VM, der Schlüsseltresor, die Azure AD-App und der geheime Clientschlüssel sollten bereits beim Erfüllen der Voraussetzungen erstellt worden sein. Ersetzen Sie „MyVirtualMachineResourceGroup“, „MyKeyVaultResourceGroup“, „MySecureVM“, „MySecureVault“, „My-AAD-client-ID“ und „My-AAD-client-secret“ durch Ihre Werte. Ändern Sie den Parameter „-VolumeType“, um anzugeben, welche Datenträger Sie verschlüsseln.
@@ -131,7 +132,7 @@ Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az
      ```
 
 
-### <a name="bkmk_RunningLinux"> </a> Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen IaaS-Linux-Computer mit einer Vorlage
+### <a name="bkmk_RunningLinux"> </a> Aktivieren der Verschlüsselung auf einer vorhandenen oder ausgeführten IaaS-Linux-VM mit einer Vorlage
 
 Sie können die Datenträgerverschlüsselung auf einer vorhandenen oder ausgeführten virtuellen IaaS-Linux-VM in Azure aktivieren, indem Sie die [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) verwenden.
 
@@ -154,7 +155,7 @@ In der folgenden Tabelle werden Parameter der Resource Manager-Vorlage für vorh
 
 
 
-## <a name="bkmk_EFA"> </a>Verwenden des Features EncryptFormatAll für Datenträger auf virtuellen Linux-IaaS-Computern
+## <a name="bkmk_EFA"> </a>Verwenden des Features EncryptFormatAll für Datenträger auf Linux-IaaS-VMs
 Mit dem Parameter EncryptFormatAll wird die Zeit reduziert, die zum Verschlüsseln von Linux-Datenträgern benötigt wird. Partitionen, die bestimmte Kriterien erfüllen, werden formatiert (mit ihrem aktuellen Dateisystem). Anschließend werden sie wieder an dem Ort bereitgestellt, an dem sie sich vor der Ausführung des Befehls befunden haben. Wenn Sie einen Datenträger ausschließen möchten, der die Kriterien erfüllt, können Sie die Bereitstellung vor dem Ausführen des Befehls aufheben.
 
  Nach der Ausführung dieses Befehls werden alle zuvor eingebundenen Laufwerke formatiert. Anschließend wird die Verschlüsselungsebene für das Laufwerk gestartet, das nun leer ist. Bei Auswahl dieser Option wird auch der kurzlebige Ressourcendatenträger verschlüsselt, der an die VM angefügt ist. Nachdem das kurzlebige Laufwerk zurückgesetzt wurde, wird es erneut formatiert und bei der nächsten Gelegenheit von der Azure Disk Encryption-Lösung für die VM erneut verschlüsselt.
@@ -229,7 +230,7 @@ Wir empfehlen Ihnen, ein LVM-on-crypt-Setup zu verwenden. Ersetzen Sie in allen 
 
 
 
-## <a name="bkmk_VHDpre"> </a> Neue virtuelle IaaS-Computer, die aus einer vom Kunden verschlüsselten VHD und mit Verschlüsselungsschlüsseln erstellt wurden
+## <a name="bkmk_VHDpre"> </a> Neue IaaS-VMs, die aus einer vom Kunden verschlüsselten VHD und mit Verschlüsselungsschlüsseln erstellt wurden
 In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie die Resource Manager-Vorlage, PowerShell-Cmdlets oder CLI-Befehle verwenden. In den folgenden Abschnitten werden die Resource Manager-Vorlage und die CLI-Befehle ausführlicher erläutert. 
 
 Verwenden Sie im Anhang die Anleitung zum Vorbereiten von vorverschlüsselten Images, die in Azure verwendet werden können. Nach dem Erstellen des Images können Sie die Schritte im nächsten Abschnitt ausführen, um eine verschlüsselte Azure-VM zu erstellen.
@@ -243,7 +244,7 @@ Verwenden Sie im Anhang die Anleitung zum Vorbereiten von vorverschlüsselten Im
 
 
 
-### <a name="bkmk_VHDprePSH"> </a> Verwenden von Azure PowerShell zum Verschlüsseln von virtuellen IaaS-Computern mit vorverschlüsselten VHDs 
+### <a name="bkmk_VHDprePSH"> </a> Verwenden von Azure PowerShell zum Verschlüsseln von IaaS-VMs mit vorverschlüsselten VHDs 
 Sie können die Datenträgerverschlüsselung auf einer verschlüsselten VHD aktivieren, indem Sie das PowerShell-Cmdlet [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples) verwenden. Im folgenden Beispiel sind einige häufig verwendete Parameter angegeben. 
 
 ```powershell
@@ -276,7 +277,7 @@ Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle von 
  Bei Verwendung von PowerShell zum Verschlüsseln eines neuen Datenträgers für Linux muss eine neue Sequenzversion angegeben werden. Die Sequenzversion muss eindeutig sein. Mit dem folgenden Skript wird eine GUID für die Sequenzversion generiert. 
  
 
--  **Verschlüsseln einer ausgeführten VM mit einem geheimen Clientschlüssel:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet Set-AzVMDiskEncryptionExtension aus. Die Ressourcengruppe, die VM, der Schlüsseltresor, die Azure AD-App und der geheime Clientschlüssel sollten bereits beim Erfüllen der Voraussetzungen erstellt worden sein. Ersetzen Sie „MyVirtualMachineResourceGroup“, „MyKeyVaultResourceGroup“, „MySecureVM“, „MySecureVault“, „My-AAD-client-ID“ und „My-AAD-client-secret“ durch Ihre Werte. Der Parameter „-VolumeType“ wird für reguläre Datenträger und nicht für Betriebssystemdatenträger festgelegt. Wenn der virtuelle Computer zuvor mit dem Volumetyp „OS“ oder „All“ verschlüsselt war, sollte der Parameter --Volume-type in „All“ geändert werden, damit sowohl das Betriebssystem als auch der neue Datenträger enthalten sind.
+-  **Verschlüsseln einer ausgeführten VM mit einem geheimen Clientschlüssel:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet Set-AzVMDiskEncryptionExtension aus. Die Ressourcengruppe, die VM, der Schlüsseltresor, die Azure AD-App und der geheime Clientschlüssel sollten bereits beim Erfüllen der Voraussetzungen erstellt worden sein. Ersetzen Sie „MyVirtualMachineResourceGroup“, „MyKeyVaultResourceGroup“, „MySecureVM“, „MySecureVault“, „My-AAD-client-ID“ und „My-AAD-client-secret“ durch Ihre Werte. Der Parameter „-VolumeType“ wird für reguläre Datenträger und nicht für Betriebssystemdatenträger festgelegt. Wenn der virtuelle Computer zuvor mit dem Volumetyp „OS“ oder „All“ verschlüsselt war, sollte der Parameter --Volume-type in „All“ geändert werden, damit sowohl das Betriebssystem als auch der neue Datenträger einbezogen werden.
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';

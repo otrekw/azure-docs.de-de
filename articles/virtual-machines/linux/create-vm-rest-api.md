@@ -1,25 +1,17 @@
 ---
-title: Erstellen eines virtuellen Linux-Computers mit der Azure-REST-API
+title: Erstellen einer Linux-VM mit der REST-API
 description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure erstellen, der verwaltete Datenträger und SSH-Authentifizierung mit der Azure-REST-API verwendet.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036444"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970271"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -54,7 +46,7 @@ Die folgenden Header sind erforderlich:
 | Anforderungsheader   | BESCHREIBUNG |
 |------------------|-----------------|
 | *Content-Type:*  | Erforderlich. Legen Sie diese Option auf `application/json` fest. |
-| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter [Komponenten einer REST-API-Anforderung/Antwort](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -62,7 +54,7 @@ Allgemeine Informationen zum Arbeiten mit REST-API-Anforderung finden Sie unter 
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-| NAME                       | Erforderlich | Typ                                                                                | BESCHREIBUNG  |
+| Name                       | Erforderlich | type                                                                                | BESCHREIBUNG  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | Zeichenfolge                                                                              | Ressourcenspeicherort |
 | name                       |          | Zeichenfolge                                                                              | Name des virtuellen Computers |
@@ -136,7 +128,7 @@ Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung 
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen virtuellen Computer zu erstellen oder zu aktualisieren:
 
-| NAME        | type                                                                              | BESCHREIBUNG |
+| Name        | type                                                                              | BESCHREIBUNG |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 – OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – Erstellt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Erstellt     |
