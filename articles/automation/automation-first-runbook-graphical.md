@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331467"
 ---
 # <a name="my-first-graphical-runbook"></a>Mein erstes grafisches Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246461"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-In diesem Tutorial werden die Schritte zur Erstellung eines [grafischen Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation beschrieben. Beginnen Sie mit einem einfachen Runbook, das getestet und veröffentlicht wird. Dabei erfahren Sie, wie Sie den Status des Runbookauftrags nachverfolgen. Anschließend ändern Sie das Runbook, um damit tatsächlich Azure-Ressourcen zu verwalten. Im vorliegenden Fall soll ein virtueller Azure-Computer gestartet werden. Vervollständigen Sie das Tutorial, um die Stabilität des Runbooks durch Hinzufügen von Runbookparametern und bedingten Verknüpfungen zu erhöhen.
+In diesem Tutorial werden die Schritte zur Erstellung eines [grafischen Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation beschrieben. Beginnen Sie mit einem einfachen Runbook, das Sie testen und veröffentlichen können, während Sie erfahren, wie Sie den Status des Runbookauftrags nachverfolgen. Anschließend ändern Sie das Runbook, um damit tatsächlich Azure-Ressourcen zu verwalten. Im vorliegenden Fall soll ein virtueller Azure-Computer gestartet werden. Vervollständigen Sie das Tutorial, um die Stabilität des Runbooks durch Hinzufügen von Runbookparametern und bedingten Verknüpfungen zu erhöhen.
 
 >[!NOTE]
 >Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0) (Einführung in das neue Az-Modul von Azure PowerShell). Installationsanweisungen für das Az-Modul auf Ihrem Hybrid Runbook Worker finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). In Ihrem Automation-Konto können Sie die Module mithilfe der Informationen unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) auf die neueste Version aktualisieren.
@@ -37,7 +37,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="step-1---create-runbook"></a>Schritt 1: Erstellen eines Runbooks
 
-Erstellen Sie zunächst ein einfaches Runbook, das den Text „Hello World“ ausgibt.
+Erstellen Sie zunächst ein einfaches Runbook, das den Text **Hello World** ausgibt.
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto. 
 
@@ -78,7 +78,7 @@ Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 
    Der Auftrag weist zunächst den Status **In Warteschlange** auf, der angibt, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Der Status ändert sich in **Wird gestartet**, wenn ein Worker den Auftrag beansprucht. Schließlich ändert sich der Status in **Wird ausgeführt**, wenn die Ausführung des Runbooks beginnt.
 
-1. Nach Abschluss des Runbookauftrags wird die Ausgabe auf der Seite „Test“ angezeigt. In diesem Fall wird **Hello World** angezeigt.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Nach Abschluss des Runbookauftrags wird die Ausgabe im Bereich „Test“ angezeigt. In diesem Fall wird **Hello World** angezeigt.<br> ![Hello World](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. Schließen Sie den Testbereich, um zum Zeichenbereich zurückzukehren.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>Schritt 4: Veröffentlichen und Starten des Runbooks

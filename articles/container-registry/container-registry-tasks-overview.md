@@ -3,12 +3,12 @@ title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615950"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087288"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -124,15 +124,11 @@ ACR Tasks erstellt standardmäßig Images für das Linux-Betriebssystem und die 
 | Linux | amd64<br/>ARM<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>Anzeigen von Taskprotokollen
+## <a name="view-task-output"></a>Anzeigen der Aufgabenausgabe
 
-Bei jeder Aufgabenausführung wird eine Protokollausgabe erzeugt, die Sie überprüfen können, um festzustellen, ob die Aufgabenschritte erfolgreich ausgeführt wurden. Wenn Sie den Befehl [az acr build](/cli/azure/acr#az-acr-build), [az acr run](/cli/azure/acr#az-acr-run) oder [az acr task run](/cli/azure/acr/task#az-acr-task-run) verwenden, um die Aufgabe auszulösen, wird die Protokollausgabe für die Ausführung der Aufgabe an die Konsole gestreamt und auch für einen späteren Abruf gespeichert. Wenn ein Task automatisch ausgelöst wird, z. B. durch einen Quellcodecommit oder ein Basisimageupdate, werden die Aufgabenprotokolle nur gespeichert. Zeigen Sie die Protokolle für eine Aufgabenausführung im Azure-Portal an, oder verwenden Sie den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs).
+Bei jeder Aufgabenausführung wird eine Protokollausgabe erzeugt, die Sie überprüfen können, um festzustellen, ob die Aufgabenschritte erfolgreich ausgeführt wurden. Wenn Sie eine Aufgabe manuell auslösen, wird die Protokollausgabe für die Ausführung der Aufgabe an die Konsole gestreamt und auch für einen späteren Abruf gespeichert. Wenn ein Task automatisch ausgelöst wird, z. B. durch einen Quellcodecommit oder ein Basisimageupdate, werden die Aufgabenprotokolle nur gespeichert. Zeigen Sie die Ausführungsprotokolle im Azure-Portal an, oder verwenden Sie den Befehl [az acr task logs](/cli/azure/acr/task#az-acr-task-logs).
 
-Standardmäßig werden Daten und Protokolle für Aufgabenausführungen 30 Tage in einer Registrierung aufbewahrt und danach automatisch endgültig gelöscht. Wenn Sie die Daten für eine Aufgabenausführung archivieren möchten, aktivieren Sie die Archivierung mit dem Befehl [az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run). Das folgende Beispiel aktiviert die Archivierung der Aufgabenausführung *cf11* in der Registrierung *myregistry*.
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Aufgabenprotokollen](container-registry-tasks-logs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

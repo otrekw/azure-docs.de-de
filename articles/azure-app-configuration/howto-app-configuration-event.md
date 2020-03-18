@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619590"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672157"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure App Configuration-Ereignisabonneme
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.24 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden, müssen Sie für diesen Artikel mindestens die Version 2.0.70 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Falls Sie nicht Cloud Shell verwenden, müssen Sie sich zuerst mithilfe von `az login` anmelden.
 

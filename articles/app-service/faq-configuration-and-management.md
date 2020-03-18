@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649277"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942946"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -212,7 +212,7 @@ Weitere Informationen finden Sie unter [Erstellen einer App Service-Umgebung](en
 Das Erstellen einer App Service-Umgebung misslingt mitunter. In diesem Fall wird die folgende Fehlermeldung in den Aktivitätsprotokollen angezeigt:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 Stellen Sie zum Beheben dieses Problems sicher, dass keine der folgenden Bedingungen vorliegt:
@@ -248,7 +248,7 @@ Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderu
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Wie konfiguriere ich einen benutzerdefinierten Domänennamen für eine Azure App Service-Web-App, die Traffic Manager verwendet?
 
-Informationen dazu, wie Sie einen benutzerdefinierten Domänennamen mit einer App Service-App nutzen, die Azure Traffic Manager für den Lastenausgleich verwendet, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, die Traffic Manager verwendet](web-sites-traffic-manager-custom-domain-name.md).
+Informationen dazu, wie Sie einen benutzerdefinierten Domänennamen mit einer App Service-App nutzen, die Azure Traffic Manager für den Lastenausgleich verwendet, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, die Traffic Manager verwendet](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Mein App Service-Zertifikat ist mit einer Betrugsmeldung gekennzeichnet. Wie löse ich dieses Problem?
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207029"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080141"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importieren von HSM-geschützten Schlüsseln in Key Vault (Vorschauversion)
 
@@ -58,16 +58,18 @@ In der folgenden Tabelle sind die Voraussetzungen für die Verwendung von BYOK i
 
 ## <a name="supported-hsms"></a>Unterstützte HSMs
 
-|Name des HSM-Anbieters|Unterstützte HSM-Modelle|Weitere Informationen|
-|---|---|---|
-|Thales|Produktfamilie SafeNet Luna HSM 7 mit Firmwareversion 7.3 oder höher| [SafeNet Luna – BYOK-Tool und -Dokumentation](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Herstellername|Herstellertyp|Unterstützte HSM-Modelle|Weitere Informationen|
+|---|---|---|---|
+|Thales|Hersteller|Produktfamilie SafeNet Luna HSM 7 mit Firmwareversion 7.3 oder höher| [SafeNet Luna – BYOK-Tool und -Dokumentation](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix|HSM als Dienst (aaS)|Self-Defending Key Management Service (SDKMS, selbstverteidigender Schlüsselverwaltungsdienst)|[Exportieren von SDKMS-Schlüsseln nach Cloudanbietern für BYOK – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+
 
 > [!NOTE]
 > Verwenden Sie zum Importieren von durch HSM geschützten Schlüsseln aus der HSM-Produktfamilie nCipher nShield das [BYOK-Legacyverfahren](hsm-protected-keys-legacy.md).
 
 ## <a name="supported-key-types"></a>Unterstützte Schlüsseltypen
 
-|Schlüsselname|Schlüsseltyp|Schlüsselgröße|Origin|Beschreibung|
+|Schlüsselname|Schlüsseltyp|Schlüsselgröße|Origin|BESCHREIBUNG|
 |---|---|---|---|---|
 |Schlüsselaustauschschlüssel (Key Exchange Key, KEK)|RSA| 2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Azure Key Vault-HSM|Ein durch HSM gestütztes RSA-Schlüsselpaar, das in Azure Key Vault generiert wurde|
 |Zielschlüssel|RSA|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der Schlüssel, der an das Azure Key Vault-HSM übertragen werden soll|

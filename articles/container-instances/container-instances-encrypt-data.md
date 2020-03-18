@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544316"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080359"
 ---
 # <a name="encrypt-deployment-data"></a>Verschlüsseln von Bereitstellungsdaten
 
@@ -41,6 +41,10 @@ Im restlichen Dokument werden die Schritte beschrieben, die ausgeführt werden m
 
 Als Erstes muss dafür gesorgt werden, dass Ihr [Azure-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) über einen zugewiesenen Dienstprinzipal verfügt, um dem Azure Container Instances-Dienst Berechtigungen zu gewähren. 
 
+> [!IMPORTANT]
+> Um den folgenden Befehl auszuführen und erfolgreich einen Dienstprinzipal zu erstellen, vergewissern Sie sich, dass Sie über die Berechtigungen zum Erstellen von Dienstprinzipalen in Ihrem Mandanten verfügen.
+>
+
 Mit dem folgenden CLI-Befehl wird der ACI-Dienstprinzipal in Ihrer Azure-Umgebung eingerichtet:
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 Die Ausgabe des Befehls sollte ein Dienstprinzipal sein, der mit Folgendem eingerichtet wurde: "displayName": "Azure Container Instance Service".
+
+Falls Sie den Dienstprinzipal nicht erfolgreich erstellen können:
+* Vergewissern Sie sich, dass Sie über die dafür erforderlichen Berechtigungen in Ihrem Mandanten verfügen.
+* Überprüfen Sie, ob bereits ein Dienstprinzipal in Ihrem Mandanten für die Bereitstellung in ACI vorhanden ist. Dies können Sie tun, indem Sie `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` ausführen und stattdessen diesen Dienstprinzipal verwenden.
 
 ### <a name="create-a-key-vault-resource"></a>Erstellen einer Key Vault-Ressource
 

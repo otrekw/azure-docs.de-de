@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fe04d491525b8119ca21ff1118a2ea460cc0795
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606534"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943420"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Azure Cosmos DB-Eingabebindung für Azure Functions 2.x
 
@@ -1437,8 +1437,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**collectionName** |**CollectionName** | Der Name der Sammlung mit dem Dokument |
 |**id**    | **Id** | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt [Bindungsausdrücke](./functions-bindings-expressions-patterns.md). Legen Sie nicht die beiden Eigenschaften `id` und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen. |
 |**sqlQuery**  |**SqlQuery**  | Eine SQL-Abfrage in Azure Cosmos DB zum Abrufen mehrerer Dokumente. Die Eigenschaft unterstützt Laufzeitbindungen, wie in diesem Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`. Legen Sie nicht die beiden Eigenschaften `id` und `sqlQuery` fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen.|
-|**connectionStringSetting**     |**ConnectionStringSetting**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
+|**connectionStringSetting**     |**ConnectionStringSetting**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge. |
 |**partitionKey**|**PartitionKey**|Gibt den Wert des Partitionsschlüssels für die Suche an. Kann den Bindungsparameter enthalten. Für Suchvorgänge in [partitionierten](../cosmos-db/partition-data.md#logical-partitions) Sammlungen ist dies erforderlich.|
+|**preferredLocations**| **PreferredLocations**| (Optional) Definiert bevorzugte Standorte (Regionen) für georeplizierte Datenbankkonten im Azure Cosmos DB-Dienst. Werte sollten durch Trennzeichen getrennt sein. Beispiel: „USA, Osten,USA, Süden-Mitte,Europa, Norden“. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

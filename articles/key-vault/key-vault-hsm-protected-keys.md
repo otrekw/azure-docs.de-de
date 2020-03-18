@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: d7f9527aa5aa3353dc9087f4bcc5f3a5fb241637
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184552"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082896"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Importieren von HSM-geschützten Schlüsseln in Key Vault
 
@@ -31,10 +31,19 @@ Diese Funktion steht für Azure China 21ViaNet nicht zur Verfügung.
 
 HSM-geschützte Schlüssel können abhängig vom verwendeten HSM auf zwei Arten an Key Vault übertragen werden. In der folgenden Tabelle erfahren Sie, welche Methode für Ihre HSMs verwendet werden muss, um Ihre eigenen HSM-geschützten Schlüssel zu generieren und anschließend für die Verwendung mit Azure Key Vault zu übertragen: 
 
-|Name des HSM-Anbieters|Unterstützte HSM-Modelle|Unterstützte Übertragungsmethode für HSM-Schlüssel|
-|---|---|---|
-|Thales|<ul><li>Produktfamilie „SafeNet Luna HSM 7“ mit Firmwareversion 7.3 oder neuer</li></ul>| [Verwenden Sie die neue BYOK-Methode (Vorschau).](hsm-protected-keys-vendor-agnostic-byok.md)|
-|nCipher|<ul><li>HSM-Produktfamilie „nShield“</li></ul>|[Verwenden Sie die alte BYOK-Methode.](hsm-protected-keys-legacy.md)|
+|Herstellername|Herstellertyp|Unterstützte HSM-Modelle|Unterstützte Übertragungsmethode für HSM-Schlüssel|
+|---|---|---|---|
+|nCipher|Hersteller|<ul><li>HSM-Produktfamilie „nShield“</li></ul>|[Verwenden Sie die alte BYOK-Methode.](hsm-protected-keys-legacy.md)|
+|Thales|Hersteller|<ul><li>Produktfamilie „SafeNet Luna HSM 7“ mit Firmwareversion 7.3 oder neuer</li></ul>| [Verwenden Sie die neue BYOK-Methode (Vorschau).](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix|HSM als Dienst (aaS)|<ul><li>Self-Defending Key Management Service (SDKMS, selbstverteidigender Schlüsselverwaltungsdienst)</li></ul>|[Verwenden Sie die neue BYOK-Methode (Vorschau).](hsm-protected-keys-vendor-agnostic-byok.md)|
+
+
+
+
+
+
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591522"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933809"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -102,6 +102,13 @@ Der Ersteller des Labs (Instruktor/Professor) kann eine Verbindung mit einer Kur
 
 > [!NOTE]
 > Wenn der Professor den virtuellen Computer startet und eine Verbindung mit ihm herstellt, ist das Kontingent für Schüler und Studenten davon nicht betroffen. 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Exportieren einer Liste mit virtuellen Computern in eine CSV-Datei
+
+1. Wechseln Sie zur Registerkarte **VM-Pool**.
+2. Wählen Sie auf der Symbolleiste die Auslassungspunkte ( **...** ) und dann **CSV exportieren** aus. 
+
+    ![Exportieren einer Liste mit virtuellen Computern](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen Verwendungsoptionen für Kursteilnehmer, die Sie (als Lab-Besitzer) konfigurieren können, finden Sie im folgenden Artikel: [Konfigurieren von Nutzungseinstellungen und Richtlinien](how-to-configure-student-usage.md).
