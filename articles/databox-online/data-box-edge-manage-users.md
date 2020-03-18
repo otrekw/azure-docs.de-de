@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756661"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946136"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Verwalten von Benutzern für Ihre Azure Data Box Edge-Ressource über das Azure-Portal
 
@@ -33,8 +33,7 @@ Benutzer können über Lesezugriff oder über Vollzugriff verfügen. Wie der Nam
  - **Benutzer mit Vollzugriff:** Lokaler Benutzer mit Vollzugriff.
  - **Benutzer mit Lesezugriff:** Lokaler Benutzer, der nur über Lesezugriff verfügt. Diese Benutzer werden Freigaben zugeordnet, die schreibgeschützte Vorgänge zulassen.
 
-Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Nachdem die Berechtigungen für einen Benutzer definiert wurden, können sie über den Explorer geändert werden. 
-
+Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Das Ändern von Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
 
 ## <a name="add-a-user"></a>Hinzufügen eines Benutzers
 

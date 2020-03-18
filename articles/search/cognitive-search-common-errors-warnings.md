@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913479"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671972"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -48,7 +48,7 @@ Der Indexer konnte das Dokument nicht aus der Datenquelle lesen. Möglich sind f
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Inkonsistente Feldtypen in verschiedenen Dokumenten | Der Typ des Werts stimmt nicht mit dem Spaltentyp überein. `'{47.6,-122.1}'` konnte nicht in der Autorenspalte gespeichert werden.  Erwarteter Typ: JArray. | Stellen Sie sicher, dass der Typ aller Felds in verschiedenen Dokumenten identisch ist. Wenn das `'startTime'`-Feld des ersten Dokuments z.B. den Datentyp DateTime aufweist und im zweiten Dokument eine Zeichenfolge ist, wird dieser Fehler angezeigt. |
+| Inkonsistente Feldtypen in verschiedenen Dokumenten | „Der Typ des Werts stimmt nicht mit dem Spaltentyp überein. `'{47.6,-122.1}'` konnte nicht in der Autorenspalte gespeichert werden.  Erwarteter Typ: JArray.“  „Fehler beim Konvertieren des Datentyps nvarchar in float.“  „Fehler beim Konvertieren des %nvarchar-Werts ‚12 Monate‘ in den Datentyp int.“  "Arithmetischer Überlauffehler beim Konvertieren des Ausdrucks in den Datentyp int." | Stellen Sie sicher, dass der Typ aller Felds in verschiedenen Dokumenten identisch ist. Wenn das `'startTime'`-Feld des ersten Dokuments z.B. den Datentyp DateTime aufweist und im zweiten Dokument eine Zeichenfolge ist, wird dieser Fehler angezeigt. |
 | Fehler aus dem zugrunde liegenden Dienst der Datenquelle | (aus Cosmos DB) `{"Errors":["Request rate is large"]}` | Überprüfen Sie die Speicherinstanz, um sicherzustellen, dass Sie fehlerfrei ist. Möglicherweise müssen Sie die Skalierung/Partitionierung anpassen. |
 | Vorübergehende Probleme | Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: TCP-Anbieter, Fehler: 0 – Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 

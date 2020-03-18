@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 359f78cabbe0372e6892695c092ae49b62df7bfa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227458"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944183"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -219,14 +219,17 @@ Dieser Fehler kann aus einem der folgenden Gründe auftreten:
 
 Verwenden Sie [dynamische Gruppen](../automation-update-management-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem zu beachten:
 
-* Stellen Sie sicher, dass der Computer noch vorhanden und erreichbar ist. Wenn er nicht mehr vorhanden ist, bearbeiten Sie Ihre Bereitstellung, und entfernen Sie den Computer.
+* Stellen Sie sicher, dass der Computer noch vorhanden und erreichbar ist. 
+* Wenn der Computer nicht mehr vorhanden ist, bearbeiten Sie Ihre Bereitstellung, und entfernen Sie den Computer.
 * Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der Ports und Adressen, die für die Updateverwaltung erforderlich sind. Stellen Sie sicher, dass Ihr Computer diese Anforderungen erfüllt.
-* Führen Sie die folgende Abfrage in Log Analytics aus, um nach Computern in Ihrer Umgebung zu suchen, bei denen sich die `SourceComputerId` geändert hat. Suchen Sie nach Computern, die denselben `Computer`-Wert, aber einen anderen `SourceComputerId`-Wert aufweisen. 
+* Überprüfen Sie die Konnektivität mit dem Hybrid Runbook Worker mithilfe der Problembehandlung für den Hybrid Runbook Worker-Agent. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md).
+* Führen Sie die folgende Abfrage in Log Analytics aus, um nach Computern in Ihrer Umgebung zu suchen, bei denen sich die `SourceComputerId` geändert hat. Suchen Sie nach Computern, die denselben `Computer`-Wert, aber einen anderen `SourceComputerId`-Wert aufweisen.
 
    ```loganalytics
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
-   Nachdem Sie die betroffenen Computer gefunden haben, bearbeiten Sie die Updatebereitstellungen für diese Computer. Anschließend müssen Sie die Computer entfernen und dann erneut hinzufügen, damit die `SourceComputerId` den richtigen Wert aufweist.
+
+* Nachdem Sie die betroffenen Computer gefunden haben, bearbeiten Sie die Updatebereitstellungen für diese Computer. Anschließend müssen Sie die Computer entfernen und dann erneut hinzufügen, damit die `SourceComputerId` den richtigen Wert aufweist.
 
 ## <a name="updates-nodeployment"></a>Szenario: Updates werden ohne Bereitstellung installiert.
 

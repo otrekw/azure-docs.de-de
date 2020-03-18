@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/22/2019
-ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/05/2020
+ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086933"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851271"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](/azure/container-registry) oder eine andere Docker-Registrierung, die über das Internet zugänglich ist.
-* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie im Abschnitt „Vorbereitung auf die Bereitstellung“ unter [Wo und wie wird die Bereitstellung durchgeführt](how-to-deploy-and-where.md#prepare-deployment-artifacts).
+* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie im Abschnitt „Vorbereitung auf die Bereitstellung“ unter [Wo und wie wird die Bereitstellung durchgeführt](how-to-deploy-and-where.md#prepare-to-deploy).
 
 ## <a name="create-a-custom-base-image"></a>Erstellen eines benutzerdefinierten Basisimages
 
@@ -155,6 +155,9 @@ Die Schritte in diesem Abschnitt führen zur Erstellung eines benutzerdefinierte
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > In diesem Beispiel wird das Tag `:v1` auf das Image angewandt. Wenn kein Tag angegeben ist, wird das Tag `:latest` angewandt.
+
     Während des Erstellungsprozesses werden Informationen gestreamt, um sie an die Befehlszeile zurückzugeben. Wenn die Erstellung erfolgreich war, erhalten Sie eine Meldung ähnlich dem folgenden Text:
 
     ```text
@@ -170,6 +173,10 @@ Weitere Informationen zum Hochladen vorhandener Images in eine Azure Container R
 Um ein benutzerdefiniertes Image zu verwenden, benötigen Sie die folgenden Informationen:
 
 * Der __Imagename__. Zum Beispiel ist `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` der Pfad zu einem einfachen Docker-Image, das von Microsoft bereitgestellt wird.
+
+    > [!IMPORTANT]
+    > Stellen Sie für eigene erstellte Images sicher, dass Sie alle mit dem Image verwendeten Tags einschließen. Beispiel: Das Image wurde mit einem bestimmten Tag erstellt, z. B. `:v1`. Wenn Sie beim Erstellen des Images kein bestimmtes Tag verwendet haben, wurde das Tag `:latest` angewandt.
+
 * Wenn sich das Image in einem __privaten Repository__ befindet, benötigen Sie die folgenden Informationen:
 
     * Die __Registrierungsadresse__. Beispiel: `myregistry.azureecr.io`.

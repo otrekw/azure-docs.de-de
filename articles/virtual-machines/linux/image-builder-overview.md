@@ -1,18 +1,18 @@
 ---
-title: Informationen zu Azure Image Builder für virtuelle Linux-Computer (Vorschauversion)
-description: Erhalten Sie weitere Informationen zu Azure Image Builder.
+title: Weitere Informationen zu Azure Image Builder (Vorschauversion)
+description: Erfahren Sie mehr über Azure Image Builder für virtuelle Computer in Azure.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 80982529ad891f7bd64e321c6c5d6edcaf32744c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.openlocfilehash: d0644fca56b852bb34a001a73511f4df33a5f441
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667571"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944989"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Vorschau: Übersicht über Azure Image Builder
 

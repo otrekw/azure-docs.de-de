@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721114"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129770"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -22,12 +22,14 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
 
 + [Azure Machine Learning SDK für Python](#python-sdk): Das Python SDK bietet verschiedene Möglichkeiten, Modelle mit jeweils unterschiedlichen Funktionen zu trainieren.
 
-    | Trainingsmethode | Beschreibung |
+    | Trainingsmethode | BESCHREIBUNG |
     | ----- | ----- |
     | [Laufzeitkonfiguration](#run-configuration) | Eine **generische Möglichkeit zum Trainieren von Modellen** besteht darin, ein Trainingsskript und eine Laufzeitkonfiguration zu verwenden. Die Laufzeitkonfiguration stellt die zum Konfigurieren der Trainingsumgebung, erforderlichen Informationen bereit, in der Ihr Modell trainiert wird. Sie können eine Laufzeitkonfiguration, Ihr Trainingsskript und ein Computeziel (die Trainingsumgebung) verwenden und einen Trainingsauftrag ausführen. |
     | [Automatisiertes maschinelles Lernen](#automated-machine-learning) | Mithilfe des automatisierten maschinellen Lernens können Sie **Modelle ohne umfassende Data Science- oder Programmierkenntnisse trainieren**. Für Personen mit Data Science- und Programmierungshintergrund bietet es eine Möglichkeit, Zeit und Ressourcen zu sparen, indem die Algorithmusauswahl und die Hyperparameteroptimierung automatisiert werden. Bei der Verwendung des automatisierten maschinellen Lernens müssen Sie sich nicht um die Definition einer Laufzeitkonfiguration kümmern. |
     | [Schätzfunktionen](#estimators) | Mithilfe der Estimator-Klassen können **Modelle auf Grundlage beliebter Frameworks für maschinelles Lernen einfach trainiert werden**. Es gibt Estimator-Klassen für **Scikit-learn**, **PyTorch**, **TensorFlow** und **Chainer**. Es gibt auch einen allgemeinen Estimator, der mit Frameworks verwendet werden kann, die noch keine dedizierte Estimator-Klasse aufweisen. Sie müssen sich nicht um die Definition einer Laufzeitkonfiguration kümmern, wenn Sie Estimators verwenden. |
     | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren**, die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie die Verwendung von Estimators und der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen**, z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
+
++ [Azure Machine Learning SDK für Python](#r-sdk): Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
 
 + **Designer**: Azure Machine Learning-Designer (Vorschauversion) bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 
@@ -67,7 +69,7 @@ Definieren Sie Iterationen, Hyperparametereinstellungen, Featurebereitstellungen
 * [Beispiele: Jupyter Notebook-Beispiele für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Vorgehensweise: Konfigurieren automatisierter ML-Experimente in Python](how-to-configure-auto-train.md)
 * [Vorgehensweise: Automatisches Trainieren eines Modells für die Zeitreihenprognose](how-to-auto-train-forecast.md)
-* [Gewusst wie: Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten mit [Azure Machine Learning-Studio](how-to-create-portal-experiments.md)
+* [Vorgehensweise: Erstellen, Untersuchen und Bereitstellen von Experimenten mit automatisiertem maschinellem Lernen mit Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md)
 
 ### <a name="estimators"></a>Schätzfunktionen
 
@@ -88,6 +90,15 @@ Machine Learning-Pipelines können die zuvor genannten Trainingsmethoden (Laufze
 * [Beispiele: Jupyter Notebook-Beispiele für Machine Learning-Pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [Beispiele: Pipeline mit automatisiertem maschinellen Lernen](https://aka.ms/pl-automl)
 * [Beispiele: Pipeline mit Estimators](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+Mit dem R-SDK können Sie die Programmiersprache R mit Azure Machine Learning verwenden. Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+
+* [Tutorial: Erstellen eines Modells für logistische Regression](tutorial-1st-r-experiment.md)
+* [Azure Machine Learning SDK für R – Referenz](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 

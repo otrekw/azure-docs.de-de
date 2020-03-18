@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484416"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096063"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -44,7 +44,7 @@ Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Az
 Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
-Die Passthrough-Authentifizierung unterstützt die alternative Anmelde-ID in eingeschränktem Maße als Benutzername, wenn dies in Azure AD Connect konfiguriert ist. Als Voraussetzung muss Azure AD Connect das lokale Active Directory-Attribut `UserPrincipalName` mit Azure AD synchronisieren. `UserPrincipalName` für die lokale AD-Instanz und Azure AD ist somit identisch. Falls Sie ein anderes Attribut verwenden möchten, um die Synchronisierung des UPN von der lokalen AD-Instanz mit Azure AD durchzuführen, müssen Sie entweder die Kennworthashsynchronisierung oder AD FS nutzen. Weitere Informationen finden Sie unter [Benutzerdefinierte Installation von Azure AD Connect](how-to-connect-install-custom.md). Nicht alle Office 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
+Die Anmeldung mit einem Nicht-UPN-Wert, z. B. einer alternativen E-Mail-Adresse, wird zurzeit in der privaten Vorschauversion für die Pass-Through-Authentifizierung (PTA) und die Kennworthashsynchronisierung (Password Hash Sync, PHS) getestet.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 

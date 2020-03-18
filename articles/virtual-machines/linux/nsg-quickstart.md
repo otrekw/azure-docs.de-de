@@ -1,27 +1,22 @@
 ---
-title: Öffnen von Ports für einen virtuellen Linux-Computer mit der Azure CLI
-description: Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellungsmodell und der Azure-Befehlszeilenschnittstelle für Ihren virtuellen Linux-Computer einen Port öffnen oder einen Endpunkt erstellen.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Öffnen von Ports für eine VM über die Azure-Befehlszeilenschnittstelle
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle für Ihre VM einen Port öffnen bzw. einen Endpunkt erstellen.
 author: cynthn
 manager: gwallace
-editor: ''
-ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
-ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354048"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944544"
 ---
-# <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure-CLI
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für eine VM über die Azure-Befehlszeilenschnittstelle
 
 In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI einen Port für einen virtuellen Computer öffnen. 
 

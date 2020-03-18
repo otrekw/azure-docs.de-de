@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b52d9b7eb60483da91f87435ace1994d91b1039
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665840"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127178"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Für das automatisierte maschinelle Lernen sind folgende Konfigurationsoptionen 
 * Untersuchen von Modellmetriken
 * Registrieren und Bereitstellen von Modellen
 
-Wenn Sie lieber ohne Code arbeiten, informieren Sie sich unter [Erstellen, Untersuchen und Bereitstellen automatisierter Experimente mit maschinellem Lernen in Azure Machine Learning-Studio](how-to-create-portal-experiments.md).
+Wenn Sie lieber ohne Code arbeiten, informieren Sie sich unter [Erstellen, Untersuchen und Bereitstellen automatisierter Experimente mit maschinellem Lernen in Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md).
 
 ## <a name="select-your-experiment-type"></a>Auswählen der Experimentart
 
@@ -130,8 +130,8 @@ Verwenden Sie benutzerdefinierte Validierungsdatasets, wenn eine zufällige Auft
 ## <a name="compute-to-run-experiment"></a>Computeziel zum Ausführen des Experiments
 
 Legen Sie als Nächstes die Instanz fest, auf der das Modell trainiert werden soll. Ein automatisiertes Machine Learning-Trainingsexperiment kann unter folgenden Computeoptionen ausgeführt werden:
-*   Lokaler Computer (z.B. lokaler Desktop oder Laptop): Diese Option wird i.d.R. für kleine Datasets und während der Untersuchungsphase verwendet.
-*   Ein Remotecomputer in der Cloud: [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) ist ein verwalteter Dienst, mit dem Machine Learning-Modelle in Clustern virtueller Azure-Computer trainiert werden können.
+*    Lokaler Computer (z.B. lokaler Desktop oder Laptop): Diese Option wird i.d.R. für kleine Datasets und während der Untersuchungsphase verwendet.
+*    Ein Remotecomputer in der Cloud: [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) ist ein verwalteter Dienst, mit dem Machine Learning-Modelle in Clustern virtueller Azure-Computer trainiert werden können.
 
     Beispiel-Notebooks mit lokalen und Remotecomputezielen enthält die [GitHub-Website](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning).
 
@@ -147,25 +147,25 @@ Es gibt verschiedene Optionen für das Konfigurieren Ihrer automatisierten Machi
 
 Beispiele hierfür sind:
 
-1.  Ein Klassifizierungsexperiment, in dem AUC gewichtet als primäre Metrik verwendet wird, wobei das Experimentzeitlimit auf 30 Minuten festgelegt ist und 2 Kreuzvalidierungfolds verwendet werden.
+1.    Ein Klassifizierungsexperiment, in dem AUC gewichtet als primäre Metrik verwendet wird, wobei das Experimentzeitlimit auf 30 Minuten festgelegt ist und 2 Kreuzvalidierungfolds verwendet werden.
 
     ```python
     automl_classifier=AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
         experiment_timeout_minutes=30,
-        blacklist_models='XGBoostClassifier',
+        blacklist_models=['XGBoostClassifier'],
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  Es folgt ein Beispiel für ein Regressionsexperiment, für das festgelegt ist, dass es nach 60 Minuten mit fünf Kreuzvalidierungsfolds endet.
+2.    Es folgt ein Beispiel für ein Regressionsexperiment, für das festgelegt ist, dass es nach 60 Minuten mit fünf Kreuzvalidierungsfolds endet.
 
     ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         experiment_timeout_minutes=60,
-        whitelist_models='kNN regressor'
+        whitelist_models=['kNN regressor'],
         primary_metric='r2_score',
         training_data=train_data,
         label_column_name=label,
@@ -174,7 +174,7 @@ Beispiele hierfür sind:
 
 Die drei unterschiedlichen `task`-Parameterwerte (der dritte Tasktyp ist `forecasting` und verwendet einen ähnlichen Algorithmuspool wie die `regression`-Tasks) bestimmen die Liste der anzuwendenden Modelle. Verwenden Sie die Parameter `whitelist` oder `blacklist`, um Iterationen mit den verfügbaren Modellen, die eingeschlossen oder ausgeschlossen werden sollen, weiter zu ändern. Die Liste der unterstützten Modelle finden Sie unter [SupportedModels-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) für [Klassifizierung](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Vorhersagen](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting) und [Regression](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
 
-Der automatisierte Überprüfungsdienst von ML erfordert, dass `experiment_timeout_minutes` auf eine Mindestzeit von 15 Minuten festgelegt wird, um Fehler bezüglich des Zeitlimits von Experimenten zu vermeiden.
+Der Überprüfungsdienst für automatisiertes maschinelles Lernen erfordert, dass `experiment_timeout_minutes` auf eine Mindestzeit von 15 Minuten festgelegt wird, um Fehler bezüglich des Zeitlimits von Experimenten zu vermeiden.
 
 ### <a name="primary-metric"></a>Primäre Metrik
 Die primäre Metrik bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, werden vom ausgewählten Tasktyp bestimmt. In der folgenden Tabelle werden gültige primäre Metriken für jeden Tasktyp aufgeführt.
@@ -191,7 +191,7 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 ### <a name="data-featurization"></a>Merkmalerstellung für Daten
 
-In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#featurization).
+In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization).
 
 Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `featurization` aktivieren. In der folgenden Tabelle sind die akzeptierten Einstellungen für die Featurebereitstellung in der [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)-Klasse aufgeführt.
 
@@ -199,7 +199,7 @@ Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|
-|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](how-to-create-portal-experiments.md#advanced-featurization-options) automatisch durchgeführt werden.|
+|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options) automatisch durchgeführt werden.|
 
 > [!NOTE]
 > Die Schritte zur Featurebereitstellung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Schritte zur Featurebereitstellung automatisch auf Ihre Eingabedaten angewendet.
@@ -369,7 +369,7 @@ Verwenden Sie diese 2 APIs im ersten Schritt des angepassten Modells, um mehr zu
   Diese Liste enthält alle Namen entwickelter Features.
 
   >[!Note]
-  >Verwenden Sie „timeseriestransformer“ für „task=’forecasting‘“, verwenden Sie ansonsten „datatransformer“ für die Aufgabe „regression“ oder „classification“.
+  >Verwenden Sie „timeseriestransformer“ für die Aufgabe „forecasting“ und andernfalls „datatransformer“ für die Aufgaben „regression“ oder „classification“.
 
 + API 2: `get_featurization_summary()` gibt die Zusammenfassung der Featurebereitstellung für alle Eingabefeatures zurück.
 
@@ -379,7 +379,7 @@ Verwenden Sie diese 2 APIs im ersten Schritt des angepassten Modells, um mehr zu
   ```
 
   >[!Note]
-  >Verwenden Sie „timeseriestransformer“ für „task=’forecasting‘“, verwenden Sie ansonsten „datatransformer“ für die Aufgabe „regression“ oder „classification“.
+  >Verwenden Sie „timeseriestransformer“ für die Aufgabe „forecasting“ und andernfalls „datatransformer“ für die Aufgaben „regression“ oder „classification“.
 
   Ausgabe:
   ```

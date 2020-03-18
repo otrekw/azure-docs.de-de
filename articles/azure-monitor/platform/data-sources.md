@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670524"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096733"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -72,8 +72,8 @@ Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) enthält Service Hea
 |:---|:---|
 | Aktivitätsprotokoll | Das Aktivitätsprotokoll wird in einem eigenen Datenspeicher gesammelt, den Sie über das Azure Monitor-Menü anzeigen oder zum Erstellen von Aktivitätsprotokollwarnungen verwenden können. | [Abfragen des Aktivitätsprotokolls im Azure-Portal](activity-log-view.md#azure-portal) |
 | Azure Monitor-Protokolle | Konfigurieren Sie Azure Monitor-Protokolle zum Erfassen des Aktivitätsprotokolls, um es mit anderen Überwachungsdaten zu analysieren. | [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](activity-log-collect.md) |
-| Azure Storage | Exportieren Sie das Aktivitätsprotokoll zum Archivieren in Azure Storage. | [Archivieren des Aktivitätsprotokolls](activity-log-export.md#archive-activity-log)  |
-| Event Hubs | Streamen Sie das Aktivitätsprotokoll mithilfe von Event Hubs an andere Speicherorte. | [Streamen von Aktivitätsprotokollen an Event Hubs](activity-log-export.md#stream-activity-log-to-event-hub) |
+| Azure Storage | Exportieren Sie das Aktivitätsprotokoll zum Archivieren in Azure Storage. | [Archivieren des Aktivitätsprotokolls](resource-logs-collect-storage.md)  |
+| Event Hubs | Streamen Sie das Aktivitätsprotokoll mithilfe von Event Hubs an andere Speicherorte. | [Streamen von Aktivitätsprotokollen an Event Hubs](resource-logs-stream-event-hubs.md) |
 
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) enthält Informationen zur Integrität der Azure-Dienste in Ihrem Abonnement, von denen Ihre Anwendung und Ressourcen abhängen.
@@ -92,7 +92,7 @@ Metriken und Ressourcenprotokolle enthalten Informationen zum _internen_ Betrieb
 ### <a name="platform-metrics"></a>Plattformmetriken 
 Die meisten Azure-Dienste senden [Plattformmetriken](data-platform-metrics.md), die ihre Leistung und ihren Betrieb widerspiegeln, direkt an die Metrikdatenbank. Die spezifischen [Metriken variieren je nach Ressourcentyp](metrics-supported.md). 
 
-| Destination | Beschreibung | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Metriken | Plattformmetriken werden ohne Konfiguration in die Azure Monitor-Metrikdatenbank geschrieben. Greifen Sie über den Metrik-Explorer auf Plattformmetriken zu.  | [Erste Schritte mit dem Azure-Metrik-Explorer](metrics-getting-started.md)<br>[Unterstützte Metriken von Azure Monitor](metrics-supported.md) |
 | Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](resource-logs-collect-workspace.md) |
@@ -137,7 +137,7 @@ Installieren Sie den Log Analytics-Agent für eine umfassende Überwachung und V
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs 
 [Azure Monitor für VMs](../insights/vminsights-overview.md) stellt eine angepasste Überwachungsoberfläche für virtuelle Computer mit Funktionen bereit, die über die grundlegende Azure Monitor-Funktionalität hinausgehen, einschließlich Dienststatus und Integrität des virtuellen Computers. Es ist ein Dependency-Agent auf virtuellen Windows- und Linux-Computern erforderlich, der in den Log Analytics-Agent integriert wird, um ermittelte Daten zu Prozessen, die auf dem virtuellen Computer ausgeführt werden, und externen Prozessabhängigkeiten zu sammeln.
 
-| Destination | Beschreibung | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Speichert Daten zu Prozessen und Abhängigkeiten auf dem Agent. | [Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten](../insights/vminsights-maps.md) |
 | VM-Speicher | Azure Monitor für VMs verwendet den Log Analytics-Agent zur Speicherung von Informationen zum Integritätsstatus an einem benutzerdefinierten Speicherort. Dies ist nur für Azure Monitor für VMs im Azure-Portal zusätzlich zur [Azure Resource Health-REST-API](/rest/api/resourcehealth/) verfügbar. | [Grundlegendes zur Integrität Ihrer Azure-VMs](../insights/vminsights-health.md)<br>[Azure Resource Health-REST-API](https://docs.microsoft.com/rest/api/resourcehealth/) |

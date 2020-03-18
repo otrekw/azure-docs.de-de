@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505727"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851383"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -203,7 +203,7 @@ Dieses Problem kann durch ein nicht ordnungsgemäß konfiguriertes oder abgelauf
 
 Um zu überprüfen, ob Ihr RunAs-Konto ordnungsgemäß konfiguriert ist, wechseln Sie zu Ihrem Automation-Konto im Azure-Portal, und wählen Sie **RunAs-Konten** unter **Kontoeinstellungen** aus. Hier sehen Sie den Status Ihrer RunAs-Konten; wenn ein RunAs-Konto falsch konfiguriert oder abgelaufen ist, zeigt dies der Status.
 
-Wenn Ihr RunAs-Konto [falsch konfiguriert](../manage-runas-account.md#misconfiguration) ist, sollten Sie es löschen und neu erstellen.
+Wenn Ihr ausführendes Konto falsch konfiguriert ist, sollten Sie es löschen und neu erstellen. Weitere Informationen finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](../manage-runas-account.md).
 
 Wenn das Zertifikat für Ihr RunAs-Konto abgelaufen ist, befolgen Sie die Schritte unter [Erneuerung eines selbstsignierten Zertifikat](../manage-runas-account.md#cert-renewal) zur Erneuerung des Zertifikats.
 

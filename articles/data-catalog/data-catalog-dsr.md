@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950274"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898147"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -124,7 +124,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 und höher</td>
     </tr>
     <tr>
       <td>Oracle Database-Sicht</td>
@@ -132,7 +132,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 und höher</td>
     </tr>
     <tr>
       <td>Anderes (generisches Objekt)</td>
@@ -151,7 +151,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Ansicht von Azure SQL Data Warehouse</td>
+      <td>Azure SQL Data Warehouse-Ansicht</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -164,7 +164,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-KPI</td>
@@ -172,7 +172,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Measure</td>
@@ -180,7 +180,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
@@ -188,15 +188,15 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services-Bericht</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>"Browser"</td>
-      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt. Nur SQL Server 2008 und neuere Versionen</td>
+      <td>Browser</td>
+      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt. Nur SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server-Tabelle</td>
@@ -204,7 +204,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>SQL Server-Sicht</td>
@@ -212,7 +212,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td>SQL Server 2008 und neuere Versionen.</td>
+      <td>SQL Server 2008 und höher</td>
     </tr>
     <tr>
       <td>Teradata-Tabelle</td>

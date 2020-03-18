@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754524"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942968"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Projektionen in einem Wissensspeicher in Azure Cognitive Search
 
@@ -211,3 +211,8 @@ Erstellen Sie als nächsten Schritt entsprechend den Anweisungen Ihren ersten Wi
 
 > [!div class="nextstepaction"]
 > [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
+
+Für ein Tutorial zu erweiterten Projektionskonzepten wie Aufteilen in Slices, Inlinestrukturierung und Beziehungen behandelt beginnen Sie mit [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md).
+
+> [!div class="nextstepaction"]
+> [Definieren von Projektionen in einem Wissensspeicher](knowledge-store-projections-examples.md)

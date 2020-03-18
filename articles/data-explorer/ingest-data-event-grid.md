@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424982"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096420"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen
 
@@ -118,7 +118,7 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Tabelle | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
-    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. Unterstützte Komprimierungsoptionen: Zip und gzip |
+    | Datenformat | *JSON* | Unterstützte Formate: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV, RAW und TXT. Unterstützte Komprimierungsoptionen: Zip und gzip |
     | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen.|
     | | |
     
@@ -150,13 +150,32 @@ Speichern Sie die Daten in einer Datei, und laden Sie sie mit diesem Skript hoch
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Für eine optimale Leistung bei der Erfassung muss die *unkomprimierte* Größe der für die Erfassung übertragenen komprimierten Blobs übermittelt werden. Da Event Grid-Benachrichtigungen nur grundlegende Details enthalten, müssen die Größeninformationen explizit übermittelt werden. Die Informationen zur unkomprimierten Größe können durch Festlegen der `rawSizeBytes`-Eigenschaft in den Blobmetadaten angegeben werden, wobei die Größenangabe der *unkomprimierten* Daten in Byte erfolgt.
+
+### <a name="ingestion-properties"></a>Erfassungseigenschaften
+
+Sie können die [Datenerfassungseigenschaften](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties) für die Bloberfassung über die Blobmetadaten angeben.
+
+Die folgenden Eigenschaften können festgelegt werden:
+
+|**Eigenschaft** | **Beschreibung der Eigenschaft**|
+|---|---|
+| `rawSizeBytes` | Größe der Rohdaten (unkomprimiert). Bei Avro/ORC/Parquet ist dies die Größe vor dem Anwenden der formatspezifischen Komprimierung.|
+| `kustoTable` |  Name der vorhandenen Zieltabelle. Überschreibt die `Table`, die auf dem Blatt `Data Connection` festgelegt ist. |
+| `kustoDataFormat` |  Datenformat. Überschreibt das `Data format`, das auf dem Blatt `Data Connection` festgelegt ist. |
+| `kustoIngestionMappingReference` |  Name der zu verwendenden vorhandenen Erfassungszuordnung. Überschreibt das `Column mapping`, das auf dem Blatt `Data Connection` festgelegt ist.|
+| `kustoIgnoreFirstRecord` | Wenn `true` festgelegt wird, ignoriert Kusto die erste Zeile im Blob. Verwenden Sie diese Eigenschaft in Daten in einem Tabellenformat (CSV, TSV oder ähnliche), um die Header zu ignorieren. |
+| `kustoExtentTags` | Zeichenfolgendarstellung von [Tags](/azure/kusto/management/extents-overview#extent-tagging), die an die resultierende Erweiterung angefügt werden. |
+| `kustoCreationTime` |  Überschreibt [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) für das Blob und ist als ISO 8601-Zeichenfolge formatiert. Verwenden Sie dies für einen Abgleich. |
 
 > [!NOTE]
 > Azure Data Explorer löscht die Blobs nach der Erfassung nicht.

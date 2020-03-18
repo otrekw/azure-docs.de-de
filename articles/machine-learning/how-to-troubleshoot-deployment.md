@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945811"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399687"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -221,6 +221,10 @@ def run(input_data):
 
 **Hinweis**: Die Rückgabe von Fehlermeldungen aus dem Aufruf `run(input_data)` sollte nur zu Debugzwecken erfolgen. Aus Sicherheitsgründen sollten Sie in einer Produktionsumgebung keine Fehlermeldungen auf diese Weise zurückgeben.
 
+## <a name="http-status-code-502"></a>HTTP-Statuscode 502
+
+Der Statuscode 502 gibt an, dass der Dienst eine Ausnahme ausgelöst hat oder in der `run()`-Methode der Datei „score.py“ abgestürzt ist. Verwenden Sie die Informationen in diesem Artikel, um die Datei zu debuggen.
+
 ## <a name="http-status-code-503"></a>HTTP-Statuscode 503
 
 Azure Kubernetes Service-Bereitstellungen unterstützen die automatische Skalierung, mit der das Hinzufügen von Replikaten ermöglicht wird, um zusätzliche Last zu unterstützen. Die Autoskalierung wurde jedoch für die Behandlung **stetiger** Veränderungen der Last konzipiert. Wenn Sie große Spitzen bei den Anforderungen pro Sekunde erhalten, erhalten Clients möglicherweise den HTTP-Statuscode 503.
@@ -261,6 +265,12 @@ Es gibt zwei Möglichkeiten, die beim Verhindern des Statuscodes 503 helfen kö
     > Wenn Anforderungsspitzen eingehen, die die neue Mindestanzahl von Replikaten überschreiten, erhalten Sie möglicherweise wieder den Statuscode 503. Wenn sich der Datenverkehr Ihres Diensts beispielsweise erhöht, müssen Sie die Mindestanzahl von Replikaten möglicherweise erhöhen.
 
 Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Modulreferenz zu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py).
+
+## <a name="http-status-code-504"></a>HTTP-Statuscode 504
+
+Der Statuscode 504 gibt an, dass für die Anforderung ein Timeout aufgetreten ist. Das Standardtimeout beträgt 1 Minute.
+
+Sie können das Timeout erhöhen oder versuchen, den Dienst zu beschleunigen, indem Sie unnötige Aufrufe in „score.py“ entfernen. Wenn das Problem durch diese Aktionen nicht behoben werden kann, debuggen Sie die Datei „score.py“ mithilfe der Informationen in diesem Artikel. Möglicherweise reagiert der Code nicht mehr, oder er befindet sich in einer Endlosschleife.
 
 ## <a name="advanced-debugging"></a>Erweitertes Debuggen
 

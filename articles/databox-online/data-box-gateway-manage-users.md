@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ee5eec5a5c17e443fe71f0093f09c96cf81ece0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754786"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946117"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Verwalten von Benutzern auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal 
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Verwalten von Benutzern auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Benutzer auf Ihrer Azure Data Box Gateway-Ressource verwalten. Azure Data Box Gateway kann über das Azure-Portal oder über die lokale Webbenutzeroberfläche verwaltet werden. Verwenden Sie das Azure-Portal, um Benutzer hinzuzufügen, zu ändern oder zu löschen.
 
@@ -24,17 +24,16 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
 > * Hinzufügen eines Benutzers
 > * Ändern eines Benutzers
-> * Löschen eines Benutzers 
+> * Löschen eines Benutzers
 
 ## <a name="about-users"></a>Informationen zu Benutzern
 
-Benutzer können über Lesezugriff oder über Vollzugriff verfügen. Wie der Name schon sagt, können Benutzer mit Lesezugriff die Freigabedaten nur anzeigen. Benutzer mit Vollzugriff können Freigabedaten lesen, Schreibvorgänge für diese Freigaben ausführen sowie Freigabedaten ändern oder löschen. 
+Benutzer können über Lesezugriff oder über Vollzugriff verfügen. Wie der Name schon sagt, können Benutzer mit Lesezugriff die Freigabedaten nur anzeigen. Benutzer mit Vollzugriff können Freigabedaten lesen, Schreibvorgänge für diese Freigaben ausführen sowie Freigabedaten ändern oder löschen.
 
- - **Benutzer mit Vollzugriff:** Lokaler Benutzer mit Vollzugriff. 
+ - **Benutzer mit Vollzugriff:** Lokaler Benutzer mit Vollzugriff.
  - **Benutzer mit Lesezugriff:** Lokaler Benutzer, der nur über Lesezugriff verfügt. Diese Benutzer werden Freigaben zugeordnet, die schreibgeschützte Vorgänge zulassen.
 
-Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Nachdem die Berechtigungen für einen Benutzer definiert wurden, können sie über den Explorer geändert werden. 
-
+Die Benutzerberechtigungen werden definiert, wenn der Benutzer im Rahmen der Freigabeerstellung erstellt wird. Das Ändern von Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
 
 ## <a name="add-a-user"></a>Hinzufügen eines Benutzers
 

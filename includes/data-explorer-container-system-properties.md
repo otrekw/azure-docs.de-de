@@ -2,41 +2,57 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-ms.date: 01/08/2020
+ms.date: 02/27/2020
 ms.author: orspodek
-ms.openlocfilehash: f9788e4623ce60ad55d79558d1d77a17eb2a9f26
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a2297301a0b9c0540c73c0f50483cccfc3181a0f
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779948"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128751"
 ---
 ### <a name="event-system-properties-mapping"></a>Zuordnung von Ereignissystemeigenschaften
 
-Wenn Sie **Ereignissystemeigenschaften** im Abschnitt **Datenquelle** der obigen Tabelle ausgewählt haben, wechseln Sie zur [Webbenutzeroberfläche](https://dataexplorer.azure.com/), um den entsprechenden KQL-Befehl für die ordnungsgemäße Zuordnungserstellung auszuführen.
+> [!Note]
+> * Systemeigenschaften werden für Ereignisse mit einem Datensatz unterstützt.
+> * Für die `csv`-Zuordnung werden am Anfang des Datensatzes Eigenschaften hinzugefügt. Bei einer `json`-Zuordnung werden Eigenschaften entsprechend dem in der Dropdownliste angezeigten Namen hinzugefügt.
 
-   **Für CSV-Zuordnung:**
+Wenn Sie **Ereignissystemeigenschaften** im Abschnitt **Datenquelle** der Tabelle ausgewählt haben, müssen Sie die folgenden Eigenschaften in das Tabellenschema und die Zuordnung einfügen.
 
-    ```kusto
-    .create table MyTable ingestion csv mapping "CsvMapping1"
+**Beispiel für ein Tabellenschema**
+
+Wenn Ihre Daten drei Spalten (`Timespan`, `Metric` und `Value`) enthalten und die Eigenschaften, die Sie einschließen, `x-opt-enqueued-time` und `x-opt-offset` lauten, erstellen oder ändern Sie das Tabellenschema mit dem folgenden Befehl:
+
+```kusto
+    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
+```
+
+**Beispiel einer CSV-Zuordnung**
+
+Führen Sie die folgenden Befehle aus, um am Anfang des Datensatzes Daten hinzuzufügen. Beachten Sie die Ordinalwerte.
+
+```kusto
+    .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "messageid", "DataType":"string", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "userid", "DataType":"string", "Properties":{"Ordinal":"1"}},'
-    '   { "column" : "other", "DataType":"int", "Properties":{"Ordinal":"2"}}'
+    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
+    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
+    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
+    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
     ']'
-    ```
+```
  
-   **Für JSON-Zuordnung:**
+**Beispiel einer JSON-Zuordnung**
 
-    ```kusto
-    .create table MyTable ingestion json mapping "JsonMapping1"
+Daten werden mithilfe der Namen der Systemeigenschaften hinzugefügt, mit denen sie auf dem Blatt **Datenverbindung** in der Liste **Ereignissystemeigenschaften** angezeigt werden. Führen Sie diese Befehle aus.
+
+```kusto
+    .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "messageid", "datatype" : "string", "Properties":{"Path":"$.message-id"}},'
-    '    { "column" : "userid", "Properties":{"Path":"$.user-id"}},'
-    '    { "column" : "other", "Properties":{"Path":"$.other"}}'
+    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
+    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'
-    ```
-
-   > [!TIP]
-   > * Sie müssen alle ausgewählten Eigenschaften in die Zuordnung einschließen. 
-   > * Die Reihenfolge der Eigenschaften ist bei der CSV-Zuordnung wichtig. Die Systemeigenschaften müssen vor allen anderen Eigenschaften und in derselben Reihenfolge aufgelistet werden, in der sie in der **Ereignissystemeigenschaften**-Dropdownliste angezeigt werden.
+```

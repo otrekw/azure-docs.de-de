@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 04cfdd1f96f83898710b6f292116f0afddc8df96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237236"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096814"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer 
 
@@ -46,6 +46,8 @@ Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die 
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Zurzeit wird die Option **Vollbildmodus öffnen**, über die Sie den temporären Lese-/Schreib- oder Lesezugriff freigeben, noch nicht für Azure Cosmos DB Gremlin- und Tabellen-API-Konten unterstützt. Sie können Ihre Gremlin- und Tabellen-API-Konten noch immer anzeigen, indem Sie die Verbindungszeichenfolge an Azure Cosmos DB Explorer übergeben. 
+
+Derzeit wird das Anzeigen von Dokumenten, die eine UUID enthalten, in Data Explorer nicht unterstützt. Dies wirkt sich nicht auf das Laden von Sammlungen aus, sondern nur auf einzelne Dokumente oder Abfragen, die diese Dokumente enthalten. Um diese Dokumente anzuzeigen und zu verwalten, sollten Benutzer weiterhin das Tool verwenden, das ursprünglich zum Erstellen dieser Dokumente verwendet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die ersten Schritte der Datenverwaltung in Azure Cosmos DB Explorer erlernt haben, haben Sie folgende Möglichkeiten:

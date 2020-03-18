@@ -1,7 +1,7 @@
 ---
-title: Sichern von Webdiensten mit SSL
+title: Absichern von Webdiensten mit TLS
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie HTTPS aktivieren, um einen über Azure Machine Learning bereitgestellten Webdienst zu schützen.
+description: Erfahren Sie, wie Sie HTTPS aktivieren, um einen über Azure Machine Learning bereitgestellten Webdienst zu schützen. Azure Machine Learning verwendet TLS Version 1.2 zum Absichern von Modellen, die als Webdienste bereitgestellt werden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905209"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355530"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie einen über Azure Machine Learning bereitgestellten Webdienst schützen.

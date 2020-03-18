@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529297"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897919"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -28,12 +28,12 @@ Erfahren Sie, wie Sie HDInsight mit Ihrem lokalen Netzwerk verbinden, indem Sie 
 
 Um HDInsight und den Ressourcen im angebundenen Netzwerk eine Kommunikation per Name zu ermöglichen, müssen Sie die folgenden Aufgaben ausführen:
 
-* Erstellen eines virtuellen Azure-Netzwerks
-* Erstellen eines benutzerdefinierten DNS-Servers im virtuellen Azure-Netzwerk
-* Konfigurieren des virtuellen Netzwerks, damit anstelle des rekursiven Azure-Resolvers der benutzerdefinierte DNS-Server verwendet wird
-* Konfigurieren der Weiterleitung zwischen dem benutzerdefinierten DNS-Server und Ihrem lokalen DNS-Server
+1. Erstellen eines virtuellen Azure-Netzwerks
+1. Erstellen eines benutzerdefinierten DNS-Servers im virtuellen Azure-Netzwerk
+1. Konfigurieren des virtuellen Netzwerks, damit anstelle des rekursiven Azure-Resolvers der benutzerdefinierte DNS-Server verwendet wird
+1. Konfigurieren der Weiterleitung zwischen dem benutzerdefinierten DNS-Server und Ihrem lokalen DNS-Server
 
-Diese Konfiguration ermöglicht das folgende Verhalten:
+Diese Konfigurationen ermöglichen folgendes Verhalten:
 
 * Anforderungen für vollqualifizierte Domänennamen, die das DNS-Suffix __für das virtuelle Netzwerk__ umfassen, werden an den benutzerdefinierten DNS-Server weitergeleitet. Der benutzerdefinierte DNS-Server leitet die Anforderungen dann an den rekursiven Azure-Resolver weiter, der die IP-Adresse zurückgibt.
 * Alle anderen Anforderungen werden an den lokalen DNS-Server weitergeleitet. Selbst Anforderungen für öffentliche Internetressourcen, wie z.B. microsoft.com, werden zur Namensauflösung an den lokalen DNS-Server weitergeleitet.
@@ -65,11 +65,13 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
   
-2. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** > **Compute** > **Ubuntu Server 18.04 LTS**.
+1. Klicken Sie im oberen Menü auf **+ Ressource erstellen**.
 
-    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. Geben Sie auf der Registerkarte __Grundeinstellungen__ die folgenden Informationen ein:  
+1. Wählen Sie **Compute** > **Virtueller Computer** aus, um zur Seite **Virtuellen Computer erstellen** zu wechseln.
+
+1. Geben Sie auf der Registerkarte __Grundeinstellungen__ die folgenden Informationen ein:  
   
     | Feld | Wert |
     | --- | --- |
@@ -178,7 +180,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie die Benachrichtigung
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    Der Text `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` ist das __DNS-Suffix__ für dieses virtuelle Netzwerk. Speichern Sie diesen Wert, weil der später wieder verwendet wird.
+    Der Text `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` ist das __DNS-Suffix__ für dieses virtuelle Netzwerk. Speichern Sie diesen Wert, da er später verwendet wird.
 
 5. Um Bind zum Auflösen von DNS-Namen für Ressourcen innerhalb des virtuellen Netzwerks zu konfigurieren, verwenden Sie den folgenden Text als Inhalt der Datei `/etc/bind/named.conf.local`:
 

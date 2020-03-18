@@ -2,23 +2,23 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/09/2020
+ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228110"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942751"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erstellen von Ressourcen auf der Verwaltungsgruppenebene
 
-In der Regel stellen Sie Azure-Ressourcen für eine Ressourcengruppe in Ihrem Azure-Abonnement bereit. Sie können jedoch auch auf der Verwaltungsgruppenebene Ressourcen erstellen. Sie verwenden die Bereitstellungen auf Verwaltungsgruppenebene, um Aktionen durchzuführen, die auf dieser Ebene sinnvoll sind, etwa das Zuweisen von [rollenbasierter Zugriffssteuerung](../../role-based-access-control/overview.md) oder das Anwenden von [Richtlinien](../../governance/policy/overview.md).
+Wenn Ihre Organisation sich weiterentwickelt, müssen Sie möglicherweise [Richtlinien](../../governance/policy/overview.md) oder [rollenbasierte Zugriffssteuerungen](../../role-based-access-control/overview.md) für eine Verwaltungsgruppe definieren und zuweisen. Mit Vorlagen auf Verwaltungsgruppenebene können Sie Richtlinien deklarativ anwenden und Rollen auf Verwaltungsgruppenebene zuweisen.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
 Sie können die folgenden Ressourcentypen auf der Verwaltungsgruppenebene bereitstellen:
 
-* [Bereitstellungen](/azure/templates/microsoft.resources/deployments)
+* [Bereitstellungen:](/azure/templates/microsoft.resources/deployments) für geschachtelte Vorlagen, die auf Abonnements oder Ressourcengruppen angewandt werden
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -35,10 +35,10 @@ Verwenden Sie für Vorlagen Folgendes:
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-Verwenden Sie für Parameterdateien Folgendes:
+Das Schema für eine Parameterdatei ist für alle Bereitstellungsbereiche identisch. Verwenden Sie für Parameterdateien Folgendes:
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
@@ -163,5 +163,4 @@ Im folgenden Beispiel wird der Verwaltungsgruppe eine vorhandene Richtliniendefi
 
 * Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
-* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
-* Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md).
+* Sie können Vorlagen auch auf [Abonnementebene](deploy-to-subscription.md) und [Mandantenebene](deploy-to-tenant.md) bereitstellen.

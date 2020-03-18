@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192624"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037242"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -25,11 +25,11 @@ In diesem Artikel erfahren Sie, wie Azure Storage mit HDInsight-Clustern funktio
 > [!IMPORTANT]  
 > Speicherkonten vom Typ **BlobStorage** können nur als sekundärer Speicher für HDInsight-Cluster verwendet werden.
 
-| Art des Speicherkontos | Unterstützte Dienste | Unterstützte Leistungsstufen | Unterstützte Zugriffsebenen |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (universell v2)  | Blob     | Standard                    | Heiß, Kalt, Archiv\*   |
-| Speicher (general-purpose v1)   | Blob     | Standard                    | –                    |
-| BlobStorage                    | Blob     | Standard                    | Heiß, Kalt, Archiv\*   |
+| Art des Speicherkontos | Unterstützte Dienste | Unterstützte Leistungsstufen |Nicht unterstützte Leistungsstufen| Unterstützte Zugriffsebenen |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2 (universell v2)  | Blob     | Standard                    |Premium| Heiß, Kalt, Archiv\*   |
+| Speicher (general-purpose v1)   | Blob     | Standard                    |Premium| –                    |
+| BlobStorage                    | Blob     | Standard                    |Premium| Heiß, Kalt, Archiv\*   |
 
 Die Verwendung des Standard-Blobcontainers zum Speichern von Geschäftsdaten wird nicht empfohlen. Stattdessen empfiehlt es sich, den Standard-Blobcontainer nach jeder Verwendung zu löschen, um die Speicherkosten zu verringern. Der Standardcontainer enthält Anwendungs- und Systemprotokolle. Stellen Sie sicher, dass Sie die Protokolle abrufen, bevor Sie den Container löschen.
 

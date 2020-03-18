@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 234c8be8c696ca7381b8860680d072e84820d424
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1904ed9707859f0d00bca3b6e3aef90d1346cea5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431977"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331484"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Erstellen eines Media Services-Kontos im Azure-Portal
 
@@ -46,13 +46,9 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche
 In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **+Neu** > **Web und mobil** > **Media Services**.
-   
-    ![Media Services – Erstellung](./media/media-services-create-account/media-services-new1.png)
+2. Klicken Sie auf **+ Ressource erstellen** > **Medien** > **Media Services**.
 3. Geben Sie unter **CREATE MEDIA SERVICES ACCOUNT** (MEDIA SERVICES-KONTO ERSTELLEN) die erforderlichen Werte ein.
-   
-    ![Media Services – Erstellung](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. Geben Sie unter **Kontoname**den Namen des neuen AMS-Kontos ein. Der Name eines Media Services-Kontos darf nur Kleinbuchstaben oder Ziffern ohne Leerzeichen enthalten und muss aus 3 bis 24 Zeichen bestehen.
    2. Wählen Sie unter „Abonnement“ das Azure-Abonnement aus, auf das Sie Zugriff haben.
    3. Wählen Sie unter **Ressourcengruppe**die neue oder vorhandene Ressource aus.  Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../../azure-resource-manager/management/overview.md#resource-groups)erhalten Sie weitere Informationen.
@@ -71,7 +67,6 @@ In diesem Abschnitt erfahren Sie, wie Sie ein AMS-Konto erstellen.
 ## <a name="to-manage-your-ams-account"></a>Verwalten Ihres AMS-Kontos
 
 Wenn Sie Ihr AMS-Konto verwalten (also etwa eine programmgesteuerte Verbindung mit der AMS-API herstellen, Videos hochladen, Medienobjekte codieren, den Inhaltsschutz konfigurieren oder den Auftragsstatus überwachen) möchten, wählen Sie im linken Bereich des Portals die Option **Einstellungen** aus. Navigieren Sie unter **Einstellungen** zu einem der verfügbaren Blätter (beispielsweise **API-Zugriff**, **Medienobjekte**, **Aufträge**, **Inhaltsschutz**).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

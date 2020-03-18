@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369863"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898382"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testen eines Azure Stream Analytics-Auftrags mit Beispieldaten
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testen eines Azure Stream Analytics-Auftrags im Portal
 
-In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten aus Ihrer Eingabesenke oder hochgeladenen Beispieldaten aus einer lokalen Datei im Azure-Portal testen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](stream-analytics-live-data-local-testing.md) und [Visual Studio Code](visual-studio-code-local-run-live-input.md) testen.
+In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten von Ihren Streamingquellen testen oder Beispieldaten aus einer lokalen Datei im Azure-Portal hochladen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](stream-analytics-live-data-local-testing.md) und [Visual Studio Code](visual-studio-code-local-run-live-input.md) testen.
 
-## <a name="sample-incoming-data-from-input"></a>Beispieleingangsdaten aus Eingabe
+## <a name="automatically-sample-incoming-data-from-input"></a>Automatisches Nehmen von Stichproblem von Beispieleingangsdaten aus der Eingabe
 
-Azure Stream Analytics ruft automatisch Ereignisse aus ihrer Datenstromeingabe ab. Sie können Abfragen mit dem Standardbeispiel ausführen oder einen bestimmten Zeitraum für das Beispiel festlegen.
+Azure Stream Analytics ruft automatisch Ereignisse aus Ihrer Streamingeingabe ab. Sie können Abfragen mit dem Standardbeispiel ausführen oder einen bestimmten Zeitraum für das Beispiel festlegen.
 
 1. Melden Sie sich beim Azure-Portal an.
 
@@ -98,6 +98,7 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
 10. Nachdem Sie die im Browser angezeigten Ergebnisse überprüft haben, können Sie den Auftrag **Starten**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Erstellen einer IoT-Lösung mithilfe von Stream Analytics:](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics) In diesem Tutorial wird erläutert, wie Sie eine End-to-End-Lösung mit einem Datengenerator erstellen, die den Datenverkehr an einer Mautstation simuliert.
 
 * [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 

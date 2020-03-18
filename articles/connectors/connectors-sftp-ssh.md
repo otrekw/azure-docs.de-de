@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161873"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128414"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -36,29 +36,31 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
   > [!NOTE]
   > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
+  Sie können dieses adaptive Verhalten außer Kraft setzen, indem Sie eine [konstante Blockgröße angeben](#change-chunk-size), die stattdessen verwendet werden soll. Diese Größe kann zwischen 5 MB und 50 MB liegen. Nehmen Sie beispielsweise an, Sie verfügen über eine 45 MB große Datei und ein Netzwerk, das diese Dateigröße ohne Latenzen unterstützt. Die adaptive Segmentierung führt zu mehreren Aufrufen anstelle von einem Aufruf. Um die Anzahl der Aufrufe zu reduzieren, können Sie versuchen, die Blockgröße auf 50 MB festzulegen. Wenn in einem anderen Szenario mit einer Blockgröße von beispielsweise 15 MB ein Timeout bei Ihrer Logik-App auftritt, können Sie versuchen, die Größe auf 5 MB zu reduzieren.
+
   Die Blockgröße ist einer Verbindung zugeordnet, was beduetet, dass Sie dieselbe Verbindung für Aktionen verwenden können, die Blockerstellung unterstützen, und dann für Aktionen, die keine Blockerstellung unterstützen. In diesem Fall liegt die Blockgröße für Aktionen, die keine Blockerstellung unterstützen, zwischen 5 MB und 50 MB. In dieser Tabelle sehen Sie, welche SFTP-SSH-Aktionen Blockerstellung unterstützen:
 
-  | Aktion | Unterstützung für Blockerstellung |
-  |--------|------------------|
-  | **Datei kopieren** | Nein |
-  | **Datei erstellen** | Ja |
-  | **Ordner erstellen** | Nicht verfügbar |
-  | **Datei löschen** | Nicht verfügbar |
-  | **Archiv in Ordner extrahieren** | Nicht verfügbar |
-  | **Dateiinhalte abrufen** | Ja |
-  | **Dateiinhalt anhand des Pfads abrufen** | Ja |
-  | **Dateimetadaten abrufen** | Nicht verfügbar |
-  | **Dateimetadaten anhand des Pfads abrufen** | Nicht verfügbar |
-  | **Dateien im Ordner aufführen** | Nicht verfügbar |
-  | **Datei umbenennen** | Nicht verfügbar |
-  | **Datei aktualisieren** | Nein |
-  |||
+  | Aktion | Unterstützung für Blockerstellung | Unterstützung für die Außerkraftsetzung der Blockgröße |
+  |--------|------------------|-----------------------------|
+  | **Datei kopieren** | Nein | Nicht verfügbar |
+  | **Datei erstellen** | Ja | Ja |
+  | **Ordner erstellen** | Nicht verfügbar | Nicht verfügbar |
+  | **Datei löschen** | Nicht verfügbar | Nicht verfügbar |
+  | **Archiv in Ordner extrahieren** | Nicht verfügbar | Nicht verfügbar |
+  | **Dateiinhalte abrufen** | Ja | Ja |
+  | **Dateiinhalt anhand des Pfads abrufen** | Ja | Ja |
+  | **Dateimetadaten abrufen** | Nicht verfügbar | Nicht verfügbar |
+  | **Dateimetadaten anhand des Pfads abrufen** | Nicht verfügbar | Nicht verfügbar |
+  | **Dateien im Ordner aufführen** | Nicht verfügbar | Nicht verfügbar |
+  | **Datei umbenennen** | Nicht verfügbar | Nicht verfügbar |
+  | **Datei aktualisieren** | Nein | Nicht verfügbar |
+  ||||
 
-* SFTP-SSH-Trigger unterstützen keine Segmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 15 MB oder kleiner sind. Verwenden Sie stattdessen das folgende Muster, um Dateien abzurufen, die größer als 15 MB sind:
+* SFTP-SSH-Trigger unterstützen keine Nachrichtensegmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 15 MB oder kleiner sind. Verwenden Sie stattdessen das folgende Muster, um Dateien abzurufen, die größer als 15 MB sind:
 
-  * Verwenden Sie einen SFTP-SSH-Trigger, der Dateieigenschaften zurückgibt, z.B. **When a file is added or modified (properties only)** (Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)).
+  1. Verwenden Sie einen SFTP-SSH-Trigger, der nur Dateieigenschaften zurückgibt, z. B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)** .
 
-  * Lassen Sie auf den Trigger die SFTP-SSH-Aktion **Get file content** (Dateiinhalt abrufen) folgen, die die vollständige Datei liest und implizit Nachrichtensegmentierung verwendet.
+  1. Lassen Sie auf den Trigger die SFTP-SSH-Aktion **Get file content** (Dateiinhalt abrufen) folgen, die die vollständige Datei liest und implizit Nachrichtensegmentierung verwendet.
 
 <a name="comparison"></a>
 
@@ -153,13 +155,13 @@ Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiter
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „sftp ssh“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
+1. Geben Sie für leere Logik-Apps im Suchfeld `sftp ssh` als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
    Oder
 
-   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. Geben Sie im Suchfeld den Begriff „sftp ssh“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. Geben Sie im Suchfeld den Begriff `sftp ssh` als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
+   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
 1. Geben Sie die erforderlichen Informationen für Ihre Verbindung ein.
 
@@ -180,6 +182,22 @@ Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiter
 1. Wenn Sie die Verbindungsdetails eingegeben haben, wählen Sie **Erstellen** aus.
 
 1. Geben Sie jetzt die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
+
+<a name="change-chunk-size"></a>
+
+## <a name="override-chunk-size"></a>Außerkraftsetzen der Blockgröße
+
+Um das adaptive Standardverhalten außer Kraft zu setzen, bei dem Blöcke verwendet werden, können Sie eine konstante Blockgröße zwischen 5 MB und 50 MB angeben.
+
+1. Wählen Sie in der rechten oberen Ecke der Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) und dann **Einstellungen** aus.
+
+   ![Öffnen der SFTP-SSH-Einstellungen](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
+
+1. Geben Sie unter **Inhaltsübertragung** in der Eigenschaft **Blockgröße** einen Integerwert zwischen `5` und `50` ein, z. B.: 
+
+   ![Angeben der stattdessen zu verwendenden Blockgröße](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
+
+1. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
 
 ## <a name="examples"></a>Beispiele
 

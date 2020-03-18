@@ -5,20 +5,20 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 427117fe47294a1db1fa8d3fa1e46ee1efb91b4d
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474143"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128621"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3, ESv3, FSv2, LSv2 und MSv2. 
+- Die verfügbaren Größen und Hardwaretypen für dedizierte Hosts variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -36,8 +36,6 @@ In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone u
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Suchen Sie nach **Hostgruppe**, und wählen Sie dann in den Ergebnissen **Hostgruppen** aus.
-
-    ![Ergebnis der Suche nach „Host group“.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. Wählen Sie auf der Seite **Hostgruppen** die Option **Erstellen** aus.
 1. Wählen Sie das Abonnement aus, das Sie verwenden möchten, und wählen Sie dann **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
 1. Geben Sie *myDedicatedHostsRG* unter **Name** ein, und wählen Sie dann **OK** aus.
@@ -46,8 +44,6 @@ In diesem Beispiel erstellen Sie eine Hostgruppe mit einer Verfügbarkeitszone u
 1. Wählen Sie unter **Verfügbarkeitszone** die Option **1** aus.
 1. Wählen Sie für **Fault domain count** (Anzahl von Fehlerdomänen) die Option **2** aus.
 1. Wählen Sie **Bewerten + erstellen** aus, und warten Sie auf die Überprüfung.
-
-    ![Hostgruppeneinstellungen](./media/virtual-machines-common-dedicated-hosts-portal/host-group-settings.png)
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus, um die Hostgruppe zu erstellen.
 
 Die Erstellung der Hostgruppe sollte nur wenige Sekunden dauern.
@@ -62,16 +58,12 @@ Beim Festlegen der Anzahl der Fehlerdomänen für die Hostgruppe werden Sie aufg
 
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Suchen Sie nach **Dedizierter Host**, und wählen Sie dann in den Ergebnissen **Dedizierter Host** aus.
-
-    ![Ergebnis der Suche nach „Host group“.](./media/virtual-machines-common-dedicated-hosts-portal/host.png)
 1. Wählen Sie auf der Seite **Dedizierter Host** die Option **Erstellen** aus.
 1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
 1. Wählen Sie *myDedicatedHostsRG* unter **Ressourcengruppe** aus.
 1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myHost* für **Name** ein, und wählen Sie als Standort *USA, Osten* aus.
-1. Wählen Sie unter **Hardwareprofil** die Option *Standard Es3 family – Type 1* (Standard-Es3-Familie – Typ 1) unter **Größenfamilie**, *myHostGrup* unter **Hostgruppe** und dann *1* unter **Fehlerdomäne** aus. Behalten Sie in den restlichen Feldern die Standardwerte bei.
+1. Wählen Sie in **Hardwareprofil** die Option *Standard Es3 family – Type 1* (Standard-Es3-Familie – Typ 1) unter **Größenfamilie**, *myHostGroup* unter **Hostgruppe** und dann *1* unter **Fehlerdomäne** aus. Behalten Sie in den restlichen Feldern die Standardwerte bei.
 1. Wählen Sie nach Abschluss **Bewerten + erstellen** aus, und warten Sie auf die Validierung.
-
-    ![Hosteinstellungen](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)
 1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus, um den Host zu erstellen.
 
 

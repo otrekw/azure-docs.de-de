@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208711"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926847"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
 
@@ -33,7 +33,7 @@ SCIM ist eine standardisierte Definition von zwei Endpunkten: einem „/Users“
 
 Das in SCIM 2.0 definierte Standard-Benutzerobjektschema und die REST-APIs für die Verwaltung (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) ermöglichen eine einfachere Integration von Identitätsanbietern und Apps. Anwendungsentwickler, die einen SCIM-Endpunkt erstellen, können die Integration mit jedem SCIM-konformen Client durchführen, ohne selbst Anpassungen vornehmen zu müssen.
 
-Die Automatisierung der Bereitstellung für eine Anwendung erfordert die Erstellung und Integration eines SCIM-Endpunkts mit dem SCIM-konformen Azure AD-Client. Führen Sie die folgenden Schritte aus, um die Bereitstellung von Benutzern und Gruppen in Ihrer Anwendung zu starten. 
+Die Automatisierung der Bereitstellung für eine Anwendung erfordert die Erstellung und Integration eines SCIM-Endpunkts mit dem Azure AD-SCIM-Client. Führen Sie die folgenden Schritte aus, um die Bereitstellung von Benutzern und Gruppen in Ihrer Anwendung zu starten. 
     
   * **[Schritt 1: Entwerfen Ihres Benutzer- und Gruppenschemas](#step-1-design-your-user-and-group-schema)** Identifizieren Sie die Objekte und Attribute, die Ihre Anwendung benötigt, und legen Sie fest, wie sie dem von der Azure AD SCIM-Implementierung unterstützten Benutzer- und Gruppenschema zugeordnet werden.
 
@@ -752,7 +752,7 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 
-Nachdem Sie das Schema entworfen und die Azure AD SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie sich auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.  
+Nachdem Sie das Schema entworfen und die Azure AD-SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie sich auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.  
 Der Open-Source-[Referenzcode](https://aka.ms/SCIMReferenceCode) für .NET Core, der vom Azure AD-Bereitstellungsteam veröffentlicht wird, ist eine solche Ressource, die Ihnen einen schnellen Einstieg in die Entwicklung ermöglicht. Nachdem Sie den SCIM-Endpunkt erstellt haben, sollten Sie ihn testen. Sie können die Sammlung von [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) verwenden, die als Teil des Referenzcodes bereitgestellt werden, oder die [oben](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations) aufgeführten Beispielanforderungen/-antworten ausführen.  
 
 Hinweis: Der Referenzcode soll Ihnen den Einstieg in das Erstellen des SCIM-Endpunkts erleichtern und wird in unveränderter Form zur Verfügung gestellt. Beiträge aus der Community sind stets willkommen, um den Code weiter auszubauen und zu pflegen. 

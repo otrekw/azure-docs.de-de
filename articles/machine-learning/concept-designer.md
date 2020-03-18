@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312429"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037625"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Mit dem Azure Machine Learning-Designer können Sie [Datasets](#datasets) und [Module](#module) auf einem interaktiven Zeichenbereich visuell miteinander verbinden, um Machine Learning-Modelle zu erstellen. Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
@@ -116,7 +116,7 @@ Der Designer erstellt dasselbe [PublishedPipeline](https://docs.microsoft.com/py
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Die grafische Benutzeroberfläche wird zum Designer
 
-Die grafische Benutzeroberfläche (Vorschau) wurde aktualisiert und ist jetzt der Azure Machine Learning-Designer. Der Designer wurde umgestaltet und verwendet jetzt ein pipelinebasiertes Back-End, das vollständig in die weiteren Features von Azure Machine Learning integriert ist. 
+Die grafische Benutzeroberfläche (Vorschau) wurde aktualisiert und ist jetzt der Azure Machine Learning-Designer (Vorschau). Der Designer wurde umgestaltet und verwendet jetzt ein pipelinebasiertes Back-End, das vollständig in die weiteren Features von Azure Machine Learning integriert ist. 
 
 Aufgrund dieser Aktualisierungen wurden einige Konzepte und Begriffe für die grafische Benutzeroberfläche geändert oder umbenannt. Die nachstehende Tabelle zeigt die wichtigsten konzeptionellen Änderungen. 
 
@@ -135,13 +135,5 @@ Sie können vorhandene Experimente für die grafische Benutzeroberfläche und We
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Die Grundlagen von Predictive Analytics und maschinellem Lernen werden hier erläutert: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
-* Verwenden Sie eines der Beispiele und passen Sie es an Ihre Anforderungen an:
-
-- [Beispiel 1 – Regression: Vorhersagen des Preises eines Autos](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Beispiel 2 – Regression: Vergleichen von Algorithmen für die Vorhersage von Autopreisen](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Beispiel 3 – Klassifizierung mit Featureauswahl: Vorhersage des Einkommens](how-to-designer-sample-classification-predict-income.md)
-- [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-designer-sample-classification-churn.md)
-- [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
-- [Beispiel 7 – Textklassifizierung: Wikipedia SP 500-Dataset](how-to-designer-sample-text-classification.md)
+* Erfahren Sie, wie Sie vorhandene [Designer-Beispiele](samples-designer.md) ändern, um sie an Ihre Anforderungen anzupassen.
 

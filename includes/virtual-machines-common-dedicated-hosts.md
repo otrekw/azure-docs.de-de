@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246202"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129237"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Die folgenden VM-Serien werden unterstützt: DSv3, ESv3 und Fsv2. 
 
 ## <a name="benefits"></a>Vorteile 
 
@@ -101,17 +100,15 @@ Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https:/
 
 Sie können auch mit einer [reservierten Instanz von Azure Dedicated Hosts](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md) Kosten einsparen.
  
-## <a name="vm-families-and-hardware-generations"></a>VM-Familien und Hardwaregenerationen
+## <a name="sizes-and-hardware-generations"></a>Größen und Hardwaregenerationen
 
-Eine SKU ist für einen Host definiert und stellt die Größenserie und den Typ der VM dar. Sie können mehrere VMs unterschiedlicher Größe innerhalb eines einzelnen Hosts kombinieren, solange diese derselben Größenserie angehören. Der Typ ist die Hardwaregeneration, die derzeit in der Region verfügbar ist.
+Eine SKU ist für einen Host definiert und stellt die Größenserie und den Typ der VM dar. Sie können mehrere VMs unterschiedlicher Größe innerhalb eines einzelnen Hosts kombinieren, solange diese derselben Größenserie angehören. 
 
-Die `types` der unterschiedlichen VM-Serien stammen von unterschiedlichen CPU-Anbietern und weisen andere CPU-Generationen und Anzahlen von Kernen auf.
+Der *Typ* ist die Hardwaregeneration. Die unterschiedlichen Hardwaretypen der einzelnen VM-Serien stammen von unterschiedlichen CPU-Anbietern und weisen andere CPU-Generationen und Anzahlen von Kernen auf. 
 
-Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
+Die Größen und Hardwaretypen variieren je nach Region. Weitere Informationen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 
-Dedizierte Hosts unterstützen die folgenden SKUs bzw. Typen:  DSv3_Type1 und ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>Hostlebenszyklus
 
 

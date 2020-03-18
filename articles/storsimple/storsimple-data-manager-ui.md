@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273983"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933751"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
@@ -102,7 +102,7 @@ Führen Sie die folgenden Schritte aus, um eine Auftragsdefinition zu erstellen.
 
    3. Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis, das die von Ihnen gewünschten Daten enthält, im Format _\MeinStammverzeichnis\Daten_ ein. Laufwerkbuchstaben, etwa _\C:\Daten_, werden nicht unterstützt. Sie können hier auch Dateifilter hinzufügen.
 
-   4. Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Wenn Sie diesen Auftrag ausführen, können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
+   4. Der Datentransformationsdienst funktioniert mit den aktuellsten Momentaufnahmen der an Azure gepushten Daten.
 
    5. Klicken Sie auf **OK**.
 
@@ -150,6 +150,11 @@ Immer wenn Sie Daten aus StorSimple in das Speicherkonto verschieben möchten, d
 4. Wechseln Sie zu **Aufträge** in Ihrem StorSimple Data Manager, um diesen Auftrag zu überwachen. Zusätzlich zur Überwachung können Sie auf dem Blatt **Aufträge** außerdem die Speicherwarteschlange abhören. Hier wird jedes Mal eine Nachricht hinzugefügt, wenn eine Datei aus StorSimple in das Speicherkonto verschoben wird.
 
     ![Starten der Auftragsausführung 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>Anzeigen von Protokollen nach Auftragsabschluss
+
+Nachdem Sie einen Auftrag abgeschlossen haben, können Sie seinen Status anzeigen. Der Auftragsstatus kann **Erfolgreich**, **Teilweise erfolgreich** oder **Fehlerhaft** sein. Sie können die Liste der erfolgreich kopierten Dateien und der Dateien, die nicht kopiert werden konnten, anzeigen. Diese Listen sind in einem Container mit dem Namen **storsimple-data-manager-joblogs** in Ihrem Zielspeicherkonto verfügbar. Sie können in diesem Container nach einem Ordner mit dem gleichen Namen wie die Auftragsdefinition suchen. Darin wird ein Ordner für jede Auftragsausführung erstellt, der Ihre Listen enthält. Der Name dieses Ordners ist die GUID des Auftrags, die Sie auf der Seite mit den Auftragsdetails finden. Alternativ wird in den meisten Fällen ein Link für die Kopierprotokolle auf der Seite „Aufträge“ angezeigt.
+In diesem Ordner werden zwei Gruppen von CSV-Dateien angezeigt. Alle Dateien, die mit **copiedfilelist...** beginnen, enthalten die Liste der erfolgreich kopierten Dateien. Alle Dateien, die mit **failedfilelist...** beginnen, enthalten Dateien, die nicht kopiert werden konnten, sowie eine Fehlermeldung.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,21 +4,26 @@ description: Erfahren Sie, wie Sie eine StorSimple 8100- oder 8600-Appliance zu
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250945"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943585"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
-Die StorSimple 8000-Serie stellt zwei separate SKUs dar, und es ist möglich, die Daten von jeder dieser SKUs zu einer Umgebung der Azure-Dateisynchronisierung zu migrieren. In diesem Artikel wird beschrieben, wie Sie beide Appliances zur Azure-Dateisynchronisierung migrieren. Er enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für ein erfolgreiches Migrieren zur Azure-Dateisynchronisierung.
+Die StorSimple 8000-Serie wird durch physische, lokale Appliances der Typen 8100 oder 8600 und die zugehörigen Clouddienstkomponenten dargestellt. Die Daten können von jeder dieser Appliances zu einer Umgebung der Azure-Dateisynchronisierung migriert werden. Die Azure-Dateisynchronisierung ist der standardmäßige und strategisch langfristige Azure-Dienst, zu dem StorSimple-Geräte migriert werden können.
+
+Die StorSimple 8000-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series). Es ist wichtig, möglichst bald mit der Planung der Migration zu beginnen. Dieser Artikel enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für eine erfolgreiche Migration zur Azure-Dateisynchronisierung. 
 
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+
+> [!IMPORTANT]
+> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
@@ -238,10 +243,10 @@ Während dieses Migrationsprozesses stellen Sie mehrere Volumeklone auf der VM u
 > [!IMPORTANT]
 > Damit dies funktioniert, muss vor dem Konfigurieren der Azure-Dateisynchronisierung ein Registrierungsschlüssel auf dem Server festgelegt werden.
 
-1. Erstellen Sie ein neues Verzeichnis auf dem Systemlaufwerk der VM. Azure-Dateisynchronisierungsinformationen müssen dort statt auf den bereitgestellten Volumeklonen dauerhaft gespeichert werden. Beispiel: `“C:\syncmetadata”`
+1. Erstellen Sie ein neues Verzeichnis auf dem Systemlaufwerk der VM. Azure-Dateisynchronisierungsinformationen müssen dort statt auf den bereitgestellten Volumeklonen dauerhaft gespeichert werden. Beispiel: `"C:\syncmetadata"`
 2. Öffnen Sie den Registrierungs-Editor, und suchen Sie nach der folgenden Registrierungsstruktur: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Erstellen Sie einen neuen Schlüssel vom Zeichenfolgentyp mit folgendem Namen: ***MetadataRootPath***
-4. Legen Sie den vollständigen Pfad zu dem Verzeichnis fest, das Sie auf dem Systemvolume erstellt haben, z. B.: `C:\syncmetadata”`
+4. Legen Sie den vollständigen Pfad zu dem Verzeichnis fest, das Sie auf dem Systemvolume erstellt haben, z. B.: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Konfigurieren der Azure-Dateisynchronisierung auf der Azure-VM
 
@@ -376,7 +381,7 @@ Hintergrund:
       /COPY:Kopierflag[s]
    :::column-end:::
    :::column span="1":::
-      Genauigkeit der Dateikopie (Standard: „/COPY:DAT“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel, S = Sicherheit = NTFS-ACLs, O = Besitzerinformationen, U = Überprüfungsinformationen
+      Genauigkeit der Dateikopie (Standard: „/COPY:DAT“), Kopierflags: D = Daten, A = Attribute, T = Zeitstempel, S = Sicherheit = NTFS-ACLs, O = Eigentümerinformationen, U = Überprüfungsinformationen
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -384,7 +389,7 @@ Hintergrund:
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      Kopieren aller Dateiinformationen (entspricht „/COPY:DATSOU“)
+      Kopieren aller Dateiinformationen (äquivalent zu „/COPY:DATSOU“)
    :::column-end:::
 :::row-end:::
 :::row:::

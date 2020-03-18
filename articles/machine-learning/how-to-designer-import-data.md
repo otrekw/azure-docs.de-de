@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138151"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942289"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importieren Ihrer Daten in Azure Machine Learning-Designer (Preview)
 
@@ -56,6 +56,8 @@ Obwohl wir empfehlen, dass Sie Datasets zum Importieren von Daten verwenden, kö
 
 Ausführliche Informationen zur Verwendung des Moduls „Daten importieren“ finden Sie auf der [Referenzseite für den Datenimport](algorithm-module-reference/import-data.md).
 
+[!NOTE]
+> Wenn die Daten viele Spalten aufweisen, kann im Modul Import Data die Fehlermeldung „Fehler bei der Überprüfung aufgrund von Größenbeschränkung“ auftreten. Dies liegt daran, dass die Spalten nach der Codierung die maximale Länge für Modulparameter überschreiten. In diesem Fall wird empfohlen, [das Dataset in der Datasets-Benutzeroberfläche zu registrieren](how-to-create-register-datasets.md#use-the-ui). Dadurch kann der Fehler vermieden werden.  
 
 ## <a name="supported-sources"></a>Unterstützte Quellen
 

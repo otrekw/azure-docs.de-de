@@ -1,21 +1,21 @@
 ---
-title: Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Power BI-Ausgabe (Vorschauversion)
+title: Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in der Power BI-Ausgabe
 description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Power BI-Ausgabe beschrieben.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459678"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086325"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI (Vorschauversion)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
-Die [Authentifizierung von verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe in Power BI ist für Azure Stream Analytics in der Vorschauphase verfügbar. Dies ermöglicht Stream Analytics Aufträgen direkten Zugriff auf einen Arbeitsbereich in Ihrem Power BI-Konto. Mit diesem Feature können Bereitstellungen von Stream Analytics-Aufträgen vollständig automatisiert werden, da es nicht mehr erforderlich ist, dass sich ein Benutzer über das Azure-Portal interaktiv bei Power BI anmeldet. Darüber hinaus werden Aufträge mit langer Ausführungszeit, die in Power BI schreiben, jetzt besser unterstützt, da der Auftrag nicht mehr regelmäßig erneut autorisiert werden muss.
+Das [Authentifizieren über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe in Power BI ermöglicht Stream Analytics Aufträgen direkten Zugriff auf einen Arbeitsbereich in Ihrem Power BI-Konto. Mit diesem Feature können Bereitstellungen von Stream Analytics-Aufträgen vollständig automatisiert werden, da es nicht mehr erforderlich ist, dass sich ein Benutzer über das Azure-Portal interaktiv bei Power BI anmeldet. Darüber hinaus werden Aufträge mit langer Ausführungszeit, die in Power BI schreiben, jetzt besser unterstützt, da der Auftrag nicht mehr regelmäßig erneut autorisiert werden muss.
 
 Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Power BI-Ausgaben eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
 

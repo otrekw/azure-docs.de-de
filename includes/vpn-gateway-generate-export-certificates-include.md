@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182218"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305006"
 ---
 ## <a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
 
@@ -28,6 +28,7 @@ Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsignierte
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. Lassen Sie die PowerShell-Konsole geöffnet, wenn Sie direkt nach dem Erstellen dieses Stammzertifikats ein Clientzertifikat erstellen möchten.
 
 ## <a name="clientcert"></a>Generieren eines Clientzertifikats
 
@@ -37,7 +38,7 @@ Die folgenden Schritte führen Sie durch das Generieren eines Clientzertifikats 
 
 In den Beispielen wird das Cmdlet „New-SelfSignedCertificate“ zum Generieren eines Clientzertifikats verwendet, das in einem Jahr abläuft. Zusätzliche Informationen zu den Parametern, z.B. Festlegen eines anderen Ablaufwerts für das Clientzertifikat, finden Sie in der Beschreibung zu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>Beispiel 1
+### <a name="example-1---powershell-console-session-still-open"></a>Beispiel 1: PowerShell-Konsolensitzung weiterhin geöffnet.
 
 Verwenden Sie dieses Beispiel, wenn Sie die PowerShell-Konsole nach dem Erstellen des selbstsignierten Stammzertifikats nicht geschlossen haben. Dieses Beispiel wird aus dem vorherigen Abschnitt fortgesetzt und verwendet die deklarierte Variable „$cert“. Wenn Sie die PowerShell-Konsole nach dem Erstellen des selbstsignierten Stammzertifikats geschlossen haben oder zusätzliche Clientzertifikate in einer neuen PowerShell-Konsolensitzung erstellen, verwenden Sie die Schritte in [Beispiel 2](#ex2).
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>Beispiel 2
+### <a name="ex2"></a>Beispiel 2: neue PowerShell-Konsolensitzung
 
 Wenn Sie zusätzliche Clientzertifikate erstellen oder nicht die gleiche PowerShell-Sitzung verwenden, in der Sie Ihr selbstsigniertes Stammzertifikat erstellt haben, führen Sie folgende Schritte aus:
 

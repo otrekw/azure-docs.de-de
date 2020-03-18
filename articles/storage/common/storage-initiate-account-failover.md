@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157703"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128333"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -29,9 +29,8 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal, PowerShell o
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie ein Kontofailover für Ihr Speicherkonto ausführen können, müssen Sie die folgenden Schritte ausführen:
+Damit Sie ein Kontofailover für Ihr Speicherkonto ausführen können, müssen Sie den folgenden Schritt ausführen:
 
-- Registrieren Sie sich für die Vorschauversion des Kontofailovers. Informationen zur Registrierung finden Sie unter [Informationen zur Vorschau](storage-disaster-recovery-guidance.md#about-the-preview).
 - Stellen Sie sicher, dass Ihr Speicherkonto zur Verwendung als georedundanter Speicher (GRS) oder georedundanter Speicher mit Lesezugriff (RA-GRS) konfiguriert ist. Weitere Informationen zum georedundanten Speicher finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>Wichtige Auswirkungen eines Kontofailovers
@@ -44,7 +43,7 @@ Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundant
 
 Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft, die Daten in Ihrem Konto in die neue sekundäre Region zu replizieren. Die Dauer der Replikation hängt von der Menge der zu replizierenden Daten ab.  
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu initiieren:
 
@@ -60,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu 
 
     ![Screenshot: Bestätigungsdialogfeld für ein Kontofailover](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zunächst das 6.0.1-Vorschaumodul installieren. Führen Sie dazu folgende Schritte aus:
 
@@ -97,7 +96,7 @@ Führen Sie den folgenden Befehl aus, um ein Kontofailover über PowerShell zu i
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Führen Sie die folgenden Befehle aus, um ein Kontofailover über die Azure-Befehlszeilenschnittstelle zu initiieren:
 

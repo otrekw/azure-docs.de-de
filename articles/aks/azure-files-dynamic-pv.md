@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure F
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596419"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897709"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -29,11 +29,13 @@ Mit einer Speicherklasse wird festgelegt, wie eine Azure-Dateifreigabe erstellt 
 
 * *Standard_LRS:* lokal redundanter Standardspeicher (LRS)
 * *Standard_GRS:* georedundanter Standardspeicher (GRS)
+* *Standard_ZRS:* zonenredundanter Standardspeicher (GRS)
 * *Standard_RAGRS:* Georedundanter Standardspeicher mit Lesezugriff (Standard-RA-GRS)
 * *Premium_LRS:* lokal redundanter Premium-Speicher (LRS)
+* *Premium_ZRS:* zonenredundanter Premiumspeicher (GRS)
 
 > [!NOTE]
-> Azure Files unterstützt Storage Premium in AKS-Clustern, auf denen Kubernetes 1.13 oder höher ausgeführt wird.
+> Azure Files unterstützt Storage Premium in AKS-Clustern, auf denen Kubernetes 1.13 oder höher ausgeführt wird. Die kleinstmögliche Dateifreigabe ist 100 GB.
 
 Weitere Informationen zu Kubernetes-Speicherklassen für Azure Files finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Einbindungsoptionen
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das persistente Volume dynamisch mit einer Speicherklasse erstellen, können Einbindungsoptionen im Speicherklassenobjekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
+Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes Version 1.13.0 und höher *0777*. Wenn Sie das persistente Volume dynamisch mit einer Speicherklasse erstellen, können Einbindungsoptionen im Speicherklassenobjekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
 
 ```yaml
 kind: StorageClass
@@ -174,16 +175,13 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
-
-Bei Verwendung eines Clusters der Version 1.8.0 bis 1.8.4 kann ein Sicherheitskontext angegeben werden, indem der Wert *runAsUser* auf *0* festgelegt wird. Weitere Informationen zum Sicherheitskontext für Pods finden Sie unter [Konfigurieren eines Sicherheitskontexts][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

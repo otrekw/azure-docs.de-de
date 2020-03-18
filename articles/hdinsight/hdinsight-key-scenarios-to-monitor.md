@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770882"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082879"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Überwachen der Clusterleistung in Azure HDInsight
 
@@ -27,13 +27,13 @@ Die Leistung von Hadoop-Clustern ist am besten, wenn die Last des Clusters gleic
 
 Melden Sie sich bei der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) an, und wählen Sie dann die Registerkarte **Hosts** aus, um sich einen allgemeinen Überblick über die Knoten Ihres Clusters und deren Last zu verschaffen. Ihre Hosts werden anhand ihrer vollqualifizierten Domänennamen aufgelistet. Der Betriebsstatus jedes Hosts wird mit einer farbigen Integritätsanzeige angegeben:
 
-| Color | Beschreibung |
+| Color | BESCHREIBUNG |
 | --- | --- |
 | Red | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Orange | Mindestens eine sekundäre Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Gelb | Ambari Server hat seit mehr als drei Minuten keinen Heartbeat mehr vom Host empfangen. |
 | Grün | Normaler Ausführungszustand |
- 
+
 Außerdem werden Spalten angezeigt, in denen die Anzahl von Kernen und die RAM-Menge für jeden Host sowie die Datenträgerauslastung und die durchschnittliche Auslastung angezeigt werden.
 
 ![Apache Ambari: Übersicht über die Hostregisterkarte](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -81,6 +81,46 @@ Wenn Sie Azure Data Lake Storage (ADLS) als Sicherungsspeicher für Ihren Cluste
 * [Anleitung für die Leistungsoptimierung für Apache Hive in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Anleitung für die Leistungsoptimierung für Apache Storm in HDInsight und Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>Beheben von Problemen bei der Leistung langsamer Knoten
+
+Trägheit kann unter anderem auf wenig Speicherplatz im Cluster zurückzuführen sein. Führen Sie eine Untersuchung anhand der folgenden Schritte durch:
+
+1. Verwenden Sie den [SSH-Befehl](./hdinsight-hadoop-linux-use-ssh-unix.md), um Verbindungen mit den einzelnen Knoten herzustellen.
+
+1. Überprüfen Sie die Datenträgerauslastung, indem Sie einen der folgenden Befehle ausführen:
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. Überprüfen Sie anhand der Ausgabe, ob im Ordner `mnt` oder in anderen Ordnern große Dateien vorhanden sind. Die Ordner `usercache` und `appcache` („mnt/resource/hadoop/yarn/local/usercache/hive/appcache/“) enthalten in der Regel große Dateien.
+
+1. Sollten große Dateien vorhanden sein, wurde die Dateivergrößerung entweder durch einen aktuellen Auftrag verursacht, oder ein fehlerhafter vorheriger Auftrag hat zu diesem Problem beigetragen. Überprüfen Sie mithilfe des folgenden Befehls, ob dieses Verhalten durch einen aktuellen Auftrag verursacht wird:
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. Sollte von diesem Befehl ein bestimmter Auftrag angegeben werden, können Sie diesen mithilfe eines Befehls wie dem folgenden beenden:
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    Ersetzen Sie `application_id` durch die Anwendungs-ID. Sollten keine bestimmten Aufträge angegeben werden, fahren Sie mit dem nächsten Schritt fort.
+
+1. Falls durch den oben genannten Befehl keine spezifischen Aufträge angegeben wurden, löschen Sie die gefundenen großen Dateien mithilfe eines Befehls wie dem folgenden:
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+Weitere Informationen zu Speicherplatzproblemen finden Sie unter [Nicht genügend Speicherplatz](./hadoop/hdinsight-troubleshoot-out-disk-space.md).
+
+> [!NOTE]  
+> Wenn Sie über große Dateien verfügen, die zu dem Speicherplatzproblem beitragen, aber erhalten bleiben sollen, müssen Sie Ihren HDInsight-Cluster zentral hochskalieren und die Dienste neu starten. Warten Sie nach Abschluss dieser Prozedur einige Minuten. Danach steht wieder freier Speicherplatz zur Verfügung, und der Knoten funktioniert wie gewohnt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,13 +2,13 @@
 title: Benutzerdefinierte Funktionen in Vorlagen
 description: Beschreibt, wie benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage definiert und verwendet werden.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 58b9ba7b162736329cf775e2be5a47bfcae0a4ca
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122473"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943219"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage
 
@@ -18,7 +18,7 @@ Dieser Artikel beschreibt, wie benutzerdefinierte Funktionen in einer Azure Reso
 
 ## <a name="define-the-function"></a>Definieren der Funktion
 
-Für benutzerdefinierte Funktionen müssen Namespacewerte verwendet werden, um Namenskonflikte mit Vorlagenfunktionen zu vermeiden. Im folgenden Beispiel wird eine Funktion veranschaulicht, die einen Speicherkontonamen zurückgibt:
+Für benutzerdefinierte Funktionen müssen Namespacewerte verwendet werden, um Namenskonflikte mit Vorlagenfunktionen zu vermeiden. Im folgenden Beispiel wird eine Funktion veranschaulicht, die einen eindeutigen Namen zurückgibt:
 
 ```json
 "functions": [
@@ -44,23 +44,53 @@ Für benutzerdefinierte Funktionen müssen Namespacewerte verwendet werden, um N
 
 ## <a name="use-the-function"></a>Verwenden der Funktion
 
-Das folgende Beispiel zeigt, wie Sie die Funktion aufrufen.
+Das folgende Beispiel zeigt eine Vorlage, die eine benutzerdefinierte Funktion enthält. Die Funktion wird dazu verwendet, einen eindeutigen Namen für ein Speicherkonto abzurufen. Die Vorlage weist den Parameter **storageNamePrefix** auf, der als Parameter an die Funktion übergeben wird.
 
 ```json
-"resources": [
+{
+ "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+ "contentVersion": "1.0.0.0",
+ "parameters": {
+   "storageNamePrefix": {
+     "type": "string",
+     "maxLength": 11
+   }
+ },
+ "functions": [
   {
-    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
-    "apiVersion": "2016-01-01",
-    "type": "Microsoft.Storage/storageAccounts",
-    "location": "South Central US",
-    "tags": {},
-    "sku": {
-      "name": "Standard_LRS"
-    },
-    "kind": "Storage",
-    "properties": {}
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
   }
-]
+],
+ "resources": [
+   {
+     "type": "Microsoft.Storage/storageAccounts",
+     "apiVersion": "2019-04-01",
+     "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+     "location": "South Central US",
+     "sku": {
+       "name": "Standard_LRS"
+     },
+     "kind": "StorageV2",
+     "properties": {
+       "supportsHttpsTrafficOnly": true
+     }
+   }
+ ]
+}
 ```
 
 ## <a name="limitations"></a>Einschränkungen

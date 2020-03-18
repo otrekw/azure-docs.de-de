@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912568"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383975"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Wie viel Zeit ist für die Migration erforderlich?
 
@@ -22,6 +22,14 @@ Die Planung und Ausführung der Migration hängt stark von der Komplexität der 
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Wie lautet die Definition eines neuen Kunden für IaaS-VMs (klassisch)?
 
 Kunden, die im Februar 2020 (einen Monat vor Beginn der Kennzeichnung als veraltet) keine IaaS-VMs (klassisch) in ihren Abonnements hatten, werden als neue Kunden betrachtet. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Was ist die Definition eines vorhandenen Kunden auf virtuellen IaaS-Computern (klassisch)?
+
+Kunden, die im Februar 2020 über aktive oder beendete, aber zugewiesene IaaS-VMs (klassisch) in ihren Abonnements verfügten, werden als vorhandene Kunden angesehen. Nur diese Kunden können ihre VMs bis zum 1. März 2023 von Azure Service Manager zu Azure Resource Manager migrieren. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Warum erhalte ich eine Fehlermeldung mit dem Hinweis „NewClassicVMCreationNotAllowedForSubscription“?
+
+Im Rahmen des Deaktivierungsvorgangs sind IaaS-VMs (klassisch) nicht mehr für neue Kunden verfügbar. Wir haben Sie als neuen Kunden identifiziert, daher wurde Ihr Vorgang nicht autorisiert. Es wird dringend empfohlen, [Azure Virtual Machines mit ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) zu verwenden. Wenn Sie keine Azure-VMs mit ARM verwenden können, wenden Sie sich an den Support, um Ihr Abonnement in die Whitelist aufnehmen zu lassen.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 

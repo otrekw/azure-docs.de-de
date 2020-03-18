@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273796"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399301"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
-Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über Programmiersprachen und Tools aufrufen.
+Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über Programmiersprachen und Tools aufrufen.
 
 Die Berichterstellungs-API verwendet [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) zum Autorisieren des Zugriffs auf die Web-APIs.
 
@@ -191,7 +191,6 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 In diesem Abschnitt werden die häufigsten Fehlermeldungen, die beim Zugreifen auf Aktivitätsberichte über die Microsoft Graph-API auftreten können, sowie Schritte zu deren Behebung aufgeführt.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Error: Fehler beim Abrufen von Benutzerrollen aus Microsoft Graph
 
  Melden Sie sich auf der Graph-Tester-Benutzeroberfläche über beide Anmeldeschaltflächen bei Ihrem Konto an, um zu vermeiden, dass bei der Anmeldung mit dem Graph-Tester ein Fehler ausgegeben wird. 
@@ -204,7 +203,6 @@ Wenn Sie diese Fehlermeldung beim Versuch erhalten, auf Anmeldungen mithilfe des
 
 ![Benutzeroberfläche zum Ändern von Berechtigungen](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Error: Der Mandant ist nicht B2C, oder der Mandant besitzt keine Premium-Lizenz
 
 Für den Zugriff auf Anmeldeberichte ist eine Azure Active Directory Premium 1-Lizenz (P1) erforderlich. Wenn diese Fehlermeldung beim Zugriff auf Anmeldungen angezeigt wird, stellen Sie sicher, dass Ihr Mandant mit einer Azure AD P1-Lizenz lizenziert ist.
@@ -215,7 +213,7 @@ Für den Zugriff auf Anmeldeberichte ist eine Azure Active Directory Premium 1-L
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Error: Der Anwendung fehlt die AAD-Berechtigung „Verzeichnisdaten lesen“ 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Error: Der Anwendung fehlt die Berechtigung „Alle Überwachungsprotokolldaten lesen“ der Microsoft-API
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Error: Der Anwendung fehlt die Berechtigung „Alle Überwachungsprotokolldaten lesen“ der Microsoft Graph-API
 
 Führen Sie die unter [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](howto-configure-prerequisites-for-reporting-api.md) aufgeführten Schritte aus, um sicherzustellen, dass Ihre Anwendung mit dem richtigen Berechtigungssatz ausgeführt wird. 
 
