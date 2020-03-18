@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500584"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117094"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -58,9 +58,13 @@ Automatische Verbindungswiederherstellung und DDNS werden in Punkt-zu-Standort-V
 
 Ja. Beim Resource Manager-Bereitstellungsmodell müssen Sie als VPN-Typ für Ihr Gateway „RouteBased“ festlegen. Für das klassische Bereitstellungsmodell benötigen Sie ein dynamisches Gateway. Point-to-Site-Konfigurationen werden für VPN-Gateways mit statischem Routing oder für richtlinienbasierte Gateways nicht unterstützt.
 
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Kann ich einen Point-to-Site-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren Gateways für virtuelle Netzwerke herstellt?
+
+Abhängig von der verwendeten VPN-Clientsoftware können Sie unter Umständen eine Verbindung mit mehreren Gateways für virtuelle Netzwerke herstellen. Voraussetzung dafür ist, dass für die virtuellen Netzwerke, mit denen eine Verbindung hergestellt wird, keine Adressräume vorliegen, die miteinander oder mit dem Netzwerk in Konflikt stehen, aus dem der Client eine Verbindung herstellt.  Azure VPN Client unterstützt zwar viele VPN-Verbindungen, es kann jedoch immer nur eine Verbindung aktiv sein.
+
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Kann ich einen Punkt-zu-Standort-Client so konfigurieren, dass er gleichzeitig eine Verbindung mit mehreren virtuellen Netzwerken herstellt?
 
-Nein. Ein Point-to-Site-Client kann nur eine Verbindung mit Ressourcen im VNET herstellen, in dem sich das Gateway für virtuelle Netzwerke befindet.
+Ja. Point-to-Site-Verbindungen mit einem Gateway für virtuelle Netzwerke, das in einem VNET bereitgestellt wird, für das ein Peering mit anderen VNETs besteht, haben unter Umständen Zugriff auf andere per Peering verknüpfte VNETs.  Wenn die per Peering verknüpften VNETs die Features „UseRemoteGateway“ bzw. „AllowGatewayTransit“ nutzen, kann der Point-to-Site-Client eine Verbindung mit diesen VNETs herstellen.  Weitere Informationen finden Sie in [diesem Artikel](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md).
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Wie viel Durchsatz kann ich bei einer Standort-zu-Standort- oder bei einer Punkt-zu-Standort-Verbindung erwarten?
 
