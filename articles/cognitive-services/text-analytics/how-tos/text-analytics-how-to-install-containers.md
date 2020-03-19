@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383158"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037506"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installieren und Ausführen von Containern für die Textanalyse
 
 Container ermöglichen es Ihnen, die Textanalyse-APIs in ihrer eigenen Umgebung auszuführen und eignen sich hervorragend für Ihre spezifischen Anforderungen bezüglich Sicherheit und Datengovernance. Container für die Textanalyse ermöglichen eine erweiterte Verarbeitung von natürlicher Sprache anhand von unformatiertem Text und bieten drei Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung. Die Entitätsverknüpfung wird derzeit in Containern nicht unterstützt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!IMPORTANT]
+> Das kostenlose Konto ist auf 5.000 Transaktionen pro Monat beschränkt, und für Container sind nur die <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">Tarife <span class="docon docon-navigate-external x-hidden-focus"></span></a> **Free** und **Standard** gültig. Weitere Informationen zu den Transaktionsanforderungsraten finden Sie unter [Datengrenzwerte](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +39,7 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
-|Textanalyseressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ [Textanalyse](../../cognitive-services-apis-create-account.md), um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite der Textanalyse zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der **Übersichtsseite** angegeben ist|
+|Textanalyseressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ [Textanalyse](../../cognitive-services-apis-create-account.md), um den entsprechenden API-Schlüssel und den URI des Endpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichts- und auf der Schlüsselseite der Textanalyse zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -48,15 +51,15 @@ Zur Verwendung des Containers für die Textanalyse müssen die folgenden Vorauss
 
 In der folgenden Tabelle werden die Mindestanforderungen und Empfehlungen für CPU-Kerne (mindestens 2,6 GHz) und Arbeitsspeicher in Gigabyte (GB) angegeben, die für jeden Container für die Textanalyse zugewiesen werden müssen.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+# <a name="language-detection"></a>[Sprachenerkennung](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
@@ -71,15 +74,15 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 
 In der Microsoft Container Registry stehen Containerimages für die Textanalyse zur Verfügung.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+# <a name="language-detection"></a>[Sprachenerkennung](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -89,15 +92,15 @@ In der Microsoft Container Registry stehen Containerimages für die Textanalyse 
 
 ### <a name="docker-pull-for-the-text-analytics-containers"></a>Docker-Pullvorgang für die Textanalyse-Container
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+# <a name="language-detection"></a>[Sprachenerkennung](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -116,15 +119,15 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 Es sind [Beispiele](../text-analytics-resource-container-config.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+# <a name="language-detection"></a>[Sprachenerkennung](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 

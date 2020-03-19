@@ -1,25 +1,26 @@
 ---
-title: Hochverfügbarkeit und Zuverlässigkeit – Azure Scheduler
+title: Hochverfügbarkeit und Zuverlässigkeit
 description: Erfahren Sie etwas über die Hochverfügbarkeit und Zuverlässigkeit bei Azure Scheduler.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979287"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898560"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Hochverfügbarkeit und Zuverlässigkeit für Azure Scheduler
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 Azure Scheduler bietet sowohl [Hochverfügbarkeit](https://docs.microsoft.com/azure/architecture/framework/#resiliency) als auch Zuverlässigkeit für Ihre Aufträge. Weitere Informationen finden Sie unter [SLA für Scheduler](https://azure.microsoft.com/support/legal/sla/scheduler).
 
@@ -29,7 +30,7 @@ Azure Scheduler ist [hochverfügbar] und bietet sowohl eine georedundante Dienst
 
 ### <a name="geo-redundant-service-deployment"></a>Georedundante Dienstbereitstellung
 
-Azure Scheduler ist im Azure-Portal in fast [jeder von Azure unterstützten geografischen Region](https://azure.microsoft.com/global-infrastructure/regions/#services) verfügbar. Wenn also ein Azure-Rechenzentrum in einer gehosteten Region nicht verfügbar ist, können Sie Azure Scheduler weiterhin verwenden, da die Failoverfunktionen Scheduler aus einem anderen Rechenzentrum verfügbar machen.
+Azure Scheduler ist in fast [jeder derzeit von Azure unterstützten geografischen Region](https://azure.microsoft.com/global-infrastructure/regions/#services) verfügbar. Wenn also ein Azure-Rechenzentrum in einer gehosteten Region nicht verfügbar ist, können Sie Azure Scheduler weiterhin verwenden, da die Failoverfunktionen Scheduler aus einem anderen Rechenzentrum verfügbar machen.
 
 ### <a name="geo-regional-job-replication"></a>Georegionale Auftragsreplikation
 
@@ -70,9 +71,9 @@ Der Aktionstyp der alternativen Aktion kann sich von dem für die ursprüngliche
 
 Weitere Informationen zum Einrichten eines alternativen Endpunkts finden Sie unter [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
-* [Erstellen komplexer Zeitpläne und erweiterter Serien](scheduler-advanced-complexity.md)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
+* [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 * [Grenzwerte, Kontingente, Standardwerte und Fehlercodes](scheduler-limits-defaults-errors.md)

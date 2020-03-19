@@ -3,19 +3,19 @@ title: Vorbereiten von Testdaten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie die Genauigkeit der Spracherkennung von Microsoft testen oder Ihre benutzerdefinierten Modelle trainieren möchten, benötigen Sie Audio- und Textdaten. Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660408"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942714"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -55,15 +55,17 @@ Audiodaten eignen sich optimal, um die Genauigkeit des Microsoft-Basismodells f�
 
 Anhand der folgenden Tabelle können Sie sicherstellen, dass Ihre Audiodateien für die Verwendung mit Custom Speech richtig formatiert sind:
 
-| Eigenschaft | value |
-|----------|-------|
-| Dateiformat | RIFF (WAV) |
-| Samplingrate | 8\.000 Hz oder 16.000 Hz |
-| Kanäle | 1 (Mono) |
-| Maximale Länge pro Audioaufnahme | 2 Stunden |
-| Beispielformat | PCM, 16 Bit |
-| Archivierungsformat | .zip |
-| Maximale Archivgröße | 2 GB |
+| Eigenschaft                 | Wert                 |
+|--------------------------|-----------------------|
+| Dateiformat              | RIFF (WAV)            |
+| Samplingrate              | 8\.000 Hz oder 16.000 Hz |
+| Kanäle                 | 1 (Mono)              |
+| Maximale Länge pro Audioaufnahme | 2 Stunden               |
+| Beispielformat            | PCM, 16 Bit           |
+| Archivierungsformat           | .zip                  |
+| Maximale Archivgröße     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sollten Sie mehr Daten zum Trainieren benötigen, teilen Sie sie auf mehrere ZIP-Dateien auf, und laden Sie sie separat hoch. Später können Sie auswählen, dass Sie *mehrere* Datasets zum Trainieren verwenden möchten. Sie können jedoch nur aus *einem* Dataset testen.
@@ -79,18 +81,20 @@ Verwenden Sie <a href="http://sox.sourceforge.net" target="_blank" rel="noopener
 
 Um die Genauigkeit der Microsoft-Spracherkennung bei der Verarbeitung Ihrer Audiodateien zu bemessen, müssen Sie menschenmarkierte Transkriptionen (wortwörtliche Transkriptionen) für den Vergleich bereitstellen. Zwar ist das Erstellen einer menschenmarkierten Transkription oft sehr zeitaufwendig, doch wird sie benötigt, um die Genauigkeit zu bewerten und das Modell für Ihre Anwendungsfälle zu trainieren. Denken Sie daran, dass die Verbesserung der Erkennung nur so gut ist wie die bereitgestellten Daten. Aus diesem Grund ist es wichtig, dass nur qualitativ hochwertige Transkripte hochgeladen werden.
 
-| Eigenschaft | value |
-|----------|-------|
-| Dateiformat | RIFF (WAV) |
-| Samplingrate | 8\.000 Hz oder 16.000 Hz |
-| Kanäle | 1 (Mono) |
+| Eigenschaft                 | Wert                               |
+|--------------------------|-------------------------------------|
+| Dateiformat              | RIFF (WAV)                          |
+| Samplingrate              | 8\.000 Hz oder 16.000 Hz               |
+| Kanäle                 | 1 (Mono)                            |
 | Maximale Länge pro Audioaufnahme | 2 Stunden (Tests)/60 s (Training) |
-| Beispielformat | PCM, 16 Bit |
-| Archivierungsformat | .zip |
-| Maximale ZIP-Dateigröße | 2 GB |
+| Beispielformat            | PCM, 16 Bit                         |
+| Archivierungsformat           | .zip                                |
+| Maximale ZIP-Dateigröße         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sie können nur aus *einem* Dataset testen. Achten Sie darauf, dass dieses im Rahmen der geeigneten Dateigröße bleibt.
+> Beim Hochladen von Trainings- und Testdaten darf die ZIP-Datei maximal 2 GB groß sein. Sie können nur aus *einem* Dataset testen. Achten Sie darauf, dass dieses die geeignete Dateigröße einhält. Darüber hinaus dürfen die einzelnen Trainingsdateien 60 Sekunden nicht überschreiten, andernfalls tritt ein Fehler auf.
 
 In Hinsicht auf Probleme wie die Löschung oder Ersetzung von Wörtern sind erhebliche Datenmengen erforderlich, um die Erkennung zu verbessern. Im Allgemeinen wird empfohlen, wortwörtliche Transkriptionen für ungefähr 10 bis 1.000 Stunden Audio bereitzustellen. Die Transkriptionen für sämtliche WAV-Dateien sollten in einer einzelnen Textdatei enthalten sein. Jede Zeile der Transkriptionsdatei muss den Namen einer der Audiodateien enthalten – gefolgt von der jeweiligen Transkription. Der Dateiname und die Transkription sollten durch ein Tabulatorzeichen (\t) getrennt werden.
 
@@ -130,7 +134,7 @@ Als allgemeine Richtlinie gilt: Die Modellanpassung ist am effektivsten, wenn de
 
 Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Äußerungen richtig formatiert ist:
 
-| Eigenschaft | value |
+| Eigenschaft | Wert |
 |----------|-------|
 | Textcodierung | UTF-8 BOM |
 | Anzahl von Äußerungen pro Zeile | 1 |
@@ -168,7 +172,7 @@ Eine benutzerdefinierte Aussprache ist für Englisch (`en-US`) und Deutsch (`de-
 
 Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Aussprache richtig formatiert ist. Aussprachedateien sind klein und sollten einige KB nicht übersteigen.
 
-| Eigenschaft | value |
+| Eigenschaft | Wert |
 |----------|-------|
 | Textcodierung | UTF-8 BOM (ANSI wird für Englisch ebenfalls unterstützt) |
 | Anzahl der Aussprachen pro Zeile | 1 |

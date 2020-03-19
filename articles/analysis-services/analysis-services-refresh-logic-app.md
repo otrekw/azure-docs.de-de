@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572340"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126854"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualisieren mit Logic Apps
 
@@ -19,14 +19,14 @@ Mit Logic Apps und REST-Aufrufen können Sie automatisierte Datenaktualisierung
 
 Weitere Informationen zur Verwendung von REST-APIs mit Azure Analysis Services finden Sie unter [Asynchrones Aktualisieren mit der REST-API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  In den Beispielen in diesem Artikel wird ein Dienstprinzipalname (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services verwendet. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals im Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="design-the-logic-app"></a>Entwerfen der Logik-App
 
 > [!IMPORTANT]
-> Die folgenden Beispiele setzen voraus, dass die Azure Analysis Services-Firewall deaktiviert ist.  Wenn die Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators in der Whitelist der Azure Analysis Services-Firewall enthalten sein. Weitere Informationen zu den Logik-App-IP-Adressbereichen pro Region finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
+> Die folgenden Beispiele setzen voraus, dass die Azure Analysis Services-Firewall deaktiviert ist. Wenn die Firewall aktiviert ist, muss die öffentliche IP-Adresse des Anforderungsinitiators in der Whitelist der Azure Analysis Services-Firewall enthalten sein. Weitere Informationen zu den Azure Logic Apps-IP-Adressbereichen pro Region finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#configuration).
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +66,7 @@ Konfigurieren Sie die Aktivität „HTTP“ wie folgt:
 |---------|---------|
 |**Methode**     |POST         |
 |**URI**     | https://*Ihre Serverregion*/servers/*Name des AAS-Servers*/models/*Name Ihrer Datenbank*/refreshes <br /> <br /> Beispiel: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**Header**     |   Content-Type, application/json <br /> <br />  ![Header](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Headers**     |   Content-Type, application/json <br /> <br />  ![Header](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Weitere Informationen zum Bilden des Anforderungstexts finden Sie unter [Asynchrones Aktualisieren mit der REST-API – POST /refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Authentifizierung**     |Active Directory OAuth         |
 |**Mandant**     |Geben Sie Ihre Azure Active Directory-Mandanten-ID ein.         |

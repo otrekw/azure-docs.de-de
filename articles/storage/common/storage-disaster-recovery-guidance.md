@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905513"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894527"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
@@ -114,22 +114,17 @@ Sie können ein Kontofailover über das Azure-Portal, PowerShell, Azure CLI oder
 
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
-Kontofailover befindet sich in der Vorschau ist für alle Kunden verfügbar, die GRS oder RA-GRS mit Azure Resource Manager-Bereitstellungen verwenden. GPv1, GPv2 und BLOB-Speicherkonten werden unterstützt. Kontofailover ist zurzeit in den folgenden Regionen verfügbar:
-
-- Asien, Osten
-- Asien, Südosten
-- Australien (Osten)
-- Australien, Südosten
-- USA, Mitte
-- USA (Ost 2)
-- USA, Westen-Mitte
-- USA, Westen 2
+Kontofailover befindet sich in der Vorschau ist für alle Kunden verfügbar, die GRS oder RA-GRS mit Azure Resource Manager-Bereitstellungen verwenden. GPv1, GPv2 und BLOB-Speicherkonten werden unterstützt. Kontofailover ist derzeit in allen öffentlichen Regionen verfügbar. Kontofailover ist derzeit nicht in Sovereign bzw. nationalen Clouds verfügbar.
 
 Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
 
 ### <a name="additional-considerations"></a>Weitere Überlegungen
 
 Lesen Sie die Erläuterungen in diesem Abschnitt, um zu verstehen, welche Auswirkungen es auf Ihre Anwendungen und Dienste haben kann, wenn Sie während des Vorschauzeitraums ein Failover erzwingen.
+
+#### <a name="storage-account-containing-archived-blobs"></a>Speicherkonto mit archivierten Blobs
+
+Speicherkonten mit archivierten Blobs unterstützen ein Kontofailover. Nachdem das Failover durchgeführt wurde, müssen zum Rückkonvertieren des Kontos in GRS oder RA-GRS zunächst alle archivierten Blobs auf einer Onlineebene aktiviert werden.
 
 #### <a name="storage-resource-provider"></a>Speicherressourcenanbieter
 
@@ -162,8 +157,8 @@ Beachten Sie, dass alle auf einem temporären Datenträger gespeicherten Daten v
 
 Die folgenden Funktionen und Dienste werden für das Kontofailover in der Vorschauversion nicht unterstützt:
 
-- Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.  
-- Für ein Speicherkonto mit archivierten Blobs kann kein Failover durchgeführt werden. Bewahren Sie archivierte Blobs in einem separaten Speicherkonto auf, für das Sie kein Failover ausführen möchten.
+- Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.
+- ADLS Gen2-Speicherkonten (Konten mit aktiviertem hierarchischen Namespace) werden derzeit nicht unterstützt.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
 - Für ein Speicherkonto mit Containern mit aktivierter [WORM-Unveränderlichkeitsrichtlinie](../blobs/storage-blob-immutable-storage.md) kann kein Failover durchgeführt werden. Entsperrte/gesperrte Richtlinien für die zeitbasierte Aufbewahrung oder die gesetzliche Aufbewahrungspflicht verhindern ein Failover zur Einhaltung der Richtlinien.
 - Nach dem Failover arbeiten die folgenden Funktionen möglicherweise nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](../blobs/storage-blob-event-overview.md), [Änderungsfeed](../blobs/storage-blob-change-feed.md), [Richtlinien für den Lebenszyklus](../blobs/storage-lifecycle-management-concepts.md) und [Storage Analytics-Protokollierung](storage-analytics-logging.md).

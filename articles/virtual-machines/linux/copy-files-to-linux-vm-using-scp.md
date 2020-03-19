@@ -1,26 +1,19 @@
 ---
 title: Verschieben von Dateien für Azure-Linux-VMs per SCP
 description: Es wird beschrieben, wie Sie Dateien mit SCP und einem SSH-Schlüsselpaar auf sichere Weise auf eine bzw. von einer Linux-VM in Azure verschieben.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036601"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969604"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Verschieben von Dateien für eine Linux-VM per SCP
 
@@ -72,7 +65,7 @@ Mit dem folgenden Befehl werden Dateien im Verzeichnis */home/azureuser/logs/* a
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-Mit dem CLI-Flag `-r` wird SCP angewiesen, die Dateien und Verzeichnisse rekursiv von dem Punkt des Verzeichnisses zu kopieren, der im Befehl angegeben ist.  Beachten Sie auch, dass die Befehlszeilensyntax dem Kopierbefehl `cp` ähnelt.
+Mit dem Flag `-r` wird SCP angewiesen, die Dateien und Verzeichnisse rekursiv von dem Punkt des Verzeichnisses zu kopieren, der im Befehl angegeben ist.  Beachten Sie auch, dass die Befehlszeilensyntax dem Kopierbefehl `cp` ähnelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

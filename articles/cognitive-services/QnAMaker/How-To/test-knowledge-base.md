@@ -1,22 +1,14 @@
 ---
 title: 'Testen einer Wissensdatenbank: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterativen Prozesses zur Verbesserung der Genauigkeit zurückgegebener Antworten. Sie können die Wissensdatenbank über eine verbesserte Chatschnittstelle testen, die Ihnen auch Änderungen ermöglicht.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091756"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927275"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -29,11 +21,11 @@ Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterati
 1. Geben Sie eine Abfrage in das Textfeld ein, und drücken Sie die EINGABETASTE.
 1. Die am besten passende Antwort aus der Wissensdatenbank wird als Antwort zurückgegeben.
 
-### <a name="clear-test-panel"></a>Löschen des Bereichs „Test“
+### <a name="clear-test-panel"></a>Leeren des Testbereichs
 
 Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option **Neu beginnen** aus.
 
-### <a name="close-test-panel"></a>Schließen des Bereichs „Test“
+### <a name="close-test-panel"></a>Schließen des Testbereichs
 
 Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
 
@@ -61,11 +53,11 @@ Sie können alternative Formen einer Frage für eine bestimmte Antwort hinzufüg
 
 ### <a name="add-a-new-answer"></a>Hinzufügen einer neuen Antwort
 
-Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde). 
+Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde).
 
-Verwenden Sie das Textfeld unten in der Antwortliste, um eine neue Antwort einzugeben, und drücken Sie die Eingabetaste, um sie hinzuzufügen. 
+Verwenden Sie das Textfeld unten in der Antwortliste, um eine neue Antwort einzugeben, und drücken Sie die Eingabetaste, um sie hinzuzufügen.
 
-Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt. 
+Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt.
 
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.
@@ -83,12 +75,14 @@ Verwenden Sie das Batchtesttool für Folgendes:
 * Ermitteln der besten Antwort und des Scores für eine Reihe von Fragen
 * Überprüfen der erwarteten Antwort auf eine Reihe von Fragen
 
-Batchtests werden über das Batchtesttool bereitgestellt. Dieses Tool ist zum Download als [komprimierte ausführbare Datei](https://aka.ms/qnamakerbatchtestingtool) oder als [C#-Quellcode](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) verfügbar. 
+Das [Tutorial zu Batchtests](../Quickstarts/batch-testing.md) enthält Schritt-für-Schritt-Anleitungen.
+
+Batchtests werden über das Batchtesttool bereitgestellt. Dieses Tool ist zum Download als [komprimierte ausführbare Datei](https://aka.ms/qnamakerbatchtestingtool) oder als [C#-Quellcode](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) verfügbar.
 
 Die [Referenzdokumentation zu dem Tool](../reference-tsv-format-batch-testing.md) umfasst Folgendes:
 
 * Befehlszeilenbeispiel für das Tool
-* Format für TSV-Eingabe- und -Ausgabedateien 
+* Format für TSV-Eingabe- und -Ausgabedateien
 
 ## <a name="next-steps"></a>Nächste Schritte
 

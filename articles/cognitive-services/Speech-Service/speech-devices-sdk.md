@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330786"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
 
@@ -47,7 +47,7 @@ Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 
 ### <a name="linux"></a>Linux
 
 Für Linux wird die Beispielanwendung als plattformübergreifende Java-Anwendung bereitgestellt. Laden Sie die neueste Version des [Speech-Geräte-SDK für die JRE](https://aka.ms/sdsdk-download-JRE) herunter.
-Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
+Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
 Zusätzliche Binärdateien werden bereitgestellt, um demnächst erscheinende Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) und [Urbetter DDK-](https://aka.ms/sdsdk-download-urbetter) zu unterstützen.
 

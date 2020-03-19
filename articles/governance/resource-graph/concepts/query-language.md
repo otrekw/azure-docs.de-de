@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851212"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927493"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -28,8 +28,12 @@ Resource Graph stellt mehrere Tabellen für die Daten bereit, die in Bezug auf R
 |---|---|
 |Ressourcen |Die Standardtabelle, wenn keine in der Abfrage definiert ist. Die meisten Resource Manager-Ressourcentypen und -Eigenschaften sind hier enthalten. |
 |ResourceContainers |Umfasst die Ressourcentypen und Daten des Abonnements (in der Vorschauphase – `Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
-|AlertsManagementResources |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement` _in Zusammenhang stehen_. |
-|SecurityResources |Umfasst Ressourcen, die mit `Microsoft.Security` _in Zusammenhang stehen_. |
+|AdvisorResources |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
+|AlertsManagementResources |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
+|MaintenanceResources |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
+|SecurityResources |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
+
+Eine komplette Liste, einschließlich Ressourcentypen, finden Sie unter [ Azure Resource Graph-Tabelle und Ressourcentypreferenz](../reference/supported-tables-resources.md).
 
 > [!NOTE]
 > _Resources_ ist die Standardtabelle. Beim Abfragen der Tabelle _Resources_ muss der Tabellenname nicht angegeben werden, es sei denn, `join` oder `union` wird verwendet. Es wird jedoch empfohlen, immer die anfängliche Tabelle in die Abfrage einzubeziehen.

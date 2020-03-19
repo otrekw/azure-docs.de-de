@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903480"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970095"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher
 
@@ -23,7 +23,7 @@ In diesem Artikel wird das Festlegen und Verwalten von Unveränderlichkeitsricht
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Festlegen von Aufbewahrungsrichtlinien und gesetzlichen Aufbewahrungspflichten
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Erstellen Sie einen neuen Container, oder wählen Sie einen vorhandenen Container aus, um die Blobs zu speichern, die im unveränderlichen Zustand aufbewahrt werden müssen. Der Container muss sich in einem universellen v2-Konto oder einem Blobspeicherkonto befinden.
 
@@ -59,11 +59,11 @@ In diesem Artikel wird das Festlegen und Verwalten von Unveränderlichkeitsricht
 
 9. Entfernen Sie das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
 
-### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Die Funktion ist in den folgenden Befehlsgruppen enthalten: `az storage container immutability-policy` und `az storage container legal-hold`. Führen Sie `-h` darauf aus, um die Befehle anzuzeigen.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-Erstellen oder Aktualisieren von Unveränderlichkeitsrichtlinien:
+Erstellen oder Aktualisieren von zeitbasierten Unveränderlichkeitsrichtlinien:
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>Zulassen von Schreibvorgängen in geschützten Anfügeblobs
 
-Derzeit können Sie auf die Einstellung `allowProtectedAppendWrites` für zeitbasierte Aufbewahrungsrichtlinien nur über [diesen speziellen Portallink](https://aka.ms/immutableappendblobs) zugreifen. 
-
-> [!IMPORTANT] 
->  Die Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs unter „Zeitbasierte Aufbewahrung“ ist derzeit nur in den folgenden Regionen verfügbar:
-> - East US
-> - USA Süd Mitte
-> - USA, Westen 2
->
-> Weitere Informationen finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 ![Zulassen zusätzlicher Schreibvorgänge in Anfügungen](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Die Funktion ist in den folgenden Befehlsgruppen enthalten: `az storage container immutability-policy` und `az storage container legal-hold`. Führen Sie `-h` darauf aus, um die Befehle anzuzeigen.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

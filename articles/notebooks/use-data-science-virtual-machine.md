@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 7a47be46818c633c016c791d0c52eb9393029973
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646993"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898398"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Verwenden von Azure Data Science VMs
 
@@ -38,6 +38,9 @@ Sobald Sie die DSVM erstellt haben, wählen Sie im Projektdashboard von Azure No
 
 Wenn Sie eine DSVM-Instanz auswählen, werden Sie möglicherweise von Azure Notebooks zur Eingabe der spezifischen Computer-Anmeldeinformationen aufgefordert, die beim Erstellen der VM verwendet wurden.
 
+> [!Important]
+> Der Benutzername darf nur aus Kleinbuchstaben bestehen, damit er mit JupyterHub verwendet werden kann.
+
 Wenn eine der Bedingungen nicht zutrifft, können Sie dennoch eine Verbindung zur DSVM herstellen. Wählen Sie in der Dropdownliste die Option **Direct Compute** aus. Sie werden nach einem Namen (für die Anzeige in der Liste), der IP-Adresse der VM mit dem zugehörigen Port (in der Regel 8000, der Standardport, an dem JupyterHub lauscht) und den VM-Anmeldeinformationen gefragt:
 
 ![Aufforderung zum Sammeln von Serverinformationen für die Option „Direktes Computing“](media/project-compute-tier-direct.png)
@@ -60,7 +63,7 @@ Wenn mehrere Benutzer eine DSVM gemeinsam nutzen, können Sie vermeiden, dass si
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem virtuellen Computer.
 1. Klicken Sie am linken Rand unter **Support und Problembehandlung** auf **Kennwort zurücksetzen**.
-1. Geben Sie einen neuen Benutzernamen und ein Kennwort ein, und klicken Sie auf **Aktualisieren**. (Vorhandene Benutzernamen sind nicht betroffen.)
+1. Geben Sie einen neuen **Benutzernamen** ein. Der Benutzername darf nur aus Kleinbuchstaben bestehen, damit er mit JupyterHub verwendet werden kann. Geben Sie ein Kennwort ein. Wählen Sie dann **Aktualisieren** aus. (Vorhandene Benutzernamen sind nicht betroffen.)
 1. Wiederholen Sie den vorherigen Schritt für alle weiteren Benutzer.
 
 ## <a name="next-steps"></a>Nächste Schritte

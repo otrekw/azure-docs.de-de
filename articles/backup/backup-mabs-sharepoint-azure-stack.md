@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure Stack
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten auf Azure Stack. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583213"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673040"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Sichern einer SharePoint-Farm in Azure Stack
 
@@ -123,7 +123,7 @@ Wenn Sie MABS und die SharePoint-Farm wie oben beschrieben konfiguriert haben, k
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS führt maximal zwei tägliche Sicherungen in Azure aus, und zwar von dem jeweils verfügbaren neuesten Datenträgersicherungspunkt aus. Azure Backup kann auch mithilfe der [Azure Backup-Netzwerk-Bandbreiteneinschränkung](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)steuern, welche WAN-Bandbreite innerhalb und außerhalb von Spitzenzeiten für Sicherungen verwendet werden kann.
+    > MABS führt maximal zwei tägliche Sicherungen in Azure aus, und zwar von dem jeweils verfügbaren neuesten Datenträgersicherungspunkt aus. Azure Backup kann auch mithilfe der [Azure Backup-Netzwerk-Bandbreiteneinschränkung](backup-windows-with-mars-agent.md#enable-network-throttling)steuern, welche WAN-Bandbreite innerhalb und außerhalb von Spitzenzeiten für Sicherungen verwendet werden kann.
     >
     >
 11. Wählen Sie abhängig vom ausgewählten Sicherungszeitplan auf der Seite **Online-Aufbewahrungsrichtlinie angeben** die gewünschte Aufbewahrungsrichtlinie für die täglichen, wöchentlichen, monatlichen und jährlichen Sicherungspunkte aus.

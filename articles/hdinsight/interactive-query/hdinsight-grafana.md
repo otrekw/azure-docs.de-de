@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 6027978b50ca72de5d18ff474b36814e22a94e85
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552217"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082862"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Zugreifen auf Grafana in Azure HDInsight
 
 [Grafana](https://grafana.com/) ist ein verbreiteter Open-Source-Generator für Diagramme und Dashboards. Mit dem umfangreichen Funktionssatz von Grafana können Benutzer nicht nur anpassbare und gemeinsam nutzbare Dashboards erstellen, sondern u.a. auch von Dashboards mit Vorlagen bzw. Skripts, LDAP-Integration und verschiedenen Datenquellen profitieren.
 
-Derzeit wird Grafana in Azure HDInsight mit den Clustertypen HBase, Kafka und Interactive Query unterstützt. Cluster mit aktiviertem Enterprise-Sicherheitspaket werden nicht unterstützt.
+Derzeit wird Grafana in Azure HDInsight mit den Clustertypen Spark, HBase, Kafka und Interactive Query unterstützt. Cluster mit aktiviertem Enterprise-Sicherheitspaket werden nicht unterstützt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Erstellen eines Apache Hadoop-Clusters
 
-Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Wählen Sie für **Clustertyp** die Option **Kafka**, **HBase** oder **Interactive Query** aus.
+Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md). Wählen Sie für **Clustertyp** die Option **Spark**, **Kafka**, **HBase** oder **Interactive Query** aus.
 
 ## <a name="access-the-grafana-dashboard"></a>Zugreifen auf das Grafana-Dashboard
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384825"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -82,7 +82,7 @@ Führen Sie einen der folgenden Schritte durch, um zu überprüfen, dass Ihre Ap
 So können Sie überprüfen, ob der Remotedesktop die durch GPU beschleunigte Codierung verwendet:
 
 1. Stellen Sie eine Verbindung mit dem Desktop der VM mithilfe des Windows Virtual Desktop-Clients her.
-2. Starten Sie die Ereignisanzeige, und navigieren Sie zum folgenden Knoten: **Applications and Services Logs** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreTS** > **Operational** (Anwendungs- und Dienstprotokolle > Microsoft > Windows > RemoteDesktopServices-RdpCoreTS > Betriebsbereit)
+2. Starten Sie die Ereignisanzeige, und navigieren Sie zum folgenden Knoten: **Applications and Services Logs** > **Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **Operational** (Anwendungs- und Dienstprotokolle > Microsoft > Windows > RemoteDesktopServices-RdpCoreCDV > Betriebsbereit)
 3. Suchen Sie nach der Ereignis-ID 170, um zu überprüfen, ob die durch GPU beschleunigte Codierung verwendet wird. Wenn „Der AVC-Hardware-Encoder ist aktiviert: 1“ angezeigt wird, wird die GPU-Codierung verwendet.
 4. Suchen Sie nach der Ereignis-ID 162, um zu überprüfen, ob der AVC 444-Modus aktiviert ist: Wenn „AVC aktiviert: 1, Anfangsprofil: 2048“ angezeigt wird, wird AVC 444 verwendet.
 

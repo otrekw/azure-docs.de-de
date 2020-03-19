@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245130"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393347"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> Möglicherweise erhalten Sie die folgende Warnung: „Fehler bei der Überprüfung der Existenz von LocalWebservice“. Sie können dies ruhig ignorieren, da Sie keinen lokalen Webdienst bereitstellen.
+> Möglicherweise erhalten Sie die Warnung „Fehler bei der Überprüfung der Existenz von LocalWebservice“ oder „Fehler beim Erstellen des Docker-Clients“. Sie können dies ruhig ignorieren, da Sie keinen lokalen Webdienst bereitstellen.
 
 Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Version 1 des Modells verwendet, das Sie zuvor registriert haben.
 

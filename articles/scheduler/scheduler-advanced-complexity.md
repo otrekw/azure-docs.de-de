@@ -1,26 +1,27 @@
 ---
-title: Erstellen erweiterter Auftragszeitpläne und -serien – Microsoft Azure Scheduler
+title: Erstellen erweiterter Auftragszeitpläne und -serien
 description: Erfahren Sie, wie Sie erweiterte Zeitpläne und Serien für Aufträge in Azure Scheduler erstellen.
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300966"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898588"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Erstellen erweiterter Zeitpläne und Serien für Aufträge in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Microsoft Azure Scheduler, der [ eingestellt wird](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+>
+> Scheduler ist nicht mehr in der Azure-Portal verfügbar, aber die [REST-API](/rest/api/scheduler) und [Azure Scheduler-PowerShell-Cmdlets](scheduler-powershell-reference.md) sind weiterhin verfügbar, damit Sie Ihre Aufträge und Auftragssammlungen verwalten können.
 
 In einem [Azure Scheduler](../scheduler/scheduler-intro.md)-Auftrag bestimmt der Zeitplan, wann und wie der Scheduler-Dienst den Auftrag ausführt. Mit Scheduler können Sie mehrere einmalige Zeitpläne und Zeitplanserien für einen Auftrag einrichten. Einmalige Zeitpläne werden nur einmal zu einem festgelegten Zeitpunkt ausgeführt und sind im Grunde Zeitplanserien, die nur einmal ausgeführt werden. Zeitplanserien werden mit einer festgelegten Häufigkeit ausgeführt. Aufgrund dieser Flexibilität kann Scheduler für eine Vielzahl von Geschäftsszenarien verwendet werden, beispielsweise:
 
@@ -34,7 +35,7 @@ In einem [Azure Scheduler](../scheduler/scheduler-intro.md)-Auftrag bestimmt der
 
 In diesem Artikel werden Beispielaufträge beschrieben, die Sie mit Scheduler und der [Azure Scheduler-REST-API](/rest/api/scheduler) erstellen können. Zudem finden Sie hier die JSON-Definition (JavaScript Object Notation) für jeden Zeitplan. 
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Diese Beispiele veranschaulichen die Vielzahl von Szenarien, die Azure Scheduler unterstützt, und zeigen, wie Sie Zeitpläne für verschiedene Verhaltensmuster erstellen können, beispielsweise:
 
@@ -207,8 +208,9 @@ Bei diesen Zeitplänen wird davon ausgegangen, dass **interval** auf 1 festgeleg
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Ausführung im 15-Minuten-Takt am letzten Freitag des Monats. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Ausführung um 05:15, 05:45, 17:15 und 17:45 Uhr am dritten Mittwoch jedes Monats. |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist der Azure Scheduler?](scheduler-intro.md)
 * [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)
+* [Azure Scheduler-REST-API – Referenz](/rest/api/scheduler)
+* [Azure Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
 * [Einschränkungen, Standardwerte und Fehlercodes für Azure Scheduler](scheduler-limits-defaults-errors.md)

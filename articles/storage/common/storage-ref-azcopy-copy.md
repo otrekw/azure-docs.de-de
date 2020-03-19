@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905505"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933785"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -171,7 +171,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--blob-type** string                     Definiert den Typ des Blobs am Ziel. Wird zum Hochladen von Blobs und beim Kopieren zwischen Konten verwendet (Standardeinstellung: „Detect“). Gültige Werte sind „Detect“, „BlockBlob“, „PageBlob“ und „AppendBlob“. Beim Kopieren zwischen Konten bewirkt der Wert „Detect“, dass AzCopy den Typ des Zielblobs anhand des Typs des Quellblobs bestimmt. Beim Hochladen einer Datei bestimmt „Detect“ anhand der Dateierweiterung, ob es sich um eine VHD- oder VHDX-Datei handelt. Eine VHD- oder VHDX-Datei wird von AzCopy als Seitenblob behandelt. (Standardwert: „Detect“)
 
-**--block-blob-tier** string               Lädt ein Blockblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Standardwert: „None“)
+**--block-blob-tier** string               Lädt Blockblobs direkt auf die [Zugriffsebene](../blobs/storage-blob-storage-tiers.md) Ihrer Wahl. (Der Standardwert lautet „None“.) Gültige Werte sind „None“, „Hot“, „Cool“ und „Archive“. Wenn der Wert „None“ oder keine Ebene übergeben wird, erbt das Blob die Ebene des Speicherkontos.
 
 **--block-size-mb** float                  Verwendet diese Blockgröße (in MiB) beim Hochladen in Azure Storage und beim Herunterladen aus Azure Storage. Der Standardwert wird anhand der Dateigröße automatisch berechnet. Dezimalzahlen sind zulässig (Beispiel: 0,25).
 

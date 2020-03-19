@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526721"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933581"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
@@ -73,7 +73,8 @@ Ausführliche Referenzdokumente finden Sie unter [azcopy copy](storage-ref-azcop
 Sie können eine Datei auch mit einem Platzhaltersymbol (*) an einer beliebigen Stelle im Dateipfad oder Dateinamen hochladen. Beispiel: `'C:\myDirectory\*.txt'` oder `C:\my*\*.txt`
 
 > [!NOTE]
-> AzCopy lädt Daten standardmäßig in Blockblobs hoch. Um Dateien als Anfügeblobs oder Seitenblobs hochzuladen, verwenden Sie das Flag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy lädt Daten standardmäßig als Blockblobs hoch. Um Dateien als Anfügeblobs oder Seitenblobs hochzuladen, verwenden Sie das Flag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+> AzCopy lädt Ihre Daten standardmäßig hoch, um die Kontozugriffsebene zu erben. Um Dateien auf eine bestimmte [Zugriffsebene](../blobs/storage-blob-storage-tiers.md) hochzuladen, verwenden Sie das Flag `--block-blob-tier=[Hot|Cool|Archive]`.
 
 ### <a name="upload-a-directory"></a>Hochladen eines Verzeichnisses
 

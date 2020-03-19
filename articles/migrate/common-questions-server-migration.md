@@ -1,54 +1,55 @@
 ---
 title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
-description: Erhalten von Antworten auf häufig gestellte Fragen zum Migrieren von Computern mithilfe der Azure Migrate-Servermigration
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 0c967027457b925b45ea19d994cfadfdbd0b8ab3
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425832"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939201"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
-In diesem Artikel werden häufig gestellte Fragen zum Azure Migrate-Servermigrationstool beantwortet. Wenn Sie nach dem Lesen dieses Artikels weitere Fragen haben, lesen Sie folgende Artikel:
+Dieser Artikel beantwortet häufige Fragen zum Azure Migrate: Servermigrationstool. Wenn Sie weitere Fragen haben, sehen Sie sich die folgenden Ressourcen an:
 
-- [Allgemeine Fragen](resources-faq.md) zu Azure Migrate.
-- [Fragen](common-questions-appliance.md) zur Azure Migrate-Appliance.
-- [Fragen](common-questions-discovery-assessment.md) zur Ermittlung, Bewertung und Abhängigkeitsvisualisierung.
-- Veröffentlichen von Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum).
-
+- [Allgemeine Fragen](resources-faq.md) zu Azure Migrate
+- Fragen zur [Azure Migrate-Appliance](common-questions-appliance.md)
+- Fragen zur [Ermittlung, Bewertung und Abhängigkeitsvisualisierung](common-questions-discovery-assessment.md)
+- Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>Wie funktioniert die VMware-Replikation ohne Agent?
 
 Die Replikationsmethode ohne Agent für VMware verwendet VMware-Momentaufnahmen und die Nachverfolgung geänderter Blöcke von VMware (Changed Block Tracking, CBT).
 
-1. Wenn Sie die Replikation starten, wird ein erster Replikationszyklus geplant. Im ersten Zyklus wird eine Momentaufnahme des virtuellen Computers erstellt. Diese Momentaufnahme wird verwendet, um die VMDKs (Datenträger) der virtuellen Computer zu replizieren. 
+Der Prozess sieht wie folgt aus:
+
+1. Wenn Sie die Replikation starten, wird ein erster Replikationszyklus geplant. Im ersten Zyklus wird eine Momentaufnahme des virtuellen Computers erstellt. Die Momentaufnahme wird verwendet, um die VMDKs (Datenträger) der virtuellen Computer zu replizieren. 
 2. Nach Abschluss des anfänglichen Replikationszyklus werden regelmäßige Deltareplikationszyklen geplant.
     - Während der Deltareplikation wird eine Momentaufnahme erstellt, und diejenigen Datenblöcke, die sich seit dem letzten Replikationszyklus geändert haben, werden repliziert.
     - Mithilfe der VMware-Nachverfolgung geänderter Blöcke (CBT) werden Blöcke ermittelt, die sich seit dem letzten Zyklus verändert haben.
-    - Die Häufigkeit der regelmäßigen Replikation wird automatisch durch Azure Migrate verwaltet und richtet sich danach, wie viele andere VMs oder Datenträger gleichzeitig vom selben Datenspeicher aus repliziert werden. Unter idealen Bedingungen erreicht die Replikation schließlich einen Zyklus pro Stunde für jede VM.
+    - Die Häufigkeit der regelmäßigen Replikation wird automatisch durch Azure Migrate verwaltet und richtet sich danach, wie viele andere VMs und Datenträger gleichzeitig vom selben Datenspeicher aus repliziert werden. Unter idealen Bedingungen erreicht die Replikation schließlich einen Zyklus pro Stunde für jede VM.
 
-Bei der Migration ist ein bedarfsbasierter Replikationszyklus eingeplant, sodass der Computer alle verbleibenden Daten erfassen kann. Sie können auswählen, den Computer während der Migration herunterzufahren, um Datenverluste zu vermeiden und die Anwendungskonsistenz sicherzustellen.
+Bei der Migration ist ein bedarfsbasierter Replikationszyklus eingeplant, sodass der Computer alle verbleibenden Daten erfassen kann. Um Datenverluste zu vermeiden und Anwendungskonsistenz sicherzustellen, können Sie den Computer während der Migration herunterfahren.
 
 ## <a name="why-isnt-resynchronization-exposed"></a>Warum wird die erneute Synchronisierung nicht offengelegt?
 
-Bei der Migration ohne Agent wird in jedem Deltazyklus die Differenz zwischen der aktuellen Momentaufnahme und der zuvor erstellten Momentaufnahme geschrieben. Da es sich immer um die Differenz zwischen Momentaufnahmen handelt, werden Daten zusammengelegt. Wenn also ein bestimmter Sektor zwischen den Momentaufnahmen N-mal geschrieben wird, muss nur der letzte Schreibvorgang übertragen werden, da wir nur an der letzten Synchronisierung interessiert sind. Dies unterscheidet sich von der Agent-basierten Replikation, bei der wir jeden Schreibvorgang nachverfolgen und anwenden. Das bedeutet, dass jeder Deltazyklus eine Neusynchronisierung ist. Daher wird keine Option zur Neusynchronisierung verfügbar gemacht. Wenn die Datenträger aufgrund eines Fehlers nicht synchronisiert werden, wird dies im nächsten Zyklus behoben. 
+Bei der Migration ohne Agent wird in jedem Deltazyklus die Differenz zwischen der aktuellen Momentaufnahme und der zuvor erstellten Momentaufnahme geschrieben. Daten werden immer nach der Differenz zwischen Momentaufnahmen zusammengelegt. Wenn ein bestimmter Sektor zwischen den Momentaufnahmen *N*-mal geschrieben wird, muss nur der letzte Schreibvorgang übertragen werden, da wir nur an der letzten Synchronisierung interessiert sind. Das Verfahren unterscheidet sich von der Agent-basierten Replikation, bei der wir jeden Schreibvorgang nachverfolgen und anwenden. Bei diesem Verfahren ist jeder Deltazyklus eine Neusynchronisierung. Daher wird keine Option zur Neusynchronisierung verfügbar gemacht. Wenn die Datenträger aufgrund eines Fehlers einmal nicht synchronisiert werden, wird dies im nächsten Zyklus behoben. 
 
-## <a name="how-does-churn-rate-impact-agentless-replication"></a>Wie wirkt sich die Änderungsrate auf die Replikation ohne Agents aus?
+## <a name="how-does-churn-rate-affect-agentless-replication"></a>Wie wirkt sich die Änderungsrate auf die Replikation ohne Agent aus?
 
-Da die Replikation ohne Agent das Datum zusammenlegt, ist das Änderungsmuster wichtiger als die Änderungsrate. Wenn eine Datei immer wieder geschrieben wird, hat die Rate keine große Auswirkung. Dagegen verursacht ein Muster, bei dem in jeden zweiten Sektor geschrieben wird, im nächsten Zyklus viele Änderungen. Da die zu übertragende Datenmenge minimiert werden soll, sollen die Daten so weit wie möglich gefaltet werden, bevor der nächste Zyklus geplant wird.  
+Da bei der Replikation ohne Agent Daten zusammengelegt werden, ist das *Änderungsmuster* wichtiger als die *Änderungsrate*. Wenn eine Datei immer wieder geschrieben wird, hat die Rate keine große Auswirkung. Dagegen verursacht ein Muster, bei dem in jeden zweiten Sektor geschrieben wird, im nächsten Zyklus viele Änderungen. Da die zu übertragende Datenmenge minimiert werden soll, sollen die Daten so weit wie möglich zusammengelegt werden, bevor der nächste Zyklus geplant wird.  
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Wie häufig wird ein Replikationszyklus geplant?
 
-Replikationszyklen werden gemäß folgender Formel geplant: (Vorherige Zyklusdauer / 2) oder 1 Stunde, je nachdem, welcher Wert höher ist.
+Die Formel zur Planung des nächsten Replikationszyklus ist (Vorherige Zyklusdauer / 2) oder eine Stunde, je nachdem, welcher Wert höher ist.
 
-Beispiel: Wenn ein Deltazyklus für eine VM vier Stunden dauert, wird der nächste Zyklus in zwei Stunden geplant, nicht in der nächsten Stunde. Dies unterscheidet sich unmittelbar nach der ersten Replikation, bei der der erste Deltazyklus sofort geplant wird.
+Beispiel: Wenn ein Deltazyklus für eine VM vier Stunden dauert, wird der nächste Zyklus in zwei Stunden geplant, nicht in der nächsten Stunde. Das Verfahren unterscheidet sich unmittelbar nach der ersten Replikation, wenn sofort der erste Deltazyklus geplant wird.
 
-## <a name="how-does-agentless-replication-impact-vmware-servers"></a>Welche Auswirkungen hat die Replikation ohne Agents auf VMware-Server?
+## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Welche Auswirkungen hat die Replikation ohne Agent auf VMware-Server?
 
-Es gibt einige Auswirkungen auf die Leistung von vCenter Server-/ESXi-Hosts. Da die Replikation ohne Agents Momentaufnahmen verwendet, verbraucht sie IOPS im Speicher, und es wird eine gewisse IOPS-Speicherbandbreite benötigt. Wir raten davon ab, die Replikation ohne Agents zu verwenden, wenn es in Ihrer Umgebung Einschränkungen hinsichtlich Speicher/IOPS gibt.
+Die Replikation ohne Agent hat einige Auswirkungen auf die Leistung von VMware vCenter Server- und VMware ESXi-Hosts. Da die Replikation ohne Agent Momentaufnahmen verwendet, verbraucht sie IOPS im Speicher, sodass eine gewisse IOPS-Speicherbandbreite erforderlich ist. Wir raten davon ab, die Replikation ohne Agent zu verwenden, wenn es in Ihrer Umgebung Einschränkungen hinsichtlich Speicher oder IOPS gibt.
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>Kann ich eine Migration ohne Agents von UEFI-VMs zu Azure Gen 2 durchführen?
 
@@ -56,24 +57,37 @@ Nein. Verwenden Sie Azure Site Recovery, um diese VMs zu Azure Gen 2-VMs zu mig
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Kann ich VMs beim Migrieren an Azure-Verfügbarkeitszonen anheften?
 
-Nein, Azure-Verfügbarkeitszonen werden nicht unterstützt.
+Nein. Azure-Verfügbarkeitszonen werden für die Azure Migrate-Migration nicht unterstützt.
 
-## <a name="which-transport-protocol-is-used-by-azure-migrate-during-replication"></a>Welches Transportprotokoll wird von Azure Migrate bei der Replikation verwendet?
+## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Welches Transportprotokoll verwendet Azure Migrate bei der Replikation?
 
 Azure Migrate verwendet das NBD-Protokoll (Network Block Device) mit SSL-Verschlüsselung.
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Welche vCenter Server-Version ist für die Migration mindestens erforderlich?
 
-Sie müssen mindestens über vCenter Server 5.5 und die VMware vSphere ESXi-Hostversion 5.5 verfügen.
+Sie müssen mindestens über vCenter Server 5.5 und die vSphere ESXi-Hostversion 5.5 verfügen.
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Können Kunden ihre VMs zu nicht verwalteten Datenträgern migrieren?
 
 Nein. Azure Migrate unterstützt nur die Migration zu verwalteten Datenträgern (HDD Standard, SSD Premium).
 
-## <a name="how-many-vms-can-i-replicate-together-with-agentless-migration"></a>Wie viele VMs kann ich zusammen mit der Migration ohne Agents replizieren?
+## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Wie viele VMs kann ich gleichzeitig mithilfe der Migration ohne Agent replizieren?
 
-Zurzeit können Sie pro vCenter Server 100 VMs gleichzeitig migrieren. Migrieren Sie in Batches von 10 VMs.
+Zurzeit können Sie pro vCenter Server-Instanz 100 VMs gleichzeitig migrieren. Migrieren Sie in Batches von 10 VMs.
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wann migriere ich Computer als physische Server?
+
+Die Behandlung von Computern als physische Server für die Migration ist in verschiedenen Szenarien hilfreich:
+
+- Wenn Sie lokale physische Server migrieren.
+- Wenn Sie VMs migrieren, die über eine Plattform, z. B. Xen oder KVM, virtualisiert wurden.
+- Zum Migrieren von Hyper-V- oder VMware-VMs, falls Sie aus irgendeinem Grund den Standardmigrationsprozess für [Hyper-V](tutorial-migrate-hyper-v.md) oder die [VMware](server-migrate-overview.md)-Migration nicht nutzen können. Wenn Sie beispielsweise VMware vCenter nicht ausführen und nur ESXi-Hosts verwenden.
+- Zum Migrieren von VMs, die zurzeit in privaten Clouds ausgeführt werden, zu Azure.
+- Wenn Sie VMs, die in öffentlichen Clouds ausgeführt werden, z. B. Amazon Web Services (AWS) oder Google Cloud Platform (GCP), zu Azure migrieren möchten.
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Benötige ich VMware vCenter, um VMware-VMs zu migrieren?
+Zum [Migrieren von VMware-VMs](server-migrate-overview.md) mithilfe der VMware-Migration mit oder ohne Agent müssen ESXi-Hosts, auf denen sich VMs befinden, von vCenter Server verwaltet werden. Wenn Sie nicht über vCenter Server verfügen, können Sie VMware-VMs migrieren, indem Sie sie als physische Server migrieren. [Weitere Informationen](migrate-support-matrix-physical-migration.md)
  
+## <a name="next-steps"></a>Nächste Schritte
 
-
-
+Sehen Sie sich die [Übersicht zu Azure Migrate](migrate-services-overview.md) an.

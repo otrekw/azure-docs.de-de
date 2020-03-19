@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4d4e47808355833ff7ecfb66db13ee86dc4a6402
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: cd2562974a689ecbca0d7016d3d970895ea211d9
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251041"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081759"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -44,7 +44,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | --- | --- | --- |
 | **Australische Behörden** |Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
 | **Europa** | Frankreich, Mitte; Frankreich, Süden; Deutschland, Norden; Deutschland, Westen-Mitte; Europa, Norden; Norwegen, Osten; Norwegen, Westen; Schweiz, Norden; Schweiz, Westen; Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Westen |Amsterdam, Amsterdam2, Dublin, Frankfurt, Genf, Kopenhagen, London, London2, Mailand, Marseille, München, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zürich |
-| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
+| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
 | **Asien** | Ostasien, Südostasien | Bangkok, Hongkong, Hongkong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipeh |
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio, Tokio2 |
@@ -88,7 +88,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Unterstützt |Unterstützt |Amsterdam, Hongkong SAR, Johannesburg, London, Newport (Wales), Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Unterstützt |Unterstützt |Miami |
 | **CDC** | Unterstützt | Unterstützt | Canberra, Canberra2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Hongkong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC, Washington DC2 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Unterstützt |Unterstützt |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokio, Toronto, Washington DC, Washington DC2 |
 | **[Chief Telecom](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Unterstützt |Unterstützt |Hongkong, Taipei |
 | **China Mobile International** |Unterstützt |Unterstützt | Singapur |
 | **China Telecom Global** |Unterstützt |Unterstützt |Hongkong |
@@ -132,6 +132,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Unterstützt |Unterstützt |Amsterdam, Hongkong (SAR), London, Los Angeles, Osaka, Singapur, Sydney, Tokio, Washington DC |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Unterstützt |Unterstützt |Tokio |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Unterstützt |Unterstützt |Osaka |
+| **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Unterstützt |Unterstützt |Marseille |
 | **[Optus](https://www.optus.com.au/enterprise/)** |Unterstützt |Unterstützt |Melbourne, Sydney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dubai2, Frankfurt, Hongkong SAR, Johannesburg, London, Paris, Sao Paulo, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Unterstützt | Unterstützt | Dubai2 |

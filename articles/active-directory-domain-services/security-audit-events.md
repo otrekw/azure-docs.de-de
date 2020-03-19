@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613059"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328645"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -33,7 +33,7 @@ Azure AD DS-Sicherheitsüberwachungen sind auf die herkömmliche Überwachung f�
 
 Die folgenden Überwachungsereigniskategorien sind verfügbar:
 
-| Name der Überwachungskategorie | Beschreibung |
+| Name der Überwachungskategorie | BESCHREIBUNG |
 |:---|:---|
 | Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Beispielabfrage 2
 
-Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Februar 2020, 9 Uhr, und Mitternacht am 10. Februar 2019 aufsteigend sortiert nach Datum und Uhrzeit anzeigen:
+Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Februar 2020, 9 Uhr, und Mitternacht am 10. Februar 2020 aufsteigend sortiert nach Datum und Uhrzeit anzeigen:
 
 ```Kusto
 AADDomainServicesAccountManagement

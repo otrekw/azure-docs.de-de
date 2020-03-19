@@ -1,25 +1,25 @@
 ---
 title: Einrichten der Abhängigkeitsvisualisierung in Azure Migrate
-description: Beschreibt das Einrichten der Abhängigkeitsvisualisierung in der Serverbewertung von Azure Migrate
+description: In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben.
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916284"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78940999"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
-In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Serverbewertung von Azure Migrate beschrieben. Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md#what-is-dependency-visualization) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md#what-is-dependency-visualization) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
 - [Überprüfen](concepts-dependency-visualization.md) Sie die Anforderungen und die verbundenen Kosten für die Abhängigkeitsvisualisierung.
 - Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
-- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Serverbewertung von Azure Migrate.
+- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
+- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 - Sie müssen einem Azure Migrate-Projekt einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/manage-access.md) zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können:
     - Stellen Sie sicher, dass Sie über einen Arbeitsbereich in dem Abonnement mit dem Azure Migrate-Projekt verfügen.
     - Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Arbeitsbereiche in anderen Regionen können keinem Projekt zugeordnet werden.

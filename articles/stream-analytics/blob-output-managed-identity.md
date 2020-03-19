@@ -5,17 +5,17 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 03/11/2020
+ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664333"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129973"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe (Vorschauversion)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe
 
-Die [Authentifizierung der verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe auf den Azure Blob Storage ist für Azure Stream Analytics als Vorschau verfügbar. Dadurch erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
+Durch die [Authentifizierung der verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe an Azure Blob Storage erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
 
 Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blobausgabe(n) eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
 

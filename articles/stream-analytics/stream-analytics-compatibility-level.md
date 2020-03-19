@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201797"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087853"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -25,11 +25,9 @@ Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Au
 
 Azure Stream Analytics unterstützt zurzeit drei Kompatibilitätsgrade:
 
-* 1.0 – Vorheriges Verhalten
-* 1.1 – Standardverhalten
-* 1.2 – neuestes Verhalten mit den neuesten Verbesserungen
-
-Der ursprüngliche Kompatibilitätsgrad „1.0“ wurde mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt.
+* 1.0 – Ursprünglicher Kompatibilitätsgrad, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics vor einigen Jahren eingeführt wurde
+* 1.1 – Vorheriges Verhalten
+* 1.2 – Neuestes Verhalten mit den neuesten Verbesserungen
 
 Wenn Sie einen neuen Stream Analytics-Auftrag erstellen, gilt es als bewährte Methode, diesen mit dem neuesten Kompatibilitätsgrad zu erstellen. Starten Sie Ihren Auftragsentwurf mit dem aktuellsten Verhalten, damit Sie später keine Änderungen vornehmen müssen und so die Komplexität erhöhen.
 

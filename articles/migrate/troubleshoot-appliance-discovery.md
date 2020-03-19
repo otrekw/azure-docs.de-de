@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048704"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080383"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -150,6 +150,7 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 10004: „Installierte Anwendungen für <Windows-/Linux->Computer können nicht ermittelt werden“. |  In der Appliance wurden keine Anmeldeinformationen für den Zugriff auf <Windows-/Linux->Computer angegeben.| Fügen Sie der Appliance entsprechende Anmeldeinformationen mit Zugriff auf die <Windows-/Linux->Computer hinzu.
 10005: „Der Zugriff auf den lokalen Server ist nicht möglich“. | Die Anmeldeinformationen für den Zugriff könnten falsch sein. | Aktualisieren Sie die Anmeldeinformationen für die Appliance, um sicherzustellen, dass Sie mit ihnen auf den betreffenden Computer zugreifen können. 
 10006: „Der Zugriff auf den lokalen Server ist nicht möglich“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist.|  Verwenden Sie nur die App-Ermittlung für Windows/Linux.
+10007: „Die abgerufenen Metadaten können nicht verarbeitet werden.“ | Dieser interne Fehler trat beim Deserialisieren von JSON auf. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
 9000/9001/9002: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf dem betreffenden Computer, oder installieren Sie diese Tools erneut. Überprüfen Sie dann, ob sie funktionieren.
 9003: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn das Betriebssystem des Computers nicht Windows oder Linux ist. | Verwenden Sie nur die App-Ermittlung für Windows/Linux.
 9004: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden“. | Dies kann vorkommen, wenn die VM ausgeschaltet ist. | Stellen Sie für die Ermittlung sicher, dass die VM eingeschaltet ist.
@@ -158,9 +159,21 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 9008: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
 9009: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Dies kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
 9010: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+9011: „Die vom Gast herunterzuladende Datei wurde auf der Gast-VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+9012: „Die Ergebnisdatei umfasst keine Inhalte.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+9013: „Für jede Anmeldung bei der VMware-VM wird ein neues temporäres Profil erstellt.“ | Für jede Anmeldung bei der VM wird ein neues temporäres Profil erstellt. | Stellen Sie sicher, dass der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
+9015: „Aufgrund unzureichender Berechtigungen für vCenter konnte keine Verbindung mit VMware-VMs hergestellt werden.“ | Die Rolle „Gastvorgänge“ ist für das vCenter-Benutzerkonto nicht aktiviert. | Stellen Sie sicher, dass die Rolle „Gastvorgänge“ für das vCenter-Benutzerkonto aktiviert ist.
+9016: „Es kann keine Verbindung mit VMware-VMs hergestellt werden, da der Gastvorgänge-Agent über keine Daten verfügt.“ | Die VMware-Tools sind nicht ordnungsgemäß installiert oder nicht auf dem neuesten Stand. | Stellen Sie sicher, dass die VMware-Tools ordnungsgemäß installiert und auf dem neuesten Stand sind.
+9017: „Die Datei mit den ermittelten Metadaten wurde auf der VM nicht gefunden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten. | Wenden Sie sich an den Microsoft-Support, um eine Lösung zu erhalten.
+9018: „PowerShell ist auf den Gast-VMs nicht installiert.“ | PowerShell ist auf der Gast-VM nicht verfügbar. | Installieren Sie PowerShell auf der Gast-VM.
+9019: „Ermittlung aufgrund von Fehlern beim Gast-VM-Vorgang nicht möglich.“ | Es ist ein Fehler beim VMware-Gastvorgang auf der VM aufgetreten. | Stellen Sie sicher, dass die VM-Anmeldeinformationen gültig sind und der Benutzername in den Anmeldeinformationen für die Gast-VM das UPN-Format hat.
+9020: „Die Berechtigung zum Erstellen von Dateien wurde verweigert.“ | Durch die Rolle, die dem Benutzer zugeordnet ist, oder die Gruppenrichtlinie ist der Benutzer auf das Erstellen der Datei im Ordner beschränkt. | Überprüfen Sie, ob der bereitgestellte Gastbenutzer über die Berechtigung zum Erstellen für die Datei im Ordner verfügt. Den Namen des Ordners finden Sie unter **Benachrichtigungen** in der Serverbewertung.
+9021: „Die Berechtigung zum Erstellen von Dateien wurde im temporären Pfad des Ordnersystems verweigert.“ | Die Version des VMware-Tools auf der VM wird nicht unterstützt. | Führen Sie ein Upgrade des VMware-Tools auf eine höhere Version als 10.2.0 durch.
+9022: „Der Zugriff zum Abrufen des WMI-Objekts wird verweigert.“ | Durch die Rolle, die dem Benutzer zugeordnet ist, oder die Gruppenrichtlinie ist der Benutzer auf den Zugriff auf das WMI-Objekt beschränkt. | Kontaktieren Sie den Microsoft-Support.
+9023: „Der Wert der Umgebungsvariablen SystemRoot ist leer.“ | Unbekannt | Kontaktieren Sie den Microsoft-Support.
+9024: „Der Wert der Umgebungsvariablen TEMP ist leer.“ | Unbekannt | Kontaktieren Sie den Microsoft-Support.
+9025: „PowerShell ist auf den Gast-VMs beschädigt.“ | Unbekannt | Installieren Sie PowerShell auf der Gast-VM neu, und überprüfen Sie, ob PowerShell auf der Gast-VM ausgeführt werden kann.
 8084: „Anwendungen können aufgrund eines VMware-Fehlers nicht ermittelt werden:  <Exception from VMware>“ | Die Azure Migrate-Appliance verwendet VMware-APIs zum Ermitteln von Anwendungen. Das Problem kann aufgrund einer Ausnahme auftreten, die von vCenter Server beim Versuch der Ermittlung von Anwendungen ausgelöst wurde. Die Fehlermeldung von VMware wird in der Fehlermeldung im Portal angezeigt. | Suchen Sie nach der Nachricht in der [VMware-Dokumentation](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), und folgen Sie den Schritten zur Behebung. Wenn Sie das Problem nicht beheben können, wenden Sie sich an den Microsoft-Support.
-9012: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
-9013: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Bei jeder Anmeldung bei dem virtuellen Computer wird ein neues temporäres Profil erstellt.  | Stellen Sie sicher, dass für den angegebenen Gastbenutzer kein temporäres Profil erstellt wird.
 
 
 

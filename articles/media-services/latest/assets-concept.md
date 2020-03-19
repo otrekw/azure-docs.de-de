@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303612"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087908"
 ---
-# <a name="assets-in-azure-media-services"></a>Medienobjekte in Azure Media Services
+# <a name="assets-in-azure-media-services-v3"></a>Medienobjekte in Azure Media Services v3
 
 In Azure Media Services ist ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) ein zentrales Konzept. Sie können darin Medien eingeben (z. B. durch Hochladen oder Liveerfassung), Medien ausgeben (von einer Auftragsausgabe) und Medien veröffentlichen (für Streaming). 
 
@@ -39,37 +39,6 @@ Ressourcennamen müssen eindeutig sein. Media Services v3-Ressourcennamen (beis
 ### <a name="blobs"></a>BLOBs
 
 Die Namen von Dateien/Blobs innerhalb einer Ressource müssen die [Anforderungen an Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) und die [Anforderungen an NTFS-Namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file) erfüllen. Diese Anforderungen bestehen, da die Dateien zur Verarbeitung aus Blob Storage auf einen lokalen NTFS-Datenträger kopiert werden können.
-
-## <a name="map-v3-asset-properties-to-v2"></a>Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2
-
-Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
-
-|v3-Eigenschaften|v2-Eigenschaften|
-|---|---|
-|`id` – (eindeutig) der vollständige Azure Resource Manager-Pfad, siehe Beispiele unter [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|`name` – (eindeutig) siehe [Benennungskonventionen](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|`Id` – (eindeutiger) Wert beginnt mit dem `nb:cid:UUID:`-Präfix.|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (Optionen für die Erstellung)|
-|`type`||
-
-## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
-
-Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen durch die speicherseitige Verschlüsselung verschlüsselt werden. Die folgende Tabelle zeigt, wie die speicherseitige Verschlüsselung in Media Services funktioniert:
-
-|Verschlüsselungsoption|BESCHREIBUNG|Media Services v2|Media Services v3|
-|---|---|---|---|
-|Media Services-Speicherverschlüsselung|AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet.|Unterstützt<sup>(1)</sup>|Nicht unterstützt<sup>(2)</sup>|
-|[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet.|Unterstützt|Unterstützt|
-|[Clientseitige Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Nicht unterstützt|Nicht unterstützt|
-
-<sup>1</sup> Media Services unterstützt zwar die Behandlung von Inhalten in Klartext/ohne jede Form der Verschlüsselung, doch wird davon abgeraten.
-
-<sup>2</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

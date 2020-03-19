@@ -1,20 +1,19 @@
 ---
-title: Hochladen einer VHD in Azure mithilfe der Azure CLI
+title: Hochladen einer VHD mithilfe der Azure CLI
 description: Hier erfahren Sie, wie Sie per Azure-Befehlszeilenschnittstelle und direktem Upload eine VHD in einen verwalteten Azure-Datenträger hochladen und den verwalteten Datenträger regionsübergreifend kopieren.
-services: virtual-machines-linux,storage
+services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
 ms.date: 09/20/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
+ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457597"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970344"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Hochladen einer VHD in Azure mithilfe der Azure CLI
 

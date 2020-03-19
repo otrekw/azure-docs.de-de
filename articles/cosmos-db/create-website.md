@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie ein Azure Cosmos DB-Konto, eine Azure App Ser
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901919"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128375"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
-In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
 
 Mit Azure Resource Manager-Vorlagen können Sie die Bereitstellung und Konfiguration von Azure-Ressourcen problemlos automatisieren.  Dieses Tutorial zeigt, wie Sie eine Webanwendung bereitstellen und Azure Cosmos DB-Kontoverbindungsinformationen automatisch konfigurieren.
 

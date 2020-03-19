@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303272"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943947"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-Sicherheitsbaseline für HDInsight
 
@@ -91,7 +91,7 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Aufzeichnen von Netzwerkpaketen und Flussprotokollen
 
-**Leitfaden**: Aktivieren Sie NSG-Flussprotokolle (Netzwerksicherheitsgruppe) für die NSG, die an das Subnetz angefügt wurde, mit dem Ihr Azure HDInsight-Cluster geschützt wird. Erfassen Sie die NSG-Flussprotokolle in einem Azure Storage-Konto, um Flussdatensätze zu generieren. Aktivieren Sie die Azure Network Watcher-Paketerfassung, falls dies für die Untersuchung anomaler Aktivitäten erforderlich ist.
+**Leitfaden**: Aktivieren Sie NSG-Flussprotokolle für die NSG (Netzwerksicherheitsgruppe), die an das Subnetz angefügt wurde, mit dem Ihr Azure HDInsight-Cluster geschützt wird. Erfassen Sie die NSG-Flussprotokolle in einem Azure Storage-Konto, um Flussdatensätze zu generieren. Aktivieren Sie die Azure Network Watcher-Paketerfassung, falls dies für die Untersuchung anomaler Aktivitäten erforderlich ist.
 
 
 Aktivieren der NSG-Flussprotokolle:

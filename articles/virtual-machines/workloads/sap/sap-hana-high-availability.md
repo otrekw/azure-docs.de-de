@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565841"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927227"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -514,7 +514,12 @@ Erstellen Sie als Nächstes die HANA-Ressourcen:
 
 > [!IMPORTANT]
 > Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
-> Für vorhandene Pacemaker-Cluster empfiehlt es sich, netcat durch socat zu ersetzen. Befolgen Sie hierzu die Anweisungen unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128). Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+> Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen:
+> - Für SLES 12 SP4/SP5 muss die Version mindestens resource-agents-4.3.018.a7fb5035-3.30.1 sein.  
+> - Für SLES 15/15 SP1 muss die Version mindestens resource-agents-4.3.0184.6ee15eb2-4.13.1 sein.  
+>
+> Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+> Wenn die Konfiguration bei vorhandenen Pacemaker-Clustern bereits für die Verwendung von socat geändert wurde, wie unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128) beschrieben, müssen Sie nicht sofort zum Ressourcen-Agent azure-lb wechseln.
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -538,9 +543,7 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> anything \
-  params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:625<b>03</b>,backlog=10,fork,reuseaddr /dev/null" \
-  op monitor timeout=20s interval=10 depth=0
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b>
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -575,7 +578,7 @@ Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gesta
 #     Slaves: [ hn1-db-1 ]
 # Resource Group: g_ip_HN1_HDB03
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-#     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
 
 ## <a name="test-the-cluster-setup"></a>Testen der Clustereinrichtung
@@ -619,7 +622,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Stopped: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 
 Failed Actions:
 * rsc_SAPHana_HN1_HDB03_start_0 on hn1-db-0 'not running' (7): call=84, status=complete, exitreason='none',
@@ -661,7 +664,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Slaves: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 </code></pre>
 
 ### <a name="test-the-azure-fencing-agent-not-sbd"></a>Testen des Azure-Umgrenzungs-Agent (nicht SBD)
@@ -749,7 +752,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-0“ aus:
@@ -776,7 +779,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 2: BEENDEN DER PRIMÄREN DATENBANK AUF KNOTEN 2
@@ -790,7 +793,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -817,7 +820,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 3: ABSTURZ DER PRIMÄREN DATENBANK AUF KNOTEN 1
@@ -831,7 +834,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-0“ aus:
@@ -858,7 +861,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 4: ABSTURZ DER PRIMÄREN DATENBANK AUF KNOTEN 2
@@ -872,7 +875,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -899,7 +902,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 5: ABSTURZ DES KNOTENS AM PRIMÄREN STANDORT (KNOTEN 1)
@@ -913,7 +916,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-0“ aus:
@@ -950,7 +953,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. TEST 6: ABSTURZ DES KNOTENS AM SEKUNDÄREN STANDORT (KNOTEN 2)
@@ -964,7 +967,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-1“ aus:
@@ -1001,7 +1004,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 7: BEENDEN DER SEKUNDÄREN DATENBANK AUF KNOTEN 2
@@ -1015,7 +1018,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -1038,7 +1041,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 8: ABSTURZ DER SEKUNDÄREN DATENBANK AUF KNOTEN 2
@@ -1052,7 +1055,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als „<hanasid\>adm on node hn1-db-1“ aus:
@@ -1075,7 +1078,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. TEST 9: ABSTURZ DES KNOTENS AM SEKUNDÄREN STANDORT (KNOTEN 2), AUF DEM DIE SEKUNDÄRE HANA-DATENBANK AUSGEFÜHRT WIRD
@@ -1089,7 +1092,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    Führen Sie die folgenden Befehle als root auf dem Knoten „hn1-db-1“ aus:
@@ -1122,7 +1125,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -1130,4 +1133,4 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
-* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+

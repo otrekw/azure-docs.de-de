@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431633"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851153"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 
@@ -28,7 +28,7 @@ Sie können sich ein [Video](https://www.youtube.com/watch?v=SGUpT-a99MA) ansehe
 Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Ein Azure-Konto.
-* Ein Konto für Power BI. Sie können ein Geschäfts-, Schul- oder Unikonto verwenden.
+* Ein Konto für Power BI Pro. Sie können ein Geschäfts-, Schul- oder Unikonto verwenden.
 * Eine abgeschlossene Version des Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Das Tutorial enthält eine App, mit der fiktive Metadaten für Telefonanrufe generiert werden. Im Tutorial erstellen Sie einen Event Hub und senden die Streamingdaten der Telefonanrufe an ihn. Sie schreiben eine Abfrage, mit der betrügerische Anrufe erkannt werden (Anrufe unter derselben Nummer zur gleichen Zeit an unterschiedlichen Orten). 
 
 

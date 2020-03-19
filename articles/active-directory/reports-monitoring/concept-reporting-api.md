@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008357"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399325"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -50,13 +50,10 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/beta/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) und in der [Referenz zur Anmelde-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Darüber hinaus können Sie die [API für Identity Protection-Risikoerkennungen](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/graph-get-started.md). 
-
-> [!NOTE]
->  Der Endpunkt **https:\/\/graph.windows.net\/\<Mandantenname\>\/reports\/** ist veraltet. Verwenden Sie die oben beschriebenen neuen API-Endpunkte für den programmgesteuerten Zugriff auf die Aktivitäts- und Sicherheitsberichte.
   
-## <a name="apis-with-graph-explorer"></a>APIs mit Graph-Tester
+## <a name="apis-with-microsoft-graph-explorer"></a>APIs mit Microsoft Graph-Tester
 
-Sie können den [MSGraph-Tester](https://developer.microsoft.com/graph/graph-explorer) verwenden, um Ihre Anmeldung und API-Daten zu überprüfen. Achten Sie darauf, bei der Anmeldung bei Ihrem Konto beide Anmeldeschaltflächen auf der Benutzeroberfläche des Graph-Testers zu verwenden und die Berechtigungen **AuditLog.Read.All** und **Directory.Read.All** wie dargestellt festzulegen.   
+Sie können den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) verwenden, um Ihre Anmeldung zu überprüfen und API-Daten zu überwachen. Achten Sie darauf, bei der Anmeldung bei Ihrem Konto beide Anmeldeschaltflächen auf der Benutzeroberfläche des Graph-Testers zu verwenden und die Berechtigungen **AuditLog.Read.All** und **Directory.Read.All** wie dargestellt festzulegen.   
 
 ![Graph-Tester](./media/concept-reporting-api/graph-explorer.png)
 

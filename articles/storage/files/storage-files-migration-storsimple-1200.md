@@ -4,21 +4,26 @@ description: Erfahren Sie, wie Sie eine virtuelle Appliance der StorSimple 1200
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252660"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943612"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
 
-Geräte der StorSimple 1200-Serie sind virtuelle Appliances, die in einem lokalen Rechenzentrum ausgeführt werden. Die Daten können von dieser Appliance zu einer Umgebung der Azure-Dateisynchronisierung migriert werden. Dieser Artikel enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für eine erfolgreiche Migration zur Azure-Dateisynchronisierung.
+Geräte der StorSimple 1200-Serie sind virtuelle Appliances, die in einem lokalen Rechenzentrum ausgeführt werden. Die Daten können von dieser Appliance zu einer Umgebung der Azure-Dateisynchronisierung migriert werden. Die Azure-Dateisynchronisierung ist der standardmäßige und strategisch langfristige Azure-Dienst, zu dem StorSimple-Geräte migriert werden können.
+
+Die StorSimple 1200-Serie erreicht im Dezember 2022 das [Ende des Lebenszyklus](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series).  Es ist wichtig, dass Sie so bald wie möglich mit der Planung der Migration beginnen. Dieser Artikel enthält die erforderlichen Hintergrundinformationen und Migrationsschritte für eine erfolgreiche Migration zur Azure-Dateisynchronisierung. 
 
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
+
+> [!IMPORTANT]
+> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFilesMigration@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
@@ -32,11 +37,11 @@ In diesem Artikel werden hauptsächlich die Migrationsschritte behandelt. Wenn S
 
 ## <a name="migration-goals"></a>Migrationsziele
 
-Das Ziel ist, die Integrität der Produktionsdaten sowie ihre Verfügbarkeit zu gewährleisten. Letztere erfordert minimale Ausfallzeiten, sodass sie in normalen Wartungsfenstern stattfinden oder diese nur geringfügig überschreiten.
+Das Ziel ist, die Integrität der Produktionsdaten sowie deren Verfügbarkeit zu gewährleisten. Letztere erfordert minimale Ausfallzeiten, sodass sie in normalen Wartungsfenstern stattfinden oder diese nur geringfügig überschreiten.
 
 ## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>StorSimple 1200: Migrationspfad zur Azure-Dateisynchronisierung
 
-Zum Ausführen eines Azure-Dateisynchronisierungs-Agents ist ein lokaler Windows-Server erforderlich. Der Windows-Server muss mindestens Windows Server 2012 R2 ausführen, idealerweise jedoch Windows Server 2019.
+Zum Ausführen eines Azure-Dateisynchronisierungs-Agents ist ein lokaler Windows-Server erforderlich. Auf dem Windows-Server muss mindestens Windows Server 2012 R2 ausgeführt werden, idealerweise jedoch Windows Server 2019.
 
 Es gibt zahlreiche alternative Migrationspfade, und der Artikel würde zu lang werden, wenn wir alle dokumentieren und veranschaulichen würden, warum sie Risiken oder Nachteile gegenüber dem von uns in diesem Artikel als bewährte Methode empfohlenen Pfad darstellen.
 

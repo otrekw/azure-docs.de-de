@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272878"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126658"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -55,25 +55,24 @@ Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um e
    
    ![Screenshot mit einer Seite „Neues Projekt“ für Google](media/google-federation/google-new-project.png)
 
-3. Stellen Sie sicher, dass das neue Projekt im Menü „Projekt“ ausgewählt ist. Öffnen Sie dann das Menü links oben, und wählen Sie **APIs & Dienste** > **Zugangsdaten** aus.
+3. Stellen Sie sicher, dass das neue Projekt im Menü „Projekt“ ausgewählt ist. Wählen Sie dann unter **APIs und Dienste**  die Option**OAuth-Zustimmungsbildschirm** aus.
 
-   ![Screenshot der Option „Google-API-Anmeldeinformationen“](media/google-federation/google-api.png)
- 
-4. Wählen Sie die Registerkarte **OAuth-Zustimmungsbildschirm** aus, und geben Sie einen **Anwendungsnamen** ein. (Behalten Sie die restlichen Einstellungen bei.)
+4. Wählen Sie **Extern** und anschließend **Erstellen** aus. 
+5. Geben Sie im **OAuth-Zustimmungsbildschirm** einen **Anwendungsnamen** ein. (Behalten Sie die restlichen Einstellungen bei.)
 
    ![Screenshot der Option „Google-OAuth-Einwilligungsbildschirm“](media/google-federation/google-oauth-consent-screen.png)
 
-5. Scrollen Sie zum Abschnitt **Authorized domains** (Autorisierte Domänen), und geben Sie „microsoftonline.com“ ein.
+6. Scrollen Sie zum Abschnitt **Authorized domains** (Autorisierte Domänen), und geben Sie „microsoftonline.com“ ein.
 
    ![Screenshot des Abschnitts „Autorisierte Domänen“](media/google-federation/google-oauth-authorized-domains.png)
 
-6. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern** aus.
 
-7. Wählen Sie die Registerkarte **Anmeldedaten** aus. Wählen Sie im Menü **Anmeldedaten erstellen** die Option **OAuth-Client-ID** aus.
+8. Wählen Sie **Anmeldeinformationen** aus. Wählen Sie im Menü **Anmeldedaten erstellen** die Option **OAuth-Client-ID** aus.
 
    ![Screenshot der Google-API-Option zum Erstellen von Anmeldeinformationen](media/google-federation/google-api-credentials.png)
 
-8. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus, und geben Sie dann unter **Autorisierte Weiterleitungs-URIs** die folgenden URIs ein:
+9. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus, und geben Sie dann unter **Autorisierte Weiterleitungs-URIs** die folgenden URIs ein:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(Dabei ist `<directory id>` Ihre Verzeichnis-ID.)
    
@@ -82,7 +81,7 @@ Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um e
 
    ![Screenshot des Abschnitts „Autorisierte Umleitungs-URIs“](media/google-federation/google-create-oauth-client-id.png)
 
-9. Klicken Sie auf **Erstellen**. Kopieren Sie die Client-ID und den geheimen Clientschlüssel, die Sie verwenden möchten, um den Identitätsanbieter im Azure AD-Portal hinzuzufügen.
+10. Klicken Sie auf **Erstellen**. Kopieren Sie die Client-ID und den geheimen Clientschlüssel, die Sie verwenden möchten, um den Identitätsanbieter im Azure AD-Portal hinzuzufügen.
 
    ![Screenshot der OAuth-Client-ID und des Clientgeheimnisses](media/google-federation/google-auth-client-id-secret.png)
 
@@ -123,7 +122,7 @@ Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können 
 
 ### <a name="to-delete-google-federation-by-using-powershell"></a>So löschen Sie den Google-Verbund mithilfe von PowerShell 
 1. Installieren Sie die neueste Version des Azure AD PowerShell für Graph-Moduls ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Führen Sie `Connect-AzureAD`aus.  
+2. Führen Sie `Connect-AzureAD` aus.  
 4. Melden Sie sich an der Anmeldeaufforderung mit dem verwalteten globalen Administratorkonto an.  
 5. Geben Sie den folgenden Befehl ein:
 

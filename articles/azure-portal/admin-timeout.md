@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132076"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096612"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Festlegen des Inaktivitätstimeouts auf Verzeichnisebene
 
@@ -43,7 +43,7 @@ Um zu überprüfen, ob die Richtlinie für das Inaktivitätstimeout ordnungsgem�
 Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt.
 
 > [!NOTE]
-> Wenn ein Administrator eine Timeouteinstellung auf Verzeichnisebene konfiguriert hat, können Benutzer die Richtlinie außer Kraft setzen und ihre eigene Dauer bis zur Abmeldung bei Inaktivität festlegen. Der Benutzer muss jedoch ein kleineres Zeitintervall als das auf Verzeichnisebene festgelegte auswählen.
+> Wenn ein globaler Administrator eine Timeouteinstellung auf Verzeichnisebene konfiguriert hat, können Benutzer die Richtlinie außer Kraft setzen und ihre eigene Dauer bis zur Abmeldung bei Inaktivität festlegen. Der Benutzer muss jedoch ein kürzeres Zeitintervall als das auswählen, das vom globalen Administrator auf Verzeichnisebene festgelegt wurde.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
