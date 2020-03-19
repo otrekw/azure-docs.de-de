@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06c9e79a68540cb10557b0951b743bf841963057
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190261"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078869"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Azure A
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` enthalten.
 
-Alle technischen Azure AD-Profile enthalten das technische Profil **AAD-Common**. Die folgenden technischen Profile geben nicht das Protokoll an, da das Protokoll im technischen Profil **AAD-Common** konfiguriert ist:
-
+Entsprechend dem [Starter Pack für benutzerdefinierte Richtlinien](custom-policy-get-started.md#custom-policy-starter-pack) enthalten alle technischen Azure AD-Profile das technische Profil **AAD-Common**. Die folgenden technischen Azure AD-Profile geben das Protokoll nicht an, da es im technischen Profil **AAD-Common** konfiguriert ist:
+ 
 - **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserReadUsingAlternativeSecurityId-NoError**: Suchen eines Social Media-Kontos im Verzeichnis.
 - **AAD-UserWriteUsingAlternativeSecurityId:** Erstellen eines neuen Social Media-Kontos.
 - **AAD-UserReadUsingEmailAddress:** Suchen eines lokalen Kontos im Verzeichnis.
@@ -56,21 +56,21 @@ Das folgende Beispiel zeigt das technische Profil **AAD-Common**:
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>Eingabeansprüche
+## <a name="inputclaims"></a>InputClaims
 
-Die folgenden technischen Profile enthalten **InputClaims** für Social Media- und lokale Konten:
+Das „Input Claims“-Element enthält einen Anspruch, der verwendet wird, um im Verzeichnis nach einem Konto zu suchen oder ein neues Konto zu erstellen. In der Sammlung von Eingabeansprüchen für alle technischen Azure AD-Profile muss genau ein „InputClaim“-Element vorhanden sein. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der in Azure Active Directory definiert wurde, zuordnen.
 
-- Das technische Profil für Social Media-Konten **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserWriteUsingAlternativeSecurityId** enthält den Anspruch **AlternativeSecurityId**. Dieser Anspruch enthält die Benutzer-ID des Social Media-Kontos.
-- Die technischen Profile für lokale Konten **AAD-UserReadUsingEmailAddress** und **AAD-UserWriteUsingLogonEmail** enthalten den Anspruch **email**. Dieser Anspruch enthält den Anmeldenamen des lokalen Kontos.
-- Die gemeinsamen technischen Profile (für lokale und Social Media-Konten) **AAD-UserReadUsingObjectId**, **AAD-UserWritePasswordUsingObjectId**, **AAD-UserWriteProfileUsingObjectId** und **AAD-UserWritePhoneNumberUsingObjectId** enthalten den Anspruch **objectId**. Der eindeutige Bezeichner eines Kontos.
+Beim Lesen, Aktualisieren oder Löschen eines vorhandenen Benutzerkontos ist der Eingabeanspruch ein Schlüssel, der das Konto in Azure AD-Verzeichnis eindeutig identifiziert. Zum Beispiel: **objectId**, **userPrincipalName**, **signInNames.emailAddress**, **signInNames.userName** oder **alternativeSecurityId**. 
 
-Das **InputClaimsTransformations**-Element darf eine Sammlung von **InputClaimsTransformation**-Elementen, die zum Ändern der Eingabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Beim Erstellen eines neuen Benutzerkontos ist der Eingabeanspruch ein Schlüssel, der ein lokales oder Verbundkonto eindeutig identifiziert. Zum Beispiel bei einem lokalen Konto: **signInNames.emailAddress** oder **signInNames.userName**. Bei einem Verbundkonto: **alternativeSecurityId**.
 
-## <a name="output-claims"></a>Ausgabeansprüche
+Das [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations)-Element kann eine Sammlung von Eingabeanspruchstransformations-Elementen enthalten, die zum Ändern des Eingabeanspruchs oder zum Generieren eines neuen Eingabeanspruchs verwendet werden.
+
+## <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die vom technischen Azure AD-Profil zurückgegeben wurden. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der in Azure Active Directory definiert wurde, zuordnen. Sie können auch Ansprüche, die nicht von Azure Active Directory zurückgegeben wurden, einfügen, sofern Sie das `DefaultValue`-Attribut festlegen.
 
-Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Das [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations)-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
 Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt z.B. ein lokales Konto und gibt die folgenden Ansprüche zurück:
 
@@ -92,7 +92,7 @@ Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt z.B. ein lokales
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-Das **PersistedClaims**-Element enthält alle Werte, die von Azure AD beibehalten werden sollen, zusammen mit möglichen Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt ClaimsSchema in der Richtlinie definiert ist, und dem Azure AD-Attributnamen.
+Das **PersistedClaims**-Element enthält alle Werte, die von Azure AD beibehalten werden sollen, zusammen mit möglichen Zuordnungsinformationen zwischen einem Anspruchstyp, der bereits im Abschnitt [ClaimsSchema](claimsschema.md) in der Richtlinie definiert ist, und dem Azure AD-Attributnamen.
 
 Das technische Profil **AAD-UserWriteUsingLogonEmail** erstellt ein lokales Konto und behält die folgenden Ansprüche bei:
 
@@ -123,9 +123,7 @@ Der Name des Anspruchs ist der Name des Azure AD-Attributs, sofern nicht das **P
 
 ### <a name="read"></a>Lesen
 
-Der **Read**-Vorgang liest die Daten zu einem einzelnen Benutzerkonto. Für das Lesen von Benutzerdaten müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames** (beliebiger Typ, Benutzername und E-Mail-basiertes Konto) oder **alternativeSecurityId**.
-
-Das folgende technische Profil liest Daten über ein Benutzerkonto mithilfe der Objekt-ID des Benutzers:
+Der **Read**-Vorgang liest die Daten zu einem einzelnen Benutzerkonto. Das folgende technische Profil liest Daten über ein Benutzerkonto mithilfe der Objekt-ID des Benutzers:
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ Das folgende technische Profil liest Daten über ein Benutzerkonto mithilfe der 
 
 ### <a name="write"></a>Schreiben
 
-Der **Write**-Vorgang erstellt oder aktualisiert ein einzelnes Benutzerkonto. Für das Schreiben in einem Benutzerkonto müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
-
-Das folgende technische Profil erstellt neues Social Media-Konto:
+Der **Write**-Vorgang erstellt oder aktualisiert ein einzelnes Benutzerkonto. Das folgende technische Profil erstellt neues Social Media-Konto:
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ Das folgende technische Profil erstellt neues Social Media-Konto:
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-Der **DeleteClaims**-Vorgang löscht die Informationen aus einer angegebenen Liste von Ansprüchen. Für das Löschen von Informationen aus Ansprüchen müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
-
-Das folgende technische Profil löscht Ansprüche:
+Der **DeleteClaims**-Vorgang löscht die Informationen aus einer angegebenen Liste von Ansprüchen. Das folgende technische Profil löscht Ansprüche:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ Das folgende technische Profil löscht Ansprüche:
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-Der **DeleteClaimsPrincipal**-Vorgang löscht ein einzelnes Benutzerkonto aus dem Verzeichnis. Für das Löschen eines Benutzerkontos müssen Sie einen Schlüssel als Eingabeanspruch angeben, z.B. **objectId**, **userPrincipalName**, **signInNames.emailAddress** oder **alternativeSecurityId**.
-
-Das folgende technische Profil löscht ein Benutzerkonto anhand des Benutzerprinzipalnamens aus dem Verzeichnis:
+Der **DeleteClaimsPrincipal**-Vorgang löscht ein einzelnes Benutzerkonto aus dem Verzeichnis. Das folgende technische Profil löscht ein Benutzerkonto anhand des Benutzerprinzipalnamens aus dem Verzeichnis:
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -253,16 +245,30 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 ```
 ## <a name="metadata"></a>Metadaten
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.|
-| UserMessageIfClaimsPrincipalAlreadyExists | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalAlreadyExists-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt bereits vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
 | ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
 | ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+
+### <a name="error-messages"></a>Fehlermeldungen
+ 
+Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Fehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Fehlermeldungen können [lokalisiert](localization.md) werden.
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalAlreadyExists-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt bereits vorhanden ist. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. |
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Azure AD-Profils:
+
+- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-configure-user-input.md)
 
 
 

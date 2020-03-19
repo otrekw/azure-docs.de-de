@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446134"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925735"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes Python-Projekt ist, verwenden Sie <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">diesen Leitfaden <span class="docon docon-navigate-external x-hidden-focus"></span></a>, um ein leeres Beispielprojekt zu erstellen.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung. <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung, und erstellen Sie ein leeres Beispielprojekt.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 
@@ -82,7 +81,9 @@ Fügen Sie diesen Code unterhalb Ihres Modells ein:
 
 Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. In diesem Beispiel geben wir das Ergebnis einfach in der Konsole aus.
 
-Fügen Sie unterhalb des Aufrufs von `recognize_once()` den folgenden Code hinzu: [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+Fügen Sie unterhalb des Aufrufs von `recognize_once()` den folgenden Code hinzu:
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 

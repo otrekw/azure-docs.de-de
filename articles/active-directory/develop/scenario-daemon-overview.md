@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9465b77d03fb3dbb668bd40bf2c7e6ded6891a05
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962055"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894550"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Szenario: Daemon-App zum Aufrufen von Web-APIs
 
@@ -42,7 +42,7 @@ Beispiele für Anwendungsfälle für Daemon-Apps:
 - Desktopanwendungen (z. B. Windows-Dienste unter Windows oder Daemonprozesse unter Linux), die Batchaufträge ausführen, oder ein Betriebssystemdienst, der im Hintergrund ausgeführt wird
 - Web-APIs, die Verzeichnisse und keine bestimmten Benutzer bearbeiten müssen
 
-Es gibt einen weiteren häufig vorkommenden Anwendungsfall, bei dem Nicht-Daemonanwendungen Clientanmeldeinformationen verwenden: Auch wenn sie im Auftrag von Benutzern fungieren, müssen sie aus technischen Gründen unter ihrer eigenen Identität auf eine Web-API oder eine Ressource zugreifen. Ein Beispiel ist der Zugriff auf Geheimnisse in Azure Key Vault oder auf eine Azure SQL-Datenbank für einen Cache.
+Es gibt einen weiteren häufig vorkommenden Fall, bei dem Nicht-Daemonanwendungen Clientanmeldeinformationen verwenden: Auch wenn sie im Auftrag von Benutzern fungieren, müssen sie aus technischen Gründen unter ihrer eigenen Identität auf eine Web-API oder eine Ressource zugreifen. Ein Beispiel ist der Zugriff auf Geheimnisse in Azure Key Vault oder auf eine Azure SQL-Datenbank für einen Cache.
 
 Für Anwendungen, die ein Token für ihre eigenen Identitäten abrufen, gilt Folgendes:
 

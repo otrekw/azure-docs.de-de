@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942634"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925243"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -32,7 +31,9 @@ Stellen Sie zunächst sicher, dass Ihr Projekt in Eclipse geöffnet ist.
 ## <a name="add-a-reference-to-gson"></a>Hinzufügen eines Verweises auf Gson
 In dieser Schnellstartanleitung verwenden wir einen externen JSON-Serialisierer/Deserialisierer. Für Java haben wir [Gson](https://github.com/google/gson) gewählt.
 
-Öffnen Sie die Datei „pom.xml“, und fügen Sie den folgenden Verweis hinzu: [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
+Öffnen Sie die Datei „pom.xml“, und fügen Sie den folgenden Verweis hinzu:
+
+[!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
 ## <a name="start-with-some-boilerplate-code"></a>Beginnen mit Codebausteinen
 

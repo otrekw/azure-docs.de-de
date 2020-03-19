@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425341"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942891"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -58,6 +58,7 @@ Bei der kombinierten Registrierung werden die folgenden Authentifizierungsmethod
 | Email | Ja | Ja | Ja |
 | Sicherheitsfragen | Ja | Nein | Ja |
 | App-Kennwörter | Ja | Nein | Ja |
+| FIDO2-Sicherheitsschlüssel<br />*Verwalteter Modus nur auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info)“*| Ja | Ja | Ja |
 
 > [!NOTE]
 > App-Kennwörter sind nur für Benutzer verfügbar, für die Multi-Factor Authentication erzwungen wurde. App-Kennwörter sind nicht verfügbar für Benutzer, für die Multi-Factor Authentication über eine Richtlinie für bedingten Zugriff aktiviert wurde.

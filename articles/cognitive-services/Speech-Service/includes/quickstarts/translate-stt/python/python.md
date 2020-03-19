@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: f86796cf8da4ba9eec1fa64c7024330ad5547c7f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446144"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925918"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -22,8 +22,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=python)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=python)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 

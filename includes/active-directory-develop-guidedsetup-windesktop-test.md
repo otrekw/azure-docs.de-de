@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178269"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129593"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -43,8 +43,8 @@ Nachdem Sie sich angemeldet haben, sollten Sie die Benutzerprofilinformationen s
 
 |Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
-
-|**Username** |<span>user@domain.com</span> |Der Benutzername, der zur Identifizierung des Benutzers verwendet wird.| |**Token Expires** |DateTime |Der Zeitpunkt, zu dem das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
+|**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
+|**Ablaufdatum des Tokens** |Datetime |Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 
 
 <!--start-collapse-->

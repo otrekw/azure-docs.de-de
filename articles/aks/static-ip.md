@@ -3,13 +3,13 @@ title: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung mit dem L
 description: Informationen zum Erstellen und Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593596"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943578"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
@@ -67,7 +67,7 @@ Vergewissern Sie sich vor dem Erstellen eines Diensts, dass der vom AKS-Cluster 
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -97,7 +97,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Anwenden einer DNS-Bezeichnung auf den Dienst
 
-Wenn Ihr Dienst eine dynamische oder statische öffentliche IP-Adresse verwendet, können Sie die Dienstanmerkung `service.beta.kubernetes.io/azure-dns-label-name` verwenden, um eine öffentliche DNS-Bezeichnung festzulegen. Damit wird ein vollqualifizierter Domänenname für Ihren Dienst veröffentlicht, der die öffentlichen DNS-Server und die Domäne der obersten Ebene von Azure verwendet. Der Anmerkungswert muss innerhalb des Azure-Standorts eindeutig sein, daher wird die Verwendung einer ausreichend qualifizierten Bezeichnung empfohlen.   
+Wenn Ihr Dienst eine dynamische oder statische öffentliche IP-Adresse verwendet, können Sie die Dienstanmerkung `service.beta.kubernetes.io/azure-dns-label-name` verwenden, um eine öffentliche DNS-Bezeichnung festzulegen. Damit wird ein vollqualifizierter Domänenname für Ihren Dienst veröffentlicht, der die öffentlichen DNS-Server und die Domäne der obersten Ebene von Azure verwendet. Weil der Anmerkungswert innerhalb des Azure-Standorts eindeutig sein muss, wird die Verwendung einer ausreichend qualifizierten Bezeichnung empfohlen.   
 
 Azure fügt dann automatisch ein Standardsubnetz wie `<location>.cloudapp.azure.com` (wobei der Standort die von Ihnen ausgewählte Region ist) an den von Ihnen angegebenen Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Beispiel:
 

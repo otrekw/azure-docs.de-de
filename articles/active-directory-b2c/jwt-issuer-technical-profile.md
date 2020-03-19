@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671812"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 
 ## <a name="metadata"></a>Metadaten
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ja | Der Anspruch, der in OAuth2-Autorisierungscodes und Aktualisierungstoken als Benutzeridentitätsanspruch verwendet werden soll. Standardmäßig sollten Sie dieses Attribut auf `objectId` festlegen, es sei denn, Sie möchten einen anderen SubjectNamingInfo-Anspruchstyp angeben. |
 | SendTokenResponseBodyWithJsonNumbers | Nein | Immer auf `true` festgelegt. Legen Sie für ein altes Format, in dem numerische Werte als Zeichenfolgen anstelle von JSON-Zahlen angegeben sind, `false` fest. Dieses Attribut ist für Clients erforderlich, die eine Abhängigkeit von einer früheren Implementierung übernommen haben, bei der diese Eigenschaften als Zeichenfolgen zurückgegeben wurden. |
@@ -56,6 +56,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 | allow_infinite_rolling_refresh_token | Nein | Bei einer Festlegung auf `true` läuft die Lebensdauer für gleitendes Fenster des Aktualisierungstokens nie ab. |
 | IssuanceClaimPattern | Nein | Steuert den Ausstelleranspruch (iss). Einer der Werte:<ul><li>AuthorityAndTenantGuid: Der Ausstelleranspruch enthält Ihren Domänennamen, z.B. `login.microsoftonline` oder `tenant-name.b2clogin.com`, und die Mandanten-ID „https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/“.</li><li>AuthorityWithTfp: Der Ausstelleranspruch enthält Ihren Domänennamen, z.B. `login.microsoftonline` oder `tenant-name.b2clogin.com`, Ihre Mandanten-ID und den Richtliniennamen der vertrauenden Seite. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Standardwert: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Nein | Steuert den Wert des `acr`-Anspruchs.<ul><li>None: Azure AD B2C stellt den acr-Anspruch nicht aus.</li><li>PolicyId: Der `acr`-Anspruch enthält den Namen der Richtlinie.</li></ul>Die Optionen zum Festlegen dieses Werts sind „TFP“ (Vertrauensframework-Richtlinie) und „ACR“ (Authentifizierungskontext-Referenz). Es wird empfohlen, diesen Wert auf „TFP“ festzulegen. Um den Wert festzulegen, stellen Sie sicher, dass das `<Item>` mit dem `Key="AuthenticationContextReferenceClaimPattern"` vorhanden ist und der Wert `None` lautet. Fügen Sie in Ihrer Richtlinie der vertrauenden Seite das `<OutputClaims>`-Element wie folgt hinzu: `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Stellen Sie außerdem sicher, dass die Richtlinie den Anspruchstyp `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` enthält. |
+|RefreshTokenUserJourneyId| Nein | Der Bezeichner einer User Journey, die beim [Aktualisieren eines Zugriffstokens](authorization-code-flow.md#4-refresh-the-token) bei der POST-Anforderung an den `/token`-Endpunkt ausgeführt werden soll. |
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 

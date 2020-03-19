@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 9971b16da42cdf1de0464857291c74a947535735
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178636"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927382"
 ---
 Sie können zum Abrufen und Filtern Ihrer Daten Abfragen im Daten-Explorer verwenden.
 
-1. Sehen Sie sich im Daten-Explorer oben auf der Registerkarte **Dokumente** die Standardabfrage `SELECT * FROM c` an. Diese Abfrage ruft alle Dokumente in der Sammlung ab und zeigt sie nach ID sortiert an. 
+1. Sehen Sie sich im Daten-Explorer oben auf der Registerkarte **Elemente** die Standardabfrage `SELECT * FROM c` an. Diese Abfrage ruft alle Dokumente in der Sammlung ab und zeigt sie nach ID sortiert an. 
    
    ![Die Standardabfrage im Daten-Explorer ist „SELECT * FROM c“.](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    

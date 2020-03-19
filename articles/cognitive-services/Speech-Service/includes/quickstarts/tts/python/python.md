@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 19/14/2020
 ms.author: dapine
-ms.openlocfilehash: 7be9037ddfd19d82263b37fe0b824e3c2b3f5078
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 58f2b3693b924197dda1e396ae71192776ca276e
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037698"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925368"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,8 +23,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md)
 
 ## <a name="support-and-updates"></a>Support und Updates
 
@@ -52,7 +51,7 @@ Alternativ können Sie dieses Schnellstarttutorial als [Jupyter](https://jupyter
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Installieren und Verwenden des Speech SDK mit Visual Studio Code
 
-1. Laden Sie eine 64-Bit-Version (3.5 oder höher) von [Python](https://www.python.org/downloads/) herunter, und installieren Sie sie auf Ihrem Computer.
+1. Laden Sie eine 64-Bit-Version (3.5 bis 3.8) von [Python](https://www.python.org/downloads/) herunter, und installieren Sie sie auf Ihrem Computer.
 1. Laden Sie [Visual Studio Code](https://code.visualstudio.com/Download) herunter, und installieren Sie die Software.
 1. Öffnen Sie Visual Studio Code, und installieren Sie die Python-Erweiterung. Wählen Sie im Menü **Datei** > **Einstellungen** > **Erweiterungen**. Suchen Sie nach **Python**.
 

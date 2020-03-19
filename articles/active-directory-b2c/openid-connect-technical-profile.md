@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184008"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399074"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -77,9 +77,11 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
-| IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob das Token in einem Anspruch, der vom Identitätsanbieter zurückgegeben wurde, enthalten und mit dem angegebenen Token identisch ist. |
-| METADATA | Ja | Eine URL, die auf ein JSON-Konfigurationsdokument, das gemäß der OpenId Connect Discovery-Spezifikation formatiert ist, verweist und auch als OpenId-Konfigurationsendpunkt bezeichnet wird. |
-| ProviderName | Nein | Der Name des Identitätsanbieters. |
+| IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob der Anspruch `aud` in einem Token, das vom Identitätsanbieter zurückgegeben wurde, mit dem in den Metadaten für „IdTokenAudience“ angegebenen Token identisch ist.  |
+| METADATA | Ja | Eine URL, die auf ein Konfigurationsdokument für den OpenID Connect-Identitätsanbieter verweist, das auch als bekannter OpenID-Konfigurationsendpunkt bezeichnet wird. Die URL kann den Ausdruck `{tenant}` enthalten, der durch den Mandantennamen ersetzt wird.  |
+| authorization_endpoint | Nein | Eine URL, die auf einen OpenID Connect-Autorisierungsendpunkt der Identitätsanbieterkonfiguration verweist. Der Wert der Metadaten für „authorization_endpoint“ hat Vorrang vor dem Wert für `authorization_endpoint`, der im bekannten OpenID-Konfigurationsendpunkt angegeben ist. Die URL kann den Ausdruck `{tenant}` enthalten, der durch den Mandantennamen ersetzt wird. |
+| Issuer (Aussteller) | Nein | Die eindeutige Bezeichnung eines OpenID Connect-Identitätsanbieters. Der Wert der Metadaten für „Issuer“ hat Vorrang vor dem Wert für `issuer`, der im bekannten OpenID-Konfigurationsendpunkt angegeben ist.  Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob der Anspruch `iss` in einem Token, das vom Identitätsanbieter zurückgegeben wird, mit dem in den Metadaten für „Issuer“ angegebenen Token identisch ist. |
+| ProviderName | Nein | Der Name des Identitätsanbieters.  |
 | response_types | Nein | Der Antworttyp gemäß der OpenId Connect Core 1.0-Spezifikation. Mögliche Werte: `id_token`, `code` oder `token`. |
 | response_mode | Nein | Die Methode, die der Identitätsanbieter verwendet, um das Ergebnis zurück an Azure AD B2C zu senden. Mögliche Werte: `query`, `form_post` (Standard) oder `fragment`. |
 | scope | Nein | Der Bereich für die Anforderung gemäß der OpenId Connect Core 1.0-Spezifikation. Beispiele: `openid`, `profile` und `email`. |

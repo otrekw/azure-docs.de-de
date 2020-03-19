@@ -1,39 +1,141 @@
 ---
-title: 'Zuordnungsdatenfluss: Vereinfachungstransformation'
-description: 'Azure Data Factory-Zuordnungsdatenfluss: Vereinfachungstransformation'
+title: Vereinfachungstransformation im Zuordnungsdatenfluss
+description: Denormalisieren Sie hierarchische Daten mithilfe der Vereinfachungstransformation.
 author: kromerm
 ms.author: makromer
+ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/09/2020
+ms.openlocfilehash: 74f6df1fbc749a5ec015afb954ca6b12cbe0f18f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164728"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086965"
 ---
-# <a name="azure-data-factory-flatten-transformation"></a>Azure Data Factory: Vereinfachungstransformation
+# <a name="flatten-transformation-in-mapping-data-flow"></a>Vereinfachungstransformation im Zuordnungsdatenfluss
 
-Die Vereinfachungstransformation kann verwendet werden, um Arraywerte in einer hierarchischen Struktur in neue Zeilen zu pivotieren, wodurch Ihre Daten im Wesentlichen denormalisiert werden.
+Verwenden Sie die Vereinfachungstransformation, um Arraywerte in hierarchischen Strukturen wie JSON auszuwählen und in einzelne Zeilen aufzulösen. Dieser Prozess wird als „Denormalisierung“ bezeichnet.
 
-![Transformationstoolbox](media/data-flow/flatten5.png "Transformationstoolbox")
+## <a name="configuration"></a>Konfiguration
 
-![Vereinfachungstransformation 1](media/data-flow/flatten7.png "Vereinfachungstransformation 1")
+Die Vereinfachungstransformation enthält die folgenden Konfigurationseinstellungen:
 
-## <a name="unroll-by"></a>Auflösen
+![Einstellungen vereinfachen](media/data-flow/flatten1.png "Vereinfachen von Einstellungen")
 
-Wählen Sie zuerst die Arrayspalte aus, die Sie auflösen und pivotieren möchten.
+### <a name="unroll-by"></a>Auflösen
 
-![Einstellungen der Vereinfachungstransformation](media/data-flow/flatten1.png "Einstellungen der Vereinfachungstransformation")
+Wählen Sie ein Array aus, das aufgelöst werden soll. Die Ausgabedaten enthalten eine Zeile pro Element in jedem Array. Wenn das Array „Auflösen“ in der Eingabezeile NULL oder leer ist, gibt es eine einzige Ausgabezeile mit nicht aufgelösten Werten als NULL.
 
-## <a name="unroll-root"></a>Stamm auflösen
+### <a name="unroll-root"></a>Stamm auflösen
 
-Standardmäßig vereinfacht ADF die Struktur an dem Auflösungsarray, das Sie oben ausgewählt haben. Sie können aber auch einen anderen Teil der Hierarchie auswählen, für den die Auflösung ausgeführt werden soll. „Unroll root“ (Stamm auflösen) ist eine optionale Einstellung.
+Standardmäßig löst die Vereinfachungstransformation ein Array an den Anfang der Hierarchie auf, in der es sich befindet. Sie können optional ein Array auswählen, bei dem der Stamm aufgelöst werden soll. „Stamm auflösen“ muss ein Array komplexer Objekte sein, dass entweder das Array „Auflösen“ ist oder dieses Array enthält. Wenn „Stamm auflösen“ ausgewählt wird, enthalten die Ausgabedaten mindestens eine Zeile pro Elemente im aufgelösten Stamm. Wenn die Eingabezeile keine Elemente in „Stamm auflösen“ enthält, wird sie aus den Ausgabedaten gelöscht. Wenn Sie „Stamm auflösen“ auswählen, wird immer eine Anzahl von Zeilen ausgegeben, die kleiner als das Standardverhalten oder mit ihm identisch ist.
 
-## <a name="input-columns"></a>Eingabespalten
+### <a name="flatten-mapping"></a>Vereinfachen der Zuordnung
 
-Wählen Sie zuletzt die Projektion Ihrer neuen Struktur basierend auf den eingehenden Feldern und der normalisierten Spalte aus, die Sie aufgelöst haben.
+Wählen Sie ähnlich wie bei der Auswahltransformation die Projektion der neuen Struktur aus eingehenden Feldern und dem denormalisierten Array aus. Wenn ein denormalisiertes Array zugeordnet wird, stimmt der Datentyp der Ausgabespalte mit demjenigen des Arrays überein. Wenn das Array „Auflösen“ ein Array komplexer Objekte ist, das Subarrays enthält, wird bei der Zuordnung eines Elements aus diesem Subarray ein Array ausgegeben.
+
+Überprüfen Sie Ihre Ausgabe der Zuordnung auf der Registerkarte „Überprüfen“ und in der Datenvorschau.
+
+## <a name="examples"></a>Beispiele
+
+Sehen Sie sich das nachstehende JSON-Objekt im Zusammenhang mit den folgenden Beispielen zur Vereinfachungstransformation an.
+
+``` json
+[{
+  "name":"MSFT","location":"Redmond", "satellites": ["Bay Area", "Shanghai"],
+  "goods": {
+    "trade":true, "customers":["government", "distributer", "retail"],
+    "orders":[
+        {"orderId":1,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":2}]}},
+        {"orderId":2,"orderTotal":323.34,"shipped":{"orderItems":[{"itemName":"Mice","itemQty":2},{"itemName":"Keyboard","itemQty":1}]}}
+    ]}},
+{"name":"Company1","location":"Seattle", "satellites": ["New York"],
+  "goods":{"trade":false, "customers":["store1", "store2"],
+  "orders":[
+      {"orderId":4,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":3}]}},
+      {"orderId":5,"orderTotal":343.24,"shipped":{"orderItems":[{"itemName":"Chair","itemQty":4},{"itemName":"Lamp","itemQty":2}]}}
+    ]}},
+{"name": "Company2", "location": "Bellevue",
+  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}},
+{"name": "Company3", "location": "Kirkland"}]
+```
+
+### <a name="no-unroll-root-with-string-array"></a>Kein „Stamm auflösen“ bei Zeichenfolgenarray
+
+| Auflösen | Stamm auflösen | Projektion |
+| --------- | ----------- | ---------- |
+| goods.customers | Keine | name <br> customer = goods.customer |
+
+#### <a name="output"></a>Output
+
+```
+{ 'MSFT', 'government'},
+{ 'MSFT', 'distributer'},
+{ 'MSFT', 'retail'},
+{ 'Company1', 'store'},
+{ 'Company1', 'store2'},
+{ 'Company2', 'Bank'},
+{ 'Company3', null}
+```
+
+### <a name="no-unroll-root-with-complex-array"></a>Kein „Stamm auflösen“ bei komplexem Array
+
+| Auflösen | Stamm auflösen | Projektion |
+| --------- | ----------- | ---------- |
+| goods.orders.shipped.orderItems | Keine | name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemNameitemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> location = location |
+
+#### <a name="output"></a>Output
+
+```
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
+{ 'Company1', 4, 'Charger', 3, 'Seattle'},
+{ 'Company1', 5, 'Chair', 4, 'Seattle'},
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'Company2', 4, null, null, 'Bellevue'},
+{ 'Company3', null, null, null, 'Kirkland'}
+```
+
+### <a name="same-root-as-unroll-array"></a>Dasselbe Stammverzeichnis wie „Array auflösen“
+
+| Auflösen | Stamm auflösen | Projektion |
+| --------- | ----------- | ---------- |
+| goods.orders | goods.orders | name <br> goods.orders.shipped.orderItems.itemName <br> goods.customers <br> location |
+
+#### <a name="output"></a>Output
+
+```
+{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'},
+{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'},
+{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'},
+{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'},
+{ 'Company2', null, ['Bank'], 'Bellevue'}
+```
+
+### <a name="unroll-root-with-complex-array"></a>„Stamm auflösen“ bei komplexem Array
+
+| Auflösen | Stamm auflösen | Projektion |
+| --------- | ----------- | ---------- |
+| goods.orders.shipped.orderItem | goods.orders |name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemNameitemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> location = location |
+
+#### <a name="output"></a>Output
+
+```
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
+{ 'Company1', 4, 'Charger', 3, 'Seattle'},
+{ 'Company1', 5, 'Chair', 4, 'Seattle'},
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'Company2', 4, null, null, 'Bellevue'}
+```
 
 ## <a name="data-flow-script"></a>Datenflussskript
 
@@ -53,25 +155,16 @@ foldDown(unroll(<unroll cols>),
 ### <a name="example"></a>Beispiel
 
 ```
-source(output(
-        name as string,
-        location as string,
-        satellites as string[],
-        goods as (trade as boolean, customers as string[], orders as (orderId as string, orderTotal as double, shipped as (orderItems as (itemName as string, itemQty as string)[]))[])
-    ),
-    allowSchemaDrift: true,
-    validateSchema: false) ~> source2
-source2 foldDown(unroll(goods.orders.shipped.orderItems),
+source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
     mapColumn(
         name,
-        each(goods.orders, match(type == 'integer')),
-        each(goods.orders.shipped.orderItems, match(true())),
-        location
-    )) ~> Flatten1
-Flatten1 sink(allowSchemaDrift: true,
-    validateSchema: false,
-    skipDuplicateMapInputs: true,
-    skipDuplicateMapOutputs: true) ~> sink1
+        orderId = goods.orders.orderId,
+        itemName = goods.orders.shipped.orderItems.itemName,
+        itemQty = goods.orders.shipped.orderItems.itemQty,
+        location = location
+    ),
+    skipDuplicateMapInputs: false,
+    skipDuplicateMapOutputs: false) 
 ```    
 
 ## <a name="next-steps"></a>Nächste Schritte

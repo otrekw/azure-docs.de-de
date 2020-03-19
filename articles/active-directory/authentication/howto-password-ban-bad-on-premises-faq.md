@@ -1,24 +1,24 @@
 ---
-title: Häufig gestellte Fragen zum lokalen Kennwortschutz – Azure Active Directory
-description: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz
+title: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz
+description: In den häufig gestellten Fragen (FAQ) finden Sie Informationen zum Azure AD-Kennwortschutz in einer lokalen Active Directory Domain Services-Umgebung
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b4c941272906e7ff5a017c78c8bc7c5084a667
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abef6e52e37cfa2faeb426bc59bb0de5a52a6658
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847829"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671677"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
+# <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure AD-Kennwortschutz in lokalen Umgebungen
 
 In diesem Abschnitt finden Sie Antworten auf häufige Fragen zum Azure AD-Kennwortschutz.
 
@@ -38,7 +38,7 @@ Das Azure AD-Portal ermöglicht die Änderung der lokalen Konfiguration des „K
 
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
-Nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktiviert ist, werden keine Unterscheidungen getroffen – alle Benutzer genießen dieselben Sicherheitsvorteile.
+Wird nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktiviert ist, werden keine Unterscheidungen getroffen – alle Benutzer genießen dieselben Sicherheitsvorteile.
 
 **F: Worin besteht der Unterschied zwischen einer Kennwortänderung und einer Kennwortfestlegung (oder Kennwortzurücksetzung)?**
 
@@ -62,11 +62,11 @@ Ja. Unterstützung für mehrere registrierte Kennwortfilter-DLLs ist ein Hauptme
 
 **F: Wie kann ich den Azure AD-Kennwortschutz in meiner Active Directory-Umgebung bereitstellen und konfigurieren, ohne Azure zu verwenden?**
 
-Nicht unterstützt. Der Azure AD-Kennwortschutz ist ein Azure-Feature, das auf eine lokale Active Directory-Umgebung ausgeweitet werden kann.
+Wird nicht unterstützt. Der Azure AD-Kennwortschutz ist ein Azure-Feature, das auf eine lokale Active Directory-Umgebung ausgeweitet werden kann.
 
 **F: Wie kann ich den Inhalt der Richtlinie auf Active Directory-Ebene ändern?**
 
-Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Portal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
+Wird nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Portal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
 
 **F: Warum ist DFSR für die sysvol-Replikation erforderlich?**
 

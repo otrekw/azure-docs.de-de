@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030081"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674068"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für einen bereits bereitgestellten Endpunkt oder eine API, die das Webhookmuster für das Abonnieren und Kündigen von Abonnements für [Webhooktrigger in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-triggers) oder [Webhookaktionen in Logik-Apps](../logic-apps/logic-apps-create-api-app.md#webhook-actions) je nach Bedarf unterstützt.
 
@@ -65,35 +65,47 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 ## <a name="add-an-http-webhook-trigger"></a>Hinzufügen eines HTTP-Webhooktriggers
 
-Dieser integrierte Trigger registriert eine Rückruf-URL beim angegebenen Dienst und wartet darauf, dass dieser Dienst eine HTTP POST-Anforderung an diese URL sendet. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und führt sofort die Logik-App aus.
+Dieser integrierte Trigger ruft den Abonnementendpunkt im Zieldienst auf und registriert eine Rückruf-URL beim Zieldienst. Ihre Logik-App wartet dann darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und übergibt alle Daten in der Anforderung an den Workflow.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
-1. Geben Sie im Suchfeld des Designers „http webhook“ als Filter ein. Wählen Sie aus der Liste **Trigger** den Trigger **HTTP-Webhook** aus.
+1. Geben Sie `http webhook` als Filter in das Suchfeld des Designers ein. Wählen Sie aus der Liste **Trigger** den Trigger **HTTP-Webhook** aus.
 
    ![Auswählen des HTTP-Webhooktriggers](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   Dieses Beispiel benennt den Trigger in „HTTP-Webhooktrigger“ um, damit der Schritt über einen aussagekräftigeren Namen verfügt. Darüber hinaus fügt das Beispiel später eine HTTP-Webhookaktion hinzu, und beide Namen müssen eindeutig sein.
+   Dieses Beispiel benennt den Trigger in `HTTP Webhook trigger` um, damit der Schritt über einen aussagekräftigeren Namen verfügt. Darüber hinaus fügt das Beispiel später eine HTTP-Webhookaktion hinzu, und beide Namen müssen eindeutig sein.
 
-1. Geben Sie die Werte für die [Parameter des HTTP-Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) an, die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten:
+1. Geben Sie die Werte für die [Parameter des HTTP-Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) an, die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten.
+
+   In diesem Beispiel umfasst der Auslöser die Methoden, URIs und Nachrichtentexte, die beim Durchführen der Vorgänge „Abonnieren“ und „Abonnement kündigen“ verwendet werden sollen.
 
    ![Eingeben von Triggerparametern des HTTP-Webhooks](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Abonnement: Methode** | Ja | Die Methode, die beim Abonnieren des Zielendpunkts verwendet werden soll. |
+   | **Abonnieren: URI** | Ja | Die URL, die zum Abonnieren des Zielendpunkts verwendet werden soll. |
+   | **Abonnieren: Text** | Nein | Jeder Nachrichtentext, der in die Abonnementanforderung eingeschlossen werden soll. Dieses Beispiel beinhaltet die Rückruf-URL, die den Abonnenten eindeutig identifiziert, bei dem es sich um Ihre Logik-App handelt, indem der `@listCallbackUrl()`-Ausdruck verwendet wird, um die Rückruf-URL Ihrer Logik-App abzurufen. |
+   | **Abonnement kündigen: Method** | Nein | Die Methode, die beim Kündigen des Abonnements des Zielendpunkts verwendet werden soll. |
+   | **Abonnement kündigen: URI** | Nein | Die URL, die zum Kündigen des Abonnements des Zielendpunkts verwendet werden soll. |
+   | **Abonnement kündigen: Text** | Nein | Ein optionaler Nachrichtentext, der in die Anforderung der Abonnementkündigung eingeschlossen werden soll. <p><p>**Hinweis**: Diese Eigenschaft unterstützt nicht die Verwendung der `listCallbackUrl()`-Funktion. Der Trigger schließt jedoch automatisch die Header `x-ms-client-tracking-id` und `x-ms-workflow-operation-name` ein und sendet sie, die der Zieldienst verwenden kann, um den Abonnenten eindeutig zu identifizieren. |
+   ||||
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+1. Öffnen Sie die Liste **Neuen Parameter hinzufügen**, um weitere Triggereigenschaften hinzuzufügen.
+
+   ![Hinzufügen weiterer Triggereigenschaften](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
+
+   Wenn Sie beispielsweise Authentifizierung verwenden müssen, können Sie die Eigenschaften **Abonnieren: Authentifizierung** und **Abonnement kündigen: Authentifizierung** hinzufügen. Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Fahren Sie mit dem Erstellen des Workflows Ihrer Logik-App fort, und fügen Sie weitere Aktionen hinzu, die bei Auslösung des Triggers ausgeführt werden.
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
-   Das Speichern Ihrer Logik-App ruft den Abonnementendpunkt auf und registriert die Rückruf-URL für das Auslösen dieser Logik-App.
-
-1. Wenn der Zieldienst nun eine `HTTP POST`-Anforderung an die Rückruf-URL sendet, wird die Logik-App ausgelöst und enthält anschließend alle Daten, die durch die Anforderung übergeben werden.
+   Durch das Speichern Ihrer Logik-App wird der Abonnementendpunkt im Zieldienst aufgerufen und die Rückruf-URL registriert. Ihre Logik-App wartet dann darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und übergibt alle Daten in der Anforderung an den Workflow. Wenn diese Aktion erfolgreich abgeschlossen wird, kündigt der Trigger das Abonnement des Endpunkts, und Ihre Logik-App setzt den verbleibenden Workflows fort.
 
 ## <a name="add-an-http-webhook-action"></a>Hinzufügen einer HTTP-Webhookaktion
 
-Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, hält den Workflow der Logik-App an und wartet darauf, dass dieser Dienst eine HTTP POST-Anforderung an diese URL sendet. Wenn dieses Ereignis eintritt, wird die Aktion fortgesetzt und die Logik-App ausgeführt.
+Diese integrierte Aktion ruft den Abonnementendpunkt im Zieldienst auf und registriert eine Rückruf-URL beim Zieldienst. Ihre Logik-App pausiert und wartet dann darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn dieses Ereignis eintritt, übergibt die Aktion alle Daten in der Anforderung an den Workflow. Wenn der Vorgang erfolgreich abgeschlossen wird, kündigt die Aktion das Abonnement des Endpunkts, und Ihre Logik-App setzt die Ausführung des verbleibenden Workflows fort.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
 
@@ -103,23 +115,37 @@ Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, 
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld des Designers „http webhook“ als Filter ein. Wählen Sie in der Liste **Aktionen** die Aktion **HTTP-Webhook** aus.
+1. Geben Sie `http webhook` als Filter in das Suchfeld des Designers ein. Wählen Sie in der Liste **Aktionen** die Aktion **HTTP-Webhook** aus.
 
    ![Auswählen einer HTTP-Webhookaktion](./media/connectors-native-webhook/select-http-webhook-action.png)
 
    Dieses Beispiel benennt die Aktion in „HTTP-Webhookaktion“ um, damit der Schritt über einen aussagekräftigeren Namen verfügt.
 
-1. Geben Sie die Werte für die Parameter der HTTP-Webhookaktion an (die ähnlich wie die [Parameter des Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) sind), die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten:
+1. Geben Sie die Werte für die Parameter der HTTP-Webhookaktion an (die ähnlich wie die [Parameter des Webhooktriggers](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) sind), die Sie für die Aufrufe zum Abonnieren und Kündigen eines Abonnements verwenden möchten.
+
+   In diesem Beispiel umfasst die Aktion die Methoden, URIs und Nachrichtentexte, die beim Durchführen der Vorgänge „Abonnieren“ und „Abonnement kündigen“ verwendet werden sollen.
 
    ![Eingeben der Parameter für die HTTP-Webhookaktion](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   Während der Laufzeit ruft die Logik-App beim Ausführen dieser Aktion den Abonnementendpunkt auf. Ihre Logik-App hält dann den Workflow an und wartet darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn die Aktion erfolgreich abgeschlossen wird, kündigt die Aktion das Abonnement des Endpunkts, und Ihre Logik-App setzt die Ausführung des Workflows fort.
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Abonnement: Methode** | Ja | Die Methode, die beim Abonnieren des Zielendpunkts verwendet werden soll. |
+   | **Abonnieren: URI** | Ja | Die URL, die zum Abonnieren des Zielendpunkts verwendet werden soll. |
+   | **Abonnieren: Text** | Nein | Jeder Nachrichtentext, der in die Abonnementanforderung eingeschlossen werden soll. Dieses Beispiel beinhaltet die Rückruf-URL, die den Abonnenten eindeutig identifiziert, bei dem es sich um Ihre Logik-App handelt, indem der `@listCallbackUrl()`-Ausdruck verwendet wird, um die Rückruf-URL Ihrer Logik-App abzurufen. |
+   | **Abonnement kündigen: Method** | Nein | Die Methode, die beim Kündigen des Abonnements des Zielendpunkts verwendet werden soll. |
+   | **Abonnement kündigen: URI** | Nein | Die URL, die zum Kündigen des Abonnements des Zielendpunkts verwendet werden soll. |
+   | **Abonnement kündigen: Text** | Nein | Ein optionaler Nachrichtentext, der in die Anforderung der Abonnementkündigung eingeschlossen werden soll. <p><p>**Hinweis**: Diese Eigenschaft unterstützt nicht die Verwendung der `listCallbackUrl()`-Funktion. Die Aktion schließt jedoch automatisch die Header `x-ms-client-tracking-id` und `x-ms-workflow-operation-name` ein und sendet sie, die der Zieldienst verwenden kann, um den Abonnenten eindeutig zu identifizieren. |
+   ||||
 
-1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
+1. Öffnen Sie die Liste **Neuen Parameter hinzufügen**, um weitere Aktionseigenschaften hinzuzufügen.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   ![Hinzufügen weiterer Aktionseigenschaften](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
+
+   Wenn Sie beispielsweise Authentifizierung verwenden müssen, können Sie die Eigenschaften **Abonnieren: Authentifizierung** und **Abonnement kündigen: Authentifizierung** hinzufügen. Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP Webhook finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+
+   Wenn diese Aktion nun ausgeführt wird, ruft Ihre Logik-App den Abonnementendpunkt im Zieldienst auf und registriert die Rückruf-URL. Die Logik-App hält dann den Workflow an und wartet darauf, dass der Zieldienst eine `HTTP POST`-Anforderung an die Rückruf-URL sendet. Wenn dieses Ereignis eintritt, übergibt die Aktion alle Daten in der Anforderung an den Workflow. Wenn der Vorgang erfolgreich abgeschlossen wird, kündigt die Aktion das Abonnement des Endpunkts, und Ihre Logik-App setzt die Ausführung des verbleibenden Workflows fort.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
@@ -129,14 +155,14 @@ Weitere Informationen zu Triggern und Aktionsparametern, die einander ähnlich s
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrigger oder einer -aktion, die diese Informationen zurückgeben:
 
-| Eigenschaftenname | type | Beschreibung |
+| Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
 | headers | Objekt (object) | Die Header aus der Anforderung |
 | body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
 | status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | Beschreibung |
+| Statuscode | BESCHREIBUNG |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

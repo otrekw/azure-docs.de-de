@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429286"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669434"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über die Azure CLI
 
@@ -29,25 +29,29 @@ Bei der automatischen Geräteverwaltung werden mehrere Geräte- oder Modulzwilli
 
 * Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder Zielmodulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
-* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden.
+* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl der Zwillinge, die erfolgreich aktualisiert wurden.
 
-Die automatischen Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und danach in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal ausgeführt, wenn die automatische Konfiguration ausgeführt wird.
+Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal ausgeführt, wenn die automatische Konfiguration ausgeführt wird.
 
 ## <a name="cli-prerequisites"></a>Voraussetzungen für die Befehlszeilenschnittstelle
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement. 
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
-* Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
+
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.70 lauten. Verwenden Sie `az –-version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
+
+* Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-cli) ist vorhanden.
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>Implementieren von Zwillingen
 
 Für automatische Gerätekonfigurationen ist der Einsatz von Gerätezwillingen erforderlich, um den Zustand zwischen der Cloud und den Geräten zu synchronisieren.  Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](iot-hub-devguide-device-twins.md).
 
-Für automatische Modulkonfigurationen ist der Einsatz von Modulzwillingen erforderlich, um den Zustand zwischen der Cloud und den Modulen zu synchronisieren. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](iot-hub-devguide-module-twins.md).
+Für automatische Modulkonfigurationen ist der Einsatz von Modulzwillingen erforderlich, um den Status zwischen der Cloud und den Modulen zu synchronisieren. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](iot-hub-devguide-module-twins.md).
 
 ## <a name="use-tags-to-target-twins"></a>Verwenden von Tags mit Zwillingen als Ziel
 
-Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder Module Sie als Ziel verwenden möchten. Azure IoT Hub identifiziert Geräte, verwendet Tags im Gerätezwilling und identifiziert Module mithilfe von Tags im Modulzwilling. Jedes Gerät oder Modul kann mehrere Tags aufweisen, und Sie können diese auf jede beliebige Weise definieren, die für Ihre Lösung sinnvoll erscheint. Wenn Sie beispielsweise Geräte an verschiedenen Standorten verwalten, fügen Sie einem Gerätezwilling die folgenden Tags hinzu:
+Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte oder Module Sie als Ziel verwenden möchten. Azure IoT Hub identifiziert Geräte, verwendet Tags im Gerätezwilling und identifiziert Module mithilfe von Tags im Modulzwilling. Jedes Gerät oder Modul kann mehrere Tags aufweisen, die sie auf jede beliebige Weise definieren können, die Ihnen für Ihre Lösung sinnvoll erscheint. Wenn Sie beispielsweise Geräte an verschiedenen Standorten verwalten, fügen Sie einem Gerätezwilling die folgenden Tags hinzu:
 
 ```json
 "tags": {
@@ -181,7 +185,7 @@ Wenn Sie Änderungen an einer Konfiguration vornehmen, werden diese sofort auf a
 
 Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpassungen:
 
-* Wenn ein Zwilling die alte Zielbedingung nicht erfüllt, wohl aber die neue, und diese Konfiguration für den Zwilling die höchste Priorität aufweist, wird diese Konfiguration angewendet. 
+* Wenn ein Zwilling zwar die alte Zielbedingung nicht erfüllt, aber die neue, und diese Konfiguration für den Zwilling die höchste Priorität hat, wird diese Konfiguration angewendet. 
 
 * Wenn ein Zwilling, auf dem diese Konfiguration zurzeit ausgeführt wird, die Zielbedingung nicht mehr erfüllt, werden die von der Konfiguration implementierten Einstellungen entfernt, und der Zwilling wird durch die nächste Konfiguration mit der höchsten Priorität geändert. 
 

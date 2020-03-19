@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613585"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946420"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -42,7 +42,11 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
 > [!NOTE]
-> Da [kein Zugriff auf Domänencontroller in Azure AD DS vorhanden ist](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), können Sie keinen zentralen Speicher für administrative Vorlagen für Gruppenrichtlinien in einer verwalteten Domäne erstellen und verwenden. [Sysvol ist in der lokalen Azure AD Connect-Synchronisierung nicht enthalten](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), daher können Sie auch keinen lokalen zentralen Speicher erstellen und mit Azure AD DS über Azure AD synchronisieren.
+> Sie können administrative Vorlagen für Gruppenrichtlinien verwenden, indem Sie die neuen Vorlagen in die Verwaltungsarbeitsstation kopieren. Kopieren Sie die *ADMX*-Dateien in das Verzeichnis `%SYSTEMROOT%\PolicyDefinitions` und die gebietsschemaspezifischen *ADML*-Dateien in das Verzeichnis `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, wobei `Language-CountryRegion` der Sprache und der Region der *ADML*-Dateien entspricht.
+>
+> Kopieren Sie z. B. die Version „en-US (Englisch, USA)“ der *ADML*-Dateien in den Ordner `\en-us`.
+>
+> Alternativ können Sie Ihre administrative Vorlage für Gruppenrichtlinien auf den Domänencontrollern, die Teil der verwalteten Azure AD DS-Domäne sind, zentral speichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten des zentralen Speichers für administrative Vorlagendateien für Gruppenrichtlinien in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="install-group-policy-management-tools"></a>Installieren der Gruppenrichtlinien-Verwaltungstools
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016033"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080083"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -103,10 +103,10 @@ Wählen Sie rechts oben in einem Codeblock die Option „Ausprobieren“ aus.
 Öffnen Sie Cloud Shell in Ihrem Browser.
 Wählen Sie im Menü rechts oben im [Azure-Portal](https://portal.azure.com) die Schaltfläche „Cloud Shell“ aus.
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.31 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie „az --version“ aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie im Artikel [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.31 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie „az --version“ aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie im Artikel [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
-1. Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) eine Ressourcengruppe. 
-1. Erstellen Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create) einen virtuellen Computer unter Verwendung einer unterstützten Distribution in einer unterstützten Region. 
+1. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
+1. Erstellen Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer unter Verwendung einer unterstützten Distribution in einer unterstützten Region. 
 1. Installieren Sie die VM-Erweiterung für die Azure AD-Anmeldung. 
 
 Im folgenden Beispiel wird der virtuelle Computer „myVM“, auf dem Win2019Datacenter ausgeführt wird, in der Ressourcengruppe „myResourceGroup“ in der Region „southcentralus“ bereitgestellt. In den folgenden Beispielen können Sie den Namen Ihrer Ressourcengruppe und Ihres virtuellen Computers nach Bedarf angeben.
@@ -128,7 +128,7 @@ az vm create \
 
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten.
 
-Installieren Sie schließlich die VM-Erweiterung für die Azure AD-Anmeldung, um die Azure AD-Anmeldung für den virtuellen Windows-Computer zu aktivieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung AADLoginForWindows auf dem virtuellen Computer „myVM“ in der Ressourcengruppe „myResourceGroup“ zu installieren:
+Installieren Sie schließlich die VM-Erweiterung für die Azure AD-Anmeldung, um die Azure AD-Anmeldung für den virtuellen Windows-Computer zu aktivieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung AADLoginForWindows auf dem virtuellen Computer „myVM“ in der Ressourcengruppe „myResourceGroup“ zu installieren:
 
 > [!NOTE]
 > Sie können die Erweiterung AADLoginForWindows auf einem vorhandenen virtuellen Computer unter Windows Server 2019 oder Windows 10 1809 und höher installieren, um ihn für die Azure AD-Authentifizierung zu aktivieren. Ein Beispiel für die Azure-Befehlszeilenschnittstelle ist nachstehend dargestellt.
@@ -175,9 +175,9 @@ Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Berei
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Verwenden von Azure Cloud Shell
 
-Im folgenden Beispiel wird [az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](https://docs.microsoft.com/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](https://docs.microsoft.com/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../virtual-machines/linux/login-using-aad.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../virtual-machines/linux/login-using-aad.md).
 
-```AzureCLI
+```   zureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -188,13 +188,13 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID des Benutzerkontos mit `--assignee-object-id` angeben. Die Angabe des Benutzernamens für `--assignee` genügt nicht. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list) erhalten.
+> Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID des Benutzerkontos mit `--assignee-object-id` angeben. Die Angabe des Benutzernamens für `--assignee` genügt nicht. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
 
 Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in folgenden Artikeln:
 
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](/azure/role-based-access-control/role-assignments-portal)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
 ## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
 
@@ -233,8 +233,7 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > Wenn die Erweiterung nach dem anfänglichen Fehler neu gestartet wird, wird das Protokoll mit dem Bereitstellungsfehler als „CommandExecution_JJJJMMTTHHMMSSSSS.log“ gespeichert. 
-
+   > Wenn die Erweiterung nach dem anfänglichen Fehler neu gestartet wird, wird das Protokoll mit dem Bereitstellungsfehler als „CommandExecution_JJJJMMTTHHMMSSSSS.log“ gespeichert. "
 1. Öffnen Sie eine Eingabeaufforderung auf dem virtuellen Computer, und überprüfen Sie, ob diese Abfragen für den auf dem Azure-Host ausgeführten Instance Metadata Service-Endpunkt (IMDS) Folgendes zurückgeben:
 
    | Auszuführender Befehl | Erwartete Ausgabe |
@@ -338,7 +337,7 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 
 ![Mit den Anmeldeinformationen konnte keine Verbindung hergestellt werden](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-Vergewissern Sie sich, dass der Windows 10-PC, den Sie zum Initiieren der Remotedesktopverbindung verwenden, über Azure AD regulär oder hybrid im selben Azure AD-Verzeichnis eingebunden ist, in dem auch der virtuelle Computer eingebunden ist. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](https://docs.microsoft.com/azure/active-directory/devices/overview).
+Vergewissern Sie sich, dass der Windows 10-PC, den Sie zum Initiieren der Remotedesktopverbindung verwenden, über Azure AD regulär oder hybrid im selben Azure AD-Verzeichnis eingebunden ist, in dem auch der virtuelle Computer eingebunden ist. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](/azure/active-directory/devices/overview).
 
 > [!NOTE]
 > Unter Windows 10 20H1 ist die Unterstützung für in Azure AD registrierte PCs zum Herstellen einer Remotedesktopverbindung mit einem virtuellen Computer enthalten. Treten Sie dem Windows-Insider-Programm bei, um dies zu testen und neue Funktionen von Windows 10 kennenzulernen.
@@ -355,7 +354,7 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 
 Wenn Sie eine Richtlinie für bedingten Zugriff konfiguriert haben, die die mehrstufige Authentifizierung (MFA) erforderlich macht, damit Sie auf die Ressource zugreifen können, müssen Sie sicherstellen, dass die Anmeldung auf dem Windows 10-PC, über den die Remotedesktopverbindung mit dem virtuellen Computer initiiert wird, mithilfe einer starken Authentifizierungsmethode erfolgt, z. B. mit Windows Hello. Wenn Sie keine starke Authentifizierungsmethode für die Remotedesktopverbindung verwenden, wird dieser Fehler angezeigt.
 
-Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit keine Option ist, können Sie die MFA-Anforderung ausschließen, indem Sie eine Richtlinie für bedingten Zugriff konfigurieren, die die App Azure Windows VM Sign-In aus der Liste der Cloud-Apps ausschließt, für die die mehrstufige Authentifizierung erforderlich ist. Weitere Informationen zu Windows Hello for Business finden Sie in der [Übersicht zu Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit keine Option ist, können Sie die MFA-Anforderung ausschließen, indem Sie eine Richtlinie für bedingten Zugriff konfigurieren, die die App Azure Windows VM Sign-In aus der Liste der Cloud-Apps ausschließt, für die die mehrstufige Authentifizierung erforderlich ist. Weitere Informationen zu Windows Hello for Business finden Sie in der [Übersicht zu Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 > [!NOTE]
 > Die Authentifizierung über die Windows Hello for Business-PIN mit RDP wird unter Windows 10 in mehreren Versionen unterstützt. Die Unterstützung für die biometrische Authentifizierung mit RDP wurde dagegen in Windows 10 Version 1809 hinzugefügt. Die Verwendung der Windows Hello for Business-Authentifizierung bei der RDP-Verbindung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.
@@ -365,4 +364,5 @@ Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit 
 Geben Sie Feedback zu dieser Previewfunktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+
+Weitere Informationen zu Azure Active Directory finden Sie unter [Was ist Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-whatis).

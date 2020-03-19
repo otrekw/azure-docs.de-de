@@ -4,20 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
-ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 646cce25efcbebab6229389f63912346e3712cdd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942762"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925463"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md)
-> * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md)
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 

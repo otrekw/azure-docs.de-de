@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 4af31b281f4b2e7cdd7ed217753df55ce8009fa9
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446697"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384110"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](~/articles/cognitive-services/Speech-Service/get-started.md)
-* [Python 3.5 oder höher](https://www.python.org/downloads/).
+* [Python 3.5 bis 3.8](https://www.python.org/downloads/)
 * Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar:
     * Windows: x64 und x86.
     * Mac: macOS X Version 10.12 oder höher
-    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9 unter x64
+    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 unter x64
 * Führen Sie unter Linux die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
   * Auf Ubuntu:
@@ -40,6 +40,16 @@ ms.locfileid: "77446697"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * Unter RHEL/CentOS 8:
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 * Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform.
 
@@ -110,7 +120,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Installieren und Verwenden des Speech SDK mit Visual Studio Code
 
-1. Laden Sie eine 64-Bit-Version (3.5 oder höher) von [Python](https://www.python.org/downloads/) herunter, und installieren Sie sie auf Ihrem Computer.
+1. Laden Sie eine 64-Bit-Version (3.5 bis 3.8) von [Python](https://www.python.org/downloads/) herunter, und installieren Sie sie auf Ihrem Computer.
 1. Laden Sie [Visual Studio Code](https://code.visualstudio.com/Download) herunter, und installieren Sie die Software.
 1. Öffnen Sie Visual Studio Code, und installieren Sie die Python-Erweiterung. Wählen Sie im Menü **Datei** > **Einstellungen** > **Erweiterungen**. Suchen Sie nach **Python**.
 

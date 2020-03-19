@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110004"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400003"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-Aktivität in Azure Data Factory
 Sie können mithilfe einer Webhook-Aktivität die Ausführung von Pipelines über Ihren benutzerdefinierten Code steuern. Mithilfe der Webhook-Aktivität können Kunden einen Endpunkt aufrufen und eine Rückruf-URL übergeben. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.
@@ -53,7 +53,7 @@ Sie können mithilfe einer Webhook-Aktivität die Ausführung von Pipelines übe
 
 
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Name der Webhook-Aktivität | String | Ja |
 type | Muss auf **WebHook** festgelegt werden. | String | Ja |
@@ -116,6 +116,10 @@ Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalt
 Azure Data Factory übergibt die zusätzliche Eigenschaft „callBackUri“ im Textkörper an den URL-Endpunkt und erwartet, dass dieser URI vor dem angegebenen Timeoutwert aufgerufen wird. Wenn der URI nicht aufgerufen wird, schlägt die Aktivität mit dem Status „TimedOut“ fehl.
 
 Die Webhook-Aktivität selbst schlägt fehl, wenn beim Aufruf des benutzerdefinierten Endpunkts ein Fehler auftritt. Im Textkörper des Rückrufs kann jede beliebige Fehlermeldung hinzugefügt und in einer nachfolgenden Aktivität verwendet werden.
+
+Außerdem kommt es bei jedem Rest-API-Rückruf beim Client zu einem Timeout, wenn der Endpunkt nicht innerhalb von 1 Minute antwortet. Dies ist die bewährte HTTP-Standardmethode. Zur Behebung dieses Problems müssen Sie in diesem Fall das 202-Muster implementieren, bei dem der Endpunkt „202 (Akzeptiert)“ zurückgibt und der Client abfragt.
+
+Das 1-Minute-Timeout für die Anforderung hat nichts mit dem Aktivitätstimeout zu tun. Dieses dient zum Warten auf den Rückruf-URI.
 
 Der an den Rückruf-URI zurückgegebene Textkörper sollte gültiges JSON sein. Sie müssen den Content-Type-Header auf `application/json` festlegen.
 

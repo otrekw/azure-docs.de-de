@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189923"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397789"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -56,8 +56,11 @@ Das **ClaimType**-Element enthält die folgenden Elemente:
 | Mask | 0:1 | Eine optionale Zeichenfolge von Maskierungszeichen, die bei der Anzeige des Anspruchs angewendet werden kann. Beispielsweise kann die Telefonnummer 324-232-4343 als XXX-XXX-4343 maskiert werden. |
 | UserHelpText | 0:1 | Eine Beschreibung des Anspruchstyps, der Benutzern helfen kann, dessen Zweck zu verstehen. Der Wert kann [lokalisiert](localization.md) sein. |
 | UserInputType | 0:1 | Der Typ des Eingabesteuerelements, der dem Benutzer zur Verfügung stehen sollte, wenn die Anspruchsdaten für den Anspruchstypen manuell eingegeben werden. Weitere Informationen hierzu finden Sie weiter unten in den Definitionen der Benutzereingabetypen. |
+| AdminHelpText | 0:1 | Eine Beschreibung des Anspruchstyps, der Administratoren helfen kann, dessen Zweck zu verstehen. |
 | Einschränkung | 0:1 | Die Werteinschränkungen für diesen Anspruch, z.B. ein regulärer Ausdruck (RegEx) oder eine Liste der zulässigen Werte. Der Wert kann [lokalisiert](localization.md) sein. |
 PredicateValidationReference| 0:1 | Ein Verweis auf ein **PredicateValidationsInput**-Element. Die **PredicateValidationReference**-Elemente ermöglichen Ihnen einen Überprüfungsprozess, mithilfe dessen Sie sicherstellen können, dass nur ordnungsgemäß formatierte Daten eingegeben werden. Weitere Informationen finden Sie im Artikel zu [Prädikaten](predicates.md). |
+
+
 
 ### <a name="datatype"></a>DataType
 
@@ -81,7 +84,7 @@ Das Element **DataType** unterstützt die folgenden Werte:
 
 Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Protocol | 1:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
@@ -162,7 +165,7 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
@@ -182,7 +185,7 @@ Das **Enumeration**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
-|value | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
+|Wert | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
 | SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardwert `New York` konfiguriert:
@@ -240,7 +243,7 @@ Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfel
 
 Das Element **UserInputType** verfügt über folgende Benutzereingabetypen:
 
-| UserInputType | ClaimType wird unterstützt | Beschreibung |
+| UserInputType | ClaimType wird unterstützt | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Dropdownfeld mit Mehrfachauswahl. Der Anspruchswert wird durch eine Zeichenfolge der ausgewählten Werte mit Kommatrennzeichen dargestellt. |
 |DateTimeDropdown | `date`, `dateTime` |Dropdownfeld zur Auswahl von Tag, Monat und Jahr. |

@@ -16,16 +16,16 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a78a69301ab2ae637531f8643d9d57a8b44b563f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608398"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968744"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Zugriffsüberprüfung für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
-Die Azure AD-Berechtigungsverwaltung erleichtert Unternehmen die Verwaltung des Zugriffs auf Gruppen, Anwendungen und SharePoint-Websites. In diesem Artikel wird beschrieben, wie Sie als designierter Prüfer eine Zugriffsüberprüfung für andere Benutzer durchführen, die einem Zugriffspaket zugewiesen sind.
+Die Azure AD-Berechtigungsverwaltung erleichtert Unternehmen die Verwaltung des Zugriffs auf Gruppen, Anwendungen und SharePoint-Websites. In diesem Artikel wird beschrieben, wie Sie als designierter Prüfer eine Zugriffsüberprüfung für andere Benutzer durchführen, die einem Zugriffspaket zugewiesen sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,15 +41,15 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-managem
 
 Führen Sie die folgenden Schritte aus, um die Zugriffsüberprüfung zu finden und zu öffnen:
 
-1. Sie erhalten möglicherweise eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Suchen Sie die E-Mail, um die Zugriffsüberprüfung zu öffnen. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfung des Zugriffs auffordert:
+1. Sie erhalten möglicherweise eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Suchen Sie nach der E-Mail, um die Zugriffsüberprüfung zu öffnen. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfung des Zugriffs auffordert:
     
     ![E-Mail zur Zugriffsüberprüfung an Prüfer](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
 
 1. Klicken Sie auf den Link **Benutzerzugriff überprüfen**, um die Zugriffsüberprüfung zu öffnen. 
 
-1. Wenn Ihnen die E-Mail nicht vorliegt, können Sie Ihre ausstehenden Zugriffsüberprüfungen anzeigen, indem Sie direkt zu https://myaccess.microsoft.com navigieren.
+1. Wenn Ihnen die E-Mail nicht vorliegt, können Sie Ihre ausstehenden Zugriffsüberprüfungen anzeigen, indem Sie direkt zu https://myaccess.microsoft.com navigieren.  (Für US Government verwenden Sie stattdessen `https://myaccess.microsoft.us`.)
 
-1. Klicken Sie in der linken Navigationsleiste auf **Zugriffsüberprüfungen**, um eine Liste der ausstehenden Zugriffsüberprüfungen anzuzeigen, die Ihnen zugewiesen sind.
+1. Klicken Sie auf der linken Navigationsleiste auf **Zugriffsüberprüfungen**, um eine Liste der ausstehenden Zugriffsüberprüfungen anzuzeigen, die Ihnen zugewiesen sind.
     
     ![Auswählen von Zugriffsüberprüfungen in „Mein Zugriff“](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
 
@@ -103,4 +103,4 @@ Um die Zugriffsüberprüfung für mehrere Benutzer zu beschleunigen, können Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Selbstüberprüfung eines Zugriffspakets](entitlement-management-access-reviews-self-review.md)
+- [Selbstüberprüfung von Zugriffspaketen](entitlement-management-access-reviews-self-review.md)

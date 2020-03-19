@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298376"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080062"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -30,6 +30,9 @@ Dieser Artikel enthält zwei Szenarien zum Konfigurieren von Richtlinien für de
 Bei bedingtem Zugriff sind diese Client-Apps bekanntermaßen durch eine App-Schutzrichtlinie geschützt. Weitere Informationen zu App-Schutzrichtlinien finden Sie im Artikel [Übersicht über App-Schutzrichtlinien](/intune/apps/app-protection-policy).
 
 Eine Liste der qualifizierten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md).
+
+> [!NOTE]
+>    Die OR-Klausel wird innerhalb der Richtlinie verwendet, um Benutzern die Verwendung von Apps zu ermöglichen, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** bzw. **Genehmigte Client-App erforderlich** unterstützen. Weitere Informationen zu den Apps, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** unterstützen, finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 1: Office 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 
@@ -56,7 +59,7 @@ Organisationen müssen die folgenden Schritte ausführen, um die Verwendung eine
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Steuerungen anfordern**
+   - **Eine der ausgewählten Steuerungen anfordern**
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
@@ -75,7 +78,7 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie fo
    1. **Client-Apps (Vorschau):**
       1. Legen Sie **Konfigurieren** auf **Ja** fest.
       1. Wählen Sie **Mobile Apps und Desktopclients** und **Exchange ActiveSync-Clients** aus.
-1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Genehmigte Client-App erforderlich** und anschließend **Auswählen** aus.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
@@ -108,7 +111,7 @@ Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung
 1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die folgenden Optionen aus:
    - **Genehmigte Client-App erforderlich**
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
-   - **Alle ausgewählten Steuerungen anfordern**
+   - **Eine der ausgewählten Steuerungen anfordern**
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 
@@ -125,7 +128,7 @@ Organisationen müssen die folgenden drei Schritte ausführen, um die Verwendung
    1. **Client-Apps (Vorschau):**
       1. Legen Sie **Konfigurieren** auf **Ja** fest.
       1. Wählen Sie **Mobile Apps und Desktopclients** und **Exchange ActiveSync-Clients** aus.
-1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Genehmigte Client-App erforderlich** und anschließend **Auswählen** aus.
+1. Wählen Sie unter **Zugriffssteuerungen** > **Erteilen** die Option **Zugriff erteilen**, **App-Schutzrichtlinie erforderlich** aus, und wählen Sie dann **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.
 

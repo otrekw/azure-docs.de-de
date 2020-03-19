@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509018"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946431"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 
@@ -36,18 +36,21 @@ Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domai
 * [Kann ich Domänencontroller zu einer verwalteten Azure AD Domain Services-Domäne hinzufügen?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [Können in mein Verzeichnis eingeladene Gastbenutzer Azure AD Domain Services verwenden?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region oder ein anderes virtuelles Netzwerk verschieben?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [Enthält Azure AD Domain Services Hochverfügbarkeitsoptionen?](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Kann ich mehrere verwaltete Domänen für ein einzelnes Azure AD-Verzeichnis erstellen?
 Nein. Sie können nur eine einzelne durch Azure AD Domain Services verwaltete Domäne für ein einzelnes Azure AD-Verzeichnis erstellen.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Kann ich Azure AD Domain Services in einem klassischen virtuellen Netzwerk aktivieren?
-Klassische virtuelle Netzwerke werden für neue Bereitstellungen nicht unterstützt. Vorhandene verwaltete Domänen, die in klassischen virtuellen Netzwerken bereitgestellt wurden, werden weiterhin unterstützt. Sie können [Azure AD Domain Services auch vom klassischen VNET-Modell zu Resource Manager (Vorschau) migrieren](migrate-from-classic-vnet.md).
+Klassische virtuelle Netzwerke werden für neue Bereitstellungen nicht unterstützt. Vorhandene verwaltete Domänen, die in klassischen virtuellen Netzwerken bereitgestellt wurden, werden bis zu ihrer Einstellung am 1. März 2023 weiterhin unterstützt. Für bestehende Bereitstellungen können Sie [Azure AD Domain Services auch vom klassischen VNET-Modell zu Resource Manager migrieren](migrate-from-classic-vnet.md).
+
+Weitere Informationen finden Sie im [offiziellen Hinweis zur Einstellung](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Kann ich Azure AD-Domänendienste in einem virtuellen Azure Resource Manager-Netzwerk aktivieren?
 Ja. Azure AD Domain Services können in einem virtuellen Azure Resource Manager-Netzwerk aktiviert werden. Klassische virtuelle Azure-Netzwerke stehen für das Erstellen von verwalteten Domänen nicht mehr zur Verfügung.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Kann ich meine vorhandene verwaltete Domäne aus einem klassischen virtuellen Netzwerk zu einem virtuellen Resource Manager-Netzwerk migrieren?
-Ja, dieses Feature befindet sich in der Vorschauphase. Weitere Informationen finden Sie unter [Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager (Vorschau)](migrate-from-classic-vnet.md).
+Ja. Weitere Informationen finden Sie unter [Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Kann ich Azure AD Domain Services in einem Azure CSP-Abonnement (Cloud Solution Provider) aktivieren?
 Ja. Weitere Informationen finden Sie unter [Aktivieren von Azure AD Domain Services in Azure CSP-Abonnements](csp.md).
@@ -73,6 +76,10 @@ Nein. Gastbenutzer, die mit dem [Azure AD B2B](../active-directory/active-direct
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region oder ein anderes virtuelles Netzwerk verschieben?
 Nein. Nach dem Erstellen einer verwalteten Azure AD Domain Services-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
 
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Enthält Azure AD Domain Services Hochverfügbarkeitsoptionen?
+
+Ja. Jede verwaltete Azure AD Domain Services-Domäne enthält zwei Domänencontroller. Sie verwalten diese Domänencontroller nicht und stellen auch keine Verbindung zu ihnen her. Die Controller sind Bestandteil des verwalteten Diensts. Wenn Sie Azure AD Domain Services in einer Region bereitstellen, die Verfügbarkeitszonen unterstützt, werden die Domänencontroller auf die Zonen verteilt. In Regionen, die keine Verfügbarkeitszonen unterstützen, werden die Domänencontroller auf Verfügbarkeitsgruppen verteilt. Sie haben keine Möglichkeit, diese Verteilung zu konfigurieren oder deren Verwaltung zu steuern. Weitere Informationen finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/windows/availability.md).
+
 ## <a name="administration-and-operations"></a>Verwaltung und Betrieb
 
 * [Kann ich über Remotedesktop eine Verbindung mit dem Domänencontroller für meine verwaltete Domäne herstellen?](#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)
@@ -89,13 +96,13 @@ Nein. Nach dem Erstellen einer verwalteten Azure AD Domain Services-Domäne kö
 Nein. Sie besitzen keine Berechtigungen, um über Remotedesktop eine Verbindung mit Domänencontrollern in der verwalteten Domäne herzustellen. Mitglieder der *Administratorengruppe für Azure AD-Domänencontroller* können die verwaltete Domäne mithilfe von AD-Verwaltungstools wie dem Active Directory-Verwaltungscenter (Active Directory-Administration Center, ADAC) oder AD-PowerShell verwalten. Diese Tools werden mithilfe der *Remoteserver-Verwaltungstools* auf einem Windows-Server installiert, der der verwalteten Domäne beigetreten ist. Weitere Informationen finden Sie unter [Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure AD Domain Services-Domäne](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Ich habe Azure AD Domain Services aktiviert. Welches Benutzerkonto verwende ich für den Domänenbeitritt von Computern zu dieser Domäne?
-Mitglieder der administrativen Gruppe *AAD DC-Administratoren* können Computer in die Domäne einbinden. Darüber hinaus erhalten Mitglieder dieser Gruppe Remotedesktopzugriff auf Computer, die der Domäne beigetreten sind.
+Jedes Benutzerkonto, das Teil der von Azure AD DS verwalteten Domäne ist, kann einem virtuellen Computer beitreten. Mitglieder der Gruppe *AAD DC-Administratoren* erhalten Remotedesktopzugriff auf Computer, die der verwalteten Domäne beigetreten sind.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Verfüge ich über Domänenadministratorrechte für die über Azure AD Domain Services bereitgestellte verwaltete Domäne?
 Nein. Ihnen werden keine Administratorrechte für die verwaltete Domäne gewährt. Die Berechtigungen für *Domänenadministrator* und *Unternehmensadministrator* stehen innerhalb der Domäne nicht zur Verfügung. Mitglieder von Domänenadministrator- oder Unternehmensadministratorengruppen in Ihrem Active Directory-Verzeichnis erhalten ebenfalls keine Domänen-/Unternehmensadministratorberechtigungen in der verwalteten Domäne.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Kann ich mithilfe von LDAP oder anderen AD-Verwaltungstools Gruppenmitgliedschaften in verwalteten Domänen ändern?
-Nein. Gruppenmitgliedschaften können nicht in Domänen geändert werden, die von Azure AD Domain Services verwaltet werden. Das gleiche gilt für Benutzerattribute. Sie können jedoch in Azure AD oder in Ihrer lokalen Domäne Gruppenmitgliedschaften und Benutzerattribute ändern. Änderungen werden automatisch mit Azure AD Domain Services synchronisiert.
+Benutzer und Gruppen, die von Azure Active Directory mit Azure AD Domain Services synchronisiert werden, können nicht geändert werden, da sie ihren Ursprung in Azure Active Directory haben. Alle Benutzer oder Gruppen, die ihren Ursprung in der verwalteten Domäne haben, können geändert werden.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Wie lange dauert es, bis Änderungen an meinem Azure AD-Verzeichnis in meiner verwalteten Domäne angezeigt werden?
 Sowohl über die Benutzeroberfläche von Azure AD als auch über PowerShell vorgenommene Änderungen an Ihrem Azure AD-Verzeichnis werden automatisch mit Ihrer verwalteten Domäne synchronisiert. Diese Synchronisation erfolgt im Hintergrund. Es gibt keinen definierten Zeitraum für die Synchronisierung, um alle Objektänderungen abzuschließen.

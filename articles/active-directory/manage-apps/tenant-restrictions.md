@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276505"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942849"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -32,7 +32,7 @@ Mit Mandanteneinschränkungen können Organisationen eine Liste mit Mandanten an
 
 In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Office 365, das Feature sollte aber auch für jede andere SaaS-Cloud-App verwendet werden können, die moderne Authentifizierungsprotokolle mit Azure AD für einmaliges Anmelden verwendet. Falls Sie SaaS-Apps mit einem Azure AD-Mandanten verwenden, der nicht dem von Office 365 verwendeten Mandanten entspricht, müssen Sie sicherstellen, dass alle erforderlichen Mandanten zugelassen sind. Weitere Informationen zu SaaS-Cloud-Apps finden Sie im [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Die Lösung umfasst folgende Komponenten:
 
@@ -97,13 +97,16 @@ Ein Beispielbenutzer im Netzwerk von Contoso versucht, online auf die Fabrikam-I
 
 Die Konfiguration der Mandanteneinschränkungen erfolgt zwar in der Proxyinfrastruktur des Unternehmens, Administratoren können jedoch über das Azure-Portal direkt auf die Mandanteneinschränkungsberichte zugreifen. So zeigen Sie die Berichte an
 
-1. Melden Sie sich am [Azure Active Directory-Portal](https://aad.portal.azure.com/) an. Das Dashboard **Azure Active Directory Admin Center** wird angezeigt.
+1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an. Das Dashboard **Azure Active Directory Admin Center** wird angezeigt.
 
 2. Wählen Sie im linken Bereich **Azure Active Directory** aus. Die Übersichtsseite „Azure Active Directory Admin Center“ wird angezeigt.
 
 3. Wählen Sie in der Überschrift **Weitere Funktionen** die Option **Mandanteneinschränkungen** aus.
 
 Der Administrator für den Mandanten, der als Restricted-Access-Context-Mandant angegeben ist, kann sich anhand dieses Berichts über Anmeldungen informieren, die aufgrund der Mandanteneinschränkungsrichtlinie blockiert wurden (einschließlich der jeweils verwendeten Identität und der Zielverzeichnis-ID). Anmeldungen sind enthalten, wenn es sich beim Mandanten, der die Einschränkung festlegt, entweder um den Benutzermandanten oder den Ressourcenmandanten für die Anmeldung handelt.
+
+> [!NOTE]
+> Der Bericht enthält möglicherweise eingeschränkte Informationen (z. B. die Zielverzeichnis-ID), wenn sich ein Benutzer anmeldet, der sich in einem anderen Mandanten als dem Restricted-Access-Context-Mandanten befindet. In diesem Fall werden benutzerbezogene Informationen (z. B. Name und Benutzerprinzipalname) maskiert, um die Benutzerdaten in anderen Mandanten zu schützen.
 
 Genau wie bei anderen Berichten im Azure-Portal können Sie auch hier mithilfe von Filtern den gewünschten Umfang des Berichts angeben. Der Bericht kann nach einem bestimmten Zeitintervall, einem Benutzer, einer Anwendung, einem Client oder einem Status gefiltert werden. Wenn Sie die Schaltfläche **Spalten** auswählen, können Sie Daten mit einer beliebigen Kombination der folgenden Felder anzeigen:
 

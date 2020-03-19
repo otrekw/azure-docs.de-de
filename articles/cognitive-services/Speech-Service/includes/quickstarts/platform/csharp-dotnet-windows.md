@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a09b969ee3e11aeb04f338cf035b21b5da9bd952
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466463"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78926092"
 ---
-In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für .NET Framework (Windows) installieren.
+In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für .NET Framework (Windows) installieren. Führen Sie `Install-Package Microsoft.CognitiveServices.Speech` in der NuGet-Konsole aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -71,7 +71,21 @@ Sie müssen das [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget
 
    Nachdem das Paket installiert wurde, wird eine Bestätigung im Fenster **Paket-Manager-Konsole** angezeigt.
 
-Nun können Sie mit den [nächsten Schritten](#next-steps) fortfahren.
+### <a name="choose-target-architecture"></a>Auswählen der Zielarchitektur
+
+Erstellen Sie eine Plattformkonfiguration, die der Architektur Ihres Computers entspricht, um die Konsolenanwendung zu erstellen und auszuführen.
+
+1. Wählen Sie auf der Menüleiste **Build** > **Konfigurations-Manager** aus. Das Dialogfeld **Konfigurations-Manager** wird angezeigt.
+
+   ![Dialogfeld „Konfigurations-Manager“](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. Wählen Sie im Dropdownfeld **Aktive Projektmappenplattform** den Eintrag **Neu** aus. Das Dialogfeld **Neue Projektmappenplattform** wird angezeigt.
+
+1. Gehen Sie im Feld **Neue Plattform eingeben oder auswählen** wie folgt vor:
+   - Wenn Sie 64-Bit-Windows ausführen, wählen Sie **x64** aus.
+   - Wenn Sie 32-Bit-Windows ausführen, wählen Sie **x86** aus.
+
+1. Wählen Sie **OK** und dann **Schließen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

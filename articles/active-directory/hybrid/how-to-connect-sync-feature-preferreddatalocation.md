@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a493179e6e657a1d99d7cdb808629bae7332567
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918966"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894563"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -44,7 +44,7 @@ Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zu
 | --- | --- |
 | Asien-Pazifik | APC |
 | Australien | AUS |
-| Kanada | CAN |
+| Canada | CAN |
 | Europäische Union | EUR |
 | Frankreich | FRA |
 | Indien | IND |
@@ -52,7 +52,7 @@ Folgende geografische Räume stehen in Office 365 für Multi-Geo Capabilities zu
 | Korea | KOR |
 | Südafrika | ZAF |
 | Vereinigte Arabische Emirate | ARE |
-| Vereinigtes Königreich | GBR |
+| United Kingdom | GBR |
 | USA | NAM |
 
 * Wenn ein geografischer Raum nicht in dieser Tabelle aufgeführt wird (z.B. Südamerika), kann er nicht für Multi-Geo Capabilities verwendet werden.
@@ -139,9 +139,9 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 3. Um eine neue Regel für eingehende Daten zu erstellen, wählen Sie **Neue Regel hinzufügen**.
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
-    | Attribut | Wert | Details |
+    | attribute | Wert | Details |
     | --- | --- | --- |
-    | NAME | *Geben Sie einen Namen ein.* | Beispiel: „In from AD – User preferredDataLocation“ |
+    | Name | *Geben Sie einen Namen ein.* | Beispiel: „In from AD – User preferredDataLocation“ |
     | BESCHREIBUNG | *Geben Sie eine benutzerdefinierte Beschreibung an.* |  |
     | Verbundenes System | *Lokalen Active Directory Connector auswählen* |  |
     | Objekttyp des verbundenen Systems | **Benutzer** |  |
@@ -168,9 +168,9 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 3. Wählen Sie **Neue Regel hinzufügen** aus.
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
-    | Attribut | Wert | Details |
+    | attribute | Wert | Details |
     | ----- | ------ | --- |
-    | NAME | *Geben Sie einen Namen ein.* | Beispiel: „Out to Azure AD – User preferredDataLocation“ |
+    | Name | *Geben Sie einen Namen ein.* | Beispiel: „Out to Azure AD – User preferredDataLocation“ |
     | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* ||
     | Verbundenes System | *Wählen Sie den Azure AD-Connector aus.* ||
     | Objekttyp des verbundenen Systems | **Benutzer** ||
@@ -180,12 +180,12 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 
 5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine einzelne Bereichsfiltergruppe mit zwei Klauseln hinzu:
 
-    | Attribut | Operator | Wert |
+    | attribute | Operator | Wert |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Benutzer |
     | cloudMastered | NOTEQUAL | True |
 
-    Der Bereichsfilter legt fest, auf welche Azure AD-Objekte diese Synchronisierungsregel für ausgehende Daten angewendet wird. In diesem Beispiel verwenden wir den Bereichsfilter aus der Standardsynchronisierungsregel „Ausgehend nach Azure AD – Benutzeridentität“. Er verhindert, dass die Synchronisierungsregel auf **Benutzerobjekte** angewendet wird, die nicht über das lokale Active Directory synchronisiert werden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
+    Der Bereichsfilter legt fest, auf welche Azure AD-Objekte diese Synchronisierungsregel für ausgehende Daten angewendet wird. In diesem Beispiel verwenden wir den Bereichsfilter aus der Standardsynchronisierungsregel „Ausgehend nach Azure AD – Benutzeridentität“. Er verhindert, dass die Synchronisierungsregel auf **Benutzer**objekte angewendet wird, die nicht über ein lokales Active Directory synchronisiert werden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
 
 6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie folgende Transformationsregel:
 
@@ -260,7 +260,6 @@ Sie können nun die Konfiguration überprüfen und für Ihre Benutzer aktivieren
 3. Überprüfen Sie mithilfe von Exchange Online-PowerShell, ob die Postfachregion ordnungsgemäß festgelegt wurde.  
 ![Screenshot von Exchange Online-PowerShell](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
 Sofern Ihr Mandant für die Verwendung dieses Features aktiviert wurde, wird das Postfach in den richtigen geografischen Raum verschoben. Dies können Sie überprüfen, indem Sie sich den Namen des Servers ansehen, auf dem sich das Postfach befindet.
-4. Um sicherzustellen, dass diese Einstellung auf mehrere Postfächer angewendet wurde, verwenden Sie das Skript im [TechNet-Katalog](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e). Dieses Skript enthält auch eine Liste der Serverpräfixe aller Office 365-Rechenzentren mit dem geografischen Raum, in dem sie sich befinden. Es kann im vorherigen Schritt als Referenz verwendet werden, um den Speicherort des Postfachs zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

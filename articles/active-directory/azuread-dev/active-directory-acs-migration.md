@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163767"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377904"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -68,13 +68,13 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu ermitteln, welche Apps v
 ### <a name="download-and-install-acs-powershell"></a>Herunterladen und Installieren von ACS PowerShell
 
 1. Wechseln Sie zum PowerShell-Katalog, und laden Sie [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2) herunter.
-1. Installieren Sie das Modul, indem Sie Folgendes ausführen:
+2. Installieren Sie das Modul, indem Sie Folgendes ausführen:
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Rufen Sie eine Liste mit den möglichen Befehlen ab, indem Sie Folgendes ausführen:
+3. Rufen Sie eine Liste mit den möglichen Befehlen ab, indem Sie Folgendes ausführen:
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu ermitteln, welche Apps v
   
     Unter Umständen müssen Sie `Set-ExecutionPolicy -ExecutionPolicy Bypass` ausführen, bevor Sie Befehle ausführen können, und Sie müssen hierfür der Administrator dieser Abonnements sein.
 
-1. Listen Sie Ihre verfügbaren Azure-Abonnements auf, indem Sie das Cmdlet **Get-AcsSubscription** verwenden.
-1. Listen Sie Ihre ACS-Namespaces auf, indem Sie das Cmdlet **Get-AcsNamespace** verwenden.
+2. Listen Sie Ihre verfügbaren Azure-Abonnements auf, indem Sie das Cmdlet **Get-AcsSubscription** verwenden.
+3. Listen Sie Ihre ACS-Namespaces auf, indem Sie das Cmdlet **Get-AcsNamespace** verwenden.
 
 ### <a name="check-which-applications-will-be-impacted"></a>Überprüfen, welche Anwendungen betroffen sind
 
@@ -103,8 +103,8 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu ermitteln, welche Apps v
 
     Navigieren Sie beispielsweise zu `https://contoso-test.accesscontrol.windows.net`, wenn einer der Namespaces „contoso-test“ ist.
 
-1. Wählen Sie unter **Vertrauensstellungen** die Option **Anwendungen der vertrauenden Seite**, um die Liste mit den Apps anzuzeigen, auf die sich die ACS-Deaktivierung auswirkt.
-1. Wiederholen Sie die Schritte 1 und 2 für alle anderen ACS-Namespaces, die ggf. vorhanden sind.
+2. Wählen Sie unter **Vertrauensstellungen** die Option **Anwendungen der vertrauenden Seite**, um die Liste mit den Apps anzuzeigen, auf die sich die ACS-Deaktivierung auswirkt.
+3. Wiederholen Sie die Schritte 1 und 2 für alle anderen ACS-Namespaces, die ggf. vorhanden sind.
 
 ## <a name="retirement-schedule"></a>Deaktivierungszeitplan
 
@@ -210,7 +210,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Unterstützt |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergeben von Ansprüchen von Verbundidentitätsanbietern nicht möglich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche nicht möglich<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten<br />- Ausstellen von Ausgabeansprüchen basierend auf den Eigenschaften von mit Azure AD synchronisierten Benutzern |
 | **Automation** | | |
-| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über Microsoft Graph- und Azure AD Graph-API |
+| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über die Microsoft Graph-API |
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
 
@@ -261,7 +261,7 @@ Die folgende Tabelle vergleicht die für Webanwendungen relevanten Funktionen vo
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Benutzerdefinierte Signaturschlüssel, keine Zertifikate, unterstützt über benutzerdefinierte Richtlinien |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergabe von Ansprüchen von Identitätsanbietern möglich; für einige Ansprüche sind benutzerdefinierte Richtlinien erforderlich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche über benutzerdefinierte Richtlinien<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten über benutzerdefinierte Richtlinien |
 | **Automation** | | |
-| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst |- Erstellung von Benutzern zulässig über Azure AD Graph-API.<br />- B2C-Mandanten, -Anwendungen oder -Richtlinien können nicht programmgesteuert erstellt werden. |
+| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst |- Erstellen von Benutzern mit der Microsoft Graph-API zulässig<br />- B2C-Mandanten, -Anwendungen oder -Richtlinien können nicht programmgesteuert erstellt werden. |
 
 Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, lesen Sie zunächst die Informationen in den folgenden Ressourcen:
 
@@ -325,7 +325,7 @@ Azure AD kann jedoch mithilfe der Azure AD-Implementierung der Erteilung der OAu
 | Clientauthentifizierungsmethoden |- Einfaches Kennwort<br />- Signiertes SWT<br />- SAML-Token von einem Verbundidentitätsanbieter |- Einfaches Kennwort<br />- Signiertes JWT |
 | Tokenformate |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Nur JWT |
 | Tokentransformation |- Hinzufügen von benutzerdefinierten Ansprüchen<br />- Einfache If-Then-Logik für die Anspruchsausstellung | Hinzufügen von benutzerdefinierten Ansprüchen | 
-| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über Microsoft Graph- und Azure AD Graph-API |
+| Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über die Microsoft Graph-API |
 
 Anleitungen zum Implementieren von Server-zu-Server-Szenarien finden Sie in den folgenden Ressourcen:
 

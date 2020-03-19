@@ -11,25 +11,25 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d713dd968956f5bcc93e7b53ed2d7801e5d7bec2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561929"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672600"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation
 
 Jetzt, da Sie sich mit [sicheren Arbeitsstationen auskennen](concept-azure-managed-workstation.md), ist es an der Zeit, mit der Bereitstellung zu beginnen. In dieser Anleitung verwenden Sie definierte Profile, um eine Arbeitsstation zu erstellen, die von Anfang an sicherer ist.
 
-![Bereitstellen einer sicheren Arbeitsstation](./media/howto-azure-managed-workstation/deploying-secure-workstations.png)
+![Bereitstelleneiner sicheren Arbeitsstation](./media/howto-azure-managed-workstation/deploying-secure-workstations.png)
 
 Wählen Sie vor der Bereitstellung der Lösung ein Profil aus. Sie können mehrere Profile gleichzeitig in einer Bereitstellung verwenden und sie mit Tags oder Gruppen zuzuweisen.
 
 > [!NOTE]
 > Wenden Sie eines der Profile nach Ihren Anforderungen an. Sie können zu einem anderen Profil wechseln, indem Sie es in Microsoft Intune zuweisen.
 
-| Profil | Niedrig | Verbessert | Hoch | Spezialisiert | Geschützt | Isolated |
+| Profil | Niedrig | Verbessert | High | Spezialisiert | Geschützt | Isolated |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Benutzer in Azure AD | Ja | Ja | Ja | Ja | Ja | Ja |
 | Mit Intune verwaltet | Ja | Ja | Ja | Ja | Ja | Ja |
@@ -57,14 +57,14 @@ Um die Lizenzbereitstellung zu automatisieren, sollten Sie eine[ gruppenbasierte
 
 Azure Active Directory (Azure AD) verwaltet Benutzer, Gruppen und Geräte für Ihre Administratorarbeitsstationen. Sie müssen die Identitätsdienste und Features mit einem [Administratorkonto](../users-groups-roles/directory-assign-admin-roles.md) aktivieren.
 
-Wenn Sie das gesicherte Arbeitsstationsadministratorkonto erstellen, machen Sie das Konto für Ihre aktuelle Arbeitsstation verfügbar. Stellen Sie sicher, dass Sie für diese Erstkonfiguration und die gesamte globale Konfiguration ein bekanntes sicheres Gerät verwenden. Um die Angriffe bei der ersten Nutzung zu reduzieren, sollten Sie die [Hinweise zur Vermeidung von Malwareinfektionen](https://docs.microsoft.com/windows/security/threat-protection/intelligence/prevent-malware-infection) beachten.
+Wenn Sie das gesicherte Arbeitsstationsadministratorkonto erstellen, machen Sie das Konto für Ihre aktuelle Arbeitsstation verfügbar. Stellen Sie sicher, dass Sie für diese Erstkonfiguration und die gesamte globale Konfiguration ein bekanntes sicheres Gerät verwenden. Um die Angriffe bei der ersten Nutzung zu reduzieren, sollten Sie die [Hinweise zur Vermeidung von Malwareinfektionen](/windows/security/threat-protection/intelligence/prevent-malware-infection) beachten.
 
 Zudem sollte zumindest für Ihre Administratoren eine mehrstufige Authentifizierung erforderlich sein. Einen Implementierungsleitfaden finden Sie unter [Planen einer cloudbasierten Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md).
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD-Benutzer und -Gruppen
 
 1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Benutzer** > **Neuer Benutzer**.
-1. Erstellen Sie Ihren Geräteadministrator, indem Sie den Schritten im [Schnellstart zum Erstellen eines Benutzers](https://docs.microsoft.com/Intune/quickstart-create-user) folgen.
+1. Erstellen Sie Ihren Geräteadministrator, indem Sie den Schritten im [Schnellstart zum Erstellen eines Benutzers](/Intune/quickstart-create-user) folgen.
 1. Geben Sie Folgendes ein:
 
    * **Name**: Administrator der sicheren Arbeitsstation
@@ -127,7 +127,7 @@ Gehen Sie im Azure-Portal so vor:
 1. Ändern Sie die Einstellung **MDM-Benutzerbereich** in **Alle**.
 1. Wählen Sie **Speichern** aus.
 
-Mit diesen Schritten können Sie jedes Gerät mit Intune verwalten. Weitere Informationen finden Sie unter [Schnellstart: Einrichten der automatischen Registrierung für Windows 10-Geräte](https://docs.microsoft.com/Intune/quickstart-setup-auto-enrollment). Sie erstellen in einem späteren Schritt Intune-Konfigurations- und Compliancerichtlinien.
+Mit diesen Schritten können Sie jedes Gerät mit Intune verwalten. Weitere Informationen finden Sie unter [Schnellstart: Einrichten der automatischen Registrierung für Windows 10-Geräte](/Intune/quickstart-setup-auto-enrollment). Sie erstellen in einem späteren Schritt Intune-Konfigurations- und Compliancerichtlinien.
 
 #### <a name="azure-ad-conditional-access"></a>Bedingter Azure AD-Zugriff
 
@@ -137,7 +137,7 @@ Bedingter Azure AD-Zugriff kann helfen, privilegierte administrative Aufgaben au
 
 ### <a name="configure-enrollment-status"></a>Konfigurieren des Registrierungsstatus
 
-Es ist wichtig, dafür zu sorgen, dass Ihre sichere Arbeitsstation ein vertrauenswürdiges, sauberes Gerät ist. Beim Kauf neuer Geräte können Sie darauf bestehen, dass diese werkseitig auf [Windows 10 Pro im S-Modus](https://docs.microsoft.com/Windows/deployment/Windows-10-pro-in-s-mode) eingestellt sind, was die Gefährdung durch Schwachstellen beim Supply Chain Management begrenzt. Nachdem Sie ein Gerät von Ihrem Lieferanten erhalten haben, können Sie es mit Autopilot aus dem S-Modus umstellen. Die folgende Anleitung enthält Informationen zum Anwenden des Transformationsprozesses.
+Es ist wichtig, dafür zu sorgen, dass Ihre sichere Arbeitsstation ein vertrauenswürdiges, sauberes Gerät ist. Beim Kauf neuer Geräte können Sie darauf bestehen, dass diese werkseitig auf [Windows 10 Pro im S-Modus](/Windows/deployment/Windows-10-pro-in-s-mode) eingestellt sind, was die Gefährdung durch Schwachstellen beim Supply Chain Management begrenzt. Nachdem Sie ein Gerät von Ihrem Lieferanten erhalten haben, können Sie es mit Autopilot aus dem S-Modus umstellen. Die folgende Anleitung enthält Informationen zum Anwenden des Transformationsprozesses.
 
 Um sicherzustellen, dass die Geräte vor der Verwendung vollständig konfiguriert sind, bietet Intune die Option **Geräteverwendung blockieren, bis alle Apps und Profile installiert sind**.
 
@@ -160,22 +160,22 @@ In Intune im Azure-Portal:
    * Beschreibung: **Bereitstellung von sicheren Arbeitsstationen**.
    * Setzen Sie **Alle Zielgeräte in Autopilot-Geräte konvertieren** auf **Ja**. Diese Einstellung stellt sicher, dass alle Geräte in der Liste mit dem Autopilot-Bereitstellungsdienst registriert werden. Lassen Sie 48 Stunden zur Verarbeitung der Registrierung verstreichen.
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
-   * Wählen Sie im **Bereitstellungsmodus** die Option **Selbstbereitstellung (Vorschau)** . Geräte mit diesem Profil sind dem Benutzer zugeordnet, der das Gerät registriert. Anmeldeinformationen sind erforderlich, um das Gerät zu registrieren. Beachten Sie, dass die Bereitstellung eines Geräts im **Selbstbereitstellungsmodus** Ihnen die Bereitstellung von Laptops in einem freigegebenen Modell ermöglicht. Es findet keine Benutzerzuweisung statt, bis das Gerät zum ersten Mal einem Benutzer zugewiesen wird. Folglich werden alle Benutzerrichtlinien wie BitLocker erst dann aktiviert, wenn eine Benutzerzuweisung abgeschlossen ist. Weitere Informationen zum Anmelden bei einem gesicherten Gerät finden Sie unter [Ausgewählte Profile](https://docs.microsoft.com/intune/device-profile-assign).
+   * Wählen Sie im **Bereitstellungsmodus** die Option **Selbstbereitstellung (Vorschau)** . Geräte mit diesem Profil sind dem Benutzer zugeordnet, der das Gerät registriert. Anmeldeinformationen sind erforderlich, um das Gerät zu registrieren. Beachten Sie, dass die Bereitstellung eines Geräts im **Selbstbereitstellungsmodus** Ihnen die Bereitstellung von Laptops in einem freigegebenen Modell ermöglicht. Es findet keine Benutzerzuweisung statt, bis das Gerät zum ersten Mal einem Benutzer zugewiesen wird. Folglich werden alle Benutzerrichtlinien wie BitLocker erst dann aktiviert, wenn eine Benutzerzuweisung abgeschlossen ist. Weitere Informationen zum Anmelden bei einem gesicherten Gerät finden Sie unter [Ausgewählte Profile](/intune/device-profile-assign).
    * Das Feld **Azure AD beitreten als** sollte anzeigen, dass **In Azure AD eingebunden** ist und abgeblendet ist.
    * Wählen Sie Ihre Sprache (Region) und den Benutzerkontotyp **Standard** aus. 
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
    * Wählen Sie eine Bereichsmarkierung, wenn Sie eine vorkonfiguriert haben.
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Wählen Sie **Zuweisungen** > **Zuweisen zu** > **Ausgewählte Gruppen** aus. Wählen Sie unter **Wählen Sie die Gruppen aus, die eingeschlossen werden sollen** die Option **Sichere Arbeitsstationen** aus.
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Wählen Sie **Erstellen**, um das Profil zu erstellen. Das Autopilot-Bereitstellungsprofil steht nun für die Zuweisung von Geräten zur Verfügung.
 
-Die Registrierung von Geräten in Autopilot bietet eine je nach Gerätetyp und Rolle unterschiedliche Benutzererfahrung. In unserem Bereitstellungsbeispiel veranschaulichen wir ein Modell, bei dem die gesicherten Geräte in der Masse bereitgestellt werden und gemeinsam genutzt werden können, aber bei der ersten Verwendung wird das Gerät einem Benutzer zugewiesen. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](https://docs.microsoft.com/intune/device-enrollment).
+Die Registrierung von Geräten in Autopilot bietet eine je nach Gerätetyp und Rolle unterschiedliche Benutzererfahrung. In unserem Bereitstellungsbeispiel veranschaulichen wir ein Modell, bei dem die gesicherten Geräte in der Masse bereitgestellt werden und gemeinsam genutzt werden können, aber bei der ersten Verwendung wird das Gerät einem Benutzer zugewiesen. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](/intune/device-enrollment).
 
 ### <a name="configure-windows-update"></a>Konfigurieren des Windows-Updates
 
@@ -203,7 +203,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 1. Klicken Sie auf **Erstellen**.
 1. Fügen Sie auf der Registerkarte **Zuweisungen** die Gruppe **Sichere Arbeitsstationen** hinzu.
 
-Weitere Informationen zu Windows-Updaterichtlinien finden Sie unter [Policy CSP – Update (Richtlinien-CSP – Update)](https://docs.microsoft.com/windows/client-management/mdm/policy-csp-update).
+Weitere Informationen zu Windows-Updaterichtlinien finden Sie unter [Policy CSP – Update (Richtlinien-CSP – Update)](/windows/client-management/mdm/policy-csp-update).
 
 ### <a name="windows-defender-atp-intune-integration"></a>Integration von Windows Defender ATP in Intune
 
@@ -223,7 +223,7 @@ Um die Integration von Windows Defender ATP und Intune zu konfigurieren, wechsel
 1. Setzen Sie **Verbindung von Windows-Geräten mit Version 10.0.15063 und höher mit Windows Defender ATP herstellen** auf **Ein**.
 1. Wählen Sie **Speichern** aus.
 
-Weitere Informationen finden Sie unter [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
+Weitere Informationen finden Sie unter [Windows Defender Advanced Threat Protection](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection).
 
 ### <a name="finish-workstation-profile-hardening"></a>Abschließen der Härtung von Arbeitsstationsprofilen
 
@@ -245,7 +245,7 @@ Nachdem das Skript erfolgreich ausgeführt wurde, können Sie Updates von Profil
 * Hier finden Sie die durch Skripts erstellten Intune-Gerätekonfigurationsprofile: **Azure-Portal** > **Microsoft Intune** > **Gerätekonfiguration** > **Profile**.
 * Hier finden Sie die durch Skripts erstellten Intune-Gerätekonformitätsrichtlinien: **Azure-Portal** > **Microsoft Intune** > **Gerätekonformität** > **Profile**.
 
-Um die von den Skripts vorgenommenen Änderungen zu überprüfen, können Sie die Profile exportieren. Auf diese Weise können Sie eine zusätzliche Härtung bestimmen, die gemäß der [SECCON-Dokumentation](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework) erforderlich sein kann.
+Um die von den Skripts vorgenommenen Änderungen zu überprüfen, können Sie die Profile exportieren. Auf diese Weise können Sie eine zusätzliche Härtung bestimmen, die gemäß der [SECCON-Dokumentation](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework) erforderlich sein kann.
 
 Führen Sie das Intune-Datenexportskript `DeviceConfiguration_Export.ps1` aus dem [GitHub-Repository „DeviceConfiguration“](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration) aus, um alle aktuellen Intune-Profile zu exportieren.
 
@@ -260,7 +260,7 @@ Wenn Sie den Anweisungen hier folgen, haben Sie eine sichere Arbeitsstation eing
 
 ### <a name="set-rules-in-the-firewall-configuration-service-provider-csp"></a>Festlegen von Regeln im Firewall-Konfigurationsdienstanbieter (CSP)
 
-Sie können bei Bedarf zusätzliche Änderungen an der Verwaltung der Eingangs- und Ausgangsregeln für Ihre zulässigen und blockierten Endpunkte vornehmen. Während Sie die sichere Arbeitsstation weiter härten, können Sie die Einschränkung aufheben, die den gesamten ein- und ausgehenden Datenverkehr unterbindet. Sie können zulässige ausgehende Websites hinzufügen, um gemeinsame und vertrauenswürdige Websites einzubeziehen. Weitere Informationen finden Sie unter [Firewall-Konfigurationsdienst](https://docs.microsoft.com/Windows/client-management/mdm/firewall-csp).
+Sie können bei Bedarf zusätzliche Änderungen an der Verwaltung der Eingangs- und Ausgangsregeln für Ihre zulässigen und blockierten Endpunkte vornehmen. Während Sie die sichere Arbeitsstation weiter härten, können Sie die Einschränkung aufheben, die den gesamten ein- und ausgehenden Datenverkehr unterbindet. Sie können zulässige ausgehende Websites hinzufügen, um gemeinsame und vertrauenswürdige Websites einzubeziehen. Weitere Informationen finden Sie unter [Firewall-Konfigurationsdienst](/Windows/client-management/mdm/firewall-csp).
 
 Eine restriktive Verwaltung des URL-Datenverkehrs umfasst Folgendes:
 
@@ -302,7 +302,7 @@ Weitere Informationen zur Konfiguration von Chrome-Einstellungen finden Sie unte
 
 In einem gesicherten Modus ist die Anwendungsinstallation auf das Intune-Unternehmensportal beschränkt. Das Installieren des Portals erfordert jedoch Zugriff auf den Microsoft Store. In Ihrer gesicherten Lösung können Sie das Unternehmensportal über einen Offlinemodus für alle Geräte verfügbar machen.
 
-Eine in Intune verwaltete Kopie des [Unternehmensportals](https://docs.microsoft.com/Intune/store-apps-company-portal-app) bietet Ihnen bei Bedarf Zugriff auf zusätzliche Tools, die Sie an die Benutzer der gesicherten Arbeitsstationen weiterleiten können.
+Eine in Intune verwaltete Kopie des [Unternehmensportals](/Intune/store-apps-company-portal-app) bietet Ihnen bei Bedarf Zugriff auf zusätzliche Tools, die Sie an die Benutzer der gesicherten Arbeitsstationen weiterleiten können.
 
 Möglicherweise müssen Sie Windows-Anwendungen (32-Bit-Version) oder andere Anwendungen installieren, deren Bereitstellung spezielle Vorbereitungen erfordert. In solchen Fällen kann das [Microsoft Win32 Content Prep Tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) (Vorbereitungstool für Microsoft-Win32-Inhalt) eine einsatzbereite `.intunewin`-Formatdatei für die Installation bereit.
 
@@ -320,7 +320,7 @@ Azure AD bietet die Möglichkeit, die Zugriffsberechtigungen für Ihr Azure-Clou
 1. Wählen Sie **Ausschließen** aus. Klicken Sie auf **Benutzer und Gruppen**. Wählen Sie **Ausgeschlossene Benutzer auswählen** und dann die Gruppe **Emergency BreakGlass** aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** die Option **Alle Cloud-Apps** aus.
 1. Wählen Sie **Bedingungen**, dann **Geräteplattformen** und die Option **Ja** aus. Klicken Sie dann auf **Geräteplattformen auswählen**, und wählen Sie **Windows** aus.
-1. Klicken Sie auf **Zugriffskontrollen** > **Zugriff gewähren** **Ja** > **Markieren des Geräts als kompatibel erforderlich**. 
+1. Wählen Sie nacheinander **Zugriffskontrollen** > **Zugriff gewähren** **Ja** > **Markieren des Geräts als kompatibel erforderlich** aus. 
 1. Wählen Sie **Richtlinie aktivieren** > **Ein** aus.
  
 Dieser Richtliniensatz stellt sicher, dass Administratoren ein kompatibles Windows-Gerät verwenden müssen, das von Intune und WDATP festgelegt wurde. 
@@ -371,11 +371,11 @@ Nachdem Sie das Gerät konfiguriert haben, überprüfen Sie die Konfiguration. V
 
 ## <a name="assign-devices"></a>Zuweisen von Geräten
 
-Um Geräte und Benutzer zuzuweisen, müssen Sie die [ausgewählten Profile](https://docs.microsoft.com/intune/device-profile-assign) Ihrer Sicherheitsgruppe zuordnen. Alle neuen Benutzer, die Berechtigungen für den Dienst benötigen, müssen ebenfalls der Sicherheitsgruppe hinzugefügt werden.
+Um Geräte und Benutzer zuzuweisen, müssen Sie die [ausgewählten Profile](/intune/device-profile-assign) Ihrer Sicherheitsgruppe zuordnen. Alle neuen Benutzer, die Berechtigungen für den Dienst benötigen, müssen ebenfalls der Sicherheitsgruppe hinzugefügt werden.
 
 ## <a name="using-sentinel-and-windows-defender-atp-to-monitor-and-respond-to-security-incidents"></a>Überwachen von und Reagieren auf Sicherheitsvorfälle mit Sentinel und Windows Defender ATP
 
-Die Überwachung der Bereitstellung einer sicheren Arbeitsstation kann durch Aktivieren von[Sentinel] und Verwenden von [Management von Bedrohungen und Sicherheitsrisiken](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) durchgeführt werden. Die Anleitung wird keine erschöpfende Bedrohungssuche bereitstellen, sondern einen Beitrag zum gesunden Menschenverstand bei der Überwachung und Reaktion auf potenzielle Sicherheitsvorfälle leisten.
+Die Überwachung der Bereitstellung einer sicheren Arbeitsstation kann durch Aktivieren von[Sentinel] und Verwenden von [Management von Bedrohungen und Sicherheitsrisiken](/windows/security/threat-protection/microsoft-defender-atp/next-gen-threat-and-vuln-mgt) durchgeführt werden. Die Anleitung wird keine erschöpfende Bedrohungssuche bereitstellen, sondern einen Beitrag zum gesunden Menschenverstand bei der Überwachung und Reaktion auf potenzielle Sicherheitsvorfälle leisten.
 
 **Azure Sentinel** wird wie folgt genutzt: 
 
@@ -412,7 +412,7 @@ Da die Daten von Sentinel gesammelt werden, können Sie die Aktivität beobachte
 * Verwenden des Dashboards zur Identifizierung von Sicherheitsrisiken auf Computerebene während Untersuchungen
 * Senden von Korrekturen an Intune
 
-Konfigurieren Sie Ihr [Defender ATP-Dashboard](https://securitycenter.windows.com/machines). Verwenden Sie den Leitfaden unter [Threat & Vulnerability Management dashboard overview (Dashboardübersicht zur Verwaltung von Bedrohungen und Sicherheitsrisiken)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
+Konfigurieren Sie Ihr [Defender ATP-Dashboard](https://securitycenter.windows.com/machines). Verwenden Sie den Leitfaden unter [Threat & Vulnerability Management dashboard overview (Dashboardübersicht zur Verwaltung von Bedrohungen und Sicherheitsrisiken)](/windows/security/threat-protection/microsoft-defender-atp/tvm-dashboard-insights).
 
 ## <a name="monitoring-application-activity-using-microsoft-monitoring-agent-mma"></a>Überwachen der Anwendungsaktivität mithilfe von Microsoft Monitoring Agent (MMA)
 Ab der Specialized-Arbeitsstation ist der AppLocker für die Überwachung der Anwendungsaktivität auf einer Arbeitsstation aktiviert. Damit die Überwachung in Ihren Log Analytics-Arbeitsbereich integriert werden kann, ist ein MMA-Agent und die Einhaltung der Konfiguration erforderlich. 
@@ -449,18 +449,18 @@ Die Anwendungsprotokollierung ist in Ihrem ausgewählten Log Analytics-Arbeitsbe
 
 ## <a name="monitoring"></a>Überwachung
 
-* Erfahren Sie mehr im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats).
-* Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-investigate-cases).
-* Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](https://docs.microsoft.com/azure/sentinel/tutorial-respond-threats-playbook) vertraut.
-* Informieren Sie sich, wie Sie Ihr [Exposure Score (Risikopotenzial)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) prüfen können.
-* Lesen Sie mehr zu [Sicherheitsempfehlungen](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation).
-* Verwalten Sie [Empfehlungen](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) für eine höhere Sicherheit.
-* Verwalten Sie die [Endpunkterkennung und Reaktion](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response).
-* Überwachen Sie Profile mit der [Intune-Profilüberwachung](https://docs.microsoft.com/intune/device-profile-monitor).
+* Erfahren Sie mehr im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](/azure/sentinel/tutorial-detect-threats).
+* Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](/azure/sentinel/tutorial-investigate-cases).
+* Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](/azure/sentinel/tutorial-respond-threats-playbook) vertraut.
+* Informieren Sie sich, wie Sie Ihr [Exposure Score (Risikopotenzial)](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score) prüfen können.
+* Lesen Sie mehr zu [Sicherheitsempfehlungen](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation).
+* Verwalten Sie [Empfehlungen](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation) für eine höhere Sicherheit.
+* Verwalten Sie die [Endpunkterkennung und Reaktion](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response).
+* Überwachen Sie Profile mit der [Intune-Profilüberwachung](/intune/device-profile-monitor).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Microsoft Intune](https://docs.microsoft.com/intune/index)
+* Weitere Informationen zu [Microsoft Intune](/intune/index)
 * Grundlegendes zu [Azure AD](../index.yml)
-* Arbeiten mit [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
-* Entdecken der Funktionen von [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+* Arbeiten mit [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)
+* Entdecken der Funktionen von [Azure Sentinel](/azure/sentinel/)

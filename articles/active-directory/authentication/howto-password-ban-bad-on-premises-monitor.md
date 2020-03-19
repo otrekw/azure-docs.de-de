@@ -1,6 +1,6 @@
 ---
-title: 'Überwachen und Protokollieren beim Kennwortschutz: Azure AD'
-description: Informationen zur Überwachung und Protokollierung beim Azure AD-Kennwortschutz
+title: Überwachen des lokalen Azure AD-Kennwortschutzes
+description: Erfahren Sie, wie Sie in einer lokalen Active Directory Domain Services-Umgebung die Protokolle für den Azure AD-Kennwortschutz überwachen und überprüfen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847710"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671656"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Überwachung und Protokollierung beim Azure AD-Kennwortschutz
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes sind Überwachung und Berichterstellung zentrale Aufgaben. Dieser Artikel enthält detaillierte Informationen, damit Sie verschiedene Überwachungstechniken verstehen, einschließlich der Speicherorte, an denen die einzelnen Dienste Informationen protokollieren, und der Methoden zum Berichten über die Verwendung des Azure AD-Kennwortschutzes.
 

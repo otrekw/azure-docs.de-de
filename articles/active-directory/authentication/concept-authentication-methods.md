@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848747"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968776"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -156,25 +156,25 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
 
-OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Die geheimen Schlüssel müssen in Base32 codiert werden.
+OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Der geheime Schlüssel darf nur die Zeichen *a-z* oder *A-Z* und die Ziffern *1-7* enthalten und muss in Base32 codiert sein.
 
-![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![Hochladen von OATH-Token auf das Blatt „MFA > OATH-Token“](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-OATH-Hardware-Token werden als Teil der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+OATH-Hardwaretoken werden in der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Sobald Sie Token erworben haben, müssen Sie sie in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimer Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie das folgende Beispiel zeigt.
+Sobald Sie Token erworben haben, müssen Sie diese in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimem Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie im folgenden Beispiel gezeigt:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie die Kopfzeile in Ihre CSV-Datei wie oben gezeigt einschließen.
+> Stellen Sie sicher, dass Sie die Kopfzeile in Ihre CSV-Datei einschließen.
 
-Einmal ordnungsgemäß als CSV-Datei formatiert, kann sich ein Administrator dann beim Azure-Portal anmelden und zu **Azure Active Directory**, **MFA-Server**, **OATH-Token** navigieren und die resultierende CSV-Datei hochladen.
+Nach der ordnungsgemäßen Formatierung als CSV-Datei kann sich ein Administrator beim Azure-Portal anmelden, zu **Azure Active Directory** > **Sicherheit** > **MFA** > **OATH-Token** navigieren und die resultierende CSV-Datei hochladen.
 
-Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen. Wenn in der Datei Fehler vorhanden sind, haben Sie die Option, eine CSV-Datei herunterzuladen, in der alle zu behebenden Fehler für Sie aufgeführt sind.
+Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen. Wenn in der Datei Fehler vorhanden sind, haben Sie die Option, eine CSV-Datei herunterzuladen, in der alle zu behebenden Fehler für Sie aufgeführt sind. Die Feldnamen in der heruntergeladenen CSV-Datei unterscheiden sich von der hochgeladenen Version.
 
 Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivieren, indem er für das zu aktivierende Token auf **Aktivieren** klickt und das in dem Token angezeigte OTP eingibt.
 
@@ -206,7 +206,7 @@ Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
 > [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+> Ab März 2019 sind die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 ### <a name="office-phone"></a>Bürotelefon
 
@@ -217,7 +217,7 @@ Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Land
 Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
 
 > [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+> Ab März 2019 sind die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 > [!NOTE]
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.

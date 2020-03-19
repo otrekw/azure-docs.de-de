@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962117"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399016"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -55,7 +55,7 @@ Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für J
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>Beispiel einer decodierten JWT-Assertion
 
-```
+```JSON
 {
   "alg": "RS256",
   "typ": "JWT",
@@ -67,12 +67,11 @@ Zur Berechnung der Signatur wird das Zertifikat wie in der [Spezifikation für J
   "exp": 1484593341,
   "iss": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05",
   "jti": "22b3bb26-e046-42df-9c96-65dbd72c1c81",
-  "nbf": 1484592741,  
+  "nbf": 1484592741,
   "sub": "97e0a5b7-d745-40b6-94fe-5f77d35c6e05"
 }
 .
 "Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
-
 ```
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>Beispiel einer codierten JWT-Assertion
@@ -94,10 +93,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 
 In der Azure-App-Registrierung für die Clientanwendung:
-1. Wählen Sie **Zertifikate & Geheimnisse** aus. 
+1. Wählen Sie **Zertifikate & Geheimnisse** aus.
 2. Klicken Sie auf **Zertifikat hochladen**, und wählen Sie die Zertifikatdatei zum Hochladen aus.
 3. Klicken Sie auf **Hinzufügen**.
-  Nachdem das Zertifikat hochgeladen wurde, werden der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt angezeigt. 
+  Nachdem das Zertifikat hochgeladen wurde, werden der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt angezeigt.
 
 ### <a name="updating-the-application-manifest"></a>Aktualisieren des Anwendungsmanifests
 
@@ -112,7 +111,7 @@ In der Azure-App-Registrierung für die Clientanwendung:
 1. Wählen Sie **Manifest** aus, um das Anwendungsmanifest zu öffnen.
 2. Ersetzen Sie die Eigenschaft *keyCredentials* gemäß dem folgenden Schema durch Ihre neuen Zertifikatinformationen.
 
-   ```
+   ```JSON
    "keyCredentials": [
        {
            "customKeyIdentifier": "$base64Thumbprint",
@@ -123,13 +122,13 @@ In der Azure-App-Registrierung für die Clientanwendung:
        }
    ]
    ```
-3. Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie dann das Manifest in Microsoft Identity Platform hoch. 
+3. Speichern Sie die Änderungen am Anwendungsmanifest, und laden Sie dann das Manifest in Microsoft Identity Platform hoch.
 
    Da die `keyCredentials`-Eigenschaft mehrere Werte besitzen kann, können Sie mehrere Zertifikate hochladen, um eine vielfältigere Schlüsselverwaltung zu erreichen.
-   
+
 ## <a name="code-sample"></a>Codebeispiel
 
 > [!NOTE]
-> Sie müssen den X5T-Header berechnen, indem Sie ihn mit der Hashfunktion des Zertifikats in eine Base64-Zeichenfolge umwandeln. Der Code zum Ausführen dieser Umwandlung lautet in C# wie folgt: `System.Convert.ToBase64String(cert.GetCertHash());`
+> Sie müssen den X5T-Header berechnen, indem Sie ihn mit der Hashfunktion des Zertifikats in eine Base64-Zeichenfolge umwandeln. Der Code zum Ausführen dieser Umwandlung lautet in C# `System.Convert.ToBase64String(cert.GetCertHash());`.
 
-Das Codebeispiel unter [Authenticating to Microsoft Identity Platform in daemon apps with certificates](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Authentifizierung bei Microsoft Identity Platform in Daemonanwendungen mit Zertifikaten) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.
+Das Codebeispiel unter [.NET Core-Daemon-Konsolenanwendung mit Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.

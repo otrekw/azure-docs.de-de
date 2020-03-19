@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: bd15a19a352120e01da04aeca0f3b27d3fce092f
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 3481d751aacd4183bf5a999422b9631ec0e21edb
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445816"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925232"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes Java-Projekt für die JRE ist, verwenden Sie <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">diesen Leitfaden <span class="docon docon-navigate-external x-hidden-focus"></span></a>, um ein leeres Beispielprojekt zu erstellen.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung. <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung, und erstellen Sie ein leeres Beispielprojekt.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 
@@ -82,7 +81,9 @@ Fügen Sie diesen Code unterhalb Ihres Modells ein:
 
 Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. In diesem Beispiel geben wir das Ergebnis einfach in der Konsole aus.
 
-Fügen Sie diesen Code unterhalb Ihres Aufrufs von `recognizeOnceAsync()` ein: [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
+Fügen Sie diesen Code unterhalb Ihres Aufrufs von `recognizeOnceAsync()` ein:
+
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
 
 ## <a name="release-resources"></a>Freigeben von Ressourcen
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ac38adba4ca0d978dd48a546bed1b1faf4fe40fe
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159470"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036958"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
@@ -30,7 +30,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 ## <a name="added-references"></a>Hinzugefügte Verweise
 
-Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
+Betrifft die Projektdatei (*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
 | type | Verweis |
 | --- | --- |

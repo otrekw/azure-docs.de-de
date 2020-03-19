@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608362"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967775"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Selbstüberprüfung eines Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -37,7 +37,7 @@ Um eine Zugriffsüberprüfung durchführen zu können, müssen Sie zunächst die
 
 1. Klicken Sie auf den Link **Zugriff überprüfen**.
 
-1. Sie können auch direkt zu https://myaccess.microsoft.com navigieren, um nach Ihren ausstehenden Zugriffsüberprüfungen zu suchen, wenn Sie keine E-Mail erhalten.
+1. Sie können auch direkt zu https://myaccess.microsoft.com navigieren, um nach Ihren ausstehenden Zugriffsüberprüfungen zu suchen, wenn Sie keine E-Mail erhalten.  (Für US Government verwenden Sie stattdessen `https://myaccess.microsoft.us`.)
 
 1. Klicken Sie auf der linken Navigationsleiste auf **Zugriffsüberprüfungen**, um eine Liste der ausstehenden Zugriffsüberprüfungen anzuzeigen, die Ihnen zugewiesen sind.
 
@@ -56,7 +56,7 @@ Nachdem Sie die Zugriffsüberprüfung geöffnet haben, wird Ihr Zugriff angezeig
 
 1.  Wenn Sie auf **Ja** geklickt haben, müssen Sie möglicherweise im Feld **Grund** eine Begründung angeben.
 
-1.  Klicken Sie auf **Submit**.
+1.  Klicken Sie auf **Submit**(Senden).
 
 Sie können zur Überprüfung zurückkehren, wenn Sie Ihre Meinung ändern und sich entschließen, Ihre Antwort vor dem Ende der Überprüfung zu ändern.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184025"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933055"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -69,7 +69,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 ### <a name="metadata"></a>Metadaten
 
-Die folgenden Einstellungen können verwendet werden, um die Codegenerierung und -wartung zu konfigurieren:
+Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmodus zu konfigurieren:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ Die folgenden Einstellungen können verwendet werden, um die Codegenerierung und
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
 | CharacterSet | Nein | Der Zeichensatz für den Code, der für die Verwendung in einem regulären Ausdruck formatiert ist. Beispiel: `a-z0-9A-Z`. Standardwert: `0-9`. Der Zeichensatz muss mindestens zehn verschiedene Zeichen enthalten, die im angegebenen Zeichensatz enthalten sind. |
 | NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. |
-| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte sind `GenerateCode` oder `VerifyCode`. |
+| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `GenerateCode`. |
 | ReuseSameCode | Nein | Gibt an, ob ein doppelter Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`. |
 
 ### <a name="returning-error-message"></a>Zurückgegebene Fehlermeldung
@@ -90,22 +90,22 @@ Das folgende Beispiel `TechnicalProfile` wird zum Erstellen eines Codes verwende
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 ### <a name="metadata"></a>Metadaten
 
-Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird:
+Die folgenden Einstellungen können verwendet werden, um den Codeüberprüfungsmodus zu konfigurieren:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `VerifyCode`. |
+
+
+### <a name="error-messages"></a>Fehlermeldungen
+
+Die folgenden Einstellungen können verwendet werden, um die Fehlermeldungen zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#one-time-password-error-messages) werden.
+
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
 | UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |
 | UserMessageIfInvalidCode | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein ungültiger Code bereitgestellt wurde. |
-
-### <a name="returning-error-message"></a>Zurückgegebene Fehlermeldung
-
-Wie unter [Metadaten](#metadata)beschrieben, können Sie die Fehlermeldung anpassen, die dem Benutzer für verschiedene Fehlerfälle angezeigt wird. Sie können diese Nachrichten weiter lokalisieren, indem Sie das Gebietsschema mit einem Präfix versehen. Beispiel:
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|Nein| Die Meldung, die dem Benutzer angezeigt werden soll, wenn der Code nicht überprüft werden kann.|
 
 ### <a name="example"></a>Beispiel
 
@@ -154,18 +156,15 @@ Das folgende Beispiel `TechnicalProfile` wird zum Überprüfen eines Codes verwe
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 

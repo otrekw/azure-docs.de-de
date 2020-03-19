@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649506"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944200"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters (Preview)
 
@@ -100,6 +100,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Erstellen eines privaten AKS-Clusters
 
+### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene Ressourcengruppe für Ihren AKS-Cluster.
+
+```azurecli-interactive
+az group create -l westus -n MyResourceGroup
+```
+
 ### <a name="default-basic-networking"></a>Standardnetzwerke (Basic) 
 
 ```azurecli-interactive
@@ -126,35 +134,29 @@ Dabei gilt: *--enable-private-cluster* ist ein obligatorisches Flag für einen p
 > [!NOTE]
 > Wenn CIDR der Docker-Bridge-Adresse (172.17.0.1/16) mit der Subnetz-CIDR in Konflikt steht, ändern Sie die Docker-Bridge-Adresse entsprechend.
 
-## <a name="connect-to-the-private-cluster"></a>Herstellen einer Verbindung mit dem privaten Cluster
+## <a name="options-for-connecting-to-the-private-cluster"></a>Optionen zum Herstellen einer Verbindung mit dem privaten Cluster
 
-Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müssen Sie einen virtuellen Azure-Computer (VM) in einem virtuellen Netzwerk erstellen und eine Verbindung mit dem API-Server herstellen. Führen Sie hierzu folgende Schritte aus:
+Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Zum Verwalten des API-Servers müssen Sie einen virtuellen Computer verwenden, der Zugriff auf das Azure Virtual Network (VNET) des AKS-Clusters hat. Es gibt mehrere Optionen zum Einrichten der Netzwerkkonnektivität mit dem privaten Cluster.
 
-1. Abrufen der Anmeldeinformationen für die Verbindung mit dem Cluster.
+* Erstellen Sie einen virtuellen Computer in demselben Azure Virtual Network (VNET) wie dem des AKS-Clusters.
+* Verwenden Sie einen virtuellen Computer in einem separaten Netzwerk, und richten Sie ein [Peering virtueller Netzwerke][virtual-network-peering] ein.  Weitere Informationen zu dieser Option finden Sie im nachstehenden Abschnitt.
+* Verwenden Sie eine [ExpressRoute- oder VPN][express-route-or-VPN]-Verbindung.
 
-   ```azurecli-interactive
-   az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
-   ```
+Das Erstellen eines virtuellen Computers in demselben VNET wie dem des AKS-Clusters ist die einfachste Option.  ExpressRoute und VPNs (virtuelle private Netzwerke) erhöhen die Kosten und erfordern zusätzliche Netzwerkkomplexität.  Beim Peering virtueller Netzwerke müssen Sie Ihre Netzwerk-CIDR-Bereiche planen, um sicherzustellen, dass es keine überlappenden Bereiche gibt.
 
-1. Führen Sie einen der folgenden Schritte aus:
-   * Erstellen Sie einen virtuellen Computer im selben virtuellen Netzwerk wie dem des AKS-Clusters.  
-   * Erstellen Sie einen virtuellen Computer in einem anderen virtuellen Netzwerk, und stellen Sie ein Peering dieses virtuellen Netzwerks mit dem virtuellen Netzwerk des AKS-Clusters her.
+## <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
-     Wenn Sie einen virtuellen Computer in einem anderen virtuellen Netzwerk erstellen, richten Sie eine Verknüpfung zwischen diesem virtuellen Netzwerk und der privaten DNS-Zone ein. Gehen Sie folgendermaßen vor:
+Wie bereits erwähnt, ist VNET-Peering eine Möglichkeit für den Zugriff auf Ihren privaten Cluster. Wenn Sie VNET-Peering verwenden möchten, müssen Sie eine Verknüpfung zwischen dem virtuellen Netzwerk und der privaten DNS-Zone einrichten.
     
-     a. Wechseln Sie im Azure-Portal zur Ressourcengruppe „MC_*“.  
-     b. Wählen Sie die private DNS-Zone aus.   
-     c. Wählen Sie im linken Bereich den Link **Virtuelles Netzwerk** aus.  
-     d. Erstellen Sie eine neue Verknüpfung, um das virtuelle Netzwerk des virtuellen Computers der privaten DNS-Zone hinzuzufügen. Es dauert ein paar Minuten, bis der DNS-Zonenlink verfügbar wird.  
-     e. Wechseln Sie im Azure-Portal zurück zur Ressourcengruppe „MC_*“.  
-     f. Wählen Sie im rechten Bereich das virtuelle Netzwerk aus. Der Name des virtuellen Netzwerks hat die Form *aks-vnet-\** .  
-     g. Wählen Sie im linken Bereich **Peerings** aus.  
-     h. Wählen Sie **Hinzufügen** aus, fügen Sie das virtuelle Netzwerk des virtuellen Computers hinzu, und erstellen Sie dann das Peering.  
-     i. Wechseln Sie zu dem virtuellen Netzwerk, in dem sich der virtuelle Computer befindet, wählen Sie **Peerings** und dann das virtuelle AKS-Netzwerk aus, und erstellen Sie dann das Peering. Wenn die Adressbereiche im virtuellen AKS-Netzwerk mit denen im virtuellen Netzwerk des virtuellen Computers in Konflikt stehen, schlägt das Peering fehl. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken][virtual-network-peering].
-
-1. Greifen Sie über Secure Shell (SSH) auf den virtuellen Computer zu.
-1. Installieren Sie das Kubectl-Tool, und führen Sie die Kubectl-Befehle aus.
-
+1. Wechseln Sie im Azure-Portal zur Ressourcengruppe „MC_*“.  
+2. Wählen Sie die private DNS-Zone aus.   
+3. Wählen Sie im linken Bereich den Link **Virtuelles Netzwerk** aus.  
+4. Erstellen Sie eine neue Verknüpfung, um das virtuelle Netzwerk des virtuellen Computers der privaten DNS-Zone hinzuzufügen. Es dauert ein paar Minuten, bis der DNS-Zonenlink verfügbar wird.  
+5. Wechseln Sie im Azure-Portal zurück zur Ressourcengruppe „MC_*“.  
+6. Wählen Sie im rechten Bereich das virtuelle Netzwerk aus. Der Name des virtuellen Netzwerks hat die Form *aks-vnet-\** .  
+7. Wählen Sie im linken Bereich **Peerings** aus.  
+8. Wählen Sie **Hinzufügen** aus, fügen Sie das virtuelle Netzwerk des virtuellen Computers hinzu, und erstellen Sie dann das Peering.  
+9. Wechseln Sie zu dem virtuellen Netzwerk, in dem sich der virtuelle Computer befindet, wählen Sie **Peerings** und dann das virtuelle AKS-Netzwerk aus, und erstellen Sie dann das Peering. Wenn die Adressbereiche im virtuellen AKS-Netzwerk mit denen im virtuellen Netzwerk des virtuellen Computers in Konflikt stehen, schlägt das Peering fehl. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken][virtual-network-peering].
 
 ## <a name="dependencies"></a>Abhängigkeiten  
 * Der Private Link-Dienst wird nur von Load Balancer Standard unterstützt. Der Load Balancer Basic wird nicht unterstützt.  
@@ -179,6 +181,8 @@ Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müs
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[private-link-service]: /private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 

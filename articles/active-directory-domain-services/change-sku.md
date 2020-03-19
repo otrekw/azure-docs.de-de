@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614233"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126702"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Ändern der SKU für eine vorhandene, von Azure AD Domain Services verwaltete Domäne
 
-In Azure Active Directory Domain Services (Azure AD DS) beruhen die verfügbare Leistung und die Funktionen auf dem SKU-Typ. Zu diesen Funktionsunterschieden zählen die Sicherungshäufigkeit oder die maximale Anzahl von unidirektionalen ausgehenden Gesamtstrukturvertrauensstellungen (derzeit in der Vorschau verfügbar). Sie wählen eine SKU aus, wenn Sie die verwaltete Domäne erstellen, und Sie können die SKU wechseln, wenn sich Ihre Geschäftsanforderungen nach der Bereitstellung der verwalteten Domäne ändern. Änderungen bei den Geschäftsanforderungen können dazu führen, dass häufigere Sicherungen erforderlich sind oder zusätzliche Gesamtstrukturvertrauensstellungen erstellt werden müssen. Weitere Informationen zu den Grenzwerten und Preisen der unterschiedlichen SKUs finden Sie auf den Seiten[SKU-Konzepte von Azure AD DS][concepts-sku] und [Azure AD DS – Preise][pricing].
+In Azure Active Directory Domain Services (Azure AD DS) beruhen die verfügbare Leistung und die Funktionen auf dem SKU-Typ. Zu diesen Funktionsunterschieden zählen die Sicherungshäufigkeit oder die maximale Anzahl von unidirektionalen ausgehenden Gesamtstrukturvertrauensstellungen (derzeit in der Vorschau verfügbar). Sie wählen eine SKU aus, wenn Sie die verwaltete Domäne erstellen, und Sie können die SKU ändern (hoch- oder herunterstufen), wenn sich Ihre Geschäftsanforderungen nach Bereitstellung der verwalteten Domäne ändern. Änderungen bei den Geschäftsanforderungen können dazu führen, dass häufigere Sicherungen erforderlich sind oder zusätzliche Gesamtstrukturvertrauensstellungen erstellt werden müssen. Weitere Informationen zu den Grenzwerten und Preisen der unterschiedlichen SKUs finden Sie auf den Seiten[SKU-Konzepte von Azure AD DS][concepts-sku] und [Azure AD DS – Preise][pricing].
 
 In diesem Artikel wird gezeigt, wie Sie im Azure-Portal die SKU für eine vorhandene verwaltete Azure AD DS-Domäne ändern.
 
@@ -36,9 +36,12 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 ## <a name="sku-change-limitations"></a>Einschränkungen bei SKU-Änderungen
 
-Beim SKU-Änderungsvorgang gibt es einige Einschränkungen, wenn Sie eine Ressourcengesamtstruktur (derzeit in der Vorschau verfügbar) verwenden und eine unidirektionale ausgehende Gesamtstrukturvertrauensstellung von Azure AD DS zu einer lokalen AD DS-Umgebung erstellt haben. Für SKUs der *Premium*- und *Enterprise*-Edition ist ein Grenzwert für die Anzahl der Vertrauensstellungen definiert, die Sie erstellen können. Sie können nicht zu einer SKU mit einem Grenzwert wechseln, der unter dem derzeit konfigurierten Wert liegt.
+Nach der Bereitstellung der verwalteten Azure AD DS-Domäne können Sie die SKU ändern (hoch- oder herunterstufen). Wenn Sie jedoch eine Ressourcengesamtstruktur (derzeit in der Vorschau verfügbar) verwenden und eine unidirektionale ausgehende Gesamtstrukturvertrauensstellung von Azure AD DS zu einer lokalen AD DS-Umgebung erstellt haben, gibt es beim SKU-Änderungsvorgang einige Einschränkungen. Für SKUs der *Premium*- und *Enterprise*-Edition ist ein Grenzwert für die Anzahl der Vertrauensstellungen definiert, die Sie erstellen können. Sie können nicht zu einer SKU mit einem Grenzwert wechseln, der unter dem derzeit konfigurierten Wert liegt.
 
-Wenn Sie z. B. zwei Gesamtstrukturvertrauensstellungen für die *Premium*-SKU erstellt haben, können Sie nicht auf die *Standard*-SKU umsteigen. Die *Standard*-SKU unterstützt keine Gesamtstrukturvertrauensstellungen. Oder wenn Sie z. B. sieben Vertrauensstellungen für die *Premium*-SKU erstellt haben, können Sie nicht auf die *Enterprise*-SKU umsteigen. Die *Enterprise*-SKU unterstützt maximal fünf Vertrauensstellungen.
+Beispiel:
+
+* Wenn Sie zwei Gesamtstrukturvertrauensstellungen mit der *Premium*-SKU erstellt haben, können Sie nicht auf die *Standard*-SKU herunterstufen. Die *Standard*-SKU unterstützt keine Gesamtstrukturvertrauensstellungen.
+* Oder wenn Sie z. B. sieben Vertrauensstellungen für die *Premium*-SKU erstellt haben, können Sie nicht auf die *Enterprise*-SKU umsteigen. Die *Enterprise*-SKU unterstützt maximal fünf Vertrauensstellungen.
 
 Weitere Informationen zu diesen Grenzwerten finden Sie unter [Azure AD DS-Funktionen und -Grenzwerte][concepts-sku].
 

@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834245"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399088"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -44,10 +44,10 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
 
      > [!NOTE]
-     > Für jede Anwendungsrollendefinition in diesem Manifest muss im Kontext des Manifests eine andere gültige GUID für die `id`-Eigenschaft angegeben sein.    
-     > 
+     > Für jede Anwendungsrollendefinition in diesem Manifest muss im Kontext des Manifests eine andere gültige GUID für die `id`-Eigenschaft angegeben sein.
+     >
      > Die `value`-Eigenschaft der einzelnen Anwendungsrollendefinition muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden. Die `value`-Eigenschaft darf keine Leerzeichen enthalten. Ist dies der Fall, erhalten Sie einen Fehler, wenn Sie das Manifest speichern.
-     
+
 1. Speichern Sie das Manifest.
 
 ### <a name="examples"></a>Beispiele
@@ -108,7 +108,7 @@ Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen
      Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **Alle Anwendungen** die verschiedenen Filter verwenden, um den Inhalt der Liste einzugrenzen. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
 
 1. Wählen Sie die Anwendung aus, in der Sie Benutzer oder eine Sicherheitsgruppe zu Rollen zuweisen möchten.
-1. Wählen Sie in der Anwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen**.
+1. Wählen Sie in der Anwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen** aus.
 1. Wählen Sie oben in der Liste **Benutzer und Gruppen** die Schaltfläche **Benutzer hinzufügen** aus, um den Bereich **Zuweisung hinzufügen** zu öffnen.
 1. Wählen Sie im Bereich **Zuweisung hinzufügen** den Selektor **Benutzer und Gruppen** aus.
 
@@ -122,7 +122,7 @@ Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen
 
 ## <a name="more-information"></a>Weitere Informationen
 
-- [Authorization in a web app using Azure AD application roles &amp; role claims (Sample)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) (Autorisierung in einer Web-App mithilfe von Azure AD-Anwendungsrollen und -Rollenansprüchen (Beispiel))
+- [Hinzufügen von Autorisierung zu einer ASP.NET Core-Web-App mit App-Rollen und Rollenansprüchen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM) (Verwenden von Sicherheitsgruppen und Anwendungsrollen in Ihren Apps (Video))
 - [Azure Active Directory, now with Group Claims and Application Roles](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
 - [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

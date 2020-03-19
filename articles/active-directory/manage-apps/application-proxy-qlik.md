@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263505"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79036993"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -52,7 +52,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 ### <a name="application-2"></a>Anwendung 2: 
 Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Ausnahmen: 
 
-**Schritt 5**: Die interne URL sollte jetzt die Qlik Sense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Der Standardwert beträgt **4244** für HTTPS und **4248** für HTTP für QlikSense-Releases vor April 2018. Der Standardwert für QlikSense-Releases nach April 2018 lautet **443** für HTTPS und **80** für HTTP.  Beispiel: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Schritt 5**: Die interne URL sollte jetzt die Qlik Sense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Der Standardwert beträgt **4244** für HTTPS und **4248** für HTTP für QlikSense-Releases vor April 2018. Der Standardwert für QlikSense-Releases nach April 2018 lautet **443** für HTTPS und **80** für HTTP.  Beispiel: **https&#58;//demo.qlik.com:4244**</br></br>
 **Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**.
  
  

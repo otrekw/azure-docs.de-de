@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930247"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934176"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapping Data Flow: Auswahltransformation
 
@@ -30,7 +30,7 @@ Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswa
 
 ![Auswahltransformation](media/data-flow/newselect1.png "Auswählen des Alias")
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 * In der Standardeinstellung für die Auswahl werden alle eingehenden Spalten einbezogen und die ursprünglichen Namen beibehalten. Sie können dem Datenstrom einen Alias zuweisen, indem Sie den Namen der Auswahltransformation festlegen.
 * Wenn Sie einzelnen Spalten Aliase zuweisen möchten, deaktivieren Sie „Alle auswählen“, und verwenden Sie im unteren Bereich die Spaltenzuordnung.
 * Wählen Sie die Option „Skip Duplicates“ (Duplikate überspringen) aus, um doppelte Spalten aus Eingabe- oder Ausgabemetadaten zu entfernen.
@@ -55,6 +55,11 @@ Wenn Sie aber benutzerdefinierte Regeln hinzufügen möchten, klicken Sie auf �
 Wenn Sie die regelbasierte Zuordnung auswählen, weisen Sie ADF an, Ihren Abgleichsausdruck auszuwerten, um passende Eingangsmusterregeln zu ermitteln und die Ausgangsfeldnamen zu definieren. Sie können eine beliebige Kombination aus feld- und regelbasierten Zuordnungen hinzufügen. Feldnamen werden dann von ADF zur Laufzeit auf der Grundlage eingehender Metadaten aus der Quelle generiert. Sie können die Namen der generierten Felder während des Debuggens sowie im Datenvorschaubereich anzeigen.
 
 Weitere Informationen zum Musterabgleich finden Sie in der [Dokumentation zu Spaltenmustern](concepts-data-flow-column-pattern.md).
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>Verwenden der regelbasierten Zuordnung zum Parametrisieren der SELECT-Transformation
+Sie können die Feldzuordnung in der SELECT-Transformation mithilfe der regelbasierten Zuordnung parametrisieren. Verwenden Sie das Schlüsselwort ```name``` zur Überprüfung der Namen von eingehenden Spalten anhand eines Parameters. Wenn Sie beispielsweise den Datenflussparameter ```mycolumn``` haben, können Sie eine einzelne SELECT-Transformationsregel erstellen, die jeden beliebigen von Ihnen auf ```mycolumn``` festgelegten Spaltennamen einem Feldnamen folgendermaßen zuordnet:
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nachdem Sie die Option „Select“ (Auswählen) verwendet haben, um Spalten umzubenennen, neu anzuordnen und Aliase zuzuweisen, müssen Sie die [Sink transformation (Senkentransformation)](data-flow-sink.md) verwenden, um Ihre Daten im Datenspeicher zu speichern.
