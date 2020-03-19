@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 395b7bc31377fd771549a399032bad9d951ec804
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b5d9df7a0afa9b4270f0eff643e083e5bccfceb8
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384923"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933679"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
@@ -41,37 +41,37 @@ Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
 - **Starke Konsistenz**: Starke Konsistenz bietet garantierte Linearisierbarkeit. Linearisierbarkeit bedeutet die gleichzeitige Verarbeitung von Anforderungen. Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
 
-- **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens *„K“* Versionen (d. h. Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden: 
+  In der folgenden Grafik wird die starke Konsistenz anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Osten“ geschrieben wurden, erhalten Sie beim Lesen der Daten in anderen Regionen den neuesten Wert:
+
+  ![video](media/consistency-levels/strong-consistency.gif)
+
+- **Begrenzte Veraltung (Bounded staleness)** : Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens um *„K“* Versionen (Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden: 
 
   * Anhand der Anzahl von Versionen (*K*) des Elements
   * Anhand des Zeitintervalls (*T*) zwischen Lese- und Schreibvorgängen 
 
   Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. Die starke Konsistenz weist die gleiche Semantik auf wie die begrenzte Veraltung. Das Veraltungszeitfenster ist gleich Null (0). Die begrenzte Veraltung wird auch als „Linearisierbarkeit mit Zeitverzögerung“ bezeichnet. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
 
+  Die begrenzte Veraltung wird häufig von global verteilten Anwendungen genutzt, die niedrige Schreibwartezeiten erwarten, aber eine garantierte vollständige globale Reihenfolge benötigen. Begrenzte Veraltung eignet sich hervorragend für Anwendungen mit Gruppenzusammenarbeit und -freigabe, Börsenticker, Veröffentlichen-Abonnieren-Muster/Queueing und Ähnlichem. In der folgenden Grafik wird die begrenzte Veraltung anhand von Noten veranschaulicht. Nachdem die Daten in die Region „USA, Osten“ geschrieben wurden, wird der geschriebene Wert in den Regionen „USA, Westen“ und „Australien, Osten“ basierend auf der konfigurierten maximalen Verzögerung oder den maximalen Vorgängen gelesen:
+
+  ![video](media/consistency-levels/bounded-staleness-consistency.gif)
+
 - **Sitzung (Session)** :  Die Lesevorgänge in einer einzelnen Clientsitzung berücksichtigen immer folgende Garantien: Präfixkonsistenz (sofern es sich um eine einzelne Schreibsitzung handelt), monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, erreichen auch irgendwann Konsistenz.
 
-- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
+  Die Sitzungskonsistenz ist die gängige Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Die Region „USA, Westen“ und die Region „USA, Osten“ verwenden die gleiche Sitzung (Sitzung A) und lesen die Daten somit zur gleichen Zeit. Die Region „Australien, Osten“ verwendet dagegen „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
 
-- **Letztlich (Eventual)** : Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.
+  ![video](media/consistency-levels/session-consistency.gif)
 
-## <a name="consistency-levels-explained-through-baseball"></a>Konsistenzebenen – erläutert am Beispiel Baseball
+- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die Konsistenzebene „Präfixkonsistenz“ garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
-Wir verwenden hier das Szenario eines Baseballspiels als Beispiel. Stellen Sie sich eine Sequenz von Schreibvorgängen vor, die den Punktestand eines Baseballspiels darstellen. Das Ergebnis eines Baseballspiels mit den Punkteständen für jedes Inning wird im Dokument [Erläuterung der Konsistenz replizierter Daten anhand von Baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) beschrieben. Dieses hypothetische Baseballspiel befindet sich aktuell in der Mitte des siebten Innings. Der Seventh-inning stretch wird durchgeführt. Die Gastmannschaft liegt mit 2:5 im Rückstand (wie unten dargestellt).
+  Wenn Schreibvorgänge in der Reihenfolge `A, B, C` erfolgen, wird einem Client entweder `A`, `A,B` oder `A,B,C`, aber niemals eine falsche Reihenfolge wie `A,C` oder `B,A,C` angezeigt. Die Präfixkonsistenz bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie Reihenfolgengarantien für Szenarien bereit, in denen die Reihenfolge relevant ist. In der folgenden Grafik wird die Präfixkonsistenz anhand von Noten veranschaulicht. In allen Regionen werden bei Lesevorgängen niemals Schreibvorgänge in der falschen Reihenfolge angezeigt:
 
-| | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Runs** |
-| - | - | - | - | - | - | - | - | - | - | - |
-| **Gäste** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
-| **Heim** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
+  ![video](media/consistency-levels/consistent-prefix.gif)
 
-Ein Azure Cosmos-Container enthält die Gesamtanzahl von Runs des Gast- und des Heimteams. Während das Spiel läuft, können verschiedene Lesegarantien dazu führen, dass Clients verschiedene Punktestände lesen. In der folgenden Tabelle sind sämtliche Punktestände aufgelistet, die durch Lesen der Punktestände des Gast- und des Heimteams mit jeder der fünf Konsistenzgarantien zurückgegeben werden können. Die Punkte der Gastmannschaft werden zuerst aufgeführt. Die verschiedenen möglichen Rückgabewerte werden durch Kommas getrennt.
+- **Letztlich (Eventual)** : Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.  
+Die letztliche Konsistenz stellt die schwächste Form der Konsistenz dar, da ein Client unter Umständen Werte liest, die älter als die zuvor gelesenen Werte sind. Letztliche Konsistenz ist ideal, wenn die Anwendung keinerlei Reihenfolgengarantien erfordert. Ein Beispiel wäre etwa das Zählen von Retweets, „Gefällt mir“-Markierungen oder Kommentaren ohne Thread. In der folgenden Grafik wird die letztliche Konsistenz anhand von Noten veranschaulicht:
 
-| **Konsistenzebene** | **Punktestände (Gäste, Heim)** |
-| - | - |
-| **Starke Konsistenz** | 2-5 |
-| **Begrenzte Veraltung** | Punktestände, die mindestens ein Inning alt sind: 2-3, 2-4, 2-5 |
-| **Sitzungskonsistenz** | <ul><li>Für den Writer: 2-5</li><li> Für alle anderen (außer dem Writer): 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5</li><li>Nach dem Lesen von 1-3: 1-3, 1-4, 1-5, 2-3, 2-4, 2-5</li> |
-| **Präfixkonsistenz** | 0-0, 0-1, 1-1, 1-2, 1-3, 2-3, 2-4, 2-5 |
-| **Letztliche Konsistenz** | 0-0, 0-1, 0-2, 0-3, 0-4, 0-5, 1-0, 1-1, 1-2, 1-3, 1-4, 1-5, 2-0, 2-1, 2-2, 2-3, 2-4, 2-5 |
+  ![video](media/consistency-levels/eventual-consistency.gif)
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre
 

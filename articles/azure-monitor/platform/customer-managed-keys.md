@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364393"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
 
@@ -283,6 +283,11 @@ Content-type: application/json
 
 Befolgen Sie für die CMK-Konfiguration für Application Insights die Anweisungen im Anhang für diesen Schritt.
 
+Sie müssen über Schreibberechtigungen sowohl für Ihren Arbeitsbereich als auch die *Clusterressource* verfügen, um diesen Vorgang auszuführen. Dies umfasst die folgenden Aktionen:
+
+- Für den Arbeitsbereich: Microsoft.OperationalInsights/workspaces/write
+- Für die *Clusterressource*: Microsoft.OperationalInsights/clusters/write
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-*clusterDefinitionId* ist der *clusterId*-Wert, der in der Antwort aus dem vorherigen Schritt angegeben wurde.
 
 **Antwort**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -478,7 +482,6 @@ Log Analytics und Application Insights verwenden die gleiche Datenspeicherplattf
 Die Konfiguration von CMK für Application Insights ist mit dem in diesem Artikel beschriebenen Prozess identisch, einschließlich Einschränkungen und Problembehandlung, jedoch mit Ausnahme der folgenden Schritten:
 
 - Erstellen einer *Clusterressource*
-
 - Zuordnen einer Komponente zu einer *Clusterressource*
 
 Wenn Sie CMK für Application Insights konfigurieren, verwenden Sie die folgenden Schritte anstelle der oben aufgeführten Schritte.
@@ -534,6 +537,11 @@ Die Identität wird der *Clusterressource* zum Zeitpunkt der Erstellung zugewies
 > Kopieren Sie den Wert von „principle-id“, und bewahren Sie ihn auf, da Sie ihn in den nächsten Schritten benötigen.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Zuordnen einer Komponente zu einer *Clusterressource* mithilfe der API für [Komponenten: Erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
+
+Sie müssen über Schreibberechtigungen sowohl für Ihre Komponente als auch die *Clusterressource* verfügen, um diesen Vorgang auszuführen. Dies umfasst die folgenden Aktionen:
+
+- Für die Komponente: Microsoft.Insights/component/write
+- Für die *Clusterressource*: Microsoft.OperationalInsights/clusters/write
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

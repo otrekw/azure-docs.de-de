@@ -1,26 +1,19 @@
 ---
 title: Änderungen an Vorhersageendpunkten in der V3-API
-titleSuffix: Azure Cognitive Services
 description: Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 03/11/2020
 ms.author: diberry
-ms.openlocfilehash: 8756d8e60e7612c1610e07b0567465e3a0ea8884
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9a8e8cb331dd11eebaddbcbf8f603c1148415aef
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531495"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117371"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
-Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren. 
+Die Abfragevorhersage-Endpunkt-APIs wurden in V3 geändert. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren.
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
@@ -42,9 +35,9 @@ Für V3 ist eine [Referenzdokumentation](https://aka.ms/luis-api-v3) verfügbar.
 
 ## <a name="v3-changes-from-preview-to-ga"></a>V3-Änderungen von der Vorschauversion bis zur allgemeinen Verfügbarkeit
 
-An V3 wurden im Rahmen des Übergangs zur allgemeinen Verfügbarkeit die folgenden Änderungen vorgenommen: 
+An V3 wurden im Rahmen des Übergangs zur allgemeinen Verfügbarkeit die folgenden Änderungen vorgenommen:
 
-* Die folgenden vordefinierten Entitäten weisen abweichende JSON-Antworten auf: 
+* Die folgenden vordefinierten Entitäten weisen abweichende JSON-Antworten auf:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
@@ -59,23 +52,26 @@ An V3 wurden im Rahmen des Übergangs zur allgemeinen Verfügbarkeit die folgend
 
 ## <a name="suggested-adoption-strategy"></a>Vorschlag für eine Einführungsstrategie
 
-Wenn Sie Bot Framework oder Bing-Rechtschreibprüfung V7 verwenden oder nur Ihre LUIS-App-Erstellung migrieren möchten, verwenden Sie weiterhin den V2-Endpunkt. 
+Wenn Sie Bot Framework oder Bing-Rechtschreibprüfung V7 verwenden oder nur Ihre LUIS-App-Erstellung migrieren möchten, verwenden Sie weiterhin den V2-Endpunkt.
 
-Wenn Sie wissen, dass keine Ihrer Clientanwendungen oder -integrationen (Bot Framework und Bing-Rechtschreibprüfung V7) betroffen sind und Sie mit der gleichzeitigen Migration Ihrer LUIS-App-Erstellung und des Vorhersageendpunkts einverstanden sind, beginnen Sie mit der Verwendung des V3-Vorhersageendpunkts. Der V2-Vorhersageendpunkt steht weiterhin zur Verfügung und ist eine gute Rückfallstrategie. 
+Wenn Sie wissen, dass keine Ihrer Clientanwendungen oder -integrationen (Bot Framework und Bing-Rechtschreibprüfung V7) betroffen sind und Sie mit der gleichzeitigen Migration Ihrer LUIS-App-Erstellung und des Vorhersageendpunkts einverstanden sind, beginnen Sie mit der Verwendung des V3-Vorhersageendpunkts. Der V2-Vorhersageendpunkt steht weiterhin zur Verfügung und ist eine gute Rückfallstrategie.
+
 
 ## <a name="not-supported"></a>Nicht unterstützt
 
-* Die Bing-Rechtschreibprüfungs-API wird auf V3-Vorhersageendpunkten nicht unterstützt – verwenden Sie für Rechtschreibkorrekturen weiterhin Vorhersageendpunkte der V2-API
+### <a name="bing-spell-check"></a>Bing-Rechtschreibprüfung
+
+Diese API wird auf V3-Vorhersageendpunkten nicht unterstützt. Verwenden Sie für Rechtschreibkorrekturen weiterhin V2-API-Vorhersageendpunkte. Wenn Sie die V3-API verwenden und eine Rechtschreibkorrektur benötigen, lassen Sie die Clientanwendung die API [Bing-Rechtschreibprüfung](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) aufrufen, und korrigieren Sie den Text vor der Übermittlung an die LUIS-API.
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework- und Azure Bot Service-Clientanwendungen
 
-Verwenden Sie weiterhin den Vorhersageendpunkt der V2-API, bis V4.7 von Bot Framework veröffentlicht wird. 
+Verwenden Sie weiterhin den Vorhersageendpunkt der V2-API, bis V4.7 von Bot Framework veröffentlicht wird.
 
-## <a name="v2-api-deprecation"></a>Eingestellte Unterstützung der V2-API 
+## <a name="v2-api-deprecation"></a>Eingestellte Unterstützung der V2-API
 
-Die V2-Vorhersage-API wird für mindestens neun Monate nach der V3-Vorschau am 8. Juni 2020 nicht eingestellt. 
+Die V2-Vorhersage-API wird für mindestens neun Monate nach der V3-Vorschau am 8. Juni 2020 nicht eingestellt.
 
-## <a name="endpoint-url-changes"></a>Änderungen der Endpunkt-URL 
+## <a name="endpoint-url-changes"></a>Änderungen der Endpunkt-URL
 
 ### <a name="changes-by-slot-name-and-version-name"></a>Änderungen nach Slotname und Versionsname
 
@@ -95,7 +91,7 @@ Falls Sie nach Version abfragen möchten, müssen Sie zuerst die [Veröffentlich
 |`production`|
 |`staging`|
 
-## <a name="request-changes"></a>Anforderungsänderungen 
+## <a name="request-changes"></a>Anforderungsänderungen
 
 ### <a name="query-string-changes"></a>Änderungen an Abfragezeichenfolgen
 
@@ -103,12 +99,12 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 
 |Parametername|type|Version|Standard|Zweck|
 |--|--|--|--|--|
-|`log`|boolean|V2 und V3|false|Speichern Sie die Abfrage in der Protokolldatei. Der Standardwert ist „false“.| 
-|`query`|string|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
+|`log`|boolean|V2 und V3|false|Speichern Sie die Abfrage in der Protokolldatei. Der Standardwert ist „false“.|
+|`query`|Zeichenfolge|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
 |`show-all-intents`|boolean|Nur V3|false|Alle Absichten mit der entsprechenden Bewertung werden innerhalb des **prediction.intents**-Objekts zurückgegeben. Absichten werden als Objekte in einem übergeordneten `intents`-Objekt zurückgegeben. `prediction.intents.give` ermöglicht den programmgesteuerten Zugriff, ohne die Absicht im Array suchen zu müssen. In V2 werden diese Absichten in einem Array zurückgegeben. |
 |`verbose`|boolean|V2 und V3|false|Wenn **in V2** TRUE festgelegt wird, werden alle vorhergesagten Absichten zurückgegeben. Wenn Sie alle vorhergesagten Absichten abrufen müssen, verwenden Sie den V3-Parameter von `show-all-intents`.<br><br>**In V3** stellt dieser Parameter nur Details zu Entitätsmetadaten einer Entitätsvorhersage bereit.  |
-|`timezoneOffset`|string|V2|-|Zeitzone angewendet auf datetimeV2-Entitäten.|
-|`datetimeReference`|string|V3|-|[Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) angewendet auf datetimeV2-Entitäten. Ersetzt `timezoneOffset` aus V2.|
+|`timezoneOffset`|Zeichenfolge|V2|-|Zeitzone angewendet auf datetimeV2-Entitäten.|
+|`datetimeReference`|Zeichenfolge|V3|-|[Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) angewendet auf datetimeV2-Entitäten. Ersetzt `timezoneOffset` aus V2.|
 
 
 ### <a name="v3-post-body"></a>V3 POST-Text
@@ -129,15 +125,15 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 |--|--|--|--|--|
 |`dynamicLists`|array|Nur V3|Nicht erforderlich.|Mit [dynamischen Listen](#dynamic-lists-passed-in-at-prediction-time) können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.|
 |`externalEntities`|array|Nur V3|Nicht erforderlich.|Mit [externen Entitäten](#external-entities-passed-in-at-prediction-time) kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. |
-|`options.datetimeReference`|string|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet. Das Format für „datetimeReference“ ist [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.datetimeReference`|Zeichenfolge|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet. Das Format für „datetimeReference“ ist [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|boolean|Nur V3|false|Gibt an, ob die [externe Entität (mit dem gleichen Namen wie die vorhandene Entität)](#override-existing-model-predictions) des Benutzers oder die vorhandene Entität im Modell für die Vorhersage genutzt wird. |
-|`query`|string|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
+|`query`|Zeichenfolge|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
 
 
 
 ## <a name="response-changes"></a>Änderungen an Antworten
 
-Der JSON-Code für Abfrageantworten wurde geändert, um den programmgesteuerten Zugriff auf die am häufigsten verwendeten Daten zu vereinfachen. 
+Der JSON-Code für Abfrageantworten wurde geändert, um den programmgesteuerten Zugriff auf die am häufigsten verwendeten Daten zu vereinfachen.
 
 ### <a name="top-level-json-changes"></a>JSON-Änderungen auf oberster Ebene
 
@@ -162,7 +158,7 @@ Folgende JSON-Eigenschaften der obersten Ebene werden für V3 verwendet:
     "query": "this is your utterance you want predicted",
     "prediction":{
         "topIntent": "intent-name-1",
-        "intents": {}, 
+        "intents": {},
         "entities":{}
     }
 }
@@ -180,13 +176,13 @@ Die Änderungen am JSON-Antwortschema ermöglichen Folgendes:
 * Klare Trennung zwischen der ursprünglichen Äußerung (`query`) und der zurückgegebenen Vorhersage (`prediction`).
 * Vereinfachter programmgesteuerter Zugriff auf vorhergesagte Daten. Sie müssen nun nicht mehr wie in V2 ein Array durchlaufen, sondern können sowohl für Absichten als auch Entitäten über den **Namen** auf Werte zugreifen. Für vorhergesagte Entitätsrollen wird der Rollenname zurückgegeben, da dieser überall in der App eindeutig ist.
 * Wenn Datentypen ermittelt werden, werden diese auch berücksichtigt. Numerische Typen werden nicht mehr als Zeichenfolgen zurückgegeben.
-* Unterscheidung zwischen Vorhersageinformationen der ersten Prioritätsstufe und zusätzlichen Metadaten, die innerhalb des `$instance`-Objekts zurückgegeben werden. 
+* Unterscheidung zwischen Vorhersageinformationen der ersten Prioritätsstufe und zusätzlichen Metadaten, die innerhalb des `$instance`-Objekts zurückgegeben werden.
 
 ### <a name="entity-response-changes"></a>Änderungen an Entitätsantworten
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Kennzeichnen der Position von Entitäten in Äußerungen
 
-**In V2** wird eine Entität in einer Äußerung mit `startIndex` und `endIndex` gekennzeichnet. 
+**In V2** wird eine Entität in einer Äußerung mit `startIndex` und `endIndex` gekennzeichnet.
 
 **In V3** wird die Entität mit `startIndex` und `entityLength` gekennzeichnet.
 
@@ -196,13 +192,13 @@ Wenn Sie Entitätsmetadaten abrufen müssen, muss für die Abfragezeichenfolge d
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>Jede vorhergesagte Entität wird als Array dargestellt
 
-Das `prediction.entities.<entity-name>`-Objekt enthält ein Array, da jede Entität mehrfach in der Äußerung vorhergesagt werden kann. 
+Das `prediction.entities.<entity-name>`-Objekt enthält ein Array, da jede Entität mehrfach in der Äußerung vorhergesagt werden kann.
 
 <a name="prebuilt-entities-with-new-json"></a>
 
 #### <a name="prebuilt-entity-changes"></a>Änderungen an vordefinierten Entitäten
 
-Das V3-Antwortobjekt beinhaltet Änderungen an vordefinierten Entitäten. Weitere Informationen finden Sie unter [spezifische vordefinierte Entitäten](luis-reference-prebuilt-entities.md). 
+Das V3-Antwortobjekt beinhaltet Änderungen an vordefinierten Entitäten. Weitere Informationen finden Sie unter [spezifische vordefinierte Entitäten](luis-reference-prebuilt-entities.md).
 
 #### <a name="list-entity-prediction-changes"></a>Änderungen an Vorhersagen von Listenentitäten
 
@@ -216,7 +212,7 @@ Der JSON-Code für Vorhersagen von Listenentitäten wurde so geändert, dass nun
     ]
 }
 ```
-Jedes innere Array entspricht Text in der Äußerung. Das innere Objekt ist ein Array, da der gleiche Text in mehr als einer Unterliste der Listenentität auftreten kann. 
+Jedes innere Array entspricht Text in der Äußerung. Das innere Objekt ist ein Array, da der gleiche Text in mehr als einer Unterliste der Listenentität auftreten kann.
 
 Bei der Zuordnung zwischen dem `entities`- und dem `$instance`-Objekt wird die Reihenfolge der Objekte für die Vorhersagen der Listenentitäten beibehalten.
 
@@ -226,7 +222,7 @@ const predictedCanonicalForm = entities.my_list_entity[item];
 const associatedMetadata = entities.$instance.my_list_entity[item];
 ```
 
-#### <a name="entity-role-name-instead-of-entity-name"></a>Verwendung des Entitätsrollennamens anstelle des Entitätsnamens 
+#### <a name="entity-role-name-instead-of-entity-name"></a>Verwendung des Entitätsrollennamens anstelle des Entitätsnamens
 
 In V2 werden innerhalb des `entities`-Arrays alle vorhergesagten Entitäten zurückgegeben, wobei als eindeutiger Bezeichner der Entitätsname verwendet wird. In V3 ist die primäre ID der Rollenname, wenn für die Entität Rollen verwendet werden und die Vorhersage sich auf eine Entitätsrolle bezieht. Dies ist möglich, da Entitätsrollennamen überall in der App und auch gegenüber anderen Namen von Modellen und deren Absichten sowie Entitäten eindeutig sein müssen.
 
@@ -289,11 +285,11 @@ In V3 wird das gleiche Ergebnis mit dem `verbose`-Flag zur Rückgabe von Entitä
 
 Mit externen Entitäten kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. Dadurch können Sie eigene separate und benutzerdefinierte Entitätsextraktionen verwenden, bevor Abfragen an den Vorhersageendpunkt gesendet werden. Da dies am Endpunkt der Abfragevorhersage geschieht, müssen Sie Ihr Modell nicht erneut trainieren und veröffentlichen.
 
-Die Clientanwendung stellt eine eigene Entitätsextraktion bereit, indem sie die Ermittlung von Entitätsübereinstimmungen verwaltet und innerhalb der Äußerung die Position der gefundenen Entität bestimmt. Anschließend übergibt sie diese Informationen der Anforderung, die gesendet wird. 
+Die Clientanwendung stellt eine eigene Entitätsextraktion bereit, indem sie die Ermittlung von Entitätsübereinstimmungen verwaltet und innerhalb der Äußerung die Position der gefundenen Entität bestimmt. Anschließend übergibt sie diese Informationen der Anforderung, die gesendet wird.
 
 Externe Entitäten werden zur Erweiterung von Entitätstypen genutzt. Gleichzeitig werden sie weiterhin als Signale für andere Modelle wie Rollen oder Verbundentitäten verwendet.
 
-Dies ist nützlich für eine Entität, der nur zur Laufzeit der Abfragevorhersage Daten zur Verfügung stehen. Beispiele für diese Art von Daten sind benutzerspezifische oder sich ständig verändernde Daten. Sie können eine LUIS-Kontaktentität um externe Informationen aus der Kontaktliste eines Benutzers erweitern. 
+Dies ist nützlich für eine Entität, der nur zur Laufzeit der Abfragevorhersage Daten zur Verfügung stehen. Beispiele für diese Art von Daten sind benutzerspezifische oder sich ständig verändernde Daten. Sie können eine LUIS-Kontaktentität um externe Informationen aus der Kontaktliste eines Benutzers erweitern.
 
 ### <a name="entity-already-exists-in-app"></a>Bereits in der App vorhandene Entität
 
@@ -321,7 +317,7 @@ In den Text der POST-Anforderung, die der Chatbot an LUIS sendet, können Inform
     ]
 ```
 
-Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.  
+Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
 
 ### <a name="second-turn-in-conversation"></a>Zweiter Gesprächsbeitrag in einer Unterhaltung
 
@@ -345,11 +341,11 @@ In dieser Äußerung wird mit `him` auf `Hazem` verwiesen. Der Chatbot kann im P
     ]
 ```
 
-Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.  
+Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
 
 ### <a name="override-existing-model-predictions"></a>Außerkraftsetzen von vorhandenen Modellvorhersagen
 
-Mit der `preferExternalEntities`-Optionseigenschaft wird Folgendes angegeben: Wenn der Benutzer eine externe Entität sendet, die sich mit einer vorhergesagten Entität mit dem gleichen Namen überschneidet, wird von LUIS die übergebene Entität oder die im Modell vorhandene Entität ausgewählt. 
+Mit der `preferExternalEntities`-Optionseigenschaft wird Folgendes angegeben: Wenn der Benutzer eine externe Entität sendet, die sich mit einer vorhergesagten Entität mit dem gleichen Namen überschneidet, wird von LUIS die übergebene Entität oder die im Modell vorhandene Entität ausgewählt.
 
 Sehen Sie sich dies beispielsweise für die Abfrage `today I'm free` an. LUIS erkennt `today` als datetimeV2-Element mit der folgenden Antwort:
 
@@ -380,7 +376,7 @@ Wenn der Benutzer die externe Entität sendet:
 }
 ```
 
-Wenn `preferExternalEntities` auf `false` festgelegt ist, gibt LUIS eine Antwort zurück, die dem Fall entspricht, in dem die externe Entität nicht gesendet wurde. 
+Wenn `preferExternalEntities` auf `false` festgelegt ist, gibt LUIS eine Antwort zurück, die dem Fall entspricht, in dem die externe Entität nicht gesendet wurde.
 
 ```JSON
 "datetimeV2": [
@@ -410,22 +406,22 @@ Wenn `preferExternalEntities` auf `true` festgelegt ist, gibt LUIS eine Antwort 
 
 #### <a name="resolution"></a>Lösung
 
-Die _optionale_ `resolution`-Eigenschaft wird in der Vorhersageantwort zurückgegeben. Dadurch können Sie Metadaten für die externe Entität übergeben und diese Daten dann wieder aus der Antwort abrufen. 
+Die _optionale_ `resolution`-Eigenschaft wird in der Vorhersageantwort zurückgegeben. Dadurch können Sie Metadaten für die externe Entität übergeben und diese Daten dann wieder aus der Antwort abrufen.
 
-Diese Vorgehensweise dient vor allem der Erweiterung vordefinierter Entitäten, kann aber auch auf andere Entitätstypen angewendet werden. 
+Diese Vorgehensweise dient vor allem der Erweiterung vordefinierter Entitäten, kann aber auch auf andere Entitätstypen angewendet werden.
 
 Die `resolution`-Eigenschaft kann eine Zahl, eine Zeichenfolge, ein Objekt oder ein Array sein:
 
 * "Dallas"
 * {"text": "value"}
-* 12345 
+* 12345
 * ["a", "b", "c"]
 
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Dynamische Listen, die zum Zeitpunkt der Vorhersage übergeben werden
 
-Mit dynamischen Listen können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist. 
+Mit dynamischen Listen können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.
 
 Verwenden Sie dieses Feature, wenn die Werte Ihrer Listenentität regelmäßig angepasst werden müssen. Sie können die bereits trainierte und veröffentlichte Listenentität unter folgenden Umständen erweitern:
 
@@ -463,12 +459,12 @@ Wenn Sie den folgenden JSON-Anforderungstext senden, wird der Liste eine neue Un
 }
 ```
 
-Die Vorhersageantwort enthält die Listenentität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist. 
+Die Vorhersageantwort enthält die Listenentität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.
 
-## <a name="deprecation"></a>Eingestellte Unterstützung 
+## <a name="deprecation"></a>Eingestellte Unterstützung
 
-Die V2-API wird mindestens neun Monate nach der V3-Vorschau nicht eingestellt. 
+Die V2-API wird mindestens neun Monate nach der V3-Vorschau nicht eingestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aktualisieren Sie mithilfe der Dokumentation zur API V3 vorhandene REST-Aufrufe der [LUIS-Endpunkt-APIs](https://aka.ms/luis-api-v3). 
+Aktualisieren Sie mithilfe der Dokumentation zur API V3 vorhandene REST-Aufrufe der [LUIS-Endpunkt-APIs](https://aka.ms/luis-api-v3).

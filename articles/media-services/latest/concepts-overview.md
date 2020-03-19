@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5bb480181c244ee03b6ec9c2a2f5f7783c72f394
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: bdc0af39e3f3a06da6c06ddc384efe44dd678ea3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251403"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087931"
 ---
 # <a name="media-services-concepts"></a>Media Services-Konzepte
 
@@ -26,7 +26,9 @@ Dieses Thema bietet eine kurze Übersicht über die Azure Media Services-Termino
 Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.
 
 > [!NOTE]
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+> Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten der [Liveereignisse](live-events-outputs-concept.md) von Media Services v3, Anzeigen (nicht Verwalten) von v3-[Objekten](assets-concept.md) und [Abrufen von Informationen zum Zugreifen auf APIs](access-api-portal.md). Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="media-services-v3-terminology"></a>Media Services v3 – Terminologie
 
@@ -37,7 +39,7 @@ Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten v
 
 ## <a name="media-services-v3-concepts"></a>Azure Media Services v3 – Konzepte
 
-|Konzepte|Beschreibung|Links|
+|Konzepte|BESCHREIBUNG|Links|
 |---|---|---|
 |Medienobjekte und Hochladen von Inhalten|Um mit dem Verwalten, Verschlüsseln, Codieren, Analysieren und Streamen von Medieninhalten in Azure beginnen zu können, müssen Sie ein Media Services-Konto erstellen und Ihre digitalen Dateien in **Medienobjekte** hochladen.|[Clouduploads und Cloudspeicherung](storage-account-concept.md)<br/><br/>[Medienobjektkonzept](assets-concept.md)|
 |Codieren von Inhalt|Sobald Sie Ihre hochwertigen digitalen Mediendateien in Medienobjekten hochgeladen haben, können Sie sie in Formaten codieren, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. <br/>Um mit Media Services v3 codieren zu können, müssen Sie **Transformationen** und **Aufträge** erstellen.|[Transformationen und Aufträge](transforms-jobs-concept.md)<br/><br/>[Codierung mit Media Services](encoding-concept.md)|

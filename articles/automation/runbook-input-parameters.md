@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273651"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329084"
 ---
 # <a name="runbook-input-parameters"></a>Runbookeingabeparameter
 
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren der Eingabeparameter diese Schritte aus.
 
 ### <a name="configure-input-parameters-in-python-runbooks"></a>Konfigurieren von Eingabeparametern in Python-Runbooks
 
-Im Gegensatz zu PowerShell, PowerShell-Workflow und grafischen Runbooks akzeptieren Python-Runbooks keine benannten Parameter. Der Runbook-Editor analysiert alle Eingabeparameter als Array von Argumentwerten. Sie können auf das Array zugreifen, indem Sie das **sys**-Modul in Ihr Python-Skript importieren und dann das **sys.argv**-Array verwenden. Sie müssen beachten, dass das erste Element des Arrays (`sys.argv[0]`) der Name des Skripts ist. Der erste tatsächliche Eingabeparameter lautet daher *sys.argv[1]* .
+Im Gegensatz zu PowerShell, PowerShell-Workflow und grafischen Runbooks akzeptieren Python-Runbooks keine benannten Parameter. Der Runbook-Editor analysiert alle Eingabeparameter als Array von Argumentwerten. Sie können auf das Array zugreifen, indem Sie das **sys**-Modul in Ihr Python-Skript importieren und dann das **sys.argv**-Array verwenden. Wichtig: Das erste Element des Arrays (`sys.argv[0]`) ist der Name des Skripts. Somit ist *sys.argv[1]* der erste eigentliche Eingabeparameter.
 
 Ein Beispiel für die Verwendung von Eingabeparametern in einem Python-Runbook finden Sie unter [Mein erstes Python-Runbook in Azure Automation](automation-first-runbook-textual-python2.md).
 
@@ -254,7 +254,7 @@ Wenn der Auftrag erfolgreich erstellt wurde, erhalten Sie als Antwort den HTTP-S
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Testen eines Runbooks und Zuweisen von Parametern
 
-Wenn Sie mithilfe der Testoption [die Entwurfsversion Ihres Runbooks testen](automation-testing-runbook.md), wird die Seite **Testen** geöffnet. Verwenden Sie diese Seite, um Werte für die von Ihnen erstellten Parameter zu konfigurieren.
+Wenn Sie zum [Testen der Entwurfsversion Ihres Runbooks](automation-testing-runbook.md) die Testoption verwenden, wird die Seite **Test** geöffnet. Verwenden Sie diese Seite, um Werte für die Parameter zu konfigurieren, die Sie erstellt haben.
 
 ![Testen und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
@@ -270,7 +270,7 @@ Sie können einen [Webhook](automation-webhooks.md) für Ihr Runbook erstellen u
 
 ![Erstellen eines Webhooks und Zuweisen von Parametern](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Wenn Sie einen Webhook verwenden, um ein Runbook auszuführen, wird der vordefinierte Eingabeparameter *[WebhookData](automation-webhooks.md#details-of-a-webhook)* zusammen mit den von Ihnen definierten Eingabeparametern gesendet. 
+Wenn Sie einen Webhook verwenden, um ein Runbook auszuführen, wird der vordefinierte Eingabeparameter *[WebhookData](automation-webhooks.md)* zusammen mit den von Ihnen definierten Eingabeparametern gesendet. 
 
 ![WebhookData-Parameter](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

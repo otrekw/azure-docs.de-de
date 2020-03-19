@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904925"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127635"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -19,7 +19,7 @@ Azure Logic Apps nutzt Azure Storage zum Speichern und automatischen [Verschlüs
 
 Wenn Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten Ihrer Logik-Apps erstellen und mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel haben möchten, können Sie mit [Azure Key Vault](../key-vault/key-vault-overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet.
 
-In diesem Thema wird gezeigt, wie Sie Ihren eigenen Verschlüsselungsschlüssel einrichten, der beim Erstellen der ISE verwendet werden soll. 
+In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel einrichten und angeben, der verwendet wird, wenn Sie Ihre ISE mithilfe der Logic Apps-REST-API erstellen. Die allgemeinen Schritte zum Erstellen einer ISE mithilfe der Logic Apps-REST-API finden Sie unter [Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Überlegungen
 
@@ -35,7 +35,7 @@ In diesem Thema wird gezeigt, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Die gleichen [Voraussetzungen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) und [Anforderungen zum Aktivieren des Zugriffs für die ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) wie bei der ISE-Erstellung über das Azure-Portal
 
 * Ein Azure-Schlüsseltresor mit aktivierten Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen)
 
@@ -43,7 +43,7 @@ In diesem Thema wird gezeigt, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Ein Schlüssel in Ihrem Schlüsseltresor, der mit diesen Eigenschaftswerten erstellt wurde:
 
-  | Eigenschaft | value |
+  | Eigenschaft | Wert |
   |----------|-------|
   | **Schlüsseltyp** | RSA |
   | **RSA-Schlüsselgröße** | 2048 |
@@ -66,6 +66,15 @@ Um Ihre ISE durch Aufrufen der Logic Apps-REST-API zu erstellen, führen Sie die
 
 > [!IMPORTANT]
 > Version 2019-05-01 der Logic Apps-REST-API erfordert, dass Sie Ihre eigene HTTP PUT-Anforderung für ISE-Connectors ausführen.
+
+Der Bereitstellungsvorgang dauert in der Regel maximal zwei Stunden. Gelegentlich kann die Bereitstellung bis zu vier Stunden dauern. Wählen Sie zum Überprüfen des Bereitstellungsstatus im [Azure-Portal](https://portal.azure.com) auf Ihrer Azure-Symbolleiste das Benachrichtigungssymbol aus, um den Benachrichtigungsbereich zu öffnen.
+
+> [!NOTE]
+> Wenn die Bereitstellung fehlschlägt oder Sie Ihre ISE löschen, kann es bis zu einer Stunde dauern, bis Azure Ihre Subnetze freigibt. Daher müssen Sie möglicherweise warten, bevor Sie diese Subnetze in einer anderen ISE wiederverwenden können.
+>
+> Wenn Sie Ihr virtuelles Netzwerk löschen, dauert es in der Regel bis zu zwei Stunden, bis Azure Ihre Subnetze freigibt, dieser Vorgang kann aber auch länger dauern. 
+> Stellen Sie beim Löschen virtueller Netzwerke sicher, dass keine Ressourcen mehr verbunden sind. 
+> Beachten Sie hierzu die Anleitung [Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Anforderungsheader
 

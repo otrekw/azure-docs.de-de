@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/06/2019
-ms.openlocfilehash: becb05616ecac51fa4646836a6b1a2f3b71d3543
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/06/2020
+ms.openlocfilehash: ab7aaeb2b28592aab38d112b02340160a6c882ee
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535418"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927506"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,9 @@ Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für 
 * Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
+
+> [!NOTE]
+> Die Codeausschnitte in diesem Dokument wurden mit Version 1.0.83 des Python SDK getestet.
 
 <a id="whattoupdate"></a> 
 

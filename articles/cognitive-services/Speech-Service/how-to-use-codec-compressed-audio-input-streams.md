@@ -8,63 +8,63 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+zone_pivot_groups: programming-languages-set-twelve
+ms.openlocfilehash: 3fab02d3dc567a2c54edad5bfb05abe7d99f7b7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805823"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943779"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK
 
-Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an den Speech-Dienst mit PullStream oder PushStream.
+Die Speech Service SDK-API für **komprimierte Audioeingabestreams** ermöglicht das Streamen komprimierter Audiodaten an den Speech-Dienst mittels `PullStream` oder `PushStream`.
 
 > [!IMPORTANT]
-> Das Streamen komprimierter Eingabeaudiodaten wird derzeit nur für C++, C# und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) unterstützt. Es wird auch für [Java in Android](how-to-use-codec-compressed-audio-input-streams-android.md) und [Objective-C in iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) unterstützt.
-> Das Speech SDK ab Version 1.7.0 ist erforderlich.
+> Das Streamen komprimierter Eingabeaudiodaten wird derzeit nur für C#, C++ und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) unterstützt. Es wird auch für Java in Android sowie für Objective-C in iOS unterstützt.
+> Es wird mindestens die Speech SDK-Version 1.7.0 benötigt (für RHEL 8 und CentOS 8 mindestens die Version 1.10.0).
 
-Informationen zu WAV/PCM finden Sie in der Hauptdokumentation zu Speech.  Neben WAV/PCM werden folgende per Codec komprimierten Eingabeformate unterstützt:
-
-- MP3
-- OPUS/OGG
-- FLAC
-- ALAW im WAV-Container
-- MULAW im WAV-Container
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Verarbeitung komprimierter Audiodaten wird mit [GStreamer](https://gstreamer.freedesktop.org) implementiert. Aus Lizenzierungsgründen werden die GStreamer-Binärdateien nicht kompiliert und mit dem Speech SDK verknüpft. Daher muss der Anwendungsentwickler Folgendes unter 18.04, 16.04 und Debian 9 installieren, um komprimierte Audioeingaben zu verwenden.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/prerequisites.md)]
+::: zone-end
 
-```sh
-sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
-```
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/prerequisites.md)]
+::: zone-end
+
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/prerequisites.md)]
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Beispielcode für die Verwendung von per Codec komprimierter Audioeingabe
 
-Erstellen Sie `PullAudioInputStream` oder `PushAudioInputStream` zum Streamen von komprimierten Audioformaten an den Speech-Dienst. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/csharp/examples.md)]
+::: zone-end
 
-Angenommen, Sie verfügen über die Eingabestreamklasse `myPushStream` und verwenden OPUS/OGG. Ihr Code kann folgendermaßen aussehen:
+::: zone pivot="programming-language-cpp"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/cpp/examples.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-java"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/java/examples.md)]
+::: zone-end
 
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-
-// Create an audio config specifying the compressed audio format and the instance of your input stream class.
-var audioFormat = AudioStreamFormat.GetCompressedFormat(AudioStreamContainerFormat.OGG_OPUS);
-var audioConfig = AudioConfig.FromStreamInput(myPushStream, audioFormat);
-
-var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-var result = await recognizer.RecognizeOnceAsync();
-
-var text = result.GetText();
-```
+::: zone pivot="programming-language-objectivec"
+[!INCLUDE [prerequisites](includes/how-tos/compressed-audio-input/objectivec/examples.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+> [!div class="nextstepaction"]
+> [Schnellstart: Erkennen von Spracheingaben per Mikrofon](quickstarts/speech-to-text-from-microphone.md)

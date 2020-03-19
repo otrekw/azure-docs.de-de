@@ -1,20 +1,18 @@
 ---
 title: Bereitstellen von dedizierten Azure-Hosts über das Azure-Portal
 description: Stellen Sie VMs auf dedizierten Hosts über das Azure-Portal bereit.
-services: virtual-machines-linux
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: c8e2ac929b3285b0ba122928485b423e34dc8f4f
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835129"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086759"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs auf dedizierten Hosts über das Portal
 
@@ -41,6 +39,26 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 1. Wenn eine Meldung über die erfolgreiche Validierung angezeigt wird, wählen Sie **Erstellen** aus.
 
 Die Bereitstellung des virtuellen Computers dauert ein paar Minuten.
+
+## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers 
+
+Sie können einem dedizierten Host einen vorhandene virtuellen Computer hinzufügen. Der virtuelle Computer muss allerdings zuerst beendet bzw. seine Zuordnung aufgehoben werden. Vergewissern Sie sich vor dem Verschieben eines virtuellen Computers auf einen dedizierten Host, dass die VM-Konfiguration unterstützt wird:
+
+- Die VM-Größe muss sich in der gleichen Größenfamilie befinden wie der dedizierte Host. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
+- Der virtuelle Computer muss sich in der gleichen Region befinden wie der dedizierte Host.
+- Der virtuelle Computer darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie den virtuellen Computer aus der Näherungsplatzierungsgruppe, bevor Sie ihn auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer vorhandenen VM aus einer Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group).
+- Der virtuelle Computer darf sich nicht in einer Verfügbarkeitsgruppe befinden.
+- Wenn sich der virtuelle Computer in einer Verfügbarkeitszone befindet, muss es sich dabei um die gleiche Verfügbarkeitszone handeln wie bei der Hostgruppe. Die Verfügbarkeitszoneneinstellungen für den virtuellen Computer und die Hostgruppe müssen identisch sein.
+
+Verschieben Sie den virtuellen Computer mithilfe des [Portals](https://portal.azure.com) auf einen dedizierten Host.
+
+1. Öffnen Sie die Seite für den virtuellen Computer.
+1. Wählen Sie **Beenden** aus, um den virtuellen Computer zu beenden bzw. seine Zuordnung aufzuheben.
+1. Wählen Sie im Menü auf der linken Seite die Option **Konfiguration** aus.
+1. Wählen Sie in den entsprechenden Dropdownmenüs eine Hostgruppe und einen Host aus.
+1. Wählen Sie abschließend im oberen Bereich der Seite **Speichern** aus.
+1. Klicken Sie im linken Menü auf **Übersicht**, nachdem der virtuelle Computer dem Host hinzugefügt wurde.
+1. Wählen Sie oben auf der Seite **Starten** aus, um den virtuellen Computer neu zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

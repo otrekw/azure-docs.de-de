@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971497"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671578"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -88,11 +88,20 @@ Wenn Sie den Arbeitsbereich nicht erstellt haben und als Benutzer hinzugefügt w
 
 #### <a name="error-message"></a>Fehlermeldung
 
-„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein unerwarteter Cloudanbieterfehler aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch. Azure-Fehlercode: PublicIPCountLimitReached. Azure-Fehlermeldung: Für das Abonnement in dieser Region können höchstens 60 öffentliche IP-Adressen erstellt werden.“
+„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein unerwarteter Cloudanbieterfehler aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch. Azure-Fehlercode: PublicIPCountLimitReached. Azure-Fehlermeldung: Es können maximal 10 öffentliche IP-Adressen für dieses Abonnement in dieser Region erstellt werden.“
+
+#### <a name="background"></a>Hintergrund
+
+Databricks-Cluster verwenden jeweils eine öffentliche IP-Adresse pro Knoten (einschließlich des Treiberknotens). Für Azure-Abonnements gelten regionsspezifische [Grenzwerte für öffentliche IP-Adressen](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address). Daher kann es vorkommen, dass Vorgänge für die Clustererstellung oder für die zentrale Hochskalierung nicht erfolgreich sind, wenn sie dazu führen, dass die Anzahl öffentlicher IP-Adressen, die diesem Abonnement in dieser Region zugeordnet sind, den Grenzwert übersteigen. Dieser Grenzwert gilt auch für öffentliche IP-Adressen, die für eine Databricks-fremde Verwendung zugeordnet werden (etwa für benutzerdefinierte virtuelle Computer).
+
+Generell werden öffentliche IP-Adressen nur von aktiven Clustern genutzt. Fehler vom Typ `PublicIPCountLimitReached` können jedoch noch eine Zeitlang auftreten, auch wenn bereits andere Cluster beendet wurden. Das liegt daran, dass Azure-Ressourcen vorübergehend von Databricks zwischengespeichert werden, wenn ein Cluster beendet wird. Das Zwischenspeichern von Ressourcen ist beabsichtigt, da es die Wartezeit beim Clusterstart sowie bei der automatischen Skalierung in vielen Szenarien erheblich verkürzt.
 
 #### <a name="solution"></a>Lösung
 
-Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für Ihr Abonnement bereits alle öffentlichen IP-Adressen verwendet werden, sollten Sie [eine Erhöhung des Kontingents anfordern](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Wählen Sie **Kontingent** als **Problemtyp** und **Netzwerk: ARM** als **Kontingenttyp** aus. Fordern Sie in **Details** eine Erhöhung des Kontingents für öffentliche IP-Adressen an. Wenn Ihr aktueller Grenzwert beispielsweise bei 60 liegt und ein Cluster mit 100 Knoten erstellt werden soll, fordern Sie eine Erhöhung auf 160 an.
+Wenn bei Ihrem Abonnement in einer bestimmten Region bereits der Grenzwert für öffentliche IP-Adressen erreicht wurde, können Sie eine der folgenden Aktionen ausführen:
+
+- Erstellen Sie neue Cluster in einem anderen Databricks-Arbeitsbereich. Der andere Arbeitsbereich muss sich in einer Region befinden, in der der Grenzwert für öffentliche IP-Adressen Ihres Abonnements noch nicht erreicht wurde.
+- [Fordern Sie eine Erhöhung Ihres Grenzwerts für öffentliche IP-Adressen an.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) Wählen Sie **Kontingent** als **Problemtyp** und **Netzwerk: ARM** als **Kontingenttyp** aus. Fordern Sie in **Details** eine Erhöhung des Kontingents für öffentliche IP-Adressen an. Wenn Ihr aktueller Grenzwert beispielsweise bei 60 liegt und ein Cluster mit 100 Knoten erstellt werden soll, fordern Sie eine Erhöhung auf 160 an.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Problem: Zweite Art von Startfehler des Cloudanbieters beim Einrichten des Clusters (MissingSubscriptionRegistration)
 
@@ -123,4 +132,3 @@ Melden Sie sich als globaler Administrator beim Azure-Portal an. Navigieren Sie 
 
 - [Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal](quickstart-create-databricks-workspace-portal.md)
 - [Was ist Azure Databricks?](what-is-azure-databricks.md)
-

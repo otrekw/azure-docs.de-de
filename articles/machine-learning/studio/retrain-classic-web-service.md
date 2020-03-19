@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838689"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388481"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Erneutes Trainieren und Bereitstellen eines (klassischen) Studio-Webdiensts
 
@@ -53,19 +53,6 @@ Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Rep
 
 ### <a name="retrieve-patch-url"></a>Abrufen der PATCH-URL
 
-### <a name="option-1-programmatically"></a>Option 1: Programmgesteuert
-
-Um die richtige PATCH-URL programmgesteuert abzurufen, gehen Sie folgendermaßen vor:
-
-1. Führen Sie den [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)-Beispielcode aus.
-1. Suchen Sie in der Ausgabe von AddEndpoint nach dem Wert *HelpLocation*, und kopieren Sie die URL.
-
-   ![HelpLocation in der Ausgabe des addEndpoint-Beispiels](./media/retrain-classic/addEndpoint-output.png)
-1. Fügen Sie die URL in einen Browser ein, um auf eine Seite zu navigieren, auf der Hilfelinks für den Webdienst angegeben sind.
-1. Klicken Sie auf den Link **Ressource aktualisieren** , um die Hilfeseite für das Patching zu öffnen.
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>Option 2: Verwenden des Azure Machine Learning Web Services-Portals
-
 Um im Webportal die richtige PATCH-URL abzurufen, gehen Sie wie folgt vor:
 
 1. Melden Sie sich beim [Azure Machine Learning-Webdienstportal](https://services.azureml.net/) an.
@@ -101,8 +88,8 @@ Der folgende Beispielcode zeigt, wie Sie *BaseLocation*, *RelativeLocation*, *Sa
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }

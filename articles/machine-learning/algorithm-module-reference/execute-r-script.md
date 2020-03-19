@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917406"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037117"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > Überprüfen Sie, ob das Paket bereits vorhanden ist, bevor Sie es installieren, um wiederholte Installationen zu vermeiden. Wie `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` im obigen Beispielcode. Eine wiederholte Installation kann zum Timeout der Webdienstanforderung führen.     
 
+## <a name="upload-files"></a>Hochladen von Dateien
+Das Modul **Execute R Script** unterstützt das Hochladen von Dateien mit dem Azure Machine Learning R SDK.
+
+Das folgende Beispiel zeigt, wie eine Imagedatei im Modul **Execute R Script** hochgeladen wird:
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+Nachdem die Pipeline erfolgreich übermittelt wurde, können Sie eine Vorschau des Images im rechten Bereich des Moduls ![Uploaded-image](media/module/upload-image-in-r-script.png) anzeigen.
+
 ## <a name="how-to-configure-execute-r-script"></a>Konfigurieren von Execute R Script
 
 Das Modul **Execute R Script** enthält R-Beispielcode, den Sie als Ausgangspunkt verwenden können. Stellen Sie zum Konfigurieren des Moduls **Execute R Script** die erforderlichen Eingaben und den auszuführenden Code bereit.
 
-![R-Modul](media/module/execute-r-script.png)
+![R-Modul](media/module/upload-image-in-r-script.png)
 
 Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 

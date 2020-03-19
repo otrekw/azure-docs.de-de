@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 07/12/2019
-ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/05/2020
+ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893998"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396136"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Aktivieren der Protokollierung in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Sie können auch benutzerdefinierte Stapelüberwachungen für Ihren Webdienst pr
 service.update(enable_app_insights=True)
 ```
 
-Weitere Informationen, wie mit Application Insights in Azure Machine Learning-Studio gearbeitet werden kann, finden Sie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
+Weitere Informationen finden Sie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
 
 ## <a name="python-native-logging-settings"></a>Native Protokollierungseinstellungen für Python
 
@@ -111,3 +111,7 @@ Bestimmte Protokolle im SDK können einen Fehler enthalten, der Sie anweist, den
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md)

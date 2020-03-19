@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6130c934f9a718baab840dae714222e4153bfcf6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260153"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126343"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Entfernen der Verwendung von TLS 1.0 und 1.1 mit Azure Cache for Redis
 
@@ -19,7 +19,7 @@ Es zeichnet sich ein branchenweiter Trend zur ausschließlichen Verwendung von T
 
 Im Rahmen dieser Anstrengung nehmen wir die folgenden Änderungen an Azure Cache for Redis vor:
 
-* **Phase 1:** Wir konfigurieren die standardmäßige TLS-Mindestversion für neu erstellte Cache-Instanzen auf 1.2.  Vorhandene Cache-Instanzen werden zu diesem Zeitpunkt nicht aktualisiert.  Wenn erforderlich, dürfen Sie die [TLS-Mindestversion aus Gründen der Abwärtskompatibilität zurück auf 1.0 oder 1.1 zurückändern](cache-configure.md#access-ports).  Diese Änderung können Sie über das Azure-Portal oder andere Verwaltungs-APIs ausführen.
+* **Phase 1:** Wir konfigurieren die standardmäßige TLS-Mindestversion für neu erstellte Cache-Instanzen auf 1.2. (Vorher wurde TLS 1.0 verwendet.) Vorhandene Cache-Instanzen werden zu diesem Zeitpunkt nicht aktualisiert. Wenn erforderlich, dürfen Sie die [TLS-Mindestversion aus Gründen der Abwärtskompatibilität zurück auf 1.0 oder 1.1 zurückändern](cache-configure.md#access-ports). Diese Änderung können Sie über das Azure-Portal oder andere Verwaltungs-APIs ausführen.
 * **Phase 2:** Wir beenden die Unterstützung der TLS-Versionen 1.0 und 1.1. Nach dieser Änderung müssen Sie in Ihrer Anwendung für die Kommunikation mit dem Cache TLS 1.2 oder höher verwenden.
 
 Zusätzlich entfernen wir im Rahmen dieser Änderung die Unterstützung für ältere, unsichere Suites mit Verschlüsselungsverfahren.  Unsere unterstützten Suites mit Verschlüsselungsverfahren werden auf folgende beschränkt, wenn der Cache mit einer TLS-Mindestversion von 1.2 konfiguriert ist.
@@ -87,21 +87,27 @@ Bei Node Redis und IORedis wird standardmäßig TLS 1.2 verwendet.
 
 ### <a name="php"></a>PHP
 
-Predis in PHP 7 wird nicht ausgeführt, da PHP 7 nur TLS 1.0 unterstützt. In PHP 7.2.1 oder früher wird bei Predis standardmäßig TLS 1.0 oder 1.1 verwendet. Beim Erstellen der Clientinstanz können Sie TLS 1.2 angeben:
+#### <a name="predis"></a>Predis
+ 
+* Versionen vor PHP 7: Predis unterstützt nur TLS 1.0. Diese Versionen funktionieren nicht mit TLS 1.2. Führen Sie ein Upgrade durch, um TLS 1.2 verwenden zu können.
+ 
+* PHP 7.0 bis PHP 7.2.1: Predis verwendet standardmäßig nur TLS 1.0 oder 1.1. Zur Verwendung von TLS 1.2 kann die folgende Problemumgehung verwendet werden: Geben Sie beim Erstellen der Clientinstanz TLS 1.2 an:
 
-``` PHP
-$redis=newPredis\Client([
-    'scheme'=>'tls',
-    'host'=>'host',
-    'port'=>6380,
-    'password'=>'password',
-    'ssl'=>[
-        'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
-    ],
-]);
-```
+  ``` PHP
+  $redis=newPredis\Client([
+      'scheme'=>'tls',
+      'host'=>'host',
+      'port'=>6380,
+      'password'=>'password',
+      'ssl'=>[
+          'crypto_type'=>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+      ],
+  ]);
+  ```
 
-In PHP 7.3 oder höher wird bei Predis die neueste TLS-Version verwendet.
+* PHP 7.3 und höhere Versionen: Predis verwendet die aktuelle TLS-Version.
+
+#### <a name="phpredis"></a>PhpRedis
 
 Bei PhpRedis wird TLS in keiner PHP-Version unterstützt.
 

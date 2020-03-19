@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 11/08/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942233"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078475"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trainieren von Azure Machine Learning-Modellen mit einem Estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Der Schwerpunkt dieses Artikels liegt auf den Schritten 4-5. Für die Schritte 1
 
 ### <a name="single-node-training"></a>Training auf einem einzelnen Knoten
 
-Verwenden Sie einen `Estimator` für die Ausführung eines Trainings auf einem Einzelknoten auf einem Remotecomputeziel in Azure für ein SciKit-Lernmodell. Das [Computeziel](how-to-set-up-training-targets.md#amlcompute)-Objekt `compute_target` und Ihr [Datenspeicherobjekt](how-to-access-data.md)`ds` sollten Sie bereits erstellt haben.
+Verwenden Sie einen `Estimator` für die Ausführung eines Trainings auf einem Einzelknoten auf einem Remotecomputeziel in Azure für ein SciKit-Lernmodell. Das [Computeziel](how-to-set-up-training-targets.md#amlcompute)-Objekt `compute_target` und Ihr [FileDataset](how-to-create-register-datasets.md)-Objekt `ds` sollten Sie bereits erstellt haben.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +58,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 Der Codeausschnitt gibt die folgenden Parameter für den `Estimator`-Konstruktor an.
 
-Parameter | Beschreibung
+Parameter | BESCHREIBUNG
 --|--
 `source_directory`| Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
 `script_params`| Wörterbuch, in dem die an Ihr Trainingsskript zu übergebenden Befehlszeilenargumente `entry_script` in Form von `<command-line argument, value>`-Paaren festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
@@ -110,7 +110,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 Im obigen Code werden im `Estimator`-Konstruktor die folgenden neuen Parameter angegeben:
 
-Parameter | Beschreibung | Standard
+Parameter | BESCHREIBUNG | Standard
 --|--|--
 `custom_docker_image`| Der Name des zu verwendenden Images. Geben Sie nur Images an, die in öffentlichen Docker-Repositorys (in diesem Fall Docker Hub) verfügbar sind. Um ein Image aus einem privaten Docker-Repository zu verwenden, verwenden Sie stattdessen den `environment_definition`-Parameter des Konstruktors. [Siehe das Beispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Die Anzahl der Knoten, die für Ihren Trainingsauftrag verwendet werden sollen. | `1`

@@ -7,18 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270161"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330973"
 ---
 # <a name="streaming-ingestion-preview"></a>Streamingerfassung (Vorschauversion)
 
-Die Streamingerfassung ist für Szenarien vorgesehen, in denen eine geringe Wartezeit mit einer Erfassungsdauer von weniger als zehn Sekunden für unterschiedliche Volumedaten benötigt wird. Sie dient zur Optimierung der operativen Verarbeitung vieler Tabellen in einer oder mehreren Datenbanken, bei denen der Datenstrom für die einzelnen Tabellen jeweils relativ klein (wenige Datensätze pro Sekunde), das Gesamtvolumen der Datenerfassung aber hoch ist (mehrere tausend Datensätze pro Sekunde).
+Verwenden Sie die Streamingerfassung, wenn Sie eine geringe Wartezeit mit einer Erfassungsdauer von weniger als zehn Sekunden für Daten mit unterschiedlichem Volumen benötigen. Sie dient zur Optimierung der operativen Verarbeitung vieler Tabellen in einer oder mehreren Datenbanken, bei denen der Datenstrom für die einzelnen Tabellen jeweils relativ klein (wenige Datensätze pro Sekunde), das Gesamtvolumen der Datenerfassung aber hoch ist (mehrere tausend Datensätze pro Sekunde). 
 
-Wenn die Datenmenge mehr als 1 MB pro Sekunde und Tabelle beträgt, verwenden Sie anstelle der Streamingerfassung die klassische (Massen-)Erfassung. Weitere Informationen zu den verschiedenen Erfassungsmethoden finden Sie in der [Übersicht über die Datenerfassung](/azure/data-explorer/ingest-data-overview).
+Sollte die Datenmenge mehr als 1 MB pro Sekunde und Tabelle betragen, verwenden Sie anstelle der Streamingerfassung die Massenerfassung. Weitere Informationen zu den verschiedenen Erfassungsmethoden finden Sie in der [Übersicht über die Datenerfassung](/azure/data-explorer/ingest-data-overview).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Wenn die Datenmenge mehr als 1 MB pro Sekunde und Tabelle beträgt, verwenden S
 Es werden zwei Streamingerfassungstypen unterstützt:
 
 
-* [**Event Hub**](/azure/data-explorer/ingest-data-event-hub) als Datenquelle
+* [**Event Hub**](/azure/data-explorer/ingest-data-event-hub) (wird als Datenquelle verwendet)
 * Für die **benutzerdefinierte Erfassung** muss eine Anwendung geschrieben werden, die eine der Azure Data Explorer-Clientbibliotheken verwendet. Eine Beispielanwendung finden Sie [hier](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample).
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Auswählen des geeigneten Streamingerfassungstyps
@@ -63,7 +63,7 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 > [!WARNING]
 > Die Deaktivierung der Streamingerfassung kann mehrere Stunden dauern.
 
-1. Entfernen Sie die [Streamingerfassungsrichtlinie](/azure/kusto/management/streamingingestionpolicy) aus allen relevanten Tabellen und Datenbanken. Wenn Sie die Streamingerfassungsrichtlinie entfernen, werden die Streamingerfassungsdaten aus dem anfänglichen Speicher in den permanenten Speicher im Spaltenspeicher (Erweiterungen oder Shards) verschoben. Die Datenverschiebung kann zwischen einigen Sekunden und mehreren Stunden dauern. Dies ist abhängig von der Datenmenge im anfänglichen Speicher sowie davon, wie die CPU und der Arbeitsspeicher vom Cluster genutzt wird.
+1. Entfernen Sie die [Streamingerfassungsrichtlinie](/azure/kusto/management/streamingingestionpolicy) aus allen relevanten Tabellen und Datenbanken. Wenn Sie die Streamingerfassungsrichtlinie entfernen, werden die Streamingerfassungsdaten aus dem anfänglichen Speicher in den permanenten Speicher im Spaltenspeicher (Erweiterungen oder Shards) verschoben. Die Datenverschiebung kann zwischen einigen Sekunden und mehreren Stunden dauern. Dies ist abhängig von der Datenmenge im anfänglichen Speicher sowie davon, wie die CPU und der Arbeitsspeicher vom Cluster genutzt werden.
 1. Navigieren Sie im Azure-Portal zum Azure Data Explorer-Cluster. Wählen Sie unter **Einstellungen** die Option **Konfigurationen** aus. 
 1. Wählen Sie im Bereich **Konfigurationen** die Option **Off** aus, um die **Streamingerfassung** zu aktivieren.
 1. Wählen Sie **Speichern** aus.
@@ -72,15 +72,12 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 
 ## <a name="limitations"></a>Einschränkungen
 
+* [Datenbankcursor](/azure/kusto/management/databasecursor) und [Datenzuordnung](/azure/kusto/management/mappings) werden von der Streamingerfassung nicht unterstützt. Es wird nur die [vorab erstellte](/azure/kusto/management/tables#create-ingestion-mapping) Datenzuordnung unterstützt. 
 * Leistung und Kapazität der Streamingerfassung werden für größere virtuelle Computer und Cluster skaliert. Gleichzeitige Erfassungen sind auf sechs Erfassungen pro Kern beschränkt. Beispielsweise besteht die maximale unterstützte Last bei 16-Kern-SKUs (z.B. D14 und L16) aus 96 gleichzeitigen Erfassungen. Bei 2-Kern-SKUs (z. B. D11) besteht die maximale unterstützte Last aus 12 gleichzeitigen Erfassungen.
 * Die Datengröße pro Erfassungsanforderung ist auf 4 MB beschränkt.
 * Schemaaktualisierungen wie etwa die Erstellung und Änderung von Tabellen und Erfassungszuordnungen können für den Streamingerfassungsdienst bis zu fünf Minuten dauern.
 * Wenn die Streamingerfassung in einem Cluster aktiviert wird, wird ein Teil des lokalen SSD-Datenträgers der Clustercomputer für Streamingerfassungsdaten genutzt, wodurch sich der verfügbare Speicherplatz für den aktiven Cache verringert. Dies gilt auch, wenn gar keine Daten per Streaming erfasst werden.
 * [Erweiterungstags](/azure/kusto/management/extents-overview#extent-tagging) können für die Streamingerfassungsdaten nicht festgelegt werden.
-
-Folgende Features werden von der Streamingerfassung nicht unterstützt:
-* [Datenbankcursor](/azure/kusto/management/databasecursor)
-* [Datenzuordnung](/azure/kusto/management/mappings). Es wird nur die [vorab erstellte](/azure/kusto/management/create-ingestion-mapping-command) Datenzuordnung unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

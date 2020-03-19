@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977725"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086778"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -28,6 +28,10 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Se
 
 Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC) für Media Services-Konten](rbac-overview.md).
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Wie funktioniert das Streaming auf Apple iOS-Geräten?
+
+Stellen Sie sicher, dass Sie „(format=m3u8-aapl)“ am Ende Ihres Pfads (nach dem „/manifest“-Teil der URL) verwenden, um den Ursprungsserver des Streamings anzuweisen, HLS-Inhalte für die Nutzung auf nativen Apple iOS-Geräten zurückzugeben (Details hierzu finden Sie unter [Übermitteln von Inhalten](dynamic-packaging-overview.md)).
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>Wie lassen sich reservierte Einheiten für Medien konfigurieren?
 
 Für die Audioanalyse- und Videoanalyseaufträge, die von Media Services v3 oder Video Indexer ausgelöst werden, wird dringend empfohlen, Ihr Konto mit zehn S3-MRUs bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
@@ -38,13 +42,17 @@ Details dazu finden Sie unter [Skalieren der Medienverarbeitung an der Befehlsze
 
 Verwenden Sie [Transformationen](https://docs.microsoft.com/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Ich habe ein Video hochgeladen, codiert und veröffentlicht. Was könnte die Ursache dafür sein, dass das Video nicht wiedergegeben wird, wenn ich versuche, es zu streamen?
+
+Einer der häufigsten Gründe ist, dass der Streamingendpunkt, von dem Sie die Wiedergabe versuchen, nicht den Status „Wird ausgeführt“ aufweist.
+
 ### <a name="how-does-pagination-work"></a>Wie funktioniert die Paginierung?
 
 Bei Verwendung der Paginierung sollten Sie immer den Link „Weiter“ verwenden, um die Sammlung zu enumerieren, und sich nicht auf eine bestimmte Seitengröße verlassen. Weitere Informationen und Beispiele finden Sie unter [Filterung, Sortierung, Paginierung](entities-overview.md).
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Welche Features sind noch nicht in Azure Media Services v3 verfügbar?
 
-Details finden Sie unter [Featurelücken in Bezug auf v2-APIs](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+Details finden Sie unter [Featurelücken in Bezug auf v2-APIs](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Wie wird ein Media Services-Konto zwischen Abonnements verschoben?  
 
@@ -58,7 +66,7 @@ Die Livecodierung von Media Services v3 unterstützt aktuell das Einfügen von V
 
 Sie können einen [lokalen Liveencoder](recommended-on-premises-live-encoders.md) verwenden, um das Quellvideo zu wechseln. Viele Apps bieten die Möglichkeit zum Wechseln der Quelle, darunter Telestream Wirecast, Switcher Studio (unter iOS), OBS Studio (kostenlose App) und viele weitere.
 
-## <a name="content-protection"></a>Content Protection
+## <a name="content-protection"></a>Inhaltsschutz
 
 ### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>Sollte ich eine Verschlüsselung mit unverschlüsseltem AES-128-Schlüssel oder ein DRM-System verwenden?
 
@@ -126,13 +134,19 @@ In vielen Fällen haben Kunden in eine Lizenzserverfarm investiert, die sich ent
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Kann ich v3-Ressourcen im Azure-Portal verwalten?
 
-Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes verwenden:
+
+* Verwalten von Media Services v3-[Liveereignissen](live-events-outputs-concept.md) 
+* Anzeigen (nicht verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
+* [Abrufen von Informationen über den Zugriff auf APIs](access-api-portal.md) 
+
+Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Gibt es in v3 ein AssetFile-Konzept?
 
 „AssetFile“ wurde aus der AMS-API entfernt. So ist Media Services nicht länger vom Storage SDK abhängig. Ab jetzt sind die Informationen, die zu Azure Storage gehören, in Storage enthalten und nicht mehr in Media Services. 
 
-Weitere Informationen finden Sie unter [Migration zu Media Services v3](migrate-from-v2-to-v3.md).
+Weitere Informationen finden Sie unter [Migration zu Media Services v3](media-services-v2-vs-v3.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Wo ist die clientseitige Speicherverschlüsselung geblieben?
 

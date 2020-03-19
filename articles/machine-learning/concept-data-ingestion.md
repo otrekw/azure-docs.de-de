@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303119"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086878"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Datenerfassung in Azure Machine Learning
 
@@ -26,7 +26,7 @@ In diesem Artikel lernen Sie die Vor- und Nachteile der folgenden mit Azure Mach
 
 Die Datenerfassung ist der Prozess, bei dem unstrukturierte Daten aus einer oder mehreren Quellen extrahiert und dann für das Training von Machine Learning-Modellen vorbereitet werden. Sie ist auch zeitintensiv, insbesondere wenn sie manuell durchgeführt wird und Sie über große Datenmengen aus mehreren Quellen verfügen. Die Automatisierung dieses Aufwands setzt Ressourcen frei und stellt sicher, dass Ihre Modelle die aktuellsten und geeignetsten Daten verwenden.
 
-Es wird empfohlen, die Auswertung zunächst mit Azure Data Factory (ADF) durchzuführen, da es speziell für das Extrahieren, Laden und Transformieren von Daten entwickelt wurde. Wenn Sie Ihre Anforderungen mit ADF nicht erfüllen können, verwenden Sie das Python-SDK, um eine benutzerdefinierte Codelösung zu entwickeln, oder verwenden Sie ADF und das Python-SDK zusammen, um einen Gesamtworkflow für die Datenerfassung zu erstellen, der Ihren Anforderungen entspricht.
+Azure Data Factory (ADF) wurde speziell zum Extrahieren, Laden und Transformieren von Daten entwickelt. Mit dem Python SDK können Sie jedoch eine benutzerdefinierte Codelösung für grundlegende Datenerfassungsaufgaben entwickeln. Wenn beides nicht ganz Ihren Bedürfnissen entspricht, können Sie auch ADF und das Python SDK zusammen verwenden, um einen Gesamtworkflow für die Datenerfassung zu erstellen, der Ihren Anforderungen entspricht. 
 
 ## <a name="use-azure-data-factory"></a>Verwenden von Azure Data Factory
 
@@ -52,6 +52,8 @@ Diese Schritte und das folgende Diagramm veranschaulichen den Workflow von Azure
 
 
     ![ADF-Datenerfassung](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+Erfahren Sie, wie Sie eine Datenerfassungspipeline für Machine Learning mit [Azure Data Factory](how-to-data-ingest-adf.md) erstellen.
 
 ## <a name="use-the-python-sdk"></a>Verwenden des Python SDK 
 

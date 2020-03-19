@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617590"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673114"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -76,7 +76,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Übertragen von Agents auf geschützte Server mithilfe von Push | Die für den Server angegebenen Anmeldeinformationen sind ungültig. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br> Installieren Sie den Schutz-Agent manuell auf dem Produktionsserver, wie in [diesem Artikel](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) beschrieben.|
-| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<br/> 4. Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy diese [URLs](backup-configure-vault.md#verify-internet-access) und [IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen.|
+| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<br/> 4. Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy diese [URLs](install-mars-agent.md#verify-internet-access) und [IP-Adressen](install-mars-agent.md#verify-internet-access) zulassen.|
 | Fehler bei der Installation des Azure Backup-Agents | Bei der Installation von Microsoft Azure Recovery Services ist ein Fehler aufgetreten. Für alle Änderungen, die von der Microsoft Azure Recovery Services-Installation am System vorgenommen wurden, wurde ein Rollback ausgeführt. (ID: 4024) | Installieren Sie den Azure-Agent manuell.
 
 ## <a name="configuring-protection-group"></a>Konfigurieren von Schutzgruppen

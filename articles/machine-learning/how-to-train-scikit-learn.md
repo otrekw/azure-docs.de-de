@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 08/02/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: d61e33568297e6f72aca0ab736f8a14f1758ffa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255126"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942261"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Erstellen von Scikit-learn-Modellen nach Maß mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
     - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich.](how-to-configure-environment.md#workspace)
     - Herunterladen des Datasets und der Beispielskriptdatei 
         - [Iris-Dataset](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+        - [train_iris.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
     - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine fertige [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) dieser Anleitung. Das Notebook enthält einen erweiterten Abschnitt, der intelligente Hyperparameteroptimierung und das Abrufen des besten Modells nach primären Metriken behandelt.
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Registrieren Sie das Modell mit dem folgenden Code in Ihrem Arbeitsbereich. Durch die Angabe der Parameter `model_framework`, `model_framework_version` und `resource_configuration` wird die Implementierung von Modellen ohne Code verfügbar. Auf diese Weise können Sie Ihr Modell direkt als Webdienst aus dem registrierten Modell bereitstellen, und das Objekt `ResourceConfiguration` definiert die Computeressource für den Webdienst.
+Registrieren Sie das Modell mit dem folgenden Code in Ihrem Arbeitsbereich. Durch die Angabe der Parameter `model_framework`, `model_framework_version` und `resource_configuration` wird die Implementierung von Modellen ohne Code verfügbar. Auf diese Weise können Sie Ihr Modell direkt als Webdienst aus dem registrierten Modell bereitstellen, und das Objekt [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py) definiert die Computeressource für den Webdienst.
 
 ```Python
 from azureml.core import Model
@@ -199,7 +199,7 @@ Das soeben registrierte Modell kann genauso eingesetzt werden wie jedes andere r
 
 ### <a name="preview-no-code-model-deployment"></a>(Vorschau) Modellimplementierung ohne Code
 
-Anstelle der traditionellen Bereitstellungsroute können Sie auch die Bereitstellung ohne Code (Vorschau) für SciKit-learn verwenden. Die Modellimplementierung ohne Code wird für alle integrierten Scikit-learn-Modelltypen unterstützt. Indem Sie Ihr Modell wie oben gezeigt mit den Parametern `model_framework`, `model_framework_version` und `resource_configuration` registrieren, können Sie einfach die statische Funktion `deploy()` verwenden, um Ihr Modell bereitzustellen.
+Anstelle der traditionellen Bereitstellungsroute können Sie auch die Bereitstellung ohne Code (Vorschau) für SciKit-learn verwenden. Die Modellimplementierung ohne Code wird für alle integrierten Scikit-learn-Modelltypen unterstützt. Indem Sie Ihr Modell wie oben gezeigt mit den Parametern `model_framework`, `model_framework_version` und `resource_configuration` registrieren, können Sie einfach die statische Funktion [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) verwenden, um Ihr Modell bereitzustellen.
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
