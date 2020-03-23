@@ -39,7 +39,7 @@ Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten de
 
 Wenn Sie mit dem Suchdienst von Azure Maps nach einer vollständigen oder unvollständigen Adresse suchen, liest die API Schlüsselwörter aus Ihrer Suchabfrage. Anschließend werden der Längen- und Breitengrad der Adresse zurückgegeben. Dieser Vorgang wird als *Geocodierung* bezeichnet. 
 
-Die Möglichkeit der Geocodierung in einem Land hängt von der Verfügbarkeit von Straßendaten und der Genauigkeit des Geocodierungsdiensts ab. Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Land oder Region finden Sie unter [Abdeckung durch Geocodierung](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
+Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Verfügbarkeit von Straßendaten und der Genauigkeit des Geocodierungsdiensts ab. Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Land oder Region finden Sie unter [Abdeckung durch Geocodierung](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
 ### <a name="limit-search-results"></a>Einschränken von Suchergebnissen
 
