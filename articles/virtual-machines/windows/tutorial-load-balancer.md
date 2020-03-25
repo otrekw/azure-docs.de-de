@@ -16,21 +16,21 @@ ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067866"
 ---
-# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Tutorial: Vornehmen eines Lastausgleichs bei virtuellen Windows-Computern in Azure zum Erstellen einer hochverfügbaren Anwendung mit Azure PowerShell
+# <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Tutorial: Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure zum Erstellen einer hoch verfügbaren Anwendung mit Azure PowerShell
 Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
 > * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Regeln für den Lastenausgleich
+> * Erstellen von Load Balancer-Regeln
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Erstellen einer einfachen IIS-Website
-> * Erstellen und Anfügen von virtuellen Computern an einen Lastenausgleich
+> * Erstellen und Anfügen von virtuellen Computern an einen Load Balancer
 > * Anzeigen eines Load Balancers im Betrieb
 > * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
 
@@ -99,7 +99,7 @@ $lb = New-AzLoadBalancer `
 ### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
 Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Falls bei einem virtuellen Computer innerhalb eines Intervalls von 15 Sekunden zwei aufeinanderfolgende Fehler auftreten, wird er standardmäßig aus der Load Balancer-Verteilung entfernt. Integritätstests werden auf der Grundlage eines Protokolls oder einer spezifischen Integritätsprüfungsseite für Ihre App erstellt. 
 
-Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenziertere Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
+Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenzierte Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
 
 Erstellen Sie mithilfe von [Add-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerprobeconfig) einen TCP-Integritätstest. Im folgenden Beispiel wird ein Integritätstest namens *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *TCP*-Port *80* überwacht:
 
@@ -290,16 +290,16 @@ Set-AzNetworkInterface -NetworkInterface $nic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Load Balancer erstellt und ihm einen virtuellen Computer angefügt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen Load Balancer erstellt und ihm einen virtuellen Computer angefügt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
 > * Erstellen des Integritätstests für den Load Balancer
-> * Erstellen von Regeln für den Lastenausgleich
+> * Erstellen von Load Balancer-Regeln
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Erstellen einer einfachen IIS-Website
-> * Erstellen und Anfügen von virtuellen Computern an einen Lastenausgleich
+> * Erstellen und Anfügen von virtuellen Computern an einen Load Balancer
 > * Anzeigen eines Load Balancers im Betrieb
-> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Lastenausgleich
+> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
 
 Im nächsten Tutorial erfahren Sie, wie Sie VM-Netzwerke verwalten.
 

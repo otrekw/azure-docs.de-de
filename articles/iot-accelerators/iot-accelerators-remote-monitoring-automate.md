@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888890"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223567"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Tutorial: Erkennen von Problemen mit Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -33,7 +33,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Bearbeiten einer vorhandenen Regel
 > * Ein- und Ausschalten von Regeln
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -51,7 +51,7 @@ Wenden Sie einen Filter an, um nur die Regeln anzuzeigen, die für Geräte vom T
 
 Klicken Sie auf **New rule** (Neue Regel), um eine Regel zu erstellen, die eine Warnung generiert, wenn der Druck in einer Kältemaschine auf mehr als 150 PSI ansteigt. Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
-| Einstellung          | Wert                                 |
+| Einstellung          | value                                 |
 | ---------------- | ------------------------------------- |
 | Regelname        | Chiller warning                       |
 | BESCHREIBUNG      | Chiller pressure has exceeded 150 PSI |
@@ -74,12 +74,12 @@ Der Auslösezeitpunkt der Regel wird auf der Seite **Regeln** und auf der Seite 
 
 Klicken Sie auf **New rule** (Neue Regel), um eine Regel mit mehreren Bedingungen zu erstellen, die im folgenden Fall eine kritische Benachrichtigung generiert: Innerhalb der letzten fünf Minuten hat für ein Gerät vom Typ „Kältemaschine“ die durchschnittliche Luftfeuchtigkeit über 80% und die Durchschnittstemperatur oberhalb von 75 Grad Fahrenheit gelegen. Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 
-| Einstellung          | Wert                                 |
+| Einstellung          | value                                 |
 | ---------------- | ------------------------------------- |
 | Regelname        | Chiller humidity and temp critical    |
 | BESCHREIBUNG      | Humidity and temperature are critical |
 | Gerätegruppe     | **Chillers** device group             |
-| Berechnung      | Durchschnitt                               |
+| Berechnung      | Average                               |
 | Zeitraum      | 5                                     |
 | Feld für die erste Bedingung| Luftfeuchtigkeit                              |
 | Operator für die erste Bedingung | Größer als                      |
@@ -90,7 +90,7 @@ Klicken Sie auf **New rule** (Neue Regel), um eine Regel mit mehreren Bedingunge
 
 Klicken Sie zum Hinzufügen der zweiten Bedingung auf „+ Bedingung hinzufügen“. Verwenden Sie für die neue Bedingung die folgenden Werte:
 
-| Einstellung          | Wert                                 |
+| Einstellung          | value                                 |
 | ---------------- | ------------------------------------- |
 | Feld für die zweite Bedingung| Temperatur                           |
 | Operator für die zweite Bedingung | Größer als                      |

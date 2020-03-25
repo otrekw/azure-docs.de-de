@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, DevOps, Kubernetes, K8s, AKS, Blau/Grün-Bereitstellun
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251475"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Bereitstellen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
@@ -28,7 +28,7 @@ Dieses Tutorial umfasst die folgenden Aspekte:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - [GitHub-Konto](https://github.com): Sie benötigen ein GitHub-Konto, um das Beispielrepository zu klonen.
-- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): Sie erstellen mit der Azure CLI 2.0 den Kubernetes-Cluster.
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): Sie erstellen mit der Azure CLI 2.0 das Kubernetes-Cluster.
 - [Chocolatey](https://chocolatey.org): Mit diesem Paket-Manager installieren Sie kubectl.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Mit dieser Befehlszeilenschnittstelle führen Sie Befehle für Kubernetes-Cluster aus.
 - [jq](https://stedolan.github.io/jq/download/): Dies ist ein schlanker befehlszeilenbasierter JSON-Prozessor.
@@ -255,7 +255,7 @@ In diesem Abschnitt erfahren Sie, wie Sie den Jenkins-Server für die Ausführun
 
 ## <a name="run-the-job"></a>Ausführung des Auftrags.
 
-1. Überprüfen Sie, ob Sie Ihr Projekt erfolgreich in Ihrer lokalen Umgebung ausführen können. Gehen Sie dabei folgendermaßen vor: [Führen Sie das Projekt auf einem lokalen Computer aus](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Überprüfen Sie, ob Sie Ihr Projekt erfolgreich in Ihrer lokalen Umgebung ausführen können. [Führen Sie dazu das Projekt auf einem lokalen Computer aus.](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)
 
 1. Führen Sie den Jenkins-Auftrag aus. Wenn Sie den Auftrag zum ersten Mal ausführen, stellt Jenkins die ToDo-App in der blauen Umgebung bereit, die die standardmäßige inaktive Umgebung ist. 
 

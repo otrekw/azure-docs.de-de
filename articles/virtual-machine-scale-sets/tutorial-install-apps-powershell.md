@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5e1b21b1d00defdb090a35c067fa533a482c828d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271519"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Installieren von Anwendungen in VM-Skalierungsgruppen mit Azure PowerShell
@@ -24,7 +24,7 @@ Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müss
 > * Verwenden der benutzerdefinierten Skripterweiterung von Azure
 > * Aktualisieren einer ausgeführten Anwendung in einer Skalierungsgruppe
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 

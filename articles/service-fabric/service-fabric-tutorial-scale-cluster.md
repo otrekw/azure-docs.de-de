@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251794"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
@@ -18,9 +18,9 @@ Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie Ihren vorhand
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+> * Hinzufügen und Entfernen von Knoten (Auf- und Abskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
+> * Erhöhen von Knotenressourcen (Hochskalieren)
 
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -76,7 +76,7 @@ Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-cre
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Hinzufügen von Knoten zu oder Entfernen von Knoten von einem Knotentyp
 
-Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die Anzahl der Knoten im Cluster. Beim horizontalen Herunter- und Hochskalieren fügen Sie der Skalierungsgruppe mehr VM-Instanzen hinzu. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
+Horizontales Herunter- und Hochskalieren oder horizontale Skalierung ändern die Anzahl der Knoten im Cluster. Beim Ab- und Aufskalieren fügen Sie der Skalierungsgruppe mehr VM-Instanzen hinzu. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.
 
 ### <a name="update-the-template"></a>Aktualisieren der Vorlage
 
@@ -865,9 +865,9 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+> * Hinzufügen und Entfernen von Knoten (Auf- und Abskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
+> * Erhöhen von Knotenressourcen (Hochskalieren)
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]
@@ -878,8 +878,8 @@ Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
-> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (Auf- und Abskalieren)
+> * Erhöhen von Knotenressourcen (Hochskalieren)
 
 Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]

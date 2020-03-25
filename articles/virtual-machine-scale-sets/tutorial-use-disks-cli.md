@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278251"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067058"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mithilfe der Azure CLI
 Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten von VM-Instanzen verwendet. Beim Erstellen und Verwalten einer Skalierungsgruppe muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird beschrieben, wie Sie VM-Datenträger erstellen und verwalten. In diesem Tutorial lernen Sie Folgendes:
@@ -146,7 +146,7 @@ az vmss list-instance-connection-info \
 
 Verwenden Sie Ihre eigene öffentliche IP-Adresse und Portnummer, um wie im folgenden Beispiel eine Verbindung mit der ersten VM-Instanz herzustellen:
 
-```azurecli-interactive
+```console
 ssh azureuser@52.226.67.166 -p 50001
 ```
 
@@ -198,7 +198,7 @@ sudo df -h
 
 In der folgenden Beispielausgabe ist zu sehen, dass die Dateisysteme für die drei Datenträger richtig unter */datadisks* bereitgestellt wurden:
 
-```bash
+```output
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda1        30G  1.3G   28G   5% /
 /dev/sdb1        50G   52M   47G   1% /mnt
@@ -207,7 +207,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sde1       126G   60M  120G   1% /datadisks/disk3
 ```
 
-Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe zentral hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
+Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
 
 Schließen Sie die SSH-Verbindung mit Ihrer VM-Instanz:
 

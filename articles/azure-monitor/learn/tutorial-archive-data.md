@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661724"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
@@ -102,7 +102,7 @@ Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto 
 > [!NOTE]
 > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
 >
-> *Beispiel*: Die Metrik „Eingehende Nachrichten“ in einem Event Hub kann auf Warteschlangenebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+> *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
 >
 >
 

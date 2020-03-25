@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70935102"
 ---
 1. Melden Sie sich bei der [Firebase-Konsole](https://firebase.google.com/console/) an. Erstellen Sie ein neues Firebase-Projekt, falls Sie noch keins besitzen.
@@ -48,7 +48,7 @@ ms.locfileid: "70935102"
     4. Wählen Sie auf der Symbolleiste **Sync Now** (Jetzt synchronisieren) aus. 
  
         ![Konfigurationsänderungen an „build.gradle“](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
-6. Klicken Sie auf **Weiter**. 
+6. Wählen Sie **Weiter** aus. 
 7. Klicken Sie auf **Diesen Schritt überspringen**. 
 
     ![Den letzten Schritt überspringen](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)

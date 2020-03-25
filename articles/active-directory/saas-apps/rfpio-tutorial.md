@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d7b6af8ff76c890b98c29ded0e8bdc637b45dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Tutorial: Azure Active Directory-Integration mit RFPIO
@@ -143,23 +143,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in RFPIO die
 
 1. Klicken Sie in der linken unteren Ecke auf die Dropdownliste.
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app1.png)
 
 1. Klicken Sie auf **Organization Settings** (Organisationseinstellungen). 
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app2.png)
 
 1. Klicken Sie auf **FEATURES & INTEGRATION**.
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app4.png)
 
 1. Klicken Sie unter **SAML SSO Configuration** (SAML-SSO-Konfiguration) auf **Edit** (Bearbeiten).
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app3.png)
 
 1. Führen Sie in diesem Abschnitt folgende Aktionen durch:
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app5.png)
     
     a. Kopieren Sie den Inhalt der heruntergeladenen **XML-Metadatendatei**, und fügen Sie ihn in das Feld **identity configuration** (Identitätskonfiguration) ein.
 
@@ -170,7 +170,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in RFPIO die
 
     c. Schalten Sie nach dem Klicken auf **Überprüfen** die Einstellung **SAML(Enabled)** (SAML – aktiviert) auf „Ein“.
 
-    d. Klicken Sie auf **Submit**.
+    d. Klicken Sie auf **Submit**(Senden).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -194,7 +194,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -228,23 +228,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Klicken Sie in der linken unteren Ecke auf die Dropdownliste.
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app1.png)
 
 1. Klicken Sie auf **Organization Settings** (Organisationseinstellungen). 
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app2.png)
 
 1. Klicken Sie auf **TEAM MEMBERS** (TEAMMITGLIEDER).
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app6.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app6.png)
 
 1. Klicken Sie auf **ADD MEMBERS** (MITGLIEDER HINZUFÜGEN).
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app7.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app7.png)
 
 1. Im Abschnitt **Add New Members** (Neue Mitglieder hinzufügen) Führen Sie folgende Aktionen aus:
 
-    ![Configure single sign-on](./media/rfpio-tutorial/app8.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rfpio-tutorial/app8.png)
 
     a. Geben Sie die **E-Mail-Adresse** in das Feld **Enter one email per line** (eine E-Mail-Adresse pro Zeile eingeben) ein.
 
@@ -267,5 +267,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „RFPIO“ klicken, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

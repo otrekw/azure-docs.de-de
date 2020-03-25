@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: da46cf826da40658883d22692e5038b09d222907
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75974527"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
 
 Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen. Mithilfe von Metriken können Sie Leistungsindikatoren im Portal anzeigen.
 
@@ -94,8 +94,8 @@ Gehen Sie wie folgt vor, um die Diagnoseprotokollierung zu aktivieren:
 
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
-* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll über Azure PowerShell, über die Azure-Befehlszeilenschnittstelle, mithilfe der Azure-REST-API oder über das Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/management/view-activity-logs.md) .
-* **Power BI**: Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Activity Logs Content Pack for Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
+* **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll mit Azure PowerShell, der Azure CLI, der Azure-REST-API oder dem Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/management/view-activity-logs.md) .
+* **Power BI:** Wenn Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe des [Azure Activity Logs Content Pack for Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) können Sie Ihre Daten mit vorkonfigurierten Dashboards analysieren, die Sie im Istzustand oder angepasst verwenden können.
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Anzeigen und Analysieren der Netzwerk- und Anwendungsregelprotokolle
 

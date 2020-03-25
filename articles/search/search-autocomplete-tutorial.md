@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72792524"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Hinzufügen von Vorschlägen oder AutoVervollständigen zur Azure Cognitive Search-Anwendung
@@ -291,7 +291,7 @@ In Zeile 148 befindet sich ein Skript, das den `autocompleteUri` aufruft. Der er
 
 Bisher haben Sie den gehosteten NYCJobs-Demoindex verwendet. Wenn Sie die vollständige Transparenz des gesamten Codes wünschen, einschließlich des Index, befolgen Sie diese Anweisungen, um den Index in Ihrem eigenen Suchdienst zu erstellen und zu laden.
 
-1. [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Beispiel können Sie einen kostenlosen Dienst verwenden. 
+1. [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Beispiel können Sie einen kostenlosen Dienst verwenden. 
 
    > [!Note]
    > Bei Verwendung des kostenlosen Azure Cognitive Search-Diensts gilt eine Obergrenze von drei Indizes. Der Datenlader NYCJobs erstellt zwei Indizes. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Indizes verfügt.

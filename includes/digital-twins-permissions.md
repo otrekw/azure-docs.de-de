@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.custom: include file
 ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77029187"
 ---
 >[!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "77029187"
 
 1. Öffnen Sie den Bereich **API-Berechtigungen** für Ihre App-Registrierung. Wählen Sie die Schaltfläche **+ Berechtigung hinzufügen** aus. Wählen Sie im Bereich **API-Berechtigungen anfordern** die Registerkarte **Von meiner Organisation verwendete APIs** aus, und suchen Sie nach einer der folgenden Optionen:
     
-    1. `Azure Digital Twins`. Wählen Sie die API **Azure Digital Twins** aus.
+    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`). Wählen Sie die API **Azure Digital Twins** aus.
 
         [![Suchen nach der API oder nach Azure Digital Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 

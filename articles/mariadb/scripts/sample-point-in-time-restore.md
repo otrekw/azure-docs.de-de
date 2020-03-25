@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771703"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for MariaDB-Servers mithilfe der Azure-Befehlszeilenschnittstelle
@@ -41,5 +41,5 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MariaDB](../sample-scripts-azure-cli.md)

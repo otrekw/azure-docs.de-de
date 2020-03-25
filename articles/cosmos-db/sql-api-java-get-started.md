@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720799"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-Tutorial: Erstellen einer Java-Konsolenanwendung mit der SQL-API
@@ -58,7 +58,7 @@ Wir erstellen nun ein Azure Cosmos DB-Konto. Wenn Sie bereits über ein Konto ve
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Schritt 2: Klonen des GitHub-Projekts
+## <a name="step-2-clone-the-github-project"></a><a id="GitClone"></a>Schritt 2: Klonen des GitHub-Projekts
 Sie können beginnen, indem Sie das GitHub-Repository für [Get Started with Azure Cosmos DB and Java](https://github.com/Azure-Samples/documentdb-java-getting-started) (Erste Schritte mit Azure Cosmos DB und Java) klonen. Führen Sie in einem lokalen Verzeichnis beispielsweise Folgendes aus, um das Beispielprojekt lokal abzurufen:
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,7 +73,7 @@ Das Verzeichnis enthält die Datei `pom.xml` für das Projekt und den Ordner `sr
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
 Kehren Sie als Nächstes zum [Azure-Portal](https://portal.azure.com) zurück, um Ihren Endpunkt und den primären Hauptschlüssel abzurufen. Der Endpunkt und der Primärschlüssel von Azure Cosmos DB sind erforderlich, damit Ihre Anwendung weiß, womit die Verbindung hergestellt werden soll, und damit Azure Cosmos DB weiß, dass die Verbindung Ihrer Anwendung vertrauenswürdig ist.
 
 Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie auf **Schlüssel**. Kopieren Sie den URI aus dem Portal, und fügen Sie ihn in `https://FILLME.documents.azure.com` in der Datei „Program.java“ ein. Kopieren Sie anschließend den PRIMÄRSCHLÜSSEL aus dem Portal, und fügen Sie ihn in `FILLME` ein.
@@ -93,7 +93,7 @@ Ihre Azure Cosmos DB-[Datenbank](databases-containers-items.md#azure-cosmos-data
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>Schritt 5: Erstellen einer Sammlung
+## <a name="step-5-create-a-collection"></a><a id="CreateColl"></a>Schritt 5: Erstellen einer Sammlung
 > [!WARNING]
 > Mit **createCollection** wird eine neue Sammlung mit reserviertem Durchsatz erstellt. Dies wirkt sich auf die Kosten aus. Weitere Informationen finden Sie auf unserer [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
@@ -112,7 +112,7 @@ Eine Sammlung kann mithilfe der [createCollection](/java/api/com.microsoft.azure
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
+## <a name="step-6-create-json-documents"></a><a id="CreateDoc"></a>Schritt 6: Erstellen von JSON-Dokumenten
 Ein Dokument kann mithilfe der [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument)-Methode der **DocumentClient**-Klasse erstellt werden. Dokumente sind benutzerdefinierter (beliebiger) JSON-Inhalt. Wir können jetzt eines oder mehrere Dokumente einfügen. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie diese mithilfe des [Datenmigrationstools](import-data.md)von Azure Cosmos DB in eine Datenbank importieren.
 
     // Insert your Java objects as documents 
@@ -135,7 +135,7 @@ Ein Dokument kann mithilfe der [createDocument](/java/api/com.microsoft.azure.do
 
 ![Diagramm zur hierarchischen Beziehung zwischen dem Konto, der Onlinedatenbank, der Sammlung und den Dokumenten, die vom NoSQL-Tutorial zum Erstellen einer Java-Konsolenanwendung verwendet werden.](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Schritt 7: Abfragen von Azure Cosmos DB-Ressourcen
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Schritt 7: Abfragen von Azure Cosmos DB-Ressourcen
 Azure Cosmos DB unterstützt umfassende [Abfragen](how-to-sql-query.md) der in jeder Sammlung gespeicherten JSON-Dokumente.  Der folgende Beispielcode veranschaulicht, wie Sie Dokumente in Azure Cosmos DB abfragen, indem Sie SQL-Syntax mit der [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments)-Methode verwenden.
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB unterstützt umfassende [Abfragen](how-to-sql-query.md) der in j
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>Schritt 8: Ersetzen eines JSON-Dokuments
+## <a name="step-8-replace-json-document"></a><a id="ReplaceDocument"></a>Schritt 8: Ersetzen eines JSON-Dokuments
 Azure Cosmos DB unterstützt die Aktualisierung von JSON-Dokumenten per [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument)-Methode.
 
     // Update a property
@@ -159,17 +159,17 @@ Azure Cosmos DB unterstützt die Aktualisierung von JSON-Dokumenten per [replace
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>Schritt 9: Löschen eines JSON-Dokuments
+## <a name="step-9-delete-json-document"></a><a id="DeleteDocument"></a>Schritt 9: Löschen eines JSON-Dokuments
 Azure Cosmos DB unterstützt auch das Löschen von JSON-Dokumenten mit der [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument)-Methode.  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>Schritt 10: Löschen der Datenbank
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>Schritt 10: Löschen der Datenbank
 Wenn Sie die erstellte Datenbank löschen, werden auch alle untergeordneten Ressourcen (Sammlungen, Dokumente usw.) gelöscht.
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Schritt 11: Ausführen der gesamten Java-Konsolenanwendung
+## <a name="step-11-run-your-java-console-application-all-together"></a><a id="Run"></a>Schritt 11: Ausführen der gesamten Java-Konsolenanwendung
 Zum Ausführen der Anwendung in der Konsole navigieren Sie zum Projektordner, und kompilieren Sie mit Maven:
     
     mvn package

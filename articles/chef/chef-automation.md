@@ -8,10 +8,10 @@ author: tomarchermsft
 ms.author: tarcher
 ms.date: 02/22/2020
 ms.openlocfilehash: 824e4df7662ee67c3f0786877053c39a8d952d49
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77589494"
 ---
 # <a name="quickstart---configure-a-windows-virtual-machine-in-azure-using-chef"></a>Schnellstart: Konfigurieren eines virtuellen Windows-Computers in Azure mithilfe von Chef
@@ -233,7 +233,7 @@ Führen Sie unter `C:\Chef directory` den folgenden Befehl aus.
 
 Mit diesem Befehl werden eine Reihe von Dateien im Verzeichnis C:\Chef\cookbooks\webserver generiert. Als Nächstes wird der Satz von Befehlen definiert, die der Chef-Client auf dem verwalteten virtuellen Computer ausführen soll.
 
-Die Befehle werden in der Datei „default.rb“ gespeichert. Definieren Sie in dieser Datei eine Reihe von Befehlen, um IIS zu installieren und zu starten sowie um eine Vorlagendatei in den Ordner `wwwroot` zu kopieren.
+Die Befehle werden in der Datei default.rb gespeichert. Definieren Sie in dieser Datei eine Reihe von Befehlen, um IIS zu installieren und zu starten sowie um eine Vorlagendatei in den Ordner `wwwroot` zu kopieren.
 
 Ändern Sie die Datei „C:\chef\cookbooks\webserver\recipes\default.rb“, und fügen Sie die folgenden Zeilen hinzu:
 
@@ -273,7 +273,7 @@ In diesem Schritt wird das Cookbook, das Sie auf dem lokalen Computer erstellt h
 
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Bereitstellen eines virtuellen Computers mit Knife Azure
 
-Verwenden Sie den Befehl `knife`, um einen virtuellen Azure-Computer bereitzustellen und das Cookbook `Webserver` anzuwenden.
+Verwenden Sie den Befehl `Webserver`, um einen virtuellen Azure-Computer bereitzustellen und das Cookbook `knife` anzuwenden.
 
 Mit dem Befehl `knife` werden auch der IIS-Webdienst und die Standardwebseite installiert.
 

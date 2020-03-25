@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376656"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Tutorial: Überwachen Ihrer Service Fabric-Anwendungen mithilfe von ELK
@@ -100,7 +100,7 @@ Sie können für dieses Tutorial eine vorkonfigurierte ELK-Umgebung verwenden un
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. Erstellen Sie eine Logstash-Konfigurationsdatei mit folgendem Inhalt, oder passen Sie Ihre vorhandene Logstash-Konfigurationsdatei entsprechend an: Wenn Sie die Datei erstellen und das ELK-Bitnami-Image in Azure verwenden, muss die Datei unter ```/opt/bitnami/logstash/conf/access-log.conf``` erstellt werden.
+4. Erstellen Sie eine Logstash-Konfigurationsdatei mit folgendem Inhalt, oder passen Sie Ihre vorhandene Logstash-Konfigurationsdatei entsprechend an. Wenn Sie die Datei erstellen und das ELK-Bitnami-Image in Azure verwenden, muss die Datei unter ```/opt/bitnami/logstash/conf/access-log.conf``` erstellt werden.
 
     ```json
     input

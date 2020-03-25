@@ -17,10 +17,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory-Integration mit Bime
@@ -137,11 +137,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bime die
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Konto**.
   
-    ![Administrator](./media/bime-tutorial/ic775558.png "Administrator")
+    ![Administrator](./media/bime-tutorial/ic775558.png "Admin")
 
 3. Führen Sie auf der Kontenkonfigurationsseite die folgenden Schritte aus:
   
-    ![Einmaliges Anmelden konfigurieren](./media/bime-tutorial/ic775559.png "Configure single sign-on")
+    ![Einmaliges Anmelden konfigurieren](./media/bime-tutorial/ic775559.png "Einmaliges Anmelden konfigurieren")
 
     a. Aktivieren Sie **Enable SAML authentication**.
 
@@ -174,7 +174,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -212,7 +212,7 @@ Damit sich Azure AD-Benutzer bei Bime anmelden können, müssen sie in Bime ber
 
 2. Klicken Sie auf der Symbolleiste auf **Administration** und dann auf **Benutzer**.
 
-    ![Administrator](./media/bime-tutorial/ic775561.png "Administrator")
+    ![Administrator](./media/bime-tutorial/ic775561.png "Admin")
 
 3. Klicken Sie unter **Benutzerliste** auf **Neuen Benutzer hinzufügen** („+“).
 

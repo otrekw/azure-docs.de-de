@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034580"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066494"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -40,7 +40,7 @@ Standardmäßig erstellt Azure Backup eine dateisystemkonsistente Sicherung für
 Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
 
-## <a name="create-a-backup"></a>Erstellen einer Sicherung
+## <a name="create-a-backup"></a>So erstellen Sie eine Sicherung
 Erstellen Sie eine geplante tägliche Sicherung in einem Recovery Services-Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
@@ -64,7 +64,7 @@ Wenn Sie eine Datei versehentlich löschen oder daran Änderungen vornehmen, kö
 
 In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/www/html/index.nginx-debian.html“ wiederherstellen. Die öffentliche IP-Adresse der VM in diesem Beispiel ist *13.69.75.209*. Sie können die IP-Adresse des virtuellen Computers wie folgt suchen:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Löschen Sie „/var/www/html/index.nginx-debian.html“.
 
     ```bash
@@ -94,7 +95,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
 8. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung** wird geöffnet. 
 9. Wählen Sie im Menü oben auf dem Blatt die Option **Dateiwiederherstellung** aus. Das Blatt **Dateiwiederherstellung** wird geöffnet.
 10. Wählen Sie in **Schritt 1: Auswählen eines Wiederherstellungspunkts** in der Dropdownliste einen Wiederherstellungspunkt aus.
-11. Wählen Sie in **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** die Schaltfläche **Ausführbare Datei herunterladen** aus. Speichern Sie die heruntergeladene Datei auf dem lokalen Computer.
+11. Klicken Sie in **Schritt 2: Herunterladen des Skripts zum Suchen und Wiederherstellen von Dateien** auf die Schaltfläche **Ausführbare Datei herunterladen**. Speichern Sie die heruntergeladene Datei auf dem lokalen Computer.
 7. Klicken Sie auf **Skript herunterladen**, um die Skriptdatei lokal herunterzuladen.
 8. Öffnen Sie eine Bash-Eingabeaufforderung, und geben Sie Folgendes ein. Ersetzen Sie dabei *Linux_myVM_05-05-2017.sh* durch den richtigen Pfad und Dateinamen für das Skript, das Sie heruntergeladen haben, *Azureuser* durch den Benutzernamen für den virtuellen Computer und *13.69.75.209* durch die öffentliche IP-Adresse für Ihren virtuellen Computer.
     
@@ -122,7 +123,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
     
 12. Die Ausgabe des Skripts enthält den Pfad zum Bereitstellungspunkt. Die Ausgabe sieht in etwa wie folgt aus:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -155,7 +156,7 @@ In diesem Beispiel wird beschrieben, wie Sie die nginx-Standardwebseite „/var/
 
     ![nginx-Standardwebseite](./media/tutorial-backup-vms/nginx-working.png)
 
-18. Navigieren Sie auf dem lokalen Computer zurück zur Browserregisterkarte für das Azure-Portal, und klicken Sie in **Schritt 3: Aufheben der Bereitstellung der Datenträger nach der Wiederherstellung** auf die Schaltfläche **Bereitstellung der Datenträger aufheben**. Wenn Sie vergessen, diesen Schritt durchzuführen, wird die Verbindung mit dem Bereitstellungspunkt nach 12 Stunden automatisch getrennt. Nach diesen 12 Stunden müssen Sie ein neues Skript zum Erstellen eines neuen Bereitstellungspunkts herunterladen.
+18. Wechseln Sie auf dem lokalen Computer zurück zur Browserregisterkarte für das Azure-Portal, und klicken Sie in **Schritt 3: Aufheben der Bereitstellung der Datenträger nach der Wiederherstellung** auf die Schaltfläche **Bereitstellung der Datenträger aufheben**. Wenn Sie vergessen, diesen Schritt durchzuführen, wird die Verbindung mit dem Bereitstellungspunkt nach 12 Stunden automatisch getrennt. Nach diesen 12 Stunden müssen Sie ein neues Skript zum Erstellen eines neuen Bereitstellungspunkts herunterladen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

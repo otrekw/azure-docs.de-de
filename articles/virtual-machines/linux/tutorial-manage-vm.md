@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e5474387933404c29536759d383a4f2c85236949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034417"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060198"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure CLI
 
 Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible Computerumgebung. In diesem Tutorial werden grundlegende Vorgänge bei der Bereitstellung von virtuellen Azure-Computern behandelt, z.B. Auswählen einer VM-Größe, Auswählen eines VM-Images und Bereitstellen eines virtuellen Computers. Folgendes wird vermittelt:
 
@@ -39,11 +39,11 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. 
+Erstellen Sie mithilfe des Befehls [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. 
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus* erstellt. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus
 ```
 
@@ -66,7 +66,7 @@ az vm create \
 
 Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtuellen Computers gibt die Azure-Befehlszeilenschnittstelle Informationen zu dem virtuellen Computer aus. Notieren Sie sich den Wert für `publicIpAddress`. Über diese Adresse kann auf den virtuellen Computer zugegriffen werden. 
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -105,7 +105,7 @@ az vm image list --output table
 
 Der Befehl gibt die beliebtesten VM-Images in Azure zurück.
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
@@ -129,7 +129,7 @@ az vm image list --offer CentOS --all --output table
 
 Hier sehen Sie einen Teil der Ausgabe:
 
-```azurecli-interactive 
+```output
 Offer             Publisher         Sku   Urn                                     Version
 ----------------  ----------------  ----  --------------------------------------  -----------
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
@@ -142,7 +142,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207     
 
 Wenn Sie einen virtuellen Computer mit einem bestimmten Image bereitstellen möchten, notieren Sie sich den Wert aus der Spalte *Urn*. Dieser setzt sich zusammen aus dem Herausgeber, dem Angebot, der SKU und optional einer Versionsnummer zur [Identifizierung](cli-ps-findimage.md#terminology) des Images. Bei der Angabe des Images kann die Imageversionsnummer durch „latest“ ersetzt werden, um die neueste Version der Distribution auszuwählen. In diesem Beispiel wird mithilfe des Arguments `--image` die neueste Version eines CentOS 6.5-Images angeben.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
@@ -174,7 +174,7 @@ az vm list-sizes --location eastus --output table
 
 Hier sehen Sie einen Teil der Ausgabe:
 
-```azurecli-interactive 
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  2          3584  Standard_DS1                          1           1047552                    7168
@@ -199,7 +199,7 @@ Hier sehen Sie einen Teil der Ausgabe:
 
 Im vorherigen Beispiel zur Erstellung eines virtuellen Computers wurde eine Standardgröße verwendet, da keine Größe angegeben wurde. Eine VM-Größe kann bei der Erstellung mit dem Befehl [az vm create](/cli/azure/vm) und dem Argument `--size` ausgewählt werden. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupVM \
     --name myVM3 \
@@ -221,6 +221,7 @@ Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewüns
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
+
 Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden. Verwenden Sie zum Vornehmen der Größenänderung den Befehl [az vm resize]( /cli/azure/vm).
 
 ```azurecli-interactive 
@@ -229,19 +230,19 @@ az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_
 
 Falls die gewünschte Größe im aktuellen Cluster nicht verfügbar ist, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Verwenden Sie den Befehl [az vm deallocate]( /cli/azure/vm), um den virtuellen Computer zu beenden und die Zuordnung aufzuheben. Wenn der virtuelle Computer wieder eingeschaltet wird, werden unter Umständen sämtliche Daten auf dem temporären Datenträger entfernt. Die öffentliche IP-Adresse ändert sich ebenfalls – es sei denn, es wird eine statische IP-Adresse verwendet. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
 Sobald die Zuordnung aufgehoben wurde, kann die Größe geändert werden. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 ```
 
 Nach dem Ändern der Größe kann der virtuelle Computer gestartet werden.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -265,7 +266,7 @@ Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweis
 
 Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [az vm get-instance-view](/cli/azure/vm). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben. 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm get-instance-view \
     --name myVM \
     --resource-group myResourceGroupVM \
@@ -274,7 +275,7 @@ az vm get-instance-view \
 
 Ausgabe:
 
-```azurecli-interactive 
+```output
 ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
@@ -284,23 +285,23 @@ PowerState/running  VM running       Info
 
 Während der Lebensdauer eines virtuellen Computers können Sie Verwaltungsaufgaben wie das Starten, Beenden oder Löschen eines virtuellen Computers ausführen. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von wiederkehrenden oder komplexen Aufgaben zu erstellen. Mithilfe der Azure CLI können viele allgemeine Verwaltungsaufgaben über die Befehlszeile oder in Skripts ausgeführt werden. 
 
-### <a name="get-ip-address"></a>Abrufen der IP-Adresse
+### <a name="get-ip-address"></a>IP-Adresse abrufen
 
 Dieser Befehl gibt die privaten und öffentlichen IP-Adressen eines virtuellen Computers zurück.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>Beenden des virtuellen Computers
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>Starten des virtuellen Computers
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -308,7 +309,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht, z.B. die VM, das virtuelle Netzwerk und der virtuelle Datenträger. Der Parameter `--no-wait` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist. Der Parameter `--yes` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 

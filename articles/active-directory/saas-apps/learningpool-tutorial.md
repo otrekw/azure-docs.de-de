@@ -17,10 +17,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74229278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory-Integration mit Learningpool Act
@@ -125,7 +125,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Learningp
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ------------------- | -------------------- |
     | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
     | urn:oid:2.5.4.42 | user.givenname |
@@ -192,7 +192,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -242,5 +242,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Learningpool Act“ klicken, sollt
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit QuickHelp | Microsoft-Dokumentation'
+title: 'Lernprogramm: Azure Active Directory-Integration mit QuickHelp | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und QuickHelp konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: f4b41098a3b374506e655bf90f972b57195e0958
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093378"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Tutorial: Azure Active Directory-Integration mit QuickHelp
+# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Lernprogramm: Azure Active Directory-Integration mit QuickHelp
 
 In diesem Tutorial erfahren Sie, wie Sie QuickHelp in Azure Active Directory (Azure AD) integrieren.
 Die Integration von QuickHelp in Azure AD bietet die folgenden Vorteile:
@@ -134,17 +134,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit QuickHe
 
 2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Configure single sign-on][21]
+    ![Einmaliges Anmelden konfigurieren][21]
 
 3. Klicken Sie im Menü **QuickHelp Admin** auf **Einstellungen**.
    
-    ![Configure single sign-on][22]
+    ![Einmaliges Anmelden konfigurieren][22]
 
 4. Klicken Sie auf **Authentifizierungseinstellungen**.
 
 5. Führen Sie auf der Seite **Authentifizierungseinstellungen** die folgenden Schritte aus:
    
-    ![Configure single sign-on][23]
+    ![Einmaliges Anmelden konfigurieren][23]
    
     a. Wählen Sie für **SSO-Typ** die Option **WSFederation** aus.
    
@@ -180,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -224,7 +224,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „QuickHelp“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 

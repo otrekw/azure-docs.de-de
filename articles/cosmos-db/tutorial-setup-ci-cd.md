@@ -8,10 +8,10 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77561901"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie für eine ASP.NET-Anwendung eine CI-Pipe
 
 ## <a name="install-the-emulator-build-task"></a>Installieren des Emulator-Buildtasks
 
-Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator**, und klicken Sie auf **Kostenlos erhalten**.
+Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im **Marketplace** nach [Azure Cosmos DB-Emulator](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview), und klicken Sie auf **Kostenlos erhalten**.
 
 ![Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -59,7 +59,7 @@ Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Az
 Start-CosmosDbEmulator
 ```
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Hinzufügen des Tasks zu einer Buildpipeline
+## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>Hinzufügen des Tasks zu einer Buildpipeline
 
 1. Bevor Sie der Buildpipeline einen Task hinzufügen, müssen Sie einen Agent-Auftrag hinzufügen. Navigieren Sie zu Ihrer Buildpipeline. Wählen Sie **...** und anschließend **Agentauftrag hinzufügen** aus.
 

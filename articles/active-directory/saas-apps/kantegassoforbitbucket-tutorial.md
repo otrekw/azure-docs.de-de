@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b04b44c907e3210f3cc3975b36639f4fe275eef9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099206"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for Bitbucket
@@ -138,39 +138,39 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kantega S
 
 1. Klicken Sie auf das Zahnrad und dann auf **Find new add-ons** (Nach neuen Add-Ons suchen).
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
 1. Suchen Sie nach **Kantega SSO for Bitbucket SAML & Kerberos**, und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon2.png)
 
 1. Die Installation des Plug-Ins wird gestartet.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon31.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon31.png)
 
 1. Gehen Sie nach Abschluss der Installation wie folgt vor: Klicken Sie auf **Schließen**.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon33.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon33.png)
 
 1. Klicken Sie auf **Manage**.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon34.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon34.png)
 
 1. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon35.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon35.png)
 
 1. Im Abschnitt **SAML**: Wählen Sie in der Dropdownliste **Identitätsanbieter hinzufügen** die Option **Azure Active Directory (Azure AD)** .
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
 1. Wählen Sie als Abonnementebene die Option **Basic**.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
 1. Führen Sie im Abschnitt **App-Eigenschaften** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon6.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
     a. Kopieren Sie den Wert für den **App-ID-URI**, und verwenden Sie ihn als **Bezeichner, Antwort-URL und Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** des Azure-Portals.
 
@@ -178,7 +178,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kantega S
 
 1. Führen Sie im Abschnitt **Metadata import** (Metadatenimport) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon7.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon7.png)
 
     a. Wählen Sie **Metadata file on my computer** (Metadatendatei auf meinem Computer), und laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -186,7 +186,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kantega S
 
 1. Führen Sie im Abschnitt **Name and SSO location** (Name und SSO-Standort) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon8.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon8.png)
 
     a. Fügen Sie im Textfeld **Name des Identitätsanbieters** den Namen des Identitätsanbieters hinzu (z.B. Azure AD).
 
@@ -194,11 +194,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kantega S
 
 1. Überprüfen Sie das Signaturzertifikat, und klicken Sie auf **Weiter**.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon9.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
 1. Führen Sie im Abschnitt **Bitbucket user accounts** (Bitbucket-Benutzerkonten) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon10.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon10.png)
 
     a. Wählen Sie **Create users in Bitbucket's internal Directory if needed** (Benutzer im internen Bitbucket-Verzeichnis erstellen, falls erforderlich), und geben Sie den entsprechenden Namen der Gruppe für Benutzer ein (können mehrere durch Kommas getrennte Gruppen sein).
 
@@ -206,11 +206,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kantega S
 
 1. Klicken Sie auf **Fertig stellen**.
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon11.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon11.png)
 
 1. Führen Sie im Abschnitt **Known domains for Azure AD** (Bekannte Domänen für Azure AD) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/kantegassoforbitbucket-tutorial/addon12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/kantegassoforbitbucket-tutorial/addon12.png)
 
     a. Wählen Sie im linken Bereich der Seite die Option **Known domains** (Bekannte Domänen).
 
@@ -241,7 +241,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -317,5 +317,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Kantega SSO for Bitbucket“ klick
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

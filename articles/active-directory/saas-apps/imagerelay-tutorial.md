@@ -17,10 +17,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fd0637a632b277eae019ac4aebfbc7cdb87e8e2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158971"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Tutorial: Azure Active Directory-Integration mit Image Relay
@@ -133,27 +133,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Image 
 
 2. Klicken Sie auf der Symbolleiste oben auf die Workload **Users & Permissions** (Benutzer und Berechtigungen).
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. Klicken Sie auf **Create New Permission**(Neue Berechtigung erstellen).
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. Aktivieren Sie in der Workload **Single Sign On Settings** (Einstellungen für einmaliges Anmelden) das Kontrollkästchen **This Group can only sign-in via Single Sign On** (Diese Gruppe kann sich nur per einmaligem Anmelden anmelden), und klicken Sie dann auf **Speichern**.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. Wechseln Sie zu **Kontoeinstellungen**.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. Klicken Sie auf die Workload **Single Sign On Settings** (Einstellungen für einmaliges Anmelden).
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. Führen Sie im Dialogfeld **SAML Settings** (SAML-Einstellungen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -165,19 +165,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Image 
 
     e. Klicken Sie unter **x.509-Zertifikat** auf **Zertifikat aktualisieren**.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. Öffnen Sie das heruntergeladene Zertifikat im Editor, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Textfeld **x.509 Certificate** (x.509-Zertifikat) ein.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     g. Aktivieren Sie im Abschnitt **Just-In-Time User Provisioning** (Just-In-Time-Benutzerbereitstellung) das Kontrollkästchen **Enable Just-In-Time User Provisioning** (Just-In-Time-Benutzerbereitstellung aktivieren).
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Wählen Sie die Berechtigungsgruppe aus (z.B. **SSO Basic** (SSO allgemein)), bei der die Anmeldung nur per einmaligem Anmelden erfolgen soll.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Klicken Sie auf **Speichern**.
 
@@ -204,7 +204,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -242,13 +242,13 @@ Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simo
 
 2. Wechseln Sie zu **Users & Permissions** (Benutzer und Berechtigungen), und klicken Sie auf **Create SSO User** (SSO-Benutzer erstellen).
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Geben Sie die **E-Mail-Adresse**, den **Vornamen**, den **Nachnamen** und das **Unternehmen** des bereitzustellenden Benutzers an. Wählen Sie außerdem die Berechtigungsgruppe aus (z.B. „SSO Basic“). Dies ist die Gruppe, die sich nur per einmaligem Anmelden anmelden kann.
 
-    ![Configure single sign-on](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Einmaliges Anmelden konfigurieren](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -262,4 +262,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Image Relay“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

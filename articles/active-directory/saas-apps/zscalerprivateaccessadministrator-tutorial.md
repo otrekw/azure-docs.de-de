@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Zscaler Private Access Administrator | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Zscaler Private Access Administrator | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Zscaler Private Access Administrator konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67085643"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Tutorial: Azure Active Directory-Integration von Zscaler Private Access Administrator
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Tutorial: Azure Active Directory-Integration mit Zscaler Private Access Administrator
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler Private Access Administrator in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Zscaler Private Access Administrator in Azure AD bietet die folgenden Vorteile:
@@ -187,7 +187,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -247,7 +247,7 @@ Um Azure AD-Benutzern die Anmeldung bei Zscaler Private Access Administrator zu 
 
     d. Wählen Sie unter **Role** (Rolle) die Option **Zscaler Private Access Administrator** aus.
 
-    e. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. BrittaSimon@contoso.com.
+    e. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. BrittaSimon@contoso.com.
 
     f. Geben Sie im Textfeld **Phone** (Telefon) die Telefonnummer ein.
 
@@ -267,5 +267,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel für Zscaler Private Access Administr
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

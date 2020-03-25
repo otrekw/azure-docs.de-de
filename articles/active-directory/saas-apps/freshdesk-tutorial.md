@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit FreshDesk | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Freshdesk | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Freshdesk konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227616"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit Freshdesk
 
 In diesem Tutorial erfahren Sie, wie Sie Freshdesk in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Freshdesk in Azure AD bietet die folgenden Vorteile:
@@ -119,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in FreshDesk
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
     
-    | NAME | Quellattribut |
+    | Name | Quellattribut |
     | ---------------| --------------- |
     | Eindeutige Benutzer-ID | user.mail |
 
@@ -207,7 +207,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -246,7 +246,7 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Administrator](./media/freshdesk-tutorial/IC776772.png "Administrator")
+    ![Administrator](./media/freshdesk-tutorial/IC776772.png "Admin")
 
 3. Klicken Sie auf der Registerkarte **Allgemeine Einstellungen** auf **Agents**.
   

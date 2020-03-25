@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: c8781ec34cb54afc4040d858722b28e10d68bccd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74765785"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Auflisten und Aktualisieren eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI
@@ -43,6 +43,6 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure-Datenbank für MySQL](../sample-scripts-azure-cli.md)
 - Weitere Informationen zu Serverparametern finden Sie unter [Konfigurieren Sie Serverparameter in Azure-Datenbank für MySQL mit dem Azure-Portal](../howto-server-parameters.md).

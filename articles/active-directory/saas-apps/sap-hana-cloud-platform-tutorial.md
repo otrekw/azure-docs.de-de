@@ -17,10 +17,10 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform
@@ -163,7 +163,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
     ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Verwaltung von Vertrauensstellungen")
    
-    a. Klicken Sie auf **Edit**.
+    a. Klicken Sie auf **Bearbeiten**.
 
     b. Wählen Sie als **Konfigurationstyp** die Option **Benutzerdefiniert**.
 
@@ -208,7 +208,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 8. Führen Sie auf der Registerkarte **Attribute** die folgenden Schritte aus:
     
-    ![Attribute](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attribute") 
+    ![Attribute](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attributes") 
 
     a. Klicken Sie auf **Assertion-Attribut hinzufügen**, und für Sie dann die folgenden Assertion-basierten Attribute hinzu:
        
@@ -259,7 +259,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

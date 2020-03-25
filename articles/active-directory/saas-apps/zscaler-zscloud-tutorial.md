@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Zscaler ZSCloud | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit ZScaler ZSCloud | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ZScaler ZSCloud konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 43d7e58f0c267afe8a22c217d9800abb041df8cb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68723054"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration von Zscaler ZSCloud
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration mit Zscaler ZSCloud
 
 In diesem Tutorial erfahren Sie, wie Sie ZScaler ZSCloud in Azure Active Directory (Azure AD) integrieren.
 Die Integration von ZScaler ZSCloud in Azure AD bietet die folgenden Vorteile:
@@ -118,7 +118,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Zscaler�
 
 6. Darüber hinaus wird von der Zscaler ZSCloud-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
     
-    | NAME | Quellattribut |
+    | Name | Quellattribut |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 
@@ -177,7 +177,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Zscaler�
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    ![Benutzer und Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
+    ![Benutzer & Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
     
     a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -256,7 +256,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

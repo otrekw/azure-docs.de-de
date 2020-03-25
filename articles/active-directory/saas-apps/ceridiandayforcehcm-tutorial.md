@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Ceridian Dayforce HCM | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Ceridian Dayforce HCM | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Ceridian Dayforce HCM konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f488f22535c290b5fecbd0ffa9f8867f0b715bac
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Tutorial: Azure Active Directory-Integration mit Ceridian Dayforce HCM
@@ -136,7 +136,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Ceridian 
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ---------| --------- |
     | name  | user.extensionattribute2 |
 
@@ -199,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -243,5 +243,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Ceridian Dayforce HCM“ klicken, 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

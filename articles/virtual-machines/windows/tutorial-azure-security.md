@@ -16,10 +16,10 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74064952"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Windows-Computer
@@ -124,7 +124,7 @@ Wählen Sie eine Warnung aus, um weitere Informationen anzuzeigen. Sie können b
 ![RDP-Angriff](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial richten Sie Azure Security Center ein und überprüfen dann VMs in Security Center. Es wurde Folgendes vermittelt:
+In diesem Tutorial richten Sie Azure Security Center ein und überprüfen dann VMs in Security Center. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Einrichten der Datensammlung

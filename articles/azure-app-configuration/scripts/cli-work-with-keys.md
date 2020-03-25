@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523646"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Verwenden von Schlüssel-Wert-Paaren in einem Azure App Configuration-Speicher
@@ -81,7 +81,7 @@ az appconfig kv list --name $appConfigName
 
 Die folgende Tabelle enthält die im Beispielskript verwendeten Befehle: 
 
-| Befehl | Notizen |
+| Get-Help | Notizen |
 |---|---|
 | [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Dient zum Erstellen oder Aktualisieren eines Schlüssel-Wert-Paars. |
 | [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Dient zum Auflisten von Schlüssel-Wert-Paaren in einem App Configuration-Speicher. |

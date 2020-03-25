@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180703"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61448565"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Tutorial: Erstellen und Ausführen einer IoT-Gerätesimulation
 
@@ -28,13 +28,13 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Anzeigen von Metriken für eine Simulation
 > * Beenden einer Simulation
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie eine in Ihrem Azure-Abonnement bereitgestellte Instanz der Gerätesimulation.
 
-Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) aus.
+Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md).
 
 ## <a name="open-device-simulation"></a>Öffnen der Gerätesimulation
 
@@ -42,7 +42,7 @@ Um die Gerätesimulation in Ihrem Browser auszuführen, navigieren Sie zunächst
 
 Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
 
-Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der [Schnellstartanleitung](quickstart-device-simulation-deploy.md) bereitgestellt haben, auf **Starten**.
+Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der **Schnellstartanleitung** bereitgestellt haben, auf [Starten](quickstart-device-simulation-deploy.md).
 
 ## <a name="view-simulations"></a>Anzeigen von Simulationen
 

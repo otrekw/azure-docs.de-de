@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482359"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223727"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -70,7 +70,7 @@ Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows
 
 1. Erstellen Sie für dieses Tutorial in einem Terminal oder an einer Eingabeaufforderung einen Ordner an einem geeigneten Speicherort, und navigieren Sie dann zu diesem Ordner.
 
-1. Befolgen Sie die Anleitung unter [Erstellen und Aktivieren einer virtuellen Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment), um eine virtuelle Umgebung für dieses Tutorial zu erstellen.
+1. Befolgen Sie die Anleitung unter [Erstellen und Aktivieren einer virtuellen Umgebung](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv), um eine virtuelle Umgebung für dieses Tutorial zu erstellen.
 
 1. Führen Sie den folgenden Befehl für die gewählte Sprache aus, um ein Funktions-App-Projekt in einem Ordner mit dem Namen `LocalFunctionsProject` zu erstellen. Mit der Option `--docker` wird eine `Dockerfile` für das Projekt generiert. Hiermit wird ein geeigneter benutzerdefinierter Container zur Verwendung mit Azure Functions und der ausgewählten Runtime definiert.
 
@@ -152,7 +152,7 @@ Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows
     ```
     ::: zone-end
 
-1. Navigieren Sie zu `http://localhost:7071/api/HttpExample?name=Functions`, nachdem in der Ausgabe der `HttpExample`-Endpunkt angezeigt wird. Im Browser sollte eine Meldung wie „Hello, Functions“ angezeigt werden (kann je nach gewählter Programmiersprache leicht variieren).
+1. Navigieren Sie zu `HttpExample`, nachdem in der Ausgabe der `http://localhost:7071/api/HttpExample?name=Functions`-Endpunkt angezeigt wird. Im Browser sollte eine Meldung wie „Hello, Functions“ angezeigt werden (kann je nach gewählter Programmiersprache leicht variieren).
 
 1. Verwenden Sie **STRG**-**C**, um den Host zu beenden.
 
@@ -339,8 +339,9 @@ Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hosti
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    ```
     
-1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+1. Verwenden Sie den Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set), um diese Einstellung der Funktions-App hinzuzufügen. Ersetzen Sie im folgenden Befehl `<app_name>` durch den Namen Ihrer Funktions-App und `<connection_string>` durch die Verbindungszeichenfolge aus dem vorherigen Schritt (eine lange codierte Zeichenfolge, die mit „DefaultEndpointProtocol=“ beginnt):
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -871,7 +872,7 @@ export default httpTrigger;
 
 ## <a name="view-the-message-in-the-azure-storage-queue"></a>Anzeigen der Nachricht in der Azure Storage-Warteschlange
 
-Verwenden Sie in einem Browser dieselbe URL wie zuvor, um Ihre Funktion aufzurufen. Im Browser sollte die gleiche Antwort wie zuvor angezeigt werden, da Sie diesen Teil des Funktionscodes nicht geändert haben. Aufgrund des hinzugefügten Codes wurde aber eine Nachricht in die Speicherwarteschlange `outqueue` geschrieben, indem der URL-Parameter `name` verwendet wurde.
+Verwenden Sie in einem Browser dieselbe URL wie zuvor, um Ihre Funktion aufzurufen. Im Browser sollte die gleiche Antwort wie zuvor angezeigt werden, da Sie diesen Teil des Funktionscodes nicht geändert haben. Aufgrund des hinzugefügten Codes wurde aber eine Nachricht in die Speicherwarteschlange `name` geschrieben, indem der URL-Parameter `outqueue` verwendet wurde.
 
 Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quickstart-queues-portal.md) oder im [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) anzeigen. Sie haben auch die Möglichkeit, die Warteschlange per Azure CLI anzuzeigen. Dies ist in den folgenden Schritten beschrieben:
 

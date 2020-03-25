@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77193152"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
@@ -140,7 +140,7 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
     ```
 
     > [!NOTE]
-    > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` ermöglicht keine wirkliche Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.
+    > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` bietet keine echte Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.
 5. Fügen Sie am Ende der Methode `Register` in der Klasse **App_Start/WebApiConfig.cs** den folgenden Code hinzu, um den Meldungshandler zu registrieren:
 
     ```csharp

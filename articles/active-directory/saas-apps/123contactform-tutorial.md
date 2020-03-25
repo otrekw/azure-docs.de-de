@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e8328ac4008950d67cf5645c6a48c48d1196085
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Tutorial: Azure Active Directory-Integration in 123ContactForm
@@ -138,7 +138,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit 123Conta
 
 1. Navigieren Sie zum Konfigurieren des einmaligen Anmeldens auf der Seite **123ContactForm** zu [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/), und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/123contactform-tutorial/submit.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/123contactform-tutorial/submit.png) 
 
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Benutzers ein, z. B. **brittasimon\@contoso.com**.
 
@@ -148,7 +148,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit 123Conta
 
 2. Führen Sie zum Konfigurieren von **Microsoft Azure AD – einmaliges Anmelden – App-Einstellungen konfigurieren** die folgenden Schritte durch:
 
-    ![Configure single sign-on](./media/123contactform-tutorial/url3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/123contactform-tutorial/url3.png)
 
     a. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert für **IDENTIFIER** (BEZEICHNER) für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 
@@ -179,7 +179,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -223,4 +223,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „123ContactForm“ klicken, sollten
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

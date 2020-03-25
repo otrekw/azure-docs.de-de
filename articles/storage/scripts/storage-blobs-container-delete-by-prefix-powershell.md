@@ -2,25 +2,19 @@
 title: Azure PowerShell-Skriptbeispiel – Löschen von Containern nach Präfix | Microsoft-Dokumentation
 description: Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: e0c41ed1fc2cdb7559d36a7056ebb7b9a6ecc186
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73c2f221d2ac0b3ceb76e3db0fdc6379a6dd330a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242769"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060883"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens
 
@@ -34,7 +28,7 @@ Dieses Skript löscht Container in Azure Blob Storage basierend auf einem Präfi
 
 [!code-powershell[main](../../../powershell_scripts/storage/delete-containers-by-prefix/delete-containers-by-prefix.ps1 "Delete containers by prefix")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, die verbleibenden Container sowie alle zugehörigen Ressourcen zu entfernen.
 

@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: 107c844051ab396fe467a1a629883746b2903125
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66154515"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Aktivieren und Herunterladen der Serverprotokolle zu langsamen Abfragen von einem Azure Database for PostgreSQL-Server mithilfe der Azure-Befehlszeilenschnittstelle
@@ -44,6 +44,6 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL](../sample-scripts-azure-cli.md)
 - [Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal](../howto-configure-server-logs-in-portal.md)

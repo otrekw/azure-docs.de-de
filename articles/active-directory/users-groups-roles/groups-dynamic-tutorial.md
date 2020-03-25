@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74027106"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern

@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73819866"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Hinzufügen eines R-Pakets zu Machine Learning Services in Azure SQL-Datenbank (Vorschauversion)
@@ -35,7 +35,7 @@ In diesem Artikel wird erläutert, wie Sie ein R-Paket zu Machine Learning Servi
 > [!NOTE]
 > Sie können ein Paket nicht installieren, indem Sie ein R-Skript mit **sp_execute_external_script** in Azure Data Studio oder SSMS ausführen. Sie können Pakete nur wie in diesem Artikel beschrieben über die R-Befehlszeile und RStudio installieren und entfernen. Wenn das Paket installiert ist, können Sie mit **sp_execute_external_script** auf die Paketfunktionen in einem R-Skript zugreifen.
 
-## <a name="list-r-packages"></a>Liste mit R-Paketen
+## <a name="list-r-packages"></a>Auflisten von R-Paketen
 
 Microsoft stellt verschiedene R-Pakete bereit, die mit Machine Learning Services in Ihrer Azure SQL-Datenbank vorinstalliert werden.
 Sie können eine Liste der installierten R-Pakete anzeigen, indem Sie den folgenden Befehl in Azure Data Studio oder SSMS ausführen.
@@ -92,7 +92,7 @@ Im folgenden Beispiel installieren Sie das **[glue](https://cran.r-project.org/w
 
 ### <a name="add-the-package"></a>Hinzufügen des Pakets
 
-1. Öffnen Sie RStudio, und erstellen Sie eine neue **R-Skript**-Datei. 
+1. Öffnen Sie RStudio, und erstellen Sie eine neue **R-Skriptdatei**. 
 
 1. Verwenden Sie den folgenden R-Code, um ein **glue**-Paket mit **sqlmlutils** zu installieren. Ersetzen Sie die Azure SQL-Datenbank-Verbindungsinformationen durch Ihre eigenen.
 
@@ -108,7 +108,7 @@ Im folgenden Beispiel installieren Sie das **[glue](https://cran.r-project.org/w
     ```
 
     > [!TIP]
-    > Der **Bereich** kann entweder **ÖFFENTLICH** oder **PRIVAT** sein. Der öffentliche Bereich ist für den Datenbankadministrator nützlich, um Pakete zu installieren, die von allen Benutzern verwendet werden können. Beim privaten Bereich ist das Paket nur für den Benutzer verfügbar, der es installiert. Wenn Sie den Bereich nicht angeben, wird standardmäßig **PRIVAT** verwendet.
+    > Für **scope** kann **PUBLIC** oder **PRIVATE** angegeben werden. Ein öffentlicher Bereich (PUBLIC) ist für den Datenbankadministrator zum Installieren von Paketen nützlich, die von allen Benutzern verwendet werden. Pakete in einem privaten Bereich (PRIVATE) sind nur für den Benutzer verfügbar, der sie installiert. Wenn Sie keinen Bereich definieren, wird die Standardeinstellung **PRIVATE** verwendet.
 
 ### <a name="verify-the-package"></a>Überprüfen des Pakets
 
@@ -155,7 +155,7 @@ Nachdem das Paket installiert wurde, können Sie es in einem R-Skript mit **sp_e
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.
     ```
 
-### <a name="remove-the-package"></a>Entfernen des Pakets
+### <a name="remove-the-package"></a>Entfernen des Programms
 
 Führen Sie in RStudio das folgende R-Skript aus, wenn Sie das Paket entfernen möchten. Verwenden Sie die gleiche **Verbindung**, die Sie zuvor definiert haben.
 

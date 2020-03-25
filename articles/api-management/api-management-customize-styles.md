@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75430736"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Anpassen des Stils der Seiten im Entwicklerportal
@@ -40,8 +40,8 @@ In diesem Artikel erfahren Sie, wie Sie den Stil der Elemente auf den Seiten des
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
-+ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="customize-the-developer-portal"></a>Anpassen des Entwicklerportals
 

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438912"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe des Data Factory-Kopier-Assistenten
@@ -61,7 +61,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
       - Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
       - Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
           
-        Bei einigen Schritten in diesem Tutorial wird davon ausgegangen, dass Sie den Namen **ADFTutorialResourceGroup** für die Ressourcengruppe verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/overview.md).
+        Bei einigen Schritten dieses Lernprogramms wird davon ausgegangen, dass Sie die Ressourcengruppe namens **ADFTutorialResourceGroup** verwenden. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/overview.md).
    4. Wählen Sie einen **Standort** für die Data Factory aus.
    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
    6. Klicken Sie auf **Erstellen**.

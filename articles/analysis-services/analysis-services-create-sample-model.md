@@ -8,13 +8,13 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74326576"
 ---
-# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells aus dem Portal
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells über das Portal
 
 In diesem Tutorial fügen Sie eine tabellarische Adventure Works-Modelldatenbank zu Ihrem Server hinzu. Das Beispielmodell ist eine vollständige Version des Beispieldatenmodells für Internetverkäufe in Adventure Works (1200). Ein Beispielmodell eignet sich zum Testen der Modellverwaltung, zum Herstellen einer Verbindung mit Tools und Clientanwendungen und zum Abfragen von Modelldaten. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet: 
 

@@ -17,10 +17,10 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f7c5ee13f02c10441ca7852483e1299b6315309
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Tutorial: Azure Active Directory-Integration mit UNIFI
@@ -135,15 +135,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UNIFI die
 
 2. Klicken Sie auf **Users** (Benutzer).
 
-    ![Configure single sign-on](./media/unifi-tutorial/app1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/unifi-tutorial/app1.png)
 
 3. Klicken Sie auf **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen).
 
-    ![Configure single sign-on](./media/unifi-tutorial/app2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/unifi-tutorial/app2.png)
 
 4. Führen Sie im Abschnitt **Add Identity Provider** (Identitätsanbieter hinzufügen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/unifi-tutorial/app3.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/unifi-tutorial/app3.png) 
 
     a. Geben Sie im Textfeld **Provider Name** (Anbietername) den Namen des Identitätsanbieters ein.
 
@@ -176,7 +176,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -220,5 +220,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „UNIFI“ klicken, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

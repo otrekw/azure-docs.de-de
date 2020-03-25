@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73939619"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
@@ -51,9 +51,9 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 1. Klicken Sie auf **Recovery Services-Tresore** > „Tresor“.
 2. Klicken Sie im Ressourcenmenü auf **Site Recovery** > **Infrastruktur vorbereiten** > **Schutzziel**.
 3. Wählen Sie in **Schutzziel** aus, was Sie migrieren möchten.
-    - **VMware**: Wählen Sie **To Azure** (Zu Azure) > **Ja, mit VMware vSphere-Hypervisor**.
-    - **Physischer Computer:** Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
-    - **Hyper-V:** Wählen Sie **To Azure** (Zu Azure) > **Ja, mit Hyper-V** aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
+    - **VMware**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with VMWare vSphere Hypervisor** (Ja, mit VMware vSphere Hypervisor) aus.
+    - **Physischer Computer**: Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
+    - **Hyper-V**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with Hyper-V** (Ja, mit Hyper-V) aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
 
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
@@ -115,7 +115,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 
 
 > [!WARNING]
-> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die VM-Replikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs ohne die folgenden Starttreiber kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
 
@@ -158,7 +158,7 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie lokale VMs in Azure-VMs migriert. Now
+In diesem Tutorial haben Sie lokale VMs in Azure-VMs migriert. jetzt
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung](azure-to-azure-replicate-after-migration.md) in einer sekundären Azure-Region für die virtuellen Azure-Computer

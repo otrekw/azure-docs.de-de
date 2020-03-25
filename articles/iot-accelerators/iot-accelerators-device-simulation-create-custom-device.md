@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50756786"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61450547"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Tutorial: Erstellen eines benutzerdefinierten simulierten Geräts
 
@@ -28,13 +28,13 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Klonen eines Gerätemodells
 > * Löschen eines Gerätemodells
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie eine in Ihrem Azure-Abonnement bereitgestellte Instanz der Gerätesimulation.
 
-Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) aus.
+Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md).
 
 ## <a name="open-device-simulation"></a>Öffnen der Gerätesimulation
 
@@ -42,7 +42,7 @@ Um die Gerätesimulation in Ihrem Browser auszuführen, navigieren Sie zunächst
 
 Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
 
-Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) bereitgestellt haben, auf **Starten**.
+Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der **Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure** bereitgestellt haben, auf [Starten](quickstart-device-simulation-deploy.md).
 
 ## <a name="view-your-device-models"></a>Anzeigen Ihrer Gerätemodelle
 
@@ -54,13 +54,13 @@ Wählen Sie auf der Menüleiste die Option **Device models** (Gerätemodelle) au
 
 Klicken Sie rechts oben auf der Seite auf **+ Add Device Models** (+ Gerätemodelle hinzufügen):
 
-![Hinzufügen des Gerätemodells](media/iot-accelerators-device-simulation-create-custom-device/devicemodels.png)
+![Gerätemodell hinzufügen](media/iot-accelerators-device-simulation-create-custom-device/devicemodels.png)
 
 In diesem Tutorial erstellen Sie einen simulierten Kühlschrank, der Temperatur- und Luftfeuchtigkeitsdaten sendet.
 
 Füllen Sie das Formular mit den folgenden Informationen aus:
 
-| Einstellung             | Wert                                                |
+| Einstellung             | value                                                |
 | ------------------- | ---------------------------------------------------- |
 | Device model name (Name des Gerätemodells)   | Refrigerator                                         |
 | Modellbeschreibung   | Einen Kühlschrank mit Temperatur- und Luftfeuchtigkeitssensoren |
@@ -71,7 +71,7 @@ Füllen Sie das Formular mit den folgenden Informationen aus:
 
 Klicken Sie auf **+ Add data point** (+ Datenpunkt hinzufügen), um Datenpunkte für Temperatur und Luftfeuchtigkeit mit folgenden Werten hinzuzufügen:
 
-| Datenpunkt          | Verhalten        | Mindestwert | Höchstwert | Unit |
+| Datenpunkt          | Verhalten        | Mindestwert | Höchstwert | Einheit |
 | ------------------- | --------------- | --------- | --------- | ---- |
 | Temperatur         | Zufällig          | -50       | 100       | F    |
 | Luftfeuchtigkeit            | Zufällig          | 0         | 100       | %    |

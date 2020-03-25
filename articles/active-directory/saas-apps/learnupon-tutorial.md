@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Tutorial: Azure Active Directory-Integration mit LearnUpon
@@ -135,15 +135,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LearnUpo
 
 1. Klicken Sie auf die Registerkarte **Einstellungen** .
 
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. Klicken Sie auf **Einmaliges Anmelden – SAML** und anschließend auf **Allgemeine Einstellungen**, um SAML-Einstellungen zu konfigurieren.
    
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. Führen Sie im Abschnitt **Allgemeine Einstellungen** die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Wählen Sie **Aktiviert**.
 
@@ -163,7 +163,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LearnUpo
 
 1. Klicken Sie auf **Benutzereinstellungen**, und führen Sie die folgenden Schritte aus:
 
-     ![Configure single sign-on](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Einmaliges Anmelden konfigurieren](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. Geben Sie im Textfeld **First Name Identifier Format** (Format der Vornamen-ID) den Wert ein, der angibt, an welcher Stelle in der SAML-Assertion sich der Vorname des Benutzers befindet, etwa `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   
@@ -191,7 +191,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -235,4 +235,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LearnUpon“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

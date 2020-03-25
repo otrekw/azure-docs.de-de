@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093358"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Tutorial: Azure Active Directory-Integration in Questetra BPM Suite
+# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Lernprogramm: Azure Active Directory-Integration in Questetra BPM Suite
 
 In diesem Tutorial erfahren Sie, wie Sie die Questetra BPM Suite in Azure Active Directory (Azure AD) integrieren.
 Die Integration der Questetra BPM Suite in Azure AD bietet die folgenden Vorteile:
@@ -146,7 +146,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Questetr
 
 5. Führen Sie auf der Unternehmenswebsite von **Questetra BPM Suite** die folgenden Schritte aus: 
    
-    ![Configure single sign-on][15]
+    ![Einmaliges Anmelden konfigurieren][15]
    
     a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
    
@@ -184,7 +184,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -246,7 +246,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Questetra BPM Suite“ klicken, so
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 

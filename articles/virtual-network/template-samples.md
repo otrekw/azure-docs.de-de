@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
 ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75975366"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Azure Resource Manager-Vorlagenbeispiele für virtuelle Netzwerke
@@ -29,7 +29,7 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagenbeispielen
 Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Network resource types](/azure/templates/microsoft.network/allversions) (Microsoft.Network-Ressourcentypen).
 
 
-| Aufgabe | Beschreibung |
+| Aufgabe | BESCHREIBUNG |
 |----|----|
 |[Erstellen eines virtuellen Netzwerks mit zwei Subnetzen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)| Erstellt ein virtuelles Netzwerk mit zwei Subnetzen.|
 |[Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](https://github.com/Azure/azure-quickstart-templates/tree/master/201-userdefined-routes-appliance)| Erstellt ein virtuelles Netzwerk mit drei Subnetzen. Stellt in jedem der Subnetze einen virtuellen Computer bereit. Erstellt eine Routingtabelle mit Routen, um Datenverkehr aus einem Subnetz über den virtuellen Computer im dritten Subnetz an ein anderes Subnetz weiterzuleiten. Ordnet die Routingtabelle einem der Subnetze zu.|

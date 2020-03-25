@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ede78933e6b9e6933b0c5dabce395eb10713c88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0506c7fcb4e3734414fdc3b868aca84450ad8d07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278449"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067030"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit der Azure CLI
 
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Tutorial lernen Sie Folgendes:
 
@@ -67,7 +67,7 @@ az monitor autoscale create \
   --count 2
 ```
 
-## <a name="create-a-rule-to-autoscale-out"></a>Erstellen einer Regel zum automatischen horizontalen Hochskalieren
+## <a name="create-a-rule-to-autoscale-out"></a>Erstellen einer Regel zum automatischen Aufskalieren
 
 Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihrer Skalierungsgruppe. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Sie steuern, welche Metriken überwacht werden, z.B. CPU oder Datenträger, wie lange die Anwendungslast einen bestimmten Schwellenwert einhalten muss und wie viele VM-Instanzen der Skalierungsgruppe hinzugefügt werden sollen.
 
@@ -81,11 +81,11 @@ az monitor autoscale rule create \
   --scale out 3
 ```
 
-## <a name="create-a-rule-to-autoscale-in"></a>Erstellen einer Regel zum automatischen horizontalen Herunterskalieren
+## <a name="create-a-rule-to-autoscale-in"></a>Erstellen einer Regel zum automatischen Abskalieren
 
 Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie Regeln zur automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
 
-Erstellen Sie mit [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) eine weitere Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe verringert wird, wenn die durchschnittliche CPU-Last für einen Zeitraum von 5 Minuten unter 30 Prozent liegt. Im folgenden Beispiel wird die Regel zum horizontalen Herunterskalieren der Anzahl von VM-Instanzen um 1 definiert:
+Erstellen Sie mit [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) eine weitere Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe verringert wird, wenn die durchschnittliche CPU-Last für einen Zeitraum von 5 Minuten unter 30 Prozent liegt. Im folgenden Beispiel wird die Regel zum Abskalieren der Anzahl von VM-Instanzen um 1 definiert:
 
 ```azurecli-interactive
 az monitor autoscale rule create \
@@ -97,7 +97,7 @@ az monitor autoscale rule create \
 
 ## <a name="generate-cpu-load-on-scale-set"></a>Generieren einer CPU-Last in einer Skalierungsgruppe
 
-Generieren Sie zum Testen der Regeln für die automatische Skalierung eine CPU-Last auf den VM-Instanzen in der Skalierungsgruppe. Diese simulierte CPU-Last bewirkt über die automatische Skalierung das horizontale Hochskalieren und eine Erhöhung der Anzahl von VM-Instanzen. Wenn die simulierte CPU-Last dann verringert wird, wird über die Regeln für das automatische Skalieren das horizontale Herunterskalieren durchgeführt und die Anzahl von VM-Instanzen reduziert.
+Generieren Sie zum Testen der Regeln für die automatische Skalierung eine CPU-Last auf den VM-Instanzen in der Skalierungsgruppe. Diese simulierte CPU-Last bewirkt über die automatische Skalierung das Aufskalieren und eine Erhöhung der Anzahl von VM-Instanzen. Wenn die simulierte CPU-Last dann verringert wird, wird über die Regeln für das automatische Skalieren das Abskalieren durchgeführt und die Anzahl von VM-Instanzen reduziert.
 
 Listen Sie mit [az vmss list-instance-connection-info](/cli/azure/vmss) zuerst die Adresse und die Ports für die Verbindungsherstellung mit VM-Instanzen in einer Skalierungsgruppe auf:
 
@@ -118,50 +118,50 @@ Die folgende Beispielausgabe enthält den Instanznamen, die öffentliche IP-Adre
 
 Stellen Sie eine SSH-Verbindung mit Ihrer ersten VM-Instanz her. Geben Sie mithilfe des Parameters `-p` Ihre eigene öffentliche IP-Adresse und die Portnummer an, wie im vorherigen Befehl gezeigt:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 Installieren Sie nach dem Anmelden das Hilfsprogramm **stress**. Starten Sie *zehn* Worker vom Typ **stress**, um CPU-Last zu generieren. Diese Worker werden *420* Sekunden lang ausgeführt. Dieser Zeitraum reicht aus, um über die Regeln der automatischen Skalierung die gewünschte Aktion zu implementieren.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wenn für **stress** eine Ausgabe wie *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE*drücken, um zur Eingabeaufforderung zurückzukehren.
+Wenn für **stress** eine Ausgabe der Art *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Um zu bestätigen, dass **stress** CPU-Last generiert, können Sie die aktive Systemauslastung mit dem Hilfsprogramm **top** untersuchen:
 
-```azurecli-interactive
+```console
 top
 ```
 
 Beenden Sie **top**, und schließen Sie dann Ihre Verbindung mit der VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
 
-```azurecli-interactive
+```console
 Ctrl-c
 exit
 ```
 
 Stellen Sie über die Portnummer, die mit dem obigen Befehl [az vmss list-instance-connection-info](/cli/azure/vmss) aufgeführt wurde, eine Verbindung mit der zweiten VM-Instanz her:
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 Installieren Sie **stress**, und führen Sie das Hilfsprogramm aus. Starten Sie auf dieser zweiten VM-Instanz anschließend zehn Worker.
 
-```azurecli-interactive
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Auch hier gilt wieder: Wenn für **stress** eine Ausgabe wie *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie die *EINGABETASTE*drücken, um zur Eingabeaufforderung zurückzukehren.
+Wenn für **stress** eine Ausgabe der Art *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* angezeigt wird, können Sie wieder die *EINGABETASTE* drücken, um zur Eingabeaufforderung zurückzukehren.
 
 Schließen Sie die Verbindung mit der zweiten VM-Instanz. **stress** wird auf der VM-Instanz weiterhin ausgeführt.
 
-```azurecli-interactive
+```console
 exit
 ```
 
@@ -178,7 +178,7 @@ watch az vmss list-instances \
 
 Nachdem der CPU-Schwellenwert erreicht wurde, wird mit den Regeln für die automatische Skalierung die Anzahl von VM-Instanzen in der Skalierungsgruppe erhöht. In der folgenden Ausgabe werden drei VMs angezeigt, die erstellt werden, wenn für die Skalierungsgruppe das automatische horizontale Hochskalieren durchgeführt wird:
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -190,13 +190,13 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-Nachdem die Ausführung von **stress** auf den ersten VM-Instanzen angehalten wurde, sinkt die CPU-Last wieder auf normale Werte. Nach weiteren fünf Minuten wird über die Regeln für die automatische Skalierung dann das horizontale Herunterskalieren für die Anzahl von VM-Instanzen durchgeführt. Bei Aktionen zum horizontalen Herunterskalieren werden die VM-Instanzen mit den höchsten IDs zuerst entfernt. Wenn eine Skalierungsgruppe Verfügbarkeitsgruppen oder Verfügbarkeitszonen verwendet, werden Vorgänge zum horizontalen Herunterskalieren gleichmäßig auf diese VM-Instanzen verteilt. In der folgenden Beispielausgabe ist zu sehen, dass beim automatischen horizontalen Herunterskalieren der Skalierungsgruppe eine VM-Instanz gelöscht wurde:
+Nachdem die Ausführung von **stress** auf den ersten VM-Instanzen angehalten wurde, sinkt die CPU-Last wieder auf normale Werte. Nach weiteren fünf Minuten wird über die Regeln für die automatische Skalierung dann das Abskalieren für die Anzahl von VM-Instanzen durchgeführt. Bei Aktionen zum Abskalieren werden die VM-Instanzen mit den höchsten IDs zuerst entfernt. Wenn eine Skalierungsgruppe Verfügbarkeitsgruppen oder Verfügbarkeitszonen verwendet, werden Vorgänge zum Abskalieren gleichmäßig auf diese VM-Instanzen verteilt. In der folgenden Beispielausgabe ist zu sehen, dass beim automatischen horizontalen Herunterskalieren der Skalierungsgruppe eine VM-Instanz gelöscht wurde:
 
-```bash
+```output
            6  True                  eastus      myScaleSet_6  Deleting             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-Beenden Sie *watch* mit `Ctrl-c`. Für die Skalierungsgruppe wird alle fünf Minuten das horizontale Herunterskalieren durchgeführt und eine VM-Instanz entfernt, bis die Mindestanzahl von zwei Instanzen erreicht ist.
+Beenden Sie *watch* mit `Ctrl-c`. Für die Skalierungsgruppe wird alle fünf Minuten das Abskalieren durchgeführt und eine VM-Instanz entfernt, bis die Mindestanzahl von zwei Instanzen erreicht ist.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -208,7 +208,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie mit der Azure CLI eine Skalierungsgruppe automatisch horizontal herunter- oder hochskalieren:
+In diesem Tutorial wurde beschrieben, wie Sie mit der Azure CLI eine Skalierungsgruppe automatisch ab- oder aufskalieren:
 
 > [!div class="checklist"]
 > * Verwenden der automatischen Skalierung mit einer Skalierungsgruppe

@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072158"
 ---
 # <a name="edit-an-api"></a>Bearbeiten von APIs
@@ -39,7 +39,7 @@ Die Schritte in diesem Tutorial veranschaulichen, wie Sie API Management (APIM) 
 
 1. Klicken Sie auf die Registerkarte **APIs**.
 2. Wählen Sie eine der APIs aus, die Sie zuvor importiert haben.
-3. Wählen Sie die Registerkarte **Entwurf** aus.
+3. Klicken Sie auf die Registerkarte **Entwurf**.
 4. Wählen Sie einen Vorgang aus, den Sie bearbeiten möchten.
 5. Wählen Sie zum Umbenennen des Vorgangs einen **Stift** im Fenster **Front-End** aus.
 

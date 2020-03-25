@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038176"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60899898"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Tutorial: Abfragen von Daten von einem Cassandra-API-Konto in Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Dieser Artikel gehört zu einem mehrteiligen Tutorial. Bevor Sie beginnen, führen Sie die vorherigen Schritte zum Erstellen des Cassandra-API-Kontos, Keyspace oder der Tabelle und zum [Laden von Beispieldaten in die Tabelle](cassandra-api-load-data.md) aus. 
 
-## <a name="query-data"></a>Abfragen von Daten
+## <a name="query-data"></a>Daten abfragen
 
 Führen Sie zum Abfragen von Daten aus Ihrem Cassandra-API-Konto die folgenden Schritte aus:
 
@@ -107,7 +107,7 @@ Führen Sie zum Abfragen von Daten aus Ihrem Cassandra-API-Konto die folgenden S
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe, das Azure Cosmos-Konto und die dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. Wählen Sie dazu die Ressourcengruppe für den virtuellen Computer aus, klicken Sie auf **Löschen**, und bestätigen Sie den Namen der zu löschenden Ressourcengruppe.
+Wenn die Ressourcengruppe, das Azure Cosmos-Konto und die dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie löschen. Wählen Sie dazu die Ressourcengruppe für den virtuellen Computer und anschließend **Löschen** aus, und bestätigen Sie den Namen der zu löschenden Ressourcengruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

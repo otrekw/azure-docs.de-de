@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76271406"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell
@@ -26,7 +26,7 @@ Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch 
 > * Manuelles Skalieren einer Skalierungsgruppe
 > * Ausführen allgemeiner Verwaltungsaufgaben für Skalierungsgruppen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -83,7 +83,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) den Parameter `-InstanceId` hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
+Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie `-InstanceId`Get-AzVmssVM[ den Parameter ](/powershell/module/az.compute/get-azvmssvm) hinzu. Im folgenden Beispiel werden Informationen zur VM-Instanz *1* angezeigt:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -197,7 +197,7 @@ Eine VM-Instanzgröße (oder *SKU*) bestimmt die Menge an Computeressourcen (CPU
 ### <a name="vm-instance-sizes"></a>VM-Instanzgrößen
 In der folgenden Tabelle sind gängige VM-Größen nach Anwendungsfall kategorisiert:
 
-| type                     | Gängige Größen           |    Beschreibung       |
+| type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |

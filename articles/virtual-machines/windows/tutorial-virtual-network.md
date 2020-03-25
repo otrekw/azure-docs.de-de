@@ -16,13 +16,13 @@ ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 67cfb04f67e3454bde25969b634116f2871cbeb5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064746"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79221887"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Windows-Computer mit Azure PowerShell
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerken für virtuelle Windows-Computern mit Azure PowerShell
 
 Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommunikation. Dieses Tutorial enthält ausführliche Informationen zum Bereitstellen von zwei virtuellen Computern sowie zum Konfigurieren von Azure-Netzwerken für diese virtuellen Computer. In den Beispielen in diesem Tutorial wird davon ausgegangen, dass auf den virtuellen Computern eine Webanwendung mit einem Datenbank-Back-End gehostet wird. Eine Anwendung wird im Tutorial jedoch nicht bereitgestellt. In diesem Tutorial lernen Sie Folgendes:
 
@@ -70,7 +70,7 @@ Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie mit [New-AzReso
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Erstellen Sie mit [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) eine Subnetzkonfiguration namens *myFrontendSubnet*:
+Erstellen Sie mit *New-AzVirtualNetworkSubnetConfig* eine Subnetzkonfiguration namens [myFrontendSubnet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -88,7 +88,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-Erstellen Sie mit [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) unter Verwendung von *myFrontendSubnet* und *myBackendSubnet* ein VNET namens *myVNet*:
+Erstellen Sie mit *New-AzVirtualNetwork* unter Verwendung von *myFrontendSubnet* und *myBackendSubnet* ein VNET namens [myVNet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -107,7 +107,7 @@ Dank einer öffentlichen IP-Adresse kann über das Internet auf Azure-Ressourcen
 
 Als Zuordnungsmethode kann die statische Zuordnung festgelegt werden. Dadurch wird sichergestellt, dass die IP-Adresse einem virtuellen Computer zugewiesen bleibt, auch wenn seine Zuordnung aufgehoben ist. Wenn Sie eine statische IP-Adresse verwenden, kann die IP-Adresse selbst nicht angegeben werden. Stattdessen wird sie aus einem Pool verfügbarer Adressen zugeordnet.
 
-Erstellen Sie mithilfe von [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse namens *myPublicIPAddress*:
+Erstellen Sie mithilfe von *New-AzPublicIpAddress* eine öffentliche IP-Adresse namens [myPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -198,7 +198,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Fügen Sie mit [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) die Netzwerksicherheitsgruppe *myFrontendNSG* hinzu:
+Fügen Sie mit *New-AzNetworkSecurityGroup* die Netzwerksicherheitsgruppe [myFrontendNSG](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) hinzu:
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

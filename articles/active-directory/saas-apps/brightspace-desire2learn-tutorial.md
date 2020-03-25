@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Brightspace von Desire2Learn | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Brightspace von Desire2Learn | Microsoft Docs'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Brightspace by Desire2Learn konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6423920f5583cf811624a62205a433febddec02e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158765"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Tutorial: Azure Active Directory-Integration mit Brightspace von Desire2Learn
+# <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Lernprogramm: Azure Active Directory-Integration mit Brightspace von Desire2Learn
 
 In diesem Tutorial erfahren Sie, wie Sie Brightspace by Desire2Learn in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Brightspace by Desire2Learn in Azure AD bietet die folgenden Vorteile:
@@ -159,7 +159,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -206,4 +206,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Brightspace by Desire2Learn“ kli
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit „Sauce Labs - Mobile and Web Testing“ | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in „Sauce Labs - Mobile and Web Testing“ | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und „Sauce Labs - Mobile and Web Testing“ konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091560"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Tutorial: Azure Active Directory-Integration mit „Sauce Labs - Mobile and Web Testing“
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Tutorial: Azure Active Directory-Integration in „Sauce Labs - Mobile and Web Testing“
 
 In diesem Tutorial erfahren Sie, wie Sie „Sauce Labs - Mobile and Web Testing“ in Azure Active Directory (Azure AD) integrieren.
 Die Integration von „Sauce Labs - Mobile and Web Testing“ in Azure AD bietet die folgenden Vorteile:
@@ -126,19 +126,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei „Sauce
 
 2. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Team Management** (Teamverwaltung) aus.
 
-    ![Configure single sign-on](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. Geben Sie in das Textfeld Ihren **Domänennamen** ein.
 
-    ![Configure single sign-on](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. Klicken Sie auf die Registerkarte **Configure** (Konfigurieren).
 
-    ![Configure single sign-on](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. Führen Sie im Abschnitt **Configure Single Sign On** (Einmaliges Anmelden konfigurieren) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/saucelabs-mobileandwebtesting-tutorial/configure4.png)
 
     a. Klicken Sie auf **Browse** (Durchsuchen), und laden Sie die aus Azure AD heruntergeladene Metadatendatei hoch.
 
@@ -169,7 +169,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -216,5 +216,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel für „Sauce Labs - Mobile and Web T
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, DevOps, App Service, CLI
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158817"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Bereitstellen an Azure App Service mit Jenkins und der Azure CLI
@@ -52,7 +52,7 @@ Eine Azure-Anmeldeinformation ist erforderlich, um die Azure CLI auszuführen.
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Erstellen eines Azure App Service für die Bereitstellung der Java-Web-App
 
-Erstellen Sie mit dem CLI-Befehl [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
+Erstellen Sie mit dem CLI-Befehl **az appservice plan create** einen Azure App Service-Plan mit dem Tarif [FREE](/cli/azure/appservice/plan#az-appservice-plan-create). Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -212,7 +212,7 @@ Web-App unter Linux unterstützt eine andere Möglichkeit der Bereitstellung, un
     Gehen Sie zu http://&lt;App_Name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (ersetzen Sie &lt;x> und &lt;y> durch beliebige Zahlen), um die Summe aus x und y zu erhalten.
     
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine Jenkins-Pipeline konfiguriert, die den Quellcode in einem GitHub-Repository auscheckt. Maven zum Erstellen einer WAR-Datei ausführt und dann die Azure CLI für die Bereitstellung an Azure App Service nutzt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Jenkins-Pipeline konfiguriert, die den Quellcode in einem GitHub-Repository auscheckt. Maven zum Erstellen einer WAR-Datei ausführt und dann die Azure CLI für die Bereitstellung an Azure App Service nutzt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * eine Jenkins-VM erstellen können

@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 74a72df9d8c0bc8a578fea57ab81fb496f8e6add
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420356"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
@@ -236,7 +236,7 @@ $job | Add-AzSqlElasticJobStep -Name "step1" -TargetGroupName $serverGroup.Targe
 $job | Add-AzSqlElasticJobStep -Name "step2" -TargetGroupName $serverGroupExcludingDb2.TargetGroupName -CredentialName $jobCred.CredentialName -CommandText $sqlText2
 ```
 
-### <a name="run-the-job"></a>Ausführen des Auftrags
+### <a name="run-the-job"></a>Ausführung des Auftrags.
 
 Verwenden Sie den folgenden Befehl, um den Auftrag sofort zu starten:
 

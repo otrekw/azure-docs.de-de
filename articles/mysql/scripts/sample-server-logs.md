@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: a574d7c36ce1d701504ea1d202eeafca542ad946
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771254"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Aktivieren und Herunterladen der Serverprotokolle zu langsamen Abfragen von einem Azure Database for MySQL-Server mithilfe der Azure-Befehlszeilenschnittstelle
@@ -44,5 +44,5 @@ In diesem Skript werden die Befehle verwendet, die in der folgenden Tabelle aufg
 | [az group delete](/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure)
+- Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure).
 - Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure-Datenbank für MySQL](../sample-scripts-azure-cli.md)

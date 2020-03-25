@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78195327"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-Protokollierung
@@ -46,7 +46,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Azure PowerShell, Mindestversion 1.0.0. Um Azure PowerShell zu installieren und Ihrem Azure-Abonnement zuzuordnen, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Wenn Sie Azure PowerShell bereits installiert haben und die Version nicht kennen, geben Sie über die Azure PowerShell-Konsole `$PSVersionTable.PSVersion` ein.  
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
-## <a id="connect"></a>Verbinden mit Ihrem Key Vault-Abonnement
+## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Verbinden mit Ihrem Key Vault-Abonnement
 
 Der erste Schritt bei der Einrichtung der Schlüsselprotokollierung besteht darin, Azure PowerShell auf den Schlüsseltresor zu verweisen, den Sie protokollieren möchten.
 
@@ -72,7 +72,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 PowerShell auf das richtige Abonnement zu verweisen, ist ein wichtiger Schritt, insbesondere wenn mehrere Abonnements mit Ihrem Konto verknüpft sind. Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-## <a id="storage"></a>Erstellen eines Speicherkontos für Ihre Protokolle
+## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Erstellen eines Speicherkontos für Ihre Protokolle
 
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, aber wir erstellen ein Speicherkonto, das den Key Vault-Protokollen zugeordnet wird. Wir speichern die Details in einer Variablen mit dem Namen **sa**, damit wir sie später leicht angeben können.
 
@@ -87,7 +87,7 @@ Um die Verwaltung noch weiter zu vereinfachen, verwenden wir auch die gleiche Re
 >
 >
 
-## <a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle
+## <a name="identify-the-key-vault-for-your-logs"></a><a id="identify"></a>Identifizieren des Schlüsseltresors für Ihre Protokolle
 
 Im [Tutorial zu den ersten Schritten](key-vault-get-started.md) lautete der Name des Schlüsseltresors **ContosoKeyVault**. Wir werden diesen Namen weiterhin verwenden und die Details in einer Variablen namens **kv** speichern:
 
@@ -95,7 +95,7 @@ Im [Tutorial zu den ersten Schritten](key-vault-get-started.md) lautete der Name
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a id="enable"></a>Aktivieren der Protokollierung
+## <a name="enable-logging"></a><a id="enable"></a>Aktivieren der Protokollierung
 
 Zum Aktivieren der Protokollierung für den Schlüsseltresor verwenden wir das Cmdlet **Set-AzDiagnosticSetting** zusammen mit den Variable, die wir für das neue Speicherkonto und den Schlüsseltresor erstellt haben. Außerdem legen wir das Flag **-Enabled** auf **$true** und die Kategorie auf **AuditEvent** (einzige Kategorie für die Key Vault-Protokollierung) fest:
 
@@ -132,7 +132,7 @@ Protokollierte Daten:
   * Signieren, Verifizieren, Verschlüsseln, Entschlüsseln, Ver- und Entpacken von Schlüsseln, Erhalten von Geheimnissen und Auflisten von Schlüsseln und Geheimnissen (und deren Versionen).
 * Bei nicht authentifizierten Anforderungen wird eine 401-Antwort zurückgegeben. Beispiele sind Anforderungen ohne Bearertoken, falsch formatierte oder abgelaufene Anforderungen oder Anforderungen, deren Token ungültig ist.  
 
-## <a id="access"></a>Zugreifen auf Ihre Protokolle
+## <a name="access-your-logs"></a><a id="access"></a>Zugreifen auf Ihre Protokolle
 
 Key Vault-Protokolle werden im Container **insights-logs-auditevent** im von Ihnen angegebenen Speicherkonto gespeichert. Zur Anzeige der Protokolle müssen Sie Blobs herunterladen.
 
@@ -214,7 +214,7 @@ Sie können sich nun ansehen, was in den Protokollen enthalten ist. Aber bevor w
 * Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Schlüsseltresorressource: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Zum Deaktivieren der Protokollierung für Ihre Schlüsseltresorressource: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
-## <a id="interpret"></a>Interpretieren der Key Vault-Protokolle
+## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Interpretieren der Key Vault-Protokolle
 
 Einzelne Blobs werden als Text und formatiert als JSON-Blob gespeichert. Schauen wir uns einen Beispielprotokolleintrag an. Führen Sie den folgenden Befehl aus:
 
@@ -303,13 +303,13 @@ Die folgende Tabelle enthält die **operationName**-Werte und die entsprechenden
 | **SecretList** |[Auflisten von Geheimnissen in einem Tresor](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Auflisten von Versionen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>Verwenden von Azure Monitor-Protokollen
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Verwenden von Azure Monitor-Protokollen
 
 Sie können die Key Vault-Lösung in Azure Monitor verwenden, um **AuditEvent**-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten. 
 
 Weitere Informationen, z. B. zur Einrichtung, finden Sie unter [Azure Key Vault-Lösung in Azure Monitor-Protokollen](../azure-monitor/insights/azure-key-vault.md). Dieser Artikel enthält auch eine Anleitung für die Migration von der alten Key Vault-Lösung, die während der Vorschauphase von Azure Monitor-Protokollen bereitgestellt wurde. Damit haben Sie Ihre Protokolle zuerst an ein Azure Storage-Konto weitergeleitet und Azure Monitor-Protokolle für das Lesen von diesem Konto konfiguriert.
 
-## <a id="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a id="next"></a>Nächste Schritte
 
 Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67178758"
 ---
 Führen Sie diese Schritte aus, um eine Verbindung mit dem Speicherkonto herzustellen und die Verbindung zu überprüfen.
@@ -17,11 +17,11 @@ Führen Sie diese Schritte aus, um eine Verbindung mit dem Speicherkonto herzust
 
     ![Data Box-Dashboard](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. Fügen Sie Ihren **Kontonamen** und **Kontoschlüssel** (Wert von Schlüssel 1 auf der Seite **Verbindung herstellen und Daten kopieren** der lokalen Webbenutzeroberfläche) ein. Wählen Sie für die Domäne der Speicherendpunkte die Option **Other (enter below)** (Andere (unten eingeben)), und geben Sie anschließend wie unten gezeigt den Blob-Dienstendpunkt an. Aktivieren Sie die Option **HTTP verwenden** nur, wenn die Übertragung per *http* erfolgt. Lassen Sie diese Option bei Verwendung von *https* deaktiviert. Klicken Sie auf **Weiter**.
+2. Fügen Sie Ihren **Kontonamen** und **Kontoschlüssel** (Wert von Schlüssel 1 auf der Seite **Verbindung herstellen und Daten kopieren** der lokalen Webbenutzeroberfläche) ein. Wählen Sie für die Domäne der Speicherendpunkte die Option **Other (enter below)** (Andere (unten eingeben)), und geben Sie anschließend wie unten gezeigt den Blob-Dienstendpunkt an. Aktivieren Sie die Option **HTTP verwenden** nur, wenn die Übertragung per *http* erfolgt. Lassen Sie diese Option bei Verwendung von *https* deaktiviert. Wählen Sie **Weiter** aus.
 
     ![Data Box-Dashboard](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. Überprüfen Sie im Dialogfeld **Verbindungszusammenfassung** die angegebenen Informationen. Wählen Sie **Verbinden**aus.
+3. Überprüfen Sie im Dialogfeld **Verbindungszusammenfassung** die angegebenen Informationen. Wählen Sie **Verbinden**.
 
     ![Data Box-Dashboard](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 

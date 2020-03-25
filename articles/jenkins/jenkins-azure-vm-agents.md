@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, DevOps, virtueller Computer, Agents
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158532"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
@@ -103,8 +103,8 @@ Konfigurieren Sie eine Vorlage zum Definieren eines Azure-VM-Agents. Diese Vorla
 1. Geben Sie `defaulttemplate` als **Name** ein.
 1. Geben Sie `ubuntu` als **Label** ein.
 1. Wählen Sie im Kombinationsfeld die gewünschte [Azure-Region](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aus.
-1. Wählen Sie aus der Dropdownliste unter **Virtual Machine Size** eine [VM-Größe](/azure/virtual-machines/linux/sizes) aus. Für dieses Tutorial ist eine `Standard_DS1_v2`-Größe für allgemeine Zwecke ausreichend.   
-1. Behalten Sie den Wert `60` unter **Retention time** bei. Diese Einstellung legt die Anzahl der Minuten fest, die Jenkins warten kann, bevor die Zuordnung von Agents im Leerlauf aufgehoben wird. Geben Sie 0 an, wenn Sie nicht möchten, dass Agents im Leerlauf automatisch entfernt werden.
+1. Wählen Sie aus der Dropdownliste unter [Virtual Machine Size](/azure/virtual-machines/linux/sizes) eine **VM-Größe** aus. Für dieses Tutorial ist eine `Standard_DS1_v2`-Größe für allgemeine Zwecke ausreichend.   
+1. Behalten Sie den Wert **unter**Retention time`60` bei. Diese Einstellung legt die Anzahl der Minuten fest, die Jenkins warten kann, bevor die Zuordnung von Agents im Leerlauf aufgehoben wird. Geben Sie 0 an, wenn Sie nicht möchten, dass Agents im Leerlauf automatisch entfernt werden.
 
    ![Allgemeine VM-Konfiguration](./media/jenkins-azure-vm-agents/general-config.png)
 

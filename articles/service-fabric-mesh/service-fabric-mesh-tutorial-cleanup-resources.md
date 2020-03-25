@@ -7,13 +7,13 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351873"
 ---
-# <a name="tutorial-remove-azure-resources"></a>Tutorial: Azure-Ressourcen entfernen
+# <a name="tutorial-remove-azure-resources"></a>Tutorial: Entfernen von Azure-Ressourcen
 
 Dieses Tutorial ist der fünfte Teil einer Serie. Hier wird gezeigt, wie Sie die App und ihre Ressourcen löschen, damit sie Ihnen nicht in Rechnung gestellt werden.
 

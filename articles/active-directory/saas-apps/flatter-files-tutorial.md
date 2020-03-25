@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Flatter Files | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Flatter Files | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Flatter Files konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 13012474e34af80c84b034703a3b34f0208036bc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Tutorial: Azure Active Directory-Integration mit Flatter Files
@@ -125,11 +125,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Flatter�
 
 2. Klicken Sie auf **DASHBOARD**. 
    
-    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. Klicken Sie auf **Settings** (Einstellungen), und führen Sie auf der Registerkarte **Company** (Unternehmen) die folgenden Schritte aus: 
    
-    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. Wählen Sie **Use SAML 2.0 for Authentication**aus.
     
@@ -137,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Flatter�
 
 4. Führen Sie im Dialogfeld **SAML Configuration** die folgenden Schritte aus: 
    
-    ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
     a. Geben Sie in das Textfeld für die **Domäne** die registrierte Domäne ein.
    
@@ -173,7 +173,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -225,7 +225,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
    
     c. Geben Sie im Textfeld **Email Address** die E-Mail-Adresse von Britta Simon aus dem Azure-Portal ein.
    
-    d. Klicken Sie auf **Submit**.   
+    d. Klicken Sie auf **Submit**(Senden).   
 
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
@@ -240,5 +240,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Flatter Files“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

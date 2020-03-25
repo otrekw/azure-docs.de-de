@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit JIRA SAML SSO by Microsoft (V5.2) | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in JIRA SAML SSO by Microsoft (V5.2) | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und JIRA SAML SSO by Microsoft (Version 5.2) konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099515"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Tutorial: Azure Active Directory-Integration mit JIRA SAML SSO by Microsoft (V5.2)
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Tutorial: Azure Active Directory-Integration in JIRA SAML SSO by Microsoft (V5.2)
 
 In diesem Tutorial erfahren Sie, wie Sie JIRA SAML SSO by Microsoft (Version 5.2) in Azure Active Directory (Azure AD) integrieren.
 Die Integration von JIRA SAML SSO by Microsoft (Version 5.2) in Azure AD bietet die folgenden Vorteile:
@@ -53,16 +53,16 @@ Um die Azure AD-Integration in JIRA SAML SSO by Microsoft (Version 5.2) konfigur
 - Erstellter Testbenutzer in der JIRA-Serveranwendung
 
 > [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung mit JIRA zu verwenden. Testen Sie die Integration als Erstes in der Entwicklungs- oder Stagingumgebung der Anwendung, und verwenden Sie erst danach die Produktionsumgebung.
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung mit JIRA zu verwenden. Testen Sie die Integration zuerst in der Entwicklungs- oder Stagingumgebung der Anwendung, und verwenden Sie erst danach die Produktionsumgebung.
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie über keine Azure AD-Testumgebung verfügen, können Sie hier eine einmonatige Testversion anfordern: [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie hier eine einmonatige Testversion anfordern: [Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="supported-versions-of-jira"></a>Unterstützte JIRA-Versionen
 
-* JIRA Core und Software: 5,2
+* JIRA Core und Software: 5.2
 * JIRA unterstützt auch 6.0 bis 7.12. Weitere Informationen finden Sie unter [JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md).
 
 > [!NOTE]
@@ -151,23 +151,23 @@ Führen Sie z um Konfigurieren des einmaligen Anmeldens von Azure AD mit JIRA SA
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon1.png)
 
 3. Klicken Sie im Registerkartenabschnitt „Add-Ons“ auf **Add-Ons verwalten**.
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon7.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon7.png)
 
 4. Laden Sie das Plug-In aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56521) herunter. Laden Sie das von Microsoft bereitgestellte Plug-In manuell mithilfe des Menüs **Add-On hochladen** hoch. Das Herunterladen von Plug-Ins wird unter [Microsoft-Servicevertrag](https://www.microsoft.com/servicesagreement/) beschrieben.
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon12.png)
 
 5. Sobald das Plug-In installiert ist, wird es im Abschnitt **User-installed add-ons** (Vom Benutzer installierte Add-Ons) angezeigt. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon13.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon13.png)
 
 6. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/jira52microsoft-tutorial/addon52.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
@@ -218,7 +218,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -292,4 +292,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „JIRA SAML SSO by Microsoft (V5.2)�
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

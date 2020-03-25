@@ -4,12 +4,12 @@ ms.service: jenkins
 ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
-ms.openlocfilehash: 2468dc72881755a2990e8ddf8112d7fe27f64f4d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274449"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79200246"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,11 +63,11 @@ Aktivieren Sie auf der Registerkarte **Source Code Management** (Quellcodeverwal
 
 ![Definieren des Git-Repositorys](./media/jenkins-install-solution-template-steps/jenkins-job-git-configuration.png) 
 
-Wählen Sie auf der Registerkarte **Build** die Option **Add build step** (Buildschritt hinzufügen) und anschließend **Invoke Gradle script** (Gradle-Skript aufrufen) aus. Wählen Sie **Use Gradle Wrapper** (Gradle-Wrapper verwenden) aus, und geben Sie dann im Feld **Wrapper location** (Wrapperspeicherort) die Zeichenfolge `complete` und im Feld **Tasks** (Aufgaben) die Zeichenfolge `build` ein.
+Wählen Sie auf der Registerkarte **Build** die Option **Add build step** (Buildschritt hinzufügen) und anschließend **Invoke Gradle script** (Gradle-Skript aufrufen) aus. Wählen Sie **Use Gradle Wrapper** (Gradle-Wrapper verwenden) aus, und geben Sie dann im Feld `complete`Wrapper location **(Wrapperspeicherort) die Zeichenfolge** und im Feld `build`Tasks **(Aufgaben) die Zeichenfolge** ein.
 
 ![Verwenden des Gradle-Wrappers für die Erstellung](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-Wählen Sie **Erweitert** aus, und geben Sie dann im Feld **Root Build script** (Stammerstellungsskript) die Zeichenfolge `complete` ein. Wählen Sie **Speichern** aus.
+Wählen Sie **Erweitert** aus, und geben Sie dann im Feld `complete`Root Build script **(Stammerstellungsskript) die Zeichenfolge** ein. Wählen Sie **Speichern** aus.
 
 ![Festlegen erweiterter Einstellungen im Buildschritt des Gradle-Wrappers](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 
@@ -86,4 +86,4 @@ Wenn bei der Jenkins-Lösungsvorlage Fehler auftreten, melden Sie das Problem im
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwenden Sie Azure-VM-Agents für die Continuous Integration mit Jenkins.](/azure/jenkins-azure-vm-agents)
+> [Verwenden Sie Azure-VM-Agents für die Continuous Integration mit Jenkins.](/azure/jenkins/jenkins-azure-vm-agents)

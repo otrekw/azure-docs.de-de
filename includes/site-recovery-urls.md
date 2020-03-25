@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: raynew
 ms.openlocfilehash: f4cd9cad3813378fcdc3f06e8ab1c28eced4f93c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67178616"
 ---
-NAME | Kommerzielle URL | Behördliche URL | BESCHREIBUNG
+Name | Kommerzielle URL | Behördliche URL | BESCHREIBUNG
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Wird für die Übertragung und Koordinierung von Replikationsdaten verwendet.

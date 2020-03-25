@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278259"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
@@ -26,7 +26,7 @@ Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems
 > * Datenträgerleistung
 > * Anfügen und Vorbereiten von Datenträgern
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -235,7 +235,7 @@ PartitionNumber  DriveLetter  Offset   Size   Type
 1                H            1048576  128 GB  IFS
 ```
 
-Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe zentral hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
+Die Datenträger auf den einzelnen VM-Instanzen in Ihrer Skalierung werden auf die gleiche Weise automatisch vorbereitet. Wenn Ihre Skalierungsgruppe hochskaliert wird, werden die erforderlichen Datenträger an die neuen VM-Instanzen angefügt. Die benutzerdefinierte Skripterweiterung wird ebenfalls automatisch ausgeführt, um die Datenträger vorzubereiten.
 
 Schließen Sie die Remotedesktopverbindung mit der VM-Instanz.
 

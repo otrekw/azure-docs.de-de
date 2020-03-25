@@ -8,10 +8,10 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402814"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(VERALTET) Tutorial für Azure Container Service: Verwalten von DC/OS
@@ -30,7 +30,7 @@ DC/OS stellt eine verteilte Plattform zum Ausführen moderner Containeranwendung
 > * Grundlegende DC/OS-Verwaltung
 > * Löschen des DC/OS-Clusters
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 ## <a name="create-dcos-cluster"></a>Erstellen eines DC/OS-Clusters
 

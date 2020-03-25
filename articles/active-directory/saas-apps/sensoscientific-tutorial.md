@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory integration with SensoScientific Wireless Temperature Monitoring System | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit SensoScientific Wireless Temperature Monitoring System | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SensoScientific Wireless Temperature Monitoring System konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea2f5e33859852388357526052c39fa432471efb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Tutorial: Azure Active Directory-Integration mit SensoScientific Wireless Temperature Monitoring System
@@ -126,7 +126,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SensoSci
 
 1. Klicken Sie im Navigationsmenü oben auf **Configuration** (Konfiguration), und wechseln Sie unter **Single Sign On** (Einmaliges Anmelden) zu **Configure** (Konfigurieren), um die Seite „Single Sign On Settings“ (Einstellungen für einmaliges Anmelden) zu öffnen. Führen Sie folgende Schritte aus:
 
-    ![Configure single sign-on](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
     a. Wählen Sie als **Issuer Name** die Option „Azure AD“ aus.
 
@@ -162,7 +162,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -206,5 +206,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SensoScientific Wireless Temperatu
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

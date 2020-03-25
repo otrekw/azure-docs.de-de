@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Origami | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Origami | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Origami konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fd347f4eb5f77dacc3c9fd61d0e885e9b3ee7959
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Tutorial: Azure Active Directory-Integration mit Origami
@@ -128,13 +128,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Origami 
 
 1. Melden Sie sich mit Administratorrechten beim Origami-Konto an.
 
-2. Klicken Sie oben im Menü auf **Admin**.
+2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Führen Sie auf der Dialogfeldseite „Single Sign On Setup“ die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_531.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_531.png)
 
     a. Wählen Sie **Enable Single Sign On**aus.
 
@@ -169,7 +169,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -203,21 +203,21 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
 1. Melden Sie sich mit Administratorrechten beim Origami-Konto an.
 
-2. Klicken Sie oben im Menü auf **Admin**.
+2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_51.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_51.png)
 
 3. Klicken Sie im Dialogfeld **Users and Security** (Benutzer und Sicherheit) auf **Users** (Benutzer).
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_54.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_54.png)
 
 4. Klicken Sie auf **Add New User**.
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_55.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_55.png)
 
 5. Führen Sie im Dialogfeld „Add New User“ folgende Schritte aus:
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_56.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_56.png)
 
     a. Geben Sie im Textfeld **Username** (Benutzername) die E-Mail-Adresse des Benutzers ein, z. B. **BrittaSimon\@contoso.com**.
 
@@ -229,13 +229,13 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
     e. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers ein (beispielsweise **Simon**).
 
-    f. Klicken Sie auf **Save**.
+    f. Klicken Sie auf **Speichern**.
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_57.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_57.png)
 
 6. Weisen Sie dem Benutzer unter **User Roles** (Benutzerrollen) entsprechende Benutzerrollen und unter **Client Access** (Clientzugriff) einen Benutzerzugriff zu. 
    
-    ![Configure single sign-on](./media/origami-tutorial/tutorial_origami_58.png)
+    ![Einmaliges Anmelden konfigurieren](./media/origami-tutorial/tutorial_origami_58.png)
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -249,5 +249,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Origami“ klicken, sollten Sie au
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74559187"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
-Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Lernprogramm lernen Sie Folgendes:
+# <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsincidents
+Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Selektieren von Sicherheitswarnungen

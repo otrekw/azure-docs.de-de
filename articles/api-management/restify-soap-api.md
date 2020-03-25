@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108104"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Importieren einer SOAP-API und Konvertieren dieser in REST
@@ -32,11 +32,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
 1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
 2. Wählen Sie **WSDL** in der Liste **Neue API hinzufügen** aus.
@@ -49,7 +49,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 
 5. Drücken Sie auf die Registerkarte.
 
-    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: Anzeigename, Name, Beschreibung.
+    Die folgenden Felder werden mit den Informationen aus der SOAP-API aufgefüllt: „Anzeigename“, „Name“, „Beschreibung“.
 6. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.
 9. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt „*Unlimited*“ verwendet.  Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.
 

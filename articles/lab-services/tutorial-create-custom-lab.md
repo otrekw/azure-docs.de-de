@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759532"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224127"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -31,7 +31,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Hinzufügen virtueller Computer (VMs) zum Lab
 > * Hinzufügen eines Benutzers zur Rolle „Lab-Benutzer“
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-lab"></a>Erstellen eines Labs
 Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab in Azure DevTest Labs erstellen. 
@@ -61,7 +61,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 1. Klicken Sie auf der Seite **DevTest Lab** auf der Symbolleiste auf **+ Hinzufügen**. 
 
     ![Schaltfläche „Hinzufügen“](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Suchen Sie auf der Seite **Basis auswählen** nach einem Stichwort (Beispiel: Windows, Ubuntu), und wählen Sie in der Liste eines der Basisimages aus. 
+1. Suchen Sie auf der Seite **Basis wählen** mit einem Stichwort (z.B. Windows, Ubuntu), und wählen Sie in der Liste eines der Basisimages aus. 
 1. Gehen Sie auf der Seite **Virtueller Computer** wie folgt vor: 
     1. Geben Sie in **Name des virtuellen Computers** einen Namen für den virtuellen Computer ein. 
     2. Geben Sie für **Benutzername** den Namen des Benutzers ein, der Zugriff auf den virtuellen Computer hat. 

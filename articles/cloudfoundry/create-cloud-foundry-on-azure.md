@@ -15,10 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
 ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161779"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Erstellen eines Pivotal Cloud Foundry-Clusters in Azure
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 >
 > Zum Erstellen eines Dienstprinzipals ist die Berechtigung „Kontobesitzer“ erforderlich. Sie können auch ein Skript schreiben, um die Erstellung des Dienstprinzipals zu automatisieren. Sie können beispielsweise den Azure CLI-Befehl [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) verwenden.
 
-1. Melden Sie sich beim Azure-Konto an.
+1. Melden Sie sich bei Ihrem Azure-Konto an.
 
     `az login`
 

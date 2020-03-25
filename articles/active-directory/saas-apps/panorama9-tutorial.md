@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Panorama9 | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Panorama9 | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Panorama9 konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: c88088b804f90769512d33a5e96fdedc5ce6fba8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
@@ -136,11 +136,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Panorama
 
 2. Klicken Sie in der Symbolleiste oben auf **Verwalten** und dann auf **Erweiterungen**.
    
-    ![Erweiterungen](./media/panorama9-tutorial/ic790023.png "Erweiterungen")
+    ![Extensions (Erweiterungen)](./media/panorama9-tutorial/ic790023.png "Erweiterungen")
 
 3. Klicken Sie im Dialogfeld **Erweiterungen** auf **Einmaliges Anmelden**.
    
-    ![Einmaliges Anmelden](./media/panorama9-tutorial/ic790024.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/panorama9-tutorial/ic790024.png "Single Sign-On")
 
 4. Führen Sie im Abschnitt **Einstellungen** die folgenden Schritte aus:
    
@@ -174,7 +174,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -239,5 +239,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Panorama9“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

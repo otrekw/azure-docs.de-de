@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
 ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76770721"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222047"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68857386"
 ---
 ## <a name="install-wordpress"></a>Installieren von WordPress
@@ -85,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Jetzt können Sie das WordPress-Setup abschließen und auf der Plattform veröffentlichen. Öffnen Sie einen Browser, und navigieren Sie zu `http://yourPublicIPAddress/wordpress`. Ersetzen Sie die öffentliche IP-Adresse Ihres virtuellen Computers. Die Seite sollte ähnlich wie diese Abbildung aussehen.
+Jetzt können Sie das WordPress-Setup abschließen und auf der Plattform veröffentlichen. Öffnen Sie einen Browser, und wechseln Sie zu `http://yourPublicIPAddress/wordpress`. Ersetzen Sie die öffentliche IP-Adresse Ihres virtuellen Computers. Die Seite sollte ähnlich wie diese Abbildung aussehen.
 
 ![WordPress-Installationsseite](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

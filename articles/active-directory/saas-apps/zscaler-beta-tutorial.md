@@ -17,10 +17,10 @@ ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Tutorial: Azure Active Directory-Integration in Zscaler Beta
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 6. Die Zscaler Beta-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
     
-    | NAME | Quellattribut | 
+    | Name | Quellattribut | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 
@@ -171,7 +171,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
    
     ![Verwaltung](./media/zscaler-beta-tutorial/ic800206.png "Verwaltung")
 
-    a. Wählen Sie unter **Authentication Type** (Authentifizierungstyp) die Option **SAML** aus.
+    a. Wählen Sie unter **Authentifizierungstyp** die Option **SAML** aus.
 
     b. Wählen Sie **Configure SAML** (SAML konfigurieren) aus.
 
@@ -252,7 +252,7 @@ Erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
 
     a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: `brittasimon@yourcompanydomain.extension`. Ein Beispiel ist BrittaSimon@contoso.com.
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: `brittasimon@yourcompanydomain.extension`. z. B. BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 

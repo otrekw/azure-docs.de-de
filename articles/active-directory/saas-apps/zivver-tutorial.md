@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Tutorial: Azure Active Directory-Integration mit ZIVVER
@@ -113,7 +113,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ZIVVER d
 
 6. Darüber hinaus wird von der ZIVVER-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    | NAME | Namespace | Quellattribut|
+    | Name | Namespace | Quellattribut|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
@@ -188,7 +188,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -232,5 +232,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ZIVVER“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75895399"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -33,7 +33,7 @@ ms.locfileid: "75895399"
    [![Bereitstellung der Ressource erstellen und bestätigen](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. Geben Sie im Bereich **Digital Twins** die folgenden Informationen ein:
-   * **Ressourcenname:** Erstellen Sie einen eindeutigen Namen für Ihre Digital Twins-Instanz.
+   * **Ressourcenname**: Erstellen Sie einen eindeutigen Namen für Ihre Digital Twins-Instanz.
    * **Abonnement**: Wählen Sie das Abonnement aus, das Sie zum Erstellen dieser Digital Twins-Instanz verwenden möchten. 
    * **Ressourcengruppe**: Hier können Sie eine [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) für die Digital Twins-Instanz auswählen oder erstellen.
    * **Standort**: Wählen Sie den Standort aus, der Ihren Geräten am nächsten ist.

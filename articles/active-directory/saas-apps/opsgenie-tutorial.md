@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von OpsGenie | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit OpsGenie | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und OpsGenie konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095753"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Tutorial: Azure Active Directory-Integration von OpsGenie
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Tutorial: Azure Active Directory-Integration mit OpsGenie
 
 In diesem Tutorial erfahren Sie, wie Sie OpsGenie in Azure Active Directory (Azure AD) integrieren.
 Die Integration von OpsGenie in Azure AD bietet die folgenden Vorteile:
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens B. Simon
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -221,7 +221,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens B. Simon in 
     c. Klicken Sie auf **Speichern**. 
 
 >[!NOTE]
->B: Daraufhin erhält B. Simon eine E-Mail mit Anweisungen zum Einrichten ihres Profils.
+>B. Daraufhin erhält B. Simon eine E-Mail mit Anweisungen zum Einrichten ihres Profils.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -235,5 +235,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OpsGenie“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

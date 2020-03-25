@@ -8,10 +8,10 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273376"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(VERALTET) Vornehmen eines Lastausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in ei
 
 Sie benötigen einen ACS DC/OS-Cluster, um die Schritte in diesem Tutorial auszuführen. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Der **Marathon Load Balancer (marathon-lb)** leitet eingehende Anforderungen an 
 
 Marathon Load Balancer konfiguriert sich basierend auf den von Ihnen bereitgestellten Containern selbst dynamisch neu. Außerdem kann er den Verlust eines Containers oder Agents überstehen. Wenn dies passiert, wird der Container von Apache Mesos an einem anderen Ort neu gestartet, an den sich marathon-lb anpasst.
 
-Navigieren Sie zu [https://shell.azure.com](https://shell.azure.com), um Cloud Shell in Ihrem Browser zu öffnen.
+Wechseln Sie zu [https://shell.azure.com](https://shell.azure.com), um Cloud Shell in Ihrem Browser zu öffnen.
 
 Führen Sie den folgenden Befehl aus, um den Marathon Load Balancer für den Cluster des öffentlichen Agents zu installieren.
 

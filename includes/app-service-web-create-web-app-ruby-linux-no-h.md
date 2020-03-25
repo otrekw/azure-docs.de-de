@@ -1,6 +1,6 @@
 ---
 title: include file
-description: Includedatei
+description: include file
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -9,10 +9,10 @@ ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: b864e5374dcb0bab321109e7b12ee8946adf0c05
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67849506"
 ---
 Erstellen Sie eine [Web-App](../articles/app-service/containers/app-service-linux-intro.md) im App Service-Plan `myAppServicePlan`. 

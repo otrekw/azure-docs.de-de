@@ -10,10 +10,10 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69614114"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Erstellen einer MongoDB-App mit React und Azure Cosmos DB  

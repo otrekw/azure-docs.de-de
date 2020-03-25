@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects'
+title: 'Tutorial: Bereitstellen einer ASP.NET-App mit Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects'
 description: DevOps Projects erleichtert die ersten Schritte mit Azure. Mit DevOps Projects können Sie Ihre ASP.NET-App sowie Azure SQL-Datenbank-Code in wenigen Schritten bereitstellen.
 ms.author: mlearned
 ms.manager: gwallace
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971505"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App und von Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App mit Azure SQL-Datenbank-Code mithilfe von Azure DevOps Projects
 
 Azure DevOps Projects bietet eine vereinfachte Umgebung, in der Sie Ihren vorhandenen Code und Ihr Git-Repository verwenden oder eine Beispielanwendung auswählen können, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen. 
 
@@ -39,7 +39,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
+* ein Azure-Abonnement Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
 ## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Erstellen eines Projekts in DevOps Projects für eine ASP.NET-App und Azure SQL-Datenbank
 
@@ -60,7 +60,7 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie k�
 1. Wählen Sie **Datenbank hinzufügen** und anschließend **Weiter** aus.  
     Das Anwendungsframework, das Sie in einem vorherigen Schritt ausgewählt haben, bestimmt den Typ des hier verfügbaren Bereitstellungsziels für den Azure-Dienst. 
     
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurieren von Azure DevOps und eines Azure-Abonnements
 
@@ -89,7 +89,7 @@ Mit DevOps Projects wird automatisch eine vollständige CI/CD-Pipeline in Azure 
 1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
     Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen.
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus.
 
 1. Ersetzen Sie den Namen Ihrer Buildpipeline durch einen aussagekräftigeren Namen, und wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
 

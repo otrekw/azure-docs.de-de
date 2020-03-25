@@ -15,14 +15,14 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68360261"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
-In diesem Tutorial verwenden Sie das Lab, das in [Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
+In diesem Tutorial verwenden Sie das Lab, das im Tutorial [Erstellen eines benutzerdefinierten Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
@@ -31,7 +31,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Herstellen der Verbindung zur VM
 > * Aufheben des Anspruchs auf den virtuellen Computer
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="access-the-lab"></a>Zugreifen auf das Lab
 
@@ -86,5 +86,5 @@ Wenn Sie den virtuellen Computer nicht benötigen, führen Sie folgende Schritte
 In diesem Tutorial wurde gezeigt, wie Sie auf ein Lab zugreifen, das unter Verwendung von Azure DevTest Labs erstellt wurde, und wie Sie dieses Lab verwenden. Weitere Informationen zum Zugriff auf virtuelle Computer in einem Lab sowie zu deren Verwendung finden Sie hier: 
 
 > [!div class="nextstepaction"]
-> [Gewusst wie: eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
+> [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
 

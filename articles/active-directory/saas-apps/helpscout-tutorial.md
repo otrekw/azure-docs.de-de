@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
@@ -146,7 +146,7 @@ In diesem Abschnitt wird ein Testbenutzer namens B. Simon im Azure-Portal erste
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -188,15 +188,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im oberen Menü auf **Verwalten**, und wählen Sie anschließend im Dropdownmenü die Option **Unternehmen** aus.
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings1.png)
 
 1. Wählen Sie im linken Navigationsbereich **Authentication** (Authentifizierung) aus.
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings2.png)
 
 1. Dadurch gelangen Sie zum Abschnitt mit den SAML-Einstellungen. Führen Sie dort die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings3.png)
 
     a. Kopieren Sie den Wert für **Post-back URL (Assertion Consumer Service URL)** (Postback-URL (Assertionsverbraucherdienst-URL)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Antwort-URL** ein.
 
@@ -204,7 +204,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Aktivieren Sie **SAML aktivieren**, und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/helpscout-tutorial/settings4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/helpscout-tutorial/settings4.png)
 
     a. Fügen Sie in das Textfeld **Einfacher Anmeldungs-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

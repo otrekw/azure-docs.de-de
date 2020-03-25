@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, DevOps, virtueller Computer, CI/CD
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192607"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
@@ -155,7 +155,7 @@ So erstellen Sie die Releasepipeline in Azure Pipelines:
 
 1. Klicken Sie auf **+ Release** und anschließend auf **Release erstellen**.
 2. Wählen Sie in der hervorgehobenen Dropdownliste den abgeschlossenen Build aus, und klicken Sie anschließend auf **Warteschlange**.
-3. Klicken Sie in der Popupmeldung auf den Releaselink. Beispiel: „Release **Release-1** wurde erstellt.“
+3. Klicken Sie in der Popupmeldung auf den Releaselink. Beispiel: „Freigabe **Freigabe-1** wurde erstellt.“
 4. Öffnen Sie die Registerkarte **Protokolle**, um die Konsolenausgabe der Freigabe anzuzeigen.
 5. Öffnen Sie im Browser die URL für einen der Server, die Sie der Bereitstellungsgruppe hinzugefügt haben. Geben Sie dazu beispielsweise **http://{IP-Adresse des Servers}** ein.
 6. Wechseln Sie zum Git-Quellrepository, und ändern Sie den Inhalt der Überschrift **h1** in der Datei „app/views/index.jade“ durch geänderten Text.

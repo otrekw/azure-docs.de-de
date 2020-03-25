@@ -17,10 +17,10 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
 ms.openlocfilehash: eb851b672a3cc9748d1aa5fbe27e4a7fac9d020e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74039921"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>Sicherer Netzwerkdatenverkehr zwischen virtuellen Computern
@@ -54,7 +54,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet) | Erstellt ein Subnetz. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
 | [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Aktualisiert eine NSG-Regel. In diesem Beispiel wird die Back-End-Regel aktualisiert, um nur Datenverkehr vom Front-End-Subnetz zuzulassen. |
-| [az network nsg rule list](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Gibt Informationen zu einer Netzwerksicherheitsgruppenregel zurück. In diesem Beispiel wird der Regelname in einer Variable gespeichert, um eine spätere Verwendung im Skript zu ermöglichen. |
+| [az network nsg rule list](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Gibt Informationen zu einer Netzwerksicherheitsgruppenregel zurück. In diesem Beispiel wird der Regelname in einer Variablen gespeichert, um eine spätere Verwendung im Skript zu ermöglichen. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

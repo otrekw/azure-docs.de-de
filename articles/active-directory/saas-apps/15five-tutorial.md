@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0753a061b698adb3c79ccde6856799c8928cd9f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154895"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Tutorial: Azure Active Directory-Integration mit 15Five
+# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Lernprogramm: Azure Active Directory-Integration mit 15Five
 
 In diesem Tutorial erfahren Sie, wie Sie 15Five in Azure Active Directory (Azure AD) integrieren.
 Die Integration von 15Five in Azure AD bietet die folgenden Vorteile:
@@ -154,7 +154,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -204,7 +204,7 @@ Damit sich Azure AD-Benutzer bei 15Five anmelden können, müssen sie in 15Five 
 
     a. Geben Sie in die entsprechenden Textfelder **Vorname**, **Nachname**, **Titel** und **E-Mail-Adresse** eines gültigen Azure Active Directory-Kontos ein, das Sie bereitstellen möchten.
 
-    b. Klicken Sie auf **Done**.
+    b. Klicken Sie auf **Fertig**.
 
     > [!NOTE]
     > Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.

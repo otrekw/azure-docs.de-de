@@ -2,25 +2,19 @@
 title: Azure CLI-Skriptbeispiel – Berechnen der Größe des Blobcontainers | Microsoft-Dokumentation
 description: Berechnen Sie die Größe eines Containers in Azure Blob Storage, indem Sie die Größe der Blobs im Container addieren.
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 83ec8c7b3bf5ba9d23d50d8fa1bce563dc56c135
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696931"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067125"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Berechnen der Größe eines Blob Storage-Containers
 
@@ -37,7 +31,7 @@ Mit diesem Skript berechnen Sie die Größe eines Containers in Azure Blob Stora
 
 [!code-azurecli[main](../../../cli_scripts/storage/calculate-container-size/calculate-container-size.sh?highlight=2-3 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den Container und alle zugehörigen Ressourcen zu entfernen.
 

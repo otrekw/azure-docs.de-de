@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68229252"
 ---
 So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
@@ -25,23 +25,23 @@ So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
 
 1. Erstellen Sie Ihre kostenlose IoT Hub-Instanz mit den Werten aus den folgenden Tabellen:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Resource group | Erstellen Sie eine neue Ressourcengruppe. In diesem Tutorial wird der Name **tutorials-iot-hub-rg** verwendet. |
     | Region | In diesem Tutorial wird **USA, Westen** verwendet. Sie können die Region auswählen, die Ihnen am nächsten ist. |
-    | NAME | Im folgenden Screenshot wird der Name **tutorials-iot-hub** verwendet. Sie müssen einen eigenen eindeutigen Namen wählen, wenn Sie Ihren Hub erstellen. |
+    | Name | Im folgenden Screenshot wird der Name **tutorials-iot-hub** verwendet. Sie müssen einen eigenen eindeutigen Namen wählen, wenn Sie Ihren Hub erstellen. |
 
     ![Hub-Einstellungen 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Tarif und Skalierung | F1 Free. Pro Abonnement ist jeweils nur ein kostenloser Hub zulässig. |
     | IoT Hub-Einheiten | 1 |
 
     ![Hub-Einstellungen 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
 
-1. Klicken Sie auf **Create**. Die Erstellung des Hubs kann mehrere Minuten dauern.
+1. Klicken Sie auf **Erstellen**. Die Erstellung des Hubs kann mehrere Minuten dauern.
 
     ![Hub-Einstellungen 3](media/iot-hub-tutorials-create-free-hub/hubdefinition-3.png)
 

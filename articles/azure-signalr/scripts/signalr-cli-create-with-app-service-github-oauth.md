@@ -9,15 +9,15 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158050"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Erstellen einer Web-App mit dem SignalR-Dienst und GitHub-Authentifizierung
 
-In diesem Beispielskript wird eine neue Azure SignalR-Dienstressource erstellt, mit der Echtzeitinhaltsupdates mithilfe von Push an Clients übertragen werden. Dieses Skript fügt auch eine neue Web-App und einen neuen App Service-Plan zum Hosten Ihrer ASP.NET Core-Web-App hinzu, die den SignalR-Dienst verwendet. Die Web-App ist mit App-Einstellungen konfiguriert, um eine Verbindung mit der neuen SignalR-Dienstressource herzustellen und mit [GitHub-Authentifizierung](https://developer.github.com/v3/guides/basics-of-authentication/) zu authentifizieren. Die Web-App ist auch für die Verwendung eines lokalen Git-Repositorys als Bereitstellungsquelle konfiguriert.
+In diesem Beispielskript wird eine neue Azure SignalR Service-Ressource erstellt, mit der Echtzeitinhaltsupdates mithilfe von Push an Clients übertragen werden. Dieses Skript fügt auch eine neue Web-App und einen neuen App Service-Plan zum Hosten Ihrer ASP.NET Core-Web-App hinzu, die den SignalR-Dienst verwendet. Die Web-App ist mit App-Einstellungen konfiguriert, um eine Verbindung mit der neuen SignalR-Dienstressource herzustellen und mit [GitHub-Authentifizierung](https://developer.github.com/v3/guides/basics-of-authentication/) zu authentifizieren. Die Web-App ist auch für die Verwendung eines lokalen Git-Repositorys als Bereitstellungsquelle konfiguriert.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

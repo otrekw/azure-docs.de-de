@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
 ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67133119"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -19,7 +19,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte des [vo
 
 ### <a name="container-registry"></a>Containerregistrierung
 
-Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutorial bearbeiten zu können. Wenn Sie eine Registrierung benötigen, finden Sie weitere Informationen im [vorigen Tutorial](../articles/container-registry/container-registry-tutorial-quick-task.md) oder unter [Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](../articles/container-registry/container-registry-get-started-azure-cli.md).
+Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutorial bearbeiten zu können. Informationen zum Erstellen einer Registrierung finden Sie bei Bedarf im [vorherigen Tutorial](../articles/container-registry/container-registry-tutorial-quick-task.md) und in der Schnellstartanleitung [Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](../articles/container-registry/container-registry-get-started-azure-cli.md).
 
 ## <a name="create-a-github-personal-access-token"></a>Erstellen eines persönlichen GitHub-Zugriffstokens
 

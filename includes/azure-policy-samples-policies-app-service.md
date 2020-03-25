@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 2520c218dbdd4dbad233de924db708769dac5dd1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6391a70a8a7283d6218c6ec54609f7879b605ae5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668905"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79382071"
 ---
 |Name |BESCHREIBUNG |Auswirkungen |Version |GitHub |
 |---|---|---|---|---|

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Tutorial: Azure Active Directory-Integration mit Meta Networks Connector
@@ -128,7 +128,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 7. Darüber hinaus wird von der Meta Networks Connector-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
     
-    | NAME | Quellattribut | Namespace|
+    | Name | Quellattribut | Namespace|
     | ---------------| --------------- | -------- |
     | firstname | user.givenname | |
     | lastname | user.surname | |
@@ -177,19 +177,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 2. Klicken Sie auf **Verwaltung** und dann auf **Einstellungen**.
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. Stellen Sie sicher, dass **Log Internet Traffic** (Internetdatenverkehr protokollieren) und **Force VPN MFA** (VPN-MFA erzwingen) deaktiviert sind.
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. Klicken Sie auf **Verwaltung** und dann auf **SAML**.
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. Führen Sie auf der Registerkarte **DETAILS** die folgenden Schritte aus:
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. Kopieren Sie den Wert für **SSO-URL**, und fügen Sie ihn im Abschnitt **Domäne und URLs für Meta Networks Connector** ins Textfeld **Anmelde-URL** ein.
     
@@ -201,7 +201,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Meta Net
     
 6. Führen Sie auf der Registerkarte **ALLGEMEIN** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. Fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in **URL für einmaliges Anmelden des Identitätsanbieters** ein.
 
@@ -234,7 +234,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -281,5 +281,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Meta Networks Connector“ klicken
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

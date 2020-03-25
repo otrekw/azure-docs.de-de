@@ -1,5 +1,5 @@
 ---
-title: Kopieren von verwalteten Datenträgern in ein Abonnement – PowerShell-Beispiel
+title: 'Kopieren von verwalteten Datenträgern in ein Abonnement: PowerShell-Beispiel'
 description: Azure PowerShell-Beispielskript – Kopieren (oder Verschieben) verwalteter Datenträger in das gleiche oder ein anderes Abonnement
 services: virtual-machines-linux
 documentationcenter: storage
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
 ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75375898"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopieren von verwalteten Datenträgern in das gleiche oder ein anderes Abonnement mit PowerShell

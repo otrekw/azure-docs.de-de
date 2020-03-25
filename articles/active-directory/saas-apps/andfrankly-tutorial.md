@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit &frankly | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit &frankly | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und &frankly konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76120654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Tutorial: Azure Active Directory-Integration mit &frankly

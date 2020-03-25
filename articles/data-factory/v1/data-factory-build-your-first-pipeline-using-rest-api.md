@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438967"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Erstellen der ersten Azure Data Factory mit der Data Factory-REST-API
@@ -30,11 +30,11 @@ ms.locfileid: "75438967"
 
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](../quickstart-create-data-factory-rest-api.md) weiter.
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [Schnellstart: Erstellen einer Data Factory mithilfe von Azure Data Factory](../quickstart-create-data-factory-rest-api.md).
 
 In diesem Artikel verwenden Sie die Data Factory-REST-API zum Erstellen Ihrer ersten Azure Data Factory. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus.
 
-Die Pipeline in diesem Tutorial enthält nur eine Aktivität: eine **HDInsight Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt.
+Die Pipeline in diesem Tutorial enthält eine Aktivität: **HDInsight-Hive-Aktivität**. Bei dieser Aktivität wird ein Hive-Skript in einem Azure HDInsight-Cluster ausgeführt, mit dem Eingabedaten transformiert werden, um Ausgabedaten zu erhalten. Die Pipeline zwischen dem Start- und Endzeitpunkt wird einmal pro Monat ausgeführt.
 
 > [!NOTE]
 > In diesem Artikel werden nicht alle Komponenten der REST-API behandelt. In der [Data Factory REST-API-Referenz](/rest/api/datafactory/) finden Sie eine umfassende Dokumentation zur REST-API.
@@ -84,7 +84,7 @@ Erstellen Sie die folgenden JSON-Dateien in dem Ordner, in dem sich die Datei �
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
+> Ersetzen Sie **accountname** und **accountkey** durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Zugriffsschlüsseln für Speicherkonten](../../storage/common/storage-account-keys-manage.md).
 >
 >
 
@@ -314,13 +314,13 @@ In diesem Schritt erstellen Sie eine Azure Data Factory mit dem Namen **FirstDat
 
 Beachten Sie folgende Punkte:
 
-* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar** in Ergebnissen angezeigt wird:
+* Der Name der Azure Data Factory muss global eindeutig sein. Führen Sie die folgenden Schritte aus, wenn der Fehler **Der Data Factory-Name „FirstDataFactoryREST“ ist nicht verfügbar**angezeigt wird:
   1. Ändern Sie den Namen in der Datei **datafactory.json** (beispielsweise in „&lt;IhrName&gt;FirstDataFactoryREST“). Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
   2. Ersetzen Sie im ersten Befehl an der Stelle, an der der Variablen **$cmd** ein Wert zugewiesen wird, „FirstDataFactoryREST“ durch den neuen Namen, und führen Sie den Befehl aus.
   3. Führen Sie die nächsten beiden Befehle zum Aufrufen der REST-API aus, um die Data Factory zu erstellen und die Ergebnisse des Vorgangs auszugeben.
 * Data Factory-Instanzen können nur von Mitwirkenden/Administratoren des Azure-Abonnements erstellt werden.
 * Der Name der Data Factory kann in Zukunft als DNS-Name registriert und so öffentlich sichtbar werden.
-* Bei Anzeige der Fehlermeldung „**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**“ auftritt, führen Sie einen der folgenden Schritte aus, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
+* Führen Sie einen der folgenden Schritte aus, wenn Sie eine Fehlermeldung wie**Dieses Abonnement ist nicht zur Verwendung des Microsoft.DataFactory-Namespaces registriert**erhalten, und versuchen Sie, die Veröffentlichung erneut durchzuführen:
 
   * Führen Sie in Azure PowerShell den folgenden Befehl aus, um den Data Factory-Anbieter zu registrieren:
 
@@ -484,7 +484,7 @@ In diesem Tutorial haben Sie eine Azure Data Factory zum Verarbeiten von Daten e
 4. Sie haben eine **Pipeline** mit einer **HDInsight Hive**-Aktivität erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen dazu, wie Sie eine Copy-Aktivität zum Kopieren von Daten aus einem Azure-Blob nach Azure SQL verwenden finden Sie unter [Tutorial: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+In diesem Artikel haben Sie eine Pipeline mit einer Transformationsaktivität (HDInsight-Aktivität) erstellt, die ein Hive-Skript in einem bedarfsgesteuerten Azure HDInsight-Cluster ausführt. Informationen zum Verwenden einer Kopieraktivität zum Kopieren von Daten aus einem Azure-Blob in Azure SQL finden Sie unter [Lernprogramm: Kopieren von Daten aus einem Azure-Blob in Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 | Thema | BESCHREIBUNG |

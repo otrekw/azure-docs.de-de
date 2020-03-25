@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028354"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79221927"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -39,8 +39,8 @@ Im folgenden Video wird die Überwachung von API Management mithilfe von Azure M
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
-+ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -180,7 +180,7 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 }  
 ```
 
-| Eigenschaft  | type | Beschreibung |
+| Eigenschaft  | type | BESCHREIBUNG |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boolean | „True“, wenn die HTTP-Anforderung mit einem Antwortstatuscode im Bereich 2xx oder 3xx abgeschlossen wird |
 | time | date-time | Der Zeitstempel des Zeitpunkts, zu dem das Gateway mit dem Verarbeiten der Anforderung beginnt |
@@ -190,7 +190,7 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | callerIpAddress | string | IP-Adresse des unmittelbaren Gateway-Aufrufers (kann auch ein Zwischenaufrufer sein) |
 | correlationId | string | Von API Management zugewiesene eindeutige HTTP-Anforderungs-ID |
 | location | string | Name der Azure-Region, in der sich das Gateway befindet, das die Anforderung verarbeitet hat |
-| httpStatusCodeCategory | string | Kategorie des HTTP-Antwortstatuscodes: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
+| httpStatusCodeCategory | string | Kategorie des HTTP-Anforderungsstatuscode: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
 | resourceId | string | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
 | properties | Objekt (object) | Eigenschaften der aktuellen Anforderung |
 | method | string | HTTP-Methode der eingehenden Anforderung |

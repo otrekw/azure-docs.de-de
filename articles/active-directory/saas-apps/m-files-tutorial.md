@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit M-Files | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit M-Files | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und M-Files konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 41877db250cd6c56d80dbdf98fa0d78562686bfd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Tutorial: Azure Active Directory-Integration mit M-Files
@@ -137,11 +137,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit M-Files 
 
 1. Öffnen Sie das Fenster **M-Files Desktop Settings** (M-Files-Desktopeinstellungen). Klicken Sie anschließend auf **Hinzufügen**.
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Einmaliges Anmelden konfigurieren](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. Führen Sie im Fenster **Document Vault Connection Properties** (Eigenschaften von Dokumenttresorverbindung) die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     Geben Sie im Abschnitt „Server“ die Werte wie folgt ein:  
 
@@ -180,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -224,5 +224,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „M-Files“ klicken, sollten Sie au
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

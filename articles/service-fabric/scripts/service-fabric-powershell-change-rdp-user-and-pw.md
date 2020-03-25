@@ -15,10 +15,10 @@ ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614807"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>Aktualisieren des Administratorbenutzernamens und des zugehörigen Kennworts für die VMs in einem Cluster
@@ -35,7 +35,7 @@ Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure Powe
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Das Skript benutzt die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|

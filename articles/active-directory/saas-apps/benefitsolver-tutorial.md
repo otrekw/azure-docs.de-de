@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Benefitsolver | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Benefitsolver | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Benefitsolver konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30e29a0de1b80393b3c38baa589253e90e3e65cc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158929"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Tutorial: Azure Active Directory-Integration mit Benefitsolver
+# <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Lernprogramm: Azure Active Directory-Integration mit Benefitsolver
 
 In diesem Tutorial erfahren Sie, wie Sie Benefitsolver in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Benefitsolver in Azure AD hat folgende Vorteile:
@@ -121,7 +121,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Benefits
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
 
-    | NAME |  Quellattribut|
+    | Name |  Quellattribut|
     |---------------|----------------|
     | ClientID | Diesen Wert erhalten Sie vom [Supportteam für den Benefitsolver-Client](https://www.businessolver.com/contact).|
     | ClientKey | Diesen Wert erhalten Sie vom [Supportteam für den Benefitsolver-Client](https://www.businessolver.com/contact).|
@@ -191,7 +191,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -235,4 +235,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Benefitsolver“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

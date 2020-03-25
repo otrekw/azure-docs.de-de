@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Namely | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Namely | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Namely konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: a9ec54ce27b4d058938e688ec671709e09391cce
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Tutorial: Azure Active Directory-Integration mit Namely
@@ -132,19 +132,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Namely 
 
 2. Klicken Sie oben auf der Symbolleiste auf **Company**.
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_06.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_06.png) 
 
 3. Klicken Sie auf die Registerkarte **Settings** .
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_07.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_07.png) 
 
 4. Klicken Sie auf **SAML**.
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_08.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_08.png) 
 
 5. Führen Sie auf der Seite **SAML Settings** die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_09.png)
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_09.png)
  
     a. Aktivieren Sie **Enable SAML**. 
 
@@ -177,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -215,15 +215,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie oben auf der Symbolleiste auf **People**.
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_10.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_10.png) 
 
 3. Klicken Sie auf die Registerkarte **Directory** .
    
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_11.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_11.png) 
 
 4. Klicken Sie auf **Neue Person hinzufügen**.
 
-    ![Configure single sign-on](./media/namely-tutorial/tutorial_namely_12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. Führen Sie im Dialogfeld **Neue Person hinzufügen** die folgenden Schritte aus:
 
@@ -247,5 +247,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Namely“ klicken, sollten Sie aut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

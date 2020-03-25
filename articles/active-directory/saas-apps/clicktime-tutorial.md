@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ClickTime | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit ClickTime | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ClickTime konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157403"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Tutorial: Azure Active Directory-Integration mit ClickTime
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Lernprogramm: Azure Active Directory-Integration mit ClickTime
 
 In diesem Tutorial erfahren Sie, wie Sie ClickTime in Azure Active Directory (Azure AD) integrieren.
 Die Integration von ClickTime in Azure AD bietet die folgenden Vorteile:
@@ -137,7 +137,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickTim
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On Preferences** die folgenden Schritte aus:
    
-    ![Security Settings (Sicherheitseinstellungen)](./media/clicktime-tutorial/tic777280.png "Security Settings")
+    ![Security Settings (Sicherheitseinstellungen)](./media/clicktime-tutorial/tic777280.png "Sicherheitseinstellungen")
    
     a.  Wählen Sie **Zulassen** für das einmalige Anmelden (SSO) mit **Azure AD**.
    
@@ -170,7 +170,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

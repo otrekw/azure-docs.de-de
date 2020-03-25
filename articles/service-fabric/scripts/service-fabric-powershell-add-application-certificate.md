@@ -15,10 +15,10 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77114342"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Fügen Sie ein Anwendungszertifikat zu einem Service Fabric-Cluster hinzu
@@ -93,7 +93,7 @@ Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMS
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Das Skript benutzt die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|

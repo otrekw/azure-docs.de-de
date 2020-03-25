@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09c93e2d851bea22e9d54dde35398f36335eb896
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70967589"
 ---
-# <a name="cli-example-reset-the-account-credentials"></a>CLI-Beispiel: Zurücksetzen der Kontoanmeldeinformationen
+# <a name="cli-example-reset-the-account-credentials"></a>CLI-Beispiel: Zurücksetzen der Anmeldeinformationen des Kontos
 
 Das Azure CLI-Skript in diesem Artikel zeigt, wie Sie die Anmeldeinformationen für Ihr Konto zurücksetzen und die Einstellungen von „app.config“ wiederherstellen.
 

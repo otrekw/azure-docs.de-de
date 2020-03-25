@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: d8fa054bc418fc3230c1a69fb2767faadc59a9a8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74421884"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Verwenden von PowerShell zum Synchronisieren zwischen einer SQL-Datenbank und einer lokalen SQL Server-Datenbank
@@ -35,7 +35,7 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronis
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen einer Azure SQL-Datenbank auf der Grundlage der AdventureWorksLT-Beispieldatenbank als Hub-Datenbank
+- Erstellen einer Azure SQL-Datenbank auf Grundlage der AdventureWorksLT-Beispieldatenbank als Hub-Datenbank
 - Erstellen einer Azure SQL-Datenbank in der Region, in der sich auch die Synchronisierungsdatenbank befindet
 - Erstellen einer lokalen SQL Server-Datenbank als Mitgliedsdatenbank
 - Aktualisieren der Parameterplatzhalter vor dem Ausführen des Beispiels
@@ -313,7 +313,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 - Übersicht: [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
 - Einrichten der Datensynchronisierung
-    - Im Portal – [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server](../sql-database-get-started-sql-data-sync.md)
+    - Im Portal: [Tutorial: Einrichten der SQL-Datensynchronisierung zum Synchronisieren von Daten zwischen Azure SQL-Datenbank und lokalem SQL Server](../sql-database-get-started-sql-data-sync.md)
     - Mit PowerShell
         - [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](sql-database-sync-data-between-sql-databases.md)
 - Datensynchronisierungs-Agent: [Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung](../sql-database-data-sync-agent.md)

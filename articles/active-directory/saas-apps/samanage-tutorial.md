@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Samanage | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Samanage | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Samanage konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Tutorial: Azure Active Directory-Integration mit Samanage
@@ -182,7 +182,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -221,7 +221,7 @@ Im Fall von Samanage ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie auf **Dashboard**, und wählen Sie im linken Navigationsbereich die Option **Setup** aus.
    
-    ![Einrichtung](./media/samanage-tutorial/tutorial_samanage_001.png "Einrichtung")
+    ![Einrichtung](./media/samanage-tutorial/tutorial_samanage_001.png "Einrichten")
 
 3. Klicken Sie auf die Registerkarte **Benutzer** .
    

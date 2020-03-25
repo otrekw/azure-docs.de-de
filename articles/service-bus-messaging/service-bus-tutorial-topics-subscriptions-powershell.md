@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 3d1e1491ad045eba88ca7bbe54a1acb38199f7d7
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65987915"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit PowerShell und Themen/Abonnements
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Beispiel dieses Szenarios ist eine Aktualisierung des Bestandssortiments für mehrere Einzelhandelsgeschäfte. Hierbei erhält jedes Geschäft bzw. jede Gruppe von Geschäften Nachrichten, die jeweils die Aktualisierung der Sortimente betreffen. In diesem Tutorial wird veranschaulicht, wie Sie dieses Szenario mit Abonnements und Filtern implementieren. Zuerst erstellen Sie ein Thema mit drei Abonnements, fügen einige Regeln und Filter hinzu und führen dann das Senden und Empfangen von Nachrichten aus den Themen und Abonnements durch.
 
-![Thema](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
+![topic](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
 
 2. Öffnen Sie eine PowerShell-Eingabeaufforderung.
 
-3. Navigieren Sie zum Ordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart` mit den Beispielen.
+3. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
 4. Rufen Sie die Verbindungszeichenfolge mit dem folgenden PowerShell-Cmdlet ab, falls Sie dies noch nicht getan haben. Achten Sie darauf, dass Sie `my-resourcegroup` und `namespace-name` durch Ihre jeweiligen Werte ersetzen: 
 
@@ -275,7 +275,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie mit Azure PowerShell Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die zugehörigen Abonnements gesendet und empfangen. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie mit Azure PowerShell Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die zugehörigen Abonnements gesendet und empfangen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements für das Thema mit dem Azure-Portal

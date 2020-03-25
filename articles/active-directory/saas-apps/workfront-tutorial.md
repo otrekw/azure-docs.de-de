@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51fd45729a4e34fa1669f758c5a9c8f5cbec498f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>Tutorial: Azure Active Directory-Integration mit Workfront
@@ -135,7 +135,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Workfro
 
 3. Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
     
-    ![Configure single sign-on][23]
+    ![Einmaliges Anmelden konfigurieren][23]
    
     a. Wählen Sie für **Typ** die Option **SAML 2.0** aus.
    
@@ -171,7 +171,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -235,7 +235,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Workfront“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 

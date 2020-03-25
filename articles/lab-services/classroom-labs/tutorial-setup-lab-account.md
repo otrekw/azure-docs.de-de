@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: dba6a4c07691f3d7ec88d8b889e68d6ac7116f07
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133984"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223467"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie ein Labkonto erstellen. 
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
@@ -30,7 +30,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Erstellen eines Lab-Kontos
 > * Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 ## <a name="create-a-lab-account"></a>Erstellen eines Lab-Kontos
 Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein Lab-Konto in Azure Lab Services zu erstellen. 

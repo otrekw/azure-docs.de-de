@@ -17,10 +17,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e5e43bd32e7e0ddbe0a7b5f63d74a1fd46f68d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>Tutorial: Azure Active Directory-Integration mit HappyFox
@@ -137,23 +137,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit HappyFox
 
 2. Navigieren Sie zu **Manage** (Verwalten), und klicken Sie auf die Registerkarte **Integrations** (Integrationen).
 
-    ![Configure single sign-on](./media/happyfox-tutorial/header.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/header.png) 
 
 3. Klicken Sie auf der Registerkarte „Integrations“ (Integrationen) unter **SAML Integration** (SAML-Integration) auf **Configure** (Konfigurieren), um die Einstellungen für einmaliges Anmelden zu öffnen.
 
-    ![Configure single sign-on](./media/happyfox-tutorial/configure.png)
+    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/configure.png)
 
 4. Fügen Sie im Abschnitt für die SAML-Konfiguration den Wert der **Anmelde-URL**, die Sie im Azure-Portal kopiert haben, in das Textfeld **SSO Target URL** (SSO-Ziel-URL) ein.
 
-    ![Configure single sign-on](./media/happyfox-tutorial/targeturl.png)
+    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/targeturl.png)
 
 5. Öffnen Sie das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und fügen Sie den Inhalt im Abschnitt **IdP Signature** ein.
 
-    ![Configure single sign-on](./media/happyfox-tutorial/cert.png)
+    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/cert.png)
 
 6. Klicken Sie auf die Schaltfläche **Save settings** (Einstellungen speichern).
 
-    ![Configure single sign-on](./media/happyfox-tutorial/savesettings.png)
+    ![Einmaliges Anmelden konfigurieren](./media/happyfox-tutorial/savesettings.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -178,7 +178,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -228,4 +228,4 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

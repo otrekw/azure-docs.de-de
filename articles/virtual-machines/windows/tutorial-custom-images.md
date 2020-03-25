@@ -13,10 +13,10 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76274202"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell
@@ -50,7 +50,7 @@ Wenn Sie ein Image eines virtuellen Computers erstellen möchten, müssen Sie de
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisieren der Windows-VM mithilfe von Sysprep
 
-Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
+Sysprep entfernt unter anderem alle persönlichen Kontoinformationen, und bereitet den Computer darauf vor, als Image verwendet zu werden. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx)(in englischer Sprache).
 
 
 1. Stellen Sie eine Verbindung mit dem virtuellen Computer her.
@@ -71,7 +71,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Legen Sie mithilfe von [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) den Status des virtuellen Computers auf `-Generalized` fest. 
+Legen Sie mithilfe von `-Generalized`Set-AzVm[ den Status des virtuellen Computers auf ](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) fest. 
    
 ```azurepowershell-interactive
 Set-AzVM `

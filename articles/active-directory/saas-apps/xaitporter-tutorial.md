@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Tutorial: Azure Active Directory-Integration mit XaitPorter
@@ -132,15 +132,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit XaitPort
 
 4. Klicken Sie auf **Admin**.
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/xaitporter-tutorial/user1.png)
 
 5. Wählen Sie in der Dropdownliste **System Setup** (Systemsetup) die Option **Manage Single Sign-On** (Einmaliges Anmelden verwalten) aus.
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/xaitporter-tutorial/user2.png)
 
 6. Führen Sie im Abschnitt **MANAGE SINGLE SIGN-ON** (EINMALIGES ANMELDEN VERWALTEN) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/xaitporter-tutorial/user3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/xaitporter-tutorial/user3.png)
 
     a. Aktivieren Sie **Enable Single Sign-On Authentication** (SSO-Authentifizierung aktivieren).
 
@@ -172,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -216,5 +216,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „XaitPorter“ klicken, sollten Sie
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

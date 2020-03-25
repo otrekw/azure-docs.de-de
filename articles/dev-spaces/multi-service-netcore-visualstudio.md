@@ -8,10 +8,10 @@ ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine .NET Core-Anwendung mit mehreren Diensten in Azure Kubernetes Service debuggen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 ms.openlocfilehash: 7f95c21c2cf5b7adcdb34d7bbe2b1f8314c20333
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438405"
 ---
 # <a name="running-multiple-dependent-services-net-core-and-visual-studio-with-azure-dev-spaces"></a>Ausführen mehrerer abhängiger Dienste: .NET Core und Visual Studio mit Azure Dev Spaces
@@ -28,7 +28,7 @@ Laden Sie Beispielcode aus einem GitHub-Repository herunter, um Zeit zu sparen. 
 
 ### <a name="run-mywebapi"></a>Ausführen von *mywebapi*
 1. Öffnen Sie das Projekt `mywebapi` in einem *separaten Visual Studio-Fenster*.
-1. Wählen Sie wie zuvor für das Projekt `webfrontend` im Dropdownmenü mit den Starteinstellungen **Azure Dev Spaces** aus. Erstellen Sie diesmal keinen neuen AKS-Cluster, sondern wählen Sie den bereits erstellten Cluster aus. Übernehmen Sie wie zuvor für „Space“ (Bereich) den Standardwert `default`, und klicken Sie auf **OK**. Sie sehen im Ausgabefenster, dass Visual Studio diesen neuen Dienst in Ihrem Entwicklungsbereich vorbereitet, um das Debuggen zu beschleunigen.
+1. Wählen Sie wie zuvor für das Projekt **im Dropdownmenü mit den Starteinstellungen**Azure Dev Spaces`webfrontend` aus. Erstellen Sie diesmal keinen neuen AKS-Cluster, sondern wählen Sie den bereits erstellten Cluster aus. Übernehmen Sie wie zuvor für „Space“ (Bereich) den Standardwert `default`, und klicken Sie auf **OK**. Sie sehen im Ausgabefenster, dass Visual Studio diesen neuen Dienst in Ihrem Entwicklungsbereich vorbereitet, um das Debuggen zu beschleunigen.
 1. Drücken Sie F5, und warten Sie, bis der Dienst erstellt und bereitgestellt wurde. Der Vorgang ist abgeschlossen, wenn die Statusleiste von Visual Studio orange angezeigt wird.
 1. Notieren Sie die Endpunkt-URL, die im Fenster **Ausgabe** im Bereich **Azure Dev Spaces for AKS** (Azure Dev Spaces für AKS) angezeigt wird. Sie sieht ungefähr wie folgt aus: `http://localhost:<portnumber>`. Es sieht unter Umständen so aus, als würde der Container lokal ausgeführt, tatsächlich wird er jedoch im Entwicklungsbereich in Azure ausgeführt.
 2. Wenn `mywebapi` bereit ist, öffnen Sie in Ihrem Browser die localhost-Adresse, und fügen Sie `/api/values` an die URL an, um die Standard-GET-API für `ValuesController` aufzurufen. 
@@ -37,7 +37,7 @@ Laden Sie Beispielcode aus einem GitHub-Repository herunter, um Zeit zu sparen. 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Senden einer Anforderung von *webfrontend* an *mywebapi*
-Schreiben Sie nun Code in `webfrontend`, der eine Anforderung an `mywebapi` sendet. Wechseln Sie zum Visual Studio-Fenster mit dem Projekt `webfrontend`. *Ersetzen* Sie in der Datei `HomeController.cs` den Code für die About-Methode durch den folgenden Code:
+Schreiben Sie nun Code in `webfrontend`, der eine Anforderung an `mywebapi` sendet. Wechseln Sie zum Visual Studio-Fenster mit dem Projekt `webfrontend`. `HomeController.cs`Ersetzen*Sie in der Datei* den Code für die About-Methode durch den folgenden Code:
 
    ```csharp
    public async Task<IActionResult> About()

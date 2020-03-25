@@ -8,13 +8,13 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73572317"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung mit Power BI Desktop
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop
 
 In diesem Tutorial verwenden Sie Power BI Desktop, um eine Verbindung mit der Beispielmodelldatenbank „adventureworks“ auf Ihrem Server herzustellen. Die auszuführenden Aufgaben simulieren eine typische Benutzerverbindung mit dem Modell sowie die Erstellung eines einfachen Berichts auf der Grundlage von Modelldaten.
 

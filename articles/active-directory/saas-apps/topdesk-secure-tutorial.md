@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit TOPdesk – Secure | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TOPdesk - Secure konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233401"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk – Secure
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure
 
 In diesem Tutorial erfahren Sie, wie Sie TOPdesk - Secure in Azure Active Directory (Azure AD) integrieren.
 Die Integration von TOPdesk - Secure in Azure AD bietet die folgenden Vorteile:
@@ -185,7 +185,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
 
     d. Klicken Sie zum Hochladen der Logodatei, die Sie vom TOPdesk-Supportteam erhalten haben, unter **Logosymbol** auf **Durchsuchen**.
 
-    e. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in das Textfeld **Benutzernamenattribut** ein.
+    e. Geben Sie **in das Textfeld**Benutzernamenattribut`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
     f. Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
 
@@ -214,7 +214,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

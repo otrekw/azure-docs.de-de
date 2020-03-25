@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit UserEcho | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit UserEcho | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und UserEcho konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087766"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Tutorial: Azure Active Directory-Integration mit UserEcho
@@ -132,19 +132,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit UserEch
 
 2. Klicken Sie auf der Symbolleiste oben auf Ihren Benutzernamen, um das Menü zu erweitern, und klicken Sie dann auf **Setup**.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_06.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
 3. Klicken Sie auf **Integrations**.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_07.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
 4. Klicken Sie auf **Website** und dann auf **Single sign-on (SAML2)** (Einmaliges Anmelden (SAML2)).
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_08.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
 5. Führen Sie auf der Seite **Single sign-on (SAML)** die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_09.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_09.png)
     
     a. Wählen Sie für **SAML-aktiviert** die Option **Ja**.
     
@@ -178,7 +178,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -216,23 +216,23 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 2. Klicken Sie auf der Symbolleiste oben auf Ihren Benutzernamen, um das Menü zu erweitern, und klicken Sie dann auf **Setup**.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_06.png)
 
 3. Klicken Sie auf **Benutzer**, um den Abschnitt **Benutzer** zu erweitern.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_10.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_10.png)
 
 4. Klicken Sie auf **Users**.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_11.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_11.png)
 
 5. Klicken Sie auf **Invite a new user**.
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_12.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_12.png)
 
 6. Führen Sie im Dialogfeld **Invite a new user** die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/userecho-tutorial/tutorial_userecho_13.png)
+    ![Einmaliges Anmelden konfigurieren](./media/userecho-tutorial/tutorial_userecho_13.png)
 
     a. Geben Sie im Textfeld **Name** den Namen des Benutzers, z.B. „Britta Simon“, ein.
     
@@ -252,5 +252,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „UserEcho“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

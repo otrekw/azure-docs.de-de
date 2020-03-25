@@ -16,10 +16,10 @@ ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76896445"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
@@ -40,7 +40,7 @@ Mithilfe einer Netzwerksicherheitsgruppe (NSG) können Sie eingehenden Datenverk
 > * Herunterladen protokollierter Daten
 > * Anzeigen protokollierter Daten
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -214,8 +214,8 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | 443         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 443 bestimmt war, wurde der Flow anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
 | T            | Protocol               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
 | O            | Direction              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
-| Ein            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
-| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B**: („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt. |
+| Ein            | Action                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
+| C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B** (Beginn/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C** (Continue/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E** (End/Beendung): Beendung eines Flows, Statistiken werden bereitgestellt. |
 | 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |
 | 16978 | Gesendete Bytes – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast. |
 | 24 | Gesendete Pakete – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. |

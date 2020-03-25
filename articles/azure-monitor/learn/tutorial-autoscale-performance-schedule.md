@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661651"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
@@ -22,7 +22,7 @@ ms.locfileid: "77661651"
 In diesem Tutorial lernen Sie Folgendes: 
 > [!div class="checklist"]
 > * Erstellen einer Web-App und eines App Service-Plans
-> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Konfigurieren von Regeln für die automatische Skalierung zum Auf- und Abskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Auslösen einer Aktion zur horizontalen Herunterskalierung und Anzeigen der sinkenden Anzahl von Instanzen
 > * Bereinigen von Ressourcen
@@ -174,7 +174,7 @@ Die Bedingung zum horizontalen Herunterskalieren in der Einstellung für die aut
 In diesem Tutorial haben Sie Folgendes durchgeführt:  
 > [!div class="checklist"]
 > * Erstellen einer Web-App und eines App Service-Plans
-> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Konfigurieren von Regeln für die automatische Skalierung zum Ab- und Aufskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
 > * Bereinigen von Ressourcen

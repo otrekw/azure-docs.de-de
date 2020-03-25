@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit SAP Business ByDesign | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit SAP Business ByDesign | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SAP Business ByDesign konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b830f0760b768826b2d937b4a8b2ffbd8e9e2a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091671"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Tutorial: Azure Active Directory-Integration mit SAP Business ByDesign
@@ -153,7 +153,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 3. Klicken Sie auf **New Identity Provider** (Neuer Identitätsanbieter), und wählen Sie die XML-Metadatendatei aus, die Sie aus dem Azure-Portal heruntergeladen haben. Beim Importieren der Metadaten lädt das System automatisch das erforderliche Signatur- und Verschlüsselungszertifikat hoch.
 
-    ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. Um die **Assertion Consumer Service-URL** in der SAML-Anforderung hinzuzufügen, aktivieren Sie **Include Assertion Consumer Service URL** (Assertion Consumer Service-URL aufnehmen).
 
@@ -163,11 +163,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
 7. Klicken Sie auf die Registerkarte **My System** (Mein System).
 
-    ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. Fügen Sie im Textfeld **Azure AD Sign On URL** (Azure AD-Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    ![Configure single sign-on](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
+    ![Einmaliges Anmelden konfigurieren](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
 
 9. Geben Sie an, ob der Mitarbeiter manuell zwischen der Anmeldung mit Benutzer-ID und Kennwort oder SSO wählen kann. Aktivieren Sie dazu die Option **Manual Identity Provider Selection** (Manuelle Auswahl des Identitätsanbieters).
 
@@ -210,7 +210,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -257,4 +257,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP Business ByDesign“ klicken, 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

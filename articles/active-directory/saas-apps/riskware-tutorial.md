@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Riskware | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Riskware | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Riskware konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72027115"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration mit Riskware
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration in Riskware
 
 In diesem Tutorial erfahren Sie, wie Sie Riskware in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Riskware in Azure AD bietet die folgenden Vorteile:
@@ -208,7 +208,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -296,4 +296,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Riskware“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

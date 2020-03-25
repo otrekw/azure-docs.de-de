@@ -16,13 +16,13 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e629c605c0ffd3a7e0e1e53c3d661642b9dd01b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74034499"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure-Befehlszeilenschnittstelle
 
 Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. In diesem Tutorial erstellen Sie ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers. Folgendes wird vermittelt:
 
@@ -134,7 +134,7 @@ az image delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Aufheben der Bereitstellung und Generalisieren von virtuellen Computern

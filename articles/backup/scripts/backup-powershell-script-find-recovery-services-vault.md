@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie mithilfe eines Azure PowerShell-Skripts
 ms.topic: sample
 ms.date: 1/28/2020
 ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76775866"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>PowerShell-Skript für die Suche nach dem Recovery Services-Tresor, bei dem ein Speicherkonto registriert ist
@@ -62,7 +62,7 @@ Im folgenden Beispiel wird versucht, den Recovery Services-Tresor zu finden, be
 .\FindRegisteredStorageAccount.ps1 -ResourceGroupName AzureFiles -StorageAccountName afsaccount -SubscriptionId ef4ad5a7-c2c0-4304-af80-af49f49af3d1
 ```
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Die Ausgabe enthält den vollständigen Pfad des Recovery Services-Tresors, bei dem das Speicherkonto registriert ist. Hier ist eine Beispielausgabe:
 

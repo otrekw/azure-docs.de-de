@@ -16,10 +16,10 @@ ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: c48d5e514d854568043d001a22411b6a67f79e6a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067808"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell

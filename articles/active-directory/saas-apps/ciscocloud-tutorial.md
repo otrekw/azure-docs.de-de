@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Cisco Cloud | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Cisco Cloud | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Cisco Cloud konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 342101c623d451b71a33b2394ec6617482f388d6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157459"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration von Cisco Cloud
+# <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration mit Cisco Cloud
 
 In diesem Tutorial erfahren Sie, wie Sie Cisco Cloud in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Cisco Cloud in Azure AD bietet die folgenden Vorteile:
@@ -125,7 +125,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Cisco C
 
 7. Darüber hinaus wird von der Cisco Cloud-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | -----------| ------------|
     | country    | user.country |
     | company    | user.companyname |
@@ -180,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -224,4 +224,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Cisco Cloud“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

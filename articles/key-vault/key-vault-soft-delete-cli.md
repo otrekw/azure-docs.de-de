@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 940de5e100da934e0bc4efdfc6686f8040e10954
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197316"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457320"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -33,7 +33,7 @@ Key Vault-spezifische Informationen zur Befehlszeilenschnittstelle finden Sie in
 
 Key Vault-Vorgänge werden wie folgt separat über RBAC-Berechtigungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwaltet:
 
-| Vorgang | Beschreibung | Benutzerberechtigung |
+| Vorgang | BESCHREIBUNG | Benutzerberechtigung |
 |:--|:--|:--|
 |List|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
 |Wiederherstellen|Stellt einen gelöschten Schlüsseltresor wieder her.|Microsoft.KeyVault/vaults/write|
@@ -53,7 +53,7 @@ Sie können das vorläufige Löschen aktivieren, im die Wiederherstellung eines 
 Für einen vorhandenen Schlüsseltresor mit dem Namen „ContosoVault“ aktivieren Sie vorläufiges Löschen wie folgt: 
 
 ```azurecli
-az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
+az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
 ### <a name="new-key-vault"></a>Neuer Schlüsseltresor
@@ -233,13 +233,13 @@ Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Lö
 
 Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren:
 
-```
+```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
 Verwenden Sie den Befehl [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update), um einem vorhandenen Tresor einen Bereinigungsschutz hinzuzufügen (für den bereits das vorläufige Löschen aktiviert ist):
 
-```
+```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
 ```
 

@@ -17,10 +17,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86e1c0487a33d8ca90cc8bf43ec53e2707a4d027
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Tutorial: Azure Active Directory-Integration mit LCVista
@@ -133,7 +133,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LCVista 
 
 2. Aktivieren Sie im Abschnitt **SAML Config** das Kontrollkästchen **Enable SAML login**, und geben Sie die Daten so ein, wie im folgenden Bild veranschaulicht. 
 
-    ![Configure single sign-on](./media/lcvista-tutorial/tutorial_lcvista_config.png)
+    ![Einmaliges Anmelden konfigurieren](./media/lcvista-tutorial/tutorial_lcvista_config.png)
 
     a. Fügen Sie in das Textfeld **Entity ID** (Entitäts-ID) den Wert für den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -174,7 +174,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -218,4 +218,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LCVista“ klicken, sollten Sie au
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -10,10 +10,10 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969473"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET Core-App in Azure Service Fabric mithilfe von Azure DevOps Projects
@@ -37,7 +37,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
+* ein Azure-Abonnement Über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) erhalten Sie ein kostenloses Abonnement.
 
 ## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>Erstellen einer ASP.NET Core-App und Bereitstellen dieser App in Service Fabric mithilfe von DevOps Projects
 
@@ -92,7 +92,7 @@ Mit DevOps Projects wird automatisch eine CI/CD-Pipeline in Azure Pipelines konf
 1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
     Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und für Bereitstellungen verwendete Ausgaben veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen. 
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus. 
 
 1. Wählen Sie unter dem Buildpipelinenamen **Verlauf** aus.  
     In diesem Bereich wird ein Überwachungsprotokoll mit den letzten Änderungen für den Build angezeigt. An der Buildpipeline vorgenommene Änderungen werden von Azure DevOps nachverfolgt, sodass Sie verschiedene Versionen vergleichen können.

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 62a8c68b11562cac7bb9e8a318cbe08084449423
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034636"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066503"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
 
@@ -44,12 +44,12 @@ Wir arbeiten mit unseren Partnern zusammen, damit cloud-init einbezogen wird und
 
 | Herausgeber | Angebot | SKU | Version | cloud-init-fähig |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |latest |Ja | 
-|Canonical |UbuntuServer |16.04-LTS |latest |Ja | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |Ja |
-|CoreOS |CoreOS |Stable |latest |Ja |
+|Canonical |UbuntuServer |18.04-LTS |latest |ja | 
+|Canonical |UbuntuServer |16.04-LTS |latest |ja | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |ja |
+|CoreOS |CoreOS |Stable |latest |ja |
 |OpenLogic 7.6 |CentOS |7-CI |latest |preview |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |Ja |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
 
 
@@ -58,7 +58,7 @@ Um cloud-init in Aktion zu sehen, erstellen Sie einen virtuellen Computer, der N
 
 Erstellen Sie an der Bash-Eingabeaufforderung oder in der Cloud Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein. Geben Sie beispielsweise `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
-```azurecli-interactive
+```bash
 #cloud-config
 package_upgrade: true
 packages:
@@ -271,7 +271,7 @@ Gesicherte NGINX-Website und Node.js-App werden dann wie im folgenden Beispiel a
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie virtuelle Computer beim ersten Start mit cloud-init konfiguriert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie virtuelle Computer beim ersten Start mit cloud-init konfiguriert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer cloud-init-Konfigurationsdatei
