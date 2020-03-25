@@ -18,7 +18,7 @@
           href: python-sdk-quickstart.md
         - name: Verwenden des Java SDK
           href: java-sdk-quickstart.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Moderieren von E-Commerce-Bildern
       href: ecommerce-retail-catalog-moderation.md
@@ -38,7 +38,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 'Überprüfungen, Workflows und Aufträge'
       href: review-api.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Moderieren von Inhalten
       items:
@@ -134,3 +134,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: content-moderator-encryption-of-data-at-rest.md

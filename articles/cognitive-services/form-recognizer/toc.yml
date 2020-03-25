@@ -38,11 +38,11 @@
               href: quickstarts/python-layout.md
     - name: Verwenden des .NET SDK
       href: quickstarts/dotnet-sdk.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Verwenden der Formularerkennung mit Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
       href: build-training-data-set.md

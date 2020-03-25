@@ -2,7 +2,7 @@
   items:
     - name: Was ist Azure FarmBeats?
       href: overview-azure-farmbeats.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: Struktur für Bodenfeuchtigkeit generieren

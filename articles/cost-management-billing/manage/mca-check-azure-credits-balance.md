@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: banders
 ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199686"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
@@ -84,7 +84,7 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
    | Begriff | Definition |
    |---|---|
    | Transaktionsdatum | Das Datum der Transaktion. |
-   | Beschreibung | Eine Beschreibung der Transaktion. |
+   | BESCHREIBUNG | Eine Beschreibung der Transaktion. |
    | Amount| Der Betrag der Transaktion |
    | Balance | Das Guthaben nach der Transaktion. |
 
@@ -196,7 +196,7 @@ In der API-Antwort werden der geschätzte und der aktuelle Saldo für das Abrech
 }
 ```
 
-| Elementname  | Beschreibung                                                                           |
+| Elementname  | BESCHREIBUNG                                                                           |
 |---------------|---------------------------------------------------------------------------------------|
 | `estimatedBalance` | Ihr geschätztes Guthaben nach Berücksichtigung aller in Rechnung gestellten und ausstehenden Transaktionen. |
 | `currentBalance`   | Das Guthaben seit Ihrer letzten Rechnung ohne Berücksichtigung ausstehender Transaktionen.    |
@@ -259,7 +259,7 @@ In der API-Antwort werden Listen mit Azure-Guthaben für ein Abrechnungsprofil z
   ]
 }
 ```
-| Elementname  | Beschreibung                                                                                               |
+| Elementname  | BESCHREIBUNG                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `originalAmount` | Der ursprüngliche Guthabenbetrag. |
 | `closedBalance`   | Der Saldo seit der letzten Rechnung.    |
@@ -347,7 +347,7 @@ In der API-Antwort werden alle Transaktionen zurückgegeben, die sich auf das Gu
   ]
 }
 ```
-| Elementname  | Beschreibung                                                                                               |
+| Elementname  | BESCHREIBUNG                                                                                               |
 |---------------|-----------------------------------------------------------------------------------------------------------|
 | `transactionDate` | Das Datum der Transaktion. |
 | `description` | Die Beschreibung der Transaktion. |

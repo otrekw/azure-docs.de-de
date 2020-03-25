@@ -14,7 +14,7 @@
           href: quickstarts/csharp.md
         - name: Java
           href: quickstarts/java.md
-        - name: JavaScript
+        - name: Javascript
           href: quickstarts/javascript.md
 - name: Konzepte
   items:
@@ -42,7 +42,7 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Regionen
+    - name: Regions
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
 - name: Ressourcen
   items:
@@ -52,5 +52,5 @@
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Datenschutz und Cookies
       href: 'https://privacy.microsoft.com/privacystatement'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

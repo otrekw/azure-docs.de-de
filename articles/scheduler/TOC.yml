@@ -14,7 +14,7 @@
   items:
     - name: 'Konzepte, Bedingungen und Entitäten'
       href: scheduler-concepts-terms.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Planen und Entwerfen
       items:

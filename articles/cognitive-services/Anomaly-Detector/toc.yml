@@ -30,7 +30,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: Anomalieerkennung für Streamingdaten mit Azure Databricks
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Ermitteln von Anomalien in Ihren Daten
       href: how-to/identify-anomalies.md
@@ -88,7 +88,7 @@
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Architektur der Referenzlösung
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
 - name: Support
   items:

@@ -20,9 +20,9 @@
       href: Networking.md
     - name: Physische Sicherheit
       href: physical-security.md
-    - name: Unterstützungsmöglichkeiten
+    - name: Unterstützbarkeit
       href: supportability.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Wählen der Bereitstellungsarchitektur
       href: deployment-architecture.md

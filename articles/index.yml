@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e885abcd997a4764090c5e8c8ce7ad14c0963220
-  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79086721"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80129820"
 highlightedContent:
   items:
   - title: Anleitung mit den ersten Schritten für Azure-Entwickler
@@ -278,7 +278,7 @@ productDirectory:
     azureCategories:
     - analytics
     url: data-explorer/index.yml
-  - title: Azure Data Lake Storage
+  - title: Azure Data Lake Store
     summary: Hochgradig skalierbare, sichere Data Lake-Funktionalität auf Basis von Azure Blob Storage
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -304,7 +304,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: sql-data-warehouse/index.yml
+    url: synapse-analytics/sql-data-warehouse/index.yml
   - title: Data Catalog
     summary: Erzielen eines größeren Nutzens aus Ihren Unternehmensdatenbeständen
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
@@ -336,7 +336,7 @@ productDirectory:
     - analytics
     url: hdinsight/index.yml
   - title: Log Analytics
-    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
     azureCategories:
     - analytics
@@ -505,7 +505,7 @@ productDirectory:
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
   - title: Virtual Machine Scale Sets
-    summary: Verwalten und zentrales Hochskalieren Tausender virtueller Linux- und Windows-Computer
+    summary: Verwalten und Hochskalieren Tausender virtueller Linux- und Windows-Computer
     imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
     azureCategories:
     - compute
@@ -674,7 +674,7 @@ productDirectory:
     - developer-tools
     url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
   - title: Application Insights
-    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
     azureCategories:
     - devops
@@ -693,7 +693,7 @@ productDirectory:
     - devops
     url: https://docs.microsoft.com/azure/devops/boards/
   - title: Azure Monitor
-    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
     azureCategories:
     - devops
@@ -800,7 +800,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
     azureCategories:
     - integration
-    url: service-bus/index.md
+    url: service-bus-messaging/index.yml
   - title: Azure Digital Twins (Vorschauversion)
     summary: Erstellen moderner IoT-Lösungen für intelligente Umgebungen
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
@@ -1220,7 +1220,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
     azureCategories:
     - storage
-    url: storsimple/index.md
+    url: storsimple/index.yml
   - title: Azure SignalR Service
     summary: Einfaches Hinzufügen von Echtzeit-Webfunktionen
     imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg

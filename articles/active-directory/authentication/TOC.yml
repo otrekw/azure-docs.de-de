@@ -4,7 +4,7 @@
   items:
     - name: Was ist Authentifizierung?
       href: overview-authentication.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: Aktivieren der Self-Service-Kennwortzurücksetzung
@@ -62,7 +62,7 @@
           href: concept-password-ban-bad-on-premises.md
     - name: Resiliente Zugriffssteuerungen
       href: concept-resilient-controls.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Self-Service-Kennwortzurücksetzung
       items:

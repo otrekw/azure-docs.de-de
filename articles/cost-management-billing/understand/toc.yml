@@ -1,7 +1,7 @@
 - name: 'Dokumentation: Erste Schritte bei der Azure-Abrechnung'
   href: index.yml
   items:
-    - name: Tutorials
+    - name: Lernprogramme
       items:
         - name: Überprüfen Ihrer Einzelkontorechnung
           href: review-individual-bill.md
@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: "Überprüfen der Rechnung Ihrer Microsoft\_Partner-Vereinbarung"
           href: review-partner-agreement-bill.md
+        - name: Überprüfen der Enterprise Agreement-Rechnung
+          href: review-enterprise-agreement-bill.md
     - name: Konzepte
       items:
         - name: Nutzungsbedingungen für einzelne Abonnements
@@ -27,7 +29,7 @@
           href: mpa-invoice-terms.md
         - name: Abrechnungskonten für Microsoft-Partnervereinbarung
           href: mpa-overview.md
-    - name: Anleitungen
+    - name: Gewusst-wie-Anleitungen
       items:
         - name: Vermeiden unerwarteter Kosten
           href: ../manage/getting-started.md

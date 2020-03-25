@@ -32,7 +32,7 @@
   items:
     - name: Erstellen einer Rechtschreibprüfungs-Web-App
       href: tutorials/spellcheck.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Upgrade von v5 auf v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -86,5 +86,5 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

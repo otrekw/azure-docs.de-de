@@ -12,7 +12,7 @@
           href: tutorial-windows-vm-access-arm.md
         - name: Linux-VM
           href: tutorial-linux-vm-access-arm.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Windows-VM/-VMSS
       items:
@@ -54,7 +54,7 @@
       href: /azure/event-hubs/authenticate-managed-identity.md?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Konfigurieren von verwalteten Identitäten auf virtuellen Computern
       items:

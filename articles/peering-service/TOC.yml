@@ -14,7 +14,7 @@
       href: connection-telemetry.md
     - name: Onboarding-Modell
       href: onboarding-model.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Registrieren von Peering Service
       items:
@@ -26,7 +26,7 @@
           href: cli.md
     - name: Messen von Verbindungstelemetrie
       href: measure-connection-telemetry.md
-- name: Referenzen
+- name: References
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.peering

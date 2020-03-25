@@ -4,7 +4,7 @@
       items:
         - name: Erste Schritte
           href: overview.md
-        - name: Workloads
+        - name: Arbeitsauslastungen
           href: partner-workloads.md
     - name: Konzepte
       items:

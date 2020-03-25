@@ -45,13 +45,13 @@
           href: go-tutorial.md
         - name: Objekterkennung
           href: go-tutorial-object-detection.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Melden von visuellen Zustände auf einem IoT-Gerät
       href: iot-visual-alerts-tutorial.md
     - name: Erkennen von Logos auf mobilen Geräten
       href: logo-detector-mobile.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Testen des Modells
       href: test-your-model.md

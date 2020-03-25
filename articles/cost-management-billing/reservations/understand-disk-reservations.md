@@ -10,10 +10,10 @@ ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
 ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77586647"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Grundlegendes zur Anwendung Ihres Reservierungsrabatts auf Azure-Datenträgerspeicher
@@ -44,7 +44,7 @@ Angenommen, Sie stellen für eine Stunde innerhalb des Reservierungszeitraums nu
 
 Angenommen, Sie verwenden in einer Stunde innerhalb des Reservierungszeitraums 101 SSD Premium-Datenträger vom Typ P30. Der Reservierungsrabatt gilt nur für 100 P30-Datenträger. Der zusätzliche P30-Datenträger wird zum Preis für die nutzungsbasierte Bezahlung für diese Stunde abgerechnet. Wenn Ihre Nutzung in der nächsten Stunde auf 100 P30-Datenträger zurückgeht, ist die gesamte Nutzung durch die Reservierung abgedeckt.
 
-### <a name="tiering-your-capacity"></a>Einteilung Ihrer Kapazität
+### <a name="tiering-your-capacity"></a>Einteilen Ihrer Kapazität
 
 Angenommen, Sie möchten in einer Stunde innerhalb Ihres Reservierungszeitraums insgesamt 200 SSD Premium-Datenträger vom Typ P30 verwenden. Nehmen wir weiter an, dass in den ersten 30 Minuten nur 100 Datenträger genutzt werden. Während dieses Zeitraums ist Ihre Nutzung vollständig abgedeckt, da Ihre Reservierung 100 Datenträger vom Typ P30 umfasst. Wenn Sie dann die Verwendung der ersten 100 beenden (sodass die Nutzung auf null zurückgeht) und dann mit der Verwendung der anderen 100 für die verbleibenden 30 Minuten beginnen, ist auch diese Nutzung im Rahmen Ihrer Reservierung abgedeckt.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200743"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
@@ -78,7 +78,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
 3. Wählen Sie im linken Bereich die Option **Abrechnungsprofile** aus. Wählen Sie in der Liste ein Abrechnungsprofil aus. Der neue Abschnitt wird auf der Rechnung des ausgewählten Abrechnungsprofils angezeigt.
 
-   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Screenshot: Liste mit Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Wählen Sie im linken Bereich **Rechnungsabschnitte** und dann oben auf der Seite **Hinzufügen** aus.
 
@@ -106,7 +106,7 @@ Um ein Abrechnungsprofil erstellen zu können, müssen Sie ein **Besitzer des Ab
 
 3. Wählen Sie im linken Bereich **Abrechnungsprofile** und dann oben auf der Seite **Hinzufügen** aus.
 
-   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Screenshot: Liste mit Abrechnungsprofilen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >

@@ -19,7 +19,7 @@
       href: cache-nodejs-get-started.md
     - name: Python-App
       href: cache-python-get-started.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Verwenden von Caching mit Bestenlisten
       href: cache-web-app-cache-aside-leaderboard.md
@@ -33,18 +33,22 @@
       href: cli-samples.md
 - name: Konzepte
   items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Failover und Patching
       href: cache-failover.md
     - name: Bewährte Methoden
       href: cache-best-practices.md
     - name: 'Architektur: bewährte Methoden für die Zwischenspeicherung'
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Planen
       items:
         - name: Auswählen einer Cacheebene
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: Verteilen Ihres Caches mit Clustering
           href: cache-how-to-premium-clustering.md
         - name: Einrichten eines persistenten Cache mit Redis-Datenpersistenz
@@ -113,7 +117,7 @@
       items:
         - name: Aktualisieren auf eine andere Größe und einen anderen Tarif
           href: cache-how-to-scale.md
-        - name: Horizontales Herunter-/Hochskalieren mithilfe des Redis-Clusters
+        - name: Ab-/Aufskalieren mithilfe des Redis-Clusters
           href: cache-how-to-premium-clustering.md
 - name: Verweis
   items:

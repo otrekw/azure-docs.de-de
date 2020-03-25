@@ -20,7 +20,7 @@
       href: pim-email-notifications.md
     - name: Microsoft Graph-APIs
       href: pim-apis.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von PIM

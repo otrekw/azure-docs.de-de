@@ -4,7 +4,7 @@
   items:
     - name: Erstellen von Lösungen für Behörden mit Azure IoT Central
       href: overview-iot-central-government.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer App für die vernetzte Abfallwirtschaft
       href: tutorial-connected-waste-management.md
@@ -20,7 +20,7 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: 'Überwachung der Wasserqualität: Referenzarchitektur'
       href: concepts-waterqualitymonitoring-architecture.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verbinden Ihrer App mit Dynamics 365 Field Services
       href: how-to-configure-connected-field-services.md
@@ -84,30 +84,32 @@
           href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Ein-/Ausschalten des Livechats
           href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-- name: Verwandte Themen
+- name: Ressourcen
   items:
-    - name: Plattformdienste
+    - name: Azure IoT-Dienste
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: "IoT\_Plug\_&\_Play"
-          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge-Lösungen
+    - name: Azure IoT SDKs
       items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT-Geräte-SDKs
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: Ressourcen
-  items:
     - name: Support- und Hilfeoptionen
       href: /azure/iot-fundamentals/iot-support-help
     - name: Kundendatenanforderungen

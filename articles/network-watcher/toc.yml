@@ -15,7 +15,7 @@
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Diagnostizieren eines VM-Routingproblems
       href: diagnose-vm-network-routing-problem.md
@@ -43,7 +43,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: Berechtigungen für die rollenbasierte Zugriffssteuerung
       href: required-rbac-permissions.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Konfigurieren von Network Watcher
       href: network-watcher-create.md

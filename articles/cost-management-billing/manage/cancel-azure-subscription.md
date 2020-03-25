@@ -1,5 +1,5 @@
 ---
-title: Kündigen Ihres Azure-Abonnements | Microsoft Docs
+title: Kündigen Ihres Azure-Abonnements
 description: Beschreibt, wie Sie Ihr Azure-Abonnement, etwa das Abonnement für die kostenlose Testversion, kündigen.
 author: bandersmsft
 ms.reviewer: amberb
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 738eb860857d15f920a7552629c7d83ae6e2c3f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4cc3c1bcfe5f153e76f3bd37fbefa79fca4d541a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199822"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237733"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 

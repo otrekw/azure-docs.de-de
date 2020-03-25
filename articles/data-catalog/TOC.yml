@@ -8,7 +8,7 @@
   items:
     - name: Erstellen einer Azure Data Catalog-Instanz
       href: data-catalog-get-started.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Registrieren von Datenassets
       href: register-data-assets-tutorial.md

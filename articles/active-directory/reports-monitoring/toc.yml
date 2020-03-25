@@ -45,7 +45,7 @@
       href: concept-reporting-api.md
     - name: Azure AD-Protokolle in Azure Monitor
       href: concept-activity-logs-azure-monitor.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Berichte

@@ -25,7 +25,7 @@
   items:
     - name: Sichere Container
       href: container-service-security.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Skalieren eines ACS-Clusters
       href: container-service-scale.md

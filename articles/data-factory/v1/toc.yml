@@ -47,7 +47,7 @@
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: Häufig gestellte Fragen
       href: data-factory-faq.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Verschieben von Daten
       items:

@@ -64,7 +64,7 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-Konsole (Daemon)
           href: quickstart-v2-python-daemon.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Einseitige Apps
       displayName: SPA
@@ -433,7 +433,7 @@
       items:
         - name: Übersicht
           href: authentication-national-cloud.md
-        - name: Authentifizierung
+        - name: Authentication
           href: msal-national-cloud.md
     - name: Automatische Benutzerbereitstellung (SCIM)
       items:
@@ -441,9 +441,9 @@
           href: /azure/active-directory/manage-apps/user-provisioning
         - name: Erstellen und Integrieren eines SCIM-Endpunkts
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
-    - name: Authentifizierung
+    - name: Authentication
       items:
         - name: Konfigurieren von Rollenansprüchen
           href: active-directory-enterprise-app-role-management.md

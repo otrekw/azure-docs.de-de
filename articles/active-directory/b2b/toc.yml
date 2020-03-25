@@ -13,7 +13,7 @@
           href: b2b-quickstart-add-guest-users-portal.md
         - name: Hinzufügen von Gastbenutzern mit PowerShell
           href: b2b-quickstart-invite-powershell.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
         - name: Masseneinladung über PowerShell
           href: bulk-invite-powershell.md
@@ -52,7 +52,7 @@
           href: self-service-portal.md
         - name: Aktuelle Einschränkungen
           href: current-limitations.md
-    - name: Anleitungen
+    - name: Gewusst-wie-Anleitungen
       expanded: true
       items:
         - name: Verwalten der B2B-Freigabe

@@ -20,7 +20,7 @@
       items:
         - name: Erstellen eines Ausführungsplans
           href: example-terraform-bash.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: PowerShell Cloud Shell für Windows-Benutzer
       href: cloud-shell-windows-users.md

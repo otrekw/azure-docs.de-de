@@ -90,7 +90,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: Grundlegendes zu Schattenattributen
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Installation und Upgrade
       items:
@@ -194,7 +194,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Ändern des Kennworts für das Azure ADSync-Dienstkonto
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Ändern des Kennwort für das Azure AD Connector-Konto
+        - name: Ändern des Kennworts für das Azure AD-Connector-Konto
           href: how-to-connect-azureadaccount.md
         - name: Ändern des Kennworts für das AD DS-Connector-Konto
           href: how-to-connect-sync-change-addsacct-pass.md
@@ -312,6 +312,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Probleme bei der Installation
           href: tshoot-connect-install-issues.md
+        - name: Änderungen des Benutzerprinzipalnamens
+          href: howto-troubleshoot-upn-changes.md
 - name: Verweis
   items:
     - name: Erforderliche Ports und Protokolle für die Hybrid-Identität

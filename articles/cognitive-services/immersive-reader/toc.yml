@@ -13,7 +13,7 @@
       href: quickstart-nodejs.md
     - name: Verwenden von Swift (iOS)
       href: ios-quickstart.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md

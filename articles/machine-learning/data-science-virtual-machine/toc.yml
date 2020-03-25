@@ -41,7 +41,7 @@
       href: dsvm-enterprise-overview.md
 - name: Beispiele
   href: dsvm-samples-and-walkthroughs.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwenden einer Data Science Virtual Machine-Instanz für Windows
       href: vm-do-ten-things.md

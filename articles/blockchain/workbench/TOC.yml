@@ -5,7 +5,7 @@
   items:
     - name: Info zu Azure Blockchain Workbench
       href: overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: Erstellen einer Blockchain-App
@@ -18,7 +18,7 @@
       href: architecture.md
     - name: Integrationsmuster
       href: integration-patterns.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von Workbench

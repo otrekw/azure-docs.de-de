@@ -13,7 +13,7 @@
   items:
     - name: Verwenden des SDK
       href: sdk-learning-loop.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Verwenden von Azure Notebook
       href: tutorial-use-azure-notebook-generate-loop-data.md
@@ -58,7 +58,7 @@
           href: concept-feature-evaluation.md
     - name: Skalierbarkeit und Leistung
       href: concepts-scalability-performance.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen einer Personalisierungsressource
       href: how-to-create-resource.md
@@ -107,6 +107,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure-Roadmap
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: Preise

@@ -29,7 +29,7 @@
       items:
         - name: Clientbibliotheken für die Bing-Websuche
           href: ./quickstarts/client-libraries.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-web-search-single-page-app.md
@@ -39,7 +39,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
     - name: SDK-Beispiele
       href: sdk-samples.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Filtern von Antworten
       href: filter-answers.md

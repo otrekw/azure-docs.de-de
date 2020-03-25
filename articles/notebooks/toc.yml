@@ -22,7 +22,7 @@
       href: tutorial-create-run-jupyter-notebook.md
 - name: Beispiele
   items:
-    - name: Beispielnotebooks
+    - name: Beispiel-Notebooks
       href: azure-notebooks-samples.md
 - name: Konzepte
   items:
@@ -30,7 +30,7 @@
       href: azure-notebooks-user-account.md
     - name: Profile
       href: azure-notebooks-user-profile.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen und Klonen von Projekten
       href: create-clone-jupyter-notebooks.md

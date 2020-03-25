@@ -4,7 +4,7 @@
   items:
     - name: Informationen zu Azure Red Hat OpenShift
       href: intro-openshift.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters
       items:
@@ -22,7 +22,7 @@
           href: cluster-administration-cluster-admin-role.md
         - name: 2. Verwalten von Sicherheitskontexteinschränkungen
           href: cluster-administration-security-context-constraints.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
@@ -41,6 +41,8 @@
           href: howto-azure-monitor-v4.md
     - name: Bereitstellen einer eigenständigen Prometheus-Instanz in einem Azure Red Hat OpenShift-Cluster
       href: howto-deploy-prometheus.md
+    - name: Verwalten von Projekten in einem Azure Red Hat OpenShift-Cluster
+      href: howto-manage-projects.md
     - name: Erstellen eines privaten Azure Red Hat OpenShift-Clusters
       href: howto-create-private-cluster.md
     - name: Überwachung und Protokollierung

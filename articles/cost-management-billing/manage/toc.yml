@@ -4,7 +4,7 @@
   items:
     - name: Was sind Kostenverwaltung und Abrechnung?
       href: ../cost-management-billing-overview.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Kostenloses Konto
@@ -83,8 +83,6 @@
       items:
         - name: "Erste Schritte im Azure\_EA-Portal"
           href: ea-portal-get-started.md
-        - name: Erläuterungen zur EA-Rechnung
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: EA-Rollen in Azure
           href: understand-ea-roles.md
         - name: "Azure\_EA-Portalverwaltung"

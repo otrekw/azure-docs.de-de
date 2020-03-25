@@ -15,7 +15,7 @@
     - name: Erstellen eines virtuellen Linux-Computers
       href: terraform-create-complete-vm.md
       maintainContext: true
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Setup und Konfiguration
       items:

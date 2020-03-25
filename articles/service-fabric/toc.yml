@@ -19,7 +19,7 @@
           href: service-fabric-quickstart-java-spring-boot.md
         - name: Bereitstellen einer Reliable Services-Anwendung
           href: service-fabric-quickstart-java-reliable-services.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Bereitstellen einer .NET-App
       items:
@@ -316,8 +316,6 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Ausbalancieren eines Clusters
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: Subclustering
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: Drosselung
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Dienstverschiebung
@@ -360,7 +358,7 @@
       href: concepts-managed-identity.md
     - name: Konfigurieren der Anmeldeinformationen des Containerrepositorys
       href: configure-container-repository-credentials.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Einrichten der Entwicklungsumgebung
       items:
@@ -645,11 +643,11 @@
                   href: service-fabric-tutorial-create-vnet-and-linux-cluster.md
             - name: Skalieren
               items:
-                - name: Manuelles horizontales Hochskalieren
+                - name: Manuelles Aufskalieren
                   href: service-fabric-cluster-scale-up-down.md
-                - name: Programmgesteuertes horizontales Hochskalieren
+                - name: Programmgesteuertes Aufskalieren
                   href: service-fabric-cluster-programmatic-scaling.md
-                - name: Zentrales Hochskalieren des primären Knotentyps
+                - name: Hochskalieren des primären Knotentyps
                   href: service-fabric-scale-up-node-type.md
                 - name: Hinzufügen eines Knotentyps
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md

@@ -23,7 +23,7 @@
         - name: Verwaltete Datenträger
           items:
             - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit CLI
-              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
             - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell
               href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
         - name: VM-Skalierungsgruppen
@@ -68,11 +68,11 @@
         - name: Event Hubs
           items:
             - name: Georedundante Notfallwiederherstellung in Event Hubs
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
         - name: Service Bus
           items:
             - name: Georedundante Notfallwiederherstellung in Service Bus
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
         - name: VPN Gateway
           items:
             - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke

@@ -29,7 +29,7 @@
   items:
     - name: Dienstprinzipal – Kubernetes
       href: container-service-kubernetes-service-principal.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Kubernetes mit Windows
       href: container-service-kubernetes-windows-walkthrough.md

@@ -1,20 +1,20 @@
 ---
-title: Hinzufügen erweiterter Metriken für virtuelle Azure-Computer | Microsoft-Dokumentation
+title: Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 description: Dieser Artikel unterstützt Sie dabei, erweiterte Diagnosemetriken für Ihre Azure-VMs zu aktivieren und zu konfigurieren.
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082913"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481618"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -30,7 +30,9 @@ Das Aktivieren der Metrikerfassung ermöglicht Folgendes:
 Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastung in % für Ihre Azure-VMs überwachen. Die entsprechenden Azure-VM-Metriken lauten _CPU in Prozent_ und _\Memory\Zugesicherte verwendete Bytes (\%)_ .
 
 > [!NOTE]
-> Das Sammeln von erweiterten Metriken wird nur zusammen mit Azure-Überwachung auf Gastebene unterstützt. Cloudyn ist nicht mit dem [Log Analytics-Agent](../../azure-monitor/platform/agents-overview.md) kompatibel. 
+> Das Sammeln von erweiterten Metriken wird nur zusammen mit Azure-Überwachung auf Gastebene unterstützt. Cloudyn ist nicht mit dem [Log Analytics-Agent](../../azure-monitor/platform/agents-overview.md) kompatibel.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Bestimmen, ob erweiterte Metriken aktiviert sind
 

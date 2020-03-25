@@ -5,7 +5,7 @@
   items:
     - name: Was ist die Anwendungsbereitstellung?
       href: user-provisioning.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: G Suite
       href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
@@ -28,7 +28,7 @@
       href: plan-auto-user-provisioning.md
     - name: Planen einer HR-Cloudbereitstellung
       href: plan-cloud-hr-provision.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Konfigurieren der Bereitstellung für eine Katalog-App

@@ -7,7 +7,7 @@
     - name: Was ist die Azure AD Connect-Cloudbereitstellung?
       href: what-is-cloud-provisioning.md
       maintainContext: true
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: "Integrieren einer einzelnen AD-Gesamtstruktur in einen einzelnen Azure\_AD-Mandanten"
@@ -24,7 +24,7 @@
       href: concept-attributes.md
     - name: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
       href: reference-expressions.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Installation und Upgrade
       items:

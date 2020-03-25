@@ -9,7 +9,7 @@
   items:
     - name: Ermitteln von verfügbaren Räumen
       href: quickstart-view-occupancy-dotnet.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Überwachen eines Gebäudes mit Digital Twins
       items:
@@ -43,7 +43,7 @@
           href: security-create-manage-role-assignments.md
         - name: Authentifizierung von Verwaltungs-APIs
           href: security-authenticating-apis.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Aktivieren von mehrinstanzenfähigen Anwendungen
       href: how-to-multitenant-applications.md

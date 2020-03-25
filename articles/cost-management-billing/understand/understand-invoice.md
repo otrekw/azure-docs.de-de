@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: a3bf55bef0f6fc25f98b362b4a22e22471a031f1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199057"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
@@ -38,7 +38,7 @@ Der Abschnitt mit den Kontoinformationen der Rechnung befindet sich oben auf der
 
 ![Abschnitt mit Kontoinformationen der Rechnung](./media/understand-invoice/account-information-section.png)
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Bestellnr. des Kunden |Eine optionale Bestellnummer, die Ihnen zur Nachverfolgung zugewiesen wird |
 | Invoice No. |Eine eindeutige, von Microsoft generierte Rechnungsnummer, die für Nachverfolgungszwecke verwendet wird |
@@ -78,7 +78,7 @@ Der Abschnitt „Aktuelle Gebühren“ der Rechnung enthält Details zu Ihren mo
 
 In der folgenden Tabelle werden Angaben zu Käufer und Zahlungsanweisungen auf der zweiten Seite Ihrer Rechnung beschrieben.
 
-| Begriff |Beschreibung |
+| Begriff |BESCHREIBUNG |
 | --- | --- |
 | Sold To |Die Profiladresse im Konto. <br/><br/>Weitere Informationen zum Ändern dieser Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](../manage/change-azure-account-profile.md).|
 | Payment Instructions |Anweisungen zur Zahlung je nach Zahlungsmethode (z.B. per Kreditkarte oder Rechnung) |
@@ -91,7 +91,7 @@ Der Abschnitt „Nutzungsgebühren“ der Rechnung enthält Informationen zu Ihr
 
 In der folgenden Tabelle werden die Spaltenüberschriften des Abschnitts „Nutzungsgebühren“ in Ihrer Rechnung beschrieben.
 
-| Begriff |Beschreibung |
+| Begriff |BESCHREIBUNG |
 | --- | --- |
 | Name |Gibt den Dienst der obersten Ebene für die Nutzung an |
 | type |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |

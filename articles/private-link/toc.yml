@@ -40,9 +40,9 @@
       href: manage-private-endpoint.md
     - name: Problembehandlung
       items:
-        - name: Beheben von Problemen bei Verbindungen mit privaten Endpunkten
+        - name: Problembehandlung bei Konnektivitätsproblemen mit privaten Endpunkten
           href: troubleshoot-private-endpoint-connectivity.md
-        - name: Beheben von Problemen bei Verbindungen mit dem Private Link-Dienst
+        - name: Problembehandlung bei Konnektivitätsproblemen beim Private Link-Dienst
           href: troubleshoot-private-link-connectivity.md
 - name: Verweis
   items:

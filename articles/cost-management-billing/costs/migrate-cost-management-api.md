@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201032"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
@@ -425,7 +425,7 @@ Im Bereich der EA-Registrierung sind die API-Antwort und Eigenschaften identisch
 
 Die älteren Eigenschaften für [Azure Resource Manager-Preisblatt-APIs](/rest/api/consumption/pricesheet) und die entsprechenden neuen Eigenschaften sind in der folgenden Tabelle enthalten.
 
-| Alte Eigenschaft der Azure Resource Manager-Preisblatt-API  | Neue Eigenschaft der Preisblatt-API für Microsoft-Kundenvereinbarungen   | Beschreibung |
+| Alte Eigenschaft der Azure Resource Manager-Preisblatt-API  | Neue Eigenschaft der Preisblatt-API für Microsoft-Kundenvereinbarungen   | BESCHREIBUNG |
 | --- | --- | --- |
 | Meter ID | _meterId_ | Eindeutiger Bezeichner für die Verbrauchseinheit. Entspricht meterID. |
 | Meter name | meterName | Name der Verbrauchseinheit. Die Verbrauchseinheit stellt die bereitstellbare Ressource eines Azure-Diensts dar. |
@@ -454,7 +454,7 @@ Das Preisblatt enthält Preise für Dienste, deren Preis auf der Nutzung basiert
 
 Die folgenden Felder sind entweder nicht in Preisblatt-APIs für Microsoft-Kundenvereinbarungen verfügbar oder diese weisen die gleichen Felder auf.
 
-|Nicht mehr verwendetes Feld| Beschreibung|
+|Nicht mehr verwendetes Feld| BESCHREIBUNG|
 |---|---|
 | billingPeriodId | Nicht zutreffend. Entspricht InvoiceId für MCA. |
 | offerID | Nicht zutreffend Entspricht productOrderName in MCA. |

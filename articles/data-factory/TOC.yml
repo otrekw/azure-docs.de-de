@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Kopieren und Erfassen von Daten
       items:
@@ -190,7 +190,7 @@
       href: pricing-concepts.md
     - name: Benennungsregeln
       href: naming-rules.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Autor
       items:

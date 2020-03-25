@@ -16,7 +16,7 @@
       items:
         - name: Installieren von Chef mit dem Azure-Portal
           href: ./chef-extension-portal.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Chef
       items:

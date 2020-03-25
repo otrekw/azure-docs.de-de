@@ -4,7 +4,7 @@
   items:
     - name: Was ist Azure Firewall?
       href: overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: Bereitstellen und konfigurieren
@@ -43,7 +43,7 @@
       href: compliance-certifications.md
     - name: Zentrale Verwaltung
       href: central-management.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
       href: deploy-ps.md

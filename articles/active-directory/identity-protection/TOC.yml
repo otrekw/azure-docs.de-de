@@ -17,7 +17,7 @@
       href: concept-identity-protection-user-experience.md
     - name: Identity Protection und B2B-Benutzer
       href: concept-identity-protection-b2b.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Konfigurieren von Benachrichtigungen

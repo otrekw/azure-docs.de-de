@@ -9,7 +9,7 @@
   items:
     - name: Ausführen eines Genomics-Beispielworkflows
       href: quickstart-run-genomics-workflow-portal.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwenden verschiedener Eingabedateiformate
       items:

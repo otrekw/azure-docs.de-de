@@ -4,7 +4,7 @@
   items:
     - name: Was ist Stretch Database?
       href: /sql/sql-server/stretch-database/stretch-database
-    - name: Einschränkungen und Hindernisse
+    - name: Einschränkungen und blockierende Probleme
       href: /sql/sql-server/stretch-database/limitations-for-stretch-database
 - name: Erste Schritte
   items:
@@ -12,7 +12,7 @@
       href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
     - name: Ausführen des Assistenten
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Aktivieren
       items:
@@ -20,7 +20,7 @@
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
         - name: Aktivieren einer Tabelle
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
-        - name: Auswählen von Zeilen für die Migration
+        - name: Auswählen von zu migrierenden Zeilen
           href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
     - name: Verwalten
       items:

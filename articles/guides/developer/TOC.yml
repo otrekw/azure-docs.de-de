@@ -22,7 +22,7 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen und Bereitstellen einer Web-App
       items:

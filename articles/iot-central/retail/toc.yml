@@ -4,7 +4,7 @@
   items:
     - name: Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
       href: overview-iot-central-retail-pnp.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: In-Store-Analyse – Auschecken
       items:
@@ -46,7 +46,7 @@
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Was sind Anwendungsvorlagen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
@@ -110,32 +110,34 @@
           href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Ein-/Ausschalten des Livechats
           href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: Verwandte Themen
-  items:
-    - name: Plattformdienste
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: "IoT\_Plug\_&\_Play"
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge-Lösungen
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT-Dienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDKs
+      items:
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Kundendatenanforderungen
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Unterstützte Browser

@@ -15,7 +15,7 @@
       href: add-application-portal.md
     - name: Anzeigen Ihrer Unternehmensanwendungen
       href: view-applications-portal.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
       href: /azure/active-directory/saas-apps/
@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: Mandanteneinschränkungen
               href: tenant-restrictions.md
-            - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
+            - name: Konfigurieren der SAML-Tokenverschlüsselung
               href: howto-saml-token-encryption.md
             - name: Endbenutzerportale
               href: end-user-experiences.md
@@ -92,7 +92,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Cloud-Apps und einmaliges Anmelden
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
               href: configure-admin-consent-workflow.md
-            - name: Methoden zum Zuweisen von Benutzern und Gruppen zu einer App
-              href: methods-for-assigning-users-and-groups.md
-            - name: Zuweisen eines Benutzers zu einer App
+            - name: Zuweisen eines Benutzers oder einer Gruppe zu einer App
               href: assign-user-or-group-access-portal.md
             - name: Erstellen von Auflistungen in „Meine Apps“
               href: access-panel-collections.md

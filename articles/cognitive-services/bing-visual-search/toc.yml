@@ -56,7 +56,7 @@
     - name: Analysen für die API für die visuelle Suche
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Gewinnen von Erkenntnissen per Token
       href: use-insights-token.md
@@ -96,5 +96,5 @@
       href: 'https://stackoverflow.com/questions/tagged/bing-search'
     - name: Aussagen von Benutzern
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

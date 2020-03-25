@@ -4,7 +4,7 @@
   items:
     - name: Was ist Azure Firewall Manager?
       href: overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: 'Schützen Ihres virtuellen WAN: Portal'
@@ -25,7 +25,7 @@
       href: rule-processing.md
     - name: Architekturoptionen
       href: vhubs-and-vnets.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Bereitstellen vertrauenswürdiger Sicherheitspartner
       href: deploy-trusted-security-partner.md

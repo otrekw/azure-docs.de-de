@@ -43,7 +43,7 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Gewinnen von Erkenntnissen aus Videos
       href: video-insights.md
@@ -105,5 +105,5 @@
     - name: Analyse für die Bing-Videosuche-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

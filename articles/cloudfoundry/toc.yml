@@ -5,7 +5,7 @@
   items:
     - name: Marketplace-Vorlage
       href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer CF-Instanz in Azure
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure

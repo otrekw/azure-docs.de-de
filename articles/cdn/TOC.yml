@@ -14,7 +14,7 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Erstellen eines Profils mit einer Azure Resource Manager-Vorlage
       href: create-profile-resource-manager-template.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Hinzufügen von Azure CDN zu einer Web-App
       href: cdn-add-to-web-app.md
@@ -46,7 +46,7 @@
       href: cdn-migrate.md
     - name: DDoS-Schutz
       href: cdn-ddos.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Optimieren von Inhalten
       href: cdn-optimization-overview.md

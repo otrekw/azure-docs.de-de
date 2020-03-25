@@ -33,7 +33,7 @@
           href: luis-get-started-get-intent-from-rest.md
         - name: Ändern des Modells
           href: get-started-get-model-rest-apis.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer zerlegbaren App
       items:
@@ -135,7 +135,7 @@
         - name: Entwurfsstrategien
           href: luis-concept-enterprise.md
           displayName: import
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Starten einer neuen App
       href: luis-how-to-start-new-app.md
@@ -408,6 +408,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Verschlüsselung
+      href: luis-encryption-of-data-at-rest.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice

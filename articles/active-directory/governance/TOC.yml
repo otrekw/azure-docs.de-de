@@ -9,7 +9,7 @@
       href: entitlement-management-overview.md
     - name: Worum handelt es sich bei Zugriffsüberprüfungen?
       href: access-reviews-overview.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: true
   items:
     - name: Erstellen Ihres ersten Zugriffspakets
@@ -31,7 +31,7 @@
           href: manage-user-access-with-access-reviews.md
         - name: 'Verwalten von Benutzern, die vom bedingten Zugriff ausgeschlossen wurden'
           href: conditional-access-exclusion.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Berechtigungsverwaltung

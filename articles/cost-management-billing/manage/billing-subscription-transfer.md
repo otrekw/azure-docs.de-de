@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245384"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238158"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -124,7 +124,7 @@ Die Übertragung von Abonnements im Azure-Portal ist für die unten aufgeführte
 
 Diese häufig gestellten Fragen richten sich an Benutzer, die den Abrechnungsbesitz eines Azure-Abonnements an ein anderes Konto übertragen möchten.
 
-### <a name="whoisaa"></a> Wer ist ein Abrechnungsadministrator für ein Konto?
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Wer ist ein Abrechnungsadministrator für ein Konto?
 
 Ein Abrechnungsadministrator ist eine Person, die über Berechtigungen zum Verwalten der Abrechnung für ein Konto verfügt. Sie ist berechtigt, im [Azure-Portal](https://portal.azure.com) auf die Abrechnung zuzugreifen und verschiedene Abrechnungsaufgaben durchzuführen (Abonnements erstellen, Rechnungen anzeigen und bezahlen, Zahlungsmethoden aktualisieren und Ähnliches).
 
@@ -206,15 +206,15 @@ Der Unternehmensadministrator kann den Kontobesitz für beliebige Konten aktuali
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
 
 Die Self-Service-Abonnementübertragung ist für Ihr Abrechnungskonto nicht verfügbar. Derzeit wird die Übertragung des Abrechnungsbesitzes von Abonnements in Enterprise Agreement (EA)-Konten im Azure-Portal nicht unterstützt. Darüber hinaus wird die Übertragung des Abrechnungsbesitzes für Konten mit Microsoft-Kundenvereinbarung, die in Zusammenarbeit mit einem Microsoft-Vertreter erstellt werden, nicht unterstützt.
 
-### <a id="no-button"></a> Warum unterstützt mein Abonnementtyp die Übertragung nicht?
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Warum unterstützt mein Abonnementtyp die Übertragung nicht?
 
 Nicht alle Abonnementtypen unterstützen die Übertragung des Abrechnungsbesitzes. Unter [Unterstützte Abonnementtypen](#supported-subscription-types) sind die Abonnementtypen aufgelistet, die eine Übertragung unterstützen.
 
-### <a id="no-button"></a> Warum erhalte ich den Fehler „Zugriff verweigert“, wenn ich versuche, den Abrechnungsbesitz eines Abonnements zu übertragen?
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Warum erhalte ich den Fehler „Zugriff verweigert“, wenn ich versuche, den Abrechnungsbesitz eines Abonnements zu übertragen?
 
 Dieser Fehler wird angezeigt, wenn Sie versuchen, ein Abonnement für einen Microsoft Azure-Plan zu übertragen und nicht über die erforderliche Berechtigung verfügen. Um das Abonnement für einen Microsoft Azure-Plan zu übertragen, müssen Sie im Rechnungsabschnitt entweder Besitzer oder Mitwirkender sein, dem das Abonnement in Rechnung gestellt wird. Weitere Informationen finden Sie unter [Verwalten von Abonnements für den Rechnungsabschnitt](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 

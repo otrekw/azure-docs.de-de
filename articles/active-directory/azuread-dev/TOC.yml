@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Daemon- oder Serveranwendung
           href: service-to-service.md
-    - name: Authentifizierung
+    - name: Authentication
       items:
         - name: Authentifizierungsgrundlagen
           href: v1-authentication-scenarios.md
@@ -81,9 +81,9 @@
       href: conditional-access-dev-guide.md
     - name: Nationale Clouds
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
-    - name: Authentifizierung
+    - name: Authentication
       items:
         - name: Einmaliges Anmelden konfigurieren
           displayName: SSO

@@ -17,7 +17,7 @@
     - name: Ausführen Ihrer ersten Abfrage – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen und Freigeben einer Abfrage im Azure-Portal
       displayName: 'query, portal'
@@ -44,7 +44,7 @@
     - name: Leitfaden für gedrosselte Anforderungen
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Abrufen von Ressourcenänderungen
       displayName: 'resource, change, history, snapshot, details'

@@ -54,7 +54,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: Konfigurieren der Integration von Azure Key Vault
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen einer SQL-VM
       items:

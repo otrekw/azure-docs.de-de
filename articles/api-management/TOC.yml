@@ -15,7 +15,7 @@
       href: get-started-create-service-instance.md
     - name: Erstellen einer Instanz – PowerShell
       href: powershell-create-service-instance.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: '1: Importieren Ihrer ersten API'
       href: import-and-publish.md
@@ -65,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: Übersicht über das selbstgehostete Gateway
       href: self-hosted-gateway-overview.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Definieren von APIs
       items:

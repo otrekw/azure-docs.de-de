@@ -83,7 +83,7 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Entwickeln
       items:

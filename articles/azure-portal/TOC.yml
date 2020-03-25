@@ -14,7 +14,7 @@
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Festlegen Ihrer Azure-Portaleinstellungen
       href: set-preferences.md

@@ -26,7 +26,7 @@
     - name: ARM-Vorlage
       displayName: Resource Manager
       href: quick-create-template.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Azure-Web-Apps
       items:
@@ -101,7 +101,7 @@
           href: create-certificate.md
         - name: Überwachen und Verwalten der Zertifikaterstellung
           href: create-certificate-scenarios.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Sicherheit
       items:
@@ -129,7 +129,7 @@
       href: tutorial-rotation.md
     - name: Integrieren in Azure Policy
       href: azure-policy.md
-    - name: Integration in den Azure Private Link-Dienst (Vorschau)
+    - name: "Integration in den Azure\_Private\_Link-Dienst"
       href: private-link-service.md
     - name: Azure Key Vault-Protokollierung
       href: key-vault-logging.md

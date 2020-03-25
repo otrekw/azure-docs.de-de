@@ -15,7 +15,7 @@
       items:
         - name: Erkunden von Time Series Insights (Vorschauversion)
           href: time-series-insights-update-quickstart.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Azure Time Series Insights (allgemein verfügbar)
       items:
@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI-Integration
               href: concepts-power-bi.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Gewähren des Datenzugriffs
       href: time-series-insights-data-access.md

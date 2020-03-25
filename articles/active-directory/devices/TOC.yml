@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Mit Azure verwaltete Arbeitsstationen
       href: concept-azure-managed-workstation.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: false
   items:
     - name: Planen der Implementierung Ihrer Azure AD-Einbindung

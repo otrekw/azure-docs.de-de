@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200213"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237903"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Kundenvereinbarung
 
@@ -23,7 +23,7 @@ Die Rechnung enthält eine Zusammenfassung der Gebühren sowie Zahlungsanweisung
 
 ## <a name="billing-period"></a>Abrechnungszeitraum
 
-Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im [Azure-Portal](https://portal.azure.com/) in den Eigenschaften des Abrechnungsprofils das *Rechnungsdatum* überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
+Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im *Azure-Portal* in den Eigenschaften des Abrechnungsprofils das [Rechnungsdatum](https://portal.azure.com/) überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
 
 ## <a name="invoice-terms-and-descriptions"></a>Begriffe auf der Rechnung und entsprechende Beschreibungen
 
@@ -35,7 +35,7 @@ Den Abschnitt **Rechnungszusammenfassung** finden Sie oben auf der ersten Seite.
 
 ![Abschnitt „Rechnungszusammenfassung“](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Sold To |Adresse des Rechtsträgers gemäß den Angaben im Abrechnungskonto|
 | Bill to |Rechnungsadresse des Abrechnungsprofils, das die Rechnung erhält, gemäß den Angaben im Abrechnungsprofil|
@@ -51,7 +51,7 @@ Im Abschnitt **Billing summary** (Abrechnungsübersicht) werden alle in Rechnung
 
 ![Abschnitt „Billing Summary“ (Abrechnungsübersicht)](./media/mca-understand-your-invoice/billingsummary.png)
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Charges|Microsoft-Gesamtgebühren für dieses Abrechnungsprofil seit dem letzten Abrechnungszeitraum |
 | Guthaben |Gutschriften durch Rückgaben |

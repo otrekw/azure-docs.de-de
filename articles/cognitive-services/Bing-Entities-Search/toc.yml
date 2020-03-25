@@ -28,7 +28,7 @@
       items:
         - name: Clientbibliotheken für die Bing-Entitätssuche
           href: ./quickstarts/client-libraries.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-entities-search-single-page-app.md
@@ -36,7 +36,7 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
