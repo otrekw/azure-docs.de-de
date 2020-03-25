@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74532842"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Erstellen einer Funktionen-App in einem App Service-Plan
@@ -38,7 +38,7 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt ein Azure Storage-Konto. |
-| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Erstellt einen Premium-Plan. |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Erstellt einen Premium-Tarif. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im App Service-Plan. |
 
 ## <a name="next-steps"></a>Nächste Schritte

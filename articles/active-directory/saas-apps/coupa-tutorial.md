@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Coupa | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Coupa | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Coupa konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory-Integration mit Coupa
@@ -182,7 +182,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -224,7 +224,7 @@ Damit sich Azure AD-Benutzer bei Coupa anmelden können, müssen sie in Coupa be
 
     ![Benutzer](./media/coupa-tutorial/ic791908.png "Benutzer")
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
     ![Erstellen von Benutzern](./media/coupa-tutorial/ic791909.png "Benutzer erstellen")
 
@@ -234,7 +234,7 @@ Damit sich Azure AD-Benutzer bei Coupa anmelden können, müssen sie in Coupa be
 
     a. Geben Sie die Attribute **Benutzername**, **Vorname**, **Nachname**, **ID für einmaliges Anmelden** und **E-Mail** eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
-    b. Klicken Sie auf **Create**.
+    b. Klicken Sie auf **Erstellen**.
 
     >[!NOTE]
     >Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.

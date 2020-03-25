@@ -17,13 +17,13 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154029"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration mit Adobe Sign
+# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in Adobe Sign integrieren.
 Die Integration von Azure AD in Adobe Sign bietet die folgenden Vorteile:
@@ -150,7 +150,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Adobe Si
 
 1. Melden Sie sich in einem anderen Webbrowserfenster auf der Adobe Sign-Unternehmenswebsite als Administrator an.
 
-1. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  >  **SAML Settings** (SAML-Einstellungen) auf.
+1. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  > **SAML Settings** (SAML-Einstellungen) auf.
    
     ![Screenshot der Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/ic789520.png "Konto")
 
@@ -199,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -236,7 +236,7 @@ Damit sich Azure AD-Benutzer bei Adobe Sign anmelden können, müssen sie in Ado
 
 1. Melden Sie sich auf der **Adobe Sign**-Unternehmenswebsite als Administrator an.
 
-2. Wählen Sie oben im Menü **Account** (Konto) aus. Wählen Sie im linken Bereich **Users & Groups** (Benutzer & Gruppen)  >  **Create a new user** (Neuen Benutzer erstellen) aus.
+2. Wählen Sie oben im Menü **Account** (Konto) aus. Wählen Sie im linken Bereich **Users & Groups** (Benutzer & Gruppen)  > **Create a new user** (Neuen Benutzer erstellen) aus.
    
     ![Screenshot der Adobe Sign-Unternehmenswebsite mit Hervorhebung von „Account“ (Konto), „Users & Groups“ (Benutzer & Gruppen) und „Create a new user“ (Neuen Benutzer erstellen)](./media/adobe-echosign-tutorial/ic789524.png "Konto")
    

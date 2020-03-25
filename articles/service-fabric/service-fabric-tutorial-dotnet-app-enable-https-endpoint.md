@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614076"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222727"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Gewähren von Zugriff auf den privaten Schlüssel des Zertifikats für „NETWORK SERVICE“
 
-In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\LocalMachine\My` auf dem Entwicklungscomputer importiert.  Gewähren Sie nun dem Konto, das den Dienst ausführt (standardmäßig „NETWORK SERVICE“), explizit Zugriff auf den privaten Schlüssel des Zertifikats. Dieser Schritt kann manuell über das Tool „certlm.msc“ ausgeführt werden. Es empfiehlt sich jedoch, automatisch ein PowerShell-Skript auszuführen. Hierzu können Sie unter **SetupEntryPoint** im Dienstmanifest [ein Startskript konfigurieren](service-fabric-run-script-at-service-startup.md).
+In einem vorherigen Schritt haben Sie das Zertifikat in den Speicher `Cert:\LocalMachine\My` auf dem Entwicklungscomputer importiert.  Gewähren Sie nun dem Konto, das den Dienst ausführt (standardmäßig „NETWORK SERVICE“), explizit Zugriff auf den privaten Schlüssel des Zertifikats. Dieser Schritt kann manuell über das Tool „certlm.msc“ ausgeführt werden. Es empfiehlt sich jedoch, automatisch ein PowerShell-Skript auszuführen. Hierzu können Sie unter [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) im Dienstmanifest **ein Startskript konfigurieren**.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurieren des Setupeinstiegspunkts für Dienste
 

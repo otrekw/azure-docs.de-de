@@ -17,10 +17,10 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA
@@ -201,7 +201,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -247,7 +247,7 @@ Wenn Sie manuell einen Benutzer erstellen müssen, führen Sie die folgenden Sch
 
 3. Klicken Sie auf **Add** (Hinzufügen), um den SAML-IDP hinzuzufügen.  Wählen Sie den entsprechenden SAML-IDP aus, und klicken Sie dann auf **OK**.
 
-4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Wählen Sie dann **OK**aus.
+4. Fügen Sie den Wert für **External Identity** (Externe ID) (in diesem Fall BrittaSimon) hinzu, oder wählen Sie **Any** (Beliebig). Klicken Sie anschließend auf **OK**.
 
    > [!Note]
    > Wenn das Kontrollkästchen **Any** (Beliebig) nicht aktiviert ist, muss der Benutzername in HANA exakt dem Namen des Benutzers im Benutzerprinzipalnamen vor dem Domänensuffix entsprechen. (Beispiel: BrittaSimon@contoso.com wird in HANA zu „BrittaSimon“.)
@@ -273,5 +273,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAP HANA“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441109"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Erstellen einer Angular-App mit der API für MongoDB von Azure Cosmos DB: Hinzufügen von CRUD-Funktionen zur App
@@ -44,7 +44,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     
     Kümmern wir uns zunächst um den Code für den hero-Dienst. 
 
-2. Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Funktion `getHeroes` und vor `module.exports` in **hero.service.js** ein. Für diesen Code gilt Folgendes:  
+2. Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Funktion **und vor** in `getHeroes`hero.service.js`module.exports` ein. Für diesen Code gilt Folgendes:  
    * Er verwendet das hero-Modell, um einen neuen Helden zu veröffentlichen.
    * Er überprüft anhand der Antworten, ob ein Fehler vorliegt, und gibt den Statuswert 500 zurück.
 
@@ -67,7 +67,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
    }
    ```
 
-3. Aktualisieren Sie `module.exports` in **hero.service.js** mit der neuen Funktion `postHero`. 
+3. Aktualisieren Sie **in**hero.service.js`module.exports` mit der neuen Funktion `postHero`. 
 
     ```javascript
     module.exports = {
@@ -76,7 +76,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     };
     ```
 
-4. Fügen Sie in **routes.js** nach dem Router `get` einen Router für die Funktion `post` hinzu. Diese Router veröffentlicht jeweils einen einzelnen Helden. Diese Struktur der Routerdatei zeigt auf übersichtliche Weise alle verfügbaren API-Endpunkte und überlässt die eigentliche Arbeit der Datei **hero.service.js**.
+4. Fügen Sie in **routes.js** nach dem Router `post` einen Router für die Funktion `get` hinzu. Diese Router veröffentlicht jeweils einen einzelnen Helden. Diese Struktur der Routerdatei zeigt auf übersichtliche Weise alle verfügbaren API-Endpunkte und überlässt die eigentliche Arbeit der Datei **hero.service.js**.
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -110,7 +110,7 @@ Für diesen Teil des Tutorials wird vorausgesetzt, dass Sie die Schritte aus [Te
     });
     ```
 
-2. Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Funktion `checkServerError` in **hero.service.js** ein. Für diesen Code gilt Folgendes:
+2. Kopieren Sie den folgenden Code, und fügen Sie ihn nach der Funktion **in**hero.service.js`checkServerError` ein. Für diesen Code gilt Folgendes:
    * Er erstellt die Funktionen `put` und `delete`.
    * Er überprüft, ob der Held gefunden wurde.
    * Er führt eine Fehlerbehandlung durch. 

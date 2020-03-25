@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: faaa5dcc435452d6ed9e0f2c5b481df1e352dfd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Tutorial: Azure Active Directory-Integration mit SkyDesk Email
@@ -130,32 +130,32 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SkyDesk
 
 1. Klicken Sie im oberen Menü auf **Setup**, und wählen Sie **Org** aus.
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. Klicken Sie im linken Bereich auf **Domains** (Domänen).
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. Klicken Sie auf **Add Domain** (Domäne hinzufügen).
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Geben Sie den Namen Ihrer Domäne ein, und überprüfen Sie die Domäne dann.
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Klicken Sie im linken Bereich auf **SAML Authentication** .
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. Führen Sie auf der Dialogseite **SAML Authentication** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > Um die SAML-basierte Authentifizierung zu verwenden, sollten Sie entweder eine **überprüfte Domäne** oder eine **Portal-URL** eingerichtet haben. Sie können die Portal-URL mit dem eindeutigen Namen einrichten.
 
-    ![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -192,7 +192,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -226,7 +226,7 @@ In diesem Abschnitt erstellen Sie in SkyDesk Email einen Benutzer mit dem Namen 
 
 Klicken Sie in SkyDesk Email im linken Bereich auf **User Access**, und geben Sie Ihren Benutzernamen ein.
 
-![Configure single sign-on](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Einmaliges Anmelden konfigurieren](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Wenn Sie mehrere Benutzer erstellen müssen, setzen Sie sich mit dem [Supportteam für den SkyDesk Email-Client](https://www.skydesk.jp/apps/support/) in Verbindung.
@@ -243,5 +243,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SkyDesk Email“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

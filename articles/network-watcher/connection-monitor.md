@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834653"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
@@ -32,7 +32,7 @@ Erfolgreiche Kommunikation zwischen einem virtuellen Computer (VM) und einem End
 > * Generieren von Warnungen zu Verbindungsmonitormetriken
 > * Diagnostizieren eines Problems bei der Kommunikation zwischen zwei VMs und Informationen zu seiner Lösung
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -149,7 +149,7 @@ Standardmäßig ermöglicht Azure die Kommunikation über alle Ports zwischen vi
     | Einstellung                 | value          |
     | ---                     | ---            |
     | Zielportbereiche | 22             |
-    | Aktion                  | Verweigern           |
+    | Action                  | Verweigern           |
     | Priority                | 100            |
     | Name                    | DenySshInbound |
 
@@ -169,7 +169,7 @@ Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht
 
 1. Geben Sie im oben im Portal im Feld *Suche* die Zeichenfolge **myResourceGroup** ein. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
-3. Geben Sie für **Geben Sie den Ressourcengruppennamen ein:** den Namen *myResourceGroup* ein, und klicken Sie auf **Löschen**.
+3. Geben Sie für *Geben Sie den Ressourcengruppennamen ein:* den Namen **myResourceGroup** ein, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

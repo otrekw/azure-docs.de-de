@@ -17,16 +17,16 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory-Integration in TalentLMS
 
 In diesem Tutorial erfahren Sie, wie Sie TalentLMS in Azure Active Directory (Azure AD) integrieren.
-Die Integration von TalentLMS in Azure AD bietet die folgenden Vorteile:
+Die Integration von TalentLMS{1}{2}in Azure AD bietet die folgenden Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf TalentLMS hat.
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei TalentLMS anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
@@ -157,13 +157,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TalentLM
 
     f. Geben Sie Folgendes ein:
 
-    * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` in das Textfeld **TargetedID** ein.
+    * Geben Sie **in das Textfeld**TargetedID`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
-    * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` in das Textfeld **Vorname** ein.
+    * Geben Sie **in das Textfeld**Vorname`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` ein.
 
-    * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` in das Textfeld **Nachname** ein.
+    * Geben Sie **in das Textfeld**Nachname`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein.
 
-    * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in das Textfeld **E-Mail** ein.
+    * Geben Sie **in das Textfeld**E-Mail`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
 1. Klicken Sie auf **Speichern**.
 
@@ -189,7 +189,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

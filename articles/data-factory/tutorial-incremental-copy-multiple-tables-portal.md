@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439292"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
@@ -267,7 +267,7 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 1. Wählen Sie **Selbstgehostet** aus, und klicken Sie auf **Weiter**. 
 1. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Erstellen**. 
 
-1. Klicken Sie auf **Klicken Sie hier, um das Express-Setup für diesen Computer zu starten** im Abschnitt **Option 1: Express-Setup**. 
+1. Klicken Sie im Abschnitt **Option 1: Express setup** (Option 1: Express-Setup) auf **Click here to launch the express setup for this computer** (Klicken Sie hier, um das Express-Setup für diesen Computer zu starten). 
 
    ![Klicken auf den Link für das Express-Setup](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
@@ -396,7 +396,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und konditionelle Abschnitte), und ziehen Sie die **ForEach**-Aktivität auf die Oberfläche des Pipeline-Designers. Geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
 
-1. Wechseln Sie zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
+1. Wechseln Sie zur Registerkarte **Einstellungen**, und geben Sie unter `@pipeline().parameters.tableList`Elemente**die Zeichenfolge** ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
 
     ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 

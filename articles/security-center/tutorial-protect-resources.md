@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
 ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73686332"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Tutorial: Schützen Ihrer Ressourcen mit Azure Security Center
@@ -86,7 +86,7 @@ Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen defi
 
 3. Wählen Sie eine Ressourcengruppe aus, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie die Anwendungssteuerung nicht anwenden möchten. Sehen Sie sich unter **Prozesse für Whitelistregeln auswählen** die Liste mit empfohlenen Anwendungen an, und heben Sie die Auswahl aller Optionen auf, die Sie nicht anwenden möchten. Die Liste enthält Folgendes:
 
-   - **NAME**: Der vollständige Anwendungspfad
+   - **NAME**: Der vollständige Anwendungspfad.
    - **PROZESSE**: Die Anzahl von Anwendungen innerhalb des jeweiligen Pfads.
    - **ALLGEMEIN**: „Ja“ gibt an, dass diese Prozesse auf den meisten virtuellen Computern in dieser Ressourcengruppe ausgeführt wurden.
    - **SICHERHEITSLÜCKE**: Ein Warnsymbol gibt an, ob die Anwendungen von einem Angreifer zur Umgehung des Anwendungswhitelistings verwendet werden können. Es empfiehlt sich, diese Anwendungen vor der Genehmigung zu überprüfen.

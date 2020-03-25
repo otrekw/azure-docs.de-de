@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory-Integration mit Kintone
@@ -145,7 +145,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kintone d
 
 1. Klicken Sie unter **Systemadministration \> Sicherheit** auf **Anmelden**.
 
-    ![Anmeldung](./media/kintone-tutorial/ic785881.png "Anmeldung")
+    ![Anmeldung](./media/kintone-tutorial/ic785881.png "Anmeldename")
 
 1. Klicken Sie auf **SAML-Authentifizierung aktivieren**.
 
@@ -186,7 +186,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

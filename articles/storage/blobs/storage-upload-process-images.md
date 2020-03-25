@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79130334"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage
@@ -43,7 +43,7 @@ Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Falls Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Falls Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Die Web-App umfasst einen Hostingort für den Code der Beispiel-App, der aus dem GitHub-Beispielrepository bereitgestellt wird. Erstellen Sie eine [Web-App](../../app-service/overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp).  
 
-Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Ist `<web_app>` nicht eindeutig, wird die folgende Fehlermeldung angezeigt: *Eine Website mit dem angegebenen Namen `<web_app>` ist bereits vorhanden.* Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
+Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Wenn `<web_app>` nicht eindeutig ist, wird die folgende Fehlermeldung angezeigt: *Eine Website mit dem Namen `<web_app>` ist bereits vorhanden.* Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 webapp="<web_app>"
@@ -182,7 +182,7 @@ Wählen Sie den Bereich **Fotos hochladen** aus, um eine Datei anzugeben und hoc
 
 ![Hochladen von Fotos in .NET](media/storage-upload-process-images/figure1.png)
 
-Im Beispielcode wird der Task `UploadFileToStorage` in der Datei *Storagehelper.cs* verwendet, um die Bilder mit der [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync)-Methode in den Container *images* des Speicherkontos hochzuladen. Das folgende Codebeispiel enthält einen Task „`UploadFileToStorage`“.
+Im Beispielcode wird der Task `UploadFileToStorage` in der Datei *Storagehelper.cs* verwendet, um die Bilder mit der *UploadAsync*-Methode in den Container [images](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) des Speicherkontos hochzuladen. Das folgende Codebeispiel enthält einen Task „`UploadFileToStorage`“.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
