@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
 ms.openlocfilehash: fbc91b2610d97fe071e6585a58d7789dca873a9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882332"
 ---
 Stellen Sie die App auf Ihrem Gerät bereit. Wählen Sie nach dem Start der App im Dialogfeld **Choose A Demo** (Demo auswählen) mithilfe der des nach links oder rechts zeigenden Pfeils die Option **LocalShare** aus, und tippen Sie auf **Go!** (Los). Befolgen Sie die Anweisungen in der App. Sie können die Option **Create & Share Anchor** (Anker erstellen und freigeben) oder **Locate Shared Anchor** (Freigegebenen Anker suchen) auswählen.

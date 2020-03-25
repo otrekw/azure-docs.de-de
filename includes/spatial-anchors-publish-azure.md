@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67177780"
 ---
 ### <a name="open-the-publish-wizard"></a>Öffnen des Veröffentlichungs-Assistenten
@@ -41,7 +41,7 @@ Wählen Sie neben **Hostingplan** die Option **Neu** aus.
 
 Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstellungen:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
 | Location | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |

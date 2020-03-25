@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Tutorial: Azure Active Directory-Integration mit Procore SSO
@@ -126,11 +126,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens bei Procore SSO über Azu
 
 2. Klicken Sie auf der Dropdownliste der Toolbox auf **Admin**, um die Seite mit den Einstellungen für das einmalige Anmelden zu öffnen.
 
-    ![Configure single sign-on](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Fügen Sie die Werte wie unten beschrieben in die Felder ein.
 
-    ![Configure single sign-on](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/procore_setting_admin.png)  
 
     a. Fügen Sie im Textfeld **Single Sign On Issuer URL** (SSO-Aussteller-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -164,7 +164,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -200,11 +200,11 @@ Führen Sie die folgenden Schritte aus, um einen Procore-Testbenutzer aufseiten 
 
 2. Klicken Sie in der Dropdownliste der Toolbox auf **Directory**, um die Verzeichnisseite für Ihr Unternehmen zu öffnen.
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Klicken Sie auf die Option **Add a Person**, um das Formular zu öffnen, und geben Sie die folgenden Optionen ein:
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. Geben Sie im Textfeld **First Name** den Vornamen des Benutzers ein, z.B. **Britta**.
 
@@ -214,15 +214,15 @@ Führen Sie die folgenden Schritte aus, um einen Procore-Testbenutzer aufseiten 
 
     d. Wählen Sie für **Permission Template** die Option **Apply Permission Template Later** aus.
 
-    e. Klicken Sie auf **Create**.
+    e. Klicken Sie auf **Erstellen**.
 
 4. Prüfen Sie die Informationen für den neu hinzugefügten Kontakt, und aktualisieren Sie sie ggf.
 
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. Klicken Sie auf **Save and Send Invitiation** (wenn eine Einladung per E-Mail erforderlich ist) oder auf **Save** (zum direkten Speichern), um die Benutzerregistrierung abzuschließen.
     
-    ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Einmaliges Anmelden konfigurieren](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -236,5 +236,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Procore SSO“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

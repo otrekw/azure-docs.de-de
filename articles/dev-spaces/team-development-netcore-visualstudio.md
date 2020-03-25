@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio eine Teamentwicklung in einer .NET Core-Anwendung in Azure Kubernetes Service durchführen.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
 ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78245055"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Entwicklung im Team mit .NET Core und Visual Studio über Azure Dev Spaces
@@ -102,7 +102,7 @@ Gehen Sie wie folgt vor, um einen neuen Bereich zu erstellen:
 
 ### <a name="update-code-for-mywebapi"></a>Aktualisieren von Code für *mywebapi*
 
-1. Ändern Sie im Projekt *mywebapi* in der Datei `Controllers/ValuesController.cs` den Code der `string Get(int id)`-Methode wie folgt:
+1. Ändern Sie im Projekt *mywebapi* in der Datei `string Get(int id)` den Code der `Controllers/ValuesController.cs`-Methode wie folgt:
  
     ```csharp
     [HttpGet("{id}")]

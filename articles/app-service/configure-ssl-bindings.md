@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849750"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223837"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung: Azure App Service
 
@@ -50,7 +50,7 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 
 ## <a name="secure-a-custom-domain"></a>Schützen einer benutzerdefinierten Domäne
 
-Führen Sie folgende Schritte aus:
+Führen Sie die folgenden Schritte aus:
 
 Wählen Sie im linken Menü des <a href="https://portal.azure.com" target="_blank">Azure-Portals</a> die Optionen **App Services** >  **\<App-Name>** aus.
 
@@ -146,6 +146,12 @@ Wählen Sie im linken Navigationsbereich der App-Seite **SSL-Einstellungen** aus
 ![Erzwingen von TLS 1.1 oder 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS-Version ab.
+
+## <a name="handle-ssl-termination"></a>Behandeln der SSL-Terminierung
+
+In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+
+In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer Linux-Node.js-App für Azure App Service](containers/configure-language-nodejs.md#detect-https-session)) wird die Erkennung einer HTTPS-Sitzung in Ihrem Anwendungscode gezeigt.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

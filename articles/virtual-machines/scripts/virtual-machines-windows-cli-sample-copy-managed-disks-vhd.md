@@ -1,5 +1,5 @@
 ---
-title: Kopieren eines verwalteten Datenträgers in ein Speicherkonto – CLI-Beispiel
+title: 'Kopieren eines verwalteten Datenträgers in ein Speicherkonto: CLI-Beispiel'
 description: 'Azure CLI-Beispiel: Exportieren oder Kopieren eines verwalteten Datenträgers in ein Speicherkonto'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -17,10 +17,10 @@ ms.date: 09/17/2018
 ms.author: ramankum
 ms.custom: mvc,seodec18
 ms.openlocfilehash: 92c752c56c37b854bc793d897c664337cf8bfccd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463625"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Exportieren/Kopieren eines verwalteten Datenträgers in ein Speicherkonto per Azure CLI

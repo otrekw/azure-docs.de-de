@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614042"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric mithilfe von Application Insights
@@ -100,7 +100,7 @@ Folgende Schritte sind für das Einrichten des NuGet-Pakets erforderlich:
 3. Suchen Sie nach `Microsoft.ApplicationInsights.ServiceFabric.Native`, und klicken Sie auf das entsprechende NuGet-Paket.
 4. Klicken Sie auf der rechten Seite auf die zwei Kontrollkästchen neben den beiden Diensten der Anwendung (**VotingWeb** und **VotingData**), und klicken Sie auf **Installieren**.
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. Klicken Sie im angezeigten Dialogfeld *Änderungen überprüfen* auf **OK**, und akzeptieren Sie die *Lizenzbedingungen*. Dadurch wird das Hinzufügen des NuGet-Pakets zu den Diensten abgeschlossen.
+5. Klicken Sie im angezeigten Dialogfeld **Änderungen überprüfen** auf *OK*, und akzeptieren Sie die *Lizenzbedingungen*. Dadurch wird das Hinzufügen des NuGet-Pakets zu den Diensten abgeschlossen.
 6. Sie müssen nun den Telemetrieinitialisierer in beiden Diensten einrichten. Öffnen Sie dazu *VotingWeb.cs* und *VotingData.cs*. Führen Sie für beide folgende Schritte aus:
     1. Fügen Sie diese zwei *using*-Anweisungen jeweils vor *\<ServiceName>.cs* und nach den vorhandenen *using*-Anweisungen hinzu:
 

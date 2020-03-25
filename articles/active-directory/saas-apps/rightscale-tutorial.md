@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 53799b62da043b7680f010e1eaaf0d9243f07dd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Tutorial: Azure Active Directory-Integration in RightScale
@@ -131,32 +131,32 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Rightsca
 
 2. Klicken Sie im Menü oben auf die Registerkarte **Settings**, und wählen Sie **Single Sign-On**.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Klicken Sie auf die Schaltfläche **new** (neu), um Werte für **Your SAML Identity Providers** (Ihre SAML-Identitätsanbieter) hinzuzufügen.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. Geben Sie im Textfeld **Display Name**den Namen Ihres Unternehmens ein.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Wählen Sie in unten stehendem Textfeld **Allow RightScale-initiated SSO using a discovery hint** aus, und geben Sie Ihren **Domänennamen** in das unten stehende Textfeld ein.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Fügen Sie den Wert der **Anmelde-URL**, den Sie im Azure-Portal kopiert haben, in RightScale in das Feld **SAML SSO Endpoint** (SAML-SSO-Endpunkt) ein.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Fügen Sie den Wert von **Azure AD-Bezeichner**, den Sie im Azure-Portal kopiert haben, in RightScale in das Feld **SAML EntityID** (SAML-Entitäts-ID) ein.
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Klicken Sie auf die Schaltfläche **Browse** (Durchsuchen), um das aus dem Azure-Portal heruntergeladene Zertifikat hochzuladen.
 
 
-    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Einmaliges Anmelden konfigurieren](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. Klicken Sie auf **Speichern**.
 
@@ -183,7 +183,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -227,4 +227,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Rightscale“ klicken, sollten Sie
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

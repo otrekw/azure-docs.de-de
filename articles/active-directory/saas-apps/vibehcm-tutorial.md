@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Vibe HCM | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Vibe HCM | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Vibe HCM konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4267b75be72c1d162b4abaf7184afcdd02c38720
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943111"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Tutorial: Azure Active Directory-Integration mit Vibe HCM
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Tutorial: Azure Active Directory-Integration von Vibe HCM
 
 In diesem Tutorial erfahren Sie, wie Sie Vibe HCM in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Vibe HCM in Azure AD bietet die folgenden Vorteile:
@@ -144,7 +144,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -188,5 +188,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Vibe HCM“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

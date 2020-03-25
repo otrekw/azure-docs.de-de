@@ -6,13 +6,13 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688755"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057446"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -23,10 +23,10 @@ Neben Azure Application Gateway stehen verschiedene Marketplace-Optionen wie [Ba
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 Für dieses Dokument konfigurieren wir die App Service-Umgebung hinter mehreren Barracuda WAF-Instanzen mit Lastenausgleich, sodass nur Datenverkehr von der WAF die App Service-Umgebung erreichen kann und kein Zugriff aus der DMZ möglich ist. Außerdem haben wir Azure Traffic Manager die Barracuda WAF-Instanzen für den Lastenausgleich von Azure-Rechenzentren und Regionen vorgelagert. Ein allgemeines Diagramm der Einrichtung sieht aus wie in der folgenden Abbildung dargestellt:
 
-![Architecture][Architecture] 
+![Aufbau][Architecture] 
 
 > [!NOTE]
 > Mit der Einführung der [ILB-Unterstützung für die App Service-Umgebung](app-service-environment-with-internal-load-balancer.md) können Sie die ASE so konfigurieren, dass darauf von der DMZ nicht zugegriffen werden kann und sie nur im privaten Netzwerk zur Verfügung steht. 

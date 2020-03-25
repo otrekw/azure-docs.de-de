@@ -9,11 +9,11 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507517"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61330597"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Erstellen einer App mit Node.js und der API für MongoDB von Azure Cosmos DB 
 > [!div class="op_single_selector"]
@@ -115,7 +115,7 @@ Um dieses Beispiel zu verwenden, müssen Sie Folgendes tun:
     });
     ```
     
-    **Optional:** Bei Verwendung des **MongoDB Node.js 2.2-Treibers** muss der folgende Codeausschnitt ersetzt werden:
+    **Optional:** Bei Verwendung des **MongoDB-Node.js 2.2-Treibers** muss der folgende Codeausschnitt ersetzt werden:
 
     Original:
 

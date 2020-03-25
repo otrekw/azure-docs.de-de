@@ -4,10 +4,10 @@ description: Erstellen Sie eine serverlose Python-Funktions-App, und binden Sie 
 ms.topic: sample
 ms.date: 03/01/2020
 ms.openlocfilehash: 3d66f84d124b36f1be335c3a2204f21690510ee8
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79086287"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Einbinden einer Dateifreigabe in eine Python-Funktions-App mithilfe der Azure CLI
@@ -21,7 +21,7 @@ Dieses Azure Functions-Beispielskript erstellt eine Funktions-App und eine Freig
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). Beispiele sind für die Bash-Shell geschrieben und müssen für die Ausführung in einer Windows-Eingabeaufforderung geändert werden. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). Beispiele sind für die Bash-Shell geschrieben und müssen für die Ausführung in einer Windows-Eingabeaufforderung geändert werden. 
 
 ## <a name="sample-script"></a>Beispielskript
 

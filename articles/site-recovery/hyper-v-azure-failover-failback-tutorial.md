@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75498160"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Ausführen eines Failovers auf Azure für virtuelle Hyper-V-Computer
@@ -21,7 +21,7 @@ In diesem Tutorial erfahren Sie, wie Sie mit [Azure Site Recovery](site-recovery
 
 > [!div class="checklist"]
 > * Überprüfen der Hyper-V-VM-Eigenschaften zum Feststellen der Konformität mit Azure-Anforderungen
-> * Ausführen eines Failovers auf Azure für bestimmte VMs
+> * Führen Sie für bestimmte VMs ein Failover auf Azure aus.
 
 
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    
@@ -64,7 +64,7 @@ Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 4. Klicken Sie auf **Commit ausführen**, nachdem Sie das Failover überprüft haben. Daraufhin werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Wenn Sie den Fortschritt abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein Failover in Bearbeitung nicht ab**: Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 ## <a name="connect-to-failed-over-vm"></a>Herstellen einer Verbindung mit einer VM nach dem Failover
 

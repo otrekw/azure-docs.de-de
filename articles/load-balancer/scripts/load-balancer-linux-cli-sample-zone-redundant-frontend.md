@@ -10,14 +10,14 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 8ef4a0d1eca76ffaad7136c9b55756b96b80925f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274591"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79218341"
 ---
-# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI-Skriptbeispiele: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
+# <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI-Skriptbeispiel: Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg
 
 Dieses Azure CLI-Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer Ubuntu-VMs in einer Konfiguration mit Hochverfügbarkeit und Lastenausgleich benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer in allen Verfügbarkeitszonen, die über eine Azure Load Balancer Standard-Instanz zugänglich sind. 
 
@@ -50,7 +50,7 @@ Dieses Azure CLI-Beispielskript erstellt alle Komponenten, die zum Ausführen me
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \

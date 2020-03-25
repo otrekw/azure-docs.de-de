@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040247"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066459"
 ---
 # <a name="restart-vms"></a>Neustarten von VMs
 
@@ -33,13 +33,13 @@ Dieses Beispiel zeigt verschiedene Möglichkeiten, einige VMs abzurufen und sie 
 
 Bei der ersten werden alle virtuellen Computer in der Ressourcengruppe neu gestartet.
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 Bei der zweiten werden die markierten VMs mit `az resource list` abgerufen, und es wird nach den Ressourcen gefiltert, die virtuelle Computer sind, und diese virtuellen Computer werden neu gestartet.
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +77,7 @@ Dieses Skript startet alle virtuellen Computer in der Ressourcengruppe neu und s
 
 Nach der Ausführung des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppen, VMs und alle zugehörigen Ressourcen entfernt werden.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -88,7 +88,7 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | Get-Help | Notizen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Erstellt die virtuellen Computer.  |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Erstellt die virtuellen Computer  |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm) | Wird mit `--query` verwendet, um sicherzustellen, dass die virtuellen Computer vor ihrem Neustart bereitgestellt werden, und dann die IDs der virtuellen Computer abzurufen, um sie neu zu starten. |
 | [az resource list](https://docs.microsoft.com/cli/azure/vm) | Wird mit `--query` verwendet, um die IDs der virtuellen Computer mit dem Tag abzurufen. |
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Startet die VMs neu. |

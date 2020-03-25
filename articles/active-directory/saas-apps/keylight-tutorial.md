@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Tutorial: Azure Active Directory-Integration in LockPath Keylight
@@ -138,19 +138,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LockPath
 
     b. Klicken Sie im Menü oben auf **Person**, und wählen Sie **Keylight Setup** aus.
 
-    ![Configure single sign-on](./media/keylight-tutorial/401.png)
+    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/401.png)
 
     c. Klicken Sie in der Strukturansicht links auf **SAML**.
 
-    ![Configure single sign-on](./media/keylight-tutorial/402.png)
+    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/402.png)
 
     d. Klicken Sie im Dialogfeld **SAML-Einstellungen** auf **Bearbeiten**.
 
-    ![Configure single sign-on](./media/keylight-tutorial/404.png)
+    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/404.png)
 
 1. Führen Sie auf der Dialogfeldseite **Edit SAML Settings** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/keylight-tutorial/405.png)
+    ![Einmaliges Anmelden konfigurieren](./media/keylight-tutorial/405.png)
 
     a. Legen Sie für **SAML-Authentifizierung** die Einstellung **Aktiv** fest.
 
@@ -174,9 +174,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LockPath
 
     k. Geben Sie im Textfeld **E-Mail-Attribut** die Zeichenfolge `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    l. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` in das Textfeld **Vornamen-Attribut** ein.
+    l. Geben Sie **in das Textfeld**Vornamen-Attribut`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` ein.
 
-    m. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` in das Textfeld **Nachnamen-Attribut** ein.
+    m. Geben Sie **in das Textfeld**Nachnamen-Attribut`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein.
 
     n. Klicken Sie auf **Speichern**.
 
@@ -202,7 +202,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -246,4 +246,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LockPath Keylight“ klicken, soll
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

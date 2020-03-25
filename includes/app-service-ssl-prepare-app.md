@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "78301000"
 ---
 ## <a name="prepare-your-web-app"></a>Vorbereiten Ihrer Web-App
@@ -37,7 +37,7 @@ Sie befinden sich auf der Verwaltungsseite Ihrer Web-App.
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich auf der Seite Ihrer Web-App zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)** aus.
+Scrollen Sie im linken Navigationsbereich auf der Seite Ihrer Web-App zum Abschnitt **Einstellungen**, und wählen Sie **Hochskalieren (App Service-Plan)** aus.
 
 ![Menü „Zentral hochskalieren“](./media/app-service-ssl-prepare-app/scale-up-menu.png)
 
@@ -45,9 +45,9 @@ Vergewissern Sie sich, dass sich Ihre Web-App nicht im Tarif **F1** oder **D1** 
 
 ![Überprüfen des Tarifs](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Benutzerdefiniertes SSL wird im Tarif **F1** oder **D1** nicht unterstützt. Wenn Sie Ihren App Service-Plan zentral hochskalieren müssen, führen Sie die Schritte im nächsten Abschnitt aus. Schließen Sie andernfalls die Seite **Zentral hochskalieren**, und überspringen Sie den Abschnitt [Zentrales Hochskalieren Ihres App Service-Plans](#scale-up-your-app-service-plan).
+Benutzerdefiniertes SSL wird im Tarif **F1** oder **D1** nicht unterstützt. Wenn Sie Ihren App Service-Plan hochskalieren müssen, führen Sie die Schritte im nächsten Abschnitt aus. Schließen Sie andernfalls die Seite **Hochskalieren**, und überspringen Sie den Abschnitt [Hochskalieren Ihres App Service-Plans](#scale-up-your-app-service-plan).
 
-### <a name="scale-up-your-app-service-plan"></a>Zentrales Hochskalieren Ihres App Service-Plans
+### <a name="scale-up-your-app-service-plan"></a>Hochskalieren Ihres App Service-Plans
 
 Wählen Sie einen der kostenpflichtigen Tarife aus (**B1**, **B2**, **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion**). Klicken Sie auf **Alle Optionen anzeigen**, um weitere Optionen anzuzeigen.
 
