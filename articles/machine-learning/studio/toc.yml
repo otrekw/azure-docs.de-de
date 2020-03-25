@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: Verwenden des Excel-Add-Ins
           href: excel-add-in-for-web-services.md
-        - name: Verwenden eines Batch-Pools
-          href: dedicated-capacity-for-bes-jobs.md
     - name: Anwendungsfälle
       items:
         - name: Kundenabwanderung

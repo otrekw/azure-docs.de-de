@@ -49,7 +49,7 @@ sections:
               src: media/index/i_perftier.svg
           - title: Skalierbarkeit
             href: /azure/sql-database/sql-database-scale-resources
-            html: '<p>Sie können die Datenbank problemlos zentral hochskalieren, um die Leistung Ihrer Anwendung zu verbessern.</p>'
+            html: '<p>Sie können die Datenbank problemlos hochskalieren, um die Leistung Ihrer Anwendung zu verbessern.</p>'
             image:
               src: media/index/i_scale.svg
           - title: Platform-as-a-Service

@@ -1,7 +1,6 @@
 ---
 title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: f81ec71ffe5cdf7f70e309282307a1c4bb293219
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245476"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204884"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -209,7 +208,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | resourceGroup | Name der Azure-Ressourcengruppe, der für die Lebenszyklusverwaltung der Ressource verwendet wird. | Name der Ressourcengruppe |
 | instanceID (oder) ResourceID | Bezeichner der Ressourceninstanz. | Wird als ResourceURI angezeigt, der die kompletten Ressourceneigenschaften enthält. |
 | resourceLocation | Name des Ressourcenspeicherorts. | Der Speicherort der Ressource. |
-| Location | Normalisierter Speicherort der Ressourcengruppe. | – |
+| Position | Normalisierter Speicherort der Ressourcengruppe. | – |
 | effectivePrice | Der geltende Einheitenpreis für den Dienst in der Abrechnungswährung. Dieser Preis ist für jedes Produkt, jede Dienstfamilie, jede Verbrauchseinheit und jedes Angebot einzigartig. Wird mit den Preisen im Preisblatt für das Abrechnungskonto verwendet. Bei Stufenpreisen oder enthaltenen Mengen wird der gemischte Preis für die Nutzung angezeigt. | Der Einzelpreis nach den vorgenommenen Anpassungen. |
 | Menge | Die gemessene Menge, die erworben oder genutzt wurde. Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde. | Anzahl der Einheiten. Stellen Sie sicher, dass die Angaben den Informationen in Ihrem Abrechnungssystem während des Abgleichs entsprechen. |
 | unitOfMeasure | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele: GB oder Stunden. | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden und 10.000 s. |
