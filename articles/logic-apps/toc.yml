@@ -13,7 +13,7 @@
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: Erstellen von Logik-Apps – Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen zeitplanbasierter Workflows
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
@@ -39,7 +39,7 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: Zugriff auf virtuelle Azure-Netzwerke
       href: connect-virtual-network-vnet-isolated-environment-overview.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Entwickeln
       items:

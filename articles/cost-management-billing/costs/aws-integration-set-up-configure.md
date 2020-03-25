@@ -1,20 +1,18 @@
 ---
 title: Einrichten der AWS-Integration mit Azure Cost Management
 description: Dieser Artikel erläutert das Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten in Azure Cost Management.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199992"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203082"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Einrichten und Konfigurieren der Integration von AWS-Kosten- und Nutzungsberichten
 
@@ -39,11 +37,11 @@ Verwenden Sie die Seite **Cost & Usage Reports** (Kosten- und Nutzungsberichte) 
 9. Führen Sie im Dialogfeld „Configure S3 Bucket“ (S3-Bucket konfigurieren) eine der folgenden Aufgaben aus:
     1. Wählen Sie aus der Dropdownliste einen vorhandenen Bucket aus, und wählen Sie dann **Next** (Weiter) aus.
     2. Geben Sie einen Bucketnamen und die Region ein, in der Sie einen neuen Bucket erstellen möchten, und wählen Sie dann **Next** aus.
-10. Wählen Sie **I have confirmed that this policy is correct** (Ich habe bestätigt, dass diese Richtlinie richtig ist) aus, und klicken Sie dann auf **Save** (Speichern).
-11. (Optional) Geben Sie unter „Report path prefix“ (Berichtspfadpräfix) das Berichtspfadpräfix ein, das dem Namen Ihres Berichts vorangestellt werden soll.
+10.    Wählen Sie **I have confirmed that this policy is correct** (Ich habe bestätigt, dass diese Richtlinie richtig ist) aus, und klicken Sie dann auf **Save** (Speichern).
+11.    (Optional) Geben Sie unter „Report path prefix“ (Berichtspfadpräfix) das Berichtspfadpräfix ein, das dem Namen Ihres Berichts vorangestellt werden soll.
 Wenn Sie kein Präfix angeben, ist das Standardpräfix der Name, den Sie für den Bericht angegeben haben. Der Datumsbereich hat das Format `/report-name/date-range/`.
 12. Für **Zeiteinheit** wählen Sie **Stündlich** aus.
-13. Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob neue Berichtsversionen die vorherigen Berichtsversionen überschreiben oder ob zusätzliche neue Berichte erstellt werden sollen.
+13.    Wählen Sie für **Report versioning** (Berichtsversionsverwaltung) aus, ob neue Berichtsversionen die vorherigen Berichtsversionen überschreiben oder ob zusätzliche neue Berichte erstellt werden sollen.
 14. Für **Enable data integration for** (Datenintegration aktivieren für) ist keine Auswahl erforderlich.
 15. Für **Komprimierung** wählen Sie die Option **GZIP** aus.
 16. Wählen Sie **Weiter** aus.
@@ -124,8 +122,8 @@ Der JSON-Code der Richtlinie sollte wie im folgenden Beispiel aussehen: Ersetzen
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

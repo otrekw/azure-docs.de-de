@@ -10,7 +10,7 @@
       href: quickstart-create-data-migration-service-portal.md
     - name: 'Erstellen eines Diensts im Hybridmodus: Portal'
       href: quickstart-create-data-migration-service-hybrid-portal.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Offlinemigration von SQL Server zu einer Einzeldatenbank in Azure SQL-Datenbank
       href: tutorial-sql-server-to-azure-sql.md
@@ -38,7 +38,7 @@
       href: tutorial-mongodb-cosmos-db-online.md
     - name: Onlinemigration von Oracle zu Azure DB for PostgreSQL (Einzelserver)
       href: tutorial-oracle-azure-postgresql-online.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Migrieren von SQL Server zu einer Einzeldatenbank in Azure SQL-Datenbank mithilfe von PowerShell
       href: howto-sql-server-to-azure-sql-powershell.md

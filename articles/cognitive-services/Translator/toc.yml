@@ -32,7 +32,7 @@
           href: customization.md
         - name: Vorgehensweise der API beim Zählen von Zeichen
           href: character-counts.md
-    - name: Anleitungen
+    - name: Gewusst-wie-Anleitungen
       items:
         - name: Registrieren für die Textübersetzungs-API
           href: translator-text-how-to-signup.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: Verwenden der Funktion für das dynamische Wörterbuch
           href: dynamic-dictionary.md
-        - name: Verwenden von Containern
-          items:
-            - name: Installieren und Ausführen von Containern
-              href: how-to-install-containers.md
-            - name: Konfigurieren von Containern
-              href: translator-text-container-config.md
         - name: Übersetzen hinter Firewalls
           href: firewalls.md
     - name: Beispiele
@@ -110,7 +104,7 @@
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionale Verfügbarkeit
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: Compliance
+        - name: Kompatibilität
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Anforderungsgrenzwerte
           href: request-limits.md
@@ -144,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-Bewertung
           href: custom-translator/what-is-bleu-score.md
-    - name: Anleitungen
+    - name: Gewusst-wie-Anleitungen
       items:
         - name: Erstellen eines Projekts
           href: custom-translator/how-to-create-project.md
@@ -176,7 +170,9 @@
           href: custom-translator/faq.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-        - name: Compliance
+        - name: Kompatibilität
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: Verschlüsselung
+          href: translator-encryption-of-data-at-rest.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

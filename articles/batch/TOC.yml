@@ -15,7 +15,7 @@
       href: quick-run-dotnet.md
     - name: Ausführen eines Batch-Auftrags – Python
       href: quick-run-python.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Parallele Dateiverarbeitung – .NET
       href: tutorial-parallel-dotnet.md
@@ -65,7 +65,7 @@
       href: batch-compute-node-environment-variables.md
     - name: Integration von Batch in Azure-Richtlinien
       href: batch-integration-policies.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwalten von Batch-Konten
       items:

@@ -34,7 +34,7 @@
       href: quickstart-device-simulation-deploy.md
     - name: Testen einer Predictive Maintenance-Lösung
       href: quickstart-predictive-maintenance-deploy.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Remoteüberwachung
       items:
@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: "OPC\_Vault-Architektur"
           href: overview-opc-vault-architecture.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Remoteüberwachung
       items:
@@ -195,34 +195,34 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Bereitstellen eines benutzerdefinierten Docker-Images
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: Verwandte Themen
-  items:
-    - name: IoT Central
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Plattformdienste
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: "IoT\_Plug\_&\_Play"
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT-Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Karten
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT-Geräte-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT-Dienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDKs
+      items:
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Remoteüberwachung
       items:
         - name: Referenzhandbuch für Entwickler (.NET)

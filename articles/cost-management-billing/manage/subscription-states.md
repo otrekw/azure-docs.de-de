@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: andalmia
 ms.openlocfilehash: 29af3d064b481548cdb9b9518e9735eb34aaf034
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78270238"
 ---
 # <a name="azure-subscription-states"></a>Azure-Abonnementstatus
 
-In diesem Artikel werden die verschiedenen Zustände beschrieben, die ein Azure-Abonnement aufweisen kann. Diese Zustände werden in den Abonnementbereichen des Azure-Portals als **Status** angezeigt.
+In diesem Artikel werden die verschiedenen Status beschrieben, die ein Azure-Abonnement aufweisen kann. Diese Zustände werden in den Abonnementbereichen des Azure-Portals als **Status** angezeigt.
 
-| Abonnementstatus | Beschreibung |
+| Abonnementstatus | BESCHREIBUNG |
 |-------------| ----------------|
 | **Aktiv** | Ihr Azure-Abonnement ist aktiv. Das Abonnement kann zum Bereitstellen neuer Ressourcen sowie zum Verwalten bereits vorhandener Ressourcen verwendet werden.|
 | **Gelöscht** | Ihr Azure-Abonnement wurde zusammen mit allen zugrunde liegenden Ressourcen/Daten gelöscht. |

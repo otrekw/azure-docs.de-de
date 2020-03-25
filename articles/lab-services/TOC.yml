@@ -8,7 +8,7 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs und Lab Services
       href: lab-services-overview.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: 1. Einrichten eines Labs
       href: tutorial-create-custom-lab.md
@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: Szenarien für die Verwendung von abrufbaren VMs
           href: devtest-lab-use-claim-capabilities.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Konfigurieren eines Labs
       items:
@@ -221,7 +221,7 @@
           href: devtest-lab-reference-architecture.md
         - name: Proof of Concept-Bereitstellung
           href: deliver-proof-concept.md
-        - name: Zentrales Hochskalieren der DevTest Labs-Bereitstellung
+        - name: Hochskalieren der DevTest Labs-Bereitstellung
           href: devtest-lab-guidance-scale.md
         - name: Orchestrieren der Implementierung von DevTest Labs
           href: devtest-lab-guidance-orchestrate-implementation.md

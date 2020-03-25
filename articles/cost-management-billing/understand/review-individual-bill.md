@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199125"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Tutorial: Überprüfen Ihrer individuellen Azure-Rechnung
@@ -92,7 +92,7 @@ Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. D
 |Enthalten |Included Quantity |
 |Billable |Overage Quantity |
 |Rate | EffectivePrice|
-| value | Kosten |
+| Wert | Kosten |
 
 Der Abschnitt **Nutzungsgebühren** Ihrer Rechnung enthält den Gesamtwert (Kosten) der einzelnen Verbrauchseinheiten im Abrechnungszeitraum. Die folgende Abbildung zeigt beispielsweise eine Nutzungsgebühr für den Azure Storage-Dienst für die Ressource *P10 Disks* (P10-Datenträger).
 
@@ -120,7 +120,7 @@ Die in der Kostenanalyse angezeigten Kosten müssen exakt den *Nutzungsgebühren
 
 ![Nutzungsgebühren (Rechnung)](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>Separat in Rechnung gestellte externe Dienste
+## <a name="external-services-billed-separately"></a><a name="external"></a>Separat in Rechnung gestellte externe Dienste
 
 Externe Dienste oder Marketplace-Gebühren gelten für Ressourcen, die von Drittanbietern erstellt wurden. Diese Ressourcen können über den Azure Marketplace genutzt werden. Barracuda Firewall ist beispielsweise eine von einem Drittanbieter angebotene Azure Marketplace-Ressource. Alle Gebühren für die Firewall und die entsprechenden Verbrauchseinheiten werden als Gebühren für externe Dienste angezeigt.
 
@@ -149,7 +149,7 @@ Nachdem der virtuelle Computer erstellt wurde, beginnen diese Verbrauchseinheite
 
 Die zur Berechnung Ihrer Rechnung verwendeten Verbrauchseinheiten werden in der CSV-Nutzungsdatei angezeigt.
 
-## <a name="payment"></a>Bezahlen Ihrer Rechnung
+## <a name="pay-your-bill"></a><a name="payment"></a>Bezahlen Ihrer Rechnung
 
 Wenn Sie eine Kreditkarte als Zahlungsmethode eingerichtet haben, wird die Zahlung automatisch zehn Tage nach Abschluss des Abrechnungszeitraums berechnet. Auf Ihrem Kreditkartenbeleg lautet die Postenzeile dann **MSFT Azure**.
 

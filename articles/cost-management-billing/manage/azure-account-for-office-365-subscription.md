@@ -1,20 +1,19 @@
 ---
-title: Registrieren für Office 365 mit einem Azure-Konto | Microsoft-Dokumentation
+title: Registrieren für Office 365 mit einem Azure-Konto
 description: Erfahren Sie, wie Sie mit einem Azure-Konto ein Office 365-Abonnement erstellen
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199924"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204816"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrieren für ein Office 365-Abonnement mit Ihrem Azure-Konto
 Wenn Sie Azure-Abonnent sind, können Sie zum Registrieren für ein Office 365-Abonnement Ihr Azure-Konto verwenden. Wenn Sie Mitglied einer Organisation sind, die über ein Azure-Abonnement verfügt, können Sie Office 365-Abonnements für Benutzer in der vorhandenen Azure Active Directory-Instanz (Azure AD) erstellen. Registrieren Sie sich für Office 365 mit einem Konto mit der Berechtigung „Globaler Administrator“ oder „Abrechnungsadministrator“ in Ihrem Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Überprüfen meiner Kontoberechtigungen in Azure AD](#RoleInAzureAD) und [Zuweisen von Administratorrollen in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -47,7 +46,7 @@ Wenn Sie das Office 365-Abonnement für Ihre Organisation erstellt haben, führe
 
 Nach der Registrierung wird das Office 365-Abonnement der gleichen Azure Active Directory-Instanz hinzugefügt, der Ihr Azure-Abonnement angehört. Weitere Informationen finden Sie unter [Hintergrundinformationen zu Azure- und Office 365-Abonnements](office-365-account-for-azure-subscription.md#more-about-subs) und [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a id="RoleInAzureAD"></a>Überprüfen meiner Kontoberechtigungen in Azure AD
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Überprüfen meiner Kontoberechtigungen in Azure AD
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste**, und suchen Sie nach **Active Directory**.
 

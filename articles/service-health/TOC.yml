@@ -16,7 +16,7 @@
       href: service-health-overview.md
     - name: Resource Health
       href: resource-health-overview.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Konfigurieren von Warnungen für Service Health-Ereignisse
       href: alerts-activity-log-service-notifications.md

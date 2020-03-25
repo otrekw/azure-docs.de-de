@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
 ms.openlocfilehash: a29af1c9239cc44b3d4a41d17df88e88ee926fbe
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78272378"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise-REST-APIs
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie den Benutzern, die keine Untern
 
 Übergeben Sie den API-Schlüssel zur Authentifizierung und Autorisierung. Übergeben Sie die folgende Eigenschaft an HTTP-Header:
 
-| Anforderungsheaderschlüssel | value |
+| Anforderungsheaderschlüssel | Wert |
 | --- | --- |
 | Authorization | Geben Sie den Wert im folgenden Format an: **bearer {API\_KEY}** .
 Beispiel: bearer \&lt;APIKey\&gt; |

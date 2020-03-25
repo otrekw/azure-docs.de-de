@@ -10,7 +10,7 @@
   items:
     - name: Peeringrichtlinie
       href: policy.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Voraussetzungen für das Einrichten von Peering mit Microsoft
       href: prerequisites.md

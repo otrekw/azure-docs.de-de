@@ -11,7 +11,7 @@
       href: publish-managed-app-definition-quickstart.md
     - name: Bereitstellen einer Dienstkatalog-App
       href: deploy-service-catalog-quickstart.md
-- name: Tutorials
+- name: Lernprogramme
   items:
     - name: Erstellen von Definitionsdateien
       href: publish-service-catalog-app.md
@@ -35,7 +35,7 @@
       href: concepts-built-in-policy.md
     - name: Rollendefinitionsartefakt
       href: concepts-custom-role-definition.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herausgeber
       items:

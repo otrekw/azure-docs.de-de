@@ -8,7 +8,7 @@
   items:
     - name: Planen des aggregierten Namespace
       href: hpc-cache-namespace.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Voraussetzungen
       href: hpc-cache-prereqs.md
