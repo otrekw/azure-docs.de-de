@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Small Improvements | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Small Improvements | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Small Improvements konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Tutorial: Azure Active Directory-Integration mit Small Improvements
@@ -132,15 +132,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Small I
 
 1. Klicken Sie auf der Dashboard-Hauptseite links auf die Schaltfläche **Administration** .
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. Klicken Sie im Abschnitt **Integrationen** auf die Schaltfläche **SAML-SSO**.
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. Führen Sie auf der Seite für die SSO-Einrichtung die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Einmaliges Anmelden konfigurieren](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. Fügen Sie in das Textfeld **HTTP Endpoint** (HTTP-Endpunkt) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -175,7 +175,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -247,4 +247,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Small Improvements“ klicken, sol
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

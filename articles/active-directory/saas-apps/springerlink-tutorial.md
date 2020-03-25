@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Springer Link | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Springer Link | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Springer Link konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e93f6d1804dd32e9e0da2c9be98aa523a6faafa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089701"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration von Springer Link
+# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration mit Springer Link
 
 In diesem Tutorial erfahren Sie, wie Sie Springer Link in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Springer Link in Azure AD bietet folgende Vorteile:
@@ -163,7 +163,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -207,5 +207,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Springer Link“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

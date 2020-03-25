@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620597"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067564"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Vorbereiten von Azure für die lokale Notfallwiederherstellung in Azure
 
@@ -30,14 +30,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten eines virtuellen Azure-Netzwerks (VNet). Wenn virtuelle Azure-Computer nach einem Failover erstellt werden, werden sie mit diesem Netzwerk verbunden.
 
 > [!NOTE]
-> Tutorials zeigen den einfachsten Bereitstellungspfad für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in dem Artikel, der im Anleitungsabschnitt des Site Recovery-Inhaltsverzeichnisses angegeben ist.
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in dem Artikel, der im Anleitungsabschnitt des Site Recovery-Inhaltsverzeichnisses angegeben ist.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
 - Überprüfen Sie die Architektur für die Notfallwiederherstellung von [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md) und [physischen Servern](physical-azure-architecture.md).
 - Lesen Sie die allgemeinen Fragen zu [VMware](vmware-azure-common-questions.md) und [Hyper-V](hyper-v-azure-common-questions.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen. Melden Sie sich dann beim [Azure-Portal](https://portal.azure.com)an.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen. Melden Sie sich dann beim [Azure-Portal](https://portal.azure.com)an.
 
 
 ## <a name="verify-account-permissions"></a>Überprüfen von Kontoberechtigungen

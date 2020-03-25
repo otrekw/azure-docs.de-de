@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273679"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Tutorial: Konfigurieren von Serveradministrator- und Benutzerrollen
@@ -143,5 +143,5 @@ Wenn Benutzer- oder Gruppenkonten bzw. Benutzer- oder Gruppenrollen nicht mehr b
 In diesem Tutorial haben Sie gelernt, wie Sie eine Verbindung mit Ihrem Azure AS-Server herstellen und die Datenbanken und Eigenschaften der Modelldatenbank „adventureworks“ in SSMS untersuchen. Außerdem haben Sie erfahren, wie Sie mit SSMS und TMSL-Skripts Benutzer oder Gruppen zu vorhandenen und neuen Rollen hinzufügen. Sie haben Benutzerberechtigungen für Ihren Server und die Beispielmodelldatenbank konfiguriert. Nun können Sie und andere Benutzer mithilfe von Clientanwendungen wie Power BI eine Verbindung damit herstellen. Weitere Informationen finden Sie im nächsten Tutorial. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Herstellen einer Verbindung mit Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop](analysis-services-tutorial-pbid.md)
 

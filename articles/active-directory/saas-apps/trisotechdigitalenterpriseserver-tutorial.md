@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 56399f99ede611c4a120603cce3a3eede2728c6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Tutorial: Integration von Trisotech Digital Enterprise Server in Azure Active Directory
@@ -124,15 +124,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Trisotech
 
 2. Klicken Sie auf das **Menüsymbol**, und wählen Sie **Administration** (Verwaltung) aus.
 
-    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 3. Wählen Sie **User Provider** (Benutzeranbieter) aus.
 
-    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 4. Führen Sie im Abschnitt **User Provider Configurations** (Benutzeranbieterkonfigurationen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. Wählen Sie aus der Dropdownliste unter **Authentication Method** (Authentifizierungsmethode) die Option **Secured Assertion Markup Language 2 (SAML 2)** aus.
 
@@ -168,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -215,5 +215,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trisotech Digital Enterprise Serve
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

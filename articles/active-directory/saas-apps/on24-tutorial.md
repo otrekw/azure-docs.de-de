@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 801a631b56a11e68c444ede846ff82195cd7627f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Tutorial: Azure Active Directory-Integration mit ON24 Virtual Environment SAML Connection
@@ -174,7 +174,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ON24 Vir
 
 ### <a name="configure-on24-virtual-environment-saml-connection-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für ON24 Virtual Environment SAML Connection
 
-Zum Konfigurieren des einmaligen Anmeldens in **ON24 Virtual Environment SAML Connection** müssen Sie die [Verbundmetadaten-XML](https://www.on24.com/about-us/support/) und die entsprechenden URLs, die Sie im Azure-Portal heruntergeladen bzw. kopiert haben, an das **ON24 Virtual Environment SAML Connection-Supportteam** senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens in **ON24 Virtual Environment SAML Connection** müssen Sie die **Verbundmetadaten-XML** und die entsprechenden URLs, die Sie im Azure-Portal heruntergeladen bzw. kopiert haben, an das [ON24 Virtual Environment SAML Connection-Supportteam](https://www.on24.com/about-us/support/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -199,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -243,5 +243,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ON24 Virtual Environment SAML Conn
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

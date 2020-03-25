@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77016084"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Überwachung für vernetzte Abfallwirtschaft: Referenzarchitektur 
@@ -33,7 +33,7 @@ Konzepte:
 Wir werfen nun einen Blick auf Schlüsselkomponenten, die bei einer Lösung zur Überwachung des Wasserverbrauchs in der Regel eine Rolle spielen.
 
 ## <a name="devices-and-connectivity"></a>Geräte und Konnektivität 
-Geräte im öffentlichen Raum (z. B. Mülltonnen) können per LPWAN (Low-Power Wide Area Network) über einen externen Netzbetreiber vernetzt werden. Für diese Gerätetypen können Sie die [Azure IoT Central-Geräte-Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) nutzen, um Daten vom Gerät an Ihre IoT-Anwendung in Azure IoT Central zu senden. Alternativ bieten sich Gerätegateways an, die IP-fähig sind und direkt mit IoT Central verbunden werden können.
+Geräte im öffentlichen Raum (z. B. Mülltonnen) können per LPWAN (Low-Power Wide Area Network) über einen externen Netzbetreiber vernetzt werden. Für diese Gerätetypen können Sie die [Azure IoT Central-Geräte-Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) nutzen, um Daten vom Gerät an Ihre IoT-Anwendung in Azure IoT Central zu senden. Alternativ bieten sich Gerätegateways an, die IP-fähig sind und direkt mit IoT Central verbunden werden können.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central ist eine IoT-App-Plattform, mit der Sie Ihre IoT-Lösung schnell in Betrieb nehmen können. Sie können Ihre Lösung mit Branding versehen, anpassen und in Dienste von Drittanbietern integrieren.

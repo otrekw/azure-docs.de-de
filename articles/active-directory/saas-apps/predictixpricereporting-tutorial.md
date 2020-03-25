@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 808b2d964bb39af6b410a84563717102ebece454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Tutorial: Azure Active Directory-Integration mit Predictix Price Reporting
@@ -132,7 +132,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Predicti
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL**
+    1. **Abmelde-URL**:
 
 ### <a name="configure-predictix-price-reporting-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Predictix Price Reporting
 
@@ -204,4 +204,4 @@ Wenn Sie im Zugriffsbereich die Kachel „Predictix Price Reporting“ auswähle
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

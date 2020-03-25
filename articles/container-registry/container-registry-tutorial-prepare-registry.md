@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454441"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222147"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -45,8 +45,8 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Regi
 
 Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen:
 
-* **Registrierungsname:** Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
-* **Ressourcengruppe:** **Neu erstellen** > `myResourceGroup`
+* **Registrierungsname**: Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
+* **Ressourcengruppe**: **Neu erstellen** > `myResourceGroup`
 * **Standort**: `West US`
 * **Administratorbenutzer**: `Enable` (für Web-App für Container zum Pullen von Images erforderlich)
 * **SKU**: `Premium` (für die Georeplikation erforderlich)
@@ -205,7 +205,7 @@ Verwenden Sie als Nächstes den Befehl `docker push`, um das Image *acr-hellowor
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Da Sie Ihre Registrierung für die Georeplikation konfiguriert haben, wird Ihr Image mit diesem einzelnen `docker push`-Befehl automatisch sowohl in der Region *USA, Westen* als auch in *USA, Osten* repliziert.
+Da Sie Ihre Registrierung für die Georeplikation konfiguriert haben, wird Ihr Image mit diesem einzelnen *-Befehl automatisch sowohl in der Region* USA, Westen*als auch in*USA, Osten`docker push` repliziert.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: e7f5e003a058cd94e6e4a4440c512217c387fda3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9f869d595aeb3ff2ab7c3fd0bab7b52c72ab904b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158158"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Tutorial: Azure Active Directory-Integration mit FM:Systems
 
@@ -150,7 +150,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Navigieren Sie zu **Systemadministration \> Sicherheit verwalten \> Benutzer \> Benutzerliste**.
    
-    ![System Administration (Systemverwaltung)](./media/fm-systems-tutorial/ic795905.png "Systemadministration")
+    ![System Administration (Systemverwaltung)](./media/fm-systems-tutorial/ic795905.png "Systemverwaltung")
 
 3. Klicken Sie auf **Neuen Benutzer erstellen**.
    

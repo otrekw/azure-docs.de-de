@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791425"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60617624"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer
 
@@ -44,7 +44,7 @@ Laden Sie die ZIP-Demodatei „Class room“ von der [Webseite mit Blender-Demod
 Erstellen Sie einen Speicherkontocontainer für die Dateien mit den Demoszenen:
 
 * Starten Sie Batch Explorer.
-* Klicken Sie im Hauptmenü auf der linken Seite auf das Menüelement „Daten“.
+* Klicken Sie auf der linken Seite im Hauptmenü auf das Menüelement „Daten“.
 * Vergewissern Sie sich, dass in der Dropdownliste die Option „Dateigruppen“ ausgewählt ist.
 * Klicken Sie auf die Schaltfläche mit dem Pluszeichen (+), und erstellen Sie eine neue leere Dateigruppe mit dem Namen „blender-classroom“.
   * Eine Dateigruppe ist einfach ein Azure Storage-Blobcontainer mit dem Präfix „fgrp-“. Mit dieser Konvention werden andere Container im Speicherkonto herausgefiltert.

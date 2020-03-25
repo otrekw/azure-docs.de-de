@@ -10,11 +10,11 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329819"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60480383"
 ---
 # <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(VERALTET) Erstellen und Bereitstellen einer Dateifreigabe für einen DC/OS-Cluster
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird erklärt, wie eine Dateifreigabe unter Azure erstellt un
 > * Erstellen einer Dateifreigabe
 > * Einbinden der Freigabe in das DC/OS-Cluster
 
-Sie benötigen einen ACS-DC/OS-Cluster, um die Schritte in diesem Tutorial ausführen zu können. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
+Sie benötigen einen ACS DC/OS-Cluster, um die Schritte in diesem Tutorial auszuführen. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
 Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
