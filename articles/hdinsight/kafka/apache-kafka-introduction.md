@@ -1,6 +1,6 @@
 ---
 title: Einführung in Apache Kafka in HDInsight – Azure
-description: Hier finden Sie Informationen zu Apache Kafka in HDInsight. Es wird beschrieben, worum es sich handelt, welche Funktion erfüllt wird und wo Sie Beispiele und Informationen zu den ersten Schritten finden.
+description: 'Informationen zu Apache Kafka in HDInsight: Es wird beschrieben, worum es sich handelt, welche Funktion erfüllt wird und wo Sie Beispiele und Informationen zu den ersten Schritten finden.'
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77672173"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Was ist Apache Kafka in Azure HDInsight?
@@ -59,7 +59,7 @@ Die Replikation wird genutzt, um die Partitionen auf Knoten zu duplizieren und f
 
 Im Folgenden sind allgemeine Aufgaben und Muster aufgelistet, die mithilfe von Kafka in HDInsight ausgeführt werden können:
 
-|Zweck |Beschreibung |
+|Zweck |BESCHREIBUNG |
 |---|---|
 |Replikation von Apache Kafka-Daten|Kafka verfügt über das MirrorMaker-Hilfsprogramm, mit dem Daten zwischen Kafka-Clustern repliziert werden. Informationen zur Verwendung von MirrorMaker finden Sie unter [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](apache-kafka-mirroring.md).|
 |Veröffentlichen-Abonnieren-Messagingmuster|Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).|
@@ -75,10 +75,10 @@ Im Folgenden sind allgemeine Aufgaben und Muster aufgelistet, die mithilfe von K
 
 Verwenden Sie die folgenden Links, um Informationen zur Verwendung von Apache Kafka unter HDInsight zu erhalten:
 
-* [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md)
+* [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md)
 
 * [Verwenden von Kafka mit REST-Proxy](rest-proxy.md)
 
-* [Tutorial: Beispiel für Apache Spark-Streaming (DStream) mit Apache Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Beispiel für Apache Spark-Streaming (DStream) mit Apache Kafka in HDInsight](../hdinsight-apache-spark-with-kafka.md)
 
 * [Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight](../hdinsight-apache-storm-with-kafka.md)

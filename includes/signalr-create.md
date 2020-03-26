@@ -9,10 +9,10 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 39bff26baea622e6c0ed524ca68c3c8bae4e770d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76020987"
 ---
 1. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an, um eine Azure SignalR Service-Ressource zu erstellen. Wählen Sie links oben auf der Seite die Option **+ Ressource erstellen** aus. Geben Sie im Textfeld **Marketplace durchsuchen** **SignalR Service** ein.
@@ -21,7 +21,7 @@ ms.locfileid: "76020987"
 
 3. Fügen Sie auf der neuen **SignalR**-Seite „Einstellungen“ die folgenden Einstellungen für die neue SignalR-Ressource hinzu:
 
-    | Name | Empfohlener Wert | Beschreibung |
+    | Name | Empfohlener Wert | BESCHREIBUNG |
     | ---- | ----------------- | ----------- |
     | Ressourcenname | *testsignalr* | Geben Sie für die SignalR-Ressource einen eindeutigen Ressourcennamen ein. Der Name muss zwischen 1 und 63 Zeichen lang sein und darf nur Zahlen, Buchstaben und den Bindestrich (`-`) enthalten. Der Name darf weder mit dem Bindestrich beginnen oder enden, noch mehrere aufeinanderfolgende Bindestriche enthalten.|
     | Subscription | Auswählen Ihres Abonnements |  Wählen Sie das Azure-Abonnement aus, das Sie zum Testen von SignalR verwenden möchten. Wenn das Konto nur über ein einzelnes Abonnement verfügt, wird automatisch dieses Abonnement ausgewählt, und die Dropdownliste **Abonnement** wird nicht angezeigt.|

@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/25/2019
 ms.author: dobett
 ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792500"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "60890039"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Testen einer cloudbasierten Remoteüberwachungslösung
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Ausprobieren einer cloudbasierten Remoteüberwachungslösung
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung bereitstellen. Bei dieser cloudbasierten Lösung verwenden Sie die Seite mit dem **Dashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung wird zu Test- und Demonstrationszwecken eine **B
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -89,7 +89,7 @@ Auf der Seite **Dashboard** im Panel **Alerts** (Warnungen) wird die Warnung **C
 
 [![Dashboard: Druckwarnung und Gerät in der Karte](./media/quickstart-remote-monitoring-deploy/dashboardalarm-inline.png)](./media/quickstart-remote-monitoring-deploy/dashboardalarm-expanded.png#lightbox)
 
-Klicken Sie im Panel **Alerts** (Warnungen) in der Spalte **Explore** (Durchsuchen) neben der Regel **Chiller pressure too high** (Druck der Kältemaschine zu hoch) auf **...**. Sie gelangen auf die Seite **Maintenance** (Wartung), auf der Sie die Details der Regel anzeigen können, die die Warnung ausgelöst hat.
+Klicken Sie im Panel **Alerts** (Warnungen) in der Spalte **Explore** (Durchsuchen) neben der Regel **Chiller pressure too high** (Druck der Kältemaschine zu hoch) auf **...** . Sie gelangen auf die Seite **Maintenance** (Wartung), auf der Sie die Details der Regel anzeigen können, die die Warnung ausgelöst hat.
 
 Auf der Wartungsseite **Chiller pressure too high** (Druck der Kältemaschine zu hoch) werden die Details zu der Regel angezeigt, die die Warnungen ausgelöst hat. Außerdem ist hier angegeben, wann die Warnungen aufgetreten sind und von welchem Gerät sie ausgelöst wurden:
 

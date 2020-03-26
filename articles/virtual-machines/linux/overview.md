@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfda5fe7592d4c3f3f9550f406cf7635c43168ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896198"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159471"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -31,7 +31,7 @@ Virtuelle Azure-Computer können auf vielfältige Weise genutzt werden. Beispiel
 * **Anwendungen in der Cloud:** Da die Nutzung Ihrer Anwendung Schwankungen unterliegen kann, ist es unter Umständen wirtschaftlich sinnvoll, sie auf einem virtuellen Computer in Azure auszuführen. Sie bezahlen für zusätzliche virtuelle Computer, wenn Sie sie benötigen, und fahren sie andernfalls einfach herunter.
 * **Erweitertes Datencenter:** Virtuelle Computer in einem virtuellen Azure-Netzwerk lassen sich problemlos mit dem Netzwerk Ihrer Organisation verbinden.
 
-Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann zentral oder horizontal hochskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
+Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann hoch- oder aufskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
 Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche [Designaspekte](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm) berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
@@ -49,7 +49,7 @@ Alle in Azure erstellten Ressourcen werden auf [geografische Regionen](https://a
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
@@ -93,10 +93,6 @@ Microsoft arbeitet eng mit Partnern zusammen, um sicherzustellen, dass die verf�
 * Docker: [Azure Marketplace – Azure Container Service mit Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins: [Azure Marketplace – CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="vm-sizes"></a>VM-Größen
-Die [Größe](sizes.md) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
-
-Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 
 ## <a name="cloud-init"></a>cloud-init 
 
@@ -108,12 +104,6 @@ Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als 
 Azure unterstützt [cloud-init](https://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos mit VMs und VM-Skalierungsgruppen.
 
 * [Verwenden von cloud-init auf virtuellen Linux-Computern in Azure](using-cloud-init.md)
-
-## <a name="quotas"></a>Kontingente
-Jedes Azure-Abonnement verfügt über standardmäßige Kontingentgrenzen, durch die die Bereitstellung einer großen Anzahl von virtuellen Computern für Ihr Projekt beeinträchtigt werden kann. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region.  Sie können die Kontingentgrenzen schnell und einfach erhöhen lassen, indem Sie ein Supportticket erstellen und eine Erhöhung anfordern.  Weitere Informationen zu Kontingentgrenzen finden Sie hier:
-
-* [Einschränkungen für Azure-Abonnementdienste](../../azure-resource-manager/management/azure-subscription-service-limits.md)
-
 
 ## <a name="storage"></a>Storage
 * [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)

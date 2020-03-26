@@ -9,10 +9,10 @@ ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67177773"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Aktivieren des Event Grid-Ressourcenanbieters
@@ -29,4 +29,4 @@ Es kann einen Moment dauern, bis die Registrierung abgeschlossen ist. Führen Si
 az provider show --namespace Microsoft.EventGrid --query "registrationState"
 ```
 
-Wenn `registrationState` `Registered` ist, können Sie den Vorgang fortsetzen.
+Wenn `registrationState``Registered` ist, können Sie den Vorgang fortsetzen.

@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044173"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "60445800"
 ---
 # <a name="what-is-azure-data-explorer"></a>Was ist der Azure-Daten-Explorer?
 
@@ -44,11 +44,11 @@ Die folgende Abbildung zeigt die verschiedenen Aspekte der Arbeit mit Azure-Date
 
 Die Arbeit im Azure-Daten-Explorer folgt im Allgemeinen diesem Muster:
 
-1. **Datenbank erstellen:** Erstellen Sie einen *Cluster* und anschließend eine oder mehrere *Datenbanken* im Cluster. [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
+1. **Datenbank erstellen**: Erstellen Sie einen *Cluster* und anschließend eine oder mehrere *Datenbanken* im Cluster. [Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
 
-1. **Daten erfassen:** Laden Sie Daten in Datenbanktabellen, sodass Sie diese abfragen können. [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
+1. **Daten erfassen**: Laden Sie Daten in Datenbanktabellen, sodass Sie diese abfragen können. [Schnellstart: Erfassen von Daten aus Event Hub in Azure-Daten-Explorer](ingest-data-event-hub.md)
 
-1. **Datenbank abfragen:** Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+1. **Datenbank abfragen**: Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten im Azure-Daten-Explorer](web-query-data.md)
 
 ## <a name="query-experience"></a>Abfrageverhalten
 
@@ -70,8 +70,8 @@ Wir würden uns sehr über Ihr Feedback zu Azure-Daten-Explorer und seiner Abfra
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
+[Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
 
-[Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
+[Schnellstart: Erfassen von Daten aus Event Hub in Azure-Daten-Explorer](ingest-data-event-hub.md)
 
-[Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+[Schnellstart: Abfragen von Daten im Azure-Daten-Explorer](web-query-data.md)

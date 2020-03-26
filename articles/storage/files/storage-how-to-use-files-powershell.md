@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77598543"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,7 +37,7 @@ New-AzResourceGroup `
     -Location $region | Out-Null
 ```
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 Bei einem Speicherkonto handelt es sich um einen gemeinsam genutzten Pool mit Speicherplatz, den Sie zum Bereitstellen von Azure-Dateifreigaben verwenden können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze des Speicherkontos erreicht ist. In diesem Beispiel wird ein Speicherkonto vom Typ „Allgemein v2“ (General Purpose version 2, GPv2) erstellt, in dem Standard-Azure-Dateifreigaben sowie andere Speicherressourcen wie Blobs oder Warteschlangen auf einem Festplattenlaufwerk (Hard-Disk Drive, HDD) gespeichert werden können. Azure Files unterstützt auch SSDs (Solid State Drives). Premium-Azure-Dateifreigaben können in FileStorage-Speicherkonten erstellt werden.
 
 In diesem Beispiel wird mithilfe des Cmdlets [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) ein Speicherkonto erstellt. Das Speicherkonto wird mit dem Namen *mystorageaccount\<Zufallszahl>* versehen, und ein Verweis auf das Speicherkonto wird in der Variablen **$storageAcct** gespeichert. Da Speicherkontonamen eindeutig sein müssen, sollten Sie `Get-Random` verwenden, um zu diesem Zweck eine Zahl an den Namen anzufügen. 
@@ -55,7 +55,7 @@ $storageAcct = New-AzStorageAccount `
 ```
 
 > [!Note]  
-> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Konten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, entfernen Sie den Parameter `-EnableLargeFileShare`.
+> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Speicherkonten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, müssen Sie den Parameter `-EnableLargeFileShare` entfernen.
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Jetzt können Sie Ihre erste Azure-Dateifreigabe erstellen. Für die Erstellung einer Dateifreigabe können Sie das Cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) verwenden. In diesem Beispiel wird eine Freigabe mit dem Namen `myshare` erstellt.
@@ -91,7 +91,7 @@ In den meisten Fällen werden Sie ihre Azure-Dateifreigabe über das SMB-Protoko
 Die folgenden Beispiele zeigen, wie Sie mit dem Azure PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. Der Parameter `-Context` dient zum Abrufen des Speicherkontoschlüssels, um die angegebenen Aktionen für die Dateifreigabe auszuführen. Um den Speicherkontoschlüssel abrufen zu können, müssen Sie für das Speicherkonto über die RBAC-Rolle `Owner` verfügen.
 
 #### <a name="create-directory"></a>Erstellen eines Verzeichnisses
-Verwenden Sie das Cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.
+Verwenden Sie das Cmdlet *New-AzStorageDirectory*, um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen [myDirectory](/powershell/module/az.storage/New-AzStorageDirectory) zu erstellen.
 
 ```azurepowershell-interactive
 New-AzStorageDirectory `
@@ -191,7 +191,7 @@ Das Cmdlet `Start-AzStorageFileCopy` eignet sich für Ad-hoc-Dateiverschiebungen
 ## <a name="create-and-manage-share-snapshots"></a>Erstellen und Verwalten von Freigabemomentaufnahmen
 Eine weitere nützliche Aufgabe, die Sie mit einer Azure-Dateifreigabe durchführen können, ist die Erstellung von Freigabemomentaufnahmen. Mit einer Momentaufnahme wird für eine Azure-Dateifreigabe ein bestimmter Zeitpunkt beibehalten. Freigabemomentaufnahmen ähneln Betriebssystemtechnologien, mit denen Sie unter Umständen bereits vertraut sind:
 
-- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS
+- [Volumeschattenkopie-Dienst (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) für Windows-Dateisysteme wie NTFS und ReFS.
 - Momentaufnahmen vom Typ [Logical Volume Manager (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) für Linux-Systeme
 - Momentaufnahmen vom Typ [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) für macOS 
 

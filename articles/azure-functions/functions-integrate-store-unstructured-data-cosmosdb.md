@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230560"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Speichern von unstrukturierten Daten mit Azure Functions und Azure Cosmos DB
@@ -50,14 +50,14 @@ Sie müssen über ein Azure Cosmos DB-Konto verfügen, für das die SQL-API verw
 
     ![Konfigurieren einer Cosmos DB-Ausgabebindung](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Dokumentparametername** | taskDocument | Name, der auf das Cosmos DB-Objekt im Code verweist |
     | **Datenbankname** | taskDatabase | Name der Datenbank zum Speichern von Dokumenten |
     | **Sammlungsname** | TaskCollection | Name der Datenbanksammlung. |
     | **If true, creates the Cosmos DB database and collection** (Erstellt die Cosmos DB-Datenbank und -Sammlung, falls zutreffend) | Aktiviert | Die Sammlung ist noch nicht vorhanden und muss erstellt werden. |
     | **Azure Cosmos DB-Kontoverbindung** | Neue Einstellung | Wählen Sie **Neu** und dann Ihr **Abonnement** und das zuvor erstellte **Datenbankkonto** aus. Klicken Sie auf **Auswählen**. Eine Anwendungseinstellung für Ihre Kontoverbindung wird erstellt. Diese Einstellung wird von der Bindung verwendet, um die Verbindung mit der Datenbank herzustellen. |
-    | **Sammlungsdurchsatz** |400 RU| Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |
+    | **Sammlungsdurchsatz** |400 RU| Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |
 
 1. Wählen Sie **Speichern**, um die Bindung zu erstellen.
 

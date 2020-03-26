@@ -9,13 +9,13 @@ ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565467"
 ---
-# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Tutorial: Ausführen einer Analyse der Grundursache für eine Warnung
+# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Tutorial: Durchführen einer Ursachenanalyse für eine Warnung
 
 In diesem Tutorial erfahren Sie, wie Sie den Solution Accelerator für die Remoteüberwachung verwenden, um die Ursache einer Warnung zu diagnostizieren. Sie stellen im Dashboard der Remoteüberwachungslösung fest, dass eine Warnung ausgelöst wurde, und verwenden den Explorer von Azure Time Series Insights, um die Ursache zu untersuchen.
 
@@ -30,7 +30,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Durchführen einer Ursachenanalyse für eine Warnung
 > * Erstellen einer neuen Regel basierend auf Ihren Erkenntnissen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 

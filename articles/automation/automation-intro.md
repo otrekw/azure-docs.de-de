@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76930395"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
@@ -37,7 +37,7 @@ Es ist auch möglich, den Bestand von Ressourcen auf Gastsystemen abzurufen, um 
 
 Aktualisieren Sie Windows- und Linux-Systeme mit Azure Automation übergreifend für Hybridumgebungen. So erhalten Sie einen Einblick in die Konformität von Updates für Azure, die lokale Umgebung und andere Clouds. Sie können Zeitplanbereitstellungen erstellen, um die Installation von Updates in einem definierten Wartungsfenster zu orchestrieren. Falls ein Update auf einem Computer nicht installiert werden soll, können Sie es aus der Bereitstellung ausschließen.
 
-### <a name="shared-resources"></a>Gemeinsam genutzte Ressourcen
+### <a name="shared-resources"></a><a name="shared-resources"></a>Gemeinsam genutzte Ressourcen
 
 Azure Automation besteht aus einem Satz von gemeinsam genutzten Ressourcen, die Ihnen das bedarfsabhängige Automatisieren und Konfigurieren Ihrer Umgebungen erleichtern.
 

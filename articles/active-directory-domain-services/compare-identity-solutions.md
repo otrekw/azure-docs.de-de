@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76544275"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services
@@ -102,7 +102,7 @@ Mit in Azure AD DS eingebundenen Geräten können Anwendungen die Kerberos- und
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Gerät gesteuert von            | Azure AD                                            | Verwaltete Azure AD DS-Domäne                                                |
 | Darstellung im Verzeichnis | Geräteobjekte im Azure AD-Verzeichnis            | Computerobjekte in der verwalteten Azure AD DS-Domäne                        |
-| Authentifizierung                  | OAuth-/OpenID Connect-basierte Protokolle              | Kerberos- und NTLM-Protokolle                                               |
+| Authentication                  | OAuth-/OpenID Connect-basierte Protokolle              | Kerberos- und NTLM-Protokolle                                               |
 | Verwaltung                      | Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM) wie z.B. Intune | Gruppenrichtlinie                                                              |
 | Netzwerk                      | Im Internet einsetzbar                             | Muss über eine Verbindung oder eine Peeringverknüpfung mit dem virtuellen Netzwerk verfügen, in dem die virtuelle Domäne bereitgestellt wird |
 | Ideal für...                    | Mobile oder Desktop-Endbenutzergeräte                  | In Azure bereitgestellte Server-VMs                                              |

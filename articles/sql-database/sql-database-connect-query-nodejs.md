@@ -12,10 +12,10 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768605"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
@@ -28,15 +28,15 @@ In dieser Schnellstartanleitung stellen Sie mithilfe von Node.js eine Verbindung
 - Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md)
 - [Node.js](https://nodejs.org)-bezogene Software
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
   Installieren Sie Homebrew und Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter macOS](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
   Installieren Sie Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
   Installieren Sie Chocolatey und Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter Windows](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 

@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: b-juche
 ms.openlocfilehash: 70d3a2a501952a5e20b1ff8e99f48f4d7aefce8d
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78163963"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Was ist die Speicherhierarchie von Azure NetApp Files?
@@ -28,14 +28,14 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
 > [!IMPORTANT] 
 > Azure NetApp Files unterstützt derzeit keine Ressourcenmigration zwischen Abonnements.
 
-## <a name="azure_netapp_files_account"></a>NetApp-Konten
+## <a name="netapp-accounts"></a><a name="azure_netapp_files_account"></a>NetApp-Konten
 
 - Ein NetApp-Konto fungiert als administrative Gruppierung der einzelnen Kapazitätspools.  
 - Ein NetApp-Konto ist nicht dasselbe wie Ihr allgemeines Azure-Speicherkonto. 
 - Ein NetApp-Konto deckt einen regionalen Bereich ab.   
 - Sie können über mehrere NetApp-Konten in einer Region verfügen, jedes NetApp-Konto ist aber an eine einzelne Region gebunden.
 
-## <a name="capacity_pools"></a>Kapazitätspools
+## <a name="capacity-pools"></a><a name="capacity_pools"></a>Kapazitätspools
 
 - Ein Kapazitätspool wird anhand der bereitgestellten Kapazität gemessen.  
 - Die Kapazität wird durch die festen SKUs bereitgestellt, die Sie erworben haben (beispielsweise eine Kapazität von 4 TiB).
@@ -45,7 +45,7 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
   Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten kann beispielsweise der Kapazitätspool 1 nicht aus dem NetApp-Konto für „USA, Osten“ in das NetApp-Konto für „USA, Westen 2“ verschoben werden.  
 - Ein Kapazitätspool kann erst gelöscht werden, wenn alle Volumes innerhalb des Kapazitätspools gelöscht wurden.
 
-## <a name="volumes"></a>Volumes
+## <a name="volumes"></a><a name="volumes"></a>Volumes
 
 - Ein Volume wird anhand des logischen Kapazitätsverbrauchs gemessen und ist skalierbar. 
 - Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
@@ -54,7 +54,7 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
   Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten können beispielsweise die Volumes aus dem Kapazitätspool 1 nicht in den Kapazitätspool 2 verschoben werden.
 - Ein Volume kann erst gelöscht werden, wenn alle seine Momentaufnahmen gelöscht wurden.
 
-## <a name="conceptual_diagram_of_storage_hierarchy"></a>Konzeptdiagramm der Speicherhierarchie 
+## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>Konzeptdiagramm der Speicherhierarchie 
 Das folgende Beispiel zeigt die Beziehungen zwischen Azure-Abonnement, NetApp-Konten, Kapazitätspools und Volumes.   
 
 ![Konzeptdiagramm der Speicherhierarchie](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)

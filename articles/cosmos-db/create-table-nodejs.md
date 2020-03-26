@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: sngun
 ms.openlocfilehash: f317b7b5f3ab60f466054f2043027b13e8396abc
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77212832"
 ---
-# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Node.js und Azure Cosmos DB
+# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Node.js und Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -24,7 +24,7 @@ ms.locfileid: "77212832"
 > * [Python](create-table-python.md)
 > 
 
-In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Tabellen-API-Konto und verwenden den Daten-Explorer und eine über GitHub geklonte Node.js-App, um Tabellen und Entitäten zu erstellen. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
+In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Tabellen-API-Konto und verwenden den Daten-Explorer und eine über GitHub geklonte Node.js-App, um Tabellen und Entitäten zu erstellen. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

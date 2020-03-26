@@ -11,15 +11,15 @@ ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
 ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76511211"
 ---
 # <a name="what-is-azure-iot-edge"></a>Was ist Azure IoT Edge?
 
-Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit sich Ihre Organisation auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Erweitern Sie Ihre IoT-Lösung, indem Sie Ihre Geschäftslogik in Standardcontainer packen, dann können Sie diese Container für jedes Ihrer Geräte bereitstellen und es über die Cloud überwachen.
+Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit sich Ihre Organisation auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Skalieren Sie Ihre IoT-Lösung auf, indem Sie Ihre Geschäftslogik in Standardcontainer packen. Anschließend können Sie diese Container für jedes Ihrer Geräte bereitstellen und die gesamte Lösung über die Cloud überwachen.
 
 Analysen (Analytics) sind die Grundlage des geschäftlichen Nutzens von IoT-Lösungen, aber nicht alle Analysen müssen sich in der Cloud befinden. Wenn Sie so schnell wie möglich auf Notfälle reagieren möchten, können Sie die Workloads zur Anomalieerkennung im Edge-Bereich ausführen. Wenn Sie die Bandbreitenkosten reduzieren und die Übertragung von Terabytes unformatierter Daten vermeiden möchten, können Sie die Daten lokal bereinigen und aggregieren und dann nur die Erkenntnisse zur Analyse an die Cloud senden.
 

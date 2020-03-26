@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467886"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Schnellstart: Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Azure IoT-Gerätesimul
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="deploy-device-simulation"></a>Bereitstellen der Gerätesimulation
 
@@ -64,7 +64,7 @@ Wenn Sie das Dashboard für die Gerätesimulation zum ersten Mal öffnen, wird e
 
 Die Beispielsimulation kann nicht bearbeitet werden. Sie ist mit folgenden Einstellungen konfiguriert:
 
-| Einstellung             | Wert                       |
+| Einstellung             | value                       |
 | ------------------- | --------------------------- |
 | IoT-Zielhub      | Verwenden von vorab bereitgestelltem IoT Hub |
 | Gerätemodell        | LKW                       |

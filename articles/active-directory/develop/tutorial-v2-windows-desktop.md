@@ -16,10 +16,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129929"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
@@ -89,7 +89,7 @@ Gehen Sie zum Erstellen der Anwendung wie folgt vor:
 
 Sie können Ihre Anwendung auf zwei Arten registrieren.
 
-### <a name="option-1-express-mode"></a>Option 1: Expressmodi
+### <a name="option-1-express-mode"></a>Option 1: Expressmodus
 
 Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 1. Navigieren Sie zur [Anwendungsregistrierung im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
