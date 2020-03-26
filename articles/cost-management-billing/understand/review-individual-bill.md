@@ -53,7 +53,7 @@ Klicken Sie in der Abonnementliste auf das Abonnement.
 
 Klicken Sie unter **Abrechnung** auf **Rechnungen**.
 
-Suchen Sie in der Rechnungsliste nach der Rechnung, die Sie herunterladen möchten, und klicken Sie auf das Downloadsymbol. Ändern Sie ggf. die Zeitspanne, um ältere Rechnungen anzuzeigen. Die Generierung der Datei mit den Nutzungsdetails und der Rechnung kann einige Minuten dauern.
+Suchen Sie in der Rechnungsliste nach der Rechnung, die Sie herunterladen möchten, und klicken Sie auf das Downloadsymbol. Ändern Sie ggf. die Zeitspanne, um ältere Rechnungen anzuzeigen. Es kann einige Minuten dauern, bis die Datei mit den Nutzungsdetails und die Rechnung generiert werden.
 
 ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/review-individual-bill/download-invoice.png)
 
@@ -79,7 +79,7 @@ Sollte **Nicht verfügbar** angezeigt werden, gibt es verschiedene Gründe, waru
 
  Der addierte Wert für *Cost* (Kosten) muss exakt den *Nutzungsgebühren* aus Ihrer Rechnung entsprechen.
 
-Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. Die Bedeutung der folgenden Benennungen ist in der Rechnung und in der Datei mit ausführlichen Nutzungsdaten identisch. Beispielsweise entspricht der Abrechnungszyklus in der Rechnung dem Abrechnungszeitraum in der Datei mit ausführlichen Nutzungsdaten.
+Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. Die Bedeutung der folgenden Benennungen ist in der Rechnung und in der Datei mit ausführlichen Nutzungsdaten identisch. Beispielsweise entspricht der Abrechnungszyklus in der Rechnung dem Abrechnungszeitraum in der Datei mit detaillierten Nutzungsdaten.
 
 | Rechnung (PDF) | Detaillierte Nutzungsdaten (CSV)|
 | --- | --- |
@@ -167,7 +167,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Vergleichen abgerechneter Gebühren mit der Nutzungsdatei
 > * Vergleichen von Gebühren und Nutzung in der Kostenanalyse
 
-Durchlaufen Sie die Schnellstartanleitung, um mit der Kostenanalyse zu beginnen.
+Schließen Sie die Schnellstartsitzung ab, um mit der Kostenanalyse zu beginnen.
 
 > [!div class="nextstepaction"]
 > [Beginn der Kostenanalyse](../costs/quick-acm-cost-analysis.md)
