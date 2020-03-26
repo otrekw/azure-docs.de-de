@@ -12,17 +12,17 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a57370b7bf63ad73318ba13eff1b554aead7e186
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197758"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216288"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Azure Key Vault-Instanzen können über das Azure-Portal erstellt und verwaltet werden. In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor und verwenden diesen dann, um ein Geheimnis zu speichern. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](key-vault-overview.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -35,7 +35,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
 4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
 5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diesen Schnellstart verwenden wir **Contoso-vault2**. 
+    - **Namen**: Es ist ein eindeutiger Name erforderlich. Für diesen Schnellstart verwenden wir **Contoso-vault2**. 
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
@@ -44,8 +44,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Beachten Sie die beiden folgenden Eigenschaften:
 
-* **Tresorname**: In diesem Beispiel wird **Contoso-Vault2** verwendet. Dieser Name wird noch für andere Schritte benötigt.
-* **Tresor-URI**: In diesem Beispiel https://contoso-vault2.vault.azure.net/. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **Tresorname:** In diesem Beispiel wird **Contoso-Vault2** verwendet. Dieser Name wird noch für andere Schritte benötigt.
+* **Tresor-URI:** https://contoso-vault2.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
 
@@ -58,8 +58,8 @@ Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt w
 1. Klicken Sie auf den Key Vault-Eigenschaftenseiten auf **Geheimnisse**.
 2. Klicken Sie auf **Generieren/Importieren**.
 3. Wählen Sie auf dem Bildschirm **Geheimnis erstellen** folgende Werte aus:
-    - **Uploadoptionen**: Manuell
-    - **Name**: ExamplePassword
+    - **Uploadoptionen:** Manuell
+    - **Name:** ExamplePassword
     - **Wert**: hVFkk965BuUv
     - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Erstellen**.
 

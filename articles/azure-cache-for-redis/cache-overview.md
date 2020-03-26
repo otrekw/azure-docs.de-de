@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 03/11/2020
 ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79126365"
 ---
 # <a name="azure-cache-for-redis-description"></a>Beschreibung von Azure Cache for Redis
@@ -25,7 +25,7 @@ Azure Cache for Redis bietet Zugriff auf einen sicheren, dedizierten Redis Cache
 
 Azure Cache for Redis verbessert die Anwendungsleistung durch die Unterstützung gängiger Anwendungsarchitekturmuster. Nachfolgend sind einige der am häufigsten verwendeten Muster aufgeführt:
 
-| Muster      | Beschreibung                                        |
+| Muster      | BESCHREIBUNG                                        |
 | ------------ | -------------------------------------------------- |
 | [Cache-Aside](cache-web-app-cache-aside-leaderboard.md) | Datenbanken sind häufig zu groß, um sie direkt in einen Cache zu laden. Das [cachefremde](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) Muster wird üblicherweise verwendet, um Daten nur bei Bedarf in den Cache zu laden. Wenn das System Änderungen an den Daten vornimmt, kann es auch den Cache aktualisieren, der dann an andere Clients verteilt wird. Darüber hinaus kann das System ein Ablaufdatum für Daten festlegen oder eine Entfernungsrichtlinie verwenden, um Datenaktualisierungen im Cache auszulösen.|
 | [Inhaltszwischenspeicherung](cache-aspnet-output-cache-provider.md) | Viele Webseiten werden auf der Grundlage von Vorlagen mit statischen Inhalten wie Kopfzeilen, Fußzeilen und Bannern generiert. Diese statischen Elemente ändern sich in der Regel nur selten. Im Vergleich zu Back-End-Datenspeichern ermöglicht ein In-Memory-Cache einen schnelleren Zugriff auf statische Inhalte. Dieses Muster trägt zur Verringerung der Verarbeitungszeit und der Serverauslastung sowie zur Erhöhung der Reaktionsfähigkeit von Webservern bei. Dadurch benötigen Sie ggf. weniger Server, um die Last zu bewältigen. Zur Unterstützung dieses Musters mit ASP.NET bietet Azure Cache for Redis den Redis-Ausgabecacheanbieter.|
@@ -37,7 +37,7 @@ Azure Cache for Redis verbessert die Anwendungsleistung durch die Unterstützung
 
 Azure Cache for Redis ist in folgenden Tarifen verfügbar:
 
-| Tarif | Beschreibung |
+| Tarif | BESCHREIBUNG |
 |---|---|
 Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB–53 GB) und eignet sich perfekt für Entwicklungs-/Testworkloads und nicht kritische Workloads. Für den Basic-Tarif gilt keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA). |
 | Standard | Ein replizierter Cache in einer Primär-/Sekundärkonfiguration mit zwei Knoten, die von Azure verwaltet wird, mit Hochverfügbarkeits-SLA (99,9 Prozent). |

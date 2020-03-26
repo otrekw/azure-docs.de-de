@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769284"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
@@ -22,7 +22,7 @@ Hier erfahren Sie, wie Sie mithilfe von Azure Functions eine [serverlose](https:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-+ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
++ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
 
@@ -48,7 +48,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | Einstellung | Vorgeschlagener Wert | Beschreibung |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|
     | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
     | **Zeitplan** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](functions-bindings-timer.md#ncrontab-expressions), der die minütliche Ausführung der Funktion festlegt. |

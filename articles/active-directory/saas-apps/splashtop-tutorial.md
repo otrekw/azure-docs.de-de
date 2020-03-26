@@ -16,10 +16,10 @@ ms.date: 02/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6ecb03130e26d432f0bd10980c7c3553ce9f8b0
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77539697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Splashtop
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die Splashtop-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute, wobei **nameidentifier** hier **user.userprincipalname** zugeordnet wird. Die TicketManager-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher bearbeiten, indem Sie auf das Symbol **Bearbeiten** klicken und die Zuordnung entsprechend ändern.
 
-    ![Abbildung](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -133,11 +133,11 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 In diesem Abschnitt müssen Sie über das [Splashtop-Webportal](https://my.splashtop.com/login) eine neue SSO-Methode beantragen.
 1. Navigieren Sie im Splashtop-Webportal zu **Account info** / **Team** (Kontoinformationen > Team), und scrollen Sie nach unten zum Abschnitt **Single Sign On** (Einmaliges Anmelden). Klicken Sie anschließend auf **Apply for new SSO method** (Neue SSO-Methode beantragen).
 
-    ![Abbildung](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. Geben Sie im Antragsfenster unter **SSO name** (SSO-Name) einen SSO-Namen an (beispielsweise „New Azure“). Wählen Sie **Azure** als IDP-Typ aus, und geben unter **Login URL** (Anmelde-URL) und **Azure AD Identifier** (Azure AD-Bezeichner) die Werte ein, die Sie im Azure-Portal aus der Splashtop-Anwendung kopiert haben.
 
-    ![Abbildung](media/splashtop-tutorial/azure-sso-1.png)
+    ![image](media/splashtop-tutorial/azure-sso-1.png)
 
 1. Klicken Sie zum Angeben der Zertifikatinformationen mit der rechten Maustaste auf die Zertifikatdatei, die Sie im Portal aus der Splashtop-Anwendung heruntergeladen haben, bearbeiten Sie sie mit Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Feld **Download Certificate (Base64)** (Downloadzertifikat (Base64)) ein.
 
@@ -149,11 +149,11 @@ In diesem Abschnitt müssen Sie über das [Splashtop-Webportal](https://my.splas
 
 1. Aktivieren Sie nach der Aktivierung der neu erstellten SSO-Methode im Abschnitt **Einmaliges Anmelden** das entsprechende Kontrollkästchen, um die Methode zu aktivieren.
 
-    ![Abbildung](media/splashtop-tutorial/enable.png)
+    ![image](media/splashtop-tutorial/enable.png)
 
 1. Laden Sie den Testbenutzer (beispielsweise `B.Simon@contoso.com`) mit der neu erstellten SSO-Methode zu Ihrem Splashtop-Team ein.
 
-    ![Abbildung](media/splashtop-tutorial/invite.png)
+    ![image](media/splashtop-tutorial/invite.png)
 
 1. Sie können auch ein vorhandenes Splashtop-Konto in ein SSO-Konto ändern. Eine entsprechende Anleitung finden Sie [hier](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 

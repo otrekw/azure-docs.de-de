@@ -14,13 +14,13 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790910"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Schnellstartanleitung: Erstellen eines virtuellen Windows-Computers mit SQL Server unter Verwendung von Azure PowerShell
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen SQL Server-Computer erstellen.
 
@@ -28,12 +28,12 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen
 > - Sie erfahren, wie Sie schnell einen virtuellen SQL-Computer bereitstellen und eine Verbindung damit herstellen. Weitere Informationen zu anderen Azure PowerShell-Optionen für die Erstellung virtueller SQL-Computer finden Sie im [Bereitstellungshandbuch für virtuelle SQL Server-Computer mit Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
 > - Falls Sie Fragen zu SQL Server-VMs haben, finden Sie in den [häufig gestellten Fragen](virtual-machines-windows-sql-server-iaas-faq.md) weitere Informationen.
 
-## <a id="subscription"></a> Einrichten eines Azure-Abonnements
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Einrichten eines Azure-Abonnements
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 
-## <a id="powershell"></a> Abrufen von Azure PowerShell
+## <a name="get-azure-powershell"></a><a id="powershell"></a> Abrufen von Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -170,11 +170,11 @@ Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie 
 
 1. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, entscheiden Sie sich für die Eingabe von Anmeldeinformationen für ein anderes Konto. Geben Sie den Benutzernamen mit einem vorangestellten umgekehrten Schrägstrich (Beispiel: `\azureadmin`) sowie das Kennwort ein, das Sie zuvor in dieser Schnellstartanleitung festgelegt haben.
 
-## <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
+## <a name="connect-to-sql-server"></a>Verbindung mit SQL Server herstellen
 
 1. Starten Sie nach der Anmeldung bei der Remotedesktopsitzung **SQL Server Management Studio 2017** über das Startmenü.
 
-1. Behalten Sie im Dialogfeld **Mit Server verbinden** die Standardeinstellungen bei. Der Servername ist der Name des virtuellen Computers. Die Authentifizierung ist auf **Windows-Authentifizierung** festgelegt. Wählen Sie **Verbinden**aus.
+1. Behalten Sie im Dialogfeld **Mit Server verbinden** die Standardeinstellungen bei. Der Servername ist der Name des virtuellen Computers. Die Authentifizierung ist auf **Windows-Authentifizierung** festgelegt. Wählen Sie **Verbinden**.
 
 Sie sind nun lokal mit SQL Server verbunden. Falls Sie eine Remoteverbindung herstellen möchten, müssen Sie die [Konnektivität konfigurieren](virtual-machines-windows-sql-connect.md) (entweder über das Portal oder manuell).
 

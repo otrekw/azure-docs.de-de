@@ -9,21 +9,21 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75908916"
 ---
 # <a name="internet-peering-overview"></a>Übersicht über Internetpeering
 
 Peering ist die Verbindung zwischen dem globalen Netzwerk von Microsoft (AS8075) und Ihrem Netzwerk, um ein-/ausgehenden Internetdatenverkehr für Microsoft-Onlinedienste und Microsoft Azure-Dienste auszutauschen. Netzbetreiber und Dienstanbieter können eine Verbindung mit Microsoft an einem unserer Edgestandorte anfordern. Jede Anforderung wird von Microsoft geprüft, um sicherzustellen, dass sie unserer Peeringrichtlinie entspricht. Ein Peering mit dem Microsoft-Netzwerk kann auf zwei Arten eingerichtet werden:
 
-* **Direktes Peering:**
+* **Direct Peering:**
 
     Das Peering wird über direkte physische Verbindungen zwischen dem Microsoft-Netzwerk an einem Microsoft-Edgestandort und Ihrem Netzwerk eingerichtet. BGP-Sitzungen werden über diese Verbindungen gemäß unserer Routingrichtlinie und unter Verwendung einer vorab ausgehandelten Vereinbarung konfiguriert. Dies wird auch als PNI bezeichnet.
 
-* **Austauschpeering:**
+* **Exchange Peering:**
 
     Hierbei handelt es sich um standardmäßige öffentliche Peeringverbindungen an Internetknoten (Internet Exchanges, IXs). Die physischen Verbindungen zwischen dem Microsoft-Netzwerk und Ihrem Netzwerk basieren auf einer vom IX betriebenen Switch-Struktur. BGP-Sitzungen werden mit dem vom IX bereitgestellten IP-Adressbereich konfiguriert.
 
@@ -53,4 +53,4 @@ Häufig gestellte Fragen zu Peering finden Sie unter [Internetpeering: Häufig g
 
 * Informationen zum Einrichten des direkten Peerings mit Microsoft finden Sie in der [exemplarischen Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
 * Informationen zum Einrichten des Austauschpeerings mit Microsoft finden Sie in der [exemplarischen Vorgehensweise für Austauschpeering](walkthrough-exchange-all.md).
-* Informationen zu einigen anderen zentralen Azure-Netzwerkfunktionen finden Sie [hier](https://docs.microsoft.com/azure/networking/networking-overview).
+* Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](https://docs.microsoft.com/azure/networking/networking-overview) in Azure.

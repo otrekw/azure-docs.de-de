@@ -5,10 +5,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74849206"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
@@ -75,11 +75,11 @@ Eine neue Warteschlange mit dem Namen `outqueue` wird in Ihrem Speicherkonto von
 
 1. Öffnen Sie in Visual Studio im Menü **Ansicht** die Option **Cloud-Explorer**.
 
-1. Erweitern Sie im **Cloud-Explorer** Ihr Azure-Abonnement und **Speicherkonten** und anschließend das von Ihrer Funktion verwendete Speicherkonto. Den Namen des Speicherkontos finden Sie in der Datei *local.settings.json* in der Verbindungszeichenfolge`AzureWebJobsStorage`.  
+1. Erweitern Sie im **Cloud-Explorer** Ihr Azure-Abonnement und **Speicherkonten** und anschließend das von Ihrer Funktion verwendete Speicherkonto. Den Namen des Speicherkontos finden Sie in der Datei `AzureWebJobsStorage`local.settings.json *in der Verbindungszeichenfolge*.  
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und doppelklicken Sie anschließend auf die Warteschlange namens **outqueue**, um die Inhalte der Warteschlange in Visual Studio anzuzeigen. 
 
-   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure* (An die Funktion übergebener Name: Azure).
+   Die Warteschlange enthält die Meldung, die die Warteschlangen-Ausgabebindung erstellt hat, als Sie die per HTTP ausgelöste Funktion ausgeführt haben. Wenn Sie die Funktion mit dem `name`-Standardwert *Azure* aufgerufen haben, lautet die Warteschlangenmeldung *Name passed to the function: Azure*.
 
     ![In Azure Storage-Explorer angezeigte Warteschlangennachricht](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

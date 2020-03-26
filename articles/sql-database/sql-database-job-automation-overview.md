@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083119"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215458"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 
-Azure SQL-Datenbank ermöglicht die Erstellung und Planung von Aufträgen, die in regelmäßigen Abständen für einzelne oder mehrere Datenbanken ausgeführt werden können, um T-SQL-Abfragen und Wartungsaufgaben auszuführen. Jeder Auftrag protokolliert den Ausführungsstatus und wiederholt die Vorgänge im Falle eines Fehlers automatisch.
+Azure SQL-Datenbank ermöglicht die Erstellung und Planung von Aufträgen, die in regelmäßigen Abständen für einzelne oder mehrere Datenbanken ausgeführt werden können, um T-SQL-Abfragen und Wartungsaufgaben auszuführen.
+Jeder Auftrag protokolliert den Ausführungsstatus und wiederholt die Vorgänge im Falle eines Fehlers automatisch.
 Sie können die Zieldatenbank oder Gruppen von Azure SQL-Datenbanken sowie Zeitpläne für die Auftragsausführung definieren.
 Ein Auftrag übernimmt die Aufgabe der Anmeldung bei der Zieldatenbank. Zudem können Sie Transact-SQL-Skripts zur Ausführung für eine Gruppe von Azure SQL-Datenbanken definieren, verwalten und speichern.
 
@@ -48,10 +49,10 @@ In Azure SQL-Datenbank stehen folgende Auftragsplanungstechnologien zur Verfügu
 
 Zwischen dem SQL-Agent (lokal und als Komponente einer verwalteten SQL-Datenbank-Instanz verfügbar) und dem Datenbank-Agent für elastische Aufträge (für Einzeldatenbanken in Azure SQL-Datenbank und Datenbanken in SQL Data Warehouse verfügbar) gibt es einige Unterschiede.
 
-|  |Elastische Aufträge  |SQL-Agent |
+| |Elastische Aufträge |SQL-Agent |
 |---------|---------|---------|
-|`Scope`     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
-|Unterstützte APIs und Tools     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
+|`Scope` | Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
+|Unterstützte APIs und Tools | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ Darüber hinaus müssen Sie für die verwaltete Instanz die Option „Datenbank-
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 Sie können Bediener über Vorkommnisse im Zusammenhang mit Ihren SQL-Agent-Aufträgen informieren. Ein Bediener definiert Kontaktinformationen für eine Person, die für die Wartung einzelner oder mehrerer verwalteter Instanzen zuständig ist. Manchmal sind die Aufgaben eines Bedieners einer einzelnen Person zugewiesen.
@@ -140,23 +141,24 @@ In Systemen mit mehreren verwalteten Instanzen oder SQL Server-Instanzen können
 Bediener können mithilfe von SSMS oder per Transact-SQL-Skript erstellt werden, wie im folgenden Beispiel gezeigt:
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 Sie können jeden Auftrag ändern und Bediener zuweisen, die per E-Mail benachrichtigt werden sollen, wenn ein Auftrag abgeschlossen wird, nicht erfolgreich war oder erfolgreich war. Hierzu können Sie entweder SSMS oder das folgende Transact-SQL-Skript verwenden:
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>Einschränkungen für SQL-Agent-Aufträge
 
 Einige der in SQL Server verfügbaren SQL-Agent-Features werden in verwalteten Instanzen nicht unterstützt:
+
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.
 - Das Aktivieren/Deaktivieren des SQL-Agents wird in verwalteten Instanzen derzeit nicht unterstützt. Der SQL-Agent wird immer ausgeführt.
 - Benachrichtigungen werden teilweise unterstützt.
@@ -180,17 +182,16 @@ Die folgende Abbildung zeigt einen Auftrags-Agent, der Aufträge für die versch
 
 ### <a name="elastic-job-components"></a>Komponenten für elastische Aufträge
 
-|Komponente  | Beschreibung (Weitere Details finden Sie im Anschluss an die Tabelle.) |
+|Komponente | Beschreibung (Weitere Details finden Sie im Anschluss an die Tabelle.) |
 |---------|---------|
-|[**Agent für elastische Aufträge**](#elastic-job-agent) |  Der Azure-Ressource, die Sie zum Ausführen und Verwalten von Aufträgen erstellen.   |
-|[**Auftragsdatenbank**](#job-database)    |    Eine Azure SQL-Datenbank, in der der Auftrags-Agent auftragsbezogene Daten, Auftragsdefinitionen und Ähnliches speichert.      |
-|[**Zielgruppe**](#target-group)      |  Die Gruppe von Servern, Pools, Datenbanken und Shardzuordnungen, für die ein Auftrag ausgeführt werden soll.       |
-|[**Auftrag**](#job)  |  Ein Auftrag ist eine Arbeitseinheit mit mindestens einem [Auftragsschritt](#job-step). Auftragsschritte geben das auszuführende T-SQL-Skript sowie andere für die Skriptausführung erforderliche Details an.  |
-
+|[**Agent für elastische Aufträge**](#elastic-job-agent) | Der Azure-Ressource, die Sie zum Ausführen und Verwalten von Aufträgen erstellen. |
+|[**Auftragsdatenbank**](#job-database) | Eine Azure SQL-Datenbank, in der der Auftrags-Agent auftragsbezogene Daten, Auftragsdefinitionen und Ähnliches speichert. |
+|[**Zielgruppe**](#target-group) | Die Gruppe von Servern, Pools, Datenbanken und Shardzuordnungen, für die ein Auftrag ausgeführt werden soll. |
+|[**Auftrag**](#job) | Ein Auftrag ist eine Arbeitseinheit mit mindestens einem [Auftragsschritt](#job-step). Auftragsschritte geben das auszuführende T-SQL-Skript sowie andere für die Skriptausführung erforderliche Details an. |
 
 #### <a name="elastic-job-agent"></a>Agent für elastische Aufträge
 
-Bei einem Agent für elastische Aufträge handelt es sich um die Azure-Ressource zum Erstellen, Ausführen und Verwalten von Aufträgen. Der Agent für elastische Aufträge ist eine Azure-Ressource, die über das Portal erstellt wird. ([PowerShell](elastic-jobs-powershell.md) und REST werden ebenfalls unterstützt.) 
+Bei einem Agent für elastische Aufträge handelt es sich um die Azure-Ressource zum Erstellen, Ausführen und Verwalten von Aufträgen. Der Agent für elastische Aufträge ist eine Azure-Ressource, die über das Portal erstellt wird. ([PowerShell](elastic-jobs-powershell.md) und REST werden ebenfalls unterstützt.)
 
 Zum Erstellen eines **Agents für elastische Aufträge** muss eine SQL­-Datenbank vorhanden sein. Der Agent konfiguriert die vorhandene Datenbank als [*Auftragsdatenbank*](#job-database).
 
@@ -202,24 +203,20 @@ Die *Auftragsdatenbank* dient zum Definieren von Aufträgen sowie zum Nachverfol
 
 Für die aktuelle Vorschauversion muss eine Azure SQL-Datenbank (S0 oder höher) vorhanden sein, um einen Agent für elastische Aufträge erstellen zu können.
 
-Die *Auftragsdatenbank* muss nicht unbedingt neu, aber eine bereinigte, leere Datenbank mit dem Dienstziel S0 oder höher sein. Für die *Auftragsdatenbank* wird das Dienstziel S1 oder höher empfohlen, die optimale Wahl hängt jedoch von den Leistungsanforderungen Ihrer Aufträge ab (also von der Anzahl von Auftragsschritten, der Anzahl von Auftragszielen und der Ausführungshäufigkeit der Aufträge). Ein Beispiel: Für einen Auftrags-Agent, der nur wenige Aufträge pro Stunde für weniger als zehn Datenbanken ausführt, ist eine S0-Datenbank ggf. ausreichend. Wenn Sie jedoch Aufträge im Minutentakt ausführen möchten, ist eine S0-Datenbank möglicherweise nicht schnell genug, und es empfiehlt sich ggf. die Verwendung einer höheren Dienstebene. 
+Die *Auftragsdatenbank* muss nicht unbedingt neu, aber eine bereinigte, leere Datenbank mit dem Dienstziel S0 oder höher sein. Für die *Auftragsdatenbank* wird das Dienstziel S1 oder höher empfohlen, die optimale Wahl hängt jedoch von den Leistungsanforderungen Ihrer Aufträge ab (also von der Anzahl von Auftragsschritten, der Anzahl von Auftragszielen und der Ausführungshäufigkeit der Aufträge). Ein Beispiel: Für einen Auftrags-Agent, der nur wenige Aufträge pro Stunde für weniger als zehn Datenbanken ausführt, ist eine S0-Datenbank ggf. ausreichend. Wenn Sie jedoch Aufträge im Minutentakt ausführen möchten, ist eine S0-Datenbank möglicherweise nicht schnell genug, und es empfiehlt sich ggf. die Verwendung einer höheren Dienstebene.
 
-Sollten Vorgänge für die Auftragsdatenbank unerwartet langsam sein, [überwachen](sql-database-monitor-tune-overview.md#monitor-database-performance) Sie die Datenbankleistung und die Ressourcenverwendung der Auftragsdatenbank in langsamen Phasen über das Azure-Portal oder mithilfe der dynamische Verwaltungssicht [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Wenn eine Ressource (etwa CPU, Daten-E/A oder Protokollschreibvorgänge) in langsamen Phasen nahezu vollständig ausgelastet ist, empfiehlt es sich gegebenenfalls, die Datenbank schrittweise auf höhere Dienstziele zu skalieren (entweder im [DTU-Modell](sql-database-service-tiers-dtu.md) oder im [V-Kern-Modell](sql-database-service-tiers-vcore.md)), bis sich die Leistung der Auftragsdatenbank ausreichend verbessert hat.
-
+Sollten Vorgänge für die Auftragsdatenbank unerwartet langsam sein, [überwachen](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) Sie die Datenbankleistung und die Ressourcenverwendung der Auftragsdatenbank in langsamen Phasen über das Azure-Portal oder mithilfe der dynamische Verwaltungssicht [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Wenn eine Ressource (etwa CPU, Daten-E/A oder Protokollschreibvorgänge) in langsamen Phasen nahezu vollständig ausgelastet ist, empfiehlt es sich gegebenenfalls, die Datenbank schrittweise auf höhere Dienstziele zu skalieren (entweder im [DTU-Modell](sql-database-service-tiers-dtu.md) oder im [V-Kern-Modell](sql-database-service-tiers-vcore.md)), bis sich die Leistung der Auftragsdatenbank ausreichend verbessert hat.
 
 ##### <a name="job-database-permissions"></a>Berechtigungen für die Auftragsdatenbank
 
 Im Zuge der Erstellung des Auftrags-Agents werden in der *Auftragsdatenbank* ein Schema, Tabellen und eine Rolle namens *jobs_reader* erstellt. Die Rolle wird mit folgenden Berechtigung erstellt und soll Administratoren eine präzisere Zugriffssteuerung für die Auftragsüberwachung ermöglichen:
 
-
-|Rollenname  |Berechtigungen des Schemas „jobs“  |Berechtigungen des Schemas „jobs_internal“  |
+|Rollenname |Berechtigungen des Schemas „jobs“ |Berechtigungen des Schemas „jobs_internal“ |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Keine     |
+|**jobs_reader** | SELECT | Keine |
 
 > [!IMPORTANT]
 > Bedenken Sie die Auswirkungen auf die Sicherheit, bevor Sie Datenbankadministratorzugriff auf die *Auftragsdatenbank* gewähren. Ein böswilliger Benutzer mit Berechtigungen zum Erstellen oder Bearbeiten von Aufträgen kann theoretisch einen Auftrag erstellen oder bearbeiten, der unter Verwendung gespeicherter Anmeldeinformationen eine Verbindung mit einer Datenbank herstellt, die der Kontrolle des böswilligen Benutzers unterliegt. Auf diese Weise kann der böswillige Benutzer dann das Kennwort der Anmeldeinformationen ermitteln.
-
-
 
 #### <a name="target-group"></a>Zielgruppe
 
@@ -246,7 +243,6 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 **Beispiel 3** zeigt eine ähnliche Zielgruppe wie *Beispiel 2*, eine einzelne Datenbank wird jedoch ausdrücklich ausgeschlossen. Die Aktion des Auftragsschritts wird in der ausgeschlossenen Datenbank *nicht* ausgeführt.<br>
 **Beispiel 4** zeigt eine Zielgruppe, die einen Pool für elastische Datenbanken als Ziel enthält. So ähnlich wie in *Beispiel 2* wird der Pool zum Zeitpunkt der Auftragsausführung dynamisch aufgezählt, um die Liste der Datenbanken im Pool zu bestimmen.
 <br><br>
-
 
 ![Beispiele für Zielgruppen](media/elastic-jobs-overview/targetgroup-examples2.png)
 
@@ -287,7 +283,7 @@ Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md) 
-- [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell.md) 
-- [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql.md) 
+- [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Verwalten von Datenbankgruppen mithilfe von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md)
+- [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell.md)
+- [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Playbook, Application Gateway, Lastenaus
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156612"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Tutorial: Verwalten von Webdatenverkehr per Azure Application Gateway mit Ansible
@@ -53,7 +53,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 - Der Name der Ressourcengruppe lautet `myResourceGroup`. Dieser Wert wird im gesamten Tutorial verwendet.
 - Die Ressourcengruppe wird am Standort `eastus` erstellt.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook rg.yml
@@ -106,7 +106,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * Der Abschnitt `vars` enthält die Werte, die zum Erstellen der Netzwerkressourcen verwendet werden. 
 * Sie müssen diese Werte für Ihre jeweilige Umgebung ändern.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -159,7 +159,7 @@ Speichern Sie das folgende Playbook als `aci_create.yml`:
               - 80
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook aci_create.yml
@@ -262,7 +262,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * `appGatewayFrontendIP` wird im Block `frontend_ip_configurations` definiert. Diese Einstellung weist „myAGPublicIPAddress“ zu „appGatewayHttpListener“ zu.
 * `rule1` wird im Block `request_routing_rules` definiert. Hierbei handelt es sich um die Standardroutingregel, die „appGatewayHttpListener“ zugeordnet ist.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook appgw_create.yml

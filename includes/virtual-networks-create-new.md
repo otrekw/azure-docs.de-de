@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78244973"
 ---
 ## <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
@@ -26,7 +26,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
     | **Einstellung**          | **Wert**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Projektdetails**  |                                                                 |
-    | Abonnement     | Auswählen des Azure-Abonnements                                  |
+    | Subscription     | Auswählen des Azure-Abonnements                                  |
     | Ressourcengruppe   | Wählen Sie **Neu erstellen** aus, geben Sie **\<Ressourcengruppenname>** ein, und wählen Sie anschließend „OK“ aus. Alternativ kann basierend auf den Parametern auch ein bereits vorhandener **\<Ressourcengruppenname>** ausgewählt werden. |
     | **Instanzendetails** |                                                                 |
     | Name             | Geben Sie **\<VNET-Name>** ein.                                    |

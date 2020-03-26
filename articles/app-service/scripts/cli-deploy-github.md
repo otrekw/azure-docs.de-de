@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Bereitstellen einer App über GitHub'
+title: 'Über die CLI: Bereitstellen einer App über GitHub'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine App über GitHub bereitstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: dbb5c4f17b8bfecf0ada6405c789c5f9d7655a2d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 368a5d6810de5628ab98a7bef43cfceab750f95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686906"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057845"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Erstellen einer App Service-App mit Bereitstellung über GitHub mit der Azure CLI
 

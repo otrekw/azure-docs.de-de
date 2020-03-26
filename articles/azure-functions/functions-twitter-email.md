@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768961"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
@@ -76,7 +76,7 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
 
 ## <a name="create-an-http-triggered-function"></a>Erstellen einer durch HTTP ausgelösten Funktion  
 
-1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** aus.
+1. Erweitern Sie die Funktions-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktions-App ist, wählen Sie **Im Portal** aus.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -161,7 +161,7 @@ Erstellen Sie zuerst eine Verbindung mit Ihrem Twitter-Konto. Die Logik-App füh
 
     ![Twitter-Connectoreinstellungen](media/functions-twitter-email/10-tweet-settings.png)
 
-    | Einstellung      |  Vorgeschlagener Wert   | Beschreibung                                        |
+    | Einstellung      |  Vorgeschlagener Wert   | BESCHREIBUNG                                        |
     | ----------------- | ------------ | ------------- |
     | **Suchtext** | #Azure | Verwenden Sie ein Hashtag, das beliebt genug ist, damit im gewählten Zeitraum neue Tweets generiert werden. Wenn Sie den Free-Tarif verwenden und Ihr Hashtag eine zu hohe Beliebtheit aufweist, kann es passieren, dass das Transaktionskontingent Ihrer Cognitive Services-API schnell aufgebraucht ist. |
     | **Intervall** | 15 | Die zwischen Twitter-Anforderungen verstrichene Zeit in Häufigkeitseinheiten. |
@@ -232,7 +232,7 @@ Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für
 
     ![Konfigurieren Sie die E-Mail für die Aktion „E-Mail senden“.](media/functions-twitter-email/21-configure-email.png)
     
-| Einstellung      |  Vorgeschlagener Wert   | Beschreibung  |
+| Einstellung      |  Vorgeschlagener Wert   | BESCHREIBUNG  |
 | ----------------- | ------------ | ------------- |
 | **An** | Geben Sie Ihre E-Mail-Adresse ein | Die E-Mail-Adresse, an die die Benachrichtigung gesendet wird. |
 | **Subject** | Negative Tweet-Stimmung erkannt  | Die Betreffzeile der E-Mail-Benachrichtigung.  |

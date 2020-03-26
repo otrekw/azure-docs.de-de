@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74770644"
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Ruby zum Verbinden und Abfragen von Daten
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Ruby](https://www.ruby-lang.org)-Anwendung und [mysql2](https://rubygems.org/gems/mysql2)-Gem auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -34,7 +34,7 @@ Installieren Sie Ruby, Gem und die MySQL2-Bibliothek auf Ihrem eigenen Computer.
 5. Überprüfen Sie die Gem-Installation, indem Sie den Befehl `gem -v` ausführen, um die installierte Version anzuzeigen.
 6. Erstellen Sie das Mysql2-Modul für Ruby, indem Sie Gem mit dem Befehl `gem install mysql2` ausführen.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 1. Installieren Sie Ruby per Homebrew, indem Sie den Befehl `brew install ruby` ausführen. Weitere Installationsoptionen finden Sie in der [Installationsdokumentation](https://www.ruby-lang.org/en/documentation/installation/#homebrew) zu Ruby.
 2. Überprüfen Sie die Ruby-Installation, indem Sie den Befehl `ruby -v` ausführen, um die installierte Version anzuzeigen.
 3. Überprüfen Sie die Gem-Installation, indem Sie den Befehl `gem -v` ausführen, um die installierte Version anzuzeigen.

@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726391"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit PHP
@@ -42,14 +42,14 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suche
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 In der Anwendung müssen Sie Ihren Speicherkontonamen sowie den Kontoschlüssel angeben, um die **BlobRestProxy**-Instanz für Ihre Anwendung zu erstellen. Es wird empfohlen, diese Bezeichner in einer Umgebungsvariablen auf dem lokalen Computer zu speichern, auf dem die Anwendung ausgeführt wird. Verwenden Sie je nach Betriebssystem die Schritte für eines der folgenden Beispiele, um die Umgebungsvariable zu erstellen. Ersetzen Sie die Werte **youraccountname** und **youraccountkey** durch Ihren Kontonamen und den Kontoschlüssel.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -57,7 +57,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ```
 ---
 
-## <a name="configure-your-environment"></a>Konfigurieren der Umgebung
+## <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 Fügen Sie den Ordner aus Ihrem lokalen Git-Ordner in ein Verzeichnis ein, das von Ihrem PHP-Server bereitgestellt wird. Öffnen Sie anschließend eine Eingabeaufforderung für dieses Verzeichnis, und geben Sie `php composer.phar install` ein.
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels

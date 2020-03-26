@@ -4,10 +4,10 @@ description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuell
 ms.topic: overview
 ms.date: 05/10/2019
 ms.openlocfilehash: 44b819a88baec383d2faf80ab37edb903b0a5f4d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77654085"
 ---
 # <a name="what-is-azure-service-health"></a>Was ist Azure Service Health?

@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273016"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
@@ -31,7 +31,7 @@ Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermög
 
 Der erste Schritt besteht darin, den Dienstkatalog in Ihrem Kubernetes-Cluster mithilfe eines Helm-Diagramms zu installieren.
 
-Navigieren Sie zu [https://shell.azure.com](https://shell.azure.com), um Cloud Shell in Ihrem Browser zu öffnen.
+Wechseln Sie zu [https://shell.azure.com](https://shell.azure.com), um Cloud Shell in Ihrem Browser zu öffnen.
 
 Führen Sie ein Upgrade Ihrer Tiller-Installation (Helm-Server) in Ihrem Cluster mit Folgendem durch:
 

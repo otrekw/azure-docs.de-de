@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769250"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird
@@ -22,7 +22,7 @@ Erfahren Sie, wie Sie eine Funktion erstellen, die ausgelöst wird, wenn Meldung
 
 - Laden Sie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) herunter, und installieren Sie ihn.
 
-- ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-an-azure-function-app"></a>Erstellen einer Azure Function-App
 
@@ -46,7 +46,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 1. Geben Sie `queue` in das Suchfeld ein, und wählen Sie dann die Vorlage **Warteschlangentrigger** aus.
 
-1. Wählen Sie **Installieren** aus, wenn Sie dazu aufgefordert werden, um die Azure Storage-Erweiterung sowie alle Abhängigkeiten in der Funktions-App zu installieren. Klicken Sie nach erfolgreichem Abschluss der Installation auf **Weiter**.
+1. Klicken Sie auf **Installieren**, wenn Sie dazu aufgefordert werden, um die Azure Storage-Erweiterung sowie alle Abhängigkeiten in der Funktions-App zu installieren. Klicken Sie nach erfolgreichem Abschluss der Installation auf **Weiter**.
 
     ![Installieren von Bindungserweiterungen](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -54,7 +54,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Konfigurieren Sie die Funktion, die durch die Speicherwarteschlange ausgelöst wird.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
 
-    | Einstellung | Vorgeschlagener Wert | Beschreibung |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     |---|---|---|
     | **Name** | Eindeutig in Ihrer Funktionen-App | Der Name dieser Funktion mit Auslösung durch Warteschlange. |
     | **Warteschlangenname**   | myqueue-items    | Der Name der zu verknüpfenden Warteschlange in Ihrem Speicherkonto. |

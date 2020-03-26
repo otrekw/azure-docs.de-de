@@ -17,10 +17,10 @@ ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d06dea6f1d2fa762a2e885ae98e1c0c4b3293ba
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72596241"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hightail
@@ -98,10 +98,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der Hightail-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | -------- |-------- |
     | FirstName | user.givenname |
-    | Nachname | user.surname |
+    | LastName | user.surname |
     | Email | user.mail |
     | UserIdentity | user.mail |
 
@@ -126,7 +126,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -160,15 +160,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie in der oberen rechten Ecke der Seite auf das **Benutzersymbol**. 
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure1.png)
 
 1. Klicken Sie auf die Registerkarte **Administratorkonsole anzeigen**.
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure2.png)
 
 1. Klicken Sie im oberen Menü auf die Registerkarte **SAML**, und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/hightail-tutorial/configure3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/hightail-tutorial/configure3.png)
 
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

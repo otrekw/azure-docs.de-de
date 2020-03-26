@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69900589"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Was ist Azure Data Box Gateway?
@@ -69,7 +69,7 @@ Das virtuelle Data Box Gateway-Gerät weist die folgenden Merkmale auf:
 | Virtuelle Prozessoren (Kerne)   | Mindestens 4 |
 | Arbeitsspeicher  |Mindestens 8 GB|
 | Verfügbarkeit|Einzelner Knoten|
-| Datenträger|Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
+| Datenträger|Betriebssystem-Datenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
 | Netzwerkschnittstellen |Mindestens eine virtuelle Netzwerkschnittstelle|
 | Native Dateifreigabeprotokolle|SMB und NFS  |
 | Sicherheit|Authentifizierung, um den Zugriff auf Gerät und Daten zu entsperren <br> Verschlüsselung der Daten während der Übertragung mithilfe von AES-256-BitLocker-Verschlüsselung|

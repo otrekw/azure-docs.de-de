@@ -2,15 +2,15 @@
 title: Übersicht
 description: Es wird beschrieben, wie Sie den Azure-Ressourcen-Manager für die Bereitstellung, Verwaltung und Zugriffssteuerung von Ressourcen unter Azure verwenden.
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344620"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258140"
 ---
-# <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
+# <a name="what-is-azure-resource-manager"></a>Was ist Azure Resource Manager?
 
 Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Abonnement ermöglicht. Mithilfe von Verwaltungsfeatures wie Zugriffssteuerung, Sperren und Tags können Sie Ihre Ressourcen nach der Bereitstellung schützen und organisieren.
 
@@ -20,7 +20,7 @@ Informationen zu Azure Resource Manager-Vorlagen finden Sie in der [Übersicht
 
 Wenn ein Benutzer eine Anforderung über eines der Azure-Tools, über eine der APIs oder über eines der SDKs sendet, wird diese von Resource Manager empfangen. Die Anforderung wird authentifiziert und autorisiert. Anschließend sendet Resource Manager die Anforderung an den Azure-Dienst, der daraufhin die angeforderte Aktion ausführt. Da alle Anforderungen von der gleichen API verarbeitet werden, stehen in allen Tools konsistente Ergebnisse und Funktionen zur Verfügung.
 
-Die folgende Abbildung veranschaulicht die Rolle von Azure Resource Manager bei der Behandlung von Azure-Anforderungen. 
+Die folgende Abbildung veranschaulicht die Rolle von Azure Resource Manager bei der Behandlung von Azure-Anforderungen.
 
 ![Resource Manager-Anforderungsmodell](./media/overview/consistent-management-layer.png)
 
@@ -102,12 +102,8 @@ Diese Resilienz gilt für Dienste, die Anforderungen über Resource Manager empf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu allen von Ressourcenanbietern angebotenen Vorgängen finden Sie [Azure REST API Reference](/rest/api/azure/) (Referenz zu Azure-REST-APIs).
-
 * Informationen zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](move-resource-group-and-subscription.md).
 
 * Informationen zum Taggen von Ressourcen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](tag-resources.md).
 
 * Informationen zum Sperren von Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](lock-resources.md).
-
-* Informationen zum Erstellen von Vorlagen für Bereitstellungen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../templates/overview.md).

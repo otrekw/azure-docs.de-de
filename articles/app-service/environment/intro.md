@@ -6,13 +6,13 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768326"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057386"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
@@ -55,7 +55,7 @@ Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen 
 * Zwei vCPUs/7 GB RAM
 * Vier vCPUs/14 GB RAM
 
-Kunden müssen keine Front-Ends und Worker verwalten. Die gesamte Infrastruktur wird automatisch hinzugefügt, wenn Kunden ihre App Service-Pläne horizontal hochskalieren. Wenn App Service-Pläne erstellt oder in einer ASE skaliert werden, wird die erforderliche Infrastruktur nach Bedarf hinzugefügt bzw. entfernt.
+Kunden müssen keine Front-Ends und Worker verwalten. Die gesamte Infrastruktur wird automatisch hinzugefügt, wenn Kunden ihre App Service-Pläne aufskalieren. Wenn App Service-Pläne erstellt oder in einer ASE skaliert werden, wird die erforderliche Infrastruktur nach Bedarf hinzugefügt bzw. entfernt.
 
 Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur abgedeckt ist. Dies ändert sich nicht mit der Größe der ASE. Darüber hinaus fallen Kosten pro vCPU-App Service-Plan an. Alle in einer ASE gehosteten Apps befinden sich in der isolierten Preis-SKU. Um Informationen zu den Preisen für eine ASE zu erhalten, lesen Sie die Seite [App Service-Preise][Pricing], und überprüfen Sie die verfügbaren Optionen für ASEs.
 
@@ -77,7 +77,7 @@ Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und 
 
 Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt. 
 
-In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan horizontal hochskalieren können, müssen Sie zunächst den Workerpool horizontal hochskalieren, den Sie zum Hosten verwenden möchten.
+In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan aufskalieren können, müssen Sie zunächst den Workerpool aufskalieren, den Sie zum Hosten verwenden möchten.
 
 ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zugewiesene vCPU. Dazu gehören vCPUs für Front-Ends oder Worker, die keine Workloads hosten. In ASEv1 beträgt die maximale Standardskalierungsgröße einer ASE insgesamt 55 Hosts. Dazu gehören Worker und Front-Ends. ASEv1 hat den Vorteil, dass die Bereitstellung in einem klassischen virtuellen Netzwerk sowie in einem virtuellen Resource Manager-Netzwerk möglich ist. Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro].
 

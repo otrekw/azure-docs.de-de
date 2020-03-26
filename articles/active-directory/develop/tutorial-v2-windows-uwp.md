@@ -16,10 +16,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79129881"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
@@ -206,7 +206,7 @@ Dieser Abschnitt zeigt, wie Sie über die MSAL ein Token für die Microsoft Grap
     }
     ```
 
-#### Interaktives Abrufen eines Benutzertokens<a name="more-information"></a>
+#### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens<a name="more-information"></a>
 
 Die `AcquireTokenInteractive`-Methode führt zum Öffnen eines Fensters, in dem Benutzer zum Anmelden aufgefordert werden. Bei Anwendungen müssen sich Benutzer in der Regel interaktiv anmelden, wenn sie zum ersten Mal auf eine geschützte Ressource zugreifen. Die Anmeldung kann auch erforderlich sein, wenn beim automatischen Vorgang zum Beziehen eines Tokens ein Fehler auftritt (beispielsweise bei einem abgelaufenen Kennwort des Benutzers).
 
@@ -295,7 +295,7 @@ Fügen Sie folgende Methode zur Datei *MainPage.xaml.cs* hinzu, um den Benutzer 
 > [!NOTE]
 > Bei MSAL.NET werden asynchrone Methoden zum Abrufen von Token oder Bearbeiten von Konten verwendet. Sie müssen dafür sorgen, dass UI-Aktionen im UI-Thread unterstützt werden. Dies ist der Grund für den `Dispatcher.RunAsync`-Aufruf und die Vorsichtsmaßnahmen zum Aufrufen von `ConfigureAwait(false)`.
 
-#### Weitere Informationen zum Abmelden<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>Weitere Informationen zum Abmelden<a name="more-information-on-sign-out"></a>
 
 Die `SignOutButton_Click`-Methode entfernt den Benutzer aus dem MSAL-Benutzercache. Dadurch wird die MSAL effektiv angewiesen, den aktuellen Benutzer zu vergessen, und eine zukünftige Anforderung zum Abrufen eines Tokens ist nur erfolgreich, wenn diese interaktiv ist.
 
@@ -320,7 +320,7 @@ Fügen Sie *MainPage.xaml.cs* die folgende Methode hinzu, um grundlegende Inform
    }
    ```
 
-#### Weitere Informationen<a name="more-information-1"></a>
+#### <a name="more-information"></a>Weitere Informationen<a name="more-information-1"></a>
 
 Mit **OpenID Connect** abgerufene ID-Token enthalten auch eine kleine Teilmenge von Informationen zum Benutzer. `DisplayBasicTokenInfo` zeigt grundlegende Informationen im Token: Zu diesen Informationen gehören der Anzeigename und die ID des Benutzers. Darüber hinaus sind auch das Ablaufdatum des Tokens und die eigentliche Zeichenfolge, die das Zugriffstoken darstellt, angegeben. Wenn Sie mehrmals auf die Schaltfläche **Microsoft Graph-API aufrufen** klicken, sehen Sie, dass dasselbe Token für nachfolgende Anforderungen wiederverwendet wurde. Sie können auch feststellen, dass das Ablaufdatum verlängert wurde, wenn die MSAL entscheidet, dass es Zeit ist, das Token zu verlängern.
 

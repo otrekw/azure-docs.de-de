@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431550"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
@@ -43,7 +43,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vo
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. Klicken Sie auf **Weiter: Set size and scale** (Größe und Skalierung festlegen).
+4. Wählen Sie **Next: Set size and scale** (Nächster Schritt: Größe und Skalierung festlegen) aus.
 
 5. Wählen Sie eine Option für **Tarif und Skalierung** aus. Legen Sie für diese Schnellstartanleitung den Tarif **F1 – Free** fest, wenn er für Ihr Abonnement noch verfügbar ist. Weitere Informationen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 

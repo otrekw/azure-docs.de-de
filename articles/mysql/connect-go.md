@@ -7,15 +7,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770763"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067978"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Go zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Herstellen einer Verbindung und Abfragen von Daten mithilfe von Go
 In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Windows, Linux (Ubuntu) und macOS (Apple) mithilfe von Code in der Programmiersprache [Go](https://golang.org/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Go-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -29,10 +29,10 @@ Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den
 ### <a name="windows"></a>Windows
 1. [Laden Sie Go für Microsoft Windows herunter](https://golang.org/dl/), und installieren Sie es gemäß der [Installationsanleitung](https://golang.org/doc/install).
 2. Starten Sie die Eingabeaufforderung über das Startmenü.
-3. Erstellen Sie einen Ordner für Ihr Projekt. Beispiel: `mkdir  %USERPROFILE%\go\src\mysqlgo`.
+3. Erstellen Sie einen Ordner für Ihr Projekt. Beispiel: [https://login.microsoftonline.com/consumers/](`mkdir  %USERPROFILE%\go\src\mysqlgo`).
 4. Wechseln Sie zum Projektordner. Beispiel: `cd %USERPROFILE%\go\src\mysqlgo`.
-5. Legen Sie die Umgebungsvariable für GOPATH so fest, dass sie auf das Quellcodeverzeichnis verweist. `set GOPATH=%USERPROFILE%\go`.
-6. Führen Sie den Befehl `go get github.com/go-sql-driver/mysql` aus, um den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation) zu installieren.
+5. Legen Sie die Umgebungsvariable für GOPATH so fest, dass sie auf das Quellcodeverzeichnis verweist. [https://login.microsoftonline.com/consumers/](`set GOPATH=%USERPROFILE%\go`).
+6. Führen Sie den Befehl [ aus, um den ](https://github.com/go-sql-driver/mysql#installation)Go-SQL-Treiber für MySQL`go get github.com/go-sql-driver/mysql` zu installieren.
 
    Zusammenfassung: Installieren Sie Go, und führen Sie anschließend an der Eingabeaufforderung die folgenden Befehle aus:
    ```cmd
@@ -48,7 +48,7 @@ Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den
 3. Erstellen Sie in Ihrem Basisverzeichnis einen Ordner für Ihr Projekt. Beispiel: `mkdir -p ~/go/src/mysqlgo/`.
 4. Wechseln Sie zu dem Ordner. Beispiel: `cd ~/go/src/mysqlgo/`.
 5. Legen Sie die GOPATH-Umgebungsvariable so fest, dass sie auf ein gültiges Quellverzeichnis verweist (beispielsweise auf den Go-Ordner Ihres aktuellen Basisverzeichnisses). Führen Sie in der Bash-Shell `export GOPATH=~/go` aus, um das Go-Verzeichnis als GOPATH für die aktuelle Shellsitzung hinzuzufügen.
-6. Führen Sie den Befehl `go get github.com/go-sql-driver/mysql` aus, um den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation) zu installieren.
+6. Führen Sie den Befehl [ aus, um den ](https://github.com/go-sql-driver/mysql#installation)Go-SQL-Treiber für MySQL`go get github.com/go-sql-driver/mysql` zu installieren.
 
    Zusammenfassung: Führen Sie die folgenden Bash-Befehle aus:
    ```bash
@@ -65,7 +65,7 @@ Installieren Sie auf Ihrem Computer [Go](https://golang.org/doc/install) und den
 3. Erstellen Sie in Ihrem Basisverzeichnis einen Ordner für Ihr Projekt. Beispiel: `mkdir -p ~/go/src/mysqlgo/`.
 4. Wechseln Sie zu dem Ordner. Beispiel: `cd ~/go/src/mysqlgo/`.
 5. Legen Sie die GOPATH-Umgebungsvariable so fest, dass sie auf ein gültiges Quellverzeichnis verweist (beispielsweise auf den Go-Ordner Ihres aktuellen Basisverzeichnisses). Führen Sie in der Bash-Shell `export GOPATH=~/go` aus, um das Go-Verzeichnis als GOPATH für die aktuelle Shellsitzung hinzuzufügen.
-6. Führen Sie den Befehl `go get github.com/go-sql-driver/mysql` aus, um den [Go-SQL-Treiber für MySQL](https://github.com/go-sql-driver/mysql#installation) zu installieren.
+6. Führen Sie den Befehl [ aus, um den ](https://github.com/go-sql-driver/mysql#installation)Go-SQL-Treiber für MySQL`go get github.com/go-sql-driver/mysql` zu installieren.
 
    Zusammenfassung: Installieren Sie Go, und führen Sie anschließend die folgenden Bash-Befehle aus:
    ```bash

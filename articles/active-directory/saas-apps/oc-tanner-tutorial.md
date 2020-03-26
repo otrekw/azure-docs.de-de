@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 768756e013a4301ea11f5f9478178bdad46f9d67
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76983995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit O.C. Tanner – AppreciateHub
 
 In diesem Tutorial erfahren Sie, wie Sie O.C. Tanner – AppreciateHub in Azure Active Directory (Azure AD) integrieren. Die Integration von O.C. Tanner – AppreciateHub mit Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf O.C. Tanner – AppreciateHub hat.
+* Steuern Sie in Azure AD, wer Zugriff auf O.C. Tanner – AppreciateHub.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei O.C. Tanner – AppreciateHub anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
@@ -59,7 +59,7 @@ Für das Konfigurieren der Integration von O.C. Tanner – AppreciateHub in Azur
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für O.C. Tanner – AppreciateHub
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit O.C. Tanner – AppreciateHub mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in O.C. Tanner – AppreciateHub eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit O.C. Tanner – AppreciateHub mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in O.C. Tanner – AppreciateHub.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit O.C. Tanner – AppreciateHub die folgenden Schritte aus:
 
@@ -74,7 +74,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **O.C. Tanner – AppreciateHub** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **O.C. Tanner – AppreciateHub** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -110,7 +110,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf O.C. Tanner – AppreciateHub gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf O.C. Tanner – AppreciateHub.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **O.C. Tanner – AppreciateHub**.

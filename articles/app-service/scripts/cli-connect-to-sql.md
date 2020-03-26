@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Verbinden einer App mit einer SQL-Datenbank'
+title: 'Über die CLI: Verbinden einer App mit einer SQL-Datenbank'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einer SQL-Datenbank herstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: a0634cff6060e47ea059508f5f14abcaa679b53f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74e5af6c295ffada0fbb8d1ded63177afadad285
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688471"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058130"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Herstellen einer Verbindung zwischen einer App Service-App und einer SQL-Datenbank mithilfe der CLI
 

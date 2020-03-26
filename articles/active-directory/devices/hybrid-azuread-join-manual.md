@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882853"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222947"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -40,7 +40,7 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
 * [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
-* [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
+* [Planen der Implementierung von Azure Active Directory (Azure AD) Hybrid Join](hybrid-azuread-join-plan.md)
 * [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
 
 Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie in Ihrem Unternehmen mit der Aktivierung von in Azure AD eingebundenen Hybridgeräten beginnen:
@@ -185,7 +185,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktiviere
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
 > [!NOTE]
 >Falls Sie nicht AD FS als lokalen Verbunddienst nutzen, informieren Sie sich in der Anleitung Ihres jeweiligen Anbieters, ob WS-Trust 1.3- oder 2005-Endpunkte unterstützt und per MEX-Datei (Metadata Exchange) veröffentlicht werden.
@@ -478,7 +478,7 @@ Das folgende Skript unterstützt Sie beim Erstellen der oben beschriebenen Ausst
    Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString
    ```
 
-#### <a name="remarks"></a>Anmerkungen
+#### <a name="remarks"></a>Bemerkungen
 
 * Mit diesem Skript werden die Regeln an die bereits vorhandenen Regeln angefügt. Führen Sie das Skript nicht zweimal aus. Andernfalls wird der Regelsatz doppelt hinzugefügt. Stellen Sie sicher, dass keine entsprechenden Regeln für diese Ansprüche vorhanden sind (unter den jeweiligen Bedingungen), bevor Sie das Skript erneut ausführen.
 * Wenn Sie über mehrere verifizierte Domänennamen verfügen (wie im Azure AD-Portal oder über das Cmdlet **Get-MsolDomain** angegeben), legen Sie den Wert von **$multipleVerifiedDomainNames** im Skript auf **$true** fest. Entfernen Sie außerdem alle vorhandenen **issuerid**-Ansprüche, die unter Umständen von Azure AD Connect oder auf anderem Wege erstellt wurden. Hier sehen Sie ein Beispiel für diese Regel:
@@ -519,7 +519,7 @@ Ihr lokaler Verbunddienst muss das Ausstellen der Ansprüche **authenticationmet
 
 Wenn eine Anforderung dieser Art eingeht, muss der lokale Verbunddienst den Benutzer per integrierter Windows-Authentifizierung authentifizieren. Nach erfolgreicher Authentifizierung muss der Verbunddienst die beiden folgenden Ansprüche ausstellen:
 
-   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows``http://schemas.microsoft.com/claims/wiaormultiauthn`
+   `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows` `http://schemas.microsoft.com/claims/wiaormultiauthn`
 
 In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die Authentifizierungsmethode durchläuft. Diese Regel wird wie folgt hinzugefügt:
 
@@ -527,7 +527,7 @@ In AD FS müssen Sie eine Ausstellungstransformationsregel hinzufügen, die die 
 1. Klicken Sie mit der rechten Maustaste auf das Vertrauensstellungsobjekt der vertrauenden Seite, „Microsoft Office 365 Identity Platform“, und wählen Sie dann **Anspruchsregeln bearbeiten** aus.
 1. Wählen Sie auf der Registerkarte **Ausstellungstransformationsregeln** die Option **Regel hinzufügen** aus.
 1. Wählen Sie in der Vorlagenliste **Anspruchsregel** die Option **Ansprüche mit benutzerdefinierter Regel senden** aus.
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Geben Sie **Anspruchsregel für Authentifizierungsmethode** in das Textfeld **Anspruchsregelname** ein.
 1. Geben Sie im Feld **Anspruchsregel** die folgende Regel ein:
 
@@ -549,7 +549,7 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie ein Windows Instal
 
 ## <a name="verify-joined-devices"></a>Überprüfen der eingebundenen Geräte
 
-Sie können die erfolgreiche Einbindung für die Geräte Ihrer Organisation überprüfen, indem Sie das Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
+Sie können die erfolgreiche Einbindung für die Geräte Ihrer Organisation überprüfen, indem Sie das Cmdlet [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
 
 In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert und eingebunden sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mithilfe der Eigenschaft **deviceTrustType**. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
 

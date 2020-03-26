@@ -10,15 +10,15 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77020878"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Micro-Fulfillment-Center-Architektur
 
-Micro-Fulfillment-Center-Lösungen ermöglichen die digitale Verbindung, Überwachung und Verwaltung sämtlicher Aspekte eines vollständig automatisierten Fulfillment-Centers mit dem Ziel, die Kosten zu senken, indem Sie Downtime beseitigen und gleichzeitig die Sicherheit und die Gesamteffizienz erhöhen. Diese Lösungen können unter Nutzung einer der Anwendungsvorlagen in Azure IoT Central und der unten dargestellten Architektur als Richtschnur erstellt werden.
+Micro-Fulfillment-Center-Lösungen ermöglichen die digitale Verbindung, Überwachung und Verwaltung sämtlicher Aspekte eines vollständig automatisierten Fulfillment-Centers mit dem Ziel, die Kosten zu senken, indem Sie Downtime beseitigen und gleichzeitig die Sicherheit und die Gesamteffizienz erhöhen. Diese Lösungen können erstellt werden, indem eine der Anwendungsvorlagen in Azure IoT Central und die unten dargestellte Architektur als Richtschnur genutzt werden.
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 

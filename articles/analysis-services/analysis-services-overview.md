@@ -8,11 +8,11 @@ ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272953"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215548"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -22,13 +22,13 @@ Azure Analysis Services ist eine vollständig verwaltete PaaS-Komponente (Platfo
 
 ![Datenquellen](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Video:** In [Übersicht über Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
+**Video:** In [Azure Analysis Services Overview](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) (Übersicht über Azure Analysis Services) wird beschrieben, wie Azure Analysis Services zu den allgemeinen BI-Funktionen von Microsoft passt.
 
 ## <a name="get-up-and-running-quickly"></a>Schnelle Betriebsbereitschaft
 
 Über das Azure-Portal können Sie innerhalb weniger Minuten [einen Server erstellen](analysis-services-create-server.md). Und mit Azure Resource Manager-[Vorlagen](../azure-resource-manager/resource-manager-create-first-template.md) und PowerShell lassen sich Server unter Verwendung einer deklarativen Vorlage erstellen. Mit einer einzelnen Vorlage können Sie Serverressourcen sowie andere Azure-Komponenten (z.B. Speicherkonten und Azure Functions) bereitstellen. 
 
-**Video:** In [Automatisieren der Bereitstellung](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
+**Video:** In [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) (Automatisieren der Bereitstellung) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
 
 Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden. 
 
@@ -38,7 +38,7 @@ Azure Analysis Services ist in den Tarifen **Developer**, **Basic** und **Standa
 
 ### <a name="developer-tier"></a>Developer-Tarif
 
-Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das horizontale Hochskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
+Dieser Tarif wird für Auswertungs-, Entwicklungs- und Testszenarien empfohlen. Ein einzelner Plan enthält die gleichen Funktionen wie der Standard-Tarif, ist aber in Bezug auf die Verarbeitungsleistung, die QPUs und die Speichergröße begrenzt. Das Aufskalieren von Abfragereplikaten ist für diesen Tarif *nicht verfügbar*. Für diesen Tarif wird keine Vereinbarung zum Servicelevel angeboten.
 
 |Planen  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
@@ -116,17 +116,17 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung
 
-### <a name="scale-updown-pause-and-resume"></a>Zentral hoch-/herunterskalieren, Anhalten und Fortsetzen
+### <a name="scale-updown-pause-and-resume"></a>Hoch-/herunterskalieren, Anhalten und Fortsetzen
 
 Sie können den Tarif erhöhen oder verringern oder die Ausführung Ihres Servers anhalten. Verwenden Sie das Azure-Portal, oder nutzen Sie PowerShell für umfassende Steuerungsmöglichkeiten. Sie bezahlen nur für die tatsächliche Nutzung.  
 
-### <a name="scale-out-resources-for-fast-query-responses"></a>Horizontales Hochskalieren von Ressourcen zur Erzielung von schnellen Reaktionen auf Abfragen
+### <a name="scale-out-resources-for-fast-query-responses"></a>Aufskalieren von Ressourcen zur Erzielung von schnellen Reaktionen auf Abfragen
 
-Beim horizontalen Hochskalieren werden Clientabfragen auf mehrere *Abfragereplikate* in einem Abfragepool verteilt. Abfragereplikate verfügen über synchronisierte Kopien Ihrer tabellarischen Modelle. Indem die Abfrageworkload verteilt wird, können die Antwortzeiten bei einer hohen Auslastung mit Abfrageworkloads reduziert werden. Vorgänge zur Modellverarbeitung können vom Abfragepool getrennt werden, sodass sichergestellt ist, dass Clientabfragen durch Verarbeitungsvorgänge nicht negativ beeinträchtigt werden. 
+Beim Aufskalieren werden Clientabfragen auf mehrere *Abfragereplikate* in einem Abfragepool verteilt. Abfragereplikate verfügen über synchronisierte Kopien Ihrer tabellarischen Modelle. Indem die Abfrageworkload verteilt wird, können die Antwortzeiten bei einer hohen Auslastung mit Abfrageworkloads reduziert werden. Vorgänge zur Modellverarbeitung können vom Abfragepool getrennt werden, sodass sichergestellt ist, dass Clientabfragen durch Verarbeitungsvorgänge nicht negativ beeinträchtigt werden. 
 
 Sie können einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen (mit Ihrem Server insgesamt acht). Die mögliche Anzahl von Abfragereplikaten in Ihrem Pool hängt vom gewählten Plan und der gewählten Region ab. Abfragereplikate können nicht außerhalb der Region Ihres Servers verteilt werden. Abfragereplikate werden mit dem gleichen Tarif wie Ihr Server abgerechnet.
 
-Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anforderungen horizontal hochskalieren. Konfigurieren Sie das horizontale Hochskalieren im Portal oder mit den REST-APIs. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Azure Analysis Services](analysis-services-scale-out.md).
+Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anforderungen aufskalieren. Konfigurieren Sie das Aufskalieren im Portal oder mit den REST-APIs. Weitere Informationen finden Sie unter [Aufskalieren von Azure Analysis Services](analysis-services-scale-out.md).
 
 ## <a name="pricing"></a>Preise
 
@@ -161,7 +161,7 @@ Auf der Serverebene bietet Analysis Services eine Firewall, Azure-Authentifizier
 
 Die Azure Analysis Services-Firewall blockiert alle Clientverbindungen, mit Ausnahme der IP-Adressen, die nicht in Regeln angegeben sind. Für neue Server ist standardmäßig kein Firewallschutz aktiviert. Es empfiehlt sich, direkt nach der Servererstellung den Firewallschutz zu aktivieren und Regeln zu konfigurieren – entweder im Rahmen eines Serverbereitstellungsskripts oder über das Portal. Konfigurieren Sie die Regeln, mit denen zulässige IP-Adressen nach einzelnen Client-IPs oder nach dem Bereich angegeben werden. Verbindungen von Power BI (Dienst) können auch zugelassen oder blockiert werden. Konfigurieren Sie die Firewall und Regeln im Portal oder per PowerShell. Weitere Informationen finden Sie unter [Konfigurieren einer Serverfirewall](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Die Benutzerauthentifizierung wird per [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) durchgeführt. Beim Anmelden verwenden Benutzer eine Organisationskontoidentität mit rollenbasiertem Zugriff auf die Datenbank. Benutzeridentitäten müssen Mitglieder der Azure Active Directory-Standardinstanz für das Abonnement sein, unter dem sich der Server befindet. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 
@@ -187,7 +187,7 @@ Tabellarische Modelle mit dem Kompatibilitätsgrad 1400 unterstützen die Sicher
 
 ### <a name="automation-through-service-principals"></a>Automatisierung durch Dienstprinzipale
 
-Dienstprinzipale sind eine Azure Active Directory-Anwendungsressource, die Sie in Ihrem Mandanten erstellen, um unbeaufsichtigte Ressourcen- und Servicelevelvorgänge auszuführen. Dienstprinzipale werden mit Azure Automation, PowerShell im unbeaufsichtigten Modus, benutzerdefinierten Clientanwendungen und Web-Apps zum Automatisieren von allgemeinen Aufgaben verwendet, z.B. Datenaktualisierung, horizontales Hoch-/Herunterskalieren und Anhalten/Fortsetzen. Berechtigungen werden Dienstprinzipalen per Rollenmitgliedschaft zugewiesen. Weitere Informationen finden Sie unter [Automatisierung mit Dienstprinzipalen](analysis-services-service-principal.md).
+Dienstprinzipale sind eine Azure Active Directory-Anwendungsressource, die Sie in Ihrem Mandanten erstellen, um unbeaufsichtigte Ressourcen- und Servicelevelvorgänge auszuführen. Dienstprinzipale werden mit Azure Automation, PowerShell im unbeaufsichtigten Modus, benutzerdefinierten Clientanwendungen und Web-Apps zum Automatisieren von allgemeinen Aufgaben verwendet, z.B. Datenaktualisierung, Hoch-/Herunterskalieren und Anhalten/Fortsetzen. Berechtigungen werden Dienstprinzipalen per Rollenmitgliedschaft zugewiesen. Weitere Informationen finden Sie unter [Automatisierung mit Dienstprinzipalen](analysis-services-service-principal.md).
 
 ### <a name="azure-governance"></a>Azure Governance
 
@@ -260,7 +260,7 @@ Analysis Services verfügt über eine dynamische Community von Benutzern. Beteil
 > [Registrieren für eine kostenlose Azure-Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen eines Servers – Portal](analysis-services-create-server.md)   
+> [Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen eines Servers – PowerShell](analysis-services-create-powershell.md)  
+> [Erstellen eines Azure Analysis Services-Servers mithilfe von PowerShell](analysis-services-create-powershell.md)  

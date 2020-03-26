@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67593984"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
@@ -31,7 +31,7 @@ Ein CDN-Profil ist ein Container für CDN-Endpunkte und gibt einen Tarif an.
 
 3. Verwenden Sie für die CDN-Profileinstellungen die Werte aus der folgenden Tabelle:
    
-    | Einstellung  | Wert |
+    | Einstellung  | value |
     | -------- | ----- |
     | **Name** | Geben Sie *my-cdn-profile-123* als Profilname ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie einen anderen Namen eingeben. |
     | **Abonnement** | Wählen Sie in der Dropdownliste ein Azure-Abonnement aus. |

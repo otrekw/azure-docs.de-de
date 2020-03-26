@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75863277"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
@@ -22,7 +22,7 @@ Informationen zum Erstellen einer Funktion, die ausgelöst wird, wenn in Azure C
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-+ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
++ Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
@@ -61,7 +61,7 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Erstellen der ausgelösten Azure Cosmos DB-Funktion](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Name** | Standard | Verwenden Sie den von der Vorlage vorgeschlagenen Standardfunktionsnamen.|
     | **Azure Cosmos DB-Kontoverbindung** | Neue Einstellung | Wählen Sie **Neu** und dann Ihr **Abonnement** und das zuvor erstellte **Datenbankkonto** aus. Klicken Sie auf **Auswählen**. Daraufhin wird eine Anwendungseinstellung für Ihre Kontoverbindung erstellt. Diese Einstellung wird von der Bindung verwendet, um die Verbindung mit der Datenbank herzustellen. |
@@ -95,12 +95,12 @@ Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her un
 
     ![Definieren des Containers „Aufgaben“](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
-    | Einstellung|Vorgeschlagener Wert|Beschreibung |
+    | Einstellung|Vorgeschlagener Wert|BESCHREIBUNG |
     | ---|---|--- |
     | **Datenbank-ID** | Aufgaben |Der Name Ihrer neuen Datenbank. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen. |
     | **Container-ID** | Items | Der Name für den neuen Container. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen.  |
     | **[Partitionsschlüssel](../cosmos-db/partition-data.md)** | /category|Ein Partitionsschlüssel, der Daten gleichmäßig auf alle Partitionen verteilt. Die Auswahl des richtigen Partitionsschlüssels ist wichtig für die Erstellung eines leistungsfähigen Containers. | 
-    | **Durchsatz** |400 RU| Verwenden Sie den Standardwert. Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |    
+    | **Durchsatz** |400 RU| Verwenden Sie den Standardwert. Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten. |    
 
 1. Klicken Sie auf **OK**, um den Container „Items“ zu erstellen. Es dauert möglicherweise kurze Zeit, bis der Container erstellt ist.
 

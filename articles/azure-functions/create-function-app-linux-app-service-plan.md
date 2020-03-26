@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76963834"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Erstellen einer Funktions-App unter Linux in einem Azure App Service-Plan
@@ -34,7 +34,7 @@ Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funkti
 
     ![Definieren neuer Funktions-App-Einstellungen](./media/create-function-app-linux-app-service-plan/function-app-create-flow2.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. | 
@@ -45,7 +45,7 @@ Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funkti
     | **App Service-Plan/Standort** | Erstellen eines Plans | Wählen Sie **Neu erstellen**, und geben Sie einen Namen für den **App Service-Plan** an. Wählen Sie einen **Standort** in einer [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe anderer Dienste aus, auf die Ihre Funktionen zugreifen. Wählen Sie Ihren bevorzugten **[Tarif](https://azure.microsoft.com/pricing/details/app-service/linux/)** aus. <br/>Es ist nicht möglich, unter demselben App Service-Plan sowohl Linux- als auch Windows-Funktions-Apps auszuführen. |
     | **Laufzeitstapel** | Bevorzugte Sprache | Wählen Sie eine Runtime aus, die Ihre bevorzugte Programmiersprache für Funktionen unterstützt. Wählen Sie **.NET** für C#- und F#-Funktionen aus. |
     | **[Storage](../storage/common/storage-account-create.md)** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements) erfüllen muss. |
-    | **[Application Insights](functions-monitoring.md)** | Aktiviert | Application Insights ist standardmäßig deaktiviert. Es wird empfohlen, die Application Insights-Integration jetzt zu aktivieren und einen Hostingstandort in der Nähe des Standorts Ihres App Service-Plans zu wählen. Wenn Sie dies später erledigen möchten, helfen Ihnen die Informationen unter [Überwachen von Azure Functions](functions-monitoring.md) weiter.  |
+    | **[Application Insights](functions-monitoring.md)** | Enabled | Application Insights ist standardmäßig deaktiviert. Es wird empfohlen, die Application Insights-Integration jetzt zu aktivieren und einen Hostingstandort in der Nähe des Standorts Ihres App Service-Plans zu wählen. Wenn Sie dies später erledigen möchten, helfen Ihnen die Informationen unter [Überwachen von Azure Functions](functions-monitoring.md) weiter.  |
 
 3. Klicken Sie auf **Erstellen**, um die Funktionen-App bereitzustellen.
 
@@ -55,9 +55,9 @@ Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funkti
 
 5. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen.
 
-Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App. Nachdem Ihre Funktions-App bereitgestellt wurde, kann es trotzdem noch einige Minuten dauern, bis die Initialisierung vollständig abgeschlossen ist.
+Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion. Nachdem Ihre Funktions-App bereitgestellt wurde, kann es trotzdem noch einige Minuten dauern, bis die Initialisierung vollständig abgeschlossen ist.
 
-## <a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
 
 In diesem Abschnitt wird veranschaulicht, wie Sie im Portal in Ihrer neuen Funktions-App eine Funktion erstellen.
 

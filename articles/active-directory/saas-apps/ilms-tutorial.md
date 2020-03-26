@@ -17,10 +17,10 @@ ms.date: 05/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944019"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Tutorial: Integrieren von iLMS in Azure Active Directory
@@ -70,7 +70,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei iLMS müs
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **iLMS** den Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
@@ -95,7 +95,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der iLMS-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | --------|------------- |
     | division | user.department |
     | region | user.state |
@@ -135,29 +135,29 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 2. Klicken Sie auf der Registerkarte **Settings** auf **SSO:SAML**, um die SAML-Einstellungen zu öffnen, und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/ilms-tutorial/1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/1.png)
 
 3. Erweitern Sie den Abschnitt **Service Provider**, und kopieren Sie die Werte für **Identifier** und **Endpoint (URL)** .
 
-    ![Configure single sign-on](./media/ilms-tutorial/2.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/2.png) 
 
 4. Klicken Sie im Abschnitt **Identity Provider** auf **Import Metadata**.
 
 5. Wählen Sie die Datei mit **Verbundmetadaten** aus, die Sie aus dem Abschnitt **SAML-Signaturzertifikat** des Azure-Portals heruntergeladen haben.
 
-    ![Configure single sign-on](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Wenn Sie die JIT-Bereitstellung aktivieren möchten, um iLMS-Konten für unbekannte Benutzer zu erstellen, führen Sie die folgenden Schritte aus:
 
     a. Aktivieren Sie das Kontrollkästchen **Create Un-recognized User Account**.
 
-    ![Configure single sign-on](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Ordnen Sie die Attribute in Azure AD den Attributen in iLMS zu. Geben Sie in der Spalte mit den Attributen den Attributnamen oder den Standardwert an.
 
     c. Wechseln Sie zur Registerkarte **Business Rules**, und führen Sie die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/ilms-tutorial/5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/5.png)
 
     d. Aktivieren Sie das Kontrollkästchen **Create Un-recognized Regions, Divisions and Departments**, um Regionen, Sparten und Abteilungen zu erstellen, die zum Zeitpunkt des einmaligen Anmeldens noch nicht vorhanden waren.
 
@@ -169,7 +169,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 7. Klicken Sie auf die Schaltfläche **Save**, um die Änderungen zu speichern.
 
-    ![Configure single sign-on](./media/ilms-tutorial/save.png)
+    ![Einmaliges Anmelden konfigurieren](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -181,7 +181,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
    1. Geben Sie im Feld **Name** die Zeichenfolge `Britta Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `BrittaSimon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -244,4 +244,4 @@ Wenn Sie im Zugriffsbereich die Kachel „iLMS“ auswählen, sollten Sie automa
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

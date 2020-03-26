@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: f7429a6de05a301b579354d722ad354b78ce6cbf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899672"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für Go mit Azure DevOps Projects
@@ -45,7 +45,7 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie k�
 
 1. Wählen Sie die **Go**-Beispiel-App und dann **Weiter** aus.  
     
-1. **Einfache Go-App** ist das Standard-Framework. Klicken Sie auf **Weiter**.  
+1. **Einfache Go-App** ist das Standard-Framework. Wählen Sie **Weiter** aus.  
     Das App-Framework, das Sie zuvor ausgewählt haben, bestimmt den Typ des für die Bereitstellung verfügbaren Bereitstellungsziels für den Azure-Dienst. 
     
 1. Übernehmen Sie den Azure-Standarddienst, und wählen Sie **Weiter** aus.

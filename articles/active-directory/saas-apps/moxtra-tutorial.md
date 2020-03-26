@@ -17,10 +17,10 @@ ms.date: 12/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3e53ba11744b0e78287ffc46c4aac7b99b16b23
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74889613"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Moxtra
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus wird von der Moxtra-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld „Benutzerattribute“ im Abschnitt „Benutzeransprüche“ die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ------------------- | -------------------- |    
     | firstname | user.givenname |
     | lastname | user.surname |
@@ -135,7 +135,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -161,11 +161,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie auf der Symbolleiste auf der linken Seite auf **Administratorkonsole > Einmalige SAML-Anmeldung** und anschließend auf **Neu**.
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. Führen Sie auf der Seite **SAML** die folgenden Schritte aus:
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Einmaliges Anmelden konfigurieren](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein (Beispiel: *SAML*). 
   
@@ -196,7 +196,7 @@ In diesem Abschnitt wird in Moxtra ein Benutzer namens B. Simon erstellt.
 
 1. Klicken Sie auf der Symbolleiste auf der linken Seite auf **Administratorkonsole > Benutzerverwaltung** und dann auf **Benutzer hinzufügen**.
    
-    ![Configure single sign-on](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
   
