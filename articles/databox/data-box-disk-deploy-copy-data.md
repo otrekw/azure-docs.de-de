@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514152"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214325"
 ---
 ::: zone target="docs"
 
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     
     Die Parameter und Optionen für den Befehl werden wie folgt in Tabellenform angezeigt:
     
-    |Parameter/Optionen  |Beschreibung |
+    |Parameter/Optionen  |BESCHREIBUNG |
     |--------------------|------------|
     |`Source`            | Gibt den Pfad zum Quellverzeichnis an.        |
     |Destination       | Gibt den Pfad zum Zielverzeichnis an.        |

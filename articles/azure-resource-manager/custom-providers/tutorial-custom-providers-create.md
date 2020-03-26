@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648737"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Erstellen und Verwenden eines benutzerdefinierten Anbieters
@@ -109,7 +109,7 @@ Nach dem Erstellen eines benutzerdefinierten Anbieters können Sie die neuen Azu
 
 ### <a name="custom-actions"></a>Benutzerdefinierte Aktionen
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 > [!NOTE]
 > Sie müssen die Platzhalter `{subscriptionId}` und `{resourceGroupName}` durch das Abonnement und die Ressourcengruppe ersetzen, die Sie für die Bereitstellung des benutzerdefinierten Anbieters verwendet haben.
@@ -129,7 +129,7 @@ Parameter | Erforderlich | BESCHREIBUNG
 *ids* | Ja | Die Ressourcen-ID des benutzerdefinierten Anbieters
 *request-body* | Nein | Der Anforderungstext, der an den Endpunkt gesendet wird
 
-# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+# <a name="template"></a>[Vorlage](#tab/template)
 
 Keine.
 
@@ -137,7 +137,7 @@ Keine.
 
 ### <a name="custom-resources"></a>Benutzerdefinierte Ressourcen
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 > [!NOTE]
 > Sie müssen die Platzhalter `{subscriptionId}` und `{resourceGroupName}` durch das Abonnement und die Ressourcengruppe ersetzen, die Sie für die Bereitstellung des benutzerdefinierten Anbieters verwendet haben.
@@ -182,7 +182,7 @@ Parameter | Erforderlich | BESCHREIBUNG
 ---|---|---
 *id* | Ja | Die Ressourcen-ID der benutzerdefinierten Ressource. Diese ID ist eine Erweiterung der Ressourcen-ID des benutzerdefinierten Anbieters.
 
-# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+# <a name="template"></a>[Vorlage](#tab/template)
 
 Resource Manager-Beispielvorlage:
 

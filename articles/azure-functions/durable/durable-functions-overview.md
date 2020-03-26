@@ -7,17 +7,17 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357829"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290088"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](../functions-overview.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Compute-Umgebung schreiben können. Mit der Erweiterung können Sie mithilfe des Azure Functions-Programmiermodells zustandsbehaftete Workflows durch Schreiben von [*Orchestratorfunktionen*](durable-functions-orchestrations.md) und zustandsbehaftete Entitäten durch Schreiben von [*Entitätsfunktionen*](durable-functions-entities.md) definieren. Im Hintergrund verwaltet die Erweiterung Zustand, Prüfpunkte und Neustarts für Sie, sodass Sie sich auf Ihre Geschäftslogik konzentrieren können.
 
-## <a name="language-support"></a>Unterstützte Sprachen
+## <a name="supported-languages"></a><a name="language-support"></a>Unterstützte Sprachen
 
 Durable Functions unterstützt derzeit die folgenden Sprachen:
 
@@ -40,7 +40,7 @@ Der primäre Anwendungsfall für Durable Functions ist die Vereinfachung komplex
 * [Benutzerinteraktion](#human)
 * [Aggregator (zustandsbehaftete Entitäten)](#aggregator)
 
-### <a name="chaining"></a>Muster 1: Funktionsverkettung
+### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>Muster 1: Funktionsverkettung
 
 Beim Muster der Funktionsverkettung wird eine Abfolge von Funktionen in einer bestimmten Reihenfolge ausgeführt. Bei diesem Muster wird die Ausgabe einer Funktion als Eingabe einer weiteren Funktion verwendet.
 
@@ -97,7 +97,7 @@ Sie können das Objekt `context.df` verwenden, um andere Funktionen anhand des N
 
 ---
 
-### <a name="fan-in-out"></a>Muster 2: Auffächern auswärts/einwärts
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Muster 2: Auffächern auswärts/einwärts
 
 Beim Muster Auffächern auswärts/einwärts werden mehrere Funktionen parallel ausgeführt und anschließend auf den Abschluss aller gewartet. Häufig werden die von den Funktionen zurückgegebenen Ergebnisse einer Aggregation unterzogen.
 
@@ -167,7 +167,7 @@ Die automatische Prüfpunkterstellung, die beim Aufruf von `yield` für `context
 > [!NOTE]
 > In seltenen Fällen kann es im Fenster zu einem Absturz kommen, nachdem eine Aktivitätsfunktion abgeschlossen wurde und bevor ihr Abschluss im Orchestrierungsverlauf gespeichert wurde. In dem Fall wird die Aktivitätsfunktion von Anfang an erneut ausgeführt, wenn der Prozess wieder hergestellt wurde.
 
-### <a name="async-http"></a>Muster 3: Asynchrone HTTP-APIs
+### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>Muster 3: Asynchrone HTTP-APIs
 
 Das asynchrone HTTP-API-Muster ist geeignet, um den Status von Vorgängen mit langer Ausführungsdauer mit externen Clients zu koordinieren. Ein gängiges Verfahren zum Implementieren dieses Musters besteht darin, die Aktion mit langer Ausführungsdauer von einem HTTP-Endpunkt auslösen zu lassen. Leiten Sie dann den Client zu einem Statusendpunkt um, den der Client abfragt, um herauszufinden, wenn der Vorgang abgeschlossen ist.
 
@@ -206,7 +206,7 @@ Die Durable Functions-Erweiterung macht integrierte HTTP-APIs verfügbar, die Or
 
 Weitere Informationen finden Sie im Artikel [HTTP-Features](durable-functions-http-features.md), in dem erläutert wird, wie Sie asynchrone Prozesse mit langer Ausführungszeit über HTTP mithilfe der Durable Functions-Erweiterung verfügbar machen können.
 
-### <a name="monitoring"></a>Muster 4: Überwachen
+### <a name="pattern-4-monitor"></a><a name="monitoring"></a>Muster 4: Überwachen
 
 Das Überwachen-Muster bezieht sich auf einen flexiblen, wiederkehrenden Vorgang in einem Workflow. Ein Beispiel besteht im Abfragen, bis bestimmte Bedingungen erfüllt sind. Sie können einen normalen [Timertrigger](../functions-bindings-timer.md) für ein einfaches Szenario verwenden, beispielsweise einen periodischen Bereinigungsauftrag. Sein Intervall ist jedoch statisch, und die Verwaltung der Instanzlebensdauer wird komplex. Mithilfe von Durable Functions können Sie flexible Wiederholungsintervalle erstellen, die Lebensdauer von Aufgaben verwalten und mehrere Überwachungsprozesse aus einer einzelnen Orchestrierung erstellen.
 
@@ -280,7 +280,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Wenn eine Anforderung empfangen wird, wird eine neue Orchestrierungsinstanz für diese Auftrags-ID erstellt. Die Instanz fragt den Status ab, bis eine Bedingung erfüllt ist und die Schleife beendet wird. Ein permanenter Timer steuert das Abrufintervall. Anschließend können weitere Arbeitsschritte ausgeführt werden, oder die Orchestrierung wird beendet. Falls `expiryTime` von `nextCheck` überschritten wird, wird der Monitor beendet.
 
-### <a name="human"></a>Muster 5: Benutzerinteraktion
+### <a name="pattern-5-human-interaction"></a><a name="human"></a>Muster 5: Benutzerinteraktion
 
 Viele automatisierte Prozesse enthalten eine Form der Benutzerinteraktion. Das Einbeziehen von Menschen in einen automatisierten Prozess ist schwierig, da Personen nicht im gleichen hohen Maß verfügbar und reaktionsfähig sind wie Clouddienste. Ein automatisierter Prozess kann diese Interaktion mithilfe von Zeitlimits und Kompensationslogik ermöglichen.
 
@@ -382,7 +382,7 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="aggregator"></a>Muster 6: Aggregator (zustandsbehaftete Entitäten)
+### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Muster 6: Aggregator (zustandsbehaftete Entitäten)
 
 Beim sechsten Muster geht es um Aggregierung von Ereignisdaten über einen bestimmten Zeitraum in einer einzigen, adressierbaren *Entität*. In diesem Muster können die aggregierten Daten aus mehreren Quellen stammen, in Batches geliefert werden und über lange Zeiträume verteilt sein. Der Aggregator muss möglicherweise Aktionen für Ereignisdaten durchführen, wenn er diese empfängt, und es kann sein, dass externe Daten die aggregierten Daten abfragen müssen.
 

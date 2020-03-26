@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77169518"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
@@ -38,11 +38,11 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Im Abschnitt **Bedingungen** definieren Sie, wodurch Ihre Regel ausgelöst wird. Verwenden Sie die folgenden Informationen, um eine Bedingung basierend auf Temperaturtelemetrie zu definieren:
 
-    | Feld        | value            |
+    | Feld        | Wert            |
     | ------------ | ---------------- |
     | Messung  | Temperatur      |
     | Operator     | größer als  |
-    | value        | 90               |
+    | Wert        | 90               |
 
     Wählen Sie **+ Bedingung** aus, um weitere Bedingungen hinzuzufügen.
 
@@ -52,7 +52,7 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle, und wählen Sie anschließend **Fertig** aus:
 
-    | Einstellung   | value                                             |
+    | Einstellung   | Wert                                             |
     | --------- | ------------------------------------------------- |
     | `Display name` | Operator-E-Mail-Aktion                          |
     | To        | Ihre E-Mail-Adresse                                |

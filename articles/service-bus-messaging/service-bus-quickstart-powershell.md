@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75426937"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
@@ -29,7 +29,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Se
 
 Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten installiert sein:
 
-- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen. 
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen. 
 - [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher Sie verwenden Visual Studio zum Erstellen eines Beispiels, in dem Nachrichten an eine Warteschlange gesendet bzw. von dort empfangen werden. Das Beispiel dient zum Testen der Warteschlange, die Sie im Portal erstellt haben. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
 

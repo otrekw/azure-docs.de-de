@@ -5,13 +5,13 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671378"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047019"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
@@ -107,7 +107,7 @@ Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan ko
 
 ![App Service-Plan erstellen](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Einstellung  | Empfohlener Wert | Weitere Informationen |
+| Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
 | ----------------- | ------------ | ----|
 |**App Service-Plan**| myAppServicePlan | [App Service-Pläne](../app-service/overview-hosting-plans.md) |
 |**Location**| Europa, Westen | [Azure-Regionen](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
@@ -146,7 +146,7 @@ Gehen Sie im Dialogfeld **SQL-Datenbank konfigurieren** wie folgt vor:
 
 ![SQL-Datenbank konfigurieren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-Im Dialogfeld **App Service erstellen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Create**. 
+Im Dialogfeld **App Service erstellen** werden die von Ihnen konfigurierten Ressourcen angezeigt. Klicken Sie auf **Erstellen**. 
 
 ![Erstellte Ressourcen](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 

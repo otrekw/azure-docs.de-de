@@ -15,10 +15,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e8dd9f310c303cc5a1c6db6150cf4d350b0da672
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77187487"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Einrichten von Azure-SSIS Integration Runtime in Azure Data Factory mithilfe von PowerShell
@@ -34,7 +34,7 @@ Nachdem Sie Azure-SSIS IR eingerichtet haben, können Sie vertraute Tools wie S
 
 In diesem Lernprogramm lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
+> * Erstellen einer Data Factory.
 > * Erstellen einer Azure-SSIS Integration Runtime-Instanz
 > * Starten der Azure-SSIS Integration Runtime-Instanz
 > * Überprüfen des vollständigen Skripts
@@ -55,7 +55,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
     - Sie können eine Verbindung mit dem Datenbankserver herstellen, indem Sie die SQL-Authentifizierung mit Ihren Serveradministrator-Anmeldeinformationen oder die Azure AD-Authentifizierung (Azure Active Directory) mit der verwalteten Identität für Ihre Data Factory verwenden. Sehen Sie sich für die Azure AD-Authentifizierung den Artikel [Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime) an. Dort erfahren Sie, wie Sie die verwaltete Identität für Ihre Data Factory zu einer Azure AD-Gruppe mit Zugriffsberechtigungen für den Datenbankserver hinzufügen.
     - Vergewissern Sie sich, dass Ihr Datenbankserver noch nicht über eine SSISDB-Instanz verfügt. Die Verwendung einer vorhandenen SSISDB-Instanz wird bei der Azure-SSIS IR-Einrichtung nicht unterstützt.
 
-- Azure PowerShell: Wenn Sie ein PowerShell-Skript für die Azure-SSIS IR-Einrichtung ausführen möchten, gehen Sie wie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) beschrieben vor.
+- Azure PowerShell. Wenn Sie ein PowerShell-Skript für die Azure-SSIS IR-Einrichtung ausführen möchten, gehen Sie wie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) beschrieben vor.
 
 > [!NOTE]
 > Eine Liste mit den Azure-Regionen, in denen Azure Data Factory und Azure-SSIS IR derzeit verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 

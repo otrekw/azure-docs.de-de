@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/06/2020
 ms.openlocfilehash: c0eaf3907cbfcd86424b1d2cbc03930a7af72786
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78927573"
 ---
 # <a name="create-a-azure-media-services-live-stream-with-the-portal-and-wirecast"></a>Erstellen eines Azure Media Services-Livestreams mit dem Portal und Wirecast
@@ -102,7 +102,7 @@ In diesem Teil werden Ihre Ausgaben und eine Möglichkeit zum Aufzeichnen Ihres 
 
 1. Vergewissern Sie sich, dass Ihr Streamingendpunkt aktiv ist, indem Sie in der Media Services-Liste die Option **Streamingendpunkte** auswählen. Daraufhin wird die Seite mit den Streamingendpunkten angezeigt.
 1. Wenn sich der Standard-Streamingendpunkt im Status „Beendet“ befindet, klicken Sie auf den Streamingendpunkt **Standard**. Daraufhin wird die Seite für diesen Endpunkt angezeigt.
-1. Klicken Sie auf **Starten**.  Dadurch wird der Streamingendpunkt gestartet.
+1. Klicken Sie auf **Start**.  Dadurch wird der Streamingendpunkt gestartet.
 
 ## <a name="play-the-output-broadcast-with-azure-media-player"></a>Wiedergeben der Ausgabeübertragung mit dem Azure Media Player
 

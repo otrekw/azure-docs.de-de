@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
 ms.openlocfilehash: c6d4d290493bbd234ab048e613b88f8857513cc8
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78299554"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Neuerungen in Azure Application Gateway
@@ -25,7 +25,7 @@ Azure Application Gateway wird fortlaufend aktualisiert. Damit Sie bezüglich de
 
 ## <a name="new-features"></a>Neue Funktionen
 
-|Funktion  |Beschreibung  |Hinzufügedatum  |
+|Funktion  |BESCHREIBUNG  |Hinzufügedatum  |
 |---------|---------|---------|
 |Änderungen für das Affinitätscookie |Wenn die cookiebasierte Affinität aktiviert ist, fügt Application Gateway zusätzlich zum bereits vorhandenen Cookie „ApplicationGatewayAffinity“ ein identisches Cookie namens *ApplicationGatewayAffinityCORS* ein. *ApplicationGatewayAffinityCORS* werden zwei weitere Attribute hinzugefügt ( *"SameSite = None; Secure"* ), damit persistente Sitzungen auch bei ursprungsübergreifenden Anforderungen erhalten bleiben. Weitere Informationen finden Sie unter [Cookiebasierte Affinität](configuration-overview.md#cookie-based-affinity). |Februar 2020 |
 |Verbesserungen der Tests |Mit den Verbesserungen benutzerdefinierter Tests in der Application Gateway v2-SKU wurden [Testkonfigurationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku) und [bedarfsgesteuerte Back-End-Integritätstests](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) vereinfacht und [mehr Diagnoseinformationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) hinzugefügt, um Sie bei der Behandlung von Problemen mit der Back-End-Integrität zu unterstützen.  |Oktober 2019 |

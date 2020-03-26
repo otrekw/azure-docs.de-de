@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029948"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224037"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Wählen Sie die Replikationsquelle und das Replikationsziel aus.
-> * Richten Sie die Quellreplikationsumgebung, einschließlich der lokalen Komponenten zur Sitewiederherstellung, und die Zielreplikationsumgebung ein.
+> * Richten Sie die Quellreplikationsumgebung ein, einschließlich der lokalen Site Recovery-Komponenten und der Zielreplikationsumgebung.
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für eine VM
 
@@ -103,7 +103,7 @@ Wenn Sie einen Hyper-V Core Server betreiben, laden Sie die Setupdatei herunter,
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. Führen Sie `.\setupdr.exe /i`aus. Die Ergebnisse werden in „%Programdata%\ASRLogs\DRASetupWizard.log“ protokolliert.
+2. Führen Sie `.\setupdr.exe /i` aus. Die Ergebnisse werden in „%Programdata%\ASRLogs\DRASetupWizard.log“ protokolliert.
 
 3. Registrieren Sie den Server mithilfe dieses Befehls:
 

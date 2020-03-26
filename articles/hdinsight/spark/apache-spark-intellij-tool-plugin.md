@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 1790a7806b1abbe4d537f309f33dee686e30662b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645037"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223587"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Tutorial: Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ
 
-Dieses Tutorial zeigt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und dann direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen HDInsight Spark-Cluster senden. Sie können das Plug-In auf mehrere Arten verwenden:
+In diesem Tutorial wird gezeigt, wie Sie mit dem **Azure-Toolkit-Plug-In** für die IntelliJ-IDE Apache Spark-Anwendungen in Azure HDInsight entwickeln. [Azure HDInsight](../hdinsight-overview.md) ist ein verwalteter Open-Source-Analyse-Dienst in der Cloud, mit dem Sie Open-Source-Frameworks wie Hadoop, Apache Spark, Apache Hive und Apache Kafka verwenden können.
 
-* Entwickeln und Übermitteln einer Scala Spark-Anwendung an einen HDInsight Spark-Cluster
+Sie können das **Azure-Toolkit-Plug-In** auf mehrere Arten verwenden:
+
+* Entwickeln und Übermitteln Sie eine Scala Spark-Anwendung an einen HDInsight Spark-Cluster.
 * Zugreifen auf Ihre Azure HDInsight Spark-Clusterressourcen
 * Entwickeln und lokales Ausführen einer Scala Spark-Anwendung
 
@@ -27,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Verwenden des Plug-Ins „Azure-Toolkit für IntelliJ“
 > * Entwickeln von Apache Spark-Anwendungen
-> * Übermitteln der Anwendung an den Azure HDInsight-Cluster
+> * Übermitteln einer Anwendung an einen Azure HDInsight-Cluster
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -108,6 +110,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
    d. Die Datei **myApp.scala** wird dann in der Hauptansicht geöffnet. Ersetzen Sie den Standardcode durch den folgenden Code:  
 
+        ```scala
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
     
@@ -125,10 +128,12 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
             }
     
         }
+        ```
 
     Der Code liest die Daten aus der Datei „HVAC.csv“ (die für alle HDInsight Spark-Cluster verfügbar ist), ruft die Zeilen ab, die nur eine Ziffer in der siebten Spalte der CSV-Datei enthalten, und schreibt die Ausgabe in `/HVACOut` unter dem Standardspeichercontainer für den Cluster.
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>Herstellen einer Verbindung mit Ihrem HDInsight-Cluster
+
 Der Benutzer kann sich entweder [beim Azure-Abonnement anmelden](#sign-in-to-your-azure-subscription) oder [einen HDInsight-Cluster verknüpfen](#link-a-cluster). Zum Herstellen einer Verbindung kann er entweder eine Kombination aus Ambari-Benutzername und -Kennwort oder Anmeldeinformationen verwenden, die in eine Domäne eingebunden sind.
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
@@ -183,7 +188,7 @@ Sie können einen HDInsight-Cluster mithilfe des verwalteten Apache Ambari-Benut
 
     * **HDInsight-Cluster**  
   
-        |Eigenschaft |value |
+        |Eigenschaft |Wert |
         |----|----|
         |Ressourcentyp verknüpfen|Wählen Sie **HDInsight-Cluster** aus der Dropdownliste aus.|
         |Clustername/-URL| Geben Sie einen Clusternamen ein.|
@@ -195,7 +200,7 @@ Sie können einen HDInsight-Cluster mithilfe des verwalteten Apache Ambari-Benut
 
     * **Livy Service**  
   
-        |Eigenschaft |value |
+        |Eigenschaft |Wert |
         |----|----|
         |Ressourcentyp verknüpfen|Wählen Sie **Livy Service** aus der Dropdownliste aus.|
         |Livy-Endpunkt| Livy-Endpunkt eingeben|
@@ -227,7 +232,7 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie diese an den Cluste
 
 3. Geben Sie im Fenster **Edit configuration** (Konfiguration bearbeiten) die folgenden Werte an, und klicken Sie dann auf **OK**:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |----|----|
     |„Spark clusters (Linux only)“ (Spark-Cluster (nur Linux))|Wählen Sie den HDInsight Spark-Cluster aus, auf dem Sie Ihre Anwendung ausführen möchten.|
     |Select an Artifact to submit (Auswahl eines zu übermittelnden Artefakts)|Behalten Sie die Standardeinstellung bei.|
@@ -312,7 +317,7 @@ Stellen Sie sicher, dass die Voraussetzungen von „WINUTILS.exe“ erfüllt sin
 
 4. Geben Sie die folgenden Werte an, und klicken Sie anschließend auf **OK**:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |----|----|
     |„Job main class“ (Hauptklasse des Auftrags)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können eine andere Klasse auswählen, indem Sie auf die Schaltfläche mit den Auslassungspunkten ( **…** ) klicken.|
     |Umgebungsvariablen|Stellen Sie sicher, dass für HADOOP_HOME der richtige Wert festgelegt ist.|
@@ -344,7 +349,7 @@ Stellen Sie sicher, dass die Voraussetzungen von „WINUTILS.exe“ erfüllt sin
 
 4. Geben Sie die folgenden Werte an, und klicken Sie anschließend auf **OK**:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |----|----|
     |„Spark clusters (Linux only)“ (Spark-Cluster (nur Linux))|Wählen Sie den HDInsight Spark-Cluster aus, auf dem Sie Ihre Anwendung ausführen möchten.|
     |„Main class name“ (Name der Hauptklasse)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können eine andere Klasse auswählen, indem Sie auf die Schaltfläche mit den Auslassungspunkten ( **…** ) klicken.|
@@ -368,9 +373,11 @@ Sie können das Skriptergebnis vorab erhalten, indem Sie einfach Code an die lok
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrieren in den HDInsight-Identitätsbroker (HIB) 
 
 ### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Herstellen einer Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+
 Sie können die normalen Schritte zum Anmelden beim Azure-Abonnement ausführen, um eine Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB) herzustellen. Nach der Anmeldung wird die Clusterliste in Azure Explorer angezeigt. Weitere Anweisungen finden Sie unter [Herstellen einer Verbindung mit Ihrem HDInsight-Cluster](#connect-to-your-hdinsight-cluster).
 
 ### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Ausführen einer Spark Scala-Anwendung in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+
 Sie können die normalen Schritte ausführen, um einen Auftrag an einen HDInsight ESP-Cluster mit Identitätsbroker (HIB) zu übermitteln. Weitere Anweisungen finden Sie unter [Ausführen einer Spark Scala-Anwendung in einem HDInsight Spark-Cluster](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
 
 Die erforderlichen Dateien werden in einen Ordner mit dem Namen Ihres Anmeldekontos hochgeladen, und Sie können den Uploadpfad in der Konfigurationsdatei sehen.
@@ -378,11 +385,11 @@ Die erforderlichen Dateien werden in einen Ordner mit dem Namen Ihres Anmeldekon
    ![Uploadpfad in der Konfiguration](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
 
 ### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Spark-Konsole in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+
 Sie können eine lokale Spark-Konsole (Scala) oder eine Spark-Konsole mit interaktiver Livy-Sitzung (Scala) in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB) ausführen. Weitere Anweisungen finden Sie unter [Spark-Konsole](#spark-console).
 
    > [!NOTE]  
    > Für einen HDInsight ESP-Cluster mit Identitätsbroker (HIB) wird das [Verknüpfen eines Clusters](#link-a-cluster) und das [Remotedebuggen von Apache Spark-Anwendungen](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster) derzeit nicht unterstützt.
-
 
 ## <a name="reader-only-role"></a>Rolle nur mit Leseberechtigung
 
@@ -443,11 +450,15 @@ Sie können die vorhandenen Spark Scala-Anwendungen, die Sie in IntelliJ IDEA er
 
 2. Auf der Stammebene befindet sich ein **module**-Element wie das folgende:
 
+        ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+        ```
 
    Fügen Sie dem Element `UniqueKey="HDInsightTool"` hinzu, damit das **module** -Element wie folgt aussieht:
 
+        ```
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
+        ```
 
 3. Speichern Sie die Änderungen. Ihre Anwendung sollte jetzt mit dem Azure-Toolkit für IntelliJ kompatibel sein. Sie können dies testen, indem Sie in Project mit der rechten Maustaste auf den Projektnamen klicken. Im Popupmenü ist jetzt die Option **Submit Spark Application to HDInsight** (Spark-Anwendung an HDInsight übermitteln) verfügbar.
 
@@ -472,4 +483,4 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 In diesem Tutorial haben Sie gelernt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und dann direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen HDInsight Spark-Cluster senden. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie die in Apache Spark registrierten Daten in ein BI-Analyse-Tool wie Power BI gezogen werden können.
 
 > [!div class="nextstepaction"]
-> [Analysieren von Daten mithilfe von BI-Tools](apache-spark-use-bi-tools.md)
+> [Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight](apache-spark-use-bi-tools.md)

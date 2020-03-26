@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966276"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215988"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -48,9 +48,9 @@ Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug
 - IP-Standortinformationen
    - Organisationen können vertrauenswürdige IP-Adressbereiche erstellen, die beim Treffen von Richtlinienentscheidungen verwendet werden können. 
    - Administratoren können IP-Bereiche ganzer Länder angeben, um den Datenverkehr zu blockieren oder zuzulassen.
-- Gerät
+- Sicherungsmedium
    - Benutzer mit Geräten bestimmter Plattformen oder mit einer Kennzeichnung zu einem bestimmten Zustand können beim Erzwingen von Richtlinien für den bedingten Zugriff verwendet werden.
-- Anwendung
+- Application
    - Benutzer, die auf bestimmte Anwendungen zugreifen, können unterschiedliche Richtlinien für den bedingten Zugriff auslösen. 
 - Erkennung in Echtzeit und kalkulierte Risiken
    - Die Signalintegration in Azure AD Identity Protection ermöglicht bedingte Zugriffsrichtlinien, um riskantes Anmeldeverhalten zu erkennen. Richtlinien können dann erzwingen, dass Benutzer Kennwortänderungen vornehmen oder die mehrstufige Authentifizierung durchführen, um ihr Risiko zu verringern oder den Zugriff zu blockieren, bis ein Administrator manuelle Maßnahmen ergreift.
@@ -65,7 +65,7 @@ Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug
    - Kaum restriktive Entscheidungen, unter Umständen ist weiterhin mindestens eine der folgenden Optionen erforderlich:
       - Mehrstufige Authentifizierung erforderlich
       - Markieren des Geräts als kompatibel erforderlich
-      - In Azure AD eingebundenes Hybridgerät erforderlich
+      - Geräte mit Hybrid-Azure AD-Einbindung erforderlich
       - Genehmigte Client-App erforderlich
       - App-Schutzrichtlinie erforderlich (Vorschau)
 
@@ -92,7 +92,7 @@ Erfahren Sie, wie andere Organisationen mit dem bedingten Azure AD-Zugriff auto
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-Kunden mit [Microsoft 365 Business-Lizenzen](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff. 
+Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -102,6 +102,6 @@ Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Activ
 
 [Informationen zu Identity Protection](../identity-protection/overview-v2.md)
 
-[Informationen zu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Informationen zu Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[Informationen zu Microsoft Intune](https://docs.microsoft.com/intune/index)
+[Informationen zu Microsoft Intune](/intune/index)

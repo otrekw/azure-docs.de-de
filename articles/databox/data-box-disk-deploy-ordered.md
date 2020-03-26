@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70012940"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
@@ -60,7 +60,7 @@ Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
     
    ![Suchen nach Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Klicken Sie auf **Create**.
+2. Klicken Sie auf **Erstellen**.
 
 3. Überprüfen Sie, ob der Data Box-Dienst in Ihrer Region verfügbar ist. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Klicken Sie dann auf **Übernehmen**.
 
@@ -82,7 +82,7 @@ Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen.<br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. |
+    |Name|Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen.<br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. |
     |Resource group| Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. |
     |Azure-Zielregion| Wählen Sie eine Region für Ihr Speicherkonto aus.<br> Zurzeit werden Speicherkonten in allen Regionen in den USA sowie in West- und Nordeuropa, Kanada und Australien unterstützt. |
     |Geschätzte Datengröße in TB| Geben Sie einen geschätzten Wert in TB ein. <br>Basierend auf der Größe der Daten sendet Microsoft Ihnen eine geeignete Anzahl von SSDs mit jeweils 8 TB (7 TB nutzbare Kapazität) zu. <br>Die maximal nutzbare Kapazität von 5 Datenträgern beträgt bis zu 35 TB. |
@@ -125,11 +125,11 @@ Nachdem Sie die Bestellung aufgegeben haben, können Sie ihren Status im Azure-P
 
 ![Status „Bestellt“ des Data Box-Datenträgers](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
-Wenn die Datenträger nicht verfügbar sind, erhalten Sie eine Benachrichtigung. Wenn die Datenträger verfügbar sind, identifiziert Microsoft die Datenträger für den Versand und bereitet das Datenträgerpaket vor. Während der Datenträgervorbereitung werden folgende Aktionen ausgeführt:
+Sollten die Datenträger nicht verfügbar sein, erhalten Sie eine entsprechende Benachrichtigung. Wenn die Datenträger verfügbar sind, identifiziert Microsoft die Datenträger für den Versand und bereitet das Datenträgerpaket vor. Während der Datenträgervorbereitung werden folgende Aktionen ausgeführt:
 
 - Die Datenträger werden mithilfe von AES-128-BitLocker-Verschlüsselung verschlüsselt.  
 - Die Datenträger werden gesperrt, um einen nicht autorisierten Zugriff auf die Datenträger zu verhindern.
-- Der Hauptschlüssel, der die Datenträger entsperrt, wird während dieses Vorgangs generiert.
+- Während dieses Vorgangs wird der Hauptschlüssel zum Entsperren der Datenträger generiert.
 
 Wenn die Datenträgervorbereitung abgeschlossen ist, zeigt das Portal die Bestellung im Zustand **Verarbeitet** an.
 

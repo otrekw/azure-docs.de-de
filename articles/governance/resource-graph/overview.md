@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
-ms.date: 10/21/2019
+ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 1e84de19d35f0c5f5d7975c8a94d5164100013e4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936516"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214768"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -31,7 +31,7 @@ In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 Azure Resource Manager unterstützt aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
 
-Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/templates/complete-mode-deletion.md) mit **Ja** gekennzeichnet. Weitere Ressourcentypen finden Sie in den zugehörigen [Resource Graph-Tabellen](./concepts/query-language.md#resource-graph-tables). Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
+Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Eine Liste der unterstützten Ressourcentypen finden Sie in der [Tabelle und der Referenz für Ressourcentypen](./reference/supported-tables-resources.md). Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
 
 Mit Azure Resource Graph können Sie:
 

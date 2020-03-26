@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797191"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Schnellstart: Abfragen von Daten auf der Azure Data Explorer-Webbenutzeroberfläche
@@ -181,7 +181,7 @@ Häufig möchten Sie die erstellten Abfragen freigeben. Sie können einen Deep-L
 
 Der Daten-Explorer befindet sich derzeit in der Vorschauphase, und wir freuen uns über Feedback zu Ihren Erfahrungen. Sie können uns dies nun mitteilen oder warten, bis Sie mehr Zeit damit verbracht haben.
 
-1. Wählen Sie rechts oben in der Anwendung das Feedbacksymbol aus: ![Feedbacksymbol](media/web-query-data/icon-feedback.png).
+1. Wählen Sie rechts oben in der Anwendung das Feedbacksymbol aus: ![Feedbacksymbol](media/web-query-data/icon-feedback.png)erforderlich.
 
 1. Geben Sie Ihr Feedback ein, und wählen Sie dann **Senden** aus.
 

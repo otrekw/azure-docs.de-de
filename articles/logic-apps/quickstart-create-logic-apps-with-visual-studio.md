@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968889"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290528"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -28,7 +28,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind:
 
@@ -109,7 +109,7 @@ Wenn Sie über Ihr Azure-Ressourcengruppenobjekt verfügen, erstellen Sie Ihre L
 
    ![Auswählen von Azure-Abonnement, Ressourcengruppe und Ressourcenstandort](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Einstellung | Beispielwert | Beschreibung |
+   | Einstellung | Beispielwert | BESCHREIBUNG |
    | ------- | ------------- | ----------- |
    | Benutzerkonto | Fabrikam <br> sophia-owen@fabrikam.com | Das Konto, das Sie bei der Anmeldung bei Visual Studio verwendet haben |
    | **Abonnement** | Nutzungsbasierte Bezahlung <br> (sophia-owen@fabrikam.com) | Name für Ihr Azure-Abonnement und das zugeordnete Konto |

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und der Befehlszeile eine Anwendung in Azure Kubernetes Service entwickeln.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 974f0039bb16dc685bb056e279df63933e358edd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8ee5cba06d9a526640d9057ee88a681d46392f4f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245253"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239708"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Schnellstart: Entwickeln einer Anwendung unter Kubernetes – Azure Dev Spaces
 In diesem Leitfaden lernen Sie Folgendes:
@@ -84,7 +84,7 @@ azds prep --enable-ingress
 Sie müssen den Befehl `prep` im Verzeichnis *dev-spaces/samples/nodejs/getting-started/webfrontend* ausführen, um die Docker- und Helm-Diagrammobjekte richtig zu generieren.
 
 > [!TIP]
-> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Diagramm](how-dev-spaces-works.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Diagramm](how-dev-spaces-works-prep.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Erstellen und Ausführen von Code in Kubernetes
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: rohink
 ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76934764"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
@@ -63,13 +63,13 @@ Erstellen Sie ein Traffic Manager-Profil, das Benutzerdatenverkehr basierend auf
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil**.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | --------| ----- |
     | Name | Geben Sie einen eindeutigen Namen für Ihr Traffic Manager-Profil ein.|
     | Routingmethode | Wählen Sie **Priorität**.|
     | Subscription | Wählen Sie das Abonnement aus, auf das das Traffic Manager-Profil angewendet werden soll. |
     | Resource group | Wählen Sie *myResourceGroupTM1* aus.|
-    | Location |Diese Einstellung bezieht sich auf den Standort der Ressourcengruppe. Sie wirkt sich nicht auf das Traffic Manager-Profil aus, das global bereitgestellt wird.|
+    | Position |Diese Einstellung bezieht sich auf den Standort der Ressourcengruppe. Sie wirkt sich nicht auf das Traffic Manager-Profil aus, das global bereitgestellt wird.|
 
 3. Klicken Sie auf **Erstellen**.
 
@@ -82,7 +82,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 3. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen**.
 4. Geben Sie die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ------|
     | type | Wählen Sie **Azure-Endpunkt**. |
     | Name | Geben Sie *myPrimaryEndpoint* ein. |
@@ -95,7 +95,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 5. Klicken Sie auf **OK**.
 6. Wiederholen Sie die Schritte 3 und 4 mit den folgenden Einstellungen, um einen Failoverendpunkt für Ihre zweite Azure-Region zu erstellen:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ------|
     | type | Wählen Sie **Azure-Endpunkt**. |
     | Name | Geben Sie *myFailoverEndpoint* ein. |

@@ -10,11 +10,11 @@ ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b446a3ebf92f6240d3bc02a148fbb8296efec926
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950728"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222887"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge für erweiterten Bereitstellungsablauf
 
@@ -25,7 +25,7 @@ Compute kann für einfachen oder erweiterten Bereitstellungsablauf auf Ihrem Ger
 |                  | Einfache Bereitstellung                                | Erweiterte Bereitstellung                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | Vorgesehen für     | IT-Administratoren                                | Entwickler                            |
-| Type             | Verwenden des Data Box Edge-Diensts zum Bereitstellen von Modulen      | Verwenden des IoT Hub-Diensts zum Bereitstellen von Modulen |
+| type             | Verwenden des Data Box Edge-Diensts zum Bereitstellen von Modulen      | Verwenden des IoT Hub-Diensts zum Bereitstellen von Modulen |
 | Bereitgestellte Module | Single                                           | Verkettet oder mehrere Module           |
 
 
@@ -66,7 +66,7 @@ Um die Computeumgebung auf Ihrer Data Box Edge-Instanz zu konfigurieren, erstell
     |Feld  |Wert  |
     |---------|---------|
     |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und die Ressourcengruppe wie die Data Box Edge-Ressource.     |
-    |NAME     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
+    |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
     ![Erste Schritte mit Compute](./media/data-box-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
@@ -183,7 +183,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
      
         |Feld  |Wert  |
         |---------|---------|
-        |NAME     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Data Box Edge-Instanz zugeordnet ist.        |
+        |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Data Box Edge-Instanz zugeordnet ist.        |
         |Image-URI     | Der Image-URI für das entsprechende Containerimage für das Modul.        |
         |Anmeldeinformationen erforderlich     | Wenn dieses Kontrollkästchen aktiviert ist, werden ein Benutzername und ein Kennwort verwendet, um Module mit einer übereinstimmenden URL abzurufen.        |
     
@@ -219,7 +219,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
     
     ![Abschnitt „Routen angeben“](./media/data-box-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    Sie können *route* durch die nachstehende „route“-Zeichenfolge ersetzen, die Sie zuvor kopiert haben. Geben Sie in diesem Beispiel den Namen der lokalen Freigabe ein, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Ersetzen Sie `modulename` durch den Namen des Moduls. Klicken Sie auf **Weiter**.
+    Sie können *route* durch die nachstehende „route“-Zeichenfolge ersetzen, die Sie zuvor kopiert haben. Geben Sie in diesem Beispiel den Namen der lokalen Freigabe ein, über die Daten per Pushvorgang an die Cloudfreigabe übertragen werden. Ersetzen Sie `modulename` durch den Namen des Moduls. Wählen Sie **Weiter** aus.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"

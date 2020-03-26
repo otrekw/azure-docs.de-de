@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Node.js-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 74063e03e8298e388efd6888fc05bcbbc9aefa4b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245064"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240196"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes mit Visual Studio Code und Node.js: Azure Dev Spaces
 
@@ -89,7 +89,7 @@ Wenn Sie von Visual Studio Code auch zum Konfigurieren Ihres öffentlichen Endpu
 Dieser Befehl generiert ein Dockerfile und ein Helm-Chart, um Ihr Projekt für die Ausführung in Azure Dev Spaces vorzubereiten. Außerdem wird das Verzeichnis *.vscode* mit der grundlegenden Debugkonfiguration Ihres Projekts generiert.
 
 > [!TIP]
-> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](how-dev-spaces-works.md#prepare-your-code) Ihres Projekts zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien aber ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](how-dev-spaces-works-prep.md#prepare-your-code) Ihres Projekts zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien aber ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Erstellen und Ausführen von Code in Kubernetes über Visual Studio Code
 

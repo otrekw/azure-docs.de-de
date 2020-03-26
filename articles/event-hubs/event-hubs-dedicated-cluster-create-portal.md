@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77157481"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals 
@@ -35,7 +35,7 @@ Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes ve
 - [Erstellte Ressourcengruppe](../event-hubs/event-hubs-create.md#create-a-resource-group).
 
 ## <a name="create-an-event-hubs-dedicated-cluster"></a>Erstellen eines Event Hubs Dedicated-Clusters
-Ein Event Hubs-Cluster bietet einen Container mit einem eindeutigen Bereich, in dem Sie einen oder mehrere Namespaces erstellen können. In der Vorschauphase für dieses Self-Service-Feature des Portals können Sie in ausgewählten Regionen einen 1-CU-Cluster erstellen. Wenn Sie einen Cluster mit einer Kapazität von mehr als 1 CU benötigen, können Sie eine Azure-Supportanfrage senden, um Ihren Cluster nach der Erstellung zu skalieren.
+Ein Event Hubs-Cluster bietet einen Container mit einem eindeutigen Bereich, in dem Sie einen oder mehrere Namespaces erstellen können. In der Vorschauphase für dieses Self-Service-Feature des Portals können Sie in ausgewählten Regionen einen 1-CU-Cluster erstellen. Wenn Sie einen Cluster mit einer Kapazität von mehr als 1 CU benötigen, können Sie eine Azure-Supportanfrage senden, um Ihren Cluster nach der Erstellung hochzuskalieren.
 
 Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen Cluster in Ihrer Ressourcengruppe zu erstellen:
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen Cluster 
     2. Der Namespace erbt die folgenden Eigenschaften:
         1. Abonnement-ID
         2. Ressourcengruppe
-        3. Location
+        3. Position
         4. Clustername
     3. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen. Jetzt können Sie Ihren Cluster verwalten.  
 
@@ -89,7 +89,7 @@ Wenn Sie die Größe Ihres Clusters nach der Erstellung ändern möchten oder Ih
     5. Wählen Sie als **Problemtyp** **Kontingent** aus.
     6. Wählen Sie als **Problemuntertyp** einen der folgenden Werte in der Dropdownliste aus:
         1. Wählen Sie **Request for Dedicated SKU** (Anforderung der Dedicated-SKU) aus, um die Unterstützung der Funktion in Ihrer Region anzufordern.
-        2. Wählen Sie **Request to Scale Up or Scale Down Dedicated Cluster** (Anforderung von zentralem Hochskalieren oder Herunterskalieren eines Dedicated-Clusters), wenn Sie Ihren dedizierten Cluster zentral hoch- oder herunterskalieren möchten. 
+        2. Wählen Sie **Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters**, wenn Sie Ihren dedizierten Cluster hoch- oder herunterskalieren möchten. 
     7. Beschreiben Sie unter **Betreff** das Problem.
 
         ![Seite „Supportticket“](./media/event-hubs-dedicated-cluster-create-portal/support-ticket.png)

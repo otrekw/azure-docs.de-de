@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5512e44ab52a3c3d957bbc0d0a07a7a1e7b6f50e
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399580"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239511"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI
 
@@ -171,7 +171,7 @@ Die Erstellung des Anwendungsgateways in Azure kann bis zu 30 Minuten in Anspruc
 
 Für die Erstellung des Anwendungsgateways in Azure ist kein NGINX-Webserver erforderlich. Sie haben ihn in diesem Schnellstart installiert, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat. Verwenden Sie `az network public-ip show`, um die öffentliche IP-Adresse des neuen Anwendungsgateways abzurufen. 
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \

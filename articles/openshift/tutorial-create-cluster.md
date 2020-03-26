@@ -6,12 +6,12 @@ ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274890"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79455297"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters
 
@@ -46,7 +46,7 @@ Vergewissern Sie sich, dass [Ihre Entwicklungsumgebung eingerichtet](howto-setup
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen, öffnen Sie eine Bash-Befehlsshell, und führen Sie `az login` aus, um sich bei Azure anzumelden.
 
-```bash
+```azurecli
 az login
 ```
 
@@ -95,7 +95,7 @@ TENANT=<tenant ID>
 
 Erstellen Sie die Ressourcengruppe für den Cluster. Führen Sie in derselben Bash-Shell den folgenden Befehl aus, den Sie oben zum Definieren der Variablen verwendet haben:
 
-```bash
+```azurecli
 az group create --name $CLUSTER_NAME --location $LOCATION
 ```
 
@@ -113,7 +113,7 @@ Wenn Sie den Netzwerknamen oder die Ressourcengruppe des vorhandenen VNETs nicht
 
 Definieren Sie eine VNET_ID-Variable mithilfe des folgenden CLI-Befehls in einer BASH-Shell:
 
-```bash
+```azurecli
 VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
 ```
 
@@ -131,7 +131,7 @@ _Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unt
 
 Definieren Sie eine WORKSPACE_ID-Variable mithilfe des folgenden CLI-Befehls in einer BASH-Shell:
 
-```bash
+```azurecli
 WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
 ```
 
@@ -144,19 +144,19 @@ Sie sind jetzt bereit, einen Cluster zu erstellen. Mit Folgendem wird der Cluste
 
 Wenn Sie **kein** Peering Ihres Clusters mit einem virtuellen Netzwerk vornehmen oder **keine** Azure-Überwachung wünschen, verwenden Sie den folgenden Befehl:
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 Wenn Sie ein Peering Ihres Clusters mit einem virtuellen Netzwerk **vornehmen**, verwenden Sie den folgenden Befehl, der den Flag `--vnet-peer` hinzufügt:
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
 Wenn Sie Azure-Überwachung mit Ihrem Cluster **verwenden möchten**, nutzen Sie den folgenden Befehl. Er fügt das Flag `--workspace-id` hinzu:
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
 ```
 
@@ -172,7 +172,7 @@ Nach ein paar Minuten wird `az openshift create` abgeschlossen.
 
 Rufen Sie die URL für die Anmeldung bei Ihrem Cluster ab, indem Sie folgenden Befehl ausführen:
 
-```bash
+```azurecli
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
@@ -220,7 +220,7 @@ Klicken Sie in der OpenShift-Konsole auf das Fragezeichen in der oberen rechten 
 >
 > Alternativ können Sie die [oc-CLI direkt herunterladen](https://www.okd.io/download.html).
 
-Auf der Seite **Befehlszeilentools** steht ein Befehl in der Form `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` zur Verfügung.  Klicken Sie auf die Schaltfläche *In die Zwischenablage kopieren*, um diesen Befehl zu kopieren.  In einem Terminalfenster können Sie [Ihren Pfad festlegen](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli), um Ihre lokale Installation der oc-Tools einzubinden. Melden Sie sich anschließend mithilfe des kopierten oc-CLI-Befehls beim Cluster an.
+Auf der Seite **Befehlszeilentools** steht ein Befehl in der Form `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` zur Verfügung.  Klicken Sie auf die Schaltfläche *In die Zwischenablage kopieren*, um diesen Befehl zu kopieren.  In einem Terminalfenster können Sie [Ihren Pfad festlegen](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli), um Ihre lokale Installation der oc-Tools einzubinden. Melden Sie sich anschließend mithilfe des kopierten oc-CLI-Befehls beim Cluster an.
 
 Wenn Sie den Tokenwert nicht mithilfe der oben beschriebenen Schritte abrufen konnten, rufen Sie den Tokenwert hier ab: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
 

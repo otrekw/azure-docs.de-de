@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Storage-Explorer einen Container und ein Blob erstellen, das Blob auf Ihren lokalen Computer herunterladen und alle Blobs im Container anzeigen.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892463"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061372"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs
 

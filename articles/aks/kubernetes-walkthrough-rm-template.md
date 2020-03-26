@@ -4,19 +4,21 @@ description: Hier erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vo
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273791"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80129455"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) mithilfe einer Azure Resource Manager-Vorlage
 
 Azure Kubernetes Service (AKS) ist ein verwalteter Kubernetes-Dienst, mit dem Sie schnell Cluster bereitstellen und verwalten können. In diesem Schnellstart stellen Sie einen AKS-Cluster mithilfe einer Azure Resource Manager-Vorlage bereit. In dem Cluster wird eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz enthält.
 
 ![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
@@ -68,13 +70,21 @@ Notieren Sie sich die App-ID (*appId*) und das Kennwort (*password*). Diese Wert
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Die in diesem Schnellstart verwendete Vorlage dient dem [Bereitstellen eines Azure Kubernetes Service-Clusters](https://azure.microsoft.com/resources/templates/101-aks/). Weitere AKS-Beispiele finden Sie unter [Azure Schnellstartvorlagen][aks-quickstart-templates].
+### <a name="review-the-template"></a>Überprüfen der Vorlage
+
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-aks/).
+
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+
+Weitere AKS-Beispiele finden Sie unter [Azure Schnellstartvorlagen][aks-quickstart-templates].
+
+### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Klicken Sie auf das folgende Bild, um sich bei Azure anzumelden und eine Vorlage zu öffnen.
 
     [![In Azure bereitstellen](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.  
+2. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein.
 
     Im Rahmen dieser Schnellstartanleitung behalten Sie die Standardwerte für *Betriebssystem-Datenträgergröße (GB)* , *Agent-Anzahl*, *Größe der Agent-VM*, *Betriebssystemtyp*, und *Kubernetes-Version* bei. Geben Sie Ihre eigenen Werte für die folgenden Vorlagenparameter an:
 
@@ -95,7 +105,9 @@ Die in diesem Schnellstart verwendete Vorlage dient dem [Bereitstellen eines Azu
 
 Die Erstellung des AKS-Clusters dauert einige Minuten. Warten Sie, bis der Cluster erfolgreich bereitgestellt wurde, bevor Sie mit dem nächsten Schritt fortfahren.
 
-## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
+## <a name="validate-the-deployment"></a>Überprüfen der Bereitstellung
+
+### <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. Bei Verwendung von Azure Cloud Shell ist `kubectl` bereits installiert. Verwenden Sie für die lokale Installation von `kubectl` den Befehl [az aks install-cli][az-aks-install-cli]:
 
@@ -124,7 +136,7 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>Ausführen der Anwendung
+### <a name="run-the-application"></a>Ausführen der Anwendung
 
 Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
 
@@ -233,7 +245,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>Testen der Anwendung
+### <a name="test-the-application"></a>Testen der Anwendung
 
 Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Dienst das Anwendungs-Front-End im Internet verfügbar. Dieser Vorgang kann einige Minuten dauern.
 
@@ -260,7 +272,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>Löschen von Clustern
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn der Cluster nicht mehr benötigt wird, entfernen Sie mit dem Befehl [az group delete][az-group-delete] die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen.
 

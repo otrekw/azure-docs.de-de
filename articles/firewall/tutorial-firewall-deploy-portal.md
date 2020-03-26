@@ -9,11 +9,11 @@ ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77558878"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223647"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -102,7 +102,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 2. Wählen Sie **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-   |Einstellung  |value  |
+   |Einstellung  |Wert  |
    |---------|---------|
    |Resource group     |**Test-FW-RG**|
    |Name des virtuellen Computers     |**Srv-Jump**|
@@ -123,7 +123,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 
 Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mit dem Namen **Srv-Work**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
-|Einstellung  |value  |
+|Einstellung  |Wert  |
 |---------|---------|
 |Subnet|**Workload-SN**|
 |Öffentliche IP-Adresse|**None**|
@@ -138,12 +138,12 @@ Stellen Sie die Firewall im VNET bereit.
 3. Wählen Sie **Firewall** aus, und klicken Sie anschließend auf **Erstellen**.
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
 
-   |Einstellung  |value  |
+   |Einstellung  |Wert  |
    |---------|---------|
    |Subscription     |\<Ihr Abonnement\>|
    |Resource group     |**Test-FW-RG** |
    |Name     |**Test-FW01**|
-   |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Position     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|
    |Öffentliche IP-Adresse     |**Neu hinzufügen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 

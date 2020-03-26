@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten Python-Container f�
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913853"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046024"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App f체r Azure App Service
 
@@ -53,7 +53,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchl채uft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
 
 1. Ausf체hren eines benutzerdefinierten Skripts, falls durch `PRE_BUILD_SCRIPT_PATH` angegeben
-1. Ausf체hren von `pip install -r requirements.txt`
+1. F체hren Sie `pip install -r requirements.txt` aus.
 1. Wenn sich *manage.py* im Stammverzeichnis des Repositorys befindet, wird *manage.py collectstatic* ausgef체hrt. Ist `DISABLE_COLLECTSTATIC` allerdings auf `true` festgelegt, wird dieser Schritt 체bersprungen.
 1. Ausf체hren eines benutzerdefinierten Skripts, falls durch `POST_BUILD_SCRIPT_PATH` angegeben
 

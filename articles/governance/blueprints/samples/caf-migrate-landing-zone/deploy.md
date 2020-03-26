@@ -4,10 +4,10 @@ description: Bereitstellungsschritte für das CAF-Blaupausenbeispiel für die Mi
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545465"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
@@ -85,7 +85,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      Die in diesem Abschnitt definierten Parameter werden in vielen der Artefakte in der Blaupausendefinition verwendet, um Konsistenz zu gewährleisten.
 
-       - **Organization**: Geben Sie den (eindeutigen) Namen Ihrer Organisation ein, etwa Contoso oder Fabrikam.
+       - **Organisation**: Geben Sie den (eindeutigen) Namen Ihrer Organisation ein, etwa Contoso oder Fabrikam.
        - **AzureRegion**: Wählen Sie eine Azure-Region für die Bereitstellung aus.
        
    - Artefaktparameter

@@ -4,13 +4,13 @@ description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 10/21/2019
-ms.custom: seodec18
-ms.openlocfilehash: f2e31723dc2761007994f652d9d6c28ab3f7d47d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, devcenter, seodec18
+ms.openlocfilehash: 4688cc358ec6ff792be58254b0607f5416422a21
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671401"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047662"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Erstellen einer ASP.NET Framework-Web-App in Azure
 
@@ -26,10 +26,10 @@ Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blan
 
 Sie haben Visual Studio 2019 bereits installiert:
 
-- Installieren Sie die neuesten Updates in Visual Studio, indem Sie **Hilfe** > **Nach Updates suchen** auswählen.
+- Installieren Sie in Visual Studio die neuesten Updates, indem Sie **Hilfe** > **Nach Updates suchen** auswählen.
 - Fügen Sie die Workload hinzu. Wählen Sie dazu **Tools** > **Tools und Features abrufen** aus.
 
-## Erstellen einer ASP.NET-Web-App <a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>Erstellen einer ASP.NET-Web-App <a name="create-and-publish-the-web-app"></a>
 
 Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
@@ -41,17 +41,17 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
    ![Konfigurieren Ihres Web-App-Projekts](./media/app-service-web-get-started-dotnet-framework/configure-web-app-project-framework.png)
 
-4. Sie können jede Art von ASP.NET Web-App für Azure bereitstellen. Wählen Sie für diesen Schnellstart die Vorlage **MVC** aus.
+4. Sie können jede Art von ASP.NET Web-App für Azure bereitstellen. Wählen Sie für diese Schnellstartanleitung die Vorlage **MVC** aus.
 
 5. Stellen Sie sicher, dass für die Authentifizierung **Keine Authentifizierung** festgelegt ist. Klicken Sie auf **Erstellen**.
 
    ![Erstellen einer ASP.NET-Webanwendung](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-6. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Web-App lokal auszuführen.
+6. Wählen Sie im Visual Studio-Menü **Debuggen** > **Starten ohne Debugging** aus, um die Web-App lokal auszuführen.
 
    ![Lokales Ausführen der App](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## Veröffentlichen Ihrer Web-App <a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>Veröffentlichen Ihrer Web-App <a name="launch-the-publish-wizard"></a>
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
 
@@ -83,7 +83,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
    | Einstellung | Empfohlener Wert | BESCHREIBUNG |
    |-|-|-|
    |App Service-Plan| myAppServicePlan | Name des App Service-Plans. |
-   | Location | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+   | Position | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
    | Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bestimmt die Hostingfeatures. |
 
    ![App Service-Plan erstellen](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
@@ -111,7 +111,7 @@ Der App-Name, den Sie auf der Seite **App Service – Neues Element erstellen** 
    ```HTML
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
-       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+       <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 

@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
 ms.openlocfilehash: 032ca8d4ecbcf1fc7f3c22cbe5a0ee934fc5e17c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74407097"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs
@@ -36,7 +36,7 @@ In diesem Tutorial verwenden Sie Azure Notification Hubs, um Pushbenachrichtigun
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Generieren der Datei für die Anforderung der Zertifikatsignierung
+> * Erstellen der Zertifikatsignierungsanforderungs-Datei
 > * Anfordern von Pushbenachrichtigungen für Ihre App
 > * Erstellen eines Bereitstellungsprofils für die App
 > * Konfigurieren Ihres Notification Hubs für iOS-Pushbenachrichtigungen
@@ -122,7 +122,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
 
         ![Azure SDK entzippen][10]
 
-6. Fügen Sie Ihrem Projekt eine neue Headerdatei namens **Constants.h** hinzu. Klicken Sie hierzu mit der rechten Maustaste auf den Projektnamen, und wählen Sie **Neue Datei...** aus. Wählen Sie dann **Headerdatei** aus. Diese Datei enthält die Konstanten für Ihren Notification Hub. Klicken Sie anschließend auf **Weiter**. Geben Sie der Datei den Namen **Constants.h**.
+6. Fügen Sie Ihrem Projekt eine neue Headerdatei namens **Constants.h** hinzu. Klicken Sie hierzu mit der rechten Maustaste auf den Projektnamen, und wählen Sie **Neue Datei...** aus. Wählen Sie dann **Headerdatei** aus. Diese Datei enthält die Konstanten für Ihren Notification Hub. Wählen Sie **Weiter**aus. Geben Sie der Datei den Namen **Constants.h**.
 
 7. Fügen Sie der Datei „Constants.h“ den folgenden Code hinzu:
 
@@ -479,7 +479,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
 
 ## <a name="send-test-push-notifications"></a>Senden von Test-Pushbenachrichtigungen
 
-Mit der Option *Testsendevorgang* im [Azure-Portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
+Mit der Option *Testsendevorgang* im [Azure portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
 ![Azure-Portal – Testsendung][30]
 
@@ -493,7 +493,7 @@ Zum Testen von Pushbenachrichtigungen unter iOS müssen Sie die App auf einem ph
 
     ![Registrierungstest für iOS-App-Pushbenachrichtigungen][33]
 
-2. Als Nächstes senden Sie zu Testzwecken eine Pushbenachrichtigung über das [Azure-Portal], wie im vorherigen Abschnitt beschrieben.
+2. Als Nächstes senden Sie zu Testzwecken eine Pushbenachrichtigung über das [Azure portal], wie im vorherigen Abschnitt beschrieben.
 
 3. Die Pushbenachrichtigung wird an alle Geräte gesendet, die dafür registriert sind, die Benachrichtigungen vom jeweiligen Notification Hub zu erhalten.
 
@@ -530,4 +530,4 @@ In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an alle Ihre regis
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

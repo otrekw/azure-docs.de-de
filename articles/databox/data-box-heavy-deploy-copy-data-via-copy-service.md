@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77560219"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy (Vorschauversion) mithilfe des Datenkopierdiensts
@@ -55,7 +55,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 3. Füllen Sie im Dialogfeld **Auftrag konfigurieren und starten** die folgenden Felder aus:
     
-    |Feld                          |value    |
+    |Feld                          |Wert    |
     |-------------------------------|---------|
     |**Auftragsname**                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |**Quellpfad**                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |

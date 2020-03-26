@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74892888"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
@@ -29,7 +29,7 @@ Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Lernprogramm benötigen Sie Folgendes:
+Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein Azure-Speicherkonto
 * Visual Studio 2013 oder höher
@@ -52,7 +52,7 @@ Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, d
 
 * Erstellen eines Schlüsseltresors
 * Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
-* Registrieren einer Anwendung mit Azure Active Directory
+* Registrieren Sie eine Anwendung bei Azure Active Directory.
 * Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
 
 Notieren Sie ClientID und ClientSecret. Diese Angaben werden generiert, wenn Sie eine Anwendung mit Azure Active Directory registrieren.

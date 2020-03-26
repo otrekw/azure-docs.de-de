@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: apimpm
 ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78163488"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
@@ -41,7 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>Importieren und Veröffentlichen einer Back-End-API
 
 In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifikation importieren und veröffentlichen.
  
@@ -53,7 +53,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
    
    ![Erstellen einer API](./media/api-management-import-and-publish/create-api.png)
    
-   |Einstellung|value|BESCHREIBUNG|
+   |Einstellung|Wert|BESCHREIBUNG|
    |-------|-----|-----------|
    |**OpenAPI-Spezifikation**|*https:\//conferenceapi.azurewebsites.net?format=json*|Der Dienst, der die API implementiert. API Management leitet Anfragen an diese Adresse weiter.|
    |**Anzeigename**|Nachdem Sie die vorherige Dienst-URL eingegeben haben, füllt API Management dieses Feld basierend auf dem JSON-Code aus.|Der Name wird im Entwicklerportal angezeigt.|
@@ -84,7 +84,7 @@ Sie können API-Vorgänge direkt über das Azure-Portal aufrufen. Dies ist ein e
    
    Das Back-End antwortet mit **200 OK** und einigen Daten.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 

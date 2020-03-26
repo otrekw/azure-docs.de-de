@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Bereitstellen im Stagingslot'
+title: 'Über die CLI: Bereitstellen im Stagingslot'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie Code in einem Stagingslot bereitstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -7,13 +7,13 @@ ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.custom: seodec18
-ms.openlocfilehash: 1997d421a51e833e09b8d3062ba42bc0a2cf406b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0f535e902bc86ba3c098dd2238766a3bd547781f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686194"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057850"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Erstellen einer App Service-App und Bereitstellen von Code in einer Stagingumgebung mit der Azure CLI
 
