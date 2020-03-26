@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273354"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216008"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen von Gastbenutzern mit PowerShell
 
@@ -78,7 +78,7 @@ Geben Sie bei Aufforderung Ihre Anmeldeinformationen ein.
 1. Um eine Einladung an Ihr Test-E-Mail-Konto zu senden, führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie dabei **Sanda** und **sanda\@fabrikam.com** durch den Namen Ihres Test-E-Mail-Kontos und Ihre E-Mail-Adresse: 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. Der Befehl sendet eine Einladung an die angegebene E-Mail-Adresse. Die Ausgabe sollte etwa so aussehen:
 

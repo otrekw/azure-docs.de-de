@@ -12,11 +12,11 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 650a4f643f170fc64dd0e0643d645a7dcbffdfbc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420465"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215388"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 
@@ -100,28 +100,28 @@ So bearbeiten Sie die Anwendungseigenschaften:
        | Eigenschafteneinstellungen der Anwendung | | | Zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | Ja | Ja  |
-       | Ja | Ja | no  | Ja | no   |
-       | Ja | no  | Ja | Ja | Ja  |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | ja | ja  |
+       | ja | ja | nein  | ja | nein   |
+       | ja | nein  | ja | ja | ja  |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
    - Verhalten für **nicht zugewiesene** Benutzer:
 
        | Eigenschafteneinstellungen der Anwendung | | | Nicht zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | no  | no   |
-       | Ja | Ja | no  | no  | no   |
-       | Ja | no  | Ja | Ja | no   |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | nein  | nein   |
+       | ja | ja | nein  | nein  | nein   |
+       | ja | nein  | ja | ja | nein   |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
      *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
 

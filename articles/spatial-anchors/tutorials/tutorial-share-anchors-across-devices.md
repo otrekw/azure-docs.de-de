@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77615492"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
@@ -77,7 +77,7 @@ Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstell
 | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
-| Location | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Position | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt. |
 
 Klicken Sie auf **OK**.

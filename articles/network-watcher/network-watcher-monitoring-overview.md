@@ -15,10 +15,10 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844988"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
@@ -27,7 +27,7 @@ Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikan
 
 ## <a name="monitoring"></a>Überwachung
 
-### <a name = "connection-monitor"></a>Überwachen der Kommunikation zwischen einem virtuellen Computer und einem Endpunkt
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>Überwachen der Kommunikation zwischen einem virtuellen Computer und einem Endpunkt
 
 Bei Endpunkten kann es sich um einen anderen virtuellen Computer (VM), einen vollqualifizierten Domänennamen (FQDN), einen URI (Uniform Resource Identifier) oder eine IPv4-Adresse handeln. Mit der Funktion *Verbindungsmonitor* wird die Kommunikation in regelmäßigen Abständen überwacht, und Sie werden über Änderungen der Erreichbarkeit, Latenz und Netzwerktopologie zwischen der VM und dem Endpunkt informiert. Beispielsweise verfügen Sie ggf. über eine Webserver-VM, die mit einer Datenbankserver-VM kommuniziert. Es kann sein, dass eine andere Person in Ihrer Organisation (ohne dass Ihnen dies bekannt ist) eine benutzerdefinierte Route oder Netzwerksicherheitsregel auf die Webserver- oder Datenbankserver-VM oder das Subnetz anwendet.
 
@@ -55,7 +55,7 @@ Wenn Sie eine VM bereitstellen, wendet Azure mehrere Standardsicherheitsregeln a
 
 Wenn Sie ein virtuelles Netzwerk erstellen, erstellt Azure mehrere ausgehende Standardrouten für Netzwerkdatenverkehr. Der ausgehende Datenverkehr aller Ressourcen, z.B. VMs, die in einem virtuellen Netzwerk bereitgestellt werden, wird basierend auf den Standardrouten von Azure weitergeleitet. Sie können die Standardrouten von Azure außer Kraft setzen oder zusätzliche Routen erstellen. Es kann sein, dass eine VM aufgrund einer bestimmten Route nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *Nächster Hop* können Sie eine IPv4-Quell- und -Zieladresse angeben. Bei „Nächster Hop“ wird die Kommunikation getestet, und Sie erhalten die Information, welche Art von nächstem Hop zum Weiterleiten des Datenverkehrs verwendet wird. Sie können eine Route dann entfernen, ändern oder hinzufügen, um ein Routingproblem zu beheben. Erfahren Sie mehr zur Funktion [Nächster Hop](diagnose-vm-network-routing-problem.md).
 
-### <a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
 
 Mit der Funktion *Problembehandlung für Verbindung* können Sie eine Verbindung zwischen einer VM und einer anderen VM, einem FQDN, einem URI oder einer IPv4-Adresse testen. Bei diesem Test werden ähnliche Informationen wie bei Verwendung des [Verbindungsmonitors](#connection-monitor) zurückgegeben. Für die Verbindung wird aber ein bestimmter Zeitpunkt getestet, und sie wird nicht im Zeitverlauf überwacht, wie dies beim Verbindungsmonitor der Fall ist. Informieren Sie sich über die Problembehandlung von Verbindungen mit der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-overview.md).
 

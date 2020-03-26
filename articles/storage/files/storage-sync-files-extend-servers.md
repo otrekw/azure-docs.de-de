@@ -8,10 +8,10 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77597897"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
@@ -215,7 +215,7 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
 
    Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
-   | value | BESCHREIBUNG |
+   | Wert | BESCHREIBUNG |
    | ----- | ----- |
    | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |
@@ -261,7 +261,7 @@ Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen,
 
    | | |
    | ----- | ----- |
-   | value | BESCHREIBUNG |
+   | Wert | BESCHREIBUNG |
    | **Azure-Abonnement** | Das Abonnement, das den Speichersynchronisierungsdienst für dieses Tutorial enthält. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält. Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
    | **Speichersynchronisierungsdienst** | Der Name des Speichersynchronisierungsdiensts. Verwenden Sie für dieses Tutorial _afssyncservice02_. |
@@ -280,7 +280,7 @@ Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen
 
 1. Geben Sie die folgenden Informationen ein, um eine Synchronisierungsgruppe mit einem Cloudendpunkt zu erstellen:
 
-   | value | BESCHREIBUNG |
+   | Wert | BESCHREIBUNG |
    | ----- | ----- |
    | **Name der Synchronisierungsgruppe** | Dieser Name muss innerhalb des Speichersynchronisierungsdiensts eindeutig sein, es kann jedoch ein beliebiger Name sein, der für Sie Sinn ergibt. Verwenden Sie *afssyncgroup* für dieses Tutorial.|
    | **Abonnement** | Das Abonnement, unter dem Sie den Speichersynchronisierungsdienst für dieses Tutorial bereitgestellt haben. |
@@ -303,7 +303,7 @@ Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten S
 
    | | |
    | ----- | ----- |
-   | value | Beschreibung |
+   | Wert | BESCHREIBUNG |
    | **Registrierter Server** | Der Name des Servers, den Sie erstellt haben. Verwenden Sie *afsvm101918* für dieses Tutorial. |
    | **Pfad** | Der Windows Server-Pfad zum Laufwerk, das Sie erstellt haben. Verwenden Sie *f:\filestosync* für dieses Tutorial. |
    | **Cloudtiering** | Lassen Sie diese Option für dieses Tutorial deaktiviert. |

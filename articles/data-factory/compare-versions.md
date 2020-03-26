@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74924810"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Vergleichen von Azure Data Factory mit Data Factory Version 1
@@ -23,7 +23,7 @@ In diesem Artikel wird Data Factory mit Data Factory Version 1 verglichen. Eine 
 ## <a name="feature-comparison"></a>Funktionsvergleiche
 In der folgenden Tabelle werden die Features von Data Factory mit den Features von Data Factory Version 1 verglichen. 
 
-| Feature | Version 1 | Aktuelle Version | 
+| Funktion | Version 1 | Aktuelle Version | 
 | ------- | --------- | --------- | 
 | Datasets | Eine benannte Ansicht mit Daten, in der auf die Daten verwiesen wird, die Sie in Ihren Aktivitäten als Ein- und Ausgabe verwenden möchten. Datasets bestimmen Daten in verschiedenen Datenspeichern, z.B. Tabellen, Dateien, Ordnern und Dokumenten. Ein Azure Blob-Dataset gibt beispielsweise den Blobcontainer und -ordner in Azure Blob Storage an, aus dem die Aktivität die Daten lesen soll.<br/><br/>Mit **Verfügbarkeit** wird das Modell für die Aufteilung in Verarbeitungsfenster für das Dataset (beispielsweise stündlich, täglich usw.) definiert. | Die Datasets sind in der aktuellen Version identisch. Sie müssen aber keine **Verfügbarkeits**zeitpläne für die Datasets definieren. Sie können eine Triggerressource definieren, mit der Pipelines über ein Taktplaner-Paradigma geplant werden können. Weitere Informationen finden Sie unter [Trigger](concepts-pipeline-execution-triggers.md#triggers) und [Datasets](concepts-datasets-linked-services.md). | 
 | Verknüpfte Dienste | Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. | Verknüpfte Dienste haben sich im Vergleich zu Data Factory V1 nicht verändert, verfügen aber über eine neue **connectVia**-Eigenschaft für die Nutzung der Integration Runtime-Computeumgebung der aktuellen Version von Data Factory. Weitere Informationen finden Sie unter [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) sowie unter [Eigenschaften des verknüpften Diensts für Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties). |

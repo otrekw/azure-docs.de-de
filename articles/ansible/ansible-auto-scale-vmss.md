@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, skalieren, autoskalierung, vir
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156814"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tutorial: Automatisches Skalieren von VM-Skalierungsgruppen in Azure mit Ansible
@@ -85,7 +85,7 @@ ansible-playbook vmss-auto-scale.yml
 
 ## <a name="autoscale-based-on-performance-data"></a>Automatisches Skalieren auf der Grundlage von Leistungsdaten
 
-Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihren Skalierungsgruppen. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Mit Ansible können Sie steuern, welche Metriken überwacht werden sollen (beispielsweise CPU-Auslastung, Datenträgerauslastung und App-Ladezeit). In Skalierungsgruppen kann basierend auf Leistungsmetrik-Schwellenwerten, auf der Grundlage einer Zeitplanserie oder an einem bestimmten Datum horizontal herunter- und hochskaliert werden. 
+Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihren Skalierungsgruppen. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Mit Ansible können Sie steuern, welche Metriken überwacht werden sollen (beispielsweise CPU-Auslastung, Datenträgerauslastung und App-Ladezeit). In Skalierungsgruppen kann basierend auf Leistungsmetrik-Schwellenwerten, auf der Grundlage einer Zeitplanserie oder an einem bestimmten Datum ab- und aufskaliert werden. 
 
 Der Playbookcode in diesem Abschnitt überprüft jeden Montag um 18:00 Uhr die CPU-Auslastung der letzten zehn Minuten. 
 

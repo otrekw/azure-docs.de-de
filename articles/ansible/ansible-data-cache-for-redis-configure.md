@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Playbook, Cache, Redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156516"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Tutorial: Konfigurieren von Caches in Azure-Cache für Redis mit Ansible
@@ -154,7 +154,7 @@ Mit dem folgenden Code wird der Cache gelöscht:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Abrufen des Beispielplaybooks
+## <a name="get-the-sample-playbook"></a>Abrufen der Beispielplaybooks
 
 Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 - [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml), und speichern Sie es als `rediscache.yml`.
@@ -236,11 +236,11 @@ Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 
 ## <a name="run-the-sample-playbook"></a>Ausführen des Beispielplaybooks
 
-Führen Sie in diesem Abschnitt das Playbook aus, um verschiedene in diesem Artikel gezeigte Funktionen zu testen.
+In diesem Abschnitt führen Sie das Playbook aus, um verschiedene in diesem Artikel gezeigte Features zu testen.
 
 Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ resource_group_name }}` durch den Namen Ihrer Ressourcengruppe.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook rediscache.yml
@@ -339,7 +339,7 @@ Speichern Sie den folgenden Code als `cleanup.yml`:
 
 Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ resource_group_name }}` durch den Namen Ihrer Ressourcengruppe.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook cleanup.yml

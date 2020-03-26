@@ -10,11 +10,11 @@ ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70307699"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214257"
 ---
 ::: zone target="docs"
 
@@ -54,7 +54,7 @@ Für den Windows-Client sollte darüber hinaus noch Folgendes installiert sein.
 
 | **Software**| **Version** |
 | --- | --- |
-| Windows PowerShell |5.0 |
+| Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
 | Windows Management Framework |5.0|
 | BitLocker| - |
@@ -77,7 +77,7 @@ Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Dat
 | **Speicherkonto** | **Hinweise** |
 | --- | --- |
 | Klassisch | Standard |
-| Allgemeiner Zweck  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
+| Universell  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
 | Blob-Speicherkonto | |
 
 >[!NOTE]

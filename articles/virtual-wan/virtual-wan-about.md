@@ -9,11 +9,11 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056341"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290188"
 ---
 # <a name="about-azure-virtual-wan"></a>Informationen zu Azure Virtual WAN
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält eine kurze Übersicht über die Netzwerkkonnektivität i
 * **Automatisierte Spoke-Einrichtung und -Konfiguration:** Verbinden Sie Ihre virtuellen Netzwerke und Workloads nahtlos mit dem Azure-Hub.
 * **Intuitive Problembehandlung:** Sie können den gesamten Datenfluss in Azure anzeigen und diese Informationen nutzen, um erforderliche Aktionen durchzuführen.
 
-## <a name="basicstandard"></a>Virtuelle WANs des Typs „Basic“ und „Standard“
+## <a name="basic-and-standard-virtual-wans"></a><a name="basicstandard"></a>Virtuelle WANs des Typs „Basic“ und „Standard“
 
 Es gibt zwei Arten virtueller WANs: Basic und Standard. Die folgende Tabelle zeigt die verfügbaren Konfigurationen für die beiden Typen.
 
@@ -37,14 +37,14 @@ Es gibt zwei Arten virtueller WANs: Basic und Standard. Die folgende Tabelle zei
 
 Anweisungen für ein Upgrade eines virtuellen WAN finden Sie unter [Upgrade eines virtuellen WAN von Basic auf Standard](upgrade-virtual-wan.md).
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a><a name="architecture"></a>Architektur
 
 Informationen zur Virtual WAN-Architektur sowie zum Migrieren zu Virtual WAN finden Sie in den folgenden Artikeln:
 
 * [Migrieren zu Azure Virtual WAN](migrate-from-hub-spoke-topology.md)
 * [Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN](virtual-wan-global-transit-network-architecture.md)
 
-## <a name="resources"></a>Virtual WAN-Ressourcen
+## <a name="virtual-wan-resources"></a><a name="resources"></a>Virtual WAN-Ressourcen
 
 Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konfigurieren:
 
@@ -64,17 +64,17 @@ Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konf
 
   * **Site:** Diese Ressource wird ausschließlich für Site-to-Site-Verbindungen verwendet. Die Ressource „site“ ist **vpnsite**. Sie stellt Ihr lokales VPN-Gerät und die zugehörigen Einstellungen dar. Durch die Zusammenarbeit mit einem Virtual WAN-Partner verfügen Sie über eine integrierte Lösung zum automatischen Exportieren dieser Informationen nach Azure.
 
-## <a name="connectivity"></a>Konnektivitätstypen
+## <a name="types-of-connectivity"></a><a name="connectivity"></a>Konnektivitätstypen
 
 Virtual WAN lässt die folgenden Konnektivitätstypen zu: Site-to-Site-VPN, Benutzer-VPN (Point-to-Site) und ExpressRoute.
 
-### <a name="s2s"></a>Site-to-Site-VPN-Verbindungen
+### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>Site-to-Site-VPN-Verbindungen
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-about/virtualwan.png)
 
 Wenn Sie in Virtual WAN eine Site-to-Site-Verbindung einrichten, können Sie mit einem verfügbaren Partner arbeiten. Wenn Sie keinen Partner verwenden möchten, können Sie die Verbindung manuell konfigurieren. Weitere Informationen finden Sie unter [Erstellen einer Site-to-Site-Verbindung per Virtual WAN](virtual-wan-site-to-site-portal.md).
 
-#### <a name="s2spartner"></a>Workflow für Virtual WAN-Partner
+#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Workflow für Virtual WAN-Partner
 
 Wenn Sie mit einem Virtual WAN-Partner arbeiten, ist der Workflow wie folgt:
 
@@ -82,22 +82,22 @@ Wenn Sie mit einem Virtual WAN-Partner arbeiten, ist der Workflow wie folgt:
 2. Der Controller des Branchgeräts (VPN/SDWAN) ruft die Azure-Konnektivitätskonfiguration ab und aktualisiert das lokale Gerät. So werden für das lokale VPN-Gerät der Konfigurationsdownload und die Bearbeitung und die Aktualisierung automatisiert.
 3. Nachdem das Gerät über die richtige Azure-Konfiguration verfügt, wird eine Site-to-Site-Verbindung (zwei aktive Tunnel) mit dem Azure WAN eingerichtet. Azure unterstützt IKEv1 und IKEv2. BGP ist optional.
 
-#### <a name="partners"></a>Partner für Site-to-Site-Verbindungen in Virtual WAN
+#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>Partner für Site-to-Site-Verbindungen in Virtual WAN
 
 Eine Liste der verfügbaren Partner und Standorte finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
-### <a name="uservpn"></a>Benutzer-VPN-Verbindungen (Point-to-Site)
+### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Benutzer-VPN-Verbindungen (Point-to-Site)
 
 Sie können sich über eine IPsec/IKE (IKEv2)- oder OpenVPN-Verbindung mit Ihren Ressourcen in Azure verbinden. Für diese Art von Verbindung muss auf dem Clientcomputer ein VPN-Client konfiguriert sein. Weitere Informationen finden Sie unter [Herstellen einer Point-to-Site-Verbindung](virtual-wan-point-to-site-portal.md).
 
-### <a name="er"></a>ExpressRoute-Verbindungen
+### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute-Verbindungen
 Mit ExpressRoute können Sie Ihr lokales Netzwerk über eine private Verbindung mit Azure verbinden. Informationen zum Erstellen der Verbindung finden Sie unter [Erstellen einer ExpressRoute-Verbindung per Virtual WAN](virtual-wan-expressroute-portal.md).
 
-## <a name="locations"></a>Standorte
+## <a name="locations"></a><a name="locations"></a>Standorte
 
 Informationen zu Standorten finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
-## <a name="faq"></a>Häufig gestellte Fragen
+## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

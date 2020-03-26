@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77444950"
 ---
 # <a name="azure-firewall-manager-preview-policy-overview"></a>Richtlinienübersicht für Azure Firewall Manager (Vorschau)
@@ -49,9 +49,9 @@ Azure Firewall unterstützt sowohl herkömmliche Regeln und als auch herkömmlic
 
 |         |Richtlinie  |Regeln  |
 |---------|---------|---------|
-|Inhalt     |NAT-, Netzwerk- und Anwendungsregeln sowie Threat Intelligence-Einstellungen|NAT-, Netzwerk- und Anwendungsregeln |
+|Enthält     |NAT-, Netzwerk- und Anwendungsregeln sowie Threat Intelligence-Einstellungen|NAT-, Netzwerk- und Anwendungsregeln |
 |Schutz     |Virtuelle Hubs und virtuelle Netzwerke|Nur virtuelle Netzwerke|
-|Portalumgebung     |Zentrale Verwaltung mithilfe von Firewall Manager|Eigenständige Firewallumgebung|
+|Portalfunktion     |Zentrale Verwaltung mithilfe von Firewall Manager|Eigenständige Firewallumgebung|
 |Unterstützung mehrerer Firewalls     |Die Firewallrichtlinie ist eine separate Ressource und kann firewallübergreifend verwendet werden.|Sie können Regeln manuell exportieren und importieren oder Verwaltungslösungen von Drittanbietern verwenden. |
 |Preise     |Abrechnung auf der Grundlage der Firewallzuordnung. Siehe [Preise](#pricing).|Kostenlos|
 |Unterstützte Bereitstellungsmechanismen     |Portal, REST-API, Vorlagen, Azure PowerShell und Befehlszeilenschnittstelle|Portal, REST-API, Vorlagen, PowerShell und Befehlszeilenschnittstelle |
@@ -59,7 +59,7 @@ Azure Firewall unterstützt sowohl herkömmliche Regeln und als auch herkömmlic
 
 ## <a name="pricing"></a>Preise
 
-Richtlinien werden auf der Grundlage der Firewallzuordnung abgerechnet. Richtlinien mit bis zu einer Firewallzuordnung sind kostenlos. Richtlinien mit mehreren Firewallzuordnungen werden mit einer festen Rate abgerechnet. Weitere Informationen finden Sie unter [Preise für Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/).
+Richtlinien werden basierend auf der Firewallzuordnung abgerechnet. Richtlinien mit bis zu einer Firewallzuordnung sind kostenlos. Richtlinien mit mehreren Firewallzuordnungen werden zu festen Preisen abgerechnet. Weitere Informationen finden Sie unter [Preise für Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

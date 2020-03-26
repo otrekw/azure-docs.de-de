@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640012"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Clusteringmodells in R mit Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank
@@ -27,8 +27,8 @@ Im zweiten Teil dieser dreiteiligen Tutorialreihe erstellen Sie ein K-Means-Mode
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Definieren der Clusteranzahl für einen K-Means-Algorithmus
-> * Ausführen des Clusterings
+> * Definieren der Anzahl der Cluster für einen K-Means-Algorithmus
+> * Durchführen des Clustering
 > * Analysieren der Ergebnisse
 
 Im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md) haben Sie gelernt, wie Sie die Daten aus einer Azure SQL-Datenbank für das Clustering vorbereiten.
@@ -41,15 +41,15 @@ In [Teil 3](sql-database-tutorial-clustering-model-deploy.md) erlernen Sie das E
 
 * In Teil zwei dieser Reihe von Tutorials wird angenommen, dass Sie [**Teil eins**](sql-database-tutorial-clustering-model-prepare-data.md) und seine Voraussetzungen abgeschlossen haben.
 
-## <a name="define-the-number-of-clusters"></a>Definieren der Clusteranzahl
+## <a name="define-the-number-of-clusters"></a>Definieren der Anzahl der Cluster
 
-Für das Clustering Ihrer Kundendaten verwenden Sie den Clusteringalgorithmus **K-Means**. Hierbei handelt es sich um eine der einfachsten und bekanntesten Methoden zur Gruppierung von Daten.
-Weitere Informationen zum Clusteringalgorithmus „K-Means“ finden Sie in [diesem umfassenden Leitfaden](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html).
+Für das Clustering Ihrer Kundendaten verwenden Sie den **K-Means**-Clusteringalgorithmus. Dies ist eine der einfachsten und bekanntesten Methoden zum Gruppieren von Daten.
+Weitere Informationen zum K-Means-Algorithmus finden Sie im [Umfassenden Leitfaden zu K-Means-Clusteringalgorithmus](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html).
 
-Der Algorithmus akzeptiert zwei Eingaben: die Daten selbst und eine vordefinierte Zahl (*k*), die die Anzahl der zu generierenden Cluster darstellt.
-Ausgegeben werden *k* Cluster mit auf die Cluster verteilten Eingabedaten.
+Der Algorithmus akzeptiert zwei Eingaben: Die Daten selbst und eine vordefinierte Zahl „*k*“, die die Anzahl der zu generierenden Cluster darstellt.
+Die Ausgabe entspricht *k* Clustern mit den partitionierten Eingabedaten.
 
-Verwenden Sie zur Bestimmung der Clusteranzahl für den Algorithmus einen Plot der Summe der Quadrate innerhalb der Gruppen (nach Anzahl der extrahierten Cluster). Die zu verwendende Clusteranzahl befindet sich an der Krümmung (Scheitelpunkt) des Plots.
+Verwenden Sie einen Plot aus der Abweichungsquadratsumme der enthaltenen Gruppen nach der Anzahl der extrahierten Cluster, um die Anzahl der zu verwendenden Cluster für den Algorithmus zu bestimmen. Die angemessene Anzahl der zu verwendenden Cluster befindet sich an der Knickstelle bzw. am „Ellenbogen“ des Plots.
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -60,11 +60,11 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![Scheitelpunktdiagramm](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![Ellenbogengraph](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-Ausgehend von dem Diagramm wäre *k = 4* ein guter Wert. Durch diesen Wert für *k* werden die Kunden in vier Clustern gruppiert.
+Aus diesem Graph geht *k = 4* als geeigneter Wert hervor. Mit diesem *k*-Wert werden die Kunden in vier Cluster gruppiert.
 
-## <a name="perform-clustering"></a>Ausführen des Clusterings
+## <a name="perform-clustering"></a>Durchführen des Clustering
 
 Im folgenden R-Skript wird die Funktion **rxKmeans** verwendet. Hierbei handelt es sich um die K-Means-Funktion im RevoScaleR-Paket.
 
@@ -122,18 +122,18 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-Die vier Clustermittelwerte werden mithilfe der Variablen angegeben, die im [ersten Teil](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers) definiert wurden:
+Die vier Clusterdurchschnittswerte werden mittels der Variablen angegeben, die Sie in [Teil 1](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers) des Tutorials definiert haben:
 
-* *orderRatio*: Retourenverhältnis (Gesamtanzahl teilweise oder vollständig retournierter Bestellungen im Vergleich zur Gesamtanzahl von Bestellungen)
-* *itemsRatio*: Verhältnis retournierter Artikel (Gesamtanzahl retournierter Artikel im Vergleich zur Anzahl gekaufter Artikel)
-* *monetaryRatio*: Retourenbetragsverhältnis (Gesamtbetrag der retournierten Artikel im Vergleich zum Einkaufsbetrag)
-* *frequency*: Retourenhäufigkeit
+* *orderRatio* = Retourenquote für Bestellungen (Gesamtzahl der teilweise oder vollständig zurückgegebenen Bestellungen im Vergleich zur Gesamtzahl der Bestellungen)
+* *itemsRatio* = Retourenquote für Artikel (Gesamtzahl der zurückgegebenen Artikel im Vergleich zur Anzahl der gekauften Artikel)
+* *monetaryRatio* = Rückzahlungsquote (Monetärer Gesamtbetrag der zurückgegebenen Artikel im Vergleich zum erworbenen Betrag)
+* *frequency* = Häufigkeit der Retouren
 
-Beim Data Mining mit K-Means müssen die Ergebnisse zwar häufig weiter analysiert werden, und es sind weitere Schritte zum besseren Verständnis der einzelnen Cluster erforderlich, gleichzeitig können aber auch einige gute Leads entstehen.
-Im Anschluss folgen einige Interpretationsmöglichkeiten für diese Ergebnisse:
+Data Mining mit K-Means erfordert häufig weitere Analysen der Ergebnisse sowie weitere Schritte, um die einzelnen Cluster besser zu verstehen, kann jedoch gute Leads erzielen.
+Im Folgenden finden Sie Beispiele für die Interpretation dieser Ergebnisse:
 
 * Beim ersten Cluster (dem größten Cluster) scheint es sich um eine Gruppe von inaktiven Kunden zu handeln. (Alle Werte sind null.)
-* Beim dritten Cluster scheint es sich um eine Gruppe mit außergewöhnlichem Retourenverhalten zu handeln.
+* Cluster 3 scheint eine Gruppe mit erhöhtem Retournierverhalten zu sein.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -148,10 +148,10 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im zweiten Teil dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
+In Teil 2 dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
 
-* Definieren der Clusteranzahl für einen K-Means-Algorithmus
-* Ausführen des Clusterings
+* Definieren der Anzahl der Cluster für einen K-Means-Algorithmus
+* Durchführen des Clustering
 * Analysieren der Ergebnisse
 
 Um das Machine Learning-Modell bereitzustellen, das Sie erstellt haben, fahren Sie mit Teil drei dieser Tutorialreihe fort:

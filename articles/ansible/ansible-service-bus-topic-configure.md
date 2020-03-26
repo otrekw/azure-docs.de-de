@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Playbook, Service Bus, Themen, Abonnemen
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155799"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Tutorial: Konfigurieren von Themen in Azure Service Bus mit Ansible
@@ -69,7 +69,7 @@ Speichern Sie das folgende Playbook als `servicebus_topic.yml`:
           var: topic
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -139,7 +139,7 @@ Speichern Sie das folgende Playbook als `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
@@ -172,7 +172,7 @@ Speichern Sie das folgende Playbook als `servicebus_namespace_info.yml`:
 Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 - Der `show_sas_policies`-Wert gibt an, ob die SAS-Richtlinien unter dem angegebenen Namespace angezeigt werden. Der Wert ist standardmäßig `False`, um zusätzlichen Netzwerkaufwand zu vermeiden.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml

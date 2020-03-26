@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73488136"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Was ist Internet Analyzer? (Vorschau)
@@ -22,7 +22,7 @@ Internet Analyzer verwendet einen kleinen, in Ihre Webanwendung eingebetteten Ja
 
 
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="quick--customizable-tests"></a>Schnelle, anpassbare Tests
@@ -50,7 +50,7 @@ Während der Vorschau sind die folgenden vorkonfigurierten Endpunkte verfügbar:
     * Europa, Westen
     * USA (Westen) 
     * USA, Westen 2
-* **Kombinationen aus mehreren Azure-Regionen** 
+* **Kombinationen mehrerer Azure-Regionen** 
     * USA, Osten; Brasilien, Süden 
     * USA, Osten; Asien, Osten 
     * Europa, Westen; Brasilien, Süden
@@ -74,7 +74,7 @@ Internet Analyzer kann eine Vielzahl von Fragen beantworten, darunter diese sehr
 * Wie wirkt sich die Migration zur Cloud auf die Leistung aus? 
     * *Vorgeschlagener Test: Benutzerdefiniert (Ihre aktuelle lokale Infrastruktur) im Vergleich zu Azure (beliebiger vorkonfigurierter Endpunkt)*
 * Welche Vorteile ergeben sich, wenn ich meine Daten statt in einem Rechenzentrum am Edge platziere? 
-    *  *Vorgeschlagener Test: Azure im Vergleich zu Azure Front Door im Vergleich zu Azure CDN von Microsoft*
+    *  *Vorgeschlagener Test: Azure im Vergleich zu Azure Front Door, Azure im Vergleich zu Azure CDN von Microsoft*
 * Welche Leistungsvorteile bietet Azure Front Door?
     *  *Vorgeschlagener Test: Benutzerdefiniert/Azure/CDN im Vergleich zu Azure Front Door*
 * Welche Leistungsvorteile bietet Azure CDN von Microsoft? 
@@ -84,7 +84,7 @@ Internet Analyzer kann eine Vielzahl von Fragen beantworten, darunter diese sehr
 * Welches ist die beste Cloud für Ihre Endbenutzerpopulation in jeder Region? 
     *  *Vorgeschlagener Test: Benutzerdefiniert (anderer Clouddienst) im Vergleich zu Azure (beliebiger vorkonfigurierter Endpunkt)*
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Um Internet Analyzer zu verwenden, richten Sie eine Internet Analyzer-Ressource im Microsoft Azure-Portal ein, und installieren Sie den kleinen JavaScript-Client in Ihrer Anwendung. Der Client misst die Latenz zwischen Endbenutzern und Ihren ausgewählten Endpunkten, indem er ein 1 Pixel großes Bild über HTTPS herunterlädt. Nach dem Erfassen der Latenzmesswerte sendet der Client die Messdaten an Internet Analyzer.
 
@@ -99,7 +99,7 @@ Sobald ein Test gestartet wurde, werden in der Internet Analyzer-Ressource auf d
 
 * **Test (Testen):** Wählen Sie den Test aus, dessen Ergebnisse Sie anzeigen möchten. Testdaten werden angezeigt, sobald genügend Daten vorhanden sind, um die Analyse abzuschließen – in den meisten Fällen innerhalb von 24 Stunden. 
 * **Zeitraum und Enddatum**: Internet Analyzer generiert drei Scorecards pro Tag, von denen jede einen anderen Aggregationszeitraum reflektiert: 24 Stunden vorher (Tag), sieben Tage vorher (Woche) und 30 Tage vorher (Monat). Verwenden Sie den Filter „Enddatum“, um den Zeitraum auszuwählen, den Sie anzeigen möchten. 
-* **Land**: Verwenden Sie diesen Filter, um Daten für Endbenutzer in einem bestimmten Land/Region anzuzeigen. Der globale Filter zeigt Daten über alle Geografien hinweg an.  
+* **Land:** Verwenden Sie diesen Filter, um Daten für Endbenutzer in einem bestimmten Land/Region anzuzeigen. Der globale Filter zeigt Daten über alle Geografien hinweg an.  
 
 Weitere Informationen zu Scorecards finden Sie auf der Seite [Interpretieren Ihrer Scorecard](internet-analyzer-scorecard.md). 
 

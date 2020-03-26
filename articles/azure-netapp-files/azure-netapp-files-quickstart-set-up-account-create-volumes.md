@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 12/01/2019
 ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75551640"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes 
@@ -42,13 +42,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 > Der Registrierungsvorgang kann einige Zeit in Anspruch nehmen.
 >
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Öffnen Sie für die Registrierungsschritte mit dem Portal wie oben gezeigt eine Cloud Shell-Sitzung, und führen Sie diese Azure CLI-Schritte aus:
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure PowerShell-Moduls benötigt. Führen Sie `Get-Module -ListAvailable Az` aus, um Ihre aktuelle Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. Wenn Sie möchten, können Sie stattdessen die Cloud Shell-Konsole in einer PowerShell-Sitzung verwenden.
 
@@ -62,7 +62,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -70,7 +70,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 ## <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Geben Sie im Suchfeld des Azure-Portals **Azure NetApp Files** ein, und wählen Sie in der daraufhin angezeigten Liste die Option **Azure NetApp Files** aus.
 
@@ -92,7 +92,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 4. Klicken Sie auf **Erstellen**, um Ihr neues NetApp-Konto zu erstellen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Definieren Sie einige Variablen, damit in den restlichen Beispielen darauf verwiesen werden kann:
 
@@ -119,7 +119,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Definieren Sie einige Variablen, damit in den restlichen Beispielen darauf verwiesen werden kann:
 
@@ -154,7 +154,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 ## <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie auf dem Azure NetApp Files-Verwaltungsblatt Ihr NetApp-Konto (**myaccount1**) aus.
 
@@ -175,7 +175,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 5. Klicken Sie auf **OK**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Definieren einiger neuer Variablen, auf die verwiesen werden kann
 
@@ -191,7 +191,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Definieren einiger neuer Variablen, auf die verwiesen werden kann
 
@@ -217,7 +217,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Klicken Sie auf dem Azure NetApp Files-Verwaltungsblatt Ihres NetApp-Kontos auf **Volumes**.
 
@@ -261,7 +261,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
     ![Volume erstellt](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Erstellen Sie mit dem Befehl [New-AzDelegation](/powershell/module/az.network/new-azdelegation) eine Subnetzdelegierung für „Microsoft.NetApp/volumes“.
 
@@ -299,7 +299,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Definieren Sie einige Variablen zur späteren Verwendung.
     
@@ -356,7 +356,7 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.  
 
@@ -380,7 +380,7 @@ Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das 
 
     ![Ressourcengruppe löschen](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.  
 
@@ -393,7 +393,7 @@ Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das 
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie fertig sind, können Sie die Ressourcengruppe bei Bedarf löschen. Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.  
 

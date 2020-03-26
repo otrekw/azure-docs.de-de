@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121669"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290428"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ In Abschnitten des Service-Dashboards sehen Sie, über wie viele Indizes, Indexe
 
 ![Listen mit Indizes, Indexern und Datenquellen](media/search-get-started-portal/tiles-indexers-datasources.png)
 
-## <a name="create-index"></a> Erstellen eines Index und Laden von Daten
+## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Erstellen eines Index und Laden von Daten
 
 Suchabfragen durchlaufen einen [*Index*](search-what-is-an-index.md) mit durchsuchbaren Daten, Metadaten und zusätzlichen Konstrukten, die bestimmte Suchverhaltensweisen optimieren.
 
@@ -132,7 +132,7 @@ Andere Konstrukte, z.B. Bewertungsprofile und CORS-Optionen, können jederzeit h
 
 Nehmen Sie sich kurz Zeit, um die Optionen für die Indexdefinition anzuzeigen und sich damit vertraut zu machen, was Sie beim Entwerfen des Index bearbeiten können. Wenn Optionen ausgegraut sind, ist dies ein Hinweis darauf, dass ein Wert nicht geändert oder gelöscht werden kann. 
 
-## <a name="query-index"></a> Abfragen mit dem Suchexplorer
+## <a name="query-using-search-explorer"></a><a name="query-index"></a> Abfragen mit dem Suchexplorer
 
 Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Suchexplorer**](search-explorer.md)-Abfrageseite abgefragt werden kann. Sie enthält ein Suchfeld, über das Sie beliebige Abfragezeichenfolgen testen können.
 
@@ -176,7 +176,7 @@ Sie können Begriffe und Ausdrücke eingeben, ähnlich wie bei einer Bing- oder 
 
 * **$top=10** gibt die 10 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Cognitive Search die ersten 50 besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
 
-### <a name="filter-query"></a> Filtern der Abfrage
+### <a name="filter-the-query"></a><a name="filter-query"></a> Filtern der Abfrage
 
 Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anfügen. 
 
@@ -186,7 +186,7 @@ Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anf
 
 * Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
-### <a name="facet-query"></a> Facettieren der Abfrage
+### <a name="facet-the-query"></a><a name="facet-query"></a> Facettieren der Abfrage
 
 Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „facet“ verwenden, um eine aggregierte Anzahl von Dokumenten zurückzugeben, die mit einem von Ihnen angegebenen Facetwert übereinstimmen.
 
@@ -206,7 +206,7 @@ Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „
 * Das Feld *Bewertung* ist eine Gleitkommazahl mit doppelter Genauigkeit. Weitere Informationen zum Gruppieren per Intervall (z. B. „Bewertungen mit 3 Sternen“, „Bewertungen mit 4 Sternen“ usw.) finden Sie unter [Implementieren der Facettennavigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
-### <a name="highlight-query"></a> Hervorheben von Suchergebnissen
+### <a name="highlight-search-results"></a><a name="highlight-query"></a> Hervorheben von Suchergebnissen
 
 Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer Formatierung versehen (sofern Treffer in einem bestimmten Feld gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben.
 
@@ -220,7 +220,7 @@ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer 
 
 * Azure Cognitive Search unterstützt 56 Analysetools von Lucene und Microsoft. Standardmäßig verwendet Azure Cognitive Search die Standardanalyse von Lucene.
 
-### <a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
+### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
 
 Für falsch geschriebene Wörter wie *seatle* für „Seattle“ werden bei einer herkömmlichen Suche standardmäßig keine Treffer zurückgegeben. Im folgenden Beispiel werden keine Ergebnisse zurückgegeben.
 
@@ -238,7 +238,7 @@ Die Fuzzysuche und die Platzhaltersuche haben Auswirkungen auf die Suchausgabe. 
 
 Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene-Abfragesyntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
-### <a name="geo-search"></a> Ausprobieren der Geosuche
+### <a name="try-geospatial-search"></a><a name="geo-search"></a> Ausprobieren der Geosuche
 
 Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben.
 

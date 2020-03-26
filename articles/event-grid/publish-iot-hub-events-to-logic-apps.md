@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
 ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706433"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps
@@ -188,17 +188,17 @@ In diesem Abschnitt konfigurieren Sie Ihren IoT Hub zum Veröffentlichen von Ere
 
 6. Wählen Sie **Neuen Filter hinzufügen** aus. Fügen Sie die folgenden Werte in die Felder ein:
 
-   * **Key**: Wählen Sie `Subject` aus.
+   * **Key**: Wählen Sie `Subject`aus.
 
-   * **Operator**: Wählen Sie `String begins with` aus.
+   * **Operator**: Wählen Sie `String begins with`aus.
 
    * **Value**:  Geben Sie `devices/Building1_` ein, um nach Geräteereignissen in Gebäude 1 zu filtern.
   
    Fügen Sie einen weiteren Filter mit den folgenden Werten hinzu:
 
-   * **Key**: Wählen Sie `Subject` aus.
+   * **Key**: Wählen Sie `Subject`aus.
 
-   * **Operator**: Wählen Sie `String ends with` aus.
+   * **Operator**: Wählen Sie `String ends with`aus.
 
    * **Value**: Geben Sie `_Temperature` an, um nach Geräteereignissen zu filtern, die im Zusammenhang mit der Temperatur stehen.
 

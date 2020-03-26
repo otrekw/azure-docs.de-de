@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647941"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473046"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Schnellstart: Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung
 
 Diese Schnellstartanleitung enthält eine Einführung in die Verwendung von verwalteten Anwendungen. Sie fügen einem internen Katalog für die Benutzer Ihrer Organisation eine Definition für die verwaltete Anwendung hinzu. Wir haben die Dateien für Ihre verwaltete Anwendung bereits erstellt, um die Einführung zu vereinfachen. Diese Dateien sind über GitHub verfügbar. Im Tutorial [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md) erfahren Sie, wie Sie diese Dateien erstellen.
 

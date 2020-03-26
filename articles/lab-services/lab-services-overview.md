@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 02/03/2020
 ms.author: spelluru
 ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76986630"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
@@ -63,7 +63,7 @@ Weitere Informationen finden Sie unter [Verwenden von DevTest Labs für die Entw
 Mit Azure DevTest Labs lassen sich zahlreiche Schlüsselszenarien implementieren. Ein primäres Szenario ist jedoch das Hosten von Computern für Tester. In diesem Szenario bietet DevTest Labs folgende Vorteile:
 
 - Tester können schnell Windows- und Linux-Umgebungen mit wiederverwendbaren Vorlagen und Artefakten bereitstellen und so die neueste Version ihrer Anwendung testen.
-- Tester können ihre Auslastungstests durch Bereitstellen mehrerer Test-Agents zentral hochskalieren.
+- Tester können ihre Auslastungstests durch Bereitstellen mehrerer Test-Agents hochskalieren.
 - Administratoren können die Kosten kontrollieren, indem sie sicherstellen, dass Tester nicht mehr VMs erhalten, als sie für Tests benötigen, und VMs heruntergefahren werden, sobald sie nicht verwendet werden.
 
 Weitere Informationen finden Sie unter [Verwenden von DevTest Labs für Tests](devtest-lab-test-env.md).

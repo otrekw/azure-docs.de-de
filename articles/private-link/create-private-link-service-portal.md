@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
 ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252551"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
@@ -54,7 +54,7 @@ Erstellen Sie über das Portal einen internen Lastenausgleich im Tarif „Standa
 
 1. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, bzw. wählen Sie sie aus:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | **Abonnement**               | Wählen Sie Ihr Abonnement aus.    |
     | **Ressourcengruppe**         | Wählen Sie im Feld die Option **MyResourceGroupLB** aus.|
@@ -141,7 +141,7 @@ In diesem Abschnitt wird ein Private Link-Dienst hinter einem Standardlastenaus
 
 1. Geben Sie unter **Private Link-Dienst erstellen (Vorschau) – Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung           | value                                                                        |
+    | Einstellung           | Wert                                                                        |
     |-------------------|------------------------------------------------------------------------------|
     | Projektdetails:  |                                                                              |
     | **Abonnement**      | Wählen Sie Ihr Abonnement aus.                                                     |
@@ -154,7 +154,7 @@ In diesem Abschnitt wird ein Private Link-Dienst hinter einem Standardlastenaus
 
 1. Geben Sie unter **Private Link-Dienst erstellen (Vorschau) – Ausgangseinstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung                           | value                                                                           |
+    | Einstellung                           | Wert                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
     | **Load Balancer**                     | Wählen Sie **myLoadBalancer** aus.                                                           |
     | **Front-End-IP-Adresse des Lastenausgleichs** | Wählen Sie die Front-End-IP-Adresse von **myLoadBalancer** aus.                                |

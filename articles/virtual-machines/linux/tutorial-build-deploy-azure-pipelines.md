@@ -12,10 +12,10 @@ ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
 ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76988327"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
@@ -53,7 +53,7 @@ Wenn Sie bereits über eine App in GitHub verfügen, die Sie bereitstellen möch
 
 Wenn Sie jedoch noch keine Erfahrung mit diesen Vorgängen haben, empfiehlt es sich, unseren Beispielcode zu verwenden. Forken Sie in diesem Fall das folgende Repository in GitHub:
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 ```
 https://github.com/spring-projects/spring-petclinic
@@ -62,7 +62,7 @@ https://github.com/spring-projects/spring-petclinic
 > [!NOTE]
 > Petclinic ist eine [Java Spring Boot](https://spring.io/guides/gs/spring-boot)-Anwendung, die mit [Maven](https://spring.io/guides/gs/maven/) erstellt wurde.
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 ```
 https://github.com/azure-devops/fabrikam-node
@@ -82,13 +82,13 @@ https://github.com/azure-devops/fabrikam-node
 Die oben genannten Beispiel-Apps wurden unter Ubuntu 16.04 getestet, und es empfiehlt sich, für diese Schnellstartanleitung die gleiche Linux-VM-Version zu verwenden.
 Führen Sie die nachfolgend beschriebenen Schritte aus, je nachdem, welcher Runtimestapel für die App verwendet wird.
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 - Um Java Spring Boot- und Spring Cloud-basierte Apps bereitzustellen, erstellen Sie eine Linux-VM in Azure. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Vorlage, die eine vollständig unterstützte, auf OpenJDK basierende Runtime enthält.
 - Um Java-Servlets auf einem Tomcat-Server bereitzustellen, erstellen Sie eine Linux-VM mit Java 8. Verwenden Sie dafür [diese](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure-Vorlage, und [konfigurieren Sie Tomcat 9.x als Dienst](https://tomcat.apache.org/tomcat-9.0-doc/setup.html).
 - Um eine Java EE-basierte App bereitzustellen, verwenden Sie eine Azure-Vorlage, um eine [Linux-VM mit Java und WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) oder eine [Linux-VM mit Java und WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) oder eine [Linux-VM mit Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) und WildFly/JBoss 14 zu erstellen. 
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 Zum Installieren einer JavaScript-App oder einer Node.js-App benötigen Sie eine Linux-VM mit einem Nginx-Webserver, um die App bereitzustellen.
 Wenn Sie noch nicht über eine Linux-VM mit Nginx verfügen, erstellen Sie jetzt eine, indem Sie die Schritte in [diesem Beispiel](/azure/virtual-machines/linux/quick-create-cli) ausführen.
@@ -141,7 +141,7 @@ Sie benötigen eine CI-Buildpipeline, die Ihre Webanwendung veröffentlicht, sow
 
 1. Azure Pipelines analysiert das Repository und empfiehlt eine geeignete Pipelinevorlage.
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Codeausschnitt, der Ihr Java-Projekt kompiliert und Tests mit Apache Maven ausführt:
 
@@ -165,7 +165,7 @@ Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Cod
 
 Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer Java-App mit Maven](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java).
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Codeausschnitt, der ein allgemeines Node.js-Projekt mit npm kompiliert.
 

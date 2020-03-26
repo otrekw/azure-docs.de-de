@@ -4,10 +4,10 @@ description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „S
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327445"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
@@ -154,8 +154,8 @@ Nach der Veröffentlichung der Blaupausendefinition können Sie sie einem Abonne
 
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
-     |Ressourcengruppe „RGtoLock“|Resource group|NAME|TestingBPLocks|Definiert den Namen der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
-     |Ressourcengruppe „RGtoLock“|Resource group|Location|USA, Westen 2|Definiert den Standort der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
+     |Ressourcengruppe „RGtoLock“|Resource group|Name|TestingBPLocks|Definiert den Namen der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
+     |Ressourcengruppe „RGtoLock“|Resource group|Position|USA, Westen 2|Definiert den Standort der neuen Ressourcengruppe, auf die Blaupausensperren angewendet werden sollen.|
      |StorageAccount|Resource Manager-Vorlage|storageAccountType (StorageAccount)|Standard_GRS|Speicher-SKU. Der Standardwert lautet _Standard_LRS_.|
 
 1. Nachdem Sie alle Parameter eingegeben haben, wählen Sie unten auf der Seite die Option **Zuweisen** aus.
@@ -225,7 +225,7 @@ Löschen Sie nach Abschluss dieses Tutorials die folgenden Ressourcen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie neue Ressourcen schützen, die mit Azure Blueprints bereitgestellt werden. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+In diesem Tutorial haben Sie erfahren, wie Sie neue Ressourcen schützen, die mit Azure Blueprints bereitgestellt werden. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
 
 > [!div class="nextstepaction"]
 > [Informationen zum Lebenszyklus von Blaupausen](../concepts/lifecycle.md)

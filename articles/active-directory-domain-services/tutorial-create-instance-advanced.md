@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612553"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223037"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz mit erweiterten Konfigurationsoptionen
 
@@ -71,9 +71,9 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 > [!TIP]
 > Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Lautet Ihr DNS-Namespace also beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und dessen Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
+> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
-> Unter Umständen müssen einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellt werden. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
+> Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
 > In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aaddscontoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an.
 
@@ -139,7 +139,7 @@ Füllen Sie die Felder im Fenster *Netzwerk* wie folgt aus:
 
 Zur Verwaltung der Azure AD DS-Domäne wird eine spezielle Administratorgruppe namens *AAD DC-Administratoren* verwendet. Mitgliedern dieser Gruppe werden Administratorrechte auf VMs erteilt, die in die verwaltete Domäne eingebunden sind. Auf in die Domäne eingebundenen VMs wird diese Gruppe zur lokalen Administratorengruppe hinzugefügt. Mitglieder dieser Gruppe können auch Remotedesktop verwenden, um Remoteverbindungen mit den in die Domäne eingebundenen VMs herzustellen.
 
-Sie besitzen keine Berechtigungen als *Domänenadministrator* oder *Unternehmensadministrator* für eine verwaltete Domäne, in der Azure AD DS verwendet wird. Diese Berechtigungen sind vom Dienst reserviert und stehen Benutzern innerhalb des Mandanten nicht zur Verfügung. Stattdessen können Sie über die Gruppe *AAD DC-Administratoren* einige Vorgänge ausführen, für die entsprechende Berechtigungen erforderlich sind. Zu diesen Vorgängen gehört das Einbinden von Computern in die Domäne, die Mitgliedschaft in der Administratorengruppe auf in die Domäne eingebundenen VMs und das Konfigurieren von Gruppenrichtlinien.
+Sie besitzen keine Berechtigungen als *Domänenadministrator* oder *Unternehmensadministrator* für eine verwaltete Domäne, in der Azure AD DS verwendet wird. Diese Berechtigungen sind vom Dienst reserviert und stehen Benutzern innerhalb des Mandanten nicht zur Verfügung. Stattdessen können Sie über die Gruppe *AAD DC-Administratoren* einige Vorgänge ausführen, für die entsprechende Berechtigungen erforderlich sind. Zu diesen Vorgängen gehören die Zugehörigkeit zur Administratorengruppe auf in die Domäne eingebundenen virtuellen Computern und das Konfigurieren von Gruppenrichtlinien.
 
 Der Assistent erstellt die Gruppe *AAD DC-Administratoren* automatisch in Ihrem Azure AD-Verzeichnis. Wenn eine Gruppe mit diesem Namen in Ihrem Azure AD-Verzeichnis besteht, wählt der Assistent diese Gruppe aus. Sie können der Gruppe *AAD DC-Administratoren* während des Bereitstellungsprozesses optional weitere Benutzer hinzufügen. Diese Schritte können später ausgeführt werden.
 

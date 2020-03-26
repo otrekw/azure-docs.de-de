@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 96590faae26892771ce27c539bb6e71c84b65b10
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 3/18/2020
+ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938943"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067930"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Node.js zum Herstellen von Verbindungen mit Daten und Abfragen von Daten in Azure Database for MySQL
 
@@ -26,7 +26,7 @@ In diesem Thema wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung ver
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Ein Azure Database for MySQL-Server. [Erstellen Sie einen Azure Database for MySQL-Server mithilfe des Azure-Portals](quickstart-create-mysql-server-database-using-azure-portal.md), oder [erstellen Sie einen Azure Database for MySQL-Server mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-## <a name="install-nodejs-and-the-mysql-connector"></a>Installieren von Node.js und MySQL-Connector
+## <a name="install-nodejs-and-the-mysql-connector"></a>Installation von Node.js und MySQL-Connector
 
 Befolgen Sie zum Installieren von [Node.js](https://nodejs.org) die plattformabhängigen Anweisungen im entsprechenden Abschnitt. Verwenden Sie npm, um das Paket [mysql](https://www.npmjs.com/package/mysql) und die entsprechenden Abhängigkeiten in Ihrem Projektordner zu installieren.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977380"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
@@ -66,7 +66,7 @@ Erstellen Sie eine Anwendung, wie unter [Erstellen einer Azure Active Directory-
 1. Öffnen Sie den Azure Storage-Explorer. Erweitern Sie Ihr Speicherkonto. Klicken Sie mit der rechten Maustaste auf **Blobcontainer**, und wählen Sie **Blobcontainer erstellen** aus.
 1. Geben Sie dem neuen Container den Namen *adfv2branch*, und wählen Sie **Hochladen** aus, um die Datei *input.txt* zum Container hinzuzufügen.
 
-## Erstellen eines Visual Studio-Projekts<a name="create-visual-studio-project"></a>
+## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts<a name="create-visual-studio-project"></a>
 
 Erstellen Sie eine C# .NET-Konsolenanwendung:
 

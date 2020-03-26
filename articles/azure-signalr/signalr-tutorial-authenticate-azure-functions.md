@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158152"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
@@ -41,30 +41,30 @@ Für dieses Tutorial ist die folgende Software erforderlich:
 
 Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich mit Ihren Anmeldeinformationen an.
 
-## <a name="create-an-azure-signalr-service-instance"></a>Erstellen einer Azure SignalR Service-Instanz
+## <a name="create-an-azure-signalr-service-instance"></a>Erstellen einer Instanz des Azure SignalR-Diensts
 
 Sie erstellen und testen die Azure Functions-App lokal. Die App greift auf eine SignalR Service-Instanz in Azure zu, die zuvor erstellt werden muss.
 
 1. Klicken Sie auf die Schaltfläche **Ressource erstellen** ( **+** ), um eine neue Azure-Ressource zu erstellen.
 
-1. Suchen Sie nach **SignalR Service**, und wählen Sie den Dienst aus. Klicken Sie auf **Create**.
+1. Suchen Sie nach **SignalR Service**, und wählen Sie den Dienst aus. Klicken Sie auf **Erstellen**.
 
     ![Neue SignalR Service-Instanz](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. Geben Sie Folgendes ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Ressourcenname | Ein eindeutiger Name für die SignalR Service-Instanz |
     | Resource group | Erstellen Sie eine neue Ressourcengruppe mit einem eindeutigen Namen. |
-    | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
+    | Position | Wählen Sie einen Standort in Ihrer Nähe aus. |
     | Preisstufe | Kostenlos |
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
-1. Nachdem die Instanz bereitgestellt wurde, öffnen Sie sie im Portal und suchen Sie die Seite „Einstellungen“. Ändern Sie die Einstellung des Dienstmodus in *Serverlos*.
+1. Nachdem die Instanz bereitgestellt wurde, öffnen Sie sie im Portal, und navigieren Sie zur Seite „Einstellungen“. Ändern Sie die Einstellung des Dienstmodus in *Serverlos*.
 
-    ![SignalR-Dienstmodus](media/signalr-concept-azure-functions/signalr-service-mode.png)
+    ![SignalR Service-Modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
 
 ## <a name="initialize-the-function-app"></a>Initialisieren der Funktions-App
@@ -145,11 +145,11 @@ Wird die Chap-App zum ersten Mal im Browser geöffnet, sind gültige Verbindungs
 
 1. Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Funktions-App-Ordner | Wählen Sie den Hauptprojektordner aus. |
     | Vorlage | HTTP-Trigger |
-    | NAME | negotiate |
+    | Name | negotiate |
     | Autorisierungsstufe | Anonym |
 
     Ein Ordner mit dem Namen **negotiate** wird erstellt, der die neue Funktion enthält.
@@ -204,11 +204,11 @@ Die Web-App benötigt darüber hinaus eine HTTP-API zum Senden von Chatnachricht
 
 1. Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Funktions-App-Ordner | Wählen Sie den Hauptprojektordner aus. |
     | Vorlage | HTTP-Trigger |
-    | NAME | SendMessage |
+    | Name | SendMessage |
     | Autorisierungsstufe | Anonym |
 
     Ein Ordner mit dem Namen **SendMessage** wird erstellt, der die neue Funktion enthält.
@@ -315,12 +315,12 @@ Für eine in Azure ausgeführte Funktions-App wird ein Azure Storage-Konto benö
 
 1. Geben Sie Folgendes ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Subscription | Wählen Sie das Abonnement mit der SignalR Service-Instanz. |
     | Resource group | Wählen Sie dieselbe Ressourcengruppe. |
     | Ressourcenname | Geben Sie einen eindeutigen Namen für das Speicherkonto an. |
-    | Location | Wählen Sie den gleichen Speicherort wie für Ihre anderen Ressourcen aus. |
+    | Position | Wählen Sie den gleichen Speicherort wie für Ihre anderen Ressourcen aus. |
     | Leistung | Standard |
     | Kontoart | StorageV2 (universell v2) |
     | Replikation | Lokal redundanter Speicher (LRS) |
@@ -371,7 +371,7 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
 
 1. Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Bereitzustellender Ordner | Wählen Sie den Hauptprojektordner aus. |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -390,7 +390,7 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
 
 1. Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Datei für lokale Einstellungen | local.settings.json |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -449,7 +449,7 @@ Die Webanwendung wird mithilfe des Azure Blob Storage-Features für statische We
 
 1. Geben Sie die folgenden Werte ein:
 
-    | NAME | Wert |
+    | Name | Wert |
     |---|---|
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Speicherkonto | Wählen Sie das zuvor erstellte Speicherkonto aus. |

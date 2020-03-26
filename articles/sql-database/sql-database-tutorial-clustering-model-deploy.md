@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640910"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Bereitstellen eines Clusteringmodells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschau)
@@ -29,7 +29,7 @@ Sie erstellen eine gespeicherte Prozedur mit einem eingebetteten R-Skript, das e
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer gespeicherten Prozedur, die das Modell generiert
+> * Erstellen einer gespeicherten Prozedur zum Generieren des Modells
 > * Durchführen von Clustering in SQL-Datenbank
 > * Verwenden der Clusteringinformationen
 
@@ -43,12 +43,12 @@ In [Teil 2](sql-database-tutorial-clustering-model-build.md) haben Sie erfahren,
 
 * In Teil drei dieser Reihe von Tutorials wird angenommen, dass Sie [**Teil eins**](sql-database-tutorial-clustering-model-prepare-data.md) und [**Teil zwei**](sql-database-tutorial-clustering-model-build.md) abgeschlossen haben.
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>Erstellen einer gespeicherten Prozedur, die das Modell generiert
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>Erstellen einer gespeicherten Prozedur zum Generieren des Modells
 
-Führen Sie das folgende T-SQL-Skript aus, um die gespeicherte Prozedur zu erstellen. Die Prozedur führt die Schritte durch, die in Teil 1 und 2 dieser Tutorialreihe entwickelt wurden:
+Führen Sie das folgende T-SQL-Skript aus, um die gespeicherte Prozedur zu erstellen. Mit dem Verfahren werden die in Teil 1 und Teil 2 dieser Tutorialreihe entwickelten Schritte neu erstellt:
 
-* Klassifizieren von Kunden basierend auf ihren bisherigen Käufen und Rücksendungen
-* Generieren von vier Kundenclustern mithilfe eines K-Means-Algorithmus
+* Klassifizieren von Kunden basierend auf deren Käufe und Rückgaben
+* Generieren von vier Clustern von Kunden mithilfe des K-Means-Algorithmus
 
 Die Prozedur speichert die daraus resultierenden Kundenclusterzuordnungen in der Datenbanktabelle **customer_return_clusters**.
 
@@ -208,7 +208,7 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 
 ## <a name="use-the-clustering-information"></a>Verwenden der Clusteringinformationen
 
-Da Sie die Clusteringprozedur in der Datenbank gespeichert haben, kann sie das Clustering effizient anhand der Kundendaten durchführen, die in derselben Datenbank gespeichert sind. Sie können die Prozedur bei jeder Aktualisierung Ihrer Kundendaten ausführen und anschließend die aktualisierten Clusteringinformationen verwenden.
+Da Sie die Clusteringprozedur in der Datenbank gespeichert haben, können Sie das Clustering effizient für Kundendaten ausführen, die in derselben Datenbank gespeichert sind. Sie können die Prozedur nach jeder Aktualisierung der Kundendaten ausführen und die aktualisierten Clusteringinformationen verwenden.
 
 Angenommen, Sie möchten eine Werbe-E-Mail an Kunden in Cluster 3 senden, die Gruppe, die ein aktiveres Rücksendungsverhalten aufweist. (In [Teil 2](sql-database-tutorial-clustering-model-build.md#analyze-the-results) werden die vier Cluster beschrieben.) Der folgende Code wählt die E-Mail-Adressen von Kunden in Cluster 3 aus.
 
@@ -237,9 +237,9 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im dritten Teil dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
+In Teil 3 dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
 
-* Erstellen einer gespeicherten Prozedur, die das Modell generiert
+* Erstellen einer gespeicherten Prozedur zum Generieren des Modells
 * Durchführen von Clustering in SQL-Datenbank
 * Verwenden der Clusteringinformationen
 

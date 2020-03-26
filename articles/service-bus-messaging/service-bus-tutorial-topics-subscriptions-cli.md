@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718912"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements
@@ -44,7 +44,7 @@ Für die Entwicklung einer Service Bus-App mit Java muss Folgendes installiert s
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-Themen und -Abonnements
 
@@ -138,7 +138,7 @@ Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden u
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Navigieren Sie zum Ordner `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java` mit den Beispielen. Beachten Sie, dass in der Bash-Shell für die Befehle die Groß-/Kleinschreibung berücksichtigt wird und normale Schrägstriche als Pfadtrennzeichen verwendet werden müssen.
+2. Navigieren Sie zum Beispielordner `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`. Beachten Sie, dass in der Bash-Shell für die Befehle die Groß-/Kleinschreibung berücksichtigt wird und normale Schrägstriche als Pfadtrennzeichen verwendet werden müssen.
 
 3. Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
    
@@ -330,7 +330,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie mit der Azure CLI Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die dazugehörigen Abonnements gesendet und empfangen. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie mit der Azure CLI Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die dazugehörigen Abonnements gesendet und empfangen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements für das Thema mit dem Azure-Portal

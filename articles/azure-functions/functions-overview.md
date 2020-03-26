@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77621005"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions
@@ -67,7 +67,7 @@ Es steht eine Reihe von Vorlagen zur Verfügung, um Sie bei den ersten Schritten
 
 - **Service Bus-Thema**: Verbinden Sie andere Azure-Dienste oder lokale Diensten, indem Sie [auf Service Bus-Themennachrichten reagieren](./functions-bindings-service-bus.md).
 
-## <a name="pricing"></a>Was kostet Functions?
+## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Was kostet Functions?
 
 Für Azure Functions stehen drei Arten von Tarifen zur Verfügung. Wählen Sie den, der Ihren Anforderungen am besten entspricht:
 

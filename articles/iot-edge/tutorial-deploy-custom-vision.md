@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76167010"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
@@ -72,10 +72,10 @@ Nachdem Sie Ihre Bildklassifizierung erstellt und trainiert haben, können Sie s
 
 4. Erstellen Sie Ihr Projekt mit den folgenden Werten:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Name | Geben Sie einen Namen für Ihr Projekt an (beispielsweise **EdgeTreeClassifier**). |
-   | Beschreibung | Eine optionale Projektbeschreibung. |
+   | BESCHREIBUNG | Eine optionale Projektbeschreibung. |
    | Resource | Wählen Sie eine Ihrer Azure-Ressourcengruppen aus, die eine Custom Vision-Dienstressource enthält, oder **erstellen Sie eine neue**, wenn Sie noch keine hinzugefügt haben. |
    | Projekttypen | **Klassifizierung** |
    | Klassifizierungstypen | **Multiclass (single tag per image)** (Multiklasse (einzelnes Tag pro Bild)) |
@@ -146,7 +146,7 @@ Eine Projektmappe ist eine logische Methode, um mehrerer Module für eine einzel
 
 1. Geben Sie in der Befehlspalette den folgenden Befehl ein, und führen Sie ihn aus: **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein (beispielsweise **CustomVisionSolution**), oder übernehmen Sie den Standardnamen. |
@@ -212,7 +212,7 @@ In diesem Abschnitt fügen Sie der gleichen Custom Vision-Projektmappe (CustomVi
 
 1. Führen Sie im gleichen Visual Studio Code-Fenster über die Befehlspalette den Befehl **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: IoT Edge-Modul hinzufügen) aus. Geben Sie in der Befehlspalette die folgenden Informationen für Ihr neues Modul an: 
 
-   | Prompt | value | 
+   | Prompt | Wert | 
    | ------ | ----- |
    | Select deployment template file (Bereitstellungsvorlagendatei auswählen) | Wählen Sie die Datei „deployment.template.json“ aus dem Ordner „CustomVisionSolution“ aus. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie **Python-Modul** aus. |

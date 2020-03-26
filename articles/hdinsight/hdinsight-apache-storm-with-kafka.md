@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494354"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Apache Kafka in HDInsight
@@ -410,7 +410,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
       | --- | --- |
       | Subscription | Ihr Azure-Abonnement |
       | Resource group | Die Ressourcengruppe mit den Ressourcen. |
-      | Location | Die Azure-Region, in der die Ressourcen erstellt werden. |
+      | Position | Die Azure-Region, in der die Ressourcen erstellt werden. |
       | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. |
       | Storm Cluster Name (Storm-Clustername) | Der Name des Storm-Clusters. |
       | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |

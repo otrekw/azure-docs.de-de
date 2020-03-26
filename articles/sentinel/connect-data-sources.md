@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588330"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214808"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -56,7 +56,6 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
-    - [Windows-Sicherheitsereignisse](connect-windows-security-events.md) 
     - [Windows-Firewall](connect-windows-firewall.md)
     - [Windows-Sicherheitsereignisse](connect-windows-security-events.md)
 
@@ -91,7 +90,7 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - Linux-Server
     - Andere Clouds
     
-## Agent-Verbindungsoptionen<a name="agent-options"></a>
+## <a name="agent-connection-options"></a>Agent-Verbindungsoptionen<a name="agent-options"></a>
 
 Zum Verbinden Ihrer externen Appliance mit Azure Sentinel muss der Agent auf einem dedizierten Computer (VM oder lokal) bereitgestellt werden, um die Kommunikation zwischen der Appliance und Azure Sentinel zu unterstützen. Sie können den Agent automatisch oder manuell bereitstellen. Die automatische Bereitstellung ist nur verfügbar, wenn es sich bei Ihrem dedizierten Computer um einen neuen virtuellen Computer handelt, den Sie in Azure erstellen. 
 

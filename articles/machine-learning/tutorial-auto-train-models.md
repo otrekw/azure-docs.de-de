@@ -11,10 +11,10 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77116448"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
@@ -894,7 +894,7 @@ Führen Sie die folgenden Schritte aus, um ein Modell automatisch zu trainieren:
 
 Definieren Sie die Experimentparameter und Modelleinstellungen für das Training. Die vollständige Liste mit den Einstellungen finden Sie [hier](how-to-configure-auto-train.md). Mit diesen Standardeinstellungen dauert die Übermittlung des Experiments etwa fünf bis 20 Minuten. Durch Verringern des Parameters `experiment_timeout_minutes` können Sie die Laufzeit allerdings verkürzen.
 
-|Eigenschaft| Wert in diesem Tutorial |Beschreibung|
+|Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Zeitlimit in Minuten für jede Iteration. Verringern Sie diesen Wert, um die Gesamtlaufzeit zu verringern.|
 |**experiment_timeout_minutes**|20|Maximal zulässige Dauer für alle Iterationen (in Minuten). Danach wird das Experiment beendet.|

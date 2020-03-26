@@ -17,10 +17,10 @@ ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 957fee48397bc0b23737157dec0e74cf6505fab5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Tutorial: Azure Active Directory-Integration mit SAML SSO for Jira by resolution GmbH
@@ -129,37 +129,37 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit SAML SSO 
 
 2. Zeigen Sie auf der rechten Seite auf das Zahnrad, und klicken Sie auf **Manage apps** (Apps verwalten).
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon1.png)
 
 3. Sollten Sie auf die Seite für den Administratorzugriff umgeleitet werden, geben Sie dort Ihr **Kennwort** ein, und klicken Sie auf die**Bestätigungsschaltfläche**.
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon2.png)
 
 4. Jira leitet Sie normalerweise zum Atlassian-Marketplace um. Sollte das nicht der Fall sein, klicken Sie im linken Bereich auf **Find new apps** (Nach neuen Apps suchen). Suchen Sie nach **SAML Single Sign On (SSO) for JIRA**, und klicken Sie auf die Schaltfläche **Install** (Installieren), um das SAML-Plug-In zu installieren.
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/store.png)
 
 5. Die Installation des Plug-Ins wird gestartet. Klicken Sie nach Abschluss des Vorgangs auf die Schaltfläche **Close** (Schließen).
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/store-2.png)
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/store-3.png)
 
 6. Klicken Sie anschließend auf **Manage** (Verwalten).
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/store-4.png)
     
 8. Klicken Sie auf **Configure** (Konfigurieren), um das soeben installierte Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/store-5.png)
 
 9. Klicken Sie im **Konfigurations-Assistenten für das SAML SSO-Plug-In** auf **Add new IdP** (Neuen IdP hinzufügen), um Azure AD als neuen Identitätsanbieter zu konfigurieren.
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon4.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon4.png) 
 
 10. Führen Sie auf der Seite **Choose your SAML Identity Provider** (SAML-Identitätsanbieter auswählen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5a.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon5a.png)
  
     a. Legen Sie als IdP-Typ die Option **Azure AD** fest.
     
@@ -171,11 +171,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit SAML SSO 
     
 11. Klicken Sie auf der Seite **Identity provider configuration** (Identitätsanbieterkonfiguration) auf die Schaltfläche **Next** (Weiter).
  
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5b.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon5b.png)
 
 12. Führen Sie auf der Seite **Import SAML IdP Metadata** (SAML-IdP-Metadaten importieren) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5c.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon5c.png)
 
     a. Klicken Sie auf die Schaltfläche **Select Metadata XML File** (Metadaten-XML-Datei auswählen), und wählen Sie die **Verbundmetadaten-XML-Datei** aus, die Sie zuvor heruntergeladen haben.
 
@@ -187,19 +187,19 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden mit SAML SSO 
     
 13. Klicken Sie auf der Seite **User ID attribute and transformation** (Benutzer-ID-Attribut und Transformation) auf die Schaltfläche **Next** (Weiter).
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5d.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon5d.png)
     
 14. Klicken Sie auf der Seite **User creation and update** (Benutzererstellung und -aktualisierung) auf **Save & Next** (Speichern und weiter), um die Einstellungen zu speichern.
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6a.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon6a.png)
     
 15. Klicken Sie auf der Seite **Test your settings** (Einstellungen testen) auf **Skip test & configure manually** (Test überspringen und manuell konfigurieren), um den Benutzertest vorerst zu überspringen. Dieser wird im nächsten Abschnitt durchgeführt und erfordert einige Einstellungen im Azure-Portal.
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6b.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon6b.png)
     
 16. Klicken Sie auf **OK**, um die Warnung zu überspringen.
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6c.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -223,7 +223,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Kennwortfeld.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -320,5 +320,5 @@ Nach Aktivierung der Option ist die Eingabeaufforderung für Benutzername und Ke
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -14,19 +14,19 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68639977"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Vorbereiten von Daten zum Durchführen von Clustering in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
 In Teil 1 dieser dreiteiligen Tutorialreihe importieren Sie Daten aus einer Azure SQL-Datenbank in R und bereiten diese Daten vor. Später in dieser Reihe verwenden Sie die Daten zum Trainieren und Bereitstellen eines Clusteringmodells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion).
 
-*Clustering* kann man sich vorstellen als das Organisieren von Daten in Gruppen, deren Mitglieder sich in irgendeiner Weise ähneln.
-Sie verwenden den **K-Means**-Algorithmus, um das Clustering von Kunden in einem Dataset mit Produktkäufen und -rücksendungen durchzuführen. Durch das Clustering von Kunden können Sie Ihre Marketingaktivitäten effektiver gestalten, indem Sie sie auf bestimmte Gruppen ausrichten.
-Das K-Means-Clustering ist ein *nicht überwachter Lernalgorithmus*, der auf der Grundlage von Ähnlichkeiten in Daten nach Mustern sucht.
+*Clustering* kann als Organisieren von Daten in Gruppen beschrieben werden, in denen Mitglieder einer Gruppe in irgendeiner Weise ähnlich sind.
+Sie verwenden den **K-Means**-Algorithmus zum Durchführen des Clusterings von Kunden in einem Dataset von Produktkäufen und -rückgaben. Durch das Clustern von Kunden können Sie Ihre Marketingmaßnahmen effektiver auf bestimmte Gruppen ausrichten.
+K-Means-Clustering ist ein *nicht überwachter Lernalgorithmus*, der auf der Grundlage von Ähnlichkeiten nach Mustern in Daten sucht.
 
 In den Teilen 1 und 2 dieser Reihe entwickeln Sie einige R-Skripts in RStudio, um Ihre Daten vorzubereiten und ein Machine Learning-Modell zu trainieren. In Teil 3 führen Sie dann diese R-Skripts in einer SQL-Datenbank mithilfe gespeicherter Prozeduren aus.
 
@@ -61,7 +61,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="import-the-sample-database"></a>Importieren der Beispieldatenbank
 
-Das in diesem Tutorial verwendete Beispieldataset wurde in einer **BACPAC**-Datenbank-Sicherungsdatei gespeichert, die Sie herunterladen und verwenden können. Dieses Dataset leitet sich aus dem Dataset [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) ab, das vom [Transaction Processing Performance Council (TCP)](http://www.tpc.org/default.asp) bereitgestellt wird.
+Das in diesem Tutorial verwendete Beispieldataset wurde in einer **BACPAC**-Datenbank-Sicherungsdatei gespeichert, die Sie herunterladen und verwenden können. Dieses Dataset wird aus dem [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp)-Dataset abgeleitet, das von [TPC (Transaction Processing Performance Council)](http://www.tpc.org/default.asp) bereitgestellt wird.
 
 1. Laden Sie die Datei [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac) herunter.
 
@@ -71,15 +71,15 @@ Das in diesem Tutorial verwendete Beispieldataset wurde in einer **BACPAC**-Date
    * Wählen Sie während der öffentlichen Vorschau die Konfiguration **Gen5/vCore** für die neue Datenbank
    * Nennen Sie die neue Datenbank „tpcxbb_1gb“.
 
-## <a name="separate-customers"></a>Trennen von Kunden
+## <a name="separate-customers"></a>Aufteilen von Kunden
 
 Erstellen Sie eine neue RScript-Datei in RStudio, und führen Sie das folgende Skript aus.
 In der SQL-Abfrage trennen Sie Kunden anhand der folgenden Dimensionen:
 
-* **orderRatio**: Retourenverhältnis (Gesamtanzahl teilweise oder vollständig retournierter Bestellungen im Vergleich zur Gesamtanzahl von Bestellungen)
-* **itemsRatio**: Verhältnis retournierter Artikel (Gesamtanzahl retournierter Artikel im Vergleich zur Anzahl gekaufter Artikel)
-* **monetaryRatio**: Retourenbetragsverhältnis (Gesamtbetrag der retournierten Artikel im Vergleich zum Einkaufsbetrag)
-* **frequency**: Retourenhäufigkeit
+* **orderRatio** = Retourenquote für Bestellungen (Gesamtzahl der teilweise oder vollständig zurückgegebenen Bestellungen im Vergleich zur Gesamtzahl der Bestellungen)
+* **itemsRatio** = Retourenquote für Artikel (Gesamtzahl der zurückgegebenen Artikel im Vergleich zur Anzahl der gekauften Artikel)
+* **monetaryRatio** = Rückzahlungsquote (Monetärer Gesamtbetrag der zurückgegebenen Artikel im Vergleich zum erworbenen Betrag)
+* **frequency** = Häufigkeit der Retouren
 
 In der **paste**-Funktion ersetzen Sie **Server**, **UID** und **PWD** durch Ihre eigenen Verbindungsinformationen.
 
@@ -156,7 +156,7 @@ LEFT OUTER JOIN (
 "
 ```
 
-## <a name="load-the-data-into-a-data-frame"></a>Laden der Daten in einen Datenrahmen
+## <a name="load-the-data-into-a-data-frame"></a>Laden der Daten in einem neuen Datenrahmen
 
 Jetzt verwenden Sie das folgende Skript, um die Ergebnisse der Abfrage mithilfe der Funktion **rxSqlServerData** an einen R-Datenrahmen zurückzugeben.
 Im Zuge des Prozesses definieren Sie den Typ für die ausgewählten Spalten (mit colClasses), um sicherzustellen, dass die Typen ordnungsgemäß an R übertragen werden.
@@ -182,7 +182,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-Die Ergebnisse sollten ähnlich wie hier aussehen:
+Das Ergebnis sollte etwa folgendermaßen aussehen:
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency

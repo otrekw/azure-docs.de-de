@@ -1,6 +1,6 @@
 ---
 title: Einführung in Data Factory, einen Datenintegrationsdienst
-description: 'Hier erfahren Sie, worum es sich bei Azure Data Factory handelt: Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.'
+description: 'Erfahren Sie, was Azure Data Factory ist: Ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.'
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666800"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
@@ -140,7 +140,7 @@ Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu 
 
 Informationen zum Erstellen von Data Factorys mit Datenpipelines erhalten Sie anhand von Schritt-für-Schritt-Anleitungen in den folgenden Tutorials:
 
-| Tutorial | BESCHREIBUNG |
+| Lernprogramm | BESCHREIBUNG |
 | --- | --- |
 | [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Erstellen Sie eine Pipeline, mit der Daten aus Blobspeicher in eine SQL-Datenbank verschoben werden. |
 | [Tutorial: Build your first pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen der ersten Pipeline zum Verarbeiten von Daten mithilfe eines Hadoop-Clusters) |Erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline für die Datenverarbeitung, indem ein Hive-Skript in einem Azure HDInsight-Cluster (Hadoop) ausgeführt wird. |

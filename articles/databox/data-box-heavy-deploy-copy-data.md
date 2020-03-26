@@ -10,11 +10,11 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914047"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214206"
 ---
 ::: zone target = "docs"
 
@@ -171,7 +171,7 @@ Nachdem Sie eine Verbindung mit der SMB-Freigabe hergestellt haben, beginnen Sie
     ```
     Die Attribute werden in der folgenden Tabelle beschrieben.
     
-    |Attribut  |BESCHREIBUNG  |
+    |attribute  |BESCHREIBUNG  |
     |---------|---------|
     |/e      |Kopiert Unterverzeichnisse, einschließlich der leeren Verzeichnisse.         |
     |/r:     |Gibt die Anzahl von Wiederholungsversuchen für fehlerhafte Kopiervorgänge an.         |

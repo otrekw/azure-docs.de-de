@@ -4,11 +4,11 @@ description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivi
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304152"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215628"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell
 
@@ -107,7 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie das Resource Graph-Modul zu ihrer Azure PowerShell-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Weitere Informationen zur Resource Graph-Sprache finden Sie auf der Seite mit den Details zur Abfragesprache.
+In dieser Schnellstartanleitung haben Sie das Resource Graph-Modul zu ihrer Azure PowerShell-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zur Abfragesprache](./concepts/query-language.md)
+> [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).

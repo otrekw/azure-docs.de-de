@@ -17,10 +17,10 @@ ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Freshservice
@@ -42,7 +42,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Freshservice unterstützt **SP**-initiiertes einmaliges Anmelden.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -129,7 +129,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **Freshservice** aus.
-1. Suchen Sie auf der Übersichtsseite der App den Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -155,11 +155,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 4. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Administrator](./media/freshservice-tutorial/ic790814.png "Administrator")
+    ![Administrator](./media/freshservice-tutorial/ic790814.png "Admin")
 
 5. Klicken Sie im **Kundenportal** auf **Sicherheit**.
 
-    ![Sicherheit](./media/freshservice-tutorial/ic790815.png "Sicherheit")
+    ![Security](./media/freshservice-tutorial/ic790815.png "Sicherheit")
 
 6. Führen Sie im Abschnitt **Sicherheit** die folgenden Schritte aus:
 
@@ -187,7 +187,7 @@ Damit sich Azure AD-Benutzer bei Freshservice anmelden können, müssen sie in F
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Administrator](./media/freshservice-tutorial/ic790814.png "Administrator")
+    ![Administrator](./media/freshservice-tutorial/ic790814.png "Admin")
 
 3. Klicken Sie im Abschnitt **Benutzerverwaltung** auf **Anfordernde Personen**.
 

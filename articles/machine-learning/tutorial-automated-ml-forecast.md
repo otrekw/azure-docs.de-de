@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 01/27/2020
 ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77088324"
 ---
 # <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Tutorial: Vorhersagen der Bike-Sharing-Nachfrage mit automatisiertem maschinellem Lernen
@@ -72,7 +72,7 @@ Laden Sie vor dem Konfigurieren Ihres Experiments Ihre Datendatei in Form eines 
        
     1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
-        Feld|Beschreibung| Wert für das Tutorial
+        Feld|BESCHREIBUNG| Wert für das Tutorial
         ---|---|---
         Dateiformat|Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.| Durch Trennzeichen getrennt
         Trennzeichen|Mindestens ein&nbsp;Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text-Datenströmen oder anderen Datenströmen. |Komma
@@ -105,9 +105,9 @@ Nachdem Sie Ihre Daten geladen und konfiguriert haben, müssen Sie das Remotecom
 
     1. Wählen Sie **cnt** als Zielspalte aus. (Hierbei handelt es sich um die Spalte, für die Vorhersagen erstellt werden sollen.) Diese Spalte gibt die Gesamtanzahl von Bike-Sharing-Vermietungen an.
 
-    1. Wählen Sie **Neue Computefunktion erstellen** aus, und konfigurieren Sie Ihr Computeziel. Von automatisiertem maschinellem Lernen wird nur Azure Machine Learning-Compute unterstützt. 
+    1. Wählen Sie **Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Von automatisiertem maschinellem Lernen wird nur Azure Machine Learning-Compute unterstützt. 
 
-        Feld | Beschreibung | Wert für das Tutorial
+        Feld | BESCHREIBUNG | Wert für das Tutorial
         ----|---|---
         Computename |Ein eindeutiger Name, der Ihren Computekontext identifiziert.|bike-compute
         Größe des virtuellen&nbsp;Computers&nbsp;| Wählen Sie die Größe für Ihren Computes aus.|Standard_DS12_V2
@@ -132,7 +132,7 @@ Schließen Sie die Einrichtung Ihres Experiments mit automatisiertem maschinelle
     1. Klicken Sie auf **Zusätzliche Konfigurationseinstellungen anzeigen**, und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
   
-        Zusätzliche&nbsp;Konfigurationen|Beschreibung|Wert&nbsp;für&nbsp;das Tutorial
+        Zusätzliche&nbsp;Konfigurationen|BESCHREIBUNG|Wert&nbsp;für&nbsp;das Tutorial
         ------|---------|---
         Primary metric (Primäre Metrik)| Auswertungsmetrik, die zur Messung des Machine Learning-Algorithmus verwendet wird.|Wurzel der mittleren Fehlerquadratsumme (RMSE), normalisiert
         Automatische Featurebereitstellung| Ermöglicht eine Vorabaufbereitung der Daten. Dies umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren.| Aktivieren
@@ -178,7 +178,7 @@ In diesem Experimentkontext wird **StackEnsemble** basierend auf der Metrik **Wu
 
 1. Füllen Sie den Bereich **Modell bereitstellen** wie folgt aus:
 
-    Feld| value
+    Feld| Wert
     ----|----
     „Deployment name“ (Bereitstellungsname)| bikeshare-deploy
     „Deployment description“ (Bereitstellungsbeschreibung)| bike share demand deployment

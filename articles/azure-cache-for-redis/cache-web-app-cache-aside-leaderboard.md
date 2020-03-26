@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411942"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
@@ -701,11 +701,11 @@ In diesem Schritt des Tutorials veröffentlichen Sie die Anwendungsaktualisierun
 
     In der folgenden Tabelle werden die einzelnen Aktionslinks aus der Beispielanwendung beschrieben:
 
-    | Action | BESCHREIBUNG |
+    | Aktion | BESCHREIBUNG |
     | --- | --- |
     | Create New |Erstellt ein neues Team. |
     | Play Season |Spielt eine Spielesaison durch, aktualisiert die Teamstatistik und entfernt veraltete Teamdaten aus dem Cache. |
-    | Clear Cache |Löscht die Teamstatistik aus dem Cache. |
+    | Löschen des Cache |Löscht die Teamstatistik aus dem Cache. |
     | List from Cache |Ruft die Teamstatistik aus dem Cache ab. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank geladen und für den nächsten Zugriff im Cache gespeichert. |
     | Sorted Set from Cache |Ruft die Teamstatistik unter Verwendung eines sortierten Satzes aus dem Cache ab. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank geladen und unter Verwendung eines sortierten Satzes im Cache gespeichert. |
     | Top 5 Teams from Cache |Ruft die fünf besten Teams unter Verwendung eines sortierten Satzes aus dem Cache ab. Bei einem Cachefehler wird die Teamstatistik aus der Datenbank geladen und unter Verwendung eines sortierten Satzes im Cache gespeichert. |

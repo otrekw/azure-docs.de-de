@@ -8,10 +8,10 @@ author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
 ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73606155"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Was ist Azure Open Datasets, und wie können Sie dies verwenden?
@@ -33,14 +33,14 @@ Es folgen Beispiele von verfügbaren Datasets.
 
 ### <a name="weather-data"></a>Wetterdaten
  
-|Datensatz         | Notebooks     | BESCHREIBUNG                                    |
+|Dataset         | Notebooks     | BESCHREIBUNG                                    |
 |----------------|---------------|------------------------------------------------|
 |[Integrierte NOAA-Oberflächendaten (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | Weltweite stündliche Wetterdaten von NOAA mit der besten räumlichen Abdeckung in Nordamerika, Europa, Australien und Teilen von Asien. Täglich aktualisiert. |
 |[NOAA Global Forecast System (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | Stündliche US-Wettervorhersagedaten von NOAA für 15 Tage. Täglich aktualisiert. |
 
 ### <a name="calendar-data"></a>Kalenderdaten
 
-|Datensatz         | Notebooks     | BESCHREIBUNG                                    |
+|Dataset         | Notebooks     | BESCHREIBUNG                                    |
 |----------------|---------------|------------------------------------------------|
 |[Gesetzliche Feiertage](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | Weltweite Feiertagsdaten für 41 Länder oder Regionen von 1970 bis 2099. Enthält Länder und die Angabe, ob die meisten Einwohner bezahlte Freizeit haben. |
 

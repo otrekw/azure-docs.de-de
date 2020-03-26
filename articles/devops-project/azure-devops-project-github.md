@@ -17,10 +17,10 @@ author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: a0496999a9a5dc3e9bfd57df0ec035e6db77d620
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73615125"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Tutorial: Erstellen einer CI/CD-Pipeline für vorhandenen Code mit Azure DevOps Projects
@@ -104,7 +104,7 @@ Mit Azure DevOps Projects wird automatisch eine CI/CD-Pipeline in Azure Pipeline
 
    ![Seite „Builds“ in Azure Pipelines](_img/azure-devops-project-github/pipelinesbuildpage.png)
 
-1. Oben rechts auf der Seite **Builds** können Sie die Option **Bearbeiten** auswählen, um den aktuellen Build zu ändern. Mit **Warteschlange** können Sie einen neuen Build hinzufügen, und mit der Schaltfläche mit den vertikalen Auslassungszeichen (**&#8942;**) können Sie ein Menü mit weiteren Optionen öffnen. Wählen Sie **Bearbeiten** aus.
+1. Oben rechts auf der Seite **Builds** können Sie die Option **Bearbeiten** auswählen, um den aktuellen Build zu ändern. Mit **Warteschlange** können Sie einen neuen Build hinzufügen, und mit der Schaltfläche mit den vertikalen Auslassungszeichen ( **&#8942;** ) können Sie ein Menü mit weiteren Optionen öffnen. Wählen Sie **Bearbeiten** aus.
 
 1. Der Build führt verschiedene Aufgaben durch. Beispielsweise werden Quellen aus dem Repository abgerufen, Abhängigkeiten wiederhergestellt und Ausgaben für Bereitstellungen veröffentlicht. Ändern Sie auf der rechten Seite unter **Name** den Namen der Buildpipeline in einen aussagekräftigeren Namen. Wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus. Geben Sie einen Kommentar ein, und wählen Sie dann erneut **Speichern** aus.
 

@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73822788"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
@@ -258,7 +258,7 @@ Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter
     Alle Benutzer, die **mygroup** angehören, können auf die Datenbank **MyMITestDB** zugreifen.
 
     > [!IMPORTANT]
-    > Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
+    > Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
 
     Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
 
@@ -424,7 +424,7 @@ Datenbankübergreifende Abfragen werden für Azure AD-Konten mit Azure AD-Serv
 ## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins"></a>Zusätzliche unterstützte Szenarien für Azure AD-Serverprinzipale (Anmeldungen)
 
 - Für Azure AD-Serverprinzipale (Anmeldungen) werden SQL-Agent-Verwaltung und Auftragsausführungen unterstützt.
-- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Serverprinzipale (Anmeldungen) ausgeführt werden.
+- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Serverprinzipalen (Anmeldungen) ausgeführt werden.
 - [Überwachung](sql-database-managed-instance-auditing.md) aller Anweisungen in Verbindung mit Azure AD-Serverprinzipalen (Anmeldungen) und Authentifizierungsereignissen.
 - Dedizierte Administratorverbindung für Azure AD-Serverprinzipale (Anmeldungen), die der Serverrolle `sysadmin` angehören.
 - Azure AD-Serverprinzipale (Anmeldungen) können mit dem [sqlcmd-Hilfsprogramm](/sql/tools/sqlcmd-utility) und mit dem Tool [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) verwendet werden.

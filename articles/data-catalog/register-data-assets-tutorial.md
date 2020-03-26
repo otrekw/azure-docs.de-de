@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68950248"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
@@ -176,7 +176,7 @@ Mit Vergleichsoperatoren können Sie für Eigenschaften mit numerischen Datentyp
 
 2. Deaktivieren Sie unter **Objekttyp** den Filter **Tabelle**.
 
-3. Betätigen Sie die **EINGABETASTE**.
+3. Drücken Sie die **EINGABETASTE**.
 
 4. Vergewissern Sie sich, dass die Tabellen **Product**, **ProductCategory** und **ProductDescription** sowie die von Ihnen registrierte Azure SQL-Datenbank in den Suchergebnissen angezeigt werden.
 

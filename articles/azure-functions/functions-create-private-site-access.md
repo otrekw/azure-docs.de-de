@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 02/15/2020
 ms.openlocfilehash: ada08de182791c6ecb2b83ef3b924bf40975e1ee
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78852015"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
@@ -62,7 +62,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     >[!div class="mx-imgBorder"]
     >![Registerkarte „Grundeinstellungen“ für einen neuen virtuellen Windows-Computer](./media/functions-create-private-site-access/create-vm-3.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
     | [**Ressourcengruppe**](../azure-resource-manager/management/overview.md) | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
@@ -135,7 +135,7 @@ Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](funct
 2. Wählen Sie **Compute > Funktions-App** aus.
 3. Verwenden Sie im Abschnitt **Grundeinstellungen** die Funktions-App-Einstellungen aus der folgenden Tabelle:
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die die Ressourcen für dieses Tutorial enthalten soll.  Die Verwendung der gleichen Ressourcengruppe für die Funktions-App und den virtuellen Computer vereinfacht die Bereinigung der Ressourcen am Ende des Tutorials. |
     | **Name der Funktions-App** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind a–z (unabhängig von der Groß-/Kleinschreibung), 0–9 und -. |
@@ -146,7 +146,7 @@ Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](funct
     Wählen Sie unten auf der Seite die Schaltfläche **Next: Hosting >** aus.
 4. Wählen Sie im Abschnitt **Hosting** die passenden Werte für **Speicherkonto**, **Betriebssystem** und **Tarif** aus. Orientieren Sie sich dabei an den Angaben in der folgenden Tabelle:
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Speicherkonto** | Global eindeutiger Name | Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](./functions-scale.md#storage-account-requirements) erfüllen muss. |
     | **Betriebssystem** | Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |

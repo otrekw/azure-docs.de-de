@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Playbook, Apache Hadoop, HDInsight
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2281c9683583e1def034b79809829a068ef9f3e6
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156670"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Tutorial: Konfigurieren eines Clusters in Azure HDInsight mithilfe von Ansible
@@ -31,7 +31,7 @@ ms.locfileid: "74156670"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Erstellen eines zufälligen Postfixes
+## <a name="create-a-random-postfix"></a>Erstellen eines zufälligen Postfix
 
 Mit dem Playbookcode in diesem Abschnitt wird ein zufälliges Postfix generiert, das als Teil des Azure HDInsight-Clusternamens verwendet werden soll.
 
@@ -346,7 +346,7 @@ Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 
 ## <a name="run-the-sample-playbook"></a>Ausführen des Beispielplaybooks
 
-Führen Sie in diesem Abschnitt das Playbook aus, um verschiedene in diesem Artikel gezeigte Funktionen zu testen.
+In diesem Abschnitt führen Sie das Playbook aus, um verschiedene in diesem Artikel gezeigte Features zu testen.
 
 Nehmen Sie vor dem Ausführen des Playbooks die folgenden Änderungen vor:
 - Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ resource_group_name }}` durch den Namen Ihrer Ressourcengruppe.

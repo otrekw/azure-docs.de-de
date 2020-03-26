@@ -4,10 +4,10 @@ description: Führen Sie Jupyter-Notebooks in der Cloud aus, indem Sie den koste
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75646329"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Übersicht über Azure Notebooks (Vorschauversion)
@@ -65,7 +65,7 @@ Für jedes Notebook wählen Sie den Kernel aus (also die Laufzeitumgebung), der 
 
 Azure Notebooks enthält über die Basisdistributionen hinaus noch weitere Pakete. Die Python-Kernel umfassen beispielsweise die Bibliotheken numpy, pandas, scikit-learn, matplotlib und bokeh.
 
-Sie können ein Projekt auch anpassen, um eine Umgebung für alle Notebooks dieses Projekts zu erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung](quickstart-create-jupyter-notebook-project-environment.md).
+Sie können ein Projekt auch anpassen, um eine Umgebung für alle Notebooks dieses Projekts zu erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung](quickstart-create-jupyter-notebook-project-environment.md).
 
 Zusätzlich zu den Basisdistributionen sind für Azure Notebooks viele weitere Pakete vorinstalliert, die für Data Scientists nützlich sind. Sie können auch Ihre eigenen Pakete installieren, indem Sie für jede Sprache jeweils den üblichen Prozess verwenden.
 

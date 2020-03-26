@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: 2c8d7252b4e4ca8caa465727c0d2328c4aafaefb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227927"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Tutorial: Migrieren lokaler Windows-Benutzer und -Gruppen in SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz unter Verwendung der T-SQL-DDL-Syntax
@@ -220,7 +220,7 @@ Gehen Sie wie unter [Schnellstart: Wiederherstellen einer Datenbank in einer ver
 
 Führen Sie den Befehl „ALTER USER“ aus, um die Migration zu einer verwalteten Instanz abzuschließen.
 
-1. Melden Sie sich mit Ihrem Azure AD-Administratorkonto für die verwaltete Instanz bei Ihrer verwalteten Instanz an. Erstellen Sie anschließend mithilfe der folgenden Syntax Ihre Azure AD-Anmeldung in der verwalteten Instanz. Weitere Informationen finden Sie unter [Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Melden Sie sich mit Ihrem Azure AD-Administratorkonto für die verwaltete Instanz bei Ihrer verwalteten Instanz an. Erstellen Sie anschließend mithilfe der folgenden Syntax Ihre Azure AD-Anmeldung in der verwalteten Instanz. Weitere Informationen finden Sie im [Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 
@@ -329,7 +329,7 @@ Testen Sie die Authentifizierung bei der verwalteten Instanz mithilfe des Benutz
 Testen Sie die Authentifizierung bei einer verwalteten Instanz mithilfe eines Mitglieds einer Windows-Gruppe (`migration`). Der Benutzer `aadsqlmi\testGroupUser` muss der Gruppe `migration` vor der Migration hinzugefügt worden sein.
 
 1. Melden Sie sich mit Ihrem MI-Abonnement als `aadsqlmi\testGroupUser` bei dem virtuellen Verbundcomputer an. 
-1. Stellen Sie unter Verwendung von SSMS mit integrierter **Active Directory-Authentifizierung eine Verbindung mit dem MI-Server und der Datenbank** `migration` her.
+1. Stellen Sie unter Verwendung von SSMS mit integrierter **Active Directory-Authentifizierung eine Verbindung mit dem MI-Server und der Datenbank**`migration` her.
     1. Sie können sich auch mit den Anmeldeinformationen testGroupUser@aadsqlmi.net und der SSMS-Option **Active Directory: universell mit MFA-Unterstützung** anmelden. In diesem Fall steht allerdings das einmalige Anmelden nicht zur Verfügung, und Sie müssen ein Kennwort eingeben. Für die Anmeldung bei Ihrer verwalteten Instanz muss kein virtueller Verbundcomputer verwendet werden. 
 1. Im Rahmen der Rolle `db_owner` können Sie eine neue Tabelle erstellen.
 

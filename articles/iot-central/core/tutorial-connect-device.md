@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624336"
 ---
 # <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Tutorial: Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Hinzufügen von Standardansichten und benutzerdefinierten Ansichten zu einer Gerätevorlage
 > * Veröffentlichen einer Gerätevorlage und Hinzufügen eines echten Geräts zu Ihrer IoT Central-Anwendung
 > * Erstellen und Ausführen des Node.js-Gerätecodes und Verfolgen der Verbindungsherstellung mit Ihrer IoT Central-Anwendung
-> * Anzeigen der simulierten Telemetriedaten, die vom Gerät gesendet werden
+> * Zeigen Sie die simulierten Telemetriedaten an, die vom Gerät gesendet werden.
 > * Verwalten von Geräteeigenschaften mithilfe einer Ansicht
 > * Aufrufen von Befehlen zum Steuern des Geräts
 
@@ -50,17 +50,17 @@ Erstellen Sie in Ihrer Azure IoT Central-Anwendung eine Gerätevorlage mit dem
 
 Das Gerätefunktionsmodell enthält zwei Schnittstellen: die Standardschnittstelle **Device Information** (Geräteinformationen) und die benutzerdefinierte Schnittstelle **Environmental Sensor** (Umgebungssensor). Die Schnittstelle **Environmental Sensor** (Umgebungssensor) definiert folgende Funktionen:
 
-| Typ | Anzeigename | Beschreibung |
+| type | Anzeigename | BESCHREIBUNG |
 | ---- | ------------ | ----------- |
-| Eigenschaft | Device State (Gerätezustand)     | Der Zustand des Geräts. Mögliche Zustände: online und offline. |
-| Eigenschaft | Customer Name (Kundenname)    | Der Name des Kunden, der das Gerät momentan verwendet. |
+| Eigenschaft | Gerätestatus     | Der Zustand des Geräts. Mögliche Zustände: online und offline. |
+| Eigenschaft | Customer Name    | Der Name des Kunden, der das Gerät momentan verwendet. |
 | Eigenschaft | Brightness Level (Helligkeitsstufe) | Die Helligkeitsstufe für das Licht des Geräts. Mögliche Werte: 1 (hoch), 2 (mittel), 3 (niedrig). |
-| Telemetrie | Temperature (Temperatur) | Die aktuelle Temperatur des Geräts. |
-| Telemetrie | Humidity (Luftfeuchtigkeit)    | Die aktuelle Luftfeuchtigkeit des Geräts. |
-| Befehl | blink          | Lässt die LED für das angegebene Zeitintervall blinken. |
-| Befehl | turnon         | Schaltet das LED-Licht des Geräts ein. |
-| Befehl | turnoff        | Schaltet das LED-Licht des Geräts aus. |
-| Befehl | rundiagnostics | Startet eine Diagnose des Geräts. |
+| Telemetrie | Temperatur | Die aktuelle Temperatur des Geräts. |
+| Telemetrie | Luftfeuchtigkeit    | Die aktuelle Luftfeuchtigkeit des Geräts. |
+| Get-Help | blink          | Lässt die LED für das angegebene Zeitintervall blinken. |
+| Get-Help | turnon         | Schaltet das LED-Licht des Geräts ein. |
+| Get-Help | turnoff        | Schaltet das LED-Licht des Geräts aus. |
+| Get-Help | rundiagnostics | Startet eine Diagnose des Geräts. |
 
 Wählen Sie in der Gerätevorlage die Option **Anpassen** aus, um die Darstellung der Eigenschaft **Device State** (Gerätezustand) in Ihrer IoT Central-Anwendung anzupassen. Erweitern Sie den Eintrag **Device State** (Gerätezustand), und geben Sie unter **Name: TRUE** den Wert _Online_ und unter **Name: FALSE** den Wert _Offline_ ein. Speichern Sie die Änderungen:
 
@@ -357,7 +357,7 @@ Als Operator in Ihrer Azure IoT Central-Anwendung haben Sie folgende Möglichk
 
 * Anzeigen der Geräteeigenschaften auf der Seite **Info**:
 
-    ![Anzeigen von Eigenschaften](media/tutorial-connect-device/about-properties.png)
+    ![Eigenschaften anzeigen](media/tutorial-connect-device/about-properties.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

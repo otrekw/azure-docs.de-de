@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494317"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Tutorial: Abfragen von Apache Hive mit ODBC und PowerShell
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
-* Einen Interactive Query-Cluster in HDInsight. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie als Clustertyp **Interactive Query** aus.
+* Ein Interactive Query-Cluster in HDInsight. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wählen Sie als Clustertyp **Interactive Query** aus.
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Installieren des Microsoft Hive ODBC-Treibers
 
@@ -54,7 +54,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Apache Hive-ODBC-Datenquelle e
 
    | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
-   |  Name der Datenquelle |Geben Sie einen Namen für die Datenquelle an. |
+   |  Datenquellenname |Geben Sie einen Namen für die Datenquelle an. |
    |  Host(s) |Geben Sie `CLUSTERNAME.azurehdinsight.net` ein. Zum Beispiel, `myHDICluster.azurehdinsight.net` |
    |  Port |Verwenden Sie **443**.|
    |  Datenbank |Verwenden Sie **default**. |

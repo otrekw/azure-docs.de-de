@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186813"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223597"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -133,7 +133,7 @@ Wenn Sie diesen Schritt überspringen möchten, können Sie vorgefertigte JAR-Da
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a id="run"></a>Ausführen des Beispiels
+## <a name="run-the-example"></a><a id="run"></a>Ausführen des Beispiels
 
 1. Ersetzen Sie `sshuser` durch den SSH-Benutzer für Ihren Cluster und `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie den folgenden Befehl ein, um eine SSH-Verbindung mit dem Cluster zu öffnen. Geben Sie bei entsprechender Aufforderung das Kennwort für das SSH-Benutzerkonto ein.
 
@@ -218,5 +218,5 @@ So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
 In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
-> [!div class="nextstepaction"]
-> [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
+* [Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys](rest-proxy.md)
+* [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)

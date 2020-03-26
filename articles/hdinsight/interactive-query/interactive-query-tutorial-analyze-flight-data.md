@@ -9,10 +9,10 @@ ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494159"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight
@@ -42,7 +42,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 2. Löschen Sie auf der Seite die Inhalte aller Felder, und wählen Sie dann die folgenden Werte aus:
 
-   | NAME | Wert |
+   | Name | Wert |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252558"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
@@ -34,7 +34,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
 | **\<Ressourcengruppenname>**  | myResourceGroup |
 | **\<VNET-Name>** | myVirtualNetwork          |
@@ -51,7 +51,7 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -78,7 +78,7 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
@@ -100,7 +100,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure.
 
 1. Geben Sie unter **SQL-Datenbank erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **Datenbankdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -111,12 +111,12 @@ In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure.
 5. Wählen Sie unter **Server** die Option **Neu erstellen** aus. 
 6. Geben Sie bei **Neuer Server** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Serveradministratoranmeldung| Geben Sie einen Administratornamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Location | Wählen Sie eine Azure-Region aus, in der sich Ihr SQL Server befinden soll. |
+    | Position | Wählen Sie eine Azure-Region aus, in der sich Ihr SQL Server befinden soll. |
     
 7. Klicken Sie auf **OK**. 
 8. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
@@ -131,7 +131,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 2. Wählen Sie unter **Privat Link-Center – Übersicht** bei der Option **Build a private connection to a service** (Private Verbindung mit einem Dienst herstellen) **Start** aus.
 1. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **Projektdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -143,7 +143,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 5. Klicken Sie auf **Weiter: Ressource** aus.
 6. Geben Sie unter **Privaten Endpunkt erstellen – Ressource** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     |Verbindungsmethode  | Wählen Sie das Herstellen einer Verbindung mit einer Azure-Ressource im eigenen Verzeichnis aus.|
     | Subscription| Wählen Sie Ihr Abonnement aus. |
@@ -154,7 +154,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 7. Klicken Sie auf **Weiter: Konfiguration** aus.
 8. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Konfiguration** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
@@ -212,7 +212,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 4. Geben Sie unter **Mit Server verbinden** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Servertyp| Wählen Sie **Datenbank-Engine** aus.|
     | Servername| Wählen Sie *myserver.database.windows.net* aus. |

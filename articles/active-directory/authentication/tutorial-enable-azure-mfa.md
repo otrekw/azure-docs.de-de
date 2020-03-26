@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77154678"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication
@@ -37,7 +37,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen funktionierenden Azure AD-Mandanten mit aktivierter Premium- oder Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
-* Einen Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Das Konto wird in diesem Tutorial verwendet, um Azure Multi-Factor Authentication als Endbenutzer zu testen.
+* Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Das Konto wird in diesem Tutorial verwendet, um Azure Multi-Factor Authentication als Endbenutzer zu testen.
     * Wenn Sie einen Benutzer erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../add-users-azure-active-directory.md) weiter.
 * Eine Gruppe, der der Benutzer ohne Administratorrechte angehört (beispielsweise *MFA-Test-Group*). In diesem Tutorial wird Azure Multi-Factor Authentication für diese Gruppe aktiviert.
     * Wenn Sie eine Gruppe erstellen müssen, finden Sie weitere Informationen unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory-groups-create-azure-portal.md).
@@ -92,7 +92,7 @@ Richtlinien für bedingten Zugriff können auf *Nur Bericht* festgelegt werden, 
 1. Legen Sie die Umschaltfläche *Richtlinie aktivieren* auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie für bedingten Zugriff anzuwenden.
 
-## <a name="test-azure-multi-factor-authentication"></a>Testen von Azure Multi-Factor Authentication
+## <a name="test-azure-multi-factor-authentication"></a>Testen der Azure Multi-Factor Authentication
 
 In diesem Abschnitt sehen wir uns die Richtlinie für bedingten Zugriff sowie Azure Multi-Factor Authentication in Aktion an. Melden Sie sich zunächst bei einer Ressource an, für die keine MFA erforderlich ist:
 

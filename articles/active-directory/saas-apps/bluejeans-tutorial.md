@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595046"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BlueJeans for Azure AD
@@ -111,7 +111,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -137,7 +137,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wechseln Sie zu **ADMIN \> GROUP SETTINGS \> SECURITY** (ADMINISTRATOR > GRUPPENEINSTELLUNGEN > SICHERHEIT).
 
-    ![Administrator](./media/bluejeans-tutorial/ic785868.png "Administrator")
+    ![Administrator](./media/bluejeans-tutorial/ic785868.png "Admin")
 
 3. Führen Sie im Abschnitt **SECURITY** (SICHERHEIT) die folgenden Schritte aus:
 
@@ -163,9 +163,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Save Changes](./media/bluejeans-tutorial/ic785874.png "Änderungen speichern")
 
-    a. Geben Sie in das Textfeld **Benutzer-ID** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    a. Geben Sie in das Textfeld **Benutzer-ID**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
-    b. Geben Sie in das Textfeld **E-Mail** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    b. Geben Sie in das Textfeld **E-Mail** die Adresse `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
     c. Klicken Sie auf **ÄNDERUNGEN SPEICHERN**.
 
@@ -179,14 +179,14 @@ In diesem Abschnitt wird in BlueJeans for Azure AD ein Benutzer namens B. Si
 
 2. Navigieren Sie zu **ADMIN \> MANAGE USERS \> ADD USER** (ADMINISTRATOR > BENUTZER VERWALTEN > BENUTZER HINZUFÜGEN).
 
-    ![Administrator](./media/bluejeans-tutorial/ic785877.png "Administrator")
+    ![Administrator](./media/bluejeans-tutorial/ic785877.png "Admin")
 
     > [!IMPORTANT]
     > Die Registerkarte **ADD USER** (BENUTZER HINZUFÜGEN) ist nur verfügbar, wenn auf der Registerkarte **SECURITY** (SICHERHEIT) die Option **Enable automatic provisioning** (Automatische Bereitstellung aktivieren) deaktiviert ist.
 
 3. Führen Sie im Abschnitt **ADD USER** (BENUTZER HINZUFÜGEN) die folgenden Schritte aus:
 
-    ![Add User](./media/bluejeans-tutorial/ic785886.png "Benutzer hinzufügen") (Benutzer hinzufügen)
+    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785886.png "Benutzer hinzufügen")
 
     a. Geben Sie im Textfeld **First name** (Vorname) den Vornamen des Benutzers ein, z. B. **B**.
 
@@ -206,7 +206,7 @@ In diesem Abschnitt wird in BlueJeans for Azure AD ein Benutzer namens B. Si
 
     i. Klicken Sie auf **CONTINUE** (WEITER).
 
-    ![Add User](./media/bluejeans-tutorial/ic785887.png "Benutzer hinzufügen") (Benutzer hinzufügen)
+    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785887.png "Benutzer hinzufügen")
 
     J. Klicken Sie auf **BENUTZER HINZUFÜGEN**.
 

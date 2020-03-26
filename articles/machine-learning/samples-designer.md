@@ -10,10 +10,10 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/10/2020
 ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79037296"
 ---
 # <a name="designer-sample-pipelines"></a>Beispielpipelines für den Designer
@@ -42,7 +42,7 @@ Der Designer speichert eine Kopie der Beispielpipelines in Ihrem Studio-Arbeitsb
 
 Hier finden Sie weitere Informationen zu den integrierten Regressionsbeispielen.
 
-| Beispieltitel | Beschreibung | 
+| Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | [Sample 1: Regression - Automobile Price Prediction (Basic)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) (Beispiel 1: Regression: Automobilpreisvorhersage (Standard)) | Dient zum Vorhersagen von Automobilpreisen mittels linearer Regression. |
 | [Sample 2: Regression - Automobile Price Prediction (Advanced)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) (Beispiel 2: Regression: Automobilpreisvorhersage (Erweitert)) | Dient zum Vorhersagen von Automobilpreisen mittels Entscheidungsstruktur und Boosted Decision Tree-Regressoren. Vergleichen Sie die Modelle, um den besten Algorithmus zu ermitteln.
@@ -51,7 +51,7 @@ Hier finden Sie weitere Informationen zu den integrierten Regressionsbeispielen.
 
 Hier finden Sie weitere Informationen zu den integrierten Klassifizierungsbeispielen. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
 
-| Beispieltitel | Beschreibung | 
+| Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | [Sample 3: Binary Classification with Feature Selection - Income Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-predict-income.md) (Beispiel 3: Binäre Klassifizierung mit Featureauswahl: Vorhersage des Einkommens) | Dient zum Vorhersagen des Einkommens (hoch oder gering) mittels Two-Class Boosted Decision Tree. Für die Featureauswahl wird die Pearson-Korrelation verwendet.
 | [Sample 4: Binary Classification with custom Python script - Credit Risk Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-credit-risk-cost-sensitive.md) (Beispiel 4: Binäre Klassifizierung mit benutzerdefiniertem Python-Skript: Vorhersage des Kreditrisikos) | Dient zum Klassifizieren des Risikos von Kreditanträgen (hoch oder gering). Zur Gewichtung Ihrer Daten wird das Modul „Python-Skript ausführen“ verwendet.
@@ -63,7 +63,7 @@ Hier finden Sie weitere Informationen zu den integrierten Klassifizierungsbeispi
 
 Hier finden Sie weitere Informationen zu den integrierten Empfehlungsbeispielen. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
 
-| Beispieltitel | Beschreibung | 
+| Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | Beispiel 10: Empfehlung: Filmbewertungstweets | Dient zum Erstellen einer Filmempfehlungsengine auf der Grundlage von Filmtiteln und -bewertungen. |
 
@@ -71,7 +71,7 @@ Hier finden Sie weitere Informationen zu den integrierten Empfehlungsbeispielen.
 
 Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogramme und -Features veranschaulicht werden. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
 
-| Beispieltitel | Beschreibung | 
+| Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
 | [Sample 6: Use custom R script - Flight Delay Prediction](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-classification-flight-delay.md) (Beispiel 6: Verwenden eines benutzerdefinierten R-Skripts: Vorhersage von Flugverspätungen) |
 | Beispiel 8: Kreuzvalidierung für binäre Klassifizierung: Vorhersage des Einkommens von Erwachsenen | Dient zum Erstellen eines binären Klassifizierers für das Einkommen von Erwachsenen mittels Kreuzvalidierung.

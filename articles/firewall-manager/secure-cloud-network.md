@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77443056"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion) 
@@ -142,7 +142,7 @@ Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstelle
 2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-   |Einstellung  |value  |
+   |Einstellung  |Wert  |
    |---------|---------|
    |Resource group     |**FW-Manager**|
    |Name des virtuellen Computers     |**Jump-Srv**|
@@ -163,7 +163,7 @@ Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstelle
 
 Konfigurieren Sie anhand der Angaben in der folgenden Tabelle einen weiteren virtuellen Computer mit dem Namen **Workload-Srv**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
-|Einstellung  |value  |
+|Einstellung  |Wert  |
 |---------|---------|
 |Subnet|**Workload-SN**|
 |Öffentliche IP-Adresse|**None**|

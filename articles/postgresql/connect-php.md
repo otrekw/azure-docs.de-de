@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
 ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74766377"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von PHP zum Herstellen einer Verbindung und Abfragen von Daten
@@ -38,7 +38,7 @@ Installieren Sie PHP auf Ihrem eigenen Server, oder erstellen Sie eine Azure-[We
 - Im Code wird die **pgsql**-Klasse (php_pgsql.so) verwendet. Installieren Sie sie, indem Sie `sudo apt-get install php-pgsql` ausführen.
 - Aktivieren Sie die **pgsql**-Erweiterung, indem Sie die Konfigurationsdatei `/etc/php/7.0/mods-available/pgsql.ini` bearbeiten. Die Konfigurationsdatei sollte eine Zeile mit dem Text `extension=php_pgsql.so` enthalten. Fügen Sie den Text hinzu, und speichern Sie die Datei, falls der Text nicht bereits angezeigt wird. Wenn der Text vorhanden ist, aber mit einem Semikolon als Präfix als Kommentar gekennzeichnet ist, können Sie die Kommentierung aufheben, indem Sie das Semikolon entfernen.
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 - Herunterladen der [Version PHP 7.1.4](https://secure.php.net/downloads.php)
 - Installieren von PHP (Informationen zur weiteren Konfiguration finden Sie im [PHP-Handbuch](https://secure.php.net/manual/install.macosx.php))
 

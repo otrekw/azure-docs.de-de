@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Skalieren von Apps in Azure App Service mithilfe von Ansible'
-description: Es wird beschrieben, wie Sie eine App in Azure App Service zentral hochskalieren.
+description: Es wird beschrieben, wie Sie eine App in Azure App Service hochskalieren.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Azure App Service, Web-App, skalieren, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155914"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Tutorial: Skalieren von Apps in Azure App Service mit Ansible
@@ -22,7 +22,7 @@ ms.locfileid: "74155914"
 > [!div class="checklist"]
 >
 > * Abrufen der Angaben eines vorhandenen App Service-Plans
-> * Zentrales Hochskalieren des App Service-Plans auf S2 mit drei Workern
+> * Hochskalieren des App Service-Plans auf S2 mit drei Workern
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,12 +30,12 @@ ms.locfileid: "74155914"
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 - **Azure App Service-App**: [Konfigurieren Sie eine App in Azure App Service mit Ansible](ansible-create-configure-azure-web-apps.md), falls Sie nicht über eine Azure App Service-App verfügen.
 
-## <a name="scale-up-an-app"></a>Zentrales Hochskalieren einer App
+## <a name="scale-up-an-app"></a>Hochskalieren einer App
 
-Es gibt zwei Workflows für die Skalierung: *zentrales Hochskalieren* und *horizontales Hochskalieren*.
+Es gibt zwei Workflows für die Skalierung: *Hochskalieren* und *Aufskalieren*.
 
-**Zentrales Hochskalieren**: Beim zentralen Hochskalieren werden zusätzliche Ressourcen beschafft. Beispiele für diese Ressourcen sind CPU, Arbeitsspeicher, Speicherplatz auf dem Datenträger, virtuelle Computer usw. Sie führen für eine App das zentrale Hochskalieren durch, indem Sie den Tarif des App Service-Plans ändern, zu dem die App gehört. 
-**Horizontales Hochskalieren:** Beim horizontalen Hochskalieren wird die Anzahl von VM-Instanzen erhöht, über die Ihre App ausgeführt wird. Je nach Tarif Ihres App Service-Plans können Sie auf bis zu 20 Instanzen horizontal hochskalieren. Die [automatische Skalierung](/azure/azure-monitor/platform/autoscale-get-started) ermöglicht Ihnen das automatische Skalieren der Instanzanzahl basierend auf vordefinierten Regeln und Zeitplänen.
+**Hochskalieren**: Beim Hochskalieren werden zusätzliche Ressourcen beschafft. Beispiele für diese Ressourcen sind CPU, Arbeitsspeicher, Speicherplatz auf dem Datenträger, virtuelle Computer usw. Sie führen für eine App das Hochskalieren durch, indem Sie den Tarif des App Service-Plans ändern, zu dem die App gehört. 
+**Aufskalieren:** Beim Aufskalieren wird die Anzahl von VM-Instanzen erhöht, über die Ihre App ausgeführt wird. Je nach Tarif Ihres App Service-Plans können Sie auf bis zu 20 Instanzen aufskalieren. Die [automatische Skalierung](/azure/azure-monitor/platform/autoscale-get-started) ermöglicht Ihnen das automatische Skalieren der Instanzanzahl basierend auf vordefinierten Regeln und Zeitplänen.
 
 Mit dem Playbookcode in diesem Abschnitt wird der folgende Vorgang definiert:
 
@@ -80,7 +80,7 @@ Speichern Sie das folgende Playbook als `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook webapp_scaleup.yml

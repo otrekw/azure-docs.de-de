@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74813136"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Erstellen und Ändern einer ExpressRoute-Verbindung
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
 > * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie eine ExpressRoute-Verbindung mithilf
 * Stellen Sie sicher, dass Sie über die notwendigen Berechtigungen verfügen, um neue Netzwerkressourcen zu erstellen. Wenden Sie sich an Ihren Kontoadministrator, wenn Sie nicht über die richtigen Berechtigungen verfügen.
 * Sie können sich das [Video ansehen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
-## <a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 
 ### <a name="1-sign-in-to-the-azure-portal"></a>1. Melden Sie sich auf dem Azure-Portal an.
 
@@ -87,19 +87,19 @@ Auf dieser Seite bietet der **Anbieterstatus** Informationen zum aktuellen Zusta
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
 
 Anbieterstatus: Nicht bereitgestellt<BR>
-Schaltkreisstatus: Enabled
+Schaltkreisstatus: Aktiviert
 
 ![Bereitstellung initiieren](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter für Sie aktiviert wird:
 
 Anbieterstatus: Bereitstellung<BR>
-Schaltkreisstatus: Enabled
+Schaltkreisstatus: Aktiviert
 
 Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folgenden Zustand befinden:
 
 Anbieterstatus: Bereitgestellt<BR>
-Schaltkreisstatus: Enabled
+Schaltkreisstatus: Aktiviert
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 
@@ -118,11 +118,11 @@ Eine Schritt-für-Schritt-Anleitung zum Erstellen und Ändern von Verbindungspee
 
 Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Verbindung. Lesen Sie den Artikel [Verknüpfen von virtuellen Netzwerken mit ExpressRoute-Verbindungen](expressroute-howto-linkvnet-arm.md) , wenn Sie mit dem Resource Manager-Bereitstellungsmodell arbeiten.
 
-## <a name="status"></a>Abrufen des Status einer ExpressRoute-Verbindung
+## <a name="getting-the-status-of-an-expressroute-circuit"></a><a name="status"></a>Abrufen des Status einer ExpressRoute-Verbindung
 
 Sie können den Status einer Verbindung anzeigen, indem Sie die Verbindung auswählen und die Übersichtsseite anzeigen.
 
-## <a name="modify"></a>Ändern einer ExpressRoute-Verbindung
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>Ändern einer ExpressRoute-Verbindung
 
 Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können die Bandbreite, die SKU und das Abrechnungsmodell verändern und klassische Vorgänge auf der Seite **Konfiguration** zulassen. Informationen zu Grenzwerten und Beschränkungen finden Sie unter [ExpressRoute – FAQs](expressroute-faqs.md).
 
@@ -151,7 +151,7 @@ Klicken Sie auf **Konfiguration**, um eine ExpressRoute-Verbindung zu bearbeiten
 
 ![Ändern der Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
-## <a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 
 Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie dazu das Symbol **Löschen** aus. Beachten Sie die folgenden Informationen:
 

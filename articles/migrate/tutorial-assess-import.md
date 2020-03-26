@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079865"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79453645"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Bewerten von Servern anhand von importierten Daten
 
@@ -142,7 +142,6 @@ In der folgenden Tabelle sind die auszufüllenden Felder zusammengefasst:
 **Business owner** (Geschäftsinhaber) | Nein | Besitzer der Geschäftseinheit
 **Business application name** (Name der Geschäftsanwendung) | Nein | Name der Anwendung, zu der die App gehört
 **Location** | Nein | Datencenter, in dem sich der Server befindet
-**Server decommission date** (Datum der Außerbetriebnahme des Servers) | Nein | Datum der Außerbetriebnahme des physischen Servers oder des physischen Servers, der dem virtuellen Server zugrunde liegt
 
 ### <a name="add-operating-systems"></a>Hinzufügen von Betriebssystemen
 

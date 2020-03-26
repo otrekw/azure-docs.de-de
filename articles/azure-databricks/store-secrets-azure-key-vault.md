@@ -8,10 +8,10 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75889053"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks unter Verwendung von Azure Key Vault
@@ -74,12 +74,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 3. Geben Sie auf der Seite **Schlüsseltresor erstellen** die folgenden Informationen ein, und behalten Sie bei den restlichen Feldern die Standardwerte bei:
 
-   |Eigenschaft|Beschreibung|
+   |Eigenschaft|BESCHREIBUNG|
    |--------|-----------|
    |Name|Ein eindeutiger Name für Ihren Schlüsseltresor.|
    |Subscription|Wählen Sie ein Abonnement aus.|
    |Resource group|Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie eine neue.|
-   |Location|Wählen Sie einen Standort aus.|
+   |Position|Wählen Sie einen Standort aus.|
 
    ![Azure Key Vault-Eigenschaften](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 5. Geben Sie auf der Seite **Geheimnis erstellen** die folgenden Informationen an, und behalten Sie bei den restlichen Feldern die Standardwerte bei:
 
-   |Eigenschaft|value|
+   |Eigenschaft|Wert|
    |--------|-----------|
    |Uploadoptionen|Manuell|
    |Name|Anzeigename für Ihren Speicherkontoschlüssel.|
-   |value|„Schlüssel1“ aus Ihrem Speicherkonto.|
+   |Wert|„Schlüssel1“ aus Ihrem Speicherkonto.|
 
    ![Eigenschaften für das neue Schlüsseltresorgeheimnis](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -111,12 +111,12 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Arbeitsbereich zu erstellen:
 
-   |Eigenschaft  |Beschreibung  |
+   |Eigenschaft  |BESCHREIBUNG  |
    |---------|---------|
    |Arbeitsbereichname     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
    |Subscription     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
    |Resource group     | Wählen Sie die Ressourcengruppe aus, in der sich auch Ihr Schlüsseltresor befindet. |
-   |Location     | Wählen Sie den Standort aus, an dem sich auch Ihre Azure Key Vault-Instanz befindet. Alle verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
+   |Position     | Wählen Sie den Standort aus, an dem sich auch Ihre Azure Key Vault-Instanz befindet. Alle verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).        |
    |Preisstufe     |  Wählen Sie zwischen **Standard** und **Premium**. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Eigenschaften des Databricks-Arbeitsbereichs](./media/store-secrets-azure-key-vault/create-databricks-service.png)

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
 ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77191282"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal
@@ -42,7 +42,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Angeben von Details für eine neue Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*logic-app-name*> | Der Name Ihrer Logik-App, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. In diesem Beispiel wird „My-First-Logic-App“ verwendet. |
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
@@ -77,7 +77,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Die URL des RSS-Feeds** | `http://feeds.reuters.com/reuters/topNews` | Der Link für den RSS-Feed, den Sie überwachen möchten |
    | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen |
@@ -147,7 +147,7 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       ![Auswählen von Eigenschaften für E-Mail-Textinhalt](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Eigenschaft | Beschreibung |
+      | Eigenschaft | BESCHREIBUNG |
       |----------|-------------|
       | **Feedtitel** | Der Titel des Elements |
       | **Feed veröffentlicht am** | Datum und Uhrzeit der Elementveröffentlichung |

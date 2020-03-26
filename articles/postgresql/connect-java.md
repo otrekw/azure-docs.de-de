@@ -4,16 +4,18 @@ description: Dieser Schnellstart enthält ein Java-Codebeispiel, das Sie nutzen 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-java-august2019
+ms.custom:
+- mvc
+- seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769023"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063125"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver und zum Abfragen von Daten
 
@@ -23,7 +25,7 @@ In dieser Schnellstartanleitung stellen Sie über eine Java-Anwendung eine Verbi
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Abschluss von [Schnellstart: Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](quickstart-create-server-database-portal.md) oder [Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mit der Azure CLI](quickstart-create-server-database-azure-cli.md).
+- Abschluss von [Schnellstart: Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](quickstart-create-server-database-portal.md) oder [Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mit der Azure CLI](quickstart-create-server-database-azure-cli.md) erstellt wurde.
 
 - [PostgreSQL-JDBC-Treiber](https://jdbc.postgresql.org/download.html): Verwenden Sie den passenden Treiber für Ihre Java-Version und das Java Development Kit.
 - [Classpath-Details](https://jdbc.postgresql.org/documentation/head/classpath.html): Schließen Sie die PostgreSQL-JDBC-JAR-Datei (beispielsweise „postgresql-42.1.1.jar“) in den Classpath Ihrer Anwendung ein.

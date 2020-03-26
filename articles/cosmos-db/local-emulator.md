@@ -7,11 +7,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
 ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591369"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222127"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -227,7 +227,7 @@ Importieren Sie das X.509-Zertifikat in den Java-Zertifikatspeicher, indem Sie d
 
 Beim Herstellen einer Verbindung mit dem Emulator in Python- und Node.js-SDKs ist die SSL-Überprüfung deaktiviert.
 
-## <a id="command-line"></a>Referenz zum Befehlszeilentool
+## <a name="command-line-tool-reference"></a><a id="command-line"></a>Referenz zum Befehlszeilentool
 Sie können die Befehlszeile im Installationspfad verwenden, um den Emulator zu starten und zu beenden, Optionen zu konfigurieren und andere Vorgänge auszuführen.
 
 ### <a name="command-line-syntax"></a>Befehlszeilensyntax
@@ -263,7 +263,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Micros
 |FailOnSslCertificateNameMismatch | Standardmäßig erneuert der Emulator sein selbstsigniertes SSL-Zertifikat, wenn das SAN des Zertifikats nicht den Domänennamen des Emulator-Hosts, die lokale IPv4-Adresse, den „localhost“ und „127.0.0.0.1“ enthält. Bei dieser Option tritt stattdessen beim Start des Emulators ein Fehler auf. Verwenden Sie dann die Option „/GenCert“, um ein neues, selbstsigniertes SSL-Zertifikat zu erstellen und zu installieren. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
 | GenCert | Generiert und installiert ein neues, selbstsigniertes SSL-Zertifikat. Optional mit einer kommagetrennten Liste zusätzlicher DNS-Namen für den Zugriff auf den Emulator über das Netzwerk. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: Optionale durch Trennzeichen getrennte Liste zusätzlicher DNS-Namen  |
 | DirectPorts |Gibt die für die direkte Konnektivität zu verwendenden Ports an. Die Standardwerte sind 10251, 10252, 10253, 10254. | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: Durch Trennzeichen getrennte Liste mit vier Ports. |
-| Key |Autorisierungsschlüssel für den Emulator. Der Schlüssel muss die Base64-Codierung eines 64-Byte-Vektors sein. | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>: Der Schlüssel muss die Base64-Codierung eines 64-Bytes-Vektors sein.|
+| Schlüssel |Autorisierungsschlüssel für den Emulator. Der Schlüssel muss die Base64-Codierung eines 64-Byte-Vektors sein. | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>: Der Schlüssel muss die Base64-Codierung eines 64-Bytes-Vektors sein.|
 | EnableRateLimiting | Gibt an, dass das Verhalten für die Anforderungsratenbegrenzung aktiviert ist. |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |Gibt an, dass das Verhalten für die Anforderungsratenbegrenzung deaktiviert ist. |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
 | NoUI | Die Emulator-Benutzeroberfläche wird nicht angezeigt. | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
@@ -276,7 +276,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Micros
 | Konsistenz | Legt die Standardkonsistenzebene des Kontos fest. | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>: Der Wert muss eine der folgenden [Konsistenzebenen](consistency-levels.md) sein: Sitzung, stark, letztlich oder begrenzte Veraltung. Der Standardwert lautet „Sitzung“. |
 | ? | Zeigt die Hilfemeldung an.| | |
 
-## <a id="set-partitioncount"></a>Ändern der Anzahl von Containern
+## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>Ändern der Anzahl von Containern
 
 Sie können standardmäßig bis zu 25 Container mit fester Größe (nur unterstützt durch Azure Cosmos DB SDKs) oder 5 Container mit dem Azure Cosmos-Emulator erstellen. Durch Ändern des Wertes **PartitionCount** können Sie bis zu 250 Container mit fester Größe oder 50 Container mit unbegrenzter Größe oder jede Kombination der beiden erstellen, die 250 Container mit fester Größe nicht überschreitet (wobei ein Container mit unbegrenzter Größe 5 Containern mit fester Größe entspricht). Es wird jedoch nicht empfohlen, den Emulator so einzurichten, dass er mit mehr als 200 Containern fester Größe ausgeführt wird. Wegen des Mehraufwands, der den E/A-Vorgängen des Datenträgers hinzugefügt wird, kann es zu unvorhersehbaren Timeouts bei der Verwendung der Endpunkt-APIs kommen.
 
@@ -421,7 +421,7 @@ Navigieren Sie in Ihrem Browser zu folgender URL, um den Daten-Explorer zu öffn
 
 Wenn Sie über eine in einem Linux-Docker-Container ausgeführte .NET-Clientanwendung verfügen und den Azure Cosmos-Emulator auf einem Hostcomputer ausführen, gehen Sie wie im folgenden Abschnitt beschrieben vor, um das Zertifikat in den Linux-Docker-Container zu importieren.
 
-## Ausführung unter Mac oder Linux<a id="mac"></a>
+## <a name="running-on-mac-or-linux"></a>Ausführung unter Mac oder Linux<a id="mac"></a>
 
 Der Cosmos-Emulator kann derzeit nur unter Windows ausgeführt werden. Benutzer mit Mac oder Linux können den Emulator auf einer Windows-VM ausführen, die einen Hypervisor wie Parallels oder VirtualBox hostet. Dies kann mithilfe folgender Schritte ermöglicht werden.
 
@@ -505,7 +505,7 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
 
 - Wenn Ihr Computer während der Ausführung des Emulators in den Ruhezustand versetzt wird oder Betriebssystemupdates ausführt, wird möglicherweise die Meldung **Der Dienst ist zurzeit nicht verfügbar** angezeigt. Setzen Sie die Daten des Emulators zurück, indem Sie mit der rechten Maustaste auf das Symbol klicken, das im Windows-Infobereich angezeigt wird und **Daten zurücksetzen** auswählen.
 
-### <a id="trace-files"></a>Sammeln von Ablaufverfolgungsdateien
+### <a name="collect-trace-files"></a><a id="trace-files"></a>Sammeln von Ablaufverfolgungsdateien
 
 Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an einer Administratoreingabeaufforderung aus:
 
@@ -518,7 +518,7 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 7. Navigieren Sie zu `%ProgramFiles%\Azure Cosmos DB Emulator`, und suchen Sie die Datei „docdbemulator_000001.etl“.
 8. Öffnen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket, und fügen Sie die ETL-Datei zusammen mit den Reproduktionsschritten ein.
 
-### <a id="uninstall"></a>Deinstallieren des lokalen Emulators
+### <a name="uninstall-the-local-emulator"></a><a id="uninstall"></a>Deinstallieren des lokalen Emulators
 
 1. Schließen Sie alle geöffneten Instanzen des lokalen Emulators, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Symbol für den Azure Cosmos-Emulator klicken und anschließend auf „Beenden“ klicken. Bis alle Instanzen beendet wurden, kann unter Umständen eine Minute vergehen.
 2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)** .

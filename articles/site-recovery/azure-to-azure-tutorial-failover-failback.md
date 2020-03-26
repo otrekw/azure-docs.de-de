@@ -10,10 +10,10 @@ ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68782588"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Ausführen eines Failovers und erneutes Schützen von Azure-VMs zwischen Regionen
@@ -42,7 +42,7 @@ In diesem Tutorial wird beschrieben, wie ein Failover eines virtuellen Azure-Com
 
 2. Wählen Sie unter **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
 
-   * **Neuester** (Standardeinstellung): Mit dieser Option werden alle Daten in Site Recovery verarbeitet, und sie verfügt über den niedrigsten RPO-Wert (Recovery Point Objective).
+   * **Neuester** (Standardeinstellung): Bei dieser Option werden alle Daten in Site Recovery verarbeitet, und sie bietet den niedrigsten RPO-Wert (Recovery Point Objective).
    * **Letzte Verarbeitung**: Mit dieser Option wird für den virtuellen Computer der Zustand des letzten Wiederherstellungspunkts wiederhergestellt, der von Site Recovery verarbeitet wurde.
    * **Benutzerdefiniert**: Bei dieser Option wird ein Failover auf einen bestimmten Wiederherstellungspunkt ausgeführt. Diese Option eignet sich für ein Testfailover.
 
@@ -56,7 +56,7 @@ In diesem Tutorial wird beschrieben, wie ein Failover eines virtuellen Azure-Com
    Dadurch werden alle mit dem Dienst verfügbaren Wiederherstellungspunkte gelöscht. Sie können den Wiederherstellungspunkt nun nicht mehr ändern.
 
 > [!NOTE]
-> Beim Failover einer VM, der Sie einen Datenträger hinzugefügt haben, nachdem Sie für die VM Replikation aktiviert haben, zeigen die Replikationspunkte die Datenträger an, die zur Wiederherstellung zur Verfügung stehen. Wenn beispielsweise eine VM über einen einzelnen Datenträger verfügt und Sie einen neuen hinzufügen, zeigen Replikationspunkte, die vor dem Hinzufügen des Datenträgers erstellt wurden, an, dass der Replikationspunkt aus „1 von 2 Datenträgern“ besteht.
+> Beim Failover einer VM, der Sie einen Datenträger hinzugefügt haben, nachdem Sie für die VM Replikation aktiviert haben, zeigen die Replikationspunkte die Datenträger an, die zur Wiederherstellung zur Verfügung stehen. Wenn beispielsweise ein virtueller Computer über einen einzelnen Datenträger verfügt und Sie einen neuen hinzufügen, zeigen Replikationspunkte, die vor dem Hinzufügen des Datenträgers erstellt wurden, an, dass der Replikationspunkt aus „1 von 2 Datenträgern“ besteht.
 
 ![Failover mit einem hinzugefügten Datenträger](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 

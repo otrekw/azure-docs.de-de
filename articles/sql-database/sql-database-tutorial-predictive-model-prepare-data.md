@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68596667"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Vorbereiten von Daten zum Trainieren eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
 In Teil 1 dieser dreiteiligen Tutorialreihe importieren Sie Daten aus einer Azure SQL-Datenbank in R und bereiten diese Daten vor. Später in dieser Reihe verwenden Sie die Daten zum Trainieren und Bereitstellen eines Predictive Machine Learning-Modells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion).
 
-Stellen Sie sich für diese Reihe von Tutorials vor, dass Sie einen Skiverleih betreiben und die Anzahl der Vermietungen an einem in der Zukunft liegenden Datum vorhersagen möchten. Diese Informationen helfen Ihnen, Ihren Lagerbestand, Ihre Mitarbeiter und Ihre Anlagen bereitzumachen.
+Stellen Sie sich für diese Reihe von Tutorials vor, dass Sie einen Skiverleih betreiben und die Anzahl der Vermietungen an einem in der Zukunft liegenden Datum vorhersagen möchten. Mit dieser Information können Sie den Bestand, die Mitarbeiter und die Räumlichkeiten besser vorausplanen.
 
 In den Teilen 1 und 2 dieser Reihe entwickeln Sie einige R-Skripts in RStudio, um Ihre Daten vorzubereiten und ein Machine Learning-Modell zu trainieren. In Teil 3 führen Sie dann diese R-Skripts in einer SQL-Datenbank mithilfe gespeicherter Prozeduren aus.
 
@@ -69,7 +69,7 @@ Das in diesem Tutorial verwendete Beispieldataset wurde in einer **BACPAC**-Date
    * Wählen Sie während der öffentlichen Vorschau die Konfiguration **Gen5/vCore** für die neue Datenbank
    * Benennen Sie die neue Datenbank "TutorialDB"
 
-## <a name="load-the-data-into-a-data-frame"></a>Laden der Daten in einen Datenrahmen
+## <a name="load-the-data-into-a-data-frame"></a>Laden der Daten in einem neuen Datenrahmen
 
 Um die Daten in R zu verwenden, laden Sie die Daten aus der Azure SQL-Datenbank in einen Datenrahmen (`rentaldata`).
 
@@ -95,7 +95,7 @@ head(rentaldata);
 str(rentaldata);
 ```
 
-Die Ergebnisse sollten ähnlich wie hier aussehen:
+Das Ergebnis sollte etwa folgendermaßen aussehen:
 
 ```results
    Year  Month  Day  RentalCount  WeekDay  Holiday  Snow
@@ -130,7 +130,7 @@ rentaldata$WeekDay <- factor(rentaldata$WeekDay);
 str(rentaldata);
 ```
 
-Die Ergebnisse sollten ähnlich wie hier aussehen:
+Das Ergebnis sollte etwa folgendermaßen aussehen:
 
 ```results
 data.frame':      453 obs. of  7 variables:

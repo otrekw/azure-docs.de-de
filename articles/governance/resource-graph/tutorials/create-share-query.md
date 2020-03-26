@@ -4,10 +4,10 @@ description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Grap
 ms.date: 11/21/2019
 ms.topic: tutorial
 ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74303949"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
@@ -26,7 +26,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="create-and-delete-a-private-query"></a>Erstellen und Löschen einer privaten Abfrage
 
@@ -153,7 +153,7 @@ Wenn Sie mit diesem Tutorial fertig sind, löschen Sie die privaten und freigege
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie private und freigegebene Abfragen erstellt. Weitere Informationen zur Resource Graph-Sprache finden Sie auf der Seite mit den Details zur Abfragesprache.
+In diesem Tutorial haben Sie private und freigegebene Abfragen erstellt. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zur Abfragesprache](../concepts/query-language.md)
+> [Erfahren Sie mehr über die Abfragesprache](../concepts/query-language.md).

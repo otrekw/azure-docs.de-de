@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 3c8eb7ead7851c311c79c2f9e9bdc7e703c3af71
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75747490"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Übersicht über Azure Service Fabric
@@ -78,7 +78,7 @@ Mit Service Fabric können Sie Folgendes tun:
 * Stellen Sie Anwendungen in Sekundenschnelle mit hoher Dichte mit hunderten oder tausenden Anwendungen oder Containern pro Computer bereit.
 * Verschiedene Versionen derselben Anwendung gleichzeitig bereitstellen und jede Anwendung unabhängig voneinander aktualisieren.
 * Verwalten Sie den Lebenszyklus von Anwendungen ohne Ausfallzeiten – einschließlich Upgrades mit und ohne Funktionsbeeinträchtigung.
-* Skalieren Sie die Anzahl von Knoten in einem Cluster hoch oder herunter. Beim Skalieren von Knoten wird ihre Anwendung automatisch skaliert.
+* Skalieren Sie die Anzahl von Knoten in einem Cluster auf oder ab. Beim Skalieren von Knoten wird ihre Anwendung automatisch skaliert.
 * Integrität der Anwendungen überwachen und diagnostizieren und Richtlinien für automatische Reparaturen festlegen.
 * Überwachen Sie den Resource Balancer beim Organisieren einer erneuten Bereitstellung der Anwendungen im Cluster. Service Fabric führt nach Fehlern eine Wiederherstellung durch und optimiert die Lastenverteilung basierend auf den verfügbaren Ressourcen.
 
