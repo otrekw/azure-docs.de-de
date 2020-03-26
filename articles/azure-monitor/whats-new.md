@@ -6,17 +6,17 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673321"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79500502"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
 
-## <a name="march-2020"></a>März 2020
+## <a name="february-2020"></a>Februar 2020
 
 ### <a name="agents"></a>Agents
 Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung.
@@ -27,7 +27,7 @@ Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung
 - [Installieren und Konfigurieren der Microsoft Azure-Diagnoseerweiterung (WAD)](platform/diagnostics-extension-windows-install.md): Neuer Artikel. 
 - [Schema der Diagnoseerweiterung für Windows](platform/diagnostics-extension-schema-windows.md): Neu strukturiert.
 - [Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs](platform/diagnostics-extension-stream-event-hubs.md): Vollständig überarbeitet und aktualisiert.
-- [Speichern und Anzeigen von Diagnosedaten in Azure Storage](platform/diagnostics-extension-to-storage.md) Vollständig überarbeitet und aktualisiert.
+- [Speichern und Anzeigen von Diagnosedaten in Azure Storage](/azure/cloud-services/diagnostics-extension-to-storage) Vollständig überarbeitet und aktualisiert.
 - [Log Analytics-VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md): Verdeutlichung der Beziehung mit dem Log Analytics-Agent.
 - [Log Analytics-VM-Erweiterung für Linux](../virtual-machines/extensions/oms-linux.md): Verdeutlichung der Beziehung mit dem Log Analytics-Agent.
 
@@ -53,7 +53,7 @@ Mehrere Updates im Rahmen der Überarbeitung des Inhalts der Diagnoseerweiterung
 - [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Neuer Artikel.
 - [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](platform/manage-cost-storage.md): Verbesserte Beispielabfragen zum besseren Verständnis Ihrer Nutzung.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 - [Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken](platform/metrics-supported-export-diagnostic-settings.md): Ein Abschnitt zum Ändern des Verhaltens für NULL-Werte und Nullwerte wurde hinzugefügt.
 
 
@@ -175,7 +175,7 @@ Mehrere neue Artikel zur Umstellung vom Ansicht-Designer auf Arbeitsmappen.
 - [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](platform/delete-workspace.md): Diesem Artikel wurde die PowerShell-Methode hinzugefügt.
 - [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md): In diesem Artikel wurde die Erfassungsrate für einen Arbeitsbereich erhöht.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 - [Über Diagnoseeinstellungen exportierbare Azure Monitor-Plattformmetriken](platform/metrics-supported-export-diagnostic-settings.md): Neuer Artikel.
 
 ### <a name="platform-logs"></a>Plattformprotokolle

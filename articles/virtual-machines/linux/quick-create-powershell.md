@@ -16,17 +16,17 @@ ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 1e336ad05d70341365b63d806b249740113724d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74035203"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen einer Linux-VM mit PowerShell in Azure
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers mit PowerShell in Azure
 
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. Diese Schnellstartanleitung zeigt, wie Sie mit dem Azure PowerShell-Modul einen virtuellen Linux-Computer in Azure bereitstellen. In dieser Schnellstartanleitung wird das Ubuntu 16.04 LTS-Marketplace-Image von Canonical verwendet. Um den virtuellen Computer in Aktion zu sehen, stellen Sie außerdem eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 

@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
 ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73821714"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
@@ -45,7 +45,7 @@ Als Alternative zur manuellen Erstellung der verwalteten Instanz können Sie mit
 
 Nachdem Sie eine verwaltete Instanz erstellt und den Zugriff konfiguriert haben, können Sie mit der Migration Ihrer Datenbanken von lokalen SQL Server-Instanzen oder Azure-VMs beginnen. Die Migration schlägt fehl, wenn die zu migrierende Quelldatenbank nicht unterstützte Features enthält. Um Fehler zu vermeiden und die Kompatibilität zu überprüfen, können Sie den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installieren. Dieser analysiert Ihre Datenbanken in SQL Server und ermittelt sämtliche Probleme, die die Migration zu einer verwalteten Instanz verhindern können (beispielsweise das Vorhandensein von [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) oder mehreren Protokolldateien). Nachdem Sie diese Probleme behoben haben, sind Ihre Datenbanken bereit für die Migration zur verwalteten Instanz. Der [Assistent für Datenbankexperimente](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) ist ein nützliches Tool, das Ihre Workload in SQL Server aufzeichnen und in der verwalteten Instanz wiedergeben kann, um zu ermitteln, ob nach der Migration zu einer verwalteten Instanz Leistungsprobleme zu erwarten sind.
 
-Sobald Sie sicher sind, dass Ihre Datenbank zu einer verwalteten Instanz migriert werden kann, können Sie die nativen Wiederherstellungsfunktionen von SQL Server verwenden, um eine Datenbank aus einer `.bak`-Datei in einer verwalteten Instanz wiederherzustellen. Sie können diese Methode verwenden, um Datenbanken von der SQL Server-Datenbank-Engine, die lokal installiert ist, oder von virtuellen Azure-Computern zu migrieren. Einen Schnellstart finden Sie unter [Wiederherstellen einer Datenbank aus einer Sicherung in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md). In diesem Schnellstart stellen Sie eine Datenbank mit dem Transact-SQL-Befehl `RESTORE` aus einer in Azure Blob Storage gespeicherten `.bak`-Datei wieder her.
+Sobald Sie sicher sind, dass Ihre Datenbank zu einer verwalteten Instanz migriert werden kann, können Sie die nativen Wiederherstellungsfunktionen von SQL Server verwenden, um eine Datenbank aus einer `.bak`-Datei in einer verwalteten Instanz wiederherzustellen. Sie können diese Methode verwenden, um Datenbanken von der SQL Server-Datenbank-Engine, die lokal installiert ist, oder von virtuellen Azure-Computern zu migrieren. Einen Schnellstart finden Sie unter [Wiederherstellen einer Datenbank aus einer Sicherung in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md). In diesem Schnellstart stellen Sie eine Datenbank mit dem Transact-SQL-Befehl `.bak` aus einer in Azure Blob Storage gespeicherten `RESTORE`-Datei wieder her.
 
 > [!TIP]
 > Informationen zum Erstellen einer Sicherung Ihrer Datenbank in Azure Blob Storage mit dem Transact-SQL-Befehl `BACKUP` finden Sie unter [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
@@ -75,4 +75,4 @@ Erfahren Sie mehr über den [empfohlenen Migrationsprozess](sql-database-managed
 - Machen Sie sich mit der [allgemeinen Liste mit unterstützten Features in verwalteten Instanzen](sql-database-features.md) sowie mit [Details und bekannten Problemen](sql-database-managed-instance-transact-sql-information.md) vertraut.
 - Informieren Sie sich über [technische Eigenschaften der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden einer verwalteten Instanz in Azure SQL-Datenbank](sql-database-howto-managed-instance.md).
-- [Identifizieren der richtigen Azure SQL Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).
+- [Identifizieren der richtigen Azure SQL-Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/)

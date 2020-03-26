@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157580"
 ---
 # <a name="what-is-azure-signalr-service"></a>Was ist Azure SignalR Service?
@@ -72,6 +72,6 @@ SignalR Service ermöglicht es dem Server, Nachrichten an eine bestimmte Verbind
 
 Es gibt viele verschiedene Möglichkeiten für die Programmierung mit Azure SignalR Service, wie z. B.:
 
-- **[ Skalieren einer ASP.NET Core SignalR-App](signalr-concept-scale-aspnet-core.md)** : Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch horizontale Hochskalierung Hunderttausende von Verbindungen zu ermöglichen.
+- **[Skalieren einer ASP.NET Core SignalR-App](signalr-concept-scale-aspnet-core.md)** : Integrieren Sie den Azure SignalR-Dienst in eine ASP.NET Core SignalR-Anwendung, um durch Aufskalierung Hunderttausende von Verbindungen zu ermöglichen.
 - **[Erstellen von serverlosen Echtzeitanwendungen](signalr-concept-azure-functions.md)** : Verwenden Sie die Integration von Azure Functions in den Azure SignalR-Dienst, um serverlose Echtzeitanwendungen in Sprachen wie JavaScript, C# und Java zu erstellen.
 - **[Senden von Nachrichten vom Server an Clients über die REST API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** : Der Azure SignalR-Dienst bietet eine REST-API, um es Anwendungen zu ermöglichen, Nachrichten an mit dem SignalR-Dienst verbundene Clients in allen REST-fähigen Programmiersprachen zu senden.

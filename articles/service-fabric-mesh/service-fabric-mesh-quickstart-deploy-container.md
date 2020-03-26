@@ -6,13 +6,13 @@ ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75458959"
 ---
-# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Schnellstart: Bereitstellen von Hallo Welt in Service Fabric Mesh
+# <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Schnellstart: Bereitstellen von „Hello World“ in Service Fabric Mesh
 
 [Service Fabric Mesh](service-fabric-mesh-overview.md) macht es einfach, Microservicesanwendungen in Azure zu erstellen und zu verwalten, ohne virtuelle Computer bereitstellen zu müssen. In diesem Schnellstart erstellen Sie eine „Hello World“-Anwendung in Azure und stellen sie im Internet bereit. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Innerhalb weniger Minuten sehen Sie diese Ansicht in Ihrem Browser:
 

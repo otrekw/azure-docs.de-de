@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75466268"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
@@ -132,7 +132,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen** aus. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 
-Kopieren Sie den Inhalt, der nach Ausführung des Befehls `Import-PfxCertificate` im PowerShell-Fenster nach **CN=** angegeben war, und fügen Sie ihm den Port `19000` hinzu. Beispiel: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Kopieren Sie ihn in das Feld **Verbindungsendpunkt**. Speichern Sie diesen Wert. Er wird in einem späteren Schritt benötigt.
+Kopieren Sie den Inhalt, der nach Ausführung des Befehls **im PowerShell-Fenster nach**CN=`Import-PfxCertificate` angegeben war, und fügen Sie ihm den Port `19000` hinzu. Beispiel: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Kopieren Sie ihn in das Feld **Verbindungsendpunkt**. Speichern Sie diesen Wert. Er wird in einem späteren Schritt benötigt.
 
 Klicken Sie auf **Erweiterte Verbindungsparameter**, und überprüfen Sie die Informationen zu den Verbindungsparametern.  Die Werte *FindValue* und *ServerCertThumbprint* müssen dem Fingerabdruck des Zertifikats entsprechen, das Sie im vorherigen Schritt durch Ausführen von `Import-PfxCertificate` installiert haben.
 

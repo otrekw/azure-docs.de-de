@@ -10,10 +10,10 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76514135"
 ---
 ::: zone target="docs"
@@ -42,7 +42,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-1. Sie haben die Schritte unter [Tutorial: Bestellen von Azure Data Box](data-box-deploy-ordered.md) ausgeführt.
+1. Sie haben das [Tutorial zum Bestellen einer Azure Data Box](data-box-deploy-ordered.md) durchgearbeitet.
 2. Sie haben Ihre Data Box erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt. 
     - Die Klarsichthülle, die am Gerät unter dem eigentlichen Etikett angebracht ist, enthält ein Adressetikett. Bewahren Sie dieses Etikett sicher auf, da Sie es für den Rückversand benötigen.
     - In einigen Regionen in Europa wird das Gerät unter Umständen in einer Kiste ausgeliefert. Packen Sie das Gerät aus, und behalten Sie die Kiste für die Rücksendung.
@@ -143,7 +143,7 @@ Sobald die Einrichtung des Geräts abgeschlossen ist, können Sie eine Verbindun
 
 ## <a name="connect-your-device"></a>Verbinden Ihres Geräts
 
-1. Zum Abrufen des Gerätekennworts wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Allgemein > Gerätedetails**.
+1. Zum Abrufen des Gerätekennworts wechseln Sie im **Azure-Portal** zu [Allgemein > Gerätedetails](https://portal.azure.com).
 2. Weisen Sie dem Ethernet-Adapter auf dem Computer, mit dem Sie sich mit der Data Box verbinden, die statische IP-Adresse 192.168.100.5 und das Subnetz 255.255.255.255.0 zu. Greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu. Der Verbindungsaufbau kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern. 
 3. Melden Sie sich mit dem aus dem Azure-Portal abgerufenen Kennwort an. Sie sehen eine Fehlermeldung, die auf ein Problem mit dem Sicherheitszertifikat der Website hinweist. Befolgen Sie die browserspezifischen Anweisungen, um zur Webseite zu gelangen.
 4. Standardmäßig werden die Netzwerkeinstellungen für die Datenschnittstelle mit 10 Gbit/s (oder 1 Gbit/s) als DHCP konfiguriert. Bei Bedarf können Sie diese Schnittstelle als statisch konfigurieren und eine IP-Adresse angeben. 

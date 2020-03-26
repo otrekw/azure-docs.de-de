@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
 ms.openlocfilehash: 075b55b5a798924b55ef9d901e4d2e9ecfc9dc1e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77597574"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Einführung in die Cassandra-API für Azure Cosmos DB
@@ -33,7 +33,7 @@ Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosm
 
 **Globale Verteilung und Verfügbarkeit**: Azure Cosmos DB bietet die Möglichkeit, Daten in allen Azure-Regionen global zu verteilen und die Daten lokal bereitzustellen, wobei Datenzugriff mit geringer Latenz und Hochverfügbarkeit sichergestellt wird. Azure Cosmos DB bietet 99,99 % Hochverfügbarkeit innerhalb einer Region und 99,999 % Lese- und Schreibverfügbarkeit in mehreren Regionen ohne höheren Betriebsaufwand. Weitere Informationen finden Sie im Artikel [Globale Verteilung von Daten](distribute-data-globally.md). 
 
-**Auswahl der Konsistenzebene**: In Azure Cosmos DB kann zwischen fünf klar definierten Konsistenzebenen gewählt werden, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Diese Konsistenzebenen sind: „Strong“ (Sicher), „Bounded Staleness“ (Begrenzte Veraltung), „Session“ (Sitzung), „Consistent Prefix“ (Präfixkonsistenz) und „Eventual“ (Letztlich). Mit diesen gut abgegrenzten, praktischen und intuitiven Konsistenzebenen können Entwickler präzise Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz schließen. Erfahren Sie mehr im Artikel [Konsistenzebenen](consistency-levels.md). 
+**Auswahl der Konsistenzebene**: Azure Cosmos DB stellt fünf wohl definierte Konsistenzebenen zur Auswahl, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Diese Konsistenzebenen sind: „Strong“ (Sicher), „Bounded Staleness“ (Begrenzte Veraltung), „Session“ (Sitzung), „Consistent Prefix“ (Präfixkonsistenz) und „Eventual“ (Letztlich). Mit diesen gut abgegrenzten, praktischen und intuitiven Konsistenzebenen können Entwickler präzise Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz schließen. Erfahren Sie mehr im Artikel [Konsistenzebenen](consistency-levels.md). 
 
 **Für große Unternehmen geeignet**: In Azure Cosmos DB stehen [Compliancezertifizierungen](https://www.microsoft.com/trustcenter) zur Verfügung, um die sichere Nutzung der Plattform durch Benutzer sicherzustellen. Azure Cosmos DB bietet außerdem Verschlüsselung ruhender Daten sowie von Daten während der Übertragung, eine IP-Firewall und Überwachungsprotokolle für Aktivitäten auf Steuerungsebene.
 
