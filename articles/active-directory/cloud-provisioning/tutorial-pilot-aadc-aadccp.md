@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78298818"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
@@ -78,7 +78,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
  
  4. Geben Sie auf der Seite **Bereichsfilter** die Organisationseinheit oder Sicherheitsgruppe ein, auf der die Pilotbereitstellung basieren soll.  Fügen Sie zum Filtern nach der Organisationseinheit den Teil des Distinguished Name (DN) hinzu, der für die Organisationseinheit steht. Die Regel wird auf alle Benutzer in dieser Organisationseinheit angewendet.  Wenn der DN auf „OU=CPUsers,DC=contoso,DC=com“ endet, fügen Sie den folgenden Filter hinzu.  Klicken Sie dann auf **Weiter**. 
 
-    |Regel|attribute|Operator|value|
+    |Regel|attribute|Operator|Wert|
     |-----|----|----|-----|
     |Bereichsorganisationseinheit|DN|ENDSWITH|Distinguished Name der Organisationseinheit.|
     |Bereichsgruppe||ISMEMBEROF|Distinguished Name der Sicherheitsgruppe.|
