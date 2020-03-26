@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718179"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
@@ -85,7 +85,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
         az group create -l eastus -n <Name for the resource group>
         ```
     1. Geben Sie einen Namen für die **Ressourcengruppe** an.
-    2. Betätigen Sie die **EINGABETASTE**. 
+    2. Drücken Sie die **EINGABETASTE**. 
 
         Beispiel:
     

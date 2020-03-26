@@ -8,21 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329441"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064416"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Tutorial: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion) und Verbinden mit Ihrer IoT Central-Anwendung
 
 Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines [IoT Plug & Play-Geräts (Vorschauversion)](../../iot-pnp/overview-iot-plug-and-play.md) beschrieben. IoT Central kann ein Gerätefunktionsmodell verwenden, um eine Gerätevorlage und Visualisierungen für ein Gerät zu erstellen, wenn das Gerät zum ersten Mal eine Verbindung herstellt.
 
 Die Unterstützung für [IoT Plug & Play](../../iot-pnp/overview-iot-plug-and-play.md) befindet sich in der Vorschauphase und ist nur in ausgewählten Regionen verfügbar.
-
-> [!NOTE]
-> Wenden Sie sich an den technischen Support, um Zugriff auf eine Vorschauanwendung mit Unterstützung von IoT Plug & Play-Geräten zu erhalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 

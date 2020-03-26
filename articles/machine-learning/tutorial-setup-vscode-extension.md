@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604869"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Einrichten der Azure Machine Learning-Erweiterung für Visual Studio Code
@@ -53,7 +53,7 @@ Die restlichen Schritte dieses Tutorials wurden mit **Version 0.6.8** der Erwei
 Zum Bereitstellen von Ressourcen und Ausführen von Workloads in Azure müssen Sie sich mit Ihren Anmeldeinformationen für Ihr Azure-Konto anmelden. Zur Unterstützung der Kontoverwaltung wird die Azure-Kontoerweiterung von Azure Machine Learning automatisch installiert. Besuchen Sie die folgende Website, um [mehr zur Azure-Kontoerweiterung zu erfahren](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
 1. Öffnen Sie hierzu die Befehlspalette, indem Sie in der Menüleiste **Ansicht > Befehlspalette** auswählen. 
-1. Geben Sie den Befehl „Azure: Anmelden“ in die Befehlspalette ein, um den Anmeldeprozess zu starten.
+1. Geben Sie in das Textfeld den Befehl „Azure: Anmelden“ in die Befehlspalette ein, um den Anmeldeprozess zu starten.
 
 ## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Ausführen eines Trainingsskripts für ein Machine Learning-Modell in Azure
 
@@ -134,7 +134,7 @@ Nach Abschluss der Experimentausführung wird ein trainiertes Modell ausgegeben.
     > ![Herunterladen des trainierten Modells](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
 
 1. Wählen Sie einen Speicherort für die Ausgaben aus.
-1. Ein Ordner mit dem Namen Ihrer Ausführung wird lokal heruntergeladen. Navigieren Sie dorthin.
+1. Ein Ordner mit dem Namen Ihrer Ausführung wird lokal heruntergeladen. Navigieren Sie zu dieser.
 1. Die Modelldateien befinden sich im Verzeichnis `outputs/outputs/model`.
 
 ## <a name="next-steps"></a>Nächste Schritte

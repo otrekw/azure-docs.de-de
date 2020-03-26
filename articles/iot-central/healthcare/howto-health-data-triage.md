@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77021643"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
@@ -77,7 +77,7 @@ Weitere Informationen zu Streamingdatasets in Power BI finden Sie im Dokument [E
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Herstellen einer Verbindung zwischen Ihrer Logik-App und Azure Event Hubs
 Um eine Verbindung zwischen Ihrer Logik-App und Azure Event Hubs herzustellen, befolgen Sie die Anweisungen im Dokument [Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Im Folgenden finden Sie einige empfohlene Parameter:
 
-|Parameter|value|
+|Parameter|Wert|
 |---|---|
 |Inhaltstyp|Anwendung/json|
 |Intervall|3|
@@ -141,7 +141,7 @@ Im nächsten Schritt analysieren Sie die Daten aus Ihrem Event Hub, um sie in di
 
 2. Nachdem Sie die JSON-Nutzlasten überprüft haben, wechseln Sie wieder zum Logik-App-Designer und wählen **+ Neuer Schritt** aus. Suchen Sie nach **Variable initialisieren**, fügen Sie diesen Punkt als nächsten Schritt hinzu, und geben Sie die folgenden Parameter ein:
 
-    |Parameter|value|
+    |Parameter|Wert|
     |---|---|
     |Name|Schnittstellenname|
     |type|String|

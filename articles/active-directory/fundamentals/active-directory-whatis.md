@@ -12,11 +12,11 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368032"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215808"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -57,7 +57,7 @@ Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige
 
 - **Featurelizenzen mit nutzungsbasierter Bezahlung:** Es sind auch zusätzliche Featurelizenzen verfügbar (beispielsweise Azure Active Directory B2C). B2C kann Ihnen dabei helfen, Identitäts- und Zugriffsverwaltungslösungen für Ihre kundenorientierten Apps bereitzustellen. Weitere Informationen finden Sie in der [Dokumentation für Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Sie unter [ Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) und weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern unter [ Zuweisen oder Entfernen von Azure Active Directory-Lizenzen](license-users-groups.md).
+Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Sie unter [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](active-directory-how-subscriptions-associated-directory.md). Weitere Informationen zum Zuweisen von Lizenzen zu Benutzern finden Sie unter [Zuweisen oder Entfernen von Azure Active Directory-Lizenzen](license-users-groups.md).
 
 ## <a name="terminology"></a>Begriff
 
@@ -87,7 +87,7 @@ Nachdem Sie Ihre Azure AD-Lizenz gewählt haben, erhalten Sie Zugriff auf einige
 |Category|BESCHREIBUNG|
 |-------|-----------|
 |Anwendungsverwaltung|Verwalten Sie Ihre cloudbasierten und lokalen Apps, und verwenden Sie den Anwendungsproxy, einmaliges Anmelden, das Portal „Meine Apps“ (auch „Zugriffsbereich“ genannt) sowie SaaS-Apps (Software as-a-Service). Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](../manage-apps/application-proxy.md) sowie in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml).|
-|Authentifizierung|Verwalten Sie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, die Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout. Weitere Informationen finden Sie in der [Dokumentation zur Azure AD-Authentifizierung](../authentication/index.yml).|
+|Authentication|Verwalten Sie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, die Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout. Weitere Informationen finden Sie in der [Dokumentation zur Azure AD-Authentifizierung](../authentication/index.yml).|
 |Business-to-Business (B2B)|Verwalten Sie Ihre Gastbenutzer und externen Partner, ohne die Kontrolle über Ihre eigenen Unternehmensdaten aufzugeben. Weitere Informationen finden Sie in der [Dokumentation zu Azure Active Directory B2B](../b2b/index.yml).|
 |Business-to-Consumer (B2C)|Steuern Sie die Registrierung, Anmeldung und Profilverwaltung der Benutzer, die Ihre App verwenden. Weitere Informationen finden Sie in der [Dokumentation für Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Bedingter Zugriff|Verwalten Sie den Zugriff auf Ihre Cloud-Apps. Weitere Informationen finden Sie in der [Dokumentation zum bedingten Zugriff mit Azure AD](../conditional-access/index.yml).|

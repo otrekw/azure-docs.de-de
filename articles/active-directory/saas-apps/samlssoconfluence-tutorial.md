@@ -17,10 +17,10 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9676a71940569b26d6b0b6bfef767108ae57d953
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Tutorial: Azure Active Directory-Integration mit SAML SSO for Confluence by resolution GmbH
@@ -129,45 +129,45 @@ Führen Sie die folgenden Schritte durch, um das einmalige Anmelden mit Azure AD
 
 2. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
     
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon1.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon1.png)
 
 3. Sie werden zur Seite „Administratorzugriff“ umgeleitet. Geben Sie das Kennwort ein, und klicken Sie auf die Schaltfläche **Bestätigen**.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon2.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon2.png)
 
 4. Klicken Sie auf der Registerkarte **ATLASSIAN MARKETPLACE** auf **Nach neuen Add-Ons suchen**. 
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon.png)
 
 5. Suchen Sie nach **Einmalige SAML-Anmeldung (SSO) für Confluence**, und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon7.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon7.png)
 
 6. Die Installation des Plug-Ins wird gestartet. Klicken Sie auf **Schließen**.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon8.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon9.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon9.png)
 
 7.  Klicken Sie auf **Manage**.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon10.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon10.png)
     
 8. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon11.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon11.png)
 
 9. Dieses neue Plug-In wird auch auf der Registerkarte **BENUTZER & SICHERHEIT** angezeigt.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon3.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon3.png)
     
 10. Klicken Sie auf der Seite **Konfiguration des SAML-SSO-Plug-Ins** auf die Schaltfläche **Add new IdP** (Neuen IdP hinzufügen), um die Einstellungen des Identitätsanbieters zu konfigurieren.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon4.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon4.png)
 
 11. Führen Sie auf der Seite **Choose your SAML Identity Provider** (SAML-Identitätsanbieter auswählen) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon5a.png)
  
     a. Legen Sie als IdP-Typ die Option **Azure AD** fest.
     
@@ -179,11 +179,11 @@ Führen Sie die folgenden Schritte durch, um das einmalige Anmelden mit Azure AD
     
 12. Klicken Sie auf der Seite **Identitätsanbieterkonfiguration** auf die Schaltfläche **Weiter**.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon5b.png)
 
 13. Führen Sie auf der Seite **Import SAML IdP Metadata** (SAML-IdP-Metadaten importieren) die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon5c.png)
 
     a. Klicken Sie auf die Schaltfläche **Datei laden**, und wählen Sie die in Schritt 5 heruntergeladene Metadaten-XML-Datei aus.
 
@@ -195,19 +195,19 @@ Führen Sie die folgenden Schritte durch, um das einmalige Anmelden mit Azure AD
     
 14. Klicken Sie auf der Seite **User ID attribute and transformation** (Benutzer-ID-Attribut und Transformation) auf die Schaltfläche **Weiter**.
 
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon5d.png)
     
 15. Klicken Sie auf der Seite **User creation and update** (Benutzererstellung und -aktualisierung) auf **Save & Next** (Speichern und weiter), um die Einstellungen zu speichern.   
     
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon6a.png)
     
 16. Klicken Sie auf der Seite **Testen Ihrer Einstellungen** auf **Skip test & configure manually** (Test überspringen und manuell konfigurieren), um den Benutzertest vorerst zu überspringen. Dieser wird im nächsten Abschnitt durchgeführt und erfordert einige Einstellungen im Azure-Portal. 
     
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon6b.png)
     
 17. Klicken Sie im angezeigten Dialogfeld **Das Überspringen des Tests bedeutet...** auf **OK**.
     
-    ![Configure single sign-on](./media/samlssoconfluence-tutorial/addon6c.png)
+    ![Einmaliges Anmelden konfigurieren](./media/samlssoconfluence-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -232,7 +232,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -301,5 +301,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SAML SSO for Confluence by resolut
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

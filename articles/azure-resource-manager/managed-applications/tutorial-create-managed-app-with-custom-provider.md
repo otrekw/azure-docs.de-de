@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648807"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
@@ -219,7 +219,7 @@ Führen Sie das folgende Azure CLI-Skript oder die entsprechenden Schritte im A
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -244,7 +244,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Ressourcenliste **Center für verwaltete Anwendungen** ein, und wählen Sie die entsprechende Option aus.
 2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 
@@ -277,7 +277,7 @@ az managedapp definition create \
 
 Führen Sie nach der Bereitstellung der Definition für die verwaltete Anwendung das folgende Skript oder die entsprechenden Schritte im Azure-Portal aus, um die Instanz Ihrer verwalteten Anwendung mit einem benutzerdefinierten Anbieter bereitzustellen:
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -300,7 +300,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Ressourcenliste **Center für verwaltete Anwendungen** ein, und wählen Sie die entsprechende Option aus.
 2. Wählen Sie im **Center für verwaltete Anwendungen** die Option **Definition einer Dienstkataloganwendung** aus, und klicken Sie anschließend auf **Hinzufügen**. 

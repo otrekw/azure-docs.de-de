@@ -6,12 +6,12 @@ ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 05/06/2019
-ms.openlocfilehash: bf9172f0c84834c951446520ff0bfcc3ef756c9c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c6334aa20b543dfbf87fedcfe45d54bbcf7a219a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278307"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477016"
 ---
 # <a name="tutorial-scale-an-azure-red-hat-openshift-cluster"></a>Tutorial: Skalieren eines Azure Red Hat OpenShift-Clusters
 
@@ -38,7 +38,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 Wenn Sie die Azure CLI lokal ausführen, führen Sie `az login` aus, um sich bei Azure anzumelden.
 
-```bash
+```azurecli
 az login
 ```
 
@@ -54,7 +54,7 @@ CLUSTER_NAME=yourclustername
 
 Skalieren wir jetzt den Cluster mithilfe der Azure-Befehlszeilenschnittstelle auf fünf Knoten:
 
-```bash
+```azurecli
 az openshift scale --resource-group $CLUSTER_NAME --name $CLUSTER_NAME --compute-count 5
 ```
 

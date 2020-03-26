@@ -16,10 +16,10 @@ ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74112489"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen eines virtuellen Windows-Computers in Azure
@@ -132,11 +132,11 @@ Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Ausla
 
 5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
 
-6. Klicken Sie auf die Schaltfläche **OK**.
+6. Klicken Sie auf die Schaltfläche **OK** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Leistung Ihrer VM konfiguriert und angezeigt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die Leistung Ihrer VM konfiguriert und angezeigt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe und VM

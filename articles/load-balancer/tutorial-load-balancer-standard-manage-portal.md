@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249866"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80240360"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
@@ -47,7 +47,7 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
@@ -83,7 +83,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 2. Klicken Sie unter **Einstellungen** auf **Integritätstests** und anschließend auf **Hinzufügen**.
 3. Verwenden Sie folgende Werte, um den Integritätstest zu erstellen:
      
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *myHealthProbe* ein. |
     | Protocol | Wählen Sie **HTTP** aus. |
@@ -101,7 +101,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln** und anschließend auf **Hinzufügen**.
 3. Konfigurieren Sie die Lastenausgleichsregel mit folgenden Werten:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *myHTTPRule* ein. |
     | Protocol | Wählen Sie **TCP** aus. |
@@ -125,9 +125,9 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 | **\<Ressourcengruppenname>**  | myResourceGroupSLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
 | **\<VNET-Name>** | myVNet          |
 | **\<Regionsname>**          | Europa, Westen      |
-| **\<IPv4-Adressraum>**   | 10.1.0.0\16          |
+| **\<IPv4-Adressraum>**   | 10.1.0.0/16          |
 | **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0\24          |
+| **\<Subnetzadressbereich>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

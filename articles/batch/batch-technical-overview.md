@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
 ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022799"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
@@ -58,7 +58,7 @@ Viele eng gekoppelte Aufträge können mit Batch parallel ausgeführt werden. F�
 
 Für Azure Batch sind auch allgemeinere workloadspezifische Funktionen verfügbar:
 * Batch unterstützt größere Mengen von [Renderingworkloads](batch-rendering-service.md) mit Renderingtools wie beispielsweise Autodesk Maya, 3ds Max, Arnold und V-Ray. 
-* R-Benutzer können das [R-Paket „doAzureParallel“](https://github.com/Azure/doAzureParallel) installieren, um für die Ausführung von R-Algorithmen in Batch-Pools auf einfache Weise das horizontale Hochskalieren durchzuführen.
+* R-Benutzer können das [R-Paket „doAzureParallel“](https://github.com/Azure/doAzureParallel) installieren, um für die Ausführung von R-Algorithmen in Batch-Pools auf einfache Weise das Aufskalieren durchzuführen.
 
 Sie können Batch-Aufträge auch im Rahmen eines größeren Azure-Workflows zum Transformieren von Daten ausführen, der mit Tools wie [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) verwaltet wird.
 
@@ -71,7 +71,7 @@ Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargeste
 ![Exemplarische Vorgehensweise für Batch-Lösung](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Schritt  |Beschreibung  |
+|Schritt  |BESCHREIBUNG  |
 |---------|---------|
 |1.  Laden Sie die **Eingabedateien** und die **Anwendungen**, mit der diese Dateien verarbeitet werden, in Ihr Azure Storage-Konto hoch.     |Bei den Eingabedateien kann es sich um alle Daten handeln, die von Ihrer Anwendung verarbeitet werden, z.B. Daten für Finanzmodelle oder zu transcodierende Videodateien. Die Anwendungsdateien können Skripts oder Anwendungen enthalten, mit denen die Daten verarbeitet werden, z.B. einen Medien-Transcoder.|
 |2.  Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto, einen **Auftrag** zum Ausführen der Workload im Pool und **Aufgaben** im Auftrag.     | Poolknoten sind die VMs, mit denen Ihre Aufgaben ausgeführt werden. Geben Sie Eigenschaften an, beispielsweise die Anzahl und Größe der Knoten, ein Windows- oder Linux-VM-Image und eine Anwendung, die installiert werden soll, wenn die Knoten dem Pool beitreten. Verwalten Sie die Kosten und die Größe des Pools, indem Sie [VMs mit niedriger Priorität](batch-low-pri-vms.md) verwenden oder die [automatische Skalierung](batch-automatic-scaling.md) der Anzahl von Knoten durchführen, wenn sich die Workload ändert. <br/><br/>Wenn Sie einem Auftrag Aufgaben hinzufügen, plant der Batch-Dienst die Aufgaben automatisch für die Ausführung auf den Computeknoten im Pool ein. Jede Aufgabe verwendet die Anwendung, die Sie hochgeladen haben, zum Verarbeiten der Eingabedateien. |

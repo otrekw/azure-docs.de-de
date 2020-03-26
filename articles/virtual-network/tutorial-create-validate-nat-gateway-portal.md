@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250819"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80059997"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit dem Azure-Portal und Testen des NAT-Diensts
 
 In diesem Tutorial erstellen Sie ein NAT-Gateway, um ausgehende Konnektivität für virtuelle Computer in Azure bereitzustellen. Sie stellen einen virtuellen Quell- und Zielcomputer bereit, um das NAT-Gateway zu testen. Sie testen das NAT-Gateway, indem Sie über eine öffentliche IP-Adresse vom virtuellen Quell- zum Zielcomputer Verbindungen in ausgehender Richtung herstellen.  In diesem Tutorial werden die Quelle und das Ziel der Einfachheit halber in zwei unterschiedlichen virtuellen Netzwerken jeweils in derselben Ressourcengruppe bereitgestellt.
 
->[!NOTE] 
->Azure Virtual Network NAT ist zurzeit als öffentliche Vorschauversion erhältlich und nur in bestimmten [Regionen](./nat-overview.md#region-availability) verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
+Falls Sie es vorziehen, können Sie diese Schritte auch mit der [Azure CLI](tutorial-create-validate-nat-gateway-cli.md) oder [Azure PowerShell](tutorial-create-validate-nat-gateway-powershell.md) anstatt mit dem Portal ausführen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -40,14 +39,14 @@ In den folgenden Abschnitten wird die Konfiguration einer vollständigen Testumg
 
 Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen, damit Sie einen virtuellen Computer bereitstellen und das NAT-Gateway verwenden können.
 
-In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetsource          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
 | **\<subnet-name>**          | mySubnetsource        |
 | **\<subnet-address-range>** | 192.168.0.0\24          |
 
@@ -101,14 +100,14 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
 
 2. Geben Sie unter **Öffentliche IP-Adresse erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | IP-Version | Wählen Sie **IPv4** aus.
     | SKU | Wählen Sie **Standard** aus.
     | Name | Geben Sie **myPublicIPsource** ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **myResourceGroupNAT** aus. |
-    | Location | Wählen Sie **USA, Osten 2** aus.|
+    | Position | Wählen Sie **USA, Osten 2** aus.|
 
 3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
@@ -165,12 +164,12 @@ Bevor Sie einen virtuellen Computer für das Ziel bereitstellen, müssen Sie ein
 
 In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<Ressourcengruppenname>**  | myResourceGroupNAT |
 | **\<virtual-network-name>** | myVNetdestination          |
 | **\<region-name>**          | USA (Ost) 2      |
-| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<IPv4-Adressraum>**   | 192.168.0.0\16          |
 | **\<subnet-name>**          | mySubnetdestination        |
 | **\<subnet-address-range>** | 192.168.0.0\24          |
 
@@ -315,7 +314,6 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
-- [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
 ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74158179"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit ASP.NET und SignalR Service
@@ -73,7 +73,7 @@ Während der Dienst bereitgestellt wird, arbeiten wird mit dem Code. Klonen Sie 
     </configuration>
     ```
 
-1. In *Startup.cs* müssen Sie anstelle von `MapSignalR()` `MapAzureSignalR({your_applicationName})` aufrufen und die Verbindungszeichenfolge übergeben, damit die Anwendung eine Verbindung mit dem Dienst herstellt, anstatt SignalR selbst zu hosten. Ersetzen Sie `{YourApplicationName}` durch den Namen Ihrer Anwendung. Dieser Name ist ein eindeutiger Name, um diese Anwendung von Ihren anderen Anwendungen zu unterscheiden. Sie können `this.GetType().FullName` als Wert verwenden.
+1. In *Startup.cs* müssen Sie anstelle von `MapSignalR()``MapAzureSignalR({your_applicationName})` aufrufen und die Verbindungszeichenfolge übergeben, damit die Anwendung eine Verbindung mit dem Dienst herstellt, anstatt SignalR selbst zu hosten. Ersetzen Sie `{YourApplicationName}` durch den Namen Ihrer Anwendung. Dieser Name ist ein eindeutiger Name, um diese Anwendung von Ihren anderen Anwendungen zu unterscheiden. Sie können `this.GetType().FullName` als Wert verwenden.
 
     ```cs
     public void Configuration(IAppBuilder app)

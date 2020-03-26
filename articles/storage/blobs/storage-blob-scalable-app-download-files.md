@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372090"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
@@ -98,7 +98,7 @@ dotnet run
 Die Anwendung liest die Container, die sich im Speicherkonto befinden, das in der **storageconnectionstring** angegeben ist. Sie durchläuft die Blobs (jeweils 10 auf einmal) mit der [ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)-Methode in den Containern und lädt sie mit der [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync)-Methode auf den lokalen Computer herunter.
 In der folgenden Tabelle sind die [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) aufgeführt, die für jedes Blob definiert sind, wenn es heruntergeladen wird.
 
-|Eigenschaft|value|BESCHREIBUNG|
+|Eigenschaft|Wert|BESCHREIBUNG|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt. |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und gespeichert wird.   |

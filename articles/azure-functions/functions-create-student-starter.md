@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75921130"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Erstellen einer Funktion mit Microsoft Azure for Students Starter
@@ -43,14 +43,14 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
     <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird |
    | **[App Service-Plan/Standort](./functions-scale.md)** | Neu | Der Hostingplan, mit dem gesteuert wird, in welcher Region Ihre Funktions-App bereitgestellt wird und welche Dichte Ihre Ressourcen aufweisen. Wenn mehrere Funktions-Apps unter demselben Plan bereitgestellt werden, wird für alle dieselbe Instanz vom Typ „Free“ verwendet. Dies ist eine Einschränkung des Students Starter-Plans. Die vollständigen Hostingoptionen sind [hier](./functions-scale.md) beschrieben.|
     | **Laufzeitstapel** | Bevorzugte Sprache | Wählen Sie eine Runtime aus, die Ihre bevorzugte Programmiersprache für Funktionen unterstützt. Wählen Sie **.NET** für C#- und F#-Funktionen aus. |
-    |**[Application Insights](./functions-monitoring.md)**| Enabled | Application Insights wird zum Speichern und Analysieren Ihrer Protokolle von Funktions-Apps verwendet. Die Anwendung ist standardmäßig aktiviert, wenn Sie einen Standort wählen, der Application Insights unterstützt. Application Insights kann für alle Funktionen aktiviert werden, indem manuell eine in der Nähe befindliche Region für die Bereitstellung von Application Insights gewählt wird. Ohne Application Insights können Sie nur Livestreamingprotokolle anzeigen.
+    |**[Application Insights](./functions-monitoring.md)**| Aktiviert | Application Insights wird zum Speichern und Analysieren Ihrer Protokolle von Funktions-Apps verwendet. Die Anwendung ist standardmäßig aktiviert, wenn Sie einen Standort wählen, der Application Insights unterstützt. Application Insights kann für alle Funktionen aktiviert werden, indem manuell eine in der Nähe befindliche Region für die Bereitstellung von Application Insights gewählt wird. Ohne Application Insights können Sie nur Livestreamingprotokolle anzeigen.
 
 3. Wählen Sie oben **App Service-Plan/Standort**, um einen anderen Standort auszuwählen.
 
@@ -70,9 +70,9 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
 8. Wählen Sie **Zu Ressource wechseln**, um Ihre neue Funktionen-App anzuzeigen.
 
-Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
+Erstellen Sie als Nächstes eine Funktion in der neuen Funktions-App.
 
-## <a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Erstellen einer Funktion mit Auslösung per HTTP
 
 1. Erweitern Sie Ihre neue Funktions-App, klicken Sie neben **Functions** auf die Schaltfläche **+** , klicken Sie auf **Im Portal**, und klicken Sie anschließend auf **Weiter**.
 

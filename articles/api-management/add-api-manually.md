@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072699"
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
@@ -29,7 +29,7 @@ In diesem Artikel erstellen wir eine leere API und geben als Back-End-API [httpb
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

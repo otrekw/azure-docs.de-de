@@ -17,10 +17,10 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Tutorial: Azure Active Directory-Integration mit HighGear
@@ -150,7 +150,7 @@ Melden Sie sich zum Konfigurieren des einmaligen Anmeldens für HighGear bei Ihr
 
 ![Das Menüelement für die Einstellungen für einmaliges Anmelden](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Geben Sie als **Name des Identitätsanbieters** eine kurze Beschreibung ein. Diese wird auf der Anmeldeseite auf der SSO-Schaltfläche von HighGear angezeigt. Beispiel:  Azure AD
+1. Geben Sie als **Name des Identitätsanbieters** eine kurze Beschreibung ein. Diese wird auf der Anmeldeseite auf der SSO-Schaltfläche von HighGear angezeigt. Beispiel: Azure AD
 
 2. Fügen Sie in HighGear im Feld für die **URL für einmaliges Anmelden** den Wert aus dem Feld **Anmelde-URL** ein, das sich in Azure im **Abschnitt HighGear** einrichten befindet.
 
@@ -187,7 +187,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Kennwortfeld.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -230,7 +230,7 @@ Melden Sie sich bei Ihrem HighGear-System an, um einen Testbenutzer zu erstellen
     Auf der rechten Seite wird ein Bereich eingeblendet, in dem Sie die Informationen für den neuen Benutzer eingeben können.  
     ![Das Formular für den neuen Kontakt](media/highgear-tutorial/new-contact-form.png)
 
-3. Geben Sie im Feld **Name** einen Namen für den Kontakt ein. Beispiel:  Britta Simon
+3. Geben Sie im Feld **Name** einen Namen für den Kontakt ein. Beispiel: Britta Simon
 
 4. Klicken Sie auf das Menü **More Options** (Weitere Optionen), und wählen Sie das Menüelement **Account Info** (Kontoinformationen) aus.
 
@@ -259,5 +259,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „HighGear“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

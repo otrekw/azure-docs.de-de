@@ -10,10 +10,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084406"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Tutorial: Konfigurieren des IoT Hub-Nachrichtenroutings mithilfe einer Azure Resource Manager-Vorlage
@@ -421,4 +421,4 @@ Im Falle eines Skriptfehlers können Sie das Skript lokal bearbeiten, erneut in 
 Nachdem Sie nun die Ressourceneinrichtung abgeschlossen und die Nachrichtenrouten konfiguriert haben, erfahren Sie im nächsten Tutorial, wie Sie die Informationen zu den weitergeleiteten Nachrichten verarbeiten und anzeigen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Part 2 - View the routed messages](tutorial-routing-view-message-routing-results.md) (Tutorial: Teil 2: Anzeigen der Ergebnisse des Nachrichtenroutings)
+> [Teil 2: Anzeigen der Ergebnisse des Nachrichtenroutings](tutorial-routing-view-message-routing-results.md)

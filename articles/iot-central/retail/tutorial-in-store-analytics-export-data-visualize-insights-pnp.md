@@ -12,10 +12,10 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77022085"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Tutorial: Exportieren von Daten aus Azure IoT Central und Visualisieren von Erkenntnissen in Power BI
@@ -477,7 +477,7 @@ Fügen Sie vier Kartenkacheln hinzu, um für die beiden Kassen des Geschäfts di
 | Dataset | Auslastungssensor | Auslastungssensor | Auslastungssensor | Auslastungssensor |
 | Visualisierungstyp | Gruppiertes Säulendiagramm | Gruppiertes Säulendiagramm | Maßstab | Maßstab |
 | Achse    | Timestamp | Timestamp | – | – |
-| value | Wartezeit 1 | Wartezeit 2 | Länge der Schlange 1 | Länge der Schlange 2 |
+| Wert | Wartezeit 1 | Wartezeit 2 | Länge der Schlange 1 | Länge der Schlange 2 |
 | Zeitfenster | 60 Minuten | 60 Minuten |  – | – |
 | Titel | Wartezeit | Wartezeit | Warteschlangenlänge | Warteschlangenlänge |
 | Untertitel | Kasse 1 | Kasse 2 | Kasse 1 | Kasse 2 |

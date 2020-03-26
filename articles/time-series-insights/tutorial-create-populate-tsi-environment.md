@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7bebc9e682f5156fa235b77ff020e502695a28be
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76981190"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung
@@ -61,7 +61,7 @@ Erstellen Sie zunächst die Lösung für die Gerätesimulation, mit der Testdate
 
 1.  Wählen Sie **Jetzt testen** aus. Geben Sie dann auf der Seite **Create Device Simulation solution** (Gerätesimulationslösung erstellen) die erforderlichen Parameter ein:
 
-   Parameter|Beschreibung
+   Parameter|BESCHREIBUNG
    ---|---
    **Bereitstellungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
    **Azure-Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
@@ -95,7 +95,7 @@ Erstellen Sie zweitens in Ihrem Azure-Abonnement eine Time Series Insights-Umgeb
 
 1. Geben Sie auf der Seite **Time Series Insights-Umgebung** die erforderlichen Parameter ein:
 
-   Parameter|Beschreibung
+   Parameter|BESCHREIBUNG
    ---|---
    **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Time Series Insights-Umgebung aus. Die Namen werden vom Time Series Insights-Explorer und von [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie ein Abonnement aus, um die Time Series Insights-Umgebung zu erstellen.
@@ -134,7 +134,7 @@ Zusammen mit dem IoT-Hub wurde eine Azure App Service-Webanwendung generiert, um
 
 1. Wählen Sie **+ Neue Simulation** aus. Geben Sie die erforderlichen Parameter ein, nachdem die Seite mit dem **Simulationssetup** geladen wurde.
 
-   Parameter|Beschreibung
+   Parameter|BESCHREIBUNG
    ---|---
    **IoT-Zielhub** | Wählen Sie **Use pre-provisioned IoT Hub** (Vorab bereitgestellten IoT Hub verwenden) aus.
    **Gerätemodell** | Wählen Sie **Chiller** aus.

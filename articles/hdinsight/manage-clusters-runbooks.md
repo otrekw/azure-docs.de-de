@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75553120"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Tutorial: Erstellen von Azure HDInsight-Clustern mit Azure Automation
@@ -58,7 +58,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Wählen Sie **Anmeldeinformationen hinzufügen** aus.
 1. Geben Sie im Bereich **Neue Anmeldeinformationen** die erforderlichen Informationen ein. Diese Anmeldeinformationen dienen zum Speichern des Clusterkennworts für die Anmeldung bei Ambari.
 
-    | Eigenschaft | value |
+    | Eigenschaft | Wert |
     | --- | --- |
     | Name | `cluster-password` |
     | Benutzername | `admin` |

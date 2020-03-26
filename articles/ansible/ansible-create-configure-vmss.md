@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vms
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156551"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tutorial: Konfigurieren von VM-Skalierungsgruppen in Azure mit Ansible
@@ -145,7 +145,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 
 * Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ admin_password }}` durch Ihr eigenes Kennwort.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook vmss-create.yml
@@ -209,7 +209,7 @@ Die [konfigurierte Skalierungsgruppe](#configure-a-scale-set) verfügt derzeit �
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>Horizontales Hochskalieren einer Skalierungsgruppe
+## <a name="scale-out-a-scale-set"></a>Aufskalieren einer Skalierungsgruppe
 
 Mit dem Playbookcode in diesem Abschnitt werden Informationen zur Skalierungsgruppe abgerufen, und die Kapazität wird von 2 in 3 geändert.
 
@@ -243,7 +243,7 @@ Es gibt zwei Möglichkeiten, das Beispielplaybook abzurufen:
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook vmss-scale-out.yml

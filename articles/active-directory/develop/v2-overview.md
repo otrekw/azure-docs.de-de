@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194499"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215868"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Übersicht über Microsoft Identity Platform (v2.0)
 
@@ -33,7 +33,7 @@ Microsoft Identity Platform ist eine Weiterentwicklung der Azure AD-Entwicklerp
   - Social Media-Konten oder lokale Konten (über Azure AD B2C)
 - **Open-Source-Bibliotheken**: Microsoft Authentication Libraries (MSAL) und Unterstützung für andere standardkonforme Bibliotheken
 - **Verwaltungsportal für Anwendungen**: Eine Registrierungs- und Konfigurationsumgebung, die zusammen mit allen Ihren anderen Azure-Verwaltungsfunktionen in das Azure-Portal integriert ist
-- **Anwendungskonfigurations-API und PowerShell**: ermöglicht die programmgesteuerte Konfiguration Ihrer Anwendungen über die REST-API (Microsoft Graph und Azure Active Directory Graph 1.6) und PowerShell, damit Sie Ihre DevOps-Aufgaben automatisieren können.
+- **Anwendungskonfigurations-API und PowerShell**: Ermöglicht die programmgesteuerte Konfiguration Ihrer Anwendungen per Microsoft Graph-API und PowerShell, um Ihre DevOps-Aufgaben zu automatisieren.
 - **Entwicklerinhalte**: Konzept- und Referenzdokumentation, Schnellstartbeispiele, Codebeispiele, Tutorials und Schrittanleitungen
 
 Für Entwickler bietet Microsoft Identity Platform eine nahtlose Integration in Innovationen im Identitäts- und Sicherheitsbereich wie kennwortlose Authentifizierung, Step-up-Authentifizierung und bedingten Zugriff.  Sie müssen diese Funktionalität nicht selbst implementieren: In Microsoft Identity Platform integrierte Anwendungen nutzen solche Innovationen nativ.

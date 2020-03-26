@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77026393"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines Azure IoT Edge-Geräts zu Ihrer Azure IoT Central-Anwendung
@@ -47,9 +47,9 @@ So erstellen Sie eine Gerätevorlage auf der Grundlage eines IoT Edge-Manifests
 
 1. Navigieren Sie in Ihrer IoT Central-Anwendung zu **Gerätevorlagen**, und wählen Sie **+ Neu** aus.
 
-1. Wählen Sie auf der Seite **Vorlagentyp auswählen** die Kachel **Azure IoT Edge** aus. Wählen Sie anschließend **Weiter: Anpassen** aus.
+1. Wählen Sie auf der Seite **Vorlagentyp auswählen** die Kachel **Azure IoT Edge** aus. Wählen Sie anschließend **Next: Anpassen**.
 
-1. Wählen Sie auf der Seite **Azure IoT Edge-Bereitstellungsmanifest hochladen** die Option **Durchsuchen** aus, um die zuvor heruntergeladene Datei **EnvironmentalSensorManifest.json** hochzuladen. Wählen Sie anschließend **Weiter: Überprüfen** aus.
+1. Wählen Sie auf der Seite **Azure IoT Edge-Bereitstellungsmanifest hochladen** die Option **Durchsuchen** aus, um die zuvor heruntergeladene Datei **EnvironmentalSensorManifest.json** hochzuladen. Wählen Sie anschließend **Next: Review** (Weiter: Überprüfen).
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus.
 
@@ -161,7 +161,7 @@ In diesem Tutorial verwenden Sie einen in Azure erstellten Azure IoT Edge-fäh
 
 1. Gehen Sie auf der Seite **Virtuellen Computer erstellen > Grundlegende Einstellungen** wie folgt vor:
 
-    - Wählen Sie Ihr Azure-Abonnement aus.
+    - Wählen Sie Ihr Azure-Abonnement.
     - Erstellen Sie eine neue Ressourcengruppe namens **iot-edge-devices**.
     - Verwenden Sie den VM-Namen **iotedgevm**.
     - Wählen Sie die nächstgelegene Region aus.

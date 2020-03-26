@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, Playbook, AKS, Container, K
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156879"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Tutorial: Konfigurieren von kubenet-Netzwerken in Azure Kubernetes Service (AKS) mit Ansible
@@ -108,7 +108,7 @@ Hier sind einige wichtige Hinweise aufgeführt, die Sie beim Arbeiten mit dem Be
 - Mit `network_profile` werden die Eigenschaften für das kubenet-Netzwerk-Plug-In definiert.
 - Mit `service_cidr` werden interne Dienste im AKS-Cluster einer IP-Adresse zugewiesen. Dieser IP-Adressbereich muss ein Adressraum sein, der nicht an einer anderen Stelle in Ihrem Netzwerk verwendet wird. 
 - Die Adresse `dns_service_ip` sollte die „.10“-Adresse Ihres Dienst-IP-Adressbereichs sein.
-- `pod_cidr` sollte ein großer Adressraum sein, der nicht an einer anderen Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Adressbereich muss groß genug für die Anzahl von Knoten sein, auf die Sie voraussichtlich zentral hochskalieren möchten. Sie können diesen Adressbereich nicht mehr ändern, nachdem der Cluster bereitgestellt wurde.
+- `pod_cidr` sollte ein großer Adressraum sein, der nicht an einer anderen Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Adressbereich muss groß genug für die Anzahl von Knoten sein, auf die Sie voraussichtlich hochskalieren möchten. Sie können diesen Adressbereich nicht mehr ändern, nachdem der Cluster bereitgestellt wurde.
 - Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein „/24“-Adressraum zugewiesen. Im folgenden Beispiel wird mit `pod_cidr` von 192.168.0.0/16 dem ersten Knoten 192.168.0.0/24, dem zweiten Knoten 192.168.1.0/24 und dem dritten Knoten 192.168.2.0/24 zugewiesen.
 - Beim Skalieren oder Upgraden des Clusters weist Azure weiterhin jedem neuen Knoten einen Pod-IP-Adressbereich zu.
 - Das Playbook lädt `ssh_key` aus `~/.ssh/id_rsa.pub`. Verwenden Sie bei etwaigen Änderungen das einzeilige Format, und beginnen Sie die Zeile mit „ssh-rsa“ (ohne Anführungszeichen).
@@ -344,7 +344,7 @@ Speichern Sie den folgenden Code als `cleanup.yml`:
 
 Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ resource_group_name }}` durch den Namen Ihrer Ressourcengruppe.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook cleanup.yml

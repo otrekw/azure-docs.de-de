@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426181"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80235770"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
 
@@ -39,7 +39,7 @@ Zu jedem Auftrag gehört eine Ausgabe für die transformierten Daten. Sie könne
 
 In der folgenden Abbildung ist zu sehen, wie Daten an Stream Analytics gesendet, analysiert und für andere Aktionen wie Speicherung oder Darstellung weitergeleitet werden:
 
-![Stream Analytics-Einführung zur Pipeline](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
+![Stream Analytics-Einführung zur Pipeline](./media/stream-analytics-introduction/stream-analytics-e2e-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>Wichtige Funktionen und Vorteile
 

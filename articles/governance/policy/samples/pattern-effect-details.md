@@ -4,10 +4,10 @@ description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendu
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: b86a24bc0af6c9bdd7b29bb0a931d6c78865218b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77170458"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy-Muster: Auswirkungen

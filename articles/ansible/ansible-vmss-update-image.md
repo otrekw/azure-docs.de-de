@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vms
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155850"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Tutorial: Aktualisieren des benutzerdefinierten Image von Skalierungsgruppen für virtuelle Azure-Computer mit Ansible
@@ -189,7 +189,7 @@ An dieser Stelle haben Sie zwei virtuelle Computer mit geringfügig unterschiedl
 
 Mit dem Playbookcode in diesem Abschnitt wird für jeden virtuellen Computer ein benutzerdefiniertes Image erstellt.
 
-* `image_vmforimageA`: benutzerdefiniertes Image für den virtuellen Computer, auf dessen Startseite `Image A` angezeigt wird
+* `image_vmforimageA`: benutzerdefiniertes Images für den virtuellen Computer, auf dessen Startseite `Image A` angezeigt wird
 * `image_vmforimageB`: benutzerdefiniertes Images für den virtuellen Computer, auf dessen Startseite `Image B` angezeigt wird
 
 Es gibt zwei Möglichkeiten, das Beispielplaybook abzurufen:

@@ -10,10 +10,10 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022119"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektur der In-Store-Analyse
@@ -51,7 +51,7 @@ Azure IoT Central bietet darüber hinaus eine maßgeschneiderte Benutzeroberflä
 Die Azure IoT Central-Anwendung kann in einer Lösung so konfiguriert werden, dass sie unformatierte oder aggregierte Erkenntnisse an eine Reihe von Azure-PaaS-Diensten (Platform-as-a-Service) exportiert, die Datenbearbeitung durchführen und diese Erkenntnisse anreichern, bevor sie in einer Geschäftsanwendung landen. 
 
 ## <a name="business-application"></a>Geschäftsanwendung
-Die IoT-Daten können die Basis verschiedener Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt werden. Ein Manager oder Mitarbeiter eines Einzelhandelsunternehmens kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
+Die IoT-Daten können die Basis verschiedener Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt sind. Ein Manager oder Mitarbeiter eines Einzelhandelsunternehmens kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Machen Sie den Einstieg mit den Anwendungsvorlagen [In-Store-Analyse – Auschecken](https://aka.ms/checkouttemplate) und [In-Store-Analyse – Überwachen von Bedingungen](https://aka.ms/conditiontemplate). 

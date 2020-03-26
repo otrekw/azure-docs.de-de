@@ -3,13 +3,13 @@ title: 'Tutorial: Legacy-App mit Container (Vorschau)'
 description: Hier wird beschrieben, wie Sie einen benutzerdefinierten Windows-Container zu Azure App Service migrieren und darin dann benutzerdefinierte Software bereitstellen.
 ms.topic: tutorial
 ms.date: 10/22/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671976"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046616"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrieren einer ASP.NET-App zu Azure App Service mithilfe eines Windows-Containers (Preview)
 
@@ -111,7 +111,7 @@ Wählen Sie im Dialogfeld **Neue Azure Container Registry-Instanz erstellen** di
 
 Konfigurieren Sie die neue Containerregistrierung, basierend auf den in der folgenden Tabelle vorgeschlagenen Werten. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-| Einstellung  | Empfohlener Wert | Weitere Informationen |
+| Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
 | ----------------- | ------------ | ----|
 |**DNS-Präfix**| Behalten Sie den generierten Registrierungsnamen bei, oder ändern Sie ihn in einen anderen eindeutigen Namen. |  |
 |**Ressourcengruppe**| Klicken Sie auf **Neu**, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK**. |  |
@@ -134,7 +134,7 @@ Wählen Sie im linken Menü **Ressource erstellen** > **Web** > **Web-App für C
 
 Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen entsprechend der folgenden Tabelle, und klicken Sie dann auf **Weiter: Docker**.
 
-| Einstellung  | Empfohlener Wert | Weitere Informationen |
+| Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
 | ----------------- | ------------ | ----|
 |**Abonnement**| Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist. |  |
 |**Ressourcengruppe**| Wählen Sie **Neu erstellen** aus, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK**. |  |
@@ -152,7 +152,7 @@ Die Registerkarte **Grundlagen** sollte wie folgt aussehen:
 
 Konfigurieren Sie auf der Registerkarte **Docker** Ihren benutzerdefinierten Windows-Container wie in der folgenden Tabelle gezeigt, und wählen Sie **Überprüfen + erstellen** aus.
 
-| Einstellung  | Empfohlener Wert |
+| Einstellung  | Vorgeschlagener Wert |
 | ----------------- | ------------ |
 |**Imagequelle**| Azure-Containerregistrierung |
 |**Registrierung**| Wählen Sie [die zuvor erstellte Registrierung](#publish-to-azure-container-registry) aus. |

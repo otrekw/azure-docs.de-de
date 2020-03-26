@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77122076"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs mit Azure IoT Central
@@ -80,13 +80,13 @@ In der Anwendung zur Überwachung des Wasserverbrauchs ist Folgendes vorkonfigur
 
 Sie können Ihre Anwendung jederzeit ändern. Als Nächstes erkunden wir die Anwendung und nehmen einige Anpassungen vor.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Erkunden und Anpassen des Operatordashboards
+## <a name="explore-and-customize-the-operator-dashboard"></a>Erkunden und Anpassen des Bedienerdashboards
 
 Nachdem Sie die Anwendung erstellt haben, wird das exemplarische Wide World-Dashboard für den Wasserverbrauch (**Wide World water consumption dashboard**) geöffnet.
 
    ![Dashboard zur Überwachung des Wasserverbrauchs](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
 
-Als Ersteller können Sie Ansichten im Dashboard für Operatoren erstellen und anpassen. Sehen wir uns das Dashboard zunächst etwas näher an, bevor wir es anpassen.
+Als Lösungsentwickler können Sie Ansichten im Dashboard für Bediener erstellen und anpassen. Sehen wir uns das Dashboard zunächst etwas näher an, bevor wir es anpassen.
 
 > [!NOTE]
 > Alle auf dem Dashboard angezeigten Daten basieren auf simulierten Gerätedaten, mit denen wir uns im nächsten Abschnitt ausführlicher beschäftigen.
@@ -148,7 +148,7 @@ So passen Sie die Gerätevorlage an:
     In Azure IoT Central können Sie eine Eigenschaft hinzufügen, die für das Gerät relevant ist. Bei einer Cloudeigenschaft kann es sich beispielsweise um einen Warnungsschwellenwert handeln, der für einen bestimmten Installationsbereich, bestimmte Ressourceninformationen oder andere Wartungsinformationen gilt.
 1. Wählen Sie **Speichern** aus, um die Änderungen zu speichern.
 
-### <a name="views"></a>Ansichten
+### <a name="views"></a>Sichten
 
 Die Gerätevorlage zur Überwachung des Wasserverbrauchs verfügt über vordefinierte Ansichten. Sie können die Ansichten erkunden und aktualisieren. Die Ansichten definieren, wie die Gerätedaten für Operatoren angezeigt werden. Es können aber auch Cloudeigenschaften eingegeben werden.
 

@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251877"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
@@ -52,7 +52,7 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLBAZ* in das Textfeld ein.|
@@ -71,13 +71,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und virtuelle Computer
 
 ## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLBAZ (Wählen Sie die vorhandene Ressourcengruppe aus.) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa, Westen      |
+| **\<Regionsname>**          | Europa, Westen      |
 | **\<IPv4-address-space>**   | 10.0.0.0\16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.0.0.0\24          |

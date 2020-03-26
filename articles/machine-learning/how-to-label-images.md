@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898699"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79409557"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt
 
@@ -126,4 +126,4 @@ Wenn Sie mit dem Anwenden von Bezeichnungen fertig sind, wählen Sie in der rech
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml).
-* Informieren Sie sich über die [Erkennung von Objekten mit Azure und der schnelleren R-CNN-Technik](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/).
+

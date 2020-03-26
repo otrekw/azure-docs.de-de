@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65521428"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Tutorial: Integration von Azure Automation mit Event Grid und Microsoft Teams
@@ -126,7 +126,7 @@ Um dieses Tutorial abzuschließen, ist ein [Azure Automation-Konto](../automatio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial richten Sie die Integration zwischen Event Grid und Automation ein. Es wurde Folgendes vermittelt:
+In diesem Tutorial richten Sie die Integration zwischen Event Grid und Automation ein. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Importieren Sie ein Event Grid-Beispielrunbook.

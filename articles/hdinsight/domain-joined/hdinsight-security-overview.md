@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: overview
 ms.date: 03/03/2020
 ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78267718"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
@@ -32,7 +32,7 @@ Die Umgebungssicherheit in HDInsight wird mithilfe von [virtuellen Netzwerken](.
 
 Alle Cluster, die in einem VNET bereitgestellt werden, verfügen auch über einen privaten Endpunkt, der sich auf eine private IP-Adresse innerhalb des VNET auflöst, um privaten HTTP-Zugriff auf die Clustergateways zu ermöglichen.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Das [Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md) von HDInsight unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Die Active Directory-Integration wird durch die Verwendung von [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) erreicht. Mit diesen Funktionen können Sie einen HDInsight-Cluster erstellen, der in eine verwaltete Active Directory-Domäne eingebunden ist. Sie können dann eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die eine Authentifizierung und Anmeldung am Cluster durchführen können.
 

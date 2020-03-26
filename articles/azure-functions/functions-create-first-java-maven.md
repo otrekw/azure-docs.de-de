@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272732"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79136866"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Schnellstart: Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Maven/Gradle
 
@@ -61,7 +61,7 @@ mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifac
 
 Maven fordert Sie zur Eingabe von Werten auf, die erforderlich sind, um die Generierung des Projekts bei der Bereitstellung abzuschließen. Geben Sie die folgenden Werte ein, wenn Sie dazu aufgefordert werden:
 
-| value | Beschreibung |
+| Wert | BESCHREIBUNG |
 | ----- | ----------- |
 | **groupId** | Ein Wert, der Ihr Projekt projektübergreifend eindeutig identifiziert. Für den Wert müssen die [Paketbenennungsregeln](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) für Java eingehalten werden. In den Beispielen dieser Schnellstartanleitung wird `com.fabrikam.functions` verwendet. |
 | **artifactId** | Der Name des Behälters (ohne Versionsnummer). In den Beispielen dieser Schnellstartanleitung wird `fabrikam-functions` verwendet. |
@@ -136,14 +136,14 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+    HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
 ...
 ```
 
 Lösen Sie die Funktion über die Befehlszeile aus. Verwenden Sie dazu cURL in einem neuen Terminalfenster:
 
 ```bash
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```
 
 ```output
@@ -215,7 +215,7 @@ Nun können Sie mithilfe der kopierte URL auf Ihre Funktion zugreifen.
 Die in Azure ausgeführte Funktions-App kann mithilfe von `cURL` überprüft werden. Ersetzen Sie hierzu die URL aus dem folgenden Beispiel durch die URL, die Sie aus dem Portal kopiert haben.
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Dadurch wird eine POST-Anforderung mit `AzureFunctions` an den Funktionsendpunkt gesendet. Die Antwort sieht wie folgt aus:

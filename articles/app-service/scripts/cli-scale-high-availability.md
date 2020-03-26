@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Skalieren einer App mit Traffic Manager'
+title: 'Über die CLI: Skalieren einer App mit Traffic Manager'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie eine App mit Traffic Manager weltweit skaliert werden kann.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 82845977efe3141dda8c0f0f05c1fbcb3f741bd2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: fcd82297ae698707503a69d9e47f6ca4241d6db9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689367"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044863"
 ---
 # <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Weltweites Skalieren einer App Service-App mit einer Hochverfügbarkeitsarchitektur mit der Azure CLI
 

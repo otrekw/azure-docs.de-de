@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Verbinden einer App mit einem Speicherkonto'
+title: 'Über die CLI: Verbinden einer App mit einem Speicherkonto'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine Verbindung zwischen einer App und einem Speicherkonto herstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: c8fcdae21e1f9b8508649c52480fa4a007a3325b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 92cb41552d246dd30a84ce7bc27573ab6dbb7dae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688442"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058098"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Verbinden einer App Service-App mit einem Speicherkonto über CLI
 

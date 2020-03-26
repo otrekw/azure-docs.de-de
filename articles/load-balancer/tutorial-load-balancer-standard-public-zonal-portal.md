@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251908"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
@@ -50,7 +50,7 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | value                                              |
+    | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
@@ -69,13 +69,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen S
 
 ## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-In diesem Abschnitt müssen Sie die folgenden Parameter in den Schritten unten wie folgt ersetzen:
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupZLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa, Westen      |
+| **\<Regionsname>**          | Europa, Westen      |
 | **\<IPv4-address-space>**   | 10.0.0.0\16          |
 | **\<subnet-name>**          | myBackendSubnet        |
 | **\<subnet-address-range>** | 10.0.0.0\24          |

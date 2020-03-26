@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851688"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Tutorial: Synchronisieren von Daten aus SQL Database Edge mit Azure Blob Storage unter Verwendung von Azure Data Factory
@@ -195,10 +195,10 @@ Erstellen Sie eine Data Factory gemäß der Anleitung in [diesem Tutorial](../da
 
     2. Wählen Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur die Option **Import parameter** (Importparameter) aus, und geben Sie für die Parameter die folgenden Werte ein:
 
-    |NAME|type|Wert|
+    |Name|type|Wert|
     |-----|----|-----|
     |LastModifiedtime|Datetime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
-    |TableName|Zeichenfolge|@{activity('OldWaterMark').output.firstRow.TableName}|
+    |TableName|String|@{activity('OldWaterMark').output.firstRow.TableName}|
 
 33. Wählen Sie zum Überprüfen der Pipelineeinstellungen auf der Symbolleiste die Option **Überprüfen** aus. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Wählen Sie **>>** aus, um das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht) zu schließen.
 

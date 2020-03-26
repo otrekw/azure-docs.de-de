@@ -9,11 +9,11 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775328"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223807"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -49,7 +49,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
-## <a name="openvwan"></a>Erstellen eines Virtual WAN
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Erstellen eines Virtual WAN
 
 Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -67,25 +67,25 @@ Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem 
 4. Klicken Sie nach dem Ausfüllen der Felder auf **Überprüfen + erstellen**.
 5. Klicken Sie nach bestandenen Überprüfung auf **Erstellen**, um das virtuelle WAN zu erstellen.
 
-## <a name="hub"></a>Erstellen eines Hubs
+## <a name="create-a-hub"></a><a name="hub"></a>Erstellen eines Hubs
 
 Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „Site-to-Site“, „ExpressRoute“ oder „Point-to-Site“ enthalten kann. Nachdem der Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen. Es dauert 30 Minuten, um das Site-to-Site-VPN-Gateway im virtuellen Hub zu erstellen.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="site"></a>Erstellen einer Site
+## <a name="create-a-site"></a><a name="site"></a>Erstellen einer Site
 
 Nun ist alles bereit, um die Sites gemäß Ihren physischen Standorten zu erstellen. Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. Sie können in einem Virtual WAN bis zu 1.000 Sites pro virtuellem Hub erstellen. Bei mehreren Hubs ist die Erstellung von 1.000 Sites pro Hub möglich. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen (Linkeinfügung), können Sie sich beim Partner über die Automatisierungsmöglichkeiten in Azure informieren. Normalerweise umfasst die Automatisierung eine einfache Vorgehensweise per Klick, um umfassende Branchinformationen nach Azure zu exportieren und die Konnektivität vom CPE zum Azure Virtual WAN-VPN-Gateway einzurichten. Weitere Informationen finden Sie unter [Virtual WAN-Partner](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connectsites"></a>Herstellen einer Verbindung von der VPN-Site mit dem Hub
+## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>Herstellen einer Verbindung von der VPN-Site mit dem Hub
 
 In diesem Schritt stellen Sie für Ihre VPN-Site eine Verbindung mit dem Hub her.
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="vnet"></a>Herstellen einer Verbindung zwischen VNET und Hub
+## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Herstellen einer Verbindung zwischen VNET und Hub
 
 In diesem Schritt erstellen Sie die Verbindung zwischen Ihrem Hub und einem VNET. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
 
@@ -99,7 +99,7 @@ In diesem Schritt erstellen Sie die Verbindung zwischen Ihrem Hub und einem VNET
     * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk kann nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein.
 4. Klicken Sie auf **OK**, um die VNet-Verbindung zu erstellen.
 
-## <a name="device"></a>Herunterladen der VPN-Konfiguration
+## <a name="download-vpn-configuration"></a><a name="device"></a>Herunterladen der VPN-Konfiguration
 
 Verwenden Sie die VPN-Gerätekonfiguration, um Ihr lokales VPN-Gerät zu konfigurieren.
 
@@ -251,7 +251,7 @@ Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, könne
 * Für eine neue Virtual WAN-Instanz können IKEv1 und IKEv2 unterstützt werden.
 * Für Virtual WAN können sowohl richtlinienbasierte als auch routenbasierte VPN-Geräte und die entsprechenden Geräteanweisungen verwendet werden.
 
-## <a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
 
 1. Navigieren Sie zum virtuellen WAN.
 2. Auf der Seite **Übersicht** steht jeder Punkt auf der Karte für einen Hub. Bewegen Sie den Mauszeiger auf einen beliebigen Punkt, um die Zusammenfassung zur Integrität des Hubs, den Verbindungsstatus und die ein- und ausgehenden Bytes anzuzeigen.

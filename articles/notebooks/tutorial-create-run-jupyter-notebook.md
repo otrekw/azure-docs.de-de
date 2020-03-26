@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure No
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75660816"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
@@ -159,7 +159,7 @@ Im Folgenden werden die Gruppen der Menübefehle aufgeführt:
 | Einfügen | Befehle zum Einfügen einer neuen Zelle ober- oder unterhalb der aktuellen Zelle. Diese Befehle werden Sie beim Erstellen eines Notebooks häufig verwenden. |
 | Cell (Zelle) | Die verschiedenen**Run**-Befehle (Ausführen) werden in einer Zelle oder mehreren Zellen in unterschiedlichen Kombinationen ausgeführt. Die Befehle **Cell Type** (Zellentyp) ändern den Typ einer Zelle zwischen **Code**, **Markdown** und **unformatierte NBConvert**-Zellen (Nur-Text). Die Befehle **Current Outputs** (Aktuelle Ausgaben) und **All Outputs** (Alle Ausgaben) steuern, wie die Ausgabe des ausgeführten Codes angezeigt wird. Zudem wird ein Befehl zum Löschen der gesamten Ausgabe eingefügt. |
 | Kernel | Befehle, mit denen verwaltet werden kann, wie Code im Kernel zusammen mit **Change kernel** (Kernel ändern) ausgeführt wird, um die Sprache der Python-Version zu ändern, die zum Ausführen des Notebook verwendet wird. |
-| Data | Befehle zum Hochladen und Herunterladen von Dateien aus dem Projekt oder der Sitzung. Weitere Informationen finden Sie unter [Arbeiten mit Datendateien](work-with-project-data-files.md). |
+| Daten | Befehle zum Hochladen und Herunterladen von Dateien aus dem Projekt oder der Sitzung. Weitere Informationen finden Sie unter [Arbeiten mit Datendateien](work-with-project-data-files.md). |
 | Widgets | Befehle zum Verwalten von [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), die zusätzliche Funktionen zur Visualisierung, Zuordnung und zum Zeichnen bieten.|
 | Hilfe | Befehle, die Hilfe und Dokumentation für die Jupyter-Schnittstelle bereitstellen. |
 

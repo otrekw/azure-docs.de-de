@@ -9,10 +9,10 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303306"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Databricks Delta-Tabelle
@@ -275,7 +275,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 
    Fügen Sie die folgenden Einstellungen hinzu:
 
-   |Einstellungsname | value |
+   |Einstellungsname | Wert |
    |----|----|
    |**DBX_INSTANCE**| Die Region Ihres Databricks-Arbeitsbereichs. Beispiel: `westus2.azuredatabricks.net`|
    |**DBX_PAT**| Das persönliche Zugriffstoken, das Sie zuvor generiert haben. |

@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Playbook, Cosmos DB, Datenbank
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156476"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible
@@ -137,7 +137,7 @@ Im letzten Codeausschnitt wird veranschaulicht, wie Sie ein Azure Cosmos DB-Kont
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>Abrufen des Beispielplaybooks
+## <a name="get-the-sample-playbook"></a>Abrufen der Beispielplaybooks
 
 Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 - [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml), und speichern Sie es als `cosmosdb.yml`.
@@ -227,13 +227,13 @@ Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 
 ## <a name="run-the-sample-playbook"></a>Ausführen des Beispielplaybooks
 
-Führen Sie in diesem Abschnitt das Playbook aus, um verschiedene in diesem Artikel gezeigte Funktionen zu testen.
+In diesem Abschnitt führen Sie das Playbook aus, um verschiedene in diesem Artikel gezeigte Features zu testen.
 
 Nehmen Sie vor dem Ausführen des Playbooks die folgenden Änderungen vor:
 - Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ resource_group_name }}` durch den Namen Ihrer Ressourcengruppe.
 - Stellen Sie sicher, dass „cosmosdbaccount_name“ nur Kleinbuchstaben enthält und global eindeutig ist.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook cosmosdb.yml

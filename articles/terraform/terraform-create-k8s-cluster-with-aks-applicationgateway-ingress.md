@@ -5,10 +5,10 @@ keywords: Azure DevOps Terraform Application Gateway eingehend AKS Kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945315"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Azure Kubernetes Service
@@ -478,7 +478,7 @@ Der in diesem Abschnitt aufgeführte Code legt den Namen des Clusters, den Speic
 
 Mit dem Datensatz `linux_profile` können Sie die Einstellungen konfigurieren, die eine Anmeldung bei Workerknoten mithilfe von SSH ermöglichen.
 
-Mit AKS zahlen Sie nur für die Workerknoten. Der Datensatz `agent_pool_profile` konfiguriert die Details für diese Workerknoten. Der Datensatz `agent_pool_profile record` enthält die Anzahl der zu erstellenden Workerknoten und den Typ der Workerknoten. Wenn Sie den Cluster in der Zukunft zentral hochskalieren oder herunterskalieren müssen, ändern Sie den Wert `count` in diesem Datensatz.
+Mit AKS zahlen Sie nur für die Workerknoten. Der Datensatz `agent_pool_profile` konfiguriert die Details für diese Workerknoten. Der Datensatz `agent_pool_profile record` enthält die Anzahl der zu erstellenden Workerknoten und den Typ der Workerknoten. Wenn Sie den Cluster in der Zukunft hochskalieren oder herunterskalieren müssen, ändern Sie den Wert `count` in diesem Datensatz.
 
 ## <a name="create-a-terraform-output-file"></a>Erstellen einer Terraform-Ausgabedatei
 

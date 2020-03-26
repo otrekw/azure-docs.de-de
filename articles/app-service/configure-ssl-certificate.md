@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425306"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223917"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -21,7 +21,7 @@ Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-Ap
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |-|-|
 | Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
@@ -134,11 +134,11 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
-| Location | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
+| Position | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |
@@ -191,7 +191,7 @@ Wählen Sie im linken Navigationsbereich Ihrer App **TLS-/SSL-Einstellungen** > 
 
 Die folgende Tabelle unterstützt Sie beim Auswählen des Zertifikats:
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Subscription | Das Abonnement, zu dem die Key Vault-Instanz gehört |
 | Key Vault | Der Tresor mit dem zu importierenden Zertifikat |
@@ -349,7 +349,7 @@ Die heruntergeladene Datei *appservicecertificate.pfx* ist eine PKCS12-Rohdatend
 
 ### <a name="delete-certificate"></a>Löschen eines Zertifikats 
 
-Das Löschen eines App Service-Zertifikats ist endgültig und kann nicht rückgängig gemacht werden. Alle Bindungen in App Service mit diesem Zertifikat werden ungültig. Azure sperrt das Zertifikat, um ein versehentliches Löschen zu verhindern. Wenn Sie ein App Service-Zertifikat löschen möchten, müssen Sie zunächst die Löschsperre des Zertifikats entfernen.
+Das Löschen eines App Service-Zertifikats ist endgültig und kann nicht rückgängig gemacht werden. Wird eine App Service Certificate-Ressource gelöscht, wird das Zertifikat widerrufen. Alle Bindungen in App Service mit diesem Zertifikat werden ungültig. Azure sperrt das Zertifikat, um ein versehentliches Löschen zu verhindern. Wenn Sie ein App Service-Zertifikat löschen möchten, müssen Sie zunächst die Löschsperre des Zertifikats entfernen.
 
 Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und wählen Sie dann im linken Navigationsbereich **Sperren** aus.
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75982566"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
@@ -43,7 +43,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein E-Mail-Konto bei einem von Logic Apps unterstützten E-Mail-Anbieter wie Office 365 Outlook, Outlook.com oder Gmail zum Senden von Benachrichtigungen. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/).
 
@@ -63,7 +63,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
    ![Angeben von Details zur Logik-App](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Eigenschaft | Erforderlich | value | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*logic-app-name*> | Geben Sie einen eindeutigen Namen für Ihre Logik-App an. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Wählen Sie für alle Dienste in diesem Tutorial dasselbe Azure-Abonnement aus. |
@@ -98,7 +98,7 @@ Fügen Sie nun den Event Grid-Trigger hinzu, den Sie zum Überwachen der Ressour
 
    ![Angeben von Details für das Ereignisabonnement](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Eigenschaft | Erforderlich | value | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    | -------- | -------- | ----- | ----------- |
    | **Abonnement** | Ja | <*event-publisher-Azure-subscription-name*> | Wählen Sie den Namen für das Azure-Abonnement aus, das dem *Ereignisherausgeber* zugeordnet ist. Wählen Sie für dieses Tutorial den Namen des Azure-Abonnements für Ihren virtuellen Computer aus. |
    | **Ressourcentyp** | Ja | <*event-publisher-Azure-resource-type*> | Wählen Sie den Azure-Ressourcentyp für den Ereignisherausgeber aus. Weitere Informationen zu Azure-Ressourcentypen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md). Wählen Sie für dieses Tutorial den Wert `Microsoft.Resources.ResourceGroups` aus, um Azure-Ressourcengruppen zu überwachen. |
@@ -196,7 +196,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
    > [!TIP]
    > Klicken Sie zum Auswählen der Ausgabe aus vorherigen Schritten in Ihrem Workflow in ein Bearbeitungsfeld, um die Liste mit dynamischen Inhalten anzuzeigen, oder wählen Sie die Option **Dynamischen Inhalt hinzufügen** aus. Wählen Sie für jeden Abschnitt in der Liste **Mehr anzeigen** aus, um weitere Ergebnisse anzuzeigen. Um die Liste mit dynamischen Inhalten zu schließen, wählen Sie erneut **Dynamischen Inhalt hinzufügen** aus.
 
-   | Eigenschaft | Erforderlich | value | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    | -------- | -------- | ----- | ----------- |
    | **An** | Ja | <*Empfänger\@Domäne*> | Geben Sie die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
    | **Subject** | Ja | `Resource updated:` **Betreff** | Geben Sie den Inhalt des Betreffs der E-Mail ein. Geben Sie für dieses Tutorial den angegebenen Text ein, und wählen Sie das Feld **Betreff** des Ereignisses aus. Hier enthält Ihr E-Mail-Betreff den Namen für die aktualisierte Ressource (virtueller Computer). |

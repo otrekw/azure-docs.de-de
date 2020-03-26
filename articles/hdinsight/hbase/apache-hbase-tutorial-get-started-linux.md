@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
 ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71077152"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
@@ -49,7 +49,7 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
     |---|---|
     |Subscription|Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
-    |Location|Geben Sie den Standort der Ressourcengruppe an. |
+    |Position|Geben Sie den Standort der Ressourcengruppe an. |
     |ClusterName|Geben Sie einen Namen für den HBase-Cluster ein.|
     |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin**.|
     |SSH-Benutzername und Kennwort|Der Standardbenutzername lautet **sshuser**.|
@@ -290,7 +290,7 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
 
    - Regionsserver
    - Backup Master
-   - tables
+   - Tabellen
    - Tasks
    - Softwareattribute
 

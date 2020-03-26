@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73062573"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation
@@ -70,28 +70,28 @@ Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab
        | Eigenschafteneinstellungen der Anwendung | | | Zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | Ja | Ja  |
-       | Ja | Ja | no  | Ja | no   |
-       | Ja | no  | Ja | Ja | Ja  |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | ja | ja  |
+       | ja | ja | nein  | ja | nein   |
+       | ja | nein  | ja | ja | ja  |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
       Verhalten für **nicht zugewiesene** Benutzer:
 
        | Eigenschafteneinstellungen der Anwendung | | | Nicht zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | no  | no   |
-       | Ja | Ja | no  | no  | no   |
-       | Ja | no  | Ja | Ja | no   |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | nein  | nein   |
+       | ja | ja | nein  | nein  | nein   |
+       | ja | nein  | ja | ja | nein   |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
      *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
 

@@ -8,10 +8,10 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273984"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(VERALTET) Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
@@ -23,7 +23,7 @@ ms.locfileid: "78273984"
 
 Wenn Sie die Tutorials durchgearbeitet haben, verfügen Sie über einen funktionsfähigen Kubernetes-Cluster in Azure Container Service und haben die Azure Vote-App bereitgestellt. 
 
-In diesem Tutorial – Teil 5 von 7 – skalieren Sie die Pods in der App horizontal hoch und testen das Feature der automatischen Skalierung von Pods. Sie erfahren auch, wie Sie die Anzahl von Azure-VM-Agent-Knoten skalieren, um die Clusterkapazität für das Hosten von Workloads zu ändern. Folgende Aufgaben wurden ausgeführt:
+In diesem Tutorial – Teil 5 von 7 – skalieren Sie die Pods in der App auf und testen das Feature der automatischen Skalierung von Pods. Sie erfahren auch, wie Sie die Anzahl von Azure-VM-Agent-Knoten skalieren, um die Clusterkapazität für das Hosten von Workloads zu ändern. Folgende Aufgaben wurden ausgeführt:
 
 > [!div class="checklist"]
 > * Manuelles Skalieren von Kubernetes-Pods

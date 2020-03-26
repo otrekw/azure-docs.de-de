@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71200146"
 ---
 # <a name="opc-vault-architecture"></a>OPC Vault-Architektur
@@ -36,7 +36,7 @@ Der OPC Vault-Microservice ist so konzipiert, dass ein rollenbasierter Workflow
 Zur Erzielung von Kompatibilität mit vorhandenen OPC UA-Lösungen verfügen die Dienste über Unterstützung für ein Edgemodul, das auf einem OPC Vault-Microservice basiert. Hiermit wird die **Schnittstelle für den globalen OPC UA Discovery Server und die Zertifikatverwaltung** implementiert, um Zertifikate und Vertrauenslisten gemäß Teil 12 der Spezifikation zu verteilen. 
 
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Die Architektur basiert auf dem OPC Vault-Microservice mit einem OPC Vault-IoT Edge-Modul für das Fabriknetzwerk und einer Beispiel-Webbenutzeroberfläche zum Steuern des Workflows:
 
@@ -46,8 +46,8 @@ Die Architektur basiert auf dem OPC Vault-Microservice mit einem OPC Vault-IoT
 
 Der OPC Vault-Microservice umfasst die folgenden Schnittstellen zum Implementieren des Workflows für die Verteilung und Verwaltung einer unternehmensspezifischen Zertifizierungsstelle für OPC UA-Anwendungen.
 
-### <a name="application"></a>Anwendung 
-- Eine OPC UA-Anwendung kann als Server, Client oder beides fungieren. OPC Vault dient in diesem Fall als Anwendungsregistrierungsstelle. 
+### <a name="application"></a>Application 
+- Eine OPC UA-Anwendung kann als Server, Client oder beides fungieren. OPC Vault dient in diesem Fall als Stelle für die Anwendungsregistrierung. 
 - Zusätzlich zu den grundlegenden Vorgängen zum Registrieren, Aktualisieren und Aufheben der Registrierung von Anwendungen sind auch Schnittstellen vorhanden, mit denen nach Anwendungen mit Suchbegriffen gesucht werden kann und Abfragen durchgeführt werden können. 
 - In den Zertifikatanforderungen muss auf eine gültige Anwendung verwiesen werden, um eine Anforderung zu verarbeiten und ein signiertes Zertifikat mit allen OPC UA-spezifischen Erweiterungen auszustellen. 
 - Der Anwendungsdienst basiert auf einer Datenbank in Azure Cosmos DB.

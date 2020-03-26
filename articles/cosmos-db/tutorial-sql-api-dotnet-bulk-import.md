@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587565"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Ausführen eines Massenimports von Daten in ein Azure Cosmos DB-SQL-API-Konto mithilfe des .NET SDK
@@ -120,13 +120,13 @@ Zunächst überschreiben Sie die `Main`-Standardmethode und definieren die globa
 
 Fügen Sie in der `Main`-Methode den folgenden Code hinzu, um das CosmosClient-Objekt zu initialisieren:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
 
 Nach der Aktivierung von Massenausführungen werden gleichzeitige Vorgänge von CosmosClient intern zu gemeinsamen Dienstaufrufen gruppiert. Auf diese Weise wird die Durchsatznutzung optimiert, indem Dienstaufrufe auf Partitionen verteilt werden, und einzelne Ergebnisse werden dann den ursprünglichen Aufrufern zugewiesen.
 
 Anschließend können Sie einen Container erstellen, in dem alle Elemente gespeichert werden.  Definieren Sie `/pk` als Partitionsschlüssel, 50.000 RU/s als bereitgestellten Durchsatz und eine benutzerdefinierte Indizierungsrichtlinie, mit der alle Felder ausgeschlossen werden, um den Schreibdurchsatz zu optimieren. Fügen Sie nach der CosmosClient-Initialisierungsanweisung den folgenden Code hinzu:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Schritt 6: Auffüllen einer Liste mit gleichzeitigen Aufgaben
 
@@ -141,22 +141,22 @@ Fügen Sie zuerst der Lösung das falsche Paket hinzu, indem Sie den Befehl „d
 
 Legen Sie die Definition der Elemente fest, die Sie speichern möchten. Sie müssen die `Item`-Klasse in der Datei `Program.cs` definieren:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
 
 Erstellen Sie als Nächstes in der `Program`-Klasse eine Hilfsfunktion. Mit dieser Hilfsfunktion wird die von Ihnen definierte Anzahl von Elementen abgerufen, um zufällige Daten einzufügen und zu generieren:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
 Lesen Sie die Elemente ein, und serialisieren Sie sie zu Datenstrominstanzen, indem Sie die `System.Text.Json`-Klasse verwenden. Aufgrund der Art und Weise der automatisch generierten Daten serialisieren Sie diese als Datenströme. Sie können die Elementinstanz auch direkt verwenden, aber durch die Konvertierung in Datenströme können Sie die Leistung der Datenstrom-APIs in CosmosClient nutzen. Normalerweise ist die direkte Nutzung der Daten möglich, sofern Sie im Besitz des Partitionsschlüssels sind. 
 
 
 Fügen Sie in der `Main`-Methode direkt nach der Containererstellung den folgenden Code hinzu, um die Daten in Datenstrominstanzen zu konvertieren:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
 Verwenden Sie als Nächstes die Datenströme, um gleichzeitige Aufgaben zu erstellen und die Aufgabenliste aufzufüllen, damit die Elemente in den Container eingefügt werden. Fügen Sie der `Program`-Klasse den folgenden Code hinzu, um diesen Vorgang durchzuführen:
 
-:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
+[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 
 All diese gleichzeitigen Vorgänge werden zusammen (als Massenvorgang) ausgeführt, wie dies im Einführungsabschnitt beschrieben ist.
 

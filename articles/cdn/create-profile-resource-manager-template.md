@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3cda4db558210ecbfcfc8ce2aaed8c6f69f5e026
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083136"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79458782"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts mithilfe von Resource Manager-Vorlagen
 
@@ -42,7 +42,7 @@ Alle Ressourcen müssen in ein und derselben Ressourcengruppe bereitgestellt wer
 
 Erstellen Sie die Ressourcengruppe am ausgewählten Standort. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen „cdn“ am Standort „USA, Osten“ erstellt.
 
-```bash
+```azurecli-interactive
 az group create --name cdn --location eastus
 ```
 
@@ -189,7 +189,7 @@ Stellen Sie die Vorlage über die Azure-Befehlszeilenschnittstelle bereit. Sie m
 
 **endpointOriginHostName:** der Endpunkt, der über CDN bereitgestellt wird, z. B. „cdndemo.azurewebsites.net“.
 
-```bash
+```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
@@ -197,7 +197,7 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ## <a name="view-the-cdn-profile"></a>Anzeigen des CDN-Profils
 
-```bash
+```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
@@ -205,7 +205,7 @@ az cdn profile list --resource-group cdn -o table
 
 ## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Anzeigen des CDN-Endpunkts für das Profil „standard-microsoft“
 
-```bash
+```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
@@ -213,17 +213,17 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 Verwenden Sie den Hostnamen zum Anzeigen des Inhalts. Greifen Sie z. B. im Browser auf https://cdndemo-azurewebsites-net.azureedge.net zu.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Durch Löschen der Ressourcengruppe werden automatisch alle darin bereitgestellten Ressourcen entfernt.
 
-```bash
+```azurecli-interactive
 az group delete --name cdn
 ```
 
 ![Löschen der Ressourcengruppe](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * CDN-Profil: [Referenz zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
 * CDN-Endpunkt: [Referenzdokumentation zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)

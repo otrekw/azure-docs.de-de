@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Erstellen einer geplanten Sicherung'
+title: 'Über die CLI: Erstellen einer geplanten Sicherung'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird das Erstellen einer geplanten Sicherung für eine App veranschaulicht.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: e301b5503cee939846bdcfd1d0c4e755f3debe21
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 327b48052e0134ae97f0a97f0a43f36e75f2e003
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686775"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058777"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Erstellen einer geplanten Sicherung für eine App Service-App mit der CLI
 

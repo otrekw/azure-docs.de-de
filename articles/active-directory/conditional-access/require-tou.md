@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74380102"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
@@ -29,7 +29,7 @@ Dieser Schnellstart veranschaulicht das Konfigurieren einer [Azure AD-Richtlinie
 
 ![Richtlinie erstellen](./media/require-tou/5555.png)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -82,7 +82,7 @@ Dieser Abschnitt enthält die Schritte, die Sie zum Erstellen von Beispielnutzun
    1. Wählen Sie unter **Sprache** die Option **Englisch** aus.
    1. Wählen Sie für **Benutzer müssen die Nutzungsbedingungen erweitern** die Option **Ein** aus.
    1. Wählen Sie für **Mit Richtlinienvorlagen für bedingten Zugriff erzwingen** die Option **Benutzerdefinierte Richtlinie** aus.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff
 
@@ -93,7 +93,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
 Legen Sie in Ihrer Richtlinie Folgendes fest:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | --- | --- |
 | Benutzer und Gruppen | Isabella Simonsen |
 | Cloud-Apps | Microsoft Azure Management |
@@ -101,11 +101,11 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 ![Richtlinie erstellen](./media/require-tou/1234.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
 1. Geben Sie auf der Seite **Neu** im Textfeld **Name** den Text **Nutzungsbedingungen für Isabella erforderlich** ein.
 
-   ![NAME](./media/require-tou/71.png)
+   ![Name](./media/require-tou/71.png)
 
 1. Klicken Sie im Abschnitt **Zuweisung** auf **Benutzer und Gruppen**.
 
@@ -137,7 +137,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 1. Gehen Sie auf der Seite **Gewähren** folgendermaßen vor:
 
-   ![Gewährung](./media/require-tou/111.png)
+   ![Erteilen](./media/require-tou/111.png)
 
    1. Wählen Sie **Zugriff gewähren** aus.
    1. Wählen Sie **Meine Nutzungsbedingungen** aus.
@@ -146,7 +146,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
    ![Richtlinie aktivieren](./media/require-tou/18.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Auswerten einer simulierten Anmeldung
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2018
-ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772060"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79528999"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
 
@@ -51,7 +51,7 @@ Gehen Sie wie folgt vor, um unter Verwendung von MySQL Workbench eine Verbindung
 
 2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** folgende Informationen ein:
 
-   | Einstellung | Empfohlener Wert | Feldbeschreibung |
+   | Einstellung | Vorgeschlagener Wert | Feldbeschreibung |
    |---|---|---|
    |   Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für diese Verbindung an. |
    | Verbindungsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) ist ausreichend. |

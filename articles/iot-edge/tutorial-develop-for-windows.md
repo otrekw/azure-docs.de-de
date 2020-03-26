@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76772254"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
@@ -129,7 +129,7 @@ Mit der Erweiterung „Azure IoT Edge-Tools“ werden Projektvorlagen für alle 
 
 4. Konfigurieren Sie im Fenster „Modul hinzufügen“ Ihr Projekt mit den folgenden Werten:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Visual Studio-Vorlage | Wählen Sie die Option **C#-Modul** aus. |
    | Name des Moduls | Übernehmen Sie den Standardnamen **IotEdgeModule1**. |

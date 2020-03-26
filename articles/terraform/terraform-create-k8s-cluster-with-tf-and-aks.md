@@ -5,10 +5,10 @@ keywords: Azure DevOps Terraform AKS Kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945309"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Tutorial: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service unter Verwendung von Terraform
@@ -170,7 +170,7 @@ Erstellen Sie die Terraform-Konfigurationsdatei, die die Ressourcen für den Kub
 
     Mit dem Datensatz `linux_profile` können Sie die Einstellungen konfigurieren, die eine Anmeldung bei Workerknoten mithilfe von SSH ermöglichen.
 
-    Mit AKS zahlen Sie nur für die Workerknoten. Der Datensatz `default_node_pool` konfiguriert die Details für diese Workerknoten. Der Datensatz `default_node_pool record` enthält die Anzahl der zu erstellenden Workerknoten und den Typ der Workerknoten. Wenn Sie den Cluster in der Zukunft zentral hochskalieren oder herunterskalieren müssen, ändern Sie den Wert `count` in diesem Datensatz.
+    Mit AKS zahlen Sie nur für die Workerknoten. Der Datensatz `default_node_pool` konfiguriert die Details für diese Workerknoten. Der Datensatz `default_node_pool record` enthält die Anzahl der zu erstellenden Workerknoten und den Typ der Workerknoten. Wenn Sie den Cluster in der Zukunft hochskalieren oder herunterskalieren müssen, ändern Sie den Wert `count` in diesem Datensatz.
 
 1. Speichern Sie die Datei ( **&lt;STRG+S**), und beenden Sie den Editor ( **&lt;STRG+Q**).
 

@@ -8,11 +8,11 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.openlocfilehash: 6587b6d5ceb18bcc2374594aef91da91f792bb84
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77585933"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Schnellstart: Erstellen einer Konsolen-App zum Verwalten von Azure Cosmos DB-SQL-API-Kontoressourcen mithilfe von Version 4 des .NET SDK
@@ -45,7 +45,7 @@ Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren 
 
 Dieser Abschnitt führt Sie durch das Erstellen eines Azure Cosmos-Kontos und durch das Einrichten eines Projekts, das die Azure Cosmos DB-SQL-API-Clientbibliothek für .NET zum Verwalten von Ressourcen verwendet. Mit dem in diesem Artikel beschriebenen Beispielcode erstellen Sie eine Datenbank mit dem Namen `FamilyDatabase` und Familienmitglieder (jedes Familienmitglieder ist ein Element) in dieser Datenbank. Jedes Familienmitglied weist Eigenschaften auf, wie z. B. `Id, FamilyName, FirstName, LastName, Parents, Children, Address,`. Die Eigenschaft `LastName` wird als Partitionsschlüssel für den Container verwendet. 
 
-### <a id="create-account"></a>Erstellen eines Azure Cosmos-Kontos
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Erstellen eines Azure Cosmos-Kontos
 
 Wenn Sie die Option [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) verwenden, um ein Azure Cosmos-Konto zu erstellen, müssen Sie ein Azure Cosmos DB-Konto vom Typ **SQL-API** erstellen. Es wurde bereits ein Azure Cosmos DB-Testkonto für Sie erstellt. Sie müssen das Konto nicht explizit erstellen, sodass Sie diesen Abschnitt überspringen und zum nächsten Abschnitt wechseln können.
 
@@ -82,7 +82,7 @@ az cosmosdb create \
 
 Das Erstellen des Azure Cosmos-Kontos dauert eine Weile. Wenn der Vorgang erfolgreich ist, wird die Bestätigungsausgabe angezeigt. Nachdem der Befehl erfolgreich abgeschlossen wurde, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und überprüfen Sie, ob das Azure Cosmos-Konto mit dem angegebenen Namen vorhanden ist. Nachdem die Ressource erstellt wurde, können Sie das Azure Cloud Shell-Fenster schließen. 
 
-### <a id="create-dotnet-core-app"></a>Erstellen einer neuen .NET-App
+### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>Erstellen einer neuen .NET-App
 
 Erstellen Sie eine neue .NET-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus.  Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen `todo` zu erstellen. Mit dem Parameter „--langVersion“ wird die LangVersion-Eigenschaft in der erstellten Projektdatei festgelegt.
 
@@ -110,7 +110,7 @@ Build succeeded.
 Time Elapsed 00:00:34.17
 ```
 
-### <a id="install-package"></a>Installieren des Azure Cosmos DB-Pakets
+### <a name="install-the-azure-cosmos-db-package"></a><a id="install-package"></a>Installieren des Azure Cosmos DB-Pakets
 
 Installieren Sie im Anwendungsverzeichnis mit dem Befehl „dotnet add package“ die Azure Cosmos DB-Clientbibliothek für .NET Core.
 
@@ -128,7 +128,7 @@ Die Beispielanwendung muss sich bei Ihrem Azure Cosmos-Konto authentifizieren. F
 
 1. Öffnen Sie den Bereich **Schlüssel**, und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos. Den URI- und den Schlüsselwert fügen Sie im nächsten Schritt zu einer Umgebungsvariablen hinzu.
 
-## <a id="object-model"></a>Objektmodell
+## <a name="object-model"></a><a id="object-model"></a>Objektmodell
 
 Bevor Sie mit dem Erstellen der Anwendung beginnen, befassen wir uns noch mit der Hierarchie der Ressourcen in Azure Cosmos DB und dem Objektmodell, das verwendet wird, um diese Ressourcen zu erstellen und darauf zuzugreifen. Azure Cosmos DB erstellt Ressourcen in der folgenden Reihenfolge:
 
@@ -147,68 +147,68 @@ Weitere Informationen zur Hierarchie der verschiedenen Entitäten finden Sie im 
 * GetItemQueryIterator: Diese Methode erstellt eine Abfrage nach Elementen unter einem Container in einer Azure Cosmos-Datenbank unter Verwendung einer SQL-Anweisung mit parametrisierten Werten. 
 * DeleteAsync: Löscht die angegebene Datenbank aus Ihrem Azure Cosmos-Konto. Die `DeleteAsync`-Methode löscht nur die Datenbank.
 
- ## <a id="code-examples"></a>Codebeispiele
+ ## <a name="code-examples"></a><a id="code-examples"></a>Codebeispiele
 
 Mit dem in diesem Artikel beschriebenen Beispielcode wird in Azure Cosmos DB eine Familiendatenbank („FamilyDatabase“) erstellt. Die Familiendatenbank enthält Familiendetails wie Name, Adresse, Standort, die zugehörigen Eltern, Kinder und Haustiere. Definieren Sie die Eigenschaften eines Familienelements, bevor Sie Ihr Azure Cosmos-Konto mit den Daten auffüllen. Erstellen Sie eine neue Klasse mit dem Namen `Family.cs` auf der Stammebene Ihrer Beispielanwendung, und fügen Sie ihr den folgenden Code hinzu:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Family.cs":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Family.cs)]
 
 ### <a name="add-the-using-directives--define-the-client-object"></a>Hinzufügen der using-Direktiven und Definieren des Clientobjekts
 
 Öffnen Sie im Projektverzeichnis die Datei `Program.cs` im Editor, und fügen Sie die folgenden using-Direktiven am Anfang der Anwendung hinzu:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Usings":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Usings)]
 
 
 Fügen Sie in der `Program`-Klasse die folgenden globalen Variablen hinzu. Dazu gehören der Endpunkt und die Autorisierungsschlüssel, der Name der Datenbank und der von Ihnen erstellte Container. Ersetzen Sie die Werte für den Endpunkt und die Autorisierungsschlüssel gemäß Ihrer Umgebung. 
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Constants":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Constants)]
 
 Ersetzen Sie abschließend die Methode `Main` wie folgt:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Main":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Main)]
 
 ### <a name="create-a-database"></a>Erstellen einer Datenbank 
 
 Definieren Sie die `CreateDatabaseAsync`-Methode in der `program.cs`-Klasse. Diese Methode erstellt den `FamilyDatabase`, falls er noch nicht vorhanden ist.
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateDatabaseAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateDatabaseAsync)]
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
 Definieren Sie die `CreateContainerAsync`-Methode in der `Program`-Klasse. Diese Methode erstellt den `FamilyContainer`, falls er noch nicht vorhanden ist. 
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateContainerAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateContainerAsync)]
 
 ### <a name="create-an-item"></a>Erstellen eines Elements
 
 Erstellen Sie ein Familienelement, indem Sie die `AddItemsToContainerAsync`-Methode mit dem folgenden Code hinzufügen. Zum Erstellen eines Elements können Sie die Methode `CreateItemAsync` oder `UpsertItemAsync` verwenden:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="AddItemsToContainerAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=AddItemsToContainerAsync)]
 
 ### <a name="query-the-items"></a>Abfragen der Elemente
 
 Nachdem Sie ein Element eingefügt haben, können Sie eine Abfrage zum Abrufen der Details der Familie „Andersen“ ausführen. Im folgenden Codebeispiel wird gezeigt, wie die Abfrage direkt mithilfe der SQL-Abfrage ausgeführt wird. Die SQL-Abfrage zum Abrufen der Details der Familie „Anderson“ lautet `SELECT * FROM c WHERE c.LastName = 'Andersen'`. Definieren Sie die `QueryItemsAsync`-Methode in der `Program`-Klasse, und fügen Sie ihr den folgenden Code hinzu:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="QueryItemsAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=QueryItemsAsync)]
 
 ### <a name="replace-an-item"></a>Ersetzen eines Elements 
 
 Lesen Sie ein Familienelement, und aktualisieren Sie es, indem Sie die `ReplaceFamilyItemAsync`-Methode mit dem folgenden Code hinzufügen:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="ReplaceFamilyItemAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=ReplaceFamilyItemAsync)]
 
 ### <a name="delete-an-item"></a>Löschen eines Elements 
 
 Löschen Sie ein Familienelement, indem Sie die `DeleteFamilyItemAsync`-Methode mit dem folgenden Code hinzufügen:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteFamilyItemAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteFamilyItemAsync)]
 
 ### <a name="delete-the-database"></a>Löschen der Datenbank 
 
 Schließlich können Sie die Datenbank löschen, indem Sie die `DeleteDatabaseAndCleanupAsync`-Methode mit dem folgenden Code hinzufügen:
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 Speichern Sie die Datei `Program`, nachdem Sie alle erforderlichen Methoden hinzugefügt haben. 
 

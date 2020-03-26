@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Bereitstellen von App-Dateien mit FTP'
+title: 'Über die CLI: Bereitstellen von App-Dateien mit FTP'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie eine App erstellen und Dateien über FTP bereitstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -7,13 +7,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 320f293073ce0a97cf4b73b420f38d91c5206013
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688357"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044877"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Erstellen einer App Service-App und Bereitstellen von Dateien über FTP mit der Azure CLI
 

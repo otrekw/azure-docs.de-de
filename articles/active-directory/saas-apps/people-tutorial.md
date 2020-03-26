@@ -17,10 +17,10 @@ ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70164213"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit People
@@ -113,7 +113,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -147,15 +147,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
    
 4. Klicken Sie im Menü links auf **Settings**.
 
-    ![Configure single sign-on](./media/people-tutorial/tutorial_people_001.png)
+    ![Einmaliges Anmelden konfigurieren](./media/people-tutorial/tutorial_people_001.png)
 
 5. Klicken Sie auf **Unternehmen**.
 
-    ![Configure single sign-on](./media/people-tutorial/tutorial_people_002.png)
+    ![Einmaliges Anmelden konfigurieren](./media/people-tutorial/tutorial_people_002.png)
 
 6. Klicken Sie neben **Upload 'Single Sign On' SAML meta-data file** (SAML-Metadatendabei für einmaliges Anmelden hochladen) auf **Durchsuchen**, um die heruntergeladene Metadatendatei hochzuladen.
 
-    ![Configure single sign-on](./media/people-tutorial/tutorial_people_003.png)
+    ![Einmaliges Anmelden konfigurieren](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-people-test-user"></a>Erstellen eines People-Testbenutzers
 

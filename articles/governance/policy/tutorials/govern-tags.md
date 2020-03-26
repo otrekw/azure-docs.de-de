@@ -4,10 +4,10 @@ description: In diesem Tutorial verwenden Sie die Auswirkung „modify“ von Az
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75965999"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Verwalten der Tag-Governance mit Azure Policy
@@ -30,7 +30,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="identify-requirements"></a>Ermitteln der Anforderungen
 

@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: Zuweisen einer benutzerdefinierten Domäne'
+title: 'Mit PowerShell: Zuweisen einer benutzerdefinierten Domäne'
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie einer App eine benutzerdefinierte Domäne zuweisen.
 author: msangapu-msft
 tags: azure-service-management
@@ -7,13 +7,13 @@ ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: f7de667292ed89caa2895f6db3f7d8d6abf15f85
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4629157142c17122c0aa6c74c1918c1d01d796c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685584"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044737"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Zuweisen einer benutzerdefinierten Domäne zu einer Web-App mit PowerShell
 

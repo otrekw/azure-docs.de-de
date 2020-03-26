@@ -1,5 +1,5 @@
 ---
-title: 'CLI: Erstellen einer ASP.NET Core-App über Docker'
+title: 'Über die CLI: Erstellen einer ASP.NET Core-App über Docker'
 description: Hier erfahren Sie, wie Sie die Azure CLI zum Automatisieren der Bereitstellung und Verwaltung Ihrer App Service-App verwenden. In diesem Beispiel wird gezeigt, wie Sie über Docker Hub eine ASP.NET Core-App erstellen.
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 80190fa767da6c593b99d79a71ebce661d561253
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8eb95644db5b1cb00ef6e245db6197cf2a2f301b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685982"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044767"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>Erstellen einer ASP.NET Core-App in einem Docker-Container über Docker Hub mithilfe der Azure CLI
 

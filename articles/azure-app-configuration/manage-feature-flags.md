@@ -16,10 +16,10 @@ ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76899366"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Tutorial: Verwalten von Featureflags in Azure App Configuration
@@ -52,7 +52,7 @@ So fügen Sie ein neues Featureflag hinzu:
 
 1. Wenn der Zustand *Ein* lautet, können Sie mit **+Filter hinzufügen** zusätzliche Bedingungen zur Zustandsqualifizierung angeben. Geben Sie einen integrierten oder benutzerdefinierten Filterschlüssel ein, und wählen Sie dann **+Parameter hinzufügen** aus, um dem Filter mindestens einen Parameter zuzuordnen. Zu den integrierten Filtern zählen folgende:
 
-    | Key | JSON-Parameter |
+    | Schlüssel | JSON-Parameter |
     |---|---|
     | Microsoft.Percentage | {"Value": 0–100 Prozent} |
     | Microsoft.TimeWindow | {"Start": UTC-Zeit, "End": UTC-Zeit} |

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76906292"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
@@ -64,12 +64,12 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
 
 1. Geben Sie die folgenden Werte an, um Ihr Speicherkonto zu erstellen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
    | Resource group | Es empfiehlt sich, im Rahmen der IoT Edge-Schnellstartanleitungen und -Tutorials die gleiche Ressourcengruppe für alle Ihre Testressourcen zu verwenden. Beispielsweise **IoTEdgeResources**. |
    | Name | Geben Sie einen eindeutigen Namen für Ihr Speicherkonto an. |
-   | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
+   | Position | Wählen Sie einen Standort in Ihrer Nähe aus. |
 
 1. Behalten Sie in den restlichen Feldern die Standardwerte bei, und wählen Sie **Überprüfen und erstellen** aus.
 
@@ -81,12 +81,12 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
 
 1. Geben Sie die folgenden Werte an, um Ihren Auftrag zu erstellen:
 
-   | Feld | value |
+   | Feld | Wert |
    | ----- | ----- |
    | Auftragsname | Geben Sie einen Namen für Ihren Auftrag an. Beispielsweise **IoTEdgeJob** |
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
-   | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
+   | Position | Wählen Sie einen Standort in Ihrer Nähe aus. |
    | Hosting-Umgebung | Wählen Sie **Edge** aus. |
 
 1. Klicken Sie auf **Erstellen**.
@@ -193,7 +193,7 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist das Modul **Sim
 
 1. Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Nachrichten werden mit Name-Wert-Paaren erstellt. Ersetzen Sie die Standardnamen und -werte für `route` und `upstream` durch die Name-Wert-Paare in der folgenden Tabelle. Ersetzen Sie dabei Instanzen von _{moduleName}_ durch den Namen Ihres Azure Stream Analytics-Moduls.
 
-    | Name | value |
+    | Name | Wert |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

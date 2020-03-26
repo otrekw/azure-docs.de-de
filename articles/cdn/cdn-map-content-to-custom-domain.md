@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837418"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222407"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -68,11 +68,11 @@ Erstellen Sie wie folgt einen CNAME-Eintrag mit der Unterdomäne „cdnverify“
 
     | `Source`                    | type  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify.&lt;Name der benutzerdefinierten Domäne&gt;. Beispiel: „cdnverify.www.contoso.com“.
+    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify.&lt;Name der benutzerdefinierten Domäne&gt;. Beispiel: „cdnverify. www.contoso.com“.
 
-    - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
+    - Typ: Geben Sie *CNAME* ein.
 
     - Ziel: Geben Sie den Hostnamen Ihres CDN-Endpunkts, einschließlich der Unterdomäne „cdnverify“, im folgenden Format ein: cdnverify. _&lt;Endpunktname&gt;_ .azureedge.net. Beispiel: „cdnverify.contoso.azureedge.net“.
 
@@ -92,13 +92,13 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME*.
 
     - Host: Geben Sie die gewünschte Unterdomäne Ihrer benutzerdefinierten Domäne ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.www“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein (einschließlich des Unterdomänennamens „cdnverify“). Beispiel: „cdnverify.contoso.azureedge.net“. 
 
-    - TTL: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
 
 6. Wählen Sie **Speichern** aus.
  
@@ -166,7 +166,7 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (z. B. „www\.contoso.com“).
 
-   - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
+   - Typ: Geben Sie *CNAME* ein.
 
    - Ziel: Geben Sie den Hostnamen Ihres CDN-Endpunkts ein. Er muss das folgende Format haben: _&lt;Endpunktname&gt;_ .azureedge.net. Beispiel: „contoso.azureedge.net“.
 
@@ -190,13 +190,13 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
     ![CNAME-Eintrag](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME*.
 
     - Host: Geben Sie die Unterdomäne der gewünschten benutzerdefinierten Domäne ein. Beispiel: „www“ oder „cdn“.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres CDN-Endpunkts ein. Beispiel: „contoso.azureedge.net“. 
 
-    - TTL: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
 
 6. Wählen Sie **Speichern** aus.
  

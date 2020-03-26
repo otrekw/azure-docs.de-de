@@ -3,16 +3,16 @@ title: Informationen zu Mobile Apps
 description: Hier erfahren Sie, welche Vorteile App Service für Ihre mobilen Unternehmens-Apps bietet.
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 06/25/2019
-ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 33548f202046310b91fc79d38ac7d8fb18a8727e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461435"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499429"
 ---
-# <a name="getting-started"> </a>Informationen zu Mobile Apps in Azure App Service
+# <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>Informationen zu Mobile Apps in Azure App Service
 
 Azure App Service ist ein vollständig verwaltetes PaaS-Angebot ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) für professionelle Entwickler. Der Dienst stellt umfangreiche Funktionen für Web- und Integrationsszenarien sowie für mobile Szenarien bereit. 
 
@@ -35,9 +35,9 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 
     Erfahren Sie mehr über die [Authentifizierungsfeatures].
 
-* **Datenzugriff**: Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit Azure SQL-Datenbank oder einer lokalen SQL Server-Instanz verknüpft ist. Da dieser Dienst auf Entity Framework basieren kann, ermöglicht er die einfache Integration in andere NoSQL- und SQL-Datenanbieter wie [Azure Table Storage], MongoDB, [Azure Cosmos DB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
+* **Datenzugriff:** Mobile Apps stellt eine für Mobilgeräte geeignete OData v3-Datenquelle bereit, die mit Azure SQL-Datenbank oder einer lokalen SQL Server-Instanz verknüpft ist. Da dieser Dienst auf Entity Framework basieren kann, ermöglicht er die einfache Integration in andere NoSQL- und SQL-Datenanbieter wie [Azure Table Storage], MongoDB, [Azure Cosmos DB] und SaaS-API-Anbieter wie Office 365 und Salesforce.com.
 
-* **Offlinesynchronisierung:** Mit den Client-SDKs können Sie komfortabel stabile und reaktionsfähige mobile Anwendungen mit einem Offlinedataset erstellen. Dieses Dataset kann automatisch mit den Back-End-Daten synchronisiert werden, und es steht eine Unterstützung bei der Konfliktlösung zur Verfügung.
+* **Offlinesynchronisierung:** Mit den Client-SDKs können Sie komfortabel robuste und reaktionsfähige mobile Anwendungen mit einem Offlinedataset erstellen. Dieses Dataset kann automatisch mit den Back-End-Daten synchronisiert werden, und es steht eine Unterstützung bei der Konfliktlösung zur Verfügung.
 
   Erfahren Sie mehr über die [Datenfeatures].
 
@@ -50,7 +50,7 @@ Die folgenden Features sind für die cloudfähige mobile Entwicklung wichtig:
 ## <a name="azure-app-service-features"></a>Azure App Service-Features
 Die folgenden Plattformfeatures sind für mobile Produktionswebsites nützlich:
 
-* **Automatische Skalierung**: Mit App Service können Sie schnell zentral oder horizontal hochskalieren, um beliebige eingehende Datenlasten von Kunden zu bewältigen. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie eine automatische Skalierung zur last- oder zeitplanbasierten Skalierung Ihres mobilen App-Back-Ends ein.
+* **Automatische Skalierung:** Mit App Service können Sie schnell hoch- oder aufskalieren, um beliebige eingehende Datenlasten von Kunden zu bewältigen. Wählen Sie Anzahl und Größe der virtuellen Computer manuell aus, oder richten Sie eine automatische Skalierung zur last- oder zeitplanbasierten Skalierung Ihres mobilen App-Back-Ends ein.
 
   Weitere Informationen zur automatischen Skalierung finden Sie [Automatische Skalierung].
 
@@ -58,7 +58,7 @@ Die folgenden Plattformfeatures sind für mobile Produktionswebsites nützlich:
 
   Erfahren Sie mehr über [Stagingumgebungen].
 
-* **Continuous Deployment:** App Service kann in gängige Systeme für die _Quellcodeverwaltung_ (SCM) integriert werden, sodass Sie leicht eine neue Version Ihres Back-Ends bereitstellen können.
+* **Continuous Deployment**: App Service kann in gängige Systeme für die _Quellcodeverwaltung_ (SCM) integriert werden, sodass Sie leicht eine neue Version Ihres Back-Ends bereitstellen können.
 
   Erfahren Sie mehr über [Bereitstellungsoptionen](../app-service/deploy-local-git.md).
 

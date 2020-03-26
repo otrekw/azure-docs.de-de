@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128111"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79365422"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -113,4 +113,4 @@ Vergewissern Sie sich nach dem Anmelden, dass alles funktioniert, indem Sie eini
 Wenn Sie den Dienstprinzipal erstellt und ihm eine Rolle in Ihrem Windows Virtual Desktop-Mandanten zugewiesen haben, können Sie ihn zum Erstellen eines Hostpools verwenden. Weitere Informationen zu Hostpools finden Sie im Tutorial zum Erstellen eines Hostpools in Windows Virtual Desktop.
 
  > [!div class="nextstepaction"]
- > [Tutorial: Create a host pool with Azure Marketplace](./create-host-pools-azure-marketplace.md) (Tutorial: Erstellen eines Hostpools mit Azure Marketplace)
+ > [Erstellen eines Hostpools mit Azure Marketplace](./create-host-pools-azure-marketplace.md)

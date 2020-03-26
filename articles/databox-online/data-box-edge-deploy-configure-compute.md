@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277133"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222857"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge
 
@@ -53,7 +53,7 @@ Um die Computeumgebung auf Ihrer Data Box Edge-Instanz zu konfigurieren, erstell
     |Feld  |Wert  |
     |---------|---------|
     |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und die Ressourcengruppe wie die Data Box Edge-Ressource.     |
-    |NAME     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
+    |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
     ![Erste Schritte mit Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -111,7 +111,7 @@ In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln ei
     
     |Feld  |Wert  |
     |---------|---------|
-    |NAME     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Data Box Edge-Instanz zugeordnet ist.        |
+    |Name     | Ein eindeutiger Name für das Modul. Dieses Modul ist ein Docker-Container, den Sie auf dem IoT Edge-Gerät bereitstellen können, das Ihrer Data Box Edge-Instanz zugeordnet ist.        |
     |Image-URI     | Der Image-URI für das entsprechende Containerimage für das Modul.        |
     |Anmeldeinformationen erforderlich     | Wenn dieses Kontrollkästchen aktiviert ist, werden ein Benutzername und ein Kennwort verwendet, um Module mit einer übereinstimmenden URL abzurufen.        |
     |Eingabefreigabe     | Wählen Sie eine Eingabefreigabe aus. Die lokale Edgefreigabe ist in diesem Fall die Eingabefreigabe. Mit dem hier verwendeten Modul werden Dateien von der lokalen Edgefreigabe auf eine Edgefreigabe verschoben, von der sie in die Cloud hochgeladen werden.        |

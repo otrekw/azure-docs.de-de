@@ -4,10 +4,10 @@ description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiel
 ms.date: 12/04/2019
 ms.topic: sample
 ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74851365"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele
@@ -179,13 +179,13 @@ Mit dieser Blaupause werden vier Azure-Richtliniendefinitionen zum Überwachen v
 
 Die Blaupause weist auch eine Azure-Richtliniendefinition zum Überwachen der Dateiberechtigungen für Passwörter von virtuellen Linux-Computern zu, um bei einer fehlerhaften Festlegung eine Warnung auszugeben. Dieses Design ermöglicht Ihnen Korrekturmaßnahmen, die sicherstellen, dass Authentifikatoren nicht kompromittiert werden.
 
-- \[Vorschau\]: Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf Linux-VMs überwachen
+- \[Vorschau\]: Überwachen der Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf virtuellen Linux-Computern
 
 ## <a name="13-audit-information-for-users"></a>13 Überwachungsinformationen für Benutzer
 
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 - Überwachen der Diagnoseeinstellung
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs

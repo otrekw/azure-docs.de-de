@@ -16,11 +16,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064799"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222227"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen von Änderungen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -94,7 +94,7 @@ Wählen Sie im Fenster **Updateverwaltung aktivieren** den Log Analytics-Arbeits
 Falls beim Onboarding erkannt wird, dass die folgenden erforderlichen Komponenten fehlen, werden sie automatisch hinzugefügt:
 
 * [Log Analytics](../../log-analytics/log-analytics-overview.md)-Arbeitsbereich
-* [Automatisierung](../../automation/automation-offering-get-started.md)
+* [Automation](../../automation/automation-offering-get-started.md)
 * Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md), der auf dem virtuellen Computer aktiviert ist
 
 Nachdem die Lösung aktiviert wurde, wird das Fenster **Updateverwaltung** geöffnet. Konfigurieren Sie den Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und wählen Sie anschließend die Option **Aktivieren** aus. Wenn diese Optionen abgeblendet angezeigt werden, ist eine andere Automatisierungslösung für die VM aktiviert, sodass deren Arbeitsbereich und das zugehörige Automation-Konto verwendet werden müssen.
@@ -145,8 +145,8 @@ Klicken Sie auf die abgeschlossene Updatebereitstellung, um das Dashboard für d
 Auf der Kachel **Updateergebnisse** wird eine Zusammenfassung der Gesamtzahl der Updates und der Bereitstellungsergebnisse auf dem virtuellen Computer angezeigt. Die Tabelle rechts enthält eine detaillierte Aufschlüsselung der einzelnen Updates und der Installationsergebnisse. Jedes Ergebnis verfügt über einen der folgenden Werte:
 
 * **Kein Versuch erfolgt**: Das Update wird nicht installiert. Aufgrund der festgelegten Dauer des Wartungsfensters war nicht genügend Zeit verfügbar.
-* **Erfolgreich**: Das Update war erfolgreich.
-* **Fehler**: Beim Update ist ein Fehler aufgetreten.
+* **Erfolg:** Das Update war erfolgreich.
+* **Fehler:** Beim Update ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 
@@ -208,7 +208,7 @@ Jede Zeile mit Balkendiagrammen steht für einen eigenen Änderungstyp, der nach
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die Änderungsnachverfolgung und Updateverwaltung für Ihre virtuellen Computer konfiguriert und überprüft. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie die Änderungsnachverfolgung und Updateverwaltung für Ihre virtuellen Computer konfiguriert und überprüft. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe und VM

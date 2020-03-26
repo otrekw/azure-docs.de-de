@@ -9,15 +9,15 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75552415"
 ---
 Für dieses Tutorial müssen folgende Voraussetzungen erfüllt sein:
 
-**Azure CLI**: Auf dem lokalen Computer muss mindestens Version 2.0.29 der Azure-Befehlszeilenschnittstelle installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli-install].
+**Azure CLI**: Auf dem lokalen Computer muss mindestens Version 2.0.29 der Azure-Befehlszeilenschnittstelle installiert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli-install].
 
 **Docker**: In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Konzepte wie Container und Containerimages sowie grundlegende `docker`-Befehle bekannt sind. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht][docker-get-started].
 

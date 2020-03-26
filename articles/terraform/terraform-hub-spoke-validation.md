@@ -4,10 +4,10 @@ description: Tutorial zum Überprüfen der Hub-Spoke-Netzwerktopologie mit allen
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159202"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Tutorial: Überprüfen eines Hub-and-Spoke-Netzwerks in Azure mit Terraform
@@ -93,7 +93,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Konnektivität zwischen der si
 
 1. Wählen Sie auf der Registerkarte **onprem-vnet-rg** den virtuellen Computer **onprem-vm** aus.
 
-1. Wählen Sie **Verbinden**aus.
+1. Wählen Sie **Verbinden**.
 
 1. Kopieren Sie den **SSH**-Befehl neben dem Text **Mit lokalem VM-Konto anmelden** in die Zwischenablage.
 

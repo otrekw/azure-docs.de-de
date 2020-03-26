@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75371937"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
@@ -66,7 +66,7 @@ Die Anwendung erstellt fünf zufällig benannte Container und beginnt damit, die
 
 Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) für die [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync)-Methode so konfiguriert, dass Parallelismus verwendet und MD5-Hashvalidierung deaktiviert wird. Die Dateien werden in 100-MB-Blöcken hochgeladen. Diese Konfiguration bietet eine bessere Leistung, kann aber teuer sein, wenn ein leistungsschwaches Netzwerk verwendet wird, denn wenn ein Fehler auftritt, wird der gesamte 100-MB-Block wiederholt.
 
-|Eigenschaft|value|BESCHREIBUNG|
+|Eigenschaft|Wert|BESCHREIBUNG|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Die Einstellung bewirkt, dass der Blob beim Hochladen in Blöcke aufgeteilt wird. Wenn die höchste Leistung erzielt werden soll, muss dieser Wert dem Achtfachen der Anzahl von Kernen entsprechen. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt.   |
