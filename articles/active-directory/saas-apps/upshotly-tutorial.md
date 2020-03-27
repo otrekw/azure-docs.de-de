@@ -16,10 +16,10 @@ ms.date: 1/7/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f82b7ce417e79cef29c9e852ca15a8ea1e8d62f2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76266042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Upshotly
@@ -134,7 +134,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Upshotly-Konfiguration](./media/upshotly-tutorial/config1.png)
 
-    a. Kopieren Sie den Wert unter **Company ID** (Unternehmens-ID). Ersetzen Sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** unter **Anmelde-URL** den Wert der **Unternehmens-ID** durch diesen kopierten Wert **** .
+    a. Kopieren Sie den Wert unter **Company ID** (**Unternehmens-ID**). Ersetzen Sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** unter **Anmelde-URL** den Wert der **Unternehmens-ID** durch diesen kopierten Wert.
 
     b. Öffnen Sie die heruntergeladene **Verbundmetadaten-XML** aus dem Azure-Portal im Editor, kopieren Sie ihren Inhalt, und fügen Sie ihn in das Textfeld **XML metadata** (XML-Metadaten) ein.
 

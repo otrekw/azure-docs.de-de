@@ -10,11 +10,11 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602552"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224087"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Trainieren und Bereitstellen eines TensorFlow-Modells für die Bildklassifizierung mit der Azure Machine Learning-Erweiterung für Visual Studio Code
 
@@ -268,8 +268,8 @@ So stellen Sie einen Webdienst als ACI bereit:
 
 1. Wählen Sie **Azure Container Instances** aus.
 1. Nennen Sie Ihren Dienst **mnist-tensorflow-svc**, und drücken Sie die EINGABETASTE.
-1. Wählen Sie das Skript aus, das im Container ausgeführt werden soll. Drücken Sie hierzu im Eingabefeld die EINGABETASTE, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `score.py`. ****
-1. Geben Sie die Abhängigkeiten an, die zum Ausführen des Skripts erforderlich sind. Drücken Sie hierzu im Eingabefeld die EINGABETASTE, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `env.yml`. ****
+1. Wählen Sie das Skript aus, das im Container ausgeführt werden soll. Drücken Sie hierzu im Eingabefeld die **EINGABETASTE**, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `score.py`.
+1. Geben Sie die Abhängigkeiten an, die zum Ausführen des Skripts erforderlich sind. Drücken Sie hierzu im Eingabefeld die **EINGABETASTE**, und navigieren Sie im Verzeichnis `mnist-vscode-docs-sample` zur Datei `env.yml`.
 
     Eine Datei, die Ihre Modellkonfigurationen enthält, wird mit etwa folgendem Inhalt in Visual Studio Code angezeigt:
 
