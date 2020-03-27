@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199159"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065688"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 
@@ -88,6 +88,8 @@ meterCategory | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispi
 meterSubCategory | Der Name der Unterklassifizierungskategorie der Verbrauchseinheit
 meterRegion | Der Name der Region, in der die Verbrauchseinheit für den Dienst verfügbar ist. Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden.
 offer | Der Name des erworbenen Angebots
+PayGPrice | Einzelhandelspreis für die Ressource
+PricingModel | Bezeichner, der angibt, wie die Verbrauchseinheit berechnet wird (Werte: Bedarfsgesteuert, Reservierung, Spot)
 productId | Der eindeutige Bezeichner für das Produkt, für das die Gebühren anfallen
 product | Der Name des Produkts, für das die Gebühren anfallen
 Abonnement-ID | Der eindeutige Bezeichner für das Abonnement, für das die Gebühren anfallen

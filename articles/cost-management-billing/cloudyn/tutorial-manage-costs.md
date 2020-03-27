@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Verwalten von Kosten mit Cloudyn in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Verwalten von Kosten mit Cloudyn in Azure'
 description: In diesem Tutorial wird beschrieben, wie Sie Kosten per Kostenzuteilung und mit Showback- und Chargeback-Berichten verwalten.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769907"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474576"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Tutorial: Verwalten von Kosten mithilfe von Cloudyn
 
@@ -31,6 +31,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen von Showback- und Chargeback-Berichten
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

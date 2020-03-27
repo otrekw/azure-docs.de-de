@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Überprüfen der Nutzung und der Kosten mit Cloudyn in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Überprüfen der Nutzung und der Kosten mit Cloudyn in Azure'
 description: In diesem Tutorial überprüfen Sie die Nutzung und die Kosten, um Trends nachzuverfolgen, Ineffizienz zu erkennen und Warnungen zu erstellen.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: a2d4525b0b29feb230f5496196a84e651e651e52
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8a15de717ea960b411d95061b560b64abb94d98f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774044"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474559"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -34,6 +34,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Exportieren von Daten
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,7 +76,7 @@ Das Problem liegt darin, dass die vorhandene Infrastruktur bereits bezahlt wurde
 
 Im Bericht mit Empfehlungen zu kostengünstigen Größenanpassungen werden potenzielle jährliche Einsparungen ausgewiesen. Dabei wird die Kapazität des jeweiligen VM-Instanztyps mit den historischen Daten zu CPU- und Speichernutzung verglichen.  
 
-Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Wenden Sie einen Filter an, um die Ergebnisse zu reduzieren, falls dies hilfreich ist. In der folgenden Abbildung finden Sie ein Beispiel.
+Klicken Sie im Menü oben im Portal auf **Optimizer** (Optimierung) > **Sizing Optimization** (Größenoptimierung) > **Cost Effective Sizing Recommendations** (Empfehlungen zu kostengünstigen Größenanpassungen). Wenden Sie einen Filter an, um die Ergebnisse zu reduzieren, falls dies hilfreich ist. In der folgenden Abbildung finden Sie ein Beispiel:
 
 ![Bericht mit Empfehlungen zu kosteneffektiven Größen für virtuelle Azure-Computer](./media/tutorial-review-usage/sizing01.png)
 

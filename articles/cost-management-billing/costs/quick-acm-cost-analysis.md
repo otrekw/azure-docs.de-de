@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse | Microsoft-Dokumentation'
+title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/11/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649295"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155952"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -27,12 +27,13 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 - Anpassen von Kostenansichten
 - Herunterladen von Kostenanalysedaten
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
 
 Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../../cost-management/assign-access-acm-data.md).
+
+Bei einem neuen Abonnement können Cost Management-Features nicht sofort genutzt werden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -43,6 +44,10 @@ Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden S
 Um Ihre Kosten in der Kostenanalyse zu überprüfen, öffnen Sie den Bereich im Azure-Portal und wählen Sie im Menü **Kostenanalyse** aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Verwenden Sie **Bereich**, um in einen anderen Bereich der Kostenanalyse zu wechseln. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann bis zu den benötigten geschachtelten Bereichen. Es ist wichtig, dieses Vorgehen zu verstehen, da möglicherweise nicht alle Benutzer Zugriff auf einen einzelnen übergeordneten Bereich haben, der mehrere verschachtelte Bereiche abdeckt.
+
+Sehen Sie sich das Video zur [Verwendung von Cost Management im Azure-Portal](https://www.youtube.com/watch?v=mfxysF-kTFA) an, um mehr über die Verwendung der Kostenanalyse zu erfahren.
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 
@@ -65,7 +70,6 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausgewählten Zeitraum. Das Modell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich.
 
 Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD.
-
 
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten
 
@@ -174,11 +178,17 @@ Informationen zu den Bedingungen finden Sie unter [Grundlegendes zu den Bedingun
 
 Speichern Sie benutzerdefinierte Ansichten, und geben Sie sie für andere Benutzer frei, indem Sie die Kostenanalyse im Dashboard des Azure-Portals anheften oder einen Link zur Kostenanalyse kopieren.
 
+Sehen Sie sich das Video zum [Freigeben und Speichern von Ansichten in Azure Cost Management](https://www.youtube.com/watch?v=kQkXXj-SmvQ) an, um mehr darüber zu erfahren, wie Sie das Portal zum Freigeben von Kosteninformationen in Ihrer Organisation verwenden.
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 Wählen Sie zum Anheften der Kostenanalyse oben rechts das Stecknadelsymbol aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beachten Sie, dass hierbei nur die Dashboardkonfiguration freigegeben und anderen Personen kein Zugriff auf die zugrunde liegenden Daten gewährt wird. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
 Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
 Weitere Informationen zum Gewähren des Zugriffs auf die Kosten für jeden unterstützten Bereich finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+
+
 
 ## <a name="automation-and-offline-analysis"></a>Automatisierung und Offlineanalyse
 

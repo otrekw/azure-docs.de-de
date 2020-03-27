@@ -1,24 +1,26 @@
 ---
-title: Schulungsvideos zu Cloudyn in Azure | Microsoft-Dokumentation
+title: Schulungsvideos zu Cloudyn in Azure
 description: In den Schulungsvideos zu Cloudyn werden die ersten Schritte und die Verwendung der Features beschrieben.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 3344dfb1518eeb495b019138c72d566ce4064017
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201100"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463763"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Schulungsvideos zu Cloudyn
 
 Die folgenden Videos zeigen Ihnen mit Demonstrationen den Einstieg in Cloudyn und die Verwendung seiner Features. Cloudyn unterstützt mehrere Verfahren zur Nachverfolgung und Optimierung von Cloudkosten einschließlich Microsoft Azure, Amazon Web Services und Google Cloud Platform.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="overview-video"></a>Übersichtsvideo
 

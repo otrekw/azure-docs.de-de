@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Zugriffs auf Azure-Abrechnungen | Microsoft-Dokumentation
+title: Verwalten des Zugriffs auf die Azure-Abrechnung
 description: Erfahren Sie, wie Sie Mitgliedern Ihres Teams Zugriff auf Ihre Azure-Abrechnungsinformationen gewähren.
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200692"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237665"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -44,7 +44,7 @@ Wie Sie Rollen zuweisen, erfahren Sie unter [Verwalten des Zugriffs mithilfe der
 ** Wenn Sie EA-Kunde sind, kann ein Kontobesitzer die obige Rolle anderen Benutzern des Teams zuweisen. Damit diese Benutzer Abrechnungsinformationen anzeigen können, muss der Unternehmensadministrator im Enterprise Portal aber die Option „AO-Ansichtsgebühren“ aktivieren.
 
 
-### <a name="opt-in"></a> Berechtigen von Benutzern zum Herunterladen von Rechnungen
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> Berechtigen von Benutzern zum Herunterladen von Rechnungen
 
 Nachdem ein Kontoadministrator anderen Benutzern die entsprechenden Rollen zugewiesen hat, müssen diese den Zugriff aktivieren, um Rechnungen im Azure-Portal herunterzuladen. Rechnungen vor Dezember 2016 stehen nur dem Kontoadministrator zur Verfügung.
 

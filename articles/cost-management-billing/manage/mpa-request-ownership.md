@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117178"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79370728"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
@@ -139,7 +139,7 @@ Azure Marketplace-Produkte, die für von Cloudlösungsanbietern (Cloud Solution
 
 ### <a name="azure-reservations-transfer"></a>Übertragung von Azure-Reservierungen
 
-Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung behalten oder in CSP [stornieren und erneut erwerben](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations). 
+Azure-Reservierungen werden nicht automatisch zusammen mit Abonnements verschoben. Sie können die Reservierung in EA für andere Abonnements behalten oder [die Reservierung stornieren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), und Partner können sie in CSP erneut erwerben. 
 
 ### <a name="access-to-azure-services"></a>Zugriff auf Azure-Dienste
 

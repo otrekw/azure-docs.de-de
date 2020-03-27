@@ -1,24 +1,26 @@
 ---
-title: Grundlegendes zu Cloudyn-Kostenverwaltungsberichten in Azure | Microsoft-Dokumentation
+title: Grundlegendes zu Cloudyn-Kostenverwaltungsberichten in Azure
 description: In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773987"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474542"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
 In diesem Artikel erhalten Sie Informationen zur grundlegenden Struktur und den Funktionen von Cloudyn-Kostenverwaltungsberichten. Die meisten Cloudyn-Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Nachdem Sie diesen Artikel gelesen haben, sind Sie zum Verwenden aller Kostenverwaltungsberichte bereit. In den verschiedenen Berichten sind zahlreiche Standardfunktionen zur problemlosen Navigation in den Berichten verfügbar. Berichte können angepasst werden, und Sie haben die Wahl zwischen mehreren Optionen zum Berechnen und Anzeigen von Ergebnissen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>Felder und Optionen von Berichten
 

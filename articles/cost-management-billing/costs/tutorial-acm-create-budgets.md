@@ -1,20 +1,19 @@
 ---
-title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets'
 description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten für Azure-Dienste, die Sie in Anspruch nehmen.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128357"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155935"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -28,6 +27,7 @@ Die Beispiele in diesem Tutorial führen Sie durch die Erstellung und Bearbeitun
 
 Sehen Sie sich das Video [Anwenden von Budgets auf Abonnements im Azure-Portal](https://www.youtube.com/watch?v=UrkHiUx19Po) an, um zu erfahren, wie Sie Budgets in Azure erstellen können, um Ausgaben zu überwachen.
 
+>[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
 In diesem Tutorial lernen Sie Folgendes:
 

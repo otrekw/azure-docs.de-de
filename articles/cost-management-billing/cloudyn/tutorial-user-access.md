@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Zuweisen des Zugriffs mit Cloudyn in Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Zuweisen des Zugriffs mit Cloudyn in Azure'
 description: In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Cloudyn-Daten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774002"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463610"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Tutorial: Zuweisen des Zugriffs auf Cloudyn-Daten
 
@@ -33,6 +33,8 @@ Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -68,9 +70,9 @@ Sie können sich nicht selbst als Benutzer löschen.
 > [!WARNING]
 > Wenn Sie einen Benutzer löschen, kann er nicht wiederhergestellt werden.
 
-1.  Klicken Sie im Cloudyn-Portal rechts oben auf das Zahnradsymbol, und wählen Sie anschließend die Option **User Management** (Benutzerverwaltung).
-2.  Wählen Sie in der Liste mit den Benutzern den Benutzer aus, den Sie löschen möchten, und klicken Sie dann auf **Benutzer löschen** (Papierkorbsymbol).
-3.  Klicken Sie im Feld zum Löschen von Benutzern auf **Ja** und dann auf **OK**.
+1.    Klicken Sie im Cloudyn-Portal rechts oben auf das Zahnradsymbol, und wählen Sie anschließend die Option **User Management** (Benutzerverwaltung).
+2.    Wählen Sie in der Liste mit den Benutzern den Benutzer aus, den Sie löschen möchten, und klicken Sie dann auf **Benutzer löschen** (Papierkorbsymbol).
+3.    Klicken Sie im Feld zum Löschen von Benutzern auf **Ja** und dann auf **OK**.
 
 
 ## <a name="delete-or-export-personal-data"></a>Löschen oder Exportieren von personenbezogenen Daten

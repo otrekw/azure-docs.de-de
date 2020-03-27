@@ -1,17 +1,17 @@
 ---
-title: Überprüfen von Abrechnungsdaten von Azure-Abonnements mit REST-API | Microsoft Docs
+title: Überprüfen der Abrechnungsdaten von Azure-Abonnements mit der REST-API
 description: Erfahren Sie, wie Sie mit Azure-REST-APIs Abonnementabrechnungsdetails überprüfen.
 author: lleonard-msft
 ms.service: cost-management-billing
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 4746c5a541118b6018f3b6601b7eb0662503fd3a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7b80bd57906515ffeb0ff9e8ac52cf7178f5ccd8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199550"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202806"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Überprüfen der Abonnementabrechnung mit REST-APIs
 
@@ -37,7 +37,7 @@ Die Parameter `${startDate}` und `${endDate}` sind für dieses Beispiel erforder
 
 Die folgenden Header sind erforderlich:
 
-|Anforderungsheader|Beschreibung|
+|Anforderungsheader|BESCHREIBUNG|
 |--------------------|-----------------|
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|
 |*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199703"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238141"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -25,6 +25,8 @@ Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über I
 - Integrieren Sie Abrechnungs- und Kostendaten mithilfe von APIs für die [Abrechnung](https://docs.microsoft.com/rest/api/billing/) und [Nutzung](https://docs.microsoft.com/rest/api/consumption/) in Ihr eigenes Berichterstellungssystem.
 - Verwenden Sie zusätzliche Ressourcen und Tools für EA-Kunden (Enterprise Agreement, Konzernvertrag), CSP-Kunden (Cloud Solution Provider, Cloudlösungsanbieter) und Azure Sponsorship-Kunden.
 - Nutzen Sie [einige der beliebtesten Azure-Dienste 12 Monate lang kostenlos](create-free-services.md) (verfügbar mit dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/)). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](avoid-charges-free-account.md).
+
+Informationen zum Kündigen Ihres Abonnements finden Sie unter [Kündigen Ihres Azure-Abonnements](cancel-azure-subscription.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Abrufen der geschätzten Kosten vor dem Hinzufügen von Azure-Diensten
 
@@ -67,7 +69,7 @@ Mit den folgenden Tools können Sie Kosten überwachen:
 
 Erstellen Sie [Budgets](../costs/tutorial-acm-create-budgets.md), um Kosten zu verwalten, und [Warnungen](../costs/cost-mgt-alerts-monitor-usage-spending.md), damit Sie und die Projektbeteiligten automatisch über Ausgabenanomalien und zu hohe Ausgaben informiert werden.
 
-### <a name="costs"></a> Ermitteln und Analysieren von Kosten mithilfe der Kostenanalyse
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> Ermitteln und Analysieren von Kosten mithilfe der Kostenanalyse
 
 Wenn Ihre Azure-Dienste ausgeführt werden, sollten Sie regelmäßig die Kosten überprüfen, um Ihre Azure-Ausgaben zu überwachen. Mithilfe der Kostenanalyse können Sie nachvollziehen, woher Kosten für Ihre Azure-Nutzung stammen.
 
@@ -120,7 +122,7 @@ Wenn Sie Azure im Rahmen einer Microsoft-Kundenvereinbarung (Microsoft Customer 
 
 Mithilfe der Azure-APIs für die [Abrechnung](https://docs.microsoft.com/rest/api/billing/) und [Nutzung](https://docs.microsoft.com/rest/api/consumption/) können Sie Abrechnungs- und Kostendaten programmgesteuert abrufen. Verwenden Sie die RateCard-API und die Usage-API, um Ihre abgerechnete Nutzung abzurufen. Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](usage-rate-card-overview.md).
 
-## <a name="other-offers"></a> Zusätzliche Ressourcen und Sonderfälle
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Zusätzliche Ressourcen und Sonderfälle
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA-, CSP- und Sponsorship-Kunden
 Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
@@ -133,7 +135,7 @@ Wenden Sie sich an Ihren Kundenbetreuer oder Azure-Partner.
 
 Für IT-Manager großer Organisationen empfehlen wir den Artikel zum [Azure-Unternehmensgerüst](/azure/architecture/cloud-adoption-guide/subscription-governance) und das [Whitepaper zu Enterprise IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF-Download, nur auf Englisch verfügbar).
 
-### <a name="EA"></a> Enterprise Agreement-Kostenansichten im Azure-Portal
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Enterprise Agreement-Kostenansichten im Azure-Portal
 
 Enterprise-Kostenansichten sind derzeit als öffentliche Vorschau verfügbar. Folgende Punkte sind zu beachten:
 
@@ -167,7 +169,7 @@ Gehen Sie wie folgt vor, um eine Gutschrift anzufordern:
 2. Erstellen Sie eine neue Supportanfrage.
 3. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
 4. Wählen Sie unter **Problemtyp** die Option **Anforderung zur Rückerstattung** aus.
-5. Fügen Sie Details hinzu, um anzugeben, dass Sie um eine SLA-Gutschrift bitten, geben Sie das Datum, die Uhrzeit und die Zeitzone sowie die betroffenen Dienste (VMs, Websites usw.) an.
+5. Fügen Sie Details hinzu, um anzugeben, dass Sie um eine SLA-Gutschrift bitten, und geben Sie das Datum, die Uhrzeit und die Zeitzone sowie die betroffenen Dienste (VMs, Websites usw.) an.
 6. Überprüfen Sie Ihre Kontaktdetails, und wählen Sie **Erstellen** aus, um Ihre Anforderung zu senden.
 
 Die SLA-Schwellenwerte variieren je nach Dienst. Beispielsweise gilt für den SQL-Webtarif eine SLA von 99,9 %, für VMs gilt eine SLA von 99,95 %, und für den SQL-Standardtarif gilt eine SLA von 99,99 %.

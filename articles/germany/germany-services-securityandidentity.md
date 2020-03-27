@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
 ms.openlocfilehash: b91558446c8a51b0b08038134ff55432fc8f5a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75436646"
 ---
 # <a name="azure-germany-security-and-identity-services"></a>Sicherheits- und Identitätsdienste von Azure Deutschland

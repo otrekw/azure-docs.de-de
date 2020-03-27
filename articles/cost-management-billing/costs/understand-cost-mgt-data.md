@@ -1,20 +1,18 @@
 ---
-title: Verstehen der Daten in Azure Cost Management | Microsoft-Dokumentation
+title: Grundlegendes zu Azure Cost Management-Daten
 description: In diesem Artikel erfahren Sie mehr über die Daten, die in Azure Cost Management enthalten sind, und wie häufig diese verarbeitet, gesammelt, angezeigt und geschlossen werden.
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245368"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203014"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -165,9 +163,9 @@ Unabhängig davon, ob Sie die [Cost Management-APIs](../index.yml), Power BI ode
 Die in Cost Management angezeigten Kosten sind gerundet. Von der Abfrage-API zurückgegebene Kosten sind nicht gerundet. Beispiel:
 
 - Kostenanalyse im Azure-Portal: Gebühren werden gemäß Standardrundungsregeln gerundet. Werte über 0,5 werden also aufgerundet, darunter werden die Kosten abgerundet. Eine Rundung wird nur vorgenommen, wenn Werte angezeigt werden. Bei der Datenverarbeitung und -aggregation erfolgt keine Rundung. Kosten werden von der Kostenanalyse beispielsweise wie folgt aggregiert:
-  - Gebühr 1: 0,004 USD
+  -    Gebühr 1: 0,004 USD
   - Gebühr 2: 0,004 USD
-  - Aggregierte Gebühr: 0,004 + 0,004 = 0,008. Angezeigte Gebühr: 0,01 USD.
+  -    Aggregierte Gebühr: 0,004 + 0,004 = 0,008. Angezeigte Gebühr: 0,01 USD.
 - Abfrage-API: Gebühren werden mit acht Dezimalstellen angezeigt und nicht gerundet.
 
 

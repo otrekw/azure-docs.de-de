@@ -1,5 +1,5 @@
 ---
-title: Azure-Abrechnungs-APIs für Unternehmen | Microsoft-Dokumentation
+title: Azure-Abrechnungs-APIs für Unternehmen
 description: Erhalten Sie Informationen zu den Berichterstellungs-APIs, mit denen Azure-Unternehmenskunden Verbrauchsdaten programmgesteuert abrufen können.
 author: mumami
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560540"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202912"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
@@ -23,7 +23,7 @@ Alle Datums- und Uhrzeitparameter, die für APIs benötigt werden, müssen als k
 * **Generieren oder Abrufen des API-Schlüssels**: Melden Sie sich beim Enterprise Portal an, und navigieren Sie zu „Berichte“ > „Nutzung herunterladen“ > „API-Zugriffsschlüssel“, um den API-Schlüssel zu generieren oder abzurufen.
 * **Übergeben von Schlüsseln in der API**: Der API-Schlüssel muss für jeden Aufruf für die Authentifizierung und Autorisierung übergeben werden. Die folgende Eigenschaft muss für die HTTP-Header vorhanden sein
 
-|Anforderungsheaderschlüssel | value|
+|Anforderungsheaderschlüssel | Wert|
 |-|-|
 |Authorization| Geben Sie den Wert im folgenden Format an: **bearer {API_SCHLÜSSEL}** <br/> Beispiel: bearer eyr....09|
 
@@ -48,7 +48,7 @@ In der Antwort jeder der oben genannten APIs werden ETags zurückgegeben. Eine �
 
 
 ## <a name="api-response-codes"></a>API-Antwortcodes   
-|Statuscode der Antwort|`Message`|Beschreibung|
+|Statuscode der Antwort|`Message`|BESCHREIBUNG|
 |-|-|-|
 |200| OK|Kein Fehler|
 |401| Nicht autorisiert| API-Schlüssel nicht gefunden, ungültig, abgelaufen usw.|

@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199023"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065643"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -37,7 +37,7 @@ Sie können Ihre Nutzungs- und Gebühren-CSV-Datei in Microsoft Excel oder einer
 In der folgenden Tabelle werden die wichtigen Begriffe in der neuesten Version der Datei für die Azure-Nutzung und -Gebühren erläutert.
 Die Liste umfasst Konten für nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG), Enterprise Agreement (EA) und Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA).
 
-Begriff | Kontotyp | Beschreibung
+Begriff | Kontotyp | BESCHREIBUNG
 --- | --- | ---
 AccountName | EA, PAYG | Anzeigename des EA-Registrierungs- oder PAYG-Abrechnungskontos.
 AccountOwnerId<sup>1</sup> | EA, PAYG | Eindeutiger Bezeichner des EA-Registrierungs- oder PAYG-Abrechnungskontos.
@@ -67,17 +67,19 @@ InvoiceSection | MCA | Siehe „InvoiceSectionName“.
 InvoiceSectionId<sup>1</sup> | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
 InvoiceSectionName | EA, MCA | Name für EA-Abteilung oder MCA-Rechnungsabschnitt.
 IsAzureCreditEligible | All | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
-Location | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
+Position | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
 MeterCategory | All | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispiele: *Clouddienste* und *Netzwerk*.
 MeterId<sup>1</sup> | All | Der eindeutige Bezeichner für die Verbrauchseinheit.
 MeterName | All | Der Name der Verbrauchseinheit.
 MeterRegion | All | Der Name des Standorts des Rechenzentrums für auf Basis des Standorts abgerechnete Dienste. Siehe „Location“.
 MeterSubCategory | All | Name der Unterklassifizierungskategorie der Verbrauchseinheit.
 OfferId<sup>1</sup> | All | Der Name des erworbenen Angebots.
+PayGPrice | All | Einzelhandelspreis für die Ressource
 PartNumber<sup>1</sup> | EA, PAYG | Der Bezeichner, der verwendet wird, um bestimmte Verbrauchseinheitspreise zu erhalten.
 PlanName | EA, PAYG | Name des Marketplace-Plans.
 PreviousInvoiceId | MCA | Verweis auf die ursprüngliche Rechnung, wenn es sich bei diesem Posten um eine Rückerstattung handelt.
 PricingCurrency | MCA | Währung, die verwendet wird, wenn die Bewertung basierend auf vereinbarten Preisen erfolgt.
+PricingModel | All | Ein Bezeichner, der angibt, wie die Verbrauchseinheit berechnet wird. (Werte: Bedarfsgesteuert, Reservierung, Spot)
 Produkt | All | Der Name des Produkts.
 ProductId<sup>1</sup> | MCA | Der eindeutige Bezeichner für das Produkt.
 ProductOrderId | All | Der eindeutige Bezeichner für die Produktbestellung.

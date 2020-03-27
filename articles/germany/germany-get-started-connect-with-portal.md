@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
 ms.openlocfilehash: c4bb403427f2340f33c5385c0b9b42da81a67396
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75436670"
 ---
 # <a name="connect-to-azure-germany-by-using-the-azure-portal"></a>Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal

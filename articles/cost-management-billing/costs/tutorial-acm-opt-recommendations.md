@@ -3,21 +3,25 @@ title: 'Tutorial: Verringern der Azure-Kosten mit Empfehlungen'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Optimierungsempfehlungen die Azure-Kosten senken können.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245415"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155918"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
 Azure Cost Management unterbreitet Ihnen mithilfe von Azure Advisor Empfehlungen zur Kostenoptimierung. Azure Advisor zeigt Ihnen Möglichkeiten der Optimierung und Steigerung der Effizienz auf, indem ungenutzte oder nicht ausreichend genutzte Ressourcen ermittelt werden. Dieses Tutorial führt Sie durch ein Beispiel, bei dem Sie nicht ungenutzte Azure-Ressourcen identifizieren und anschließend Maßnahmen zur Kostenreduzierung ergreifen.
+
+Sehen Sie sich das Video zum [Optimieren von Cloudinvestitionen in Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) an, um mehr über die Verwendung von Advisor zur Kostenoptimierung zu erfahren.
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -32,7 +36,7 @@ Empfehlungen sind für eine Vielzahl von Bereichen und Azure-Kontotypen verfügb
 - Subscription
 - Resource group
 
-Wenn Sie Ihr Abonnement gerade erst abgeschlossen haben, können Sie Cost Management-Features noch nicht sofort verwenden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können. Sie benötigen außerdem aktive virtuelle Computer, die schon mindestens 14 Tage aktiv sind.
+Bei einem neuen Abonnement können Cost Management-Features nicht sofort genutzt werden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können. Sie benötigen außerdem aktive virtuelle Computer, die schon mindestens 14 Tage aktiv sind.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim Azure-Portal an.

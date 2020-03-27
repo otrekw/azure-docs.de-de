@@ -1,24 +1,23 @@
 ---
-title: Optimieren der Cloudinvestitionen mit Azure Cost Management | Microsoft-Dokumentation
+title: Optimieren der Cloudinvestitionen mit Azure Cost Management
 description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre Cloudinvestitionen optimal ausschöpfen, Ihre Kosten senken und auswerten, wofür genau Ihr Geld ausgegeben wird.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201066"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157210"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
-Azure Cost Management bietet Tools, mit denen Sie Ihre Ausgaben planen, analysieren und reduzieren können, um Ihre Cloudinvestitionen zu maximieren. Dieser Artikel stellt einen methodischen Ansatz für das Kostenmanagement vor und beschreibt die Tools, die Ihnen zur Verfügung stehen, um die Kostenherausforderungen Ihrer Organisation zu bewältigen. Mit Azure lassen sich Cloudlösungen einfach erstellen und bereitstellen. Es ist jedoch wichtig, dass diese Lösungen optimiert werden, um die Kosten zu minimieren. Die in diesem Artikel erläuterten Konzepte und der Einsatz unserer Tools unterstützen Ihre Organisation auf dem Weg zum Erfolg.
+Azure Cost Management bietet Tools, mit denen Sie Ihre Ausgaben planen, analysieren und reduzieren können, um Ihre Cloudinvestitionen zu maximieren. Dieses Dokument stellt einen methodischen Ansatz für das Kostenmanagement vor und beschreibt die Tools, die Ihnen zur Verfügung stehen, um die Kostenherausforderungen Ihrer Organisation zu bewältigen. Mit Azure lassen sich Cloudlösungen einfach erstellen und bereitstellen. Es ist jedoch wichtig, dass diese Lösungen optimiert werden, um die Kosten zu minimieren. Die in diesem Artikel erläuterten Konzepte und der Einsatz unserer Tools unterstützen Ihre Organisation auf dem Weg zum Erfolg.
 
 ## <a name="methodology"></a>Methodik
 
@@ -116,7 +115,7 @@ Weitere Informationen finden Sie beim [Azure-Preisrechner](https://azure.microso
 
 Azure Migrate ist ein Dienst, der die aktuellen Workloads Ihrer Organisation in Ihren lokalen Rechenzentren bewertet. So erhalten Sie einen Einblick darin, welche Elemente und Strukturen Sie in einer entsprechenden Azure-Lösung benötigen werden. Migrate analysiert zunächst Ihre lokalen Computer, um zu ermitteln, ob eine Migration überhaupt möglich ist. Danach empfiehlt der Dienst geeignete VM-Größen, um die Leistung zu maximieren. Abschließend erstellt der Dienst eine Kostenschätzung für eine Azure-basierte Lösung.
 
-Weitere Informationen finden Sie unter [Azure Migrate](../../site-recovery/migrate-overview.md).
+Weitere Informationen finden Sie unter [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
 
 ## <a name="analyze-and-manage-your-costs"></a>Analysieren und Verwalten Ihrer Kosten
 
@@ -125,6 +124,11 @@ Bleiben Sie auf dem Laufenden über die langfristige Kostenentwicklung in Ihrer 
 ### <a name="organize-and-tag-your-resources"></a>Organisieren und Kennzeichnen von Ressourcen
 
 Organisieren Sie Ihre Ressourcen mit Blick auf die Kosten. Wenn Sie Abonnements und Ressourcengruppen erstellen, bedenken Sie, welche Teams für die damit verbundenen Kosten verantwortlich sein sollen. Stellen Sie sicher, dass bei der Berichterstellung die Organisation im Mittelpunkt steht. Abonnements und Ressourcengruppen sind geeignete Elemente, um die Ausgaben über die gesamte Organisation hinweg zu organisieren und zuzuordnen. Tags bieten eine gute Möglichkeit für die Kostenzuordnung. Sie können Tags als Filter verwenden. Sie können Sie auch zum Gruppieren verwenden, wenn Sie Daten analysieren und Kosten untersuchen. Enterprise Agreement-Kunden können auch Abteilungen erstellen und Abonnements in diesen platzieren. Eine kostenbasierte Organisation in Azure hilft dabei, den relevanten Personen in Ihrer Organisation die Verantwortung für die Senkung der Ausgaben ihres Teams zu übertragen.
+
+Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung in Ihrer Organisation zur Verfügung stehen.
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>Verwenden der Kostenanalyse
 

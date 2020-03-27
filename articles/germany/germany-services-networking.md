@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
 ms.openlocfilehash: 1c184541790830218a7376e7c4db689d4cea83bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75436647"
 ---
 # <a name="azure-germany-networking-services"></a>Netzwerkdienste von Azure Deutschland
@@ -44,7 +44,7 @@ Azure ExpressRoute ist in Azure Deutschland allgemein verfügbar. Weitere Inform
 * Azure Deutschland ExpressRoute stellt private Verbindungen zu Microsoft Azure Cloud Services bereit, jedoch nicht zu Office 365- oder Dynamics 365-Clouddiensten.
 
 ### <a name="considerations"></a>Überlegungen
-Zwei grundlegende Dienste bieten private Netzwerkverbindungen zu Azure Deutschland: ExpressRoute und VPN (Site-to-Site für eine typische Organisation).
+Es gibt zwei grundlegende Dienste, die private Netzwerkverbindungen für Azure Deutschland bereitstellen: ExpressRoute und VPN (in der Regel ein Site-to-Site-VPN).
 
 Mit ExpressRoute können Sie private Verbindungen zu den Azure Deutschland-Rechenzentren und Ihrer lokalen Infrastruktur oder einer Housingumgebung herstellen. ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Sie bieten mehr Zuverlässigkeit, höhere Geschwindigkeiten und niedrigere Latenzen als konventionelle Internetverbindungen. In bestimmten Fällen lassen sich durch die Verwendung von ExpressRoute-Verbindungen zum Übertragen von Daten zwischen lokalen Systemen und Azure erhebliche Kosteneinsparungen erzielen.   
 
@@ -62,7 +62,7 @@ Wenn Sie an einem Peeringstandort innerhalb der Azure Deutschland-Region per Exp
 
 Ausführliche Informationen zu Standorten und Partnern sowie eine detaillierte Liste mit ExpressRoute-Peeringstandorten für Azure Deutschland finden Sie auf der Registerkarte **Übersicht** in der [globalen Dokumentation zu ExpressRoute](../expressroute/index.yml).
 
-Sie können mehrere ExpressRoute-Verbindungen erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie dieselben Präfixe, die von Microsoft für die öffentlichen Peeringpfade bekannt gegeben werden. Dies bedeutet, dass Sie mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Diese Situation kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Daraus können sich für verschiedene Dienste suboptimale Konnektivitätsleistungen ergeben. Um weitere Informationen zu erhalten, wechseln Sie in der [globalen Dokumentation zu ExpressRoute](../expressroute/index.yml) zur Registerkarte **Anleitungen > Best Practices** und wählen **Routing optimieren** aus.
+Sie können mehrere ExpressRoute-Verbindungen erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie dieselben Präfixe, die von Microsoft für die öffentlichen Peeringpfade bekannt gegeben werden. Dies bedeutet, dass Sie mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Diese Situation kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Daraus können sich für verschiedene Dienste suboptimale Konnektivitätsleistungen ergeben. Um weitere Informationen zu erhalten, wechseln Sie in der **globalen Dokumentation zu ExpressRoute** zur Registerkarte [Anleitungen > Best Practices](../expressroute/index.yml) und wählen **Routing optimieren** aus.
 
 ## <a name="support-for-load-balancer"></a>Load Balancer-Unterstützung
 Azure Load Balancer ist in Azure Deutschland allgemein verfügbar. Weitere Informationen finden Sie in der [globalen Dokumentation zu Load Balancer](../load-balancer/load-balancer-overview.md). 

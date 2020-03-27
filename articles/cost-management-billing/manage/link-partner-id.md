@@ -1,5 +1,5 @@
 ---
-title: Verknüpfen eines Azure-Kontos mit einer Partner-ID | Microsoft-Dokumentation
+title: Verknüpfen eines Azure-Kontos mit einer Partner-ID
 description: Verfolgen Sie Bindungen mit Azure-Kunden nach, indem Sie eine Partner-ID mit dem Benutzerkonto verknüpfen, mit dem Sie die Ressourcen des Kunden verwalten.
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651371"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204799"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
-Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
+Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ (PAL) können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Mithilfe von PAL kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Die Zuordnung von Einfluss und Umsatz Ihrer Organisation basiert dabei auf den Berechtigungen des Kontos (RBAC-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource).
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 

@@ -1,24 +1,26 @@
 ---
-title: Anzeigen von Schlüsselmetriken mit Cloudyn-Dashboards in Azure | Microsoft Docs
+title: Anzeigen von Schlüsselmetriken mit Cloudyn-Dashboards in Azure
 description: In diesem Artikel wird beschrieben, wie in Cloudyn Schlüsselmetriken mit Dashboards angezeigt werden.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770125"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464222"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Anzeigen der wichtigsten Kostenmetriken mit Dashboards
 
 Dashboards in Cloudyn bieten eine allgemeine Ansicht von Berichten. Mithilfe von Dashboards können Sie die wichtigsten Kostenmetriken in einer einzigen Ansicht anzeigen. Zudem stellen sie die wichtigsten Aspekte geschäftlicher Entwicklungen bereit, damit Sie fundierte Entscheidungen für Ihr Unternehmen treffen können.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 Dashboards werden auch zum Erstellen von Ansichten für weitere Personen mit anderen Zuständigkeiten in Ihrer Organisation verwendet, zum Beispiel:
 

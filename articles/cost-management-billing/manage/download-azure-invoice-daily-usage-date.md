@@ -1,5 +1,5 @@
 ---
-title: Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft-Dokumentation
+title: Herunterladen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 description: Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen oder ansehen können.
 keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125631"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237682"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
@@ -62,7 +62,7 @@ Rechnungen werden für jedes [Abrechnungsprofil](../understand/mca-overview.md#b
 6. Wählen Sie im Kontextmenü für den Download **Rechnung** aus.
 
 Wenn keine Rechnung für den letzten Abrechnungszeitraum angezeigt wird, finden Sie unter **Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?** weitere Informationen. <!-- Fix this -->
-### <a name="noinvoice"></a> Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?
 
 Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung sehen:
 

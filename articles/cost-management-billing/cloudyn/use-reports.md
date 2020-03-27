@@ -1,26 +1,28 @@
 ---
-title: Verwenden von Cloudyn-Berichten in Azure | Microsoft-Dokumentation
+title: Verwenden der Cloudyn-Berichte in Azure
 description: Dieser Artikel beschreibt den Zweck der im Cloudyn-Portal enthaltenen Cloudyn-Berichte, damit Sie sie effektiv nutzen können.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 633bf8126c1745cfd8db117966975bbf4ea2c9c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200009"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463542"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Im Cloudyn-Portal verfügbare Berichte
 
 Dieser Artikel beschreibt den Zweck der Cloudyn-Berichte, die im Cloudyn-Portal enthalten sind. Es wird außerdem beschrieben, wie Sie die Berichte effektiv nutzen können. Die meisten Berichte sind intuitiv und weisen ein einheitliches Erscheinungsbild auf. Die meisten der Aktionen, die Sie in einem Bericht ausführen können, sind auch in anderen Berichten verfügbar. Eine Übersicht über das Verwenden von Cloudyn-Berichten, einschließlich des Anpassens und Speicherns oder des Planens von Berichten, finden Sie unter [Grundlagen zu Kostenberichten](understanding-cost-reports.md).
 
 Azure Cost Management bietet ähnliche Funktionen wie Cloudyn. Azure Cost Management ist eine native Azure-Kostenverwaltungslösung. Die Lösung unterstützt Sie beim Analysieren von Kosten, beim Erstellen und Verwalten von Budgets, beim Exportieren von Daten sowie bei der Prüfung und Umsetzung von Optimierungsempfehlungen, um Kosten zu sparen. Weitere Informationen finden Sie unter [Azure Cost Management](../cost-management-billing-overview.md).
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-types"></a>Berichtstypen
 
