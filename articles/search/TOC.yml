@@ -263,6 +263,8 @@
           href: search-pagination-page-layout.md
         - name: Relevanzoptimierung (Bewertungsprofile)
           href: index-add-scoring-profiles.md
+        - name: Relevanzoptimierung (Ähnlichkeitsalgorithmus)
+          href: index-ranking-similarity.md
     - name: Planen
       items:
         - name: 'Wählen Sie eine Ebene aus:'

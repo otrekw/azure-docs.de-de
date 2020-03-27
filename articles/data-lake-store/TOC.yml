@@ -1,5 +1,5 @@
-- name: Dokumentation für Data Lake Storage Gen1
-  href: index.md
+- name: Dokumentation zu Data Lake Storage Gen1
+  href: index.yml
 - name: Dokumentation für den Wechsel zu Data Lake Storage Gen2
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: Übersicht
@@ -8,7 +8,7 @@
       href: data-lake-store-overview.md
     - name: Vergleichen mit Azure Storage
       href: data-lake-store-comparison-with-blob-storage.md
-    - name: Verarbeiten von Big Data
+    - name: Verarbeitung großer Datenmengen
       href: data-lake-store-data-scenarios.md
     - name: Arbeiten mit Open-Source-Anwendungen
       href: data-lake-store-compatible-oss-other-applications.md

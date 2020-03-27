@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: Application Gateway mit Dienstendpunkten
           href: networking/app-gateway-with-service-endpoints.md
+        - name: Privater Endpunkt
+          href: networking/private-endpoint.md
     - name: Eingehende und ausgehende IPs
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network-Integration
@@ -175,13 +177,15 @@
           href: configure-ssl-certificate-in-code.md
         - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
           href: app-service-web-configure-tls-mutual-auth.md
+        - name: Verschlüsseln von Standortdaten
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: Skalieren der App
       items:
-        - name: Zentrales Hochskalieren der Serverkapazität
+        - name: Hochskalieren der Serverkapazität
           href: manage-scale-up.md
         - name: Konfigurieren der PremiumV2-Ebene
           href: app-service-configure-premium-tier.md
-        - name: Horizontales Hochskalieren auf mehrere Instanzen
+        - name: Aufskalieren auf mehrere Instanzen
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: High Density-Hosting
           href: manage-scale-per-app.md
@@ -210,7 +214,7 @@
         - name: Verschieben zwischen Regionen
           href: manage-move-across-regions.md
         - name: Verschieben von Abonnements
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
     - name: Ausführen von Hintergrundaufgaben
       items:
         - name: Erstellen von Webaufträgen

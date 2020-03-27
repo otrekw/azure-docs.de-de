@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: Konzepte
   items:
+    - name: Remotearbeit
+      href: work-remotely-support.md
     - name: Konnektivitätsmodelle
       href: expressroute-connectivity-models.md
     - name: Verbindungen und Peering

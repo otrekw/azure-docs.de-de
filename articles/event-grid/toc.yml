@@ -98,6 +98,8 @@
   items:
     - name: Event Grid-Konzepte
       href: concepts.md
+    - name: Systemthemen
+      href: system-topics.md
     - name: Sicherheit
       items:
         - name: Authentifizierung

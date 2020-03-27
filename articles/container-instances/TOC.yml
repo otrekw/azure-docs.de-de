@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: Bereitstellen aus Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Bereitstellen mit GitHub Actions (Vorschauversion)
+          href: container-instances-github-action.md
         - name: Verschlüsseln von Bereitstellungsdaten
           href: container-instances-encrypt-data.md
         - name: Bereitstellen auf dedizierten Hosts
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: Aktivieren eines SSL-Endpunkts in Sidecar
           href: container-instances-container-group-ssl.md
+        - name: Verfügbarmachen der statischen IP-Adresse
+          href: container-instances-application-gateway.md
     - name: Einbinden von Datenvolumes
       items:
         - name: Azure-Dateifreigabe

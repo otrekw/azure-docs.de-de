@@ -35,6 +35,10 @@
     - name: Konzepte
       expanded: false
       items:
+        - name: Sicherheit
+          items:
+            - name: Sicherheitsbaseline
+              href: security-baseline.md
         - name: SKUs und Grenzwerte für die Containerregistrierung
           href: container-registry-skus.md
         - name: 'Registrierungen, Repositorys und Images'
@@ -120,7 +124,7 @@
         - name: Überwachen
           expanded: false
           items:
-            - name: Diagnose- und Überwachungsprotokolle (Vorschau)
+            - name: Diagnose- und Überwachungsprotokolle
               href: container-registry-diagnostics-audit-logs.md
             - name: Überwachen der Konformität mithilfe von Azure Policy (Vorschau)
               href: container-registry-azure-policy.md

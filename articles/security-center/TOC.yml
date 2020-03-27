@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: Konzepte
   items:
-    - name: Sicherheitsbewertung in Security Center
-      href: security-center-secure-score.md
-    - name: Die erweiterte Sicherheitsbewertung
+    - name: Sicherheitsbewertung
       href: secure-score-security-controls.md
     - name: Berechtigungen
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: Bedrohungsschutz und Sicherheitswarnungen
       items:
+        - name: Bedrohungsschutz in Azure Security Center
+          href: threat-protection.md
         - name: Übersicht zu Sicherheitswarnungen
           href: security-center-alerts-overview.md
         - name: Referenzliste der Warnungen
           href: alerts-reference.md
+        - name: Warnungsschemas
+          href: alerts-schemas.md
         - name: Verwalten von Sicherheitswarnungen
           href: security-center-managing-and-responding-alerts.md
         - name: Verwalten von Sicherheitsvorfällen
           href: security-center-incident.md
-        - name: Bedrohungsschutz im Azure Security Center
-          href: threat-protection.md
         - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
           href: security-center-alerts-cloud-smart.md
         - name: Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: 'Endpoint Protection: Bewertung und Empfehlungen'
       href: security-center-endpoint-protection.md
+    - name: Sicherheitsbewertung (Legacy)
+      href: security-center-secure-score.md
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn

@@ -23,23 +23,10 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Herstellen von Verbindungen zwischen virtuellen Netzwerken
       href: tutorial-connect-virtual-networks-portal.md
-    - name: NAT
-      items:
-        - name: "Erstellen einer NAT\_Gateway-Instanz: Portal"
-          href: quickstart-create-nat-gateway-portal.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: PowerShell"
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: CLI"
-          href: quickstart-create-nat-gateway-cli.md
-        - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
-          displayname: Resource Manager
-          href: quickstart-create-nat-gateway-template.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: Portal"
-          href: tutorial-create-validate-nat-gateway-portal.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: CLI"
-          href: tutorial-create-validate-nat-gateway-cli.md
+    - name: "Erstellen eines NAT\_Gateways"
+      href: quickstart-create-nat-gateway-portal.md
+    - name: Erstellen und Überprüfen eines NAT-Gateways
+      href: tutorial-create-validate-nat-gateway-portal.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -359,6 +346,19 @@
           href: move-across-regions-publicip-portal.md
         - name: 'Öffentliche IPs: PowerShell'
           href: move-across-regions-publicip-powershell.md
+    - name: NAT
+      items:
+        - name: "Erstellen einer NAT\_Gateway-Instanz: PowerShell"
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: "Erstellen einer NAT\_Gateway-Instanz: CLI"
+          href: quickstart-create-nat-gateway-cli.md
+        - name: "Erstellen einer NAT\_Gateway-Instanz: ARM-Vorlage"
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
+        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: PowerShell"
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: "Erstellen und Überprüfen einer NAT\_Gateway-Instanz: CLI"
+          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit dem Peering virtueller Netzwerke

@@ -70,10 +70,12 @@
           href: How-To/business-continuity-plan.md
         - name: Zusammenarbeiten
           href: How-To/collaborate-knowledge-base.md
+        - name: Aktivieren des Features für aktives Lernen
+          href: How-To/use-active-learning.md
     - name: Verwalten einer Wissensdatenbank
       items:
         - name: Erstellen einer Wissensdatenbank
-          href: Quickstarts/create-publish-knowledge-base.md
+          href: How-To/manage-knowledge-bases.md
         - name: Sprachauswahl
           href: How-To/language-knowledge-base.md
         - name: Hinzufügen von Smalltalk
@@ -85,7 +87,7 @@
           href: How-To/test-knowledge-base.md
     - name: Verwalten von QnA-Sätzen
       items:
-        - name: Bearbeiten der Knowledge Base
+        - name: Bearbeiten eines QnA-Satzes
           href: How-To/edit-knowledge-base.md
         - name: Hinzufügen von Folgeaufforderungen
           href: How-To/multiturn-conversation.md

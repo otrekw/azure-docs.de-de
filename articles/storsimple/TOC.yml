@@ -1,5 +1,5 @@
-- name: StorSimple-Dokumentation
-  href: index.md
+- name: Dokumentation zu StorSimple
+  href: index.yml
 - name: StorSimple Virtual Array
   items:
     - name: Übersicht
@@ -8,7 +8,7 @@
           href: storsimple-ova-overview.md
     - name: Erste Schritte
       items:
-        - name: Plan
+        - name: Planen
           items:
             - name: Überprüfen der Anforderungen
               href: storsimple-ova-system-requirements.md
@@ -73,7 +73,7 @@
               href: storsimple-virtual-array-manage-storage-accounts.md
             - name: Verwalten von ACRs
               href: storsimple-virtual-array-manage-acrs.md
-            - name: Verwalten von Aufträgen
+            - name: Aufträge verwalten
               href: storsimple-virtual-array-manage-jobs.md
             - name: Ändern des Gerätekennworts
               href: storsimple-virtual-array-change-device-admin-password.md
@@ -91,7 +91,7 @@
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: "Update\_1.1"
           href: storsimple-virtual-array-update-11-release-notes.md
-        - name: "Update\_1"
+        - name: Update 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: Archivieren
           items:
@@ -121,7 +121,7 @@
           href: storsimple-regions.md
     - name: Erste Schritte
       items:
-        - name: Plan
+        - name: Planen
           items:
             - name: Überprüfen der Anforderungen
               href: storsimple-8000-system-requirements.md
@@ -345,7 +345,7 @@
               href: storsimple-update21-release-notes.md
             - name: "Update\_2"
               href: storsimple-update2-release-notes.md
-            - name: "Update\_1"
+            - name: Update 1
               href: storsimple-update1-release-notes.md
             - name: "Update\_0.3"
               href: storsimple-february-2015-release-notes.md

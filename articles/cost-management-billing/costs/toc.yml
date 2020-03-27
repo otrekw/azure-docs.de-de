@@ -22,6 +22,8 @@
       items:
         - name: Azure Cost Management – bewährte Methoden
           href: cost-mgt-best-practices.md
+        - name: Wählen zwischen Cost Management und Cloudyn
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: Grundlegendes zu Cost Management-Daten
           href: understand-cost-mgt-data.md
         - name: Verstehen von und Arbeiten mit Bereichen

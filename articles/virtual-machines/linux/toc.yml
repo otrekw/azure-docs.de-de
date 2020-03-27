@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: Datenträgerverschlüsselung in einem isolierten Netzwerk
               href: disk-encryption-isolated-network.md
+            - name: Überprüfen des Verschlüsselungsstatus
+              href: how-to-verify-encryption-status.md
+            - name: Konfigurieren von LVM-/RAID-on-Crypt
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: Behandeln von Problemen mit der Datenträgerverschlüsselung
               href: disk-encryption-troubleshooting.md
             - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: Erstellen eines Images mit Packer
           href: build-image-with-packer.md
-        - name: RHEL-Images in Azure
-          href: rhel-images.md
         - name: Herunterladen eines vorhandenen Datenträgers
           href: download-vhd.md
     - name: Verfügbarkeit und Umfang
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: Verwenden von Automatisierungstools
       items:
+        - name: Benutzerdefinierte Daten
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: Installieren und konfigurieren

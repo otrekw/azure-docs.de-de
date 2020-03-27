@@ -58,7 +58,21 @@
     - name: Konzepte
       items:
         - name: Funktionsweise von Dev Spaces
-          href: how-dev-spaces-works.md
+          items:
+            - name: Übersicht
+              href: how-dev-spaces-works.md
+            - name: Einrichten eines Clusters
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: Vorbereiten eines Projekts
+              href: how-dev-spaces-works-prep.md
+            - name: Ausführen Ihres Codes
+              href: how-dev-spaces-works-up.md
+            - name: "Weiterleiten zwischen Dev\_Spaces-Instanzen"
+              href: how-dev-spaces-works-routing.md
+            - name: Remotedebuggen
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: Verbinden Ihres Entwicklungscomputers mit AKS
+              href: how-dev-spaces-works-connect.md
         - name: Funktionsweise von VS Code mit Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Netzwerkkonfiguration in verschiedenen Netzwerktopologien
@@ -95,7 +109,7 @@
           href: how-to/ingress-https-traefik.md
         - name: Verwenden von NGINX für benutzerdefinierten eingehenden Datenverkehr und HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
+        - name: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschau)
           href: how-to/connect.md
         - name: "Konfigurieren des Azure Dev Spaces-Clusters zur Verwendung von Helm\_3 (Vorschau)"
           href: how-to/helm-3.md

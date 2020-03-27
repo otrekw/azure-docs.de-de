@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure-Befehlszeilenschnittstelle
               href: service-bus-quickstart-cli.md
-            - name: Azure Resource Manager-Vorlage
+            - name: ARM-Vorlage
               href: service-bus-resource-manager-namespace-queue.md
         - name: Senden und Empfangen von Nachrichten
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure-Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure Resource Manager-Vorlage
+            - name: ARM-Vorlage
               href: service-bus-resource-manager-namespace-topic.md
         - name: Veröffentlichen und Abonnieren von Nachrichten
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: Bestand aktualisieren – CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: Reagieren auf Ereignisse über Event Grid
+      href: service-bus-to-event-grid-integration-example.md
 - name: Beispiele
   items:
     - name: 'Service Bus-Beispiele:'
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: Integrierte Sicherheitskontrollen
           href: service-bus-messaging-security-controls.md
+        - name: Netzwerksicherheit
+          href: network-security.md
 - name: Anleitungen
   items:
     - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: Behandlung von Nachrichten mithilfe von Azure Event Grid
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure Event Grid-Beispiele
-              href: service-bus-to-event-grid-integration-example.md
         - name: Themenfilter und -aktionen
           href: topic-filters.md
         - name: Migrieren von Standard- zu Premium-Namespaces
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Erweiterte Funktionen
           items:
-            - name: Verwenden von Firewalls
-              href: service-bus-ip-filtering.md
-            - name: Virtual Network-Dienstendpunkte
-              href: service-bus-service-endpoints.md
             - name: Warteschlangen für unzustellbare Nachrichten
               href: service-bus-dead-letter-queues.md
             - name: Vorabrufen von Nachrichten
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: Anhalten und Reaktivieren von Messagingentitäten
           href: entity-suspend.md
-        - name: Verwenden von Azure-Ressourcen-Manager-Vorlagen
+        - name: Verwenden von ARM-Vorlagen
           href: service-bus-resource-manager-overview.md
           items:
             - name: Erstellen eines Namespace
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Sicher
       items:
-        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten
+        - name: Konfigurieren von Firewalls
+          href: service-bus-ip-filtering.md
+        - name: Konfigurieren von VNET-Dienstendpunkten
+          href: service-bus-service-endpoints.md
+        - name: Konfigurieren privater Endpunkte (Vorschau)
+          href: private-link-service.md
+        - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
           href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:

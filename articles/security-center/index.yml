@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604781"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159301"
 landingContent:
 - title: Informationen zu Security Center
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: Schützen Ihrer Container
       url: container-security.md
-    - text: Hinzufügen dynamische Compliancepakete
-      url: update-regulatory-compliance-packages.md
-    - text: Integrieren mit Windows Admin Center
-      url: windows-admin-center-integration.md
+    - text: Integrierte Sicherheitsrisikobewertung für virtuelle Computer
+      url: built-in-vulnerability-assessment.md
+    - text: Überprüfen der Schemas für Sicherheitswarnungen
+      url: alerts-schemas.md
     - text: Automatisieren von Reaktionen auf Warnungen und Empfehlungen
       url: workflow-automation.md
     - text: Exportieren von Sicherheitswarnungen und -empfehlungen
       url: continuous-export.md
-    - text: Einrichten von Advanced Threat Protection für Azure Key Vault
+    - text: Einrichten eines Bedrohungsschutzes für Azure Key Vault
       url: advanced-threat-protection-key-vault.md
 - title: Erste Schritte
   linkLists:
@@ -56,8 +56,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Was ist eine Sicherheitsbewertung?
-      url: security-center-secure-score.md
+    - text: Grundlegendes zur Sicherheitsbewertung
+      url: secure-score-security-controls.md
     - text: Optimieren von Sicherheitsempfehlungen
       url: security-center-remediate-recommendations.md
     - text: Anpassen Ihrer Sicherheitsempfehlungen

@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK
       items:
-        - name: 'Verwenden von C#'
-          href: news-search-sdk-quickstart.md
-        - name: Verwenden von Node.js
-          href: news-search-sdk-node-quickstart.md
-        - name: Verwenden von Python
-          href: news-sdk-python-quickstart.md
-        - name: Verwenden von Java
-          href: news-sdk-java-quickstart.md
+        - name: Clientbibliotheken für die Bing-News-Suche
+          href: ./quickstarts/client-libraries.md
 - name: Tutorials
   items:
     - name: Erstellen einer Single-Page-Web-App

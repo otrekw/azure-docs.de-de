@@ -92,6 +92,8 @@
   items:
     - name: Aktivieren einer Funktion für eine Teilmenge von Benutzern
       href: howto-feature-filters-aspnet-core.md
+    - name: Verwenden von Bezeichnungen für die Konfiguration pro Umgebung
+      href: howto-labels-aspnet-core.md
     - name: Importieren oder Exportieren von Konfigurationsdaten
       href: howto-import-export-data.md
     - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt

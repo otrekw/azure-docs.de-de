@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure NetApp Files-Dokumentation
+summary: Erfahren Sie, wie Sie mithilfe von Azure NetApp Files NetApp-Konten, Kapazitätspools und Volumes erstellen und verwalten, die Exportrichtlinie konfigurieren, ein Volume für einen virtuellen Computer bereitstellen und Momentaufnahmen verwalten.
 metadata:
   title: Azure NetApp Files-Dokumentation
-  description: 'Informationen zum Einrichten, Zugreifen auf und Verwalten von Volumes mit dem Azure NetApp Files-Dienst'
-  author: b-juche
-  ms.author: b-juche
+  description: Informationen zum Einrichten, Zugreifen auf und Verwalten von Volumes mit dem Azure NetApp Files-Dienst
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Erfahren Sie, wie Sie mithilfe von Azure NetApp Files NetApp-Konten, Kapazitätspools und Volumes erstellen und verwalten, die Exportrichtlinie konfigurieren, ein Volume für einen virtuellen Computer bereitstellen und Momentaufnahmen verwalten. <p>Sie benötigen Zugriff auf den Azure NetApp Files-Dienst, um Azure NetApp Files verwenden zu können. Informationen zum Anfordern des Zugriffs finden Sie unter <a href="azure-netapp-files-register#waitlist">Registrieren für Azure NetApp Files</a>.</p>'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Lesen Sie, wie Sie Folgendes verwenden, um Azure NetApp Files einzurichten und ein Volume zu erstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure-Portal
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST-API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager-Vorlagen</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369051"
+landingContent:
+- title: Informationen zu Azure NetApp Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure NetApp Files?
+      url: azure-netapp-files-introduction.md
+    - text: Grundlegendes zur Speicherhierarchie
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: Servicelevel
+      url: azure-netapp-files-service-levels.md
+    - text: Überlegungen zur Leistung
+      url: azure-netapp-files-performance-considerations.md
+    - text: Richtlinien für die Netzwerkplanung
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Videos zu Azure NetApp Files
+      url: azure-netapp-files-videos.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Übermitteln einer Wartelistenanforderung
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: Erstellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines NetApp-Kontos
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Einrichten eines Kapazitätspools
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: Delegieren eines Subnetzes an Azure NetApp Files
+      url: azure-netapp-files-delegate-subnet.md
+    - text: Erstellen eines SMB-Volumes für Azure NetApp Files
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Erstellen eines NFS-Volumes für Azure NetApp Files
+      url: azure-netapp-files-create-volumes.md
+- title: Entwickeln
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST-API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Azure NetApp Files SDKs und CLI-Tools
+      url: azure-netapp-files-sdk-cli.md

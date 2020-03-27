@@ -4,7 +4,7 @@
   items:
     - name: Was ist Azure Advisor?
       href: advisor-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erste Schritte mit Advisor
       href: advisor-get-started.md
@@ -26,6 +26,10 @@
       href: permissions.md
     - name: Konfigurieren von Warnungen für Empfehlungen
       href: advisor-alerts.md
+    - name: Massenwartung für Empfehlungen
+      href: advisor-quick-fix.md
+    - name: Advisor-Daten in Azure Resource Graph
+      href: advisor-azure-resource-graph.md
 - name: Verweis
   items:
     - name: Security Center

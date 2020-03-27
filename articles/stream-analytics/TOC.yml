@@ -23,13 +23,11 @@
       href: stream-analytics-manage-job.md
     - name: 2. Ausführen von Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3. Ausführen einer benutzerdefinierten JavaScript-Funktion
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: '4: Bereitstellen mit CI/CD in Azure Pipelines'
+    - name: 3. Bereitstellen mit CI/CD in Azure Pipelines
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5: Ausführen einer benutzerdefinierten C#-Funktion'
+    - name: '4. Ausführen einer benutzerdefinierten C#-Funktion'
       href: stream-analytics-edge-csharp-udf.md
-    - name: '6: Erstellen eines benutzerdefinierten .NET-Deserialisierers'
+    - name: 5. Erstellen eines benutzerdefinierten .NET-Deserialisierers
       href: custom-deserializer.md
 - name: Beispiele
   items:
@@ -61,6 +59,14 @@
           href: stream-analytics-sql-output-perf.md
         - name: Benutzerdefinierte Pfadmuster für Blobs
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Benutzerdefinierte Funktionen
+      items:
+        - name: "Machine\_Learning-UDF"
+          href: machine-learning-udf.md
+        - name: 'C#-UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: "JavaScript\_UDF"
+          href: stream-analytics-javascript-user-defined-functions.md
     - name: Optimieren Ihres Stream Analytics-Auftrags
       items:
         - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
@@ -187,8 +193,6 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Einrichten von CI-/CD-Pipelines
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: Schreiben einer benutzerdefinierten .NET-Funktion
-          href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
         - name: Lokales Testen mit Beispieldaten

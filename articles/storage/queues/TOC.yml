@@ -45,8 +45,11 @@
       items:
         - name: Sicherheitsempfehlungen
           href: security-recommendations.md
-        - name: Azure Storage-Verschlüsselung
+        - name: "Azure\_Storage-Verschlüsselung ruhender Daten"
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: Von Kunden verwaltete Schlüssel mit Azure Key Vault
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Autorisieren von Datenvorgängen
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
           items:

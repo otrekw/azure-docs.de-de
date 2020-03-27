@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Preprocess Text
       href: preprocess-text.md
+    - name: Latent Dirichlet Allocation
+      href: latent-dirichlet-allocation.md
 - name: Empfehlung
   items:
     - name: Evaluate Recommender
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: Train SVD Recommender
       href: train-svd-recommender.md
+- name: Erkennung von Anomalien
+  items:
+    - name: PCA-basierte Anomalieerkennung
+      href: pca-based-anomaly-detection.md
+    - name: Trainieren eines Anomalieerkennungsmodells
+      href: train-anomaly-detection-model.md
 - name: Modulfehler und Problembehandlung
   href: designer-error-codes.md
