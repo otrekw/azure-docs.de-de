@@ -4,11 +4,11 @@ description: In diesem Artikel wird die Verwaltung der häufigsten Wartungsaufga
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843955"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234498"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Verwalten des Agent für Azure Monitor für Container
 

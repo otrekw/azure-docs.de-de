@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789892"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Verwalten von Dynamics 365-Datensätzen in Azure Logic Apps
@@ -25,7 +25,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein [Dynamics 365-Konto](https://dynamics.microsoft.com)
 
@@ -41,7 +41,7 @@ Fügen Sie zunächst einen Dynamics 365-Trigger, der ausgelöst wird, wenn ein n
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre leere Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie für dieses Beispiel in der Triggerliste den folgenden Trigger aus: **When a record is created** (Wenn ein Datensatz erstellt wird)
+1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in diesem Beispiel in der Triggerliste den folgenden Trigger aus: **Wenn ein Datensatz erstellt wird**
 
    ![Trigger auswählen](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -65,7 +65,7 @@ Füge nun die Dynamics 365-Aktion hinzu, die einen Aufgabendatensatz für den ne
 
 1. Wählen Sie unter Ihrem Trigger die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Create a new record** (Neuen Datensatz erstellen)
+1. Geben Sie im Suchfeld den Begriff „Dynamics 365“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Neuen Datensatz erstellen**.
 
    ![Aktion select](./media/connectors-create-api-crmonline/select-action.png)
 

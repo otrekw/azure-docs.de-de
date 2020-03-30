@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 4d4e68d99585522e773e71430b4e4f37ad7b1580
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335136"
 ---
 Für Azure Site Recovery gelten die folgenden Grenzwerte.
 
-| Grenzwertbezeichner | Standardlimit |
+| Grenzwertbezeichner | Begrenzung |
 | --- | --- |
 | Anzahl der Tresore pro Abonnement |500 |     
 | Anzahl der Server pro Azure-Tresor |250 |

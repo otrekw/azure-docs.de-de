@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303578"
 ---
 # <a name="security-recommendations"></a>Sicherheitsempfehlungen
@@ -44,7 +44,7 @@ Geräteempfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Gerä
 
 Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Konfiguration des Sicherheits-Agent.
 
-| severity | Name                                    | Data source | Beschreibung                                                                       |
+| severity | Name                                    | Data source | BESCHREIBUNG                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Niedrig      | Der Agent sendet ungenutzte Meldungen          | Agent       | 10 % oder mehr der Sicherheitsmeldungen in den letzten 24 Stunden waren kleiner als 4 KB.  |
 | Niedrig      | Sicherheitszwillingskonfiguration nicht optimal | Agent       | Die Konfiguration des Sicherheitszwillings ist nicht optimal.                                        |
@@ -55,7 +55,7 @@ Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Ko
 
 Empfehlungsbenachrichtigungen bieten Einblicke und Vorschläge für Aktionen zum Verbessern des Sicherheitszustands Ihrer Umgebung.  
 
-| severity | Name                                                     | Data source | Beschreibung                                                                                                                                                                                                             |
+| severity | Name                                                     | Data source | BESCHREIBUNG                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | High     | Identische Authentifizierungsinformationen wurden von mehreren Geräten verwendet | IoT Hub     | Von mehreren Geräten wurden die gleichen IoT Hub-Authentifizierungsinformationen verwendet. Dies kann auf ein unzulässiges Gerät hinweisen, das die Identität eines legitimen Geräts vorgibt. Die Verwendung doppelter Berechtigungen erhöht das Risiko eines Geräteidentitätswechsels durch einen bösartigen Akteur. |
 | Medium   | Die Standard-IP-Filterrichtlinie muss auf „Verweigern“ festgelegt sein                  | IoT Hub     | Die IP-Filterkonfiguration sollte Regeln für zulässigen Datenverkehr definieren und standardmäßig den gesamten übrigen Datenverkehr ablehnen.                                                                                                     |

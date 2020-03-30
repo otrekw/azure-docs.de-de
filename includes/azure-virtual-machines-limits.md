@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 083d59a2d8720a08abc7ea8998c1fbe048db3f28
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2cfd376f595ae70daf9ab468d464dd9c8ff13d74
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335014"
 ---
-| Resource | Standardlimit | Maximales Limit |
-| --- | --- | --- |
-| [Virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro Clouddienst<sup>1</sup> |50 |50 |
-| Eingabeendpunkte pro Clouddienst<sup>2</sup> |150 |150 |
+| Resource | Begrenzung |
+| --- | --- |
+| [Virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro Clouddienst<sup>1</sup> |50 |
+| Eingabeendpunkte pro Clouddienst<sup>2</sup> |150 |
 
 <sup>1</sup>Virtuelle Computer, die mithilfe des klassischen Bereitstellungsmodells anstelle von Azure Resource Manager erstellt werden, werden automatisch in einem Clouddienst gespeichert. Für den Lastenausgleich und die Verfügbarkeit können Sie diesem Clouddienst weitere virtuelle Computer hinzufügen. 
 

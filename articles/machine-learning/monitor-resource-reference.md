@@ -11,10 +11,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/06/2020
 ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927563"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
@@ -114,15 +114,15 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Machine Learning-Ress
 | Sku | SKU des erstellten Knotens/virtuellen Computers |
 | Version | Version des Images, das beim Erstellen des Knotens/virtuellen Computers verwendet wird |
 | ClusterCreationTime | Zeitpunkt, zu dem der Cluster erstellt wurde |
-| ResizeStartTime | Zeitpunkt, zu dem das zentrale Hoch-/Herunterskalieren des Clusters gestartet wurde |
-| ResizeEndTime | Zeitpunkt, zu dem das zentrale Hoch-/Herunterskalieren des Clusters beendet wurde |
+| ResizeStartTime | Zeitpunkt, zu dem das Hoch-/Herunterskalieren des Clusters gestartet wurde |
+| ResizeEndTime | Zeitpunkt, zu dem das Hoch-/Herunterskalieren des Clusters beendet wurde |
 | NodeAllocationTime | Zeitpunkt, zu dem der Knoten zugeordnet wurde |
 | NodeBootTime | Zeitpunkt, zu dem der Knoten hochgefahren wurde |
 | StartTaskStartTime | Zeitpunkt, zu dem die Aufgabe einem Knoten zugewiesen und gestartet wurde |
 | StartTaskEndTime | Zeitpunkt, zu dem die einem Knoten zugewiesene Aufgabe beendet wurde |
 | TotalE2ETimeInSeconds | Gesamtzeit, die der Knoten aktiv war |
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 In den folgenden Tabellen sind die für Azure Machine Learning gesammelten Metriken aufgeführt. Alle Metriken werden im Namespace **Azure Machine Learning Workspace** gespeichert.
 
@@ -185,7 +185,7 @@ Die folgenden Dimensionen sind Dimensionen, mit denen Ausführungsmetriken gefil
 
 Gültige Werte für die RunType-Dimension sind:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 | ----- | ----- |
 | Experiment | Nicht-Pipelineausführungen |
 | PipelineRun | Eine Pipelineausführung, die das übergeordnete Element einer Schrittausführung (StepRun) ist |

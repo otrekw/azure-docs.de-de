@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen 
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673139"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS

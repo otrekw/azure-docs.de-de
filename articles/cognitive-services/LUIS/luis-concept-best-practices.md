@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280921"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
@@ -36,7 +36,7 @@ Erweitern Sie die Äußerungen erst, wenn der aktuelle Satz von Beispiel- und En
 ## <a name="do-and-dont"></a>Empfehlungen
 Die folgende Liste enthält bewährte Methoden für LUIS-Apps:
 
-|Empfohlene Vorgehensweise|Nicht empfohlene Vorgehensweise|
+|Sie sollten|Sie sollten auf keinen Fall|
 |--|--|
 |[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Deskriptoren zu Absichten](#do-add-descriptors-to-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
 |[Anstreben einer Balance zwischen zu allgemeinen und zu spezifischen Absichten](#do-find-sweet-spot-for-intents)|[Verwenden von LUIS als Trainingsplattform](#dont-use-luis-as-a-training-platform)|
@@ -167,9 +167,9 @@ LUIS erwartet Variationen in den Äußerungen zu einer Absicht. Die Äußerungen
 
 |Verwenden Sie nicht dasselbe Format.|Verwenden Sie unterschiedliche Formate.|
 |--|--|
-|Buy a ticket to Seattle<br>Kaufe ein Ticket nach Paris<br>Kaufe ein Ticket nach Orlando|Kaufe 1 Ticket nach Seattle<br>Reserviere zwei Plätze im Nachtflug nach Paris nächsten Montag<br>Ich möchte 3 Tickets nach Orlando in den Frühjahrsferien buchen|
+|Kaufe ein Ticket nach Seattle<br>Kaufe ein Ticket nach Paris<br>Kaufe ein Ticket nach Orlando|Kaufe 1 Ticket nach Seattle<br>Reserviere zwei Plätze im Nachtflug nach Paris nächsten Montag<br>Ich möchte 3 Tickets nach Orlando in den Frühjahrsferien buchen|
 
-In der zweiten Spalte werden verschiedene Verben (buy, reserve, book), verschiedene Mengenangaben (1, two, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
+In der zweiten Spalte werden verschiedene Verben (kaufen, reservieren, buchen), verschiedene Mengenangaben (1, zwei, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
 
 ## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Trennen Sie die Definitionen von Absichten und Entitäten
 

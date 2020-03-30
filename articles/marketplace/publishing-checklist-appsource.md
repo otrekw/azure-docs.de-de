@@ -1,20 +1,18 @@
 ---
 title: Veröffentlichungsprüfliste für AppSource | Azure Marketplace
 description: Veröffentlichungsprüfliste für AppSource.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 3a40816604df510eb66d6ea7bccbe86f8c327406
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4dc70fdcce3711e61472cbbf579051a0b9306770
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822640"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285009"
 ---
 # <a name="publishing-checklist-for-appsource"></a>Veröffentlichungsprüfliste für AppSource  
 

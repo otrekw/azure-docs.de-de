@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211421"
 ---
 ## <a name="general-entity-types"></a>Allgemeine Entitätstypen:
@@ -24,7 +24,7 @@ Erkennen von Personennamen in Text.
 Sprachen:
 * Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
-| Name des Untertyps | Beschreibung                                                      | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                                      | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------------------------------|---------------------------------------|
 | –          | Erkannte Personennamen, beispielsweise `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
 
@@ -34,7 +34,7 @@ Von einer Person eingenommene Position oder Rolle.
 Sprachen:
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                                                                | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                                                                | Erst ab dieser Modellversion verfügbar |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
 | –          | Berufe, z. B. `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
@@ -46,7 +46,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
-| Name des Untertyps              | Beschreibung                                                                              | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps              | BESCHREIBUNG                                                                              | Erst ab dieser Modellversion verfügbar |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | –                       | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
 | Geopolitische Entität (GPE) – nur Englisch| Städte, Länder, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
@@ -59,7 +59,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
-| Name des Untertyps | Beschreibung                                                                                             | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                                                                             | Erst ab dieser Modellversion verfügbar |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
 | –          | Organisationen, z. B. `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`, `VOA` | `2019-10-01`                           |
 
@@ -120,7 +120,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                      | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                      | Erst ab dieser Modellversion verfügbar |
 |--------------|--------------------------------------------------|----------------------------------------|
 | –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2019-10-01`                           |
 
@@ -132,7 +132,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                          | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                          | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------------------|----------------------------------------|
 | –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2019-10-01`                           |
 

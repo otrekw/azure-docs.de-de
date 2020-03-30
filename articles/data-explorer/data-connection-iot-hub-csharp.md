@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667379"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Erstellen einer IoT Hub-Datenverbindung für Azure Data Explorer mit C# (Vorschau)
@@ -26,7 +26,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Erstellen eines [Clusters und einer Datenbank](create-cluster-database-csharp.md)
 * Erstellen einer [Tabelle und Spaltenzuordnung](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
@@ -92,6 +92,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 | iotHubResourceId | *Ressourcen-ID* | Die Ressourcen-ID Ihres IoT-Hubs mit den Daten für die Erfassung. |
 | sharedAccessPolicyName | *iothubforread* | Der Name der SAS-Richtlinie, die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit IoT Hub definiert. |
 | consumerGroup | *$Default* | Die Consumergruppe Ihres Event Hubs.|
-| location | *USA (Mitte)* | Der Speicherort der Datenverbindungsressource.|
+| location | *USA, Mitte* | Der Speicherort der Datenverbindungsressource.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

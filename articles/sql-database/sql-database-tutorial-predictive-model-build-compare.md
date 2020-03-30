@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596798"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345759"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
 In Teil 2 dieser dreiteiligen Tutorialreihe erstellen Sie zwei Vorhersagemodelle in R und wählen dann das genaueste Modell aus. Im nächsten Teil dieser Reihe stellen Sie dieses Modell in einer SQL-Datenbank mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) bereit.
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 In diesem Artikel lernen Sie Folgendes:
 

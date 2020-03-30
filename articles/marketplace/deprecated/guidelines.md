@@ -3,18 +3,17 @@ title: Azure Marketplace- und AppSource-Richtlinien für Herausgeber | Azure
 description: Azure Marketplace und AppSource-Richtlinien für Herausgeber von Apps und Diensten
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281526"
 ---
 # <a name="guidelines"></a>Richtlinien  
 
@@ -29,7 +28,7 @@ ms.locfileid: "73825934"
 Wenn mehrere Personen Zugriff auf die gleiche Microsoft-ID benötigen, mit der Ihr Marketplace-Konto erstellt wurde, sollten Sie diese Richtlinien befolgen, um ein Unternehmenskonto zu erstellen. 
 
 >[!IMPORTANT]
->Um mehrere Benutzer für den Zugriff auf Ihr Konto für Microsoft Developer Center (Dev Center) zu autorisieren, empfiehlt Microsoft die Verwendung von Azure Active Directory (Azure AD). Dort können Sie einzelnen Benutzern Rollen zuweisen. Jeder Benutzer muss für den Zugriff auf das Konto eigene Azure AD-Anmeldeinformationen verwenden. Erstellen Sie eine Microsoft-ID unter Verwendung einer E-Mail-Adresse in einer Domäne, die für Ihr Unternehmen registriert ist. Microsoft empfiehlt, diese E-Mail-Adresse nicht einer Einzelperson zuzuweisen. Ein Beispiel ist `windowsapps@fabrikam.com`.  
+>Um mehrere Benutzer für den Zugriff auf Ihr Konto für Microsoft Developer Center (Dev Center) zu autorisieren, empfiehlt Microsoft die Verwendung von Azure Active Directory (Azure AD). Dort können Sie einzelnen Benutzern Rollen zuweisen. Jeder Benutzer muss für den Zugriff auf das Konto eigene Azure AD-Anmeldeinformationen verwenden. Erstellen Sie eine Microsoft-ID unter Verwendung einer E-Mail-Adresse in einer Domäne, die für Ihr Unternehmen registriert ist. Microsoft empfiehlt, diese E-Mail-Adresse nicht einer Einzelperson zuzuweisen. z. B. `windowsapps@fabrikam.com`.  
 >*   Weitere Informationen finden Sie im Abschnitt [Problem: Microsoft-ID in einer Azure AD-Verbunddomäne](#issue-microsoft-id-in-an-azure-ad-federated-domain).  
 
 *   Beschränken Sie den Zugriff auf die Microsoft-ID auf eine möglich geringe Anzahl von Entwicklern. 

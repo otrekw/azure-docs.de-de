@@ -1,19 +1,18 @@
 ---
 title: Erstellen oder Ändern eines Angebots | Azure Marketplace
 description: API zum Erstellen eines neuen oder Aktualisieren eines vorhandenen Angebots.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819721"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288613"
 ---
 <a name="create-or-modify-an-offer"></a>Erstellen oder Ändern ein Angebots
 =========================
@@ -28,8 +27,8 @@ Dieser Aufruf aktualisiert ein bestimmtes Angebot im Herausgebernamespace oder e
 
 |  **Name**         |  **Beschreibung**                      |  **Datentyp**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Herausgeber-ID, z.B. `contoso` |   Zeichenfolge |
-| offerId           |  Angebots-ID                     |   Zeichenfolge        |
+| publisherId       |  Herausgeber-ID, z.B. `contoso` |   String |
+| offerId           |  Angebots-ID                     |   String        |
 | api-version       |  Aktuelle Version der API            |   Date           |
 |  |  |  |
 
@@ -128,7 +127,7 @@ Im folgenden Beispiel wird ein Angebot mit der Angebots-ID (offerId) `contosovir
 ```
 
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 ``` json
  {
@@ -247,11 +246,11 @@ Im folgenden Beispiel wird ein Angebot mit der Angebots-ID (offerId) `contosovir
 
 | **Code**  |  **Beschreibung**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK`. Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich geändert.           |
-|  201      | `Created`. Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich erstellt.   |
-|  400      | `Bad/Malformed request`. Der Fehlerantworttext enthält ggf. weitere Informationen.            |
-|  403      | `Forbidden`. Der Client hat keinen Zugriff auf den angeforderten Namespace.                     |
-|  404      | `Not found`. Die Entität, auf die im Client verwiesen wird, gibt es nicht.                           |
+|  200      | [https://login.microsoftonline.com/consumers/](`OK`). Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich geändert.           |
+|  201      | [https://login.microsoftonline.com/consumers/](`Created`). Die Anforderung wurde erfolgreich verarbeitet, und das Angebot wurde erfolgreich erstellt.   |
+|  400      | [https://login.microsoftonline.com/consumers/](`Bad/Malformed request`). Der Fehlerantworttext enthält ggf. weitere Informationen.            |
+|  403      | [https://login.microsoftonline.com/consumers/](`Forbidden`). Der Client hat keinen Zugriff auf den angeforderten Namespace.                     |
+|  404      | [https://login.microsoftonline.com/consumers/](`Not found`). Die Entität, auf die im Client verwiesen wird, gibt es nicht.                           |
 |  412      | Der Server erfüllt nicht alle Voraussetzungen, die die anfordernde Person in der Anforderung angegeben hat. Der Client sollte das ETAG prüfen, das mit der Anforderung gesendet wurde. |
 |  |  |
 

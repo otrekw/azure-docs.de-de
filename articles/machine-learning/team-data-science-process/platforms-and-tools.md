@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227202"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -60,7 +60,7 @@ Apache Spark ist ein Open-Source-Framework für die Parallelverarbeitung, das di
 
 Wenn Sie einen Spark-Cluster in HDInsight erstellen, erstellen Sie damit Azure-Serverressourcen, für die Spark installiert und konfiguriert ist. Die Erstellung eines Spark-Clusters in HDInsight dauert etwa zehn Minuten. Speichern Sie die zu verarbeitenden Daten in Azure Blob Storage. Informationen zur Verwendung von Azure Blob Storage mit einem Cluster finden Sie unter [Verwenden von Azure Storage mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen mit Azure HDInsight Spark-Clustern veröffentlicht: eine für Python und eine für Scala. Weitere Informationen zu **Spark-Clustern** in Azure HDInsight finden Sie unter [Einführung: Apache Spark in HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Python** für einen Azure HDInsight Spark-Cluster finden Sie in der [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Scala** für einen Azure HDInsight Spark-Cluster finden Sie unter [Data Science unter Verwendung von Scala und Spark in Azure](scala-walkthrough.md). 
+Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen mit Azure HDInsight Spark-Clustern veröffentlicht: eine für Python und eine für Scala. Weitere Informationen zu **Spark-Clustern** in Azure HDInsight finden Sie in der [Einführung in Spark in HDInsight](../../hdinsight/spark/apache-spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Python** für einen Azure HDInsight Spark-Cluster finden Sie in der [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Informationen zum Erstellen einer Data Science-Lösung mit **Scala** für einen Azure HDInsight Spark-Cluster finden Sie unter [Data Science unter Verwendung von Scala und Spark in Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -74,7 +74,7 @@ Weitere Informationen zu Azure SQL Data Warehouse finden Sie auf der [Website vo
 
 Azure Data Lake ist ein unternehmensweites Repository für alle Arten von Daten, die vor Anwendung formaler Anforderungen oder Schemas an einer zentralen Stelle gesammelt werden. Dank dieser Flexibilität können in einem Data Lake beliebige Arten von Daten gespeichert werden – unabhängig von Größe, Struktur und Erfassungsgeschwindigkeit. Organisationen können diese Data Lakes daraufhin mithilfe von Hadoop oder erweiterten Analysen auf Muster untersuchen. Data Lakes können auch als Repository für eine kostengünstigere Datenvorbereitung fungieren, bevor die Daten schließlich aufbereitet und in ein Data Warehouse verschoben werden.
 
-Weitere Informationen zu Azure Data Lake finden Sie unter [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/) (Einführung in Azure Data Lake). Informationen zum Erstellen einer umfassenden skalierbaren Data Science-Lösung mit Azure Data Lake finden Sie unter [Skalierbare Data Science mit Azure Data Lake: Lückenlose exemplarische Vorgehensweise](data-lake-walkthrough.md).
+Weitere Informationen zu Azure Data Lake finden Sie unter [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/) (Einführung in Azure Data Lake). Informationen zum Erstellen einer umfassenden skalierbaren Data Science-Lösung mit Azure Data Lake finden Sie unter [Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise](data-lake-walkthrough.md).
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive-Cluster (Hadoop)
@@ -104,7 +104,7 @@ R Services (datenbankintern) unterstützt die Open Source-R-Sprache mit einem um
 Das TDSP-Team von Microsoft hat zwei umfassende exemplarische Vorgehensweisen zur Erstellung von Data Science-Lösungen in SQL Server 2016 R Services veröffentlicht: eine für R-Programmierer und eine für SQL-Entwickler. Die umfassende exemplarische Vorgehensweise zu Data Science für **R-Programmierer** befindet sich [hier](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Das Tutorial zu erweiterten datenbankinternen Analysen für **SQL-Entwickler** befindet sich [hier](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Anhang: Tools zum Einrichten von Data Science-Projekten
+## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>Anhang: Tools zum Einrichten von Data Science-Projekten
 
 ### <a name="install-git-credential-manager-on-windows"></a>Installieren von Git Credential Manager unter Windows
 
