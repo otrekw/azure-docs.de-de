@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358133"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236170"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -80,9 +80,9 @@ Sie finden **App klonen** im Abschnitt **Entwicklungstools** des Menüs.
 
 ## <a name="scale-an-app-service-plan"></a>Skalieren eines App Service-Plans
 
-Informationen zum zentralen Hochskalieren des Tarifs eines App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).
+Informationen zum Hochskalieren des Tarifs eines App Service-Plans finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
 
-Informationen zum horizontalen Hochskalieren einer App-Instanz finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Informationen zum Aufskalieren einer App-Instanz finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
 <a name="delete"></a>
 
@@ -96,7 +96,7 @@ Um unerwartete Kosten zu vermeiden, löscht App Service den Plan standardmäßig
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md)
+> [Hochskalieren einer App in Azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

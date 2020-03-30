@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234590"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Leistung in Webanwendungen überwachen
 
@@ -20,7 +20,7 @@ Application Insights kann Java- und ASP.NET-Webanwendungen und -Dienste sowie WC
 
 Auf Clientseite kann Application Insights Telemetriedaten von Webseiten und eine Vielzahl von Geräten sammeln, einschließlich iOS-, Android- und Windows Store-Apps.
 
-## <a name="setup"></a>Einrichten der Leistungsüberwachung
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Einrichten der Leistungsüberwachung
 Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. h., wenn es nicht über ApplicationInsights.config verfügt), gehen Sie nach einer der folgenden Methoden vor, um zu beginnen:
 
 * [ASP.NET-Web-Apps](../../azure-monitor/app/asp-net.md)
@@ -29,7 +29,7 @@ Falls Sie Application Insights Ihrem Projekt noch nicht hinzugefügt haben (d. 
 * [Java EE-Web-Apps](../../azure-monitor/app/java-get-started.md)
   * [Abhängigkeitsüberwachung hinzufügen](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>Untersuchen von Leistungsmetriken
+## <a name="exploring-performance-metrics"></a><a name="view"></a>Untersuchen von Leistungsmetriken
 Navigieren Sie im [Azure-Portal](https://portal.azure.com)zu der Application Insights-Ressource, die Sie für Ihre Anwendung eingerichtet haben. Das Blatt "Übersicht" zeigt grundlegende Leistungsdaten:
 
 Klicken Sie auf ein beliebiges Diagramm, um weitere Details und Ergebnisse über einen längeren Zeitraum anzuzeigen. Klicken Sie beispielsweise auf die Kachel "Requests", und wählen Sie dann einen Zeitraum aus.
@@ -43,7 +43,7 @@ Klicken Sie auf ein Diagramm, um die anzuzeigenden Metriken auszuwählen, oder f
 > [!NOTE]
 > **Deaktivieren Sie alle Metriken**, um die insgesamt verfügbare Auswahl anzuzeigen. Die Metriken werden in Gruppen unterteilt. Wenn ein Mitglied einer Gruppe ausgewählt wird, werden nur die weiteren Mitglieder dieser Gruppe angezeigt.
 
-## <a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>Was bedeutet was? Leistungskacheln und Berichte
 Ihnen stehen verschiedene Leistungsmetriken zur Verfügung. Lassen Sie uns mit denen beginnen, die standardmäßig im Anwendungsblatt angezeigt werden.
 
 ### <a name="requests"></a>Requests
@@ -96,7 +96,7 @@ Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sin
 
 *Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.* – Handelt es sich um ein Gruppenkonto, für das Sie nur über schreibgeschützten Zugriff verfügen? Wenden Sie sich an den Kontoadministrator.
 
-## <a name="diagnosis"></a>Diagnostizieren von Problemen
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>Diagnostizieren von Problemen
 Im Folgenden finden Sie einige Tipps zum Feststellen und Diagnostizieren von Leistungsproblemen:
 
 * Richten Sie [Webtests][availability] ein, um benachrichtigt zu werden, falls Ihre Website nicht erreichbar ist oder fehlerhaft bzw. langsam reagiert. 
@@ -130,7 +130,7 @@ Auf der Oberfläche für die Leistungsuntersuchung werden relevante Erkenntnisse
 ![Drei Spitzenwerte für die Dauer von „GET Customers/Details“ im 7-Tage-Zeitbereich mit einem Zeitfenster](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 [Webtests][availability]: Lassen Sie in regelmäßigen Abständen aus aller Welt Webanforderungen an Ihre Anwendung senden.
 
 [Diagnostische Spuren protokollieren und suchen][diagnostic]: Fügen Sie Trace-Aufrufe ein, und durchsuchen Sie die Ergebnisse, um Probleme einzugrenzen.

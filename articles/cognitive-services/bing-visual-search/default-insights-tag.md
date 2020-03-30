@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60510121"
 ---
 # <a name="default-insights-tag"></a>Standardinformationstag
@@ -425,4 +425,4 @@ Die Auswertung vom Typ DocumentLevelSuggestions bietet eine Liste vorgeschlagene
 
 Sehen Sie sich [Beispiele für die Verwendung von Auswertungen in Bing](bing-insights-usage.md) an, um zu erfahren, wie Bing möglicherweise die visuellen Auswertungen anzeigt.
 
-Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Die Schnellstartanleitungen [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md) ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.

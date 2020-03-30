@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cd51eca0ea4563e1b56f74677df0829669d9e177
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773725"
 ---
 1. Füllen Sie auf der Seite **Peering erstellen** auf der Registerkarte **Konfiguration** die Felder wie unten gezeigt aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Peeringkonfiguration: Austausch](../media/setup-exchange-conf-tab.png)
+    > ![Peeringkonfiguration: Exchange](../media/setup-exchange-conf-tab.png)
 
-    * Wählen Sie unter **Peeringtyp** die Option *Exchange* (Austausch) aus.
+    * Wählen Sie unter **Peeringtyp** die Option *Exchange* aus.
     * Wählen Sie unter **SKU** die Option *Basic Free* aus.
     * Wählen Sie unter **Metro** den Standort aus, an dem Sie Peering einrichten möchten.
 
@@ -67,7 +67,7 @@ ms.locfileid: "75773725"
     > [!div class="mx-imgBorder"]
     > ![Peeringübermittlung](../media/setup-exchange-review-tab-submit.png)
 
-1. Nachdem Sie die Anforderung übermittelt haben, warten Sie, bis die Bereitstellung beendet ist. Sollte bei der Bereitstellung ein Fehler auftreten, wenden Sie sich an [Microsoft Peering](mailto:peering@microsoft.com). Eine erfolgreiche Bereitstellung sieht wie folgt aus:
+1. Nachdem Sie die Anforderung übermittelt haben, warten Sie, bis die Bereitstellung beendet ist. Sollte bei der Bereitstellung ein Fehler auftreten, wenden Sie sich an [Microsoft Peering](mailto:peering@microsoft.com). Eine erfolgreiche Bereitstellung sieht wie unten dargestellt aus.
 
     > [!div class="mx-imgBorder"]
     > ![Peering erfolgreich](../media/setup-direct-success.png)

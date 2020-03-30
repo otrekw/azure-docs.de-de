@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: fdb2bed76a8e23a6034a57b3a5f1358c26e9e990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450264"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für die Remoteüberwachung (Node.js)
@@ -262,7 +262,7 @@ Stellen Sie sicher, dass auf dem Entwicklungscomputer mindestens die [Node.js](h
 
 1. Fügen Sie den folgenden Code zu folgenden Zwecken hinzu:
 
-    * Öffnen der Verbindung.
+    * Öffnen Sie die Verbindung.
     * Einrichten eines Handlers für die gewünschten Eigenschaften.
     * Senden gemeldeter Eigenschaften.
     * Registrieren des Handlers für die direkten Methoden. Das Beispiel verwendet einen separaten Handler für die direkte Firmwareupdatemethode.

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229458"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -99,7 +99,7 @@ Es kann vorkommen, dass ein Fehler aufgrund eines nicht gefundenen Befehls auftr
 
 `sfctl: command not found`
 
-Vergewissern Sie sich in diesem Fall, dass über `$PATH` auf `~/.local/bin` zugegriffen werden kann:
+Vergewissern Sie sich in diesem Fall, dass über `~/.local/bin` auf `$PATH` zugegriffen werden kann:
 
 ```bash
 export PATH=$PATH:~/.local/bin

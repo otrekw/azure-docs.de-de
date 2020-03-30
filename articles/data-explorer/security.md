@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77373352"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Schützen von Azure Data Explorer-Clustern in Azure
@@ -62,6 +62,6 @@ Mithilfe der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-contro
 
 * [Sichern von Clustern in Azure Data Explorer](manage-cluster-security.md) durch Aktivieren der Verschlüsselung ruhender Daten
 * [Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster](managed-identities.md)
-* [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
+* [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
 * [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe von C#](customer-managed-keys-csharp.md)
 

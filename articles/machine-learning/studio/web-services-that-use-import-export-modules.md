@@ -12,23 +12,25 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 0ae545fd3ecafda74b90a6a4694dd6f506fb44b1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 144a3bc0d9e0499a238e4033d37d5e4d3fa61e05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204056"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Bereitstellen von (klassischen) Azure Machine Learning Studio-Webdiensten, die Module zum Importieren und Exportieren von Daten verwenden
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Bei der Erstellung eines Vorhersageexperiments fügen Sie in der Regel eine Webdiensteingabe und -ausgabe hinzu. Wenn Sie das Experiment bereitstellen, können Nutzer Daten über die Webdiensteingabe bzw. -ausgabe senden und empfangen. Für einige Anwendungen sind die Daten eines Nutzers möglicherweise über einen Datenfeed verfügbar oder befinden sich bereits in einer externen Datenquelle, z.B. Azure Blob Storage. In diesen Fällen müssen sie nicht mithilfe von Webdiensteingabe und -ausgabe gelesen und geschrieben werden. Sie können stattdessen mit dem Stapelausführungsdienst (Batch Execution Service, BES) mit einem Import Data-Modul aus der Datenquelle gelesen werden, und die Bewertungsergebnisse können mit einem Export Data-Modul an einen anderen Datenspeicherort geschrieben werden.
 
 Die Module Import Data und Export Data können aus verschiedenen Datenspeicherorten wie Web-URL über HTTP, Hive-Abfrage, einer Azure SQL-Datenbank, Azure-Tabellenspeicher und Azure Blob Storage, einem bereitgestellten Datenfeed oder einer lokalen SQL-Datenbank lesen und darin schreiben.
 
-Dieses Thema verwendet das Beispiel „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ und setzt dabei voraus, dass das Dataset bereits in eine Azure SQL-Tabelle mit der Bezeichnung „censusdata“ geladen wurde.
+In diesem Thema wird das Beispiel „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ (Beispiel 5: Trainieren, Testen, Evaluieren für binäre Klassifizierung: Adult-Dataset) verwendet und vorausgesetzt, dass das Dataset bereits in eine Azure SQL-Tabelle mit dem Namen „censusdata“ geladen wurde.
 
 ## <a name="create-the-training-experiment"></a>Erstellen des Trainingsexperiments
-Wenn Sie das Beispiel „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ öffnen, wird das Beispieldataset „Adult Census Income Binary Classification“ verwendet. Dabei ähnelt das Experiment im Experimentbereich der folgenden Abbildung:
+Beim Öffnen von „Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset“ wird das Beispieldataset „Adult Census Income Binary Classification“ verwendet. Dabei ähnelt das Experiment im Experimentbereich der folgenden Abbildung:
 
 ![Erstkonfiguration des Experiments.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -100,7 +102,7 @@ So stellen Sie einen klassischen Webdienst bereit und erstellen eine Anwendung, 
 2. Wenn die Ausführung abgeschlossen ist, klicken Sie auf **Deploy Web Service** und wählen **Deploy Web Service [Classic]** .
 3. Suchen Sie Ihren API-Schlüssel auf dem Webdienst-Dashboard. Kopieren Sie ihn und speichern Sie ihn zur späteren Verwendung.
 4. Klicken Sie in der Tabelle **Default Endpoint** auf den Link **Batch Execution**, um die API-Hilfeseite zu öffnen.
-5. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
+5. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
 6. Am unteren Rand der API-Hilfeseite finden Sie den Abschnitt **Sample Code** .
 7. Kopieren Sie den C#-Beispielcode, fügen Sie ihn in die Datei „Program.cs“ ein, und entfernen Sie alle Verweise auf den Blobspeicher.
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem zuvor gespeicherten API-Schlüssel.
@@ -129,7 +131,7 @@ So stellen Sie einen neuen Webdienst bereit und erstellen eine Anwendung, die ih
 3. Geben Sie auf der Seite „Deploy Experiment“ einen Namen für den Webdienst ein, wählen Sie einen Tarif aus, und klicken Sie auf **Deploy**.
 4. Klicken Sie auf der Seite **Quickstart** auf **Consume**.
 5. Klicken Sie im Abschnitt **Sample Code** auf **Batch**.
-6. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
+6. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
 7. Kopieren Sie den C#-Beispielcode, und fügen Sie ihn in die Datei „Program.cs“ ein.
 8. Aktualisieren Sie den Wert der Variablen *apiKey* mit dem **Primary Key** im Abschnitt **Basic consumption info**.
 9. Suchen Sie die Deklaration *scoreRequest*, und aktualisieren Sie die Werte der Webdienstparameter, die den Modulen *Import Data* und *Export Data* übergeben werden. In diesem Fall verwenden Sie die ursprüngliche Abfrage, definieren aber einen neuen Tabellennamen.

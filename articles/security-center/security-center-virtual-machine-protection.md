@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236750"
 ---
 # <a name="protect-your-machines-and-applications"></a>Schützen Ihrer Computer und Anwendungen
 Werden potenzielle Sicherheitslücken erkannt, erstellt Azure Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
@@ -63,7 +63,7 @@ Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden 
 
 
 
-### <a name="vms-and-computers"></a>VMs und Server
+### <a name="vms-and-servers"></a><a name="vms-and-computers"></a>VMs und Server
 Der Abschnitt „VMs und Computer“ enthält eine Übersicht über alle Sicherheitsempfehlungen für Ihre VMs und Computer. Es sind vier Arten von Computern enthalten:
 
 ![Nicht-Azure-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure-fremder Computer
@@ -84,7 +84,7 @@ Hier finden Sie die Sicherheitsdetails für den virtuellen oder physischen Compu
 
 
 
-### <a name="vmscale-sets"></a>VM-Skalierungsgruppen
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>VM-Skalierungsgruppen
 Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und empfiehlt, Microsoft Monitoring Agent auf diesen installieren.
 
 So installieren Sie den Microsoft Monitoring Agent: 
@@ -110,7 +110,7 @@ Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für al
 
 
 
-### <a name="cloud-services"></a>Clouddienste
+### <a name="cloud-services"></a><a name="cloud-services"></a>Clouddienste
 Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist.
 
 ![Clouddienste](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
@@ -122,7 +122,7 @@ In einem Szenario, in dem eine Empfehlung vorliegt, befolgen Sie die Schritte in
 
 
 
-### <a name="app-services"></a>App Services
+### <a name="app-services"></a><a name="app-services"></a>App Services
 Um die App Service-Informationen anzuzeigen, müssen Sie den Tarif „Standard“ von Security Center verwenden und App Service in Ihrem Abonnement aktivieren. Anweisungen zum Aktivieren dieses Features finden Sie unter [Schützen von App Services in Azure Security Center](security-center-app-services.md).
 
 Unter **App Services** wird eine Liste Ihrer App Service-Umgebungen und die Integritätszusammenfassung basierend auf der von Security Center ausgeführten Bewertung angezeigt.
@@ -157,7 +157,7 @@ Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung und eine Li
 
 
 
-### <a name="containers"></a>Container
+### <a name="containers"></a><a name="containers"></a>Container
 
 Wenn Sie die Registerkarte **Container** öffnen, wird je nach Ihrer Umgebung möglicherweise einer von drei Ressourcentypen angezeigt:
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
 ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934061"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>Versionsanmerkungen zu Update 2 der StorSimple 8000-Serie
@@ -53,7 +53,7 @@ In Update 2 werden die folgenden neuen Features eingeführt:
   * Routingverbesserungen mit festen Metriken für cloudfähige Blöcke.
   * Onlinewiederholung bei Ressourcenfehlern vor einem Failover.
   * Neue Warnungen für Dienstfehler.
-* **Updateverbesserungen:** In Update 1.2 und früheren Versionen wurde die StorSimple 8000-Serie über zwei Kanäle aktualisiert: Windows Update für Clustering, iSCSI usw. und Microsoft Update für Binärdateien und Firmware.
+* **Updateverbesserungen** : In Update 1.2 und früheren Versionen wurde die StorSimple 8000-Serie über zwei Kanäle aktualisiert: Windows Update für Clustering, iSCSI und so weiter und Microsoft Update für Binärdateien und Firmware.
     Update 2 verwendet Microsoft Update für alle Updatepakete. Auf diese Weise verringert sich der Zeitaufwand für Patches oder Failover. 
 * **Firmwareupdates** : Die folgenden Firmwareupdates sind enthalten:
   

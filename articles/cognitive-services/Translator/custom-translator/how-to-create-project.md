@@ -10,15 +10,15 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836562"
 ---
 # <a name="create-a-project"></a>Erstellen eines Projekts
 
-Ein Projekt ist ein Container für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachpaar verfügen.
+Ein Projekt ist ein Container für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachenpaar verfügen.
 
 Die Projekterstellung ist der erste Schritt auf dem Weg zur Modellerstellung.
 
@@ -34,13 +34,13 @@ Die Projekterstellung ist der erste Schritt auf dem Weg zur Modellerstellung.
 
     b.  Beschreibung: Eine kurze Zusammenfassung des Projekts. Diese Beschreibung hat keinerlei Einfluss auf das Verhalten von Custom Translator oder auf das resultierende benutzerdefinierte System, kann aber die Unterscheidung verschiedener Projekte erleichtern.
 
-    c.  Sprachpaar (erforderlich): Wählen Sie die Ausgangs- und Zielsprache für die Übersetzung aus.
+    c.  Language pair (Sprachpaar; erforderlich): Wählen Sie die Ausgangs- und Zielsprache für die Übersetzung aus.
 
     d.  Kategorie (erforderlich): Wählen Sie die Kategorie aus, die am besten zu Ihrem Projekt passt. Die Kategorie beschreibt die Terminologie und den Stil der Dokumente, die Sie übersetzen möchten.
 
     e.  Kategoriebeschreibung: Geben Sie in diesem Feld eine genauere Beschreibung des Bereichs oder der Branche an, in dem bzw. in der Sie tätig sind. In der Kategorie „Medizin“ können Sie beispielsweise ein bestimmtes Dokument (etwa zum Thema Chirurgie oder Kinderheilkunde) hinzufügen. Die Beschreibung hat keinerlei Einfluss auf das Verhalten von Custom Translator oder auf das resultierende benutzerdefinierte System.
 
-    f.  Projektbezeichnung: Die [Projektbezeichnung](workspace-and-project.md#project-labels) dient zur Unterscheidung von Projekten mit gleichem Sprachpaar und gleicher Kategorie. Eine Bezeichnung sollte *nur* verwendet werden, wenn Sie mehrere Projekte für das gleiche Sprachpaar und die gleiche Kategorie erstellen und auf diese Projekte jeweils mit einer anderen Kategorie-ID zugreifen möchten. Verwenden Sie dieses Feld nicht, wenn Sie Systeme für nur eine Kategorie erstellen. Eine Projektbezeichnung trägt nicht zur Unterscheidung zwischen Sprachpaaren bei. Die gleiche Bezeichnung kann für mehrere Projekte verwendet werden.
+    f.  Project label (Projektbezeichnung): Die [Projektbezeichnung](workspace-and-project.md#project-labels) dient zur Unterscheidung von Projekten mit gleichem Sprachpaar und gleicher Kategorie. Eine Bezeichnung sollte *nur* verwendet werden, wenn Sie mehrere Projekte für das gleiche Sprachpaar und die gleiche Kategorie erstellen und auf diese Projekte jeweils mit einer anderen Kategorie-ID zugreifen möchten. Verwenden Sie dieses Feld nicht, wenn Sie Systeme für nur eine Kategorie erstellen. Eine Projektbezeichnung trägt nicht zur Unterscheidung zwischen Sprachpaaren bei. Die gleiche Bezeichnung kann für mehrere Projekte verwendet werden.
 
     ![Dialogfeld für die Projekterstellung](media/how-to/how-to-create-project-dialog.png)
 
@@ -52,13 +52,13 @@ Auf der Landing Page von Custom Translator werden die ersten zehn Projekte in Ih
 
 Wenn Sie ein Projekt auswählen, wird eine Projektseite mit Folgendem angezeigt:
 
-- CategoryID: Bei der Kategorie-ID handelt es sich um eine Verkettung von Arbeitsbereich-ID, Projektbezeichnung und Kategoriecode. Mithilfe der Kategorie-ID können Sie über die Textübersetzungs-API benutzerdefinierte Übersetzungen abrufen.
+- Kategorie-ID: Bei der Kategorie-ID handelt es sich um eine Verkettung von Arbeitsbereich-ID, Projektbezeichnung und Kategoriecode. Mithilfe der Kategorie-ID können Sie über die Textübersetzungs-API benutzerdefinierte Übersetzungen abrufen.
 
-- Schaltfläche „Train“ (Trainieren): Diese Schaltfläche dient zum [Trainieren eines Modells](how-to-train-model.md).
+- Schaltfläche zum Trainieren: Diese Schaltfläche dient zum [Trainieren eines Modells](how-to-train-model.md).
 
-- Schaltfläche „Add documents“ (Dokumente hinzufügen): Diese Schaltfläche dient zum [Hochladen von Dokumenten](how-to-upload-document.md).
+- Schaltfläche zum Hinzufügen von Dokumenten: Diese Schaltfläche dient zum [Hochladen von Dokumenten](how-to-upload-document.md).
 
-- Schaltfläche „Filter documents“ (Dokumente filtern): Diese Schaltfläche dient zum Filtern von Dokumenten sowie zum Suchen nach bestimmten Dokumenten.
+- Schaltfläche zum Filtern von Dokumenten: Diese Schaltfläche dient zum Filtern von Dokumenten sowie zum Suchen nach bestimmten Dokumenten.
 
     ![Anzeigen der Projektdetails](media/how-to/how-to-view-project.png)
 

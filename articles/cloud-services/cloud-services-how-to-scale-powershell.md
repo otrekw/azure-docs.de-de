@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: memccror
 ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359036"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>Skalieren eines Clouddiensts in PowerShell
@@ -50,9 +50,9 @@ Daraufhin sollten Sie Informationen zur Rolle erhalten (einschließlich der aktu
 
 ![Informationen zur Rolle](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
-## <a name="scale-out-the-role-by-adding-more-instances"></a>Horizontales Hochskalieren der Rolle durch Hinzufügen weiterer Instanzen
+## <a name="scale-out-the-role-by-adding-more-instances"></a>Aufskalieren der Rolle durch Hinzufügen weiterer Instanzen
 
-Wenn Sie die Rolle horizontal hochskalieren möchten, übergeben Sie die gewünschte Anzahl von Instanzen als **Count**-Parameter an das **Set-AzureRole**-Cmdlet:
+Wenn Sie die Rolle aufskalieren möchten, übergeben Sie die gewünschte Anzahl von Instanzen als **Count**-Parameter an das **Set-AzureRole**-Cmdlet:
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
@@ -66,9 +66,9 @@ Sobald die neuen Instanzen gestartet wurden, wird die Blockierung des Cmdlets wi
 
 ![Erfolgreiche Erhöhung der Anzahl von Rolleninstanzen](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Horizontales Herunterskalieren der Rolle durch Entfernen von Instanzen
+## <a name="scale-in-the-role-by-removing-instances"></a>Abskalieren der Rolle durch Entfernen von Instanzen
 
-Sie können eine Rolle auf die gleiche Weise horizontal herunterskalieren, indem Sie Instanzen entfernen. Legen Sie den **Count**-Parameter für **Set-AzureRole** auf die Anzahl von Instanzen fest, die nach Abschluss des horizontalen Herunterskalierens vorhanden sein soll.
+Sie können eine Rolle auf die gleiche Weise abskalieren, indem Sie Instanzen entfernen. Legen Sie den **Count**-Parameter für **Set-AzureRole** auf die Anzahl von Instanzen fest, die nach Abschluss des Abskalierens vorhanden sein soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

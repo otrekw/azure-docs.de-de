@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743081"
 ---
 # <a name="face-recognition-concepts"></a>Konzepte der Gesichtserkennung
@@ -25,7 +25,7 @@ In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und 
 
 Bei den Erkennungsvorgängen werden hauptsächlich die folgenden Datenstrukturen verwendet. Diese Objekte werden in der Cloud gespeichert und durch ihre ID-Zeichenfolgen referenziert. Die ID-Zeichenfolgen sind innerhalb eines Abonnements immer eindeutig. Namensfelder können doppelt vorkommen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |:--|:--|
 |DetectedFace| Diese Darstellung eines einzelnen Gesichts wird mit dem Vorgang [Gesichtserkennung](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md) abgerufen. Die ID läuft 24 Stunden nach der Erstellung ab.|
 |PersistedFace| Wenn DetectedFace-Objekte einer Gruppe, z. B. FaceList oder Person, hinzugefügt werden, werden sie zu PersistedFace-Objekten. Sie können jederzeit [abgerufen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c) werden und laufen nicht ab.|

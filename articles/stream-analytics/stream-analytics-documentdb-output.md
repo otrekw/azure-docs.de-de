@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228074"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
 Azure Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt.
@@ -76,7 +76,7 @@ Die Speichergröße für Dokumente mit dem gleichen Partitionsschlüssel ist auf
 
 Ein Partitionsschlüssel ist auch die Grenze für Transaktionen in gespeicherten Prozeduren und Triggern für Azure Cosmos DB. Sie sollten den Partitionsschlüssel so auswählen, dass Dokumente, die gemeinsam in Transaktionen auftreten, denselben Partitionsschlüsselwert haben. Der Artikel [Partitionierung in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) bietet ausführlichere Informationen zur Auswahl eines Partitionsschlüssels.
 
-Bei festen Azure Cosmos DB-Containern lässt Stream Analytics kein zentrales oder horizontales Hochskalieren zu, nachdem diese voll sind. Sie haben eine Obergrenze von 10 GB und einen Durchsatz von 10.000 RU/s. Zum Migrieren der Daten aus einem festen Container zu einem unbegrenzten Container (beispielsweise mit mindestens 1.000 RU/s und einem Partitionsschlüssel) verwenden Sie das [Datenmigrationstool](../cosmos-db/import-data.md) oder die [Änderungsfeedbibliothek](../cosmos-db/change-feed.md).
+Bei festen Azure Cosmos DB-Containern lässt Stream Analytics kein Hoch- oder Aufskalieren zu, nachdem diese voll sind. Sie haben eine Obergrenze von 10 GB und einen Durchsatz von 10.000 RU/s. Zum Migrieren der Daten aus einem festen Container zu einem unbegrenzten Container (beispielsweise mit mindestens 1.000 RU/s und einem Partitionsschlüssel) verwenden Sie das [Datenmigrationstool](../cosmos-db/import-data.md) oder die [Änderungsfeedbibliothek](../cosmos-db/change-feed.md).
 
 Die Möglichkeit, in mehrere fixierte Container zu schreiben, wird als veraltet markiert. Wir empfehlen diese Möglichkeit für das horizontale Skalieren von Stream Analytics-Aufträgen nicht.
 
@@ -105,7 +105,7 @@ Beim Verwenden von Azure Cosmos DB als Ausgabe in Stream Analytics wird die folg
 
 ![Informationsfelder für einen Azure Cosmos DB-Ausgabestream](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Feld           | Beschreibung|
+|Feld           | BESCHREIBUNG|
 |-------------   | -------------|
 |Ausgabealias    | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer Stream Analytics-Abfrage.|
 |Subscription    | Das Azure-Abonnement.|

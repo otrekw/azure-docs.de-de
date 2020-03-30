@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 46cdcd5f768278dbc729f48e450c68a63be604be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822159"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228706"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet.
 
@@ -39,7 +39,7 @@ Wenn Sie die Tutorials durchgehen und mit der App arbeiten, legen Sie den Schwer
 Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Features der SQL-Datenbank sowie der von Azure SQL Data Warehouse und anderen Azure-Diensten nutzen. Die Tutorials enthalten PowerShell-Skripts mit ausführlichen Erklärungen. Die Erklärungen erleichtern das Verständnis und die Implementierung der gleichen SaaS-Verwaltungsmuster in Ihren Anwendungen.
 
 
-| Tutorial | BESCHREIBUNG |
+| Lernprogramm | BESCHREIBUNG |
 |:--|:--|
 | [Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet](saas-tenancy-wingtip-app-guidance-tips.md) | Laden Sie PowerShell-Skripts herunter, und führen Sie sie aus, um Teile der Anwendung vorzubereiten. |
 |[Bereitstellen und Kennenlernen der SaaS-Anwendung Wingtip](saas-dbpertenant-get-started-deploy.md)|  Stellen Sie die Wingtip-SaaS-Anwendung mit Ihrem Azure-Abonnement bereit, und machen Sie sich mit ihr vertraut. |

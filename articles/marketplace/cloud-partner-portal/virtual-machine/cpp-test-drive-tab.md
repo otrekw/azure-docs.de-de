@@ -1,19 +1,18 @@
 ---
 title: Registerkarte „Testversion“ für VMs im Cloud-Partnerportal für Azure Marketplace
 description: Enthält eine Beschreibung der Registerkarte „Testversion“, die Sie beim Erstellen eines VM-Angebots für den Azure Marketplace verwenden.
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 94ebbcca50916f1675ab990a4b45f3b90e069104
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288800"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Registerkarte „Testversion“ für virtuelle Computer
 

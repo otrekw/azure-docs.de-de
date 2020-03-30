@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73044102"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
@@ -106,7 +106,7 @@ In vielen Onlinecommunitys kommt es oft dazu, dass anstößige Elemente mehrmals
 Anstelle dasselbe Bild mehrmals zu moderieren, können Sie die anstößigen Bilder Ihrer benutzerdefinierten Liste blockierter Inhalte hinzufügen. Auf diese Weise vergleicht Ihr System für die Moderation von Inhalten eingehende Bilder mit der benutzerdefinierten Liste und stoppt weitere Verarbeitung.
 
 > [!NOTE]
-> Die Obergrenze liegt bei **fünf Bilderlisten**, wobei jede Liste **maximal 10.000 Bilder** enthalten kann.
+> Die Obergrenze liegt bei **fünf Bildlisten**, wobei jede Liste **max. 10.000 Bilder** enthalten kann.
 >
 
 Der Content Moderator bietet eine vollständige [API zur Verwaltung von Bilderlisten](try-image-list-api.md) mit Vorgängen zum Verwalten von Listen benutzerdefinierter Bilder. Beginnen Sie mit der [API-Konsole für Bilderlisten](try-image-list-api.md), und verwenden Sie die REST-API-Codebeispiele. Falls Sie mit Visual Studio und C# vertraut sind, können Sie sich auch die [.NET-Schnellstartanleitung für Bilderlisten](image-lists-quickstart-dotnet.md) ansehen.
@@ -139,7 +139,7 @@ Beispiel für die Extraktion:
     ....
     }
 
-## <a name="human-review-tool"></a>Tool für die manuelle Überprüfung
+## <a name="human-review-tool"></a>Tool für die Überprüfung durch Personen
 
 Verwenden Sie für nuancierte Fälle das [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md) und die API des Content Moderator, um die Ergebnisse und Inhalte der Moderation für die Überprüfung durch menschliche Moderatoren zum Vorschein zu bringen. Diese überprüfen die vom Computer zugewiesenen Tags und bestätigen die endgültigen Entscheidungen.
 

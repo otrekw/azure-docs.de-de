@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870920"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225646"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Arbeiten mit Arrays und Objekten in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Sie können Arrays wie im folgenden Beispiel gezeigt erstellen:
     FROM Families f
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -52,7 +52,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a id="Iteration"></a>Iteration
+## <a name="iteration"></a><a id="Iteration"></a>Iteration
 
 Die SQL-API unterstützt eine Iteration über JSON-Arrays mit einem neuen Konstrukt, das mit dem [IN-Schlüsselwort](sql-query-keywords.md#in) in der FROM-Quelle hinzugefügt wurde. Siehe folgendes Beispiel:
 
@@ -61,7 +61,7 @@ Die SQL-API unterstützt eine Iteration über JSON-Arrays mit einem neuen Konstr
     FROM Families.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -97,7 +97,7 @@ Die nächste Abfrage führt eine Iteration über `children` im Container `Famili
     FROM c IN Families.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -130,7 +130,7 @@ Sie können die einzelnen Einträge im Array weiter filtern wie im folgenden Bei
     WHERE c.grade = 8
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -145,7 +145,7 @@ Sie können auch das Ergebnis einer Array-Iteration aggregieren. Die folgende Ab
     FROM child IN Families.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -159,4 +159,4 @@ Die Ergebnisse sind wie folgt:
 
 - [Erste Schritte](sql-query-getting-started.md)
 - [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Verknüpfungen](sql-query-join.md)
+- [Joins](sql-query-join.md)

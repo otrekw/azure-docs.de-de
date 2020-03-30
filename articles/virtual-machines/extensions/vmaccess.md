@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226818"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Verwalten von Administratoren, SSH und Überprüfen oder Reparieren von Datenträgern auf Linux-VMs mit der VMAccess-Erweiterung und der Azure CLI
 ## <a name="overview"></a>Übersicht
@@ -42,7 +42,7 @@ Die VMAccess-Erweiterung kann für folgende Linux-Distributionen ausgeführt wer
 | Debian | Debian 7.9+, 8.2+ |
 | Red Hat | RHEL 6.7+, 7.1+ |
 | Oracle Linux | 6.4+, 7.0+ |
-| SUSE | 11 und 12 |
+| Suse | 11 und 12 |
 | openSUSE | openSUSE Leap 42.2+ |
 | CentOS | CentOS 6.3+, 7.0+ |
 | CoreOS | 494.4.0+ |
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **HINWEIS:** Der Befehl `az vm user update` fügt den Text des neuen öffentlichen Schlüssels an die Datei `~/.ssh/authorized_keys` für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
+> **HINWEIS:** Der `az vm user update`-Befehl fügt den Text des neuen öffentlichen Schlüssels der `~/.ssh/authorized_keys`-Datei für den Administratorbenutzer auf dem virtuellen Computer an. Vorhandene SSH-Schlüssel werden dadurch weder ersetzt noch entfernt. Vorherige, zur Bereitstellungszeit festgelegte Schlüssel oder nachfolgende Updates über die VMAccess-Erweiterung werden dadurch nicht entfernt.
 
 ## <a name="reset-password"></a>Kennwort zurücksetzen
 Das folgende Beispiel setzt das Kennwort für den Benutzer `azureuser` auf dem virtuellen Computer `myVM` zurück:

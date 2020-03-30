@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889485"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499320"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -36,17 +36,17 @@ Wenn Sie die Azure Monitor-Integrationsfunktion des Azure IoT Hub-Diensts zum Er
 
 Mandantenadministratoren können im Azure-Portal das Blatt „IoT-Geräte“ der Azure IoT Hub-Erweiterung verwenden, um ein Gerät zu löschen. Dabei werden die dem Gerät zugeordneten Daten gelöscht.
 
-Löschvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt werden. Weitere Informationen finden Sie unter [Service - Delete Device (Dienst – Gerät löschen)](/rest/api/iothub/service/deletedevice).
+Löschvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt werden. Weitere Informationen finden Sie unter [Service - Delete Device (Dienst – Gerät löschen)](/rest/api/iothub/service/registrymanager/deletedevice).
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 
 Mandantenadministratoren können im Azure-Portal innerhalb des Bereichs „IoT-Geräte“ der Azure IoT Hub-Erweiterung die einem Gerät zugeordneten Daten mithilfe der Funktionen zum Kopieren und Einfügen exportieren.
 
-Exportvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt werden. Weitere Informationen finden Sie unter [Service - Get Device (Dienst – Gerät abrufen)](/rest/api/iothub/service/getdevice).
+Exportvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt werden. Weitere Informationen finden Sie unter [Service - Get Device (Dienst – Gerät abrufen)](/rest/api/iothub/service/registrymanager/getdevice).
 
 > [!NOTE]
 > Wenn Sie Microsoft Enterprise Services verwenden, generiert Microsoft einige Informationen, die als vom System generierte Protokolle bezeichnet werden. Auf einige vom System generierte Azure IoT Hub-Protokolle können Mandantenadministratoren nicht zugreifen bzw. können einige dieser Protokolle nicht von Mandantenadministratoren exportiert werden. Diese Protokolle stellen faktische Aktionen dar, die innerhalb der Dienst- und Diagnosedaten einzelner Geräte ausgeführt werden.
 
 ## <a name="links-to-additional-documentation"></a>Links zu zusätzlicher Dokumentation
 
-Die vollständige Dokumentation zu Azure IoT Hub-Dienst-APIs finden Sie unter [IoT Hub-Dienst-APIs](https://docs.microsoft.com/rest/api/iothub/service).
+Die vollständige Dokumentation zu Azure IoT Hub-Dienst-APIs finden Sie unter [IoT Hub-Dienst-APIs](https://docs.microsoft.com/rest/api/iothub/service/configuration).

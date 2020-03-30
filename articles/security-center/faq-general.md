@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661838"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Häufig gestellte Fragen – allgemeine Fragen zu Azure Security Center
@@ -86,7 +86,7 @@ Azure Security Center erfasst, analysiert und kombiniert automatisch Protokollda
 * Sicherheitswarnungen von integrierten Partnersicherheitslösungen wie Antischadsoftware oder Web Application Firewalls
 
 
-## Warum haben sich die Werte der Sicherheitsbewertung geändert? <a name="secure-score-faq"></a>
+## <a name="why-did-secure-score-values-change"></a>Warum haben sich die Werte der Sicherheitsbewertung geändert? <a name="secure-score-faq"></a>
 Seit Februar 2019 hat Security Center die Bewertung von einigen Empfehlungen angepasst, um ihrem Schweregrad besser zu entsprechen. Aufgrund dieser Anpassung sind Änderungen im Gesamtwert der Sicherheitsbewertung möglich.  Weitere Informationen zur Sicherheitsbewertung finden Sie unter [Berechnung der Sicherheitsbewertung](security-center-secure-score.md).
 
 

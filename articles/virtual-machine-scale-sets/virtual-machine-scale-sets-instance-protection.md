@@ -1,41 +1,39 @@
 ---
 title: Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen
 description: Es wird beschrieben, wie Sie Instanzen von Azure-VM-Skalierungsgruppen bei Vorgängen zum horizontalen Herunterskalieren und Festlegen der Skalierung schützen.
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: manayar
-ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275792"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227974"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen (Vorschauversion)
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen
+
 Azure-VM-Skalierungsgruppen ermöglichen per [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) eine bessere Elastizität für Ihre Workload, damit Sie die Konfiguration durchführen können, wenn Ihre Infrastruktur horizontal hoch- und herunterskaliert wird. Mit Skalierungsgruppen können Sie auch eine große Zahl von VMs zentral verwalten, konfigurieren und aktualisieren, indem Sie die entsprechenden Einstellungen der [Upgraderichtlinie](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) verwenden. Sie können ein Update des Skalierungsgruppenmodells konfigurieren. Die neue Konfiguration wird dann automatisch auf alle Skalierungsgruppeninstanzen angewendet, wenn Sie die Upgraderichtlinie auf „Automatisch“ oder „Parallel“ festgelegt haben.
 
 Während der Verarbeitung von Datenverkehr durch Ihre Anwendung kann es zu Situationen kommen, in denen bestimmte Instanzen anders als die restlichen Skalierungsgruppeninstanzen behandelt werden sollen. Es kann beispielsweise sein, dass für bestimmte Instanzen der Skalierungsgruppe Vorgänge mit langer Ausführungsdauer durchgeführt werden und diese Instanzen erst horizontal herunterskaliert werden sollen, nachdem die Vorgänge abgeschlossen sind. Unter Umständen verfügen Sie auch über einige Instanzen in der Skalierungsgruppe, die Sie speziell für die Durchführung von zusätzlichen oder anderen Aufgaben eingerichtet haben, die nicht mit den restlichen Komponenten der Skalierungsgruppe durchgeführt werden sollen. Für Sie besteht dann die Notwendigkeit, dass diese „speziellen“ VMs nicht zusammen mit den anderen Instanzen der Skalierungsgruppe geändert werden. Mit dem Instanzschutz werden die zusätzlichen Steuerungen bereitgestellt, mit denen diese und andere Szenarien für Ihre Anwendung ermöglicht werden.
 
 In diesem Artikel wird beschrieben, wie Sie die verschiedenen Funktionen für den Instanzschutz auf Skalierungsgruppeninstanzen anwenden und dafür nutzen können.
 
-> [!NOTE]
->Der Instanzschutz befindet sich derzeit in der öffentlichen Vorschauphase. Es ist kein Abonnementverfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen. Die Vorschauversion des Instanzschutzes wird nur für API-Version 2019-03-01 und Skalierungsgruppen mit verwalteten Datenträgern unterstützt.
-
 ## <a name="types-of-instance-protection"></a>Arten des Instanzschutzes
 Skalierungsgruppen umfassen zwei Arten von Funktionen für den Instanzschutz:
 
 -   **Schutz vor horizontalem Herunterskalieren**
     - Wird über die **protectFromScaleIn**-Eigenschaft auf der Skalierungsgruppeninstanz aktiviert
-    - Schützt die Instanz vor dem Vorgang zum horizontalen Herunterskalieren, der von der Autoskalierung initiiert wird
+    - Schützt die Instanz vor dem Vorgang zum Abskalieren, der von der Autoskalierung initiiert wird
     - Vom Benutzer initiierte Instanzvorgänge (einschließlich dem Löschen der Instanz) werden **nicht blockiert**
     - In der Skalierungsgruppe initiierte Vorgänge (Aktualisieren, Durchführen von Reimaging, Aufheben der Zuordnung usw.) werden **nicht blockiert**
 
 -   **Schutz vor Skalierungsgruppenaktionen**
     - Wird über die **protectFromScaleSetActions**-Eigenschaft auf der Skalierungsgruppeninstanz aktiviert
-    - Schützt die Instanz vor dem Vorgang zum horizontalen Herunterskalieren, der von der Autoskalierung initiiert wird
+    - Schützt die Instanz vor dem Vorgang zum Abskalieren, der von der Autoskalierung initiiert wird
     - Schützt die Instanz vor Vorgängen, die in der Skalierungsgruppe initiiert werden (Aktualisieren, Durchführen von Reimaging, Aufheben der Zuordnung usw.)
     - Vom Benutzer initiierte Instanzvorgänge (einschließlich dem Löschen der Instanz) werden **nicht blockiert**
     - Das Löschen der gesamten Skalierungsgruppe wird **nicht blockiert**
@@ -44,6 +42,17 @@ Skalierungsgruppen umfassen zwei Arten von Funktionen für den Instanzschutz:
 Der Instanzschutz kann auf Skalierungsgruppeninstanzen angewendet werden, nachdem die Instanzen erstellt wurden. Der Schutz wird nur auf das [Instanzmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) angewendet und dort geändert – nicht für das [Skalierungsgruppenmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
 Es gibt mehrere Möglichkeiten, den Schutz vor dem horizontalen Herunterskalieren auf Ihren Skalierungsgruppeninstanzen anzuwenden. Dies ist unten in den Beispielen beschrieben.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Sie können den Schutz für horizontales Herunterskalieren über das Azure-Portal auf eine Instanz in der Skalierungsgruppe anwenden. Es ist nicht möglich, mehrere Instanzen gleichzeitig anzupassen. Wiederholen Sie diese Schritte für jede Instanz, die Sie schützen möchten.
+ 
+1. Navigieren Sie zu einer vorhandenen VM-Skalierungsgruppe.
+1. Wählen Sie **Instanzen** im Menü auf der linken Seite unter **Einstellungen** aus.
+1. Wählen Sie den Namen der Instanz aus, die Sie schützen möchten.
+1. Wählen Sie die Registerkarte **Schutzrichtlinie** aus.
+1. Wählen auf dem Blatt **Schutzrichtlinie** die Option **Vor horizontalem Herunterskalieren schützen** aus.
+1. Wählen Sie **Speichern** aus. 
 
 ### <a name="rest-api"></a>REST-API
 
@@ -98,9 +107,20 @@ az vmss update \
 ## <a name="protect-from-scale-set-actions"></a>Schutz vor Skalierungsgruppenaktionen
 Der Instanzschutz kann auf Skalierungsgruppeninstanzen angewendet werden, nachdem die Instanzen erstellt wurden. Der Schutz wird nur auf das [Instanzmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) angewendet und dort geändert – nicht für das [Skalierungsgruppenmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
-Durch das Schützen einer Instanz vor Skalierungsgruppenaktionen wird die Instanz auch vor dem Vorgang des horizontalen Herunterskalierens geschützt, der von der Autoskalierung initiiert wird.
+Durch das Schützen einer Instanz vor Skalierungsgruppenaktionen wird die Instanz auch vor dem Vorgang des Abskalierens geschützt, der von der Autoskalierung initiiert wird.
 
 Es gibt mehrere Möglichkeiten, den Schutz vor Skalierungsgruppenaktionen auf Ihren Skalierungsgruppeninstanzen anzuwenden. Dies ist unten in den Beispielen beschrieben.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Sie können den Schutz über Skalierungsgruppenaktionen über das Azure-Portal auf eine Instanz in der Skalierungsgruppe anwenden. Es ist nicht möglich, mehrere Instanzen gleichzeitig anzupassen. Wiederholen Sie diese Schritte für jede Instanz, die Sie schützen möchten.
+ 
+1. Navigieren Sie zu einer vorhandenen VM-Skalierungsgruppe.
+1. Wählen Sie **Instanzen** im Menü auf der linken Seite unter **Einstellungen** aus.
+1. Wählen Sie den Namen der Instanz aus, die Sie schützen möchten.
+1. Wählen Sie die Registerkarte **Schutzrichtlinie** aus.
+1. Wählen auf dem Blatt **Schutzrichtlinie** die Option **Vor Aktionen für Skalierungsgruppen schützen** aus.
+1. Wählen Sie **Speichern** aus. 
 
 ### <a name="rest-api"></a>REST-API
 
@@ -124,7 +144,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 > [!NOTE]
 >Der Instanzschutz wird nur für API-Version 2019-03-01 und höher unterstützt.</br>
-Durch das Schützen einer Instanz vor Skalierungsgruppenaktionen wird die Instanz auch vor dem Vorgang des horizontalen Herunterskalierens geschützt, der von der Autoskalierung initiiert wird. Es ist nicht möglich, für „protectFromScaleIn“ die Einstellung „false“ anzugeben, wenn „protectFromScaleSetActions“ auf „true“ festgelegt ist.
+Durch das Schützen einer Instanz vor Skalierungsgruppenaktionen wird die Instanz auch vor dem Vorgang des Abskalierens geschützt, der von der Autoskalierung initiiert wird. Es ist nicht möglich, für „protectFromScaleIn“ die Einstellung „false“ anzugeben, wenn „protectFromScaleSetActions“ auf „true“ festgelegt ist.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

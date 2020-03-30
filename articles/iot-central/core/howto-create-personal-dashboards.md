@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie als Benutzer Ihre persönlichen Dashboards er
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9da7efad816a466eb9d2902e36a95c5ae0fa626b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72941631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158128"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Erstellen und Verwalten mehrerer Dashboards
 
@@ -38,7 +38,7 @@ Sollten Sie ein **Administrator** für die Anwendung sein, erhalten Sie die Mög
 > [!div class="mx-imgBorder"]
 > ![Formular „Gerätedetails konfigurieren“ mit Details zu „Temperatur“](media/howto-create-personal-dashboards/device-details.png)
 
-Sie können beispielsweise eine Kachel **Telemetrie** für die aktuelle Temperatur des Geräts hinzufügen. Gehen Sie dazu wie folgt vor:
+Sie können beispielsweise eine Kachel **Telemetrie** für die aktuelle Temperatur des Geräts hinzufügen. Gehen Sie folgendermaßen vor:
 1. Wählen Sie eine **Gerätevorlage** aus.
 1. Wählen Sie für das Gerät, das auf einer Dashboardkachel angezeigt werden soll, eine **Geräteinstanz** aus. Dann wird eine Liste der Geräteeigenschaften angezeigt, die auf der Kachel verwendet werden können.
 1. Wenn Sie die Kachel auf dem Dashboard erstellen möchten, klicken Sie auf **Temperatur**, und ziehen Sie sie auf den Dashboardbereich. Sie können auch auf das Kontrollkästchen neben **Temperatur** und dann auf **Kombinieren** klicken. Der folgende Screenshot zeigt das Auswählen einer Gerätevorlage und Geräteinstanz und dann das Erstellen der Kachel „Temperaturtelemetrie“ auf dem Dashboard.

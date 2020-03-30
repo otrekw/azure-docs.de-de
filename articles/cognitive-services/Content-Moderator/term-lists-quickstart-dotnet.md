@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935959"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Überprüfen von Text anhand einer benutzerdefinierten Begriffsliste in C#
@@ -28,11 +28,11 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg 
 - Hinzufügen von Benennungen zu einer Liste.
 - Abgleichen von Benennungen mit den Benennungen in einer Liste.
 - Löschen von Benennungen aus einer Liste.
-- Löschen einer Liste.
+- Löschen einer Liste
 - Bearbeiten von Listeninformationen
 - Aktualisieren des Index, damit Änderungen an der Liste in einer neuen Überprüfung berücksichtigt werden
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
 
@@ -305,7 +305,7 @@ Das Löschen eines Begriffs oder einer Liste ist einfach. Mit dem SDK können Si
 
 - Löschen eines Begriffs. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
 - Löschen aller Begriffe in einer Liste, jedoch nicht der Liste selbst. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Löschen einer Liste und aller zugehörigen Inhalte. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
+- Löschen einer Liste und aller zugehörigen Inhalte (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
 
 ### <a name="delete-a-term"></a>Löschen eines Begriffs
 

@@ -1,19 +1,18 @@
 ---
 title: Marketplace-Einstellungen für ein Azure-Containerimage | Azure Marketplace
 description: Konfigurieren von Marketplace-Einstellungen für einen Azure-Container.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 8d7c930f3adcfb4b4d092cc909bf4468ced3271f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280047"
 ---
 # <a name="container-marketplace-tab"></a>Marketplace-Registerkarte „Container“
 

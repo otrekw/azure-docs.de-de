@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185883"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Wie funktioniert die Hyper-V-Replikation?
@@ -30,7 +30,7 @@ Azure Migrate-Servermigration ist ein Tool zum Migrieren lokaler Workloads und c
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
-![Architecture](./media/hyper-v-replication-architecture/architecture.png)
+![Aufbau](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

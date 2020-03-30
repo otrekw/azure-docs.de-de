@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8eb24fe878638853cd8519c08045552a91f0c190
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233290"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
@@ -141,7 +141,7 @@ Unter Verwendung der IoT-SDKs können Module mithilfe der ModuleClient-Klasse sp
 
 Die Quelleigenschaft kann die folgenden Werte haben:
 
-| `Source` | Beschreibung |
+| `Source` | BESCHREIBUNG |
 | ------ | ----------- |
 | `/*` | Alle Gerät-zu-Cloud-Nachrichten oder Benachrichtigungen über Änderungen am Zwilling, die von Modulen oder Blattgeräten gesendet wurden |
 | `/twinChangeNotifications` | Alle Änderungen am Zwilling (gemeldete Eigenschaften), die von Modulen oder Blattgeräten gesendet wurden |
@@ -177,7 +177,7 @@ Die Senke definiert, wohin die Nachrichten gesendet werden. Nur Module und IoT H
 
 Die Senkeneigenschaft kann die folgenden Werte haben:
 
-| Senke | Beschreibung |
+| Senke | BESCHREIBUNG |
 | ---- | ----------- |
 | `$upstream` | Sendet die Nachricht an IoT Hub |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | Sendet die Nachricht an eine bestimmte Eingabe eines bestimmten Moduls |

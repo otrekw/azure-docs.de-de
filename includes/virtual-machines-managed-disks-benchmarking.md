@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673345"
 ---
 *Auffüllen des Caches*  
@@ -62,24 +62,24 @@ Führen Sie die folgenden Schritte aus, um den Cache aufzufüllen.
 
 1. Erstellen Sie zwei Zugriffsspezifikationen mit unten aufgeführten Werten:
 
-   | NAME | Anforderungsgröße | Random % | Read % |
+   | Name | Anforderungsgröße | Random % | Read % |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
 1. Führen Sie den Iometer-Test zum Initialisieren des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
-   | Szenario | Zielvolume | NAME | Duration |
+   | Szenario | Zielvolume | Name | Duration |
    | --- | --- | --- | --- |
    | Cachedatenträger initialisieren |CacheReads |RandomWrites\_1MB |2 Stunden |
 1. Führen Sie den Iometer-Test zum Auffüllen des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
-   | Szenario | Zielvolume | NAME | Dauer |
+   | Szenario | Zielvolume | Name | Duration |
    | --- | --- | --- | --- |
    | Auffüllen des Cachedatenträgers |CacheReads |RandomReads\_1MB |2 Stunden |
 
 Nachdem der Cachedatenträger aufgefüllt wurde, fahren Sie mit den nachstehenden Testszenarien fort. Verwenden Sie zum Ausführen des Iometer-Tests mindestens drei Arbeitsthreads für **jedes** Zielvolume. Wählen Sie für jeden Arbeitsthread das Zielvolume aus, legen Sie die Warteschlangenlänge fest, und wählen Sie eine der gespeicherten Testspezifikationen, wie in der folgenden Tabelle gezeigt, um das entsprechenden Testszenario auszuführen. Die Tabelle enthält auch erwartete Ergebnisse für IOPS und Durchsatz beim Ausführen dieser Tests. Bei allen Szenarien wird eine kleine E/A-Größe von 8 KB und die hohe Warteschlangenlänge 128 verwendet.
 
-| Testszenario | Zielvolume | NAME | Ergebnis |
+| Testszenario | Zielvolume | Name | Ergebnis |
 | --- | --- | --- | --- |
 | Maximal Lese-IOPS |CacheReads |RandomWrites\_8K |50.000 IOPS |
 | Maximal Schreib-IOPS |NoCacheWrites |RandomReads\_8K |64.000 IOPS |

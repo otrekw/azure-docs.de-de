@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75551997"
 ---
 # <a name="machine-learned-entity"></a>Durch maschinelles Lernen erworbene Entität
@@ -36,7 +36,7 @@ Hier sehen Sie einige einfache Beispieläußerungen:
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Da eine durch maschinelles Lernen erworbene Entität viele Unterkomponenten mit Einschränkungen und Deskriptoren aufweisen kann, handelt es sich hier nur um Beispiele. Diese sollen als nur als Anleitung für die Rückgabewerte Ihrer Entitäten dienen.
 
@@ -341,7 +341,7 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Diese Entität ist in der V2-Vorhersageruntime nicht verfügbar.
 * * *

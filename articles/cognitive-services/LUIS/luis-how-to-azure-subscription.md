@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 876026b5399631728331c4a9e67482a34f9d0b2d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a5140da32eb6fce03131a42bfa90e71e64552431
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218796"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Verwenden von Erstellungs- und Laufzeitressourcenschlüsseln
 
@@ -58,7 +58,7 @@ Wenn Sie Ihren Vorhersageendpunkt veröffentlichen möchten, erstellen Sie Erste
 
     ![Die Language Understanding-Ressource (LUIS-Ressource) erstellen](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |NAME|Zweck|
+    |Name|Zweck|
     |--|--|
     |Ressourcenname| Ein von Ihnen gewählter benutzerdefinierter Name, der als Bestandteil der URL für Ihre Erstellungs- und Vorhersageendpunktabfragen verwendet wird.|
     |Abonnementname| Das Abonnement, unter dem die Ressource abgerechnet wird.|
@@ -81,7 +81,7 @@ Ressource `kind`:
 
 1. Melden Sie sich bei der Azure CLI an:
 
-    ```console
+    ```azurecli
     az login
     ```
 
@@ -89,13 +89,13 @@ Ressource `kind`:
 
 1. Erstellen Sie eine **LUIS-Erstellungsressource** der Art `LUIS.Authoring` mit dem Namen `my-luis-authoring-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. 
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
 1. Erstellen Sie eine **LUIS-Vorhersagen-Endpunktressource** der Art `LUIS` mit dem Namen `my-luis-prediction-resource` in der _vorhandenen_ Ressourcengruppe mit dem Namen `my-resource-group` für die Region `westus`. Wenn Sie einen höheren Durchsatz als den Free-Tarif wünschen, ändern Sie `F0` in `S0`. Weitere Informationen zu [Tarifen und Durchsatz](luis-boundaries.md#key-limits).
 
-    ```console
+    ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
@@ -134,7 +134,7 @@ Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline
 
     Diese POST-API erfordert folgende Einstellungen:
 
-    |Header|Wert|
+    |Header|value|
     |--|--|
     |`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Beachten Sie, dass dem Tokenwert das Wort `Bearer` und ein Leerzeichen vorangestellt werden müssen.| 
     |`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|
@@ -145,7 +145,7 @@ Möglicherweise soll zu Automatisierungszwecken, etwa wegen einer CI/CD-Pipeline
 
     Diese POST-API erfordert folgende Einstellungen:
 
-    |type|Einstellung|Wert|
+    |type|Einstellung|value|
     |--|--|--|
     |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Beachten Sie, dass dem Tokenwert das Wort `Bearer` und ein Leerzeichen vorangestellt werden müssen.|
     |Header|`Ocp-Apim-Subscription-Key`|Ihr Erstellungsschlüssel.|

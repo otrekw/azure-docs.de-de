@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73835830"
 ---
 # <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
@@ -57,7 +57,7 @@ Anforderungsheader:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optionaler Anforderungsheader*.<br/>Eine vom Client generierte GUID zur eindeutigen Identifizierung der Anforderung.</td>
+    <td>*Optionaler Anforderungsheader*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung.</td>
   </tr>
 </table> 
 
@@ -101,7 +101,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
+  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
 
   Im folgenden Code wird ein Beispiel veranschaulicht:
           
@@ -135,11 +135,11 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für die Sprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
+    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
-  Der folgende Code zeigt ein Beispiel:
+  Im folgenden Code wird ein Beispiel veranschaulicht:
 
   ```json
   {
@@ -192,15 +192,15 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
   * `nativeName`: Der Anzeigename der Sprache in dem Gebietsschema, das nativ für diese Sprache ist.
 
-  * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
+  * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
 
-  * `translations`: Die Liste der Sprachen mit alternativen Übersetzungen sowie Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
+  * `translations`: Die Liste der Sprachen mit alterativen Übersetzungen und Beispiele für die in der Quellsprache ausgedrückte Abfrage. Jedes Element der `translations`-Liste verfügt über Eigenschaften:
 
     * `name`: Der Anzeigename der Zielsprache im Gebietsschema, der über den `Accept-Language`-Header angefordert wurde.
 
     * `nativeName`: Der Anzeigename der Zielsprache in dem Gebietsschema, das nativ für die Zielsprache ist.
 
-    * `dir`: Die Direktionalität, also `rtl` für Sprachen, die von rechts nach links gelesen werden, bzw. `ltr` für Sprachen, die von links nach rechts gelesen werden.
+    * `dir`: Die Direktionalität, also `rtl` für Rechts-nach-links-Sprachen bzw. `ltr` für Links-nach-rechts-Sprachen.
     
     * `code`: Sprachcode, der die Zielsprache identifiziert.
 
@@ -251,7 +251,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>304</td>

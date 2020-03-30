@@ -9,17 +9,17 @@ ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: add0d392f39ab476c6d75f704d5b2e2e0faaa77c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67836771"
 ---
 ## <a name="prepare-your-repository"></a>Vorbereiten Ihres Repositorys
 
 Um automatische Builds vom Azure App Service-Kudu-Buildserver zu erhalten, muss das Stammverzeichnis Ihres Repositorys die richtigen Dateien enthalten.
 
-| Laufzeit | Stammverzeichnisdateien |
+| Typ | Stammverzeichnisdateien |
 |-|-|
 | ASP.NET (nur Windows) | _*.sln_, _*.csproj_ oder _default.aspx_ |
 | ASP.NET Core | _*.sln_ oder _*.csproj_ |

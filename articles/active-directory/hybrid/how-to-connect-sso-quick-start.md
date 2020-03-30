@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230154"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
+# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
 ## <a name="deploy-seamless-single-sign-on"></a>Bereitstellen des nahtlosen einmaligen Anmeldens
 
@@ -35,25 +35,25 @@ Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden S
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
-* **Richten Sie Ihren Azure AD Connect-Server ein:** Wenn Sie die [Pass-Through-Authentifizierung](how-to-connect-pta.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
+* **Richten Sie Ihren Azure AD Connect-Server ein:** Wenn Sie die [Passthrough-Authentifizierung](how-to-connect-pta.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
    - Sie verwenden Azure AD Connect 1.1.644.0 oder eine höhere Version. 
    - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie mittels Whitelist Verbindungen mit URLs von **\*.msappproxy.net** über den Port 443. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren. Sie ist für tatsächliche Benutzeranmeldungen nicht erforderlich.
 
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-* **Verwenden Sie eine unterstützte Azure AD Connect-Topologie:** Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
+* **Verwenden Sie eine unterstützte Azure AD Connect-Topologie**: Stellen Sie sicher, dass Sie eine der [hier](plan-connect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
 
     >[!NOTE]
     >Nahtloses einmaliges Anmelden (Single Sign-On, SSO) unterstützt mehrere AD-Gesamtstrukturen, unabhängig davon, ob AD-Vertrauensstellungen zwischen ihnen vorhanden sind.
 
-* **Richten Sie Anmeldeinformationen des Domänenadministrators ein:** Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
+* **Richten Sie Anmeldeinformationen des Domänenadministrators ein:** : Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
     * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
     
-* **Aktivieren Sie die moderne Authentifizierung:** Sie müssen die [moderne Authentifizierung](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
+* **Aktivieren Sie die moderne Authentifizierung**: Sie müssen die [moderne Authentifizierung](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) auf Ihrem Mandanten aktivieren, damit dieses Feature funktioniert.
 
-* **Verwenden Sie die neuesten Versionen der Office 365-Clients:** Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und anderen) benötigen Ihre Benutzer Versionen ab 16.0.8730.xxxx.
+* **Verwenden Sie die neuesten Versionen der Office 365-Clients:** Zur automatischen Anmeldung bei Office 365-Clients (Outlook, Word, Excel und andere) benötigen Ihre Benutzer Versionen ab 16.0.8730.xxxx.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
@@ -71,7 +71,7 @@ Wenn Sie Azure AD Connect neu installieren, wählen Sie den [benutzerdefinierten
 
 Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Azure AD Connect die Seite **Benutzeranmeldung ändern**, und klicken Sie auf **Weiter**. Bei Verwendung von Azure AD Connect-Versionen ab 1.1.880.0 wird die Option **Einmaliges Anmelden aktivieren** standardmäßig ausgewählt. Wenn Sie ältere Versionen von Azure AD Connect verwenden, wählen Sie die Option **Einmaliges Anmelden aktivieren** aus.
 
-![Azure AD Connect: Ändern der Benutzeranmeldung](./media/how-to-connect-sso-quick-start/changeusersignin.png)
+![Azure AD Connect: Benutzeranmeldung ändern](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 Fahren Sie mit dem Assistenten fort, bis Sie zur Seite **Einmaliges Anmelden aktivieren** gelangen. Geben Sie Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur an, die:
 
@@ -127,7 +127,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 3. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** . Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
-   - **Wertname:** Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
+   - **Wertname**: Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
    - **Wert** (Daten): **1** gibt die Intranetzone an.
 
      Das Ergebnis sieht wie folgt aus:
@@ -161,10 +161,10 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Geben Sie die folgenden Werte in die entsprechenden Felder ein, und klicken Sie anschließend auf **OK**.
-   - **Schlüsselpfad:** ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
+   - **Schlüsselpfad**: ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
    - **Wertname**: ***https***.
-   - **Werttyp:** ***REG_DWORD***.
-   - **Wertdaten:** ***00000001***.
+   - **Werttyp**: ***REG_DWORD***.
+   - **Wertdaten**: ***00000001***.
  
      ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -222,7 +222,7 @@ Führen Sie zum Testen des Szenarios, in dem der Benutzer weder den Benutzername
    - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/contoso.onmicrosoft.com` an. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
    - Melden Sie sich in einer neuen privaten Browsersitzung bei `https://myapps.microsoft.com/contoso.com` an. Ersetzen Sie *contoso.com* durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
 
-## <a name="step-5-roll-over-keys"></a>Schritt 5: Ausführen des Rollovers für Schlüssel
+## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
 
 In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen Active Directory-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Weitere Informationen finden Sie unter [Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke](how-to-connect-sso-how-it-works.md).
 
@@ -236,7 +236,7 @@ Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nah
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Technische Einzelheiten](how-to-connect-sso-how-it-works.md): Informationen zur Funktionsweise des nahtlosen einmaligen Anmeldens
-- [Häufig gestellte Fragen](how-to-connect-sso-faq.md): Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
-- [Problembehandlung](tshoot-connect-sso.md): Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für nahtloses einmaliges Anmelden auftreten können
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
+- [Technische Einblicke:](how-to-connect-sso-how-it-works.md) Informationen zur Funktionsweise des nahtlosen einmaligen Anmeldens
+- [Häufig gestellte Fragen:](how-to-connect-sso-faq.md) Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
+- [Problembehandlung:](tshoot-connect-sso.md) Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für nahtloses einmaliges Anmelden auftreten können
+- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Anfordern neuer Features über das Azure Active Directory-Forum

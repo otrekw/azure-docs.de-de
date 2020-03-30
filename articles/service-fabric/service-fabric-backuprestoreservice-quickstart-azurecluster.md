@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229478"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Regelmäßiges Sichern und Wiederherstellen in einem Azure Service Fabric-Cluster
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ Aktivieren Sie das Kontrollkästchen `Include backup restore service` unter `+ S
 ### <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
 Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihrem Cluster aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die [Beispielvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) verwenden oder eine Resource Manager-Vorlage erstellen. Aktivieren Sie den _Dienst für Sicherungen und Wiederherstellungen_ mit den folgenden Schritten:
 
-1. Überprüfen Sie, ob `apiversion` für die `Microsoft.ServiceFabric/clusters`-Ressource auf **`2018-02-01`** festgelegt ist. Wenn nicht, aktualisieren Sie sie wie im folgenden Codeausschnitt:
+1. Überprüfen Sie, ob `apiversion` für die **-Ressource auf `2018-02-01`** `Microsoft.ServiceFabric/clusters` festgelegt ist. Wenn nicht, aktualisieren Sie sie wie im folgenden Codeausschnitt:
 
     ```json
     {

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66390164"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Sprach- und Regionsunterstützung für die Bing-Rechtschreibprüfungs-API
@@ -40,7 +40,7 @@ Beachten Sie, dass zum Arbeiten mit einer anderen Sprache als `en-US`, `mkt` fes
 | Englisch (Neuseeland)    | `en-NZ`          |
 | Englisch (Philippinen)     | `en-PH`          |
 | Englisch (Südafrika)    | `en-ZA`          |
-| Englisch (Vereinigtes Königreich)    | `en-GB`          |
+| Walisisch (Großbritannien)    | `en-GB`          |
 | Englisch (USA)    | `en-US`          |
 | Finnisch     | `fi`          |
 | Französisch (Belgien)     | `fr-BE`          |
@@ -62,7 +62,7 @@ Beachten Sie, dass zum Arbeiten mit einer anderen Sprache als `en-US`, `mkt` fes
 | Spanisch (Chile)     | `es-CL`          |
 | Spanisch (Mexiko)    | `es-MX`          |
 | Spanisch (Spanien)    | `es-ES`          |
-| Spanisch (Vereinigte Staaten)    | `es-US`          |
+| Spanisch (USA)    | `es-US`          |
 | Schwedisch     | `sv`          |
 | Türkisch     | `tr`          |
 

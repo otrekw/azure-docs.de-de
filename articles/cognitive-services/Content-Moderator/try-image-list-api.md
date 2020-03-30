@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757188"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Moderieren von Bildern mit benutzerdefinierten Bildlisten in der API-Konsole
@@ -46,7 +46,7 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
    Die Seite **Bildlisten – Suchindex aktualisieren** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
  
     ![Regionsauswahl auf der Seite „Bildlisten – Suchindex aktualisieren“](images/test-drive-region.png)
 
@@ -63,7 +63,7 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
    Die Seite **Bildlisten – Erstellen** wird geöffnet. 
 
-3. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt.
+3. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
 
    ![Regionsauswahl auf der Seite „Bildlisten – Erstellen“](images/test-drive-region.png)
 
@@ -97,7 +97,7 @@ Nachdem Sie eine Bildliste geändert haben, müssen Sie den zugehörigen Index a
 
    Die Seite **Bild – Bild hinzufügen** wird geöffnet. 
 
-9. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt.
+9. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
 
    ![Regionsauswahl auf der Seite „Bild – Bild hinzufügen“](images/test-drive-region.png)
 
@@ -129,7 +129,7 @@ Dieses Beispiel löscht ein einzelnes Bild:
 
    Die Seite **Bild – Löschen** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt. 
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
    ![Regionsauswahl auf der Seite „Bild – Löschen“](images/test-drive-region.png)
  
@@ -151,7 +151,7 @@ Sie können Name und Beschreibung einer Liste bearbeiten und Metadatenelemente h
 
    Die Seite **Bildlisten – Details aktualisieren** wird geöffnet.
 
-2. Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt.  
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.  
 
     ![Regionsauswahl auf der Seite „Bildlisten – Details aktualisieren“](images/test-drive-region.png)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178287"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Installieren von Wartungsmodus-Updates über Windows PowerShell für StorSimple
@@ -27,17 +27,17 @@ Wenn Sie Wartungsmodus-Updates auf einem StorSimple-Gerät anwenden, werden alle
 
     Beide Controller werden im Wartungsmodus neu gestartet.
 
-3. Installieren Sie die Wartungsmodus-Updates. Geben Sie Folgendes ein:
+3. Installieren Sie die Wartungsmodus-Updates. Typ:
 
     `Start-HcsUpdate`
 
     Sie werden aufgefordert, diesen Schritt zu bestätigen. Nachdem Sie die Updates bestätigt haben, werden sie auf dem Controller installiert, auf den Sie gerade zugreifen. Nachdem die Updates installiert wurden, wird der Controller neu gestartet.
 
-4. Überwachen Sie den Status der Aktualisierungen. Melden Sie sich beim Peercontroller an, da der aktuelle Controller aktualisiert wird und keine anderen Befehle verarbeiten kann. Geben Sie Folgendes ein:
+4. Überwachen Sie den Status der Aktualisierungen. Melden Sie sich beim Peercontroller an, da der aktuelle Controller aktualisiert wird und keine anderen Befehle verarbeiten kann. Typ:
 
     `Get-HcsUpdateStatus`
 
-    Wenn `RunInProgress` `True` lautet, ist das Update noch nicht abgeschlossen. Wenn `RunInProgress``False` lautet, ist das Update abgeschlossen.
+    Wenn `RunInProgress``True` lautet, ist das Update noch nicht abgeschlossen. Wenn `RunInProgress``False` lautet, ist das Update abgeschlossen.
 
 5. Nachdem die Firmwareupdates für Datenträger erfolgreich installiert wurden und der aktualisierte Controller neu gestartet wurde, überprüfen Sie die Firmwareversion des Datenträgers. Geben Sie auf dem aktualisierten Controller Folgendes ein:
 

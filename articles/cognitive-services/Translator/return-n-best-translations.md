@@ -12,16 +12,16 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837238"
 ---
 # <a name="how-to-return-n-best-translations"></a>Zurückgeben von N besten Übersetzungen
 
 > [!NOTE]
-> Diese Methode ist veraltet. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
+> Diese Methode ist als veraltet markiert. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
 
 Die Methoden GetTranslations() und GetTranslationsArray() der Microsoft Translator-API enthalten ein optionales boolesches Flag „IncludeMultipleMTAlternatives“.
 Die Methode gibt bis zu „maxTranslations“ Alternativen zurück, wobei das Delta aus der Übersetzer-Engine-Liste mit den N besten Übersetzungen stammt.
@@ -43,15 +43,15 @@ Die Signatur ist:
 | from | **Erforderlich** Eine Zeichenfolge, die den Code der Sprache darstellt, aus der der Text übersetzt werden soll. |
 | zu | **Erforderlich** Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll. |
 | maxTranslations | **Erforderlich** Ein Integer, der die maximale Anzahl von Übersetzungen darstellt, die zurückgegeben werden sollen. |
-| options | **Optional** Ein TranslateOptions-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und entsprechen den Standardwerten für die häufigsten Einstellungen.
+| Optionen | **Optional** Ein TranslateOptions-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und entsprechen den Standardwerten für die häufigsten Einstellungen.
 
-* Kategorie: Es wird nur der Wert „general“ unterstützt, dies ist auch der Standardwert.
-* ContentType: Es wird nur der Wert „text/plain“ unterstützt, dies ist auch der Standardwert.
-* Status: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
+* Category: „general“ ist der einzige unterstützte und standardmäßige Wert.
+* ContentType: „text/plain“ ist der einzige unterstützte und standardmäßige Wert.
+* State: Mit diesem Benutzerstatus können Anforderung und Antwort korreliert werden. Die gleichen Inhalte werden in der Antwort zurückgegeben.
 * IncludeMultipleMTAlternatives: Dieses Flag bestimmt, ob mehr als eine Alternative aus der MT-Engine zurückgegeben wird. Der Standardwert ist „FALSE“ und enthält nur eine Alternative.
 
 ## <a name="ratings"></a>Ratings
-Die Bewertungen werden wie folgt angewendet: Die beste automatische Übersetzung erhält die Bewertung 5.
+Bewertungen werden folgendermaßen angewendet: Die beste automatische Übersetzung hat die Bewertung von 5.
 Die automatisch generierten (N besten) Übersetzungsalternativen haben eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
 
 ## <a name="number-of-alternatives"></a>Anzahl von Alternativen

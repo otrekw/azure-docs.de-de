@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
 ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454492"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für die Remoteüberwachung (Linux)
@@ -47,7 +47,7 @@ Das Beispiel befindet sich im Ordner **samples/solutions/remote_monitoring_clien
 
 Die folgenden Schritte beschreiben, wie Sie *CMake* zum Erstellen der Clientanwendung verwenden. Die Clientanwendung für die Remoteüberwachung wird im Rahmen des Buildprozesses für das SDK erstellt.
 
-1. Bearbeiten Sie die Datei **remote_monitoring.c**. Ersetzen Sie `<connectionstring>` durch die Geräte-Verbindungszeichenfolge, die Sie zu Beginn dieser Schrittanleitung notiert haben, als Sie ein Gerät zum Solution Accelerator hinzugefügt haben.
+1. Bearbeiten Sie die Datei **remote_monitoring.c**. Ersetzen Sie `<connectionstring>` durch die Geräteverbindungszeichenfolge, die Sie zu Beginn dieser Schrittanleitung notiert haben, als Sie ein Gerät dem Solution Accelerator hinzugefügt haben.
 
 1. Navigieren Sie zum Stamm der geklonten Kopie des [Repositorys mit Azure IoT C SDKs](https://github.com/Azure/azure-iot-sdk-c), und führen Sie die folgenden Befehle zum Erstellen der Clientanwendung aus:
 

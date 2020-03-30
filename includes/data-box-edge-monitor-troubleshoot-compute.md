@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f3bb391dceb1948820d00c0d09229f2c106ffc0b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68601332"
 ---
 Auf einem Data Box Edge-Gerät, für das die Computerolle konfiguriert ist, steht eine Teilmenge von Docker-Befehlen zur Überwachung oder Problembehandlung von Modulen zur Verfügung. Um eine Liste der verfügbaren Befehle anzuzeigen, [stellen Sie eine Verbindung zur PowerShell-Schnittstelle her](#connect-to-the-powershell-interface), und verwenden Sie die `dkrdbe`-Funktion.
@@ -121,7 +121,7 @@ reateOptions":"{\"HostConfig\":{\"Binds\":[\"/home/hcsshares/share4-dl460:/home/
 
 Um Protokolle für einen bestimmten Container abzurufen, lassen Sie sich zunächst die Liste der Container erstellen. Rufen Sie dann die Protokolle für den Container ab, an denen Sie interessiert sind.
 
-1. [Stellen Sie eine Verbindung zur PowerShell-Schnittstelle her](#connect-to-the-powershell-interface).
+1. [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](#connect-to-the-powershell-interface).
 2. Führen Sie zum Abrufen der Liste der ausgeführten Container den Befehl `ps` aus.
 
     ```powershell
@@ -154,14 +154,14 @@ Um Protokolle für einen bestimmten Container abzurufen, lassen Sie sich zunäch
 
 Verwenden Sie den Befehl `stats`, um den Arbeitsspeicher, die CPU-Auslastung und die E/A-Prozesse auf dem Gerät zu überwachen.
 
-1. [Stellen Sie eine Verbindung zur PowerShell-Schnittstelle her](#connect-to-the-powershell-interface).
+1. [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](#connect-to-the-powershell-interface).
 2. Führen Sie den Befehl `stats` aus, um den Livestream zu deaktivieren und nur das erste Ergebnis abzurufen.
 
    ```powershell
    dkrdbe stats --no-stream
    ```
 
-   Das folgende Beispiel zeigt die Verwendung dieses Cmdlets:
+   Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets:
 
     ```
     [10.100.10.10]: P> dkrdbe stats --no-stream

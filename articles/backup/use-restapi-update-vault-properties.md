@@ -1,15 +1,15 @@
 ---
-title: Aktualisieren der Konfigurationseigenschaften eines Recovery Services-Tresors mithilfe der REST-API
+title: Aktualisieren der Konfigurationen für den Recovery Services-Tresor mit der REST-API
 description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tresors mithilfe der REST-API aktualisieren.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227434"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 

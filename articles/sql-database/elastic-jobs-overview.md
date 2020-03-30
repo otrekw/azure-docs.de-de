@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214477"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank
 
@@ -33,9 +33,9 @@ Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, fi
 
 ## <a name="create-run-and-manage-jobs"></a>Erstellen, Ausführen und Verwalten von Aufträgen
 
-1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank*.
+1. Erstellen Sie mithilfe von *PowerShell* oder [T-SQL](elastic-jobs-powershell.md) Anmeldeinformationen für die Auftragsausführung in der [Auftragsdatenbank](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
 2. Definieren Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) die Zielgruppe (also die Datenbanken, für die der Auftrag ausgeführt werden soll).
-3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](sql-database-control-access.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell.md).
+3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](sql-database-manage-logins.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell.md).
 4. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) einen Auftrag.
 5. Fügen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) Auftragsschritte hinzu.
 6. Führen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#run-the-job) oder [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) einen Auftrag aus.
@@ -77,7 +77,7 @@ Die Vorschauversion ist aktuell auf 100 gleichzeitige Aufträge beschränkt.
 
 Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden kann, kann beschränkt werden, um sicherzustellen, dass es beim Ausführen von Aufträgen für Datenbanken in einem elastischen SQL-Pool nicht zu einer Überlastung der Ressourcen kommt.
 
-Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `@max_parallelism` der gespeicherten Prozedur `sp_add_jobstep` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
+Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `sp_add_jobstep` der gespeicherten Prozedur `@max_parallelism` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
 
 ## <a name="best-practices-for-creating-jobs"></a>Best Practices für die Auftragserstellung
 

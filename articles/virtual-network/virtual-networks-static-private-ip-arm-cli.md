@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
 ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199477"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
@@ -66,7 +66,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     ```
 
    * `--resource-group`: Name der Ressourcengruppe, in der die öffentliche IP-Adresse erstellt werden soll.
-   * `--name`: Der Name der öffentlichen IP-Adresse.
+   * `--name`: Name der öffentlichen IP-Adresse.
    * `--location`: Azure-Region, in der die öffentliche IP-Adresse erstellt werden soll.
 
 3. Führen Sie den Befehl [az network nic create](/cli/azure/network/nic) aus, um eine NIC mit statischer privater IP-Adresse zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert. 
@@ -118,8 +118,8 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
     Parameter:
 
     * `--private-ip-address`: Statische private IP-Adresse für die Netzwerkkarte.
-    * `--vnet-name`: Der Name des VNET, in dem die NIC erstellt werden soll.
-    * `--subnet`: Der Name des Subnetzes, in dem die NIC erstellt werden soll.
+    * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
+    * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
 
 4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
@@ -151,7 +151,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
    
    Andere Parameter als die grundlegenden Parameter von [az vm create](/cli/azure/vm).
 
-   * `--nics`: Der Name der NIC, mit der die VM verknüpft wird.
+   * `--nics`: Name der NIC, mit der der virtuelle Computer verknüpft wird.
    
 Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-cli.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private).
 

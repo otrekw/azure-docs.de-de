@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889235"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
@@ -67,7 +67,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
 1. Achten Sie darauf, die Standardeinstellung **Cloud** für die Hostingumgebung beizubehalten.
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Stream Analytics-Auftrags](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 

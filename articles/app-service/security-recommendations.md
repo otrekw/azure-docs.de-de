@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
 ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684111"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
@@ -33,7 +33,7 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 | Schützen Sie Back-End-Ressourcen durch authentifizierte Zugriffe. | Sie können entweder die Identität des Benutzers oder die Identität einer Anwendung nutzen, um eine Authentifizierung bei einer Back-End-Ressource durchzuführen. Verwenden Sie im Fall einer Anwendungsidentität eine [verwaltete Identität](overview-managed-identity.md).
 | Erzwingen Sie die Authentifizierung mit Clientzertifikaten. | Die Authentifizierung mit Clientzertifikaten sorgt für mehr Sicherheit, da nur Verbindungen von Clients zugelassen werden, die sich mit von Ihnen bereitgestellten Zertifikaten authentifizieren können. |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Empfehlung | Kommentare |
 |-|-|

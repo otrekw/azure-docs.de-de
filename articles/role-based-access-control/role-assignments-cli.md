@@ -15,11 +15,11 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471991"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225374"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle
 
@@ -72,7 +72,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
+Im folgenden Beispiel wird dem Benutzer *patlong*contoso.com *im Ressourcengruppenkontext \@pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -97,7 +97,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) zugewiesen. Zum Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list) verwenden. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](built-in-roles.md).
+Im folgenden Beispiel wird dem Benutzer [patlong](built-in-roles.md#virtual-machine-contributor)contoso.com *im Ressourcengruppenkontext \@pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen. Zum Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list) verwenden. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -149,7 +149,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *annm\@example.com* im Abonnementbereich die Rolle *Reader* zugewiesen.
+Im folgenden Beispiel wird dem Benutzer *annm*example.com *im Abonnementbereich die Rolle \@Reader* zugewiesen.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -163,7 +163,7 @@ Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-ass
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* zugewiesen.
+Im folgenden Beispiel wird dem Benutzer *alain*example.com *im Verwaltungsgruppenbereich die Rolle \@Abrechnungsleser* zugewiesen.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -205,7 +205,7 @@ Im folgenden Beispiel wird die Rolle *Reader* von der Gruppe *Ann Mack Team* mit
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
+Im folgenden Beispiel wird dem Benutzer *alain*example.com *im Verwaltungsgruppenbereich die Rolle \@Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

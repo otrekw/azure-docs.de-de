@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78201066"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate 
@@ -76,7 +76,7 @@ Erstellen Sie Variablen, die die der Excel-Datei hinzugefügten Informationen da
 
 Fügen Sie den erstellten Variablen die folgenden Informationen hinzu. Sie stellen die Spalten der Excel-Datei dar. Wenn Variablen reduziert sind, können Sie darauf klicken, um sie zu erweitern.
 
-| Aktion |Name   | type | value |
+| Action |Name   | type | value |
 |---------|---------|---|---|
 | Initialisieren einer Variablen | var_person | String | Person |
 | Variable initialisieren 2 | var_phone | String | Phone_Number |

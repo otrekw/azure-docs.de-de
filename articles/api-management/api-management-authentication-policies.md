@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120820"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473556"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="AuthenticationPolicies"></a> Authentifizierungsrichtlinien
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Authentifizierungsrichtlinien
 
 -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.
 
@@ -31,7 +31,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   [Authentifizierung mit verwalteter Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung für den API Management-Dienst mit der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md).
 
-##  <a name="Basic"></a> Standardauthentifizierung
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a> Standardauthentifizierung
  Verwenden Sie die Richtlinie `authentication-basic` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung. Diese Richtlinie legt letztlich den HTTP-Autorisierungsheader auf den Wert fest, der den Anmeldeinformationen in der Richtlinie entspricht.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -66,7 +66,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="ClientCertificate"></a> Authentifizieren mit Clientzertifikat
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Authentifizieren mit Clientzertifikat
  Verwenden Sie die Richtlinie `authentication-certificate` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung eines Clientzertifikats. Das Zertifikat muss zuerst [in API Management installiert](https://go.microsoft.com/fwlink/?LinkID=511599) werden, es wird durch seinen Fingerabdruck identifiziert.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -94,7 +94,7 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
   
 ### <a name="attributes"></a>Attributes  
   
-|Name|Beschreibung|Erforderlich|Standard|  
+|Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
 |certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
@@ -106,8 +106,8 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
   
 -   **Richtlinienbereiche:** alle Bereiche  
 
-##  <a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
- Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Bearer` im Header `Authorization` fest.
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
+ Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet im Grunde die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. Wenn das Token erfolgreich abgerufen wurde, legt die Richtlinie den Wert des Tokens unter Verwendung des Schemas `Authorization` im Header `Bearer` fest.
   
 ### <a name="policy-statement"></a>Richtlinienanweisung  
   
@@ -118,7 +118,7 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 ### <a name="example"></a>Beispiel  
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Verwenden der verwalteten Identität für die Authentifizierung bei einem Back-End-Dienst
 ```xml  
-<authentication-managed-identity resource="https://graph.windows.net"/> 
+<authentication-managed-identity resource="https://graph.microsoft.com"/> 
 ```
 ```xml  
 <authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
@@ -147,7 +147,7 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|Name|Beschreibung|Erforderlich|  
+|Name|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Stammelement|Ja|  
   

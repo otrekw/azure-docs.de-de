@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059927"
 ---
 Exportieren Sie nach dem Erstellen eines selbstsignierten Stammzertifikats die CER-Datei für den öffentlichen Schlüssel des Stammzertifikats (nicht den privaten Schlüssel). Sie laden diese Datei später in Azure hoch. Führen Sie die folgenden Schritte aus, um die CER-Datei für Ihr selbstsigniertes Stammzertifikat zu exportieren:
 
 1. Öffnen Sie **Benutzerzertifikate verwalten**, um eine CER-Datei für das Zertifikat zu erhalten. Suchen Sie das selbstsignierte Stammzertifikat (in der Regel in „Zertifikate – Aktueller Benutzer\Eigene Zertifikate\Zertifikate“), und klicken Sie mit der rechten Maustaste darauf. Klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet. Wenn Sie das Zertifikat unter „Aktueller Benutzer\Eigene Zertifikate\Zertifikate“ nicht finden, haben Sie unter Umständen versehentlich „Zertifikate – Lokaler Benutzer“ anstelle von „Zertifikate – Aktueller Benutzer“ geöffnet. Wenn Sie den Zertifikat-Manager im Bereich für den aktuellen Benutzer mithilfe von PowerShell öffnen möchten, geben Sie *certmgr* ins Konsolenfenster ein.
 
-   ![Export](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![Exportieren](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. Klicken Sie im Assistenten auf **Weiter**.
 
    ![Exportieren des Zertifikats](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
@@ -37,7 +37,7 @@ Exportieren Sie nach dem Erstellen eines selbstsignierten Stammzertifikats die C
    ![Finish](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
 7. Das Zertifikat wurde erfolgreich exportiert.
 
-   ![Erfolgreich](./media/vpn-gateway-certificates-export-public-key-include/success.png)
+   ![Erfolg](./media/vpn-gateway-certificates-export-public-key-include/success.png)
 8. Das exportierte Zertifikat sieht in etwa wie folgt aus:
 
    ![Exportiert](./media/vpn-gateway-certificates-export-public-key-include/exported.png)

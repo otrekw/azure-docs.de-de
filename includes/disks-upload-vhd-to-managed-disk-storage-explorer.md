@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74013766"
 ---
 Storage-Explorer 1.10.0 ermöglicht Benutzern das Hochladen, Herunterladen und Kopieren verwalteter Datenträger sowie das Erstellen von Momentaufnahmen. Aufgrund dieser zusätzlichen Funktionen können Sie Storage-Explorer zum Migrieren von Daten an einem lokalen Standort nach Azure und zum Migrieren von Daten zwischen Azure-Regionen verwenden.

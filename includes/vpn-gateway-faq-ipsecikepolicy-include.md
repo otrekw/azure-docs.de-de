@@ -9,10 +9,10 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74903178"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wird die benutzerdefinierte IPsec-/IKE-Richtlinie von allen Azure VPN Gateway-SKUs unterstützt?
@@ -67,7 +67,7 @@ Wenn Sie **UsePolicyBasedTrafficSelectors** aktivieren, müssen für Ihr VPN-Ger
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-### <a name ="DH"></a>Welche Diffie-Hellman-Gruppen werden unterstützt?
+### <a name="which-diffie-hellman-groups-are-supported"></a><a name ="DH"></a>Welche Diffie-Hellman-Gruppen werden unterstützt?
 Die folgende Tabelle enthält die unterstützten Diffie-Hellman-Gruppen für IKE (DHGroup) und IPsec (PFSGroup):
 
 | **Diffie-Hellman-Gruppe**  | **DHGroup**              | **PFSGroup** | **Schlüssellänge** |

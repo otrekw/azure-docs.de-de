@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224882"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Konfigurieren von Benachrichtigungen und E-Mail-Vorlagen in Azure API Management
 
@@ -26,11 +26,11 @@ API Management bietet die Möglichkeit, Benachrichtigungen über spezifische Ere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie nicht über eine API Management-Dienstinstanz verfügen, absolvieren Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Wenn Sie über keine API Management-Dienstinstanz verfügen, absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"> </a>Konfigurieren von Benachrichtigungen
+## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>Konfigurieren von Benachrichtigungen
 
 1.  Wählen Sie Ihre **API MANAGEMENT**-Instanz aus.
 2.  Klicken Sie auf **Benachrichtigungen**, um die verfügbaren Benachrichtigungen anzuzeigen.
@@ -58,7 +58,7 @@ Wenn Sie nicht über eine API Management-Dienstinstanz verfügen, absolvieren Si
 
 4.  Klicken Sie auf **Hinzufügen**.
 
-## <a name="email-templates"> </a>Konfigurieren von Benachrichtigungsvorlagen
+## <a name="configure-notification-templates"></a><a name="email-templates"> </a>Konfigurieren von Benachrichtigungsvorlagen
 
 API Management enthält Benachrichtigungsvorlagen für die E-Mail-Nachrichten, die im Rahmen von Verwaltung und Nutzung des Diensts versendet werden. Die folgenden E-Mail-Vorlagen werden angeboten.
 

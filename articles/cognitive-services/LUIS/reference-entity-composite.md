@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695164"
 ---
 # <a name="composite-entity"></a>Entität vom Typ „Composite“ 
@@ -41,7 +41,7 @@ Beachten Sie, dass zwischen der Anzahl `2` und der ToLocation `cairo` Wörter st
 
 ![Entität vom Typ „Composite“](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zurückgegeben. Dabei werden auch alle Entitäten in dieser zusammengesetzten Entität im `entities`-Array zurückgegeben:
 
@@ -89,7 +89,7 @@ Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zu
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
 
@@ -172,7 +172,7 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 * * * 
 
 
-|Datenobjekt|Name der Entität|Wert|
+|Datenobjekt|Name der Entität|value|
 |--|--|--|
 |Vordefinierte Entität – number|"builtin.number"|"2"|
 |Vordefinierte Entität – GeographyV2|"Location::ToLocation"|"cairo"|

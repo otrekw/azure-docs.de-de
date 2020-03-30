@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588245"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Verbinden von Forcepoint DLP mit Azure Sentinel
@@ -36,7 +36,7 @@ Mit dem Forcepoint DLP-Connector können Sie DLP-Incidentdaten automatisch in Az
 Konfigurieren Sie Forcepoint DLP so, dass Incidentdaten im JSON-Format über die REST-API an Ihren Azure-Arbeitsbereich weitergeleitet werden, wie im [Forcepoint DLP-Integrationshandbuch](https://frcpnt.com/dlp-sentinel) erläutert.
 
 
-## <a name="find-your-data"></a>Suchen von Daten
+## <a name="find-your-data"></a>Suchen nach den Daten
 
 Nachdem der Forcepoint DLP-Connector eingerichtet wurde, werden die Daten in Log Analytics unter „CustomLogs **ForcepointDLPEvents_CL**“ angezeigt.
 

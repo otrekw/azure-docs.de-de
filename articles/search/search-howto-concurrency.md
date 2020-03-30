@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792218"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Verwalten der Parallelität in der kognitiven Azure-Suche
@@ -22,7 +22,7 @@ Beim Verwalten von Ressourcen der kognitiven Azure-Suche wie Indizes und Datenqu
 > [!Tip]
 > Der konzeptionelle Code in einer [C#-Beispiellösung](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) dient der Erläuterung der Funktionsweise der Parallelitätssteuerung in der kognitiven Azure-Suche. Mit dem Code werden Bedingungen erstellt, die die Parallelitätssteuerung aufrufen. Den meisten Entwickler genügt es, das [Codefragment unten](#samplecode) durchzulesen. Wenn Sie es jedoch ausführen möchten, bearbeiten Sie die Datei „appsettings.json“, indem Sie den Dienstnamen und einen Admin-API-Schlüssel hinzufügen. Wenn die Dienst-URL von `http://myservice.search.windows.net` lautet, ist der Dienstname `myservice`.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Die optimistische Nebenläufigkeit ist über Prüfungen von Zugriffsbedingungen in API-Aufrufen implementiert, die in Indizes, Indexer, Datenquellen und synonymMap-Ressourcen schreiben.
 
@@ -44,7 +44,7 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 + Updatefehler, wenn die Ressource nicht mehr vorhanden ist
 + Updatefehler, wenn sich die Ressourcenversion geändert hat
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>Beispielcode aus dem [DotNetETagsExplainer-Programm](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Beispielcode aus dem [DotNetETagsExplainer-Programm](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
 ```
     class Program

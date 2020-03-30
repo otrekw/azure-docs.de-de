@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012582"
 ---
 # <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
@@ -54,7 +54,7 @@ Sie müssen außerdem Ihr Abonnement registriert haben, um den NetApp-Ressourcen
      ![Neues NetApp-Konto](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Klicken Sie auf **Create**.     
+5. Klicken Sie auf **Erstellen**.     
    Das erstellte NetApp-Konto wird nun auf dem Blatt „Azure NetApp Files“ angezeigt. 
 
 > [!NOTE] 

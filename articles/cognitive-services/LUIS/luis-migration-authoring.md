@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194508"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
@@ -78,7 +78,7 @@ Führen Sie [diese Migrationsschritte](luis-migration-authoring-steps.md) aus.
 
 Nach dem Migrationsprozess sind Ihre sämtlichen LUIS-Apps einer einzigen LUIS-Erstellungsressource zugewiesen.
 
-Sie können weitere Erstellungsressourcen erstellen und diese im _LUIS-Portal_ über die Seite **Verwalten -> Azure-Ressourcen** zuweisen.
+Sie können weitere Erstellungsressourcen erstellen und diese im **LUIS-Portal** über die Seite _Verwalten -> Azure-Ressourcen_ zuweisen.
 
 Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im _Azure-Portal_ zur **Zugriffssteuerung (IAM)** -Seite für diese Ressource wechseln. Weitere Informationen finden Sie unter [Hinzufügen von Mitwirkendenzugriff](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 

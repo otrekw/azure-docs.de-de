@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227538"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Anmeldeinformationsobjekte in Azure Automation
 
@@ -29,7 +29,7 @@ Ein Automation-Anmeldeinformationsobjekt enthält ein Objekt, das Sicherheitsanm
 
 Im Az-Modul der Azure PowerShell werden die Cmdlets in der folgenden Tabelle zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [AzureAz.Automation-Moduls](/powershell/azure/new-azureps-module-az?view=azps-1.1.0), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-| Cmdlets | Beschreibung |
+| Cmdlets | BESCHREIBUNG |
 |:--- |:--- |
 | [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab. Dies gibt kein PSCredential-Objekt zurück.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Erstellt ein neues Anmeldeinformationsobjekt. |
@@ -40,7 +40,7 @@ Im Az-Modul der Azure PowerShell werden die Cmdlets in der folgenden Tabelle zum
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
 
-| activities | Beschreibung |
+| activities | BESCHREIBUNG |
 |:--- |:--- |
 | Get-AutomationPSCredential |Ruft Anmeldeinformationen zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) -Objekt zurück. |
 
@@ -51,7 +51,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinf
 
 Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem Python2-Runbook zugegriffen.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |:---|:---|
 | automationassets.get_automation_credential | Ruft Informationen zu einem Anmeldeinformationsobjekt ab. |
 

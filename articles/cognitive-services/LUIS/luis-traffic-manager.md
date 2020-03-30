@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70256605"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
@@ -368,7 +368,7 @@ Damit Datenverkehr endpunktübergreifend verwaltet werden kann, müssen Sie eine
 
 Aktivieren Sie [Diagnoseprotokolle](../../traffic-manager/traffic-manager-diagnostic-logs.md) für Traffic Manager, um festzustellen, warum der Endpunktstatus heruntergestuft wurde.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Entfernen Sie die beiden LUIS-Endpunktschlüssel, die drei Traffic Manager-Profile und die Ressourcengruppe, die die fünf Ressourcen enthalten hat. Dies erfolgt im Azure-Portal. Löschen Sie zuerst die fünf Ressourcen aus der Ressourcenliste. Löschen Sie dann die Ressourcengruppe. 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667759"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236414"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -30,11 +30,11 @@ Die folgende Tabelle enthält eine Liste mit Compute-Umgebungen, die von Data Fa
 | ---------------------------------------- | ---------------------------------------- |
 | [Bedarfsgesteuerter Azure HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Aktivitäten mit maschinellem Lernen: „Batchausführung“ und „Ressource aktualisieren“](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) |
 
-## <a name="supported-hdinsight-versions-in-azure-data-factory"></a>In Data Factory unterstützte HDInsight-Versionen
+## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>In Data Factory unterstützte HDInsight-Versionen
 Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die Sie jederzeit bereitstellen können. Jede unterstützte Version erstellt eine bestimmte Version der HDP-Distribution (Hortonworks Data Platform) und eine Reihe von Komponenten in der Distribution. 
 
 Die Liste der unterstützten HDInsight-Versionen wird von Microsoft mit den neuesten Komponenten und Korrekturen für das Hadoop-Ökosystem aktualisiert. Ausführliche Informationen finden Sie unter [Unterstützte HDInsight-Versionen](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions).
@@ -118,7 +118,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja      |
@@ -213,7 +213,7 @@ Wenn Sie Haupt- und Workerknoten mit der Größe „D4“ erstellen möchten, ge
 
 Sollten Sie für diese Eigenschaften einen falschen Wert festgelegt haben, erscheint unter Umständen die folgende Meldung:
 
-  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. 
+  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: "Fehler". Nachricht: "PreClusterCreationValidationFailure" 
   
 Sollte diese Meldung angezeigt werden, vergewissern Sie sich, dass Sie die Cmdlet- und API-Namen aus der Tabelle unter [Größen für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/sizes.md) verwenden.  
 
@@ -254,7 +254,7 @@ Sie können einen verknüpften HDInsight-Dienst erstellen, um Ihren eigenen HDIn
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight** fest. | Ja      |
@@ -302,7 +302,7 @@ Eine weitere Möglichkeit ist die Angabe des Endpunkts **batchUri**. Beispiel:
 "batchUri": "https://eastus.batch.azure.com",
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja      |
@@ -329,7 +329,7 @@ Sie können einen verknüpften Machine Learning-Dienst erstellen, um einen Machi
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft   | BESCHREIBUNG                              | Erforderlich |
 | ---------- | ---------------------------------------- | -------- |
 | type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
@@ -391,7 +391,7 @@ Geben Sie für die Authentifizierung mit Benutzeranmeldeinformationen für Data 
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**. Geben Sie die Anmeldeinformationen ein, die die automatisch generierte URL dieser Eigenschaft zuweist. | Ja      |
-| sessionId     | Die OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja      |
+| sessionID     | Die OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja      |
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
 ```json
@@ -416,7 +416,7 @@ Der Autorisierungscode, den Sie mit der Schaltfläche **Autorisieren** generiert
 
 Wenn das Authentifizierungstoken abläuft, wird möglicherweise folgende Fehlermeldung angezeigt: 
 
-  Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z
+  Fehler beim Anmeldevorgang: invalid_grant - AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
 
 Die folgende Tabelle enthält Ablaufzeiten nach Benutzerkontotyp: 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Konten und Berechtigungen | Microsoft-Dokumentation'
+title: Azure AD Connect-Konten und -Berechtigungen | Microsoft-Dokumentation
 description: Dieses Thema beschreibt die verwendeten und erstellten Konten sowie die erforderlichen Berechtigungen.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960225"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227866"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -55,8 +55,7 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 > [!NOTE]
 > Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
 > Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
-> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE Administrative Forest Design Approach](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) (ESAE-Ansatz für administrative Gesamtstrukturen).
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE-basierter Ansatz für den Entwurf einer administrativen Gesamtstruktur](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
 > Die Rolle „Globaler Administrator“ ist nach der ersten Installation nicht erforderlich. Das einzige erforderliche Konto ist das Rollenkonto **Verzeichnissynchronisierungskonten**. Dies bedeutet nicht unbedingt, dass Sie das Konto mit der Rolle „Globaler Administrator“ einfach entfernen sollten. Sie sollten stattdessen besser die Rolle in eine Rolle mit weniger Berechtigungen ändern, da das vollständige Entfernen des Kontos zu Problemen führen kann, wenn Sie den Assistenten erneut ausführen müssen. Indem Sie die Berechtigungen der Rolle verringern, können Sie sie jederzeit erneut erhöhen, wenn Sie den Azure AD Connect-Assistenten erneut verwenden müssen. 
@@ -86,7 +85,7 @@ Diese Anmeldeinformationen werden während der Installation verwendet, nach Absc
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS Connector-Konto zum Erstellen von Berechtigungen für Expresseinstellungen
 Das AD DS Connector-Konto wird zum Erstellen von Lese- und Schreibvorgängen in Windows Server AD erstellt und besitzt die folgenden Berechtigungen, wenn es mit den Expresseinstellungen erstellt wird:
 
-| Berechtigung | Verwendung |
+| Berechtigung | Syntaxelemente |
 | --- | --- |
 | <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
@@ -134,7 +133,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 >[!IMPORTANT]
 >Mit Build **1.1.880.0** (August 2018 veröffentlicht) wurde ein neues PowerShell-Modul namens „ADSyncConfig.psm1“ eingeführt, das eine Sammlung von Cmdlets enthält, die Ihnen bei der Konfiguration der richtigen Active Directory-Berechtigungen für Ihr Azure AD DS-Connector-Konto helfen sollen.
 >
->Weitere Informationen hierzu finden Sie unter [Azure AD Connect: Konfigurieren der Azure AD DS-Connector-Kontoberechtigung](how-to-connect-configure-ad-ds-connector-account.md)
+>Weitere Informationen finden Sie unter [Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen](how-to-connect-configure-ad-ds-connector-account.md).
 
 Das Konto, das Sie auf der Seite **Verzeichnisse verbinden** angeben, muss vor der Installation bereits in Active Directory vorhanden sein.  In Azure AD Connect Version 1.1.524.0 und höher kann der Azure AD Connect-Assistent das **AD DS Connector-Konto** erstellen, das zum Herstellen der Verbindung mit Active Directory verwendet wird.  
 
@@ -142,7 +141,7 @@ Es muss auch über die erforderlichen Berechtigungen verfügen. Der Installation
 
 Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funktionen ab. Wenn Sie über mehrere Domänen verfügen, müssen die Berechtigungen für alle Domänen in der Gesamtstruktur erteilt werden. Wenn Sie keine dieser Features aktivieren, sind die **Domänenbenutzer** -Standardberechtigungen ausreichend.
 
-| Feature | Berechtigungen |
+| Funktion | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
 | Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
@@ -152,18 +151,18 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Geräterückschreiben |Berechtigungen, die mit einem PowerShell-Skript erteilt wurden, wie unter [Geräterückschreiben](how-to-connect-device-writeback.md)beschrieben |
 | Gruppenrückschreiben |Ermöglicht das Rückschreiben von **Office 365-Gruppen** in eine Gesamtstruktur, in der Exchange installiert ist.  Weitere Informationen finden Sie unter [Gruppenrückschreiben](how-to-connect-preview.md#group-writeback).|
 
-## <a name="upgrade"></a>Upgrade
+## <a name="upgrade"></a>Aktualisieren
 Wenn Sie Azure AD Connect auf eine höhere Version aktualisieren, benötigen Sie folgende Berechtigungen:
 
 >[!IMPORTANT]
 >Seit Build 1.1.484 tritt in Azure AD Connect ein Regressionsfehler auf, aufgrund dessen zum Aktualisieren der SQL-Datenbank Systemadministratorberechtigungen erforderlich sind.  Dieser Fehler wurde in Build 1.1.647 behoben.  Für das Upgrade auf diesen Build benötigen Sie Systemadministratorberechtigungen.  dbo-Berechtigungen sind nicht ausreichend.  Wenn Sie versuchen, Azure AD Connect ohne Systemadministratorberechtigungen zu aktualisieren, tritt ein Fehler auf, und Azure AD Connect funktioniert anschließend nicht mehr ordnungsgemäß.  Microsoft ist sich dieses Problems bewusst und arbeitet an einer Lösung.
 
 
-| Prinzipal | Erforderliche Berechtigungen | Verwendung |
+| Prinzipal | Erforderliche Berechtigungen | Syntaxelemente |
 | --- | --- | --- |
 | Benutzer, der den Installations-Assistenten ausführt |Administrator des lokalen Servers |Aktualisieren von Binärdateien. |
 | Benutzer, der den Installations-Assistenten ausführt |Mitglied von ADSyncAdmins |Vornehmen von Änderungen an den Synchronisierungsregeln und anderen Konfigurationen. |
-| Benutzer, der den Installations-Assistenten ausführt |Wenn Sie einen vollständigen SQL-Server verwenden: DBO (oder ähnliches) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
+| Benutzer, der den Installations-Assistenten ausführt |Bei Verwendung einer SQL Server-Instanz mit vollem Funktionsumfang: DBO (oder ähnlich) der Datenbank für das Synchronisierungsmodul |Vornehmen von Änderungen auf Datenbankebene, z. B. Aktualisieren von Tabellen mit neuen Spalten. |
 
 ## <a name="more-about-the-created-accounts"></a>Weitere Informationen zu den erstellten Konten
 ### <a name="ad-ds-connector-account"></a>AD DS Connector-Konto
@@ -266,7 +265,7 @@ Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure 
 |Azure AD Connect herunterladen | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](how-to-connect-install-express.md)|
 |Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md)|
+|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Nächste Schritte

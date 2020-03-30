@@ -9,10 +9,10 @@ ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77135158"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
@@ -41,5 +41,5 @@ Für Windows Server 2019, Windows Server 2016 und Windows 10 (bis Build 1909
 - [GRID 10.0 (441.66)](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) (EXE-Datei) 
 
 Für Windows Server 2012 R2, Windows Server 2008 R2, Windows 8 und Windows 7: 
-- [GRID 10.1 (442.06)](https://go.microsoft.com/fwlink/?linkid=874184) (EXE-Datei)
+- [GRID 10.1 (442.06)](https://go.microsoft.com/fwlink/?linkid=874184) (EXE-Datei)
 - [GRID 10.0 (441.66)](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (EXE-Datei)  

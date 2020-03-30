@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230474"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -29,15 +29,10 @@ Dieser Artikel:
 
 ## <a name="manage-device-identities"></a>Verwalten von Geräteidentitäten
 
-Das Azure AD-Portal bietet Ihnen einen zentralen Ort zum Verwalten Ihrer Geräteidentitäten. Sie können über einen [direkten Link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) oder mithilfe der folgenden manuellen Schritte zu diesem zentralen Ort gelangen:
+Das Azure AD-Portal bietet Ihnen einen zentralen Ort zum Verwalten Ihrer Geräteidentitäten. Sie können über einen [direkten Link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) dorthin gelangen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-
-2. Suchen Sie **Azure Active Directory**, und wählen Sie es aus, oder wählen Sie es auf der **Startseite** aus.
-
-3. Klicken Sie im Bereich **Verwalten** auf **Geräte**.
-
-   ![Konfigurieren der Geräteeinstellungen](./media/device-management-azure-portal/74.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Azure Active Directory** > **Geräte**.
 
 Auf der Seite **Geräte** können Sie folgende Aktivitäten ausführen:
 
@@ -50,9 +45,7 @@ Auf der Seite **Geräte** können Sie folgende Aktivitäten ausführen:
 
 Damit Ihre Geräteidentitäten im Azure AD-Portal verwaltet werden können, müssen diese in Azure AD [registriert oder eingebunden](overview.md) (d.h. mit Azure AD verknüpft) werden. Als Administrator können Sie den Prozess der Registrierung und Verknüpfung von Geräten optimieren, indem Sie die Geräteeinstellungen konfigurieren.
 
-![Konfigurieren der Geräteeinstellungen](./media/device-management-azure-portal/22.png)
-
-Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
+Die Seite mit den Geräteeinstellungen ermöglicht es Ihnen, Einstellungen zu konfigurieren, die sich auf die Identität von Geräten beziehen:
 
 ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/21.png)
 
@@ -63,7 +56,7 @@ Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
 
 - **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**: Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Hier hinzugefügte Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
 - **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die Registrierung von Windows 10-, persönlichen, iOS-, Android- und macOS-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung für Office 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
-- **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-whichversion.md). 
+- **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert ist **No**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-whichversion.md). 
 
 > [!NOTE]
 > Die Einstellung **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** gilt für Geräte, die entweder in Azure AD eingebunden oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
@@ -81,12 +74,7 @@ Diese Option ist eine Premium-Funktion, die über Produkte wie Azure AD Premium 
 Sie haben zwei Optionen, um nach registrierten und eingebundenen Geräten zu suchen:
 
 - **Alle Geräte** im Abschnitt **Verwalten** der Seite **Geräte**  
-
-   ![Alle Geräte](./media/device-management-azure-portal/41.png)
-
 - **Geräte** im Abschnitt **Verwalten** der Seite **Benutzer**
-
-   ![Alle Geräte](./media/device-management-azure-portal/43.png)
 
 Bei beiden Optionen erhalten Sie eine Ansicht, die:
 
@@ -147,7 +135,7 @@ Sie haben zwei Optionen, um ein Gerät zu löschen:
 
 - Symbolleiste auf der Seite **Geräte**
 
-   ![Gerät löschen](./media/device-management-azure-portal/34.png)
+   ![Löschen eines Mediums](./media/device-management-azure-portal/34.png)
 
 **Hinweise:**
 
@@ -193,9 +181,7 @@ Geräteaktivitäten sind über die Aktivitätsprotokolle verfügbar. Diese Proto
 
 Ihr Einstiegspunkt für die Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** der Seite **Geräte**.
 
-![Überwachungsprotokolle](./media/device-management-azure-portal/61.png)
-
-Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
+Das Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
 - Datum und Uhrzeit des Auftretens
 - Ziele

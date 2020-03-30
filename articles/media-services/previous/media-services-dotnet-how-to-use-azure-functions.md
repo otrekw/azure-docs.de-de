@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227066"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
@@ -46,13 +46,13 @@ Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariabl
 
 Bei der in diesem Artikel definierte Funktion wird davon ausgegangen, dass Sie die folgenden Umgebungsvariablen in den App-Einstellungen definiert haben:
 
-**AMSAADTenantDomain**: Azure AD-Mandantenendpunkt. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
+**AMSAADTenantDomain**: Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
 
-**AMSRESTAPIEndpoint**:  URI, der den REST-API-Endpunkt darstellt. 
+**AMSRESTAPIEndpoint**: URI, der den REST-API-Endpunkt darstellt. 
 
 **AMSClientId**: Client-ID der Azure AD-Anwendung.
 
-**AMSClientSecret**: Clientgeheimnis der Azure AD-Anwendung.
+**AMSClientSecret** – geheimer Clientschlüssel der Azure AD-Anwendung
 
 **StorageConnection**: Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
 
@@ -70,7 +70,7 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klicken Sie auf **Create**. 
+4. Klicken Sie auf **Erstellen**. 
 
 ## <a name="files"></a>Dateien
 
@@ -135,7 +135,7 @@ Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes:
 
 In der Praxis möchten Sie wahrscheinlich den Auftragsstatus nachverfolgen und Ihr codiertes Medienobjekt dann veröffentlichen. Weitere Informationen finden Sie unter [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md). Weitere Beispiele finden Sie unter [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch den folgenden Code: Klicken Sie auf **Speichern und ausführen**, nachdem Sie die Funktion definiert haben.
+Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch folgenden Code: Wenn Sie mit der Definition Ihrer Funktion fertig sind, klicken Sie auf **Speichern und ausführen**.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"

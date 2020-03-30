@@ -5,11 +5,11 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234190"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
@@ -230,13 +230,13 @@ Gehen Sie wie folgt vor:
 
 Mit den folgenden Beispielen wird veranschaulicht, wie Sie eine Einstellung zur automatischen Skalierung einer VM-Skalierungsgruppe für ein Windows-Betriebssystem basierend auf der Metrik für die CPU-Auslastung erstellen können.
 
-Erstellen Sie zunächst eine Regel für das horizontale Hochskalieren mit einer Erhöhung der Anzahl der Instanzen.
+Erstellen Sie zunächst eine Regel für das Aufskalieren mit einer Erhöhung der Anzahl der Instanzen.
 
 ```powershell
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-Erstellen Sie dann eine Regel für das horizontale Herunterskalieren mit einer Verringerung der Anzahl der Instanzen.
+Erstellen Sie dann eine Regel für das Abskalieren mit einer Verringerung der Anzahl der Instanzen.
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1

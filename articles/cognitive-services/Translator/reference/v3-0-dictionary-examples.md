@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548066"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
@@ -33,15 +33,15 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-| Abfrageparameter | Beschreibung |
+| Abfrageparameter | BESCHREIBUNG |
 | --------- | ----------- |
 | api-version <img width=200/> | **Erforderlicher Parameter**.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
-| from | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Quellsprache auswählen. |
-| zu | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum `dictionary`-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen.  | 
+| from | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Eingabetexts an. Sie müssen eine der zum [-Bereich hinzugefügten ](./v3-0-languages.md)unterstützten Sprachen`dictionary` als Quellsprache auswählen. |
+| zu | **Erforderlicher Parameter**.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum [-Bereich hinzugefügten ](./v3-0-languages.md)unterstützten Sprachen`dictionary` als Zielsprache auswählen.  | 
 
 Anforderungsheader enthalten Folgendes:
 
-| Header  | Beschreibung |
+| Header  | BESCHREIBUNG |
 | ------ | ----------- |
 | Authentifizierungsheader <img width=200/>  | **Erforderlicher Anforderungsheader**.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>. |
 | Content-Type | **Erforderlicher Anforderungsheader**.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`. |
@@ -73,23 +73,23 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeichenfolge im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `normalizedSource`: Eine Zeichenfolge, die die normalisierte Form des Ausgangsbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Text`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
+  * `normalizedSource`: eine Zeichenfolge, die die normalisierte Form des Quellbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Text`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
     
-  * `normalizedTarget`: Eine Zeichenfolge, die die normalisierte Form des Zielbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Translation`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
+  * `normalizedTarget`: eine Zeichenfolge, die die normalisierte Form des Zielbegriffs angibt. In der Regel sollte dieser Wert mit dem Wert des `Translation`-Felds übereinstimmen, das Bestandteil des entsprechenden Listenindex im Anforderungstext ist.
   
-  * `examples`: Eine Liste von Beispielen für das Begriffspaar (Begriff in der Ausgangssprache + Begriff in der Zielsprache). Jedes Listenelement ist ein Objekt mit den folgenden Zeichenfolgeneigenschaften:
+  * `examples`: eine Liste von Beispielen für das Begriffspaar (Begriff in der Ausgangssprache + Begriff in der Zielsprache). Jedes Listenelement ist ein Objekt mit den folgenden Zeichenfolgeneigenschaften:
 
-    * `sourcePrefix`: Die Zeichenfolge, die _vor_ dem Wert von `sourceTerm` verkettet werden soll, um ein vollständiges Beispiel zu bilden. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
+    * `sourcePrefix`: die Zeichenfolge, die verkettet werden soll, _bevor_ der Wert von `sourceTerm` ein vollständiges Beispiel erstellen kann. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
 
-    * `sourceTerm`: Eine Zeichenfolge, die dem tatsächlich nachgeschlagenen Begriff entspricht. Die Zeichenfolge wird durch `sourcePrefix` und `sourceSuffix` hinzugefügt, um ein vollständiges Beispiel zu erstellen. Der Wert der Zeichenfolge wird unterteilt, sodass dieser auf einer Benutzeroberfläche z.B. durch Fettformatierung markiert werden kann.
+    * `sourceTerm`: eine Zeichenfolge, die dem tatsächlich nachgeschlagenen Begriff entspricht. Die Zeichenfolge wird durch `sourcePrefix` und `sourceSuffix` hinzugefügt, um ein vollständiges Beispiel zu erstellen. Der Wert der Zeichenfolge wird unterteilt, sodass dieser auf einer Benutzeroberfläche z.B. durch Fettformatierung markiert werden kann.
 
-    * `sourceSuffix`: Die Zeichenfolge, die _hinter_ dem Wert von `sourceTerm` verkettet werden soll, um ein vollständiges Beispiel zu bilden. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
+    * `sourceSuffix`: die Zeichenfolge, die verkettet werden soll, _nachdem_ der Wert von `sourceTerm` ein vollständiges Beispiel erstellen kann. Fügen Sie kein Leerzeichen hinzu, da erforderliche Leerzeichen bereits hinzugefügt worden sein sollten. Bei diesem Wert kann es sich auch um eine leere Zeichenfolge handeln.
 
-    * `targetPrefix`: Eine Zeichenfolge, die `sourcePrefix` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetPrefix`: eine Zeichenfolge, die `sourcePrefix` ähnelt, aber dem Ziel zugewiesen ist.
 
-    * `targetTerm`: Eine Zeichenfolge, die `sourceTerm` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetTerm`: eine Zeichenfolge, die `sourceTerm` ähnelt, aber dem Ziel zugewiesen ist.
 
-    * `targetSuffix`: Eine Zeichenfolge, die `sourceSuffix` ähnelt, aber dem Ziel zugewiesen ist.
+    * `targetSuffix`: eine Zeichenfolge, die `sourceSuffix` ähnelt, aber dem Ziel zugewiesen ist.
 
     > [!NOTE]
     > Wenn es keine Beispiele im Wörterbuch gibt, lautet die Antwort zwar „200 (OK)“, aber die `examples`-Liste ist leer.

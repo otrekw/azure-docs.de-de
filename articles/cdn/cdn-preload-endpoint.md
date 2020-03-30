@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593578"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vorabladen von Assets auf einen Azure CDN-Endpunkt
@@ -68,6 +68,6 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
-* [REST-API-Referenz zu Azure CDN: Vorabladen von Inhalten auf einen Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [REST-API-Referenz zu Azure CDN: Löschen von Inhalten von einem Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN-REST-API-Referenz: Vorabladen von Assets auf einen Azure CDN-Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN-REST-API-Referenz: Löschen von Inhalt von einem Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

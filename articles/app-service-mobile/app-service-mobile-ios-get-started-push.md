@@ -7,10 +7,10 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: ad58ee158a2e1842c1b41db281bdd9f04b9b2ca4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461503"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App
@@ -25,11 +25,11 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 Der [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Sie benötigen ein physisches iOS-Gerät und eine [Apple-Entwicklerprogramm-Mitgliedschaft](https://developer.apple.com/programs/ios/).
 
-## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
+## <a name="configure-notification-hub"></a><a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Registrieren der App für Pushbenachrichtigungen
+## <a name="register-app-for-push-notifications"></a><a id="register"></a>Registrieren der App für Pushbenachrichtigungen
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
@@ -37,19 +37,19 @@ Der [iOS-Simulator unterstützt keine Pushbenachrichtigungen](https://developer.
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a id="update-server"></a>Aktualisieren des Back-Ends zum Senden von Pushbenachrichtigungen
+## <a name="update-backend-to-send-push-notifications"></a><a id="update-server"></a>Aktualisieren des Back-Ends zum Senden von Pushbenachrichtigungen
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a name="add-push-notifications-to-app"></a><a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
 
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a id="test"></a>Testen von Pushbenachrichtigungen
+## <a name="test-push-notifications"></a><a id="test"></a>Testen von Pushbenachrichtigungen
 
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a id="more"></a>Weitere Informationen
+## <a name="more"></a><a id="more"></a>Weitere Informationen
 
 * : Mithilfe von Vorlagen können Sie flexibel plattformübergreifende Pushvorgänge und lokalisierte Pushvorgänge senden. [Verwenden der iOS-Clientbibliothek für Azure Mobile Apps](app-service-mobile-ios-how-to-use-client-library.md#templates) wird erklärt, wie Sie Vorlagen registrieren.
 

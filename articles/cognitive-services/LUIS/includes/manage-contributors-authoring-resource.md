@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: c63356ba81aefb2ac28bd5f077bd743488656cfc
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 192d3d1a7bd792779b068a9c0c7ac34c7bee1c80
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279432"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116893"
 ---
 Wenn Ihre Apps von anderen Personen erstellt werden müssen, müssen Sie die zugehörigen E-Mail-Adressen in der Dokumenterstellungsressource des Azure-Portals hinzufügen.
 
@@ -26,4 +26,4 @@ Wenn Sie **nicht der Besitzer oder Administrator Ihres Azure-Abonnements** sind,
 Wenn Sie Probleme mit dieser Rollenzuweisung haben, lesen Sie Folgendes:
 
 * [Azure-Rollenzuweisungen](../../../role-based-access-control/role-assignments-portal.md)
- * [Beheben von Problemen bei der Azure-Zugriffssteuerung](../../../role-based-access-control/troubleshooting.md#problems-with-rbac-role-assignments)
+* [Beheben von Problemen bei der Azure-Zugriffssteuerung](../../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)

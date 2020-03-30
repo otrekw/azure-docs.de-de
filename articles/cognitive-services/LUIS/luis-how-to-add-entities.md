@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219136"
 ---
 # <a name="add-entities-to-extract-data"></a>Hinzufügen von Entitäten zum Extrahieren von Daten 
 
@@ -52,7 +52,7 @@ Verwenden Sie die folgende Tabelle, um zu verstehen, welche Entitäten wo erstel
 |Vordefinierte Entität|Entitäten|
 |Vordefinierte Domänenentität|Entitäten|
 
-Sie können alle Entitäten auf der Seite **Entitäten** erstellen, oder Sie können einige Entitäten im Rahmen der Bezeichnung der Entität in der Beispieläußerung auf der Seite **Absichtsdetails** erstellen. Sie können eine Entität in einer Beispieläußerung von der Seite **Absichtsdetails** nur _bezeichnen_. 
+Sie können alle Entitäten auf der Seite **Entitäten** erstellen, oder Sie können einige Entitäten im Rahmen der Bezeichnung der Entität in der Beispieläußerung auf der Seite **Absichtsdetails** erstellen. Sie können eine Entität in einer Beispieläußerung von der Seite _Absichtsdetails_ nur **bezeichnen**. 
 
 ## <a name="create-a-machine-learned-entity"></a>Erstellen einer durch maschinelles Lernen erworbenen Entität
 
@@ -88,7 +88,7 @@ Die folgende Liste zeigt den kanonischen Namen und die Synonyme.
 
 |Farbe – Name des Listenelements|Farbe – Synonyme|
 |--|--|
-|Rot|Karmesin, Blut, Apfel, Feuerwehr|
+|Red|Karmesin, Blut, Apfel, Feuerwehr|
 |Blau|Himmel, Azur, Kobalt|
 |Grün|Kelly, Limette|
 

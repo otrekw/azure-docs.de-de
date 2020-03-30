@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d9ff01cf0180dae7f75d9753ba889d0caddad937
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773985"
 ---
-In diesem Abschnitt wird beschrieben, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
+Dieser Abschnitt beschreibt, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
 
 ### <a name="add-direct-peering-connections"></a>Hinzufügen von Direct Peering-Verbindungen
 1. Klicken Sie oben auf die Schaltfläche **+ Verbindungen hinzufügen**, und konfigurieren Sie eine neue Peeringverbindung.
@@ -32,7 +32,7 @@ Das Entfernen einer Verbindung wird derzeit im Portal nicht unterstützt. Wenden
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Upgrade oder Downgrade der Bandbreite in aktiven Verbindungen
 1. Klicken Sie auf eine Peeringverbindung, die Sie ändern möchten, und klicken Sie dann auf die Schaltfläche **...**  > **Verbindung bearbeiten**.
     > [!div class="mx-imgBorder"]
-    > ![Peeringverbindung bearbeiten](../media/setup-direct-modify-editconnection.png)
+    > ![Peeringverbindung: Bearbeiten](../media/setup-direct-modify-editconnection.png)
 1. Ändern Sie die Bandbreite wie unten dargestellt, und klicken Sie dann auf **Speichern**.
     > [!div class="mx-imgBorder"]
     > ![Peeringverbindung – Bandbreite ändern](../media/setup-direct-modify-editconnectionsettings.png)

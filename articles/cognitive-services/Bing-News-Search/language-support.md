@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218876"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Sprach- und Regionsunterstützung für die Bing-News-Suche-API
 
@@ -38,8 +38,8 @@ Eine Liste der Länder-/Regionscodes, die Sie im `cc`-Abfrageparameter angeben k
 |Schweiz|Deutsch|de-CH|
 |Deutschland|Deutsch|de-DE|
 |Australien|Englisch|en-AU|
-|Kanada|Englisch|en-CA|
-|Vereinigtes Königreich|Englisch|en-GB|
+|Canada|Englisch|en-CA|
+|United Kingdom|Englisch|en-GB|
 |Indonesien|Englisch|en-ID|
 |Irland|Englisch|en-IE|
 |Indien|Englisch|en-IN|
@@ -47,7 +47,7 @@ Eine Liste der Länder-/Regionscodes, die Sie im `cc`-Abfrageparameter angeben k
 |Neuseeland|Englisch|en-NZ|
 |Republik Philippinen|Englisch|en-PH|
 |Singapur|Englisch|en-SG|
-|USA|Englisch|en-US|
+|USA|Englisch|de-DE|
 |Englisch|allgemein|en-WW|
 |Englisch|allgemein|en-XA|
 |Südafrika|Englisch|en-ZA|
@@ -59,7 +59,7 @@ Eine Liste der Länder-/Regionscodes, die Sie im `cc`-Abfrageparameter angeben k
 |Spanisch|allgemein|es-XL|
 |Finnland|Finnisch|fi-FI|  
 |Frankreich|Französisch|fr-BE|
-|Kanada|Französisch|fr-CA|
+|Canada|Französisch|fr-CA|
 |Belgien|Niederländisch|nl-BE|
 |Schweiz|Französisch|fr-CH|
 |Frankreich|Französisch|fr-FR|  
@@ -85,14 +85,14 @@ Eine Liste der Länder-/Regionscodes, die Sie im `cc`-Abfrageparameter angeben k
 |Dänemark|Dänisch|da-DK|
 |Deutschland|Deutsch|de-DE|
 |Australien|Englisch|en-AU|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |Englisch|allgemein|en-WW|
 |Chile|Spanisch|es-CL|
 |Mexiko|Spanisch|es-MX|
 |USA|Spanisch|es-US|
 |Finnland|Finnisch|fi-FI|  
-|Kanada|Französisch|fr-CA|
+|Canada|Französisch|fr-CA|
 |Frankreich|Französisch|fr-FR|  
 |Italien|Italienisch|it-IT|
 |Brasilien|Portugiesisch|pt-BR|
@@ -107,12 +107,12 @@ Eine Liste der Länder-/Regionscodes, die Sie im `cc`-Abfrageparameter angeben k
 |---------------------|--------------|-----------------|
 |Deutschland|Deutsch|de-DE|
 |Australien|Englisch|en-AU|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
-|Kanada|Englisch|en-CA|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
+|Canada|Englisch|en-CA|
 |Indien|Englisch|en-IN|
 |Frankreich|Französisch|fr-FR|
-|Kanada|Französisch|fr-CA|
+|Canada|Französisch|fr-CA|
 |Brasilien|Portugiesisch|pt-BR|
 |VR China|Chinesisch|zh-CN|
 
@@ -129,7 +129,7 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |Österreich|AT|  
 |Belgien|BE|  
 |Brasilien|BR|  
-|Kanada|CA|  
+|Canada|CA|  
 |Chile|CL|  
 |Dänemark|DK|  
 |Finnland|FI|  
@@ -137,7 +137,7 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |Deutschland|DE|  
 |Hongkong (SAR)|HK|  
 |Indien|IN|  
-|Indonesien|ID|  
+|Indonesien|id|  
 |Italien|IT|  
 |Japan|JP|  
 |Korea|KR|  
@@ -145,7 +145,7 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |Mexiko|MX|  
 |Niederlande|NL|  
 |Neuseeland|NZ|  
-|Norwegen|NO|  
+|Norwegen|Nein|  
 |VR China|CN|  
 |Polen|PL|  
 |Portugal|PT|  
@@ -158,7 +158,7 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |Schweiz|CH|  
 |Taiwan|TW|  
 |Türkei|TR|  
-|Vereinigtes Königreich|GB|  
+|United Kingdom|GB|  
 |USA|US|
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 2725a824da26dafcbc215e4c302ec38ad4b5a699
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600309"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Grundlegendes zur Datei „LocalConfiguration.json“ – C-Agent
@@ -43,11 +43,11 @@ Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfigur
 | Identity | „DPS“, „SecurityModule“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „SecurityModule“, wenn sie über Anmeldeinformationen für das Sicherheitsmodul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt. |
 | AuthenticationMethod | „SasToken“, „SelfSignedCertificate“ | Das Benutzergeheimnis zur Authentifizierung – Wählen Sie „SasToken“ aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist; wählen Sie „SelfSignedCertificate“ aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist.  |
 | FilePath | Pfad zur Datei (Zeichenfolge) | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält. |
-| HostName | Zeichenfolge | Der Hostname des Azure IoT Hubs. normalerweise <mein-hub>.azure-devices.net |
-| deviceId | Zeichenfolge | Die ID des Geräts (wie in Azure IoT Hub registriert) |
+| HostName | string | Der Hostname des Azure IoT Hubs. normalerweise <mein-hub>.azure-devices.net |
+| deviceId | string | Die ID des Geräts (wie in Azure IoT Hub registriert) |
 | DPS | JsonObject | DPS-bezogene Konfigurationen |
-| IDScope | Zeichenfolge | ID-Bereich von DPS |
-| RegistrationId | Zeichenfolge  | Registrierungs-ID für DPS-Geräte |
+| IDScope | string | ID-Bereich von DPS |
+| RegistrationId | string  | Registrierungs-ID für DPS-Geräte |
 | Protokollierung | JsonObject | Konfigurationen mit Agentprotokollierung |
 | SystemLoggerMinimumSeverity | 0 < = Zahl < = 4 | Protokollmeldungen gleich und über diesem Schweregrad werden in „/var/log/syslog“ protokolliert („0“ ist der niedrigste Schweregrad). |
 | DiagnosticEventMinimumSeverity | 0 < = Zahl < = 4 | Protokollmeldungen gleich und über diesem Schweregrad werden als Diagnoseereignisse gesendet („0“ ist der niedrigste Schweregrad). |

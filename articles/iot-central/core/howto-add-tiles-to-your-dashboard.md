@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie als Ersteller das Standardd
 author: mavoge
 ms.author: mavoge
 ms.date: 10/17/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023224"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158748"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -69,7 +69,7 @@ Sie können auch die Visualisierung der Kachel ändern, indem Sie auf das **Line
 
 In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusammengefasst:
  
-| Kachel | Dashboard | Beschreibung
+| Kachel | Dashboard | BESCHREIBUNG
 | ----------- | ------- | ------- |
 | Inhalt | Dashboards von Anwendungen und Gerätegruppen |Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext angezeigt werden. Sie können diese Kachel auch als Link-Kachel verwenden, um Benutzern das Navigieren zu einer URL Ihrer Anwendung zu ermöglichen.|
 | Image | Dashboards von Anwendungen und Gerätegruppen |Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Verwenden Sie eine Bildkachel, um einem Dashboard Grafiken hinzuzufügen und optional einem Benutzer die Navigation zu einer URL zu ermöglichen, die für Ihre Anwendung relevant ist.|

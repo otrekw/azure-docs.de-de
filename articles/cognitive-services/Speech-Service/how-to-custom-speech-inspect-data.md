@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806078"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
@@ -37,7 +37,7 @@ Gehen Sie wie folgt vor, um einen Test zu erstellen:
 3. Klicken Sie auf **Test hinzufügen**.
 4. Wählen Sie **Inspect quality (Audio-only data)** (Qualität überprüfen (nur Audiodaten)) aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audiodataset aus.
 5. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
 Nach erfolgreicher Testerstellung können Sie die Modelle nebeneinander vergleichen.
 

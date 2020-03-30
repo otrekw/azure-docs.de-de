@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082952"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon
@@ -22,7 +22,7 @@ ms.locfileid: "74082952"
 
 Über die Azure CDN-Regel-Engine können Sie anpassen, wie HTTP-Anforderungen verarbeitet werden. Hierzu zählt z.B. die Blockierung der Übermittlung bestimmter Inhaltstypen, die Definition einer Cacherichtlinie oder die Änderung eines HTTP-Headers. In diesem Tutorial wird die Erstellung einer Regel erläutert, die das Zwischenspeicherungsverhalten von CDN-Objekten ändert. Weitere Informationen zur Regel-Engine finden Sie unter [Referenz für die Azure CDN-Regel-Engine](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Access
+## <a name="access"></a>Zugriff
 
 Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure CDN-Verwaltungsseite zuerst **Verwalten** im oberen Bereich der Seite **CDN-Profil** auswählen. Je nachdem, ob der Endpunkt für die Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) optimiert ist, greifen Sie mit der Gruppe von Regeln, die für den Typ des Endpunkts geeignet sind, dann auf die Regel-Engine zu:
 
@@ -40,7 +40,7 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
 
     ![Regel-Engine für die DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
-## <a name="tutorial"></a>Tutorial
+## <a name="tutorial"></a>Lernprogramm
 
 1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.
    
@@ -100,4 +100,4 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
 - [Übereinstimmungsbedingungen der Regel-Engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Regel-Engine – bedingte Ausdrücke](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Regel-Engine – Features](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Azure Friday: Azure CDN's powerful new premium features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (Die leistungsstarken neuen Premium-Features von Azure CDN) (Video)
+- [Azure Friday: Azure CDN's powerful new Premium Features](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (Die leistungsstarken neuen Premium-Features des Azure CDN) (Video)

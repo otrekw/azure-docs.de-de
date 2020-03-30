@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75446780"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
@@ -80,9 +80,9 @@ So migrieren Sie einen Arbeitsbereich:
 
 4. Wählen Sie auf der nächsten Seite eine der beiden Optionen aus:
 
-    a. Nur bereitgestellte Trainings: Nach Auswahl dieser Option werden nur Ihre bereitgestellten Systeme und zugehörige Dokumente migriert.
+    a. Nur bereitgestellte Trainings: Nach Auswahl dieser Option werden nur Ihre bereitgestellten Systeme und dazugehörige Dokumente migriert.
 
-    b. Alle erfolgreichen Trainings: Nach Auswahl dieser Option werden alle erfolgreichen Trainings und zugehörige Dokumente migriert.
+    b. Alle erfolgreichen Trainings: Nach Auswahl dieser Option werden alle erfolgreichen Trainings und dazugehörige Dokumente migriert.
 
     c. Geben Sie die ID des Zielarbeitsbereichs in Custom Translator ein.
 
@@ -108,11 +108,11 @@ Auf der Seite „Migrationsverlauf“ werden die folgenden Informationen als Zus
 
 2. Migriert am: Datum und Zeitstempel der Migration
 
-3. Projekte: Anzahl der für die Migration angeforderten Projekte im Vergleich zur Anzahl der erfolgreich migrierten Projekte.
+3. Projekte: Die Anzahl der für die Migration angeforderten Projekte im Vergleich zur Anzahl der erfolgreich migrierten Projekte.
 
-4. Trainings: Anzahl der für die Migration angeforderten Trainings im Vergleich zur Anzahl der erfolgreich migrierten Trainings.
+4. Trainings: Die Anzahl der für die Migration angeforderten Trainings im Vergleich zur Anzahl der erfolgreich migrierten Trainings.
 
-5. Dokumente: Anzahl der für die Migration angeforderten Dokumente im Vergleich zur Anzahl der erfolgreich migrierten Dokumente.
+5. Dokumente: Die Anzahl der für die Migration angeforderten Dokumente im Vergleich zur Anzahl der erfolgreich migrierten Dokumente.
 
     ![Details des Migrationsverlaufs](media/how-to/how-to-migration-history-details.png)
 

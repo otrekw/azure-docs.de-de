@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230750"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -77,7 +77,7 @@ Der Dienstprinzipal kann Folgendes enthalten:
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)
 * Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](/azure/active-directory/manage-apps/application-proxy)
 * Verbinden einer Anwendung für einmaliges Anmelden über SAML oder einmaliges Anmelden (SSO) per Kennwort
-* Programmgesteuert über die Azure AD Graph-API oder über PowerShell
+* Programmgesteuert über die Microsoft Graph-API oder über PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Wie werden Anwendungsobjekte und Dienstprinzipale miteinander verknüpft?
 
@@ -100,13 +100,13 @@ Zu Anwendungen, die Sie selbst hinzufügen (dargestellt als **Ihre App** im Diag
 
 ### <a name="notes-and-exceptions"></a>Hinweise und Ausnahmen
 
-* Nicht alle Dienstprinzipale verweisen zurück auf ein Anwendungsobjekt. In den Anfängen von Azure AD wurden den Anwendungen eingeschränktere Dienste bereitgestellt, und der Dienstprinzipal reichte zur Einrichtung einer Anwendungsidentität aus. Der ursprüngliche Dienstprinzipal sah dem Active Directory-Dienstkonto von Windows Server noch wesentlich ähnlicher. Aus diesem Grund ist es nach wie vor möglich, Dienstprinzipale mit Azure AD PowerShell auf verschiedene Arten zu erstellen, ohne zuvor ein Anwendungsobjekt zu erstellen. Die Azure AD Graph-API setzt hingegen für die Erstellung eines Dienstprinzipals ein Anwendungsobjekt voraus.
+* Nicht alle Dienstprinzipale verweisen zurück auf ein Anwendungsobjekt. In den Anfängen von Azure AD wurden den Anwendungen eingeschränktere Dienste bereitgestellt, und der Dienstprinzipal reichte zur Einrichtung einer Anwendungsidentität aus. Der ursprüngliche Dienstprinzipal sah dem Active Directory-Dienstkonto von Windows Server noch wesentlich ähnlicher. Aus diesem Grund ist es nach wie vor möglich, Dienstprinzipale mit Azure AD PowerShell auf verschiedene Arten zu erstellen, ohne zuvor ein Anwendungsobjekt zu erstellen. Die Microsoft Graph-API erfordert ein Anwendungsobjekt, bevor ein Dienstprinzipal erstellt wird.
 * Nicht alle oben beschriebenen Informationen werden derzeit programmgesteuert bereitgestellt. Die folgenden Informationen sind nur in der Benutzeroberfläche verfügbar:
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
-* Ausführlichere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Azure AD Graph-REST-API:
-  * [Anwendung](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Dienstprinzipal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Ausführlichere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Microsoft Graph-API:
+  * [Anwendung](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Dienstprinzipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Weshalb werden Anwendung in Azure AD integriert?
 

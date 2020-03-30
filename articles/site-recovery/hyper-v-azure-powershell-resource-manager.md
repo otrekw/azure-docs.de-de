@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229166"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -45,7 +45,7 @@ Darüber hinaus gelten für das in diesem Artikel beschriebene Beispiel die folg
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Schritt 1: Anmelden bei Ihrem Azure-Konto
 
 1. Öffnen Sie eine PowerShell-Konsole, und führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Konto anzumelden. Das Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert: `Connect-AzAccount`.
-   - Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter **Credential** im Cmdlet `Connect-AzAccount` angeben.
+   - Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter `Connect-AzAccount`Credential**im Cmdlet** angeben.
    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primären Mandantendomänennamen als Mandanten an. Beispiel: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
@@ -96,7 +96,7 @@ Legen Sie den Tresorkontext wie folgt fest:
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-## <a name="step-4-create-a-hyper-v-site"></a>Schritt 4: Erstellen einer Hyper-V-Site
+## <a name="step-4-create-a-hyper-v-site"></a>Schritt 4: Erstellen eines Hyper-V-Standorts
 
 1. Erstellen Sie einen neuen Hyper-V-Standort wie folgt:
 
@@ -116,7 +116,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 1. Kopieren Sie den heruntergeladenen Schlüssel in den Hyper-V-Host. Sie benötigen den Schlüssel, um den Hyper-V-Host am Standort zu registrieren.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Schritt 5: Installieren Sie den Anbieter und den Agent.
+## <a name="step-5-install-the-provider-and-agent"></a>Schritt 5: Installieren des Anbieters und des Agents
 
 1. Laden Sie bei [Microsoft](https://aka.ms/downloaddra)das Installationsprogramm für die neueste Version des Anbieters herunter.
 1. Führen Sie das Installationsprogramm auf dem Hyper-V-Host aus.
@@ -244,7 +244,7 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in derselben Azure-Re
 > 1. Erstellen Sie mit dem Cmdlet `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` ein Wörterbuchobjekt, das die Zuordnung der Datenträger-ID zum Datenträgerverschlüsselungssatz enthalten soll. Diese Datenträgerverschlüsselungssätze müssen von Ihnen in der Zielregion vorab erstellt werden.
 > 1. Aktualisieren Sie die VM-Eigenschaften mithilfe des Cmdlets `Set-AzRecoveryServicesAsrReplicationProtectedItem`, indem Sie das Wörterbuchobjekt im Parameter **DiskIdToDiskEncryptionSetMap** übergeben.
 
-## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
+## <a name="step-8-run-a-test-failover"></a>Schritt 8: Ausführen eines Testfailovers
 
 1. Führen Sie ein Testfailover wie folgt aus:
 

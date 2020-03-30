@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
 ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012838"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Basic in Azure: Vorlage (Vorschau)

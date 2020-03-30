@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112171"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Dienst für die kognitive Azure-Suche
@@ -39,7 +39,7 @@ Version 2019-05-06 ist das neueste allgemein verfügbare Release der REST-API. 
 
 Mit diesem allgemein verfügbaren Update fallen mehrere Previewfunktionsreleases zusammen. Die Liste der neuen Previewfunktionen finden Sie unter [REST-API für den Azure Search-Dienst: Version 2019-05-06-Preview](search-api-preview.md).
 
-## <a name="breaking-changes"></a>Wichtige Änderungen
+## <a name="breaking-changes"></a>Aktuelle Änderungen
 
 Vorhandener Code, der die folgenden Funktionen enthält, löst in API-Version 2019-05-06 Fehler aus.
 
@@ -66,7 +66,7 @@ Wenn Sie das Upgrade von einer früheren allgemein verfügbaren Version, 2017-11
 
 * Der Code erzeugt Fehler, wenn nicht erkannte Eigenschaften in einer API-Antwort zurückgegeben werden. Standardmäßig sollte die Anwendung Eigenschaften ignorieren, die sie nicht versteht.
 
-* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der [Search-API-Referenz](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) nach `@search.nextPageParameters` suchen).
+* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der `@search.nextPageParameters`Search-API-Referenz[ nach ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) suchen).
 
 Wenn diese Situationen für Sie zutreffen, müssen Sie den Code möglicherweise entsprechend ändern. Darüber hinaus sollten keine Änderungen nötig sein, es sei denn, Sie möchten die [neuen Funktionen](#WhatsNew) der Version 2019-05-06 verwenden.
 

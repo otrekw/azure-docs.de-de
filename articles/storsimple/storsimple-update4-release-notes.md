@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698635"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228118"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Versionshinweise zu Update 4 der StorSimple 8000-Serie
 
@@ -66,7 +66,7 @@ Die folgenden wichtigen Verbesserungen und Fehlerbehebungen wurden in Update 4 v
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 4 behoben wurden.    
 
-| Nein | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Failover |In der vorherigen Version bestand nach dem Failover ein Problem im Zusammenhang mit der Bereinigung am Kundenstandort. Dieses Problem wurde in dieser Version behoben. |Ja |Ja |
 | 2 |Lokale Volumes |In der vorherigen Version bestand ein Problem im Zusammenhang mit dem Erstellen von lokalen Volumes, das zu Fehlern beim Erstellen von Volumes führte. Dieses Problem gibt es in dieser Version nicht mehr. |Ja |Nein |

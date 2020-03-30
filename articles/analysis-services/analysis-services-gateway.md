@@ -8,10 +8,10 @@ ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310151"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
@@ -32,7 +32,7 @@ Für Azure Analysis Services umfasst das erstmalige Einrichten des Gateways vier
 
 
 
-## <a name="how-it-works"> </a>Funktionsweise
+## <a name="how-it-works"></a><a name="how-it-works"> </a>Funktionsweise
 Das Gateway, das Sie auf einem Computer im Netzwerk Ihrer Organisation installieren, wird als Windows-Dienst mit dem Namen **Lokales Datengateway** ausgeführt. Dieser lokale Dienst wird über Azure Service Bus beim Gateway-Clouddienst registriert. Anschließend erstellen Sie eine lokale Datengatewayressource für Ihr Azure-Abonnement. Ihre Azure Analysis Services-Server werden anschließend mit der Azure-Gatewayressource verbunden. Wenn Modelle auf Ihrem Server für Abfragen oder die Verarbeitung mit Ihren lokalen Datenquellen verbunden werden müssen, durchläuft ein Abfrage- und Datenfluss die Gatewayressource, Azure Service Bus, den lokalen Datengateway-Dienst und Ihre Datenquellen. 
 
 ![Funktionsweise](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
@@ -58,7 +58,7 @@ Möglicherweise müssen Sie die IP-Adressen für Ihre Datenregion für die Firew
 
 Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gateway verwendet werden.
 
-| Domänennamen | Ausgehende Ports | Beschreibung |
+| Domänennamen | Ausgehende Ports | BESCHREIBUNG |
 | --- | --- | --- |
 | *.powerbi.com |80 |Zum Herunterladen des Installers wird HTTP verwendet. |
 | *.powerbi.com |443 |HTTPS |
@@ -73,7 +73,7 @@ Nachfolgend sind die vollqualifizierten Domänennamen aufgeführt, die vom Gatew
 | *.microsoftonline-p.com |443 |Wird je nach Konfiguration für die Authentifizierung verwendet. |
 | dc.services.visualstudio.com  |443 |Werden von AppInsights zur Erfassung von Telemetrie verwendet. |
 
-### <a name="force-https"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
+### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>Erzwingen von HTTPS-Kommunikation mit Azure Service Bus
 
 Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und nicht direkt über TCP) kommuniziert. Dies kann allerdings erheblich die Leistung beeinträchtigen. Sie können die Datei *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ändern, indem Sie den Wert von `AutoDetect` in `Https` ändern. Diese Datei befindet sich standardmäßig in *C:\Programme\On-premises data gateway*.
 

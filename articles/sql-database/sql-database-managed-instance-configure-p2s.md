@@ -12,11 +12,11 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818910"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232518"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -81,7 +81,7 @@ In dieser Schnellstartanleitung gilt Folgendes:
 1. Wechseln Sie auf Ihrem lokalen Clientcomputer unter **Netzwerk und Internet** zu **VPN**, und wählen Sie das virtuelle Netzwerk Ihrer verwalteten Instanz aus, um eine Verbindung zu diesem virtuellen Netzwerk herzustellen. In der folgenden Abbildung heißt das virtuelle Netzwerk**MyNewVNet**.
 
     ![VPN-Verbindung](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. Wählen Sie **Verbinden**aus.
+2. Wählen Sie **Verbinden**.
 3. Klicken Sie im Dialogfeld auf **Verbinden**.
 
     ![VPN-Verbindung](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  

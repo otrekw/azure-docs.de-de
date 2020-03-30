@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218916"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Suchen nach Videos mit der Bing-Videosuche-API
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Erweitern der Abfrage
 
-Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Cleaning Gutters* lautet, können die erweiterten Abfragen wie folgt aussehen: „Gutter Cleaning **Tools**“, „Cleaning Gutters **From the Ground**“, „Gutter Cleaning **Machine**“ und „**Easy** Gutter Cleaning“.
+Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Dachrinne reinigen* war, können die erweiterten Abfragen Folgendes sein: Dachrinnenreinigung **Werkzeuge**, Dachrinne reinigen **vom Boden aus**, Dachrinnenreinigung **Maschine** und **einfache** Dachrinnenreinigung.
 
 Das folgende Beispiel zeigt die erweiterten Abfragen für *Dachrinne reinigen*:
 

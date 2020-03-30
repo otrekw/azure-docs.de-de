@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773653"
 ---
-Dieser Abschnitt beschreibt, wie Sie die folgenden Änderungsvorgänge für direktes Peering ausführen:
+Dieser Abschnitt beschreibt, wie Sie die folgenden Änderungsvorgänge für Direct Peering ausführen:
 
-* Hinzufügen von direkten Peeringverbindungen
-* Entfernen von direkten Peeringverbindungen
+* Hinzufügen von Direct Peering-Verbindungen
+* Entfernen von Direct Peering-Verbindungen
 * Upgrade oder Downgrade der Bandbreite in aktiven Verbindungen
 * Hinzufügen einer IPv4/IPv6-Sitzung in aktiven Verbindungen
 * Entfernen einer IPv4/IPv6-Sitzung aus aktiven Verbindungen
 
-### <a name="add-direct-peering-connections"></a>Hinzufügen von direkten Peeringverbindungen
+### <a name="add-direct-peering-connections"></a>Hinzufügen von Direct Peering-Verbindungen
 
 Das folgende Beispiel beschreibt, wie Sie einem vorhandenen direkten Peering Verbindungen hinzufügen.
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>Entfernen von direkten Peeringverbindungen
+### <a name="remove-direct-peering-connections"></a>Entfernen von Direct Peering-Verbindungen
 
-Das Entfernen einer Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).
+Das Entfernen einer Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft Peering-Team](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -82,4 +82,4 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Entfernen einer IPv4/IPv6-Sitzung aus aktiven Verbindungen
 
-Das Entfernen einer IPv4/IPv6-Sitzung aus einer vorhandenen Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft-Peering-Team](mailto:peeringexperience@microsoft.com).
+Das Entfernen einer IPv4/IPv6-Sitzung aus einer vorhandenen Verbindung wird derzeit in PowerShell nicht unterstützt. Wenden Sie sich an das [Microsoft Peering-Team](mailto:peeringexperience@microsoft.com).
