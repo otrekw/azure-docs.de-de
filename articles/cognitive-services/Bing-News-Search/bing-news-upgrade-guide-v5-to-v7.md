@@ -10,22 +10,22 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1263e93b1e316cab4afb51cd828737a5bd087fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423844"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294364"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die News-Suche-API
 
 In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7 der Bing-News-Suche-API angegeben. Anhand dieses Leitfadens können Sie die Teile Ihrer Anwendung ermitteln, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 
-## <a name="breaking-changes"></a>Wichtige Änderungen
+## <a name="breaking-changes"></a>Aktuelle Änderungen
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https://api.cognitive.microsoft.com/bing/**v7.0**/news/search.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: `https://api.cognitive.microsoft.com/bing/v7.0/news/search`.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 
@@ -54,7 +54,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Deaktiviert|InsufficientAuthorization.AuthorizationDisabled
+Disabled|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -70,7 +70,7 @@ Blockiert|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>Änderungen an Objekten
 
-- Das Feld `contractualRules` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `contractualRules` enthält eine Liste von Regeln, die eingehalten werden müssen (z.B. Artikelzuordnungen). Statt `provider` müssen Sie die in `contractualRules` angegebene Zuordnung anwenden. Der Artikel umfasst `contractualRules` nur, wenn die Antwort der [Websuche-API](../bing-web-search/search-the-web.md) eine News-Antwort enthält.
+- Das Feld `contractualRules` wurde zum [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle)-Objekt hinzugefügt. Das Feld `contractualRules` enthält eine Liste von Regeln, die eingehalten werden müssen (z.B. Artikelzuordnungen). Statt `contractualRules` müssen Sie die in `provider` angegebene Zuordnung anwenden. Der Artikel umfasst `contractualRules` nur, wenn die Antwort der [Websuche-API](../bing-web-search/search-the-web.md) eine News-Antwort enthält.
 
 ## <a name="non-breaking-changes"></a>Geringfügige Änderungen
 
@@ -90,4 +90,4 @@ Blockiert|InvalidRequest.Blocked
 
 - Das Feld `sort` wurde zum [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news)-Objekt hinzugefügt. Das Feld `sort` zeigt die Sortierreihenfolge der Artikel an. Beispielsweise werden die Artikel nach Relevanz (Standard) oder Datum sortiert.
 
-- Das Objekt [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) wurde hinzugefügt, das eine Sortierreihenfolge definiert. Das Feld `isSelected` gibt an, ob in der Antwort die Sortierreihenfolge verwendet wurde. Wenn es **true** angibt, wurde in der Antwort die Sortierreihenfolge verwendet. Wenn `isSelected` **false** lautet, können Sie die URL im Feld `url` verwenden, um eine andere Sortierreihenfolge anzufordern.
+- Das Objekt [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) wurde hinzugefügt, das eine Sortierreihenfolge definiert. Das Feld `isSelected` gibt an, ob in der Antwort die Sortierreihenfolge verwendet wurde. Wenn es **true** angibt, wurde in der Antwort die Sortierreihenfolge verwendet. Wenn `isSelected`**false** lautet, können Sie die URL im Feld `url` verwenden, um eine andere Sortierreihenfolge anzufordern.

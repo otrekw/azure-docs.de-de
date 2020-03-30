@@ -1,20 +1,18 @@
 ---
 title: Verwalten des Azure Marketplace- und AppSource-Herausgeberprofils | Azure Marketplace
 description: 'Veralteter CPP-Artikel, verknüpft mit PC-Artikel; zuvor: „Erläuterung zur Verwaltung von Azure Marketplace- und AppSource-Herausgeberprofilen“'
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: e2fdbd8720fe80a7d647f908a78614123202c657
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: bc75ebbba807aa981e8de29c40947516fea6638d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288494"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Verwalten Ihres Azure Marketplace- und AppSource-Herausgeberprofils
 

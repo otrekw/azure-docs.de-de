@@ -8,10 +8,10 @@ ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658981"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
@@ -21,7 +21,7 @@ ms.locfileid: "77658981"
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
 
 ## <a name="built-in-monitoring-roles"></a>Integrierte Überwachungsrollen
-Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff auf Ressourcen in einem Abonnement einzuschränken und gleichzeitig den Personen, die für die Überwachung der Infrastruktur verantwortlich sind, das Abrufen und Konfigurieren der benötigten Daten zu ermöglichen. Azure Monitor bietet zwei vorkonfigurierte Rollen: eine für Benutzer mit Leseberechtigung für Überwachungsdaten und eine für Mitwirkende an der Überwachung.
+Die in Azure Monitor integrierten Rollen unterstützen Sie dabei, den Zugriff auf Ressourcen in einem Abonnement einzuschränken und gleichzeitig den Personen, die für die Überwachung der Infrastruktur verantwortlich sind, das Abrufen und Konfigurieren der benötigten Daten zu ermöglichen. Azure Monitor bietet zwei vorkonfigurierte Rollen: eine für das Lesen von Überwachungsdaten und eine für Mitwirkende an der Überwachung.
 
 ### <a name="monitoring-reader"></a>Überwachungsleser
 Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überwachungsdaten in einem Abonnement anzeigen, aber keine Ressourcen ändern oder Einstellungen im Zusammenhang mit der Ressourcenüberwachung bearbeiten. Diese Rolle eignet sich für Benutzer in einer Organisation, beispielsweise Support- oder Betriebstechniker, die folgende Aufgaben erfüllen müssen:
@@ -70,7 +70,7 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Überwachen von Berechtigungen und benutzerdefinierte RBAC-Rollen
 Wenn die oben genannten vordefinierten Rollen nicht den genauen Anforderungen Ihres Teams entsprechen, können Sie eine [benutzerdefinierte RBAC-Rolle](../../role-based-access-control/custom-roles.md) mit detaillierteren Berechtigungen erstellen. Im Folgenden sind die allgemeinen Azure Monitor-RBAC-Vorgänge mit ihren Beschreibungen aufgeführt.
 
-| Vorgang | Beschreibung |
+| Vorgang | BESCHREIBUNG |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |Lesen/Schreiben/Löschen einer Aktionsgruppe |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |Lesen/Schreiben/Löschen von Aktivitätsprotokollwarnungen |

@@ -1,19 +1,18 @@
 ---
 title: Support für ein Azure IoT Edge-Modul | Azure Marketplace
 description: Supportoptionen für ein IoT Edge-Modul.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: fe8ff895990471107cfaa229f7b4ced28b477afa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286505"
 ---
 # <a name="iot-edge-module-support-tab"></a>Registerkarte „Support“ für ein IoT Edge-Modul
 
@@ -31,7 +30,7 @@ Die folgende Tabelle beschreibt die Formularfelder und die für jedes Feld erfor
 | **Name\***                  | Name der Person oder Gruppe, die als technischer Support/Engineering-Support fungiert     |
 | **E-Mail\***                 | E-Mail-Adresse dieses technischen Ansprechpartners                                      |
 | **Telefon\***                 | Telefonnummer für den technischen Support                                           |
-| ***Kundendienst***  | *Empfängt die Supporttickets, die von Kunden in Azure geöffnet werden* |
+| ***Kundensupport***  | *Empfängt die Supporttickets, die von Kunden in Azure geöffnet werden* |
 | **Name\***                  | Name der Person oder Gruppe, die als Kundensupport fungiert                  |
 | **E-Mail\***                 | E-Mail-Adresse des Kundensupports                                            |
 | **Telefon\***                 | Telefonnummer für den Kundensupport                                            |

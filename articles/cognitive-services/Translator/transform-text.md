@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68594898"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Verwenden der TransformText-Methode
 
 > [!NOTE]
-> Diese Methode ist veraltet. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
+> Diese Methode ist als veraltet markiert. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
 
 Die TransformText-Methode ist eine Textnormalisierungsfunktion für soziale Medien, mit der die Eingabedaten in normalisierter Form zurückgegeben werden. Die Methode kann als Vorverarbeitungsschritt bei der maschinellen Übersetzung oder bei anderen Anwendungen eingesetzt werden, die einen Eingabetext in einem sauberen Zustand erwarten, der in sozialen Medien oder von Benutzern generierten Inhalten normalerweise nicht zu finden ist. Die Funktion ist derzeit nur für englischsprachige Eingaben geeignet.
 
@@ -30,7 +30,7 @@ Die Methode ist ein RESTful-Dienst, für den „GET over HTTP“ verwendet wird.
 
 | Parameter | BESCHREIBUNG |
 |:---|:---|
-| Authorization header (Autorisierungsheader) | **Erforderlich** HTTP-Header zum Identifizieren der Anwendung. Verwenden Sie als Schlüssel: „Authorization“ und als Wert: „Bearer“ + „ “ + Zugriffstoken. Ausführlichere Informationen finden Sie hier.|
+| Authorization header (Autorisierungsheader) | **Erforderlich** HTTP-Header zum Identifizieren der Anwendung. Verwenden Sie den Schlüssel „Authorization“ und den Wert „Bearer“ + „ “ + Zugriffstoken. Ausführlichere Informationen finden Sie hier.|
 | language | **Erforderlich** Eine Zeichenfolge, die den Sprachcode darstellt. Dieser Parameter unterstützt nur Englisch mit **en** als Name der Sprache.|
 | category | **Optional** Eine Zeichenfolge, die die Kategorie oder Domäne der Übersetzung enthält. Dieser Parameter unterstützt nur die allgemeine Standardoption (**general**).|
 | sentence | **Erforderlich** Ein Satz, den Sie korrigieren möchten. |

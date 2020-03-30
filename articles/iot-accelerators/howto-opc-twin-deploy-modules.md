@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 96a4afff3e58bfa1ebf661909f380aa525fea76e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820134"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241055"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Bereitstellen des OPC Twin-Moduls und der Abhängigkeiten von Grund auf
 
@@ -186,7 +186,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 2. Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an:
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
@@ -195,7 +195,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 3. Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie mit dem folgenden Befehl anzeigen:
 
-   ```bash
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 

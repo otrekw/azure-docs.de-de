@@ -1,19 +1,18 @@
 ---
 title: Getaktete Abrechnung mit dem Marketplace-Messungsdienst | Azure Marketplace
 description: Diese Dokumentation ist ein Leitfaden für ISVs, die SaaS-Angebote mit flexiblen Abrechnungsmodellen veröffentlichen.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8e5a4813301cbab16d1cffabaaa60688f6e826ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934169"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281322"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Getaktete Abrechnung mit dem Marketplace-Messungsdienst
 

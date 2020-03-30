@@ -16,10 +16,10 @@ ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037500"
 ---
 # <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
@@ -43,7 +43,7 @@ Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL S
 | [SQL-VM-Befehlszeilenschnittstelle](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
 | [Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
 | [Vorlage im Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | Dateifreigabe | Nein | Nein | Nein | Nein | Nein | Nein |
-| [Manuell](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Alle | Alle | Alle | Alle | Ja | Ja | Ja | Ja | Ja | Ja |
+| [Manuell](virtual-machines-windows-portal-sql-availability-group-prereq.md) | All | All | All | All | Ja | Ja | Ja | Ja | Ja | Ja |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 
 Wenn Sie zur Erstellung einer SQL Server-Verfügbarkeitsgruppe in Azure Virtual Machines bereit sind, sehen Sie sich die folgenden Tutorials an:
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter [Verwenden einer Azure-Schnellstartvorlag
 
 ## <a name="manually-in-azure-portal"></a>Manuell im Azure-Portal
 
-Sie können die virtuellen Computer auch manuell ohne Vorlage erstellen. Schließen Sie zunächst die erforderlichen Vorbereitungen ab, und erstellen Sie anschließend die Verfügbarkeitsgruppe. Informationen hierzu finden Sie in den folgenden Themen: 
+Sie können die virtuellen Computer auch manuell ohne Vorlage erstellen. Schließen Sie zunächst die erforderlichen Vorbereitungen ab, und erstellen Sie anschließend die Verfügbarkeitsgruppe. Weitere Informationen finden Sie in den folgenden Artikeln: 
 
 - [Configure prerequisites for SQL Server Always On availability groups on Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md) (Konfigurieren der erforderlichen Komponenten für SQL Server Always On-Verfügbarkeitsgruppen in Azure Virtual Machines)
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883432"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Abrufen von Bildauswertungen mit der Bing-Bildersuche-API
@@ -216,10 +216,10 @@ Das `region`-Feld identifiziert den Bereich des Bilds, in dem Bing die Entität 
 
 Die Werte des Rechtecks sind relativ zur Breite und Höhe des ursprünglichen Bilds und liegen im Bereich von 0,0 bis 1,0. Wenn das Bild beispielsweise 300 x 200 groß ist und die obere linke Ecke des Bereichs an Punkt (10, 20) und die untere rechte Ecke an Punkt (290, 150) liegt, ergibt sich das folgende normalisierte Rechteck:  
 
--   Links: 10 : 300 = 0,03333...  
--   Oben:  20 : 200 = 0,1  
--   Rechts: 290 : 300 = 0,9667...  
--   Unten: 150 : 200 = 0,75  
+-   Links: 10 / 300 = 0,03333...  
+-   Oben: 20 / 200 = 0,1  
+-   Rechts: 290 / 300 = 0,9667...  
+-   Unten: 150 / 200 = 0,75  
 
 Sie können den Bereich, den Bing zurückgibt, in nachfolgenden Auswertungsaufrufen verwenden. Beispielsweise zum Abrufen visuell ähnlicher Bilder für die erkannte Entität. Weitere Informationen finden Sie unter „Zuschneiden von Bildern zur Verwendung mit Modulen für visuelle Ähnlichkeit und Entitätserkennung“. Das folgende Beispiel zeigt die Zuordnung zwischen den Bereichsfeldern und den Abfrageparametern, die Sie zum Zuschneiden von Bildern verwenden.  
 

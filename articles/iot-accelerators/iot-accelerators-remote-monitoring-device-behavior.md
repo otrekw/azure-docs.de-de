@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890859"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementieren des Gerätemodellverhaltens
@@ -82,7 +82,7 @@ Der `context`-Parameter hat folgende Eigenschaften:
 - `deviceId`, z.B. `Simulated.Chiller.123`
 - `deviceModel`, z.B. `Chiller`
 
-Der `state`-Parameter enthält den Status des Geräts, wie er vom Gerätesimulationsdienst verwaltet wird. Dieser Wert ist das vom vorherigen Aufruf an `main` zurückgegebene `state`-Objekt.
+Der `state`-Parameter enthält den Status des Geräts, wie er vom Gerätesimulationsdienst verwaltet wird. Dieser Wert ist das vom vorherigen Aufruf an `state` zurückgegebene `main`-Objekt.
 
 Das folgende Beispiel zeigt eine typische Implementierung der `main`-Methode zum Behandeln des vom Simulationsdienst verwalteten Gerätestatus:
 

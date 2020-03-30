@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548117"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Textübersetzungs-API 3.0: BreakSentence
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-| Abfrageparameter | Beschreibung |
+| Abfrageparameter | BESCHREIBUNG |
 | -------| ----------- |
 | api-version <img width=200/>   | **Erforderlicher Abfrageparameter**<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein. |
 | language | **Optionaler Abfrageparameter**<br/>Sprachtag, das die Sprache des Eingabetexts angibt. Wenn kein Code angegeben ist, wird die automatische Spracherkennung angewendet. |
@@ -41,7 +41,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 Anforderungsheader enthalten Folgendes:
 
-| Header | Beschreibung |
+| Header | BESCHREIBUNG |
 | ------- | ----------- |
 | Authentifizierungsheader <img width=200/>  | **Erforderlicher Anforderungsheader**.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>. |
 | Content-Type | **Erforderlicher Anforderungsheader**.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`. |
@@ -69,13 +69,13 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeichenfolge im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `sentLen`: Ein Integerarray stellt die Länge der Sätze im Textelement dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze. 
+  * `sentLen`: ein Integerarray stellt die Länge der Sätze im Textelement dar. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze. 
 
   * `detectedLanguage`: Ein Objekt, das die erkannte Sprache durch die folgenden Eigenschaften beschreibt:
 
      * `language`: Code der erkannten Sprache.
 
-     * `score`: Ein float-Wert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
+     * `score`:Ein Floatwert, der die Zuverlässigkeit des Ergebnisses angibt. Die Bewertung bewegt sich zwischen 0 (null) und 1, und eine niedrige Bewertung gibt an, dass die Zuverlässigkeit zweifelhaft ist.
      
     Beachten Sie, dass die `detectedLanguage`-Eigenschaft nur im Ergebnisobjekt enthalten ist, wenn die automatische Spracherkennung angefordert wird.
 
@@ -97,7 +97,7 @@ Eine JSON-Beispielantwort lautet wie folgt:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>X-RequestId</td>
     <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
@@ -110,7 +110,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
     <td>Erfolg.</td>

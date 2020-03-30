@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883546"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Sprach- und Regionsunterstützung für die API für die visuelle Bing-Suche
@@ -43,7 +43,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Österreich|AT|
 |Belgien|BE|
 |Brasilien|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dänemark|DK|
 |Finnland|FI|
@@ -59,7 +59,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Mexiko|MX|
 |Niederlande|NL|
 |Neuseeland|NZ|
-|Norwegen|NO|
+|Norwegen|Nein|
 |China|CN|
 |Polen|PL|
 |Portugal|PT|
@@ -72,7 +72,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|CH|
 |Taiwan|TW|
 |Türkei|TR|
-|Vereinigtes Königreich|GB|
+|United Kingdom|GB|
 |USA|US|
 
 
@@ -86,8 +86,8 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Belgien|Niederländisch|nl-BE|
 |Belgien|Französisch|fr-BE|
 |Brasilien|Portugiesisch|pt-BR|
-|Kanada|Englisch|en-CA|
-|Kanada|Französisch|fr-CA|
+|Canada|Englisch|en-CA|
+|Canada|Französisch|fr-CA|
 |Chile|Spanisch|es-CL|
 |Dänemark|Dänisch|da-DK|
 |Finnland|Finnisch|fi-FI|
@@ -116,6 +116,6 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Schweiz|Deutsch|de-CH|
 |Taiwan|Chinesisch (traditionell)|zh-TW|
 |Türkei|Türkisch|tr-TR|
-|Vereinigtes Königreich|Englisch|en-GB|
-|USA|Englisch|en-US|
+|United Kingdom|Englisch|en-GB|
+|USA|Englisch|de-DE|
 |USA|Spanisch|es-US|

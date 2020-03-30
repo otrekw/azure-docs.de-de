@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594110"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analysieren von Nutzungsstatistiken mit den erweiterten HTTP-Berichten in Azure CDN
@@ -95,7 +95,7 @@ Mit dem Bericht „Nach Stunde“ können Sie die Gesamtanzahl von Treffern und 
 
 Bei diesem Berichtstyp wird anhand eines Balkendiagramms der Umfang der plattformspezifischen Nachfrage pro Stunde in dem vom Bericht abgedeckten Zeitraum visuell dargestellt. Dazu werden für die einzelnen im Bericht abgedeckten Stunden Balken angezeigt. Bei Auswahl eines 24-Stunden-Zeitraums wird beispielsweise ein Balkendiagramm mit 24 Balken erstellt. Jeder Balken zeigt jeweils die Gesamtanzahl von Treffern während der entsprechenden Stunde an.
 
-Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Stunde auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die Datum/Uhrzeit (Format: JJJJ-MM-TT hh:mm) für jede im Bericht enthaltene Stunde angibt. Die Zeit wird im 24-Stunden-Format (Zeitzone: UTC/GMT) angegeben.
+Die linke Seite des Graphen (y-Achse) gibt an, wie viele Treffer in der angegebenen Stunde auftraten. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum und die Uhrzeit (Format: JJJJ-MM-TT hh:mm) für jede im Bericht enthaltene Stunde angibt. Die Zeit wird im 24-Stunden-Format (Zeitzone: UTC/GMT) angegeben.
 
 > [!TIP]
 > Wenn Sie auf einen Balken zeigen, wird die Gesamtanzahl von Treffern in dieser Stunde als QuickInfo angezeigt.
@@ -119,7 +119,7 @@ Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms a
 ## <a name="by-file-detail"></a>Nach Dateidetails
 Mit dem Bericht „Nach Dateidetails“ können Sie den Umfang der Nachfrage und den über eine bestimmte Plattform übertragenen Datenverkehr für ein bestimmtes Asset anzeigen. Ganz oben im Bericht befindet sich die Option „Dateidetails für“. Mit dieser Option wird eine Liste der am häufigsten angeforderten Assets für die ausgewählte Plattform angezeigt. Um den Bericht „Nach Dateidetail“ zu erstellen, wählen Sie das gewünschte Asset über die Option „Dateidetails für“ aus. Anschließend wird mithilfe eines Balkendiagramms der Umfang der täglichen Nachfrage angegeben, die im Laufe des angegebenen Zeitraums entstand.
 
-Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset an einem bestimmten Tag an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung, die das Datum (Format: JJJJ-MM-TT), für das eine CDN-Nachfrage nach dem Asset gemeldet wurde.
+Die linke Seite des Graphen (y-Achse) gibt die Gesamtanzahl von Anforderungen für ein Asset an einem bestimmten Tag an. Direkt unterhalb des Graphen (x-Achse) befindet sich eine Bezeichnung mit dem Datum (Format: JJJJ-MM-TT), für das die CDN-Nachfrage für das Asset gemeldet wurde.
 
 Die dem Balkendiagramm zugrunde liegenden Daten werden unterhalb des Diagramms angezeigt. Dort finden Sie die Gesamtanzahl von Treffern und die Menge der übertragenen Daten (in GB) für alle vom Bericht abgedeckten Tage.
 

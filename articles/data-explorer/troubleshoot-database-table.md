@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 67e4c33498b05884fe667a7977ddb40e647ab4c8
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562393"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Problembehandlung: Fehler beim Erstellen oder Löschen einer Datenbank oder Tabelle im Azure-Daten-Explorer
@@ -36,7 +36,7 @@ Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen. 
 
     Informationen zu Berechtigungen finden Sie unter [Verwalten von Datenbankberechtigungen](manage-database-permissions.md).
 
-1. Stellen Sie sicher, dass keine Tabelle mit demselben Namen vorhanden ist. Wenn sie vorhanden ist, können Sie: Eine Tabelle mit einem anderen Namen erstellen, die vorhandene Tabelle umbenennen (erfordert die Rolle *table admin* (Tabellenadministrator)) oder die vorhandene Tabelle löschen (erfordert die Rolle *database admin* (Datenbankadministrator)). Verwenden Sie die folgenden Befehle:
+1. Stellen Sie sicher, dass keine Tabelle mit demselben Namen vorhanden ist. Ist bereits eine vorhanden, haben Sie folgende Möglichkeiten: Erstellen Sie eine Tabelle mit einem anderen Namen, benennen Sie die vorhandene Tabelle um (erfordert die Rolle *table admin* (Tabellenadministrator)), oder löschen Sie die vorhandene Tabelle (erfordert die Rolle *database admin* (Datenbankadministrator)). Verwenden Sie die folgenden Befehle:
 
     ```Kusto
     .drop table <TableName>

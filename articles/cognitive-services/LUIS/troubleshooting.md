@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123118"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218700"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Neuigkeiten
+## <a name="whats-new"></a>Neues
 
 [Erfahren Sie mehr über](whats-new.md) Neuerungen in Language Understanding (LUIS).
 
@@ -124,10 +124,10 @@ Um das nicht deterministische Training zu entfernen, können Sie die [Anwendungs
 Weitere Tipps finden Sie in den [Best Practices](luis-concept-best-practices.md). 
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Warum fügt LUIS vor und nach Wörtern oder in der Mitte von Wörtern Leerzeichen in die Abfrage ein?
-LUIS nutzt für die [Tokenisierung](luis-language-support.md#tokenization) der Äußerung deren [Kultur](luis-glossary.md#token). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
+LUIS nutzt für die [Tokenisierung](luis-glossary.md#token) der Äußerung deren [Kultur](luis-language-support.md#tokenization). Sowohl der ursprüngliche Wert als auch der nach der Tokenisierung vorhandene Wert können [extrahiert](luis-concept-data-extraction.md#tokenized-entity-returned) werden.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Wie lässt sich ein LUIS-Endpunkt erstellen und zuweisen?
-Erstellen Sie zunächst für Ihren [Servicelevel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) den [Endpunktschlüssel](luis-how-to-azure-subscription.md) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
+Erstellen Sie zunächst für Ihren [Servicelevel](luis-how-to-azure-subscription.md) den [Endpunktschlüssel](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) in Azure. [Weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) auf der Seite **[Azure-Ressourcen](luis-how-to-azure-subscription.md)** zu. Für diese Aktion steht keine API zur Verfügung. Danach müssen Sie die HTTP-Anforderung an den Endpunkt so ändern, dass der [neue Endpunktschlüssel](luis-concept-keys.md) verwendet wird.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Wie lassen sich LUIS-Bewertungen interpretieren?
 Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwenden. Ein Wert unter 0,5 (weniger als 50 %) ist nicht zwangsläufig mit einer geringen Zuverlässigkeit von LUIS gleichzusetzen. Durch das Bereitstellen weiterer Trainingsdaten kann die [Bewertung](luis-concept-prediction-score.md) für die wahrscheinlichste Absicht verbessert werden.
@@ -275,7 +275,7 @@ Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenh
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Beheben des Problems in Azure Bot Service
 
-Wenn Sie Azure Bot Service verwenden und das Problem darin besteht, dass der **Test in Webchat** `Sorry, my bot code is having an issue` zurückgibt, überprüfen Sie Ihre Protokolle:
+Wenn Sie Azure Bot Service verwenden und das Problem darin besteht, dass der **Test in Webchat**`Sorry, my bot code is having an issue` zurückgibt, überprüfen Sie Ihre Protokolle:
 
 1. Wählen Sie im Azure-Portal für Ihren Bot im Abschnitt **Bot Management** (Botverwaltung) **Build** (Erstellen) aus.
 1. Öffnen Sie den Onlinecode-Editor. 

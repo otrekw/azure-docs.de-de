@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233482"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
 
@@ -149,5 +149,5 @@ Sie müssen verschiedene wesentliche Konfigurationseinstellungen überwachen und
 * [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md)
 * [Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
 * [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Apache Spark Configuration](https://spark.apache.org/docs/latest/configuration.html) (Apache Spark-Konfiguration)
+* [Apache Spark-Konfiguration](https://spark.apache.org/docs/latest/configuration.html)
 * [Ausführen von Apache Spark in Apache Hadoop YARN](https://spark.apache.org/docs/latest/running-on-yarn.html) (in englischer Sprache)

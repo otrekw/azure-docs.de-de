@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083131"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Problembehandlung bei Azure CDN-Endpunkten mit Statuscode 404
@@ -73,7 +73,7 @@ Die Seite **Ursprung** wird angezeigt.
 #### <a name="http-and-https-ports"></a>HTTP- und HTTPS-Ports
 Überprüfen Sie die **HTTP**- und **HTTPS-Ports**. Die Einstellungen 80 und 443 stimmen meistens und erfordern keine Änderungen.  Wenn der Ursprungsserver jedoch an einem anderen Port lauscht, muss dies hier angegeben werden. Wenn Sie sich in Bezug darauf nicht sicher sind, sehen Sie sich die URL Ihrer Ursprungsdatei an. Die HTTP- und HTTPS-Spezifikationen verwenden standardmäßig die Ports 80 und 443. In der Beispiel-URL „https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt“ ist kein Port angegeben. Daher wird vom Standardport 443 ausgegangen, und die Einstellungen sind korrekt.  
 
-Nun nehmen wir jedoch an, dass die URL für die zuvor getestete Ursprungsdatei „http:\//www.contoso.com:8080/file.txt“ lautet. Am Ende des Hostnamensegments wird der Teil *:8080* angezeigt. Diese Zahl weist den Browser an, Port 8080 für die Verbindung mit dem Webserver unter www\.contoso.com zu verwenden. Geben Sie daher im Feld **HTTP-Port** den Port *8080* ein. Beachten Sie, dass sich diese Porteinstellungen nur darauf auswirken, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet.
+Nun nehmen wir jedoch an, dass die URL für die zuvor getestete Ursprungsdatei „http:\//www.contoso.com:8080/file.txt“ lautet. Am Ende des Hostnamensegments wird der Teil *:8080* angezeigt. Diese Zahl weist den Browser an, Port 8080 für die Verbindung mit dem Webserver unter www\.contoso.com zu verwenden. Geben Sie daher im Feld *HTTP-Port* den Port **8080** ein. Beachten Sie, dass sich diese Porteinstellungen nur darauf auswirken, welchen Port der Endpunkt zum Abrufen von Informationen vom Ursprung verwendet.
 
 > [!NOTE]
 > Endpunkte vom Typ **Azure CDN Standard von Akamai** lassen nicht den vollständigen TCP-Portbereich für Ursprünge zu.  Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100))(Azure CDN von Akamai – Zulässige Ursprungsports).  

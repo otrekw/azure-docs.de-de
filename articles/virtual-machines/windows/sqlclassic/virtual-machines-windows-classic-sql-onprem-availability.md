@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978047"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Erweitern von lokalen AlwaysOn-Verfügbarkeitsgruppen auf Azure
@@ -33,7 +33,7 @@ Dieses Lernprogramm setzt voraus, dass Sie über die folgenden Punkte verfügen:
 * Konnektivität zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Weitere Informationen zum Erstellen dieses virtuellen Netzwerks finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal (klassisch)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 ## <a name="add-azure-replica-wizard"></a>Assistent zum Hinzufügen von Azure-Replikaten
 In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen von Azure-Replikaten** Ihre AlwaysOn-Verfügbarkeitsgruppenlösung um Azure-Replikate erweitern.
@@ -47,7 +47,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 4. In diesem Fall müssen Sie Verbindungen mit allen vorhandenen sekundären Replikaten herstellen. Klicken Sie auf **Verbinden…** neben jedem Replikat, oder klicken Sie auf **Alle verbinden…** unten auf dem Bildschirm. Klicken Sie nach der Authentifizierung auf **Weiter** , um zum nächsten Bildschirm zu gelangen.
-5. Auf der Seite **Replikate angeben** werden oben mehrere Registerkarten aufgeführt: **Replikate**, **Endpunkte**, **Sicherungseinstellungen** und **Listener**. Klicken Sie auf der Registerkarte **Replikate** auf **Azure-Replikat hinzufügen…** , um den Assistenten zum Hinzufügen von Azure-Replikaten zu starten.
+5. Auf der Seite **Replikate angeben** befinden sich mehrere Registerkarten: **Replikate**, **Endpunkte**, **Sicherungseinstellungen** und **Listener**. Klicken Sie auf der Registerkarte **Replikate** auf **Azure-Replikat hinzufügen…** , um den Assistenten zum Hinzufügen von Azure-Replikaten zu starten.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 6. Wählen Sie ein vorhandenes Azure-Verwaltungszertifikat aus dem lokalen Windows-Zertifikatspeicher aus, wenn Sie zuvor eins installiert hatten. Wählen Sie die ID eines Azure-Abonnements aus, wenn Sie zuvor eins verwendet hatten, oder geben Sie sie ein. Sie können auf „Download“ klicken, um ein Azure-Verwaltungszertifikat herunterzuladen und zu installieren und mithilfe eines Azure-Kontos die Abonnementliste herunterzuladen.
@@ -55,7 +55,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem **Assistenten zum Hinzufügen 
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. Sie müssen jedes Feld auf der Seite mit Werten auffüllen, die zum Erstellen es virtuellen Azure-Computers (VM) verwendet werden, der für das Hosten des Replikats bestimmt ist.
    
-   | Einstellung | Beschreibung |
+   | Einstellung | BESCHREIBUNG |
    | --- | --- |
    | **Image** |Wählen Sie die gewünschte Kombination aus Betriebssystem und SQL Server aus |
    | **Größe des virtuellen Computers** |Wählen Sie die Größe für die VM, die Ihren Geschäftsanforderungen optimal entspricht |

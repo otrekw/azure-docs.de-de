@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68945233"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generieren intelligent zugeschnittener Miniaturbilder mit maschinellem Sehen
@@ -24,7 +24,7 @@ Ein Miniaturbild ist eine verkleinerte Darstellung eines Bilds. Miniaturbilder w
 
 Der Algorithmus zum Generieren der Miniaturbilder der Maschinelles Sehen-API funktioniert wie folgt:
 
-1. Entfernen störender Elemente aus dem Bild und Identifizieren des _relevanten Bereichs_ &mdash; das ist der Bildbereich, in dem die wichtigsten Objekte enthalten sind.
+1. Entfernen störender Elemente aus dem Bild und Identifizieren des _relevanten Bereichs_&mdash; das ist der Bildbereich, in dem die wichtigsten Objekte enthalten sind.
 1. Das Bild wird auf Grundlage des erkannten _relevanten Bereichs_ zugeschnitten.
 1. Das Seitenverhältnis wird entsprechend den Abmessungen des Zielminiaturbilds geändert.
 

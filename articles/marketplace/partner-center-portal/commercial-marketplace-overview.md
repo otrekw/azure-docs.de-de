@@ -1,19 +1,18 @@
 ---
 title: Übersicht über das Portal des kommerziellen Marketplace in Partner Center
 description: Erfahren Sie mehr über das Portal des kommerziellen Marketplace in Partner Center und wie Sie Angebote im Azure Marketplace, in AppSource und über das Cloud Solution Provider-Programm (CSP-Programm) auflisten und verkaufen können.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 3c98a143dbc23d4d8e105785ab003258ab913a6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281441"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das Portal des kommerziellen Marketplace in Partner Center
 

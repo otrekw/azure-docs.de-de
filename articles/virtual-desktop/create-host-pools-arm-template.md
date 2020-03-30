@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f61319a1d2a5d5599a4745979f3c5abc0a713ac7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 9ce6440989cbf962c474de2a6c90db4c485bf4a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292327"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
 
@@ -43,7 +43,7 @@ Führen Sie diese Schritte zum Bereitstellen in Azure aus, wenn Sie die Bereitst
 
 1. Scrollen Sie nach unten, klicken Sie mit der rechten Maustaste auf **In Azure bereitstellen**, und wählen Sie dann **Link-Adresse kopieren**.
 2. Öffnen Sie einen Text-Editor, z. B. Editor, und fügen Sie den Link ein.
-3. Geben Sie direkt nach „https://portal.azure.com/“ und vor dem Hashtag (#) ein at-Zeichen (@) gefolgt vom Namen der Mandantendomäne ein. Hier ist ein Beispiel für das Format angegeben, das Sie verwenden sollten: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. Geben Sie direkt nach „https://portal.azure.com/“ und vor dem Hashtag (#) ein at-Zeichen (@) gefolgt vom Namen der Mandantendomäne ein. Hier ist ein Beispiel für das Format angegeben, das Sie verwenden sollten: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`.
 4. Melden Sie sich am Azure-Portal als Benutzer mit den Berechtigungen „Administrator/Mitwirkender“ am Cloud Solution Provider-Abonnement an.
 5. Fügen Sie den Link, den Sie in den Text-Editor kopiert haben, in die Adressleiste ein.
 

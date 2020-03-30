@@ -7,20 +7,23 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d0f7085342f972f227fc549c423672296697d7de
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 454a80089b5f74d4a70015ffcd03d0212e8c08a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297910"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-resource-manager-template"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der Azure Resource Manager-Vorlage
 
 > [!div class="op_single_selector"]
+> * [Portal](customer-managed-keys-portal.md)
 > * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
+
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
 
@@ -74,12 +77,12 @@ Sie können die Azure Resource Manager-Vorlage über das Azure-Portal oder mithi
 
 ## <a name="update-the-key-version"></a>Aktualisieren der Schlüsselversion
 
-Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie den Cluster aktualisieren, damit er die neue Version verwendet. Rufen Sie zuerst `Get-AzKeyVaultKey` auf, um die aktuelle Version des Schlüssels abzurufen. Aktualisieren Sie dann die Schlüsseltresoreigenschaften des Clusters so, dass die neue Version des Schlüssels verwendet wird, wie unter [Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln](#configure-encryption-with-customer-managed-keys) gezeigt.
+Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie den Cluster aktualisieren, damit er die neue Version verwendet. Rufen Sie zuerst `Get-AzKeyVaultKey` auf, um die neueste Version des Schlüssels abzurufen. Aktualisieren Sie dann die Schlüsseltresoreigenschaften des Clusters so, dass die neue Version des Schlüssels verwendet wird, wie unter [Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln](#configure-encryption-with-customer-managed-keys) gezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schützen von Azure Data Explorer-Clustern in Azure](security.md)
-* [Konfigurieren von verwalteten Identitäten für Ihren Azure Data Explorer-Cluster](managed-identities.md)
-* [Sichern Ihres Clusters in Azure Data Explorer – Azure-Portal](manage-cluster-security.md) durch Aktivieren der Verschlüsselung ruhender Daten
+* [Schützen von Azure Data Explorer-Clustern in Azure](security.md)
+* [Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster](managed-identities.md)
+* [Sichern Ihres Clusters in Azure Data Explorer – Azure-Portal](manage-cluster-security.md) durch Aktivieren der Verschlüsselung ruhender Daten
 * [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe von C#](customer-managed-keys-csharp.md)
 

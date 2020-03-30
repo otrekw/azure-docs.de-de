@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178032"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Öffnen der TCP-Ports in der Windows-Firewall für die Standardinstanz der Datenbank-Engine
@@ -16,7 +16,7 @@ ms.locfileid: "67178032"
 2. Geben Sie nach der Anmeldung auf dem Startbildschirm **WF.msc** ein, und drücken Sie dann die EINGABETASTE.
    
     ![Starten des Firewall-Programms](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
-3. Klicken Sie in **Windows-Firewall mit erweiterter Sicherheit** im linken Bereich mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie dann im Aktionsbereich auf **Neue Regel**.
+3. Klicken Sie im linken Bereich von **Windows-Firewall mit erweiterter Sicherheit**mit der rechten Maustaste auf **Eingehende Regeln**, und klicken Sie anschließend im Aktionsbereich auf **Neue Regel** .
    
     ![Neue Regel](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
 4. Wählen Sie im Dialogfeld **Assistent für neue eingehende Regel** unter **Regeltyp** die Option **Port** aus, und klicken Sie dann auf **Weiter**.
@@ -24,14 +24,14 @@ ms.locfileid: "67178032"
    
     ![TCP-Port 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
 6. Klicken Sie auf **Weiter**.
-7. Klicken Sie im Dialogfeld **Aktion** auf **Verbindung zulassen** und anschließend auf **Weiter**.
+7. Wählen Sie im Dialogfeld **Aktion** die Option **Verbindung zulassen**aus, und klicken Sie anschließend auf **Weiter**.
    
     **Sicherheitshinweis:** Die Auswahl von **Verbindung zulassen, wenn sie sicher ist** kann für zusätzliche Sicherheit sorgen. Wählen Sie diese Option, wenn Sie zusätzliche Sicherheitsoptionen in Ihrer Umgebung konfigurieren möchten.
    
     ![Verbindungen zulassen](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. Klicken Sie im Dialogfeld **Profil** auf **Öffentlich**, **Privat** und **Domäne**. Klicken Sie auf **Weiter**.
+8. Klicken Sie im Dialogfeld **Profil** auf **Öffentlich**, **Privat** und **Domäne**. Klicken Sie dann auf **Weiter**.
    
-    **Sicherheitshinweis:**  Die Auswahl von **Öffentlich** ermöglicht den Zugriff über das Internet. Sie sollten möglichst ein restriktiveres Profil auswählen.
+    **Sicherheitshinweis:** Die Auswahl von **Öffentlich** ermöglicht den Zugriff über das Internet. Sie sollten möglichst ein restriktiveres Profil auswählen.
    
     ![Öffentliches Profil](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 9. Geben Sie im Dialogfeld **Name** einen Namen und eine Beschreibung für diese Regel ein, und klicken Sie dann auf **Fertig stellen**.
@@ -65,7 +65,7 @@ Die SQL Server-Datenbank-Engine kann ohne Domänenumgebung keine Windows-Authent
    
     ![Authentifizierungsmodus auswählen](./media/virtual-machines-sql-server-connection-steps/21Mixed-Mode.png)
 5. Klicken Sie im Dialogfeld von SQL Server Management Studio auf **OK** , um zu bestätigen, dass es erforderlich ist, SQL Server neu zu starten.
-6. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf den Server, und klicken Sie dann auf **Neu starten**. (Wenn SQL Server-Agent ausgeführt wird, muss dieser ebenfalls neu gestartet werden.)
+6. Klicken Sie im Objekt-Explorer mit der rechten Maustaste auf Ihren Server, und klicken Sie dann auf **Neu starten**. (Wenn SQL Server-Agent ausgeführt wird, muss dieser ebenfalls neu gestartet werden.)
    
     ![Neu starten](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 7. Klicken Sie im Dialogfeld von SQL Server Management Studio auf **Ja** , um zu bestätigen, dass SQL Server neu gestartet werden soll.
@@ -74,14 +74,14 @@ Die SQL Server-Datenbank-Engine kann ohne Domänenumgebung keine Windows-Authent
 Um von einem anderen Computer aus eine Verbindung mit der Datenbank-Engine herzustellen, müssen Sie mindestens einen Anmeldenamen für die SQL Server-Authentifizierung erstellen.
 
 1. Erweitern Sie in SQL Server Management Studio-Objekt-Explorer den Ordner der Serverinstanz, in der der neue Anmeldename erstellt werden soll.
-2. Klicken Sie mit der rechten Maustaste auf den Ordner **Sicherheit**, zeigen Sie auf **Neu**, und wählen Sie **Anmeldung** aus.
+2. Klicken Sie mit der rechten Maustaste auf den Ordner **Sicherheit**, zeigen Sie auf **Neu**, und wählen Sie dann **Anmeldung...** aus.
    
     ![Neue Anmeldung](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
 3. Geben Sie im Dialogfeld **Anmeldung – Neu** auf der Seite **Allgemein** im Feld **Anmeldename** den Namen des neuen Benutzers ein.
 4. Wählen Sie **SQL Server-Authentifizierung**.
 5. Geben Sie im Feld **Kennwort** ein Kennwort für den neuen Benutzer ein. Geben Sie dieses Kennwort erneut im Feld **Kennwort bestätigen** ein.
 6. Wählen Sie die erforderlichen Optionen aus, die im Zusammenhang mit dem Kennwort erzwungen werden sollen (**Kennwortrichtlinie erzwingen**, **Ablauf des Kennworts erzwingen** und **Benutzer muss das Kennwort bei der nächsten Anmeldung ändern**). Wenn Sie diese Anmeldung für sich selbst verwenden, ist eine Änderung des Kennworts bei der nächsten Anmeldung nicht erforderlich.
-7. Wählen Sie aus der Liste **Standarddatenbank** eine Standarddatenbank für den Anmeldenamen aus. **master** ist die Standardoption. Falls Sie noch keine Benutzerdatenbank erstellt haben, lassen Sie diese Einstellung auf **master**.
+7. Wählen Sie eine Standarddatenbank für die Anmeldung aus der Liste **Standarddatenbank** aus. **master** ist die Standardoption. Falls Sie noch keine Benutzerdatenbank erstellt haben, lassen Sie diese Einstellung auf **master**.
    
     ![Anmeldenameneigenschaften](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
 8. Falls es sich um den ersten Anmeldenamen handelt, den Sie erstellen, werden Sie diesen Anmeldenamen wahrscheinlich als SQL Server-Administrator bezeichnen. Prüfen Sie in diesem Fall **sysadmin** auf der Seite **Serverrollen**.

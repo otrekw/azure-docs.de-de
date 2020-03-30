@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
-ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938622"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294870"
 ---
 # <a name="how-traffic-manager-works"></a>Funktionsweise von Traffic Manager
 
@@ -34,7 +34,7 @@ Wenn ein Client eine Verbindung mit einem Dienst herstellen möchte, muss zunäc
 
 ## <a name="traffic-manager-example"></a>Traffic Manager-Beispiel
 
-Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal lautet https://partners.contoso.com/login.aspx. Die Anwendung wird in drei Bereichen von Azure gehostet. Traffic Manager wird zur Verteilung des Clientdatenverkehrs auf den nächstgelegenen verfügbaren Endpunkt verwendet, um die Verfügbarkeit zu verbessern und die allgemeine Leistung zu maximieren.
+Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal lautet `https://partners.contoso.com/login.aspx`. Die Anwendung wird in drei Bereichen von Azure gehostet. Traffic Manager wird zur Verteilung des Clientdatenverkehrs auf den nächstgelegenen verfügbaren Endpunkt verwendet, um die Verfügbarkeit zu verbessern und die allgemeine Leistung zu maximieren.
 
 Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
@@ -49,7 +49,7 @@ Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Verbindungsherstellung von Clients über Traffic Manager
 
-Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite https://partners.contoso.com/login.aspx anfordert, führt er die folgenden Schritte durch, um den DNS-Namen aufzulösen und eine Verbindung herzustellen:
+Wenn ein Client (das vorherige Beispiel fortgesetzt) die Seite `https://partners.contoso.com/login.aspx` anfordert, führt er die folgenden Schritte durch, um den DNS-Namen aufzulösen und eine Verbindung herzustellen:
 
 ![Verbindungsherstellung mit Traffic Manager][2]
 

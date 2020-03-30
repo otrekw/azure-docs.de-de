@@ -1,19 +1,18 @@
 ---
 title: Voraussetzungen für ein Azure-Containerangebot | Azure Marketplace
 description: Voraussetzungen für die Veröffentlichung eines Azure-Containers.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 2c4e5520a2055fafee586fc369c21acfa36037c6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823130"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280013"
 ---
 # <a name="container-publishing-prerequisites"></a>Voraussetzungen für die Containerveröffentlichung
 
@@ -29,7 +28,7 @@ Um ein neues Containerimage zu veröffentlichen, müssen Sie die folgenden Vorau
 - Ihre Containermetadaten müssen einsatzbereit sein. Beispielsweise die folgende nicht erschöpfende Liste:
   - Titel
   - Beschreibung (im HTML-Format)
-  - Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40×40 px, 90×90 px, 115×115 px und 255×115 px.
+  - Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40 x 40 px, 90 x 90 px, 115 x 115 px und 255 x 115 px.
 - *Nutzungsbedingungen* und *Datenschutzrichtlinie*
 - Dokumentation zur Containerlösung
 - Supportkontakte

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759627"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>SQLRuleAction-Syntaxreferenz für Azure Service Bus
@@ -123,9 +123,9 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
   
  `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
--   `%`:  Eine Zeichenfolge aus null oder mehr Zeichen  
+-   `%`: Eine beliebige Zeichenfolge von null oder mehr Zeichen  
   
--   `_`: Ein einzelnes Zeichen.  
+-   `_`: Ein einzelnes Zeichen  
   
 ## <a name="escape_char"></a>escape_char  
   

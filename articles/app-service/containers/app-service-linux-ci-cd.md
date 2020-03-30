@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687637"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Continuous Deployment mit Web-App für Container
@@ -28,7 +28,7 @@ In diesem Tutorial konfigurieren Sie Continuous Deployment für ein benutzerdefi
 3. Klicken Sie auf den Namen der App, für die Sie Continuous Deployment konfigurieren möchten.
 4. Wählen Sie auf der Seite **Containereinstellungen** die Option **Einzelner Container** aus.
 5. Wählen Sie **Azure Container Registry** aus.
-6. Wählen Sie **Continuous Deployment > Ein**
+6. Wählen Sie **Continuous Deployment > Ein**.
 7. Wählen Sie **Speichern**, um Continuous Deployment zu aktivieren.
 
 ## <a name="use-the-acr-webhook"></a>Verwenden des ACR-Webhooks

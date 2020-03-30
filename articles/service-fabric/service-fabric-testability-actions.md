@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236566"
 ---
 # <a name="testability-actions"></a>Testability-Aktionen
 Zur Simulierung einer unzuverlässigen Infrastruktur bietet Azure Service Fabric Ihnen, dem Entwickler, die Möglichkeit, verschiedene Ausfälle und Statusübergänge aus der Praxis zu simulieren. Diese werden als Testability-Aktionen verfügbar gemacht. Bei den Aktionen handelt es sich um Low-Level-APIs, die eine bestimmte Fault Injection, einen Statusübergang oder eine Überprüfung bewirken. Diese Aktionen können von Ihnen zu umfassenden Testszenarien für Ihre Dienste kombiniert werden.
@@ -23,7 +23,7 @@ Die C#-Implementierungen der Aktionen befinden sich in der Assembly „System.Fa
 Testability-Aktionen sind nach zwei Hauptbereichen (Buckets) klassifiziert:
 
 * Nicht ordnungsgemäße Fehler: Mit diesen Fehlern werden Fehler wie Neustarts von Computern und Abstürze von Prozessen simuliert. Bei diesen Fehlern wird der Ausführungskontext von Prozessen abrupt beendet. Dies bedeutet, dass keine Bereinigung des Status ausgeführt werden kann, bevor die Anwendung neu gestartet wird.
-* Ordnungsgemäße Fehler: Mit diesen Fehlern werden ordnungsgemäße Aktionen simuliert, z. B. Verschiebungen von Replikaten und per Lastenausgleich ausgelöste Ablegevorgänge. In diesen Fällen wird der Dienst über das Schließen informiert und kann vor dem Beenden den Status bereinigen.
+* Ordnungsgemäße Fehler: Mit diesen Fehlern werden ordnungsgemäße Aktionen simuliert, z. B. Verschiebungen von Replikaten und per Lastenausgleich ausgelöst Ablegevorgänge. In diesen Fällen wird der Dienst über das Schließen informiert und kann vor dem Beenden den Status bereinigen.
 
 Führen Sie zur besseren Überprüfung der Qualität die Dienst- und Unternehmensworkload aus, während Sie verschiedene ordnungsgemäße und nicht ordnungsgemäße Fehler auslösen. Bei nicht ordnungsgemäßen Fehlern werden Szenarien simuliert, bei denen der Dienstprozess mitten in einem Workflow abrupt beendet wird. Auf diese Weise wird der Wiederherstellungspfad getestet, nachdem das Dienstreplikat von Service Fabric wiederhergestellt wurde. Dies ist eine Hilfe beim Testen der Datenkonsistenz und der richtigen Beibehaltung des Dienstzustands nach Ausfällen. Bei den anderen (ordnungsgemäßen) Fehlern wird getestet, ob der Dienst richtig auf Replikate reagiert, die von Service Fabric verschoben werden. Hierbei wird auch die Behandlung des Abbruchs in der RunAsync-Methode getestet. Der Dienst muss überprüfen, ob das Abbruchtoken festgelegt ist, den Status korrekt speichern und die RunAsync-Methode beenden.
 

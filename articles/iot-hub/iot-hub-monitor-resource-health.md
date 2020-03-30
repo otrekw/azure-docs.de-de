@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929693"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233194"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen
 
@@ -343,7 +343,7 @@ IoT Hub zeichnet dieses Protokoll auf, wenn eine Nachricht mit gültigen Ablaufv
 
 Hier wird `durationMs` nicht berechnet, da die Uhr von IoT Hub möglicherweise nicht mit der Geräteuhr synchronisiert ist und daher eine Berechnung der Dauer irreführend sein kann. Es wird empfohlen, Logik unter Verwendung der Zeitstempel im Abschnitt `properties` zu schreiben, um Spitzen in der Gerät-zu-Cloud-Latenz zu erfassen.
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | Die Größe einer Gerät-zu-Cloud-Nachricht in Bytes |
 | **deviceId** | Zeichenfolge aus alphanumerischen 7-Bit-ASCII-Zeichen | Die Identität des Geräts |
@@ -377,10 +377,10 @@ IoT Hub zeichnet dieses Protokoll auf, wenn die Nachricht mit gültigen Ablaufve
 
 Im `properties` Abschnitt enthält dieses Protokoll zusätzliche Informationen zum Nachrichteneingang.
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | Zeichenfolge | Entweder „true“ oder „false“; gibt an, ob Nachrichtenweiterleitung in IoT Hub aktiviert ist |
-| **parentSpanId** | Zeichenfolge | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die D2C-Nachrichtenablaufverfolgung |
+| **isRoutingEnabled** | String | Entweder „true“ oder „false“; gibt an, ob Nachrichtenweiterleitung in IoT Hub aktiviert ist |
+| **parentSpanId** | String | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die D2C-Nachrichtenablaufverfolgung |
 
 ##### <a name="iot-hub-egress-logs"></a>Ausgehende IoT Hub-Protokolle
 
@@ -409,11 +409,11 @@ IoT Hub zeichnet dieses Protokoll auf, wenn die [Weiterleitung](iot-hub-devguide
 
 Im `properties` Abschnitt enthält dieses Protokoll zusätzliche Informationen zum Nachrichteneingang.
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | Zeichenfolge | Der Name des Routingendpunkts |
-| **endpointType** | Zeichenfolge | Der Typ des Routingendpunkts |
-| **parentSpanId** | Zeichenfolge | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die Ablaufverfolgung des IoT Hub-Nachrichteneingangs |
+| **endpointName** | String | Der Name des Routingendpunkts |
+| **endpointType** | String | Der Typ des Routingendpunkts |
+| **parentSpanId** | String | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die Ablaufverfolgung des IoT Hub-Nachrichteneingangs |
 
 #### <a name="configurations"></a>Configurations
 

@@ -1,19 +1,18 @@
 ---
 title: SKUs für ein Azure-Containerimage | Azure Marketplace
 description: Konfigurieren von SKUs für einen Azure-Container
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279996"
 ---
 # <a name="container-skus-tab"></a>Registerkarte für Container-SKUs
 

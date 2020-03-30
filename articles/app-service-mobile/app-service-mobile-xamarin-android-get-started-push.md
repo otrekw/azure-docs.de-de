@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5657be0dbaeb46f8f899a9b4a2f8ba9b4fe9ebaa
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226494"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Hinzufügen von Pushbenachrichtigungen zur Xamarin.Android-App
 
@@ -30,11 +30,11 @@ Für dieses Tutorial ist das folgende Setup erforderlich:
 * Ein aktives Google-Konto Sie können sich unter [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) für ein Google-Konto registrieren.
 * [Google Cloud Messaging Client-Komponente](https://components.xamarin.com/view/GCMClient/).
 
-## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Aktivieren von Firebase Cloud Messaging
+## <a name="enable-firebase-cloud-messaging"></a><a id="register"></a>Aktivieren von Firebase Cloud Messaging
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
@@ -42,19 +42,19 @@ Für dieses Tutorial ist das folgende Setup erforderlich:
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>Aktualisieren des Serverprojekts zum Senden von Pushbenachrichtigungen
+## <a name="update-the-server-project-to-send-push-notifications"></a><a id="update-server"></a>Aktualisieren des Serverprojekts zum Senden von Pushbenachrichtigungen
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>Konfigurieren des Clientprojekts für Pushbenachrichtigungen
+## <a name="configure-the-client-project-for-push-notifications"></a><a id="configure-app"></a>Konfigurieren des Clientprojekts für Pushbenachrichtigungen
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a name="add-push-notifications-code-to-your-app"></a><a id="add-push"></a>Hinzufügen von Pushbenachrichtigungen zur App
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>Testen von Pushbenachrichtigungen in der App
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>Testen von Pushbenachrichtigungen in der App
 
 Sie können die App mithilfe eines virtuellen Geräts im Emulgator testen. Es sind zusätzliche Konfigurationsschritte erforderlich, wenn für das Ausführen ein Emulgator verwendet wird.
 

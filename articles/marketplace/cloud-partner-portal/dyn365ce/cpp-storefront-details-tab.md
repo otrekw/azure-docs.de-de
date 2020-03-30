@@ -1,19 +1,18 @@
 ---
 title: Dynamics 365 for Customer Engagement-Angebot – Registerkarte „Details der digitalen Ladenzeile“ – Azure Marketplace
 description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Verwenden Sie die Registerkarte ‚Details der digitalen Ladenzeile‘, um Vertriebs- und Marketinginformationen für ein Dynamics 365 for Customer Engagement-Angebot anzugeben.“'
-services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 1121a021b580d23006e3aaff5da4c6a2a58dca73
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4b5a927b227b2f4b39d9b964219eb3fd50b07406
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279928"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement – Registerkarte „Details der digitalen Ladenzeile“
 

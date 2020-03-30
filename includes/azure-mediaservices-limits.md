@@ -4,17 +4,17 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 49150daa783280f47cb9401434ebfab8f6204090
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fe091a4ff0295ecadfd69ba3f2d4ca59e9612e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224407"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334789"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
 
-| Resource | Standardlimit | 
+| Resource | Begrenzung | 
 | --- | --- | 
 | Azure Media Services-Konten in einem Einzelabonnement | 25 (feststehend) |
 | Reservierte Einheiten für Medien pro Media Services-Konto |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -54,8 +54,8 @@ Seit 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 
 Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten für Medien (S1, S2 und S3). Übersteigt die Größe Ihrer Quelldatei die in der Tabelle definierten Grenzwerte, ist Ihr Codierungsauftrag nicht erfolgreich. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erhalten. Sollten Sie über 4K-Inhalte verfügen, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ übersteigen, öffnen Sie ein Supportticket.
 
-|Reservierte Einheiten für Medien (Typ)   |Maximale Eingabegröße (GB)|
+|Reservierte Einheiten für Medien (Typ)    |Maximale Eingabegröße (GB)|
 |---|---|
-|S1 |   26|
-|S2 | 60|
-|S3 |260|
+|S1 |    26|
+|S2    | 60|
+|S3    |260|

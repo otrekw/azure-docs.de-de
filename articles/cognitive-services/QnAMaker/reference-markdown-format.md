@@ -4,10 +4,10 @@ description: Im Folgenden finden Sie eine Liste der Markdown-Formate, die Sie im
 ms.topic: reference
 ms.date: 01/09/2020
 ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77045393"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>Im Antworttext von QnA Maker unterstütztes Markdown-Format

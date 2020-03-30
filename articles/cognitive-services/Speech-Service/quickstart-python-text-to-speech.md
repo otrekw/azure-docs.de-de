@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365792"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Konvertieren von Text in Sprache mit Python
 
@@ -99,7 +99,7 @@ Als Nächstes müssen Sie erforderliche Header für die Anforderung hinzufügen.
 Erstellen Sie dann den Anforderungstext mithilfe der Speech Synthesis Markup Language (SSML). Dieses Beispiel definiert die Struktur und verwendet die zuvor von Ihnen erstellte `tts`-Eingabe.
 
 >[!NOTE]
-> In diesem Beispiel wird der Voicefont `Guy24KRUS` verwendet. Eine vollständige Liste der von Microsoft bereitgestellten Stimmen/Sprachen finden Sie unter [Sprachunterstützung](language-support.md).
+> In diesem Beispiel wird der Voicefont `Guy24kRUS` verwendet. Eine vollständige Liste der von Microsoft bereitgestellten Stimmen/Sprachen finden Sie unter [Sprachunterstützung](language-support.md).
 > Wenn Sie daran interessiert sind, eine eigene Stimme mit Wiedererkennungswert für Ihre Marke zu erstellen, finden Sie unter [Erstellen von benutzerdefinierten Voicefonts](how-to-customize-voice-font.md) weitere Informationen.
 
 Abschließend stellen Sie eine Anforderung an den Dienst. Wenn die Anforderung erfolgreich war und der Statuscode 200 zurückgegeben wird, wird die Sprachausgabe in eine mit Zeitstempel versehene Datei geschrieben.
@@ -122,7 +122,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 

@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77089055"
 ---
 Mit Version 3 der Textanalyse-API können Sie die für Ihre Daten aktuelle Modellversion auswählen. Verwenden Sie den optionalen Parameter `model-version`, um die für Ihre Anforderungen gewünschte Version des Modells auszuwählen. Wenn dieser Parameter nicht angegeben wird, legt die API standardmäßig `latest` fest, die aktuelle stabile Version. Sie können zwar die aktuelle Modellversion in Ihren Anforderungen verwenden, in jeder Version werden aber nur einige Features aktualisiert. In der folgenden Tabelle wird beschrieben, welche Features in den einzelnen Modellversionen aktualisiert wurden:

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837275"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
@@ -46,11 +46,11 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt das vom Eingabetext verwendete Skript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](./v3-0-languages.md), um Eingabeskripts zu finden, die für die ausgewählte Sprache verfügbar sind.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt das vom Eingabetext verwendete Skript an. Suchen Sie mithilfe des [-Bereichs nach ](./v3-0-languages.md)unterstützten Sprachen`transliteration`, um Eingabeskripts zu finden, die für die ausgewählte Sprache verfügbar sind.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Erforderlicher Parameter*.<br/>Gibt das Ausgabeskript an. Suchen Sie mithilfe des `transliteration`-Bereichs nach [unterstützten Sprachen](./v3-0-languages.md), um Ausgabeskripts zu finden, die für die ausgewählte Kombination aus Sprache und Eingabeskript verfügbar sind.</td>
+    <td>*Erforderlicher Parameter*.<br/>Gibt das Ausgabeskript an. Suchen Sie mithilfe des [-Bereichs nach ](./v3-0-languages.md)unterstützten Sprachen`transliteration`, um Ausgabeskripts zu finden, die für die ausgewählte Kombination aus Sprache und Eingabeskript verfügbar sind.</td>
   </tr>
 </table> 
 
@@ -73,7 +73,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
+    <td>*Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
@@ -98,9 +98,9 @@ Es gelten die folgenden Einschränkungen:
 
 Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jedes Element im Eingabearray. Ein Ergebnisobjekt enthält die folgenden Eigenschaften:
 
-  * `text`: Eine Zeichenfolge, die aus der Konvertierung der Eingabezeichenfolge in das Ausgabeskript resultiert.
+  * `text`: Dies ist eine Zeichenfolge, die aus der Konvertierung der Eingabezeichenfolge in das Ausgabeskript resultiert.
   
-  * `script`: Eine Zeichenfolge, die das in der Ausgabe verwendete Skript angibt.
+  * `script`: Dies ist eine Zeichenfolge, die das in der Ausgabe verwendete Skript angibt.
 
 Eine JSON-Beispielantwort lautet wie folgt:
 
@@ -131,7 +131,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>

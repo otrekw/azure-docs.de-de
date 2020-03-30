@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71327050"
 ---
 Zum Erstellen eines Visual Studio-Projekts für die Windows-Entwicklung müssen Sie das Projekt erstellen, Visual Studio für die .NET-Desktopentwicklung einrichten, das Speech SDK installieren und die Zielarchitektur auswählen.
@@ -23,7 +23,7 @@ Erstellen Sie zunächst das Projekt in Visual Studio, und vergewissern Sie sich,
 
 1. Wählen Sie im Fenster **Neues Projekt erstellen** die Option **Konsolen-App (.NET Framework)** und dann **Weiter** aus.
 
-1. Geben Sie im Fenster **Neues Projekt konfigurieren** unter **Projektname** den Namen *helloworld* ein, und wählen Sie unter **Speicherort** den Verzeichnispfad aus, oder erstellen Sie ihn. Wählen Sie anschließend **Erstellen** aus.
+1. Geben Sie im Fenster **Neues Projekt konfigurieren** unter *Projektname* den Namen **helloworld** ein, und wählen Sie unter **Speicherort** den Verzeichnispfad aus, oder erstellen Sie ihn. Wählen Sie anschließend **Erstellen** aus.
 
 1. Wählen Sie auf der Visual Studio-Menüleiste **Extras** > **Tools und Features abrufen** aus, um den Visual Studio-Installer zu öffnen und das Dialogfeld **Änderung** anzuzeigen.
 

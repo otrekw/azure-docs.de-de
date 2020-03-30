@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74075695"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenz für die API für die Bing-Suche nach ortsansässigen Unternehmen v7
@@ -53,15 +53,15 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 |Header|BESCHREIBUNG|  
 |------------|-----------------|  
 |Akzeptieren|Optionaler Anforderungsheader.<br /><br /> Der Standardmedientyp ist application/json. Um anzugeben, dass die Antwort [JSON-LD](https://json-ld.org/) verwenden soll, legen Sie den Accept-Header auf application/ld+json fest.|  
-|<a name="acceptlanguage" />Accept-Language|Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter „cc“ angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden sollen, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header „BingAPIs-Market“.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von Bing.com in den Antwortobjekten verwenden die angegebene Sprache.|  
+|<a name="acceptlanguage" />Accept-Language|Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter „cc“ angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden sollen, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header „BingAPIs-Market“.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von „bing.com“ in den Antwortobjekten verwenden die angegebene Sprache.|  
 |<a name="market" />BingAPIs-Market|Antwortheader.<br /><br /> Der von der Anforderung verwendete Markt. Das Format lautet \<Sprachcode\>-\<Ländercode\>. Beispiel: en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Antwortheader.<br /><br /> Die ID des Protokolleintrags, der die Details der Anforderung enthält. Erfassen Sie diese ID, wenn ein Fehler auftritt. Wenn Sie das Problem nicht ermitteln und beheben können, übermitteln Sie diese ID und weitere Informationen an das Supportteam.|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Erforderlicher Anforderungsheader.<br /><br /> Der Abonnementschlüssel, den Sie bei der Registrierung für diesen Dienst in [Cognitive Services](https://www.microsoft.com/cognitive-services/) erhalten haben.|  
 |<a name="pragma" />Pragma|Optionaler Anforderungsheader.<br /><br /> Als Standardeinstellung gibt Bing zwischengespeicherte Inhalte (sofern vorhanden) zurück. Wenn Sie dies verhindern möchten, legen Sie den Pragma-Header auf „no-cache“ fest (z.B. „Pragma: no-cache“).
 |<a name="useragent" />User-Agent|Optionaler Anforderungsheader.<br /><br /> Der Benutzer-Agent, von dem die Anforderung stammt. Bing verwendet den Benutzer-Agent, um die Erfahrung mobiler Benutzer zu optimieren. Auch wenn dies optional ist, sollten Sie diesen Header immer angeben.<br /><br /> Der Benutzer-Agent sollte der Zeichenfolge entsprechen, die alle häufig verwendeten Browser senden. Informationen zu Benutzer-Agents finden Sie in [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Nachfolgend einige Beispiele für Zeichenfolgen für Benutzer-Agents.<br /><ul><li>Windows Phone&mdash;Mozilla/5.0 (kompatibel; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)<br /><br /></li><li>Android&mdash;Mozilla/5.0 (Linux; U; Android 2.3.5; en-US; SCH-I500 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML; wie Gecko) Version/4.0 Mobile Safari/533.1<br /><br /></li><li>iPhone&mdash;Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 wie Mac OS X) AppleWebKit/536.26 (KHTML; wie Gecko) Mobile/10B142 iPhone4;1 BingWeb/3.03.1428.20120423<br /><br /></li><li>PC&mdash;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) wie Gecko<br /><br /></li><li>iPad&mdash;Mozilla/5.0 (iPad; CPU OS 7_0 wie Mac OS X) AppleWebKit/537.51.1 (KHTML, wie Gecko) Version/7.0 Mobile/11A465 Safari/9537.53</li></ul>|
-|<a name="clientid" />X-MSEdge-ClientID|Optionaler Anforderungs- und Antwortheader.<br /><br /> Bing verwendet diesen Header, um Benutzern beim Aufrufen der Bing-API ein konsistentes Verhalten bereitzustellen. Bing testet häufig neue Funktionen und Verbesserungen und verwendet dabei die Client-ID als Schlüssel für die Zuweisung von Datenverkehr an verschiedene Flights. Wenn Sie für einen Benutzer bei unterschiedlichen Anforderungen nicht dieselbe Client-ID verwenden, weist Bing den Benutzer möglicherweise mehreren widersprüchlichen Flights zu. Die Zuweisung zu mehreren widersprüchlichen Flights kann zu einer inkonsistenten Benutzererfahrung führen. Weist die zweite Anforderung beispielsweise eine andere Flight-Zuweisung als die erste auf, kann dies zu einer unerwarteten Benutzererfahrung führen. Außerdem kann Bing die Client-ID zur Anpassung der Webergebnisse an den Suchverlauf dieser Client-ID verwenden. Dies führt zu einer noch besseren Benutzererfahrung.<br /><br /> Bing verwendet den Header auch, um die Rangfolge der Ergebnisse zu verbessern, indem es die Aktivität der Client-ID analysiert. Durch die verbesserte Relevanz erhöht sich die Qualität der von Bing-APIs bereitgestellten Ergebnisse, was wiederum zu höheren Durchklickraten für den API-Consumer führt.<br /><br /> **WICHTIG:** Auch wenn er optional ist, sollten Sie diesen Header als erforderlich betrachten. Das Beibehalten der Client-ID für dieselbe Kombination aus Benutzer und Gerät über mehrere Anforderungen hinweg ermöglicht 1) dem API-Consumer eine konsistente Benutzererfahrung sowie 2) höhere Durchklickraten durch eine bessere Qualität der Bing-API-Ergebnisse.<br /><br /> Die folgenden Grundregeln gelten bei der Verwendung dieses Headers.<br /><ul><li>Jeder Benutzer, der die Anwendung auf dem Gerät verwendet, muss über eine eindeutige, von Bing generierte Client-ID verfügen.<br /><br/>Wenn Sie diesen Header nicht in die Anforderung einfügen, generiert Bing eine ID, die im Antwortheader „X-MSEdge-ClientID“ zurückgegeben wird. Der einzige Zeitpunkt, bei dem dieser Header NICHT in eine Anforderung eingeschlossen werden sollte, ist bei der erstmaligen Verwendung der App auf dem Gerät.<br /><br/></li><li>Verwenden Sie die Client-ID für jede Anforderung der Bing-API, die die App für diesen Benutzer auf dem Gerät durchführt.<br /><br/></li><li>**ACHTUNG:** Vergewissern Sie sich, dass die Client-ID nicht mit authentifizierbaren Benutzerkontoinformationen verknüpft werden kann.</li><br/><li>Behalten Sie die Client-ID bei. Verwenden Sie ein permanentes HTTP-Cookie, um sicherzustellen, dass die ID in einer Browser-App bei allen Sitzungen verwendet wird. Verwenden Sie kein Sitzungscookie. Verwenden Sie für andere Apps wie z.B. mobile Apps den permanenten Speicher des Geräts, um die ID beizubehalten.<br /><br/>Rufen Sie bei der nächsten Verwendung der App auf dem Gerät durch den Benutzer die gespeicherte Client-ID ab.</li></ul><br /> **HINWEIS:** Bing-Antworten können diesen Header enthalten, müssen es aber nicht. Enthält die Antwort diesen Header, erfassen Sie die Client-ID, und verwenden Sie sie für alle nachfolgenden Bing-Anforderungen des Benutzers auf diesem Gerät.<br /><br /> **HINWEIS:** Wenn Sie den Header „X-MSEdge-ClientID“ einfügen, dürfen Sie in die Anforderung nicht gleichzeitig Cookies einschließen.|  
+|<a name="clientid" />X-MSEdge-ClientID|Optionaler Anforderungs- und Antwortheader.<br /><br /> Bing verwendet diesen Header, um Benutzern beim Aufrufen der Bing-API ein konsistentes Verhalten bereitzustellen. Bing testet häufig neue Funktionen und Verbesserungen und verwendet dabei die Client-ID als Schlüssel für die Zuweisung von Datenverkehr an verschiedene Flights. Wenn Sie für einen Benutzer bei unterschiedlichen Anforderungen nicht dieselbe Client-ID verwenden, weist Bing den Benutzer möglicherweise mehreren widersprüchlichen Flights zu. Die Zuweisung zu mehreren widersprüchlichen Flights kann zu einer inkonsistenten Benutzererfahrung führen. Weist die zweite Anforderung beispielsweise eine andere Flight-Zuweisung als die erste auf, kann dies zu einer unerwarteten Benutzererfahrung führen. Außerdem kann Bing die Client-ID zur Anpassung der Webergebnisse an den Suchverlauf dieser Client-ID verwenden. Dies führt zu einer noch besseren Benutzererfahrung.<br /><br /> Bing verwendet den Header auch, um die Rangfolge der Ergebnisse zu verbessern, indem es die Aktivität der Client-ID analysiert. Durch die verbesserte Relevanz erhöht sich die Qualität der von Bing-APIs bereitgestellten Ergebnisse, was wiederum zu höheren Durchklickraten für den API-Consumer führt.<br /><br /> **WICHTIG:** Auch wenn er optional ist, sollten Sie diesen Header als erforderlich betrachten. Das Beibehalten der Client-ID für dieselbe Kombination aus Benutzer und Gerät über mehrere Anforderungen hinweg ermöglicht 1) dem API-Consumer eine konsistente Benutzererfahrung sowie 2) höhere Durchklickraten durch eine bessere Qualität der Bing-API-Ergebnisse.<br /><br /> Die folgenden Grundregeln gelten bei der Verwendung dieses Headers.<br /><ul><li>Jeder Benutzer, der die Anwendung auf dem Gerät verwendet, muss über eine eindeutige, von Bing generierte Client-ID verfügen.<br /><br/>Wenn Sie diesen Header nicht in die Anforderung einfügen, generiert Bing eine ID, die im Antwortheader „X-MSEdge-ClientID“ zurückgegeben wird. Der einzige Zeitpunkt, zu dem dieser Header NICHT in eine Anforderung eingeschlossen werden sollte, ist bei der erstmaligen Verwendung der App auf dem Gerät.<br /><br/></li><li>Verwenden Sie die Client-ID für jede Anforderung der Bing-API, die die App für diesen Benutzer auf dem Gerät durchführt.<br /><br/></li><li>**ACHTUNG:** Vergewissern Sie sich, dass die Client-ID nicht mit authentifizierbaren Benutzerkontoinformationen verknüpft werden kann.</li><br/><li>Behalten Sie die Client-ID bei. Verwenden Sie ein permanentes HTTP-Cookie, um sicherzustellen, dass die ID in einer Browser-App bei allen Sitzungen verwendet wird. Verwenden Sie kein Sitzungscookie. Verwenden Sie für andere Apps wie z.B. mobile Apps den permanenten Speicher des Geräts, um die ID beizubehalten.<br /><br/>Rufen Sie bei der nächsten Verwendung der App auf dem Gerät durch den Benutzer die gespeicherte Client-ID ab.</li></ul><br /> **HINWEIS:** Bing-Antworten können diesen Header enthalten, müssen es aber nicht. Enthält die Antwort diesen Header, erfassen Sie die Client-ID, und verwenden Sie sie für alle nachfolgenden Bing-Anforderungen des Benutzers auf diesem Gerät.<br /><br /> **HINWEIS:** Wenn Sie den Header „X-MSEdge-ClientID“ einfügen, dürfen Sie in die Anforderung nicht gleichzeitig Cookies einschließen.|  
 |<a name="clientip" />X-MSEdge-ClientIP|Optionaler Anforderungsheader.<br /><br /> Die IPv4- oder IPv6-Adresse des Clientgeräts. Die IP-Adresse wird verwendet, um den Standort des Benutzers zu ermitteln. Bing verwendet die Standortinformationen für ein sicheres Suchverhalten.<br /><br /> **HINWEIS:** Auch wenn dies optional ist, sollten Sie diesen Header und den Header „X-Search-Location“ immer angeben.<br /><br /> Verschleiern Sie nicht die Adresse (z.B. durch Ändern des letzten Oktetts in 0). Durch Verschleiern der Adresse stimmen Ihr Standort und der tatsächliche Gerätestandort nicht überein, wodurch Bing möglicherweise fehlerhafte Ergebnisse anzeigt.|  
-|<a name="location" />X-Search-Location|Optionaler Anforderungsheader.<br /><br /> Eine durch Semikolons getrennte Liste mit Schlüssel/Wert-Paaren, die den geografischen Standort des Clients beschreiben. Bing verwendet die Standortinformationen für ein sicheres Suchverhalten und zur Rückgabe von lokalen relevanten Inhalten. Geben Sie das Schlüssel-Wert-Paar im Format \<Schlüssel\>:\<Wert\> an. Verwenden Sie die folgenden Schlüssel zur Angabe des Benutzerstandorts.<br /><br /><ul><li>lat: Der Breitengrad des Clientstandorts (in Grad). Der Breitengrad muss größer als oder gleich -90,0 und kleiner als oder gleich +90,0 sein. Negative Werte geben südliche Breitengrade und positive Werte nördliche Breitengrade an.<br /><br /></li><li>long: Der Längengrad des Clientstandorts (in Grad). Der Längengrad muss größer als oder gleich -180,0 und kleiner als oder gleich +180,0 sein. Negative Werte geben westliche Längengrade und positive Werte östliche Längengrade an.<br /><br /></li><li>re: Der Radius (in Metern), der die horizontale Genauigkeit der Koordinaten angibt. Übergeben Sie den Wert, der vom Standortdienst des Geräts zurückgegeben wird. Typische Werte sind 22 m für GPS/WLAN, 380 m für Funkmasttriangulation und 18.000 m für umgekehrte IP-Suche.<br /><br /></li><li>ts: Der UTC UNIX-Zeitstempel des Zeitpunkts, zu dem sich der Client am Standort befand. (Der UNIX-Zeitstempel gibt die Anzahl der Sekunden seit dem 1. Januar 1970 an.)<br /><br /></li><li>head: Optional. Relatives Ziel oder Reiserichtung des Clients. Geben Sie die Reiserichtung von 0 bis 360 (in Grad) im Uhrzeigersinn ausgehend vom geografischen Norden an. Geben Sie diesen Schlüssel nur an, wenn der `sp`-Schlüssel ungleich 0 ist.<br /><br /></li><li>sp: Die horizontale Geschwindigkeit (in Metern pro Sekunde), mit der das Clientgerät unterwegs ist.<br /><br /></li><li>alt: Die Höhe des Clientgeräts (in Metern).<br /><br /></li><li>are: Optional. Der Radius (in Metern), der die vertikale Genauigkeit der Koordinaten angibt. Der Standardwert für den Radius ist 50 Kilometer. Geben Sie diesen Schlüssel nur an, wenn Sie auch den `alt`-Schlüssel angeben.<br /><br /></li></ul> **HINWEIS:** Auch wenn diese Schlüssel optional sind, werden die Standortergebnisse immer genauer, je mehr Informationen Sie bereitstellen.<br /><br /> **HINWEIS:** Sie sollten den geografischen Standort des Benutzers immer angeben. Besonders wichtig ist die Standortangabe dann, wenn die IP-Adresse des Clients den physischen Standort des Benutzers nicht exakt wiedergibt (wenn der Client beispielsweise VPN verwendet). Für optimale Ergebnisse sollten Sie diesen Header und den Header „X-MSEdge-ClientIP“ einfügen. Auf jeden Fall sollten Sie aber zumindest diesen Header verwenden.|
+|<a name="location" />X-Search-Location|Optionaler Anforderungsheader.<br /><br /> Eine durch Semikolons getrennte Liste mit Schlüssel/Wert-Paaren, die den geografischen Standort des Clients beschreiben. Bing verwendet die Standortinformationen für ein sicheres Suchverhalten und zur Rückgabe von lokalen relevanten Inhalten. Geben Sie das Schlüssel-Wert-Paar im Format \<Schlüssel\>:\<Wert\> an. Verwenden Sie die folgenden Schlüssel zur Angabe des Benutzerstandorts.<br /><br /><ul><li>lat: Der Breitengrad des Clientstandorts (in Grad). Der Breitengrad muss größer als oder gleich -90,0 und kleiner als oder gleich +90,0 sein. Negative Werte geben südliche Breitengrade und positive Werte nördliche Breitengrade an.<br /><br /></li><li>long: Der Längengrad des Clientstandorts (in Grad). Der Längengrad muss größer als oder gleich -180,0 und kleiner als oder gleich +180,0 sein. Negative Werte geben westliche Längengrade und positive Werte östliche Längengrade an.<br /><br /></li><li>re: Der Radius (in Metern), der die horizontale Genauigkeit der Koordinaten angibt. Übergeben Sie den Wert, der vom Standortdienst des Geräts zurückgegeben wird. Typische Werte sind 22 m für GPS/WLAN, 380 m für die Funkmasttriangulation und 18.000 m für die umgekehrte IP-Suche.<br /><br /></li><li>ts: Der UTC UNIX-Zeitstempel des Zeitpunkts, zu dem sich der Client am Standort befand. (Der UNIX-Zeitstempel gibt die Anzahl der Sekunden seit dem 1. Januar 1970 an.)<br /><br /></li><li>head: Optional. Relatives Ziel oder Reiserichtung des Clients. Geben Sie die Reiserichtung von 0 bis 360 (in Grad) im Uhrzeigersinn ausgehend vom geografischen Norden an. Geben Sie diesen Schlüssel nur an, wenn der `sp`-Schlüssel ungleich 0 ist.<br /><br /></li><li>sp: Die horizontale Geschwindigkeit (in Metern pro Sekunde), mit der das Clientgerät unterwegs ist.<br /><br /></li><li>alt: Die Höhe des Clientgeräts (in Metern).<br /><br /></li><li>are: Optional. Der Radius (in Metern), der die vertikale Genauigkeit der Koordinaten angibt. Der Standardwert für den Radius ist 50 Kilometer. Geben Sie diesen Schlüssel nur an, wenn Sie auch den `alt`-Schlüssel angeben.<br /><br /></li></ul> **HINWEIS:** Auch wenn diese Schlüssel optional sind, werden die Standortergebnisse immer genauer, je mehr Informationen Sie bereitstellen.<br /><br /> **HINWEIS:** Sie sollten den geografischen Standort des Benutzers immer angeben. Besonders wichtig ist die Standortangabe dann, wenn die IP-Adresse des Clients den physischen Standort des Benutzers nicht exakt wiedergibt (wenn der Client beispielsweise VPN verwendet). Für optimale Ergebnisse sollten Sie diesen Header und den Header „X-MSEdge-ClientIP“ einfügen. Auf jeden Fall sollten Sie aber zumindest diesen Header verwenden.|
 
 > [!NOTE] 
 > Beachten Sie, dass die Nutzungsbedingungen die Einhaltung aller geltenden Gesetze erfordert. Dies gilt auch für die Verwendung dieses Headers. Die Rechtsprechung in bestimmten Ländern (z.B. in Europa) erfordert etwa die Zustimmung des Benutzers, um bestimmte Tracking-Geräte auf Benutzergeräten platzieren zu dürfen.
@@ -71,16 +71,16 @@ Die folgenden Header kann eine Anforderung und Antwort möglicherweise enthalten
 Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderlichen Parameter Finden Sie in der Spalte „Erforderlich“. Sie müssen die Abfrageparameter URL-codieren.  
   
   
-|NAME|Wert|type|Erforderlich|  
+|Name|value|type|Erforderlich|  
 |----------|-----------|----------|--------------|
-|<a name="count" />count|Die Anzahl der zurückzugebenden Ergebnisse, beginnend mit dem durch den Parameter `offset` angegebenen Index.|Zeichenfolge|Nein|   
-|<a name="localCategories" />localCategories|Liste der Optionen, die die Suche nach Unternehmenskategorie definieren.  Weitere Informationen finden Sie unter [Kategorien für die Suche nach ortsansässigen Unternehmen](local-categories.md).|Zeichenfolge|Nein|  
-|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die API für die Suche nach ortsansässigen Unternehmen unterstützt zurzeit nur den Markt und die Sprache „en-us“.<br /><br />|Zeichenfolge|Ja|
+|<a name="count" />count|Die Anzahl der zurückzugebenden Ergebnisse, beginnend mit dem durch den Parameter `offset` angegebenen Index.|String|Nein|   
+|<a name="localCategories" />localCategories|Liste der Optionen, die die Suche nach Unternehmenskategorie definieren.  Weitere Informationen finden Sie unter [Kategorien für die Suche nach ortsansässigen Unternehmen](local-categories.md).|String|Nein|  
+|<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die API für die Suche nach ortsansässigen Unternehmen unterstützt zurzeit nur den Markt und die Sprache „en-us“.<br /><br />|String|Ja|
 |<a name="offset"/>offset|Der Index, der die Ergebnisse startet, die durch den Parameter `count` angegeben werden.|Integer|Nein|  
-|<a name="query" />q|Der Suchbegriff des Benutzers.|Zeichenfolge|Nein|  
-|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />  Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](https://json-ld.org/).|Zeichenfolge|Nein|  
-|<a name="safesearch" />safeSearch|Ein Filter für nicht jugendfreie Inhalte. Die folgenden Filterwerte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>Off: Es werden Webseiten mit nicht jugendfreiem Text oder Bildern zurückgegeben.<br /><br/></li><li>Moderate: Webseiten mit nicht jugendfreiem Text werden zurückgegeben, nicht jugendfreie Bilder oder Videos jedoch nicht.<br /><br/></li><li>Strict: Es werden keine Webseiten mit nicht jugendfreiem Text bzw. nicht jugendfreien Bildern oder Videos zurückgegeben.</li></ul><br /> Die Standardeinstellung ist „Moderate“.<br /><br /> **HINWEIS:** Stammt die Anforderung aus einem Markt, für den laut Bing-Richtlinien zu nicht jugendfreien Inhalten für `safeSearch` die Einstellung „Strict“ erforderlich ist, ignoriert Bing den `safeSearch`-Wert und verwendet stattdessen „Strict“.<br/><br/>**HINWEIS:** Bei Verwendung des Abfrageoperators `site:` kann es vorkommen, dass die Antwort unabhängig von der Einstellung des `safeSearch`-Abfrageparameters nicht jugendfreie Inhalte enthält. Verwenden Sie `site:` nur, wenn Sie wissen, welche Inhalte die Website enthält, und wenn in Ihrem Szenario ggf. auch nicht jugendfreie Inhalte zulässig sind. |Zeichenfolge|Nein|  
-|<a name="setlang" />setLang|Die Sprache, die für Zeichenfolgen der Benutzeroberfläche verwendet werden soll. Geben Sie die Sprache mithilfe des zweistelligen Sprachcodes nach ISO 639-1 an. Der Sprachcode für Englisch lautet z.B. „EN“. Der Standardwert ist „EN“ (Englisch).<br /><br /> Auch wenn dies optional ist, sollten Sie immer eine Sprache angeben. In der Regel wird bei `setLang` dieselbe Sprache angegeben wie bei `mkt`, sofern der Benutzer die Zeichenfolgen der Benutzeroberfläche nicht in einer anderen Sprache anzeigen möchte.<br /><br /> Dieser Parameter und der Header [Accept-Language](#acceptlanguage) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die angegebene Sprache wird auch in Links zu Eigenschaften von „bing.com“ in den Antwortobjekten verwendet.|Zeichenfolge|Nein| 
+|<a name="query" />q|Der Suchbegriff des Benutzers.|String|Nein|  
+|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />  Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](https://json-ld.org/).|String|Nein|  
+|<a name="safesearch" />safeSearch|Ein Filter für nicht jugendfreie Inhalte. Die folgenden Filterwerte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>Off: Es werden Webseiten mit nicht jugendfreiem Text oder Bildern zurückgegeben.<br /><br/></li><li>Moderate: Webseiten mit nicht jugendfreiem Text werden zurückgegeben, nicht jugendfreie Bilder oder Videos jedoch nicht.<br /><br/></li><li>Strict: Es werden keine Webseiten mit nicht jugendfreiem Text bzw. nicht jugendfreien Bildern oder Videos zurückgegeben.</li></ul><br /> Die Standardeinstellung ist „Moderate“.<br /><br /> **HINWEIS:** Stammt die Anforderung aus einem Markt, für den laut Bing-Richtlinien zu nicht jugendfreien Inhalten für `safeSearch` die Einstellung „Strict“ erforderlich ist, ignoriert Bing den `safeSearch`-Wert und verwendet stattdessen „Strict“.<br/><br/>**HINWEIS:** Bei Verwendung des Abfrageoperators `site:` kann es vorkommen, dass die Antwort unabhängig von der Einstellung des `safeSearch`-Abfrageparameters nicht jugendfreie Inhalte enthält. Verwenden Sie `site:` nur, wenn Sie wissen, welche Inhalte die Website enthält, und wenn in Ihrem Szenario ggf. auch nicht jugendfreie Inhalte zulässig sind. |String|Nein|  
+|<a name="setlang" />setLang|Die Sprache, die für Zeichenfolgen der Benutzeroberfläche verwendet werden soll. Geben Sie die Sprache mithilfe des zweistelligen Sprachcodes nach ISO 639-1 an. Der Sprachcode für Englisch lautet z.B. „EN“. Der Standardwert ist „EN“ (Englisch).<br /><br /> Auch wenn dies optional ist, sollten Sie immer eine Sprache angeben. In der Regel wird bei `setLang` dieselbe Sprache angegeben wie bei `mkt`, sofern der Benutzer die Zeichenfolgen der Benutzeroberfläche nicht in einer anderen Sprache anzeigen möchte.<br /><br /> Dieser Parameter und der Header [Accept-Language](#acceptlanguage) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die angegebene Sprache wird auch in Links zu Eigenschaften von „bing.com“ in den Antwortobjekten verwendet.|String|Nein| 
 
 
 ## <a name="response-objects"></a>Antwortobjekte  
@@ -92,25 +92,25 @@ Im Folgenden finden Sie die JSON-Antwortobjekte, die die Antwort enthalten könn
 |[Place](#place)|Definiert Informationen zu einem ortsansässigen Unternehmen, z.B. ein Restaurant oder Hotel.|  
 
   
-### <a name="error"></a>Error  
+### <a name="error"></a>Fehler  
 Definiert den aufgetretenen Fehler.  
   
 |Element|BESCHREIBUNG|type|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|Zeichenfolge|  
-|<a name="error-message" />message|Eine Beschreibung des Fehlers.|Zeichenfolge|  
-|<a name="error-moredetails" />moreDetails|Eine Beschreibung, die zusätzliche Informationen zum Fehler enthält.|Zeichenfolge|  
-|<a name="error-parameter" />parameter|Der Abfrageparameter in der Anforderung, der den Fehler verursacht hat.|Zeichenfolge|  
-|<a name="error-subcode" />subCode|Der Fehlercode, der den Fehler identifiziert. Wenn `code` z.B. InvalidRequest ist, kann `subCode` ParameterInvalid oder ParameterInvalidValue sein. |Zeichenfolge|  
-|<a name="error-value" />value|Der Wert des Abfrageparameters, der ungültig war.|Zeichenfolge|  
+|<a name="error-code" />code|Der Fehlercode, der die Kategorie des Fehlers angibt. Eine Liste der möglichen Codes finden Sie unter [Fehlercodes](#error-codes).|String|  
+|<a name="error-message" />message|Eine Beschreibung des Fehlers.|String|  
+|<a name="error-moredetails" />moreDetails|Eine Beschreibung, die zusätzliche Informationen zum Fehler enthält.|String|  
+|<a name="error-parameter" />parameter|Der Abfrageparameter in der Anforderung, der den Fehler verursacht hat.|String|  
+|<a name="error-subcode" />subCode|Der Fehlercode, der den Fehler identifiziert. Wenn `code` z.B. InvalidRequest ist, kann `subCode` ParameterInvalid oder ParameterInvalidValue sein. |String|  
+|<a name="error-value" />value|Der Wert des Abfrageparameters, der ungültig war.|String|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fehlschlägt.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|_type|Der Typhinweis.|Zeichenfolge|  
+|_type|Der Typhinweis.|String|  
 |<a name="errors" />errors|Eine Liste von Fehlern, die die Gründe beschreiben, warum die Anforderung fehlgeschlagen ist.|[Error](#error)[]|  
 
   
@@ -118,48 +118,48 @@ Das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anforderung fe
 ### <a name="license"></a>Lizenz  
 Definiert die Lizenz, unter der der Text oder das Foto verwendet werden kann.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|name|Der Name der Lizenz.|Zeichenfolge|  
-|url|Die URL zu einer Website, auf der der Benutzer weitere Informationen zur Lizenz erhalten kann.<br /><br /> Verwenden Sie den Namen und die URL, um einen Link zu erstellen.|Zeichenfolge|  
+|name|Der Name der Lizenz.|String|  
+|url|Die URL zu einer Website, auf der der Benutzer weitere Informationen zur Lizenz erhalten kann.<br /><br /> Verwenden Sie den Namen und die URL, um einen Link zu erstellen.|String|  
 
 
 ### <a name="link"></a>Link  
 Definiert die Komponenten eines Links.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|_type|Der Typhinweis.|Zeichenfolge|  
-|text|Der Anzeigetext.|Zeichenfolge|  
-|url|Eine URL. Verwenden Sie die URL und den Anzeigetext, um einen Link zu erstellen.|Zeichenfolge|  
+|_type|Der Typhinweis.|String|  
+|text|Der Anzeigetext.|String|  
+|url|Eine URL. Verwenden Sie die URL und den Anzeigetext, um einen Link zu erstellen.|String|  
   
 
 
   
-### <a name="organization"></a>Organisation  
+### <a name="organization"></a>Organization  
 Definiert einen Herausgeber.  
   
 Beachten Sie, dass ein Herausgeber möglicherweise seinen Namen oder seine Website oder beide Angaben bereitstellt.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|name|Der Name des Herausgebers.|Zeichenfolge|  
-|url|Die URL zur Website des Herausgebers.<br /><br /> Beachten Sie, dass der Herausgeber möglicherweise keine Website bereitstellt.|Zeichenfolge|  
+|name|Der Name des Herausgebers.|String|  
+|url|Die URL zur Website des Herausgebers.<br /><br /> Beachten Sie, dass der Herausgeber möglicherweise keine Website bereitstellt.|String|  
   
   
 
 ### <a name="place"></a>Ort  
 Definiert Informationen zu einem ortsansässigen Unternehmen, z.B. ein Restaurant oder Hotel.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|_type|Der Typhinweis, die auf einen der folgenden Werte festgelegt werden kann:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|Zeichenfolge|  
+|_type|Der Typhinweis, die auf einen der folgenden Werte festgelegt werden kann:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurant</ul><li>|String|  
 |address|Die Postadresse, an der sich die Entität befindet.|PostalAddress|  
 |entityPresentationInfo|Weitere Informationen zur Entität z.B. Hinweise, die Sie zum Bestimmen des Entitätstypen verwenden können. Beispielsweise, ob es sich um ein Restaurant oder Hotel handelt. Die Feld `entityScenario` auf „ListItem“ festgelegt.|EntityPresentationInfo|  
-|name|Der Name der Entität.|Zeichenfolge|  
-|telephone|Die Telefonnummer der Entität.|Zeichenfolge|  
-|url|Die URL zur Website der Entität.<br /><br /> Verwenden Sie diese URL zusammen mit dem Namen der Entität, um einen Hyperlink zu erstellen, der den Benutzer beim Anklicken auf die Website der Entität führt.|Zeichenfolge|  
-|webSearchUrl|Die URL zum Bing-Suchergebnis für diesen Ort.|Zeichenfolge| 
+|name|Der Name der Entität.|String|  
+|telephone|Die Telefonnummer der Entität.|String|  
+|url|Die URL zur Website der Entität.<br /><br /> Verwenden Sie diese URL zusammen mit dem Namen der Entität, um einen Hyperlink zu erstellen, der den Benutzer beim Anklicken auf die Website der Entität führt.|String|  
+|webSearchUrl|Die URL zum Bing-Suchergebnis für diesen Ort.|String| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -168,38 +168,38 @@ Definiert den Abfragekontext, den Bing für die Anforderung verwendet hat.
 |Element|BESCHREIBUNG|type|  
 |-------------|-----------------|----------|  
 |adultIntent|Ein boolescher Wert, der angibt, ob die angegebene Abfrage nicht jugendfreie Inhalte aufweist. Der Wert ist **TRUE**, wenn die Abfrage nicht jugendfreie Inhalte aufweist, andernfalls ist er **FALSE**.|Boolean|  
-|alterationOverrideQuery|Die zu verwendende Abfragezeichenfolge, um Bing zu zwingen, die ursprüngliche Zeichenfolge zu verwenden. Wenn die Abfragezeichenfolge z.B. *saling downwind* lautet, lautet die Abfragezeichenfolge zum Überschreiben *+saling downwind*. Denken Sie daran, die Abfragezeichenfolge mit den Ergebnissen in *%2Bsaling+downwind* zu codieren.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|Zeichenfolge|  
-|alteredQuery|Die Abfragezeichenfolge, die von Bing verwendet wird, um die Abfrage auszuführen. Bing verwendet die geänderte Abfragezeichenfolge, wenn die ursprüngliche Abfragezeichenfolge Rechtschreibfehler enthielt. Wenn die Abfragezeichenfolge z.B. `saling downwind` lautet, lautet die geänderten Abfragezeichenfolge `sailing downwind`.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|Zeichenfolge|  
+|alterationOverrideQuery|Die zu verwendende Abfragezeichenfolge, um Bing zu zwingen, die ursprüngliche Zeichenfolge zu verwenden. Wenn die Abfragezeichenfolge z.B. *saling downwind* lautet, lautet die Abfragezeichenfolge zum Überschreiben *+saling downwind*. Denken Sie daran, die Abfragezeichenfolge mit den Ergebnissen in *%2Bsaling+downwind* zu codieren.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|String|  
+|alteredQuery|Die Abfragezeichenfolge, die von Bing verwendet wird, um die Abfrage auszuführen. Bing verwendet die geänderte Abfragezeichenfolge, wenn die ursprüngliche Abfragezeichenfolge Rechtschreibfehler enthielt. Wenn die Abfragezeichenfolge z.B. `saling downwind` lautet, lautet die geänderten Abfragezeichenfolge `sailing downwind`.<br /><br /> Dieses Feld ist nur enthalten, wenn die ursprüngliche Abfragezeichenfolge einen Rechtschreibfehler enthält.|String|  
 |askUserForLocation|Ein boolescher Wert, der angibt, ob Bing den Standort des Benutzers benötigt, um genaue Ergebnisse bereitzustellen. Wenn Sie den Standort des Benutzers mithilfe der [X-MSEdge-ClientIP](#clientip)- und [X-Search-Location](#location)-Header angegeben haben, können Sie dieses Feld ignorieren.<br /><br /> Für standortaktivierte Abfragen (z.B. „Wetter heute“ oder „Restaurants in meiner Nähe“), die den Standort des Benutzers benötigen, um genaue Ergebnisse zu liefern, ist dieses Feld auf **TRUE** festgelegt.<br /><br /> Für standortaktivierte Abfragen, die den Standort beinhalten (z.B. „Wetter in Seattle“), ist dieses Feld auf **FALSE** festgelegt. Dieses Feld wird auch für Abfragen auf **FALSE** festgelegt, die nicht standortaktiviert sind, z.B. „Beste Verkäufer“.|Boolean|  
-|originalQuery|Die Abfragezeichenfolge wie in der Anforderung angegeben.|Zeichenfolge|  
+|originalQuery|Die Abfragezeichenfolge wie in der Anforderung angegeben.|String|  
 
 ### <a name="identifiable"></a>Identifiable
 
-|NAME|Wert|type|  
+|Name|value|type|  
 |-------------|-----------------|----------|
-|id|Ein Ressourcenbezeichner.|Zeichenfolge|
+|id|Ein Ressourcenbezeichner.|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiert eine Suchergebnisgruppe, z.B. „mainline“.
 
-|NAME|Wert|type|  
+|Name|value|type|  
 |-------------|-----------------|----------|
 |items|Eine Liste der Suchergebnisse, die in der Gruppe angezeigt werden sollen.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiert ein anzuzeigendes Suchergebniselement.
 
-|NAME|Wert|type|  
+|Name|value|type|  
 |-------------|-----------------|----------|
 |resultIndex|Ein nullbasierter Index des Elements in der Antwort, das angezeigt werden soll. Wenn das Element dieses Feld nicht enthält, werden alle Elemente in der Antwort angezeigt. Beispielsweise werden alle Artikel in der News-Antwort angezeigt.|Integer|
-|answerType|Die Antwort, die das anzuzeigende Element enthält. Beispiel: News.<br /><br />Verwenden Sie den Typ, um nach der Antwort im SearchResponse-Objekt zu suchen. Der Typ ist der Name eines SearchResponse-Felds.<br /><br /> Verwenden Sie diesen Antworttyp jedoch nur, wenn dieses Objekt das value-Feld enthält. Ignorieren Sie ihn andernfalls.|Zeichenfolge|
+|answerType|Die Antwort, die das anzuzeigende Element enthält. Beispiel: News.<br /><br />Verwenden Sie den Typ, um nach der Antwort im SearchResponse-Objekt zu suchen. Der Typ ist der Name eines SearchResponse-Felds.<br /><br /> Verwenden Sie diesen Antworttyp jedoch nur, wenn dieses Objekt das value-Feld enthält. Ignorieren Sie ihn andernfalls.|String|
 |textualIndex|Der Index der Antwort in textualAnswers, die angezeigt werden soll.| Ganze Zahl ohne Vorzeichen|
 |value|Die ID, die eine anzuzeigende Antwort oder ein anzuzeigendes Element einer Antwort identifiziert. Wenn die ID eine Antwort identifiziert, werden alle Elemente der Antwort angezeigt.|Identifiable|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Definiert, wo auf der Suchergebnisseite Inhalt platziert werden soll und in welcher Reihenfolge.  
   
-|NAME|Wert|  
+|Name|value|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Die Suchergebnisse, die in der Hauptlinie angezeigt werden sollen.|  
 |<a name="ranking-pole" />pole|Die Suchergebnisse, die am sichtbarsten sein sollen (die z.B. über der Hauptlinie und der Randleiste angezeigt werden).|  
@@ -210,9 +210,9 @@ Definiert das Objekt auf oberster Ebene, das die Antwort enthält, wenn die Anfo
   
 Beachten Sie Folgendes: Wenn der Dienst einen Denial-of-Service-Angriff vermutet, ist die Anforderung erfolgreich (HTTP-Statuscode: 200 OK). Der Antworttext ist jedoch leer.  
   
-|NAME|Wert|type|  
+|Name|value|type|  
 |----------|-----------|----------|  
-|_type|Der Typhinweis, der auf SearchResponse festgelegt wird.|Zeichenfolge|  
+|_type|Der Typhinweis, der auf SearchResponse festgelegt wird.|String|  
 |places|Eine Liste der Entitäten, die für die Suchabfrage relevant sind.|JSON-Objekt|  
 |queryContext|Ein Objekt, das die Abfragezeichenfolge enthält, die Bing für die Anforderung verwendet.<br /><br /> Dieses Objekt enthält die Abfragezeichenfolge, wie Sie vom Benutzer eingegeben wurde. Es kann auch eine geänderte Abfragezeichenfolge enthalten, die Bing für die Abfrage verwendet hat, wenn die Abfragezeichenfolge einen Rechtschreibfehler enthält.|[QueryContext](#querycontext)|  
 
@@ -223,7 +223,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   
 |Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
-|200|Erfolgreich.|  
+|200|Erfolg.|  
 |400|Einer der Abfrageparameter fehlt oder ist ungültig.|  
 |401|Der Abonnementschlüssel fehlt oder ist ungültig.|  
 |403|Der Benutzer ist authentifiziert (er hat z.B. einen gültigen Abonnementschlüssel verwendet), aber er ist nicht für die angeforderte Ressource berechtigt.<br /><br /> Bing gibt diesen Status möglicherweise auch zurück, wenn der Aufrufer sein Kontingent für Abfragen pro Monat überschritten hat.|  

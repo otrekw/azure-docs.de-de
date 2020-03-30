@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066644"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
 
@@ -29,7 +29,7 @@ Für diese Führungslinie müssen Sie mindestens Version 2.0.4 der Azure-Befehls
 
 Erstellen Sie eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *USA, Osten*.
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 Erstellen Sie mithilfe des Befehls [az storage account create](/cli/azure/storage/account) ein neues Speicherkonto in der von Ihnen erstellten Ressourcengruppe. In diesem Beispiel wird ein Speicherkonto mit dem Namen *mySTORAGEACCT\<Zufallszahl>* erstellt und der Name dieses Speicherkontos in die Variable **STORAGEACCT** eingefügt. Da Speicherkontonamen eindeutig sein müssen, wird durch Verwendung von `$RANDOM` eine Zahl an das Ende des Namens angefügt.
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -52,7 +52,7 @@ Beim Erstellen eines Speicherkontos werden die Speicherkontoschlüssel als Paar 
 
 Verwenden Sie [az storage account keys list](/cli/azure/storage/account/keys), um die Speicherkontoschlüssel anzuzeigen. In diesem Beispiel wird der Wert des Schlüssels 1 in der Variable **STORAGEKEY** gespeichert.
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -67,7 +67,7 @@ Freigabenamen dürfen nur Kleinbuchstaben, Zahlen und einzelne Bindestriche enth
 
 In diesem Beispiel wird eine Freigabe mit dem Namen *myshare* mit einem Kontingent von 10 GiB erstellt. 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -103,6 +103,7 @@ Beim Neustart eines virtuellen Linux-Computers wird die Bereitstellung der SMB-F
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 Zur Erhöhung der Sicherheit in Produktionsumgebungen sollten Sie Ihre Anmeldeinformationen außerhalb der fstab-Datei speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte

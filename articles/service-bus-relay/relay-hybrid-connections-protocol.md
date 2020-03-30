@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: clemensv
 ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514951"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
@@ -144,7 +144,7 @@ Die `namespace-address` ist der vollqualifizierte Domänenname des Azure Relayna
 
 Der Abfragezeichenfolgenparameter verfügt über folgende Optionen.
 
-| Parameter        | Erforderlich | Beschreibung
+| Parameter        | Erforderlich | BESCHREIBUNG
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Ja      | Für die Listener-Rolle muss der Parameter **sb-hc-action=listen** lauten.
 | `{path}`         | Ja      | Der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert wird. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt.
@@ -153,7 +153,7 @@ Der Abfragezeichenfolgenparameter verfügt über folgende Optionen.
 
 Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der Hybridverbindung nicht registriert ist, ein Token ungültig ist oder fehlt oder ein anderer Fehler vorliegt, wird das Fehlerfeedback mithilfe des regulären HTTP 1.1-Statusinformationsmodells bereitgestellt. Die Statusbeschreibung enthält eine Fehlernachverfolgungs-ID, die an die Azure-Supportmitarbeiter übermittelt werden kann:
 
-| Code | Fehler          | Beschreibung
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
@@ -162,7 +162,7 @@ Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der H
 
 Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden WebSocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält. Ohne eine erkennbare Fehlerbedingung fährt der Dienst den Steuerungskanal nicht herunter. Jedes saubere Herunterfahren wird durch den Client gesteuert.
 
-| WS-Status | Beschreibung
+| WS-Status | BESCHREIBUNG
 | --------- | -------------------------------------------------------------------------------
 | 1001      | Der Hybridverbindungspfad wurde gelöscht oder deaktiviert.
 | 1008      | Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde.
@@ -204,7 +204,7 @@ Dasselbe gilt für den `Sec-WebSocket-Extensions`-Header. Wenn das Framework ein
 
 Die URL muss unverändert für die Erstellung des accept-Sockets verwendet werden, doch enthält folgenden Parameter:
 
-| Parameter      | Erforderlich | Beschreibung
+| Parameter      | Erforderlich | BESCHREIBUNG
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ja      | Zum Akzeptieren eines Sockets muss der Parameter `sb-hc-action=accept` lauten.
 | `{path}`       | Ja      | (Siehe folgenden Abschnitt.)
@@ -219,14 +219,14 @@ Weitere Informationen finden Sie im Abschnitt „Absenderprotokoll“ weiter unt
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
-| Code | Fehler          | Beschreibung
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -----------------------------------
 | 403  | Verboten      | Die URL ist nicht gültig.
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten
 
  Nachdem die Verbindung hergestellt wurde, beendet der Server den WebSocket, wenn der Absender-WebSocket beendet wird oder folgenden Status aufweist:
 
-| WS-Status | Beschreibung                                                                     |
+| WS-Status | BESCHREIBUNG                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Der Absenderclient beendet die Verbindung.                                    |
 | 1001      | Der Hybridverbindungspfad wurde gelöscht oder deaktiviert.                        |
@@ -241,7 +241,7 @@ Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
  Zum Ablehnen des Sockets verwendet der Client den Adress-URI aus der `accept`-Nachricht und fügt wie folgt zwei Abfragezeichenfolgenparameter an:
 
-| Parameter                   | Erforderlich | Beschreibung                              |
+| Parameter                   | Erforderlich | BESCHREIBUNG                              |
 | ----------------------- | -------- | ---------------------------------------- |
 | sb-hc-statusCode        | Ja      | Numerischer HTTP-Statuscode.                |
 | sb-hc-statusDescription | Ja      | Ein visuell lesbarer Grund für die Ablehnung. |
@@ -250,7 +250,7 @@ Der resultierende URI wird dann verwendet, um eine WebSocket-Verbindung herzuste
 
 Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absichtlich mit dem HTTP-Fehlercode 410 fehl, da kein WebSocket erstellt wurde. Im Fehlerfall werden Fehler mit den folgenden Codes beschrieben:
 
-| Code | Fehler          | Beschreibung                          |
+| Code | Fehler          | BESCHREIBUNG                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Verboten      | Die URL ist nicht gültig.                |
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten. |
@@ -376,13 +376,13 @@ Für Antworten, die größer als 64 KB sind, MUSS die Antwort per Rendezvous-Soc
 
 Die URL von `address` im `request`-Element muss unverändert für die Erstellung des Rendezvous-Sockets verwendet werden, aber sie enthält die folgenden Parameter:
 
-| Parameter      | Erforderlich | Beschreibung
+| Parameter      | Erforderlich | BESCHREIBUNG
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ja      | Zum Akzeptieren eines Sockets muss der Parameter `sb-hc-action=request` lauten.
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
-| Code | Fehler           | Beschreibung
+| Code | Fehler           | BESCHREIBUNG
 | ---- | --------------- | -----------------------------------
 | 400  | Ungültige Anforderung | Nicht erkannte Aktion oder ungültige URL.
 | 403  | Verboten       | Die URL ist abgelaufen.
@@ -390,7 +390,7 @@ Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
  Nachdem die Verbindung hergestellt wurde, beendet der Server den WebSocket, wenn der HTTP-Socket des Clients beendet wird oder folgenden Status aufweist:
 
-| WS-Status | Beschreibung                                                                     |
+| WS-Status | BESCHREIBUNG                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Der Absenderclient beendet die Verbindung.                                    |
 | 1001      | Der Hybridverbindungspfad wurde gelöscht oder deaktiviert.                        |
@@ -415,7 +415,7 @@ Wenn das Listenertoken abläuft, kann es ersetzt werden, indem über den eingeri
 
 Wenn die Tokenüberprüfung nicht erfolgreich ist, wird der Zugriff verweigert, und der Clouddienst schließt den WebSocket des Steuerkanals mit einem Fehler. Andernfalls erfolgt keine Antwort.
 
-| WS-Status | Beschreibung                                                                     |
+| WS-Status | BESCHREIBUNG                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde. |
 
@@ -434,7 +434,7 @@ Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von
 
 Die Optionen des Abfragezeichenfolgenparameters lauten wie folgt:
 
-| Parameter          | Erforderlich? | Beschreibung
+| Parameter          | Erforderlich? | BESCHREIBUNG
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Ja       | Für die Absenderrolle muss der Parameter `sb-hc-action=connect` lauten.
 | `{path}`       | Ja       | (Siehe folgenden Abschnitt.)
@@ -451,7 +451,7 @@ Der `path`-Ausdruck wird an den Listener in dem Adress-URI übergeben, der in de
 
 Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der Hybridverbindung nicht registriert ist, ein Token ungültig ist oder fehlt oder ein anderer Fehler vorliegt, wird das Fehlerfeedback mithilfe des regulären HTTP 1.1-Statusinformationsmodells bereitgestellt. Die Statusbeschreibung enthält eine Fehlernachverfolgungs-ID, die an die Azure-Supportmitarbeiter übermittelt werden kann:
 
-| Code | Fehler          | Beschreibung
+| Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
@@ -460,7 +460,7 @@ Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der H
 
 Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden WebSocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält.
 
-| WS-Status | Beschreibung
+| WS-Status | BESCHREIBUNG
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | Der Listener beendet den Socket.
 | 1001      | Der Hybridverbindungspfad wurde gelöscht oder deaktiviert.
@@ -482,23 +482,23 @@ Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von
 
 Die Optionen des Abfragezeichenfolgenparameters lauten wie folgt:
 
-| Parameter          | Erforderlich? | Beschreibung
+| Parameter          | Erforderlich? | BESCHREIBUNG
 | -------------- | --------- | ---------------- |
 | `sb-hc-token`  | Ja\*     | Der Listener muss ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace oder die Hybridverbindung bereitstellen, das die Berechtigung **Senden** direkt überträgt.
 
 Das Token kann auch im HTTP-Header `ServiceBusAuthorization` oder `Authorization` enthalten sein. Das Token kann weggelassen werden, wenn die Hybridverbindung so konfiguriert ist, dass anonyme Anforderungen zulässig sind.
 
-Da der Dienst quasi als Proxy fungiert (wenn auch nicht wie ein echter HTTP-Proxy), fügt er entweder einen `Via`-Header hinzu oder fügt entsprechend gemäß [RFC7230, Abschnitt 5.7.1](https://tools.ietf.org/html/rfc7230#section-5.7.1) Anmerkungen an den vorhandenen `Via`-Header an.
+Da der Dienst quasi als Proxy fungiert (wenn auch nicht wie ein echter HTTP-Proxy), fügt er entweder einen `Via`-Header hinzu oder fügt entsprechend gemäß `Via`RFC7230, Abschnitt 5.7.1[ Anmerkungen an den vorhandenen ](https://tools.ietf.org/html/rfc7230#section-5.7.1)-Header an.
 Der Dienst fügt den Hostnamen des Relay-Namespace an `Via` an.
 
-| Code | `Message`  | Beschreibung                    |
+| Code | `Message`  | BESCHREIBUNG                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | Die Anforderung wurde von mindestens einem Listener verarbeitet.  |
 | 202  | Zulässig | Die Anforderung wurde von mindestens einem Listener akzeptiert. |
 
 Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren. Anhand des Vorhandenseins des `Via`-Headers kann identifiziert werden, ob die Antwort vom Dienst oder vom Listener stammt. Wenn der Header vorhanden ist, stammt die Antwort vom Listener.
 
-| Code | Fehler           | Beschreibung
+| Code | Fehler           | BESCHREIBUNG
 | ---- | --------------- |--------- |
 | 404  | Nicht gefunden       | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert    | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.

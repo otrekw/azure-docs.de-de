@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: f59b688b2ce41985d69e800d6d1f6c6d7ce5e0d4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278336"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455561"
 ---
 # <a name="check-resource-usage-against-limits"></a>Vergleichen der Ressourcennutzung mit Grenzwerten
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus.
-3. Geben Sie im Feld **Filter** den Text *Abonnements* ein. Wenn **Abonnements** in den Suchergebnissen angezeigt wird, wählen Sie diesen Eintrag aus.
+3. Geben Sie im Feld *Filter* den Text **Abonnements** ein. Wenn **Abonnements** in den Suchergebnissen angezeigt wird, wählen Sie diesen Eintrag aus.
 4. Wählen Sie den Namen des Abonnements aus, für das Sie die Nutzungsinformationen anzeigen möchten.
 5. Wählen Sie unter **EINSTELLUNGEN** die Option **Nutzung + Kontingente** aus.
 6. Sie können die folgenden Optionen auswählen:
@@ -59,7 +59,7 @@ Get-AzNetworkUsage `
 
 Die Ausgabe ist wie im folgenden Beispiel formatiert:
 
-```powershell
+```output
 ResourceType            CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50
@@ -83,7 +83,7 @@ az network list-usages \
 
 Die Ausgabe ist wie im folgenden Beispiel formatiert:
 
-```azurecli
+```output
 Name                    CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50

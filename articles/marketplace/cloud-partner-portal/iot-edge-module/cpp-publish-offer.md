@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen eines Azure IoT Edge-Modulangebots | Azure Marketplace
 description: Hier erfahren Sie, wie Sie ein IoT Edge-Modulangebot veröffentlichen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 2310d7a7cad16009bbb58469190a77eedb0619f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b30fde19c4474ba7e2d3bbaed44802884a5b27f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286522"
 ---
 # <a name="publish-iot-edge-module-offer"></a>Veröffentlichen eines IoT Edge-Modulangebots
 

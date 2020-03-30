@@ -1,19 +1,18 @@
 ---
 title: Cloud-Partnerportal-API-Referenz | Azure Marketplace
 description: Beschreibung der, Voraussetzungen zum Verwenden der und die Liste der Marketplace-API-Vorgänge.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288545"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Cloud-Partnerportal-API-Referenz
 ==================================
@@ -47,7 +46,7 @@ In dieser Referenz werden APIs ausführlich erläutert, mit denen die folgenden 
 -   [Erstellen von Angeboten](./cloud-partner-portal-api-creating-offer.md)
 -   [Veröffentlichen eines Angebots](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Vorgänge
+### <a name="operations"></a>Operationen (Operations)
 
 -   [Abrufen von Vorgängen](./cloud-partner-portal-api-retrieve-operations.md)
 -   [Abbrechen von Vorgängen](./cloud-partner-portal-api-cancel-operations.md)

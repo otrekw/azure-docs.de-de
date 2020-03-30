@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer ILB-ASE v1
-description: Erstellen und verwenden Sie eine ASE mit einem internen Lastenausgleich. Dieses Dokument wird nur für Kunden bereitgestellt, die die App Service-Legacyumgebung v1 verwenden.
+description: Erstellen und verwenden Sie eine ASE mit einem internen Lastenausgleich. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: ccompy
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688722"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294732"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung
 
@@ -93,8 +93,8 @@ Gehen Sie wie folgt vor, wenn Sie den Flow mit Ihren eigenen Zertifikaten auspro
 4. Erstellen Sie nach der Erstellung eine Web-App in der ASE. 
 5. Erstellen Sie einen virtuellen Computer, wenn in diesem VNET keiner vorhanden ist (nicht im gleichen Subnetz wie die ASE, da dies zum Absturz führt).
 6. Legen Sie den DNS für die Unterdomäne fest. Sie können einen Platzhalter mit Ihrer Unterdomäne in Ihrem DNS verwenden, oder wenn Sie einige einfache Tests durchführen möchten, bearbeiten Sie die Hostdatei auf Ihrem virtuellen Computer, um die VIP-Adresse für den Web-App-Namen festzulegen. Wenn Sie in einer ASE mit dem Unterdomänennamen „.ilbase.com“ die Web-App „mytestapp“ erstellen, sodass sie mit „mytestapp.ilbase.com“ adressiert wird, müssen Sie dies in der Hostdatei festlegen. (Unter Windows befindet sich die Hostdatei unter C:\Windows\System32\drivers\etc\.\)
-7. Wechseln Sie in einem Browser auf diesem virtuellen Computer zu https://mytestapp.ilbase.com (bzw. dem Namen Ihrer Web-App in Ihrer Unterdomäne).
-8. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Bei Verwendung eines selbstsignierten Zertifikats müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen. 
+7. Wechseln Sie in einem Browser auf diesem virtuellen Computer zu `https://mytestapp.ilbase.com` (bzw. dem Namen Ihrer Web-App in Ihrer Unterdomäne).
+8. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu `https://mytestapp.ilbase.com`. Bei Verwendung eines selbstsignierten Zertifikats müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen. 
 
 Die IP-Adresse der ILB wird in den Eigenschaften als virtuelle IP-Adresse aufgeführt.
 
@@ -111,7 +111,7 @@ Um Ihre Netzwerksicherheitsgruppen zu konfigurieren, müssen Sie die IP-Adresse 
 ![][5]
 
 #### <a name="general-ilb-ase-management"></a>Allgemeine ILB-ASE-Verwaltung
-Das Verwalten einer ILB-ASE ist weitgehend identisch mit dem normalen Verwalten einer ASE. Sie müssen Ihre Workerpools zentral hochskalieren, um weitere ASP-Instanzen zu hosten, und Ihre Front-End-Server zentral hochskalieren, um zusätzlichen HTTP/HTTPS-Datenverkehr zu verarbeiten. Allgemeine Informationen zur Verwaltung der Konfiguration einer ASE finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 
+Das Verwalten einer ILB-ASE ist weitgehend identisch mit dem normalen Verwalten einer ASE. Sie müssen Ihre Workerpools hochskalieren, um weitere ASP-Instanzen zu hosten, und Ihre Front-End-Server hochskalieren, um zusätzlichen HTTP/HTTPS-Datenverkehr zu verarbeiten. Allgemeine Informationen zur Verwaltung der Konfiguration einer ASE finden Sie unter [Konfigurieren einer App Service-Umgebung][ASEConfig]. 
 
 Die zusätzlichen Verwaltungselemente sind Zertifikat- und DNS-Verwaltung. Sie müssen das für HTTPS verwendete Zertifikat nach der ILB-ASE-Erstellung abrufen und hochladen und vor Ablauf ersetzen. Da Azure die Basisdomäne besitzt, können Zertifikate für ASEs mit einer externen VIP-Adresse bereitgestellt werden. Da die für eine ILB-ASE verwendete Unterdomäne eine beliebige Unterdomäne sein kann, müssen Sie Ihr eigenes Zertifikat für HTTPS bereitstellen. 
 

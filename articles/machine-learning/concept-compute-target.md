@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169813"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232990"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -22,12 +22,12 @@ Ein **Computeziel** ist eine festgelegte Computeressource/-Umgebung, in der Ihr 
 
 In einem typischen Modellentwicklungslebenszyklus gehen Sie unter Umständen wie folgt vor:
 1. Sie entwickeln und experimentieren zunächst mit einer kleinen Datenmenge. In dieser Phase wird empfohlen, Ihre lokale Umgebung (etwa Ihren lokalen Computer oder einen cloudbasierten virtuellen Computer) als Computeziel zu verwenden. 
-2. Skalieren Sie Ihre Umgebung für größere Datenmengen zentral hoch, oder führen Sie ein verteiltes Training mithilfe eines dieser [Trainingscomputeziele](#train) durch.  
+2. Skalieren Sie Ihre Umgebung für größere Datenmengen hoch, oder führen Sie ein verteiltes Training mithilfe eines dieser [Trainingscomputeziele](#train) durch.  
 3. Wenn Ihr Modell bereit ist, stellen Sie es in einer Webhostingumgebung oder auf einem IoT-Gerät mit einem [dieser Bereitstellungscomputeziele](#deploy) bereit.
 
 Die Computeressourcen, die Sie für Ihre Computeziele verwenden, werden an einen [Arbeitsbereich](concept-workspace.md) angefügt. Andere Computeressourcen als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
 
-## <a name="train"></a> Trainieren von Computezielen
+## <a name="training-compute-targets"></a><a name="train"></a> Trainieren von Computezielen
 
 Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene Computeressourcen.  Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien kann jedoch variieren.
 
@@ -35,7 +35,7 @@ Azure Machine Learning bietet unterschiedliche Unterstützung für verschiedene 
 
 Erfahren Sie mehr über das [Einrichten und Verwenden eines Computeziels für das Modelltraining](how-to-set-up-training-targets.md).
 
-## <a name="deploy"></a>Bereitstellungsziele
+## <a name="deployment-targets"></a><a name="deploy"></a>Bereitstellungsziele
 
 Die folgenden Computeressourcen können zum Hosten Ihrer Modellimplementierung verwendet werden.
 

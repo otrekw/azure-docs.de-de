@@ -4,10 +4,10 @@ description: Informationen zum Verwenden der Typen von URLs zum Importieren und 
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651792"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Unterstützte URLs zum Importieren von Dokumenten

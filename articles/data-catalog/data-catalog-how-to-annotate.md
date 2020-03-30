@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950260"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Kommentieren von Datenquellen in Azure Data Catalog
@@ -21,7 +21,7 @@ ms.locfileid: "68950260"
 
 ## <a name="annotation-and-crowdsourcing"></a>Anmerkung und Crowdsourcing
 Jeder hat eine Meinung. Und das ist auch gut so.
-Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Stellen Sie sich folgendes Szenario vor:
+Data Catalog berücksichtigt die Tatsache, dass unterschiedliche Benutzer Unternehmensdatenquellen aus verschiedenen Perspektiven betrachten und jede dieser Perspektiven nützlich sein kann. Nehmen Sie das folgende Szenario als Beispiel:
 
 * Der Systemadministrator kennt die Vereinbarung zum Servicelevel für die Server und Dienste, die die Datenquelle hosten.
 * Der Datenbankadministrator kennt den Sicherungszeitplan für jede Datenbank und die zulässigen ETL-Verarbeitungsfenster.

@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77648511"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Überwachen der Migrationsaktivität mithilfe von Azure Database Migration Service
@@ -129,14 +129,14 @@ Der Migrationsfortschritt wird auf zwei Registerkarten – einmal im vollständi
 
 In der folgenden Tabelle sind die im Migrationsfortschritt auf Tabellenebene angezeigten Felder beschrieben.
 
-| Feldname        | Beschreibung       |
+| Feldname        | BESCHREIBUNG       |
 | ------------- | ------------- |
 | **Status – Wird synchronisiert**      | Fortlaufende Synchronisierung wird ausgeführt. |
 | **Einfügen**      | Anzahl von auf das Ziel angewendete CDC-Einfügungen in Zeilen.      |
 | **Aktualisieren** | Anzahl von auf das Ziel angewendete CDC-Updates in Zeilen.      |
 | **Löschen**      | Anzahl von auf das Ziel angewendete CDC-Löschungen in Zeilen. |
 | **Angewendet gesamt**      | Gesamtanzahl von auf das Ziel angewendeten CDC-Updates, -Einfügungen und -Löschungen in Zeilen. |
-| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls.*  Kunden sollten eine Abfrage von Tabelle „dms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
+| **Datenfehler** | Anzahl der in dieser Tabelle aufgetretenen Datenfehler. Einige Beispiele für Fehler sind *511: Eine Zeile der Größe %d kann nicht erstellt werden, da sie länger als die zulässige maximale Zeilengröße von %d wäre, 8114: Fehler beim Konvertieren des %ls-Datentyps in %ls*.  Kunden sollten eine Abfrage von Tabelle „dms_apply_exceptions“ im Azure-Ziel durchführen, um die Fehlerdetails anzuzeigen.    |
 
 > [!NOTE]
 > Die CDC-Werte „Einfügen“, „Aktualisieren“, „Löschen“ und „Angewendet gesamt“ verringern sich möglicherweise, wenn die Datenbank umgestellt oder die Migration neu gestartet wird.

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671748"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
@@ -34,7 +34,7 @@ Die Warnungsdetails enthalten Folgendes:
 Normale [Metrikwarnungen](../../azure-monitor/app/alerts.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Per Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyseschritte ausgeführt, die Sie ansonsten selbst ausführen müssten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.
 
 ## <a name="how-it-works"></a>Funktionsweise
-Bei Smart Detection werden die von Ihrer App erhaltenen Daten und insbesondere die Fehlerraten überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)-Aufrufe zu [filtern](../../azure-monitor/app/api-filtering-sampling.md#filtering) oder zu erstellen). 
+Bei Smart Detection werden die von Ihrer App erhaltenen Daten und insbesondere die Fehlerraten überwacht. Diese Regel ermittelt die Anzahl von Anforderungen, bei denen die `Successful request`-Eigenschaft auf „false“ festgelegt ist, sowie die Anzahl von Abhängigkeitsaufrufen, bei denen die `Successful call`-Eigenschaft auf „false“ festgelegt ist. Für Anforderungen gilt standardmäßig `Successful request == (resultCode < 400)` (es sei denn, Sie haben benutzerdefinierten Code geschrieben, um Ihre eigenen [TrackRequest](../../azure-monitor/app/api-filtering-sampling.md#filtering)-Aufrufe zu [filtern](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder zu erstellen). 
 
 Die Leistung Ihrer App weist ein typisches Verhaltensmuster auf. Einige Anforderungen oder Abhängigkeitsaufrufe sind anfälliger für Fehler als andere, und die gesamte Fehlerrate kann mit zunehmender Auslastung steigen. Bei Smart Detection werden diese Anomalien mithilfe von maschinellem Lernen ermittelt.
 

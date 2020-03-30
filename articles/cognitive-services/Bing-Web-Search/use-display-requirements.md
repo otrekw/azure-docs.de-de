@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60499884"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
@@ -37,7 +37,7 @@ Diese Verwendungs- und Anzeigeanforderungen gelten für jede Implementierung von
 |Begriff  |BESCHREIBUNG  |
 |---------|---------|
 |Antwort     | Eine Kategorie von Ergebnissen, die in einer Antwort zurückgegeben werden. Eine Reaktion der Bing-Websuche-API kann beispielsweise Antworten in den Kategorien „Webseitenergebnisse“, „Bild“, „Video“ „Thema“ und „News“ enthalten. |
-|response     | Sämtliche Antworten und die zugehörigen Daten, die infolge eines einzelnen Aufrufs einer Suche-API empfangen werden. |
+|Antwort     | Sämtliche Antworten und die zugehörigen Daten, die infolge eines einzelnen Aufrufs einer Suche-API empfangen werden. |
 |Ergebnis    | Ein Informationselement in einer Antwort. Die Daten in Verbindung mit einem einzelnen Nachrichtenartikel sind beispielsweise ein Ergebnis in einer Nachrichtenantwort. |
 |Such-APIs    | Sammelbegriff für die APIs der benutzerdefinierten Bing-Suche, der Entitätssuche, der Bildersuche, der News-Suche, der Videosuche, der visuellen Suche, der Suche nach lokalen Unternehmen und der Websuche. |
 
@@ -71,7 +71,7 @@ Alle in einer Reaktion zurückgegebenen Daten dürfen ausschließlich im Rahmen 
 
 Die einzige Ausnahme für diese Anforderung bei der Internetsuche betrifft die URL-Ermittlung, wie weiter unten in diesem Artikel beschrieben. 
 
-### <a name="restrictions"></a>Einschränkungen
+### <a name="restrictions"></a>Beschränkungen
 
 Vermeiden Sie Folgendes:
 
@@ -127,7 +127,7 @@ Wenn Sie einem Benutzer die Weiterleitung einer Reaktion von einer Such-API an e
 
 Daten aus Reaktionen von Such-APIs dürfen nicht kopiert, gespeichert oder zwischengespeichert werden. Zur Gewährleistung der Kontinuität beim Dienstzugriff und beim Rendern von Daten ist es unter folgenden Bedingungen jedoch gestattet, Ergebnisse aufzubewahren:
 
-#### <a name="device"></a>Gerät
+#### <a name="device"></a>Sicherungsmedium
 
 Sie können einem Benutzer die Aufbewahrung von Ergebnissen auf einem Gerät für den kürzeren der beiden folgenden Zeiträume ermöglichen: (i) 24 Stunden ab dem Zeitpunkt der Abfrage oder (ii) bis ein Benutzer eine weitere Abfrage für aktualisierte Ergebnisse übermittelt – vorausgesetzt, die aufbewahrten Ergebnisse werden ausschließlich zu folgenden Zwecken verwendet:
 

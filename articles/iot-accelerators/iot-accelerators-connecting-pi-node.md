@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 98d947e8aabf20fbfdb192cb80c9bc881007d5da
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889266"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und dem Solution Accelerator für die Remoteüberwachung (Node.js)
@@ -45,7 +45,7 @@ Sie benötigen einen SSH-Client auf Ihrem Desktopcomputer, um per Remotezugriff 
 
 Auf dem Raspberry Pi muss mindestens Node.js 4.0.0 installiert sein. Die folgenden Schritte zeigen, wie Sie Node.js v6 auf Ihrem Raspberry Pi installieren:
 
-1. Stellen Sie mithilfe von `ssh` eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/) unter [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).
+1. Stellen Sie mithilfe von `ssh` eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) unter [SSH (Secure Shell)](https://www.raspberrypi.org/).
 
 1. Verwenden Sie den folgenden Befehl aus, um Ihr Raspberry Pi zu aktualisieren:
 
@@ -86,7 +86,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     cd remotemonitoring
     ```
 
-1. Führen Sie die folgenden Befehle aus, um die Pakete herunterzuladen und zu installieren, die Sie zum Fertigstellen der Beispiel-App benötigen:
+1. Führen Sie die folgenden Befehle aus, um die Pakete, die Sie zum Fertigstellen der Beispiel-App benötigen, herunterzuladen und zu installieren:
 
     ```sh
     npm install async azure-iot-device azure-iot-device-mqtt
@@ -318,7 +318,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
 
 1. Fügen Sie den folgenden Code zu folgenden Zwecken hinzu:
 
-    * Öffnen der Verbindung.
+    * Öffnen Sie die Verbindung.
     * Einrichten eines Handlers für die gewünschten Eigenschaften.
     * Senden gemeldeter Eigenschaften.
     * Registrieren des Handlers für die direkten Methoden. Das Beispiel verwendet einen separaten Handler für die direkte Firmwareupdatemethode.

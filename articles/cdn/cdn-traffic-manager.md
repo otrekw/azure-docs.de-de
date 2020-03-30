@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083003"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Einrichten des Failovers für mehrere Azure CDN-Endpunkte mit Azure Traffic Manager
@@ -33,7 +33,7 @@ Dieser Artikel enthält Anweisungen und ein Beispiel zum Einrichten des Failover
 ## <a name="set-up-azure-cdn"></a>Einrichten von Azure CDN 
 Erstellen Sie mehrere Azure CDN-Profile und Endpunkte mit verschiedenen Anbietern.
 
-1. Erstellen Sie anhand der unter [Erstellen eines neuen CDN-Profils](cdn-create-new-endpoint.md#create-a-new-cdn-profile) beschriebenen Schritte das Profil **Azure CDN Standard von Verizon** und das Profil **Azure CDN Standard von Akamai**.
+1. Erstellen Sie anhand der unter **Erstellen eines neuen CDN-Profils** beschriebenen Schritte das Profil **Azure CDN Standard von Verizon** und das Profil [Azure CDN Standard von Akamai](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
  
    ![Mehrere CDN-Profile](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 

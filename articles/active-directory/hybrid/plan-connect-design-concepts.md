@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Entwurfskonzepte | Microsoft-Dokumentation'
+title: Entwurfskonzepte für Azure AD Connect | Microsoft Docs
 description: In diesem Thema werden bestimmte Aspekte des Implementierungsentwurfs beschrieben.
 services: active-directory
 documentationcenter: ''
@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227902"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Entwurfskonzepte
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Designkonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
 
 ## <a name="sourceanchor"></a>sourceAnchor

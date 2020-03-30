@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: 788903d802ca47c763734e7cf6ddbbf3b0032203
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943829"
 ---
 Erstellen Sie `SPXPullAudioInputStream` oder `SPXPushAudioInputStream` zum Streamen von komprimierten Audioformaten an den Speech-Dienst.

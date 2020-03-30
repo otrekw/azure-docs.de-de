@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667702"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
@@ -52,7 +52,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | *SearchResults* |"IncludeSearchResults": true|Von der Abfrage als JSON-Tabelle zurückgegebene Datensätze, die auf die ersten 1.000 Datensätze beschränkt sind; wenn „"IncludeSearchResults": true“ in einer benutzerdefinierten JSON-Webhookdefinition als Eigenschaft der obersten Ebene hinzugefügt wird. |
 | *Warnungstyp*| #alerttype | Der Typ der konfigurierten Protokollwarnungsregel als [metrische Maßeinheit](alerts-unified-log.md#metric-measurement-alert-rules) oder [Anzahl von Ergebnissen](alerts-unified-log.md#number-of-results-alert-rules).|
 | *WorkspaceID* |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
-| *Anwendungs-ID* |#applicationid |ID Ihrer Application Insights-App. |
+| *Anwendungs-ID*: |#applicationid |ID Ihrer Application Insights-App. |
 | *Abonnement-ID* |#subscriptionid |ID des von Ihnen verwendeten Azure-Abonnements. 
 
 > [!NOTE]

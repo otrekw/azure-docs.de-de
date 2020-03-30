@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889344"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden
@@ -21,7 +21,7 @@ Mithilfe des Solution Accelerators für Gerätesimulation können Sie Telemetrie
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 Bei den Schritten in dieser Anleitung wird angenommen, dass Sie den Solution Accelerator für Gerätesimulation im Rahmen Ihres Azure-Abonnements bereitgestellt haben. Falls Sie den Solution Accelerator für Gerätesimulation noch nicht bereitgestellt haben, führen Sie die Schritte im Schnellstart [Bereitstellen und Ausführen einer cloudbasierten Lösung für Gerätesimulation](quickstart-device-simulation-deploy.md) aus.
 
@@ -63,7 +63,7 @@ Bei den nachstehenden Schritten wird die Azure-Befehlszeilenschnittstelle in der
 
 1. Wenn Sie Ihre Time Series Insights-Umgebung in derselben Ressourcengruppe wie der Ihres Solution Accelerators erstellen möchten, verwenden Sie die Werte in der nachstehenden Tabelle:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Umgebungsname | Im nachstehenden Screenshot wird der Name **Contoso-TSI** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
@@ -77,7 +77,7 @@ Bei den nachstehenden Schritten wird die Azure-Befehlszeilenschnittstelle in der
     > [!NOTE]
     > Wenn Sie die Time Series Insights-Umgebung zu derselben Ressourcengruppe wie der des Solution Accelerators hinzufügen, bedeutet dies: Sie wird beim Löschen des Solution Accelerators ebenfalls gelöscht.
 
-1. Klicken Sie auf **Create**. Die Erstellung der Umgebung kann ein paar Minuten dauern.
+1. Klicken Sie auf **Erstellen**. Die Erstellung der Umgebung kann ein paar Minuten dauern.
 
 ## <a name="create-event-source"></a>Erstellen der Ereignisquelle
 
@@ -95,7 +95,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. Ve
 
 1. Verwenden Sie die Werte in der folgenden Tabelle, um Ihren IoT Hub als eine neue Ereignisquelle zu konfigurieren:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Name der Ereignisquelle | Im nachstehenden Screenshot wird der Name **contoso-iot-hub** verwendet. Verwenden Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | `Source` | **IoT Hub** |
@@ -110,7 +110,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. Ve
 
     ![Erstellen der Ereignisquelle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
 > Sie können [weiteren Benutzern Zugriff gewähren](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) auf den Time Series Insights-Explorer.
@@ -167,7 +167,7 @@ Der Time Series Insights-Explorer ist eine Web-App, mit der Sie Ihre Telemetried
 
 Wenn Sie mehr wissen möchten, lassen Sie den Solution Accelerator für weiterhin bereitgestellt.
 
-Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen, indem Sie ihn markieren und dann auf **Lösung löschen** klicken.
+Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen, indem Sie ihn auswählen und dann auf **Lösung löschen** klicken.
 
 Falls Sie der Ressourcengruppe des Solution Accelerators die Time Series Insights-Umgebung hinzugefügt haben, wird sie beim Löschen des Accelerators automatisch gelöscht. Andernfalls müssen Sie die Time Series Insights-Umgebung manuell aus dem Azure-Portal entfernen.
 

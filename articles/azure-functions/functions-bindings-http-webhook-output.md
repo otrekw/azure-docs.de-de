@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356063"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235206"
 ---
 # <a name="azure-functions-http-output-bindings"></a>HTTP-Ausgabebindungen in Azure Functions
 
@@ -25,7 +25,7 @@ Der Standardrückgabewert für eine HTTP-ausgelöste Funktion ist:
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* festlegen. Für C#-Klassenbibliotheken gibt es keine Attributeigenschaften, die den folgenden Eigenschaften der Datei *function.json* entsprechen.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 | **type** |Muss auf `http` festgelegt sein. |
 | **direction** | Muss auf `out` festgelegt sein. |

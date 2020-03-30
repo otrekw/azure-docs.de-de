@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647383"
 ---
 # <a name="upload-a-document"></a>Hochladen eines Dokuments
@@ -40,8 +40,8 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
     -  Training: Diese Dokumente werden für den Trainingssatz verwendet.
     -  Optimierung: Diese Dokumente werden für den Optimierungssatz verwendet.
     -  Test: Diese Dokumente werden für den Testsatz verwendet.
-    -  Ausdruckswörterbuch: Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
-    -  Satzwörterbuch: Diese Dokumente werden für das Satzwörterbuch verwendet.
+    -  Phrase Dictionary (Ausdruckswörterbuch): Diese Dokumente werden für das Ausdruckswörterbuch verwendet.
+    -  Sentence Dictionary (Satzwörterbuch): Diese Dokumente werden für das Satzwörterbuch verwendet.
 
     b.  Language pair (Sprachpaar)
 
@@ -55,7 +55,7 @@ Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.
         -  Dokumentname: Nur beim Hochladen paralleler Dateien relevant.
 
     - Kombinationsdaten:
-        -  Kombinationsdatei: Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
+        -  Combo File (Kombinationsdatei): Wählen Sie die Kombinationsdatei auf Ihrem lokalen Computer aus. Die Kombinationsdatei enthält sowohl die Sätze in der Ausgangssprache als auch die Sätze in der Zielsprache. Für Kombinationsdateien wird eine [Namenskonvention](document-formats-naming-convention.md) benötigt.
 
     e.  Klicken Sie auf „Hochladen“.
 

@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71122730"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
@@ -75,7 +75,7 @@ Wenn Sie zur Website navigieren, werden nun ausführlichere Fehlermeldungen zur�
 
 * Serverfehler in Anwendung '/'.
 * Beschreibung: Unbehandelte Ausnahme beim Ausführen der aktuellen Webanforderung. Überprüfen Sie die Stapelüberwachung, um weitere Informationen über diesen Fehler anzuzeigen und festzustellen, wo der Fehler im Code verursacht wurde.
-* Ausnahmendetails: System.IO.FileNotFoundException: Die Datei oder Assembly „Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35“ oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
+* Ausnahmedetails: System.IO.FIleNotFoundException: Die Datei oder Assembly  "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35" oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
 
 Beispiel:
 
@@ -91,7 +91,7 @@ Bei dieser Diagnosemethode erzielen Sie die besten Ergebnisse, wenn Sie einen ph
 3. Navigieren Sie im Windows-Explorer zum Ordner „bin\debug“ des Clouddienstprojekts.
 4. Kopieren Sie den CSX-Ordner und die CSCFG-Datei auf den Computer, den Sie zum Debuggen von Problemen verwenden.
 5. Öffnen Sie auf dem neu installierten Computer ein Azure SDK-Eingabeaufforderungsfenster, und geben Sie `csrun.exe /devstore:start`ein.
-6. Geben Sie an der Eingabeaufforderung Folgendes ein: `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
+6. Geben Sie an der Eingabeaufforderung `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser` ein:
 7. Wenn die Rolle gestartet wird, werden detaillierte Fehlerinformationen in Internet Explorer angezeigt. Für eine eingehendere Problemdiagnose können Sie auch standardmäßige Windows-Tools zur Problembehandlung verwenden.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostizieren von Problemen mit IntelliTrace

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
 ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227910"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 
@@ -33,7 +33,7 @@ Es sind viele Erweiterungen für virtuelle Computer verfügbar. Nicht alle Erwei
 
 Die folgenden Erweiterungen können mit dem Automatisierungsskriptfeature exportiert werden.
 
-| Erweiterung ||||
+| Durchwahl ||||
 |---|---|---|---|
 | Acronis Backup | Datadog Windows Agent | OS Patching For Linux | VM Snapshot Linux
 | Acronis Backup Linux | Docker-Erweiterung | Puppet Agent |

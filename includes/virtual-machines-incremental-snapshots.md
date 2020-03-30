@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74014552"
 ---
 ## <a name="overview"></a>Übersicht
@@ -87,7 +87,7 @@ In den folgenden Schritten wird beschrieben, wie Sie Momentaufnahmen von *myprem
 
 1. Erstellen Sie das Sicherungsseitenblob für Ihren Storage Premium-Datenträger, indem Sie eine Momentaufnahme von *mypremiumdisk* mit dem Namen *mypremiumdisk_ss1* erstellen.
 2. Kopieren Sie diese Momentaufnahme als Seitenblob namens *mybackupstdpageblob*in „mybackupstdaccount“.
-3. Erstellen Sie mit [Snapshot Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob) von *mybackupstdpageblob* eine Momentaufnahme mit Namen *mybackupstdpageblob_ss1*, und speichern Sie sie in *mybackupstdaccount*.
+3. Erstellen Sie mit *Snapshot Blob* von *mybackupstdpageblob* eine Momentaufnahme mit Namen [mybackupstdpageblob_ss1](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob), und speichern Sie sie in *mybackupstdaccount*.
 4. Erstellen Sie während des Sicherungsfensters eine weitere Momentaufnahme von *mypremiumdisk*, z.B. *mypremiumdisk_ss2*, und speichern Sie sie in *mypremiumaccount*.
 5. Rufen Sie die inkrementellen Änderungen zwischen den beiden Momentaufnahmen *mypremiumdisk_ss2* und *mypremiumdisk_ss1* ab. Verwenden Sie dabei [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges) für *mypremiumdisk_ss2*, und legen Sie den Parameter **prevsnapshot** auf den Zeitstempel von *mypremiumdisk_ss1* fest. Schreiben Sie diese inkrementellen Änderungen in *mybackupstdaccount* in das Sicherungsseitenblob *mybackupstdpageblob*. Wenn die inkrementellen Änderungen gelöschte Bereiche enthalten, müssen sie aus dem Sicherungsseitenblob gelöscht werden. Verwenden Sie [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) , um inkrementelle Änderungen in das Sicherungsseitenblob zu schreiben.
 6. Erstellen Sie vom Sicherungsseitenblob *mybackupstdpageblob* eine Momentaufnahme mit Namen *mybackupstdpageblob_ss2*. Löschen Sie die vorherige Momentaufnahme *mypremiumdisk_ss1* aus dem Storage Premium-Konto.

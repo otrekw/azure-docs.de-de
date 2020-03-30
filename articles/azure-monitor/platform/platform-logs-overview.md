@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659319"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Übersicht über Protokolle der Azure-Plattform
@@ -20,7 +20,7 @@ Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformatione
 ## <a name="types-of-platform-logs"></a>Typen von Plattformprotokollen
 In der folgenden Tabelle werden die spezifischen Plattformprotokolle aufgeführt, die auf unterschiedlichen Ebenen von Azure verfügbar sind.
 
-| Log | Ebene | Beschreibung |
+| Log | Ebene | BESCHREIBUNG |
 |:---|:---|:---|
 | Ressourcenprotokolle | Azure-Ressourcen | Sie bieten einen Einblick in Vorgänge, die innerhalb einer Azure-Ressource (der *Datenebene*) ausgeführt wurden, z.B. das Abrufen eines Geheimnisses aus einem Key Vault oder die Ausgabe einer Anforderung an eine Datenbank. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp.<br><br>*Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet.*  |
 | Aktivitätsprotokoll | Azure-Abonnement | Bietet Einblicke in die Vorgänge für jede Azure-Ressource im Abonnement von außen (*die Verwaltungsebene*) sowie Aktualisierungen zu Service Health-Ereignissen. Verwenden Sie das Aktivitätsprotokoll zum Ermitteln der Antworten auf die Fragen _Was_, _Wer_ und _Wann_ für alle Schreibvorgänge (PUT, POST, DELETE), die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen.  Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. |

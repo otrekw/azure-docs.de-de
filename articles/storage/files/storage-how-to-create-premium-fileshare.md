@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529106"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
@@ -146,7 +146,7 @@ Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://po
 
 Wenn Sie sich bei Ihrer lokalen Installation der CLI anmelden möchten, sollten Sie zuerst sicherstellen, dass Sie über die aktuelle Version verfügen, und anschließend den Anmeldebefehl ausführen:
 
-```cli
+```azurecli
 az login
 ```
 
@@ -177,7 +177,7 @@ az storage account create `
 
 Speicherkontoschlüssel steuern den Zugriff auf Ressourcen in einem Speicherkonto. In diesem Artikel verwenden wir den Schlüssel zum Erstellen einer Premium-Dateifreigabe. Die Schlüssel werden automatisch erstellt, wenn Sie ein Speicherkonto erstellen. Sie können die Speicherkontoschlüssel für Ihr Speicherkonto mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys) abrufen:
 
-```azurecli-interactive 
+```azurecli-interactive
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \

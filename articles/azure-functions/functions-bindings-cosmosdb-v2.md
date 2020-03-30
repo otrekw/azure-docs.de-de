@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77605760"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Cosmos DB-Trigger und -Bindungen für Azure Functions 2.x – Übersicht
@@ -20,7 +20,7 @@ ms.locfileid: "77605760"
 
 In dieser Gruppe von Artikeln wird die Verwendung von [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)-Bindungen in Azure Functions 2.x erläutert. Azure Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
 
-| Aktion | type |
+| Action | type |
 |---------|---------|
 | Ausführen einer Funktion, wenn ein Azure Cosmos DB-Dokument erstellt oder geändert wird | [Trigger](./functions-bindings-cosmosdb-v2-trigger.md) |
 | Lesen eines Azure Cosmos DB-Dokuments | [Eingabebindung](./functions-bindings-cosmosdb-v2-input.md) |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: kumud
-ms.openlocfilehash: b99e5e6809a909184d775c70b56c249c11734cb9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 144f30463adb3dfbce1717e06548baccc8286f8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646607"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240235"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Ber
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
 In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielhaft ein virtueller Computer mit mehreren IP-Adressen erstellt werden kann. Sie können die Variablenwerte in "" ändern und die IP-Adresstypen an Ihren Implementierungsbedarf anpassen. 
 
@@ -164,7 +164,7 @@ Nachdem die VM erstellt wurde, geben Sie den Befehl `az network nic show --name 
 
 Fügen Sie die privaten IP-Adressen dem Betriebssystem des virtuellen Computers hinzu. Führen Sie dazu die Schritte für Ihr Betriebssystem im Abschnitt [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](#os-config) in diesem Artikel aus.
 
-## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
 Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche private und öffentliche IP-Adressen hinzufügen, indem Sie die nachfolgenden Schritte ausführen. Die Beispiele bauen auf dem in diesem Artikel beschriebenen [Szenario](#scenario) auf.
 
@@ -176,7 +176,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
     
     Um eine private IP-Adresse zu einer Netzwerkkarte hinzuzufügen, müssen Sie mit dem folgenden Befehl eine IP-Konfiguration erstellen. Bei der statischen IP-Adresse darf es sich nicht um eine für das Subnetz verwendete Adresse handeln.
 
-    ```bash
+    ```azurecli
     az network nic ip-config create \
     --resource-group myResourceGroup \
     --nic-name myNic1 \
@@ -196,7 +196,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
     
         Immer, wenn Sie in einer neuen IP-Konfiguration eine öffentliche IP-Adresse hinzufügen, müssen Sie auch eine private IP-Adresse hinzufügen, denn in jeder IP-Konfiguration muss es eine private IP-Adresse geben. Sie können entweder eine vorhandene öffentliche IP-Adressressource hinzufügen oder eine neue erstellen. Verwenden Sie den folgenden Befehl, um eine neue zu erstellen:
     
-        ```bash
+        ```azurecli
         az network public-ip create \
         --resource-group myResourceGroup \
         --location westcentralus \
@@ -206,7 +206,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
 
         Um eine neue IP-Konfiguration mit einer statischen privaten IP-Adresse und der zugeordneten öffentlichen IP-Adressressource *myPublicIP3* zu erstellen, geben Sie den folgenden Befehl ein:
 
-        ```bash
+        ```azurecli
         az network nic ip-config create \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
@@ -217,7 +217,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
 
     - **Zuordnen der Ressource zu einer vorhandenen IP-Konfiguration** Eine öffentliche IP-Adressressource kann nur einer IP-Konfiguration zugeordnet werden, der noch keiner öffentlichen IP-Adressressource zugeordnet ist. Ob einer IP-Konfiguration eine öffentliche IP-Adresse zugeordnet ist, können Sie mithilfe des folgenden Befehls ermitteln:
 
-        ```bash
+        ```azurecli
         az network nic ip-config list \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
@@ -234,7 +234,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
 
         Da die Spalte **PublicIpAddressId** für *IpConfig-3* in der Ausgabe leer ist, ist derzeit keine öffentliche IP-Adressressource zugeordnet. Sie können IpConfig-3 eine vorhandene öffentliche IP-Adressressource zuordnen oder mit dem folgenden Befehl eine erstellen:
 
-        ```bash
+        ```azurecli
         az network public-ip create \
         --resource-group  myResourceGroup
         --location westcentralus \
@@ -245,7 +245,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
     
         Geben Sie den folgenden Befehl ein, um die öffentliche IP-Adressressource der vorhandenen IP-Konfiguration namens *IPConfig-3* zuzuordnen:
     
-        ```bash
+        ```azurecli
         az network nic ip-config update \
         --resource-group myResourceGroup \
         --nic-name myNic1 \
@@ -255,7 +255,7 @@ Sie können zu einer vorhandenen Azure-Netzwerkschnittstelle zusätzliche privat
 
 3. Geben Sie den folgenden Befehl ein, um die privaten IP-Adressen und die IDs der öffentlichen IP-Adressressourcen, die der Netzwerkkarte zugewiesen sind, anzuzeigen:
 
-    ```bash
+    ```azurecli
     az network nic ip-config list \
     --resource-group myResourceGroup \
     --nic-name myNic1 \

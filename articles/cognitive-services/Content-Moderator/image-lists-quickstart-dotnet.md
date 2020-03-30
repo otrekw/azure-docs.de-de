@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931756"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Moderieren mit benutzerdefinierten Bildlisten in C#
@@ -34,7 +34,7 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg 
 
 Die Konsolenanwendung für den vorliegenden Leitfaden simuliert einige der Aufgaben, die Sie mit der Bildlisten-API ausführen können.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen. 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
 
@@ -587,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Hinzufügen von Code zum Simulieren der Verwendung einer Bildliste
 
-Fügen Sie der Methode **Main** den folgenden Code hinzu. Dieser Code simuliert viele Vorgänge, die Sie zu Definition und Verwaltung der Liste ausführen würden, sowie die Verwendung der Liste zum Überprüfen von Bildern. Mit den Protokollierungsfunktionen können Sie die Antwortobjekte anzeigen, die von den SDK-Aufrufen an den Content Moderator-Dienst generiert werden.
+Fügen Sie der Methode **Main** den folgenden Code hinzu. Dieser Code simuliert viele Vorgänge, die Sie zu Definition und Verwaltung der Liste ausführen würden, sowie die Verwendung der Liste zum Überprüfen von Bildern. Mit den Protokollierungsfunktionen können Sie die Antwortobjekte anzeigen, die von den SDK-Aufrufen des Content Moderator-Diensts generiert werden.
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

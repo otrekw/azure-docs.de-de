@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74422588"
 ---
 # <a name="iterative-app-design-for-luis"></a>Iteratives App-Design für LUIS
@@ -23,7 +23,7 @@ ms.locfileid: "74422588"
 Am effizientesten lernen und arbeiten LUIS-Apps (Language Understanding) in Iterationen. Dies ist ein typischer Iterationszyklus:
 
 * Erstellen einer neuen Version
-* Bearbeiten des LUIS-App-Schemas Dies umfasst:
+* Bearbeiten des LUIS-App-Schemas Dies schließt Folgendes ein:
     * Absichten mit Beispieläußerungen
     * Entitäten
     * Features
@@ -72,7 +72,7 @@ Für jede Beispieläußerung müssen alle **erforderlichen zu extrahierenden Dat
 
 |Schlüsselelement|Zweck|
 |--|--|
-|Absicht|**Klassifizieren** von Benutzeräußerungen in einer einzelnen Absicht oder Aktion. Beispiele sind `BookFlight` und `GetWeather`.|
+|Intent|**Klassifizieren** von Benutzeräußerungen in einer einzelnen Absicht oder Aktion. Beispiele sind `BookFlight` und `GetWeather`.|
 |Entität|**Extrahieren** von Daten aus Äußerungen, was für die Vervollständigung der Absicht erforderlich ist. Beispiele hierfür sind Datum und Uhrzeit der Reise und der Standort.|
 
 Eine LUIS-App kann so entworfen sein, dass sie Äußerungen ignoriert, die für Ihre App-Domäne nicht relevant sind, indem die Äußerung der Absicht **None** zugewiesen wird.

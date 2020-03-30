@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987770"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -27,7 +27,7 @@ ms.locfileid: "76987770"
 1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
 1. Geben Sie alle erforderlichen Einstellungen für den **Runtimeschlüssel** ein:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |--|--|
     |Name|Gewünschter Name (2 bis 64 Zeichen)|
     |Subscription|Wählen Sie ein passendes Abonnement aus|

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682748"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229918"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-create-datasets.md)
 > * [Version 2 (aktuelle Version)](../concepts-datasets-linked-services.md)
 
@@ -38,7 +38,7 @@ Eine Aktivität kann über null oder mehr **Eingabedatasets** verfügen und ein 
 
 Bevor Sie ein Dataset erstellen, erstellen Sie einen **verknüpften Dienst**, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Datasets bestimmen Daten in den verknüpften Datenspeichern, z.B. SQL-Tabellen, Dateien, Ordnern und Dokumenten. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner dar, der die zu verarbeitenden Eingabeblobs enthält.
 
-Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
+Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie dann zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
@@ -80,9 +80,9 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | name |Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |Nicht verfügbar |
-| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
+| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
 | structure |Schema des Datasets.<br/><br/>Unter [Dataset: structure](#Structure) finden Sie weitere Details. |Nein |Nicht verfügbar |
-| typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure-Blob, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
+| typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
 | external | Boolesches Flag, das angibt, ob ein Dataset explizit durch eine Data Factory-Pipeline erstellt wird oder nicht. Wenn das Eingabedataset für eine Aktivität nicht durch die aktuelle Pipeline erstellt wird, legen Sie für dieses Flag „true“ fest. Legen Sie für das Eingabedataset der ersten Aktivität in der Pipeline für dieses Flag „true“ fest.  |Nein |false |
 | availability | Definiert das Verarbeitungsfenster (beispielsweise stündlich oder täglich) oder das Modell für das Aufteilen in Slices für die Datasetproduktion. Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstellt wird, heißt Datenslice. Wenn die Verfügbarkeit des Ausgabedatasets auf täglich (frequency - Day, interval - 1) festgelegt ist, wird täglich ein Slice erstellt. <br/><br/>Ausführlichere Informationen finden Sie unter „Dataset-Verfügbarkeit“. <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). |Ja |Nicht verfügbar |
 | policy |Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Weitere Informationen finden Sie im Abschnitt [Dataset: policy](#Policy). |Nein |Nicht verfügbar |
@@ -141,7 +141,7 @@ Wie Sie sehen, definiert der verknüpfte Dienst das Herstellen einer Verbindung 
 > [!IMPORTANT]
 > Falls ein Dataset nicht von der Pipeline erzeugt wird, sollte es als **external** markiert werden. Diese Einstellung gilt im Allgemeinen für Eingaben der ersten Aktivität in einer Pipeline.
 
-## <a name="Type"></a> Dataset: type
+## <a name="dataset-type"></a><a name="Type"></a> Dataset: type
 Der Typ des Datasets hängt von dem Datenspeicher ab, den Sie verwenden. In der folgenden Tabelle finden Sie eine Liste der von Data Factory unterstützten Datenspeicher. Klicken Sie auf einen Datenspeicher, um Informationen zum Erstellen eines verknüpften Diensts und eines Datasets für diesen Datenspeicher zu erhalten.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
@@ -175,7 +175,7 @@ Im vorherigen Abschnitt ist im Beispiel der Typ des Datasets auf **AzureSqlTable
 }
 ```
 
-## <a name="Structure"></a>Dataset: structure
+## <a name="dataset-structure"></a><a name="Structure"></a>Dataset: structure
 Der Abschnitt **structure** ist optional. In ihm ist das Schema des Datasets in einer Sammlung der Namen und Datentypen der Spalten definiert. Im Abschnitt „structure“ legen Sie Typinformationen fest, die zum Konvertieren von Typen und Zuordnen von Spalten von der Quelle zum Ziel bereitgestellt werden. Im folgenden Beispiel hat das Dataset drei Spalten: `slicetimestamp`, `projectname` und `pageviews`. Die Spalten haben jeweils den folgenden Typ: „String“, „String“, „Decimal“.
 
 ```json
@@ -203,7 +203,7 @@ Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **s
     Da Typinformationen für strukturierte Datenquellen bereits verfügbar sind, sollten Sie keine Typinformationen einschließen, wenn Sie sich für die Verwendung des Abschnitts „structure“ entscheiden.
 * **Für das Schema von Lesedatenquellen (insbesondere Blob Storage)** können Sie Daten speichern, ohne Schema- oder Typinformationen mit den Daten zu speichern. Für diese Datenquellentypen geben Sie „structure“ an, wenn Sie Quellspalten zu Zielspalten zuordnen möchten. Geben Sie „structure“ auch an, wenn das Dataset eine Eingabe für eine Kopieraktivität ist und die Datentypen des Quelldatasets in systemeigene Typen für das Ziel (Senke) konvertiert werden müssen.
     
-    Data Factory unterstützt die folgenden Werte für das Bereitstellen von Typinformationen in der Struktur: **„Int16“, „Int32“, „Int64“, „Single“, „Double“, „Decimal“, „Byte[]“, „Boolean“, „String“, „Guid“, „Datetime“, „Datetimeoffset“ und „Timespan“** . Diese Werte sind CLS-kompatible (Common Language Specification) .NET-basierte Typwerte.
+    Data Factory unterstützt die folgenden Werte für die Bereitstellung von Typinformationen in „structure“: **Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset und Timespan**. Diese Werte sind CLS-kompatible (Common Language Specification) .NET-basierte Typwerte.
 
 Data Factory führt beim Verschieben von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher automatisch Typkonvertierungen durch.
 
@@ -236,7 +236,7 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |Nicht verfügbar |
 | style |Gibt an, ob der Slice am Anfang oder am Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Wenn **frequency** auf **Month** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn **style** auf **StartOfInterval** festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn **frequency** auf **Day** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn **frequency** auf **Hour** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein |EndOfInterval |
-| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Beachten Sie, dass, wenn diese Eigenschaft Datumsteile hat, die detaillierter als die angegebene Häufigkeit sind, die detaillierteren Teile ignoriert werden. Wenn **interval** beispielsweise auf **hourly** festgelegt ist (frequency: hour, interval: 1) und das **AnchorDateTime**-Element **Minuten und Sekunden** enthält, wird der Teil mit den Minuten und Sekunden von **anchorDateTime** ignoriert. |Nein |01/01/0001 |
+| anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Beachten Sie, dass, wenn diese Eigenschaft Datumsteile hat, die detaillierter als die angegebene Häufigkeit sind, die detaillierteren Teile ignoriert werden. Wenn **interval** z.B. auf **hourly** festgelegt ist („frequency: hour“ und „interval: 1“) und **anchorDateTime** Angaben für **Minuten und Sekunden** enthält, werden die Minuten- und Sekundenteile von **anchorDateTime** ignoriert. |Nein |01/01/0001 |
 | offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein |Nicht verfügbar |
 
 ### <a name="offset-example"></a>Beispiel zu Offset
@@ -274,7 +274,7 @@ Das folgende Dataset wird monatlich am dritten Tage jedes Monats um 8:00 Uhr ers
 }
 ```
 
-## <a name="Policy"></a>Dataset: policy
+## <a name="dataset-policy"></a><a name="Policy"></a>Dataset: policy
 Der Abschnitt **policy** in der Datasetdefinition definiert die Kriterien oder die Bedingung, die die Datasetslices erfüllen müssen.
 
 ### <a name="validation-policies"></a>Überprüfungsrichtlinien
@@ -314,7 +314,7 @@ Externe Datasets werden nicht durch eine Pipeline erstellt, die in der Data Fact
 
 Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **extern** markiert werden. Diese Einstellung gilt im Allgemeinen für die Eingaben der ersten Aktivität in einer Pipeline, wenn weder Aktivitäts- noch Pipelineverkettung genutzt wird.
 
-| NAME | BESCHREIBUNG | Erforderlich | Standardwert |
+| Name | BESCHREIBUNG | Erforderlich | Standardwert |
 | --- | --- | --- | --- |
 | dataDelay |Die Zeitspanne, um die die Prüfung der Verfügbarkeit der externen Daten für den angegebenen Slice verzögert wird. Beispielsweise können Sie eine stündliche Überprüfung verzögern, indem Sie diese Einstellung verwenden.<br/><br/>Die Einstellung gilt nur für die aktuelle Zeit. Beispiel: Wenn es gerade 13:00 Uhr ist und dieser Wert 10 Minuten beträgt, beginnt die Überprüfung um 13:10 Uhr.<br/><br/>Diese Einstellung wirkt sich nicht auf Slices in der Vergangenheit aus. Slices mit **Segmentendzeit** + **dataDelay** < **Jetzt** werden ohne Verzögerung verarbeitet.<br/><br/>Zeiträume, die länger als 23 Stunden 59 Minuten sind, müssen im Format `day.hours:minutes:seconds` angegeben werden. Um beispielsweise 24 Stunden anzugeben, verwenden Sie nicht 24:00:00. Verwenden Sie stattdessen 1.00:00:00. Wenn Sie 24:00:00 verwenden, wird dies als 24 Tage (24.00:00:00) gewertet. Für 1 Tag und 4 Stunden geben Sie „1:04:00:00“ an. |Nein |0 |
 | retryInterval |Die Wartezeit zwischen einem Fehler und dem nächsten Versuch. Diese Einstellung gilt für die aktuelle Zeit. Wenn beim vorherigen Versuch ein Fehler auftrat, wird der nächste Versuch nach Verstreichen des **retryInterval**-Zeitraums durchgeführt. <br/><br/>Wenn es gerade 13:00 Uhr ist, beginnt der erste Versuch. Wenn die Ausführung der ersten Überprüfung 1 Minute gedauert hat und ein Fehler aufgetreten ist, findet die nächste Wiederholung um 13:00 + 1 Min. (Dauer) + 1 Min. (Wiederholungsintervall) = 13:02 Uhr statt. <br/><br/>Für Slices in der Vergangenheit gibt es keine Verzögerung. Der erneute Versuch erfolgt sofort. |Nein |00:01:00 (1 Minute) |

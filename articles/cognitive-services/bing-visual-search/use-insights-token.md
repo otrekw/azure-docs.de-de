@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67341723"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
@@ -65,7 +65,7 @@ Beispiele, die das Erkenntnistoken verwenden, finden Sie hier: [C#](#use-with-c)
 ### <a name="c-prerequisites"></a>C#-Voraussetzungen
 
 - Sie benötigen eine beliebige Version von [Visual Studio 2019](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können.
-- Ein Azure-Abonnement. Für diesen Schnellstart können Sie den Schlüssel eines [kostenlosen Testabonnements](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder eines kostenpflichtigen Abonnements verwenden.
+- ein Azure-Abonnement Für diesen Schnellstart können Sie den Schlüssel eines [kostenlosen Testabonnements](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) oder eines kostenpflichtigen Abonnements verwenden.
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
@@ -246,7 +246,7 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen:
 
 1. Laden Sie die [Gson-Java-Bibliothek](https://github.com/google/gson) herunter, und installieren Sie sie. Sie können Gson auch über Maven abrufen.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt.
-3. Fügen Sie den bereitgestellten Code in eine Datei namens `VisualSearch.java` ein.
+3. Fügen Sie den bereitgestellten Code in die Datei `VisualSearch.java` ein.
 4. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
 5. Führen Sie das Programm aus.
 

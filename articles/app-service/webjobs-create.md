@@ -9,11 +9,11 @@ ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235674"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -42,7 +42,7 @@ Die folgende Tabelle beschreibt die Unterschiede zwischen *fortlaufenden* und *a
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="acceptablefiles"></a>Unterstützte Dateitypen für Skripts oder Programme
+## <a name="supported-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>Unterstützte Dateitypen für Skripts oder Programme
 
 Die folgenden Dateitypen werden unterstützt:
 
@@ -54,7 +54,7 @@ Die folgenden Dateitypen werden unterstützt:
 * JS (bei Verwendung von Node.js)
 * JAR (bei Verwendung von Java)
 
-## <a name="CreateContinuous"></a> Erstellen eines fortlaufenden WebJobs
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a> Erstellen eines fortlaufenden WebJobs
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -92,7 +92,7 @@ when making changes in one don't forget the other two.
 
     ![Beenden eines fortlaufenden WebJobs](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="CreateOnDemand"></a> Erstellen eines manuell ausgelösten WebJobs
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Erstellen eines manuell ausgelösten WebJobs
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -130,7 +130,7 @@ when making changes in one don't forget the other two.
    
     ![Webauftrag ausführen](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="CreateScheduledCRON"></a> Erstellen eines geplanten WebJobs
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Erstellen eines geplanten WebJobs
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -179,7 +179,7 @@ Weitere Informationen finden Sie unter [Planen eines ausgelösten WebJobs](webjo
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-## <a name="ViewJobHistory"></a> Anzeigen des Auftragsverlaufs
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a> Anzeigen des Auftragsverlaufs
 
 1. Wählen Sie den WebJob aus, für den der Verlauf angezeigt werden soll, und klicken Sie dann auf die Schaltfläche **Protokolle**.
    
@@ -201,6 +201,6 @@ Weitere Informationen finden Sie unter [Planen eines ausgelösten WebJobs](webjo
    
     ![Liste der Webaufträge im Verlaufsdashboard](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a> Nächste Schritte
+## <a name="next-steps"></a><a name="NextSteps"></a> Nächste Schritte
 
 Das Azure WebJobs SDK kann in Verbindung mit WebJobs zahlreiche Programmieraufgaben vereinfachen. Weitere Informationen finden Sie unter [Was ist das WebJobs-SDK?](https://github.com/Azure/azure-webjobs-sdk/wiki).

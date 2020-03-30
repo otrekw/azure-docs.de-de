@@ -5,10 +5,10 @@ ms.author: estfan
 ms.topic: include
 ms.date: 11/08/2019
 ms.openlocfilehash: ea0ae1b1527aa1f527c8ac8fbcd3b4e4f6b6fe2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789194"
 ---
 * Wenn Sie Azure SQL-Datenbank verwenden, führen Sie die Schritte unter [Herstellen einer Verbindung mit Azure SQL-Datenbank](#connect-azure-sql-db) aus.
@@ -38,7 +38,7 @@ Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsi
 
 <a name="connect-sql-server"></a>
 
-### <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
+### <a name="connect-to-sql-server"></a>Verbindung mit SQL Server herstellen
 
 Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsinformationen anzugeben, befolgen Sie diese Schritte, die sowohl für Trigger als auch für Aktionen gelten. Für Szenarien, die die Installation des [lokalen Datengateways](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install) auf einem lokalen Computer und [Erstellen der Azure-Datengatewayressource](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) erfordern, stellen Sie sicher, dass Sie zuerst diese Anforderungen erfüllen. Andernfalls wird Ihre Gatewayressource bei der Erstellung der Verbindung nicht in der Gatewayliste angezeigt.
 
