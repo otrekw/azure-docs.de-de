@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712670"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240780"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -45,7 +45,7 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
    Die Regeln, die in der vorherigen Abbildung aufgeführt sind, beziehen sich auf eine Netzwerkschnittstelle mit dem Namen **myVMVMNic**. Sie können **REGELN FÜR EINGEHENDE PORTS** für die Netzwerkschnittstelle aus zwei verschiedenen Netzwerksicherheitsgruppen sehen:
    
    - **mySubnetNSG**: Ist dem Subnetz zugeordnet, in dem sich die Netzwerkschnittstelle befindet.
-   - **myVMNSG**: Ist der Netzwerkschnittstelle auf der VM mit dem Namen **myVMVMNic** zugeordnet.
+   - **myVMNSG**: Ist der Netzwerkschnittstelle in der VM mit dem Namen **myVMVMNic** zugeordnet.
 
    Die Regel mit dem Namen **DenyAllInBound** verhindert eingehende Kommunikation mit der VM über Port 80 über das Internet, wie im [Szenario](#scenario) beschrieben wird. Die Regel gibt *0.0.0.0/0* für **QUELLE** an, die das Internet einschließt. Keine andere Regel mit einer höheren Priorität (niedrigere Zahl) lässt den Port 80 als eingehenden Port zu. Um den Port 80 als eingehenden Port für die VM über das Internet zuzulassen, lesen Sie den Artikel [Beheben eines Problems](#resolve-a-problem). Weitere Informationen zu Sicherheitsregeln und zu ihrer Anwendung in Azure finden Sie unter [Netzwerksicherheitsgruppen](security-overview.md).
 
@@ -72,8 +72,8 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
    Im Gegensatz zur Netzwerkschnittstelle **myVMVMNic** ist die Netzwerkschnittstelle **myVMVMNic2** nicht einer Netzwerksicherheitsgruppe zugeordnet. Jede Netzwerkschnittstelle und jedes Subnetz können optional einer NSG zugeordnet werden. Den einzelnen Netzwerkschnittstellen oder Subnetzen kann die gleiche oder eine andere NSG zugeordnet werden. Sie können dieselbe Netzwerksicherheitsgruppe beliebig vielen Netzwerkschnittstellen und Subnetzen zuordnen.
 
 Effektive Sicherheitsregeln können nicht nur über die VM angezeigt werden, sondern auch jeweils über Folgendes:
-- **Netzwerkschnittstelle:** Erfahren Sie, wie Sie [eine Netzwerkschnittstelle anzeigen](virtual-network-network-interface.md#view-network-interface-settings).
-- **NSG**: Erfahren Sie, wie Sie [eine NSG anzeigen](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **Netzwerkschnittstelle**: Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG**: Erfahren Sie, wie [eine NSG angezeigt wird](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnose mit PowerShell
 
@@ -94,7 +94,7 @@ Die Ausgabe wird nur dann zurückgegeben, wenn einer NSG die Netzwerkschnittstel
 
 Wenn das Konnektivitätsproblem weiterhin besteht, lesen Sie die Abschnitte [Zusätzliche Diagnose](#additional-diagnosis) und [Überlegungen](#considerations).
 
-Wenn Sie den Namen einer Netzwerkschnittstelle nicht kennen, aber den Namen der VM, an die die Netzwerkschnittstelle angefügt ist, geben die folgenden Befehle die IDs aller Netzwerkschnittstellen zurück, die an eine VM angefügt sind:
+Wenn Sie den Namen einer Netzwerkschnittstelle nicht kennen, aber den Namen der VM, der die Netzwerkschnittstelle angefügt ist, geben die folgenden Befehle die IDs aller Netzwerkschnittstellen zurück, die einer VM angefügt sind:
 
 ```azurepowershell-interactive
 $VM = Get-AzVM -Name myVM -ResourceGroupName myResourceGroup
@@ -103,7 +103,7 @@ $VM.NetworkProfile
 
 Eine Ausgabe ähnlich wie im folgenden Beispiel wird angezeigt:
 
-```powershell
+```output
 NetworkInterfaces
 -----------------
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
@@ -128,7 +128,7 @@ Die Ausgabe wird nur dann zurückgegeben, wenn einer NSG die Netzwerkschnittstel
 
 Wenn das Konnektivitätsproblem weiterhin besteht, lesen Sie die Abschnitte [Zusätzliche Diagnose](#additional-diagnosis) und [Überlegungen](#considerations).
 
-Wenn Sie den Namen einer Netzwerkschnittstelle nicht kennen, aber den Namen der VM, an die die Netzwerkschnittstelle angefügt ist, geben die folgenden Befehle die IDs aller Netzwerkschnittstellen zurück, die an eine VM angefügt sind:
+Wenn Sie den Namen einer Netzwerkschnittstelle nicht kennen, aber den Namen der VM, der die Netzwerkschnittstelle angefügt ist, geben die folgenden Befehle die IDs aller Netzwerkschnittstellen zurück, die einer VM angefügt sind:
 
 ```azurecli-interactive
 az vm show \
@@ -138,7 +138,7 @@ az vm show \
 
 In der zurückgegebenen Ausgabe finden Sie Informationen wie etwa im folgenden Beispiel:
 
-```azurecli
+```output
 "networkProfile": {
     "additionalProperties": {},
     "networkInterfaces": [
@@ -157,7 +157,7 @@ In der vorangehenden Ausgabe lautet der Netzwerkschnittstellenname *myVMVMNic in
 Unabhängig davon, ob Sie [PowerShell](#diagnose-using-powershell) oder die [Azure CLI](#diagnose-using-azure-cli) zum Diagnostizieren eines Problems verwendet haben, erhalten Sie eine Ausgabe mit den folgenden Informationen:
 
 - **NetworkSecurityGroup**: Die ID der Netzwerksicherheitsgruppe.
-- **Zuordnung:** Gibt an, ob die Netzwerksicherheitsgruppe einer *Netzwerkschnittstelle* oder einem *Subnetz* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
+- **Zuordnung**: Gibt an, ob die Netzwerksicherheitsgruppe *NetworkInterface* oder *Subnet* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
 - **EffectiveSecurityRules**: Eine Erläuterung der einzelnen Eigenschaften finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Regelnamen mit vorangestellten *defaultSecurityRules/* sind Standardsicherheitsregeln, die in jede NSG vorhanden sind. Regelnamen mit vorangestellten *securityRules/* sind Regeln, die Sie erstellt haben. Regeln, die ein [Diensttag](security-overview.md#service-tags) angeben (z.B. **Internet**, **VirtualNetwork** und **AzureLoadBalancer** für die Eigenschaften **destinationAddressPrefix** oder **sourceAddressPrefix**), weisen auch Werte für die Eigenschaft **expandedDestinationAddressPrefix** auf. Die Eigenschaft **expandedDestinationAddressPrefix** listet alle Adresspräfixe auf, die von dem Diensttag dargestellt werden.
 
 Wenn doppelte Regeln in der Ausgabe aufgeführt werden, so ist dies darauf zurückzuführen, dass eine NSG sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet ist. Beide NSGs weisen die gleichen Standardregeln und möglicherweise weitere doppelte Regeln auf, wenn Sie eigene Regeln erstellt haben, die in beiden NSGs identisch sind.
@@ -166,18 +166,18 @@ Die Regel mit dem Namen **defaultSecurityRules/DenyAllInBound** verhindert einge
 
 ## <a name="resolve-a-problem"></a>Beheben eines Problems
 
-Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestellte Problem über das [Azure-Portal](#diagnose-using-azure-portal), über [PowerShell](#diagnose-using-powershell) oder über die [Azure CLI](#diagnose-using-azure-cli) diagnostizieren, die Lösung besteht darin, eine Netzwerksicherheitsregel mit den folgenden Eigenschaften zu erstellen:
+Unabhängig davon, ob Sie das im [Szenario](#diagnose-using-azure-portal) dieses Artikels dargestellte Problem über das [Azure-Portal](#diagnose-using-powershell), über [PowerShell](#diagnose-using-azure-cli) oder über die [Azure CLI](#scenario) diagnostizieren, die Lösung besteht darin, eine Netzwerksicherheitsregel mit den folgenden Eigenschaften zu erstellen:
 
-| Eigenschaft                | Wert                                                                              |
+| Eigenschaft                | value                                                                              |
 |---------                |---------                                                                           |
-| `Source`                  | Beliebig                                                                                |
-| Quellportbereiche      | Beliebig                                                                                |
-| Ziel             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
+| `Source`                  | Any                                                                                |
+| Source port ranges      | Any                                                                                |
+| Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
 | Protocol                | TCP                                                                                |
-| Aktion                  | ZULASSEN                                                                              |
-| Priorität                | 100                                                                                |
-| NAME                    | Allow-HTTP-All                                                                     |
+| Action                  | Allow                                                                              |
+| Priority                | 100                                                                                |
+| Name                    | Allow-HTTP-All                                                                     |
 
 Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound*, die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.
 

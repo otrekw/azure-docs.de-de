@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068109"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Versionshinweise zu Azure Data Box Edge und Azure Data Box Gateway 1905
@@ -31,7 +31,7 @@ Dieses Release entspricht den folgenden Softwareversionen:
 > [!NOTE]
 > Update 1905 kann nur auf Data Box Edge-Geräte angewandt werden, auf denen die allgemein verfügbare Version der Software ausgeführt wird.
 
-## <a name="whats-new"></a>Neuigkeiten
+## <a name="whats-new"></a>Neues
 
 - **Verbesserungen bei der FPGA-Protokollierung (Field Programmable Gate Array):** In diesem Release wurden Verbesserungen bei der Protokollierung und den Warnungen im Zusammenhang mit FPGA vorgenommen. Dies ist ein erforderliches Update für Data Box Edge, wenn Sie die Edgecomputingfunktion mit dem FPGA verwenden. Weitere Informationen finden Sie unter [Transformieren von Daten mit Edgecomputing unter Data Box Edge](data-box-edge-deploy-configure-compute-advanced.md).
 

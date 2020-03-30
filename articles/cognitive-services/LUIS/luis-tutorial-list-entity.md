@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
 ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499476"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
@@ -33,7 +33,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Aktuelle Version von [Node.js](https://nodejs.org)
-> * [HomeAutomation-LUIS-App](luis-get-started-create-app.md). Wenn Sie die HomeAutomation-App nicht erstellt haben, erstellen Sie eine neue App, und fügen Sie die vorgefertigten Domäne, **HomeAutomation**, hinzu. Trainieren und veröffentlichen Sie die App. 
+> * [LUIS-App HomeAutomation](luis-get-started-create-app.md). Wenn Sie die HomeAutomation-App nicht erstellt haben, erstellen Sie eine neue App, und fügen Sie die vorgefertigten Domäne, **HomeAutomation**, hinzu. Trainieren und veröffentlichen Sie die App. 
 > * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (bei häufigen Abfragen), appID, versionID und [region](luis-reference-regions.md) für die LUIS-App.
 
 > [!Tip]
@@ -72,7 +72,7 @@ In diesem Artikel wird eine Entitätsliste mit dem Thermostat erstellt. In diese
 |hot (warm)|
 |hotter (wärmer)|
 |cold (kalt)|
-|colder (kälter)|
+|colder|
 
 Wenn der LUIS häufig eine neue Alternative festlegen muss, stellt eine [Begriffsliste](luis-concept-feature.md#how-to-use-phrase-lists) eine bessere Lösung dar.
 
@@ -93,7 +93,7 @@ Die Ausgabe der Ausführung ist die ID der Listenentität:
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>Modelltraining
+## <a name="train-the-model"></a>Trainieren des Modells
 Trainieren Sie den LUIS, damit die neue Liste auf die Abfrageergebnisse angewendet wird. Das Training besteht aus zwei Teilen: dem Training selbst und der Prüfung, ob das Training erfolgt ist. Es kann eine Weile dauern, bis eine App mit vielen Modellen trainiert ist. Der folgende Code trainiert die App und wartet, bis das Training erfolgreich ist. Der Code verwendet eine Warte- und Wiederholungsstrategie, um zu verhindern, dass zu viele 429-Fehler („Zu viele Anforderungen“) auftreten. 
 
 Erstellen Sie eine Node.js-Datei, und fügen Sie folgenden Code ein. Ändern Sie die Werte von „authoringKey“, „appId“, „versionId“ und „region“.

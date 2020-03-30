@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086904"
 ---
 ## <a name="personal-information-entity-types"></a>Entitätstypen für personenbezogene Informationen:
@@ -35,7 +35,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                                                                       | Erst ab dieser Modellversion verfügbar|
+| Name des Untertyps | BESCHREIBUNG                                                                                       | Erst ab dieser Modellversion verfügbar|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
 | –          | Organisationen, z. B. `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
@@ -59,7 +59,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                      | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                      | Erst ab dieser Modellversion verfügbar |
 |--------------|--------------------------------------------------|----------------------------------------|
 | –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2020-02-01`                           |
 
@@ -71,7 +71,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                                          | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                                          | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------------------|----------------------------------------|
 | –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2020-02-01`                           |
 
@@ -95,7 +95,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                   | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                   | Erst ab dieser Modellversion verfügbar |
 |--------------|-------------------------------|----------------------------------------|
 | Age          | `90 days old`, `30 years old` | `2020-02-01`                           |
 
@@ -107,7 +107,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                   | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                   | Erst ab dieser Modellversion verfügbar |
 |--------------|-------------------------------|----------------------------------------|
 | Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
@@ -157,7 +157,7 @@ Sprachen:
 
 #### <a name="financial-account-identification"></a>Identifikation bei Finanzkonten
 
-| Name des Untertyps               | Beschreibung                                                                |
+| Name des Untertyps               | BESCHREIBUNG                                                                |
 |----------------------------|----------------------------------------------------------------------------|
 | ABA-Nummern        | ABA-Nummern (American Bankers Association) für den Zahlungsverkehr mit US-amerikanischen Banken.                  |
 | SWIFT-Code                 | SWIFT-Codes in Zahlungsanweisungen.                           |

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235486"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Dieses Thema zeigt, wie Sie gängige Aufgaben wie Erstellen, Aktualisieren und S
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Weitere Informationen über das klassische Bereitstellungsmodus finden Sie unter [Azure Resource Manager im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/management/deployment-models.md).
+Weitere Informationen über das klassische Bereitstellungsmodell finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.0 oder höher. Sie können die von Ihnen installierte Azure Power Shell-Version mit diesem Befehl über die Azure PowerShell-Eingabeaufforderung prüfen.
@@ -117,14 +117,14 @@ Weitere Informationen zu Microsoft Azure Deutschland finden Sie unter [Microsoft
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Eigenschaften, die für Azure Cache for Redis-PowerShell verwendet werden
 Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, die beim Erstellen und Verwalten Ihrer Azure Cache for Redis-Instanzen mithilfe von Azure PowerShell häufig verwendet werden.
 
-| Parameter | Beschreibung | Standard |
+| Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
 | Name |Name des Caches | |
 | Location |Ort des Caches | |
 | ResourceGroupName |Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
 | Size |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
-| SKU |Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard und Premium |Standard |
+| SKU |Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard, Premium |Standard |
 | RedisConfiguration |Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Gibt an, ob der Nicht-SSL-Port aktiviert ist. |False |
 | MaxMemoryPolicy |Dieser Parameter ist veraltet – verwenden Sie stattdessen RedisConfiguration. | |
@@ -134,7 +134,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-Eigenschaften
-| Eigenschaft | Beschreibung | Tarife |
+| Eigenschaft | BESCHREIBUNG | Tarife |
 | --- | --- | --- |
 | rdb-backup-enabled |Gibt an, ob [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) aktiviert ist |Nur Premium |
 | rdb-storage-connection-string |Die Verbindungszeichenfolge für das Speicherkonto für [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) |Nur Premium |
@@ -776,7 +776,7 @@ Weitere Informationen zur Verwendung von Windows PowerShell mit Azure finden Sie
 
 * [Dokumentation zu den Azure Cache for Redis-Cmdlets auf MSDN](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager-Cmdlets](https://go.microsoft.com/fwlink/?LinkID=394765): Hier erfahren Sie, wie Sie die Cmdlets im Azure Resource Manager-Modul verwenden.
-* [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/templates/deploy-portal.md): Erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
+* [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/templates/deploy-portal.md): Hier erfahren Sie, wie Sie Ressourcengruppen im Azure-Portal erstellen und verwalten.
 * [Azure-Blog](https://azure.microsoft.com/blog/): Informationen zu neuen Funktionen in Azure.
 * [Windows PowerShell-Blog](https://blogs.msdn.com/powershell): Informationen zu neuen Funktionen in Windows PowerShell.
 * ["Hey, Scripting Guy!"- Blog](https://blogs.technet.com/b/heyscriptingguy/): Praktische Tipps und Tricks aus der Windows PowerShell-Community.

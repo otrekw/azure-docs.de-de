@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.reviewer: sunayv
 ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233072"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
@@ -140,7 +140,7 @@ PowerApps und Microsoft Flow unterstützen Auflistungen von Identitätsanbietern
 ``` 
 Während des Exports geben Sie Konfigurationswerte an, mit denen PowerApps und Microsoft Flow Benutzer authentifizieren können.
 
-In diesem Abschnitt werden die im **Express**-Modus unterstützten Authentifizierungstypen erläutert: API-Schlüssel, Azure Active Directory und generisches OAuth 2.0. PowerApps und Microsoft Flow unterstützen für bestimmte Dienste wie Dropbox, Facebook und Salesforce auch die Standardauthentifizierung sowie OAuth 2.0.
+In diesem Abschnitt werden die vom **Express**-Modus unterstützten Authentifizierungstypen behandelt: API-Schlüssel, Azure Active Directory und generisches OAuth 2.0. PowerApps und Microsoft Flow unterstützen für bestimmte Dienste wie Dropbox, Facebook und Salesforce auch die Standardauthentifizierung sowie OAuth 2.0.
 
 ### <a name="api-key"></a>API-Schlüssel
 Wenn ein API-Schlüssel verwendet wird, werden die Benutzer Ihres Connectors beim Herstellen einer Verbindung aufgefordert, den Schlüssel anzugeben. Geben Sie einen API-Schlüsselnamen an, um kenntlich zu machen, welcher Schlüssel erforderlich ist. Im vorangehenden Beispiel haben wir den Namen `API Key (contact meganb@contoso.com)` verwendet, damit die Benutzer wissen, wo Informationen zum API-Schlüssel abgerufen werden können. Bei Azure Functions handelt es sich beim Schlüssel in der Regel um einen der Hostschlüssel, die in der Funktionen-App verschiedene Funktionen erfüllen.

@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980426"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
@@ -32,7 +32,7 @@ Sie können [die gesamte Lösung in Visual Studio erstellen](../logic-apps/quick
 
    Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie die [Schnellstartanleitung für das Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) oder [Quickstart: Automate tasks and processes with Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) (Schnellstart: Automatisieren von Aufgaben und Prozessen mit Azure Logic Apps – Visual Studio).
 
-2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der folgenden Aktion: **Wenn ein neuer Tweet gepostet wird**
+2. Suchen Sie im Logik-App-Designer nach dem Twitter-Trigger mit der Aktion **Wenn ein neuer Tweet gepostet wird**, und fügen Sie ihn hinzu.
 
 3. Richten Sie den Trigger so ein, dass er basierend auf einem Schlüsselwort oder Hashtag auf Tweets lauscht.
 
@@ -58,10 +58,10 @@ Um die Stimmungslage zu erkennen, die sich hinter einem Text verbirgt, können S
 
 Nachdem Sie die Tweetdaten und Erkenntnisse zum Tweet abgerufen haben, können Sie mehrere andere relevante Connectors und deren Aktionen verwenden:
 
-* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen
-* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden
-* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern
-* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert
+* **Power BI – Zeilen zum Streamingdataset hinzufügen**: Eingehende Tweets in einem Power BI-Dashboard anzeigen.
+* **Azure Data Lake – Datei anfügen**: Kundendaten zu einem Azure Data Lake-Dataset hinzufügen, um sie in Analyseaufträge einzubinden.
+* **SQL – Zeilen hinzufügen**: Daten zur späteren Wiederverwendung in einer Datenbank speichern.
+* **Slack – Nachricht senden**: Einen Slack-Kanal über negatives Feedback benachrichtigen, das möglicherweise eine Aktion erfordert.
 
 Sie können auch eine Azure-Funktion erstellen und hinzufügen, um eine benutzerdefinierte Verarbeitung Ihrer Daten auszuführen. 
 

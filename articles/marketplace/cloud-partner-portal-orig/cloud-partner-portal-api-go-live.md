@@ -1,19 +1,18 @@
 ---
 title: Live schalten | Azure Marketplace
 description: Der Live schalten-API initiiert den Prozess, in dem das Angebot zur Auflistung freigeschaltet (live geschaltet) wird.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819684"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288579"
 ---
 <a name="go-live"></a>Live schalten
 =======
@@ -27,8 +26,8 @@ Diese API startet den Prozess zum Überführen einer App in den Produktionsstatu
 
 |  **Name**      |   **Beschreibung**                                                           | **Datentyp** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Herausgeber-ID für das abzurufende Angebot, z. B. `contoso`       |  Zeichenfolge       |
-| offerId        | Angebots-ID des abzurufenden Angebots                                   |  Zeichenfolge       |
+| publisherId    | Herausgeber-ID für das abzurufende Angebot, z. B. `contoso`       |  String       |
+| offerId        | Angebots-ID des abzurufenden Angebots                                   |  String       |
 | api-version    | Aktuelle Version der API                                                   |  Date         |
 |  |  |  |
 
@@ -46,7 +45,7 @@ Diese API startet den Prozess zum Überführen einer App in den Produktionsstatu
 <a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
 

@@ -5,11 +5,11 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716292"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219200"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -19,11 +19,11 @@ Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es
 ## <a name="data-location-and-key-usage"></a>Speicherort der Daten und Schlüsselverwendung
 LUIS stellt die Daten vom veröffentlichten [Endpunkt](luis-glossary.md#endpoint) bereit. Die **HTTPS-Anforderung** (POST oder GET) enthält die Äußerung sowie einige optionale Konfigurationen wie z.B. Staging- oder Produktionsumgebung.
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 – Anforderung für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 – Anforderung für Vorhersageendpunkt](#tab/V2)
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 – Anforderung für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 – Anforderung für Vorhersageendpunkt](#tab/V3)
 
 `https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
 
@@ -38,7 +38,7 @@ Die **HTTPS-Antwort** enthält alle Informationen zur Absicht und den Entitäten
 ## <a name="data-from-intents"></a>Daten aus Absichten
 Die wichtigste Angabe ist der **Name der Absicht** mit der höchsten Bewertung. Die Endpunktantwort lautet:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 {
@@ -51,7 +51,7 @@ Die wichtigste Angabe ist der **Name der Absicht** mit der höchsten Bewertung. 
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 ```JSON
 {
@@ -80,7 +80,7 @@ Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 Wenn Ihr Chatbot oder die App, die den Aufruf an LUIS durchgeführt hat, eine Entscheidung basierend auf mehreren Absichtsbewertungen trifft, geben Sie die Bewertungen aller Absichten zurück.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Legen Sie den QueryString-Parameter `verbose=true` fest. Die Endpunktantwort lautet:
 
@@ -105,7 +105,7 @@ Legen Sie den QueryString-Parameter `verbose=true` fest. Die Endpunktantwort lau
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Legen Sie den QueryString-Parameter `show-all-intents=true` fest. Die Endpunktantwort lautet:
 
@@ -142,7 +142,7 @@ Die Absichten werden von der höchsten zur niedrigsten Bewertung sortiert.
 
 Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domäne, wie z.B. `Utilties` oder `Communication`, sowie die Absicht an:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 {
@@ -168,7 +168,7 @@ Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domä
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 ```JSON
 {
@@ -210,7 +210,7 @@ Ein einzelnes Wort oder ein Ausdruck in einer Äußerung kann mehreren Entitäte
 
 Alle Entitäten werden im Array **entities** der Antwort vom Endpunkt zurückgegeben:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -233,7 +233,7 @@ Alle Entitäten werden im Array **entities** der Antwort vom Endpunkt zurückgeg
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 ```JSON
 "entities": {
@@ -266,7 +266,7 @@ Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus ande
 
 `Dec 5th send to +1 360-555-1212`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -347,7 +347,7 @@ Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus ande
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Ohne QueryString-Parameter `verbose=true`:
 
@@ -556,7 +556,7 @@ Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. vo
 Rollen sind kontextabhängige Unterschiede von Entitäten.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Der Entitätsname ist `Location` mit zwei Rollen, `Origin` und `Destination`.
 
@@ -589,7 +589,7 @@ Der Entitätsname ist `Location` mit zwei Rollen, `Origin` und `Destination`.
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 In V3 ist der **Rollenname** der primäre Name des Objekts.
 
@@ -709,7 +709,7 @@ Für alle anderen Kulturen lautet die Antwort:
 Die Entität zu Schlüsselbegriffserkennung gibt Schlüsselausdrücke in der Äußerung zurück, die von der [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) bereitgestellt werden.
 
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 {
@@ -744,7 +744,7 @@ Die Entität zu Schlüsselbegriffserkennung gibt Schlüsselausdrücke in der Äu
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
@@ -822,7 +822,7 @@ LUIS gibt alle Entitäten zurück, die in der Äußerung ermittelt wurden. Daher
 
 Der LUIS-Endpunkt kann die gleichen Daten in verschiedenen Entitäten erkennen.
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 {
@@ -948,7 +948,7 @@ Der LUIS-Endpunkt kann die gleichen Daten in verschiedenen Entitäten erkennen.
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Ohne `verbose=true` als QueryString-Parameter.
 
@@ -1135,7 +1135,7 @@ Wenn ein Wort oder ein Ausdruck mit mehreren Listenentitäten übereinstimmt, wi
 
 Wenn die App bei der Abfrage `when is the best time to go to red rock?` das Wort `red` in mehreren Listenentitäten enthält, erkennt LUIS alle Entitäten und gibt als Teil der JSON-Endpunktantwort ein Array von Entitäten zurück:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 {
@@ -1173,7 +1173,7 @@ Wenn die App bei der Abfrage `when is the best time to go to red rock?` das Wort
 
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Ohne `verbose=true` in der Abfragezeichenfolge:
 
