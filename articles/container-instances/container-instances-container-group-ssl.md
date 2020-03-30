@@ -3,12 +3,12 @@ title: Aktivieren von SSL mit Sidecar-Container
 description: Erstellen eines SSL- oder TLS-Endpunkts für eine in Azure Container Instances ausgeführte Containergruppe durch Ausführen von Nginx in einem Sidecar-Container
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460551"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294940"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Aktivieren eines SSL-Endpunkts in einem Sidecar-Container
 
@@ -196,7 +196,7 @@ type: Microsoft.ContainerInstance/containerGroups
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location westus
 ```
 
 Stellen Sie die Containergruppe mit dem Befehl [az container create](/cli/azure/container#az-container-create) bereit, und geben Sie die YAML-Datei als Argument weiter.

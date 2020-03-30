@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720094"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Durchsuchen von Daten auf einer SQL Server-VM in Azure
@@ -29,7 +29,7 @@ Dieser Task ist ein Schritt im [Team Data Science-Prozess](overview.md).
 > 
 > 
 
-## <a name="sql-dataexploration"></a>Durchsuchen von SQL-Daten mit SQL-Skripts
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>Durchsuchen von SQL-Daten mit SQL-Skripts
 Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf einem SQL Server verwendet werden können.
 
 1. Abrufen der Anzahl der Vorkommen pro Tag:
@@ -50,7 +50,7 @@ Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf ei
 > 
 > 
 
-## <a name="python"></a>Durchsuchen von SQL-Daten mit Python
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>Durchsuchen von SQL-Daten mit Python
 Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md)beschrieben ist. Laden Sie die Daten in einen Pandas-Datenrahmen, damit sie weiterverarbeitet werden können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
 
 Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit „pyodbc“ eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch Ihre Daten):

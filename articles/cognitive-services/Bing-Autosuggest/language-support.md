@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "60547335"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Sprach- und Regionsunterstützung für die Bing-Vorschlagssuche-API
@@ -38,7 +38,7 @@ Nachfolgend sind die von der Bing-Vorschlagssuche-API unterstützten Sprachen au
 | Englisch (Neuseeland)    | `en-NZ`          |
 | Englisch (Philippinen)     | `en-PH`          |
 | Englisch (Südafrika)    | `en-ZA`          |
-| Englisch (Vereinigtes Königreich)    | `en-GB`          |
+| Walisisch (Großbritannien)    | `en-GB`          |
 | Englisch (USA)    | `en-US`          |
 | Finnisch     | `fi`          |
 | Französisch (Belgien)     | `fr-BE`          |
@@ -60,7 +60,7 @@ Nachfolgend sind die von der Bing-Vorschlagssuche-API unterstützten Sprachen au
 | Spanisch (Chile)     | `es-CL`          |
 | Spanisch (Mexiko)    | `es-MX`          |
 | Spanisch (Spanien)    | `es-ES`          |
-| Spanisch (Vereinigte Staaten)    | `es-US`          |
+| Spanisch (USA)    | `es-US`          |
 | Schwedisch     | `sv`          |
 | Türkisch     | `tr`          |
 

@@ -1,18 +1,18 @@
 ---
 title: Grundlegendes zur Verwendung von mobilen Anwendungen und zum Benutzerverhalten mit Visual Studio App Center und Azure-Diensten
 description: Erfahren Sie mehr über die Dienste wie App Center, die Ihnen helfen, intelligente Geschäftsentscheidungen zu treffen, indem sie aufbereiten, wie Benutzer Ihre mobile Anwendung nutzen.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ff25df55e8489819ca9400205cdea1b8ceb8bf80
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 4dc3cea4497c55dda0d8da2ca29201615dadff19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454529"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241076"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>Analysieren und Verstehen der Verwendung mobiler Anwendungen
 Wie gut erfassen Sie, wie Ihre Benutzer ihre Anwendungen verwenden? Wie viele Benutzer nutzen Ihre Anwendung aktive, und wie ändert sich die Nutzung im Laufe der Zeit? Welche Features nutzen sie, und welche werden am häufigsten verwendet? Wo befinden sich diese Benutzer? Wie viele Benutzer verwenden die neueste Version der Anwendung? Für alle diese Fragen ist die jeweilige Antwort wichtig, damit Ihre App in ein erfolgreiches Unternehmen mündet. Um diese Arten von Fragen zur Nutzungsanalyse zu beantworten, müssen Sie Nutzungsdaten aus Ihren Apps sammeln.

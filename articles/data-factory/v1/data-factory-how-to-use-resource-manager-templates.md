@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972858"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
@@ -34,11 +34,11 @@ Das Unternehmen möchte diese 10 Data Factorys darüber hinaus mehrfach in versc
 ## <a name="templating-with-azure-resource-manager"></a>Verwenden von Vorlagen in Azure Resource Manager
 [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/overview.md) stellen eine hervorragende Möglichkeit dar, in Azure Data Factory mit Vorlagen zu arbeiten. Resource Manager-Vorlagen definieren die Infrastruktur und Konfiguration Ihrer Azure-Lösung über eine JSON-Datei. Da Azure Resource Manager-Vorlagen für (beinahe) alle Azure-Dienste zur Verfügung stehen, können Sie in vielen Bereichen genutzt werden, um alle Ressourcen Ihrer Azure-Assets zu verwalten. Weitere (allgemeinere) Informationen über Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 
-## <a name="tutorials"></a>Tutorials
+## <a name="tutorials"></a>Lernprogramme
 Schritt-für-Schritt-Anleitungen zum Erstellen von Data Factory-Entitäten mithilfe von Resource Manager-Vorlagen finden Sie in den folgenden Tutorials:
 
-* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md) (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)
-* [Tutorial: Create a pipeline to process data by using Azure Resource Manager template](data-factory-build-your-first-pipeline.md) (Tutorial: Erstellen einer Pipeline zum Verarbeiten von Daten mithilfe einer Azure Resource Manager-Vorlage)
+* [Tutorial: Create a pipeline to copy data by using Azure Resource Manager template (Tutorial: Erstellen einer Pipeline zum Kopieren von Daten mithilfe einer Azure Resource Manager-Vorlage)](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Tutorial: Create a pipeline to process data by using Azure Resource Manager template (Tutorial: Erstellen einer Pipeline zum Verarbeiten von Daten mithilfe einer Azure Resource Manager-Vorlage)](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Data Factory-Vorlagen auf GitHub
 Sehen Sie sich die folgenden Azure-Schnellstartvorlagen auf GitHub an:

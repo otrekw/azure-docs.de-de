@@ -1,22 +1,22 @@
 ---
 title: Skalieren von Computeressourcen für den Synapse-SQL-Pool (Azure-Portal)
 description: Sie können Computeressourcen für den Synapse-SQL-Pool (Data Warehouse) mithilfe des Azure-Portals skalieren.
-services: sql-data-warehouse
+services: synapse-analytics
 author: Antvgski
 manager: craigg
-ms.service: sql-data-warehouse
+ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: implement
+ms.subservice: ''
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e7e16615df464358fa22e3d03488866022b87d9a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f92152658b9db83740ffc2de2dc6956003849e06
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79539436"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350819"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Schnellstart: Skalieren von Computeressourcen für den Synapse-SQL-Pool mit dem Azure-Portal
 

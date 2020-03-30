@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237426"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
@@ -31,7 +31,7 @@ Ein Modulzwilling enthält:
 
 Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | schemaVersion | Muss „1.0“ sein. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |
@@ -74,10 +74,10 @@ Anhand der Kopie der aktuellen gewünschten Eigenschaften können Sie feststelle
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
-| lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `412`: Ungültige Schemaversion, `417`: Die gewünschten Eigenschaften sind leer, `500`: Fehler |
+| lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (Ungültige Konfiguration), `412` Invalid Schema Version (Ungültige Schemaversion), `417` The Desired Properties are Empty (Die gewünschten Eigenschaften sind leer), `500` Failed (Fehler) |
 | lastDesiredStatus.description | Textbeschreibung des Status |
 | deviceHealth | `healthy`, wenn der Runtimestatus aller Module entweder `running` oder `stopped` ist, andernfalls `unhealthy` |
 | configurationHealth.{deploymentId}.health | `healthy`, wenn der von der Bereitstellung {deploymentId} festgelegte Runtimestatus aller Module `running` oder `stopped` ist, andernfalls `unhealthy` |
@@ -104,7 +104,7 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 
 Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Hub und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | Beschreibung | Im Bereitstellungsmanifest erforderlich |
+| Eigenschaft | BESCHREIBUNG | Im Bereitstellungsmanifest erforderlich |
 | -------- | ----------- | -------- |
 | schemaVersion | Muss „1.0“ sein. | Ja |
 | routes.{routeName} | Eine Zeichenfolge, die eine IoT Edge-Hubroute darstellt. Weitere Informationen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes). | Das `routes`-Element kann vorhanden, aber leer sein. |
@@ -112,10 +112,10 @@ Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koord
 
 ## <a name="edgehub-reported-properties"></a>Gemeldete EdgeHub-Eigenschaften
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Hub verarbeitete Version der gewünschten Eigenschaften. |
-| lastDesiredStatus.code | Der Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Hub erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `500`: Fehler |
+| lastDesiredStatus.code | Der Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Hub erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (ungültige Konfiguration), `500` Failed (Fehler) |
 | lastDesiredStatus.description | Textbeschreibung des Status. |
 | clients.{device or moduleId}.status | Konnektivitätsstatus dieses Geräts oder Moduls. Mögliche Werte: {"connected" \| "disconnected"}. Nur Modulidentitäten können den Status „disconnected“ aufweisen. Nachgeschaltete Geräte, die eine Verbindung mit dem IoT Edge-Hub herstellen, werden nur bei erfolgreicher Verbindung angezeigt. |
 | clients.{device or moduleId}.lastConnectTime | Letzter Verbindungszeitpunkt des Geräts oder Moduls. |

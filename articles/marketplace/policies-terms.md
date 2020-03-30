@@ -1,19 +1,18 @@
 ---
 title: Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace | Azure
 description: Die Richtlinien und Nutzungsbedingungen für den kommerziellen Microsoft-Marketplace gelten für alle Herausgeber und Angebote im Microsoft Azure Marketplace.
-services: Azure, Marketplace, AppSource, commercial marketplace, Partner Center
-author: MaggiePucciEvans
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 03/07/2020
-ms.author: evansma
-ms.openlocfilehash: 51d6a50631d94086318a9e37a9cecf89eb489ed1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.topic: conceptual
+ms.date: 03/27/2020
+ms.author: dsindona
+ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336260"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Richtlinien und Nutzungsbedingungen für den kommerziellen Marketplace
 

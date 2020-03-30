@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: 61ddad58a9f61589aae137fb66ad75b37a0cbbe9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931175"
 ---
 # <a name="security-best-practices-for-internet-of-things-iot"></a>Bewährte Methoden für die Sicherheit für das Internet der Dinge (IoT)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235164"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit der Azure CLI
 
@@ -31,7 +31,7 @@ Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen 
 * Bereitstellen eines virtuellen Computers (VM) in jedem virtuellen Netzwerk
 * Kommunikation zwischen VMs
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -86,7 +86,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-Erstellen Sie mit [az network vnet peering create](/cli/azure/network/vnet/peering) ein Peering zwischen *myVirtualNetwork1* und *myVirtualNetwork2*. Wenn der `--allow-vnet-access`-Parameter nicht angegeben ist, wird ein Peering eingerichtet, es ist jedoch keine Kommunikation über diesen möglich.
+Erstellen Sie mit *az network vnet peering create* ein Peering zwischen *myVirtualNetwork1* und [myVirtualNetwork2](/cli/azure/network/vnet/peering). Wenn der `--allow-vnet-access`-Parameter nicht angegeben ist, wird ein Peering eingerichtet, es ist jedoch keine Kommunikation über diesen möglich.
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-In der Ausgabe, die nach der Ausführung des vorherigen Befehl zurückgegeben wird, können Sie sehen, dass **peeringState** auf *Verbunden* steht. Azure hat zudem den Peeringstatus des Peerings *myVirtualNetwork1-myVirtualNetwork2* in *Verbunden* geändert. Überprüfen Sie mit [az network vnet peering show](/cli/azure/network/vnet/peering), ob der Peeringstatus für das Peering *myVirtualNetwork1-myVirtualNetwork2* in *Verbunden* geändert wurde.
+In der Ausgabe, die nach der Ausführung des vorherigen Befehl zurückgegeben wird, können Sie sehen, dass **peeringState** auf *Verbunden* steht. Azure hat zudem den Peeringstatus des Peerings *myVirtualNetwork1-myVirtualNetwork2* in *Verbunden* geändert. Überprüfen Sie mit *az network vnet peering show*, ob der Peeringstatus für das Peering *myVirtualNetwork1-myVirtualNetwork2* in [Verbunden](/cli/azure/network/vnet/peering) geändert wurde.
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -143,7 +143,7 @@ az vm create \
 
 Erstellen Sie eine VM im virtuellen Netzwerk *myVirtualNetwork2*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -155,7 +155,7 @@ az vm create \
 
 Die Erstellung des virtuellen Computers dauert einige Minuten. Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an: 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -174,13 +174,13 @@ Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem später
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVm2*-VM. Ersetzen Sie `<publicIpAddress>` durch die öffentliche IP-Adresse der VM. Im vorherigen Beispiel lautet die öffentliche IP-Adresse *13.90.242.231*.
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
 Pingen Sie die VM in *myVirtualNetwork1*.
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
@@ -192,7 +192,7 @@ Schließen Sie die SSH-Sitzung mit der *myVm2*-VM.
 
 Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit [az group delete](/cli/azure/group) entfernen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

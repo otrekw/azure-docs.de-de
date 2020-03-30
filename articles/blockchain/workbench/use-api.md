@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672746"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Verwenden der REST-API der Vorschauversion von Azure Blockchain Workbench
@@ -28,7 +28,7 @@ Der Zugriff auf Blockchain Workbench-APIs erfolgt über einen Endpunkt für Ihre
 
     ![URL des API-Endpunkts für den App-Dienst](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Anforderungen an die Blockchain Workbench-REST-API werden durch Azure Active Directory (Azure AD) geschützt.
 
@@ -74,7 +74,7 @@ Laden Sie die Solidity-Codedatei der Anwendung über die [Anwendungen-Vertragsco
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | Wert |
+| Parameter | value |
 |-----------|-------|
 | {applicationId} | Rückgabewert der Anwendungs-POST-API. |
 | {ledgerId} | Der Index des Ledgers. Der Wert ist in der Regel 1. Sie können den Wert auch in der [Tabelle „Ledger“](data-sql-management-studio.md) überprüfen. |
@@ -104,7 +104,7 @@ Erstellen Sie mithilfe der [Anwendungs-Rollenzuweisungs-POST-API](https://docs.m
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | Wert |
+| Parameter | value |
 |-----------|-------|
 | {applicationId} | Rückgabewert der Anwendungs-POST-API. |
 | {userId} | Der Benutzer-ID-Wert aus der [Tabelle „User“](data-sql-management-studio.md). |
@@ -223,7 +223,7 @@ Verwenden Sie [Vertrags-POST-API V2](https://docs.microsoft.com/rest/api/azure-
 
 Ersetzen Sie die folgenden Werte:
 
-| Parameter | Wert |
+| Parameter | value |
 |-----------|-------|
 | {workflowId} | Der Workflow-ID-Wert ist die ConstructorID des Vertrags aus der [Tabelle „Workflow“](data-sql-management-studio.md). |
 | {contractCodeId} | Der Vertragscode-ID-Wert aus der [Tabelle „ContractCode“](data-sql-management-studio.md). Korrelieren Sie die Anwendungs-ID und die Ledger-ID für die Vertragsinstanz, die Sie erstellen möchten. |
@@ -231,7 +231,7 @@ Ersetzen Sie die folgenden Werte:
 
 Legen Sie für den Anforderungstext mithilfe der folgenden Informationen Werte fest:
 
-| Parameter | Wert |
+| Parameter | value |
 |-----------|-------|
 | workflowFunctionID | Die ID aus der [Tabelle „WorkflowFunction“](data-sql-management-studio.md). |
 | workflowActionParameters | Name-Wert-Paare von Parametern, die an den Konstruktor übergeben werden. Verwenden Sie für jeden Parameter den Wert workflowFunctionParameterID aus der Tabelle [WorkflowFunctionParameter](data-sql-management-studio.md). |

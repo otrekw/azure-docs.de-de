@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73744381"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
@@ -42,7 +42,7 @@ Wenn Sie den vom Überprüfungstool generierten Schlüssel für eine kostenlose 
 
 Fügen Sie das Transkript einer Videoüberprüfung hinzu. Das Video muss online veröffentlicht werden. Sie benötigen seinen Streamingendpunkt. Mit dem Streamingendpunkt kann der Videoplayer des Prüfungstools das Video wiedergeben.
 
-![Vorführvideo-Miniaturansicht](images/ams-video-demo-view.PNG)
+![Miniaturansicht für Demonstrationsvideo](images/ams-video-demo-view.PNG)
 
 - Kopieren Sie die **URL** auf [dieser Azure Media Services-Demoseite](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) für die Manifest-URL.
 
@@ -192,16 +192,16 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 > [!NOTE]
 > Für Ihren Content Moderator-Dienstschlüssel gilt ein Ratenlimit vom Typ „Anforderungen pro Sekunde“ (Requests Per Second, RPS). Wenn Sie das Limit überschreiten, löst das SDK eine Ausnahme mit dem Fehlercode 429 aus.
 >
-> Ein Schlüssel des Free-Tarifs verfügt über ein RPS-Ratenlimit.
+> Bei einem Schlüssel des Free-Tarifs ist die Anforderungsrate auf eine einzelne Anforderung pro Sekunde beschränkt.
 
 ## <a name="add-transcript-to-video-review"></a>Hinzufügen eines Transkripts zur Videoüberprüfung
 
 Sie fügen ein Transkript einer Videoüberprüfung mit **ContentModeratorClient.Reviews.AddVideoTranscript** hinzu. **AddVideoTranscript** verfügt über die folgenden erforderlichen Parameter:
 1. Ihre Content Moderator-Team-ID
-1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung
+1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
 1. Ein **Stream**-Objekt mit dem Transkript
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
 > [!NOTE]
 > Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](https://docs.microsoft.com/azure/media-services/media-services-index-content).
@@ -240,7 +240,7 @@ Zusätzlich zum Hinzufügen eines Transkripts zu einer Videoüberprüfung fügen
 1. **Term**: Eine Zeichenfolge, die den Begriff enthält
 1. **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
 
-Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
+Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
 Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Mit dieser Methode wird ein Transkript an die **ContentModeratorClient.TextModeration.ScreenText**-Methode übermittelt. Außerdem wird das Ergebnis in ein „IList\<TranscriptModerationBodyItem>“-Element übersetzt und an **AddVideoTranscriptModerationResult** übermittelt.
 
