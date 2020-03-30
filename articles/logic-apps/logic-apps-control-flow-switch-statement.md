@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793240"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
@@ -25,7 +25,7 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
 
@@ -44,7 +44,7 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
    Wenn Sie eine switch-Anweisung zwischen Schritten hinzufügen möchten, bewegen Sie den Zeiger auf den Pfeil an der Stelle, an der Sie die switch-Anweisung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld den Begriff „switch“ als Filter ein. Wählen Sie diese Aktion aus: **Switch – steuern**.
+1. Geben Sie im Suchfeld den Begriff „switch“ als Filter ein. Wählen Sie diese Aktion aus: **Switch – steuern**
 
    ![switch hinzufügen](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
@@ -63,7 +63,7 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
 1. Fügen Sie den entsprechenden Fällen diese Aktionen hinzu:
 
-   | Fallnr. | **SelectedOption** | Aktion |
+   | Fallnr. | **SelectedOption** | Action |
    |--------|--------------------|--------|
    | Fall 1 | **Genehmigen** | Fügen Sie die Outlook-Aktion **E-Mail senden** für das Senden von Details zum RSS-Element nur hinzu, wenn die genehmigende Person **Genehmigen** ausgewählt hat. |
    | Fall 2 | **Ablehnen** | Fügen Sie die Outlook-Aktion **E-Mail senden** hinzu, um andere genehmigende Personen zu darüber zu benachrichtigen, dass das RSS-Element abgelehnt wurde. |

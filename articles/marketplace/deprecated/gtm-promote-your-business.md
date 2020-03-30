@@ -1,19 +1,18 @@
 ---
 title: Go-To-Market-Dienste – Bewerben Ihres Business mit Microsoft | Azure
 description: Go-To-Market-Dienste – In diesem Abschnitt erfahren Herausgeber, wie sie ihr Business mit Microsoft fördern können.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825948"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281543"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Bewerben Ihres Business mit Microsoft
 

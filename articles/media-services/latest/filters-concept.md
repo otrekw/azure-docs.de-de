@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225412"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227158"
 ---
 # <a name="filters"></a>Filter
 
@@ -47,7 +47,7 @@ Abhängig vom Szenario entscheiden Sie, welcher Filtertyp (Medienobjektfilter od
 
 Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter. 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |firstQuality|Die erste Qualitätsstufe der Bitrate für den Filter.|
 |presentationTimeRange|Der Bereich der Präsentationszeit. Diese Eigenschaft wird zum Filtern der Start-/Endpunkte des Manifests, der Länge des Präsentationsfensters und der Livestartposition verwendet. <br/>Weitere Informationen finden Sie unter [PresentationTimeRange](#presentationtimerange).|
@@ -57,7 +57,7 @@ Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter.
 
 Verwenden Sie diese Eigenschaft mit **Medienobjektfiltern**. Es wird nicht empfohlen, die Eigenschaft mit **Kontofiltern** festzulegen.
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |**endTimestamp**|Gilt für Video on Demand (VoD).<br/>Bei einer Livestreamingpräsentation wird diese Eigenschaft stillschweigend ignoriert und angewendet, wenn die Präsentation endet und der Stream zu VoD wird.<br/>Dies ist ein Long-Wert, der einen absoluten Endpunkt der Präsentation darstellt und auf den nächsten GOP-Start gerundet wird. Die Einheit ist die Zeitskala, daher würde ein „endTimestamp“ von 1800000000 einer Zeit von drei Minuten entsprechen.<br/>Verwenden Sie „startTimestamp“ und „endTimestamp“, um die Fragmente in der Wiedergabeliste (das Manifest) zu kürzen.<br/>Wenn Sie z. B. „startTimestamp=40000000“ und „endTimestamp=100000000“ mit der voreingestellten Zeitskala verwenden, wird eine Wiedergabeliste generiert, die Fragmente aus einer Zeitspanne von vier bis zehn Sekunden der VoD-Präsentation enthält. Wenn ein Fragment die Grenze überschreitet, wird das gesamte Fragment in das Manifest aufgenommen.|
 |**forceEndTimestamp**|Gilt nur für Livestreaming.<br/>Gibt an, ob die Eigenschaft „endTimestamp“ vorhanden sein muss. Bei „true“ muss „endTimestamp“ muss angegeben werden, da ansonsten ein ungültiger Anforderungscode zurückgegeben wird.<br/>Zulässige Werte: false, true.|
@@ -72,7 +72,7 @@ Sie geben eine Liste von Eigenschaftsbedingungen für die Filterung nach Spuren 
 
 Spureigenschaftsbedingungen für die Filterung beschreiben Spurtypen, Werte (siehe nachstehende Tabelle) und Vorgänge („Equal“, „NotEqual“). 
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |---|---|
 |**Bitrate**|Verwenden Sie die Bitrate der Spur zur Filterung.<br/><br/>Der empfohlene Wert ist ein Bereich aus Bitraten in Bits pro Sekunde. Beispiel: 0-2427000.<br/><br/>Hinweis: Sie können einen bestimmten Wert für die Bitrate angeben, z.B. 250000 (Bits pro Sekunde), dieser Ansatz wird jedoch nicht empfohlen, weil die exakten Bitraten je nach Medienobjekt unterschiedlich sein können.|
 |**FourCC**|Verwenden Sie den FourCC-Wert der Spur für die Filterung.<br/><br/>Der Wert ist das erste Element des Codecs-Formats, wie angegeben in [RFC 6381](https://tools.ietf.org/html/rfc6381). Aktuell werden die folgenden Codecs unterstützt: <br/>Für Video: avc1, hev1, hvc1<br/>Für Audio: mp4a, ec-3<br/><br/>Um die FourCC-Werte für die Spuren in einem Medienobjekt zu bestimmen, müssen Sie die Manifestdatei abrufen und untersuchen.|

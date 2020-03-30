@@ -1,18 +1,18 @@
 ---
 title: Unterschiedliche Phasen in der Entwicklung mobiler Apps mit Visual Studio App Center und Azure-Diensten
 description: Erfahren Sie mehr über die verschiedenen Phasen der Entwicklung mobiler Apps und darüber, wie Microsoft-Dienste wie Visual Studio App Center Ihnen helfen können, eine hochwertige mobile App zu erstellen.
-author: elamalani
+author: codemillmatt
 ms.assetid: 12bbb070-9b3c-1234-5678-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 2693155281c6ceb9cb737960df6d3201c0983c50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 8d0fbc12f3048b6a9c81d53c9a9cd0a1998d4f88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454375"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240052"
 ---
 # <a name="different-stages-in-mobile-application-development"></a>Unterschiedliche Phasen in der Entwicklung mobiler Apps
 Das Erstellen einer mobilen App besteht aus mehreren Phasen. Sie können problemlos von Microsoft-Diensten, -Tools und -Technologien profitieren, um hochwertige mobile Apps zu erstellen.

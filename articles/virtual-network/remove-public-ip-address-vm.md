@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: kumud
 ms.openlocfilehash: 1c27af30f97ea967d170b2cccaefb2e95f8fedaf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900739"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Trennen einer öffentlichen IP-Adresse von einem virtuellen Azure-Computer 

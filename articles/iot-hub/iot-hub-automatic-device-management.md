@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
 ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233262"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über das Azure-Portal
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Diese Aktualisierung erfolgt mithilfe einer _automatischen Gerätekonfiguration_ oder _automatischen Modulkonfiguration_, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten sowie Konfigurationen gestaffelt einführen können.
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Dieses Update erfolgt mithilfe einer _automatischen Gerätekonfiguration_ oder einer _automatischen Modulkonfiguration_, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten und Konfigurationen gestaffelt einführen können.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Bei der automatischen Geräteverwaltung wird ein Satz von Geräte- oder Modulzwillingen mit den gewünschten Eigenschaften aktualisiert und eine Zusammenfassung bereitgestellt, die auf den gemeldeten Zwillingseigenschaften basiert.  Für die automatische Gerätekonfiguration werden eine neue Klasse und ein JSON-Dokument eingeführt, das als *Konfiguration* bezeichnet wird und aus drei Teilen besteht:
+Bei der automatischen Geräteverwaltung werden mehrere Geräte- oder Modulzwillinge mit den gewünschten Eigenschaften aktualisiert und eine Zusammenfassung bereitgestellt, die auf den gemeldeten Eigenschaften der Zwillinge basiert.  Für die automatische Gerätekonfiguration werden eine neue Klasse und ein JSON-Dokument eingeführt, das als *Konfiguration* bezeichnet wird und aus drei Teilen besteht:
 
 * Die **Zielbedingung** definiert den Umfang der zu aktualisierenden Geräte- oder Modulzwillinge. Die Zielbedingung wird als Abfrage für Zwillingstags und/oder gemeldete Eigenschaften angegeben.
 
-* Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder -modulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
+* Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgeräte- oder Zielmodulzwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
 * Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Zwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielzwillingen und die Anzahl der Zwillinge, die erfolgreich aktualisiert wurden.
 
-Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden bei jeder Ausführung der automatischen Konfiguration ausgeführt.
+Automatische Konfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt und anschließend in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal ausgeführt, wenn die automatische Konfiguration ausgeführt wird.
 
 ## <a name="implement-twins"></a>Implementieren von Zwillingen
 

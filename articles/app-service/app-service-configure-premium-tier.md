@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672205"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 
-Der neue Tarif **PremiumV2** bietet Ihnen schnellere Prozessoren und SSD-Speicher und verdoppelt das Verhältnis von Speicher zu Kern im Vergleich mit vorhandenen Tarifen. Mit diesem Leistungsvorteil können Sie Geld sparen, da Apps in weniger Instanzen ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie eine App im **PremiumV2**-Tarif erstellen oder eine App auf den **PremiumV2**-Tarif zentral hochskalieren.
+Der neue Tarif **PremiumV2** bietet Ihnen schnellere Prozessoren und SSD-Speicher und verdoppelt das Verhältnis von Speicher zu Kern im Vergleich mit vorhandenen Tarifen. Mit diesem Leistungsvorteil können Sie Geld sparen, da Apps in weniger Instanzen ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie eine App im **PremiumV2**-Tarif erstellen oder eine App auf den **PremiumV2**-Tarif hochskalieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Wählen Sie **Produktion** aus und dann **P1V2**, **P2V2** oder **P3V2**, und kl
 > [!IMPORTANT] 
 > Wenn Sie die Optionen **P1V2**, **P2V2** und **P3V2** nicht sehen oder die Optionen ausgegraut sind, ist **PremiumV2** wahrscheinlich in der vorliegenden App Service-Bereitstellung, die App Service-Plan enthält, nicht verfügbar. Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Zentrales Hochskalieren einer vorhandenen App auf PremiumV2-Tarif
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Hochskalieren einer vorhandenen App auf PremiumV2-Tarif
 
 Stellen Sie vor dem Hochskalieren einer vorhandenen App auf den **PremiumV2**-Tarif sicher, dass **PremiumV2** verfügbar ist. Informationen hierzu finden Sie unter [PremiumV2 availability (Verfügbarkeit von PremiumV2)](#availability). Wenn der Tarif nicht verfügbar ist, finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported) weitere Informationen.
 
@@ -56,7 +56,7 @@ Je nach Hostingumgebung können für das zentrale Hochskalieren zusätzliche Sch
 
 Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> die Seite Ihrer App Service-App.
 
-Wählen Sie im linken Navigationsbereich **Zentral hochskalieren (App Service-Plan)** aus.
+Wählen Sie im linken Navigationsbereich **Hochskalieren (App Service-Plan)** aus.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
@@ -68,7 +68,7 @@ Wenn der Vorgang erfolgreich abgeschlossen wurde, wird auf der Übersichtsseite 
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
-### <a name="if-you-get-an-error"></a>Hinweis zu möglicher Fehlermeldung
+### <a name="if-you-get-an-error"></a>Wenn Sie eine Fehlermeldung erhalten:
 
 Einige App Service-Pläne können nicht auf den PremiumV2-Tarif hochskaliert werden, wenn die vorliegende App Service-Bereitstellung PremiumV2 nicht unterstützt.  Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
 
@@ -115,5 +115,5 @@ New-AzAppServicePlan -ResourceGroupName <resource_group_name> `
 ```
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Zentrales Hochskalieren einer App in Azure](manage-scale-up.md)  
+[Hochskalieren einer App in Azure](manage-scale-up.md)  
 [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md)

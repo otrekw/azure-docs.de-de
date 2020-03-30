@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756418"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227266"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 
@@ -62,7 +62,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-## Ressourcentoken <a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>Ressourcentoken <a id="resource-tokens"></a>
 
 Ressourcentoken ermöglichen den Zugriff auf die Anwendungsressourcen in einer Datenbank. Ressourcentoken:
 
@@ -95,7 +95,7 @@ Die Generierung und Verwaltung von Ressourcentoken wird von den nativen Cosmos D
 
 Ein Beispiel für einen Dienst der mittleren Ebene, der zum Generieren oder Vermitteln von Ressourcentoken dient, finden Sie unter der [ResourceTokenBroker-App](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-## Benutzer<a id="users"></a>
+## <a name="users"></a>Benutzer<a id="users"></a>
 
 Azure Cosmos DB-Benutzer werden einer Cosmos-Datenbank zugeordnet.  Jede Datenbank kann null oder mehr Cosmos DB-Benutzer enthalten. Das folgende Codebeispiel veranschaulicht das Erstellen eines Cosmos DB-Benutzers mit dem [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -109,7 +109,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Jeder Cosmos DB-Benutzer verfügt über eine ReadAsync()-Methode, mit deren Hilfe die Liste mit den [Berechtigungen](#permissions) abgerufen werden kann, die dem Benutzer zugeordnet sind.
 
-## Berechtigungen<a id="permissions"></a>
+## <a name="permissions"></a>Berechtigungen<a id="permissions"></a>
 
 Eine Berechtigungsressource ist einem Benutzer zugeordnet und sowohl auf der Container- als auch auf der Partitionsschlüsselebene zugewiesen. Jeder Benutzer kann null oder mehr Berechtigungen enthalten. Eine Berechtigungsressource ermöglicht den Zugriff auf ein Sicherheitstoken, das der Benutzer beim Zugriff auf einen bestimmten Container oder bestimmte Daten in einem speziellen Partitionsschlüssel benötigt. Von einer Berechtigungsressource können zwei Zugriffsebenen bereitgestellt werden:
 

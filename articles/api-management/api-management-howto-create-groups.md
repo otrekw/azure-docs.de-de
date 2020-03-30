@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430712"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
@@ -40,11 +40,11 @@ Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie Aufgaben in diesem Artikel aus: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-group"> </a>Erstellen einer Gruppe
+## <a name="create-a-group"></a><a name="create-group"> </a>Erstellen einer Gruppe
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihrem API Management-Konto eine neue Gruppe hinzufügen.
 
@@ -59,7 +59,7 @@ Nachdem die Gruppe erstellt wurde, wird sie der Liste **Gruppen** hinzugefügt. 
 
 Nachdem Sie die Gruppe erstellt haben, können Sie sie zu Produkten und Entwicklern zuordnen.
 
-## <a name="associate-group-product"> </a>Zuordnen einer Gruppe zu einem Produkt
+## <a name="associate-a-group-with-a-product"></a><a name="associate-group-product"> </a>Zuordnen einer Gruppe zu einem Produkt
 
 1. Wählen Sie auf der linken Seite die Registerkarte **Produkte**.
 2. Klicken Sie auf den Namen des gewünschten Produkts.
@@ -80,7 +80,7 @@ Sobald ein Produkt zu einer Gruppe zugeordnet ist, können Entwickler in dieser 
 > [!NOTE]
 > Informationen zum Hinzufügen von Azure Active Directory-Gruppen finden Sie unter [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management](api-management-howto-aad.md).
 
-## <a name="associate-group-developer"> </a>Zuordnen von Gruppen zu Entwicklern
+## <a name="associate-groups-with-developers"></a><a name="associate-group-developer"> </a>Zuordnen von Gruppen zu Entwicklern
 
 In diesem Abschnitt wird gezeigt, wie Gruppen Elemente zugeordnet werden.
 
@@ -95,7 +95,7 @@ In diesem Abschnitt wird gezeigt, wie Gruppen Elemente zugeordnet werden.
 
 Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können Sie diese auf der Registerkarte **Benutzer** anzeigen.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 
 * Sobald ein Entwickler zu einer Gruppe hinzugefügt wurde, können diese die zu dieser Gruppe zugeordneten Produkte anzeigen und abonnieren. Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts in Azure API Management][How create and publish a product in Azure API Management].
 * Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) der API Management-REST-API erstellen und verwalten.

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75929637"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
@@ -51,7 +51,7 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
   }
 ```
 
-| attribute | type | Beschreibung |
+| attribute | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **parentId** | String | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
 | **name** |String | Ein benutzerfreundlicher Name für das Blob |
@@ -106,7 +106,7 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 }
 ```
 
-| attribute | type | Beschreibung |
+| attribute | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **id** | String | Der eindeutige Bezeichner für das Blob |
 | **name** |String | Ein benutzerfreundlicher Name für das Blob |

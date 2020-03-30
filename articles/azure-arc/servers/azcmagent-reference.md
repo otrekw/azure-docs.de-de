@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510395"
 ---
 # <a name="azure-connected-machine-agent-cli-interface"></a>Azure Connected Machine Agent CLI-Schnittstelle
@@ -24,7 +24,7 @@ Der Agent selbst ist ein Daemonprozess namens `himdsd` unter Linux und ein Windo
 
 Bei normalem Betrieb wird `azcmagent connect` verwendet, um eine Verbindung zwischen diesem Computer und Azure herzustellen, und `azcmagent disconnect`, wenn Sie feststellen, dass Sie diese Verbindung nicht mehr benötigen. Die anderen Befehle dienen der Problembehandlung oder sind für andere Sonderfälle gedacht.
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
 ```none
   -h, --help      help for azcmagent
@@ -64,7 +64,7 @@ Authentifizierungsoptionen:
 azcmagent connect [flags]
 ```
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 ```none
       --access-token string               Access token
@@ -106,7 +106,7 @@ Authentifizierungsoptionen:
 azcmagent disconnect [flags]
 ```
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 ```none
       --access-token string               Access token
@@ -147,7 +147,7 @@ Authentifizierungsoptionen
 azcmagent reconnect [flags]
 ```
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 ```none
       --access-token string               Access token
@@ -176,7 +176,7 @@ Ruft Computermetadaten und den Agent-Status ab. Dies ist vor allem für die Prob
 azcmagent show [flags]
 ```
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 ```
   -h, --help   help for show
@@ -196,7 +196,7 @@ Zeigt die Version des Hybrid Management-Agents an.
 azcmagent version [flags]
 ```
 
-### <a name="options"></a>Optionen
+### <a name="options"></a>Tastatur
 
 ```none
   -h, --help   help for version
