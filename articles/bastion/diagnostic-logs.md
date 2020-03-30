@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989449"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Aktivieren und Verwenden von Bastion-Diagnoseprotokollen
 
 Wenn Benutzer mithilfe von Azure Bastion eine Verbindung mit Workloads herstellen, können Diagnosedaten der Remotesitzungen von Bastion protokolliert werden. Anschließend können Sie anhand der Diagnose feststellen, welche Benutzer wann und von wo aus eine Verbindung mit welchen Workloads hergestellt haben, und weitere relevante Protokollinformationen einsehen. Um die Diagnose verwenden zu können, müssen Sie Diagnoseprotokolle in Azure Bastion aktivieren. Dieser Artikel unterstützt Sie dabei, Diagnoseprotokolle zu aktivieren und anschließend die Protokolle anzuzeigen.
 
-## <a name="enable"></a>Aktivieren der Diagnoseprotokolle
+## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>Aktivieren der Diagnoseprotokolle
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Diagnoseeinstellungen** aus.
 
@@ -33,7 +33,7 @@ Wenn Benutzer mithilfe von Azure Bastion eine Verbindung mit Workloads herstelle
 
    ![Beispieleinstellungen](./media/diagnostic-logs/4example-settings.png)
 
-## <a name="view"></a>Anzeigen des Diagnoseprotokolls
+## <a name="view-diagnostics-log"></a><a name="view"></a>Anzeigen des Diagnoseprotokolls
 
 Um auf die Diagnoseprotokolle zuzugreifen, können Sie direkt das Speicherkonto verwenden, das Sie beim Aktivieren der Diagnoseeinstellungen angegeben haben.
 

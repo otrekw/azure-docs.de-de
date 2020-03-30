@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e245b58449ab773914fc60be056082b82f05035a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184484"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
@@ -47,8 +47,8 @@ Der Prozess zum Exportieren von Kundendaten aus Azure AD B2C ähnelt dem Löschv
 
 Azure AD B2C-Benutzerdaten sind auf folgende Daten beschränkt:
 
-- **In Azure Active Directory gespeicherte Daten**: Sie können Daten über die User Journey einer Azure AD B2C-Authentifizierung abrufen, indem Sie die Objekt-ID oder einen beliebigen Anmeldenamen wie beispielsweise die E-Mail-Adresse oder den Benutzernamen verwenden.
-- **Benutzerspezifischer Bericht der Überwachungsereignisse**: Sie können Daten durch Verwendung der Objekt-ID indizieren.
+- **In Azure Active Directory gespeicherte Daten:** Sie können Daten über die User Journey einer Azure AD B2C-Authentifizierung abrufen, indem Sie die Objekt-ID oder einen beliebigen Anmeldenamen wie die E-Mail-Adresse oder den Benutzernamen verwenden.
+- **Bericht zu benutzerspezifischen Überwachungsereignissen:** Sie können Daten anhand der Objekt-ID indizieren.
 
 Im folgenden Beispiel für einen Exportdatenfluss lassen sich die Schritte, die für die Anwendung beschrieben werden, entweder per Back-End-Prozess oder von einem Benutzer mit einer Administratorrolle im Verzeichnis ausführen:
 

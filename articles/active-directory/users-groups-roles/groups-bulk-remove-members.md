@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517091"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern (Vorschau) in Azure Active Directory

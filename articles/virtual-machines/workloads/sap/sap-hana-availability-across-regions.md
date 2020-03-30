@@ -16,10 +16,10 @@ ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70078850"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA-Verfügbarkeit in verschiedenen Azure-Regionen
@@ -87,7 +87,7 @@ Verwenden von „logreplay“ als Betriebsmodus: Diese Konfiguration stellt in d
 Eine ausführliche Anleitung zum Einrichten dieser Konfigurationen in Azure finden Sie in folgenden Artikeln:
 
 - [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](sap-hana-high-availability.md)
-- [High Availability for SAP HANA using System Replication](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/) (Hochverfügbarkeit für SAP HANA durch Systemreplikation)
+- [Your SAP on Azure – Part 4 – High Availability for SAP HANA using System Replication](https://blogs.sap.com/2018/01/08/your-sap-on-azure-part-4-high-availability-for-sap-hana-using-system-replication/) (SAP in Azure – Teil 4: Hochverfügbarkeit für SAP HANA durch Systemreplikation)
 
  
 

@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672835"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Erste Schritte mit U-SQL in Azure Data Lake Analytics
@@ -27,7 +27,7 @@ U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kom
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die U-SQL-Beispiele in diesem Dokument durchgehen, lesen Sie das [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md), und schließen Sie es ab. In diesem Tutorial wird veranschaulicht, wie Sie U-SQL mit Azure Data Lake Tools für Visual Studio verwenden.
+Bevor Sie die U-SQL-Beispiele in diesem Dokument durcharbeiten, ist es ratsam, das [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) zu lesen und zu absolvieren. In diesem Tutorial wird veranschaulicht, wie Sie U-SQL mit Azure Data Lake Tools für Visual Studio verwenden.
 
 ## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454497"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und dem Solution Accelerator für die Remoteüberwachung (C)
@@ -47,7 +47,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie die neueste Version des [Raspbian
 
 Die folgenden Schritte zeigen, wie Sie Ihren Raspberry Pi für die Erstellung einer C-Anwendung vorbereiten, die eine Verbindung mit dem Solution Accelerator herstellt:
 
-1. Stellen Sie mithilfe von **SSH** eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/) unter [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).
+1. Stellen Sie mithilfe von **SSH** eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) unter [SSH (Secure Shell)](https://www.raspberrypi.org/).
 
 1. Verwenden Sie den folgenden Befehl aus, um Ihr Raspberry Pi zu aktualisieren:
 
@@ -75,7 +75,7 @@ Das Beispiel befindet sich im Ordner **samples/solutions/remote_monitoring_clien
 
 Die folgenden Schritte beschreiben, wie Sie *CMake* zum Erstellen der Clientanwendung verwenden. Die Clientanwendung für die Remoteüberwachung wird im Rahmen des Buildprozesses für das SDK erstellt.
 
-1. Bearbeiten Sie die Datei **remote_monitoring.c**. Ersetzen Sie `<connectionstring>` durch die Geräte-Verbindungszeichenfolge, die Sie zu Beginn dieser Schrittanleitung notiert haben, als Sie ein Gerät zum Solution Accelerator hinzugefügt haben.
+1. Bearbeiten Sie die Datei **remote_monitoring.c**. Ersetzen Sie `<connectionstring>` durch die Geräteverbindungszeichenfolge, die Sie zu Beginn dieser Schrittanleitung notiert haben, als Sie ein Gerät dem Solution Accelerator hinzugefügt haben.
 
 1. Navigieren Sie zum Stamm der geklonten Kopie des [Repositorys mit Azure IoT C SDKs](https://github.com/Azure/azure-iot-sdk-c), und führen Sie die folgenden Befehle zum Erstellen der Clientanwendung aus:
 

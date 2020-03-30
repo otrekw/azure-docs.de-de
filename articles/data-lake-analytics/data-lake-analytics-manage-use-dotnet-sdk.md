@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60617706"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Verwalten von Azure Data Lake Analytics mithilfe einer .NET-App
@@ -215,7 +215,7 @@ if (adlaClient.Account.Exists(rg, adla))
 }
 ```
 
-## <a name="manage-data-sources"></a>Verwalten von Datenquellen
+## <a name="manage-data-sources"></a>Datenquellen verwalten
 
 Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 

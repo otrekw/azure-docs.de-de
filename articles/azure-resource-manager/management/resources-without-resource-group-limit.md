@@ -4,10 +4,10 @@ description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen 
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937950"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe

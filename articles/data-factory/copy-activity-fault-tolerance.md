@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708901"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
@@ -33,15 +33,15 @@ Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und
 
 - **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp**. 
 
-    Beispiel:  Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ „INT“ enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. 123,456,789 enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. 123,456, abc, werden dagegen als nicht kompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ INT enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. 123,456,789 enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. 123,456, abc, werden dagegen als nicht kompatibel erkannt und übersprungen.
 
 - **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke**.
 
-    Beispiel:  Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
 - **Primärschlüsselverletzung beim Schreiben in SQL Server/Azure SQL-Datenbank/Azure Cosmos DB**
 
-    Beispiel:  Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
 
 >[!NOTE]
 >- Um Daten mit PolyBase in SQL Data Warehouse zu laden, verwenden Sie die native Fehlertoleranzunterstützung von PolyBase, indem Sie in der Kopieraktivität über [polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink) Ablehnungsrichtlinien angeben. Sie können für nicht mit PolyBase kompatible Zeilen weiterhin die Umleitung an ein Blob oder ADLS aktivieren, wie unten gezeigt.
@@ -70,7 +70,7 @@ Das folgende Beispiel umfasst eine JSON-Definition zum Konfigurieren des Übersp
 }
 ```
 
-Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | Gibt an, ob nicht kompatible Zeilen beim Kopieren übersprungen werden sollen. | True<br/>False (Standardwert) | Nein
 redirectIncompatibleRowSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69542611"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Codieren eines Medienobjekts mit Media Encoder Standard im Azure-Portal
@@ -28,7 +28,7 @@ ms.locfileid: "69542611"
 > 
 > 
 
-Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarien das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Um die Videos für das Streaming mit adaptiver Bitrate vorzubereiten, müssen Sie zuerst das Quellvideo in Dateien mit mehreren Bitraten codieren. Mit Media Encoder Standard können Sie Ihre Videos codieren.  
+Bei der Arbeit mit Azure Media Services ist eines der häufigsten Szenarien das Streaming mit adaptiver Bitrate an Clients. Media Services unterstützt die folgenden Streamingtechnologien mit adaptiver Bitrate: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming und Dynamic Adaptive Streaming über HTTP (DASH oder MPEG-DASH). Um die Videos für das Streaming mit adaptiver Bitrate vorzubereiten, müssen Sie zuerst das Quellvideo in Dateien mit mehreren Bitraten codieren. Mit Media Encoder Standard können Sie Ihre Videos codieren.  
 
 Media Services bietet eine dynamische Paketerstellung. Mit der dynamischen Paketerstellung können Sie Ihre MP4-Dateien mit mehreren Bitraten in HLS, Smooth Streaming und MPEG-DASH ohne erneutes Packen in diesen Streamingformaten übermitteln. Mit der dynamischen Paketerstellung können Sie die Dateien in einem einzigen Format speichern und zahlen auch nur für dieses eine Format. Media Services reagiert mit der richtigen Antwort auf die Anforderung eines Clients.
 

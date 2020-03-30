@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 5228e42a778714f0d656bc993007692bd32d84fb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227226"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Exportieren und Löschen von im Produkt enthaltenen Benutzerdaten aus Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Daten, die im Produkt enthalten sind und von Azure Machine Learning Studio (klassisch) gespeichert wurden, können Sie über das Azure-Portal, die (klassische) Studio-Schnittstelle, PowerShell sowie authentifizierte REST-APIs löschen oder exportieren. In diesem Artikel erfahren Sie, wie das geht. 
 
@@ -53,7 +55,7 @@ In Machine Learning Studio (klassisch) gibt es drei Arten von Konten. Die Art de
     - Persönliche und Kundendaten können Sie über die Benutzeroberfläche, REST-APIs oder das PowerShell-Paket exportieren.
     - Sie können Ihre Daten im Azure-Portal löschen.
 
-## <a name="delete"></a>Löschen von Arbeitsbereichsdaten in Studio (klassisch) 
+## <a name="delete-workspace-data-in-studio-classic"></a><a name="delete"></a>Löschen von Arbeitsbereichsdaten in Studio (klassisch) 
 
 ### <a name="delete-individual-assets"></a>Löschen einzelner Objekte
 
@@ -64,7 +66,7 @@ Benutzer können Objekte in einem Arbeitsbereich löschen, indem Sie zuerst die 
 ### <a name="delete-an-entire-workspace"></a>Löschen eines gesamten Arbeitsbereichs
 
 Benutzer können auch ihren gesamten Arbeitsbereich löschen:
-- Kostenpflichtiger Arbeitsbereich: Löschen über das Azure-Portal.
+- Kostenpflichtiger Arbeitsbereich: Löschen Sie diesen über das Azure-Portal.
 - Kostenloser Arbeitsbereich: Verwenden Sie die Schaltfläche „Löschen“ im Bereich **Einstellungen**.
 
 ![Löschen eines kostenlosen Arbeitsbereichs in Machine Learning Studio (klassisch)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)

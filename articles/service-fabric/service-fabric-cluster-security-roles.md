@@ -4,10 +4,10 @@ description: Dieser Artikel beschreibt die zwei Clientrollen und die für die Ro
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451898"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollenbasierte Zugriffssteuerung für Service Fabric-Clients
@@ -41,9 +41,9 @@ Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-
 * **RecoverSystemPartitions**: Wiederherstellen von Systemdienstpartitionen                             
 
 ### <a name="cluster-operations"></a>Clustervorgänge
-* **ProvisionFabric**: MSI- und/oder Clustermanifestbereitstellung                             
+* **ProvisionFabric**: MSI- und/oder Clustermanifest-Bereitstellung                             
 * **UpgradeFabric**: Starten von Clusterupgrades                             
-* **UnprovisionFabric**: Aufhebung der MSI- und/oder Clustermanifestbereitstellung                         
+* **UnprovisionFabric**: Aufheben der MSI- und/oder Clustermanifest-Bereitstellung                         
 * **MoveNextFabricUpgradeDomain**: Fortsetzen von Clusterupgrades mit einer expliziten Updatedomäne                             
 * **ReportFabricUpgradeHealth**: Fortsetzen von Clusterupgrades beim aktuellen Aktualisierungsvorgang                             
 * **StartInfrastructureTask**: Starten von Infrastrukturaufgaben                             
@@ -89,7 +89,7 @@ Die Zugriffssteuerung vom Typ „Benutzer“ ist standardmäßig auf die folgend
 Die Zugriffssteuerung des Typs „Admin“ kann auch auf die zuvor genannten Vorgänge zugreifen.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Ändern der Standardeinstellungen für Clientrollen
-In der Manifestdatei des Clusters können bei Bedarf Administratorfunktionen für den Client bereitgestellt werden. Sie können die Standardeinstellungen ändern, indem Sie während der [Clustererstellung](service-fabric-cluster-creation-via-portal.md) die Option **Fabric-Einstellungen** auswählen und die zuvor beschriebenen Einstellungen in den Feldern **name**, **admin**, **user** und **value** angeben.
+In der Manifestdatei des Clusters können bei Bedarf Administratorfunktionen für den Client bereitgestellt werden. Sie können die Standardeinstellungen ändern, indem Sie während der **Clustererstellung** die Option [Fabric-Einstellungen](service-fabric-cluster-creation-via-portal.md) auswählen und die zuvor beschriebenen Einstellungen in den Feldern **name**, **admin**, **user** und **value** angeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Service Fabric-Clustersicherheit](service-fabric-cluster-security.md)

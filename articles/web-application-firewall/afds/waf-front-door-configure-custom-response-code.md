@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185343"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Konfigurieren einer benutzerdefinierten Antwort für Azure Web Application Firewall

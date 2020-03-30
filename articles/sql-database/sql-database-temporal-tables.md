@@ -12,13 +12,13 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
 ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820723"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in der Azure SQL-Datenbank
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Erste Schritte mit temporalen Tabellen in Azure SQL-Datenbank
 
 Temporale Tabellen sind eine neue Programmierfunktion der Azure SQL-Datenbank, mit der Sie den vollständigen Verlauf von Änderungen in Ihren Daten ohne benutzerdefinierte Codierung nachverfolgen und analysieren können. Temporale Tabellen enthalten Daten, die eng mit dem zeitlichen Kontext verbunden sind, sodass gespeicherte Fakten nur im angegebenen Zeitraum als gültig interpretiert werden können. Diese Eigenschaft von temporalen Tabellen ermöglicht eine effiziente zeitbasierte Analyse und Einblicke in die Datenentwicklung.
 
@@ -105,7 +105,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>Schritt 2: Reguläres Ausführen Ihrer Workload
+## <a name="step-2-run-your-workload-regularly"></a>Schritt 2: Reguläres Ausführen Ihrer Workload
 Der Hauptvorteil von temporalen Tabellen ist, dass Sie Ihre Website zum Nachverfolgen von Änderungen in keiner Weise ändern oder anpassen müssen. Nach der Erstellung behalten temporale Tabellen jedes Mal transparent vorherige Zeilenversionen bei, wenn Sie Änderungen an Ihren Daten ausführen. 
 
 Um die automatische Änderungsnachverfolgung für dieses spezielle Szenario nutzen zu können, richten wir es ein, dass die Spalte **PagesVisited** jedes Mal aktualisiert wird, wenn ein Benutzer seine Sitzung auf der Website beendet:
@@ -188,7 +188,7 @@ ALTER TABLE dbo.WebsiteUserInfo
 Alternativ verwenden Sie die aktuellen [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) , um das Schema der temporalen Tabelle zu ändern, während Sie mit der Datenbank verbunden sind (Onlinemodus), oder als Teil des Datenbankprojekts (Offlinemodus).
 
 ## <a name="controlling-retention-of-historical-data"></a>Steuern der Aufbewahrung von Verlaufsdaten
-Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle die Datenbankgröße stärker steigern als reguläre Tabellen. Eine große und stetig wachsende Verlaufstabelle kann ein Problem darstellen, sowohl aufgrund der reinen Speicherkosten als auch aufgrund der Tatsache, dass temporale Abfragen eine zusätzliche Belastung mit sich bringen. Daher ist die Entwicklung einer Aufbewahrungsrichtlinie für die Verwaltung von Daten in der Verlaufstabelle ein wichtiger Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle. Die Azure SQL-Datenbank bietet Ihnen die folgenden Methoden zum Verwalten von Verlaufsdaten in der temporalen Tabelle:
+Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle die Datenbankgröße stärker steigern als reguläre Tabellen. Eine große und ständig wachsende Verlaufstabelle kann zu einem Problem werden, sowohl aufgrund der reinen Speicherkosten als auch durch Leistungsbeeinträchtigungen aufgrund von temporalen Abfragen. Daher ist die Entwicklung einer Aufbewahrungsrichtlinie für die Verwaltung von Daten in der Verlaufstabelle ein wichtiger Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle. Die Azure SQL-Datenbank bietet Ihnen die folgenden Methoden zum Verwalten von Verlaufsdaten in der temporalen Tabelle:
 
 * [Tabellenpartitionierung](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [Benutzerdefiniertes Bereinigungsskript](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)

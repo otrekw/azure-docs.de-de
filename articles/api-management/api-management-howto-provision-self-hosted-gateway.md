@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075289"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Bereitstellen eines selbstgehosteten Gateways in Azure API Management
@@ -28,7 +28,7 @@ Das Bereitstellen einer Gatewayressource in Ihrer Azure API Management-Instanz i
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

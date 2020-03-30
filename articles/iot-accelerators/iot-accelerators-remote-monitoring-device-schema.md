@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65823326"
 ---
 # <a name="understand-the-device-model-schema"></a>Grundlegendes zum Gerätemodellschema
@@ -167,7 +167,7 @@ Derzeit können Sie nur JSON-Nachrichtenschemas verwenden. Die im Schema aufgef�
 * Boolean
 * Integer
 * Double
-* DateTime
+* Datetime
 
 Fügen Sie dem Array `Telemetry` mehrere Telemetrietypen hinzu, um Telemetrienachrichten in verschiedenen Intervallen zu senden. Im folgenden Beispiel werden die Daten zur Temperatur und Luftfeuchtigkeit alle 10 Sekunden und der Status des Lichts einmal pro Minute gesendet:
 

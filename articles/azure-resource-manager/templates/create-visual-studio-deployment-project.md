@@ -4,10 +4,10 @@ description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt 
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76152730"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
@@ -41,7 +41,7 @@ In diesem Abschnitt erstellen Sie ein Azure-Ressourcengruppenprojekt mit der Vor
 
     Da Sie die Vorlage „Web-App“ ausgewählt haben, werden die folgenden Dateien angezeigt:
 
-   | Dateiname | Beschreibung |
+   | Dateiname | BESCHREIBUNG |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Ein PowerShell-Skript, das PowerShell-Befehle für die Bereitstellung in Azure Resource Manager ausführt. Über dieses PowerShell-Skript wird in Visual Studio Ihre Vorlage bereitgestellt. |
    | WebSite.json |Die Resource Manager-Vorlage, die sowohl die für Azure bereitzustellende Infrastruktur als auch die Parameter definiert, die Sie bei der Bereitstellung angeben können. Sie definiert auch die Abhängigkeiten zwischen Ressourcen, damit sie von Resource Manager in der richtigen Reihenfolge bereitgestellt werden. |

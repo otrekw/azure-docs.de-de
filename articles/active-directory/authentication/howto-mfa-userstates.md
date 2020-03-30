@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756764"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
@@ -44,10 +44,10 @@ Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Z
 > [!IMPORTANT]
 > Wenn Sie Azure MFA über eine Richtlinie für bedingten Zugriff aktivieren, ändert sich der Zustand des Benutzers nicht. Keine Sorge, falls Benutzer als deaktiviert angezeigt werden: Der Zustand wird durch bedingten Zugriff nicht geändert. **Organisationen sollten Benutzer nicht aktivieren oder erzwingen, wenn sie Richtlinien für den bedingten Zugriff verwenden.**
 
-| Status | Beschreibung | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
+| Status | BESCHREIBUNG | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
 |:---:| --- |:---:|:--:|:--:|
 | Disabled | Der Standardstatus eines neuen Benutzers, der nicht für Azure MFA registriert ist. | Nein | Nein | Nein |
-| Aktiviert | Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine Azure MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine Azure MFA-Registrierung erforderlich. |
+| Enabled | Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine Azure MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine Azure MFA-Registrierung erforderlich. |
 | Erzwungen | Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. | Ja. Für Apps sind App-Kennwörter erforderlich. | Ja. Azure MFA ist bei der Anmeldung erforderlich. | Ja. Azure MFA ist bei der Anmeldung erforderlich. |
 
 Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer für Azure MFA registriert hat und ob der Registrierungsprozess abgeschlossen ist.
@@ -87,7 +87,7 @@ Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert 
 
 Zum Ändern des Benutzerstatus mit [Azure AD PowerShell](/powershell/azure/overview) ändern Sie `$st.State`. Es gibt drei mögliche Status:
 
-* Aktiviert
+* Enabled
 * Erzwungen
 * Disabled  
 

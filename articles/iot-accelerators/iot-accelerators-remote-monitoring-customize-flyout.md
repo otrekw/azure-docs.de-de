@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447113"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
@@ -37,7 +37,7 @@ Sie sollten die Schritte in den folgenden Artikeln ausführen, bevor Sie fortfah
 
 - [Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-page.md).
 - [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md).
-- [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md)
+- [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md)
 
 ## <a name="add-a-flyout"></a>Hinzufügen eines Flyouts
 

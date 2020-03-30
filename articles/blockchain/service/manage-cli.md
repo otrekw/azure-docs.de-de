@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455582"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Verwalten des Azure Blockchain-Diensts mit der Azure CLI
@@ -36,7 +36,7 @@ az resource create \
 |---------|-------------|
 | **resource-group** | Name der Ressourcengruppe, in der die Ressourcen des Azure Blockchain-Diensts erstellt werden. |
 | **name** | Ein eindeutiger Name, der Ihr Blockchainmitglied in Azure Blockchain identifiziert. Der Name wird für die Adresse eines öffentlichen Endpunkts verwendet. Beispiel: `myblockchainmember.blockchain.azure.com`. |
-| **Speicherort** | Die Azure-Region, in der das Blockchainmitglied erstellt wird. Beispiel: `eastus`. Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt. |
+| **location** | Die Azure-Region, in der das Blockchainmitglied erstellt wird. Beispiel: `eastus`. Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt. |
 | **password** | Das Kennwort des Mitgliedskontos. Das Mitgliedskontokennwort wird verwendet, um den öffentlichen Endpunkt des Blockchainmitglieds zu authentifizieren. Hierzu wird die Standardauthentifizierung verwendet. Das Kennwort muss drei der folgenden vier Anforderungen erfüllen: Es muss zwischen 12 und 72 Zeichen lang sein und muss einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen beinhalten (nicht zulässig: Raute (#), Prozentzeichen (%), Komma (,), Stern (*), Backquote (\`), doppelte Anführungszeichen ("), einfache Anführungszeichen ('), Bindestriche (-) oder Semikolons (;)).|
 | **protocol** | Die öffentliche Vorschauversion unterstützt Quorum. |
 | **consortium** | Name des Konsortiums, dem beigetreten oder das erstellt werden soll. |
@@ -82,7 +82,7 @@ az resource create \
 |---------|-------------|
 | **resource-group** | Name der Ressourcengruppe, in der die Ressourcen des Azure Blockchain-Diensts erstellt werden. |
 | **name** | Der Name des Blockchainmitglieds von Azure Blockchain mit dem Namen des neuen Transaktionsknotens. |
-| **Speicherort** | Die Azure-Region, in der das Blockchainmitglied erstellt wird. Beispiel: `eastus`. Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt. |
+| **location** | Die Azure-Region, in der das Blockchainmitglied erstellt wird. Beispiel: `eastus`. Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt. |
 | **password** | Das Kennwort des Transaktionsknotens. Das Kennwort muss drei der folgenden vier Anforderungen erfüllen: Es muss zwischen 12 und 72 Zeichen lang sein und muss einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen beinhalten (nicht zulässig: Raute (#), Prozentzeichen (%), Komma (,), Stern (*), Backquote (\`), doppelte Anführungszeichen ("), einfache Anführungszeichen ('), Bindestriche (-) oder Semikolons (;)). |
 | **ruleName** | Regelname zum Hinzufügen eines IP-Adressbereichs zu einer Whitelist. Optionaler Parameter für Firewallregeln. |
 | **startIpAddress** | Anfang des IP-Adressbereichs, der der Whitelist hinzugefügt werden soll. Optionaler Parameter für Firewallregeln. |

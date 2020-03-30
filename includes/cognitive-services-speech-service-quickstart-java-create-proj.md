@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
 ms.openlocfilehash: a542e02c51bf2ce9b3b13bc50a39584ce079ec72
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78330826"
 ---
 1. Starten Sie Eclipse.
@@ -35,7 +35,7 @@ ms.locfileid: "78330826"
 
    ![Screenshot des Paket-Explorers](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Das Fenster **Neue POM-Datei erstellen** wird angezeigt. Geben Sie *com.microsoft.cognitiveservices.speech.samples* in das Feld **Gruppen-ID** und *Schnellstart* in das Feld **Artefakt-ID** ein. Wählen Sie dann **Fertig stellen** aus.
+1. Das Fenster **Neue POM-Datei erstellen** wird angezeigt. Geben Sie **com.microsoft.cognitiveservices.speech.samples** in das Feld *Gruppen-ID* und **Schnellstart** in das Feld *Artefakt-ID* ein. Wählen Sie dann **Fertig stellen** aus.
 
    ![Screenshot des Fensters „Neue POM-Datei erstellen“](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 

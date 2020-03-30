@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184239"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
@@ -51,7 +51,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Daten Ihrer Re
   
 1. Öffnen Sie die Power BI-Desktop-App, und klicken Sie in der linken oberen Ecke auf „Daten abrufen“. 
 
-    ![Abrufen von Daten](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
+    ![Get Data](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
 2. Wenn Sie zur Eingabe von Daten aufgefordert werden, suchen Sie nach „Azure Cosmos DB“, und wählen Sie den entsprechenden Connector aus. Dieser Connector pullt im Wesentlichen Daten direkt aus der Cosmos-Datenbank Ihrer Azure IoT-Lösung.
   

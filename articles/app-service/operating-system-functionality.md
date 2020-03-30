@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671622"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
@@ -45,7 +45,7 @@ In App Service gibt es viele Laufwerke, einschließlich lokaler Laufwerke und Ne
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Lokale Laufwerke
-Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies umfasst:
+Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Platform-as-a-Service) ausgeführt wird. Daher sind die lokalen Laufwerke, die an einen virtuellen Computer "angehängt" sind, die gleichen Laufwerkstypen wie die für jede in Azure ausgeführte Workerrolle verfügbaren Typen. Dies schließt Folgendes ein:
 
 - Ein Betriebssystemlaufwerk (Laufwerk D:\)
 - Ein Anwendungslaufwerk mit den CSPKG-Dateien des Azure-Pakets, das ausschließlich von App Service verwendet wird (und auf das Kunden keinen Zugriff haben)

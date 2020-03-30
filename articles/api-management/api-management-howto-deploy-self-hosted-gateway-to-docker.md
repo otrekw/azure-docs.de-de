@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: b5acda30f7f4a01e1b7b6ac82652452c3c40e3bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768502"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Bereitstellen eines selbstgehosteten Azure API Management-Gateways für Docker
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt die Schritte für die Bereitstellung eines selbstgehos
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+- Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 - Erstellen Sie eine Docker-Umgebung. [Docker für Desktop](https://www.docker.com/products/docker-desktop) ist eine gute Option für Entwicklungs- und Evaluierungszwecke. Weitere Informationen zu allen Docker-Editionen, ihren Features sowie eine umfassende Dokumentation zu Docker selbst finden Sie unter [Docker-Dokumentation](https://docs.docker.com).
 - [Bereitstellen einer Gatewayressource in Ihrer API Management-Instanz](api-management-howto-provision-self-hosted-gateway.md)
 

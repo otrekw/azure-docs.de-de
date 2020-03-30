@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790672"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von EDIFACT-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
@@ -79,9 +79,9 @@ Der Connector „EDIFACT-Nachricht decodieren“ führt folgende Aufgaben aus:
   * Überprüfen der Gruppenkontrollnummer in Bezug auf andere Gruppenkontrollnummern im Austausch 
   * Überprüfen der Transaktionssatz-Kontrollnummer in Bezug auf andere Transaktionssatz-Kontrollnummern in dieser Gruppe
 * Trennen des Austauschs in Transaktionssätze oder Beibehalten des gesamten Austauschs:
-  * Trennen des Austauschs in Transaktionssätze – Transaktionssätze bei Fehler anhalten: Trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. 
+  * Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten: Trennt jeden Austausch in Transaktionssätze und analysiert jeden Transaktionssatz. 
   Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
-  * Trennen des Austauschs in Transaktionssätze – Austausch bei Fehler anhalten: Trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. 
+  * Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten: Trennt jeden Austausch in Transaktionssätze und analysiert jeden Transaktionssatz. 
   Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion „X12 decodieren“ alle Transaktionssätze in diesem Austausch in `badMessages` aus.
   * Austausch beibehalten – Transaktionssätze bei Fehler anhalten: Behält den Austausch bei und verarbeitet den gesamten Batchaustausch. 
   Die Aktion „X12 decodieren“ gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.

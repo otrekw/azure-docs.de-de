@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: rohink
 ms.openlocfilehash: 0120501aab7f0a63721126bfb5b3d04d9deb42fb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936801"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Verwalten von DNS-Zonen mithilfe der PowerShell
@@ -140,7 +140,7 @@ Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 ### <a name="specify-the-zone-using-a-zone-object"></a>Angeben der Zone mithilfe eines $zone-Objekts
 
-Sie können festlegen, dass die Zone mithilfe eines von `Get-AzureRmDnsZone` zurückgegebenen `$zone`-Objekts gelöscht werden soll.
+Sie können festlegen, dass die Zone mithilfe eines von `$zone` zurückgegebenen `Get-AzureRmDnsZone`-Objekts gelöscht werden soll.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -162,7 +162,7 @@ Die Cmdlets `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` und `Remove-AzureRmDnsZon
 
 Sowohl `New-AzureRmDnsZone` als auch `Set-AzureRmDnsZone` fordern eine Bestätigung an, wenn die PowerShell-Einstellungsvariable `$ConfirmPreference` einen Wert von `Medium` oder weniger hat. Aufgrund der potenziell wesentlichen Auswirkungen der Löschung einer DNS-Zone forder das `Remove-AzureRmDnsZone`-Cmdlet zur Bestätigung auf, wenn die PowerShell-Variable `$ConfirmPreference` einen anderen Wert als `None` aufweist.
 
-Da `High` der Standardwert für `$ConfirmPreference` ist, fordert nur `Remove-AzureRmDnsZone` standardmäßig zur Bestätigung auf.
+Da `$ConfirmPreference` der Standardwert für `High` ist, fordert nur `Remove-AzureRmDnsZone` standardmäßig zur Bestätigung auf.
 
 Die aktuelle Einstellung für `$ConfirmPreference` kann mithilfe des `-Confirm`-Parameters überschrieben werden. Bei Angabe von `-Confirm` oder `-Confirm:$True` fordert das Cmdlet vor der Ausführung eine Bestätigung an. Bei Verwendung von `-Confirm:$False` fordert das Cmdlet keine Bestätigung an.
 

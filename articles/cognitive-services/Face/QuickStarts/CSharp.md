@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d1349c096b6a6c9bffef38a8b8b3c7ea6bbd432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301810"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053406"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und C#
 
 In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-API mit C#, um menschliche Gesichter in einem Bild zu erkennen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ### <a name="include-namespaces"></a>Einschließen von Namespaces
 
-Fügen Sie am Anfang der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
+Fügen Sie am Anfang der Datei `using`Program.cs*die folgenden*-Anweisungen hinzu:
 
 ```csharp
 using System;
@@ -77,11 +77,6 @@ Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu.
 ```csharp
         static void Main(string[] args)
         {
-
-            // Explicitly set TLS 1.2.
-            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
-                SecurityProtocolType.Tls12;
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(

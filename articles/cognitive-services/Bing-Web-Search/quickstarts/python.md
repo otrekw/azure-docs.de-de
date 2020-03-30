@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976365"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Python zum Aufrufen der Bing-Websuche-API  
@@ -28,7 +28,7 @@ Dieses Beispiel wird als Jupyter-Notebook unter [MyBinder](https://mybinder.org)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Python 2.x oder 3.x](https://www.python.org/)
+* [Python 2.x oder 3.x](https://www.python.org/)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 

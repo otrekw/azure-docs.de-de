@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a77cf1704c20abb77d432eab16569071208f6da8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75396092"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Übersicht über allgemeine Muster zur automatischen Skalierung
@@ -24,7 +24,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit der automatischen Skalier
 
 Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchführen:
 
-- Sie möchten basierend auf der CPU horizontal hoch- bzw. herunterskalieren.
+- Sie möchten basierend auf der CPU auf- bzw. abskalieren.
 - Darüber hinaus möchten Sie sicherstellen, dass eine Mindestanzahl von Instanzen vorhanden ist.
 - Des Weiteren möchten Sie einen maximalen Grenzwert für die Anzahl der Instanzen, die skaliert werden können, festlegen.
 
@@ -43,7 +43,7 @@ Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchfüh
 
 Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchführen:
 
-- Sie möchten standardmäßig basierend auf der CPU-Auslastung zentral hoch- bzw. herunterskalieren.
+- Sie möchten standardmäßig basierend auf der CPU-Auslastung hoch- bzw. herunterskalieren.
 - Allerdings möchten Sie die Standardwerte während der Feiertage (oder an bestimmten für Ihr Unternehmen wichtigen Tagen) überschreiben und über größere Kapazitäten verfügen.
 
 ![Individuelles Skalieren an Feiertagen][4]
@@ -52,7 +52,7 @@ Sie haben eine Web-App (/VMSS/Clouddienstrolle) und möchten Folgendes durchfüh
 
 Sie verfügen über ein Web-Front-End und eine API-Ebene, die mit dem Back-End kommuniziert.
 
-- Sie möchten die API-Ebene basierend auf benutzerdefinierten Ereignissen im Front-End skalieren (Beispiel: Sie möchten die Kaufabwicklung basierend auf der Anzahl der Artikel im Warenkorb skalieren)
+- Sie möchten die API-Ebene basierend auf benutzerdefinierten Ereignissen im Front-End skalieren (Beispiel: Sie möchten Ihren Bezahlvorgang basierend auf der Anzahl der Artikel im Warenkorb skalieren.).
 
 ![Skalieren basierend auf benutzerdefinierten Metriken][5]
 

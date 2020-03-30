@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
 ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68414315"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
 Die Sicherheit ist bei jeder IoT-Lösung, die auf Azure IoT Hub basiert, ein wichtiger Aspekt. Manchmal müssen Sie im Rahmen der Sicherheitskonfiguration die IP-Adressen explizit angeben, über die Geräte eine Verbindung herstellen können. Mit dem Feature *IP-Filter* können Sie Regeln konfigurieren, mit denen Datenverkehr von bestimmten IPv4-Adressen abgelehnt oder zugelassen wird.
 
-## <a name="when-to-use"></a>Einsatzgebiete
+## <a name="when-to-use"></a>Verwendung
 
 Wenn es hilfreich ist, die IoT Hub-Endpunkte für bestimmte IP-Adressen zu blockieren, gibt es zwei spezifische Anwendungsfälle:
 

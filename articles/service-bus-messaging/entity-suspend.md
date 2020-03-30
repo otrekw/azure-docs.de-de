@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760384"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
@@ -40,7 +40,7 @@ Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Si
 
 Folgende Zustände können für eine Warteschlange festgelegt werden:
 
--   **Aktiv:** Die Warteschlange ist aktiv.
+-   **Active**: Die Warteschlange ist aktiv.
 -   **Disabled**: Die Warteschlange wurde angehalten.
 -   **SendDisabled**: Die Warteschlange ist teilweise angehalten, der Empfang ist zulässig.
 -   **ReceiveDisabled**: Die Warteschlange ist teilweise angehalten, das Senden ist zulässig.

@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66730034"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell
@@ -35,7 +35,7 @@ Sie können eingehenden und ausgehenden Netzwerkdatenverkehr im Subnetz eines vi
 * Bereitstellen von virtuellen Computern in einem Subnetz
 * Testen von Datenverkehrsfiltern
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -290,7 +290,7 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu `http://<public-ip-address-from-previous-step>`, um sich zu vergewissern, dass Sie außerhalb von Azure auf den Webserver *myVmWeb* zugreifen können. Die Verbindung wird erfolgreich hergestellt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
+Navigieren Sie auf Ihrem Computer in einem Internetbrowser zu *, um sich zu vergewissern, dass Sie außerhalb von Azure auf den Webserver* myVmWeb`http://<public-ip-address-from-previous-step>` zugreifen können. Die Verbindung wird erfolgreich hergestellt, da am Port 80 eingehender Datenverkehr aus dem Internet für die Anwendungssicherheitsgruppe *myAsgWebServers* zugelassen wird, in der sich die an den virtuellen Computer *myVmWeb* angefügte Netzwerkschnittstelle befindet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -304,4 +304,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 In diesem Artikel haben Sie eine Netzwerksicherheitsgruppe erstellt und dem Subnetz eines virtuellen Netzwerks zugeordnet. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md) sowie unter [Verwalten einer Netzwerksicherheitsgruppe](manage-network-security-group.md).
 
-Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen stattdessen auch über einen virtuellen Computer weiterleiten, der als Firewall dient. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).
+Azure leitet standardmäßig Datenverkehr zwischen Subnetzen weiter. Sie können Datenverkehr zwischen Subnetzen aber beispielsweise auch über einen virtuellen Computer weiterleiten, der als Firewall fungiert. Informationen dazu finden Sie unter [Erstellen einer Routingtabelle](tutorial-create-route-table-powershell.md).

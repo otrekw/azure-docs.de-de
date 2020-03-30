@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: 694501fdaaaa92e898f4973838d86343e29144e3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74895295"
 ---
 Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für eine zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie vom Kunden verwaltete Schlüssel bereitstellen, mit denen Blob- und Dateidaten verschlüsselt werden können.

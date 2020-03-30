@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie einen Test konfigurieren, um sicherzustellen,
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76935680"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurieren von Bereitschaftstests

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69616762"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Leistungstipps für Azure Cosmos DB und Java
@@ -74,7 +74,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
    <a id="max-connection"></a>
 3. **Erhöhen von MaxPoolSize pro Host im Gatewaymodus**
 
-    Anforderungen an Azure Cosmos DB erfolgen bei Verwendung des Gatewaymodus standardmäßig über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxPoolSize-Wert festlegen (200 – 1000), damit die Clientbibliothek mehrere Verbindungen mit Azure Cosmos DB gleichzeitig nutzen kann. Im Java-SDK lautet der Standardwert für [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) „100“. Verwenden Sie [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize), um den Wert zu ändern.
+    Anforderungen an Azure Cosmos DB erfolgen bei Verwendung des Gatewaymodus über HTTPS/REST und unterliegen dem Standardverbindungslimit pro Hostname oder IP-Adresse. Unter Umständen müssen Sie einen höheren MaxPoolSize-Wert festlegen (200 – 1000), damit die Clientbibliothek mehrere Verbindungen mit Azure Cosmos DB gleichzeitig nutzen kann. Im Java-SDK lautet der Standardwert für [ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) „100“. Verwenden Sie [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize), um den Wert zu ändern.
 
 4. **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
@@ -92,7 +92,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung diese Drosselung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet. Unterstützung für Wiederholungsrichtlinien wird ab [Java-SDK](documentdb-sdk-java.md) Version 1.8.0 bereitgestellt. Weitere Informationen finden Sie unter [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 
-6. **Horizontales Hochskalieren Ihrer Clientworkload**
+6. **Aufskalieren Ihrer Clientworkload**
 
     Wenn Sie auf einem hohen Durchsatzniveau testen (> 50.000 RU/s), kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerkauslastung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 

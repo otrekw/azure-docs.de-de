@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer Single-Page-Webanwendung – Bing-Websuche-API'
+title: 'Tutorial: Erstellen einer einseitigen Web-App – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
 description: Dieses Tutorial zum Erstellen einer einseitigen App zeigt, wie Sie mit der Bing-Websuche-API relevante Suchergebnisse in einer einseitigen App abrufen, analysieren und anzeigen können.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943875"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Websuche-API
 
 Diese einseitige App zeigt, wie Sie Suchergebnisse aus der Bing-Websuche-API abrufen, analysieren und anzeigen. Das Tutorial verwendet Standard-HTML und -CSS und konzentriert sich auf den JavaScript-Code. HTML-, CSS- und JS-Dateien sind in [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) mit Schnellstartanweisungen verfügbar.
 
@@ -66,7 +66,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 ## <a name="html-form"></a>HTML-Formular
 
-`index.html` enthält ein Formular, mit dem Benutzer Suchvorgänge ausführen und Suchoptionen auswählen können. Das Attribut `onsubmit` wird ausgelöst, wenn das Formular gesendet wird, wobei die in `scripts.js` definierte `bingWebSearch()`-Methode aufgerufen wird. Es verwendet drei Argumente:
+`index.html` enthält ein Formular, mit dem Benutzer Suchvorgänge ausführen und Suchoptionen auswählen können. Das Attribut `onsubmit` wird ausgelöst, wenn das Formular gesendet wird, wobei die in `bingWebSearch()` definierte `scripts.js`-Methode aufgerufen wird. Es verwendet drei Argumente:
 
 * Suchabfrage
 * Ausgewählte Optionen
@@ -129,7 +129,7 @@ function bingSearchOptions(form) {
 
 `SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen mit zwei Zuständen: `strict` oder `moderate`.
 
-Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `promote` ist `answerCount` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
+Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `answerCount` ist `promote` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
 > [!NOTE]
 > Das Höherstufen eines Ergebnistyps *garantiert nicht*, dass er in den Suchergebnissen enthalten ist. Vielmehr erhöht sich dadurch die Relevanz dieser Ergebnistypen ausgehend von den üblichen Relevanzwerten. Wenn Sie Suchergebnisse auf bestimmte Ergebnisse einschränken möchten, können Sie dazu den `responseFilter`-Abfrageparameter verwenden oder einen anderen Endpunkt wie die Bing-Bildersuche-API oder die Bing-News-Suche-API verwenden.
 

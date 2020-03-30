@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
 ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70018234"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Aktualisieren und Skalieren einer Azure API Management-Instanz  
 
 Kunden können eine Azure APIM-Instanz (API Management) skalieren, indem sie Einheiten hinzufügen und entfernen. Eine **Einheit** umfasst dedizierte Azure-Ressourcen und verfügt über eine bestimmte Lastkapazität, die als Anzahl von API-Aufrufen pro Monat ausgedrückt wird. Diese stellt nicht die maximale Anzahl von Aufrufen, sondern eher einen maximalen Durchsatzwert für die grobe Kapazitätsplanung dar. Der tatsächliche Durchsatz und die Latenz variieren aufgrund der folgenden Faktoren erheblich: Anzahl und Übertragungsrate von parallelen Verbindungen, Anzahl und Art von konfigurierten Richtlinien, Umfang von Anforderungen und Antworten sowie Back-End-Latenzzeiten.
 
-Die Kapazität und der Preis der einzelnen Einheiten richtet sich nach dem **Tarif** der Einheit. Sie können zwischen vier Tarifen auswählen: **Developer**, **Basic**, **Standard** und **Premium**. Wenn Sie die Kapazität für einen Dienst eines Tarifs erhöhen müssen, sollten Sie eine Einheit hinzufügen. Falls der Tarif, der in Ihrer APIM-Instanz derzeit ausgewählt ist, das Hinzufügen von weiteren Einheiten nicht zulässt, müssen Sie ein Upgrade auf einen höheren Tarif durchführen.
+Die Kapazität und der Preis der einzelnen Einheiten richtet sich nach dem **Tarif** der Einheit. Sie können zwischen vier Tarifen wählen: **Developer**, **Basic**, **Standard** und **Premium**. Wenn Sie die Kapazität für einen Dienst eines Tarifs erhöhen müssen, sollten Sie eine Einheit hinzufügen. Falls der Tarif, der in Ihrer APIM-Instanz derzeit ausgewählt ist, das Hinzufügen von weiteren Einheiten nicht zulässt, müssen Sie ein Upgrade auf einen höheren Tarif durchführen.
 
 Der Preis jeder Einheit und die verfügbaren Features (z.B. Bereitstellung in mehreren Regionen) richten sich nach dem Tarif, den Sie für Ihre APIM-Instanz gewählt haben. Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erfahren Sie, welchen Preis pro Einheit und welche Features Sie im jeweiligen Tarif erhalten. 
 
@@ -45,7 +45,7 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 
 ## <a name="upgrade-and-scale"></a>Aktualisieren und Skalieren  
 
-Sie können zwischen vier Tarifen auswählen: **Developer**, **Basic**, **Standard** und **Premium**. Der Tarif **Developer** ist zum Evaluieren des Diensts und nicht zur Verwendung in der Produktion bestimmt. Der Tarif **Developer** verfügt nicht über eine Vereinbarung zum Servicelevel (SLA) und ist nicht skalierbar (Einheiten hinzufügen/entfernen). 
+Sie können zwischen vier Tarifen wählen: **Developer**, **Basic**, **Standard** und **Premium**. Der Tarif **Developer** ist zum Evaluieren des Diensts und nicht zur Verwendung in der Produktion bestimmt. Der Tarif **Developer** verfügt nicht über eine Vereinbarung zum Servicelevel (SLA) und ist nicht skalierbar (Einheiten hinzufügen/entfernen). 
 
 Bei **Basic**, **Standard** und **Premium** handelt es sich um Tarife für die Produktion, die über eine Vereinbarung zum Servicelevel (SLA) verfügen und skaliert werden können. Der Tarif **Basic** ist der kostengünstigste Tarif mit SLA, und er kann auf bis zu zwei Einheiten skaliert werden, während der Tarif **Standard** auf bis zu vier Einheiten skaliert werden kann. Im Tarif **Premium** können Sie eine beliebige Anzahl von Einheiten hinzufügen.
 

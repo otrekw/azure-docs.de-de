@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125047"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -51,11 +51,11 @@ Bei der clientseitigen Verschlüsselung hat der Clouddienstanbieter keinen Zugri
 
 Die drei Modelle für die serverseitige Verschlüsselung bieten unterschiedliche Merkmale der Schlüsselverwaltung, die Sie je nach Ihren Anforderungen auswählen können:
 
-- **Vom Dienst verwaltete Schlüssel**: Bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand.
+- **Dienstverwaltete Schlüssel:** bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand
 
-- **Vom Kunden verwaltete Schlüssel**: Bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren.
+- **Kundenverwaltete Schlüssel:** bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren
 
-- **Vom Dienst verwaltete Schlüssel auf vom Kunden gesteuerter Hardware**: Ermöglichen Ihnen, Schlüssel in Ihrem eigenen Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
+- **Dienstverwaltete Schlüssel auf vom Kunden gesteuerter Hardware:** ermöglichen es Ihnen, Schlüssel in Ihrem proprietären Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -79,7 +79,7 @@ Weitere Informationen zum Verwenden und Herunterladen des NuGet-Pakets „Azure 
 
 Bei Verwendung der clientseitigen Verschlüsselung mit Key Vault werden Ihre Daten mit einem einmaligen symmetrischen Inhaltsverschlüsselungsschlüssel (CEK, Content Encryption Key) verschlüsselt, der vom Azure Storage Client SDK generiert wird. Der CEK wird mit einem Schlüsselverschlüsselungsschlüssel (KEK, Key Encryption Key) verschlüsselt, bei dem es sich entweder um ein symmetrisches oder ein asymmetrisches Schlüsselpaar handeln kann. Sie können ihn lokal verwalten oder in Key Vault speichern. Die verschlüsselten Daten werden dann in Azure Storage hochgeladen.
 
-Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwenden, um die clientseitige Verschlüsselung vor dem Hochladen von Daten in Azure Storage und die Entschlüsselung der Daten beim Herunterladen auf den Client durchzuführen. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt diese Bibliothek zudem die Integration in [Key Vault](https://azure.microsoft.com/services/key-vault/).
 
@@ -87,9 +87,9 @@ Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwe
 
 [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) ist ein relationaler Datenbankdienst in Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank unterstützt die serverseitige Verschlüsselung über das TDE-Feature (Transparent Data Encryption) sowie die clientseitige Verschlüsselung über das Always Encrypted-Feature.
 
-#### <a name="transparent-data-encryption"></a>Transparent Data Encryption
+#### <a name="transparent-data-encryption"></a>Transparente Datenverschlüsselung
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
 
 TDE schützt die Daten- und Protokolldateien über die Verschlüsselungsalgorithmen AES und Triple Data Encryption Standard (3DES). Die Verschlüsselung der Datenbankdatei erfolgt auf Seitenebene. Die Seiten in einer verschlüsselten Datenbank werden verschlüsselt, bevor sie auf den Datenträger geschrieben werden, und entschlüsselt, bevor sie in den Arbeitsspeicher eingelesen werden. TDE ist jetzt bei neu erstellten Azure SQL-Datenbanken standardmäßig aktiviert.
 

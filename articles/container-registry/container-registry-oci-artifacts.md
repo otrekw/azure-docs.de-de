@@ -4,14 +4,14 @@ description: Pushen und Pullen von OCI-Artefakten (Open Container Initiative) un
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 03/11/2020
 ms.author: stevelas
-ms.openlocfilehash: cb58a7ed51ae15d33ffdbb616c9b32ef03bcbfb7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371051"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Pushen und Pullen eines OCI-Artefakts unter Verwendung einer Azure-Containerregistrierung
 
@@ -34,7 +34,7 @@ In diesem Abschnitt werden zwei vorgeschlagene Workflows für die Anmeldung bei 
 
 ### <a name="sign-in-with-oras"></a>Anmelden mit ORAS
 
-Führen Sie den Befehl `oras login` unter Verwendung eines [Dienstprinzipals](container-registry-auth-service-principal.md) mit Pushrechten aus, um sich mit der Anwendungs-ID und dem Kennwort des Dienstprinzipals bei der Registrierung anzumelden. Geben Sie den vollqualifizierten Registrierungsnamen (nur Kleinbuchstaben) an – in diesem Fall: *myregistry.azurecr.io*. Die Anwendungs-ID des Dienstprinzipals wird in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben.
+Führen Sie den Befehl [ unter Verwendung eines ](container-registry-auth-service-principal.md)Dienstprinzipals`oras login` mit Pushrechten aus, um sich mit der Anwendungs-ID und dem Kennwort des Dienstprinzipals bei der Registrierung anzumelden. Geben Sie den vollqualifizierten Registrierungsnamen (nur Kleinbuchstaben) an – in diesem Fall: *myregistry.azurecr.io*. Die Anwendungs-ID des Dienstprinzipals wird in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben.
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
@@ -66,10 +66,20 @@ echo "Here is an artifact!" > artifact.txt
 
 Pushen Sie diese Textdatei mithilfe des Befehls `oras push` in Ihre Registrierung. Im folgenden Beispiel wird die Beispieltextdatei in das Repository `samples/artifact` gepusht. Die Registrierung wird mit dem vollqualifizierten Registrierungsnamen *myregistry.azurecr.io* (nur Kleinbuchstaben) angegeben. Das Artefakt wird als `1.0` markiert. Das Artefakt hat einen undefinierten Typ. Dieser wird standardmäßig durch die *Medientypzeichenfolge* nach dem Dateinamen `artifact.txt` angegeben. Weitere Typen finden Sie unter [OCI Artifacts](https://github.com/opencontainers/artifacts) (OCI-Artefakte). 
 
+**Linux**
+
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
     --manifest-config /dev/null:application/vnd.unknown.config.v1+json \
     ./artifact.txt:application/vnd.unknown.layer.v1+txt
+```
+
+**Windows**
+
+```cmd
+.\oras.exe push myregistry.azurecr.io/samples/artifact:1.0 ^
+    --manifest-config NUL:application/vnd.unknown.config.v1+json ^
+    .\artifact.txt:application/vnd.unknown.layer.v1+txt
 ```
 
 Die Ausgabe für einen erfolgreichen Pushvorgang sieht in etwa wie folgt aus:

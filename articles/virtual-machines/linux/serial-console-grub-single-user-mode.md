@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 87f16ec615c8b47c93745b33be12d3acd6d9177a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035052"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
@@ -79,7 +79,7 @@ Wenn Sie GRUB und den Stammzugriff wie oben beschrieben eingerichtet haben, kön
 1. Suchen Sie nach der Kernelzeile. In Azure beginnt diese mit `linux16`.
 1. Drücken Sie STRG+E, um zum Ende der Zeile zu wechseln.
 1. Fügen Sie am Ende der Zeile Folgendes hinzu: `systemd.unit=rescue.target`
-    * Dadurch starten Sie im Einzelbenutzermodus. Wenn Sie den Notfallmodus verwenden möchten, fügen Sie anstelle von `systemd.unit=rescue.target` am Ende der Zeile `systemd.unit=emergency.target` hinzu.
+    * Dadurch starten Sie im Einzelbenutzermodus. Wenn Sie den Notfallmodus verwenden möchten, fügen Sie anstelle von `systemd.unit=emergency.target` am Ende der Zeile `systemd.unit=rescue.target` hinzu.
 1. Drücken Sie STRG+X, um den Modus zu beenden und einen Neustart mit den angewendeten Einstellungen durchzuführen.
 1. Sie werden zur Eingabe des Administratorkennworts aufgefordert, bevor Sie in den Einzelbenutzermodus wechseln können. Dies ist das Kennwort, das Sie in den obigen Anweisungen erstellt haben.    
 
@@ -120,12 +120,12 @@ Ubuntu-Images erfordern kein Stammkennwort. Wenn das System im Einzelbenutzermod
 ### <a name="grub-access-in-ubuntu"></a>GRUB-Zugriff in Ubuntu
 Halten Sie zum Zugreifen auf GRUB während des Starts der VM die ESC-TASTE gedrückt. 
 
-Standardmäßig zeigen Ubuntu-Images den GRUB-Bildschirm nicht automatisch an. Dies können Sie durch Ausführen der folgenden Anweisungen ändern:
+Standardmäßig zeigen Ubuntu-Images den GRUB-Bildschirm nicht automatisch an. Dies können Sie wie folgt ändern:
 1. Öffnen Sie `/etc/default/grub.d/50-cloudimg-settings.cfg` in einem Text-Editor Ihrer Wahl.
 1. Ändern Sie den Wert von `GRUB_TIMEOUT` in einen Wert ungleich null.
 1. Öffnen Sie `/etc/default/grub` in einem Text-Editor Ihrer Wahl.
 1. Kommentieren Sie die Zeile `GRUB_HIDDEN_TIMEOUT=1` aus.
-1. Führen Sie `sudo update-grub` aus.
+1. Ausführen von `sudo update-grub`
 
 ### <a name="single-user-mode-in-ubuntu"></a>Einzelbenutzermodus in Ubuntu
 Ubuntu aktiviert automatisch den Einzelbenutzermodus, wenn ein normaler Start nicht möglich ist. Um den Einzelbenutzermodus manuell zu aktivieren, gehen Sie wie folgt vor:
@@ -185,5 +185,5 @@ Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Ora
 ## <a name="next-steps"></a>Nächste Schritte
 * Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](serial-console.md).
 * Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
-* Die serielle Konsole ist auch für [Windows](../windows/serial-console.md)-VMs verfügbar.
+* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
 * Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).

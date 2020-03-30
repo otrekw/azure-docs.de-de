@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77650281"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Was ist die Bing-Websuche-API?
@@ -30,7 +30,7 @@ Neugierig geworden? Sehen Sie sich unsere [Demo der Bing-Websuche-API](https://a
 
 Die Bing-Websuche bietet nicht nur Zugang zu sofortigen Antworten. Sie bietet auch Features und Funktionen, mit denen Sie Suchergebnisse für Ihre Benutzer anpassen können.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |---------|-------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](../bing-autosuggest/get-suggested-search-terms.md) | Verwenden Sie die Bing-Vorschlagssuche-API, um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer Anwendung zu verbessern. |
 | [Filtern und Einschränken von Ergebnissen nach Inhaltstyp](filter-answers.md) | Verwenden Sie Filter und Abfrageparameter für Webseiten, Bilder, Videos, sichere Suche und mehr, um Suchergebnisse anzupassen und einzugrenzen. |

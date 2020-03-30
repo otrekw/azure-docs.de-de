@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773885"
 ---
 # <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource mit PowerShell
@@ -22,17 +22,17 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell-Cmdlets ein 
 Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](howto-legacy-direct-portal.md) ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für das direkte Peering](walkthrough-direct-all.md).
+* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für direktes Peering](walkthrough-direct-all.md).
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource
+## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Konvertieren eines älteren direkten Peerings in eine Azure-Ressource
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>Abrufen des direkten Peerings für die Konvertierung
+### <a name="get-legacy-direct-peering-for-conversion"></a><a name= get></a>Abrufen des direkten Peerings für die Konvertierung
 Im Folgenden finden Sie ein Beispiel für das Abrufen einer älteren Instanz für direktes Peering an einem Peeringstandort in Seattle.
 
 ```powershell
@@ -41,7 +41,7 @@ $legacyPeering = Get-AzLegacyPeering `
 $legacyPeering
 ```
 
-Hier eine Beispielantwort:
+Unten finden Sie eine Beispielantwort:
 ```powershell
 Name                       :
 Sku                        : Basic_Direct_Free
@@ -94,7 +94,7 @@ $legacyPeering[0] | New-AzPeering `
 
 ```
 
-Hier eine Beispielantwort:
+Unten finden Sie eine Beispielantwort:
 
 ```powershell
 Name                 : SeattleDirectPeering

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969270"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Vorauszahlen für Azure Data Explorer-Markupeinheiten mit reservierter Azure Data Explorer-Kapazität
@@ -23,7 +23,7 @@ Beim Kauf einer Reservierung bezahlen Sie im Voraus die Markupkosten für einen 
 Sie können reservierte Azure Data Explorer-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. Zum Kaufen von reservierter Azure Data Explorer-Kapazität ist Folgendes erforderlich:
 
 * Sie müssen der Besitzer mindestens eines Enterprise-Abonnements oder eines Abonnements mit nutzungsbasierter Bezahlung sein.
-* Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
+* Bei Enterprise-Abonnements muss im **EA-Portal** die Option [Reservierte Instanzen hinzufügen](https://ea.azure.com) aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 * Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents reservierte Azure Data Explorer-Kapazität erwerben.
 
 Ausführliche Informationen dazu, wie Reservierungskäufe bei Kunden mit einem Enterprise-Abonnement und Kunden mit einem Abonnement mit nutzungsbasierter Bezahlung in Rechnung gestellt werden, finden Sie in den folgenden Artikeln:

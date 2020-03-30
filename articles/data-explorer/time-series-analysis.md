@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765482"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
@@ -37,15 +37,15 @@ Die resultierende Tabelle enthält eine Zeitstempelspalte, drei kontextbezogene 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 |   | TimeStamp | BrowserVer | OsVer | Land/Region |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Vereinigtes Königreich |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Vereinigtes Königreich |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Vereinigtes Königreich |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republik Litauen |
 |   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | Indien |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Vereinigtes Königreich |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Niederlande |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Vereinigtes Königreich |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indien |
 
 Da keine Metriken vorhanden sind, können wir nur einen Satz Zeitreihen erstellen, die die Anzahl von Datenverkehrsbewegungen selbst darstellen, partitioniert nach Betriebssystem. Dazu erstellen wir folgende Abfrage:
@@ -67,7 +67,7 @@ demo_make_series1
     - `byOsVer`: Partitioniert nach Betriebssystem.
 - Die tatsächliche Datenstruktur der Zeitreihen ist ein numerisches Array des aggregierten Werts pro Zeitabschnitt. Wir verwenden `render timechart` für die Visualisierung.
 
-In der oben stehenden Tabelle haben wir drei Partitionen. Wir können eine separate Zeitreihe erstellen: Windows 10 (rot), Windows 7 (blau) und Windows 8.1 (grün), wie im Diagramm dargestellt:
+In der oben stehenden Tabelle haben wir drei Partitionen. Wir können separate Zeitreihen für jede Betriebssystemversion erstellen – Windows 10 (rot), 7 (blau) und 8.1 (grün) –, wie im Diagramm zu sehen:
 
 ![Zeitreihenpartitionen](media/time-series-analysis/time-series-partition.png)
 
@@ -196,7 +196,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
+|   | timestamp | Loc | anonOp | DB | DataRead |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
@@ -244,7 +244,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Count |
+|   | Anzahl |
 |   | 18339 |
 
 Jetzt erstellen wir einen Satz aus 18.339 Zeitreihen der Metrik für die Anzahl von Lesevorgängen. Wir fügen die `by`-Klausel zur make-series-Anweisung hinzu, wenden lineare Regression an und wählen die beiden Zeitreihen aus, bei denen der signifikanteste Abwärtstrend zu beobachten war:

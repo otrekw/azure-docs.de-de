@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672428"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
@@ -138,7 +138,7 @@ So beheben Sie den Fehler
 
 1. Entfernen Sie die Datei „sqljdbc*.jar-“ aus Ihrem Ordner „app/lib“.
 2. Bei Verwendung des benutzerdefinierten Tomcat- oder Azure Marketplace Tomcat-Webservers kopieren Sie diese JAR-Datei in den Tomcat-Ordner „lib“.
-3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
+3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc\*“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
 
     ```xml
     <httpPlatform>
@@ -183,7 +183,7 @@ Wenn Sie vor Kurzem zu Azure migriert sind, leitet WordPress Sie zur alten Domä
 
 WordPress Buddy+ ist eine Erweiterung für Azure-Websites, mit deren Hilfe Sie die Umleitungs-URL direkt in der Datenbank aktualisieren können. Weitere Informationen zur Verwendung von WordPress Buddy+ finden Sie unter [WordPress tools and MySQL migration with WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (WordPress-Tools und MySQL-Migration mit WordPress Buddy+).
 
-Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, gehen Sie wie unter [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL) beschrieben vor.
+Wenn Sie die Umleitungs-URL lieber manuell mithilfe von SQL-Abfragen oder PHPMyAdmin aktualisieren, siehe [WordPress: Redirecting to wrong URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (WordPress: Umleitung zur falschen URL).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Wie ändere ich mein WordPress-Anmeldungskennwort?
 

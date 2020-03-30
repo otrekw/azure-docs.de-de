@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442667"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
@@ -31,7 +31,7 @@ Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>Bereitstellen einer API Management-Dienstinstanz in einer neuen Region
+## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>Bereitstellen einer API Management-Dienstinstanz in einer neuen Region
 
 > [!NOTE]
 > Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen unter [Erstellen einer API Management-Dienstinstanz][create an api management service instance].
@@ -52,7 +52,7 @@ Klicken Sie auf **Hinzufügen** um Ihre Auswahl in der Tabelle „Standorte“ z
 
 Wiederholen Sie diesen Vorgang, bis Sie alle Standorte konfiguriert haben, und klicken Sie auf der Symbolleiste auf **Speichern**, um den Bereitstellungsprozess zu starten.
 
-## <a name="remove-region"> </a>Löschen einer API Management-Dienstinstanz an einem Standort
+## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>Löschen einer API Management-Dienstinstanz an einem Standort
 
 Navigieren Sie im Azure-Portal zur Seite **Skalierung und Preise** für Ihre API Management-Dienstinstanz.
 
@@ -62,7 +62,7 @@ Navigieren Sie im Azure-Portal zur Seite **Skalierung und Preise** für Ihre API
 
 Bestätigen Sie den Löschvorgang, und klicken Sie auf **Speichern** um die Änderungen zu übernehmen.
 
-## <a name="route-backend"> </a>Weiterleiten von API-Aufrufen an regionale Back-End-Dienste
+## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>Weiterleiten von API-Aufrufen an regionale Back-End-Dienste
 
 Azure API Management bietet nur eine Back-End-Dienst-URL. Obwohl in verschiedenen Regionen Azure API Management-Instanzen vorhanden sind, leitet das API-Gateway Anforderungen dennoch an denselben Back-End-Dienst weiter, der nur in einer Region bereitgestellt wird. In diesem Fall wird der Leistungsgewinn nur durch Antworten erzielt, die innerhalb von Azure API Management in einer für die Anforderung spezifischen Region zwischengespeichert werden, aber die Kontaktaufnahme mit dem Back-End weltweit kann dennoch zu einer hohen Latenz führen.
 
@@ -109,9 +109,9 @@ Um die geografische Verteilung Ihres Systems voll auszuschöpfen, sollten Sie Ba
 > [!TIP]
 > Sie können Ihren Back-End-Diensten auch [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) vorschalten, die API-Aufrufe an Traffic Manager weiterleiten und diesem das automatische Routing überlassen.
 
-## <a name="custom-routing"> </a>Verwenden von benutzerdefiniertem Routing an regionale API Management-Gateways
+## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>Verwenden von benutzerdefiniertem Routing an regionale API Management-Gateways
 
-API Management leitet die Anforderungen basierend auf [der geringsten Latenz](../traffic-manager/traffic-manager-routing-methods.md#performance) an ein regionales _Gateway_ weiter. Es ist zwar nicht möglich, diese Einstellung in API Management außer Kraft zu setzen, Sie können jedoch Ihre eigene Traffic Manager-Instanz mit benutzerdefinierten Routingregeln verwenden.
+API Management leitet die Anforderungen basierend auf _der geringsten Latenz_ an ein regionales [Gateway](../traffic-manager/traffic-manager-routing-methods.md#performance) weiter. Es ist zwar nicht möglich, diese Einstellung in API Management außer Kraft zu setzen, Sie können jedoch Ihre eigene Traffic Manager-Instanz mit benutzerdefinierten Routingregeln verwenden.
 
 1. Erstellen Sie Ihren eigenen [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
 1. Bei Verwendung einer benutzerdefinierten Domäne [verwenden Sie sie mit Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) anstelle des API Management-Diensts.

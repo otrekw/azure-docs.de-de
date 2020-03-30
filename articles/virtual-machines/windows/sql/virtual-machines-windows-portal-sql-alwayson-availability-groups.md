@@ -15,13 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374253"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren von Always On-Verfügbarkeitsgruppen in Azure Virtual Machines: Ressourcen-Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
 
 Dieses Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe erstellen, die Azure Resource Manager-VMs nutzt. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, können Sie die Standardeinstellungen überprüfen, erforderliche Einstellungen eingeben und die Blätter im Portal aktualisieren.
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76981088"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Überwachen und Verwalten von Azure Bastion-Sitzungen
 
 Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um sich nahtlos mit jeder VM in diesem virtuellen Netzwerk zu verbinden. Wenn Benutzer eine Verbindung mit Workloads herstellen, kann Azure Bastion zur Überwachung von Remotesitzungen und für schnelle Verwaltungsaktionen verwendet werden. Bei der Überwachung von Azure Bastion-Sitzungen können Sie sehen, welche Benutzer mit welchen VMs verbunden sind. Neben der IP-Adresse, über die der Benutzer eine Verbindung hergestellt hat, sehen Sie auch, wie lange die Verbindung andauert und wann sie hergestellt wurde. Mit der Sitzungsverwaltung können Sie eine laufende Sitzung auswählen und die Trennung erzwingen bzw. eine Sitzung löschen, um den Benutzer von der laufenden Sitzung zu trennen.
 
-## <a name="monitor"></a>Überwachen von Remotesitzungen
+## <a name="monitor-remote-sessions"></a><a name="monitor"></a>Überwachen von Remotesitzungen
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Bastion-Ressource, und wählen Sie auf der Azure Bastion-Seite **Sitzungen** aus.
 
@@ -34,7 +34,7 @@ Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitg
 > Aktivieren Sie Port 4443 für eingehenden Datenverkehr vom Gateway-Manager, damit die Sitzungsüberwachung funktioniert.
 >
 
-## <a name="view"></a>Löschen oder Erzwingen der Trennung einer laufenden Remotesitzung
+## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Löschen oder Erzwingen der Trennung einer laufenden Remotesitzung
 
 Sie können eine Reihe von Sitzungen auswählen und deren Trennung erzwingen. Die folgenden Schritte zeigen, wie Remotesitzungen gelöscht werden:
 

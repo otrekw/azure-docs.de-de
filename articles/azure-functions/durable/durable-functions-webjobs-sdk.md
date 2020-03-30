@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232740"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
@@ -47,7 +47,7 @@ In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt (entspric
 
 Sie müssen zuerst eine Konsolen-App erstellen, um Durable Functions als WebJobs ausführen zu können. Ein WebJobs SDK-Projekt ist lediglich ein Konsolen-App-Projekt, für das die entsprechenden NuGet-Pakete installiert sind.
 
-Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** aus. In der Projektdatei sollte die `TargetFrameworkVersion` `v4.6.1` sein.
+Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** aus. In der Projektdatei sollte die `TargetFrameworkVersion``v4.6.1` sein.
 
 Visual Studio bietet auch eine WebJob-Projektvorlage, die Sie verwenden können, indem Sie **Cloud** > **Azure WebJob (.NET Framework)** auswählen. Diese Vorlage installiert viele Pakete, von denen einige möglicherweise nicht benötigt werden.
 
@@ -216,7 +216,7 @@ In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt entwickel
 
 Die wichtigste eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework. Zum Erstellen eines WebJobs SDK 3.x-Projekts sind die Anweisungen identisch, mit diesen Ausnahmen:
 
-1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework` `netcoreapp2.x` ist.
+1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework``netcoreapp2.x` ist.
 
 1. Wählen Sie die Releaseversion WebJobs SDK 3.x der folgenden Pakete:
 

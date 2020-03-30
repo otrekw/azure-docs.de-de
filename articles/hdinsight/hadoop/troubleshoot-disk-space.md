@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/17/2020
 ms.openlocfilehash: 577bed7ce342be14a50077a3ffd841cd901b5b31
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77473318"
 ---
 # <a name="manage-disk-space-in-azure-hdinsight"></a>Verwalten von Speicherplatz in Azure HDInsight
@@ -24,11 +24,11 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 1. Navigieren Sie zu **Hive** > **Configs** > **Advanced** > **Advanced hive-log4j**. Überprüfen Sie die folgenden Einstellungen:
 
-    * `hive.root.logger=DEBUG,RFA`. Dies ist der Standardwert. Ändern Sie die [Protokollebene](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) in `INFO`, um weniger Protokolleinträge zu drucken.
+    * [https://login.microsoftonline.com/consumers/](`hive.root.logger=DEBUG,RFA`). Dies ist der Standardwert. Ändern Sie die [Protokollebene](https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html) in `INFO`, um weniger Protokolleinträge zu drucken.
 
-    * `log4jhive.log.maxfilesize=1024MB`. Dies ist der Standardwert. Ändern Sie ihn nach Bedarf.
+    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxfilesize=1024MB`). Dies ist der Standardwert. Ändern Sie ihn nach Bedarf.
 
-    * `log4jhive.log.maxbackupindex=10`. Dies ist der Standardwert. Ändern Sie ihn nach Bedarf. Wenn der Parameter ausgelassen wurde, werden endlose Protokolldateien generiert.
+    * [https://login.microsoftonline.com/consumers/](`log4jhive.log.maxbackupindex=10`). Dies ist der Standardwert. Ändern Sie ihn nach Bedarf. Wenn der Parameter ausgelassen wurde, werden endlose Protokolldateien generiert.
 
 ## <a name="yarn-log-configurations"></a>YARN-Protokollkonfigurationen
 
@@ -40,7 +40,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
     1. Navigieren Sie zu **Hive** > **Configs** > **Advanced** > **Resource Manager**. Stellen Sie sicher, dass **Enable Log Aggregation** (Protokollaggregation aktivieren) aktiviert ist. Wenn diese Option deaktiviert ist, speichern Namenknoten die Protokolle lokal und aggregieren diese bei der Anwendungsbeendigung nicht in einem Remotespeicher.
 
-* Stellen Sie sicher, dass die Clustergröße für die Workload geeignet ist. Möglicherweise hat sich die Workload oder die Größe des Cluster vor Kurzem geändert. [Skalieren](../hdinsight-scaling-best-practices.md) Sie den Cluster für eine höhere Workload zentral hoch.
+* Stellen Sie sicher, dass die Clustergröße für die Workload geeignet ist. Möglicherweise hat sich die Workload oder die Größe des Cluster vor Kurzem geändert. [Skalieren](../hdinsight-scaling-best-practices.md) Sie den Cluster für eine höhere Workload hoch.
 
 * Möglicherweise ist `/mnt/resource` mit verwaisten Dateien gefüllt (wie beim Resource Manager-Neustart). Führen Sie bei Bedarf eine manuelle Bereinigung von `/mnt/resource/hadoop/yarn/log` und `/mnt/resource/hadoop/yarn/local` durch.
 

@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612540"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1
@@ -65,7 +65,7 @@ Neben dem Schützen der Data Lake Storage-Konten vor dem Zugriff aus dem virtuel
 Verwenden Sie eine Firewalllösung in Ihrem virtuellen Netzwerk, um den ausgehenden Datenverkehr basierend auf der Zielkonto-URL zu filtern. Lassen Sie den Zugriff nur für genehmigte Data Lake Storage Gen1-Konten zu.
 
 Einige der verfügbaren Optionen sind:
-- [Azure Firewall:](https://docs.microsoft.com/azure/firewall/overview) [Stellen Sie eine Azure Firewall für Ihr virtuelles Netzwerk bereit, und konfigurieren Sie sie](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Schützen Sie den ausgehenden Data Lake Storage-Datenverkehr, und sperren Sie ihn für die bekannte und genehmigte Konto-URL.
+- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): [Stellen Sie eine Azure Firewall für Ihr virtuelles Netzwerk bereit, und konfigurieren Sie sie](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal). Schützen Sie den ausgehenden Data Lake Storage-Datenverkehr, und sperren Sie ihn für die bekannte und genehmigte Konto-URL.
 - Firewall für [virtuelle Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/): Ihr Administrator lässt unter Umständen nur die Verwendung der Produkte von bestimmten kommerziellen Firewallanbietern zu. Verwenden Sie eine Firewalllösung vom Azure Marketplace, die auf einem virtuellen Netzwerkgerät basiert, um die gleiche Funktion durchzuführen.
 
 > [!NOTE]

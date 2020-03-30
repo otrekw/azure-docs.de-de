@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer Single-Page-Webanwendung für die Bing-Videosuche'
+title: 'Tutorial: Erstellen einer einseitigen Bing-Videosuche-App'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird erläutert, wie Sie die Bing-Videosuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988259"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-Webanwendung für die Videosuche
@@ -87,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Das `onsubmit`-Attribut des HTML-Tags `<form>` ruft die `bingWebSearch`-Funktion auf, um die Suchergebnisse zurückzugeben. `bingWebSearch` verwendet `getSubscriptionKey()` zur Authentifizierung aller Abfragen. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, falls dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
+Das `<form>`-Attribut des HTML-Tags `onsubmit` ruft die `bingWebSearch`-Funktion auf, um die Suchergebnisse zurückzugeben. `bingWebSearch` verwendet `getSubscriptionKey()` zur Authentifizierung aller Abfragen. Wie in der obigen Definition gezeigt, fordert `getSubscriptionKey` den Benutzer zur Eingabe des Schlüssels auf, falls dieser noch nicht eingegeben wurde. Der Schlüssel wird anschließend gespeichert und kann von der Anwendung auch später verwendet werden.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -100,7 +100,7 @@ Die folgende Abbildung zeigt das Abfragetextfeld und Optionen, die eine Suche de
 
 Das HTML-Formular enthält folgende Elemente:
 
-|Element|Beschreibung|
+|Element|BESCHREIBUNG|
 |-|-|
 | `where` | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird. |
 | `query` | Das Textfeld, in das Suchbegriffe eingegeben werden. |
@@ -308,7 +308,7 @@ Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antw
 
 Die Bing-News-Suche-API gibt bis zu vier verschiedene Arten verwandter Ergebnisse zurück, und zwar jeweils in einem eigenen Objekt der obersten Ebene. Sie lauten wie folgt:
 
-|Beziehung|Beschreibung|
+|Beziehung|BESCHREIBUNG|
 |-|-|
 |`pivotSuggestions`|Abfragen, bei denen ein Pivot-Wort in der ursprünglichen Suche durch ein anderes ersetzt wird. Wenn Sie beispielsweise nach „rote Blumen“ suchen, kann ein Pivot-Wort „rote“ sein, und ein Pivot-Vorschlag kann „gelbe Blumen“ sein.|
 |`queryExpansions`|Abfragen, bei denen die ursprüngliche Suche durch Hinzufügen weiterer Begriffe eingegrenzt wird. Wenn Sie beispielsweise nach „Microsoft Surface“ suchen, kann eine Abfrageerweiterung „Microsoft Surface Pro“ sein.|
@@ -332,7 +332,7 @@ searchItemRenderers = {
 ```
 Für eine Funktion zum Rendern können die folgenden Parameter angegeben werden:
 
-|Parameter|Beschreibung|
+|Parameter|BESCHREIBUNG|
 |-|-|
 |`item`| Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`| Der Index des Ergebniselements innerhalb der Auflistung.|

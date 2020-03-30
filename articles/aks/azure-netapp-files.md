@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
 ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273747"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrieren von Azure NetApp Files in Azure Kubernetes Service
@@ -80,7 +80,7 @@ az netappfiles pool create \
     --service-level Premium
 ```
 
-Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][az-network-vnet-subnet-create][an Azure NetApp Files zu delegieren][anf-delegate-subnet]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
+Erstellen Sie ein Subnetz, um mithilfe von [az network vnet subnet create][anf-delegate-subnet][an Azure NetApp Files zu delegieren][az-network-vnet-subnet-create]. *Dieses Subnetz muss sich dabei im selben virtuellen Netzwerk wie Ihr AKS-Cluster befinden.*
 
 ```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus

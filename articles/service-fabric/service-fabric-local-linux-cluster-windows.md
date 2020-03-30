@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
 ms.openlocfilehash: 806e77a928d25e30aed24147525f74507bc32795
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462982"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Einrichten eines Linux-Service Fabric-Clusters auf Ihrem Windows-Entwicklungscomputer
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte in PowerShell aus, um einen lokalen Docker-Co
     >[!TIP]
     > Standardmäßig wird dann das Image mit der aktuellen Version von Service Fabric per Pullvorgang bereitgestellt. Bestimmte Revisionen finden Sie auf der Seite [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-3. Öffnen Sie ein Terminal, wechseln Sie per `cd` zum Verzeichnis mit Ihrer Datei vom Typ `Dockerfile`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
+3. Öffnen Sie ein Terminal, wechseln Sie per `Dockerfile` zum Verzeichnis mit Ihrer Datei vom Typ `cd`, und führen Sie anschließend Folgendes aus, um Ihr wiederverwendbares Images auf der Grundlage der Datei vom Typ `Dockerfile` zu erstellen:
 
     ```powershell 
     docker build -t mysfcluster .

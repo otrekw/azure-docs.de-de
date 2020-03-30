@@ -16,10 +16,10 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232164"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer vom Windows-VM-System zugewiesenen verwalteten Identität für den Zugriff auf Azure Storage über SAS-Anmeldeinformationen
@@ -50,7 +50,7 @@ Erstellen Sie ein Speicherkonto, sofern Sie über keines verfügen. Sie können 
 3. Geben Sie einen Namen für das Speicherkonto ein, das Sie später verwenden werden.  
 4. **Bereitstellungsmodell** und **Kontoart** sollten jeweils auf „Resource Manager“ und „Allgemein“ festgelegt werden. 
 5. Stellen Sie sicher, dass **Abonnement** und **Ressourcengruppe** dem entsprechen, was Sie bei der Erstellung Ihrer VM im vorherigen Schritt angegeben haben.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines neuen Speicherkontos](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

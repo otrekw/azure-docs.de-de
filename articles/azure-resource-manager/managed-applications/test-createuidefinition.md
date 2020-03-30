@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250178"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Testen Ihrer Portalschnittstelle für Azure Managed Applications
@@ -20,7 +20,7 @@ Nachdem Sie [die Datei „createUiDefinition.json“](create-uidefinition-overvi
 
 * Die Datei **createUiDefinition.json**. Falls Sie nicht über diese Datei verfügen, kopieren Sie die [Beispieldatei](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="use-sandbox"></a>Verwenden der Sandbox
 

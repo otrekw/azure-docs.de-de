@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Beheben von Fehlern während der Synchronisierung | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Beheben von Fehlern während der Synchronisierung | Microsoft Docs'
 description: Erläutert die Behebung von Fehlern während der Synchronisierung mit Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609195"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung

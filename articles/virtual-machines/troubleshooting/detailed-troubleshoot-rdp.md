@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920143"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Detaillierte Problembehandlung beim Herstellen einer Remotedesktopverbindung mit virtuellen Windows-Computern in Azure
@@ -91,7 +91,7 @@ Wenn Sie eine Remotedesktopverbindung mit einem direkt mit dem Internet verbunde
 
 Korrigieren Sie zusammen mit Ihrem Netzwerkadministrator die Einstellungen des Edgegeräts für das Intranet Ihrer Organisation, um HTTPS-basierte Remotedesktopverbindungen mit dem Internet zu ermöglichen.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Quelle 3: Clouddienst-Endpunkt und ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Quelle 3: Clouddienst-Endpunkt und ACL
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -100,14 +100,14 @@ Korrigieren Sie zusammen mit Ihrem Netzwerkadministrator die Einstellungen des E
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> Für virtuelle Computer, die im Resource Manager erstellt wurden, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#source-4-network-security-groups) fort.
+> Für virtuelle Computer, die im Ressourcen-Manager erstellt wurden, fahren Sie mit [Quelle 4: Netzwerksicherheitsgruppen](#source-4-network-security-groups)fort.
 
 Ist kein anderer virtueller Computer im gleichen Clouddienst oder virtuellen Netzwerk vorhanden, erstellen Sie einen. Führen Sie die unter [Erstellen eines virtuellen Computers unter Windows in Azure](../virtual-machines-windows-hero-tutorial.md) beschriebenen Schritte aus. Löschen Sie den virtuellen Testcomputer nach Abschluss des Tests wieder.
 
 Wenn Sie mit einem virtuellen Computer im gleichen Clouddienst oder virtuellen Netzwerk eine Remotedesktopverbindung herstellen können, überprüfen Sie Folgendes:
 
-* Die Endpunktkonfiguration für den Remotedesktop-Datenverkehr auf dem virtuellen Zielcomputer: Der private TCP-Port des Endpunkts muss dem TCP-Port entsprechen, an dem der Remotedesktopdienst lauscht (Standardeinstellung ist Port 3389).
-* Die ACL für den Endpunkt für den Remotedesktop-Datenverkehr auf dem virtuellen Zielcomputer: In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können verhindern, dass die Remotedesktop-Datenverkehr zum Endpunkt gelangt. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?](../../virtual-network/virtual-networks-acl.md)
+* Die Endpunktkonfiguration für den Remotedesktop-Datenverkehr auf der Ziel-VM: der private TCP-Port des Endpunkts muss mit dem TCP-Port übereinstimmen, den der Remotedesktop-Dienst der VM überwacht (standardmäßig 3389).
+* Die ACL für den Endpunkt des Remotedesktop-Datenverkehrs auf der Ziel-VM: In ACLs können Sie anhand der Quell-IP-Adresse angeben, ob eingehender Datenverkehr aus dem Internet zugelassen oder verweigert wird. Falsch konfigurierte ACLs können verhindern, dass die Remotedesktop-Datenverkehr zum Endpunkt gelangt. Überprüfen Sie die ACLs, um sicherzustellen, dass eingehender Verkehr von den öffentlichen IP-Adressen des Proxy- oder eines anderen Edgeservers zugelassen wird. Weitere Informationen finden Sie unter [Was ist eine Endpunkt-Zugriffssteuerungsliste (Access Control List, ACL)?](../../virtual-network/virtual-networks-acl.md)
 
 Um den Endpunkt als Problemquelle auszuschließen, entfernen Sie den aktuellen Endpunkt und erstellen Sie einen neuen Endpunkt. Wählen Sie einen zufälligen Port im Bereich von 49152 bis 65535 für die externe Portnummer aus. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: areddish
 ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77616321"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Java
@@ -32,7 +32,7 @@ Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vis
 
 Wenn Sie eine Java-App schreiben möchten, die Custom Vision verwendet, benötigen Sie die Maven-Pakete für Custom Vision. Diese Pakete sind in dem Beispielprojekt enthalten, das Sie herunterladen. Sie können hier aber auch einzeln auf sie zugreifen.
 
-Sie finden das Custom Vision SDK im zentralen Maven-Repository:
+Sie finden das Custom Vision SDK im zentralen Maven-Repository:
 - [Trainings-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Vorhersage-SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
@@ -97,7 +97,7 @@ Der Vorhersageendpunkt (hier dargestellt durch das Objekt `predictor`) ist die R
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Navigieren Sie zum Kompilieren und Ausführen der Lösung mit Maven an einer Eingabeaufforderung zum Projektverzeichnis (**Vision/CustomVision**), und führen Sie den run-Befehl aus:
+Navigieren Sie zum Kompilieren und Ausführen der Lösung mit Maven in einer Eingabeaufforderung zum Projektverzeichnis (**Vision/CustomVision**), und führen Sie den run-Befehl aus:
 
 ```bash
 mvn compile exec:java

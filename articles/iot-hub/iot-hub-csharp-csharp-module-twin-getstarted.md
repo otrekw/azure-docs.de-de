@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
 ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73947679"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (.NET)
@@ -71,7 +71,7 @@ Rufen Sie vor dem Beginn die Modulverbindungszeichenfolge ab. Melden Sie sich be
 
     ![Installieren des Azure IoT Hub-.NET-Dienst-SDK in der aktuellen Version](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

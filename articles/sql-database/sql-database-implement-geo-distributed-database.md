@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1da977f41add19afa6f84b7e5a3dc99c980ac1cf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 58d5bd4a7f3087e11056354f7534c3c9dbebca3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421139"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067287"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Tutorial: Implementieren einer geografisch verteilten Datenbank
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Für dieses Tutorial muss Folgendes installiert sein:
 
@@ -58,7 +58,7 @@ Für dieses Tutorial muss Folgendes installiert sein:
 
 Erstellen Sie mit Azure PowerShell [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL-Server und einem neuen Azure SQL-Server in einer anderen Region. Fügen Sie dann der Failovergruppe die Beispieldatenbank hinzu.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -90,12 +90,12 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 > [!IMPORTANT]
 > Führen Sie `az login` aus, um sich bei Azure anzumelden.
 
-```powershell
+```azurecli
 $admin = "<adminName>"
 $password = "<password>"
 $resourceGroup = "<resourceGroupName>"
@@ -317,7 +317,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
 
 Führen Sie die folgenden Skripts aus, um ein Failover zu simulieren und die Anwendungsergebnisse zu beobachten. Beachten Sie, wie einige Einfüge- und Auswahlvorgänge während der Datenbankmigration zu Fehlern führen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Sie können während des Tests mit dem folgenden Befehl die Rolle des Notfallwiederherstellungsservers überprüfen:
 
@@ -342,11 +342,11 @@ So testen Sie ein Failover
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Sie können während des Tests mit dem folgenden Befehl die Rolle des Notfallwiederherstellungsservers überprüfen:
 
-```azure-cli
+```azurecli
 az sql failover-group show --name $failoverGroup --resource-group $resourceGroup --server $drServer
 ```
 
@@ -354,13 +354,13 @@ So testen Sie ein Failover
 
 1. Starten Sie das manuelle Failover der Failovergruppe:
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $drServer
    ```
 
 1. Stellen Sie die Failovergruppe auf dem primären Server wieder her:
 
-   ```azure-cli
+   ```azurecli
    az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
    ```
 
@@ -368,7 +368,7 @@ So testen Sie ein Failover
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure SQL-Datenbank-Instanz und -Anwendung für das Failover zu einer Remoteregion konfiguriert und einen Failoverplan getestet. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Azure SQL-Datenbank-Instanz und -Anwendung für das Failover zu einer Remoteregion konfiguriert und einen Failoverplan getestet. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > - Erstellen einer Georeplikations-Failovergruppe

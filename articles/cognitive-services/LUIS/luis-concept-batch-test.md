@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218824"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
@@ -120,7 +120,7 @@ Datenpunkte in den Abschnitten **False Positive** (Falsch positives Ergebnis) un
 
 Dieses Diagramm unterstützt Sie beim Auffinden von Äußerungen, die LUIS auf der Grundlage seines aktuellen Trainings falsch vorhersagt. Die Ergebnisse werden pro Bereich des Diagramms angezeigt. Wählen Sie einzelne Punkte im Diagramm aus, um die Äußerungsinformationen zu überprüfen, oder wählen Sie den Bereichsnamen aus, um Ergebnisse für Äußerungen im betreffenden Bereich zu überprüfen.
 
-![Batchtests](./media/luis-concept-batch-test/batch-testing.png)
+![Testen in Batches](./media/luis-concept-batch-test/batch-testing.png)
 
 ## <a name="errors-in-the-results"></a>Fehler in den Ergebnissen
 

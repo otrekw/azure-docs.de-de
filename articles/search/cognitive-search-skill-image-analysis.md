@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080193"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369474"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
@@ -55,10 +55,11 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
             "context": "/document/normalized_images/*",
             "defaultLanguageCode": "en",
             "visualFeatures": [
-                "Tags",
-                "Categories",
-                "Description",
-                "Faces"
+                "tags",
+                "categories",
+                "description",
+                "faces",
+                "brands"
             ],
             "inputs": [
                 {
@@ -78,6 +79,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
                 },
                 {
                     "name": "faces"
+                },
+                {
+                    "name": "brands"
                 }
             ]
         }
@@ -312,6 +316,10 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
         {
             "sourceFieldName": "/document/normalized_images/*/faces/*",
             "targetFieldName": "faces"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/brands/*/name",
+            "targetFieldName": "brands"
         }
 ```
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>Variation von Ausgabefeldzuordnungen (verschachtelte Eigenschaften)
@@ -485,6 +493,7 @@ Sie können Ausgabefeldzuordnungen zu Eigenschaften niedrigerer Ebenen definiere
         "brands":[  
            {  
               "name":"Microsoft",
+              "confidence": 0.903,
               "rectangle":{  
                  "x":20,
                  "y":97,

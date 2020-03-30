@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871260"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Ausführen von SQL-Abfragen in Azure Cosmos DB
@@ -19,7 +19,7 @@ Die Cosmos DB-REST-API kann mit jeder Sprache aufgerufen werden, die HTTP/HTTPS-
 
 Die folgenden Beispiele zeigen, wie Sie eine Abfrage erstellen und auf einem Cosmos-Datenbankkonto ausführen können.
 
-## <a id="REST-API"></a>REST-API
+## <a name="rest-api"></a><a id="REST-API"></a>REST-API
 
 Cosmos DB bietet ein RESTful-Programmiermodell über HTTP. Das Ressourcenmodell besteht aus einem Satz von Ressourcen in einem Datenbankkonto, das von einem Azure-Abonnement bereitgestellt wird. Das Datenbankkonto besteht aus einem Satz von *Datenbanken*, die jeweils mehrere *Container* enthalten können, die wiederum *Elemente*, UDFs und andere Ressourcentypen enthalten. Jede Cosmos DB-Ressource kann über einen logischen und beständigen URI adressiert werden. Ein Satz von Ressourcen wird als *Feed* bezeichnet. 
 
@@ -41,7 +41,7 @@ Die folgenden Beispiele zeigen einen `POST`-Vorgang für eine SQL-API-Abfrage de
     }
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     HTTP/1.1 200 Ok
@@ -112,7 +112,7 @@ Die nächste, komplexere Abfrage gibt mehrere Ergebnisse aus einer Verknüpfung 
     }
 ```
 
-Die Ergebnisse sind wie folgt: 
+Die Ergebnisse sind: 
 
 ```json
     HTTP/1.1 200 Ok
@@ -243,11 +243,11 @@ Das nächste Beispiel zeigt Verknüpfungen mithilfe von LINQ `SelectMany`.
 
 Der .NET-Client durchläuft automatisch alle Seiten der Abfrageergebnisse in den `foreach`-Blöcken wie im vorherigen Beispiel gezeigt. Die im Abschnitt zur [REST-API](#REST-API) vorgestellten Abfrageoptionen sind auch im .NET SDK über die Klassen `FeedOptions` and `FeedResponse` in der `CreateDocumentQuery`-Methode verfügbar. Sie können die Anzahl der Seiten über die `MaxItemCount`-Einstellung steuern.
 
-Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IQueryable`-Objekts ein `IDocumentQueryable`-Element erstellen, die `ResponseContinuationToken`-Werte lesen und sie anschließend als `RequestContinuationToken` in `FeedOptions` zurückgeben. Sie können `EnableScanInQuery` festlegen, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt wird. Für partitionierte Container können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen, auch wenn Azure Cosmos DB dies automatisch aus dem Abfragetext extrahieren kann. Mit `EnableCrossPartitionQuery` können Sie Abfragen für mehrere Partitionen ausführen.
+Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IDocumentQueryable`-Objekts ein `IQueryable`-Element erstellen, die `ResponseContinuationToken`-Werte lesen und sie anschließend als `RequestContinuationToken` in `FeedOptions` zurückgeben. Sie können `EnableScanInQuery` festlegen, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt wird. Für partitionierte Container können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen, auch wenn Azure Cosmos DB dies automatisch aus dem Abfragetext extrahieren kann. Mit `EnableCrossPartitionQuery` können Sie Abfragen für mehrere Partitionen ausführen.
 
 Weitere Beispiele für .NET mit Abfragen finden Sie unter den [Azure Cosmos DB-.NET-Beispielen](https://github.com/Azure/azure-cosmos-dotnet-v3) in GitHub.
 
-## <a id="JavaScript-server-side-API"></a>Serverseitige JavaScript-API
+## <a name="javascript-server-side-api"></a><a id="JavaScript-server-side-API"></a>Serverseitige JavaScript-API
 
 Azure Cosmos DB bietet ein Programmiermodell zur [Ausführung JavaScript-basierter Anwendungslogik](stored-procedures-triggers-udfs.md) direkt für Container über gespeicherte Prozeduren und Trigger. Die auf Containerebene registrierte JavaScript-Logik kann anschließend Datenbankvorgänge für die Elemente der jeweiligen Container ausführen, die in ACID-Transaktionen der jeweiligen Umgebung gekapselt werden.
 

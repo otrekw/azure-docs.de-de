@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840603"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
@@ -44,7 +44,7 @@ Die bereitgestellte Vorlage kann bearbeitet werden. Sie können sie also ändern
 
 ## <a name="setup"></a>Einrichten
 
-Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von Netzwerksicherheits-Flowprotokollen finden Sie in folgendem Artikel: [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, und auf dem Computer muss ausreichend freier Speicherplatz vorhanden sein, um die Protokolldaten, die in Ihrem Speicherkonto vorhanden sind, herunterzuladen und zu laden.
 

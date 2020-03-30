@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
 ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822077"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Mandantenübergreifende Berichte mithilfe verteilter Abfragen
@@ -172,7 +172,7 @@ Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** b
 
    Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Der Großteil der Verarbeitung erfolgt remote.  Nur einzelne Zeilen mit den Ticketverkaufszahlen pro Tag für jeden Veranstaltungsort werden an die Hauptdatenbank zurückgegeben.
 
-   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![Abfrage](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

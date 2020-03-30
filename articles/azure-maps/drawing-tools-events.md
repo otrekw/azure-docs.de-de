@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198308"
 ---
 # <a name="drawing-tool-events"></a>Ereignisse von Zeichentools
 
 Wenn Sie auf einer Karte Zeichentools verwenden, ist es sinnvoll, auf bestimmte Ereignisse zu reagieren, während der Benutzer auf der Karte zeichnet. Die folgende Tabelle enthält alle Ereignisse, die von der Klasse `DrawingManager` unterstützt werden:
 
-| Ereignis | Beschreibung |
+| Ereignis | BESCHREIBUNG |
 |-------|-------------|
 | `drawingchanged` | Wird ausgelöst, wenn in einer Form eine Koordinate hinzugefügt oder geändert wurde. | 
 | `drawingchanging` | Wird ausgelöst, wenn eine Vorschaukoordinate für eine Form angezeigt wird. Dieses Ereignis wird beispielsweise mehrmals ausgelöst, wenn eine Koordinate gezogen wird. | 

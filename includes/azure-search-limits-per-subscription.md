@@ -1,19 +1,18 @@
 ---
 title: include file
 description: include file
-services: search
 author: HeidiSteen
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 380a0a76de763df5f2cc6ff702750b36d233728d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272688"
 ---
 Sie können mehrere Dienste in einem Abonnement erstellen. Jeder kann für einen bestimmten Tarif bereitgestellt werden. Sie sind nur durch die Anzahl der Dienste beschränkt, die in einem Tarif zulässig sind. Beispielsweise können Sie in einem Abonnement bis zu 12 Dienste für den Basic-Tarif und weitere 12 Dienste für den S1-Tarif erstellen. Weitere Informationen zu Tarifen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Cognitive Search](../articles/search/search-sku-tier.md).
 

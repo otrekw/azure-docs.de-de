@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
 ms.openlocfilehash: 1c2196f1f834002b76dbea555b54a5162655ec1c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77205750"
 ---
 ## <a name="local-settings-file"></a>Datei für lokale Einstellungen
@@ -37,7 +37,7 @@ Die Datei „local.settings.json“ speichert App-Einstellungen, Verbindungszeic
 
 Diese Einstellungen werden bei der lokalen Ausführung von Projekten unterstützt:
 
-| Einstellung      | Beschreibung                            |
+| Einstellung      | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`IsEncrypted`** | Wenn diese Einstellung auf `true` festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist `false`. |
 | **`Values`** | Ein Array von Anwendungseinstellungen und Verbindungszeichenfolgen, die bei der lokalen Ausführung eines Projekts verwendet werden. Diese Schlüssel-Wert-Paare (Zeichenfolge-Zeichenfolge) entsprechen den Anwendungseinstellungen in Ihrer Funktions-App in Azure, etwa [`AzureWebJobsStorage`]. Viele Trigger und Bindungen verfügen über eine Eigenschaft, die auf eine App-Einstellung für die Verbindungszeichenfolge verweist, z. B. `Connection` für den [Blob Storage-Trigger](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Für diese Eigenschaften muss eine Anwendungseinstellung im Array `Values` definiert sein. <br/>[`AzureWebJobsStorage`] ist eine erforderliche App-Einstellung für andere Trigger als HTTP. <br/>Ab Version 2.x der Functions-Runtime ist die Einstellung [`FUNCTIONS_WORKER_RUNTIME`] erforderlich, die mit Core-Tools für Ihr Projekt generiert wird. <br/> Wenn der [Azure-Speicheremulator](../articles/storage/common/storage-use-emulator.md) lokal installiert ist und Sie [`AzureWebJobsStorage`] auf `UseDevelopmentStorage=true` festlegen, verwendet Core Tools den Emulator. Der Emulator ist während der Entwicklung hilfreich, doch sollten Sie vor der Bereitstellung einen Test mit einer tatsächlichen Speicherverbindung durchführen.<br/> Werte müssen Zeichenfolgen und dürfen nicht JSON-Objekte oder Arrays sein. Einstellungsnamen dürfen weder einen Doppelpunkt (`:`) noch einen doppelten Unterstrich (`__`) enthalten. Diese Zeichen sind für die Runtime reserviert.  |

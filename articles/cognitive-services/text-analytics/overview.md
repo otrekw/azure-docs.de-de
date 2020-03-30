@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78395728"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
@@ -84,7 +84,7 @@ Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artik
 
 Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen.
 
-| Begrenzung | Wert |
+| Begrenzung | value |
 |------------------------|---------------|
 | Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (von [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gemessen) |
 | Maximale Größe der gesamte Anforderung | 1 MB |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399176"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Spracherkennungscontainers der Textanalyse in Azure Kubernetes Service
@@ -25,7 +25,7 @@ Hier erfahren Sie, wie Sie den Sprachenerkennungscontainer bereitstellen. In dem
 
 Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt werden. Verwenden Sie nicht Azure Cloud Shell.
 
-* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 * [Git](https://git-scm.com/downloads) für Ihr Betriebssystem, um das in diesem Verfahren verwendete [Beispiel](https://github.com/Azure-Samples/cognitive-services-containers-samples) klonen zu können.
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Docker-Engine](https://www.docker.com/products/docker-engine). (Vergewissern Sie sich, dass die Docker-Befehlszeilenschnittstelle in einem Konsolenfenster funktioniert.)

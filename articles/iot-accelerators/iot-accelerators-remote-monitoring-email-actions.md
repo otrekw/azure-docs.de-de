@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168366"
 ---
 # <a name="add-an-email-action"></a>Hinzufügen einer E-Mail-Aktion
@@ -81,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um beim Erstellen einer neuen Regel eine
 
 Ihre Regel mit einer E-Mail-Aktion ist jetzt aktiviert. Bei jeder Auslösung der Aktion wird eine neue E-Mail an die Empfänger gesendet.
 
-## Anmelden bei Outlook <a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Anmelden bei Outlook <a name="outlook"></a>
 
 Bei der ersten Aktivierung einer E-Mail-Aktion im Solution Accelerator müssen Sie sich bei Outlook anmelden. Mit dieser Aktion wird das E-Mail-Konto eingerichtet, das die E-Mail-Benachrichtigungen sendet.
 
@@ -138,7 +138,7 @@ Mit den folgenden Schritten können Sie sich anmelden und E-Mail-Aktionen einric
 
    ![Erfolgreiche Outlook-Anmeldung](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## Anpassen der E-Mail-HTML <a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>Anpassen der E-Mail-HTML <a name="htmledit"></a>
 
 Der vorkonfigurierte Solution Accelerator für die Remoteüberwachung stellt eine einfache HTML-Vorlage für Aktions-E-Mails bereit. In der E-Mail-Vorlage werden Werte aus den Einstellungen der E-Mail-Aktionen verwendet. Hier sehen Sie eine Beispiel-E-Mail:
 

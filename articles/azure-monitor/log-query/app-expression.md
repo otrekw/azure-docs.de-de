@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670254"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
@@ -26,9 +26,9 @@ Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer 
 
 ## <a name="arguments"></a>Argumente
 
-- *Bezeichner*: Identifiziert die Anwendung mit einem der Formate in der folgenden Tabelle.
+- *Identifier*: identifiziert die Anwendung mit einem der Formate in der folgenden Tabelle.
 
-| Bezeichner | Beschreibung | Beispiel
+| Bezeichner | BESCHREIBUNG | Beispiel
 |:---|:---|:---|
 | Ressourcenname | Für Menschen lesbarer Name der Anwendung (auch als „Komponentenname“ bezeichnet) | app("fabrikamapp") |
 | Qualifizierter Name | Vollständiger Name der Anwendung in der Form: „Abonnementname/Ressourcengruppe/Komponentenname“ | app('AI-Prototype/Fabrikam/fabrikamapp') |

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720485"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Bereitstellungsphase des Team Data Science-Prozesslebenszyklus
@@ -39,7 +39,7 @@ Stellen Sie Modelle mit einer Datenpipeline in einer Produktionsumgebung oder ei
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase geht es um die folgende Hauptaufgabe:
 
-**Operationalisieren des Modells:** Stellen Sie das Modell und die Pipeline in einer Produktionsumgebung oder produktionsähnlichen Umgebung zur Nutzung der Anwendung bereit.
+**Operationalisieren des Modells**: Stellen Sie das Modell und die Pipeline in einer Produktionsumgebung oder produktionsähnlichen Umgebung zur Nutzung der Anwendung bereit.
 
 ### <a name="operationalize-a-model"></a>Operationalisieren eines Modells
 Nachdem wir eine Gruppe von Modellen mit adäquater Leistung haben, können diese für die Nutzung durch andere Anwendungen operationalisiert werden. Abhängig von den Geschäftsanforderungen erfolgen Vorhersagen entweder in Echtzeit oder auf Batchbasis. Um Modelle bereitzustellen, machen Sie diese mit einer offenen API-Schnittstelle verfügbar. Die Schnittstelle ermöglicht die einfache Verwendung des Modells durch unterschiedliche Anwendungen wie:

@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
 ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227602"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Beim Er
 
 Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] und [Was versteht man unter Azure Load Balancer?][azure-lb].
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -63,7 +63,7 @@ Wenn Sie einen AKS-Cluster erstellen, wird standardmäßig ein Lastenausgleich m
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurieren des Load Balancers als internen Lastenausgleich
 
-Sie können den Lastenausgleich auch als internen Lastenausgleich konfigurieren und keine öffentliche IP-Adresse verfügbar machen. Wenn Sie den Lastenausgleich als intern konfigurieren möchten, müssen Sie dem Dienst *LoadBalancer* die Anmerkung `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` hinzufügen. Ein exemplarisches YAML-Manifest sowie weitere Details zum internen Lastenausgleich finden Sie [hier][internal-lb-yaml].
+Sie können den Lastenausgleich auch als internen Lastenausgleich konfigurieren und keine öffentliche IP-Adresse verfügbar machen. Wenn Sie den Lastenausgleich als intern konfigurieren möchten, müssen Sie dem Dienst `service.beta.kubernetes.io/azure-load-balancer-internal: "true"`LoadBalancer*die Anmerkung* hinzufügen. Ein exemplarisches YAML-Manifest sowie weitere Details zum internen Lastenausgleich finden Sie [hier][internal-lb-yaml].
 
 ## <a name="scale-the-number-of-managed-public-ips"></a>Skalieren der Anzahl der verwalteten öffentlichen IP-Adressen
 

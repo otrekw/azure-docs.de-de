@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Synchronisierungsdienstinstanzen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Synchronisierungsdienstinstanzen | Microsoft Docs'
 description: Diese Seite beschreibt besondere Überlegungen für Azure AD-Instanzen.
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66298829"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Besondere Überlegungen zu Instanzen

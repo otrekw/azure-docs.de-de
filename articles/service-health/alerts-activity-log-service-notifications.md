@@ -4,10 +4,10 @@ description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn 
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749310"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
@@ -60,7 +60,7 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
     > [!NOTE]
     > Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
 
-1. Wählen Sie die **Ereignistypen** aus, bei denen Sie benachrichtigt werden möchten: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
+1. Wählen Sie die **Ereignistypen** für Benachrichtigungen aus: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
 
 1. Definieren Sie die Warnungsdetails durch Eingeben eines **Namens für die Warnungsregel** und einer **Beschreibung**.
 
@@ -72,7 +72,7 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
 1. Definieren Sie eine Liste von Empfängern, indem Sie folgende Daten der Empfänger angeben:
 
-    a. **Name**: Geben Sie Name, Alias oder Bezeichner des Empfängers ein.
+    a. **Name:** Geben Sie Name, Alias oder Bezeichner des Empfängers ein.
 
     b. **Aktionstyp**: Wählen Sie „SMS“, „E-Mail“, „Webhook“ „Azure-App“ usw. aus.
 

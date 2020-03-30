@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
 ms.openlocfilehash: fba762a53ec562bdbd52468716ce6e44eb717aaa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73887187"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDKs und CLI-Tools

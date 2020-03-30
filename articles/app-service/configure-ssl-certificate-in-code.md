@@ -6,10 +6,10 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671897"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Verwenden eines SSL-Zertifikats in Ihrem Code in Azure App Service

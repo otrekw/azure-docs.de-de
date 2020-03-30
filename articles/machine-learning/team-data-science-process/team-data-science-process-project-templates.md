@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864229"
 ---
 # <a name="team-data-science-process-project-planning"></a>Projektplanung für einen Team Data Science-Prozess
@@ -35,7 +35,7 @@ Beschreibungen zu den einzelnen Phasen finden Sie unter [Lebenszyklus des Team D
  
 ## <a name="microsoft-project-template"></a>Microsoft Project-Vorlage
 
-Die Microsoft Project-Vorlage für den Team Data Science-Prozess ist hier verfügbar: [Microsoft Project-Vorlage](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Die Microsoft Project-Vorlage für den Team Data Science-Prozess ist hier verfügbar: [Microsoft Project-Vorlage](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp). 
 
 Wenn Sie den Plan öffnen, klicken Sie für die TDSP auf den ganz links stehenden Link. Ändern Sie den Namen und die Beschreibung, und fügen Sie dann weitere erforderliche Teamressourcen hinzu. Kalkulieren Sie die erforderlichen Daten anhand Ihrer Erfahrungen.
 

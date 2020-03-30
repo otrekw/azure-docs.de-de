@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: b946a360ced05500a4ef89cda7c623d8ae16658e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444867"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Welche Optionen bietet die Azure Firewall Manager-Architektur?

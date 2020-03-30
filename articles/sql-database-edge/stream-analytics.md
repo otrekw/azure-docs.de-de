@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384157"
 ---
 # <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>Verwenden von SQL-Datenbank-DAC-Paketen und Stream Analytics-Aufträgen mit SQL Database Edge
@@ -55,7 +55,7 @@ Wenn Sie ein SQL-Datenbank-DAC-Paket (*.DACPAC) mit SQL Database Edge verwenden 
 
     2. Wählen Sie im linken Bereich die Option **IoT Edge** aus.
 
-    3. Suchen Sie auf der Seite **IoT Edge** nach der IoT Edge-Instanz, in der das SQL Database Edge-Modul bereitgestellt wurde, und wählen Sie es aus.
+    3. Suchen Sie auf der Seite **IoT Edge** nach der IoT Edge-Instanz, in der das SQL Database Edge-Modul bereitgestellt wurde, und wählen Sie sie aus.
 
     4. Wählen Sie auf der Geräteseite **IoT Edge-Gerät** die Option **Modul festlegen** aus.
 
@@ -104,7 +104,7 @@ Azure SQL Database Edge enthält eine native Implementierung der Stream Analytic
     |Servername | Name (oder IP-Adresse) und Portnummer für die SQL Server-Instanz. Bei einer SQL Database Edge-Bereitstellung können Sie **tcp:.,1433** für den Servernamen verwenden.|
     |Username | SQL-Anmeldekonto, das über Datenleser- und Datenschreiberzugriff auf die zuvor angegebene Datenbank verfügt.|
     |Kennwort | Kennwort für das zuvor angegebene SQL-Anmeldekonto.|
-    |Table | Name der Tabelle, die für den Streamingauftrag ausgegeben wird.|
+    |Tabelle | Name der Tabelle, die für den Streamingauftrag ausgegeben wird.|
     |Partitionierung erben| Ermöglicht das Erben des Partitionierungsschemas Ihres vorherigen Abfrageschritts oder Ihrer vorherigen Eingabe. Wenn diese Option aktiviert ist, können Sie einen besseren Durchsatz erwarten, wenn Sie in eine datenträgerbasierte Tabelle schreiben und es eine vollständig parallele Topologie für Ihren Auftrag gibt.|
     |Batchgröße| Die maximale Anzahl von Datensätzen, die bei jeder Masseneinfügungstransaktion gesendet werden.|
 
@@ -152,7 +152,7 @@ Wenn Sie den Streamingauftrag im SQL Database Edge-Modul bereitstellen möchten,
 
 5. Wählen Sie auf der Seite **Module festlegen** für das SQL Database Edge-Modul **Konfigurieren** aus.
 
-6. Wählen Sie im Bereich **Benutzerdefinierte IoT Edge-Module** die Option **Gewünschte Eigenschaften für Modulzwilling festlegen** aus. Aktualisieren Sie die gewünschten Eigenschaften so, dass sie den URI für die Option `ASAJobInfo` enthalten, wie im folgenden Beispiel gezeigt wird.
+6. Wählen Sie im Bereich **Benutzerdefinierte IoT Edge-Module** die Option **Gewünschte Eigenschaften für Modulzwilling festlegen** aus. Aktualisieren Sie die gewünschten Eigenschaften, um den URI für die Option `ASAJobInfo` einzubeziehen, wie im folgenden Beispiel gezeigt wird.
 
     > [!NOTE]
     > Der SAS-URI im nachstehenden JSON-Code ist nur ein Beispiel. Ersetzen Sie diesen URI durch den tatsächlichen URI aus Ihrer Bereitstellung.

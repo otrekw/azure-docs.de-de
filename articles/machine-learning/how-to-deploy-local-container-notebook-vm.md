@@ -11,10 +11,10 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: afbd9950c31bc1c40b01ec0aaf3d2bfffb8a6b94
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78398145"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Bereitstellen eines Modells auf einer Azure Machine Learning Studio-Compute-Instanz

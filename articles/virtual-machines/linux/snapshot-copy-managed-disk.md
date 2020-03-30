@@ -15,10 +15,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034799"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme 
@@ -41,7 +41,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-Erstellen Sie mit [az snapshot create](/cli/azure/snapshot#az-snapshot-create) eine Momentaufnahme namens *osDisk-backup*.
+Erstellen Sie mit *az snapshot create* eine Momentaufnahme namens [osDisk-backup](/cli/azure/snapshot#az-snapshot-create).
 
 ```azurecli-interactive
 az snapshot create \
@@ -70,7 +70,7 @@ az snapshot list \
 5. Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie den Namen für eine neue Ressourcengruppe ein. 
 7. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 8. Wählen Sie den **Kontotyp** aus, der zum Speichern der Momentaufnahme verwendet werden soll. Wir empfehlen **Standard-Festplattenlaufwerke**, es sei denn, Sie benötigen eine leistungsstarke SSD.
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

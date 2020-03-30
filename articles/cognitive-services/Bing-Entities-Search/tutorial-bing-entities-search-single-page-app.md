@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Single-Page-Webanwendung für die Bing-Entitätssuche'
+title: 'Tutorial: Einzelseiten-Web-App für die Bing-Entitätssuche'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird beschrieben, wie Sie die Bing-Entitätssuche-API in einer Single-Page-Webanwendung verwenden.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943136"
 ---
-# <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
+# <a name="tutorial-single-page-web-app"></a>Tutorial: Single-Page-Web-App
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
@@ -71,7 +71,7 @@ Die Tutorialanwendung setzt sich ebenso wie alle anderen Single-Page-Webanwendun
 
 In diesem Tutorial wird ein Großteil des HTML- und CSS-Codes nicht ausführlich behandelt, da dieser selbsterklärend ist.
 
-Der HTML-Teil enthält das Suchformular, in dem der Benutzer eine Abfrage eingibt und Suchoptionen auswählt. Das Formular wird vom JavaScript-Teil ausgewertet, der die Suche mithilfe des `onsubmit`-Attributs des `<form>`-Tags ausführt:
+Der HTML-Teil enthält das Suchformular, in dem der Benutzer eine Abfrage eingibt und Suchoptionen auswählt. Das Formular wird vom JavaScript-Teil ausgewertet, der die Suche mithilfe des `<form>`-Attributs des `onsubmit`-Tags ausführt:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">

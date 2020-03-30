@@ -8,10 +8,10 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688641"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
@@ -26,7 +26,7 @@ Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-n
 
 Es gibt zwei Möglichkeiten, Zertifikate mit Ihrer ILB-ASE zu konfigurieren.  Sie können ein Platzhalterzertifikat für die ILB-ASE festlegen oder Zertifikate für die einzelnen Web-Apps in der ASE festlegen.  Unabhängig davon, welche Auswahl Sie treffen, müssen die folgenden Zertifikatsattribute ordnungsgemäß konfiguriert sein:
 
-- **:** Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
+- **Antragsteller**: Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
 - **Alternativer Antragstellername**: Dieses Attribut muss sowohl *.[ihre-stammdomäne-hier] als auch *.scm.[ihre-stammdomäne-hier] für das ILB-ASE-Platzhalterzertifikat enthalten. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] und [app-name].scm.[ihre-stammdomäne-hier] lauten.
 
 Als dritte Variante können Sie ein ILB-ASE-Zertifikat erstellen, das alle Ihre individuellen App-Namen im SAN des Zertifikats anstelle einer Platzhalterreferenz enthält. Das Problem mit dieser Methode ist, dass Sie im Voraus die Namen der Apps wissen müssen, die Sie in die ASE einfügen, oder dass Sie das ILB-ASE-Zertifikat ständig aktualisieren müssen.

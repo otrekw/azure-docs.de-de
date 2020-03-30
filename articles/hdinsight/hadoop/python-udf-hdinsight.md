@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74148394"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
 
 Erfahren Sie, wie Sie benutzerdefinierte Python-Funktionen (User-Defined Functions, UDFs) mit Apache Hive und Apache Pig in Apache Hadoop in Azure HDInsight verwenden.
 
-## <a name="python"></a>Python in HDInsight
+## <a name="python-on-hdinsight"></a><a name="python"></a>Python in HDInsight
 
 Python 2.7 wird in der Version HDInsight 3.0 und höher standardmäßig installiert. Apache Hive kann mit dieser Version von Python zur Streamverarbeitung verwendet werden. Die Streamverarbeitung nutzt STDOUT und STDIN, um Daten zwischen Hive und der benutzerdefinierten Funktion zu übergeben.
 
@@ -27,10 +27,10 @@ HDInsight enthält außerdem Jython, eine in Java geschriebene Python-Implementi
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit einer Resource Manager-Vorlage](apache-hadoop-linux-tutorial-get-started.md).
+* **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * Das [URI-Schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder adl:// für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage aktiviert ist, lautet der URI wasbs://.  Siehe auch [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
-* **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie ein Speicherkonto vom Typ `BlobStorage` verwenden, helfen Ihnen die Informationen unter [Speicherkonfiguration](#storage-configuration) weiter.
+* **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie ein Speicherkonto vom Typ [ verwenden, helfen Ihnen die Informationen unter ](#storage-configuration)Speicherkonfiguration`BlobStorage` weiter.
 * Optional.  Wenn Sie PowerShell verwenden möchten, müssen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) installieren.
 
 > [!NOTE]  
@@ -38,7 +38,7 @@ HDInsight enthält außerdem Jython, eine in Java geschriebene Python-Implementi
 
 ## <a name="storage-configuration"></a>Speicherkonfiguration
 
-Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto vom Typ `Storage (general purpose v1)` oder `StorageV2 (general purpose v2)` ist.  Der Prozess in diesem Artikel wird mindestens zu einer Ausgabe in `/tezstaging` führen.  In einer Hadoop-Standardkonfiguration ist `/tezstaging` in der Konfigurationsvariablen `fs.azure.page.blob.dir` in der Datei `core-site.xml` des `HDFS`-Diensts enthalten.  Diese Konfiguration bewirkt, dass es sich bei der Ausgabe im Verzeichnis um Seitenblobs handelt. Diese werden für Speicherkonten vom Typ `BlobStorage` aber nicht unterstützt.  Entfernen Sie `/tezstaging` aus der Konfigurationsvariablen `fs.azure.page.blob.dir`, damit Sie `BlobStorage` im Rahmen dieses Artikels verwenden können.  Zugriff auf die Konfiguration besteht über die [Ambari-Benutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).  Andernfalls erhalten Sie diese Fehlermeldung: `Page blob is not supported for this account type.`
+Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto vom Typ `Storage (general purpose v1)` oder `StorageV2 (general purpose v2)` ist.  Der Prozess in diesem Artikel wird mindestens zu einer Ausgabe in `/tezstaging` führen.  In einer Hadoop-Standardkonfiguration ist `/tezstaging` in der Konfigurationsvariablen `fs.azure.page.blob.dir` in der Datei `core-site.xml` des `HDFS`-Diensts enthalten.  Diese Konfiguration bewirkt, dass es sich bei der Ausgabe im Verzeichnis um Seitenblobs handelt. Diese werden für Speicherkonten vom Typ `BlobStorage` aber nicht unterstützt.  Entfernen Sie `BlobStorage` aus der Konfigurationsvariablen `/tezstaging`, damit Sie `fs.azure.page.blob.dir` im Rahmen dieses Artikels verwenden können.  Zugriff auf die Konfiguration besteht über die [Ambari-Benutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).  Andernfalls erhalten Sie diese Fehlermeldung: `Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Für die Schritte in diesem Dokument gelten die folgenden Annahmen:  
@@ -52,7 +52,7 @@ Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto vom Typ `Sto
 > * `scp` zum Hochladen der Dateien aus Cloud Shell in HDInsight verwenden.
 > * `ssh` aus Cloud Shell zum Herstellen einer Verbindung mit HDInsight verwenden und die Beispiele ausführen.
 
-## <a name="hivepython"></a>Benutzerdefinierte Apache Hive-Funktion
+## <a name="apache-hive-udf"></a><a name="hivepython"></a>Benutzerdefinierte Apache Hive-Funktion
 
 Python kann mittels der Hive QL-`TRANSFORM`-Anweisung als UDF von Hive aus verwendet werden. Beispielsweise ruft die folgende HiveQL-Anweisung die im standardmäßigen Azure Storage-Konto für den Cluster gespeicherte `hiveudf.py`-Datei auf.
 
@@ -287,7 +287,7 @@ Die Ausgabe für den **Hive**-Auftrag sollte ungefähr folgendem Beispiel entspr
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-## <a name="pigpython"></a>Benutzerdefinierte Apache Pig-Funktion
+## <a name="apache-pig-udf"></a><a name="pigpython"></a>Benutzerdefinierte Apache Pig-Funktion
 
 Ein Python-Skript kann mit der `GENERATE`-Anweisung von Pig aus als UDF verwendet werden. Sie können das Skript entweder mit Jython oder C-Python ausführen.
 
@@ -555,7 +555,7 @@ Die Ausgabe für den **Pig**-Job sollte ungefähr folgenden Daten entsprechen:
     ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
     ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-## <a name="troubleshooting"></a>Problembehandlung
+## <a name="troubleshooting"></a><a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="errors-when-running-jobs"></a>Fehler beim Ausführen von Aufträgen
 
@@ -582,7 +582,7 @@ Die Fehlerinformationen (STDERR) und das Ergebnis des Auftrags (STDOUT) werden a
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
 Wenn Sie Python-Module laden müssen, die standardmäßig nicht bereitgestellt werden, lesen Sie [Bereitstellen eines Moduls für Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 

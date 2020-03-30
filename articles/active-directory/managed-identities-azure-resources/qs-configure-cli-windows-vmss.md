@@ -16,10 +16,10 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430091"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit der Azure-Befehlszeilenschnittstelle
@@ -124,7 +124,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnit
 
 Dieser Abschnitt führt Sie durch das Erstellen einer VM-Skalierungsgruppe und das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu der VM-Skalierungsgruppe. Wenn Sie eine bereits vorhandene VM-Skalierungsgruppe verwenden möchten, überspringen Sie diesen Abschnitt, und fahren Sie mit dem nächsten Abschnitt fort.
 
-1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az-group-create) eine [Ressourcengruppe](~/articles/azure-resource-manager/management/overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. decodiert werden:
+1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](~/articles/azure-resource-manager/management/overview.md#terminology) eine [Ressourcengruppe](/cli/azure/group/#az-group-create) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. decodiert werden:
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

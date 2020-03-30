@@ -14,10 +14,10 @@ ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
 ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76309777"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Leitfaden zur Problembehandlung für Azure Event Hubs
@@ -30,7 +30,7 @@ In diesem Abschnitt werden die von .NET Framework-APIs generierten .NET-Ausnahme
 
 Die von den .NET-APIs von Event Hubs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören.
 
-1. Codierfehler des Benutzers: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
+1. Fehler der Benutzercodierung: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
 2. Fehler bei der Einrichtung oder Konfiguration: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Allgemeine Maßnahme: Überprüfen Sie die Konfiguration, und ändern Sie diese gegebenenfalls.
 3. Vorübergehende Ausnahmen: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](#serverbusyexception), [Microsoft.Azure.EventHubs.ServerBusyException](#serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Allgemeine Maßnahme: Wiederholen Sie den Vorgang, oder benachrichtigen Sie die Benutzer.
 4. Andere Ausnahmen: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](#timeoutexception), [Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Allgemeine Aktion: spezifisch für den Typ der Ausnahme; zu finden in der Tabelle im folgenden Abschnitt. 
@@ -85,7 +85,7 @@ Dieser Fehler kann aus zwei Gründen auftreten:
     
     Lösung: Eine Überarbeitung der Strategie für die Partitionsverteilung oder die Verwendung von [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) behebt das Problem möglicherweise.
 
-2. Der Event Hubs-Namespace enthält nicht genügend Durchsatzeinheiten (Sie können die Angabe im [Azure-Portal](https://portal.azure.com) im Fenster des Event Hubs-Namespace auf dem Bildschirm **Metriken** überprüfen). Im Portal werden aggregierte Informationen für einen Zeitraum von einer Minute angezeigt. Wir messen den Durchsatz jedoch in Echtzeit, daher handelt es sich nur um eine Schätzung.
+2. Der Event Hubs-Namespace enthält nicht genügend Durchsatzeinheiten (Sie können die Angabe im **Azure-Portal** im Fenster des Event Hubs-Namespace auf dem Bildschirm [Metriken](https://portal.azure.com) überprüfen). Im Portal werden aggregierte Informationen für einen Zeitraum von einer Minute angezeigt. Wir messen den Durchsatz jedoch in Echtzeit, daher handelt es sich nur um eine Schätzung.
 
     Lösung: Die Erhöhung der Durchsatzeinheiten für den Namespace kann helfen. Diesen Vorgang können Sie im Portal im Fenster **Skalieren** des Bildschirms mit dem Event Hubs-Namespace ausführen. Sie können auch die [automatische Vergrößerung](event-hubs-auto-inflate.md) verwenden.
 
@@ -103,7 +103,7 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Konnektivitäts-, Zertifikat- oder Timeoutprobleme
 Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektivitäts-/Zertifikat-/Timeoutproblemen für alle Dienste unter *.servicebus.windows.net. 
 
-- Navigieren Sie zu `https://<yournamespacename>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
+- Navigieren Sie zu [, oder verwenden Sie ](https://www.gnu.org/software/wget/)wget`https://<yournamespacename>.servicebus.windows.net/`. Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
 
     Beispiel für eine erfolgreiche Meldung:
     

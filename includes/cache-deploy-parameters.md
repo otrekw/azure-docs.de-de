@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67177900"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
@@ -81,12 +81,12 @@ Die Vorlage definiert die ganzzahligen Werte, die für diesen Parameter zulässi
 
 Diese Werte entsprechen den folgenden Cachegrößen:
 
-| Wert | Basic und Standard.<br>Cachegröße | Premium<br>Cachegröße |
+| value | Basic und Standard.<br>Cachegröße | Premium<br>Cachegröße |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB (Standard)                 | –                   |
 | 1     | 1 GB                             | 6 GB (Standard)        |
 | 2     | 2,5 GB                           | 13 GB                 |
-| 3     | 6 GB                             | 26 GB                 |
+| 3     | 6 GB                             | 26 GB                 |
 | 4     | 13 GB                            | 53 GB                 |
 | 5     | 26 GB                            | 120 GB                |
 | 6     | 53 GB                            | –                   |

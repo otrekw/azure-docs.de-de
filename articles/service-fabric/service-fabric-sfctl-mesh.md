@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 40d0f70b0dabdc02434fa662663a2fd105431f0a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905898"
 ---
 # <a name="sfctl-mesh"></a>sfctl mesh
 Löschen und Verwalten von Service Fabric Mesh-Anwendungen.
 
 ## <a name="subgroups"></a>Untergruppen
-|Untergruppe|Beschreibung|
+|Untergruppe|BESCHREIBUNG|
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | Ruft Anwendungsressourcen ab bzw. löscht diese. |
 | [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | Ruft die Protokolle für den Container des angegebenen Codepakets für das angegebene Dienstreplikat ab. |

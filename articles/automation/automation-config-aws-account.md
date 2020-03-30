@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
 ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366939"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Authentifizieren von Runbooks mit Amazon Web Services
@@ -20,7 +20,7 @@ Die Automatisierung von häufigen Aufgaben mit Ressourcen in Amazon Web Services
 * Ein AWS-Abonnement und einen Satz Anmeldeinformationen. Genauer gesagt: Ihren AWS-Zugriffsschlüssel und den geheimen Schlüssel. Weitere Informationen finden Sie im Artikel [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)(Verwenden von AWS-Anmeldeinformationen).
 * Ein Azure-Abonnement und ein Automation-Konto.
 
-Zum Authentifizieren mit AWS müssen Sie einen Satz mit AWS-Anmeldeinformationen angeben, um Ihre über Azure Automation ausgeführten Anmeldeinformationen zu authentifizieren. Falls Sie bereits ein Automation-Konto erstellt haben und für die Authentifizierung mit AWS verwenden möchten, können Sie die Schritte im folgenden Abschnitt ausführen: Wenn Sie ein dediziertes Konto für Runbooks zur Verwendung mit AWS-Ressourcen festlegen möchten, müssen Sie zuerst ein neues [Automation-Konto](automation-offering-get-started.md) erstellen (überspringen Sie die Option zum Erstellen eines Dienstprinzipals) und dann die folgenden Schritte ausführen:
+Zum Authentifizieren mit AWS müssen Sie einen Satz mit AWS-Anmeldeinformationen angeben, um Ihre über Azure Automation ausgeführten Anmeldeinformationen zu authentifizieren. Wenn Sie bereits ein Automation-Konto erstellt haben, das Sie für die Authentifizierung bei AWS verwenden möchten, können Sie die Schritte im folgenden Abschnitt befolgen. Wenn Sie ein Konto für Runbooks mit AWS-Ressourcen als Ziel reservieren möchten, sollten Sie zuerst zunächst ein neues [Automation-Konto](automation-offering-get-started.md) erstellen (überspringen Sie die Option zum Erstellen eines Dienstprinzipals) und die folgenden Schritte ausführen:
 
 ## <a name="configure-automation-account"></a>Konfigurieren des Automation-Kontos
 

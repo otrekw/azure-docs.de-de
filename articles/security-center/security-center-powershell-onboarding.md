@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603690"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
@@ -58,7 +58,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest (wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt):
+2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest. (Wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt.)
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -78,7 +78,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
     > Sie sollten die automatische Bereitstellung aktivieren, um sicherzustellen, dass Ihre virtuellen Azure-Computer automatisch mit Azure Security Center geschützt werden.
     >
 
-5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte sind die Empfänger der von Security Center generierten Warnungen und Benachrichtigungen:
+5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte erhalten die von Security Center generierten Warnungen und Benachrichtigungen:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 

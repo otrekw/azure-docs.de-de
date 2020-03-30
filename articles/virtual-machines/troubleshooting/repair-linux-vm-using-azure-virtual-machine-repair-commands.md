@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73796198"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
@@ -66,7 +66,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create`aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, wird eine Reparatur-VM erstellt und wird der Datenträger zugeordnet.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, wird eine Reparatur-VM erstellt und wird der Datenträger zugeordnet.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -74,7 +74,7 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
 4. Führen Sie alle erforderlichen Reparaturschritte auf der erstellten Reparatur-VM aus, und fahren Sie dann mit Schritt 5 fort.
 
-5. Führen Sie `az vm repair restore`aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
+5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

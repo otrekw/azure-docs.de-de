@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939337"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Private Azure DNS-Zonen: Szenarien
@@ -43,7 +43,7 @@ In diesem Szenario haben Sie einen Anwendungsfall, bei dem Sie je nachdem, wo si
 
 Im folgenden Diagramm ist dieses Szenario dargestellt. Sie haben ein virtuelles Netzwerk mit zwei virtuellen Computern (VNETA-VM1 und VNETA-VM2), denen jeweils sowohl eine private als auch eine öffentliche IP-Adresse zugeordnet sind. Sie erstellen eine öffentliche DNS-Zone namens „contoso.com“ und registrieren die öffentlichen IP-Adressen für diese virtuellen Computer als DNS-Einträge in der Zone. Sie erstellen außerdem eine private DNS-Zone, die ebenfalls den Namen „contoso.com“ hat, wobei Sie A als das virtuelle Registrierungsnetzwerk angeben. Azure registriert die virtuellen Computer automatisch als A-Datensätze in der privaten Zone, die auf ihre privaten IP-Adressen verweisen.
 
-Ab jetzt gibt Azure, wenn ein Internetclient eine DNS-Abfrage sendet, um „VNETA-VM1.contoso.com“ nachzuschlagen, den öffentlichen IP-Eintrag aus der öffentlichen Zone zurück. Wird die gleiche DNS-Abfrage von einem anderen virtuellen Computer (z. B. VNETA-VM2) im selben virtuellen Netzwerk A gesendet, gibt Azure den privaten IP-Eintrag aus der privaten Zone zurück. 
+Ab jetzt gibt Azure, wenn ein Internetclient eine DNS-Abfrage sendet, um „VNETA-VM1.contoso.com“ nachzuschlagen, den öffentlichen IP-Eintrag aus der öffentlichen Zone zurück. Wird die gleiche DNS-Abfrage von einem anderen virtuellen Computer (z. B. VNETA-VM2) im selben virtuellen Netzwerk gesendet, gibt Azure den privaten IP-Eintrag aus der privaten Zone zurück. 
 
 ![Split-Horizon-Auflösung](./media/private-dns-scenarios/split-brain-resolution.png)
 
@@ -52,7 +52,7 @@ Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS fo
 
 Erfahren Sie, wie Sie in Azure DNS [eine private DNS-Zone erstellen](./private-dns-getstarted-powershell.md).
 
-Weitere Informationen zu DNS-Zonen und -Einträgen finden Sie unter [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).
+Erfahren Sie mehr zu DNS-Zonen und -Einträgen im folgenden Artikel: [DNS-Zonen und -Einträge: Übersicht](dns-zones-records.md).
 
 Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978201"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
 
 > [!NOTE]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 >
 
  Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt sichern, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie Inhalte dynamisch mit AES (Advanced Encryption Standard) unter Verwendung von 128-Bit-Verschlüsselungsschlüsseln verschlüsselt übermitteln. Sie können es auch mit herkömmlicher Verschlüsselung (CENC) verwenden, indem Sie PlayReady und/oder Widevine Digital Rights Management (DRM) und Apple FairPlay verwenden. 
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um Content Protection global über das P
 
 1. Wählen Sie **Einstellungen** > **Inhaltsschutz** aus.
 
-    ![Content Protection](./media/media-services-portal-content-protection/media-services-content-protection001.png)
+    ![Inhaltsschutz](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
 ## <a name="keylicense-authorization-policy"></a>Schlüssel-/Lizenzautorisierungsrichtlinie
 Media Services unterstützt mehrere Methoden zur Authentifizierung von Benutzern, die Schlüssel oder Lizenzen anfordern. Sie müssen die Autorisierungsrichtlinie für den Inhaltsschlüssel konfigurieren. Ihr Client muss die Richtlinie erfüllen, bevor der Schlüssel bzw. die Lizenz an ihn übermittelt werden kann. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token.
@@ -53,7 +53,7 @@ Bei Verwendung einer offenen Einschränkung übermittelt das System den Schlüss
 ### <a name="token-authorization"></a>Tokenautorisierung
 Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format „Simple Web Token“ (SWT) und „JSON Web Token“ (JWT). Media Services stellt keinen Sicherheitstokendienst (STS) bereit. Sie können einen benutzerdefinierten Sicherheitstokendienst erstellen oder Azure Access Control Service zum Ausstellen von Token verwenden. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Wenn das Token gültig ist und die Ansprüche im Token mit den für den Schlüssel (oder die Lizenz) konfigurierten Ansprüchen übereinstimmen, gibt der Schlüsselübermittlungsdienst von Media Services den angeforderten Schlüssel (oder die Lizenz) an den Client zurück.
 
-Bei der Konfiguration der Richtlinie mit Token-Einschränkung müssen die Parameter des primären Verifizierungsschlüssels, „issuer“ und „audience“, angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. Audience (manchmal auch Scope) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
+Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. Audience (manchmal auch Scope) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
 ![Schlüssel-/Lizenzautorisierungsrichtlinie](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
@@ -126,7 +126,7 @@ Die AES-Verschlüsselung mit unverschlüsseltem Schlüssel ist für alle Streami
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

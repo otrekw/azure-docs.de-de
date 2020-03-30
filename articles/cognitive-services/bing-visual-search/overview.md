@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
 ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446655"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
@@ -57,7 +57,7 @@ Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit pr
 Sehen Sie sich zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/) zur API für die visuelle Bing-Suche an.
 Diese Demo zeigt, wie Sie schnell eine Suchabfrage anpassen und das Web nach Bildern durchsuchen.
 
-Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Die Schnellstartanleitungen [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md) ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834294"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
@@ -25,7 +25,7 @@ API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit 
 
 Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren auf, die als benannte Werte bezeichnet werden und die für die gesamte Dienstinstanz gelten. Es gibt keine Beschränkung für die Anzahl der Elemente in der Sammlung. Benannte Werte können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jeder benannte Wert kann die folgenden Attribute aufweisen:
 
-| attribute      | type            | Beschreibung                                                                                                                            |
+| attribute      | type            | BESCHREIBUNG                                                                                                                            |
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | string          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
 | `Value`        | string          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                        |

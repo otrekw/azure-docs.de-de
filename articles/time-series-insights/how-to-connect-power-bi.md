@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863841"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Time Series Insights in Power BI
@@ -74,7 +74,7 @@ Erste Schritte:
        [![Warm Storage-Warnung](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage**konfigurieren.
+       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage**{3}{4}konfigurieren.
 
 1. Wählen Sie **Abfrage in Zwischenablage kopieren** aus.
 1. Starten Sie jetzt Power BI Desktop.

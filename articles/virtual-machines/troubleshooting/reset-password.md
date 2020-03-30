@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
 ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71153569"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs
@@ -103,7 +103,7 @@ Sie können sich nicht am virtuellen Computer anmelden, und Sie erhalten eine Na
 
 11. Trennen Sie im Azure-Portal den Datenträger von der Problembehandlungs-VM.
 
-12. [Ändern des Betriebssystemdatenträgers für die betroffene VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)
+12. [Wechseln Sie den Betriebssystemdatenträger für die betroffene VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

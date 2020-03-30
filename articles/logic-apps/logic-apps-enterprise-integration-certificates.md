@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191380"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbessern der Sicherheit von B2B-Nachrichten mithilfe von Zertifikaten
@@ -44,7 +44,7 @@ Um ein *öffentliches Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu 
 
 3. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | value | Beschreibung | 
+   | Eigenschaft | value | BESCHREIBUNG | 
    |----------|-------|-------------|
    | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „PublicCert“) | 
    | **Zertifikattyp** | Öffentlich | Der Typ Ihres Zertifikats |

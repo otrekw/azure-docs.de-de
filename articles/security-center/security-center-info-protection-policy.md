@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
 ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75611065"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
@@ -83,5 +83,5 @@ In diesem Artikel haben Sie erfahren, wie eine SQL Information Protection-Richtl
 
 Weitere Informationen zu Sicherheitsrichtlinien und zur Datensicherheit im Azure Security Center finden Sie in den folgenden Artikeln:
  
-- [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md): Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-- [Azure Security Center-Datensicherheit](security-center-data-security.md): Erfahren Sie, wie Security Center Daten verwaltet und schützt.
+- [Festlegen von Sicherheitsrichtlinien im Azure Security Center:](tutorial-security-policy.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
+- [Azure Security Center-Datensicherheit](security-center-data-security.md): Hier erfahren Sie, wie Daten vom Security Center verwaltet und geschützt werden.

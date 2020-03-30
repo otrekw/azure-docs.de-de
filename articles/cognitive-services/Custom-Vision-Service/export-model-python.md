@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969838"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen des TensorFlow-Modells in Python
+# <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen eines TensorFlow-Modells in Python
 
 Nachdem Sie Ihr [TensorFlow-Modell](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) aus Custom Vision Service exportiert haben, hilft Ihnen dieser Schnellstart dabei, das Modell lokal zu verwenden, um Bilder zu klassifizieren.
 

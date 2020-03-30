@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906875"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -52,7 +52,7 @@ Der globale Endpunkt der Textübersetzung ist als die `endpoint` festgelegt. `pa
 Die Parameter (`params`) in diesem Beispiel werden verwendet, um die Sprache für den angegebenen Text festzulegen. `params` sind für die `breaksentence`-Route nicht erforderlich. Wenn die Angabe in der Anforderung weggelassen wird, versucht die API, die Sprache des angegebenen Texts zu erkennen, und stellt diese Informationen mit einer Zuverlässigkeitsbewertung in der Antwort bereit.
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
 path = '/breaksentence?api-version=3.0'

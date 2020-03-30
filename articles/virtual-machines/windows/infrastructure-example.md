@@ -16,10 +16,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038566"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Windows-VMs
@@ -72,7 +72,7 @@ Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk v
 Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folgenden Einstellungen über das Azure-Portal erstellt:
 
 * Name: AZOS-USE-VN01
-* Standort: USA (Ost) 2
+* Standort: East US 2
 * Adressraum des virtuellen Netzwerks: 10.0.0.0/8
 * Erstes Subnetz:
   * Name: FrontEnd

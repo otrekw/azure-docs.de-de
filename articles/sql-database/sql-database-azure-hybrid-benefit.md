@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
 ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945619"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
@@ -31,7 +31,7 @@ Mit dem Azure-Hybridvorteil können Sie wahlweise nur die zugrunde liegende Azur
 
 Sie können Ihr Lizenzierungsmodell im Azure-Portal oder mithilfe einer der folgenden APIs auswählen oder ändern:
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Festlegen oder Aktualisieren des Lizenztyps mithilfe von PowerShell:
 
@@ -40,7 +40,7 @@ Festlegen oder Aktualisieren des Lizenztyps mithilfe von PowerShell:
 - [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance)
 - [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Festlegen oder Aktualisieren des Lizenztyps mithilfe der Azure-Befehlszeilenschnittstelle:
 
@@ -49,7 +49,7 @@ Festlegen oder Aktualisieren des Lizenztyps mithilfe der Azure-Befehlszeilenschn
 - [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create)
 - [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)
 
-# <a name="rest-apitabrest"></a>[REST-API](#tab/rest)
+# <a name="rest-api"></a>[REST-API](#tab/rest)
 
 Festlegen oder Aktualisieren des Lizenztyps mithilfe der REST-API:
 

@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707617"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Erste Schritte mit Azure Storage (Azure WebJob-Projekte)
@@ -35,7 +35,7 @@ Einige der Codeausschnitte zeigen das **Table** -Attribut in Funktionen, die man
 
 Um einer Tabelle Entitäten hinzuzufügen, verwenden Sie das **Table**-Attribut mit einem **ICollector\<T>** - oder **IAsyncCollector\<T>** -Parameter, wobei **T** das Schema der Entitäten angibt, die Sie hinzufügen möchten. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Tabelle angibt.
 
-Das folgende Codebeispiel fügt einer Tabelle namens **Ingress** *Person*-Entitäten hinzu.
+Das folgende Codebeispiel fügt einer Tabelle namens **Ingress***Person*-Entitäten hinzu.
 
 ```csharp
 [NoAutomaticTrigger]

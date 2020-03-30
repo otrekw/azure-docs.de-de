@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719992"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
@@ -33,7 +33,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 ## <a name="how-to-submit-hive-queries"></a>Gewusst wie: Übermitteln von Hive-Abfragen
 Hive-Abfragen können in der Hadoop-Befehlszeilenkonsole auf dem Hauptknoten des Hadoop-Clusters übermittelt werden.  Melden Sie sich beim Hauptknoten des Hadoop-Clusters an, öffnen Sie die Hadoop-Befehlszeilenkonsole, und übermitteln Sie die Hive-Abfragen von dort aus. Informationen zum Übermitteln von Hive-Abfragen in der Hadoop-Befehlszeilenkonsole finden Sie unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit).
 
-## <a name="uniform"></a> Einheitliche Stichproben
+## <a name="uniform-random-sampling"></a><a name="uniform"></a> Einheitliche Stichproben
 Bei einheitlichen Stichproben hat jede Zeile im Dataset die gleiche Wahrscheinlichkeit, als Stichprobe verwendet zu werden. Dies kann durch das Hinzufügen des zusätzlichen Felds „rand()“ zum Dataset in der inneren select-Abfrage und in der äußeren select-Abfrage, die von diesem Zufallsfeld abhängt, implementiert werden.
 
 Dies ist eine Beispielabfrage:
@@ -51,7 +51,7 @@ Dies ist eine Beispielabfrage:
 
 Dabei gibt `<sample rate, 0-1>` den Anteil von Datensätzen an, den die Benutzer erfassen möchten.
 
-## <a name="group"></a> Zufällige Stichproben nach Gruppen
+## <a name="random-sampling-by-groups"></a><a name="group"></a> Zufällige Stichproben nach Gruppen
 Bei der Entnahme von Stichproben aus kategorischen Daten sollten Sie entweder alle Instanzen eines bestimmten Werts der kategorischen Variable ein- oder ausschließen. Diese Art von Sampling wird als „Stichprobe nach Gruppe“ bezeichnet. Wenn Sie beispielsweise die kategorische Variable „*State*“ haben, die als Werte „NY“, „MA“, „CA“, „NJ“, „PA“ usw. hat, möchten Sie natürlich, dass Datensätze der einzelnen Bundesstaaten immer zusammenbleiben, ob als Stichprobe oder auch sonst.
 
 Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
@@ -80,8 +80,8 @@ Dies ist eine Beispielabfrage für das Erstellen einer Stichprobe nach Gruppe:
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>Geschichtete Stichproben
-Zufällige Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten kategorische Werte enthalten, die im gleichen Verhältnis wie in der übergeordneten Datenmenge vorliegen. Verwenden Sie das gleiche Beispiel wie oben beschrieben. Angenommen, Ihre Daten weisen die folgenden Beobachtungen nach Zuständen auf: NJ hat 100 Beobachtungen, NY hat 60 Beobachtungen, und WA hat 300 Beobachtungen. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
+## <a name="stratified-sampling"></a><a name="stratified"></a>Geschichtete Stichproben
+Zufällige Stichproben sind in Bezug auf eine kategorische Variable geschichtet, wenn die abgerufenen Beispieldaten kategorische Werte enthalten, die im gleichen Verhältnis wie in der übergeordneten Datenmenge vorliegen. Bei dem oben genannten Beispiel besitzen Ihre Daten beispielsweise die folgenden Vorkommen nach Bundesstaat: „NJ“ hat 100 Vorkommen, „NY“ 60 und „WA“ 300. Wenn Sie die Rate für die geschichtete Stichprobe auf 0,5 festlegen, sollte die abgerufene Stichprobe ungefähr 50, 30 und 150 Vorkommen für "NJ", "NY" und "WA" aufweisen.
 
 Dies ist eine Beispielabfrage:
 

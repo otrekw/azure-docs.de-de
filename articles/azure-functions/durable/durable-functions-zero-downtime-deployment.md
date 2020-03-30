@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74231254"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Bereitstellung ohne Ausfallzeit für Durable Functions
@@ -25,7 +25,7 @@ Um zu verhindern, dass diese Fehler auftreten, haben Sie zwei Möglichkeiten:
 
 Das folgende Diagramm enthält einen Vergleich der drei Hauptstrategien, um eine Bereitstellung ohne Ausfallzeit für Durable Functions zu erzielen: 
 
-| Strategie |  Einsatzgebiete | Vorteile | Nachteile |
+| Strategie |  Verwendung | Vorteile | Nachteile |
 | -------- | ------------ | ---- | ---- |
 | [Versionsverwaltung](#versioning) |  Anwendungen, für die es nicht häufig zu [Breaking Changes](durable-functions-versioning.md) kommt | Einfache Implementierung |  Erweiterte Funktions-App-Größe im Arbeitsspeicher und Anzahl von Funktionen<br/>Codeduplizierung |
 | [Statusüberprüfung mit Slot](#status-check-with-slot) | Ein System, das keine zeitintensiven Orchestrierungen mit einer Länge von mehr als 24 Stunden oder sich häufig überlappenden Orchestrierungen aufweist. | Einfache Codebasis<br/>Keine zusätzliche Funktions-App-Verwaltung erforderlich | Zusätzliche Verwaltung des Speicherkontos oder des Aufgabenhubs erforderlich<br/>Zeiträume erforderlich, in denen keine Orchestrierungen ausgeführt werden |

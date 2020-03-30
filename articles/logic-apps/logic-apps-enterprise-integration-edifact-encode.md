@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790643"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit Enterprise Integration Pack
@@ -66,7 +66,7 @@ Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Vereinbarungsname
 
 #### <a name="encode-edifact-message-by-identities"></a>Encode EDIFACT Message by identities (EDIFACT-Nachricht nach Identitäten codieren)
 
-Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer EDIFACT-Vereinbarung ein. Select the XML message to encode.
+Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten entschieden haben, geben Sie den Absenderqualifizierer und -bezeichner und den Empfängerqualifizierer und -bezeichner gemäß der Konfiguration in Ihrer EDIFACT-Vereinbarung ein. Wählen Sie die zu codierende XML-Nachricht aus.
 
 ![Identitäten für Absender und Empfänger angeben und zu codierende XML-Nachricht auswählen](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
@@ -75,7 +75,7 @@ Falls Sie sich für die Codierung von EDIFACT-Nachrichten nach Identitäten ents
 Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus: 
 
 * Auflösen der Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner
-* Serialisieren des EDI-Austauschs, Konvertieren von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
+* Serialisierung des EDI-Austauschs mit Konvertierung von XML-codierten Nachrichten in EDI-Transaktionssätze im Austausch
 * Anwendung von Header- und Nachspannsegmenten für den Transaktionssatz
 * Generierung einer Austauschkontrollnummer, einer Gruppenkontrollnummer und einer Transaktionssatz-Kontrollnummer für jeden ausgehenden Austausch
 * Ersetzung von Trennzeichen in den Nutzlastdaten
@@ -84,7 +84,7 @@ Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus:
   * EDI-Überprüfung für Transaktionssatz-Datenelemente
   * Erweiterte Überprüfung für Transaktionssatz-Datenelemente
 * Generieren eines XML-Dokuments für jeden Transaktionssatz
-* Generieren einer technischen Bestätigung (Kontrollbestätigung) und/oder einer Funktionsbestätigung (sofern konfiguriert)
+* Anforderung einer technischen Bestätigung und/oder einer Funktionsbestätigung (sofern konfiguriert)
   * Als technische Bestätigung kennzeichnet die Kontrollbestätigung den Empfang eines Austauschvorgangs.
   * Als Funktionsbestätigung dient die Kontrollbestätigung dazu, die Annahme oder Ablehnung des empfangenen Austauschs, der Gruppe oder der Nachricht mit einer Liste von Fehlern oder nicht unterstützter Funktionen anzugeben.
 

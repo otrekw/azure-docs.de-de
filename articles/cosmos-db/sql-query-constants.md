@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873419"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>SQL-Abfragekonstanten in Azure Cosmos DB  
 
- Eine Konstante, auch bekannt als Literal oder skalarer Wert, ist ein Symbol, das einen bestimmten Datenwert darstellt. Das Format einer Konstante hängt vom Datentyp des Werts ab, den sie darstellt.  
+ Eine Konstante, gelegentlich auch als Literal- oder Skalarwert bezeichnet, ist ein Symbol, das einen bestimmten Datenwert repräsentiert. Das Format einer Konstante ist abhängig vom Datentyp des Werts, den sie repräsentiert.  
   
  **Unterstützte skalare Datentypen:**  
   
@@ -29,7 +29,7 @@ ms.locfileid: "74873419"
 |**Array**|Eine Sequenz von null (0) oder mehr Elementen. Jedes Element kann einen Wert eines beliebigen skalaren Datentyps mit Ausnahme von **Undefiniert** aufweisen.|  
 |**Object**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
   
-## <a name="bk_syntax"></a>Syntax
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873419"
   
 ```  
   
-##  <a name="bk_arguments"></a>Argumente
+##  <a name="arguments"></a><a name="bk_arguments"></a>Argumente
   
 * `<undefined_constant>; Undefined`  
   

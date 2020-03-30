@@ -9,13 +9,13 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77198325"
 ---
-## <a name="timeout"></a>Funktions-App-Timeoutdauer 
+## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Funktions-App-Timeoutdauer 
 
 Die Timeoutdauer einer Funktions-App wird durch die `functionTimeout`-Eigenschaft in der [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout)-Projektdatei definiert. Die folgende Tabelle listet die Standard- und Maximalwerte in Minuten für beide Pläne und die unterschiedlichen Laufzeitversionen auf:
 

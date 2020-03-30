@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Inhaltsvertrauen für Ihre Azure-Containerregistr
 ms.topic: article
 ms.date: 09/06/2019
 ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249924"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
@@ -78,7 +78,7 @@ Details zum Erteilen der Rolle `AcrImageSigner` im Azure-Portal und in der Azure
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für **Rolle** die Option `AcrImageSigner` aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
+Navigieren Sie im Azure-Portal zu Ihrer Registrierung, und wählen Sie dann **Zugriffssteuerung (IAM)**  > **Rollenzuweisung hinzufügen** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** für `AcrImageSigner`Rolle**die Option** aus. Wählen Sie dann unter **Auswählen** mindestens einen Benutzer oder Dienstprinzipal aus, und klicken Sie auf **Speichern**.
 
 In diesem Beispiel wurde die Rolle `AcrImageSigner` zwei Entitäten zugewiesen: einem Dienstprinzipal mit dem Namen „Dienstprinzipal“, und einem Benutzer mit dem Namen „Azure-Benutzer“.
 

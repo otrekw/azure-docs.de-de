@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 45219790cf0cd064e0fcd456e262b2f93aa03ac9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74323913"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Versionsverwaltung für die Azure Blockchain Workbench-Anwendung (Vorschauversion)

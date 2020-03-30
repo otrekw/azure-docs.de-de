@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165962"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
@@ -33,7 +33,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 Der vollständige Beispielcode ist im Repository [Cognitive Services Face Android](https://github.com/Azure-Samples/cognitive-services-face-android-sample) (Cognitive Services-Beispiel für die Gesichtserkennung unter Android) auf GitHub verfügbar.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937366"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen über einen Domänennamen verfügen, den Sie zum Testen in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
 
-Eine Anleitung zum Hosten Ihrer Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
+Anweisungen zum Hosten der Domäne in Azure DNS finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.com“. Verwenden Sie aber ruhig Ihren eigenen Domänennamen.
 
@@ -76,7 +76,7 @@ Notieren Sie jetzt die IP-Adresse und den Hostnamen für die Web-Apps.
 
 Erstellen Sie in Ihrer Ressourcengruppe ein Traffic Manager-Profil. Verwenden Sie die Standardeinstellungen, und geben Sie einen eindeutigen Namen innerhalb des trafficmanager.net-Namespace ein.
 
-Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung](../traffic-manager/quickstart-create-traffic-manager-profile.md).
+Informationen zum Erstellen eines Traffic Manager-Profils finden Sie unter [Schnellstart: Erstellen eines Traffic Manager-Profils für eine hoch verfügbare Web-App](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 
 ### <a name="create-endpoints"></a>Erstellen von Endpunkten
 
@@ -94,7 +94,7 @@ Jetzt können Sie die Endpunkte für die beiden Web-Apps erstellen.
 
 ## <a name="create-dns-zone"></a>Erstellen einer DNS-Zone
 
-Sie können entweder eine vorhandene DNS-Zone für Tests verwenden, oder Sie können eine neue Zone erstellen. Informationen zum Erstellen und Delegieren einer neuen DNS-Zone in Azure finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
+Sie können entweder eine vorhandene DNS-Zone für Tests verwenden, oder Sie können eine neue Zone erstellen. Informationen zum Erstellen einer neuen DNS-Zone in Azure finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md).
 
 ## <a name="add-a-txt-record-for-custom-domain-validation"></a>Hinzufügen eines TXT-Eintrags für die Überprüfung einer benutzerdefinierten Domäne
 
@@ -156,8 +156,8 @@ Sie können Ihre Web-App jetzt testen, um sicherzustellen, dass Sie sie erreiche
 
 Weitere Informationen zu Aliaseinträgen finden Sie in den folgenden Artikeln:
 
-- [Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
-- [Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](tutorial-alias-tm.md)
+- [Tutorial: Konfigurieren eines Aliasdatensatzes, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
+- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md) (Tutorial: Konfigurieren eines Aliaseintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager)
 - [Häufig gestellte Fragen zu DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
 Weitere Informationen zum Migrieren eines aktiven DNS-Namens finden Sie unter [Migrieren eines aktiven DNS-Namens zu Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

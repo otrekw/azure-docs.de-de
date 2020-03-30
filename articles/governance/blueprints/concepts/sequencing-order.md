@@ -4,10 +4,10 @@ description: Erfahren Sie mehr über die Standardreihenfolge, in der Blaupausena
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74128821"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint

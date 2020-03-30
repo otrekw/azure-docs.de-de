@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67203156"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
@@ -21,11 +21,11 @@ In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im 
 
 ## <a name="default-settings"></a>Standardeinstellungen
 
-Wenn Sie die Lösung für die Remoteüberwachung zum ersten Mal bereitstellen, stehen zwei Rollen zur Verfügung: **Administrator** und **Schreibgeschützt**.
+Wenn Sie die Remoteüberwachungslösung zum ersten Mal bereitstellen, stehen zwei Rollen zur Verfügung: **Administrator** und **Lesezugriff**.
 
 Benutzer mit der Rolle **Administrator** verfügen über Vollzugriff auf die Lösung, einschließlich der nachfolgend aufgeführten Berechtigungen. Benutzer mit der Rolle **Lesezugriff** verfügen lediglich über den Zugriff zum Anzeigen der Lösung.
 
-| Berechtigung            | Administrator | Nur Leseberechtigung |
+| Berechtigung            | Admin | Nur Leseberechtigung |
 |----------------       |-------|-----------|
 | Anzeigen der Lösung         | Ja   | Ja       |
 | Aktualisieren von Alarmen         | Ja   | Nein        |

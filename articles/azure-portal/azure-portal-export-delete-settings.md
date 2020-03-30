@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: mblythe
 ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900752"
 ---
 # <a name="export-or-delete-user-settings"></a>Exportieren oder Löschen von Benutzereinstellungen
@@ -41,7 +41,7 @@ Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, bevor 
 
       Diese Aktionen sind in der folgenden Tabelle beschrieben.
 
-      | Aktion | Beschreibung |
+      | Action | BESCHREIBUNG |
       | --- | --- |
       | **Alle Einstellungen exportieren** | Erstellt eine *JSON*-Datei, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards.|
       | **Alle Einstellungen und private Dashboards löschen** | Löscht alle Verknüpfungen mit privaten Dashboards und anderen benutzerdefinierten Einstellungen, die Sie im Portal vorgenommen haben. |

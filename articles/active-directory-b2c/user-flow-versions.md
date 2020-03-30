@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78185619"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Benutzerflowversionen in Azure Active Directory B2C
@@ -39,7 +39,7 @@ Neue Benutzerflows werden als neue Versionen hinzugefügt. Sobald Benutzerflows 
 
 ## <a name="v11"></a>V1.1
 
-| Benutzerflow | Empfohlen | Beschreibung |
+| Benutzerflow | Empfohlen | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | Kennwortzurücksetzung v1.1 | Nein | Ermöglicht einem Benutzer nach Überprüfung seiner E-Mail-Adresse die Auswahl eines neuen Kennworts (neues Seitenlayout verfügbar). Mithilfe dieses Benutzerflows können Sie Folgendes konfigurieren: <ul><li>[Multi-Factor Authentication](custom-policy-multi-factor-authentication.md)</li><li>Tokenkompatibilitätseinstellungen</li><li>[Anforderungen an die Komplexität von Kennwörtern](user-flow-password-complexity.md)</li></ul> |
 

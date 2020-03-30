@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67875301"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
@@ -29,7 +29,7 @@ Azure StorSimple ist eine hybride Cloudspeicherlösung von Microsoft. StorSimple
 
 In diesem Artikel werden die StorSimple-Integration mit Veeam sowie bewährte Methoden für die Integration beider Lösungen beschrieben. Außerdem erhalten Sie Empfehlungen, wie Sie Veeam für eine optimale Integration in StorSimple einrichten. Wir gehen auf die bewährten Methoden von Veeam für Sicherungsarchitekten und Administratoren ein, um Veeam optimal zum Erfüllen einzelner Sicherungsanforderungen und Vereinbarungen zum Servicelevel (SLAs) einzurichten.
 
-In diesem Artikel werden Konfigurationsschritte und wichtige Konzepte veranschaulicht. Es handelt aber keinesfalls um eine detaillierte Anleitung für die Konfiguration oder Installation. Es wird von uns vorausgesetzt, dass die grundlegenden Komponenten und Infrastrukturen funktionieren und die hier beschriebenen Konzepte unterstützen können.
+In diesem Artikel werden Konfigurationsschritte und wichtige Konzepte veranschaulicht. Es handelt jedoch keinesfalls um eine detaillierte Anleitung für die Konfiguration oder Installation. Es wird von uns vorausgesetzt, dass die grundlegenden Komponenten und Infrastrukturen funktionieren und die hier beschriebenen Konzepte unterstützen können.
 
 ### <a name="who-should-read-this"></a>Zielgruppe dieses Artikels
 
@@ -117,7 +117,7 @@ In diesem Szenario werden StorSimple-Volumes der Sicherungsanwendung als einzige
 1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück zum Sicherungsserver.
 2.  Der Sicherungsserver schreibt Daten auf die mehrstufigen StorSimple-Volumes.
 3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt dann den Sicherungsauftrag ab.
-4.  Ein Momentaufnahmenskript löst den StorSimple Cloud Snapshot Manager aus (starten oder löschen).
+4.  Ein Momentaufnahmenskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (starten oder löschen).
 5.  Der Sicherungsserver löscht die abgelaufenen Sicherungen basierend auf einer Aufbewahrungsrichtlinie.
 
 ### <a name="primary-target-restore-logical-steps"></a>Logische Schritte bei der Wiederherstellung des Primärziels
@@ -163,12 +163,12 @@ Jeder Schritt wird in den folgenden Abschnitten ausführlich erläutert.
 
 ### <a name="set-up-the-network"></a>Einrichten des Netzwerks
 
-Da StorSimple eine in die Azure-Cloud integrierte Lösung ist, erfordert StorSimple eine aktive und funktionierende Verbindung mit der Azure-Cloud. Diese Verbindung wird für Vorgänge wie beispielsweise Cloudmomentaufnahmen, Datenverwaltung, Metadatenübertragung sowie für das Tiering älterer, seltener genutzter Daten in Azure-Cloudspeicher verwendet.
+Da StorSimple eine in die Azure-Cloud integrierte Lösung ist, erfordert StorSimple eine aktive und funktionierende Verbindung mit der Azure-Cloud. Dieser Verbindung wird für Vorgänge wie z.B. Cloudmomentaufnahmen, Datenverwaltung, Metadatenübertragung sowie zum Tiering älterer, seltener genutzter Daten in Azure-Cloudspeicher verwendet.
 
 Damit die Lösung optimal funktioniert, empfehlen sich die folgenden bewährten Methoden für die Netzwerkeinrichtung:
 
--   Der Link, der Ihr StorSimple-Tiering mit Azure verbindet, muss die Bandbreitenanforderungen erfüllen. Ordnen Sie hier Ihren Infrastrukturswitches die erforderliche Servicequalitätsstufe zu, um Ihre SLAs für Recovery Point Objective (RTO) und Recovery Time Objective (RTO) zu erfüllen.
--   Die maximalen Zugriffswartezeiten für Azure Blob Storage sollten ca. 80 Millisekunden betragen.
+-   Die Verbindung zwischen Ihrem StorSimple-Tiering und Azure muss die Bandbreitenanforderungen erfüllen. Ordnen Sie hier Ihren Infrastrukturswitches die erforderliche Servicequalitätsstufe zu, um Ihre SLAs für Recovery Point Objective (RTO) und Recovery Time Objective (RTO) zu erfüllen.
+-   Die maximalen Zugriffslatenzen für Azure Blob Storage sollten um 80 Millisekunden betragen.
 
 ### <a name="deploy-storsimple"></a>Bereitstellen von StorSimple
 
@@ -224,7 +224,7 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 
 -   Stellen Sie sicher, dass das StorSimple-Gerät die Version [Update 3 oder höher](storsimple-install-update-3.md) aufweist.
 -   Isolieren Sie iSCSI- und Clouddatenverkehr. Verwenden Sie dedizierte iSCSI-Verbindungen für Datenverkehr zwischen StorSimple und dem Sicherungsserver.
--   Stellen Sie sicher, dass Ihr StorSimple-Gerät ein dediziertes Sicherungsziel ist. Gemischte Workloads werden nicht unterstützt, da sie sich auf RTO und RPO auswirken.
+-   Stellen Sie sicher, dass Ihr StorSimple-Gerät ein dediziertes Sicherungsziel ist. Gemischte Workloads werden nicht unterstützt, da sie sich auf die RTO- und RPO-Ziele auswirken.
 
 ### <a name="veeam-best-practices"></a>Bewährte Methoden für Veeam
 
@@ -260,7 +260,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Sicherungstyp | Größe (TiB) | GFS-Multiplikator\* | Gesamtkapazität (TiB)  |
 |---|---|---|---|
 | Wöchentlich vollständig | 1 | 4  | 4 |
-| Täglich inkrementell | 0,5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
+| Täglich inkrementell | 0.5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
 | Monatlich vollständig | 1 | 12 | 12 |
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
@@ -276,11 +276,11 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Veeam-Verwaltungskonsole, Seite mit Sicherungsrepositorys](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Geben Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) einen Namen und eine Beschreibung für das Repository ein. Klicken Sie auf **Weiter**.
+2.  Geben Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) einen Namen und eine Beschreibung für das Repository ein. Wählen Sie **Weiter** aus.
 
     ![Veeam-Verwaltungskonsole, Seite zum Eingeben von Name und Beschreibung](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Wählen Sie als Typ die Option **Microsoft Windows server** (Microsoft Windows-Server). Wählen Sie den Veeam-Server aus. Klicken Sie auf **Weiter**.
+3.  Wählen Sie als Typ die Option **Microsoft Windows server** (Microsoft Windows-Server). Wählen Sie den Veeam-Server aus. Wählen Sie **Weiter** aus.
 
     ![Veeam-Verwaltungskonsole, Bildschirm zur Auswahl des Speicherrepositorytyps](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -293,7 +293,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Veeam-Verwaltungskonsole, Einstellungen für Speicherkompatibilität](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Aktivieren Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) das Kontrollkästchen **Enable vPower NFS service on the mount server (recommended)** (vPower NFS-Dienst auf dem Bereitstellungsserver aktivieren (empfohlen)). Klicken Sie auf **Weiter**.
+6.  Aktivieren Sie im Dialogfeld **New Backup Repository** (Neues Sicherungsrepository) das Kontrollkästchen **Enable vPower NFS service on the mount server (recommended)** (vPower NFS-Dienst auf dem Bereitstellungsserver aktivieren (empfohlen)). Wählen Sie **Weiter** aus.
 
     ![Veeam-Verwaltungskonsole, Seite mit Sicherungsrepositorys](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -341,7 +341,7 @@ Erstellen Sie für ein Szenario mit primärem Sicherungsziel einen täglichen Au
 
     ![Veeam-Verwaltungskonsole, Seite für neuen Sicherungsauftrag](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  Wählen Sie für **Backup proxy** (Sicherungsproxy) und **Backup repository** (Sicherungsrepository) die gewünschten Werte aus. Wählen Sie einen Wert für **Restore points to keep on disk** (Auf Datenträger beizubehaltende Wiederherstellungspunkte) auf dem lokal verbundenen Speicher gemäß den RPO- und RTO-Definitionen für Ihre Umgebung aus. Wählen Sie **Advanced** (Erweitert).
+4.  Wählen Sie für **Backup proxy** (Sicherungsproxy) und **Backup repository** (Sicherungsrepository) die gewünschten Werte aus. Wählen Sie einen Wert für **Restore points to keep on disk** (Auf Datenträger beizubehaltende Wiederherstellungspunkte) auf dem lokal verbundenen Speicher gemäß den RPO- und RTO-Definitionen für Ihre Umgebung aus. Wählen Sie **Erweitert**aus.
 
     ![Veeam-Verwaltungskonsole, Seite für neuen Sicherungsauftrag](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
@@ -372,11 +372,11 @@ In diesem Modell muss ein Speichermedium (nicht StorSimple) vorhanden sein, das 
 
 Die folgende Abbildung zeigt typische Volumes für die kurzfristige lokale Aufbewahrung (auf dem Server) und die langfristige Aufbewahrung im Archiv. In diesem Szenario erfolgen alle Sicherungen auf dem lokalen RAID-Volume (auf dem Server). Diese Sicherungen werden regelmäßig dupliziert und auf einem Archivvolume archiviert. Es ist wichtig, die Größe des lokalen RAID-Volumes (auf dem Server) so einzurichten, dass die Kapazitäts- und Leistungsanforderungen für die kurzfristige Aufbewahrung erfüllt werden.
 
-![StorSimple als sekundäres Sicherungsziel – Logikdiagramm](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
+![StorSimple als sekundäres Sicherungsziel – logisches Diagramm](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>StorSimple als sekundäres Sicherungsziel – GFS-Beispiel
 
-In der folgenden Tabelle wird gezeigt, wie Sicherungen auf den lokalen und StorSimple-Datenträgern ausgeführt werden. Sie enthält die individuellen und gesamten Kapazitätsanforderungen.
+In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf den lokalen und StorSimple-Datenträgern eingerichtet werden. Die Tabelle enthält individuelle und gesamte Kapazitätsanforderungen.
 
 | Sicherungstyp und Aufbewahrung | Konfigurierter Speicher | Größe (TiB) | GFS-Multiplikator | Gesamtkapazität \* (TiB) |
 |---|---|---|---|---|
@@ -393,7 +393,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen auf den lokalen und StorS
 
 GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 
-| Woche | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
+| Week | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
 |---|---|---|---|---|---|---|
 | Woche 1 | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
 | Woche 2 | StorSimple, Woche 2-4 |   |   |   |   |   |
@@ -502,17 +502,17 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 
 | Szenario | Auswirkung | Wiederherstellung | Notizen |
 |---|---|---|---|
-| Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwändiger Prozess sein. |
+| Ausfall eines StorSimple-Geräts | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Ersetzen Sie das ausgefallene Gerät, und führen Sie die [Schritte für StorSimple-Failover und -Notfallwiederherstellung](storsimple-device-failover-disaster-recovery.md) durch. | Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. Dieses erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Dies kann ein sehr zeitaufwendiger Prozess sein. |
 | Ausfall des Veeam-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie im [Veeam Help Center (Technical Documentation)](https://www.veeam.com/documentation-guides-datasheets.html) (Veeam Help Center (Technische Dokumentation)) beschrieben.  | Sie können den Veeam-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Veeam-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
-| Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitsdatensätze aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
+| Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. | Stellen Sie zuerst StorSimple und dann Veeam wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
 
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Speicherszenarien: Schlanke Speicherzuweisung](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
 - [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 

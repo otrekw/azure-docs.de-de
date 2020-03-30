@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
 ms.openlocfilehash: a2fb2479f5544b869b51e796085fcb4d0b76121a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038144"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Erstellen eines MATLAB Distributed Computing Server-Clusters auf virtuellen Azure-Computern

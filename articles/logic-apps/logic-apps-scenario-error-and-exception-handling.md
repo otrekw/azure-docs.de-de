@@ -8,10 +8,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76902704"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
@@ -399,7 +399,7 @@ Mit unserer Lösung haben wir den Funktionsumfang von [Azure Cosmos DB](https://
 Sie können eine MVC-Web-App erstellen, mit der die Fehlerdatensätze aus Cosmos DB angezeigt werden können. In der aktuellen Version sind die Vorgänge **Liste**, **Details**, **Bearbeiten** und **Löschen** enthalten.
 
 > [!NOTE]
-> Bearbeitungsvorgang: Cosmos DB ersetzt das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
+> Beim Bearbeitungsvorgang ersetzt Cosmos DB das gesamte Dokument. Die Datensätze, die in der **Listen** und in der **Detailansicht** angezeigt werden, sind lediglich Beispiele. Es handelt sich nicht um echte Datensätze mit Patiententerminen.
 
 Im Anschluss finden Sie Beispiele für unsere MVC-App-Details, die auf der Grundlage des zuvor beschriebenen Konzepts erstellt wurden.
 

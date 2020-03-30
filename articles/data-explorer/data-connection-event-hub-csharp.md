@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: cf2a274b4f48b31739d6abba5cf87fa2a10d4ca1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667693"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>Erstellen einer Event Hub-Datenverbindung für Azure Data Explorer mit C#
@@ -26,7 +26,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Erstellen eines [Clusters und einer Datenbank](create-cluster-database-csharp.md)
 * Erstellen einer [Tabelle und Spaltenzuordnung](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
@@ -89,6 +89,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | dataFormat | *csv* | Das Datenformat der Nachricht.|
 | eventHubResourceId | *Ressourcen-ID* | Die Ressourcen-ID Ihres Event Hubs mit den Daten für die Erfassung. |
 | consumerGroup | *$Default* | Die Consumergruppe Ihres Event Hubs.|
-| location | *USA (Mitte)* | Der Speicherort der Datenverbindungsressource.|
+| location | *USA, Mitte* | Der Speicherort der Datenverbindungsressource.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

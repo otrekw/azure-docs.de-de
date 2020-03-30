@@ -5,10 +5,10 @@ keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, Automatisieren, I
 ms.date: 03/19/2019
 ms.topic: article
 ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158229"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Verwenden Sie InSpec für die Automatisierung der Konformität der Azure-Infrastruktur

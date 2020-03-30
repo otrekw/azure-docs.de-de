@@ -7,10 +7,10 @@ ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 68ce06d8a2904bf99f58a53817444b2992b23501
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719737"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementieren einer Lambda-Architektur auf der Azure Platform 
@@ -103,7 +103,7 @@ Weitere Informationen zum Azure Cosmos DB-Änderungsfeed finden Sie hier:
 
 * [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](change-feed.md)
 * [Introducing the Azure Cosmos DB Change Feed Processor Library](https://azure.microsoft.com/blog/introducing-the-azure-cosmosdb-change-feed-processor-library/) (Einführung in die Prozessorbibliothek für den Azure Cosmos DB-Änderungsfeed)
-* [Änderungen bei der Streamverarbeitung: Azure Cosmos DB-Änderungsfeed und Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/)
+* [Stream Processing Changes: Azure Cosmos DB change feed + Apache Spark](https://azure.microsoft.com/blog/stream-processing-changes-azure-cosmosdb-change-feed-apache-spark/) (Änderungen bei der Streamverarbeitung: Azure Cosmos DB-Änderungsfeed und Apache Spark)
 
 ## <a name="batch-and-serving-layers"></a>Batch- und Bereitstellungsebene
 Da die neuen Daten in Azure Cosmos DB geladen werden (wo der Änderungsfeed für die Geschwindigkeitsebene verwendet wird), befindet sich hier das **Masterdataset** (unveränderlich, Nur-Anhängen-Satz mit Rohdaten). Verwenden Sie ab jetzt HDInsight (Apache Spark) zum Durchführen der Funktionen für die Vorabberechnung von der **Batchebene** zur **Bereitstellungsebene**. Dies ist in der folgenden Abbildung dargestellt:
@@ -119,7 +119,7 @@ Wichtige Aspekte dieser Ebenen:
  5. Alle Abfragen können beantwortet werden, indem Ergebnisse der Batchansichten und Echtzeitansichten zusammengeführt werden oder einzeln ein Ping ausgeführt wird.
 
 ### <a name="code-example-pre-computing-batch-views"></a>Codebeispiel: Vorabberechnung von Batchansichten
-Verwenden Sie die folgenden Codeausschnitte aus den Notebooks [Lambda Architecture Rearchitected – Batch Layer](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) (Neu gestaltete Lambda-Architektur – Batchebene) und [Lambda Architecture Rearchitected – Batch to Serving Layer](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) (Neu gestaltete Lambda-Architektur – Batch- zu Bereitstellungsebene), um zu veranschaulichen, wie Sie vorab berechnete Ansichten für Ihr **Masterdataset** von Apache Spark zu Azure Cosmos DB ausführen. Verwenden Sie in diesem Szenario die in Azure Cosmos DB gespeicherten Twitter-Daten.
+Verwenden Sie die folgenden Codeausschnitte aus den Notebooks **Lambda Architecture Rearchitected – Batch Layer** (Neu gestaltete Lambda-Architektur – Batchebene) und [Lambda Architecture Rearchitected – Batch to Serving Layer](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) (Neu gestaltete Lambda-Architektur – Batch- zu Bereitstellungsebene), um zu veranschaulichen, wie Sie vorab berechnete Ansichten für Ihr [Masterdataset](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) von Apache Spark zu Azure Cosmos DB ausführen. Verwenden Sie in diesem Szenario die in Azure Cosmos DB gespeicherten Twitter-Daten.
 
 Beginnen Sie, indem Sie die Konfigurationsverbindung mit den Twitter-Daten in Azure Cosmos DB mithilfe des unten angegebenen PySpark-Codes erstellen.
 
@@ -261,7 +261,7 @@ Bei diesem Entwurf benötigen Sie nur zwei verwaltete Dienste: Azure Cosmos DB u
 * **Neue Daten**: Der [Streamfeed von Twitter zu CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed). Dies ist der Mechanismus zum Übertragen von neuen Daten an Azure Cosmos DB per Pushvorgang.
 * **Batchebene:** Die Batchebene umfasst das *Masterdataset* (unveränderlich, Nur-Anhängen-Satz mit Rohdaten) und die Möglichkeit zum Vorabberechnen von Batchansichten der Daten, die per Pushvorgang an die **Bereitstellungsebene** übertragen werden.
    * Im Notebook **Lambda Architecture Rearchitected – Batch Layer** (Neu gestaltete Lambda-Architektur – Batchebene) [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) wird der *Masterdataset*-Satz mit den Batchansichten abgefragt.
-* **Bereitstellungsebene:** Die **Bereitstellungsebene** umfasst vorab berechnete Daten, aus denen sich Batchansichten (z. B. Aggregationen, bestimmte Slicer usw.) für schnelle Abfragen ergeben.
+* **Bereitstellungsebene:** Die **Bereitstellungsebene** umfasst vorab berechnete Daten, aus denen sich Batchansichten (z.B. Aggregationen, bestimmte Slicer usw.) für schnelle Abfragen ergeben.
   * Im Notebook **Lambda Architecture Rearchitected – Batch to Serving Layer** (Neu gestaltete Lambda-Architektur – Batch- zu Bereitstellungsebene) [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.html) werden die Batchdaten per Pushvorgang an die Bereitstellungsebene übertragen. Dies bedeutet, dass Spark eine Batchsammlung mit Tweets abfragt, verarbeitet und in einer anderen Sammlung (berechneter Batch) speichert.
     * **Geschwindigkeitsebene:** Bei der **Geschwindigkeitsebene** wird für Spark der Azure Cosmos DB-Änderungsfeed verwendet. Er wird gelesen, und es werden sofort die entsprechenden Maßnahmen getroffen. Die Daten können auch als berechnete Echtzeitdaten (*Computed RT*) gespeichert werden, damit andere Systeme die verarbeiteten Echtzeitdaten abfragen können, anstatt selbst eine Echtzeitabfrage durchzuführen.
   * Mit dem Scala-Skript unter [Streaming Query from Cosmos DB Change Feed](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Streaming%20Query%20from%20Cosmos%20DB%20Change%20Feed.scala) (Streamingabfrage für Cosmos DB-Änderungsfeed) wird eine Streamingabfrage aus dem Azure Cosmos DB-Änderungsfeed ausgeführt, um eine Intervallanzahl über die Spark-Shell zu berechnen.

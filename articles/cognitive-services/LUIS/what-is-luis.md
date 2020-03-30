@@ -3,14 +3,16 @@ title: Worum handelt es sich bei Language Understanding (LUIS)?
 description: Language Understanding (LUIS) ist ein cloudbasierter API-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen.
 ms.topic: overview
 ms.date: 02/23/2020
-ms.openlocfilehash: c74b842d27146683ef3168a534b9a012ae48fcad
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587038"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053353"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Language Understanding (LUIS) ist ein cloudbasierter API-Dienst, der benutzerdefinierte Machine Learning-Intelligenz auf natürliche Konversationssprachtexte eines Benutzers anwendet, um die allgemeine Bedeutung vorherzusagen sowie relevante und detaillierte Informationen abzurufen.
 
@@ -27,7 +29,7 @@ Sobald die LUIS-App veröffentlicht ist, sendet eine Clientanwendung Äußerunge
 
 ![Konzeptionelle Abbildungen von LUIS in Zusammenarbeit mit dem Chatbot zur Vorhersage von Benutzertext mithilfe des Verstehens natürlicher Sprache](./media/luis-overview/LUIS-chat-bot-request-response.svg "Konzeptionelle Abbildungen von LUIS in Zusammenarbeit mit dem Chatbot zur Vorhersage von Benutzertext mithilfe des Verstehens natürlicher Sprache")
 
-|Schritt|Aktion|
+|Schritt|Action|
 |:--|:--|
 |1|Die Clientanwendung sendet die _Benutzeräußerung_ (Text in den Worten des Benutzers) „Ich möchte meinen Personalverantwortlichen anrufen“ als HTTP-Anforderung an den LUIS-Endpunkt.|
 |2|LUIS ermöglicht Ihnen das Erstellen eigener Sprachmodelle, um Ihrer Anwendung Intelligenz zu verleihen. Maschinell erlernte Sprachmodelle verwenden den unstrukturierten Eingabetext des Benutzers und geben eine Antwort im JSON-Format mit der wichtigsten Absicht, `HRContact`, zurück. Die JSON-Endpunktantwort enthält mindestens die Abfrageäußerung und die Absicht mit der höchsten Bewertung. Sie kann auch Daten wie die Entität _Kontakttyp_ extrahieren.|
@@ -42,7 +44,7 @@ Die LUIS-App stellt Intelligenz bereit, damit die Clientanwendung intelligente E
 
 Ihre LUIS-App enthält ein domänenspezifisches Modell für natürliche Sprache. Sie können die LUIS-App mit einem vordefinierten Domänenmodell beginnen, ein eigenes Modell erstellen oder Teile einer vordefinierten Domäne mit Ihren eigenen benutzerdefinierten Informationen mischen.
 
-* **Vordefiniertes Modell**: LUIS verfügt über eine Vielzahl vordefinierter Domänenmodelle, einschließlich Absichten, Äußerungen und vordefinierter Entitäten. Sie können die vordefinierten Entitäten nutzen, ohne die Absichten und Äußerungen des vordefinierten Modells verwenden zu müssen. [Vordefinierte Domänenmodelle](luis-how-to-use-prebuilt-domains.md) enthalten den gesamten Entwurf und bieten eine hervorragende Möglichkeit für ein schnelle Verwendung von LUIS.
+* **Vordefiniertes Modell**: LUIS verfügt über eine Vielzahl vordefinierter Domänenmodelle, einschließlich Absichten, Äußerungen und {3}vordefinierter Entitäten{4}. Sie können die vordefinierten Entitäten nutzen, ohne die Absichten und Äußerungen des vordefinierten Modells verwenden zu müssen. [Vordefinierte Domänenmodelle](luis-how-to-use-prebuilt-domains.md) enthalten den gesamten Entwurf und bieten eine hervorragende Möglichkeit für ein schnelle Verwendung von LUIS.
 
 * **Benutzerdefiniertes Modell** LUIS bietet Ihnen mehrere Möglichkeiten, eigene benutzerdefinierte Modelle zu definieren, einschließlich Absichten und Entitäten. Entitäten umfassen auf maschinellem Lernen basierende Entitäten, bestimmte oder literale Entitäten sowie eine Kombination von literalen und auf maschinellem Lernen basierenden Entitäten.
 

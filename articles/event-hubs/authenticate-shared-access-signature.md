@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74545587"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
@@ -223,7 +223,7 @@ Zum Definieren von Autorisierungsregeln, die nur für das Senden/Veröffentliche
 Zum Authentifizieren von Back-End-Anwendungen, die von Event Hubs-Producern generierte Daten nutzen, erfordert die Event Hubs-Tokenauthentifizierung, dass den Clients entweder Rechte zum **Verwalten** oder die Berechtigung **Lauschen** für den Event Hubs-Namespace, die Event Hub-Instanz oder das Thema zugewiesen sind. Daten werden von Event Hubs mithilfe von Consumergruppen genutzt. Mit einer SAS-Richtlinie können Sie zwar einen präzisen Bereich festlegen, dieser Bereich wird aber nur auf der Entitätsebene definiert und nicht auf der Consumerebene. Die auf der Ebene des Namespaces, der Event Hub-Instanz oder des Themas definierten Berechtigungen werden folglich auf die Consumergruppen dieser Entität angewendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Authorize using SAS](authenticate-shared-access-signature.md) (Autorisieren mit SAS)
 - [Authorize using Role-base access control (RBAC)](authenticate-shared-access-signature.md) (Autorisieren mit der rollenbasierten Zugriffssteuerung (RBAC))

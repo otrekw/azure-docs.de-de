@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76717645"
 ---
-# <a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
+# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
 
 Dieser Artikel beschreibt die Erstellung von Stichproben für SQL Server-Daten in Azure unter Verwendung von SQL oder der Programmiersprache Python. Es wird gezeigt, wie erfasste Daten in Azure Machine Learning verschoben werden, indem Sie sie in einer Datei speichern, diese in einen Azure-Blob hochladen und anschließend in Azure Machine Learning Studio lesen.
 
@@ -34,7 +34,7 @@ Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Kompr
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-## <a name="SQL"></a>Mit SQL
+## <a name="using-sql"></a><a name="SQL"></a>Mit SQL
 In diesem Abschnitt werden verschiedene Methoden beschrieben, um mit SQL einfache Stichproben der Daten in der Datenbank zu extrahieren. Wählen Sie eine Methode, die für Ihre Datengröße und -verteilung geeignet ist.
 
 Die beiden folgenden Beispiele zeigen, wie Sie mit `newid` in SQL Server eine Stichprobe erstellen. Die von Ihnen gewählte Methode hängt davon ab, wie zufällig die Stichprobe sein soll (im folgenden Beispielcode wird angenommen, dass „pk_id“ ein automatisch generierter Primärschlüssel ist).
@@ -59,12 +59,12 @@ Sie können auch mit TABLESAMPLE eine Stichprobe der Daten erstellen. Diese Opti
 > 
 > 
 
-### <a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 Sie können die Beispielabfragen oben direkt im Modul [Import Data][import-data] von Azure Machine Learning verwenden, um Stichproben aus den Daten dynamisch zu erstellen und in einem Azure Machine Learning-Experiment zu verwenden. Hier ist ein Screenshot der Verwendung des Reader-Moduls zum Lesen der erfassten Daten:
 
 ![reader sql][1]
 
-## <a name="python"></a>Mit der Programmiersprache Python
+## <a name="using-the-python-programming-language"></a><a name="python"></a>Mit der Programmiersprache Python
 In diesem Abschnitt wird veranschaulicht, wie die [pyodbc-Bibliothek](https://code.google.com/p/pyodbc/) in Python für das Herstellen einer ODBC-Verbindung mit einer SQL Server-Datenbank verwendet wird. Die Datenbankverbindungszeichenfolge lautet wie folgt (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch die entsprechenden Werte Ihrer Konfiguration):
 
     #Set up the SQL Azure connection
@@ -80,7 +80,7 @@ Die [Pandas](https://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielz
 
 Sie können jetzt mit den erfassten Daten im Pandas-DataFrame arbeiten. 
 
-### <a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
+### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 Mit dem folgenden Beispielcode können Sie die Stichprobendaten in einer Datei speichern und in ein Azure-Blob hochladen. Die Daten im Blob können mit dem Modul [Import Data][import-data] direkt in ein Azure Machine Learning-Experiment gelesen werden. Die Schritte lauten wie folgt: 
 
 1. Schreiben Sie den Pandas-DataFrame in eine lokale Datei:

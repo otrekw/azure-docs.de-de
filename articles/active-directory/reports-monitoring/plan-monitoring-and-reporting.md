@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232103"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planen einer Azure Active Directory-Bereitstellung für Berichterstellung und Überwachung
@@ -97,7 +97,7 @@ Die Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen
 
 * Notwendig, damit die Lösung geschäftliche Anforderungen erfüllt
 * Geeignet, um geschäftliche Anforderungen zu erfüllen
-* Nicht zutreffend
+* Nicht verfügbar
 
 |Bereich |BESCHREIBUNG |
 |-|-|
@@ -111,7 +111,7 @@ Die Berichterstellung und Überwachung werden verwendet, um Ihre geschäftlichen
 
 Mit der Azure AD-Überwachung können Sie Ihre Azure AD-Aktivitätsprotokolle an ein System weiterleiten, das Ihren Geschäftsanforderungen am besten entspricht. Sie können diese dann für die langfristige Berichterstellung und Analyse aufbewahren, um Einblicke in Ihre Umgebung zu erhalten und sie in SIEM-Tools zu integrieren.
 
-#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sectionsmediareporting-deployment-plandeploy-reporting-flow-diagrampng"></a>Flussdiagramm zum Entscheidungsprozess![Bild: Ablauf in aufeinanderfolgenden Abschnitten](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
+#### <a name="decision-flow-chartan-image-showing-what-is-described-in-subsequent-sections"></a>Flussdiagramm zum Entscheidungsprozess![Bild: Ablauf in aufeinanderfolgenden Abschnitten](media/reporting-deployment-plan/deploy-reporting-flow-diagram.png)
 
 #### <a name="archive-logs-in-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 

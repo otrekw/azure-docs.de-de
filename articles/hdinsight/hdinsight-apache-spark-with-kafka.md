@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327398"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Beispiel für Apache Spark-Streaming (DStream) mit Apache Kafka in HDInsight
 
-Erfahren Sie, wie Sie [Apache Spark](https://spark.apache.org/) verwenden, um Daten mithilfe von [DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) in oder aus [Apache Kafka](https://kafka.apache.org/) in HDInsight zu streamen. In diesem Beispiel wird ein auf dem Spark-Cluster ausgeführtes [Jupyter Notebook](https://jupyter.org/) verwendet.
+Erfahren Sie, wie Sie [Apache Spark](https://spark.apache.org/) verwenden, um Daten mithilfe von [DStreams](https://kafka.apache.org/) in oder aus [Apache Kafka](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) in HDInsight zu streamen. In diesem Beispiel wird ein auf dem Spark-Cluster ausgeführtes [Jupyter Notebook](https://jupyter.org/) verwendet.
 
 > [!NOTE]  
 > Mit den in diesem Dokument beschriebenen Schritten wird eine Azure-Ressourcengruppe erstellt, die jeweils einen Spark- und einen Kafka-Cluster in HDInsight beinhaltet. Die Cluster befinden sich innerhalb eines virtuellen Azure-Netzwerks, wodurch Spark- und Kafka-Cluster direkt miteinander kommunizieren können.
@@ -51,7 +51,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
 1. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Resource group|Erstellen Sie eine Gruppe, oder wählen Sie eine vorhandene Gruppe aus.|
     |Location|Wählen Sie einen Standort in Ihrer Nähe aus.|

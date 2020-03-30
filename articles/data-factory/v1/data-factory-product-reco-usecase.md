@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70139145"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
@@ -38,7 +38,7 @@ Drittens müssen die Empfehlungen dem Kunden sofort zur Verfügung stehen, um ih
 
 Drittens müssen Onlinehändler die Effektivität des Vorgehens ermitteln, indem sie den Gesamterfolg von Up-Selling und Cross-Selling beim Verkauf nachverfolgen und ihre künftigen Empfehlungen entsprechend anpassen.
 
-## <a name="solution-overview"></a>Lösungsübersicht
+## <a name="solution-overview"></a>Übersicht über die Lösungen
 Dieser Beispielanwendungsfall wurde von realen Azure-Benutzern mit Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert, darunter [HDInsight](https://azure.microsoft.com/services/hdinsight/) und [Power BI](https://powerbi.microsoft.com/).
 
 Der Onlinehändler verwendet einen Azure-Blobspeicher, einen lokalen SQL-Server, Azure SQL-Datenbank und einen relationalen Datamart als Datenspeicheroptionen im gesamten Workflow.  Der Blobspeicher enthält Kundeninformationen, Daten zum Kundenverhalten und Produktdaten. Die Produktdaten enthalten Informationen zur Produktmarke und einen Produktkatalog, der lokal in einem SQL Data Warehouse gespeichert ist. 

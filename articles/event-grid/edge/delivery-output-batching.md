@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841746"
 ---
 # <a name="output-batching"></a>Ausgabebatches
@@ -77,7 +77,7 @@ Das Verhalten der Batchverarbeitung von Event Grid kann für einzelne Abonnenten
 
 Die folgenden zur Bereitstellung festgelegten Einstellungen steuern den zulässigen Höchstwert beim Erstellen eines Ereignisabonnements.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Der zulässige Höchstwert für den Knopf `PreferredBatchSizeInKilobytes`. Standardwert: `1033`.
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | Der zulässige Höchstwert für den Knopf `MaxEventsPerBatch`. Standardwert: `50`.
@@ -86,7 +86,7 @@ Die folgenden zur Bereitstellung festgelegten Einstellungen steuern den zulässi
 
 Die folgenden zur Bereitstellung festgelegten Einstellungen steuern den Runtime-Standardwert jedes Knopfs, wenn dieser nicht im Ereignisabonnement angegeben ist. Für einen erneuten Durchlauf muss mindestens ein Knopf im Ereignisabonnement so festgelegt werden, dass das Batchverarbeitungsverhalten aktiviert ist.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | Maximale Größe der Übermittlungsanforderung, wenn nur `MaxEventsPerBatch` angegeben ist. Standardwert: `1_058_576`.
 | `broker__defaultMaxEventsPerBatch` | Maximale Anzahl der einem Batch hinzuzufügenden Ereignisse, wenn nur `MaxBatchSizeInBytes` angegeben ist. Standardwert: `10`.

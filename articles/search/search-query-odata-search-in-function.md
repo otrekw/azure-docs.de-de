@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113122"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData-Funktion `search.in` in der kognitiven Azure-Suche
@@ -59,7 +59,7 @@ Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 > [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld oder eine Bereichsvariable einem der Werte in einer angegebenen Liste entspricht. Die Gleichheit zwischen der Variablen und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung.
 
@@ -88,7 +88,7 @@ Suche nach allen Hotels, deren Name „Sea View motel“ oder „Budget hotel“
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 
-Suche nach allen Hotels, deren Namen „Sea View motel“ oder „Budget hotel“ entspricht (getrennt durch „|“):
+Suche nach allen Hotels, deren Name „Sea View motel“ oder „Budget hotel“ entspricht (getrennt durch „|“):
 
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
 

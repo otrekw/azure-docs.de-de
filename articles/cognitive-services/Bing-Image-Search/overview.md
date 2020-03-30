@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e51f6ad25ca81431eab0561926b6bf065abaa508
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383774"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79134526"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Was ist die Bing-Bildersuche-API?
 
@@ -33,7 +33,7 @@ Die Bing-Bildersuche-API gibt als Suchergebnisse ausschließlich Bilder zurück.
 | [Filtern und Einschränken von Bildergebnissen](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | Bearbeiten Sie Abfrageparameter, um die von Bing zurückgegebenen Bilder zu filtern.                                                                                                       |
 | [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | Für die von der Bing-Bildersuche zurückgegebenen Bilder können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
 | [Pivotieren und Erweitern der Suchabfragen von Benutzern](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | Erweitern Sie Ihre Suchfunktionen, indem Sie von Bing vorgeschlagene Suchbegriffe in Abfragen einschließen und anzeigen.                                                                    |
-| [Abrufen von beliebten Bildern](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | Richten Sie eine Suche nach beliebten Bildern aus der ganzen Welt ein.                                                                                                          |
+| [Abrufen von beliebten Bildern](trending-images.md)                                                                     | Richten Sie eine Suche nach beliebten Bildern aus der ganzen Welt ein.                                                                                                          |
 
 ## <a name="workflow"></a>Workflow
 

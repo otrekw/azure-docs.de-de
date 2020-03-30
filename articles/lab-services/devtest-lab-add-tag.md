@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/13/2019
 ms.author: spelluru
 ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72302798"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen von Tags zu einem Lab in Azure DevTest Labs

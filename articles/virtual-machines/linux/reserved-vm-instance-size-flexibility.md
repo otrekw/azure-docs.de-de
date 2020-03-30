@@ -1,5 +1,5 @@
 ---
-title: Flexibilität bei der VM-Größe – Azure Reserved VM Instances
+title: Flexibilität bei der VM-Größe – reservierte Azure-VM-Instanzen
 description: Es wird beschrieben, für welche Größenserie ein Reservierungsrabatt gilt, wenn Sie eine reservierte VM-Instanz erwerben.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
 ms.openlocfilehash: c443fc1871d771083218811f90644d335e02e9c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035129"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilität bei der VM-Größe mit reservierten VM-Instanzen

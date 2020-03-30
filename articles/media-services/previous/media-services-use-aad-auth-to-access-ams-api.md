@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157855"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
@@ -141,7 +141,7 @@ Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: 401 – nicht autorisiert.
+Ausnahme: „Der Remoteserver hat einen Fehler zurückgegeben: (401) Nicht autorisiert.“
 
 Lösung: Damit die Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle „Mitwirkender“ oder „Besitzer“ in dem Media Services-Konto verfügen, auf das zugegriffen werden soll. Weitere Informationen finden Sie im Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 

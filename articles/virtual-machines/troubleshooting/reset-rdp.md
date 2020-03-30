@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
 ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058442"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
@@ -55,7 +55,7 @@ Mit diesem Prozess wird der Remotedesktopdienst auf der VM aktiviert, und es wir
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Zurücksetzen mit der VMAccess-Erweiterung und PowerShell
 
-Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](/powershell/azure/overview) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
+Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](/powershell/azure/overview) sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert ist](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) und Sie bei Ihrem Azure-Abonnement angemeldet sind.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zurücksetzen des Kennworts eines lokalen Administratorkontos**
 

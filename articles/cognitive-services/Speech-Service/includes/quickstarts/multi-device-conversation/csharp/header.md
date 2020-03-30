@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
 ms.openlocfilehash: 11ee22be1de22bfc4206aeb7f4a27449bd70c2bb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76267978"
 ---
 Wenn Sie direkt loslegen möchten, können Sie sich alle [Sprach-SDK-C#-Beispiele](https://aka.ms/speech/github-csharp) auf GitHub ansehen oder von dort herunterladen. Machen Sie andernfalls hier weiter.

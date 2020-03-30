@@ -4,10 +4,10 @@ description: Erlauben Sie den Zugriff auf eine Azure-Containerregistrierung nur 
 ms.topic: article
 ms.date: 07/01/2019
 ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454330"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln

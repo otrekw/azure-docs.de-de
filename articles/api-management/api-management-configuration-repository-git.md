@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71104965"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
@@ -148,7 +148,7 @@ Informationen zum Ausführen dieses Vorgangs mit der REST-API finden Sie unter [
 
 Die Dateien und Ordner im lokalen Git-Repository enthalten die Konfigurationsinformationen der Dienstinstanz.
 
-| Item | BESCHREIBUNG |
+| Element | BESCHREIBUNG |
 | --- | --- |
 | Stammordner „api-management“ |Enthält die Konfiguration der obersten Ebene für die Dienstinstanz |
 | Ordner „apis“ |Enthält die Konfiguration für die APIs in der Dienstinstanz |
@@ -243,7 +243,7 @@ Der Ordner `policies` enthält die Richtlinienanweisungen für Ihre Dienstinstan
 ### <a name="portalstyles-folder"></a>Ordner „portalStyles“
 Der Ordner `portalStyles` enthält Konfigurationen und Stylesheets für Anpassungen des Entwicklerportals für die Dienstinstanz.
 
-* `portalStyles\configuration.json`: Enthält die Namen der Stylesheets, die vom Entwicklerportal verwendet werden.
+* `portalStyles\configuration.json` : Enthält die Namen der Stylesheets, die vom Entwicklerportal verwendet werden.
 * `portalStyles\<style name>.css`: Jede `<style name>.css`-Datei enthält Stile für das Entwicklerportal (standardmäßig `Preview.css` und `Production.css`).
 
 ### <a name="products-folder"></a>Ordner „products“

@@ -4,7 +4,6 @@ description: Erfahren Sie mehr über die Optionen zum Verschieben von Apps und D
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
@@ -13,14 +12,15 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377904"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155000"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus Azure Access Control Service
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -112,8 +112,8 @@ Im November 2017 werden alle Access Control-Komponenten in vollem Umfang unterst
 
 Dies ist der Zeitplan für die Deaktivierung von Access Control-Komponenten:
 
-- **November 2017:**  Die Azure AD-Administratoroberfläche im klassischen Azure-Portal wird [deaktiviert](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Zu diesem Zeitpunkt können Namespaces für Access Control unter der folgenden neuen dedizierten URL verwaltet werden: `https://manage.windowsazure.com?restoreClassic=true`. Verwenden Sie diesen URl, um Ihre vorhandenen Namespaces anzuzeigen, Namespaces zu aktivieren und deaktivieren und ggf. zu löschen.
-- **2. April 2018**: Das klassische Azure-Portal ist vollständig deaktiviert. Dies bedeutet, dass Namespaces für Access Control nicht mehr über jede URL verwaltet werden können. Zu diesem Zeitpunkt können Sie Ihre Access Control-Namespaces nicht deaktivieren oder aktivieren, löschen oder aufzählen. Das Access Control-Verwaltungsportal ist jedoch voll funktionsfähig und befindet sich unter „`https://\<namespace\>.accesscontrol.windows.net`“. Alle sonstigen Komponenten von Access Control arbeiten weiterhin normal.
+- **November 2017**: Die Azure AD-Administratoroberfläche im klassischen Azure-Portal wird [deaktiviert](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Zu diesem Zeitpunkt können Namespaces für Access Control unter der folgenden neuen dedizierten URL verwaltet werden: `https://manage.windowsazure.com?restoreClassic=true`. Verwenden Sie diesen URl, um Ihre vorhandenen Namespaces anzuzeigen, Namespaces zu aktivieren und deaktivieren und ggf. zu löschen.
+- **2. April 2018**: Das klassische Azure-Portal ist vollständig deaktiviert, d.h. Namespaces für Access Control können nicht mehr über jede URL verwaltet werden. Zu diesem Zeitpunkt können Sie Ihre Access Control-Namespaces nicht deaktivieren oder aktivieren, löschen oder aufzählen. Das Access Control-Verwaltungsportal ist jedoch voll funktionsfähig und befindet sich unter „`https://\<namespace\>.accesscontrol.windows.net`“. Alle sonstigen Komponenten von Access Control arbeiten weiterhin normal.
 - **7. November 2018**: Alle Komponenten von Access Control werden endgültig heruntergefahren. Dazu zählen das Access Control-Verwaltungsportal, der Verwaltungsdienst, STS und das Tokentransformationsregel-Modul. Zu diesem Zeitpunkt tritt bei allen Anforderungen, die an Access Control (unter der Adresse „\<namespace\>.accesscontrol.windows.net“) gesendet werden, ein Fehler auf. Alle vorhandenen Apps und Dienste müssen vor diesem Zeitpunkt zu anderen Technologien migriert worden sein.
 
 > [!NOTE]
@@ -161,8 +161,8 @@ Für Webanwendungen, die Access Control für die Benutzerauthentifizierung verwe
 
 - Umfassende Integration mit Windows Identity Foundation (WIF)
 - Verbund mit Google-, Facebook-, Yahoo-, Azure Active Directory- und AD FS-Konten sowie Microsoft-Konten.
-- Unterstützung der folgenden Authentifizierungsprotokolle: OAuth 2.0 Draft 13, WS-Trust und Webdiensteverbund (WS-Verbund).
-- Unterstützung der folgenden Tokenformate: JSON Web Token (JWT), SAML 1.1, SAML 2.0 und Simple Web Token (SWT).
+- Unterstützung für die folgenden Authentifizierungsprotokolle: OAuth 2.0 (Entwurf 13), WS-Trust und WS-Verbund.
+- Unterstützung für die folgenden Tokenformate: JSON-Webtoken (JWT), SAML 1.1, SAML 2.0 und Simple Web Token (SWT).
 - In WIF integrierte Startbereichsermittlung, die Benutzern das Auswählen des Kontotyps für die Anmeldung ermöglicht. Diese Funktion wird von der Webanwendung gehostet und ist vollständig anpassbar.
 - Tokentransformation, die die umfassende Anpassung der Ansprüche ermöglicht, die von der Webanwendung von Access Control empfangen werden, einschließlich:
     - Übergeben von Ansprüchen von Identitätsanbietern

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198291"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interaktionsarten und Tastenkombinationen für Zeichentools im Zeichentools-Modul
@@ -135,7 +135,7 @@ Wenn sich der Zeichnungs-Manager im `draw-circle`-Modus befindet, können abhän
 
 Die Zeichnungstools unterstützen Tastenkombinationen. Diese Tastenkombinationen sind funktionsfähig, wenn die Karte den Fokus besitzt.
 
-| Key      | Aktion                            |
+| Key      | Action                            |
 |----------|-----------------------------------|
 | `C` | Beendet alle aktuell ausgeführten Zeichenvorgänge und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |
 | `Escape` | Bricht alle aktuell ausgeführten Zeichenvorgänge ab und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |

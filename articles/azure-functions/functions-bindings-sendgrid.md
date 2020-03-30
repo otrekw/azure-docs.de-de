@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235158"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 
@@ -389,7 +389,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```  
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |from|–|E-Mail-Adresse des Absenders für alle Funktionen.| 
 

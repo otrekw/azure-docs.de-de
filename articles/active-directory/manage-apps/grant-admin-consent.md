@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75475272"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
@@ -43,7 +43,7 @@ Sie können die mandantenweite Administratoreinwilligung über *Unternehmensanwe
 
 So erteilen Sie die mandantenweite Administratoreinwilligung für eine in **Unternehmensanwendungen** aufgeführte Anwendung:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](https://portal.azure.com), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) an.
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **Unternehmensanwendungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**.
@@ -56,7 +56,7 @@ Bei Anwendungen, die Ihre Organisation entwickelt hat, oder die direkt in Ihrem 
 
 So erteilen Sie die mandantenweite Administratoreinwilligung in **App-Registrierungen**:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](https://portal.azure.com), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) an.
 2. Klicken Sie auf **Azure Active Directory** und anschließend auf **App-Registrierungen**.
 3. Wählen Sie die Anwendung aus, der Sie eine mandantenweite Administratoreinwilligung erteilen möchten.
 4. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung erteilen**.
@@ -80,9 +80,9 @@ Dabei gilt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)
+[Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können](configure-user-consent.md)
 
-[Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
+[Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)
 
 [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
 

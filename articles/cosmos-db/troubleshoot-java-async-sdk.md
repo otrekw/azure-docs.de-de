@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65519979"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Java Async SDK mit Azure Cosmos DB-SQL-API-Konten
@@ -27,7 +27,7 @@ Beginnen Sie mit dieser Liste:
 * Überprüfen Sie die [Leistungstipps](performance-tips-async-java.md), und implementieren Sie die Empfehlungen.
 * Lesen Sie den Rest dieses Artikels, falls Sie keine Lösung gefunden haben. Reichen Sie anschließend ein [GitHub-Problem](https://github.com/Azure/azure-cosmosdb-java/issues) ein.
 
-## <a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Netzwerkprobleme, Netty-Lesetimeoutfehler, niedriger Durchsatz, hohe Latenz
 
@@ -38,16 +38,16 @@ Beginnen Sie mit dieser Liste:
 #### <a name="connection-throttling"></a>Verbindungsdrosselung
 Eine Verbindungsdrosselung kann entweder aufgrund eines [Verbindungslimit auf einem Hostcomputer] oder aufgrund von [Azure SNAT-Portauslastung (PAT)] auftreten.
 
-##### <a name="connection-limit-on-host"></a>Verbindungslimit auf einem Hostcomputer
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>Verbindungslimit auf einem Hostcomputer
 Bei einigen Linux-Systemen (beispielsweise Red Hat) gilt eine Obergrenze für die Gesamtzahl geöffneter Dateien. Da Sockets in Linux als Dateien implementiert werden, schränkt dies auch die Gesamtanzahl von Verbindungen ein.
-Führen Sie den folgenden Befehl aus:
+Führen Sie den folgenden Befehl aus.
 
 ```bash
 ulimit -a
 ```
 Die maximal zulässige Anzahl geöffneter Dateien (nofile) muss mindestens doppelt so hoch sein wie die Größe Ihres Verbindungspools. Weitere Informationen finden Sie unter [Leistungstipps für Azure Cosmos DB und Async Java](performance-tips-async-java.md).
 
-##### <a name="snat"></a>Azure SNAT-Portauslastung (PAT)
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT-Portauslastung (PAT)
 
 Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) eingeschränkt.
 
@@ -58,7 +58,7 @@ Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse b
     Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.
 
-##### <a name="cant-connect"></a>Dienst nicht erreichbar – Firewall
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>Dienst nicht erreichbar – Firewall
 ``ConnectTimeoutException`` gibt an, dass das SDK den Dienst nicht erreichen kann.
 Im direkten Modus erhalten Sie möglicherweise einen Fehler ähnlich dem folgenden:
 ```
@@ -73,7 +73,7 @@ Halten Sie auch das [Verbindungslimit auf einem Hostcomputer](#connection-limit-
 Wenn Sie einen HTTP-Proxy verwenden, vergewissern Sie sich, dass er die Anzahl von Verbindungen unterstützt, die in `ConnectionPolicy` des SDK konfiguriert ist.
 Andernfalls treten Verbindungsprobleme auf.
 
-#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren eines Netty E/A-Threads
+#### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Ungültiges Codierungsmuster: Blockieren des Netty-E/A-Threads
 
 Das SDK verwendet für die Kommunikation mit Azure Cosmos DB die [Netty](https://netty.io/)-E/A-Bibliothek. Das SDK verfügt über asynchrone APIs und verwendet nicht blockierende E/A-APIs von Netty. Die E/A-Aufgaben des SDK werden in Netty-E/A-Threads ausgeführt. Die Anzahl von Netty-E/A-Threads ist so konfiguriert, dass sie mit der Anzahl von CPU-Kernen des App-Computers übereinstimmt. 
 
@@ -137,7 +137,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `.observeOn(customScheduler)` auf einen durch `customScheduler` bereitgestellten Worker.
+   Unter Umständen müssen zeitaufwendige Aufgaben (etwa rechenintensive Aufgaben oder blockierende E/A-Vorgänge) ausgeführt werden. Verlagern Sie den Thread in diesem Fall mithilfe der API `customScheduler` auf einen durch `.observeOn(customScheduler)` bereitgestellten Worker.
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -196,7 +196,7 @@ Nachdem Sie identifiziert haben, dass RxJava-1.2.2 eine transitive Abhängigkeit
 Weitere Informationen finden Sie in der [Anleitung zum Ausschließen transitiver Abhängigkeiten](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html).
 
 
-## <a name="enable-client-sice-logging"></a>Aktivieren von Client-SDK-Protokollierung
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>Aktivieren von Client-SDK-Protokollierung
 
 Das Java Async SDK verwendet SLF4j als Protokollierungsfassade, die die Anmeldung bei gängigen Protokollierungsframeworks wie log4j und logback unterstützt.
 
@@ -235,7 +235,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 Weitere Informationen finden Sie im [Leitfaden zur sfl4j-Protokollierung](https://www.slf4j.org/manual.html).
 
-## <a name="netstats"></a>Netzwerkstatistiken des Betriebssystems
+## <a name="os-network-statistics"></a><a name="netstats"></a>Netzwerkstatistiken des Betriebssystems
 Führen Sie den Befehl „netstat“ aus, um einen Überblick darüber zu erhalten, wie viele Verbindungen sich im Zustand `ESTABLISHED`, `CLOSE_WAIT` usw. befinden.
 
 Unter Linux können Sie den folgenden Befehl ausführen:

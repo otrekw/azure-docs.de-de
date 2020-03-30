@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74922114"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von einem lokalen Netezza-Server zu Azure 
@@ -39,7 +39,7 @@ Azure Data Factory bietet eine serverlose Architektur, die Parallelität auf ver
 
 Das vorhergehende Diagramm kann wie folgt interpretiert werden:
 
-- Eine einzelne Kopieraktivität kann skalierbare Computeressourcen nutzen. Wenn Sie Azure Integration Runtime verwenden, können Sie [bis zu 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) für jede Kopieraktivität serverlos angeben. Bei einer selbstgehosteten Integration Runtime (selbstgehostete IR) können Sie den Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Eine einzelne Kopieraktivität verteilt ihre Partition auf alle Knoten. 
+- Eine einzelne Kopieraktivität kann skalierbare Computeressourcen nutzen. Wenn Sie Azure Integration Runtime verwenden, können Sie [bis zu 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) für jede Kopieraktivität serverlos angeben. Bei einer selbstgehosteten Integration Runtime (selbstgehostete IR) können Sie den Computer manuell hochskalieren oder das Aufskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Eine einzelne Kopieraktivität verteilt ihre Partition auf alle Knoten. 
 
 - Für eine Kopieraktivität werden mehrere Threads genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen. 
 
@@ -73,7 +73,7 @@ Das vorhergehende Diagramm kann wie folgt interpretiert werden:
 
 - Bei dieser Architektur übertragen Sie Daten per HTTPS sicher über das öffentliche Internet.
 
-- Sie müssen die (selbstgehostete) Integration Runtime von Azure Data Factory auf einem Windows-Computer hinter der Unternehmensfirewall installieren, um diese Architektur zu erhalten. Stellen Sie sicher, dass diese Integration Runtime direkt auf den Netezza-Server zugreifen kann. Sie können Ihren Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehreren Computern durchführen, um die Bandbreite Ihres Netzwerks und der Datenspeicher zum Kopieren von Daten vollständig zu nutzen.
+- Sie müssen die (selbstgehostete) Integration Runtime von Azure Data Factory auf einem Windows-Computer hinter der Unternehmensfirewall installieren, um diese Architektur zu erhalten. Stellen Sie sicher, dass diese Integration Runtime direkt auf den Netezza-Server zugreifen kann. Sie können Ihren Computer manuell hochskalieren oder das Aufskalieren auf mehreren Computern durchführen, um die Bandbreite Ihres Netzwerks und der Datenspeicher zum Kopieren von Daten vollständig zu nutzen.
 
 - Durch die Verwendung dieser Architektur können Sie sowohl Daten der Anfangsmomentaufnahme als auch Deltadaten migrieren.
 
@@ -85,7 +85,7 @@ Das vorhergehende Diagramm kann wie folgt interpretiert werden:
 
 - Bei dieser Architektur wird die Datenmigration über einen privaten Peeringlink per Azure ExpressRoute durchgeführt, damit Daten niemals über das öffentliche Internet übertragen werden. 
 
-- Sie müssen die (selbstgehostete) Integration Runtime von Azure Data Factory auf einem virtuellen Windows-Computer (VM) in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten. Sie können Ihre VMs manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehreren VMs durchführen, um die Bandbreite Ihres Netzwerks und der Datenspeicher zum Kopieren von Daten vollständig zu nutzen.
+- Sie müssen die (selbstgehostete) Integration Runtime von Azure Data Factory auf einem virtuellen Windows-Computer (VM) in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten. Sie können Ihre VMs manuell hochskalieren oder das Aufskalieren auf mehreren VMs durchführen, um die Bandbreite Ihres Netzwerks und der Datenspeicher zum Kopieren von Daten vollständig zu nutzen.
 
 - Durch die Verwendung dieser Architektur können Sie sowohl Daten der Anfangsmomentaufnahme als auch Deltadaten migrieren.
 
@@ -141,9 +141,9 @@ Jede Tabelle kann eine andere Grenzwertspalte verwenden, um ihre neuen oder aktu
 
 Wenn Sie Daten vom Netezza-Server zu Azure migrieren, müssen Sie unabhängig davon, ob sich der Server lokal hinter Ihrer Unternehmensfirewall oder in einer virtuellen Netzwerkumgebung befindet, eine selbstgehostete IR auf einem Windows-Computer oder einer VM installieren, die die Engine zum Verschieben von Daten darstellt. Bei der Installation des selbstgehosteten IR empfehlen wir den folgenden Ansatz:
 
-- Beginnen Sie für jeden Windows-Computer oder jede VM mit einer Konfiguration von 32 vCPUs und 128 GB Arbeitsspeicher. Sie können die Auslastung der CPU und des Arbeitsspeichers für den IR-Computer während der Datenmigration weiter überwachen. So können Sie ermitteln, ob Sie den Computer weiter zentral hochskalieren müssen, um die Leistung zu verbessern, oder zentral herunterskalieren müssen, um Kosten zu sparen.
+- Beginnen Sie für jeden Windows-Computer oder jede VM mit einer Konfiguration von 32 vCPUs und 128 GB Arbeitsspeicher. Sie können die Auslastung der CPU und des Arbeitsspeichers für den IR-Computer während der Datenmigration weiter überwachen. So können Sie ermitteln, ob Sie den Computer weiter hochskalieren müssen, um die Leistung zu verbessern, oder herunterskalieren müssen, um Kosten zu sparen.
 
-- Sie können auch horizontal hochskalieren, indem Sie bis zu vier Knoten einer selbstgehosteten Integration Runtime zuordnen. Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete IR ausgeführt wird, werden automatisch alle VM-Knoten angewendet, um die Daten parallel zu kopieren. Zur Sicherstellung von Hochverfügbarkeit beginnen Sie mit zwei VM-Knoten, um bei der Datenmigration einen Single Point of Failure zu vermeiden.
+- Sie können auch aufskalieren, indem Sie bis zu vier Knoten einer selbstgehosteten Integration Runtime zuordnen. Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete IR ausgeführt wird, werden automatisch alle VM-Knoten angewendet, um die Daten parallel zu kopieren. Zur Sicherstellung von Hochverfügbarkeit beginnen Sie mit zwei VM-Knoten, um bei der Datenmigration einen Single Point of Failure zu vermeiden.
 
 ### <a name="limit-your-partitions"></a>Begrenzen der Partitionen
 
@@ -153,7 +153,7 @@ Beginnen Sie zum Kopieren einer Tabelle mit einer einzelnen Kopieraktivität mit
 
 Wenn sie nicht innerhalb von zwei Stunden zu Azure geladen werden kann und die Kapazität des selbst gehosteten IR-Knotens und des Datenspeichers nicht voll ausgeschöpft wird, erhöhen Sie schrittweise die Anzahl der gleichzeitigen Kopieraktivitäten, bis Sie die Grenzen Ihres Netzwerks oder das Bandbreitenlimit der Datenspeicher erreichen. 
 
-Überwachen Sie weiterhin die Auslastung von CPU/Arbeitsspeicher auf dem Computer mit der selbstgehosteten IR, und halten Sie sich bereit, den Computer zentral hochzuskalieren oder das horizontale Hochskalieren auf mehrere Computer durchzuführen, wenn die CPU und der Arbeitsspeicher voll ausgelastet sind. 
+Überwachen Sie weiterhin die Auslastung von CPU/Arbeitsspeicher auf dem Computer mit der selbstgehosteten IR, und halten Sie sich bereit, den Computer hochzuskalieren oder das Aufskalieren auf mehrere Computer durchzuführen, wenn die CPU und der Arbeitsspeicher voll ausgelastet sind. 
 
 Wenn für die Azure Data Factory-Kopieraktivität Drosselungsfehler gemeldet werden, sollten Sie entweder die Parallelitäts- oder die `parallelCopies`-Einstellung in Azure Data Factory reduzieren oder erwägen, die IOPS-/Bandbreitenlimits (Vorgänge pro Sekunde) für das Netzwerk und die Datenspeicher zu erhöhen. 
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645989"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulieren von Ausfällen während der Bearbeitung von Dienstworkloads
@@ -18,7 +18,7 @@ Dank der in Azure Service Fabric enthaltenen Testability-Szenarien müssen sich 
 ## <a name="sample-custom-scenario"></a>Benutzerdefiniertes Beispielszenario
 Mit diesem Test wird ein Szenario veranschaulicht, bei dem eine Überlappung der Geschäftsworkload mit [ordnungsgemäßen und nicht ordnungsgemäßen Fehlern](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)erfolgt. Die Fehler sollten in der Mitte von Dienstvorgängen oder bei der Berechnung der besten Ergebnisse ausgelöst werden.
 
-Sehen wir uns ein Beispiel für einen Dienst an, der vier Workloads bereitstellt: A, B, C und D. Jede Workload entspricht einer Reihe von Workflows und kann ein Compute- bzw. Speichervorgang oder eine Mischung aus beidem sein. Der Einfachheit halber werden die Workloads im Beispiel abstrahiert. Die folgenden unterschiedlichen Ausfälle werden die in diesem Beispiel ausgeführt:
+Wir gehen hier ein Beispiel für einen Dienst durch, der die vier Workloads A, B, C und D verfügbar macht. Jede Workload entspricht einer Gruppe von Workflows, und es kann sich dabei um eine Berechnung, Speicherung oder Mischung handeln. Der Einfachheit halber werden die Workloads im Beispiel abstrahiert. Die folgenden unterschiedlichen Ausfälle werden die in diesem Beispiel ausgeführt:
 
 * RestartNode: Ein nicht ordnungsgemäßer Ausfall zur Simulation eines Neustarts des Computers.
 * RestartDeployedCodePackage: Ein nicht ordnungsgemäßer Ausfall zur Simulation von Abstürzen des Diensthostprozesses.

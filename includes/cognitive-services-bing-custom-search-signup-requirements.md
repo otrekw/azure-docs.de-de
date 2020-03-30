@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/09/2018
 ms.openlocfilehash: 8f729dfbfdb7933a540a6616335ef64f27040485
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74972698"
 ---
 ## <a name="create-an-azure-resource"></a>Erstellen einer Azure-Ressource
@@ -16,7 +16,7 @@ ms.locfileid: "74972698"
 Beginnen Sie mit der Verwendung der API für die benutzerdefinierte Bing-Suche, indem Sie eine der unten aufgeführten Azure-Ressourcen erstellen.
 
 * [Erstellen einer Testressource:](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)
-    * Kein Azure-Abonnement erforderlich
+    * Kein Azure-Abonnement erforderlich.
     * Kostenlos und sieben Tage lang gültig. Nach der Registrierung stehen ein Testschlüssel und ein Endpunkt auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
 
 * [Erstellen einer Ressource für die benutzerdefinierte Bing-Suche:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)
@@ -25,4 +25,4 @@ Beginnen Sie mit der Verwendung der API für die benutzerdefinierte Bing-Suche, 
 
 * [Erstellen einer Ressource für mehrere Dienste:](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
     * Verfügbar über das Azure-Portal, bis Sie die Ressource löschen.  
-    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt für mehrere Cognitive Services-Instanzen.
+    * Verwenden Sie für Ihre Anwendungen den gleichen Schlüssel und Endpunkt über mehrere Cognitive Services-Instanzen hinweg.

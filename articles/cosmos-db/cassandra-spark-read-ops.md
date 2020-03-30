@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893398"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Lesen von Daten in Azure Cosmos DB-Cassandra-API-Tabellen mithilfe von Spark
@@ -143,5 +143,5 @@ Im Folgenden finden Sie weitere Artikel zur Arbeit mit der Azure Cosmos DB-Cassa
  * [Upsertvorgänge](cassandra-spark-upsert-ops.md)
  * [Löschvorgänge](cassandra-spark-delete-ops.md)
  * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
- * [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+ * [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)
 

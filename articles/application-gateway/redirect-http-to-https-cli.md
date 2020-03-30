@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246875"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
@@ -28,11 +28,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Hinzufügen eines Listeners und einer Umleitungsregel
 > * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
@@ -62,7 +62,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit *az network vnet subnet create* das Subnetz namens [myBackendSubnet](/cli/azure/network/vnet/subnet) hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -159,7 +159,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Hinzufügen der Routingregel
 
-Fügen Sie dem Anwendungsgateway mit [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) die Routingregel namens *rule2* mit der Umleitungskonfiguration hinzu.
+Fügen Sie dem Anwendungsgateway mit *az network application-gateway rule create* die Routingregel namens [rule2](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) mit der Umleitungskonfiguration hinzu.
 
 ```azurecli-interactive
 az network application-gateway rule create \

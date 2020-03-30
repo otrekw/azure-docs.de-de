@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz,
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462729"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
@@ -21,7 +21,7 @@ ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und repliziert
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Vergleich mit [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queue"></a>Vergleich mit [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
 ReliableConcurrentQueue wird als Alternative zu [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) angeboten. Dieser Warteschlangentyp sollte verwendet werden, wenn eine strikte FIFO-Reihenfolge nicht erforderlich ist, da eine garantierte FIFO-Reihenfolge Abstriche bei der Parallelität bedeutet.  [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) verwendet Sperren, um die FIFO-Reihenfolge zu erzwingen. Dabei darf maximal je eine Transaktion gleichzeitig in die Warteschlange eingereiht und aus der Warteschlange entfernt werden. Im Vergleich dazu lockert ReliableConcurrentQueue die Einschränkung hinsichtlich der Reihenfolge und macht es möglich, dass sich die Einreihungs- und Entfernungsvorgänge einer beliebigen Anzahl von gleichzeitigen Transaktionen überschneiden. Es wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet, die relative Reihenfolge von zwei Werten in ReliableConcurrentQueue kann jedoch nie garantiert werden.
 
@@ -51,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 Hier finden Sie einige Codeausschnitte für die Verwendung von EnqueueAsync sowie die erwarteten Ausgaben.
 
-- *Fall 1: Einzelner Einreihungstask*
+- *Fall 1: einzelner Einreihungstask*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -70,7 +70,7 @@ Wir gehen davon aus, dass der Task erfolgreich abgeschlossen wurde und es keine 
 > 20, 10
 
 
-- *Fall 2: Paralleler Einreihungstask*
+- *Fall 2: paralleler Einreihungstask*
 
 ```
 // Parallel Task 1
@@ -99,7 +99,7 @@ Wir gehen davon aus, dass die Tasks erfolgreich abgeschlossen wurden, die Tasks 
 Hier finden Sie einige Codeausschnitte für die Verwendung von „TryDequeueAsync“ sowie die erwarteten Ausgaben. Wir gehen davon aus, dass die Warteschlange bereits mit den folgenden Elementen aufgefüllt wurde:
 > 10, 20, 30, 40, 50, 60
 
-- *Fall 1: Einzelner Entfernungstask*
+- *Fall 1: einzelner Entfernungstask*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -114,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Wir gehen davon aus, dass der Task erfolgreich abgeschlossen wurde und es keine gleichzeitigen Transaktionen gab, die zu einer Änderung der Warteschlange geführt haben. Da ein Rückschluss auf die Reihenfolge der Elemente in der Warteschlange nicht möglich ist, können alle drei Elemente in beliebiger Reihenfolge entfernt werden. Die Warteschlange versucht, die ursprüngliche Reihenfolge der Elemente (in der sie eingereiht wurden) beizubehalten, wird jedoch aufgrund von Fehlern oder gleichzeitigen Vorgängen möglicherweise gezwungen, die Reihenfolge zu ändern.  
 
-- *Fall 2: Paralleler Entfernungstask*
+- *Fall 2: paralleler Entfernungstask*
 
 ```
 // Parallel Task 1

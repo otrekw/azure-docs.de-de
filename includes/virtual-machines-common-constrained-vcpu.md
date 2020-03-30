@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178086"
 ---
 Einige Datenbankworkloads wie SQL Server oder Oracle erfordern hohe Werte für Arbeitsspeicher, Speicherplatz und E/A-Bandbreite, aber keine hohe Anzahl von Kernen. Viele Datenbankworkloads sind nicht CPU-intensiv. Azure bietet bestimmte VM-Größen an, bei denen Sie die Anzahl der VM vCPUs einschränken können, um die Kosten für die Softwarelizenzierung zu reduzieren, während Arbeitsspeicher, Speicherplatz und E/A-Bandbreite gleich bleiben.
@@ -24,7 +24,7 @@ Beispielsweise verfügt die aktuelle VM-Größe „Standard_GS5“ über 32 vCPU
 Die Lizenzgebühren für SQL Server oder Oracle sind auf die neue vCPU-Anzahl beschränkt, und andere Produkte sollten auf der Grundlage der neuen vCPU-Anzahl berechnet werden. Dies führt zu einer Erhöhung des Verhältnisses zwischen VM-Spezifikationen und aktiven (abrechenbaren) vCPUs um 50 % bis 75 %. Mit diesen neuen VM-Größen können Kunden für ihre Workloads dieselben Arbeitsspeicher- und Speicherkapazität sowie E/A-Bandbreite verwenden und gleichzeitig ihre Kosten für die Softwarelizenzierung senken. Zu diesem Zeitpunkt bleiben die Computekosten (einschließlich der Betriebssystemlizenzierung) gleich wie bei der ursprünglichen Größe. Weitere Informationen finden Sie unter [Azure VM-Größen für kostengünstigere Datenbankworkloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| NAME                | vCPU | Spezifikationen           |
+| Name                | vCPU | Spezifikationen           |
 |---------------------|------|-----------------|
 | Standard_M8-2 ms     | 2    | Wie M8ms    |
 | Standard_M8-4ms     | 4    | Wie M8ms    |

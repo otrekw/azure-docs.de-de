@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604558"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Anwenden von Systemupdates in Azure Security Center
@@ -45,7 +45,7 @@ In diesem Beispiel verwenden wir **Compute**.
    Im unteren Bereich des Dashboards werden alle fehlenden Updates für Ihre virtuellen und physischen Computer sowie der Schweregrad des fehlenden Updates aufgeführt.  Die Liste enthält Folgendes:
 
     - NAME: Der Name des fehlenden Updates.
-    - ANZAHL VON VMs UND COMPUTERN: Die Gesamtzahl von VMs und Computern, auf denen dieses Update fehlt.
+    - ANZAHL VON VMS UND COMPUTERN: Die Gesamtzahl virtueller und physischer Computer, auf denen dieses Update fehlt.
     - STATUS: Der aktuelle Status der Empfehlung:
 
       - Offen: Die Empfehlung wurde noch nicht umgesetzt.
@@ -54,9 +54,9 @@ In diesem Beispiel verwenden wir **Compute**.
 
     - SCHWEREGRAD: Beschreibt den Schweregrad der jeweiligen Empfehlung:
 
-      - Hoch: Ein Sicherheitsrisiko betrifft eine wichtige Ressource (Anwendung, VM oder Netzwerksicherheitsgruppe) und erfordert einen Eingriff.
-      - Mittel: Es liegt ein nicht kritisches Problem vor, oder es sind zusätzliche Schritte erforderlich, um einen Prozess abzuschließen oder ein Sicherheitsrisiko zu beseitigen.
-      - Niedrig: Ein Sicherheitsrisiko, das behandelt werden sollte, jedoch keinen unmittelbaren Eingriff erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
+      - Hoch: Ein Sicherheitsrisiko betrifft eine wichtige Ressource (Anwendung, virtueller Computer oder Netzwerksicherheitsgruppe) und erfordert eine Aktion.
+      - Mittel: Nicht kritische oder zusätzliche Schritte sind erforderlich, um einen Prozess abzuschließen oder ein Sicherheitsrisiko zu beseitigen.
+      - Niedrig: Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber es ist keine unmittelbare Aktion erforderlich. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
 3. Klicken Sie auf ein fehlendes Update in der Liste, um weitere Informationen anzuzeigen.
 

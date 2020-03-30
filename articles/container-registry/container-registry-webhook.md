@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454379"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
@@ -29,7 +29,7 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 1. Wählen Sie in der Webhook-Symbolleiste die Option **Hinzufügen**.
 1. Geben Sie folgende Informationen in das Formular *Webhook erstellen* ein:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 |---|---|
 | Webhookname | Der Name, den Sie dem Webhook geben möchten. Er darf nur Buchstaben und Zahlen enthalten und muss 5 bis 50 Zeichen lang sein. |
 | Location | Geben Sie für eine [georeplizierte](container-registry-geo-replication.md) Registrierung die Azure-Region des Registrierungsreplikats an. 
@@ -37,7 +37,7 @@ Ausführliche Informationen zu Webhookanforderungen finden Sie unter [Referenz z
 | Benutzerdefinierte Header | Header, die Sie zusammen mit der POST-Anforderung übergeben möchten. Diese müssen im Format „Schlüssel: Wert“ vorliegen. |
 | Triggeraktionen | Aktionen, die den Webhook auslösen. Zu den Aktionen gehören Pushvorgänge für Images, Löschen von Images, Pushvorgänge für Helm-Diagramme, Löschen von Helm-Diagrammen und Quarantäne für Images. Sie können eine oder mehrere Aktionen auswählen, um den Webhook auszulösen. |
 | Status | Der Status des Webhooks nach der Erstellung. Der Webhook ist standardmäßig aktiviert. |
-| Bereich | Der Bereich, in dem der Webhook funktioniert. Wenn nichts anderes angegeben ist, gilt der Bereich für alle Ereignisse in der Registrierung. Der Bereich kann im Format „repository:tag“ für ein Repository oder ein Tag oder mit „respository:*“ für alle Tags in einem Repository angegeben werden. |
+| `Scope` | Der Bereich, in dem der Webhook funktioniert. Wenn nichts anderes angegeben ist, gilt der Bereich für alle Ereignisse in der Registrierung. Der Bereich kann im Format „repository:tag“ für ein Repository oder ein Tag oder mit „respository:*“ für alle Tags in einem Repository angegeben werden. |
 
 Beispielformular für Webhook:
 

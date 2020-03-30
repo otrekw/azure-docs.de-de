@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382326"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Erstellen einer Suchclient-Konsolen-App in C#
@@ -224,8 +224,8 @@ Bevor wir darauf eingehen, wie Sie nach Rang sortierte Ergebnisse anzeigen, sehe
 Das JSON-Objekt `rankingResponse` ([Dokumentation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) beschreibt die korrekte Anzeigereihenfolge für Suchergebnisse. Es enthält mindestens eine der folgenden priorisierten Gruppen:
 
 - `pole`: Die Suchergebnisse, die am sichtbarsten sein und beispielsweise über dem Hauptbereich und der Randleiste angezeigt werden sollen.
-- `mainline`: Die Suchergebnisse, die in der Hauptlinie angezeigt werden sollen.
-- `sidebar`: Die Suchergebnisse, die in der Randleiste angezeigt werden sollen. Ist keine Randleiste vorhanden, werden die Ergebnisse unterhalb des Hauptbereichs angezeigt.
+- `mainline`: Die Suchergebnisse, die im Hauptbereich angezeigt werden sollen.
+- `sidebar`: Die Suchergebnisse, die auf der Randleiste angezeigt werden sollen. Ist keine Randleiste vorhanden, werden die Ergebnisse unterhalb des Hauptbereichs angezeigt.
 
 Der JSON-Code der Rangfolgeantwort kann eine oder mehrere der Gruppen enthalten.
 

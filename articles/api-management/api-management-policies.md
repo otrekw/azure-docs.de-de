@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71219468"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
@@ -26,15 +26,15 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
   
  Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Variable festlegen](api-management-advanced-policies.md#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies) und [Richtlinienausdrücke](api-management-policy-expressions.md).  
   
-##  <a name="ProxyPolicies"></a> Richtlinien  
+##  <a name="policies"></a><a name="ProxyPolicies"></a> Richtlinien  
   
 -   [Richtlinien für die Zugriffsbeschränkung](api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
     -   [HTTP-Header überprüfen](api-management-access-restriction-policies.md#CheckHTTPHeader) – Erfordert das Vorhandensein und/oder einen Wert eines HTTP-Headers.  
     -   [Limit call rate (Aufrufrate begrenzen)](api-management-access-restriction-policies.md#LimitCallRate) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Abonnement beschränkt wird.  
-    -   [Limit call rate (Aufrufrate nach Schlüssel begrenzen)](api-management-access-restriction-policies.md#LimitCallRateByKey) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.  
+    -   [Limit call rate by key (Aufrufrate nach Schlüssel begrenzen)](api-management-access-restriction-policies.md#LimitCallRateByKey) – Verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.  
     -   [Beschränkung für Aufrufer-IP](api-management-access-restriction-policies.md#RestrictCallerIPs) – Filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.  
     -   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](api-management-access-restriction-policies.md#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.  
-    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
+    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
     -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
 -   [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – bedingte Anwendung von Richtlinienanweisungen basierend auf der Auswertung von booleschen Ausdrücken.  
@@ -76,7 +76,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [HTTP-Header setzen](api-management-transformation-policies.md#SetHTTPheader) – Weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.  
     -   [Abfrageparameter setzen](api-management-transformation-policies.md#SetQueryStringParameter) – Fügt Abfrageparameter hinzu, löscht diese oder ersetzt deren Werte.  
     -   [URL umschreiben](api-management-transformation-policies.md#RewriteURL) – Konvertiert eine Anforderung-URL von der öffentlichen Form in die vom Webdienst erwartete Form.  
-    -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
+    -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – Wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.  
 
 
 

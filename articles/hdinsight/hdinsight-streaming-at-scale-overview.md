@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435398"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 
-Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster zentral hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
+Big Data-Echtzeitlösungen verarbeiten Daten während der Übertragung. In der Regel sind diese Daten zum Zeitpunkt des Eingangs am nützlichsten. Wenn der eingehende Datenstrom aufgrund seiner Größe nicht mehr verarbeitet werden kann, müssen die Ressourcen gedrosselt werden. Alternativ kann ein HDInsight-Cluster hochskaliert werden, um die Anforderungen Ihrer Lösung durch bedarfsgerechtes Hinzufügen von Knoten zu erfüllen.
 
 Von den Datenquellen einer Streaminganwendung können pro Sekunde Millionen von Ereignissen generiert werden, die schnell und ohne den Verlust nützlicher Informationen erfasst werden müssen. Die eingehenden Ereignisse werden durch *Streampufferung* (auch *Ereignisqueuing* genannt) von einem Dienst wie [Apache Kafka](kafka/apache-kafka-introduction.md) oder [Event Hubs](https://azure.microsoft.com/services/event-hubs/) verarbeitet. Nachdem die Ereignisse erfasst wurden, können Sie die Daten innerhalb der *Streamverarbeitungsebene* mithilfe eines Echtzeitanalysesystems wie [Apache Storm](storm/apache-storm-overview.md) oder [Apache Spark Streaming](spark/apache-spark-streaming-overview.md) analysieren. Die verarbeiteten Daten können langfristig in entsprechenden Systemen wie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) gespeichert und in Echtzeit in einem Business Intelligence-Dashboard wie [Power BI](https://powerbi.microsoft.com) oder Tableau oder auf einer benutzerdefinierten Webseite angezeigt werden.
 

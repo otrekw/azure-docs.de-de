@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: aa11f329cf0a0cb27d58b940b42731a2ec41c272
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774001"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-powershell"></a>Konvertieren eines älteren Exchange Peerings in eine Azure-Ressource mithilfe von PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell-Cmdlets ein vorhandenes Legacy-Exchange Peering in eine Azure-Ressource konvertieren.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch über das [Portal](howto-legacy-exchange-portal.md) ausführen.
+Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](howto-legacy-exchange-portal.md) ausführen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für das Exchange Peering](walkthrough-exchange-all.md).
+* Lesen Sie vor dem Konfigurieren die Informationen zu den [Voraussetzungen](prerequisites.md) sowie die [exemplarische Vorgehensweise für das Austauschpeering](walkthrough-exchange-all.md).
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
@@ -32,7 +32,7 @@ Falls Sie es vorziehen, können Sie diese Anleitung auch über das [Portal](howt
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name= get></a>Abrufen des Legacy- Exchange Peerings für die Konvertierung
+### <a name="get-legacy-exchange-peering-for-conversion"></a><a name= get></a>Abrufen des Legacy- Exchange Peerings für die Konvertierung
 Im Folgenden finden Sie das Beispiel zum Abrufen einer älteren Instanz für Exchange Peering an einem Peeringstandort in Seattle:
 
 ```powershell

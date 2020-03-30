@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649822"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.FileUpload“
@@ -80,12 +80,12 @@ Beim Testen eines CreateUiDefinition-Elements schneiden manche Browser (etwa Goo
 
 ## <a name="remarks"></a>Bemerkungen
 
-- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert lautet **null**.
+- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert ist **NULL**.
 - Wenn `options.multiple` auf **true** festgelegt ist, kann der Benutzer im Dateidialogfeld des Browsers mehr als eine Datei auswählen. Der Standardwert ist **false**.
 - Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
 - Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) für den Zugriff auf die Datei während der Bereitstellung.
 - Der Wert für `options.openMode` bestimmt, wie die Datei gelesen wird. Wenn eine Nur-Text-Datei erwartet wird, geben Sie **text** an. Andernfalls geben Sie **binary** an. Der Standardwert lautet **text**.
-- Wenn **file** für `options.uploadMode` und **binary** für `options.openMode` festgelegt ist, ist die Ausgabe Base64-codiert.
+- Wenn `options.uploadMode`file**für** und `options.openMode`binary**für** festgelegt ist, ist die Ausgabe Base64-codiert.
 - `options.encoding` gibt die beim Lesen der Datei zu verwendende Codierung an. Der Standardwert ist **UTF-8**. Er wird nur verwenden, wenn für `options.openMode` der Wert **text** angegeben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte

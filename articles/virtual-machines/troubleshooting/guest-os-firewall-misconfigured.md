@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71153891"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Falsch konfigurierte Gastbetriebssystem-Firewall der Azure-VM
@@ -49,7 +49,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 Die folgenden Regeln können bearbeitet werden, um entweder den Zugriff auf den virtuellen Computer (über RDP) zu aktivieren oder eine einfachere Problembehandlung zu ermöglichen:
 
-*   Remotedesktop (TCP eingehend): Dies ist die Standardregel, die primären Zugriff auf den virtuellen Computer bietet, indem RDP in Azure zugelassen wird.
+*   Remotedesktop (TCP eingehend): Dies ist die standardmäßige Regel, die primären Zugriff auf den virtuellen Computer bietet, indem RDP in Azure zugelassen wird.
 
 *   Windows-Remoteverwaltung (HTTP eingehend): Mit dieser Regel können Sie die Verbindung mit dem virtuellen Computer mithilfe von PowerShell herstellen. In Azure können Sie mit dieser Art von Zugriff den Skripterstellungsaspekt von Remoteskripterstellung und Problembehandlung verwenden.
 

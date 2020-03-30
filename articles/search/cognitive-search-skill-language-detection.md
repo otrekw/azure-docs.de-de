@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045020"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Der kognitive Skill „Spracherkennung“
@@ -39,13 +39,13 @@ Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch 
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Eingaben     | Beschreibung |
+| Eingaben     | BESCHREIBUNG |
 |--------------------|-------------|
 | text | Der zu analysierende Text|
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-| Ausgabename    | Beschreibung |
+| Ausgabename    | BESCHREIBUNG |
 |--------------------|-------------|
 | languageCode | Der für die Sprache identifizierte ISO-6391-Sprachcode. Beispiel: „en“. |
 | languageName | Der Name der Sprache. Beispiel: „Englisch“. |

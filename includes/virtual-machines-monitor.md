@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
 ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75752171"
 ---
 Angesichts des starken Wachstums der in Azure gehosteten VMs ist es wichtig, Leistungs- und Integritätsprobleme zu identifizieren, die sich auf Anwendungen und Infrastrukturdienste auswirken, die sie unterstützen. Grundlegende Überwachung wird standardmäßig mit Azure durch die Metriktypen CPU-Auslastung, Datenträgerverwendung, Arbeitsspeicherauslastung und Netzwerkdatenverkehr bereitgestellt, die vom Hosthypervisor erfasst werden. Zusätzliche Metrik-und Protokolldaten können mit [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) erfasst werden, um die Diagnose für Ihre virtuellen Computer über das Gastbetriebssystem zu konfigurieren.

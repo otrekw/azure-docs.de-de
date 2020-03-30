@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/28/2020
 ms.author: kumud
 ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76851305"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerschaften mit Azure DDoS Protection Standard
@@ -49,7 +49,7 @@ Azure DDoS Protection identifiziert und entschärft DDoS-Angriffe ohne jegliches
 Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum [Rapid Response-Team](https://azure.microsoft.com/blog/ddos-protection-attack-analytics-rapid-response/). DRR hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
 
 ### <a name="sla-guarantee-and-cost-protection"></a>SLA-Garantie und Kostenschutz
-Der DDoS Protection Standard-Dienst wird durch eine SLA von 99,99 % abgedeckt, und der Kostenschutz bietet Ressourcenguthaben für horizontales Hochskalieren während eines dokumentierten Angriffs. Weitere Informationen finden Sie unter [SLA für Azure DDoS Protection](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/).
+Der DDoS Protection Standard-Dienst wird durch eine SLA von 99,99 % abgedeckt, und der Kostenschutz bietet Ressourcenguthaben für Aufskalieren während eines dokumentierten Angriffs. Weitere Informationen finden Sie unter [SLA für Azure DDoS Protection](https://azure.microsoft.com/support/legal/sla/ddos-protection/v1_0/).
 
 ## <a name="featured-partner-scenarios"></a>Empfohlene Partnerszenarien
 Im Folgenden werden die wichtigsten Vorteile aufgeführt, die Sie durch Integration in Azure DDoS Protection Standard erzielen können:

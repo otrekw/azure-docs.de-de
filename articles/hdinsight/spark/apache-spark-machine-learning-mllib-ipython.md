@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494091"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Apache Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets.
@@ -22,7 +22,7 @@ Lernen Sie, wie man mithilfe von Apache Spark [MLlib](https://spark.apache.org/m
 
 MLLib ist eine Spark-Kernbibliothek, die viele Hilfsprogramme enthält, die nützlich für Aufgaben aus dem Bereich des Machine Learning sind, darunter befinden sich auch Hilfsprogramme für folgende Aufgaben:
 
-* Classification
+* Klassifizierung
 * Regression
 * Clustering
 * Themenmodellierung
@@ -197,13 +197,13 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
 
     ![Ausgabe der Spark Machine Learning-Anwendung im Kreisdiagramm mit fünf unterschiedlichen Messergebnissen](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark Machine Learning-Ergebnisausgabe")
 
-    Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, können Sie die Ergebnisdaten in zwei Kategorien gruppieren: **Fail** und **Pass**:
+    Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, ist es sinnvoll, die Ergebnisdaten in zwei Kategorien zu gruppieren: **Fail** und **Pass**:
 
    - Pass
        - Pass
        - Pass w/ Conditions
-   - Fail
-       - Fail
+   - Fehler
+       - Fehler
    - Verwerfen
        - Business not located
        - Out of Business
@@ -359,8 +359,8 @@ Nun können Sie eine endgültige Visualisierung erstellen, um sich mit den Ergeb
 ## <a name="shut-down-the-notebook"></a>Herunterfahren des Notebooks
 Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Hierdurch wird das Notebook heruntergefahren und geschlossen.
 
-## <a name="seealso"></a>Weitere Informationen
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+## <a name="see-also"></a><a name="seealso"></a>Weitere Informationen
+* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
@@ -379,6 +379,6 @@ Nach dem Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahr
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

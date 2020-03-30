@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73241541"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Einrichten einer interaktiven PySpark-Umgebung für Visual Studio Code
@@ -57,7 +57,7 @@ Starten Sie VS Code neu, und navigieren Sie zurück zum Skript-Editor, der **HDI
 ## <a name="next-steps"></a>Nächste Schritte
 
 ### <a name="demo"></a>Demo
-* HDInsight for VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight für VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 * [Verwenden von Azure HDInsight-Tools für Visual Studio Code](hdinsight-for-vscode.md)

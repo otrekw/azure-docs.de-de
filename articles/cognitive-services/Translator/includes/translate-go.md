@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 2ead85da805bb33247ca54bea51cccc57b0e4e94
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906759"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-translate-text"></a>Erstellen einer Funktion für die Übersetzung von Text
 
-Wir erstellen nun eine Funktion für die Übersetzung von Text. Diese Funktion nimmt ein einzelnes Argument entgegen: Ihren Textübersetzungs-Abonnementschlüssel.
+Wir erstellen nun eine Funktion für die Übersetzung von Text. Diese Funktion verwendet ein einzelnes Argument: Ihren Textübersetzungs-Abonnementschlüssel.
 
 ```go
 func translate(subscriptionKey string, uri string) {
@@ -78,9 +78,9 @@ func translate(subscriptionKey string, uri string) {
 }
 ```
 
-Als Nächstes erstellen wir die URL. Die URL wird mit den Methoden `Parse()` und `Query()` erstellt. Sie werden feststellen, dass mit der `Add()`-Methode Parameter hinzugefügt werden. In diesem Beispiel übersetzen Sie aus dem Englischen ins Italienische und Deutsche: `de` und `it`.
+Als Nächstes erstellen wir die URL. Die URL wird mit den Methoden `Parse()` und `Query()` erstellt. Mit der Methode `Add()` werden Parameter hinzugefügt. In diesem Beispiel übersetzen Sie aus dem Englischen ins Italienische und Deutsche: `de` und `it`.
 
-Kopieren Sie diesen Code in die `translate`-Funktion.
+Kopieren Sie diesen Code in die Funktion `translate`.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse

@@ -10,10 +10,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
 ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722083"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in SQL-Datenbank
@@ -41,9 +41,9 @@ Für die Datenbank `Database1` unter `Server1` wäre beispielsweise folgender Pf
 
 Überwachungsereignisse werden in eine `AzureDiagnostics`-Tabelle mit der Kategorie `SQLSecurityAuditEvents` in dem Log Analytics-Arbeitsbereich protokolliert, der während der Konfiguration festgelegt wurde. Weitere nützliche Informationen zu Log Analytics-Suchsprache und -Suchbefehlen finden Sie unter [Referenz zur Log Analytics-Suche](../log-analytics/log-analytics-log-search.md).
 
-## <a id="subheading-1"></a>Felder eines Überwachungsprotokolls
+## <a name="audit-log-fields"></a><a id="subheading-1"></a>Felder eines Überwachungsprotokolls
 
-| Name (Blob) | Name (Event Hubs/Log Analytics) | Beschreibung | Blobtyp | Event Hubs-/Log Analytics-Typ |
+| Name (Blob) | Name (Event Hubs/Log Analytics) | BESCHREIBUNG | Blobtyp | Event Hubs-/Log Analytics-Typ |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID der Aktion | varchar(4) | string |
 | action_name | action_name_s | Name der Aktion | – | string |

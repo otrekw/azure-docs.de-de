@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 32d4313b345964a2db13d68e83f81756a4acf0d9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458935"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hinzufügen der Authentifizierung zu Ihrer Windows-App
@@ -21,10 +21,10 @@ In diesem Thema erfahren Sie, wie Sie Ihrer mobilen App eine cloudbasierte Authe
 
 Dieses Tutorial baut auf dem Mobile App-Schnellstart auf. Sie müssen zunächst das Tutorial [Erste Schritte mit Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md)durchlaufen.
 
-## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren. Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist. In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_. Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden. Es sollte für Ihre mobile Anwendung eindeutig sein. So aktivieren Sie die Umleitung auf der Serverseite
 
@@ -36,14 +36,14 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 
 4. Klicken Sie auf **Speichern**.
 
-## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktiviert wurde. Legen Sie das UWP-App-Projekt als Startprojekt fest, stellen Sie die App bereit, und führen Sie sie aus. Überprüfen Sie, ob ein nicht behandelter Ausnahmefehler mit dem Statuscode 401 (Nicht autorisiert) angezeigt wird, nachdem die App gestartet wurde. Dies liegt daran, dass die App versucht, als nicht authentifizierter Benutzer auf den Code Ihrer mobilen App zuzugreifen, die *TodoItem*-Tabelle jetzt jedoch Authentifizierung erfordert.
 
 Als Nächstes aktualisieren Sie die App, um Benutzer zu authentifizieren, bevor diese Ressourcen von App Service anfordern.
 
-## <a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
 1. Fügen Sie in der UWP-App-Projektdatei „MainPage.xaml.cs“ den folgenden Codeausschnitt hinzu:
    
         // Define a member variable for storing the signed-in user. 
@@ -137,7 +137,7 @@ Als Nächstes aktualisieren Sie die App, um Benutzer zu authentifizieren, bevor 
 6. Öffnen Sie die Datei „Package.appxmanifest“, navigieren Sie zu **Deklarationen**, und wählen Sie in der Dropdownliste **Verfügbare Deklarationen** die Option **Protokoll** aus. Klicken Sie anschließend auf die Schaltfläche **Hinzufügen**. Konfigurieren Sie nun die **Eigenschaften** der Deklaration **Protokoll**. Fügen Sie unter **Anzeigename** den Namen hinzu, der Benutzern Ihrer Anwendung angezeigt werden soll. Geben Sie unter **Name** das URL-Schema Ihrer App ein.
 7. Drücken Sie F5, um die App auszuführen, klicken Sie auf die Schaltfläche **Sign in** , und melden Sie sich mit dem von Ihnen ausgewählten Identitätsanbieter bei der App an. Wenn Sie sich erfolgreich angemeldet haben, wird die App fehlerfrei ausgeführt, und Sie können Ihr Back-End abfragen und Daten aktualisieren.
 
-## <a name="tokens"></a>Speichern des Authentifizierungstokens auf dem Client
+## <a name="store-the-authentication-token-on-the-client"></a><a name="tokens"></a>Speichern des Authentifizierungstokens auf dem Client
 Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, die erfordert, dass der Client bei jedem Start der App sowohl den Identitätsanbieter als auch den App Service kontaktiert. Diese Methode ist nicht nur ineffizient, sie kann auch zu nutzungsbezogenen Problemen führen, wenn eine große Anzahl von Kunden die App gleichzeitig starten sollte. Ein besserer Ansatz ist es daher, das vom App Service zurückgegebene Authentifizierungstoken zwischenzuspeichern und vor einer anbieterbasierten Anmeldung zu verwenden.
 
 > [!NOTE]
