@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497862"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
@@ -44,9 +44,9 @@ In diesem Tutorial wird beschrieben, wie Sie ein Failover für lokale physische 
 
 1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den Computer > **Failover**.
 2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-   - **Aktuell**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
-   - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-   - **Letzter anwendungskonsistenter Zeitpunkt**: Mit dieser Option wird ein Failover des Computers auf den letzten anwendungskonsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde.
+   - **Neueste**: Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte Azure-VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+   - **Letzte Verarbeitung:** Mit dieser Option wird ein Failover des Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
+   - **Letzte App-Konsistenz:** Mit dieser Option wird ein Failover des Computers mithilfe des letzten App-konsistenten Wiederherstellungspunkts ausgeführt, der von Site Recovery verarbeitet wurde.
    - **Benutzerdefiniert**: Geben Sie einen Wiederherstellungspunkt an.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, den Quellcomputer herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
@@ -72,7 +72,7 @@ Nach dem Failover müssen Sie [Azure-Einstellungen konfigurieren](site-recovery-
 
 Nachdem Sie ein Failover zu Azure ausgeführt haben, schützen Sie Azure-VMs wieder, indem Sie sie an den lokalen Standort replizieren. Nach der Replikation können Sie ein Failback zum lokalen Standort ausführen, indem Sie ein Failover von Azure zum lokalen Standort ausführen.
 
-1. Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurden, kann ein Failback nur als VMware-VMs erfolgen. Sie benötigen eine VMware-Infrastruktur, damit Sie ein Failback ausführen können. Führen Sie die Schritte in [diesem Artikel](vmware-azure-prepare-failback.md) aus, um den erneuten Schutz und das Failback vorzubereiten, einschließlich der Einrichtung eines Prozessservers in Azure und eines lokalen Masterzielservers sowie der Konfiguration eines Site-to-Site-VPN oder des privaten ExpressRoute-Peerings für das Failback.
+1. Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurden, kann ein Failback nur als VMware-VMs erfolgen. Sie benötigen eine VMware-Infrastruktur, damit Sie ein Failback ausführen können. Führen Sie die Schritte in [diesem Artikel](vmware-azure-prepare-failback.md) aus, um den erneuten Schutz und das Failback vorzubereiten, einschließlich der Einrichtung eines Prozessservers in Azure und eines lokalen Masterzielservers sowie der Konfiguration eines Site-to-Site-VPN oder des privaten Peerings von ExpressRoute für das Failback.
 2. Stellen Sie sicher, dass der lokale Konfigurationsserver ausgeführt wird und mit Azure verbunden ist. Beim Failover zu Azure ist der lokale Standort möglicherweise nicht verfügbar. Der Konfigurationsserver ist deshalb möglicherweise nicht verfügbar oder heruntergefahren. Während des Failbacks muss der virtuellen Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich.
 3. Löschen Sie alle Momentaufnahmen auf dem lokalen Masterzielserver. Der erneute Schutz funktioniert nicht, wenn Momentaufnahmen vorhanden sind.  Die Momentaufnahmen auf dem virtuellen Computer werden während des Auftrags zum erneuten Schützen automatisch zusammengeführt.
 4. Wenn Sie in einer Replikationsgruppe zusammengefasste virtuelle Computer erneut schützen, um die Konsistenz mehrerer virtueller Computer zu gewährleisten, stellen Sie sicher, dass sie alle dasselbe Betriebssystem (Windows oder Linux) verwenden, und stellen Sie sicher, dass der von Ihnen bereitgestellte Masterzielserver denselben Betriebssystemtyp aufweist. Alle virtuellen Computer in einer Replikationsgruppe müssen denselben Masterzielserver verwenden.
@@ -82,13 +82,13 @@ Nachdem Sie ein Failover zu Azure ausgeführt haben, schützen Sie Azure-VMs wie
 8. Wenn Sie zum Erstellen virtueller Computer eine Vorlage verwendet haben, sollten Sie sicherstellen, dass jeder virtuelle Computer über eine eigene UUID für die Datenträger verfügt. Falls ein Konflikt zwischen der UUID des virtuellen Computers und der UUID des Masterziels besteht, weil beide mit der gleichen Vorlage erstellt wurden, tritt beim erneuten Schützen ein Fehler auf. Verwenden Sie für die Bereitstellung eine andere Vorlage.
 9. Wenn Sie ein Failback zu einem anderen vCenter Server durchführen, stellen Sie sicher, dass der neue vCenter Server und der Masterzielserver erkannt werden. In der Regel sind die Datenspeicher nicht zugänglich oder nicht in **Erneutes Schützen** sichtbar, wenn sie es nicht werden.
 10. In den folgenden Szenarios ist kein Failback möglich:
-    - Sie verwenden entweder die kostenlose Edition von ESXi 5.5 oder die kostenlose Edition von vSphere 6 Hypervisor. Führen Sie eine Aktualisierung auf eine andere Version durch.
+    - Sie verwenden entweder die kostenlose Edition von ESXi 5.5 oder die kostenlose Edition von vSphere 6 Hypervisor. Führen Sie ein Upgrade auf eine andere Version durch.
     - Sie verfügen über einen physischen Windows Server 2008 R2 SP1-Server.
     - Virtuelle Computer, die [migriert wurden](migrate-overview.md#what-do-we-mean-by-migration).
     - Ein virtueller Computer wurde in eine andere Ressourcengruppe verschoben.
     - Ein Replikat des virtuellen Azure-Computers wurde gelöscht.
     - Ein Replikat des virtuellen Azure-Computers ist nicht geschützt (und wird im lokalen Standort repliziert).
-10. [Überprüfen Sie die Failbacktypen](concepts-types-of-failback.md), die Sie verwenden können: Wiederherstellung am ursprünglichen Standort und Wiederherstellung an einem anderen Standort.
+10. [Überprüfen Sie die Typen der Failbacks](concepts-types-of-failback.md), die Sie verwenden können: Wiederherstellung am ursprünglichen Standort und Wiederherstellung an einem anderen Standort.
 
 
 ## <a name="reprotect-azure-vms-to-an-alternate-location"></a>Erneutes Schützen von Azure-VMs an einem alternativen Speicherort
@@ -102,7 +102,7 @@ Bei diesem Verfahren wird davon ausgegangen, dass der lokale virtuelle Computer 
        - Verwenden Sie diese Option, wenn der lokale virtuelle Computer gelöscht wurde oder nicht vorhanden ist und neue Datenträger erstellt werden müssen.
        - Diese Einstellung wird ignoriert, wenn die Datenträger bereits vorhanden sind. Sie müssen aber trotzdem einen Wert angeben.
 5. Wählen Sie das Masterziel-Aufbewahrungslaufwerk aus. Die Failbackrichtlinie wird automatisch ausgewählt.
-6. Klicken Sie auf **OK**, um das erneute Schützen zu starten. Ein Auftrag beginnt mit der Replikation des virtuellen Azure-Computers an den lokalen Standort. Sie können den Fortschritt auf der Registerkarte **Aufträge** nachverfolgen.
+6. Klicken Sie auf **OK**, um das erneute Schützen zu starten. Ein Auftrag beginnt mit der Replikation des virtuellen Azure-Computers am lokalen Standort. Sie können den Fortschritt auf der Registerkarte **Aufträge** nachverfolgen.
 
 > [!NOTE]
 > Wenn Sie den virtuellen Azure-Computer unter einem vorhandenen lokalen virtuellen Computer wiederherstellen möchten, binden Sie den Datenspeicher des lokalen virtuellen Computers mit Lese-/Schreibzugriff auf dem ESXi-Host des Masterzielservers ein.

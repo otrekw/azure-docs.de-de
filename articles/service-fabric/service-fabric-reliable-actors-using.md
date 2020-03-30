@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 55ee4c7498dcda3060d4e4221711793b80132bdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426719"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502286"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihrem Akteurdienst
 
@@ -143,7 +143,7 @@ public class Program
 
 ## <a name="implement-actor-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Akteuren
 
-Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist. Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](service-fabric-reliable-actors-backup-and-restore.md).
+Der benutzerdefinierte Actordienst kann eine Methode zum Sichern von Actordaten bereitstellen. Diese nutzt die Vorteile des Remoting-Listeners, der bereits im `ActorService` enthalten ist. Ein Beispiel finden Sie unter [Implementieren von Sicherung und Wiederherstellung von Actors](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).
 
 ## <a name="actor-that-uses-a-remoting-v2-interface-compatible-stack"></a>Akteur, der einen Remoting V2-Stapel (schnittstellenkompatibel) verwendet
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74951852"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
@@ -46,21 +46,21 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
   
   | Feld | Datentyp |
   | --- | --- |
-  | clientid |Zeichenfolge |
-  | querytime |Zeichenfolge |
-  | market |Zeichenfolge |
-  | deviceplatform |Zeichenfolge |
-  | devicemake |Zeichenfolge |
-  | devicemodel |Zeichenfolge |
-  | state |Zeichenfolge |
-  | country |Zeichenfolge |
+  | clientid |string |
+  | querytime |string |
+  | market |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | country |string |
   | querydwelltime |double |
-  | sessionid |bigint |
-  | sessionpagevieworder |bigint |
+  | sessionid |BIGINT |
+  | sessionpagevieworder |BIGINT |
 
 In diesem Artikel verwenden Sie diese beiden Datasets zum Testen des Sqoop-Imports- und -Exports.
 
-## <a name="create-cluster-and-sql-database"></a>Einrichten der Testumgebung
+## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Einrichten der Testumgebung
 
 Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal mithilfe einer Azure Resource Manager-Vorlage erstellt. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein BACPAC-Paket auf, um die Tabellenschemas in einer SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
 
@@ -78,7 +78,7 @@ Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal 
 
 2. Geben Sie die folgenden Eigenschaften ein:
 
-    |Feld |Wert |
+    |Feld |value |
     |---|---|
     |Subscription |Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.|
     |Resource group |Wählen Sie in der Dropdownliste Ihre Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe.|
@@ -121,5 +121,5 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 Sie haben nun gelernt, wie Sie Sqoop verwenden. Weitere Informationen finden Sie unter:
 
 * [Verwenden von Apache Hive mit HDInsight](../hdinsight-use-hive.md)
-* [Hochladen von Daten in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
+* [Hochladen von Daten in HDInsight:](../hdinsight-upload-data.md) Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
 * [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop](./apache-hadoop-use-sqoop-mac-linux.md)

@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790285"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen
@@ -23,7 +23,7 @@ Wenn Sie beispielsweise statische Ergebnisse für die Outlook 365-Aktion „E-Ma
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -49,7 +49,7 @@ Wenn Sie beispielsweise statische Ergebnisse für die Outlook 365-Aktion „E-Ma
       |----------|-------------|
       | **Status** | Der Status der Aktion, der zurückgegeben werden soll |
       | **Statuscode** | Der genaue Statuscode, der zurückgeben werden soll |
-      | **Header** | Der Headerinhalt, der zurückgegeben werden soll |
+      | **Headers** | Der Headerinhalt, der zurückgegeben werden soll |
       |||
 
       ![Aktivieren Sie die Option „Statisches Ergebnis aktivieren“](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
@@ -86,7 +86,7 @@ Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die 
 
 1. Kopieren Sie entweder das ganze JSON-Objekt oder den genauen Unterabschnitt, den Sie verwenden möchten, z. B. den Abschnitt „Ausgaben“ oder sogar nur den Abschnitt „Header“.
 
-1. Führen Sie alle unter [Einrichten von statischen Ergebnissen](#set-up-static-results) beschriebenen notwendigen Schritte aus, um das Feld **Statisches Ergebnis** zu öffnen.
+1. Führen Sie alle unter **Einrichten von statischen Ergebnissen** beschriebenen notwendigen Schritte aus, um das Feld [Statisches Ergebnis](#set-up-static-results) zu öffnen.
 
 1. Wählen Sie anschließend eine der folgenden beiden Optionen aus **:**
 

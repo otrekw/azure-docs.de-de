@@ -4,10 +4,10 @@ description: Kunden können anhand von protokollierten Aktivitäten überprüfen
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649635"
 ---
 # <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität

@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware Solutions (AVS): Zuordnen öffentlicher IP-Adressen'
-description: Beschreibt, wie öffentliche IP-Adressen für virtuelle Computer in der privaten AVS-Cloudumgebung zugeordnet werden
+title: 'Azure VMware Solution by CloudSimple: Zuordnen öffentlicher IP-Adressen'
+description: Beschreibt, wie öffentliche IP-Adressen für virtuelle Computer in der privaten Cloudumgebung zugeordnet werden.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024295"
 ---
-# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>Zuordnen von öffentlichen IP-Adressen für die private AVS-Cloudumgebung
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Zuordnen von öffentlichen IP-Adressen für die private Cloudumgebung
 
-Öffnen Sie die Registerkarte „Public IPs“ (Öffentliche IP-Adressen) auf der Seite „Network“ (Netzwerk), um öffentliche IP-Adressen für virtuelle Computer in Ihrer privaten AVS-Cloudumgebung zuzuordnen.
+Öffnen Sie die Registerkarte „Public IPs“ (Öffentliche IP-Adressen) auf der Seite „Network“ (Netzwerk), um öffentliche IP-Adressen für virtuelle Computer in Ihrer privaten Cloudumgebung zuzuordnen.
 
-1. [Greifen Sie auf das AVS-Portal zu](access-cloudsimple-portal.md), und wählen Sie im seitlichen Menü **Network** (Netzwerk) aus.
+1. [Greifen Sie auf das CloudSimple Portal zu](access-cloudsimple-portal.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
 2. Wählen Sie **Public IPs** (Öffentliche IP-Adressen) aus.
 3. Klicken Sie auf **New Public IP** (Neue öffentliche IP-Adresse).
 
