@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224998"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -31,7 +31,7 @@ Eine Site-to-Site-VPN-Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk
 
 ![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
@@ -41,7 +41,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
 * PowerShell ist erforderlich, um den gemeinsam verwendeten Schlüssel anzugeben und die VPN Gateway-Verbindung zu erstellen. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="values"></a>Beispielkonfigurationswerte für diese Übung
+### <a name="sample-configuration-values-for-this-exercise"></a><a name="values"></a>Beispielkonfigurationswerte für diese Übung
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
 
@@ -59,7 +59,7 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 * **Name des lokalen Standorts:** Site2
 * **Clientadressraum**: Der Adressraum an Ihrem lokalen Standort.
 
-## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
 Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie Folgendes sicherstellen: Die von Ihnen angegebenen Adressräume dürfen sich nicht mit den Clientadressräumen für die lokalen Standorte überlappen, mit denen Sie eine Verbindung herstellen möchten. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei.
 
@@ -81,7 +81,7 @@ Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie
 8. Klicken Sie auf **Erstellen**, um das VNET zu erstellen.
 9. Nach dem Klicken auf „Erstellen“ wird im Dashboard eine Kachel angezeigt, die den Status für Ihr VNet anzeigt. Die Kachel verändert sich, wenn das VNet erstellt wird.
 
-## <a name="additionaladdress"></a>2. Hinzufügen weiterer Adressräume
+## <a name="2-add-additional-address-space"></a><a name="additionaladdress"></a>2. Hinzufügen weiterer Adressräume
 
 Nach dem Erstellen Ihres virtuellen Netzwerks können Sie weitere Adressräume hinzufügen. Das Hinzufügen von zusätzlichen Adressräumen ist für eine S2S-Konfiguration nicht obligatorisch, aber Sie können die folgenden Schritte ausführen, falls Sie mehrere Adressräume benötigen:
 
@@ -89,7 +89,7 @@ Nach dem Erstellen Ihres virtuellen Netzwerks können Sie weitere Adressräume h
 2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk im Abschnitt **Einstellungen** auf **Adressraum**.
 3. Klicken Sie auf der Seite „Adressraum“ auf **+Hinzufügen**, und geben Sie weitere Adressräume ein.
 
-## <a name="dns"></a>3. Angeben eines DNS-Servers
+## <a name="3-specify-a-dns-server"></a><a name="dns"></a>3. Angeben eines DNS-Servers
 
 Die DNS-Einstellungen sind für eine S2S-Konfiguration nicht obligatorisch, aber das DNS wird benötigt, wenn Sie die Namensauflösung nutzen möchten. Wenn ein Wert angegeben wird, wird kein neuer DNS-Server erstellt. Die IP-Adresse des angegebenen DNS-Servers muss dazu in der Lage sein, die Namen für die Ressourcen aufzulösen, mit denen Sie eine Verbindung herstellen möchten. Für die Beispieleinstellungen wurde eine private IP-Adresse verwendet. Die verwendete IP-Adresse ist wahrscheinlich nicht die IP-Adresse Ihres DNS-Servers. Achten Sie darauf, dass Sie Ihre eigenen Werte verwenden.
 
@@ -100,7 +100,7 @@ Nach Erstellung des virtuellen Netzwerks können Sie für die Namensauflösung d
 3. Fügen Sie einen DNS-Server hinzu.
 4. Klicken Sie oben auf der Seite auf **Speichern**, um Ihre Einstellungen zu speichern.
 
-## <a name="localsite"></a>4. Konfigurieren des lokalen Standorts
+## <a name="4-configure-the-local-site"></a><a name="localsite"></a>4. Konfigurieren des lokalen Standorts
 
 Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enthält die IP-Adresse des VPN-Geräts, mit dem Sie eine Verbindung herstellen, und die IP-Adressbereiche, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden.
 
@@ -116,7 +116,7 @@ Mit dem lokalen Standort ist in der Regel Ihr lokaler Standort gemeint. Er enth�
 
 Klicken Sie auf **OK**, um die Seite „Lokaler Standort“ zu schließen. **Klicken Sie nicht auf OK, um die Seite „Neue VPN-Verbindung“ zu schließen**.
 
-## <a name="gatewaysubnet"></a>5. Konfigurieren des Gatewaysubnetzes
+## <a name="5-configure-the-gateway-subnet"></a><a name="gatewaysubnet"></a>5. Konfigurieren des Gatewaysubnetzes
 
 Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den Diensten des VPN-Gateways verwendet werden.
 
@@ -132,7 +132,7 @@ Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnet
 
    ![Gatewaysubnetz hinzufügen](./media/vpn-gateway-howto-site-to-site-classic-portal/addgwsubnet.png "Gatewaysubnetz hinzufügen")
 
-## <a name="sku"></a>6. Angeben der SKU und des VPN-Typs
+## <a name="6-specify-the-sku-and-vpn-type"></a><a name="sku"></a>6. Angeben der SKU und des VPN-Typs
 
 1. Wählen Sie die **Gatewaygröße**aus. Hierbei handelt es sich um die Gateway-SKU, die Sie bei der Erstellung Ihres Gateways für virtuelle Netzwerke verwenden. Klassische VPN-Gateways verwenden die alten Gateway-SKUs. Weitere Informationen zu den alten Gateway-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](vpn-gateway-about-skus-legacy.md).
 
@@ -141,7 +141,7 @@ Sie müssen für Ihr VPN-Gateway ein Gatewaysubnetz erstellen. Das Gatewaysubnet
 3. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
 4. Klicken Sie am unteren Rand der Seite **Neue VPN-Verbindung** auf **OK**, um mit der Bereitstellung Ihres Gateways für virtuelle Netzwerke zu beginnen. Abhängig von der ausgewählten SKU kann die Erstellung eines Gateways für virtuelle Netzwerke bis zu 45 Minuten dauern.
 
-## <a name="vpndevice"></a>7. Konfigurieren des VPN-Geräts
+## <a name="7-configure-your-vpn-device"></a><a name="vpndevice"></a>7. Konfigurieren des VPN-Geräts
 
 Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erforderlich. In diesem Schritt konfigurieren Sie Ihr VPN-Gerät. Beim Konfigurieren des VPN-Geräts benötigen Sie Folgendes:
 
@@ -150,7 +150,7 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 
 [!INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-## <a name="CreateConnection"></a>8. Erstellen der Verbindung
+## <a name="8-create-the-connection"></a><a name="CreateConnection"></a>8. Erstellen der Verbindung
 In diesem Schritt legen Sie den gemeinsam verwendeten Schlüssel fest und erstellen die Verbindung. Der von Ihnen festgelegte Schlüssel muss der gleiche Schlüssel sein, der in Ihrer VPN-Gerätekonfiguration verwendet wurde.
 
 > [!NOTE]
@@ -201,17 +201,17 @@ Wenn Sie ein klassisches virtuelles Netzwerk im Portal (nicht über PowerShell) 
    ```
    Wenn die Verbindung erstellt wird, lautet das Ergebnis: **Status: Erfolgreich** zurückgegeben werden.
 
-## <a name="verify"></a>9. Überprüfen der Verbindung
+## <a name="9-verify-your-connection"></a><a name="verify"></a>9. Überprüfen der Verbindung
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
 Sollten bei der Verbindungsherstellung Probleme auftreten, wechseln Sie über das Inhaltsverzeichnis auf der linken Seite zum Abschnitt **Problembehandlung**.
 
-## <a name="reset"></a>Zurücksetzen einer VPN Gateway-Instanz
+## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>Zurücksetzen einer VPN Gateway-Instanz
 
 Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. Eine entsprechende Anleitung finden Sie unter [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md#resetclassic).
 
-## <a name="changesku"></a>Ändern einer Gateway-SKU
+## <a name="how-to-change-a-gateway-sku"></a><a name="changesku"></a>Ändern einer Gateway-SKU
 
 Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (alte SKUs)](vpn-gateway-about-SKUS-legacy.md#classicresize).
 

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234296"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 
 Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens
 
@@ -72,7 +74,7 @@ Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gel
 
 Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Löschen aktiviert ist:
 
-| REST-API-Vorgang | Ressourcentyp | Beschreibung | Änderung im Verhalten |
+| REST-API-Vorgang | Ressourcentyp | BESCHREIBUNG | Änderung im Verhalten |
 |--------------------|---------------|-------------|--------------------|
 | [Löschen](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Löscht das Speicherkonto einschließlich aller Container und Blobs, die darin enthalten sind.                           | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden. |
 | [Delete Container](/rest/api/storageservices/delete-container) | Container | Löscht den Container einschließlich aller darin enthaltenen Blobs. | Keine Änderung. Blobs im gelöschten Container können nicht wiederhergestellt werden. |
@@ -150,7 +152,7 @@ Wenn Sie erstmals vorläufiges Löschen aktivieren, wird empfohlen, eine kurze B
 
 Die folgenden Schritte zeigen, wie Sie mit dem vorläufigen Löschen beginnen.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Aktivieren Sie das vorläufige Löschen für Blobs in Ihrem Speicherkonto über das Azure-Portal:
 
@@ -190,7 +192,7 @@ Sobald Sie die Momentaufnahmen eines Blobs wiederhergestellt haben, können Sie 
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -204,7 +206,8 @@ $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 Mithilfe des folgenden Befehls können Sie überprüfen, ob vorläufiges Löschen aktiviert wurde:
 
 ```powershell
-$MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
+$MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name storageaccount
+   Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
 Rufen Sie zum Wiederherstellen von Blobs, die versehentlich gelöscht wurden, „Undelete“ für diese Blobs auf. Denken Sie daran, dass der Aufruf von **Undelete Blob** (für aktive und vorläufig gelöschte Blobs) alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederherstellt. Im folgende Beispiel wird „Undelete“ für alle vorläufig gelöschten und aktiven Blobs in einem Container aufgerufen:
@@ -227,7 +230,7 @@ Mithilfe des folgenden Befehls können Sie die aktuelle Aufbewahrungsrichtlinie 
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="clitabazure-cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-CLI)
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-CLI)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
@@ -241,7 +244,7 @@ Verwenden Sie den folgenden Befehl, um sicherzustellen, dass das vorläufige Lö
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
@@ -259,7 +262,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 

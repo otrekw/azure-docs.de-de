@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235022"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 
@@ -32,7 +32,7 @@ Damit Continuous Deployment erfolgreich ausgeführt werden kann, muss Ihre Verze
 >[!NOTE]  
 > Continuous Deployment wird derzeit nicht für Linux-Apps unterstützt, die mit einem Verbrauchstarif ausgeführt werden. 
 
-## <a name="credentials"></a>Einrichten von Continuous Deployment
+## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Einrichten von Continuous Deployment
 
 Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktions-App zu konfigurieren. Die Schritte zeigen die Integration eines GitHub-Repositorys. Die Vorgehensweise für Azure Repos und andere Quellcoderepositorys ist jedoch ähnlich.
 

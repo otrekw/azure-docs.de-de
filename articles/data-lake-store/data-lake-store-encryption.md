@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878394"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Verschlüsselung von Daten in Azure Data Lake Storage Gen1
@@ -22,7 +22,7 @@ Mit der Verschlüsselung in Azure Data Lake Storage Gen1 können Sie Ihre Daten 
 Data Lake Storage Gen1 unterstützt die Verschlüsselung von ruhenden Daten und Daten im Übergang. Für ruhende Daten unterstützt Data Lake Storage Gen1 die standardmäßig aktivierte, transparente Verschlüsselung. Das bedeutet Folgendes:
 
 * **Standardmäßig aktiviert**: Beim Erstellen eines neuen Data Lake Storage Gen1-Kontos wird die Verschlüsselung standardmäßig aktiviert. In Data Lake Storage Gen1 gespeicherte Daten werden daraufhin immer verschlüsselt, bevor sie auf persistenten Medien gespeichert werden. Das gilt für alle Daten und kann nach der Kontoerstellung nicht mehr geändert werden.
-* **Transparent:** Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
+* **Transparent**: Daten werden von Data Lake Storage Gen1 vor der persistenten Speicherung automatisch verschlüsselt und vor dem Abrufen entschlüsselt. Die Verschlüsselung wird auf der Data Lake Storage Gen1-Ebene von einem Administrator konfiguriert und verwaltet. Die Datenzugriffs-APIs werden nicht geändert. Folglich sind auch keine verschlüsselungsbedingten Änderungen in Anwendungen und Diensten erforderlich, die mit Data Lake Storage Gen1 interagieren.
 
 Daten im Übergang (auch als „Daten in Bewegung“ bezeichnet) werden in Data Lake Storage Gen1 ebenfalls immer verschlüsselt. Zusätzlich zur Verschlüsselung von Daten vor dem Speichern auf persistenten Medien werden Daten auch während der Übertragung immer über HTTPS geschützt. Für die Data Lake Storage Gen1-REST-Schnittstellen wird ausschließlich das HTTPS-Protokoll unterstützt. Die folgende Abbildung zeigt, wie Daten in Data Lake Storage Gen1 verschlüsselt werden:
 
@@ -74,7 +74,7 @@ Beachten Sie beim Auswählen des Modus für die Masterverschlüsselungsschlüsse
 
 Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der folgenden Tabelle erhalten Sie einen Überblick:
 
-| Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Type       | Notizen                                                                                                   |
+| Key                   | Abkürzung | Zugeordnet zu | Speicherort                             | type       | Notizen                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Masterverschlüsselungsschlüssel | MEK          | Ein Data Lake Storage Gen1-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Storage Gen1 oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Ein Data Lake Storage Gen1-Konto | Persistenter Speicher (vom Data Lake Storage Gen1-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |

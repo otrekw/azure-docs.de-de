@@ -4,11 +4,11 @@ description: Verwalten Sie für Ihren Bot von einer Frage zur nächsten die vers
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210413"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219032"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -80,7 +80,7 @@ Beim Hinzufügen eines hierarchischen Dokuments bestimmt QnA Maker Folgeaufforde
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
 
-Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt.
+Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `context` der `prompts`-Eigenschaft hinzugefügt.
 
 ## <a name="show-questions-and-answers-with-context"></a>Anzeigen von Fragen und Antworten mit Kontext
 
@@ -360,7 +360,7 @@ Der in der JSON-Antwort zurückgegebene [Anzeigetext und die Anzeigereihenfolge]
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Hinzufügen oder Löschen von Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Update-API
 
-Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `promptsToAdd` der `context`-Eigenschaft und im Array `promptsToDelete` hinzugefügt.
+Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `context` der `promptsToAdd`-Eigenschaft und im Array `promptsToDelete` hinzugefügt.
 
 ## <a name="export-knowledge-base-for-version-control"></a>Exportieren der Wissensdatenbank für die Versionskontrolle
 

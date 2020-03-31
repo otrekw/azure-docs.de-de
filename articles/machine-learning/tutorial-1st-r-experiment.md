@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Modell zur logistischen Regression in R'
+title: 'Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells'
 titleSuffix: Azure Machine Learning
-description: In diesem Tutorial erstellen Sie ein logistisches Regressionsmodell mithilfe der R-Pakete „azuremlsdk“ und „caret“, um die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorherzusagen.
+description: In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK, um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648290"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159085"
 ---
-# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Tutorial: Erstellen eines logistischen Regressionsmodells in R mit Azure Machine Learning
+# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Tutorial: Verwenden von R zum Erstellen eines Machine Learning-Modells
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Tutorial verwenden Sie R und Azure Machine Learning, um ein logistisches Regressionsmodell zu erstellen, das die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhersagt. Nach Abschluss dieses Tutorials verfügen Sie über die praktischen Kenntnisse für das Azure Machine Learning R SDK, die Sie für komplexere Experimente und Workflows benötigen.
+In diesem Tutorial verwenden Sie das Azure Machine Learning R SDK, um ein logistisches Regressionsmodell zu erstellen, mit dem die Wahrscheinlichkeit einer tödlichen Verletzung bei einem Autounfall vorhergesagt wird. Es wird gezeigt, wie die Azure Machine Learning-Cloudressourcen mit R verwendet werden, um eine skalierbare Umgebung für das Trainieren und Bereitstellen eines Modells zu erhalten.  
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > * Bereitstellen eines Vorhersageendpunkts
 > * Testen des Modells über R
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
@@ -49,7 +49,7 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 > Notieren Sie sich Ihren **Arbeitsbereich** und Ihr **Abonnement**. Sie benötigen diese Informationen, um sicherzustellen, dass Sie Ihr Experiment an der richtigen Stelle erstellen. 
 
 
-## <a name="azure"></a>Klonen eines Notebook-Ordners
+## <a name="clone-a-notebook-folder"></a><a name="azure"></a>Klonen eines Notebook-Ordners
 
 In diesem Beispiel wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](https://azure.github.io/azureml-sdk-for-r/articles/installation.html), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
 
@@ -229,7 +229,7 @@ Das Modelltraining wird im Hintergrund durchgeführt. Warten Sie, bis das Traini
 wait_for_run_completion(run, show_output = TRUE)
 ```
 
-Sie – und Ihre Kolleginnen und Kollegen mit Zugriff auf den Arbeitsbereich – können mehrere Experimente parallel übermitteln, und Azure ML übernimmt das Planen der Aufgaben im Computecluster. Sie können den Cluster sogar so konfigurieren, dass automatisch zentral auf mehrere Knoten hochskaliert und diese Skalierung dann rückgängig gemacht wird, wenn in der Warteschlange keine Computeaufgaben mehr vorhanden sind. Diese Konfiguration ist ein kostengünstiger Ansatz, um Teams die gemeinsame Nutzung von Computeressourcen zu ermöglichen.
+Sie – und Ihre Kolleginnen und Kollegen mit Zugriff auf den Arbeitsbereich – können mehrere Experimente parallel übermitteln, und Azure ML übernimmt das Planen der Aufgaben im Computecluster. Sie können den Cluster sogar so konfigurieren, dass automatisch auf mehrere Knoten hochskaliert und diese Skalierung dann rückgängig gemacht wird, wenn in der Warteschlange keine Computeaufgaben mehr vorhanden sind. Diese Konfiguration ist ein kostengünstiger Ansatz, um Teams die gemeinsame Nutzung von Computeressourcen zu ermöglichen.
 
 ## <a name="retrieve-training-results"></a>Abrufen der Trainingsergebnisse
 Nachdem das Training für Ihr Modell abgeschlossen wurde, können Sie auf die Artefakte Ihres Auftrags zugreifen, die in der Ausführungsaufzeichnung gespeichert wurden, z. B. die protokollierten Metriken und das fertige trainierte Modell.

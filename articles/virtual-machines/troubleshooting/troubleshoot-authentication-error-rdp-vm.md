@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231930"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Problembehandlung von Authentifizierungsfehlern bei der Verwendung von RDP für das Herstellen von Verbindungen mit Azure-VMs
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > Rufen Sie die SSH/TLS-Version x.x aus den Protokollen des Gastbetriebssystems für die SCHANNEL-Fehler ab.
 
-#### <a name="fips-compliant"></a>FIPS-konforme Algorithmusverbindungen überprüfen
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>FIPS-konforme Algorithmusverbindungen überprüfen
 
 Für Remotedesktop lässt sich die ausschließliche Verwendung von FIPS-konformen Algorithmusverbindungen erzwingen. Dies kann mithilfe eines Registrierungsschlüssels festgelegt werden. Öffnen Sie zu diesem Zweck ein Eingabeaufforderungsfenster mit erhöhten Rechten, und fragen Sie dann die folgenden Schlüssel ab:
 

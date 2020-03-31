@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506214"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387647"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen in Azure SQL-Datenbank
 
@@ -46,7 +46,7 @@ Die Zielgruppen für dieses Handbuch sind Kunden, die mit Fragen zum Sichern von
 - Datenschutzbeauftragte
 - Sicherheitstechniker
 
-### <a id="using"></a> Verwenden dieses Leitfadens
+### <a name="using-this-guide"></a><a id="using"></a> Verwenden dieses Leitfadens
 
 Dieses Dokument ist als Begleitmaterial zu unserer vorhandenen Dokumentation zur [Sicherheit von Azure SQL-Datenbank](sql-database-security-overview.md) gedacht.
 
@@ -657,7 +657,7 @@ Das Nachverfolgen von Datenbankereignissen kann Ihnen dabei helfen, die Datenban
 **Bewährte Methoden:**
 
 - Wenn Sie [SQL-Datenbank-Überwachung](sql-database-auditing.md) auf dem Datenbankserver zum Überwachen von Ereignissen konfigurieren, werden alle vorhandenen und neu erstellten Datenbanken auf diesem Server überwacht.
-- Standardmäßig umfasst die Überwachungsrichtlinie alle Aktionen (Abfragen, gespeicherte Prozeduren und erfolgreiche und fehlgeschlagene Anmeldungen) für die Datenbanken, was zu einer großen Anzahl von Überwachungsprotokollen führen kann. Es wird Kunden empfohlen, die [Überwachung für verschiedene Arten von Aktionen und Aktionsgruppen mithilfe von PowerShell zu konfigurieren](sql-database-auditing.md#subheading-7). Durch diese Konfiguration können sie die Anzahl der überwachten Aktionen steuern und das Risiko von Ereignisverlusten minimieren. Das Konfigurieren einer benutzerdefinierten Überwachung ermöglicht Kunden, nur die wirklich benötigten Überwachungsdaten zu erfassen.
+- Standardmäßig umfasst die Überwachungsrichtlinie alle Aktionen (Abfragen, gespeicherte Prozeduren und erfolgreiche und fehlgeschlagene Anmeldungen) für die Datenbanken, was zu einer großen Anzahl von Überwachungsprotokollen führen kann. Es wird Kunden empfohlen, die [Überwachung für verschiedene Arten von Aktionen und Aktionsgruppen mithilfe von PowerShell zu konfigurieren](sql-database-auditing.md#manage-auditing). Durch diese Konfiguration können sie die Anzahl der überwachten Aktionen steuern und das Risiko von Ereignisverlusten minimieren. Das Konfigurieren einer benutzerdefinierten Überwachung ermöglicht Kunden, nur die wirklich benötigten Überwachungsdaten zu erfassen.
 - Überwachungsprotokolle können direkt im [Azure-Portal](https://portal.azure.com/) oder aus dem konfigurierten Speicherort genutzt werden. 
 
 

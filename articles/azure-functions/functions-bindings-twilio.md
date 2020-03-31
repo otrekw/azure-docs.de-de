@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715063"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
@@ -35,7 +35,7 @@ Die Twilio-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.T
 
 ## <a name="example---functions-2x-and-higher"></a>Beispiel: Functions 2.x oder höher
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Textnachricht sendet, wenn sie durch eine Warteschlangennachricht ausgelöst wird.
 
@@ -70,7 +70,7 @@ namespace TwilioQueueOutput
 
 Dieses Beispiel verwendet das `TwilioSms`-Attribut mit dem Rückgabewert der Methode. Alternativ können Sie das Attribut auch mit einem `out CreateMessageOptions`-Parameter oder den Parametern `ICollector<CreateMessageOptions>` oder `IAsyncCollector<CreateMessageOptions>` verwenden.
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Twilio-Ausgabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet einen `out`-Parameter, um eine Textnachricht zu senden.
 
@@ -156,7 +156,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Twilio-Ausgabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet.
 
@@ -201,7 +201,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im folgenden Beispiel wird gezeigt, wie Sie eine SMS-Nachricht unter Verwendung der Ausgabebindung senden, wie im folgenden Code (*function.js*) definiert:
 
@@ -239,7 +239,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
     return func.HttpResponse(f"Message sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Im folgenden Beispiel wird gezeigt, wie Sie die Anmerkung [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) verwenden, um eine SMS-Nachricht zu senden. In der Attributdefinition müssen Werte für `to`, `from` und `body` angegeben werden, auch wenn Sie sie programmgesteuert überschreiben.
 
@@ -287,7 +287,7 @@ public class TwilioOutput {
 
 ## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das Attribut [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs).
 
@@ -305,19 +305,19 @@ public static CreateMessageOptions Run(
 
 Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#example).
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Attribute werden von Python nicht unterstützt.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Platzieren Sie die Anmerkung [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) in einem Parameter vom Typ [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding). `T` kann hierbei ein beliebiger nativer Java-Typ (beispielsweise `int`, `String` oder `byte[]`) oder ein POJO-Typ sein.
 
@@ -327,7 +327,7 @@ Platzieren Sie die Anmerkung [TwilioSmsOutput](https://docs.microsoft.com/java/a
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `TwilioSms` festlegen:
 
-| function.json-Eigenschaft in v1 | function.json-Eigenschaft in v2 | Attributeigenschaft |Beschreibung|
+| function.json-Eigenschaft in v1 | function.json-Eigenschaft in v2 | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|---------|----------------------|
 |**type**|**type**| auf `twilioSms` festgelegt werden muss.|
 |**direction**|**direction**| auf `out` festgelegt werden muss.|

@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 961d10f3a0bc4be25a2981e5411cc6a8a75d2105
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 3/18/2020
+ms.openlocfilehash: 4c7eb5e4f22cb432a9d17e6eafa653e62e1f9129
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255097"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529899"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Auswählen der richtigen MariaDB Server-Option in Azure
 
@@ -23,7 +23,7 @@ Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 
   Mit einer verwalteten Instanz von MariaDB in Azure können Sie integrierte Features nutzen, die ansonsten eine umfangreiche Konfiguration erfordern, wenn der MariaDB-Server entweder lokal oder auf einer Azure-VM gehostet wird.
 
-  Wenn Sie mit MariaDB als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen, und haben die Möglichkeit, für eine bessere Kontrolle ohne Unterbrechung horizontal oder zentral hochzuskalieren. Azure Database for MariaDB verfügt im Gegensatz zu einem eigenständigen MariaDB-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligenz und Verwaltung.
+  Wenn Sie mit MariaDB als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen, und haben die Möglichkeit, für eine bessere Kontrolle ohne Unterbrechung auf- oder hochzuskalieren. Azure Database for MariaDB verfügt im Gegensatz zu einem eigenständigen MariaDB-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligenz und Verwaltung.
 
 - **MariaDB auf Azure-VMs:** Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie den MariaDB-Server innerhalb eines vollständig verwalteten virtuellen Computers auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MariaDB können auf einem virtuellen IaaS-Computer installiert werden.
 

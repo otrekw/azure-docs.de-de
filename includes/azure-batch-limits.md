@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 22bfc3c86605f4c2eed4c022919b3643f394ea95
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67080903"
 ---
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
@@ -20,7 +20,7 @@ ms.locfileid: "67080903"
 | Azure Batch-Konten pro Region und Abonnement | 1-3 |50 |
 | Dedizierte Kerne pro Batch-Konto | 90-900 | Support kontaktieren |
 | Kerne mit niedriger Priorität pro Batch-Konto | 10-100 | Support kontaktieren |
-| **[Aktive](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)**  Aufträge und Auftragszeitpläne pro Batch-Konto (**abgeschlossene** Aufträge haben keinen Grenzwert) | 100-300 | 1\.000<sup>1</sup> |
+| **[Aktive](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)** Aufträge und Auftragszeitpläne pro Batch-Konto (**abgeschlossene** Aufträge haben keinen Grenzwert) | 100-300 | 1\.000<sup>1</sup> |
 | Pools pro Batch-Konto | 20-100 | 500<sup>1</sup> |
 
 > [!NOTE]

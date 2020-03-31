@@ -3,12 +3,12 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233914"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -98,7 +98,7 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 1. Standardmäßig befindet sich der Ordner „scratch“ unter `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
 2. Stellen Sie sicher, dass der Pfad des Speicherorts für den Ordner „scatch“ mit den Werten der folgenden Registrierungsschlüsseleinträge übereinstimmt:
 
-    | Registrierungspfad | Registrierungsschlüssel | value |
+    | Registrierungspfad | Registrierungsschlüssel | Wert |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
@@ -113,7 +113,7 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 4. Kopieren Sie den gesamten `\Scratch`-Ordner auf ein anderes Laufwerk mit ausreichend Speicherplatz. Stellen Sie sicher, dass die Inhalte kopiert, nicht verschoben werden.
 5. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neu verschobenen Ablageordner.
 
-    | Registrierungspfad | Registrierungsschlüssel | value |
+    | Registrierungspfad | Registrierungsschlüssel | Wert |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort für den Ablageordner* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort für den Ablageordner* |
@@ -149,7 +149,7 @@ Der Cacheordner und die Metadaten-VHD verfügen nicht über die erforderlichen A
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Gibt es eine Möglichkeit, die für die Sicherung genutzte Bandbreite anzupassen?
 
-Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-configure-vault.md#enable-network-throttling)
+Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-windows-with-mars-agent.md#enable-network-throttling)
 
 ## <a name="restore"></a>Restore
 

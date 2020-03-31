@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 8cdba27ac949584e1fa96e3f7b0874f4fc0d4212
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235311"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
 
@@ -40,7 +40,7 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 |Benutzerdefinierte Nachrichteneigenschaften     |Ja         |Ja         |Nein       |
 |Benutzerdefinierte C#-Codefunktion und Deserialisierer|Schreibgeschützter Modus|Ja|Nein|
 |JavaScript-UDF und -UDA     |Ja         |Ja         |Nur Windows         |
-|Machine Learning Service     |Ja, aber die Abfrage kann nicht getestet werden        |Ja         |Nein         |
+|Machine Learning Service     |Ja        |Ja         |Nein         |
 |Machine Learning Studio     |Ja, aber die Abfrage kann nicht getestet werden        |Ja |Nein         |
 |Kompatibilitätsgrad     |1.0</br>1.1</br>1.2 (Standard)         |1.0</br>1.1</br>1.2 (Standard)           |1.0</br>1.1</br>1.2 (Standard)           |
 |Integrierte Anomalieerkennungsfunktionen auf ML-Basis     |Ja         |Ja         |Ja         |

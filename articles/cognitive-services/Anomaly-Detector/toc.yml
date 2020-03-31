@@ -24,13 +24,13 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Verwenden von Python
           href: quickstarts/detect-data-anomalies-python.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Visualisieren von Anomalien als Batch mithilfe von Power BI
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: Anomalieerkennung für Streamingdaten mit Azure Databricks
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Ermitteln von Anomalien in Ihren Daten
       href: how-to/identify-anomalies.md
@@ -78,6 +78,16 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Ressourcen
   items:
+    - name: Support
+      items:
+        - name: Support
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: Uservoice
+          href: 'https://aka.ms/aduservoice'
     - name: Preise
       href: 'https://aka.ms/adpricing'
     - name: Regionale Verfügbarkeit
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: Support
-  items:
-    - name: Support
-      href: 'https://aka.ms/adsupport'
-    - name: Stack Overflow
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: Uservoice
-      href: 'https://aka.ms/aduservoice'

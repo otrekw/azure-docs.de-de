@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246028"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066383"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network NAT-Dienst verwenden. Sie erstellen ein NAT-Gateway, um ausgehende Konnektivität für einen virtuellen Computer in Azure bereitzustellen. 
 
->[!NOTE] 
->Azure Virtual Network NAT ist zurzeit als öffentliche Vorschauversion verfügbar und nur in bestimmten [Regionen](./nat-overview.md#region-availability) verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
+Falls Sie es vorziehen, können Sie diese Schritte anstatt mit dem Portal auch per [Azure CLI](quickstart-create-nat-gateway-cli.md), [Azure PowerShell](quickstart-create-nat-gateway-powershell.md) oder Bereitstellung einer [ARM-Vorlage](quickstart-create-nat-gateway-powershell.md) ausführen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -38,7 +37,7 @@ Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen,
 
 In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
 
-| Parameter                   | value                |
+| Parameter                   | Wert                |
 |-----------------------------|----------------------|
 | **\<Ressourcengruppenname>**  | myResourceGroupNAT |
 | **\<VNET-Name>** | myVNet          |
@@ -93,14 +92,14 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
 
 2. Geben Sie unter **Öffentliche IP-Adresse erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | IP-Version | Wählen Sie **IPv4** aus.
     | SKU | Wählen Sie **Standard** aus.
     | Name | Geben Sie **myPublicIP** ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **myResourceGroupNAT** aus. |
-    | Location | Wählen Sie **USA, Osten 2** aus.|
+    | Position | Wählen Sie **USA, Osten 2** aus.|
 
 3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
@@ -179,6 +178,5 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
-- [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 > [!div class="nextstepaction"]
 

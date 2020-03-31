@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160213"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048413"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -69,9 +69,9 @@ Mehrinstanzenfähige Anwendungen müssen in jedem Verzeichnis bereitgestellt wer
 Der Benutzer bzw. Administrator kann dann seine Einwilligung für die Anwendung erteilen. Das bedeutet konkret, dass er der Anwendung Zugriff auf die angegebenen Daten gewährt und die Anwendung schließlich im Verzeichnis registriert.
 
 > [!NOTE]
-> Wenn Sie Ihre Anwendung Benutzern in mehreren Verzeichnissen bereitstellen, müssen Sie ermitteln, in welchem Mandaten sie sich befinden. Eine Anwendung mit einem einzelnen Mandanten muss nur in ihrem eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss einen bestimmten Benutzer in allen Verzeichnissen in Azure AD identifizieren.
+> Wenn Sie Ihre Anwendung für Benutzer in mehreren Verzeichnissen bereitstellen, müssen Sie ermitteln, unter welchem Mandanten sich diese befinden. Eine Anwendung mit einem einzelnen Mandanten muss nur in ihrem eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss einen bestimmten Benutzer in allen Verzeichnissen in Azure AD identifizieren.
 > 
-> Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen allgemeinen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common) für alle Verzeichnisse in Azure AD. Ein mandantenspezifischer Endpunkt wäre beispielsweise [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com). 
+> Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen allgemeinen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet `https://login.microsoftonline.com/common` für alle Verzeichnisse in Azure AD. Ein mandantenspezifischer Endpunkt wäre beispielsweise `https://login.microsoftonline.com/contoso.onmicrosoft.com`. 
 >
 > Der allgemeine Endpunkt ist wichtig für die Entwicklung Ihrer Anwendung. Sie benötigen die notwendige Logik, um mehrere Mandanten bei der Anmelde-, Abmelde- und Tokenüberprüfung zu verwalten.
 
@@ -125,7 +125,7 @@ Die folgenden Schritte beschreiben den Einwilligungsprozess für Anwendungsentwi
 
 3. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom Azure AD-/Authorisierungsendpunkt zum Anmelden aufgefordert.
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![Authentifizierung](./media/openidoauth-tutorial/authentication.png)
 
 4. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob ihm eine Seite zum Einwilligen angezeigt wird. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat.
 

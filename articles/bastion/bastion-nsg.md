@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087270"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
@@ -28,7 +28,7 @@ In diesem Diagramm:
 * Verbindungsintegration: RDP-/SSH-Sitzung innerhalb des Browsers mit nur einem Klick
 * Für den virtuellen Azure-Computer ist keine öffentliche IP-Adresse erforderlich.
 
-## <a name="nsg"></a>Netzwerksicherheitsgruppen
+## <a name="network-security-groups"></a><a name="nsg"></a>Netzwerksicherheitsgruppen
 
 In diesem Abschnitt wird der Netzwerkdatenverkehr zwischen dem Benutzer und Azure Bastion und weiter zu virtuellen Zielcomputern in Ihrem virtuellen Netzwerk gezeigt:
 
@@ -50,7 +50,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (AzureBastionSubnet) bereit
 
    * **Eingehender Datenverkehr von Azure Bastion:** Azure Bastion erreicht die Ziel-VM über die private IP-Adresse. RDP-/SSH-Ports (Port 3389 bzw. 22) müssen aufseiten des virtuellen Zielcomputers für die private IP-Adresse geöffnet werden. Es empfiehlt sich, in dieser Regel den IP-Adressbereich des Azure Bastion-Subnetzes hinzuzufügen, damit diese Ports auf den virtuellen Zielcomputern in Ihrem Ziel-VM-Subnetz nur von Bastion geöffnet werden können.
 
-## <a name="apply"></a>Anwenden von NSGs auf AzureBastionSubnet
+## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>Anwenden von NSGs auf AzureBastionSubnet
 
 Wenn Sie eine NSG erstellen und auf ***AzureBastionSubnet*** anwenden, stellen Sie sicher, dass Sie die folgenden Regeln in Ihrer NSG hinzugefügt haben. Wenn Sie diese Regeln nicht hinzufügen, ist die Erstellung/Aktualisierung der NSG nicht erfolgreich:
 

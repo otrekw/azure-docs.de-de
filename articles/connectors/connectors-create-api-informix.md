@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76757967"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Verwalten von IBM Informix-Datenbankressourcen mithilfe von Azure Logic Apps
@@ -58,7 +58,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App z
 
 1. Geben Sie die Informationen für Ihrem ausgewählte Aktion ein:
 
-   | Aktion | Beschreibung | Eigenschaften und Beschreibungen |
+   | Aktion | BESCHREIBUNG | Eigenschaften und Beschreibungen |
    |--------|-------------|-----------------------------|
    | **Tabellen abrufen** | Auflisten von Datenbanktabellen durch Ausführen einer Informix-CALL-Anweisung. | Keine |
    | **Zeilen abrufen** | Abrufen aller Zeilen aus der angegebenen Tabelle durch Ausführen einer Informix-`SELECT *`-Anweisung. | **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <p><p>Um dieser Aktion weitere Eigenschaften hinzuzufügen, wählen Sie diese aus der Liste **Neuen Parameter hinzufügen** aus. Weitere Informationen finden Sie im [Referenzthema des Connectors](/connectors/informix/). |
@@ -78,7 +78,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App z
 
 1. Geben Sie diese Verbindungsinformationen an, und wählen Sie dann **Erstellen** aus.
 
-   | Eigenschaft | JSON-Eigenschaft | Erforderlich | Beispielwert | Beschreibung |
+   | Eigenschaft | JSON-Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
    |----------|---------------|----------|---------------|-------------|
    | Verbindungsname | `name` | Ja | `informix-demo-connection` | Der für die Verbindung mit Ihrer Informix-Datenbank zu verwendende Name. |
    | Server | `server` | Ja | - Cloud: `informixdemo.cloudapp.net:9089` <br>- Lokal: `informixdemo:9089` | Die TCP/IP-Adresse oder der Alias, im IPv4- oder IPv6-Format, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |

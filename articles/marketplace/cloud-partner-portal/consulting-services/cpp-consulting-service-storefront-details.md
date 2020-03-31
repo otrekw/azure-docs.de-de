@@ -1,19 +1,18 @@
 ---
 title: Eingeben von Details der digitalen Ladenzeile für das Beratungsangebot | Azure Marketplace
 description: Definieren Sie Details für die digitale Ladenzeile (Storefront) in einem Azure- oder Dynamics 365-Beratungsdienstangebot im Cloud-Partnerportal.
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: dsindona
+ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191166"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281696"
 ---
 # <a name="storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails)
 

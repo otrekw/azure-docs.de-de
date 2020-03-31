@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818039"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222587"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 
@@ -149,7 +149,7 @@ Informationen zum Konfigurieren von Azure AD finden Sie hier:
 
 ## <a name="manage-database-access"></a>Verwalten des Datenbankzugriffs
 
-Verwalten Sie den Zugriff auf die Datenbank, indem Sie der Datenbank Benutzer hinzufügen oder Benutzern den Zugriff über sichere Verbindungszeichenfolgen ermöglichen. Verbindungszeichenfolgen sind hilfreich für externe Anwendungen. Weitere Informationen finden Sie unter [Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-control-access.md) sowie unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL](sql-database-aad-authentication.md).
+Verwalten Sie den Zugriff auf die Datenbank, indem Sie der Datenbank Benutzer hinzufügen oder Benutzern den Zugriff über sichere Verbindungszeichenfolgen ermöglichen. Verbindungszeichenfolgen sind hilfreich für externe Anwendungen. Weitere Informationen finden Sie in den Artikeln zum [Verwalten von Anmeldungen und Benutzerkonten](sql-database-manage-logins.md) und zur [AD-Authentifizierung](sql-database-aad-authentication.md).
 
 Wählen Sie zum Hinzufügen von Benutzern den Datenbankauthentifizierungstyp aus:
 
@@ -296,7 +296,7 @@ So aktivieren Sie die Überwachung:
 
 1. Nun können Sie **Überwachungsprotokolle anzeigen** auswählen, um Datenbankereignisdaten anzuzeigen.
 
-    ![Überwachungsdatensätze](./media/sql-database-security-tutorial/audit-records.png)
+    ![Überwachen von Datensätzen](./media/sql-database-security-tutorial/audit-records.png)
 
 > [!IMPORTANT]
 > Informationen zur weiteren Anpassung von Überwachungsereignissen mittels PowerShell oder REST-API finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
@@ -331,14 +331,14 @@ So aktivieren oder überprüfen Sie die Verschlüsselung:
 
 1. Legen Sie bei Bedarf die Option **Datenverschlüsselung** auf **EIN** fest. Wählen Sie **Speichern** aus.
 
-    ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
+    ![Transparente Datenverschlüsselung](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
 > Stellen Sie zum Anzeigen des Verschlüsselungsstatus über [SSMS](./sql-database-connect-query-ssms.md) eine Verbindung mit der Datenbank her, und fragen Sie die Spalte `encryption_state` der Sicht [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) ab. Der Zustand `3` gibt an, dass die Datenbank verschlüsselt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie mit wenigen einfachen Schritten die Sicherheit Ihrer Datenbank verbessern. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie gelernt, wie Sie mit wenigen einfachen Schritten die Sicherheit Ihrer Datenbank verbessern. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > - Erstellen von Firewallregeln auf Server- und Datenbankebene

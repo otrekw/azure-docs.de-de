@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595944"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
 
 > [!NOTE]
-> Diese Methode ist veraltet. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
+> Diese Methode ist als veraltet markiert. Sie ist unter V3.0 der Textübersetzungs-API nicht verfügbar.
 > 
 > Das Collaborative Translation Framework (CTF), das für V2.0 der Textübersetzungs-API verfügbar war, gilt ab dem 1. Februar 2018 als veraltet. Mit den Funktionen AddTranslation und AddTranslationArray konnten Benutzer Korrekturen über das Collaborative Translation Framework aktivieren. Nach dem 31. Januar 2018 werden für diese beiden Funktionen keine neuen Satzübermittlungen mehr akzeptiert, und Benutzer erhalten eine Fehlermeldung. Diese Funktionen wurden eingestellt und werden nicht durch neue Funktionen ersetzt.
 
@@ -34,7 +34,7 @@ Der Endpunkt der CTF-Berichterstellungs-API lautet https://api.microsofttranslat
 
 
 ## <a name="methods"></a>Methoden
-| NAME |    BESCHREIBUNG|
+| Name |    BESCHREIBUNG|
 |:---|:---|
 | GetUserTranslationCounts-Methode | Ruft die Anzahl von Übersetzungen ab, die vom Benutzer erstellt werden. |
 | GetUserTranslations-Methode | Ruft die Übersetzungen ab, die vom Benutzer erstellt werden. |
@@ -96,7 +96,7 @@ Das Resultset enthält ein Array mit dem **UserTranslationCount**-Element. Jedes
 
 | Feld | BESCHREIBUNG |
 |:---|:---|
-| Count| Anzahl von abgerufenen Ergebnissen|
+| Anzahl| Anzahl von abgerufenen Ergebnissen|
 | From | Quellsprache|
 | Rating| Bewertung, die vom Übermittler im AddTranslation()-Methodenaufruf angewendet wird|
 | To| Zielsprache|

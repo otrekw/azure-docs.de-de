@@ -2,17 +2,17 @@
 title: Verschlüsselung ruhender Daten in Azure Cosmos DB
 description: Erfahren Sie, wie Azure Cosmos DB eine Verschlüsselung ruhender Daten bereitstellt und wie diese implementiert wird.
 author: markjbrown
-ms.author: sngun
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062600"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 

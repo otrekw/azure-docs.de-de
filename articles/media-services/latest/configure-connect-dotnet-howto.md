@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899893"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232802"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
 
@@ -47,7 +47,7 @@ Die Beispiel-App in diesem Thema ist auf `netcoreapp2.0` ausgerichtet. Der Code 
 
 |Paket|BESCHREIBUNG|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Um sicherzustellen, dass Sie das neueste Azure Media Services-Paket verwenden, überprüfen Sie [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
+|`Microsoft.Azure.Management.Media`|Azure Media Services SDK <br/>Um sicherzustellen, dass Sie das neueste Azure Media Services-Paket verwenden, überprüfen Sie [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-Authentifizierungsbibliothek für Azure SDK für NET|
 |`Microsoft.Extensions.Configuration.EnvironmentVariables`|Lesen von Konfigurationswerten aus Umgebungsvariablen und lokalen JSON-Dateien|
 |`Microsoft.Extensions.Configuration.Json`|Lesen von Konfigurationswerten aus Umgebungsvariablen und lokalen JSON-Dateien

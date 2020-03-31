@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178304"
 ---
 ## <a name="deleting-personal-information"></a>Löschen personenbezogener Informationen
@@ -23,11 +23,11 @@ Personenbezogene Informationen sind für den Import/Export-Dienst (über das Por
 
 - Kontaktname
 - Telefonnummer
-- E-Mail
+- Email
 - Anschrift
 - City
 - Postleitzahl
-- Zustand
+- State
 - Land/Provinz/Region
 - Laufwerk-ID
 - Kontonummer des Versanddienstleisters

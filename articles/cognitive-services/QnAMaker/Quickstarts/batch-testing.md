@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77108991"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Schnellstart: Testen der Wissensdatenbank mit Batchfragen und erwarteten Antworten
@@ -44,7 +44,7 @@ Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer Qn
 
 1. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
     |**Default answer text** (Standardantworttext)| `Batch test - default answer not found.`|

@@ -1,19 +1,18 @@
 ---
 title: Kontomigration vom Cloud-Partnerportal zu Partner Center – Kommerzieller Marketplace für Azure
 description: Hier erfahren Sie, wie Sie Ihr Konto von CPP zu Partner Center migrieren. – Kommerzieller Marketplace für Azure
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 076250444989d4edb3ec86039ab25887ff1e206b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279809"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Kontomigration vom Cloud-Partnerportal zu Partner Center
 

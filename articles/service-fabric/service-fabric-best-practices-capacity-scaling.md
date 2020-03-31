@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75377462"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229474"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -28,7 +28,7 @@ Durch die Verwendung der automatischen Skalierung über VM-Skalierungsgruppen de
    Sie können zusätzlich zur manuellen Skalierung eine [Continuous Integration- und Continuous Delivery-Pipeline in Azure DevOps Services mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen](https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts) konfigurieren. Diese Pipeline wird meist durch eine Logik-App ausgelöst, die Leistungsmetriken von virtuellen Computern nutzt, die über die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough) abgefragt wurden. Die Pipeline führt eine effektive automatische Skalierung basierend auf Ihren gewünschten Metriken durch und optimiert gleichzeitig die Resource Manager-Vorlagen.
 * Sie müssen jeweils nur einen Knoten einer VM-Skalierungsgruppe horizontal skalieren.
    
-   Zum Erweitern um drei oder mehr Knoten gleichzeitig sollten Sie [einen Service Fabric-Cluster durch das Hinzufügen einer VM-Skalierungsgruppe erweitern](virtual-machine-scale-set-scale-node-type-scale-out.md). Es ist am sichersten, das Hoch- und Herunterskalieren von VM-Skalierungsgruppen horizontal und mit jeweils einem Knoten durchzuführen.
+   Zum Erweitern um drei oder mehr Knoten gleichzeitig sollten Sie [einen Service Fabric-Cluster durch das Hinzufügen einer VM-Skalierungsgruppe aufskalieren](virtual-machine-scale-set-scale-node-type-scale-out.md). Es ist am sichersten, das Auf- und Abskalieren von VM-Skalierungsgruppen mit jeweils einem Knoten durchzuführen.
 * Für den Service Fabric-Cluster ist die Zuverlässigkeitsstufe „Silber“ oder höher und die Dauerhaftigkeitsstufe „Silber“ oder höher für alle Skalierungsgruppen festgelegt, für die Sie Regeln für die automatische Skalierung konfigurieren.
   
    Die Mindestkapazität für Regeln zur automatischen Skalierung beträgt fünf VM-Instanzen. Zudem muss sie gleich oder größer dem der minimalen Zuverlässigkeitsstufe für Ihren primären Knotentyp sein.
@@ -81,7 +81,7 @@ Sie können die horizontale Skalierung entweder [manuell](https://docs.microsoft
 
 ### <a name="scaling-out"></a>Horizontales Skalieren
 
-Skalieren Sie einen Service Fabric-Cluster horizontal hoch, indem Sie die Anzahl der Instanzen für eine bestimmte VM-Skalierungsgruppe erhöhen. Sie können das horizontale Hochskalieren programmgesteuert durchführen, indem Sie mithilfe von `AzureClient` und der ID für die gewünschte Skalierungsgruppe die Kapazität erhöhen.
+Skalieren Sie einen Service Fabric-Cluster auf, indem Sie die Anzahl der Instanzen für eine bestimmte VM-Skalierungsgruppe erhöhen. Sie können das Aufskalieren programmgesteuert durchführen, indem Sie mithilfe von `AzureClient` und der ID für die gewünschte Skalierungsgruppe die Kapazität erhöhen.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -89,7 +89,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Für ein manuelles horizontales Hochskalieren aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
+Für ein manuelles Aufskalieren aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
 
 ```json
 "sku": {
@@ -106,14 +106,14 @@ Beim horizontalen Herunterskalieren müssen mehr Aspekte berücksichtigt werden 
 * Service Fabric-Systemdienste werden auf dem primären Knotentyp in Ihrem Cluster ausgeführt. Sie dürfen also niemals die Anzahl der Instanzen für diesen Knotentyp herunterfahren oder so herunterskalieren, dass weniger Instanzen vorhanden sind, als durch die Zuverlässigkeitsstufe vorgegeben ist. 
 * Für einen zustandsbehafteten Dienst muss eine bestimmte Anzahl von Knoten stets aktiv sein, um die Verfügbarkeit sicherzustellen und den Zustand des Diensts beizubehalten. Sie benötigen mindestens eine Anzahl von Knoten, die der Anzahl der Zielreplikatgruppen der Partition oder des Diensts entspricht.
 
-Beim manuellen Herunterskalieren gehen Sie folgendermaßen vor:
+Beim manuellen Abskalieren gehen Sie folgendermaßen vor:
 
 1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht `RemoveNode` aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
 2. Führen Sie `Get-ServiceFabricNode` aus, um sicherzustellen, dass der Status des Knotens tatsächlich in „Deaktiviert“ geändert wurde. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Dies kann für jeden Knoten einige Stunden dauern. Fahren Sie erst fort, nachdem der Status des Knotens in „Deaktiviert“ geändert wurde.
 3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
 4. Wiederholen Sie ggf. die Schritte 1 bis 3, bis die gewünschte Kapazität bereitgestellt wird. Skalieren Sie auf keinen Fall die Anzahl der Instanzen des primären Knotentyps auf einen Wert herunter, der unter dem von der Zuverlässigkeitsstufe vorgegebenen liegt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
 
-Um manuell horizontal herunterzuskalieren, aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
+Um manuell abzuskalieren, aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
 
 ```json
 "sku": {
@@ -123,7 +123,7 @@ Um manuell horizontal herunterzuskalieren, aktualisieren Sie die Kapazität in d
 }
 ```
 
-Damit das horizontale Herunterskalieren programmgesteuert durchgeführt werden kann, müssen Sie den Knoten auf das Herunterfahren vorbereiten. Ermitteln Sie den Knoten, der entfernt werden soll (der Knoten der höchsten Instanz). Beispiel:
+Damit das Abskalieren programmgesteuert durchgeführt werden kann, müssen Sie den Knoten auf das Herunterfahren vorbereiten. Ermitteln Sie den Knoten, der entfernt werden soll (der Knoten der höchsten Instanz). Beispiel:
 
 ```csharp
 using (var client = new FabricClient())

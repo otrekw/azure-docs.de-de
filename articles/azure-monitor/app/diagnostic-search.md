@@ -4,11 +4,11 @@ description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von 
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234702"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
@@ -133,9 +133,9 @@ Neben der standardmäßig vom Application Insights SDK gesendeten Telemetriedate
 
 [Erfahren Sie, wie Sie Protokolle und benutzerdefinierte Telemetrie an Application Insights senden können](../../azure-monitor/app/asp-net-trace-logs.md).
 
-## <a name="questions"></a>FRAGEN UND ANTWORTEN
+## <a name="q--a"></a><a name="questions"></a>FRAGEN UND ANTWORTEN
 
-### <a name="limits"></a>Wie viele Daten werden beibehalten?
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
 
 Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](../../azure-monitor/app/pricing.md#limits-summary).
 
@@ -143,7 +143,7 @@ Entsprechende Informationen finden Sie unter [Zusammenfassung der Grenzwerte](..
 
 POST-Daten werden nicht automatisch protokolliert. Sie können jedoch [TrackTrace oder Protokollaufrufe](../../azure-monitor/app/asp-net-trace-logs.md) verwenden. Fügen Sie die POST-Daten in den "message"-Parameter ein. Sie können nicht anhand der Nachricht wie anhand von Eigenschaften filtern, aber dafür ist der Größengrenzwert höher.
 
-## <a name="add"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="add"></a>Nächste Schritte
 
 * [Stellen von komplexeren Abfragen mit Analytics](../../azure-monitor/log-query/get-started-portal.md)
 * [Senden von Protokollen und benutzerdefinierter Telemetrie an Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)

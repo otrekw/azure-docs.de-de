@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239433"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines vorhandenen Application Gateways
 
@@ -81,13 +81,13 @@ Verwenden Sie [Cloud Shell](https://shell.azure.com/), um die folgenden Befehle 
 
 1. Erstellen Sie eine Azure-Identität **in derselben Ressourcengruppe wie die AKS-Knoten**. Die Auswahl der richtigen Ressourcengruppe ist wichtig. Die im folgenden Befehl erforderliche Ressourcengruppe ist *nicht* die im AKS-Portalbereich referenzierte Ressourcengruppe. Dies ist die Ressourcengruppe der virtuellen `aks-agentpool`-Computer. In der Regel beginnt diese Ressourcengruppe mit `MC_` und enthält den Namen Ihres AKS. Beispiel: `MC_resourceGroup_aksABCD_westus`
 
-    ```bash
+    ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
 1. Für die unten aufgeführten Rollenzuweisungsbefehle müssen wir `principalId` für die neu erstellte Identität abrufen:
 
-    ```bash
+    ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
@@ -95,7 +95,7 @@ Verwenden Sie [Cloud Shell](https://shell.azure.com/), um die folgenden Befehle 
 
     Rufen Sie die Liste der Application Gateway-IDs in Ihrem Abonnement wie folgt ab: `az network application-gateway list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Contributor \
         --assignee <principalId> \
@@ -104,7 +104,7 @@ Verwenden Sie [Cloud Shell](https://shell.azure.com/), um die folgenden Befehle 
 
 1. Gewähren Sie der Identität `Reader` Zugriff auf die Application Gateway-Ressourcengruppe. Die Ressourcengruppen-ID sieht wie folgt aus: `/subscriptions/A/resourceGroups/B`. Sie können alle Ressourcengruppen wie folgt abrufen: `az group list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Reader \
         --assignee <principalId> \
@@ -116,7 +116,7 @@ Es ist auch möglich, AGIC-Zugriff auf ARM über ein Kubernetes-Geheimnis bereit
 
 1. Erstellen Sie einen Active Directory-Dienstprinzipal, und codieren Sie ihn als base64. Die base64-Codierung ist erforderlich, damit das JSON-Blob in Kubernetes gespeichert wird.
 
-```bash
+```azurecli
 az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
 ```
 

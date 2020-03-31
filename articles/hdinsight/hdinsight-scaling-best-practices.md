@@ -6,21 +6,21 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/26/2020
+ms.openlocfilehash: 96a72541255ad0059abe5ad280f1728518dbf68c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064630"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234735"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
-HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. Durch diese Flexibilität können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
+HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern hoch- und herunterskalieren können. Durch diese Flexibilität können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
 
 Bei einer regelmäßigen Batchverarbeitung kann der HDInsight-Cluster ein paar Minuten vor diesem Vorgang zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
 
-Sie können einen Cluster mit einer der unten aufgeführten Methoden manuell skalieren oder die Optionen der [Autoskalierung](hdinsight-autoscale-clusters.md) verwenden, damit das zentrale Hoch- und Herunterskalieren als Reaktion auf CPU-Leistung, Arbeitsspeicher und andere Metriken im System automatisch erfolgt.
+Sie können einen Cluster mit einer der unten aufgeführten Methoden manuell skalieren oder die Optionen der [Autoskalierung](hdinsight-autoscale-clusters.md) verwenden, damit das Hoch- und Herunterskalieren als Reaktion auf CPU-Leistung, Arbeitsspeicher und andere Metriken im System automatisch erfolgt.
 
 > [!NOTE]  
 > Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters.
@@ -29,12 +29,12 @@ Sie können einen Cluster mit einer der unten aufgeführten Methoden manuell ska
 
 Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 
-|Hilfsprogramm | Beschreibung|
+|Hilfsprogramm | BESCHREIBUNG|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
-|[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --target-instance-count \<NeueGröße>|
-|[Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße> |
+|[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --workernode-count \<NeueGröße>|
+|[Klassische Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße> |
 |[Azure portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
 ![Azure-Portal – Option zum Skalieren von Clustern](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
@@ -47,7 +47,7 @@ Mit jeder dieser Methoden können Sie Ihren HDInsight-Cluster innerhalb von Minu
 
 ## <a name="impact-of-scaling-operations"></a>Auswirkungen von Skalierungsvorgängen
 
-Wenn Sie Ihrem ausgeführten HDInsight-Cluster Knoten **hinzufügen** (zentrales Hochskalieren), sind ausstehende oder ausgeführte Aufträge nicht betroffen. Neue Aufträge können sicher übermittelt werden, während der Skalierungsprozess ausgeführt wird. Wenn bei der Skalierung aus einem beliebigen Grund ein Fehler auftritt, wird der Fehler behandelt, sodass der Cluster funktionsfähig bleibt.
+Wenn Sie Ihrem ausgeführten HDInsight-Cluster Knoten **hinzufügen** (Hochskalieren), sind ausstehende oder ausgeführte Aufträge nicht betroffen. Neue Aufträge können sicher übermittelt werden, während der Skalierungsprozess ausgeführt wird. Wenn bei der Skalierung aus einem beliebigen Grund ein Fehler auftritt, wird der Fehler behandelt, sodass der Cluster funktionsfähig bleibt.
 
 Wenn Sie Knoten **entfernen** (zentrales Herunterskalieren), treten bei ausstehenden oder ausgeführten Aufträgen Fehler auf, wenn die Skalierung abgeschlossen ist. Der Grund für diese Fehler ist, dass einige Dienste während des Skalierungsvorgangs neu gestartet werden. Es besteht zudem das Risiko, dass der Cluster während eines manuellen Skalierungsvorgangs im abgesicherten Modus hängen bleibt.
 
@@ -88,7 +88,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
 
     Es folgt ein Beispiel-CLI-Befehl für den Neuausgleich der Storm-Topologie:
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
@@ -142,11 +142,11 @@ Wenn HDFS erkennt, dass die erwartete Anzahl von Kopien der Dateiblöcke nicht v
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>Beispiel für Fehler bei aktiviertem abgesichertem Modus
 
-```
+```output
 org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. Name node is in safe mode.
 ```
 
-```
+```output
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
@@ -160,7 +160,7 @@ Es gibt mehrere Möglichkeiten, zu verhindern, dass HDInsight im abgesicherten M
 
 * Beenden Sie alle Hive-Aufträge, bevor Sie HDInsight zentral herunterskalieren. Alternativ können Sie das zentrale Herunterskalieren planen, um Konflikte mit der Ausführung von Hive-Aufträgen zu verhindern.
 * Bereinigen Sie vor dem zentralen Herunterskalieren manuell die `tmp`-Scratchverzeichnisdateien von Hive in HDFS.
-* Skalieren Sie HDInsight nur auf minimal drei Workerknoten zentral herunter. Vermeiden Sie es, auf nur einen Workerknoten herunter zu gehen.
+* Skalieren Sie HDInsight nur auf minimal drei Workerknoten herunter. Vermeiden Sie es, auf nur einen Workerknoten herunter zu gehen.
 * Führen Sie bei Bedarf den Befehl zum Verlassen des abgesicherten Modus aus.
 
 In den folgenden Abschnitten werden diese Optionen beschrieben.

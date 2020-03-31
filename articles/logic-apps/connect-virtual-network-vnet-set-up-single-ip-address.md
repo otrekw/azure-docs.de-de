@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191498"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Einrichten einer einzelnen IP-Adresse für eine oder mehrere Integrationsdienstumgebungen in Azure Logic Apps
@@ -49,7 +49,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
 
    ![Regel zum Weiterleiten von ausgehendem Datenverkehr einrichten](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Routenname** | <*unique-route-name*> | Ein eindeutiger Name für die Route in der Routingtabelle |
    | **Adresspräfix** | <*destination-address*> | Die Adresse des Zielsystems, an die der Datenverkehr gesendet werden soll. Achten Sie darauf, für diese Adresse [die CIDR-Notation (Classless Interdomain Routing = klassenloses domänenübergreifendes Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) zu verwenden. |
@@ -71,7 +71,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
 
    **Eigenschaften für Netzwerkregelsammlungen**
 
-   | Eigenschaft | value | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*network-rule-collection-name*> | Der Name Ihrer Netzwerkregelsammlung |
    | **Priority** | <*priority-level*> | Die Prioritätsstufe für die Ausführung der Regelsammlung. Weitere Informationen finden Sie unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts) |
@@ -80,7 +80,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
 
    **Netzwerkregeleigenschaften**
 
-   | Eigenschaft | value | Beschreibung |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*network-rule-name*> | Der Name Ihrer Netzwerkregel |
    | **Protokoll** | <*connection-protocols*> | Die zu verwendenden Verbindungsprotokolle. Wenn Sie z. B. NSG-Regeln verwenden, wählen Sie sowohl **TCP** als auch **UDP** und nicht nur **TCP** aus. |

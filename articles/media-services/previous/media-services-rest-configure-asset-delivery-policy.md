@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09f0371bc189fcf7b25ec3261e2e1f5eaf1892ae
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194488"
 ---
 # <a name="configuring-asset-delivery-policies"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte
@@ -71,7 +71,7 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="clear-asset-delivery-policy"></a>Löschen einer Übermittlungsrichtlinie für Medienobjekte
-### <a id="create_asset_delivery_policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
+### <a name="create-asset-delivery-policy"></a><a id="create_asset_delivery_policy"></a>Erstellen einer Übermittlungsrichtlinie für Medienobjekte
 Die folgende HTTP-Anforderung erstellt eine Übermittlungsrichtlinie für Medienobjekte. Diese gibt an, dass keine dynamische Verschlüsselung angewendet und der Stream mit einem der folgenden Protokolle übermittelt wird:  MPEG DASH-, HLS- und Smooth Streaming-Protokolle. 
 
 Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) wird erläutert, welche Werte Sie beim Erstellen von AssetDeliveryPolicy angeben   
@@ -120,7 +120,7 @@ Antwort:
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
+### <a name="link-asset-with-asset-delivery-policy"></a><a id="link_asset_with_asset_delivery_policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
 Die folgende HTTP-Anforderung verknüpft das angegebene Medienobjekt mit der Übermittlungsrichtlinie für Medienobjekte.
 
 Anforderung:
@@ -147,7 +147,7 @@ Antwort:
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Erstellen eines Inhaltsschlüssels des EnvelopeEncryption-Typs und Verknüpfen des Schlüssels mit dem Medienobjekt
 Wenn Sie die DynamicEnvelopeEncryption-Übermittlungsrichtlinie angeben, müssen Sie sicherstellen, dass Ihr Medienobjekt mit einem Inhaltsschlüssel des EnvelopeEncryption-Typs verknüpft wird. Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-rest-create-contentkey.md).
 
-### <a id="get_delivery_url"></a>Abrufen der Übermittlungs-URL
+### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>Abrufen der Übermittlungs-URL
 Rufen Sie die Übermittlungs-URL für die angegebene Übermittlungsmethode des Inhaltsschlüssels auf, den Sie im vorherigen Schritt erstellt haben. Ein Client verwendet die zurückgegebene URL, um einen AES-Schlüssel oder eine PlayReady-Lizenz zur Wiedergabe des geschützten Inhalts anzufordern.
 
 Geben Sie den Typ der abzurufenden URL im Text der HTTP-Anforderung an. Wenn Sie Ihre Inhalte mit PlayReady schützen, fordern Sie eine Media Services PlayReady-Lizenzerwerbs-URL an, indem Sie für keyDeliveryType den Wert 1 angeben: {"keyDeliveryType":1}. Wenn Sie Ihre Inhalte mit der Umschlagverschlüsselung schützen, fordern Sie eine Schlüsselerwerbs-URL an, indem Sie für keyDeliveryType den Wert 2 angeben: {"keyDeliveryType":2}.
@@ -272,7 +272,7 @@ Beispiel:
 ### <a name="link-asset-with-asset-delivery-policy"></a>Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte
 Weitere Informationen finden Sie unter [Verknüpfen des Medienobjekts mit einer Übermittlungsrichtlinie für Medienobjekte](#link_asset_with_asset_delivery_policy)
 
-## <a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 

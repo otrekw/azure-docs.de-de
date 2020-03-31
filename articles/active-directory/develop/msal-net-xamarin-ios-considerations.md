@@ -15,11 +15,11 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 76e614b605cd07cd5dc454824dd204447f806907
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230618"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Überlegungen zur Verwendung von Xamarin iOS mit MSAL.NET
 Wenn Sie die Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) in Xamarin iOS einsetzen, sollten Sie diese Punkte berücksichtigen: 
@@ -115,7 +115,7 @@ Sie stellen möglicherweise auch ein Problem mit der ASP.NET Core-OICD-Authentif
 
 Informationen zu Eigenschaften für Xamarin iOS finden Sie im Absatz [iOS-spezifische Überlegungen](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) oder der README.md-Datei des folgenden Beispiels:
 
-Beispiel | Plattform | Beschreibung
+Beispiel | Plattform | BESCHREIBUNG
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Universelle Windows-Plattform (UWP) | Eine einfache Xamarin Forms-App, die die Verwendung von MSAL zeigt, um persönliche Microsoft-Konten und Azure AD über den Azure AD 2.0-Endpunkt zu authentifizieren. Die App zeigt darüber hinaus, wie das resultierende Token für den Zugriff auf Microsoft Graph verwendet wird.
 

@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894563"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258327"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -69,7 +69,7 @@ Azure AD Connect unterstützt in Version 1.1.524.0 und höher die Synchronisieru
 Standardmäßig ist das **preferredDataLocation**-Attribut für die Synchronisierung nicht aktiviert. Dieses Feature ist für größere Organisationen vorgesehen. Das Active Directory-Schema in Windows Server 2019 verfügt über das Attribut **msDS-preferredDataLocation**, das Sie für diesen Zweck verwenden sollten. Wenn Sie das Active Directory-Schema nicht aktualisiert haben und dies auch nicht möglich ist, müssen Sie ein Attribut identifizieren, das die Office 365-Georeplikation für Ihre Benutzer enthält. Dies ist für jede Organisation unterschiedlich.
 
 > [!IMPORTANT]
-> Azure AD erlaubt die direkte Konfiguration des **preferredDataLocation**-Attributs in **Cloudbenutzerobjekten** mithilfe von Azure AD PowerShell. In Azure AD kann das **preferredDataLocation**-Attribut in **synchronisierten Benutzerobjekten** nicht mehr direkt mithilfe von Azure AD PowerShell konfiguriert werden. Für die Konfiguration dieses Attributs in **synchronisierten Benutzerobjekten** müssen Sie Azure AD Connect verwenden.
+> Azure AD erlaubt die direkte Konfiguration des **preferredDataLocation**-Attributs in **Cloudbenutzerobjekten** mithilfe von Azure AD PowerShell. Für die Konfiguration dieses Attributs in **synchronisierten Benutzerobjekten** müssen Sie Azure AD Connect verwenden.
 
 Vor Aktivieren der Synchronisierung:
 

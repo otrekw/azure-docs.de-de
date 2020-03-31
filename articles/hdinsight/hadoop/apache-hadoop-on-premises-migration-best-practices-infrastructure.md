@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74951512"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
@@ -152,7 +152,7 @@ Weitere Informationen finden Sie im Artikel [Verwenden leerer Edgeknoten in Apac
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Verwenden des Features zum Hoch- und Herunterskalieren von Clustern
 
-HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern. Weitere Informationen finden Sie unter
+HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern. Weitere Informationen finden Sie unter
 
 * [Skalieren von HDInsight-Clustern](../hdinsight-scaling-best-practices.md)
 * [Skalieren von Clustern](../hdinsight-administer-use-portal-linux.md#scale-clusters)

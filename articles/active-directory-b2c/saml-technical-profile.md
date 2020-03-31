@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183838"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen SAML-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
@@ -68,7 +68,7 @@ So entschlüsseln Sie die SAML-Antwortassertion:
 1. Laden Sie das gültige X509-Zertifikat mit dem privaten Schlüssel (PFX-Datei) in den Azure AD B2C-Richtlinienschlüsselspeicher hoch.
 2. Fügen Sie ein **CryptographicKey**-Element mit einem `SamlAssertionDecryption`-Bezeichner in die **CryptographicKeys**-Sammlung des technischen Profils ein. Legen Sie **StorageReferenceId** auf den Namen des Richtlinienschlüssels fest, den Sie in Schritt 1 erstellt haben.
 3. Legen Sie die **WantsEncryptedAssertions**-Metadaten des technischen Profils auf `true` fest.
-4. Aktualisieren Sie den Identitätsanbieter mit den neuen Metadaten des technischen Azure AD B2C-Profils. Dann sollte **KeyDescriptor** mit der auf `encryption` festgelegten **use**-Eigenschaft mit dem öffentlichen Zertifikatschlüssel angezeigt werden.
+4. Aktualisieren Sie den Identitätsanbieter mit den neuen Metadaten des technischen Azure AD B2C-Profils. Dann sollte **KeyDescriptor** mit der auf **festgelegten**use`encryption`-Eigenschaft mit dem öffentlichen Zertifikatschlüssel angezeigt werden.
 
 Im folgenden Beispiel wird der Verschlüsselungsbereich der Metadaten des technischen Azure AD B2C-Profils dargestellt:
 
@@ -141,7 +141,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 Das **CryptographicKeys**-Element enthält die folgenden Attribute:
 
-| attribute |Erforderlich | Beschreibung |
+| attribute |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Nachrichten. Azure AD B2C verwendet diesen Schlüssel, um die Anforderungen zu signieren und an den Identitätsanbieter zu senden. |
 | SamlAssertionDecryption |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Entschlüsseln der SAML-Nachrichten. Das Zertifikat sollte vom Identitätsanbieter bereitgestellt werden. Azure AD B2C verwendet das Zertifikat, um die vom Identitätsanbieter gesendeten Daten zu senden. |

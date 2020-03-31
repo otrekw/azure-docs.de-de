@@ -15,10 +15,10 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913003"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
@@ -45,7 +45,7 @@ Wenn Sie eine Aufgabe mit **Azure Media Motion Detector**erstellen, müssen Sie 
 ### <a name="parameters"></a>Parameter
 Sie können die folgenden Parameter verwenden:
 
-| Name | Tastatur | Beschreibung | Standard |
+| Name | Tastatur | BESCHREIBUNG | Standard |
 | --- | --- | --- | --- |
 | sensitivityLevel |String: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
 | frameSamplingValue |Positive ganze Zahl |Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw. |1 |
@@ -90,7 +90,7 @@ Ein Bewegungserkennungsauftrag gibt eine JSON-Datei in das Ausgabeasset zurück,
 
 Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in einem Video mit unbewegtem Hintergrund (z. B. einem Überwachungsvideo) auftreten. Der Motion Detector wird trainiert, falsche Alarme, die z. B. auf Änderungen von Lichtverhältnissen und Schatten beruhen, zu reduzieren. Die aktuellen Einschränkungen der Algorithmen beziehen sich auf Nachtsichtvideos, halbtransparente und kleine Objekte.
 
-### <a id="output_elements"></a>Elemente der JSON-Ausgabedatei
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der JSON-Ausgabedatei
 > [!NOTE]
 > In der neuesten Version hat sich das JSON-Ausgabeformat geändert und stellt für einige Kunden unter Umständen eine größere Umstellung dar.
 > 
@@ -98,7 +98,7 @@ Die Motion Detector-API stellt Indikatoren bereit, sobald bewegte Objekte in ein
 
 In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 
-| Element | Beschreibung |
+| Element | BESCHREIBUNG |
 | --- | --- |
 | version |Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2. |
 | timescale |„Ticks“ pro Sekunde des Videos. |

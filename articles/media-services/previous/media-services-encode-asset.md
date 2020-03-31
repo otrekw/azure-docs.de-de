@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227046"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Übersicht der Azure On-Demand Media Encoder 
 
@@ -75,7 +75,7 @@ Informationen finden Sie unter [Erstellen von Überlagerungen mithilfe von Media
 ### <a name="overview"></a>Übersicht
 [Introducing Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
-### <a name="how-to-use"></a>Gewusst wie
+### <a name="how-to-use"></a>Verwendung
 Media Encoder Premium Workflow ist mit komplexen Workflows konfiguriert. Workflowdateien können mit dem Tool [Workflow-Designer](media-services-workflow-designer.md) erstellt und aktualisiert werden.
 
 [How to Use Premium Encoding in Azure Media Services (in englischer Sprache)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
