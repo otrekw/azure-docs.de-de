@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines IoT Hubs mit der Azure-CLI | Microsoft Docs
-description: Hier erfahren Sie, wie Sie mit den Azure CLI-Befehlen eine Ressourcengruppe und dann in der Ressourcengruppe einen IoT Hub erstellen. Außerdem erfahren Sie, wie der Hub entfernt wird.
+description: Hier erfahren Sie, wie Sie mit den Azure CLI-Befehlen eine Ressourcengruppe und dann in der Ressourcengruppe einen IoT Hub erstellen. Außerdem erfahren Sie, wie die Hub-Instanz entfernt wird.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889519"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237390"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie unter Verwendung der Azure-Befehlszeilen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Anleitung wird ein Azure-Abonnement benötigt. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Für diese Anleitung wird ein Azure-Abonnement benötigt. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

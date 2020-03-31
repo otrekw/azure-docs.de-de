@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76710832"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Senden von Ereignissen von Azure SignalR Service an Event Grid
 
 Azure Event Grid ist ein vollständig verwalteter Dienst für das Ereignisrouting, der eine einheitliche Ereignisnutzung mithilfe eines Veröffentlichen/Abonnieren-Modells bereitstellt. In diesem Leitfaden verwenden Sie die Azure CLI, um einen Azure SignalR Service zu erstellen, Verbindungsereignisse zu abonnieren und anschließend eine Beispielwebanwendung für den Empfang der Ereignisse bereitzustellen. Schließlich können Sie eine Verbindung herstellen und trennen und die Ereignisnutzlast in der Beispielanwendung nachvollziehen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto][azure-account], bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

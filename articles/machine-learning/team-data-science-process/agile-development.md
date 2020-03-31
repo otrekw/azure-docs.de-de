@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722100"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
@@ -33,7 +33,7 @@ Die folgende Abbildung veranschaulicht einen typischen Workflow mit Sprintplanun
 
 ![Team Data Science-Prozess](./media/agile-development/1-project-execute.png)
 
-##  <a name='Terminology-1'></a>Arbeitselementtypen
+##  <a name="work-item-types"></a><a name='Terminology-1'></a>Arbeitselementtypen
 
 Im TDSP-Sprintplanungsframework gibt es vier häufig verwendete Typen von *Arbeitselementen*: *Features*, *User Storys*, *Aufgaben* und *Fehler*. Das Backlog für alle Arbeitselemente erfolgt auf Projektebene, nicht auf der Ebene des Git-Repositorys. 
 
@@ -60,7 +60,7 @@ Data Scientists bevorzugen möglicherweise eine Agile-Vorlage, die Features, Use
 > [!NOTE]
 > TDSP greift die Konzepte von Features, User Storys, Aufgaben und Fehlern aus SCM (Software Code Management) auf. Die TDSP-Konzepte können von den herkömmlichen SCM-Definitionen leicht abweichen.
 
-## <a name='SprintPlanning-2'></a>Planen von Sprints
+## <a name="plan-sprints"></a><a name='SprintPlanning-2'></a>Planen von Sprints
 
 Viele Data Scientists sind mit mehreren Projekten beschäftigt, deren Abschluss mehrere Monate dauern kann und die in unterschiedlichen Geschwindigkeiten bearbeitet werden. Die Sprintplanung ist für die Projektpriorisierung sowie die Ressourcenplanung und -zuordnung nützlich. In Azure Boards können Sie problemlos Arbeitselemente in Ihrem Projekt erstellen, verwalten und nachverfolgen und eine Sprintplanung durchführen, um sicherzustellen, dass Ihre Projekte sich wie erwartet entwickeln.
 
@@ -68,7 +68,7 @@ Weitere Informationen zur Sprintplanung finden Sie unter [Scrum-Sprints](https:/
 
 Weitere Informationen zur Sprintplanung in Azure Boards finden Sie unter [Zuweisen von Backlogelementen zu einem Sprint](/azure/devops/boards/sprints/assign-work-sprint). 
 
-## <a name='AddFeature-3'></a>Hinzufügen eines Features zum Backlog 
+## <a name="add-a-feature-to-the-backlog"></a><a name='AddFeature-3'></a>Hinzufügen eines Features zum Backlog 
 
 Nachdem Sie das Projekt und das Projektcoderepository erstellt haben, können Sie dem Backlog ein Feature hinzufügen, das die Aufgaben für das Projekt darstellt.
 
@@ -90,7 +90,7 @@ Nachdem Sie das Projekt und das Projektcoderepository erstellt haben, können Si
    
    ![Bearbeiten des Features und Auswählen von „Speichern und schließen“](./media/agile-development/3a-add-link-repo.png)
 
-## <a name='AddStoryunderfeature-4'></a>Hinzufügen einer User Story zum Feature 
+## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>Hinzufügen einer User Story zum Feature 
 
 Unter dem Feature können User Storys hinzugefügt werden, um wichtige erforderliche Schritte zum Abschließen des Projekts zu beschreiben. 
 
@@ -108,7 +108,7 @@ So fügen Sie einem Feature eine neue User Story hinzu:
    
 1. Wenn Sie mit dem Bearbeiten der User Story fertig sind, wählen Sie **Speichern und schließen** aus. 
 
-## <a name='AddTaskunderstory-5'></a>Hinzufügen einer Aufgabe zu einer User Story 
+## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>Hinzufügen einer Aufgabe zu einer User Story 
 
 Aufgaben sind bestimmte ausführliche Schritte, die zum Abschließen einer User Story erforderlich sind. Nachdem alle Aufgaben einer User Story abgeschlossen sind, sollte auch die User Story abgeschlossen werden. 
 
@@ -122,7 +122,7 @@ Nachdem Sie Features, User Storys und Aufgaben erstellt haben, können Sie sie i
 
 ![Ansicht „Boards“](./media/agile-development/8a-sprint-board-view.png)
 
-## <a name='set-up-agile-dsp-6'></a>Verwenden einer Agile-TDSP-Arbeitsvorlage
+## <a name="use-an-agile-tdsp-work-template"></a><a name='set-up-agile-dsp-6'></a>Verwenden einer Agile-TDSP-Arbeitsvorlage
 
 Data Scientists bevorzugen möglicherweise eine Agile-Vorlage, die Features, User Storys und Aufgaben durch TDSP-Lebenszyklusphasen und -Unterphasen ersetzt. In Azure Boards können Sie eine von Agile abgeleitete Vorlage erstellen, die TDSP-Lebenszyklusphasen verwendet, um Arbeitselemente zu erstellen und nachzuverfolgen. Die folgenden Schritte führen Sie durch das Einrichten einer Data Science-spezifischen Agile-Prozessvorlage und das Erstellen von Data Science-Arbeitselementen auf der Basis dieser Vorlage.
 

@@ -1,14 +1,14 @@
 ---
 title: Index der Richtlinienbeispiele
 description: Index der Integrationen für Azure Policy Kategorietags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.topic: sample
-ms.openlocfilehash: 11e36ba71e1b88f279e824948dffa809f16fd443
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d990f911612c8e1f5ab7cdbdae7efe362aa70bb5
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/25/2020
-ms.locfileid: "77168029"
+ms.locfileid: "80257171"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -31,6 +31,10 @@ Nachfolgend finden Sie Beispiele für verschiedene Muster, in der die Sprache un
 - [count-Operator](./pattern-count-operator.md)
 - [Gruppieren von Richtliniendefinitionen in einer Initiative](./pattern-group-with-initiative.md)
 - [Bereitstellen von Ressourcen mit deployIfNotExists](./pattern-deploy-resources.md)
+
+## <a name="other-samples"></a>Weitere Beispiele
+
+- [GitHub – Repository zu Community-Richtlinien](https://github.com/Azure/Community-Policy)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

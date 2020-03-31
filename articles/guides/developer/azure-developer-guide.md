@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344084"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225170"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -43,7 +43,7 @@ Sehen wir uns nun einige bestimmte Dienste an, die Sie für Ihre Anwendungen unt
 
 ### <a name="application-hosting"></a>Anwendungshosting
 
-Azure stellt mehrere cloudbasierte Computerangebote bereit, mit denen Sie Ihre Anwendung ausführen können. Sie müssen sich also keine Sorgen über Infrastrukturdetails machen. Sie können Ihre Ressourcen bequem zentral oder horizontal hochskalieren, sobald Ihre Anwendungsnutzung steigt.
+Azure stellt mehrere cloudbasierte Computerangebote bereit, mit denen Sie Ihre Anwendung ausführen können. Sie müssen sich also keine Sorgen über Infrastrukturdetails machen. Sie können Ihre Ressourcen bequem hoch- oder aufskalieren, sobald Ihre Anwendungsnutzung steigt.
 
 Azure bietet Dienste, die Ihre Anforderungen für Anwendungsentwicklung und Hosting unterstützen. Mit den Infrastructure-as-a-Service-Angeboten (IaaS) von Azure können Sie das Hosting Ihrer Anwendungen vollständig selbst steuern. Die Platform-as-a-Service-Angebote (PaaS) von Azure bieten Ihnen vollständig verwaltete Dienste, die Sie zur Unterstützung Ihrer Apps benötigen. Es gibt sogar die Möglichkeit zum serverlosen Hosten in Azure, wo Sie nur Ihren Code schreiben müssen.
 

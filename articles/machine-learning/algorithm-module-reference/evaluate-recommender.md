@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 0890e13acbba8dae31de28d7c78a81bd9b516853
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76312259"
 ---
 # <a name="evaluate-recommender"></a>Evaluate Recommender
 
-In diesem Artikel wird die Verwendung des Moduls Evaluate Recommender im Azure Machine Learning-Designer beschrieben. Das Ziel besteht darin, die Genauigkeit der Vorhersagen zu messen, die von einem Empfehlungsmodell erstellt wurden. Mit diesem Modul können Sie verschiedene Arten von Empfehlungen evaluieren:  
+In diesem Artikel wird die Verwendung des Moduls „Evaluate Recommender“ (Evaluieren von Empfehlungswerten) im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Das Ziel besteht darin, die Genauigkeit der Vorhersagen zu messen, die von einem Empfehlungsmodell erstellt wurden. Mit diesem Modul können Sie verschiedene Arten von Empfehlungen evaluieren:  
   
 -   Für einen Benutzer und ein Element vorhergesagte Bewertungen    
 -   Für einen Benutzer empfohlene Elemente  

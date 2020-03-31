@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: ab7aaeb2b28592aab38d112b02340160a6c882ee
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927506"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296951"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,6 +92,8 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
         ```azurecli-interactive
         az login
         ```
+
+        [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
     1. Um den Arbeitsbereich so zu aktualisieren, dass der neue Schlüssel verwendet wird, verwenden Sie den folgenden Befehl. Ersetzen Sie `myworkspace` durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs, und ersetzen Sie `myresourcegroup` durch den Namen der Azure-Ressourcengruppe, die den Arbeitsbereich enthält.
 

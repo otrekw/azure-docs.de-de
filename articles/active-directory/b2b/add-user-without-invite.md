@@ -1,8 +1,8 @@
 ---
 title: Hinzufügen von B2B-Gastbenutzern ohne Einladungslink oder -E-Mail – Azure AD
 description: Sie können festlegen, dass ein Gastbenutzer Ihrem Azure AD andere Gastbenutzer hinzufügen kann, ohne dass eine Einladung in der Azure Active Directory B2B-Zusammenarbeit erforderlich ist.
-services: active-directory
 documentationcenter: ''
+services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 42c9caaf581fab37e2e55cbe408db6d6d846622a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268928"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050909"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Hinzufügen von Gastbenutzern der B2B-Zusammenarbeit ohne Einladungslink oder -E-Mail
 

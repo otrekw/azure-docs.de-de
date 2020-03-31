@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 30e9e31c7b3f372ed252f1b81eeece02d2ca1f21
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217973"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio (klassisch) Web Services-Portal
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
 
 Das Machine Learning Web Services-Portal bietet diese Möglichkeiten:
@@ -92,8 +95,8 @@ Sie können die folgenden Eigenschaften aktualisieren:
 Klicken Sie auf der Seite „Quickstart“ des Webdiensts auf die Menüoption **Plans** . Sie können auch auf den Plan klicken, der einem bestimmten Webdienst zugeordnet ist, um diesen Plan zu verwalten.
 
 * **New** ermöglicht das Erstellen eines neuen Plans.
-* **Add/Remove Plan instance** können Sie einen vorhandenen Plan horizontal hochskalieren, um Kapazität hinzuzufügen.
-* **Upgrade/Downgrade** können Sie einen vorhandenen Plan zentral hochskalieren, um Kapazität hinzuzufügen.
+* **Add/Remove Plan instance** können Sie einen vorhandenen Plan aufskalieren, um Kapazität hinzuzufügen.
+* **Upgrade/Downgrade** können Sie einen vorhandenen Plan hochskalieren, um Kapazität hinzuzufügen.
 * **Delete** ermöglicht das Löschen eines Plans.
 
 Klicken Sie auf einen Plan, um dessen Dashboard anzuzeigen. Das Dashboard zeigt eine Momentaufnahme der Plannutzung in einem ausgewählten Zeitraum. Klicken Sie rechts oben im Dashboard auf die Dropdownliste **Period**, um den anzuzeigenden Zeitraum auszuwählen. 

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: femila
 ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486358"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid-Ereignisschema für Azure Maps
@@ -115,7 +115,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | apiCategory | string | API-Kategorie des Ereignisses. |
 | apiName | string | API-Name des Ereignisses. |
@@ -156,7 +156,7 @@ Das geometries-Objekt listet die IDs der Geofences auf, die bezogen auf die übe
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | Listen der Geometrie-ID des Geofence, der bezogen auf die in der Anforderung übermittelte Benutzerzeit abgelaufen ist. |
 | geometries | geometries[] |Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |

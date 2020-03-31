@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801877"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
@@ -129,7 +129,7 @@ Im Rahmen des Pilotprojekts setzt das Team von Nancy auch Datenquellen ein, die 
 
 Nachdem das Pilotprojekt erstellt wurde, können Sie Ihren Plan für die Einführung von Data Catalog ausführen.
 
-### <a name="execute"></a>Ausführen
+### <a name="execute"></a>Execute
 
 Sie haben bereits Anwendungsfälle für Data Catalog ermittelt und Ihr erstes Projekt identifiziert. Außerdem haben Sie die wichtigen Adventure Works-Datenquellen registriert und Informationen aus der vorhandenen Excel-Arbeitsmappe hinzugefügt, indem Sie das von der IT-Abteilung erstellte Tool verwendet haben. Jetzt beginnt die Arbeit mit dem Pilotprojektteam, um den Einführungsprozess für Data Catalog zu starten.
 

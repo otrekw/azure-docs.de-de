@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436030"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Erstellen und Konfigurieren von Clustern mit dem Enterprise-Sicherheitspaket in Azure HDInsight
@@ -43,11 +43,11 @@ In diesem Abschnitt verwenden Sie eine Schnellstartvorlage für die Azure-Bereit
 1. Melden Sie sich bei Ihrem Azure-Abonnement an.
 1. Geben Sie auf der Seite **Create an Azure VM with a new AD Forest** (Azure-VM mit einer neuen AD-Gesamtstruktur erstellen) die folgenden Informationen an:
 
-    |Eigenschaft | value |
+    |Eigenschaft | Wert |
     |---|---|
     |Subscription|Wählen Sie das Abonnement aus, in dem die Ressourcen bereitgestellt werden sollen.|
     |Resource group|Klicken Sie auf **Neu erstellen**, und geben Sie den Namen `OnPremADVRG` ein.|
-    |Location|Wählen Sie einen Standort aus.|
+    |Position|Wählen Sie einen Standort aus.|
     |Administratorbenutzername|`HDIFabrikamAdmin`|
     |Administratorkennwort|Geben Sie ein Kennwort ein.|
     |Domänenname|`HDIFabrikam.com`|
@@ -349,14 +349,14 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. Wählen Sie unter **Einstellungen** die Optionen **Eingangssicherheitsregeln** > **Hinzufügen** aus.
     1. Geben Sie auf der Seite **Eingangssicherheitsregel hinzufügen** die folgenden Eigenschaften ein, und wählen Sie **Hinzufügen** aus:
 
-        | Eigenschaft | value |
+        | Eigenschaft | Wert |
         |---|---|
         | `Source` | Any |
         | Source port ranges | * |
         | Destination | Any |
         | Destination port range | 636 |
         | Protocol | Any |
-        | Action | Allow |
+        | Aktion | Allow |
         | Priority | \<Gewünschte Zahl> |
         | Name | Port_LDAP_636 |
 

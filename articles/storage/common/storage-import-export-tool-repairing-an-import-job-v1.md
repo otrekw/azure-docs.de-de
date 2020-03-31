@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: f5db321d8c4a6e42591a82b0ed8eb6bc6e93bad4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973882"
 ---
 # <a name="repairing-an-import-job"></a>Reparieren eines Importauftrags
@@ -33,7 +33,7 @@ Die folgenden Parameter können mit **RepairImport** angegeben werden:
 |||  
 |-|-|  
 |**/r:** &lt;Reparaturdatei\>|**Erforderlich.** Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, übergeben Sie den Pfad zu einer noch nicht vorhandenen Reparaturdatei. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Die Reparaturdatei für das Ziellaufwerk muss immer angegeben werden.|  
-|**/logdir:** &lt;Protokollverzeichnis\>|**Optional.** Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
+|**/logdir:** &lt;Protokollverzeichnis\>|**Optional.** Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
 |**/d:** &lt;Zielverzeichnisse\>|**Erforderlich.** Eine oder mehrere, durch Semikolons getrennte Verzeichnisse, die die ursprünglichen Dateien enthalten, die importiert wurden. Das Importlaufwerk kann auch verwendet werden, wird aber nicht benötigt, wenn alternative Speicherorte der ursprünglichen Dateien verfügbar sind.|  
 |**/bk:** &lt;BitLocker-Schlüssel\>|**Optional.** Sie müssen den BitLocker-Schlüssel angeben, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die ursprünglichen Dateien verfügbar sind.|  
 |**/sn:** &lt;Speicherkontoname\>|**Erforderlich.** Der Name des Speicherkontos für den Importauftrag.|  

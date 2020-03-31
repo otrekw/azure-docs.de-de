@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456916"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
@@ -41,7 +41,7 @@ FR = Künftige Version
 PP = Öffentliche Vorschau  
 
 ## <a name="on-premises-to-cloud-synchronization"></a>Synchronisierung vom lokalen Standort zur Cloud
-| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste (AAD Sync) – NICHT MEHR UNTERSTÜTZT | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste (AAD Sync) – NICHT MEHR UNTERSTÜTZT | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur |● |● |● |● |● |
 | Herstellen einer Verbindung mit mehreren lokalen AD-Gesamtstrukturen |● |● | |● |● |
@@ -62,7 +62,7 @@ PP = Öffentliche Vorschau
    2. Sie können Ihre eigene Lösung zum Verschieben von Objekten von LDAP zu Active Directory entwickeln.  Synchronisieren Sie die Objekte anschließend mit Azure AD Connect.  MIM oder FIM kann als mögliche Lösung zum Verschieben der Objekte verwendet werden. 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Synchronisierung von der Cloud zum lokalen Standort
-| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Rückschreiben von Geräten |● | |● | | |
 | Rückschreiben von Attributen (für Exchange-Hybridbereitstellung) |● |● |● |● |● |
@@ -70,7 +70,7 @@ PP = Öffentliche Vorschau
 | Rückschreiben von Kennwörtern (Self-Service-Kennwortzurücksetzung und Kennwortänderung) |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>Unterstützung von Authentifizierungsfunktionen
-| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Kennworthashsynchronisierung für eine einzelne lokale AD-Gesamtstruktur |●|●|● | | |
 | Kennworthashsynchronisierung für mehrere lokale AD-Gesamtstrukturen |●|● | | | |
@@ -80,7 +80,7 @@ PP = Öffentliche Vorschau
 | Rückschreiben von Kennwörtern (Self-Service-Kennwortzurücksetzung und Kennwortänderung) |● |● | | | |
 
 ## <a name="set-up-and-installation"></a>Einrichtung und Installation
-| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Microsoft Identity Manager 2016 (MIM) |
+| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | Unterstützt die Installation auf einem Domänencontroller |● |● |● | |
 | Unterstützt die Installation mit SQL Express |● |● |● | |
@@ -91,7 +91,7 @@ PP = Öffentliche Vorschau
 | Unterstützung für Windows Server 2012 und Windows Server 2012 R2 |● |● |● |● |
 
 ## <a name="filtering-and-configuration"></a>Filterung und Konfiguration
-| Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Funktion | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste – NICHT MEHR UNTERSTÜTZT  | Azure Active Directory-Synchronisierungstool (DirSync) – NICHT MEHR UNTERSTÜTZT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Filterung nach für Domänen und Organisationseinheiten |● |● |● |● |● |
 | Filterung nach den Attributwerten eines Objekts |● |● |● |● |● |

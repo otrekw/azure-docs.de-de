@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169697"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Exportieren oder Löschen personenbezogener Daten aus Azure DevTest Labs
@@ -160,7 +160,7 @@ Wir betrachten die exportierten Daten nun genauer. Wie bereits erwähnt, liegen 
 
 Die Datei **virtualmachines.csv** enthält die folgenden Datenspalten:
 
-| Spaltenname | Beschreibung |
+| Spaltenname | BESCHREIBUNG |
 | ----------- | ----------- | 
 | SubscriptionId | Der Abonnementbezeichner, in dem das Lab vorhanden ist. |
 | LabUId | Eindeutiger GUID-Bezeichner für das Lab. |
@@ -188,7 +188,7 @@ Die Datei **virtualmachines.csv** enthält die folgenden Datenspalten:
 
 Die in **disks.csv** enthaltenen Datenspalten sind unten aufgeführt:
 
-| Spaltenname | Beschreibung | 
+| Spaltenname | BESCHREIBUNG | 
 | ----------- | ----------- | 
 | SubscriptionId | ID des Abonnements, das das Lab enthält. |
 | LabUId | GUID für das Lab |

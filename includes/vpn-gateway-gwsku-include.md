@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74085242"
 ---
 Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Informationen zu virtuellen Netzwerkgateway-SKUs in Azure-Verfügbarkeitszonen finden Sie unter [Gateway SKUs für Azure-Verfügbarkeitszonen](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md).
 
-###  <a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
+###  <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -27,7 +27,7 @@ Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünsch
 >  * Informationen zu ExpressRoute-Gateway-SKUs finden Sie unter [Informationen zu Gateways für virtuelle Netzwerke für ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
 >
 
-###  <a name="feature"></a>Gateway-SKUs nach Featuregruppe
+###  <a name="gateway-skus-by-feature-set"></a><a name="feature"></a>Gateway-SKUs nach Featuregruppe
 
 Die neuen VPN-Gateway-SKUs optimieren die für die Gateways bereitgestellten Features:
 
@@ -41,7 +41,7 @@ Die neuen VPN-Gateway-SKUs optimieren die für die Gateways bereitgestellten Fea
 
 (\*\*) Die Basic-SKU wird als Legacy-SKU betrachtet. Für die Basic-SKU gelten bestimmte Featurebeschränkungen. Die Größe eines Gateways mit einer Basic-SKU kann nicht auf eine der neuen Gateway-SKUs festgelegt werden. Stattdessen müssen Sie zu einer neuen SKU wechseln und dazu Ihr VPN-Gateway löschen und neu erstellen.
 
-###  <a name="workloads"></a>Gateway-SKUs: Gegenüberstellung von Produktions- und Dev-Test-Workloads
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Gateway-SKUs: Gegenüberstellung von Produktions- und Dev-Test-Workloads
 
 Aufgrund der Unterschiede bei SLAs und Features werden die folgenden SKUs für die Produktion bzw. für Dev-Test-Workloads empfohlen:
 

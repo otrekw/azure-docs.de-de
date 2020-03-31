@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229962"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 
@@ -324,7 +324,7 @@ Diese Serialisierung ist nicht wirklich sicher und soll auch nicht sicher sein. 
 
 Um auf Eigenschaften vom Typ *SecureString* von einer benutzerdefinierten Aktivität aus zuzugreifen, lesen Sie die Datei `activity.json`, die sich im gleichen Ordner wie Ihre EXE-Datei befindet, deserialisieren Sie den JSON-Code, und greifen Sie dann auf die JSON-Eigenschaft zu (extendedProperties => [eigenschaftenName] => Wert).
 
-## <a name="compare-v2-v1"></a> Vergleich: Benutzerdefinierte V2-Aktivität und Version 1 der DotNet-Aktivität (benutzerdefiniert)
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> Vergleich: Benutzerdefinierte V2-Aktivität und Version 1 der DotNet-Aktivität (benutzerdefiniert)
 
 In Azure Data Factory Version 1 implementieren Sie eine (benutzerdefinierte) DotNet-Aktivität, indem Sie ein .NET-Klassenbibliotheksprojekt mit einer Klasse erstellen, die die `Execute`-Methode der `IDotNetActivity`-Schnittstelle implementiert. Die verknüpften Dienste, Datasets und erweiterten Eigenschaften in der JSON-Nutzlast einer (benutzerdefinierten) DotNet-Aktivität werden als stark typisierte Objekte an die Ausführungsmethode übergeben. Ausführliche Informationen zum Verhalten von Version 1 finden Sie unter [(Benutzerdefinierte) DotNet-Aktivität in Version 1](v1/data-factory-use-custom-activities.md). Aufgrund dieser Implementierung muss Ihr Code von Version 1 auf die DotNet-Aktivität auf .NET Framework 4.5.2 ausgerichtet sein. Version 1 der DotNet-Aktivität muss auch auf Windows-basierten Knoten des Azure Batch-Pools ausgeführt werden.
 

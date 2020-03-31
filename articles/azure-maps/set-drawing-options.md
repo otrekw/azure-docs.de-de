@@ -1,19 +1,19 @@
 ---
 title: Zeichentools-Modul | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK Daten für Zeichenoptionen festlegen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f3634149b744b9a03f0ed89aafbc20932701bdbc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334310"
 ---
 # <a name="use-the-drawing-tools-module"></a>Verwenden des Zeichentools-Moduls
 
@@ -26,8 +26,8 @@ Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul
     - Verwenden Sie die global gehostete Azure Content Delivery Network-Version des Azure Maps-Moduls „Dienste“. Fügen Sie einen Verweis auf das JavaScript und das CSS-Stylesheet im `<head>`-Element der Datei hinzu:
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
     - Alternativ können Sie das Zeichentools-Modul für den Quellcode des Azure Maps Web SDK lokal mithilfe des npm-Pakets [azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) laden und es anschließend zusammen mit Ihrer App hosten. Dieses Paket enthält außerdem TypeScript-Definitionen. Verwenden Sie diesen Befehl:

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233598"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -21,13 +21,13 @@ ms.locfileid: "73498242"
 
 Erfahren Sie, wie Sie die Apache Ambari-REST-API zum Verwalten und Überwachen von Apache Hadoop-Clustern in Azure HDInsight verwenden.
 
-## <a id="whatis"></a>Was ist Apache Ambari?
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Was ist Apache Ambari?
 
 [Apache Ambari](https://ambari.apache.org) vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern durch die Bereitstellung einer benutzerfreundlichen Webbenutzeroberfläche, die auf den zugehörigen [REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) basiert.  Ambari wird standardmäßig mit Linux-basierten Clustern bereitgestellt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit einer Resource Manager-Vorlage](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Einen Hadoop-Cluster in HDInsight**. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **Bash auf Ubuntu unter Windows 10**.  In den Beispielen dieses Artikels wird die Bash-Shell unter Windows 10 verwendet. Die Installationsschritte finden Sie unter [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) (Windows-Subsystem für Linux: Installationshandbuch für Windows 10).  Es funktionieren auch andere [Unix-Shells](https://www.gnu.org/software/bash/).  Die Beispiele können mit einigen geringfügigen Änderungen auch an einer Windows-Eingabeaufforderung verwendet werden.  Alternativ hierzu können Sie Windows PowerShell nutzen.
 
@@ -39,7 +39,7 @@ Erfahren Sie, wie Sie die Apache Ambari-REST-API zum Verwalten und Überwachen v
 
  Der Basis-URI (Uniform Resource Identifier) für die Ambari-REST-API unter HDInsight lautet `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.  Bei Clusternamen in URIs wird die **Groß-/Kleinschreibung** beachtet.  Beim Clusternamen im vollqualifizierten Domänennamen (FQDN) innerhalb des URI (`CLUSTERNAME.azurehdinsight.net`) wird die Groß-/Kleinschreibung nicht beachtet, bei anderen Vorkommen im URI dagegen schon.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator**) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
 
@@ -99,7 +99,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="example-get-the-fqdn-of-cluster-nodes"></a> Abrufen des FQDN von Clusterknoten
+### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a> Abrufen des FQDN von Clusterknoten
 
 Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) eines Clusterknotens kennen. Sie können den FQDN für die verschiedenen Knoten im Cluster einfach wie folgt abrufen:
 
@@ -159,7 +159,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> Abrufen der internen IP-Adresse der Clusterknoten
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a> Abrufen der internen IP-Adresse der Clusterknoten
 
 Auf die von den Beispielen in diesem Abschnitt zurückgegebenen IP-Adressen kann nicht direkt über das Internet zugegriffen werden. Auf sie kann nur innerhalb des virtuellen Azure-Netzwerks, das den HDInsight-Cluster enthält, zugegriffen werden.
 
@@ -253,7 +253,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 > [!NOTE]  
 > Das Cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) von [Azure PowerShell](/powershell/azure/overview) gibt auch die Speicherinformationen für den Cluster zurück.
 
-### <a name="get-all-configurations"></a> Abrufen aller Konfigurationen
+### <a name="get-all-configurations"></a><a name="get-all-configurations"></a> Abrufen aller Konfigurationen
 
 Rufen Sie die verfügbaren Konfigurationen für Ihren Cluster ab.
 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721879"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
@@ -111,7 +111,7 @@ Die folgende Abbildung enthält ein Beispiel für Anomalien, die von der Score-A
 ### <a name="detectors"></a>Erkennungsmodule
 Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kategorien. Details zu bestimmten Eingabeparametern und Ausgaben für jedes Erkennungsmodul finden Sie in der folgenden Tabelle.
 
-| Kategorie des Erkennungsmoduls | Erkennungsmodul | Beschreibung | Eingabeparameter | Ausgaben |
+| Kategorie des Erkennungsmoduls | Erkennungsmodul | BESCHREIBUNG | Eingabeparameter | Ausgaben |
 | --- | --- | --- | --- | --- |
 | Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
 | Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
@@ -121,7 +121,7 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | Beschreibung | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historywindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beide |enumerated |Both, Spikes, Dips |Beide |
@@ -134,7 +134,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 ### <a name="output"></a>Output
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
-| Ausgaben | Beschreibung |
+| Ausgaben | BESCHREIBUNG |
 | --- | --- |
 | Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | Daten |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
@@ -157,7 +157,7 @@ Die Detektoren im Saisonabhängigkeits-Endpunkt ähneln denen im Nicht-Saisonabh
 
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | Beschreibung | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | type | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
 | preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |– |
@@ -177,7 +177,7 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 ### <a name="output"></a>Output
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt.
 
-| Ausgaben | Beschreibung |
+| Ausgaben | BESCHREIBUNG |
 | --- | --- |
 | Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | OriginalData |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |

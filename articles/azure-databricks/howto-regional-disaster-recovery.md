@@ -9,10 +9,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161935"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
@@ -31,7 +31,7 @@ Diese Architektur hat unter anderem den Vorteil, dass Benutzer Azure Databricks 
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Erstellen einer Topologie für die regionale Notfallwiederherstellung
 
-Wie aus der obigen Beschreibung der Architektur hervorgeht, gibt es eine Vielzahl von Komponenten für Big Data-Pipelines mit Azure Databricks:  Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
+Wie Sie der obigen Architekturbeschreibung entnehmen können, umfasst eine Big Data-Pipeline mit Azure Databricks mehrere Komponenten. Dazu zählen unter anderem Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
 
 Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erstellen möchten, gehen Sie wie folgt vor:
 

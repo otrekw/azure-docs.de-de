@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767363"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530681"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB
 Azure Database for MariaDB unterstützt die Verbindung Ihres Servers mit Azure Database for MariaDB mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
 
 ## <a name="obtain-ssl-certificate"></a>Abrufen eines SSL-Zertifikats
 Laden Sie das Zertifikat, das für die SSL-Kommunikation mit Ihrem Azure Database for MariaDB-Server erforderlich ist, von [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) herunter, und speichern Sie die Zertifikatsdatei auf dem lokalen Laufwerk. (In diesem Tutorial wird als Beispiel „c:\ssl“ verwendet.)
-**Für Microsoft Internet Explorer und Microsoft Edge**: Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
+**Für Microsoft Internet Explorer und Microsoft Edge:** Benennen Sie nach dem Download das Zertifikat in „BaltimoreCyberTrustRoot.crt.pem“ um.
 
 ## <a name="bind-ssl"></a>Binden von SSL
 
@@ -27,13 +27,13 @@ Konfigurieren Sie MySQL Workbench, um eine sichere Verbindung über SSL herzuste
 
 1. Navigieren Sie im Dialogfeld „Setup New Connection“ (Neue Verbindung einrichten) zur Registerkarte **SSL**. 
 
-1. Ändern Sie das Feld **Use SSL** (SSL verwenden) in „Require“ (Anfordern).
+1. Aktualisieren Sie das Feld **Use SSL** (SSL verwenden) auf „Require“ (Anfordern).
 
 1. Geben Sie in das Feld für die **SSL-CA-Datei** den Speicherort der Datei **BaltimoreCyberTrustRoot.crt.pem** ein. 
     
-    ![Speichern der SSL-Konfiguration](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![SSL-Konfiguration speichern](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-Für vorhandene Verbindungen können Sie SSL binden, indem Sie mit der rechten Maustaste auf das Verbindungssymbol klicken und dann „Edit“ (Bearbeiten) auswählen. Navigieren Sie dann zur Registerkarte **SSL** und binden die Zertifikatsdatei.
+Für vorhandene Verbindungen können Sie SSL binden, indem Sie mit der rechten Maustaste auf das Verbindungssymbol klicken und dann „Bearbeiten“ auswählen. Navigieren Sie dann zur Registerkarte **SSL** und binden die Zertifikatsdatei.
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>Herstellen einer Verbindung mit dem Server mithilfe der MySQL-CLI über SSL
 Sie können das SSL-Zertifikat auch mithilfe der MySQL-Befehlszeilenschnittstelle und der folgenden Befehle binden: 
@@ -61,7 +61,7 @@ Führen Sie den MySQL-Befehl **status** aus, um sicherzustellen, dass die Verbin
 ```sql
 status
 ```
-Um sicherzustellen, dass die Verbindung verschlüsselt ist, überprüfen Sie die Ausgabe, die Folgendes anzeigen sollte:  **SSL: Verwendete Verschlüsselung ist AES256-SHA** 
+Vergewissern Sie sich, dass die Verbindung verschlüsselt ist, indem Sie die Ausgabe überprüfen, die wie folgt angezeigt werden sollte: **SSL: verwendete Verschlüsselung AES256-SHA**. 
 
 ## <a name="sample-code"></a>Beispielcode
 Um in Ihrer Anwendung über SSL eine sichere Verbindung mit Azure Database for MariaDB einzurichten, können Sie die folgenden Codebeispiele verwenden:

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435681"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
@@ -276,7 +276,7 @@ Methode 2: Übermitteln Sie eine Datei. Daraufhin wird der Ordner „.vscode“
     ![HDInsight Apache: Livy-Konfiguration](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
-    >Legen Sie für die Einstellungen **driverMemory** und **executorMemory** den Wert und die Einheit fest. Beispiel:  1g oder 1024m.
+    >Legen Sie für die Einstellungen **driverMemory** und **executorMemory** den Wert und die Einheit fest. Beispiel: 1g oder 1024m.
 
 + Unterstützte Livy-Konfigurationen:
 

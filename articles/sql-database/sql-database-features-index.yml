@@ -3,7 +3,7 @@ documentType: LandingData
 title: Features
 metadata:
   title: Azure SQL-Datenbank – Funktionen
-  meta.description: Learn about the features in Azure SQL Database.
+  description: 'Entdecken Sie Datenbankfunktionen in Azure SQL-Datenbank, mit denen Sie leistungsfähigere Vorgänge ausführen und erweiterte Szenarien implementieren können.'
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph
@@ -37,7 +37,7 @@ sections:
           - title: Auftragsautomatisierung
             href: /azure/sql-database/sql-database-job-automation-overview
             html: <p>Planen Sie mit SQL-Agent und elastischen Aufträgen wiederkehrende Aufgaben.</p>
-          - title: Temporäre Tabellen
+          - title: Temporale Tabellen
             href: /azure/sql-database/sql-database-temporal-tables
             html: <p>Verfolgen und analysieren Sie in Ihren Daten den vollständigen Änderungsverlauf.</p>
   - title: Weitere Ressourcen

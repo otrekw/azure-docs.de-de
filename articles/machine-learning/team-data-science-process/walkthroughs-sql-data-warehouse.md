@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864127"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128165"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Exemplarische Data Science-Vorgehensweisen für SQL Data Warehouse unter Verwendung von T-SQL und Python in Azure
 
-In diesen exemplarischen Vorgehensweisen wird SQL Data Warehouse für Predictive Analytics verwendet. Diese folgen den im Team Data Science-Prozess ausgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in SQL Data Warehouse finden Sie unter [Was ist Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+In diesen exemplarischen Vorgehensweisen wird SQL Data Warehouse für Predictive Analytics verwendet. Diese folgen den im Team Data Science-Prozess ausgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in SQL Data Warehouse finden Sie unter [Was ist Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Science-Prozess befolgt wird, sind nach der jeweils verwendeten **Plattform** gruppiert. Eine Aufschlüsselung dieser Beispiele finden Sie unter [Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses](walkthroughs.md).
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972649"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
@@ -104,7 +104,7 @@ Zum Extrahieren mit Azure Key Vault-Verweisen (nur statisch) führen Sie den fol
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| Parameter | Erforderlich | Beschreibung |
+| Parameter | Erforderlich | BESCHREIBUNG |
 |------------|----------|-------------|
 | TemplateFile | Ja | Der Pfad zu Ihrer Vorlagendatei |
 | KeyVault | Nein | Eine Enumeration, in der beschrieben ist, wie mögliche Schlüsseltresorwerte (Key Vault-Werte) verarbeitet werden Der Standardwert lautet `None`. |

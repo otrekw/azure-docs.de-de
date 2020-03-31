@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456696"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Speichern und Verwalten von Werten mittels Variablen in Azure Logic Apps
@@ -31,7 +31,7 @@ Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt,
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Logik-App, für die Sie die Variable erstellen möchten.
 
@@ -65,7 +65,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
 1. Geben Sie diese Informationen zu Ihrer Variablen wie unten beschrieben an:
 
-   | Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Typ** | Ja | <*Variablentyp*> | Der Datentyp für die Variable |
@@ -205,7 +205,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
 1. Geben Sie diese Informationen zum schrittweisen Erhöhen Ihrer Variable an:
 
-   | Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Wert** | Nein | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. |
@@ -326,7 +326,7 @@ Um eine Variable um einen konstanten Wert zu verringern oder zu *dekrementieren*
 
 Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | **Wert** | Nein | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. |
@@ -359,7 +359,7 @@ Um einer vorhandenen Variablen einen anderen Wert zuzuweisen, folgen Sie den Sch
 
 Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. |
@@ -417,7 +417,7 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Wert |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. |

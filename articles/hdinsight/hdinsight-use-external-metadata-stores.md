@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/02/2020
+ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327366"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233526"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -53,7 +53,9 @@ HDInsight unterstützt auch benutzerdefinierte Metastores, der für Produktionsc
 
 * Die Kosten für einen Metastore (Azure SQL-Datenbank) richten sich nach der von Ihnen ausgewählten Leistungsstufe.
 
-* Sie können den Metastore nach Bedarf zentral hochskalieren.
+* Sie können den Metastore nach Bedarf hochskalieren.
+
+* Cluster und externer Metastore müssen in der gleichen Region gehostet werden.
 
 ![Anwendungsfall für den Hive-Metadatenspeicher in HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 

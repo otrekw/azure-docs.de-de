@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
 ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513370"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
@@ -27,11 +27,11 @@ ms.locfileid: "76513370"
 
 Beim Importieren einer API stoßen Sie unter Umständen auf Einschränkungen oder Probleme, die behoben werden müssen, damit der Import erfolgreich ausgeführt werden kann. Diese Einschränkungen werden nachfolgend unter dem jeweiligen Importformat der API beschrieben. Außerdem wird beschrieben, wie der OpenAPI-Export funktioniert.
 
-## <a name="open-api"> </a>Einschränkungen für den OpenAPI/Swagger-Import
+## <a name="openapiswagger-import-limitations"></a><a name="open-api"> </a>Einschränkungen für den OpenAPI/Swagger-Import
 
 Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stellen Sie sicher, dass Sie das Dokument zuvor überprüft haben. Dazu können Sie entweder im Azure-Portal den Designer (Entwurf – Front-End – OpenAPI-Spezifikations-Editor) oder ein Tool eines Drittanbieters (z. B. <a href="https://editor.swagger.io">Swagger Editor</a>) verwenden.
 
-### <a name="open-api-general"> </a>Allgemein
+### <a name="general"></a><a name="open-api-general"> </a>Allgemein
 
 -   Erforderliche Parameter für Pfad und Abfrage müssen eindeutige Namen besitzen. (In OpenAPI muss ein Parametername nur an einem Ort (beispielsweise im Pfad, in der Abfrage oder im Header) eindeutig sein. In API Management können Vorgänge jedoch sowohl nach Pfad- als auch nach Abfrageparametern unterschieden werden (dies wird von OpenAPI nicht unterstützt). Daher müssen Parameternamen innerhalb der gesamten URL-Vorlage eindeutig sein.)
 -   Mit `\$ref`-Zeigern kann nicht auf externe Dateien verwiesen werden.
@@ -44,11 +44,11 @@ Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stel
 -   Ein definierter URL-Parameter muss Teil der URL-Vorlage sein.
 -   `Produces`-Schlüsselwort, mit dem von einer API zurückgegebene MIME-Typen beschrieben werden, wird nicht unterstützt. 
 
-### <a name="open-api-v2"> </a>OpenAPI, Version 2
+### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI, Version 2
 
 -   Nur das JSON-Format wird unterstützt.
 
-### <a name="open-api-v3"> </a>OpenAPI, Version 3
+### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI, Version 3
 
 -   Wenn viele `servers` angegeben sind, versucht API Management, die erste HTTPS-URL auszuwählen. Wenn keine HTTPS-URLs vorhanden sind, wird die erste HTTP-URL ausgewählt. Wenn keine HTTP-URLs vorhanden sind, bleibt die Server-URL leer.
 -   `Examples` wird nicht unterstützt, aber `example`.
@@ -91,7 +91,7 @@ Normalisierungsregeln für operationId
 - Verwenden Sie ggf. die restlichen vier Zeichen für ein Deduplizierungsuffix in Form von `-1, -2, ..., -999`.
 
 
-## <a name="wsdl"> </a>WSDL
+## <a name="wsdl"></a><a name="wsdl"> </a>WSDL
 
 WSDL-Dateien werden verwendet, um SOAP-Passthrough- und SOAP-to-REST-APIs zu erstellen.
 
@@ -119,6 +119,6 @@ WSDL-Dateien werden verwendet, um SOAP-Passthrough- und SOAP-to-REST-APIs zu ers
     </complexType>
 ```
 
-## <a name="wadl"> </a>WADL
+## <a name="wadl"></a><a name="wadl"> </a>WADL
 
 Derzeit sind keine Probleme beim Import im Format WADL bekannt.

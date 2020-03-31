@@ -10,10 +10,10 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505579"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
@@ -81,7 +81,7 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 > [!WARNING]
 > Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
 
-## <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
 
 Wenn Sie einen Arbeitsbereich erstellen, entscheiden Sie, ob Sie ihn mit [Basic oder Enterprise Edition](overview-what-is-azure-ml.md#sku) erstellen. Die-Edition bestimmt die im Arbeitsbereich verfügbaren Features (Funktionen). Neben anderen Features bietet die Enterprise Edition Ihnen Zugriff auf [Azure Machine Learning Designer](concept-designer.md) und die Studio-Version zum Erstellen von [automatisierten Machine Learning-Experimenten](tutorial-first-experiment-automated-ml.md).  Weitere Details und Preisinformationen finden Sie unter [Azure Machine Learning – Preise](https://azure.microsoft.com/pricing/details/machine-learning/).
 
@@ -95,11 +95,11 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs:
 > [!NOTE]
 > Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.
 
-## <a name="upgrade"></a> Upgrade auf Enterprise Edition
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Upgrade auf Enterprise Edition
 
 Sie können über das Azure-Portal [Ihren Arbeitsbereich von Basic auf Enterprise Edition upgraden](how-to-manage-workspace.md#upgrade). Es ist nicht möglich, einen Enterprise Edition-Arbeitsbereich in einen Basic Edition-Arbeitsbereich herabzustufen. 
 
-## <a name="resources"></a> Zugeordnete Ressourcen
+## <a name="associated-resources"></a><a name="resources"></a> Zugeordnete Ressourcen
 
 Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere Azure-Ressourcen erstellt, die vom Arbeitsbereich verwendet werden:
 

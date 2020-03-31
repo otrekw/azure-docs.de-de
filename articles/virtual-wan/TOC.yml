@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Globale Transitarchitektur
           href: virtual-wan-global-transit-network-architecture.md
+        - name: Herstellen einer Verbindung mit China
+          href: interconnect-china.md
 - name: Tutorials
   items:
     - name: Herstellen einer Standort-zu-Standort-Verbindung
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: Konzepte
   items:
+    - name: Remotearbeit
+      href: work-remotely-support.md
     - name: Standorte und Partner
       items:
         - name: Hub-Standorte und -Partner
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec-Richtlinien
       href: virtual-wan-ipsec.md
-    - name: Übersicht über Point-to-Site-VPN
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: Benutzer-VPN (Point-to-Site)
       items:
-        - name: Erstellen von Benutzer-VPN-Verbindungen (Point-to-Site)
+        - name: Erstellen einer Benutzer-VPN-Verbindung
           href: virtual-wan-point-to-site-portal.md
-        - name: Konfigurieren von Zertifikaten für ein Benutzer-VPN
+        - name: Generieren von Zertifikaten
           href: certificates-point-to-site.md
-        - name: "Konfigurieren eines Azure\_AD-Mandanten für das Benutzer-VPN"
+        - name: "Konfigurieren eines Azure\_AD-Mandanten"
           href: openvpn-azure-ad-tenant.md
-        - name: "Konfigurieren eines Always\_On-VPN-Benutzertunnels"
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: "Konfigurieren eines Always\_On-VPN-Gerätetunnels"
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Aktivieren von Multi-Factor Authentication (MFA) für das Benutzer-VPN
-          href: openvpn-azure-ad-mfa.md
-        - name: "Konfigurieren der Azure\_AD-Authentifizierung für Benutzer-VPN"
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: "Konfigurieren der Azure\_AD-Authentifizierung für mehrere Anwendungen für Benutzer-VPN"
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Herunterladen von globalen und hub-basierten VPN-Benutzerprofilen
+        - name: Clientprofil
+          href: about-vpn-profile-download.md
+        - name: Globales und hubbasiertes Profil
           href: global-hub-profile.md
-    - name: Konfigurieren des Routings
+        - name: Konfigurieren von OpenVPN-Clients
+          href: howto-openvpn-clients.md?
+        - name: "Konfigurieren eines Always\_On-VPN-Benutzertunnels"
+          href: howto-always-on-user-tunnel.md
+        - name: "Konfigurieren eines Always\_On-VPN-Gerätetunnels"
+          href: howto-always-on-device-tunnel.md
+        - name: Aktivieren von Multi-Factor Authentication (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: Konfigurieren von Azure AD-Authentifizierung
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: "Konfigurieren von Azure VPN Client für Windows\_10"
+          href: openvpn-azure-ad-client.md
+        - name: "Konfigurieren der Azure\_AD-Authentifizierung für mehrere Anwendungen"
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Routing
       items:
         - name: Weiterleiten von Datenverkehr von einem virtuellen Hub an ein virtuelles Netzwerkgerät
           items:

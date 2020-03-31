@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840807"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Einführung in die variable Paketerfassung in Azure Network Watcher
@@ -31,7 +31,7 @@ Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, kön
 
 **Erfassungskonfiguration**
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |**Maximale Bytes pro Paket (Bytes)** | Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Wenn Sie nur die IPv4-Header benötigen, geben Sie hier „34“ an. |
 |**Maximale Bytes pro Sitzung (Bytes)** | Gesamtanzahl der Bytes, die erfasst werden – nach Erreichen des Werts wird die Sitzung beendet.|
@@ -39,7 +39,7 @@ Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, kön
 
 **Filterung (optional)**
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |**Protokoll** | Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.|
 |**Lokale IP-Adresse** | Dieser Wert filtert bei der Paketerfassung Pakete, deren lokale IP-Adresse mit diesem Filterwert übereinstimmt.|
