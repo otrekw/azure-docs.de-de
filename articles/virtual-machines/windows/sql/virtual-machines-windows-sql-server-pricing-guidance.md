@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981716"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Preisinformationen für Azure SQL Server-VMs
@@ -93,7 +93,7 @@ Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 201
 > [!NOTE]
 > Es ist jetzt möglich, das Lizenzierungsmodell von nutzungsbasierter Bezahlung zum Verwenden einer eigenen Lizenz (Bring Your Own License, BYOL) zu wechseln und umgekehrt. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md). 
 
-## <a id="byol"></a> BYOL (Bring Your Own License)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> BYOL (Bring Your Own License)
 
 Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“** , auch als **BYOL** bezeichnet, bedeutet, dass Sie eine vorhandene SQL Server-Volumenlizenz mit Software Assurance auf einem virtuellen Azure-Computer nutzen. Bei einem virtuellen SQL Server-Computer mit BYOL-Modell werden nur die Kosten für die Ausführung des Computers berechnet, nicht für die SQL Server-Lizenzierung. Dies setzt voraus, dass Sie bereits über ein Volumenlizenzprogramm Lizenzen und Software Assurance erworben haben.
 
@@ -111,7 +111,7 @@ Die Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität“ empfiehlt s
 
 Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über eine Lizenz für SQL Server Standard oder Enterprise sowie über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) verfügen. Software Assurance ist in einigen Programmen zur Volumenlizenzierung erforderlich und in anderen Programmen optional. Die Preisstufen, die in den verschiedenen Volumenlizenzprogrammen angeboten werden, unterscheiden sich je nach Art der Vereinbarung sowie nach Umfang und Nutzungsdauer von SQL Server. Generell bietet das BYOL-Modell für kontinuierliche Arbeitsauslastungen in der Produktion folgende Vorteile:
 
-| BYOL-Vorteil | Beschreibung |
+| BYOL-Vorteil | BESCHREIBUNG |
 |-----|-----|
 | **Kostenersparnis** | Der [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) bietet Einsparungen von bis zu 55 %. Weitere Informationen finden Sie unter [Wechsel des Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md). |
 | **Kostenloses passives sekundäres Replikat** | Ein weiterer Vorteil der Nutzung eigener Lizenzen ist die [kostenlose Lizenz für ein passives sekundäres Replikat](https://azure.microsoft.com/pricing/licensing-faq/) pro SQL Server-Instanz, um Hochverfügbarkeit sicherzustellen. Damit halbieren sich die Lizenzierungskosten einer hochverfügbaren SQL Server-Bereitstellung (etwa mit AlwaysOn-Verfügbarkeitsgruppen). Die Berechtigungen zum Ausführen des passiven sekundären Replikats werden über den Software Assurance-Vorteil für Failoverserver bereitgestellt. |
@@ -133,7 +133,7 @@ Um einen virtuellen Azure-Computer mit SQL Server 2017 mit einem dieser BYOL-Ima
 
 Um unnötige Kosten zu vermeiden, wählen Sie eine optimale Größe für virtuelle Computer aus, und ziehen Sie vorübergehendes Herunterfahren für nicht kontinuierlich ausgeführte Arbeitsauslastungen in Betracht.
 
-### <a id="machinesize"></a>Richtige Größe Ihres virtuellen Computers
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>Richtige Größe Ihres virtuellen Computers
 
 Die Kosten der Lizenzierung für SQL Server sind direkt von der Anzahl der vCPUs abhängig. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) und [Größen virtueller Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

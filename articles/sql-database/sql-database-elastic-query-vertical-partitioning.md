@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823734"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
@@ -122,12 +122,12 @@ Das folgende Beispiel zeigt, wie Sie die Liste der externen Tabellen aus der akt
 
     select * from sys.external_tables; 
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
 Die Abfrage für elastische Datenbanken erweitert die vorhandene externe Tabellensyntax zum Definieren von externen Tabellen, die externe Datenquellen vom Typ RDBMS verwenden. Eine externe Tabellendefinition für die vertikale Partitionierung behandelt die folgenden Aspekte: 
 
-* **Schema:** In der DDL für externe Tabellen ist ein Schema definiert, das Ihre Abfragen verwenden können. Das in Ihrer Definition für externe Tabellen angegebene Schema muss mit dem Schema der Tabellen in der Remotedatenbank übereinstimmen, in der die eigentlichen Daten gespeichert werden. 
-* **Remotedatenbankverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den Namen des SQL-Datenbank-Servers und den Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
+* **Schema**: Die DDL für externe Tabellen definiert ein Schema, das Ihre Abfragen verwenden kann. Das in Ihrer Definition für externe Tabellen angegebene Schema muss mit dem Schema der Tabellen in der Remotedatenbank übereinstimmen, in der die eigentlichen Daten gespeichert werden. 
+* **Remotedatenbankverweis**: Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den Namen des SQL-Datenbank-Servers und den Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
 
 Wenn Sie eine externe Datenquelle gemäß der Beschreibung im vorherigen Abschnitt verwenden, lautet die Syntax zum Erstellen externer Tabellen wie folgt: 
 
@@ -139,7 +139,7 @@ Die folgende DDL-Anweisung löscht eine vorhandene Definition für eine externe 
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Berechtigungen für CREATE/DROP EXTERNAL TABLE:** Berechtigungen vom Typ ALTER ANY EXTERNAL DATA SOURCE sind für die DDL für externe Tabellen erforderlich, die auch für den Verweis auf die zugrunde liegende Datenquelle benötigt wird.  
+**Berechtigungen für CREATE/DROP EXTERNAL TABLE**: Berechtigungen vom Typ ALTER ANY EXTERNAL DATA SOURCE sind für die DDL für externe Tabellen erforderlich, die auch für den Verweis auf die zugrunde liegende Datenquelle benötigt wird.  
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
@@ -169,10 +169,10 @@ Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen den zwei lokalen 
 
 Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Remotedatenbank bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in der Remotedatenbank auszuführen. Hierfür werden die folgenden Parameter verwendet: 
 
-* Datenquellenname (nvarchar): Name der externen Datenquelle vom Typ RDBMS. 
-* Abfrage (nvarchar): T-SQL-Abfrage, die für die Remotedatenbank ausgeführt werden soll. 
-* Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im Query-Parameter verwendet werden (wie sp_executesql). 
-* Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (wie sp_executesql).
+* Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS. 
+* Abfrage (nvarchar): T-SQL-Abfrage, die für die Remotedatenbank ausgeführt werden soll 
+* Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp_executesql). 
+* Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (z.B. sp_executesql).
 
 Die Prozedur „sp\_execute\_remote“ verwendet die externe Datenquelle, die in den Aufrufparametern angegeben ist, um die jeweilige T-SQL-Anweisung in der Remotedatenbank auszuführen. Dabei werden die Anmeldeinformationen der externen Datenquelle verwendet, um die Verbindung mit der Remotedatenbank herzustellen.  
 

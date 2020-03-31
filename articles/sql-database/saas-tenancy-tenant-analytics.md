@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
 ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826383"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
@@ -62,7 +62,7 @@ Schließlich wird der Analysespeicher mithilfe von **PowerBI** abgefragt, um die
 
 Anhand der Informationen, wie die einzelnen Mandanten den Dienst verwenden, können Möglichkeiten zur Vermarktung und Verbesserung des Diensts für einen größeren Erfolg der Mandanten geprüft werden. Dieses Tutorial enthält grundlegende Beispiele für die Arten von Erkenntnissen, die aus Mandantendaten abgeleitet werden können.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -86,13 +86,13 @@ In diesem Tutorial werden die Ticketverkaufsdaten analysiert. Im aktuellen Schri
 Häufig sind die Mandantendaten in sehr vielen Transaktionsdatenbanken enthalten. Sie müssen die Mandantendaten aus den vielen Transaktionsdatenbanken in einem Analysespeicher aggregieren. Die Aggregation erlaubt das effiziente Abfragen der Daten. In diesem Tutorial wird eine Datenbank in Azure SQL-Datenbank verwendet, um die aggregierten Daten zu speichern.
 
 In den folgenden Schritten stellen Sie einen Analysespeicher namens **tenantanalytics** bereit. Außerdem stellen Sie vordefinierte Tabellen bereit, die später in diesem Tutorial aufgefüllt werden:
-1. Öffnen Sie „ *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*“ in der PowerShell ISE. 
+1. Öffnen Sie *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* in der PowerShell ISE. 
 2. Legen Sie die $DemoScenario-Variable im Skript entsprechend Ihrem Analysespeicher fest:
     - Wenn Sie SQL-Datenbank ohne Columnstore verwenden, legen Sie **$DemoScenario** = **2** fest.
     - Wenn Sie SQL-Datenbank mit Columnstore verwenden, legen Sie **$DemoScenario** = **3** fest.  
 3. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript*Deploy-TenantAnalytics\<XX>.ps1* aufruft), um den Mandantenanalysespeicher zu erstellen. 
 
-Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und mithilfe des Anmeldenamens *developer* und dem Kennwort *P\@ssword1* eine Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;** her. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
+Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und mithilfe des Anmeldenamens **developer&lt; und dem Kennwort &gt;P**ssword1 **eine Verbindung mit den Servern &lt;tenants1-dpt-&gt;Benutzer***und*catalog-dpt-*Benutzer\@* her. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -118,7 +118,7 @@ Zeigen Sie durch Erweitern des Knotens für den Analysespeicher die folgenden Da
 Bevor Sie fortfahren, stellen Sie sicher, dass Sie das Auftragskonto und die Datenbank „jobaccount“ bereitgestellt haben. In den nächsten Schritten werden elastische Aufträge zum Extrahieren von Daten aus den einzelnen Mandantendatenbanken und zum Speichern der Daten im Analysespeicher verwendet. Der zweite Auftrag teilt die Daten dann auf und speichert sie in Tabellen im Sternschema. Diese zwei Aufträge werden für zwei unterschiedliche Zielgruppen ausgeführt, nämlich **TenantGroup** und **AnalyticsGroup**. Der Auftrag zum Extrahieren wird für die Gruppe „TenantGroup“ ausgeführt, die sämtliche Mandantendatenbanken enthält. Der Auftrag zum Aufteilen wird für die Gruppe „AnalyticsGroup“ ausgeführt, die nur den Analysespeicher enthält. Erstellen Sie die Zielgruppen anhand der folgenden Schritte:
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
-2. Öffnen Sie in SSMS „ *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql*“. 
+2. Öffnen Sie in SSMS *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql*. 
 3. Ändern Sie die @User-Variable oben im Skript, und ersetzen Sie dabei `<User>` durch den Benutzerwert, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde.
 4. Drücken Sie **F5** zum Ausführen des Skripts, das die zwei Zielgruppen erstellt.
 
@@ -132,7 +132,7 @@ Umfangreiche Datenänderungen treten bei Daten zu *Tickets und Kunden* häufiger
 Jeder Auftrag extrahiert die entsprechenden Daten und sendet sie an den Analysespeicher. Dort teilt ein separater Auftrag die extrahierten Daten in das Sternschema für die Analyse auf.
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
-2. Öffnen Sie in SSMS „ *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*“.
+2. Öffnen Sie in SSMS *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
 3. Ändern Sie @User oben im Skript, und ersetzen Sie dabei `<User>` durch den Benutzernamen, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde. 
 4. Drücken Sie F5 zum Ausführen des Skripts, das den Auftrag zum Extrahieren der Ticket- und Kundendaten aus den einzelnen Mandantendatenbanken erstellt und ausführt. Der Auftrag speichert die Daten im Analysespeicher.
 5. Fragen Sie die Tabelle „TicketsRawData“ in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
@@ -152,7 +152,7 @@ Der nächste Schritt besteht darin, die extrahierten Rohdaten in Tabellen aufzut
 In diesem Abschnitt des Tutorials definieren Sie einen Auftrag, der die extrahierten Rohdaten mit den Daten in den Tabellen des Sternschemas zusammenführt, und führen ihn aus. Nach Abschluss des Zusammenführungsauftrags werden die Rohdaten gelöscht. Die Tabellen sind damit bereit, mit den nächsten Mandantendaten aus dem Extraktionsauftrag gefüllt zu werden.
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
-2. Öffnen Sie in SSMS „ *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*“.
+2. Öffnen Sie in SSMS *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
 3. Drücken Sie **F5** zum Ausführen des Skripts, mit dem ein Auftrag definiert wird, der die gespeicherte Prozedur „sp_ShredRawExtractedData“ im Analysespeicher aufruft.
 4. Warten Sie lange genug, damit der Auftrag erfolgreich ausgeführt werden kann.
     - Überprüfen Sie in der Spalte **Lifecycle** der Tabelle „jobs.jobs_execution“ den Status des Auftrags. Stellen Sie vor dem Fortfahren sicher, dass der Auftrag **erfolgreich** abgeschlossen wurde. Bei einer erfolgreichen Ausführung werden die Daten ähnlich wie im folgenden Diagramm dargestellt:
@@ -178,7 +178,7 @@ Gehen Sie gemäß den folgenden Schritte vor, um eine Verbindung mit Power BI he
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. Wählen Sie im Bereich **Navigator** unter der Analysedatenbank die folgenden Tabellen im Sternschema aus: fact_Tickets, dim_Events, dim_Venues, dim_Customers und dim_Dates. Wählen Sie dann **Laden** aus. 
+6. Wählen Sie im Bereich **Navigator** unter der Analysedatenbank die folgenden Tabellen im Sternschema aus: „fact_Tickets“, „dim_Events“, „dim_Venues“, „dim_Customers“ und „dim_Dates“. Wählen Sie dann **Laden** aus. 
 
 Glückwunsch! Sie haben die Daten erfolgreich in Power BI geladen. Jetzt können Sie damit beginnen, interessante Visualisierungen zu untersuchen, die Ihnen Einblicke in Ihre Mandanten verschaffen. Als Nächstes erfahren Sie, wie Analysen Ihnen helfen können, dem Geschäftsteam von Wingtip Tickets datengesteuerte Empfehlungen zu geben. Die Empfehlungen helfen bei der Optimierung des Geschäftsmodells und der Benutzeroberfläche für die Kunden.
 

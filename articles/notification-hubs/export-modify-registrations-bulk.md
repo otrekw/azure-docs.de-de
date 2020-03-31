@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212402"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen
@@ -31,7 +31,7 @@ Die Batchunterstützung wurde dazu entworfen, Aufträge mit langer Ausführungsz
 
 ## <a name="import"></a>Importieren
 
-### <a name="set-up"></a>Einrichtung
+### <a name="set-up"></a>Einrichten
 In diesem Abschnitt wird vorausgesetzt, dass Sie über folgende Entitäten verfügen:
 
 - Ein bereitgestellter Notification Hub
@@ -261,7 +261,7 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>Export
+## <a name="export"></a>Exportieren
 Das Exportieren von Registrierungen ähnelt dem Importieren mit den folgenden Unterschieden:
 
 - Sie benötigen lediglich die Ausgabe-URL

@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68934888"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Bereitstellen von sicheren Anwendungen in Azure
@@ -26,7 +26,7 @@ In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, di
 In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 
 - Release
-- response
+- Antwort
 
 ## <a name="release"></a>Release
 Der Schwerpunkt der Freigabephase liegt darin, ein Projekt für die öffentliche Freigabe vorzubereiten.
@@ -54,7 +54,7 @@ Eine wohlüberlegte Überprüfung aller durchgeführten Sicherheitsaktivitäten 
 
 Das Zertifizieren von Software vor einer Freigabe ermöglicht es sicherzustellen, dass die Sicherheits- und Datenschutzanforderungen erfüllt werden. Das Archivieren aller relevanten Daten ist für das Ausführen von Wartungsaufgaben nach der Freigabe unerlässlich. Archivieren ermöglicht außerdem, die langfristigen Kosten zu senken, die mit kontinuierlicher Softwareentwicklung verbunden sind.
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 Für die Reaktionsphase nach der Freigabe geht es im Wesentlichen darum, dass das Entwicklungsteam in der Lage und verfügbar ist, angemessen auf alle Berichte über neu auftretende Softwarebedrohungen und Sicherheitsrisiken zu reagieren.
 
 ### <a name="execute-the-incident-response-plan"></a>Ausführen des Plans für Reaktion auf Vorfälle

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707598"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Überprüfen des Verschlüsselungsstatus eines Blobs
@@ -26,7 +26,7 @@ In diesem Artikel wird erläutert, wie Sie feststellen, ob ein bestimmtes Blob v
 
 Verwenden Sie das Azure-Portal, PowerShell oder die Azure CLI, um festzustellen, ob ein Blob ohne Code verschlüsselt wurde.
 
-### <a name="azure-portaltabportal"></a>[Azure-Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals zu überprüfen, ob ein Blob verschlüsselt wurde:
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals zu überpr
 
     ![Screenshot zum Überprüfen der Eigenschaft „Server verschlüsselte“ im Azure-Portal](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Wenn Sie mithilfe von PowerShell überprüfen möchten, ob ein Blob verschlüsselt wurde, sehen Sie sich die **IsServerEncrypted**-Eigenschaft des Blobs an. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -56,7 +56,7 @@ Um festzustellen, wann das Blob erstellt wurde, sehen Sie sich den Wert der Eige
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-### <a name="azure-clitabcli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/cli)
 
 Wenn Sie mithilfe der Azure CLI überprüfen möchten, ob ein Blob verschlüsselt wurde, sehen Sie sich die **IsServerEncrypted**-Eigenschaft des Blobs an. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 

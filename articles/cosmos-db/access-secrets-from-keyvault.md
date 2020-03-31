@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72755226"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault 
@@ -33,8 +33,8 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
 2. Wählen Sie **Ressource erstellen > Sicherheit > Key Vault** aus.  
 3. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:  
-   * **Name:** Geben Sie einen eindeutigen Namen für Ihren Schlüsseltresor an.  
-   * **Abonnement:** Wählen Sie das zu verwendende Abonnement aus.  
+   * **Name**: Geben Sie einen eindeutigen Namen für Ihren Key Vault an.  
+   * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.  
    * Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.  
    * Wählen Sie im Pulldownmenü „Standort“ einen Standort aus.  
    * Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.  

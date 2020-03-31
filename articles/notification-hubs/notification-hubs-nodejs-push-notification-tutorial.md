@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213197"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
@@ -100,7 +100,7 @@ Das `NotificationHubService`-Objekt enthält die folgenden Objektinstanzen für 
 - **Windows Phone**: Verwenden Sie das `MpnsService`-Objekt unter `notificationHubService.mpns`.
 - **Universelle Windows-Plattform**: Verwenden Sie das `WnsService`-Objekt unter `notificationHubService.wns`.
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Anwendungen
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Gewusst wie: Senden von Pushbenachrichtigungen an Android-Apps
 
 Das `GcmService`-Objekt enthält eine `send`-Methode, mit der Sie Pushbenachrichtigungen an Android-Apps senden können. Die `send`-Methode nimmt die folgenden Parameter entgegen:
 

@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196482"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-Dateifreigabe – Dateien wurden nicht aus Azure-Dateifreigabe gelöscht
@@ -72,7 +72,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Beispielergebnis:
 
-|HandleId|`Path`|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|`Path`|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionID|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|

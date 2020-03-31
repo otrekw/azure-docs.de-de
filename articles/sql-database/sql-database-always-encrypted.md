@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
 ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822046"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel im Windows-Zertifikatspeicher
@@ -42,7 +42,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Ein Azure-Konto und ein Azure-Abonnement. Falls Sie diese benötigen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) Version 13.0.700.242 oder höher.
 * [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) oder höher (auf dem Clientcomputer)
-* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-Datenbank
 
@@ -101,7 +101,7 @@ SSMS enthält einen Assistenten zum einfachen Konfigurieren von Always Encrypted
 
     ![Spalten verschlüsseln](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Der Always Encrypted-Assistent enthält die folgenden Abschnitte: **Spaltenauswahl**, **Konfiguration des Hauptschlüssels** (CMK), **Prüfung** und **Zusammenfassung**.
+Der Always Encrypted-Assistent umfasst die folgenden Abschnitte: **Spaltenauswahl**, **Konfiguration des Hauptschlüssels** (CMK), **Überprüfung** und **Zusammenfassung**.
 
 ### <a name="column-selection"></a>Spaltenauswahl
 
@@ -190,7 +190,7 @@ In diesem Beispiel wird Folgendes veranschaulicht:
 * Einfügen von Daten in die verschlüsselten Spalten
 * Auswählen eines Datensatzes per Filterung nach einem bestimmten Wert in einer verschlüsselten Spalte
 
-Ersetzen Sie den Inhalt von **Program.cs** durch den folgenden Code. Ersetzen Sie die Verbindungszeichenfolge für die globale connectionString-Variable in der Zeile direkt über der Main-Methode durch Ihre gültige Verbindungszeichenfolge aus dem Azure-Portal. Dies ist die einzige Änderung, die Sie an diesem Code vornehmen müssen.
+Ersetzen Sie die Inhalte von **Program.cs** durch den folgenden Code. Ersetzen Sie die Verbindungszeichenfolge für die globale connectionString-Variable in der Zeile direkt über der Main-Methode durch Ihre gültige Verbindungszeichenfolge aus dem Azure-Portal. Dies ist die einzige Änderung, die Sie an diesem Code vornehmen müssen.
 
 Führen Sie die App aus, um Always Encrypted in Aktion zu erleben.
 

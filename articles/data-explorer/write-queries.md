@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68881195"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Schreiben von Abfragen für den Azure-Daten-Explorer
@@ -50,7 +50,7 @@ StormEvents
 
 In diesem Fall ist das Ergebnis:
 
-|Count|
+|Anzahl|
 |-----|
 |   23|
 | |
@@ -542,7 +542,7 @@ StormEvents
 
 ### <a name="dcount"></a>dcount()
 
-[**dcount()** ](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Gibt eine Schätzung der Anzahl unterschiedlicher Werte eines Ausdrucks in der Gruppe zurück. Sie können [ **count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) verwenden, um alle Werte zu zählen.
+[**dcount()** ](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction): Gibt eine Schätzung der Anzahl unterschiedlicher Werte eines Ausdrucks in der Gruppe zurück. Sie können [**count()** ](https://docs.microsoft.com/azure/kusto/query/countoperator) verwenden, um alle Werte zu zählen.
 
 Die folgende Abfrage zählt unterschiedliche `Source` nach `State`.
 
@@ -569,7 +569,7 @@ StormEvents
 
 ### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Berechnet **Dcount** anhand von HyperLogLog-Ergebnissen (generiert von [ **hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) oder [ **hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): Berechnet **Dcount** anhand von HyperLogLog-Ergebnissen (generiert von [**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) oder [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Die folgende Abfrage verwendet den HLL-Algorithmus, um die Anzahl zu generieren.
 
@@ -631,7 +631,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Gibt eine Schätzung für den angegebenen [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in [ **summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
+[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): Gibt eine Schätzung für den angegebenen [**nächsten Perzentilrang**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) der durch einen Ausdruck definierten Grundgesamtheit. Die Genauigkeit hängt von der Bevölkerungsdichte in der Region des Perzentils ab. Kann nur im Kontext der Aggregation in [**summarize**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) verwendet werden.
 
 Die folgende Abfrage berechnet Perzentile für die Sturmdauer.
 
@@ -917,7 +917,7 @@ StormEvents
 
 ## <a name="functions"></a>Functions
 
-Dieser Abschnitt behandelt [ **Funktionen**](https://docs.microsoft.com/azure/kusto/query/functions): wiederverwendbare Abfragen, die auf dem Server gespeichert sind. Funktionen können von Abfragen und andere Funktionen aufgerufen werden (rekursive Funktionen werden nicht unterstützt).
+Dieser Abschnitt behandelt [**Funktionen**](https://docs.microsoft.com/azure/kusto/query/functions): wiederverwendbare Abfragen, die auf dem Server gespeichert sind. Funktionen können von Abfragen und andere Funktionen aufgerufen werden (rekursive Funktionen werden nicht unterstützt).
 
 > [!NOTE]
 > Sie können keine Funktionen im Hilfecluster erstellen, der schreibgeschützt ist. Verwenden Sie Ihren eigenen Testcluster für diesen Teil.

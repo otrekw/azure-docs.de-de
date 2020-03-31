@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644816"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Verschieben des externen Azure Load Balancers in eine andere Region mit Azure PowerShell

@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 851ef49a5c066f12a95baa54daf5e267cb4278c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821436"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Verschieben von Azure SQL-Ressourcen in eine andere Region
@@ -73,7 +73,7 @@ Sie können in regelmäßigen Abständen [Get-AzSqlDatabaseFailoverGroup](/power
 
 ### <a name="test-synchronization"></a>Testen der Synchronisierung
 
-Sobald **ReplicationState** `2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
+Sobald **ReplicationState**`2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
 
 ### <a name="initiate-the-move"></a>Initiieren der Verschiebung
 
@@ -125,7 +125,7 @@ Sie können in regelmäßigen Abständen [Get-AzSqlDatabaseFailoverGroup](/power
 
 ### <a name="test-synchronization"></a>Testen der Synchronisierung
  
-Sobald **ReplicationState** `2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
+Sobald **ReplicationState**`2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
 
 ### <a name="initiate-the-move"></a>Initiieren der Verschiebung
  
@@ -172,7 +172,7 @@ Sie können in regelmäßigen Abständen [Get-AzSqlDatabaseFailoverGroup](/power
 
 ### <a name="test-synchronization"></a>Testen der Synchronisierung
 
-Sobald **ReplicationState** `2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
+Sobald **ReplicationState**`2` ist, verbinden Sie sich mit der jeweiligen Datenbank oder einer Teilmenge von Datenbanken unter Verwendung des sekundären Endpunkts `<fog-name>.secondary.database.windows.net`, und führen Sie jede Abfrage an den Datenbanken durch, um die Konnektivität, die richtige Sicherheitskonfiguration und die Datenreplikation sicherzustellen. 
 
 ### <a name="initiate-the-move"></a>Initiieren der Verschiebung 
 

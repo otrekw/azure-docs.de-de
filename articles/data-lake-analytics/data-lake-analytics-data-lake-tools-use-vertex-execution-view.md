@@ -9,10 +9,10 @@ ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
 ms.openlocfilehash: f5adbb75e6852551976aa040a1a1c723d2e3f59b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309728"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Verwenden der Scheitelpunktausführungsansicht in Data Lake Tools für Visual Studio
@@ -39,12 +39,12 @@ Der obere mittlere Bereich zeigt den **Ausführungsstatus aller Vertices**.
 
 Der untere mittlere Bereich zeigt Informationen zu jedem Vertex:
 * Process Name (Prozessname): Der Name der Vertexinstanz. Er besteht aus verschiedenen Teilen in StageName|VertexName|VertexRunInstance. Beispielsweise steht der Vertex SV7_Split[62].v1 für die zweite sich in Ausführung befindliche Instanz (.v1, der Index beginnt ab 0) der Vertexnummer 62 in der Phase SV7_Split.
-* Total Data Read/Write (Gesamte gelesene/geschriebene Daten): Die Daten wurden von diesem Scheitelpunkt gelesen/geschrieben.
-* State/Exit Status (Phasen/Exitstatus): Der finale Status, wenn der Scheitelpunkt beendet ist.
+* Total Data Read/Written (Gelesene/geschriebene Daten gesamt): Die Daten wurden von diesem Scheitelpunkt gelesen/geschrieben.
+* State/Exit Status (Phasen/Exitstatus): Der finale Status wenn der Scheitelpunkt beendet ist.
 * Exit Code/Failure Type (Exitcode/Fehlertyp): Der Fehler, wenn der Scheitelpunkt fehlgeschlagen ist.
-* Creation Reason (Erstellungsgrund): Grund für die Erstellung des Scheitelpunkts
+* Creation Reason (Erstellungsgrund): Warum der Scheitelpunkt erstellt wurde.
 * Resource Latency/Process Latency/PN Queue Latency (Ressourcenlatenz/Prozesslatenz/PN-Schlangenlatenz): Die Zeit, die der Scheitelpunkt benötigt, um auf Ressourcen zu warten, um Daten zu verarbeiten und in der Schlange zu bleiben.
-* Process/Creator GUID (Prozess/Ersteller-GUID): GUID für den aktuell ausgeführten Scheitelpunkt oder dessen Ersteller
+* Process/Creator GUID (Prozess/Ersteller-GUID): GUID für den aktuell ausgeführten Scheitelpunkt oder dessen Ersteller.
 * Version (Version): die n-te Instanz des ausgeführten Scheitelpunkts (das System plant möglicherweise neue Instanzen für einen Scheitelpunkt aus verschiedenen Gründen, z.B. Failover, Berechnungsredundanz usw.).
 * Version Created Time (Erstellungszeit der Version).
 * Process Create Start Time/Process Queued Time/Process Start Time/Process Complete Time (Startzeit der Erstellung durch den Prozess / Zeit des Prozesses in der Warteschlange / Startzeit des Prozesses / Abschlusszeit des Prozesses): wenn der Scheitelpunktprozess erstellt wird, wenn sich der Scheitelpunktprozess in der Warteschlange befindet, wenn der bestimmte Scheitelpunktprozess startet, wenn der bestimmte Scheitelpunktprozess beendet wird.

@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825849"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Ausführen von Notfallwiederherstellungsverfahren
@@ -30,7 +30,7 @@ Notfallwiederherstellungsverfahren umfassen Folgendes:
 
 Abhängig vom [Entwurf Ihrer Anwendung für Geschäftskontinuität](sql-database-business-continuity.md)kann der verbundene Workflow variieren. In diesem Artikel sind die bewährten Methoden zum Durchführen eines Notfallwiederherstellungsverfahrens im Kontext von Azure SQL-Datenbank beschrieben.
 
-## <a name="geo-restore"></a>Geografische Wiederherstellung
+## <a name="geo-restore"></a>Geowiederherstellung
 
 Um Datenverluste beim Durchführen eines Notfallwiederherstellungsverfahrens zu verhindern, sollten Sie das Verfahren mit einer Testumgebung ausführen, indem Sie eine Kopie der Produktionsumgebung erstellen und diese zum Überprüfen des Failoverworkflows der Anwendung verwenden.
 
@@ -38,7 +38,7 @@ Um Datenverluste beim Durchführen eines Notfallwiederherstellungsverfahrens zu 
 
 Um die Ausfallzeit zu simulieren, können Sie die Quelldatenbank umbenennen. Durch diese Namensänderung werden Verbindungsfehler für die Anwendung verursacht.
 
-### <a name="recovery"></a>Wiederherstellen
+### <a name="recovery"></a>Wiederherstellung
 
 * Führen Sie die Geowiederherstellung der Datenbank auf einem anderen Server aus, wie [hier](sql-database-disaster-recovery.md)beschrieben.
 * Ändern Sie die Anwendungskonfiguration zum Herstellen einer Verbindung mit der wiederhergestellten Datenbank, und folgen Sie der Anleitung unter [Konfigurieren einer Datenbank nach der Wiederherstellung](sql-database-disaster-recovery.md) zum Abschließen der Wiederherstellung.
@@ -55,7 +55,7 @@ Für eine durch Failovergruppen geschützte Datenbank beinhaltet das Verfahren e
 
 Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuellen Computer deaktivieren, die bzw. der mit der Datenbank verbunden ist. Dieses Simulieren von Ausfällen führt zu Verbindungsfehlern für die Webclients.
 
-### <a name="recovery"></a>Wiederherstellen
+### <a name="recovery"></a>Wiederherstellung
 
 * Stellen Sie sicher, dass die Anwendungskonfiguration in der Notfallwiederherstellungsregion auf die vorherige sekundäre Datenbank verweist. Diese Datenbank wird zur neuen primären Datenbank, auf die vollständig zugegriffen werden kann.
 * Löst ein [geplantes Failover](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) der Failovergruppe vom sekundären Server aus.

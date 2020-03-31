@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169052"
 ---
 # <a name="fqdn-tags-overview"></a>Übersicht über FQDN-Tags
@@ -42,4 +42,4 @@ Die folgende Tabelle enthält die aktuellen FQDN-Tags, die Sie verwenden können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie Sie eine Azure Firewall-Instanz bereitstellen, erfahren Sie unter [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md).
+Informationen zum Bereitstellen einer Azure Firewall finden Sie im [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md).

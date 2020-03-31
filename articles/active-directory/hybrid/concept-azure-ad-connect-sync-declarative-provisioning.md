@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246320"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
@@ -92,7 +92,7 @@ Ein Metaverse-Objekt besteht, solange sich eine Synchronisierungsregel im Bereic
 Wenn ein Metaverse-Objekt gelöscht wird, werden alle Objekte, die einer ausgehenden, für **Bereitstellen** markierten Synchronisierungsregel zugeordnet sind, zum Löschen markiert.
 
 ## <a name="transformations"></a>Transformationen
-Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse sind folgende **Flowtypen** möglich: direkt, Konstante oder Ausdruck. Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
+Transformationen werden verwendet, um festzulegen, wie der Datenfluss von Attributen von der Quelle zum Ziel erfolgen soll. Für die Datenflüsse gibt es die folgenden **FlowTypes**(Durchflusstypen): Direkt, Konstant oder Expression (Ausdruck). Bei einem direkten Durchfluss wird der Attributwert im vorliegenden Zustand ohne weitere Änderungen übertragen. Ein konstanter Wert legt den angegebenen Wert fest. Ein Ausdruck verwendet die deklarative Bereitstellungsausdruckssprache, um auszudrücken, wie die Transformation aussehen soll. Weitere Informationen zur Ausdruckssprache finden Sie im Thema [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ![Bereitstellen oder verbinden](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -128,7 +128,7 @@ Dieser Ausdruck ist wie folgt zu lesen: Wenn sich das Postfach des Benutzers in 
 
 ### <a name="importedvalue"></a>ImportedValue
 Die Funktion „ImportedValue“ unterscheidet sich von allen anderen Funktionen, da der Attributname in Anführungszeichen statt in eckige Klammern eingeschlossen werden muss:  
-`ImportedValue("proxyAddresses")`.
+[https://login.microsoftonline.com/consumers/](`ImportedValue("proxyAddresses")`).
 
 Üblicherweise verwendet ein Attribut während der Synchronisierung den erwarteten Wert, selbst wenn er noch nicht exportiert wurde oder während des Exports ein Fehler empfangen wurde („top of the tower“). Bei einer eingehenden Synchronisierung wird vorausgesetzt, dass ein Attribut, das ein verbundenes Verzeichnis noch nicht erreicht hat, dieses schließlich erreicht. In einigen Fällen ist es wichtig, nur Werte zu synchronisieren, die vom verbundenen Verzeichnis bestätigt wurden („hologram and delta import tower“).
 
@@ -164,4 +164,4 @@ In diesem Szenario müssen Sie den Bereich der Synchronisierungsregeln ändern, 
 
 **Referenzthemen**
 
-* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect-Synchronisierung: Funktionsreferenz](reference-connect-sync-functions-reference.md)

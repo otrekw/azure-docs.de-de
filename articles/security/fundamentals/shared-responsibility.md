@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/16/2019
 ms.author: terrylan
 ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72518146"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>Gemeinsame Verantwortung in der Cloud

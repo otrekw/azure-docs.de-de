@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245496"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
@@ -47,7 +47,7 @@ Wichtige Punkte, die beim Synchronisieren von Gruppen in Active Directory mit Az
 
     * Wenn das *proxyAddress*-Attribut der Gruppe leer ist, muss das *mail*-Attribut einen Wert enthalten.
 
-    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es mindestens einen SMTP-Proxyadresswert enthalten. Hier einige Beispiele:
+    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es mindestens einen SMTP-Proxyadresswert enthalten. Im Folgenden finden Sie einige Beispiele:
     
       * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält keine SMTP-Adresse.
       

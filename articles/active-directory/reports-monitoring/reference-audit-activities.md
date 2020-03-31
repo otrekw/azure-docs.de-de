@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007749"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
@@ -230,9 +230,9 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Authorization|Aktualisieren von Richtlinien|
 |Authorization|Update user attribute (Benutzerattribut aktualisieren)|
 |Authorization|Upload a CPIM encrypted key (Verschlüsselten CPIM-Schlüssel hochladen)|
-|Authorization|Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.|
-|Authorization|Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.|
-|Authorization|Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.|
+|Authorization|User Authorization: API is disabled for tenant featureset (Benutzerautorisierung: Die API ist für die Mandantenfeatures deaktiviert.)|
+|Authorization|User Authorization: User granted access as 'Tenant Admin' (Benutzerautorisierung: Dem Benutzer wurde Zugriff als „Mandantenadministrator“ gewährt.)|
+|Authorization|User Authorization: User was granted 'Authenticated Users' access rights (Benutzerautorisierung: Dem Benutzer wurden Zugriffsrechte vom Typ „Authentifizierte Benutzer“ gewährt.)|
 |Authorization|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
 |Authorization|Überprüfen, ob das Feature aktiviert ist|
 |Authorization|Programm erstellen|
@@ -256,17 +256,17 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Verzeichnisverwaltung|Get tenant Info (Abrufen der Mandanteninformationen)|
 |Verzeichnisverwaltung|Get tenant allowed features (Vom Mandanten zugelassene Features abrufen)|
 |Verzeichnisverwaltung|Get tenantDomains (tenantDomains-Element abrufen)|
-|Schlüssel|Gets the type of tenant (Mandantentyp abrufen)|
-|Schlüssel|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
-|Schlüssel|Überprüfen, ob das Feature aktiviert ist|
-|Schlüssel|Partner zu Unternehmen hinzufügen|
-|Schlüssel|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
-|Schlüssel|Add verified domain (Überprüfte Domäne hinzufügen)|
-|Schlüssel|Unternehmen erstellen|
-|Schlüssel|Unternehmenseinstellungen erstellen|
-|Schlüssel|Unternehmenseinstellungen löschen|
-|Schlüssel|Partner tiefer stufen|
-|Schlüssel|Directory deleted (Verzeichnis gelöscht)|
+|Key|Gets the type of tenant (Mandantentyp abrufen)|
+|Key|Verify if B2C feature is enabled (Überprüfen, ob das B2C-Feature aktiviert ist)|
+|Key|Überprüfen, ob das Feature aktiviert ist|
+|Key|Partner zu Unternehmen hinzufügen|
+|Key|Add inverified domain (Nicht überprüfte Domäne hinzufügen)|
+|Key|Add verified domain (Überprüfte Domäne hinzufügen)|
+|Key|Unternehmen erstellen|
+|Key|Unternehmenseinstellungen erstellen|
+|Key|Unternehmenseinstellungen löschen|
+|Key|Partner tiefer stufen|
+|Key|Directory deleted (Verzeichnis gelöscht)|
 |Andere|Directory deleted permanently (Verzeichnis unwiderruflich gelöscht)|
 |Andere|Directory scheduled for deletion (Löschen des Verzeichnisses geplant)|
 |Resource|Promote company to partner (Unternehmen zu Partner heraufstufen)|

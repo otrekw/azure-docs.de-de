@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792304"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
@@ -60,7 +60,7 @@ Es werden folgende Schritte ausgeführt:
     In den meisten Fällen die Konfigurationszeichenfolge für die Aufgabe leer (wie im folgenden Beispiel). Es gibt einige erweiterte Szenarien, bei denen Sie eine XML-Zeichenfolge an die Codierungsaufgabe bereitstellen (und Laufzeiteigenschaften dynamisch festlegen) müssen. Beispiele für solche Szenarios sind das Erstellen einer Überlagerung, das parallele oder sequenzielle Zusammenfügen von Medien und die Untertitelung.
 5. Hinzufügen von zwei Medienobjekten zur Aufgabe.
 
-   1. 1\. – das Medienobjekt für den Workflow
+   1. 1 – das Medienobjekt für den Workflow
    2. 2 – das Videomedienobjekt
 
       >[!NOTE]
@@ -231,7 +231,7 @@ namespace MediaEncoderPremiumWorkflowSample
 
 ## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

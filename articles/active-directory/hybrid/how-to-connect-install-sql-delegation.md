@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60243547"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen
@@ -31,7 +31,7 @@ Mit dem neuesten Release von Azure AD Connect kann der SQL-Administrator nun ein
 ## <a name="before-you-begin"></a>Voraussetzungen
 Um dieses Feature verwenden zu können, müssen Sie beachten, dass es mehrere variable Komponenten gibt, für die jeweils ein anderer Administrator in Ihrer Organisation verantwortlich sein kann.  In der folgenden Tabelle werden die einzelnen Rollen und ihre jeweiligen Aufgaben bei der Bereitstellung von Azure AD Connect mit diesem Feature zusammengefasst.
 
-|Rolle|BESCHREIBUNG|
+|Role|BESCHREIBUNG|
 |-----|-----|
 |AD-Administrator der Domäne oder Gesamtstruktur|Erstellt das Dienstkonto auf Domänenebene, das von Azure AD Connect zum Ausführen des Synchronisierungsdiensts verwendet wird.  Weitere Informationen zu Dienstkonten finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md).
 |SQL-Administrator|Erstellt die ADSync-Datenbank und gewährt dem Azure AD Connect-Administrator und dem Dienstkonto, das vom Administrator der Domäne/Gesamtstruktur erstellt wurde, Anmelde- und dbo-Berechtigungen|
@@ -46,7 +46,7 @@ Gehen Sie zum Out-of-Band-Bereitstellen der Datenbank und Installieren von Azure
 
 1. Lassen Sie die ADSync-Datenbank durch den SQL-Administrator mit einer Sortierreihenfolge unter Berücksichtigung der Groß-/Kleinschreibung **(Latin1_General_CI_AS)** erstellen.  Die Datenbank muss den Namen **ADSync** tragen.  Wiederherstellungsmodell, Kompatibilitätsgrad und Einschlusstyp werden auf die richtigen Werte festgelegt, wenn Azure AD Connect installiert wird.  Die Sortierreihenfolge muss jedoch vom SQL-Administrator ordnungsgemäß festgelegt werden, da andernfalls Azure AD Connect die Installation blockiert.  Zum Wiederherstellen muss der Dienstadministrator die Datenbank löschen und neu erstellen.
  
-   ![Collation](./media/how-to-connect-install-sql-delegation/sql4.png)
+   ![Sortierung](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Gewähren Sie dem Azure AD Connect-Administrator und dem Domänendienstkonto die folgenden Berechtigungen:
    - SQL-Anmeldung 
    - **Datenbankbesitzerrechte (dbo)**

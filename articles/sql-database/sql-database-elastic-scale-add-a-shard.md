@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823708"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Hinzufügen eines Shards mithilfe der Tools für elastische Datenbanken
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Wichtig**:  Verwenden Sie dieses Verfahren nur, wenn Sie sicher sind, dass der Bereich für die aktualisierte Zuordnung leer ist.  Durch die oben genannten Methoden werden keine Daten für den verschobenen Bereich überprüft. Deshalb empfiehlt es sich, Prüfroutinen im Code zu implementieren.  Wenn der verschobene Bereich Zeilen enthält, stimmt die tatsächliche Datenverteilung nicht mit der aktualisierten Shard Map überein. Verwenden Sie das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md), um den Vorgang durchzuführen.  
+**Wichtig**: Verwenden Sie dieses Verfahren nur, wenn Sie sicher sind, dass der Bereich für die aktualisierte Zuordnung leer ist.  Durch die oben genannten Methoden werden keine Daten für den verschobenen Bereich überprüft. Deshalb empfiehlt es sich, Prüfroutinen im Code zu implementieren.  Wenn der verschobene Bereich Zeilen enthält, stimmt die tatsächliche Datenverteilung nicht mit der aktualisierten Shard Map überein. Verwenden Sie das [Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md), um den Vorgang durchzuführen.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

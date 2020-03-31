@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390174"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
@@ -120,7 +120,7 @@ Die verfügbaren Operatoren für Zeichenfolgen sind:
 
 Bei allen Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.
 
-### <a name="key"></a>Schlüssel
+### <a name="key"></a>Key
 
 Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den Schlüssel:
 
@@ -146,7 +146,7 @@ Verwenden Sie für ein benutzerdefiniertes Eingabeschema die Ereignisdatenfelder
 Diese Werte sind möglich:
 
 * number
-* Zeichenfolge
+* string
 * boolean
 * array
 

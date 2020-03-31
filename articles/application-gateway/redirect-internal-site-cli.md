@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74074554"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle
@@ -28,7 +28,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen einer VM-Skalierungsgruppe mit dem Back-End-Pool
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das vom Back-End-Serverpool benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit *az network vnet subnet create* das Subnetz namens [myBackendSubnet](/cli/azure/network/vnet/subnet) hinzufügen, das vom Back-End-Serverpool benötigt wird. Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip#az-network-public-ip-create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -86,7 +86,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
+Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 - *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
 - *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Hinzufügen der Umleitungskonfiguration
 
-Fügen Sie mit [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) die Umleitungskonfiguration hinzu, die Datenverkehr von *www\.contoso.org* an den Listener für *www\.contoso.com* im Anwendungsgateway sendet.
+Fügen Sie mit *az network application-gateway redirect-config create\. die Umleitungskonfiguration hinzu, die Datenverkehr von* www*contoso.org\. an den Listener für* www[contoso.com](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) im Anwendungsgateway sendet.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

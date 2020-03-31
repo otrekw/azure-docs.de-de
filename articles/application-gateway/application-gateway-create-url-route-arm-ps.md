@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048048"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure PowerShell
@@ -28,7 +28,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ![URL-Routingbeispiel](./media/application-gateway-create-url-route-arm-ps/scenario.png)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) die Subnetzkonfigurationen *myAGSubnet* und *myBackendSubnet*. Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) und den Subnetzkonfigurationen das virtuelle Netzwerk *myVNet*. Erstellen Sie abschließend mithilfe von [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) die öffentliche IP-Adresse mit dem Namen *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
+Erstellen Sie mit *New-AzVirtualNetworkSubnetConfig* die Subnetzkonfigurationen *myAGSubnet* und [myBackendSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Erstellen Sie mit *New-AzVirtualNetwork* und den Subnetzkonfigurationen das virtuelle Netzwerk [myVNet](/powershell/module/az.network/new-azvirtualnetwork). Erstellen Sie abschließend mithilfe von *New-AzPublicIpAddress* die öffentliche IP-Adresse mit dem Namen [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress). Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -95,7 +95,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Erstellen des Standardpools und der Einstellungen
 
-Erstellen Sie mit [New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) den Standard-Back-End-Pool *appGatewayBackendPool* für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
+Erstellen Sie mit *New-AzApplicationGatewayBackendAddressPool* den Standard-Back-End-Pool [appGatewayBackendPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) für das Anwendungsgateway. Konfigurieren Sie mit [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) die Einstellungen für den Back-End-Pool.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -110,9 +110,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Erstellen des Standardlisteners und einer Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr entsprechend an den Back-End-Pool weiterleiten kann. In diesem Tutorial werden zwei Listener erstellt. Der erste grundlegende Listener, den Sie erstellen, lauscht an der Stamm-URL auf Datenverkehr. Der zweite Listener, den Sie erstellen, lauscht an bestimmten URLs auf Datenverkehr.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Tutorial werden zwei Listener erstellt. Der erste grundlegende Listener, den Sie erstellen, lauscht an der Stamm-URL auf Datenverkehr. Der zweite Listener, den Sie erstellen, lauscht an bestimmten URLs auf Datenverkehr.
 
-Erstellen Sie den Standardlistener namens *myDefaultListener* mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
+Erstellen Sie den Standardlistener namens *myDefaultListener* mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener), der zuvor erstellten Front-End-Konfiguration und dem zuvor erstellten Front-End-Port. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit *New-AzApplicationGatewayRequestRoutingRule* eine grundlegende Regel namens [rule1](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule).
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -130,7 +130,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) Parameter für das Anwendungsgateway *myAppGateway* an, und erstellen Sie es mit [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
+Sie haben die erforderlichen unterstützenden Ressourcen erstellt. Geben Sie nun mit *New-AzApplicationGatewaySku* Parameter für das Anwendungsgateway [myAppGateway](/powershell/module/az.network/new-azapplicationgatewaysku) an, und erstellen Sie es mit [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway).
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -174,7 +174,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Fügen Sie mit [Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) den Back-End-Listener namens *backendListener* hinzu. Er ist zum Weiterleiten von Datenverkehr erforderlich.
+Fügen Sie mit *Add-AzApplicationGatewayHttpListener* den Back-End-Listener namens [backendListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener) hinzu. Er ist zum Weiterleiten von Datenverkehr erforderlich.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -196,7 +196,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-url-path-map"></a>Hinzufügen einer URL-Pfadzuordnung
 
-URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mit [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) und [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) URL-Pfadzuordnungen namens *imagePathRule* und *videoPathRule* erstellen.
+URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mit *New-AzApplicationGatewayPathRuleConfig* und *Add-AzApplicationGatewayUrlPathMapConfig* URL-Pfadzuordnungen namens [imagePathRule](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) und [videoPathRule](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig) erstellen.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -235,7 +235,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rule"></a>Hinzufügen einer Routingregel
 
-Die Routingregel ordnet die URL-Zuordnung dem von Ihnen erstellten Listener zu. Sie können mit [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) die Regel **rule2* hinzufügen.
+Die Routingregel ordnet die URL-Zuordnung dem von Ihnen erstellten Listener zu. Sie können mit *Add-AzApplicationGatewayRequestRoutingRule* die Regel *[rule2](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) hinzufügen.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `

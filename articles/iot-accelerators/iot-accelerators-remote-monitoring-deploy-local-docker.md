@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888834"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Sie erfahren, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Eine lokale Microservices-Bereitstellung verwendet die folgenden Clouddienste: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Sie erfahren, wie Sie die Microservices in lokalen Docker-Containern bereitstellen. Bei einer lokalen Bereitstellung von Microservices werden die folgenden Clouddienste verwendet: IoT Hub, Cosmos DB, Azure Stream Analytics und Azure Time Series Insights-Dienste in der Cloud.
 
 Wenn Sie den Solution Accelerator für die Remoteüberwachung in einer IDE auf Ihrem lokalen Computer ausführen möchten, finden Sie entsprechende Informationen unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -27,7 +27,7 @@ Wenn Sie den Solution Accelerator für die Remoteüberwachung in einer IDE auf I
 
 Für die Bereitstellung der vom Solution Accelerator für die Remoteüberwachung benötigten Azure-Dienste benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Einrichtung des Computers
 
@@ -98,7 +98,7 @@ Führen Sie folgende Schritte aus, um den Stream Analytics-Auftrag zu starten:
 
 Browsen Sie für den Zugriff auf das Dashboard der Lösung für die Remoteüberwachung zu `http://localhost:8080`. Nun können Sie die Webbenutzeroberfläche und die lokalen Microservices verwenden.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Navigieren Sie zum Entfernen der Dienste zum [Azure-Portal](https://ms.portal.azure.com), und löschen Sie die Ressourcengruppe, die mit dem Skript **start.cmd** erstellt wurde.
 

@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 5a7ed254de7b7ea32f2fb357d860354693e46e92
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827230"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrieren zu den neuen Aufträgen für die elastische Datenbank
@@ -92,7 +92,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 Nachdem die alten und die neuen Cmdlets für elastische Aufträge initialisiert wurden, migrieren Sie Ihre Auftragsanmeldeinformationen, Ziele und Aufträge zu der neuen *Auftragsdatenbank*.
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 ```powershell
 $ErrorActionPreference = "Stop";

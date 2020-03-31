@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014419"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
@@ -51,8 +51,8 @@ Um die Log Analytics-Ansichten verwenden zu können, benötigen Sie Folgendes:
 
 2. Sobald Sie sich in Ihrem Arbeitsbereich befinden, wählen Sie **Zusammenfassung des Arbeitsbereichs** aus. Die folgenden drei Ansichten sollten angezeigt werden:
 
-    * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z.B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
-    * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z.B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
+    * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z. B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
+    * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z. B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
 
 3. Wählen Sie eine der beiden Ansichten aus, um zu den einzelnen Berichten zu wechseln. Sie können auch Benachrichtigungen für jeden der Berichtsparameter festlegen. Lassen Sie uns zum Beispiel eine Benachrichtigung bei jedem Mal festlegen, wenn es zu einem Anmeldefehler kommt. Zu diesem Zweck wählen Sie zuerst die Ansicht **Anmeldeereignisse** aus, dann den Bericht **Anmeldefehler im Laufe der Zeit**, und wählen Sie dann **Analytics** aus, um die Seite mit den Details zu öffnen, in denen sich die eigentliche Abfrage befindet, die dem Bericht zugrunde liegt. 
 

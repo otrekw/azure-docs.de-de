@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823757"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken (Vorschau)
@@ -134,7 +134,7 @@ So löschen Sie externe Tabellen:
 
     DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
 Die DATA\_SOURCE-Klausel definiert die externe Datenquelle (eine Shardzuordnung), die für die externe Tabelle verwendet wird.  
 
@@ -146,7 +146,7 @@ Die DISTRIBUTION-Klausel gibt die Datenverteilung für diese Tabelle an: Der Abf
 2. **REPLICATED** bedeutet, dass identische Kopien der Tabelle in jeder Datenbank vorhanden sind. Sie müssen sicherstellen, dass die Replikate in allen Datenbanken identisch sind.
 3. **ROUND\_ROBIN** bedeutet, dass die Tabelle mit einer anwendungsabhängigen Verteilungsmethode horizontal partitioniert wurde.
 
-**Datenschichtverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt eine Shardzuordnung an, die der externen Tabelle die Informationen bereitstellt, die benötigt werden, um alle Datenbanken in Ihrer Datenebene zu finden.
+**Datenebenenverweis**: Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt eine Shardzuordnung an, die der externen Tabelle die Informationen bereitstellt, die benötigt werden, um alle Datenbanken in Ihrer Datenebene zu finden.
 
 ### <a name="security-considerations"></a>Sicherheitshinweise
 
@@ -179,10 +179,10 @@ Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern
 
 Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
 
-* Datenquellenname (nvarchar): Name der externen Datenquelle vom Typ RDBMS.
-* Abfrage (nvarchar): T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird.
-* Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im Query-Parameter verwendet werden (wie sp_executesql).
-* Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (wie sp_executesql).
+* Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS.
+* Abfrage (nvarchar): Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird.
+* Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp_executesql).
+* Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (z.B. sp_executesql).
 
 Die Prozedur „sp\_execute\_remote“ verwendet die externe Datenquelle, die in den Aufrufparametern angegeben ist, um die jeweilige T-SQL-Anweisung in den Remotedatenbanken auszuführen. Die Anmeldeinformationen der externen Datenquelle werden verwendet, um die Verbindung mit der ShardMapManager-Datenbank und den Remotedatenbanken herzustellen.  
 
