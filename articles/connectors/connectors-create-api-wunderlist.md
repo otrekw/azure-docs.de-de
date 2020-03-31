@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789119"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Wunderlist mithilfe von Azure Logic Apps
@@ -43,7 +43,7 @@ Mit Azure Logic Apps und dem Wunderlist-Connector können Sie automatisierte Auf
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Wählen Sie einen Pfad aus: 
+1. Auswählen eines Pfads: 
 
    * Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „wunderlist“ als Filter ein. 
    Wählen Sie in der Triggerliste den gewünschten Trigger aus. 

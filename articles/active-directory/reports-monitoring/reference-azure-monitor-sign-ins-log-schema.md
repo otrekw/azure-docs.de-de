@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748663"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretieren des Azure AD-Anmeldeprotokollschemas in Azure Monitor
@@ -143,7 +143,7 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 
 ## <a name="field-descriptions"></a>Feldbeschreibungen
 
-| Feldname | Beschreibung |
+| Feldname | BESCHREIBUNG |
 |------------|-------------|
 | Time | Das Datum und die Uhrzeit in UTC. |
 | resourceId | Dieser Wert wird nicht zugeordnet, sodass das Feld ignoriert werden kann.  |
@@ -164,7 +164,7 @@ Dieser Artikel beschreibt das Azure Active Directory-Anmeldeprotokollschema (Azu
 | CorrelationId | Die optionale GUID, die vom Client übergeben wird. Dieser Wert kann dabei helfen, clientseitige Vorgänge mit serverseitigen Vorgängen zu korrelieren und Protokolle zu verfolgen, die sich über mehrere Dienste erstrecken. |
 | Identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Dies kann ein Benutzerkonto, ein Systemkonto oder einen Dienstprinzipal sein. |
 | Ebene | Gibt den Typ der Nachricht an. Bei Überwachungen ist es immer *Information*. |
-| Location | Gibt den Standort der Anmeldeaktivität an. |
+| Position | Gibt den Standort der Anmeldeaktivität an. |
 | Eigenschaften | Listet alle Eigenschaften auf, die mit Anmeldungen verknüpft sind. Weitere Informationen finden Sie in der [Microsoft Graph-API-Referenz](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Dieses Schema verwendet zur besseren Lesbarkeit die gleichen Attributnamen wie die Anmelderessource.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,10 +4,10 @@ description: Ein Überblick über die sichere Ausführung von Microservicesanwen
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452253"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
@@ -20,7 +20,7 @@ Dieser Artikel ist kein Leitfaden für die Sicherheit von Microservices (es sind
 ## <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung
 Es ist häufig erforderlich, die Verwendung von Ressourcen und APIs, die von einem Dienst verfügbar gemacht werden, auf bestimmte vertrauenswürdige Benutzer oder Clients einzuschränken. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Autorisierung ist der Vorgang, durch den APIs oder Dienste einigen authentifizierten Benutzern, aber nicht allen zur Verfügung gestellt werden.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 Der erste Schritt, Entscheidungen zur Vertrauenswürdigkeit auf API-Ebene zu treffen, ist die Authentifizierung. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Die Authentifizierung wird in Microserviceszenarien in der Regel zentral vorgenommen. Wenn Sie ein API-Gateway verwenden, können Sie [die Authentifizierung an das Gateway auslagern](/azure/architecture/patterns/gateway-offloading). Wenn Sie diesen Ansatz verwenden, stellen Sie sicher, dass die einzelnen Dienste nicht direkt (ohne das API-Gateway) erreicht werden können, es sei denn, es ist zusätzliche Sicherheit für die Authentifizierung von Nachrichten vorhanden, und zwar unabhängig davon, ob sie vom Gateway stammen oder nicht.
 
 Wenn auf Dienste direkt zugegriffen werden kann, kann ein Authentifizierungsdienst wie Azure Active Directory oder ein dedizierter Authentifizierungsmicroservice verwendet werden, der als Sicherheitstokendienst (Security Token Service, STS) fungiert, um Benutzer zu authentifizieren. Vertrauensentscheidungen werden zwischen Diensten mit Sicherheitstoken oder Cookies geteilt. 

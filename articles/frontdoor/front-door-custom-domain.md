@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb9e369bbba72cd3a1dd7fcc864e2845e3a979e9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5ffa85a2a681bfd064bfeade77d9ae7b85b1f723
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184634"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471760"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
-In diesem Tutorial erfahren Sie, wie Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzufügen. Wenn Sie Azure Front Door Service zur Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in der Endbenutzeranforderung sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
+In diesem Tutorial erfahren Sie, wie Sie Ihrer Azure Front Door Service-Konfiguration eine benutzerdefinierte Domäne hinzufügen. Wenn Sie Azure Front Door für die Anwendungsbereitstellung verwenden, ist eine benutzerdefinierte Domäne erforderlich, sofern Ihr eigener Domänenname in der Endbenutzeranforderung sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein.
 
 Nachdem Sie eine Azure Front Door Service-Konfiguration erstellt haben, wird der Front-End-Standardhost (eine Unterdomäne von `azurefd.net`) standardmäßig in die URL für die Übermittlung von Azure Front Door Service-Inhalten von Ihrem Back-End eingeschlossen (z. B. „https:\//contoso.azurefd.net/activeusers.htm“). Zur Vereinfachung bietet Azure Front Door Service Ihnen die Möglichkeit, dem Standardhost eine benutzerdefinierte Domäne zuzuordnen. Bei Verwendung dieser Option stellen Sie Ihre Inhalte mit einer benutzerdefinierten Domäne in Ihrer URL bereit und nicht über einen Domänennamen im Besitz von Azure Front Door Service (z. B. „https:\//www.contoso.com/photo.png“). 
 
@@ -31,6 +31,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Überprüfen der benutzerdefinierten Domäne
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> Für Front Door werden benutzerdefinierte Domänen mit [Punycode](https://en.wikipedia.org/wiki/Punycode)-Zeichen **nicht** unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,14 +46,14 @@ Wenn Sie Azure zum Hosten Ihrer [DNS-Domänen](https://docs.microsoft.com/azure/
 
 ## <a name="create-a-cname-dns-record"></a>Erstellen eines CNAME-DNS-Eintrags
 
-Bevor Sie eine benutzerdefinierte Domäne mit Ihrer Azure Front Door Service-Konfiguration verwenden können, müssen Sie zunächst einen kanonischen Namenseintrag (CNAME) bei Ihrem Domänenanbieter erstellen, der auf den Front-End-Standardhost von Azure Front Door Service verweist (z. B. „contoso.azurefd.net“). Ein CNAME-Eintrag ist eine Art von DNS-Eintrag, mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird. Für Azure Front Door Service ist der Quelldomänenname Ihr benutzerdefinierter Domänenname und der Zieldomänenname der Name Ihres Azure Front Door Service-Standardhosts. Nachdem der von Ihnen erstellte CNAME-Eintrag von Azure Front Door Service überprüft wurde, wird der für die benutzerdefinierte Quelldomäne (z. B. „www\.contoso.com“) bestimmte Datenverkehr an den angegebenen Ziel-Front-End-Standardhost von Azure Front Door Service geleitet (z. B. „contoso.azurefd.net“). 
+Bevor Sie eine benutzerdefinierte Domäne mit Ihrer Azure Front Door Service-Konfiguration verwenden können, müssen Sie zunächst einen kanonischen Namenseintrag (CNAME) bei Ihrem Domänenanbieter erstellen, der auf den Front-End-Standardhost von Azure Front Door Service verweist (z. B. „contoso.azurefd.net“). Ein CNAME-Eintrag ist eine Art von DNS-Eintrag, mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird. Für Azure Front Door ist der Quelldomänenname Ihr benutzerdefinierter Domänenname und der Zieldomänenname der Name Ihres Azure Front Door-Standardhosts. Nachdem der von Ihnen erstellte CNAME-Eintrag von Azure Front Door Service überprüft wurde, wird der für die benutzerdefinierte Quelldomäne (z. B. „www\.contoso.com“) bestimmte Datenverkehr an den angegebenen Ziel-Front-End-Standardhost von Azure Front Door Service geleitet (z. B. „contoso.azurefd.net“). 
 
-Eine benutzerdefinierte Domäne und die dazugehörige Unterdomäne können jeweils nur mit einer Azure Front Door Service-Konfiguration verknüpft werden. Sie können jedoch unterschiedliche Unterdomänen derselben benutzerdefinierten Domäne für unterschiedliche Azure Front Door Service-Konfigurationen verwenden, indem Sie mehrere CNAME-Einträge erstellen. Außerdem können Sie eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen derselben Azure Front Door Service-Konfiguration zuordnen.
+Eine benutzerdefinierte Domäne und die zugehörige Unterdomäne können jeweils nur mit einer Azure Front Door-Konfiguration verknüpft werden. Sie können aber unterschiedliche Unterdomänen derselben benutzerdefinierten Domäne für unterschiedliche Azure Front Door-Konfigurationen verwenden, indem Sie mehrere CNAME-Einträge erstellen. Außerdem können Sie eine benutzerdefinierte Domäne mit unterschiedlichen Unterdomänen derselben Azure Front Door-Konfiguration zuordnen.
 
 
-## <a name="map-the-temporary-afdverify-sub-domain"></a>Zuordnen der temporären Unterdomäne „afdverify“
+## <a name="map-the-temporary-afdverify-subdomain"></a>Zuordnen der temporären Unterdomäne „afdverify“
 
-Es müssen bestimmte Aspekte berücksichtigt werden, wenn Sie eine vorhandene Domäne zuordnen, die sich in der Produktion befindet. Während Sie Ihre benutzerdefinierte Domäne im Azure-Portal registrieren, kann es für die Domäne zu einer kurzen Ausfallzeit kommen. Ordnen Sie Ihre benutzerdefinierte Domäne zuerst Ihrem Azure Front Door Service-Front-End-Standardhost mit der Azure-Unterdomäne „afdverify“ zu, um eine temporäre CNAME-Zuordnung zu erstellen und so eine Unterbrechung des Webdatenverkehrs zu verhindern. Mit dieser Methode können Benutzer ohne Unterbrechung auf Ihre Domäne zugreifen, während die DNS-Zuordnung durchgeführt wird.
+Es müssen bestimmte Aspekte berücksichtigt werden, wenn Sie eine vorhandene Domäne zuordnen, die sich in der Produktion befindet. Während Sie Ihre benutzerdefinierte Domäne im Azure-Portal registrieren, kann es für die Domäne zu einer kurzen Ausfallzeit kommen. Ordnen Sie Ihre benutzerdefinierte Domäne zuerst Ihrem Azure Front Door-Front-End-Standardhost mit der Azure-Unterdomäne „afdverify“ zu, um eine temporäre CNAME-Zuordnung zu erstellen und so eine Unterbrechung des Webdatenverkehrs zu verhindern. Mit dieser Methode können Benutzer ohne Unterbrechung auf Ihre Domäne zugreifen, während die DNS-Zuordnung durchgeführt wird.
 
 Falls Sie Ihre benutzerdefinierte Domäne zum ersten Mal verwenden und kein Produktionsdatenverkehr in der Domäne stattfindet, können Sie die benutzerdefinierte Domäne auch direkt Ihrer Azure Front Door Service-Konfiguration zuordnen. Fahren Sie mit [Zuordnen der permanenten benutzerdefinierten Domäne](#map-the-permanent-custom-domain) fort.
 
@@ -64,11 +67,11 @@ So erstellen Sie einen CNAME-Eintrag mit der Unterdomäne „afdverify“:
 
     | `Source`                    | type  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify. www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne „afdverify“ im folgenden Format ein: afdverify. _&lt;Name der benutzerdefinierten Domäne&gt;_ . Beispiel: afdverify.www.contoso.com.
+    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne einschließlich der Unterdomäne „afdverify“ im folgenden Format ein: afdverify. _&lt;Name der benutzerdefinierten Domäne&gt;_ . Beispiel: afdverify. www.contoso.com.
 
-    - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
+    - Typ: Geben Sie *CNAME* ein.
 
     - Ziel: Geben Sie Ihren Azure Front Door Service-Front-End-Standardhost einschließlich der Unterdomäne „afdverify“ im folgenden Format ein: afdverify. _&lt;Endpunktname&gt;_ .azurefd.net. Beispiel: afdverify.contoso.azurefd.net.
 
@@ -86,13 +89,13 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 5. Füllen Sie für den CNAME-Eintrag die folgenden Felder aus:
 
-    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME*.
 
-    - Host: Geben Sie die gewünschte Unterdomäne Ihrer benutzerdefinierten Domäne ein (einschließlich des Unterdomänennamens „afdverify“). Beispiel: afdverify.www.
+    - Host: Geben Sie die gewünschte Unterdomäne Ihrer benutzerdefinierten Domäne ein (einschließlich des Unterdomänennamens „afdverify“). Beispiel: afdverify. www.
 
     - Points to (Verweist auf): Geben Sie den Hostnamen Ihres Azure Front Door Service-Front-End-Standardhosts ein (einschließlich des Unterdomänennamens „afdverify“). Beispiel: afdverify.contoso.azurefd.net. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Lassen Sie die Auswahl von *Eine Stunde* unverändert.
 
 6. Wählen Sie **Speichern** aus.
  
@@ -118,7 +121,7 @@ Nachdem Sie Ihre benutzerdefinierte Domäne registriert haben, können Sie sie I
    Azure überprüft, ob der CNAME-Eintrag für den eingegebenen Namen der benutzerdefinierten Domäne vorhanden ist. Wenn der CNAME-Eintrag korrekt ist, wird Ihre benutzerdefinierte Domäne überprüft.
 
 >[!WARNING]
-> Sie **müssen** sicherstellen, dass jedem Front-End-Host (einschließlich benutzerdefinierter Domänen) in Ihrer Azure Front Door Service-Konfiguration eine Routingregel mit einem Standardpfad („/\*“) zugeordnet ist. Für alle Ihrer Routingregeln muss mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad („/\*“) definiert sein. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
+> Sie **müssen** sicherstellen, dass jedem Front-End-Host (einschließlich benutzerdefinierter Domänen) in Ihrer Azure Front Door Service-Konfiguration eine Routingregel mit einem Standardpfad („/\*“) zugeordnet ist. Das bedeutet, für alle Ihre Routingregeln muss mindestens eine Routingregel für jeden Ihrer Front-End-Hosts unter dem Standardpfad („/\*“) definiert sein. Andernfalls wird der Datenverkehr Ihrer Endbenutzer möglicherweise nicht richtig weitergeleitet.
 
 ## <a name="verify-the-custom-domain"></a>Überprüfen der benutzerdefinierten Domäne
 
@@ -145,7 +148,7 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (z. B. „www\.contoso.com“).
 
-   - Geben Sie Folgendes ein:  Geben Sie *CNAME* ein.
+   - Typ: Geben Sie *CNAME* ein.
 
    - Ziel: Geben Sie Ihren Azure Front Door Service-Front-End-Standardhost ein. Der Host muss im folgenden Format angegeben werden: _&lt;hostname&gt;_ .azurefd.net. Beispiel: contoso.azurefd.net.
 
@@ -167,13 +170,13 @@ Für die Domänenregistrierungsstelle GoDaddy gilt beispielsweise folgende Vorge
 
 5. Füllen Sie die Felder für den CNAME-Eintrag aus:
 
-    - Geben Sie Folgendes ein:  Übernehmen Sie *CNAME*.
+    - Typ: Übernehmen Sie *CNAME*.
 
     - Host: Geben Sie die Unterdomäne der gewünschten benutzerdefinierten Domäne ein. Beispiel: „www“ oder „profile“.
 
     - Points to (Verweist auf): Geben Sie den Namen des Standardhosts Ihrer Azure Front Door Service-Konfiguration ein. Beispiel: contoso.azurefd.net. 
 
-    - Gültigkeitsdauer: Übernehmen Sie *1 Stunde*.
+    - Gültigkeitsdauer: Lassen Sie die Auswahl von *Eine Stunde* unverändert.
 
 6. Wählen Sie **Speichern** aus.
  

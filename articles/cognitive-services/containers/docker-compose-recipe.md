@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037519"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Verwenden von Docker Compose zum Bereitstellen mehrerer Container
@@ -29,7 +29,7 @@ Es kann hilfreich sein, mehrere Containerimages auf nur einem Hostcomputer zu or
 
 Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt werden:
 
-* Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * [Docker-Engine](https://www.docker.com/products/docker-engine). Vergewissern Sie sich, dass die Docker-CLI in einem Konsolenfenster funktioniert.
 * Eine Azure-Ressource mit dem korrekten Tarif. Für diesen Container können nur die folgenden Tarife genutzt werden:
   * Ressource **Maschinelles Sehen** nur mit F0- oder Standard-Tarif.

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Upgrade für die Version oder Konfigurati
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451821"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade und Update von eigenständigen Service Fabric-Clustern

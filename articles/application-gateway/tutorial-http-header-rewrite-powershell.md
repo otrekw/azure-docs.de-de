@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173714"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers
 
-Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](rewrite-http-headers.md) zu konfigurieren.
+Sie können Azure PowerShell verwenden, wenn Sie das neue [zonenredundante Anwendungs-SKU-Gateway mit automatischer Skalierung](rewrite-http-headers.md) erstellen, um [Regeln zum erneuten Generieren einer HTTP-Anforderung und eines Antwort-Headers](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) zu konfigurieren.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -30,7 +30,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen des Anwendungsgateways
 > * Testen des Anwendungsgateways
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73961425"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover
@@ -22,8 +22,8 @@ Nach dem Failover von Hyper-V-VMs in VMM-Clouds (System Center Virtual Machine M
 
 Nach einem Failover gibt es mehrere Möglichkeiten, die IP-Adressierung für virtuelle Replikatcomputer zu behandeln: 
 
-- **Beibehalten derselben IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
-- **Verwenden einer anderen IP-Adresse nach einem Failover**: In diesem Szenario erhält die VM nach einem Failover eine neue IP-Adresse. 
+- **Beibehalten der gleichen IP-Adresse nach einem Failover**: In diesem Szenario besitzt der replizierte virtuelle Computer die gleiche IP-Adresse wie der primäre virtuelle Computer. Dies vereinfacht netzwerkbezogene Probleme nach dem Failover, erfordert jedoch einige Infrastrukturarbeiten.
+- **Verwenden einer anderen IP-Adresse nach dem Failover**: In diesem Szenario erhält der virtuelle Computer nach einem Failover eine neue IP-Adresse. 
  
 
 ## <a name="retain-the-ip-address"></a>Beibehalten der IP-Adresse

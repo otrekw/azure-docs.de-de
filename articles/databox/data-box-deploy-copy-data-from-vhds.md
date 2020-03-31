@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 965c768df9138d850c2ac9f88e3797dcc54fa3fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471226"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501861"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box zum Importieren von Daten als verwaltete Datenträger in Azure
 
@@ -23,10 +23,10 @@ In diesem Tutorial erfahren Sie, wie Sie die Azure Data Box verwenden, um Ihre l
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Überprüfen der Voraussetzungen
 > * Herstellen einer Verbindung mit der Data Box
 > * Kopieren von Daten auf die Data Box
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,6 +39,8 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
     - Unterstützte Größen für verwaltete Datenträger und [Größenbeschränkungen für das Azure-Objekt](data-box-limits.md#azure-object-size-limits)
     - [Einführung in verwaltete Azure-Datenträger](/azure/virtual-machines/windows/managed-disks-overview) 
+
+5. Sie haben eine Kopie der Quelldaten aufbewahrt, bis Sie bestätigt haben, dass Ihre Daten von Data Box in Azure Storage übertragen wurden.
 
 ## <a name="connect-to-data-box"></a>Herstellen einer Verbindung mit der Data Box
 
@@ -93,7 +95,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
     ```
     C:\>net use \\169.254.250.200\mydbmdrgl_MDisk /u:mdisk
-    Enter the password for ‘mdisk’ to connect to '169.254.250.200':
+    Enter the password for 'mdisk' to connect to '169.254.250.200':
     The command completed successfully.
     C: \>
     ```

@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370473"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
 Sie können einem Blob-Dienstendpunkt oder einem Endpunkt einer [statischen Website](storage-blob-static-website.md) eine benutzerdefinierte Domäne zuordnen. 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Diese Zuordnung funktioniert nur für Unterdomänen (z. B. `www.contoso.com`). Wenn Ihr Webendpunkt für die Stammdomäne (z. B. `contoso.com`) verfügbar sein soll, müssen Sie Azure CDN verwenden. Eine entsprechende Anleitung finden Sie im Abschnitt [Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS](#enable-https) in diesem Artikel. Weil Sie in diesem Abschnitt dieses Artikels die Stammdomäne Ihrer benutzerdefinierten Domäne aktivieren, ist der Schritt innerhalb dieses Abschnitts zum Aktivieren von HTTPS optional. 
@@ -231,7 +233,7 @@ Sie können beispielsweise den folgenden URI verwenden, um auf ein Webformular i
 
 Wenn Sie die Zuordnung einer benutzerdefinierten Domäne entfernen möchten, müssen Sie die Registrierung der benutzerdefinierten Domäne aufheben. Wenden Sie eines der folgenden Verfahren an.
 
-#### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie zum Entfernen der Einstellung für die benutzerdefinierte Domäne die folgenden Schritte aus:
 
@@ -246,7 +248,7 @@ Führen Sie zum Entfernen der Einstellung für die benutzerdefinierte Domäne di
 
 Nachdem die benutzerdefinierte Domäne erfolgreich entfernt wurde, wird in einer Portalbenachrichtigung angezeigt, dass Ihr Speicherkonto erfolgreich aktualisiert wurde.
 
-#### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Verwenden Sie den CLI-Befehl [az storage account update](https://docs.microsoft.com/cli/azure/storage/account), und geben Sie eine leere Zeichenfolge (`""`) als Wert für das `--custom-domain`-Argument an, um die Registrierung einer benutzerdefinierten Domäne zu entfernen.
 
@@ -268,7 +270,7 @@ Verwenden Sie den CLI-Befehl [az storage account update](https://docs.microsoft.
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

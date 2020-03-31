@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: diberry
 ms.openlocfilehash: f292fe5d658133c670c2813f2133492663493257
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383692"
 ---
 Um die Vorteile von [zerlegbaren Konzepten](../luis-concept-model.md#v3-authoring-model-decomposition) zu nutzen, beginnen Sie mit der durch maschinelles Lernen erworbenen Entität. Eine Schrittanleitung zum Erstellen dieser Art von Entität, einschließlich Beispielen, finden Sie in diesem [Tutorial zur durch maschinelles Lernen erworbenen Entität](../tutorial-machine-learned-entity.md):

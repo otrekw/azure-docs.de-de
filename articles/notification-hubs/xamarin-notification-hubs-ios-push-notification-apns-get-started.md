@@ -1,5 +1,5 @@
 ---
-title: Senden von Pushbenachrichtigungen an Xamarin iOS mit Azure Notification Hubs | Microsoft-Dokumentation
+title: Senden von Pushbenachrichtigungen an Xamarin mit Azure Notification Hubs | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs eine Pushbenachrichtigung an eine Xamarin.iOS-Anwendung senden.
 services: notification-hubs
 keywords: iOS-Pushbenachrichtigungen,Pushnachrichten,Pushbenachrichtigungen,Pushnachricht
@@ -18,12 +18,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: e693d771d9a4726a1a9d698b5b7ed61d19197bdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07417427385806e61db0d7d83624d923e92eb693
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895032"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127007"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.iOS-Apps mit Azure Notification Hubs
 
@@ -206,7 +206,7 @@ Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notif
 
 ## <a name="send-test-push-notifications"></a>Senden von Test-Pushbenachrichtigungen
 
-Mit der Option *Testsendevorgang* im [Azure-Portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
+Mit der Option *Testsendevorgang* im [Azure portal] können Sie den Empfang von Benachrichtigungen in Ihrer App testen. Diese Option sendet zu Testzwecken eine Pushbenachrichtigung an Ihr Gerät.
 
 ![Azure-Portal – Testsendung][30]
 
@@ -238,4 +238,4 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an alle iOS-Geräte ges
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

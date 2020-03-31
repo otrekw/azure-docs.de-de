@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1f0cc1d63f8560399d1d71c8d010c37bd2c5e387
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241105"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Erstellen eines routenbasierten VPN-Gateways mithilfe von CLI
 
@@ -29,15 +29,15 @@ Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden m
 Erstellen Sie mit dem Befehl [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="vnet"></a>Erstellen eines virtuellen Netzwerks
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>Erstellen eines virtuellen Netzwerks
 
 Erstellen Sie mit dem Befehl [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen **VNet1** am Standort **USA, Osten** erstellt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az network vnet create \
   -n VNet1 \
   -g TestRG1 \
@@ -47,11 +47,11 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>Hinzufügen eines Gatewaysubnetzes
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Hinzufügen eines Gatewaysubnetzes
 
 Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Verwenden Sie die folgenden Beispiele, um ein Gatewaysubnetz hinzufügen:
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
@@ -59,7 +59,7 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>Anfordern einer öffentlichen IP-Adresse
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Anfordern einer öffentlichen IP-Adresse
 
 Ein VPN-Gateway muss über eine dynamisch zugewiesene öffentliche IP-Adresse verfügen. Die öffentliche IP-Adresse wird dem VPN-Gateway zugeordnet, das Sie für Ihr virtuelles Netzwerk erstellen. Fordern Sie gemäß des folgenden Beispiels eine öffentliche IP-Adresse an:
 
@@ -70,7 +70,7 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>Erstellen des VPN-Gateways
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Erstellen des VPN-Gateways
 
 Erstellen Sie das VPN-Gateway mit dem Befehl [az network vnet-gateway create](/cli/azure/group).
 
@@ -91,7 +91,7 @@ az network vnet-gateway create \
 
 Das Erstellen eines VPN-Gateways kann 45 Minuten oder länger dauern.
 
-## <a name="viewgw"></a>Anzeigen des VPN-Gateways
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>Anzeigen des VPN-Gateways
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -101,7 +101,7 @@ az network vnet-gateway show \
 
 Die Antwort sieht wie folgt aus:
 
-```
+```output
 {
   "activeActive": false,
   "bgpSettings": null,
@@ -159,7 +159,7 @@ Der dem Feld **ipAddress** zugeordnete Wert ist die öffentliche IP-Adresse Ihre
 
 Beispielantwort:
 
-```
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"a12d4d03-b27a-46cc-b222-8d9364b8166a\"",
@@ -170,6 +170,7 @@ Beispielantwort:
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group). Damit löschen Sie die Ressourcengruppe mit allen enthaltenen Ressourcen.

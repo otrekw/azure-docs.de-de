@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: de112ff441bb53a0b3bc7f4ffa4456f1c241682c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510319"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
 In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastion ausführen.
 
-## <a name="nsg"></a>Fehler beim Erstellen einer NSG im AzureBastionSubnet
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Fehler beim Erstellen einer NSG im AzureBastionSubnet
 
 **F:** Beim Versuch, eine NSG im Azure Bastion-Subnetz zu erstellen, wird ein mit dem folgenden vergleichbarer Fehler angezeigt: *„Die Netzwerksicherheitsgruppe <NSG name> verfügt nicht über die erforderlichen Regeln für das Azure Bastion-Subnetz ‚AzureBastionSubnet‘“* .
 
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastio
 Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
 Weitere Informationen finden Sie im [NSG-Leitfaden für Azure Bastion](bastion-nsg.md).
 
-## <a name="sshkey"></a>Der SSH-Schlüssel kann nicht mit Azure Bastion verwendet werden.
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Der SSH-Schlüssel kann nicht mit Azure Bastion verwendet werden.
 
 **F:** Wenn ich versuche, meine SSH-Schlüsseldatei zu durchsuchen, wird ein mit dem folgenden vergleichbarer Fehler angezeigt: *„Der private SSH-Schlüssel muss mit ‚-----BEGIN RSA PRIVATE KEY-----‘ beginnen und mit ‚-----END RSA PRIVATE KEY-----‘ enden.“*
 
@@ -67,19 +67,19 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="domain"></a>Anmeldung bei einem virtuellen, in die Domäne eingebundenen Windows-Computer nicht möglich
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>Anmeldung bei einem virtuellen, in die Domäne eingebundenen Windows-Computer nicht möglich
 
 **F:** Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen, der in die Domäne eingebunden ist.
 
 **A:** Azure Bastion unterstützt die Anmeldung bei virtuellen, in die Domäne eingebundenen Computern nur für Domänenanmeldungen, die auf dem Benutzernamen und Kennwort basieren. Wenn Sie die Domänenanmeldeinformationen im Azure-Portal angeben, verwenden Sie das UPN-Format (username@domain) anstelle des *domain\username*-Formats, um sich anzumelden. Dies wird für in die Domäne oder in Hybridumgebungen eingebundene virtuelle Computer unterstützt (die sowohl in die Domäne als auch in Azure AD eingebunden sind). Virtuelle Computer, die nur in Azure AD eingebunden sind, werden nicht unterstützt.
 
-## <a name="filetransfer"></a>Probleme bei der Dateiübertragung
+## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Probleme bei der Dateiübertragung
 
 **F:** Wird die Dateiübertragung mit Azure Bastion unterstützt?
 
 **A:** Die Dateiübertragung wird zurzeit nicht unterstützt. Wir arbeiten daran, die Unterstützung zu implementieren.
 
-## <a name="blackscreen"></a>Schwarzer Bildschirm im Azure-Portal
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Schwarzer Bildschirm im Azure-Portal
 
 **F:** Wenn ich versuche, eine Verbindung mithilfe von Azure Bastion herzustellen, erhalte ich einen schwarzen Bildschirm im Azure-Portal.
 

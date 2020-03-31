@@ -9,14 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118544"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052432"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Text, Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Texte aus Formularen werden erfasst und strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Die Formularerkennung besteht aus benutzerdefinierten Modellen, dem vordefinierten Belegmodell und der Layout-API. Sie können Formularerkennungsmodelle mithilfe einer REST-API aufrufen, um die Komplexität zu reduzieren und sie in Ihren Workflow oder Ihre Anwendung zu integrieren.
 
@@ -49,7 +51,7 @@ Die Formularerkennung umfasst auch ein Modell zum Lesen englischsprachiger Verka
 
 ## <a name="layout-api"></a>Layout-API
 
-Die Formularerkennung kann auch Text- und Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) mithilfe hochauflösender optischer Zeichenerkennung (Optical Character Recognition, OCR) extrahieren. 
+Die Formularerkennung kann auch Text- und Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) mithilfe hochauflösender optischer Zeichenerkennung (Optical Character Recognition, OCR) extrahieren.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -59,9 +61,9 @@ Befolgen Sie einen Schnellstart zum Extrahieren von Daten aus Ihren Formularen. 
   * Trainieren ohne Beschriftungen
     * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL](quickstarts/curl-train-extract.md)
     * [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python](quickstarts/python-train-extract.md)
-  * Trainieren mit Beschriftungen 
+  * Trainieren mit Beschriftungen
     * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](quickstarts/label-tool.md)
-    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python](quickstarts/python-labeled-data.md) 
+    * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mit der REST-API und Python](quickstarts/python-labeled-data.md)
 * Vordefinierte Belege: Extrahieren von Daten aus USA-Verkaufsbelegen
   * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von cURL](quickstarts/curl-receipts.md)
   * [Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe von Python](quickstarts/python-receipts.md)
@@ -92,7 +94,7 @@ Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
 
 * Als Format muss JPEG, PNG, BMP, PDF (Text oder gescannt) oder TIFF verwendet werden.
 * Die Dateigröße muss weniger als 20 MB betragen.
-* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen. 
+* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
 * Die Abmessungen bei PDFs dürfen maximal 17 x 17 Zoll betragen. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.
 * Bei PDF- und TIFF-Dateien werden nur die ersten 200 Seiten verarbeitet. (Bei einem Abonnement im Free-Tarif werden nur die ersten beiden Seiten verarbeitet.)
 

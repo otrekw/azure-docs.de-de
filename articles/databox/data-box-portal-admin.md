@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229782"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Verwalten von Azure Data Box und Azure Data Box Heavy über das Azure-Portal
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um einen Auftrag zu klonen.
 
     ![Klonen eines Auftrags (1)](media/data-box-portal-admin/clone-order1.png)
 
-2.  Die Auftragsdetails bleiben unverändert. Als Auftragsname wird der Name des ursprünglichen Auftrags mit dem Zusatz *-Clone* verwendet. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzinformationen gelesen haben. Klicken Sie auf **Create**.
+2.  Die Auftragsdetails bleiben unverändert. Als Auftragsname wird der Name des ursprünglichen Auftrags mit dem Zusatz *-Clone* verwendet. Aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzinformationen gelesen haben. Klicken Sie auf **Erstellen**.
 
 Der Klon wird in wenigen Minuten erstellt und im Portal angezeigt.
 
@@ -210,7 +210,7 @@ Sobald sich der Gerätestatus im Portal ändert, werden Sie per E-Mail benachric
 |Mit Fehlern abgeschlossen| Die Datenkopie wurde abgeschlossen, aber es sind Fehler beim Kopiervorgang aufgetreten. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Fehlern abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
 |Abgeschlossen mit Warnungen| Das Kopieren der Daten wurde abgeschlossen, Ihre Daten wurden jedoch geändert. Die Daten hatten unkritische Blob- oder Dateinamensfehler, die durch Ändern der Datei- oder Blobnamen behoben wurden. <br> Überprüfen Sie im Azure-Portal im angegebenen Pfad die Kopierprotokolle. Beachten Sie sich die Änderungen in Ihren Daten. Siehe [Beispiele für Kopierprotokolle, wenn der Upload mit Warnungen abgeschlossen wurde](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen. Wenn der Auftrag nicht binnen 90 Tagen erfüllt werden kann, wird er storniert, und Sie werden benachrichtigt.     |
-|Bereinigen | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsverlauf im Azure-Portal zum Download zur Verfügung steht.|
+|Bereinigung | Die Daten auf den Datenträgern des Geräts werden gelöscht. Die Gerätebereinigung gilt als abgeschlossen, wenn der Auftragsverlauf im Azure-Portal zum Download zur Verfügung steht.|
 
 
 

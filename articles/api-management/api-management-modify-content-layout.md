@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430634"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Ändern des Inhalts und Layouts von Seiten im Entwicklerportal in Azure API Management
@@ -30,7 +30,7 @@ Es gibt drei grundlegende Möglichkeiten, das Entwicklerportal in Azure API Mana
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>Struktur von Seiten im Entwicklerportal
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>Struktur von Seiten im Entwicklerportal
 
 Das Entwicklerportal basiert auf einem Content Management-System. Das Layout jeder Seite wird basierend auf einer Gruppe von kleinen Seitenelementen erstellt, die als „Widgets“ bezeichnet werden:
 
@@ -42,7 +42,7 @@ Alle Widgets können bearbeitet werden.
 
 Bei der alltäglichen Bearbeitung von Seiten wird häufig nur das Inhaltswidget geändert, das unterschiedliche Inhalte für die einzelnen Seiten enthält.
 
-## <a name="modify-layout-widget"> </a>Ändern des Inhalts eines Layoutwidgets
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>Ändern des Inhalts eines Layoutwidgets
 
 Das Entwicklerportal kann über das Azure-Portal aufgerufen werden.
 
@@ -55,7 +55,7 @@ Das Entwicklerportal kann über das Azure-Portal aufgerufen werden.
 
 Die neue Kopfzeile wird jetzt auf allen Seiten im Entwicklerportal angezeigt.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 * [Aktualisieren der Stile, die für Seitenelemente im gesamten Entwicklerportal verwendet werden][customize-styles]
 * [Ändern der Vorlagen, die für vom Portal generierte Seiten verwendet werden][portal-templates] (beispielsweise API-Dokumente, Produkte, Benutzerauthentifizierung usw.)
 

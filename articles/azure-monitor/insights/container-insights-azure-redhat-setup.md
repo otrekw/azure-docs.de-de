@@ -4,11 +4,11 @@ description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines 
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234558"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container
 

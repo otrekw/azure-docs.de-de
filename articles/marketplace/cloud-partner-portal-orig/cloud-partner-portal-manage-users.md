@@ -1,20 +1,18 @@
 ---
 title: Verwalten von Benutzern im Cloud-Partnerportal | Azure Marketplace
 description: Verwalten von Benutzern im Cloudpartnerportal
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280217"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>Verwalten von Benutzern im Cloudpartnerportal
 ======================================
@@ -38,20 +36,20 @@ Führen Sie zum **Hinzufügen von Benutzern und Zuweisen von Rollen** für die V
 
 Sie können den neuen Benutzer als „Besitzer“ oder „Mitwirkender“ hinzufügen.
 
-**E-Mail**: Fügen Sie die E-Mail-Adressen der Teamkollegen ein, die an der Angebotsveröffentlichung mitarbeiten. Es werden Microsoft-Konten (Outlook, Hotmail und Live) und Organisations-IDs unterstützt.
+**E-Mail:** Fügen Sie die E-Mail-Adressen der Teamkollegen ein, die an der Angebotsveröffentlichung mitarbeiten. Es werden Microsoft-Konten (Outlook, Hotmail und Live) und Organisations-IDs unterstützt.
 
 o Fügen Sie einen Alias oder eine Sicherheitsgruppe für die Team- oder Gruppen-E-Mail für den Fall hinzu, dass die Person, die an dem Angebot arbeitet, das Unternehmen verlässt.
 
 o Stellen Sie sicher, dass die im Cloud-Partnerportal angegebenen E-Mail-IDs für jegliche Kommunikation von Microsoft überwacht werden.
 
-**Rolle**: In der folgenden Tabelle finden Sie den entsprechenden Rollentyp für Benutzer.
+**Rolle:** In der folgenden Tabelle finden Sie den entsprechenden Rollentyp für Benutzer.
 
 ![Rolle zuweisen](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
 ![Rollenebene](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
 
 Derzeit können nur Besitzer auf die Registerkarten „Azure Payouts“ (Azure-Auszahlungen) und „Azure Customer“ (Azure-Kunde) in Insights zugreifen.
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Schritt 4: Wählen Sie den Namen des Herausgebers aus, für den Sie den neuen Benutzer hinzufügen möchten. Klicken Sie dann auf „Hinzufügen“, um das Hinzufügen des Benutzers abzuschließen.
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Schritt 4. Wählen Sie den Namen des Herausgebers aus, für den Sie den neuen Benutzer hinzufügen möchten. Klicken Sie dann auf „Hinzufügen“, um das Hinzufügen des Benutzers abzuschließen.
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]

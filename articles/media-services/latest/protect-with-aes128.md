@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974171"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Tutorial: Verschlüsseln von Videos mit AES-128 und Verwenden des Schlüsselübermittlungsdienstes
@@ -38,7 +38,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 > * Herunterladen des im Artikel beschriebenen Beispiels [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES)
 > * Starten der Verwendung von Media Services-APIs mit dem .NET SDK
 > * Erstellen eines Ausgabemedienobjekts
-> * Erstellen einer Codierungstransformation
+> * Erstellen einer Codierungstransformation.
 > * Übermitteln eines Auftrags
 > * Warten auf den Abschluss des Auftrags
 > * Erstellen einer Richtlinie für Inhaltsschlüssel
@@ -143,7 +143,7 @@ In **ContentKeyPolicy** wird „ContentKeyIdentifierClaim“ verwendet, d. h., d
 
 ## <a name="build-a-dash-streaming-url"></a>Erstellen einer DASH-Streaming-URL
 
-Nachdem der [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **Streaminglocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Bei der ersten Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **Streamingendpunkt** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
+Nachdem der [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **Streaminglocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Beim ersten Erstellen eines Media Services-Kontos weist dieser *standardmäßige* **Streamingendpunkt** den Status „Beendet“ auf. Sie müssen daher **Start** aufrufen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 

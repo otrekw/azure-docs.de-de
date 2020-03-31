@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74791493"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
@@ -79,7 +79,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
       | **Wegpunkt 2** | <*Ende*> | Geben Sie das Ziel Ihrer Route ein. | 
       | **Vermeiden** | Keine | Geben Sie Elemente ein, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. Mögliche Werte finden Sie im Artikel zum [Berechnen einer Route](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimieren** | timeWithTraffic | Wählen Sie einen Parameter zur Optimierung der Route aus, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. In diesem Beispiel wird der „timeWithTraffic“ verwendet. | 
-      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: "Mile" | 
+      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: „Meile“ | 
       | **Travel mode** (Reisemodus) | Driving (Auto) | Geben Sie das Fortbewegungsmittel für die Route ein. In diesem Beispiel wird „Driving“ (Auto) verwendet. | 
       | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
       | **Transit Date-Time Type** (Typ für Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
@@ -88,7 +88,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 1. [Fügen Sie eine Bedingung hinzu](../logic-apps/logic-apps-control-flow-conditional-statement.md), die überprüft, ob die aktuelle Reisezeit mit Verkehr eine angegebene Zeit überschreitet. 
    Führen Sie für dieses Beispiel die folgenden Schritte aus:
 
-   1. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn die Verkehrszeit die angegebene Zeit überschreitet**
+   1. Benennen Sie die Bedingung wie folgt um: **Wenn die Verkehrszeit die angegebene Zeit überschreitet**
 
    1. Klicken Sie in der linken Spalte in das Feld **Wert auswählen**, damit die dynamische Inhaltsliste angezeigt wird. Wählen Sie in der Liste das Feld **Travel Duration Traffic** (Reisedauer (Verkehr)) aus, das in Sekunden angegeben wird. 
 
@@ -179,7 +179,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
 
    ![Bereich hinzugefügt](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung mit dieser Beschreibung um: **Wenn im Bereich ein Fehler auftritt**
+1. Fügen Sie unter dem Bereich eine Bedingung hinzu, die den Status des Bereichs prüft. Benennen Sie die Bedingung wie folgt um: **Wenn im Bereich ein Fehler auftritt**
 
    ![Hinzufügen einer Bedingung zum Überprüfen des Bereichsstatus](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   

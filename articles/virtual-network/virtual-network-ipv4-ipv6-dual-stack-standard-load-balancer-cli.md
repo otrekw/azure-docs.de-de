@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/17/2019
 ms.author: kumud
-ms.openlocfilehash: f182ecc88f6b3362df4f3476a889fe15fb8e22e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa895a294e26b6c74ab72afa3136feac2b2ec986
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240252"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: CLI (Vorschau)
 
@@ -40,17 +40,20 @@ Um die Funktion IPv6 für das virtuelle Azure-Netzwerk zu nutzen, müssen Sie Ih
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Sie können Ihren Registrierungsstatus überprüfen, indem Sie den folgenden Azure CLI-Befehl ausführen:
 
-```azurelci
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Führen Sie im Anschluss an die Registrierung den folgenden Befehl aus:
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
+
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Bevor Sie Ihr virtuelles Dual Stack-Netzwerk erstellen können, müssen Sie eine Ressourcengruppe mit [az group create](/cli/azure/group) erstellen. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *DsResourceGroup01* am Standort *eastus*.
@@ -156,6 +159,7 @@ Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/az
 ```azurecli
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
 ```
+
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. 
@@ -362,6 +366,7 @@ Erstellen Sie den virtuellen Computer *dsVM0* wie folgt:
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
+
 Erstellen Sie den virtuellen Computer *dsVM1* wie folgt:
 
 ```azurecli

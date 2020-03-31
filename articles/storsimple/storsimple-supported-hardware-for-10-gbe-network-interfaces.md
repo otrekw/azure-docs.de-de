@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965016"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
@@ -37,7 +37,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>Kabel
-| S. Nein. | Stellen | Modell |
+| S. Nein. | Make | Modell |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 | 4. |Tripp Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Switches
-| S. Nein. | Stellen | Modell |
+| S. Nein. | Make | Modell |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -54,7 +54,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 ## <a name="list-of-devices-tested-in-the-field"></a>Liste der Geräte, die in der Praxis getestet wurden
 Dieser Abschnitt enthält eine Liste der Geräte, die von StorSimple-Kunden erfolgreich in der Praxis eingesetzt wurden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| Parameter | Wert |
+| Parameter | value |
 | --- | --- |
 | Switch-Fabrikat |Juniper |
 | Switch-Modell |ex4550-32F |
@@ -73,7 +73,7 @@ Mellanox hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Von Mellanox unterstützte Kabel und Module
 Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |Passives Kupferkabel, SFP+, 10 GBit/s (1 m) |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |Passives Kupferkabel, SFP+, 10 GBit/s (2 m) |Arista |
@@ -114,7 +114,7 @@ Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstütz
 ### <a name="switches-supported-by-mellanox"></a>Liste der von Mellanox unterstützten Switches
 Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Make |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733-B21 |HP ProCurve 6120XG Ethernet Blade Switch (10 GbE) |HP |
 | 2. |10 GbE |538113-B21 |HP 10-GbE-Pass-Through-Modul (PTM) |HP |

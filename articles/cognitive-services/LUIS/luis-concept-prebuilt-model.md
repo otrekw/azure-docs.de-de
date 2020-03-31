@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280837"
 ---
 # <a name="prebuilt-models"></a>Vordefinierte Modelle
@@ -26,7 +26,7 @@ Vordefinierte Modelle stellen Domänen, Absichten, Entitäten und Äußerungen b
 
 LUIS bietet drei Typen von vordefinierten Modellen. Jedes Modell kann Ihrer App jederzeit hinzugefügt werden. 
 
-|Modelltyp|Umfang|
+|Modelltyp|Includes|
 |--|--|
 |[Domäne](luis-reference-prebuilt-domains.md)|Absichten, Äußerungen, Entitäten|
 |Absichten|Absichten, Äußerungen|
