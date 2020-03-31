@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74886811"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 ## <a name="overview"></a>Übersicht
-Ein Codierauftrag ist einem (oder mehreren) Eingangsmedienobjekt zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabemedienobjekt erzeugt.  Das Ausgabemedienobjekt enthält Videodaten, Audiodaten, Miniaturansichten usw. Das Ausgabemedienobjekt enthält auch eine Datei mit Metadaten zum Ausgabemedienobjekt. Der Name der XML-Metadatendatei weist das folgende Format auf: &lt;Quelldateiname&gt;_manifest.xml (z.B. BigBuckBunny_manifest.xml).  
+Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten. Beispiele: Codieren einer MP4-Datei in H.264 MP4 Adaptive Bitrate-Sätze, Erstellen einer Miniaturansicht, Erstellen von Überlagerungen. Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabemedienobjekt enthält Videodaten, Audiodaten, Miniaturansichten usw. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Ausgabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: &lt;Quelldateiname&gt;_manifest.xml (z.B. BigBuckBunny_manifest.xml).  
 
 Media Services überprüft die eingegebenen Assets nicht präventiv, um Metadaten zu generieren. Eingabemetadaten werden nur dann als Artefakt generiert, wenn ein Eingabeasset in einem Auftrag verarbeitet wird. Dieses Artefakt wird dann in das Ausgabeasset geschrieben. Zum Generieren von Metadaten für Eingabe- und Ausgabeassets werden verschiedene Tools eingesetzt. Deshalb weicht das Schema der Eingabemetadaten leicht von dem der Ausgabemetadaten ab.
 
@@ -33,68 +33,68 @@ In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf
 
 Sie finden den vollständigen Schemacode und das XML-Beispiel am Ende des Artikels.  
 
-## <a name="AssetFiles"></a> „AssetFiles“-Stammelement
+## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a> „AssetFiles“-Stammelement
 Sammlung von „AssetFile“-Einträgen für den Codierauftrag.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein AssetFile-Element, das Teil der AssetFiles-Sammlung ist. |
 
-## <a name="AssetFile"></a> AssetFile-Element
+## <a name="assetfile-element"></a><a name="AssetFile"></a> AssetFile-Element
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
-### <a name="attributes"></a>Attribute
-| NAME | type | BESCHREIBUNG |
+### <a name="attributes"></a>Attributes
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Der Name der Medienobjektdatei. |
 | **Größe**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:long** |Größe der Assetdatei in Byte |
 | **Duration**<br/><br/> Erforderlich |**xs:duration** |Dauer der Inhaltswiedergabe. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **Sources** |Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen. Weitere Informationen finden Sie unter „Source-Element“. |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Weitere Informationen finden Sie unter „VideoTracks-Element“. |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren. Weitere Informationen finden Sie unter „AudioTracks-Element“. |
 
-## <a name="Sources"></a> „Sources“-Element
+## <a name="sources-element"></a><a name="Sources"></a> „Sources“-Element
 Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter „Source-Element“. |
 
-## <a name="Source"></a> „Source“-Element
+## <a name="source-element"></a><a name="Source"></a> „Source“-Element
 Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
-### <a name="attributes"></a>Attribute
-| NAME | type | BESCHREIBUNG |
+### <a name="attributes"></a>Attributes
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
-## <a name="VideoTracks"></a> VideoTracks-Element
+## <a name="videotracks-element"></a><a name="VideoTracks"></a> VideoTracks-Element
 Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **VideoTracks**-Element stellt eine Sammlung aller Videotitel dar.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Videospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter „VideoTrack-Element“. |
 
-## <a name="VideoTrack"></a> „VideoTrack“-Element
+## <a name="videotrack-element"></a><a name="VideoTrack"></a> „VideoTrack“-Element
 Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
-### <a name="attributes"></a>Attribute
-| NAME | type | BESCHREIBUNG |
+### <a name="attributes"></a>Attributes
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Videospur. **Hinweis:**  Diese **ID** ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **FourCC**<br/><br/> Erforderlich |**xs:string** |Videocodec-FourCC-Code |
@@ -103,30 +103,30 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 | **Width**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Breite des codierten Videos in Pixel |
 | **Height**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Höhe des codierten Videos in Pixel |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Zähler der Videoanzeige |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Nenner der Videoanzeige. |
-| **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:decimal** |Gemessene Videobildfrequenz im Format „.3f“. |
+| **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:double** |Seitenverhältnis-Nenner der Videoanzeige |
+| **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:decimal** |Gemessene Videobildfrequenz im Format „.3f“ |
 | **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:decimal** |Voreingestellte Videobildfrequenz im Format „.3f“. |
 | **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Die durchschnittliche Videobildfrequenz in kBit/s gemäß Berechnung anhand der Medienobjektdatei. Zählt nur die elementare Datenstrom-Nutzlast, ohne den Aufwand für das Packen einzubeziehen. |
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Durchschnittliche Bitrate dieser Videospur entsprechend der Anforderung der Codierungsvoreinstellung in kBit/s. |
-| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximale durchschnittliche GOP-Bitrate für diese Videospur in kBit/s. |
+| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximale durchschnittliche GOP-Bitrate für diese Videospur in KBit/s |
 
-## <a name="AudioTracks"></a> „AudioTracks“-Element
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a> „AudioTracks“-Element
 Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **AudioTracks**-Element stellt eine Sammlung aller Audiotitel dar.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter „AudioTrack-Element“. |
 
-## <a name="AudioTrack"></a> „AudioTrack“-Element
+## <a name="audiotrack-element"></a><a name="AudioTrack"></a> „AudioTrack“-Element
 Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
-### <a name="attributes"></a>Attribute
-| NAME | type | BESCHREIBUNG |
+### <a name="attributes"></a>Attributes
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Audiospur. **Hinweis:**  Dies ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **Codec** |**xs:string** |Codec-Zeichenfolge der Audiospur. |
@@ -134,20 +134,20 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | **Channels**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Anzahl der Audiokanäle. |
 | **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Audiosamplingrate in Stichproben/Sekunde oder Hz |
 | **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Die durchschnittliche Audiobitrate in Bit/s gemäß Berechnung anhand der Medienobjektdatei. Zählt nur die elementare Datenstrom-Nutzlast, ohne den Aufwand für das Packen einzubeziehen. |
-| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Bits pro Sample für den Formattyp „wFormatTag“. |
+| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Bits pro Stichprobe für den Formattyp „wFormatTag“. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter „LoudnessMeteringResultParameters-Element“. |
 
-## <a name="LoudnessMeteringResultParameters"></a> „LoudnessMeteringResultParameters“-Element
+## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a> „LoudnessMeteringResultParameters“-Element
 Parameter für das Messergebnis der Lautheit.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
-### <a name="attributes"></a>Attribute
-| NAME | type | BESCHREIBUNG |
+### <a name="attributes"></a>Attributes
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |Development Kit-Version von **Dolby** Professional Loudness Metering (DPLM). |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Erforderlich |**xs:int** |Über DPLM generierte „DialogNormalization“, bei Festlegung von „LoudnessMetering“ erforderlich. |
@@ -509,7 +509,7 @@ Parameter für das Messergebnis der Lautheit.
 
 
 
-## <a name="xml"></a> XML-Beispiel
+## <a name="xml-example"></a><a name="xml"></a> XML-Beispiel
 
 Es folgt ein XML-Beispiel der Datei mit den Ausgabemetadaten.  
 

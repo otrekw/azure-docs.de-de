@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75772226"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie virtuelle Azure-Computer mit aktivierter
 > Site Recovery unterstützt derzeit ADE mit und ohne Azure Active Directory (AAD) für virtuelle Computer, auf denen Windows- und Linux-Betriebssysteme ausgeführt werden.  Für Computer, auf denen ADE 1.1 (ohne AAD) ausgeführt wird, müssen die virtuellen VMs verwaltete Datenträger verwenden. Virtuelle Computer mit nicht verwalteten Datenträgern werden nicht unterstützt. Wenn Sie von ADE 0.1 (mit AAD) zu 1.1 wechseln, müssen Sie die Replikation deaktivieren und die Replikation für einen virtuellen Computer aktivieren, nachdem Sie 1.1 aktiviert haben.
 
 
-## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
 Site Recovery erfordert, dass der Benutzer über Berechtigungen zum Erstellen des Schlüsseltresors in der Zielregion und zum Kopieren von Schlüsseln aus dem Schlüsseltresor der Quellregion in den Schlüsseltresor der Zielregion verfügt.
 
 Um die Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal aktivieren zu können, muss der Benutzer über die folgenden Berechtigungen für den Schlüsseltresor der **Quellregion und der Zielregion** verfügen.
@@ -133,7 +133,7 @@ Sie können mit einem [Skript](#copy-disk-encryption-keys-to-the-dr-region-by-us
 
 ![Dialogfeld zum Aktualisieren von ADE-Einstellungen](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
-## <a id="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
+## <a name="troubleshoot-key-vault-permission-issues-during--azure-to-azure-vm-replication"></a><a id="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
 
 Azure Site Recovery erfordert mindestens die Leseberechtigung für den Schlüsseltresor der Quellregion und die Schreibberechtigung für den Schlüsseltresor der Zielregion, um das Geheimnis zu lesen und in den Schlüsseltresor der Zielregion zu kopieren. 
 

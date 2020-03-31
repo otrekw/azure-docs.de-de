@@ -1,19 +1,18 @@
 ---
 title: Storefrontdetails für ein Power BI-App-Angebot | Azure Marketplace
 description: Konfigurieren der Felder für „Storefront Details“ für ein Power BI-App-Angebot für den Microsoft AppSource-Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 309b2eb33c594b5233c547e3bf45a49aa3a25678
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817658"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281679"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails) für Power BI-Apps
 
@@ -72,7 +71,7 @@ Sie können die Felder in diesem Abschnitt gemäß der folgenden Tabelle ausfül
 | **Miniaturansicht**                        | Fügen Sie eine Miniaturansicht der App hinzu.  AppSource unterstützt nur das PNG-Format mit einer Auflösung von 1280 × 720 Pixel.   |
 | *Dokumente*                          | Fügen Sie bis zu drei Dokumente hinzu, die in AppSource unter **Weitere Informationen** angezeigt werden.  |
 | **Name**                             | Geben Sie den Namen oder Titel eines Informationsdokuments ein.                              |
-| **Datei**                             | Laden Sie eine PDF-Datei hoch.                             |
+| **File**                             | Laden Sie eine PDF-Datei hoch.                             |
 | *Screenshots\**                      | Fügen Sie bis zu fünf Screenshots hinzu.                        |
 | **Name**                             | Geben Sie einen Namen oder Titel eines Screenshots an.                                       |
 | **Image**                            | Laden Sie einen Screenshot im PNG-Format hoch. Die Auflösung muss 1280 × 720 Pixel betragen.  | 
@@ -110,7 +109,7 @@ Richten Sie im Bereich **Leadverwaltung** Ihr System so ein, dass es die Kundenv
 
 |    Feld               |   Leadzielgruppe                               |
 |------------------------|--------------------------------------            |
-|  **Keine**              | Keine Vertriebsleads erfassen. Dies ist die Standardoption.  |
+|  **None**              | Keine Vertriebsleads erfassen. Dies ist die Standardoption.  |
 | **Azure-Blob (veraltet)** | Geben Sie einen [Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) anhand eines Containernamens und einer Verbindungszeichenfolge an.  Diese Option ist veraltet. Verwenden Sie stattdessen **Azure Table**.  |
 | **Azure-Tabelle**        | Geben Sie einen [Azure Table-Speicher](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) mithilfe einer Verbindungszeichenfolge an.  |
 | **Dynamics CRM Online** | Geben Sie [Dynamics 365](https://dynamics.microsoft.com/) mithilfe einer URL und Authentifizierungsanmeldeinformationen an. |

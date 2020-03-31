@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356693"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235374"
 ---
 # <a name="http-api-reference"></a>HTTP-API-Referenz
 
@@ -18,7 +18,7 @@ Die Durable Functions-Erweiterung macht eine Reihe integrierter HTTP-APIs verfü
 
 Alle HTTP-APIs, die von der Erweiterung implementiert werden, benötigen die folgenden Parameter. Alle Parameter haben den Datentyp `string`.
 
-| Parameter        | Parametertyp  | Beschreibung |
+| Parameter        | Parametertyp  | BESCHREIBUNG |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Abfragezeichenfolge    | Der Name des [Aufgabenhub](durable-functions-task-hubs.md). Wenn er nicht angegeben ist, wird der Name des Aufgabenhub der aktuellen Funktionen-App verwendet. |
 | **`connection`** | Abfragezeichenfolge    | Der **Name** der Verbindungszeichenfolge für das Speicherkonto. Wenn nichts angegeben ist, wird die Standardverbindungszeichenfolge für die Funktionen-App genutzt. |
@@ -54,7 +54,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld              | Parametertyp  | Beschreibung |
+| Feld              | Parametertyp  | BESCHREIBUNG |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL             | Der Name der zu startenden Orchestratorfunktion. |
 | **`instanceId`**   | URL             | Dieser Parameter ist optional. ID der Orchestrierungsinstanz Wenn kein Wert angegeben wird, beginnt die Orchestratorfunktion mit einer zufälligen Instanz-ID. |
@@ -166,7 +166,7 @@ Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 
-| Feld                 | Datentyp | Beschreibung |
+| Feld                 | Datentyp | BESCHREIBUNG |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | Zeichenfolge    | Der Laufzeitstatus der Instanz. Mögliche Werte sind *Running*, *Pending*, *Failed*, *Canceled*, *Terminated* und *Completed*. |
 | **`input`**           | JSON      | Die JSON-Daten, die zum Initialisieren der Instanz verwendet werden. Dieses Feld lautet `null`, wenn der Abfragezeichenfolgenparameter `showInput` auf `false` festgelegt ist.|
@@ -445,7 +445,7 @@ Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
-| Feld                   | Datentyp | Beschreibung |
+| Feld                   | Datentyp | BESCHREIBUNG |
 |-------------------------|-----------|-------------|
 | **`instancesDeleted`**  | integer   | Die Anzahl der gelöschten Instanzen. |
 
@@ -718,7 +718,7 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
 
 Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
 
-| Feld                       | Parametertyp  | Beschreibung |
+| Feld                       | Parametertyp  | BESCHREIBUNG |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL             | Optional. Wenn dieser Parameter angegeben wird, wird die Liste der zurückgegebenen Entitäten anhand der Entitätsnamen gefiltert (dabei wird die Groß-/Kleinschreibung nicht beachtet). |
 | **`fetchState`**            | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn dieser Parameter auf `true` festgelegt wird, wird der Zustand der Entität in die Antwortnutzlast eingefügt. |

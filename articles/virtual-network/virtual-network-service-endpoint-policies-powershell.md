@@ -18,26 +18,26 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78253163"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Verwalten der Datenexfiltration in Azure Storage-Konten mit VNET-Dienstendpunktrichtlinien mithilfe von Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mithilfe von VNET-Dienstendpunktrichtlinien können Sie Zugriffssteuerung auf Azure Storage-Konten innerhalb eines virtuellen Netzwerks über Dienstendpunkte anwenden. Dies ist ein wichtiger Aspekt zum Sichern von Workloads, zum Verwalten der zulässigen Aktionen von Speicherkonten sowie zulässiger Datenexfiltration.
+Mithilfe von VNET-Dienstendpunktrichtlinien können Sie Zugriffssteuerung auf Azure Storage-Konten innerhalb eines virtuellen Netzwerks über Dienstendpunkte anwenden. Dies ist ein wichtiger Aspekt zum Sichern von Workloads und zum Verwalten der zulässigen Speicherkonten sowie der Situationen mit zulässiger Datenexfiltration.
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Erstellen Sie ein virtuelles Netzwerk.
 * Fügen Sie ein Subnetz hinzu, und aktivieren Sie einen Dienstendpunkt für Azure Storage.
 * Erstellen Sie zwei Azure Storage-Konten, und lassen Sie Netzwerkzugriff auf diese Konten aus dem oben erstellten Subnetz zu.
-* Erstellen Sie eine Dienstendpunktrichtlinie, um den Zugriff nur auf eines der Speicherkonten zuzulassen.
-* Stellen Sie einen virtuellen Computer (VM) im Subnetz bereit.
-* Bestätigen Sie den Zugriff auf das zulässige Speicherkonto aus dem Subnetz.
-* Bestätigen Sie, dass der Zugriff auf das unzulässige Speicherkonto aus dem Subnetz verweigert wird.
+* Erstellen einer Dienstendpunkt-Richtlinie zum Zulassen des Zugriffs nur auf eines der Speicherkonten
+* Bereitstellen eines virtuellen Computers im Subnetz
+* Bestätigen des Zugriffs auf das zulässige Speicherkonto aus dem Subnetz
+* Bestätigen der Verweigerung des Zugriffs auf das unzulässige Speicherkonto aus dem Subnetz
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -384,4 +384,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie eine Dienstendpunktrichtlinie über einen Azure Virtual Network-Dienstendpunkt auf Azure Storage angewendet. Sie haben Azure Storage-Konten erstellt und den Netzwerkzugriff auf bestimmte Speicherkonten im Subnetz eines virtuellen Netzwerks eingeschränkt (und somit für andere Konten verweigert). Um mehr über Dienstendpunktrichtlinien zu erfahren, lesen Sie [Dienstendpunktrichtlinien: Übersicht](virtual-network-service-endpoint-policies-overview.md).
+In diesem Artikel haben Sie eine Dienstendpunkt-Richtlinie über den Dienstendpunkt eines virtuellen Azure-Netzwerks auf Azure Storage angewandt. Sie haben Azure Storage-Konten erstellt und den Netzwerkzugriff auf bestimmte Speicherkonten im Subnetz eines virtuellen Netzwerks eingeschränkt (und somit für andere Konten verweigert). Weitere Informationen zu Dienstendpunkt-Richtlinien finden Sie unter [Dienstendpunkt-Richtlinien: Übersicht](virtual-network-service-endpoint-policies-overview.md).

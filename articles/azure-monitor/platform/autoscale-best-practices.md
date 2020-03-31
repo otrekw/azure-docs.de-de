@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117114"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226374"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -21,7 +21,7 @@ Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgrupp
 * Eine Einstellung für die automatische Skalierung skaliert Instanzen horizontal *hoch*, indem die Anzahl der Instanzen erhöht, und *herunter*, indem die Anzahl der Instanzen verringert wird.
   Eine Einstellung für die automatische Skalierung hat einen Höchst-, Mindest- und Standardwert von Instanzen.
 * Eine automatische Skalierungsaufgabe liest die zugeordnete Skalierungsmetrik und überprüft dabei, ob die konfigurierten Schwellenwerte zum horizontalen Hoch- oder Herunterskalieren überschritten wurden. Eine Liste der Metriken, nach der die automatische Skalierung vorgenommen werden kann, finden Sie unter [Übliche Metriken für die automatische Skalierung in Azure Monitor](autoscale-common-metrics.md).
-* Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung > 2 % und die Instanzenanzahl 80 ist“, dass horizontal hochskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
+* Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung &gt; 2 % und die Instanzenanzahl 80 ist“, dass aufskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
 * Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./../../azure-monitor/platform/activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
 * Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
@@ -38,7 +38,7 @@ Falls Ihre Einstellung ein Minimum von „2“ und ein Maximum von „2“ hat u
 Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert die Engine für die automatische Skalierung automatisch auf den Mindestwert (sofern der Wert niedriger ist) oder den Höchstwert (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert die Engine für die automatische Skalierung bei der nächsten Ausführung auf drei Instanzen. Wenn Sie manuell die Skalierung auf acht Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf sechs Instanzen herunterskaliert.  Die manuelle Skalierung ist temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
-Wenn Sie nur einen Teil der Kombination verwenden, wird die Autoskalierung nur in eine Richtung (horizontal hochskalieren oder herunterskalieren) wirken, bis sie die im Profil definierte maximale oder minimale Anzahl von Instanzen erreicht. Dies ist nicht optimal, da Sie Ihre Ressource in Zeiten hoher Auslastung vorzugsweise horizontal hochskalieren möchten, um die Verfügbarkeit sicherzustellen. Ebenso möchten Sie in Zeiten geringer Auslastung, dass Ihre Ressource horizontal herunterskaliert wird, damit Sie Kosteneinsparungen realisieren können.
+Wenn Sie nur einen Teil der Kombination verwenden, wird die Autoskalierung nur in eine Richtung (aufskalieren oder abskalieren) wirken, bis sie die im Profil definierte maximale oder minimale Anzahl von Instanzen erreicht. Dies ist nicht optimal, da Sie Ihre Ressource in Zeiten hoher Auslastung vorzugsweise aufskalieren möchten, um die Verfügbarkeit sicherzustellen. Ebenso möchten Sie in Zeiten geringer Auslastung, dass Ihre Ressource abskaliert wird, damit Sie Kosteneinsparungen realisieren können.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wählen Sie die passende Statistik für Ihre Diagnosemetrik aus
 Für die Diagnosemetriken können Sie zwischen *Durchschnitt*, *Minimum*, *Maximum* und *Gesamt* als Metrik, nach der skaliert werden soll, auswählen. Die am häufigsten verwendete Statistik ist *Durchschnitt*.
@@ -56,8 +56,8 @@ Sehen wir uns nun ein Beispiel an, das zu möglicherweise verwirrendem Verhalten
 1. Nehmen Sie an, es gibt anfangs zwei Instanzen, und die durchschnittliche Anzahl der Threads pro Instanz wächst auf 625.
 2. Die automatische Skalierung skaliert horizontal hoch und fügt eine dritte Instanz hinzu.
 3. Nehmen Sie jetzt an, dass sich die durchschnittliche Threadanzahl über alle Instanzen hinweg auf 575 verringert.
-4. Bevor herunterskaliert wird, versucht die automatische Skalierung, den Endzustand nach ausgeführtem Herunterskalieren abzuschätzen. Falls beispielsweise 575 x 3 (aktuelle Instanzenanzahl) = 1.725 / 2 (Anzahl der Instanzen, wenn zentral herunterskaliert wird) = 862,5 Threads. Das bedeutet, dass die Autoskalierung nach dem horizontalen Herunterskalieren sofort wieder horizontal hochskalieren muss, falls die durchschnittliche Threadanzahl gleich bleibt oder sich nur leicht verringert. Falls jedoch wieder horizontal hochskaliert wird, würde sich der ganze Vorgang wiederholen, was zu einer Endlosschleife führen würde.
-5. Um diese Fluktuation zu vermeiden, wird gar nicht erst zentral herunterskaliert. Stattdessen wird diese Bedingung übersprungen und beim nächsten Ausführen dieses Dienstauftrags neu bewertet. Die Fluktuation kann viele Benutzer verwirren, da die Autoskalierung scheinbar bei einer durchschnittlichen Threadanzahl von 575 nicht funktioniert.
+4. Bevor herunterskaliert wird, versucht die automatische Skalierung, den Endzustand nach ausgeführtem Herunterskalieren abzuschätzen. Falls beispielsweise 575 x 3 (aktuelle Instanzenanzahl) = 1.725 / 2 (Anzahl der Instanzen, wenn zentral herunterskaliert wird) = 862,5 Threads. Das bedeutet, dass die Autoskalierung nach dem horizontalen Herunterskalieren sofort wieder aufskalieren muss, falls die durchschnittliche Threadanzahl gleich bleibt oder sich nur leicht verringert. Falls jedoch wieder horizontal hochskaliert wird, würde sich der ganze Vorgang wiederholen, was zu einer Endlosschleife führen würde.
+5. Um diese Fluktuation zu vermeiden, wird gar nicht erst herunterskaliert. Stattdessen wird diese Bedingung übersprungen und beim nächsten Ausführen dieses Dienstauftrags neu bewertet. Die Fluktuation kann viele Benutzer verwirren, da die Autoskalierung scheinbar bei einer durchschnittlichen Threadanzahl von 575 nicht funktioniert.
 
 Die Schätzung während eines horizontalen Herunterskalierens soll „Pendelsituationen“ vermeiden, in denen horizontales Herunter- und Hochskalieren ständig wechseln. Behalten Sie dieses Verhalten im Hinterkopf , wenn Sie für das horizontale Hoch- und Herunterskalieren die gleichen Schwellenwerte auswählen.
 
@@ -103,7 +103,7 @@ Sobald die Bedingung eines Profils erfüllt wird, überprüft die automatische S
 
 Sehen wir uns dies mithilfe eines Beispiels an:
 
-Die Abbildung unten zeigt eine Einstellung für die automatische Skalierung mit einem Standardprofil mit einem Instanzenminimum von 2 und einem Instanzenmaximum von 10. In diesem Beispiel wurden die Regeln so konfiguriert, dass horizontal hochskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange größer als 10 ist, und horizontal herunterskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange kleiner als drei ist. Die Ressource kann jetzt also zwischen zwei und zehn Instanzen hoch- bzw. herunterskalieren.
+Die Abbildung unten zeigt eine Einstellung für die automatische Skalierung mit einem Standardprofil mit einem Instanzenminimum von 2 und einem Instanzenmaximum von 10. In diesem Beispiel wurden die Regeln so konfiguriert, dass aufskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange größer als 10 ist, und abskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange kleiner als drei ist. Die Ressource kann jetzt also zwischen zwei und zehn Instanzen hoch- bzw. herunterskalieren.
 
 Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Für dieses wurde ein Instanzenminimum von 3 und ein Instanzenmaximum von 10 festgelegt. Das heißt, dass am Montag bei der erstmaligen Überprüfung dieser Bedingung durch die automatische Skalierung, diese auf das neue Minimum von drei horizontal hochskaliert, falls die Instanzenanzahl bereits zwei ist. Solange die automatische Skalierung bei der Überprüfung feststellt, dass diese Profilbedingung erfüllt ist (Montag), wird sie nur die CPU-basierten Regeln für das horizontale Skalieren (hoch/herunter) ausführen, die für dieses Profil konfiguriert wurden. Zu diesem Zeitpunkt wird die Länge der Warteschlange nicht überprüft. Falls Sie jedoch wollen, dass die Bedingung der Länge der Warteschlange ebenfalls überprüft wird, sollten Sie diese Regeln aus dem Standardprofil auch in Ihr Montagsprofil übernehmen.
 
@@ -127,8 +127,8 @@ Nehmen Sie an, Sie hätten die folgenden vier Regeln für die automatische Skali
 
 Daraufhin erfolgt Folgendes:
 
-* Falls die CPU-Auslastung 76 % und die Arbeitsspeicherauslastung 50 % beträgt, erfolgt eine horizontale Skalierung.
-* Falls die CPU-Auslastung 50 % und die Arbeitsspeicherauslastung 76 % beträgt, erfolgt eine horizontale Skalierung.
+* Falls die CPU-Auslastung 76 % und die Arbeitsspeicherauslastung 50 % beträgt, erfolgt eine Aufskalierung.
+* Falls die CPU-Auslastung 50 % und die Arbeitsspeicherauslastung 76 % beträgt, erfolgt eine Aufskalierung.
 
 Andererseits wird, wenn die CPU-Auslastung 25 % und die Arbeitsspeicherauslastung 51 % beträgt, **nicht** automatisch horizontal herunterskaliert. Um horizontal herunterzuskalieren, muss die CPU-Auslastung 29 % und die Arbeitsspeicherauslastung 49 % betragen.
 
@@ -144,11 +144,11 @@ Die automatische Skalierung schreibt in das Aktivitätsprotokoll, wenn eine der 
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.
 
-Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität der Engine für die automatische Skalierung verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Vorgänge der Engine für die automatische Skalierung in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller fehlerhaften Vorgänge zum automatischen horizontalen Herunterskalieren und zum automatischen horizontalen Hochskalieren in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität der Engine für die automatische Skalierung verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Vorgänge der Engine für die automatische Skalierung in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller fehlerhaften Vorgänge zum automatischen Abskalieren und zum automatischen Aufskalieren in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
 
 Neben der Verwendung von Warnungen zu Aktivitätsprotokollen können Sie auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle Autoskalierungsvorgänge zum Abskalieren und Aufskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind, zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

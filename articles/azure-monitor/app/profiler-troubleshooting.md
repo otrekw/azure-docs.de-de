@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671561"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
@@ -20,7 +20,7 @@ ms.locfileid: "77671561"
 * Die Profilerstellung für ASP.NET Core 3.x-Anwendungen wird noch nicht unterstützt.
   * Wenn Sie einen Profiler benötigen, können Sie als Problemumgehung [Application Insights Profiler für ASP.NET Core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore) verwenden. Der Profiler ist für Linux angegeben, funktioniert aber auch mit .NET Core-Anwendungen ab Version 3.0 unter Windows. Weitere Informationen finden Sie unter [Unterstützte Versionen](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions).
 
-## <a id="troubleshooting"></a>Allgemeine Problembehandlung
+## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Allgemeine Problembehandlung
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profile werden nur bei vorhandenen Anforderungen für die Anwendung während der Profiler-Ausführung hochgeladen.
 
@@ -52,7 +52,7 @@ Profiler schreibt Meldungen zur Ablaufverfolgung und benutzerdefinierten Ereigni
 * Stellen Sie sicher, dass der Zugriff auf https://gateway.azureserviceprofiler.net nicht durch Proxys oder durch eine Firewall blockiert wird.
 * Profiler wird in App Service-Plänen vom Typ „Free“ oder „Shared“ nicht unterstützt. Wenn Sie einen dieser Pläne verwenden, sollten Sie eine Skalierung auf einen der „Basic“-Pläne durchführen. Profiler sollte dann funktionieren.
 
-### <a id="double-counting"></a>Doppelte Erfassung in parallelen Threads
+### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Doppelte Erfassung in parallelen Threads
 
 Manchmal übersteigt die Gesamtzeitmetrik im Stapel-Viewer die Dauer der Anforderung.
 
@@ -69,7 +69,7 @@ Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzung
 * Für Ihre Web-App muss Application Insights aktiviert sein.
 * Ihre Web-App muss die folgenden App-Einstellungen aufweisen:
 
-    |App-Einstellung    | value    |
+    |App-Einstellung    | Wert    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey für Ihre Application Insights-Ressource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
@@ -101,7 +101,7 @@ Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktuali
 1. Legen Sie **Immer bereit** auf **Ein** fest.
 1. Erstellen Sie die folgenden App-Einstellungen:
 
-    |App-Einstellung    | value    |
+    |App-Einstellung    | Wert    |
     |---------------|----------|
     |APPINSIGHTS_INSTRUMENTATIONKEY         | iKey für Ihre Application Insights-Ressource    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

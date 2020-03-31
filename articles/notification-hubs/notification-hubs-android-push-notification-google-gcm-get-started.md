@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72386318"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging (veraltet)
@@ -55,7 +55,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Abonnement**. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* **Azure-Abonnement**. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Erstellen eines Projekts, das Google Cloud Messaging unterstützt
@@ -76,14 +76,14 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie besitzen die Verbindungszeichenfolge, um die App für den Empfang und das Senden von Pushbenachrichtigungen zu registrieren.
 
-## <a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
 
 ### <a name="create-a-new-android-project"></a>Erstellen eines neuen Android-Projekts
 
 1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
 
    ![Android Studio – Neues Projekt][13]
-2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie auf **Weiter**.
+2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie dann auf **Weiter**.
 
    ![Android Studio – Projekterstellungsworkflow][14]
 3. Wählen Sie **Empty Activity** als Hauptaktivität aus, und klicken Sie auf **Weiter** und anschließend auf **Fertig stellen**.
@@ -167,8 +167,8 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
     Aktualisieren Sie die drei folgenden Platzhalter im weiter unten angegebenen Code für die `NotificationSettings`-Klasse:
 
    * `SenderId`: Dies ist die Projektnummer, die Sie zuvor über die [Google Cloud Console](https://cloud.google.com/console) abgerufen haben.
-   * `HubListenConnectionString`: Die Verbindungszeichenfolge `DefaultListenAccessSignature` für Ihren Hub. Sie können diese Verbindungszeichenfolge kopieren, indem Sie im [Azure-Portal] auf der Seite **Einstellungen** Ihres Hub auf **Zugriffsrichtlinien** klicken.
-   * `HubName`: Verwenden Sie den Namen Ihres Benachrichtigungshubs, der im [Azure-Portal] auf der Hub-Seite angezeigt wird.
+   * `HubListenConnectionString`: Die Verbindungszeichenfolge `DefaultListenAccessSignature` für Ihren Hub. Sie können diese Verbindungszeichenfolge kopieren, indem Sie im [Azure portal] auf der Seite **Einstellungen** Ihres Hub auf **Zugriffsrichtlinien** klicken.
+   * `HubName`: Verwenden Sie den Namen Ihres Benachrichtigungshubs, der im [Azure portal] auf der Hub-Seite angezeigt wird.
 
      `NotificationSettings` -Code:
 
@@ -468,10 +468,10 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Senden von Test-Pushbenachrichtigungen im Azure-Portal
 
-Sie können den Empfang von Pushbenachrichtigungen in Ihrer App testen, indem Sie sie über das [Azure-Portal] senden.
+Sie können den Empfang von Pushbenachrichtigungen in Ihrer App testen, indem Sie sie über das [Azure portal] senden.
 
 1. Klicken Sie im Abschnitt **Problembehandlung** auf **Testsendevorgang**.
-2. Klicken Sie unter **Plattformen** auf **Android**.
+2. Wählen Sie für **Plattformen** die Option **Android** aus.
 3. Klicken Sie auf **Senden**, um die Testbenachrichtigung zu senden.
 4. Vergewissern Sie sich, dass die Benachrichtigungsmeldung auf dem Android-Gerät angezeigt wird.
 
@@ -518,7 +518,7 @@ In der Regel werden Benachrichtigungen über einen Back-End-Server versendet. In
     ```
 3. Fügen Sie in der Datei `NotificationSetting.java` der `NotificationSettings`-Klasse die folgende Einstellung hinzu.
 
-    Aktualisieren Sie `HubFullAccess` mit der Verbindungszeichenfolge **DefaultFullSharedAccessSignature** für Ihren Hub. Sie können diese Verbindungszeichenfolge aus dem [Azure-Portal] kopieren, indem Sie auf der Seite **Einstellungen** für den Benachrichtigungshub auf **Zugriffsrichtlinien** klicken.
+    Aktualisieren Sie `HubFullAccess` mit der Verbindungszeichenfolge **DefaultFullSharedAccessSignature** für Ihren Hub. Sie können diese Verbindungszeichenfolge aus dem [Azure portal] kopieren, indem Sie auf der Seite **Einstellungen** für den Benachrichtigungshub auf **Zugriffsrichtlinien** klicken.
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -746,4 +746,4 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an alle Android-Geräte
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

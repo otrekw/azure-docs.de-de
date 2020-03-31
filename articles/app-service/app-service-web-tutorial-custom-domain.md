@@ -6,13 +6,13 @@ ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672077"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047208"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -57,7 +57,7 @@ Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
 ![Auswählen von „App Services“](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
-Wählen Sie auf der Seite **App Services** und den Namen Ihrer Azure-App aus.
+Wählen Sie auf der Seite **App Services** den Namen Ihrer Azure-App aus.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
@@ -67,7 +67,7 @@ Die Verwaltungsseite der App Service-App wird angezeigt.
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)** .
+Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Hochskalieren (App Service-Plan)** .
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -75,11 +75,11 @@ Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewi
 
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Zentral hochskalieren**, und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#cname) fort.
+Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Hochskalieren**, und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#cname) fort.
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
+### <a name="scale-up-the-app-service-plan"></a>Hochskalieren des App Service-Plans
 
 Wählen Sie einen der kostenpflichtigen Tarife aus (**D1**, **B1**, **B2**, **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion**). Klicken Sie auf **Alle Optionen anzeigen**, um weitere Optionen anzuzeigen.
 
@@ -136,7 +136,7 @@ Wählen Sie das Symbol **+** neben der Option **Benutzerdefinierte Domäne hinzu
 
 Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben, z.B. `www.contoso.com`.
 
-Wählen Sie **Überprüfen**.
+Wählen Sie **Überprüfen** aus.
 
 Die Seite **Benutzerdefinierte Domäne hinzufügen** wird angezeigt.
 
@@ -192,7 +192,7 @@ Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden T
 
 | Eintragstyp | Host | Wert |
 | - | - | - |
-| Eine Datei | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+| Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
 > [!NOTE]
@@ -200,7 +200,7 @@ Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden T
 >
 > | Eintragstyp | Host | Wert |
 > | - | - | - |
-> | Eine Datei | `www` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+> | Ein | `www` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 > | TXT | `www` | `<app_name>.azurewebsites.net` |
 >
 
@@ -220,7 +220,7 @@ Wählen Sie das Symbol **+** neben der Option **Benutzerdefinierte Domäne hinzu
 
 Geben Sie den vollqualifizierten Domänennamen ein, für den Sie den A-Eintrag konfiguriert haben, z.B. `contoso.com`.
 
-Wählen Sie **Überprüfen**.
+Wählen Sie **Überprüfen** aus.
 
 Die Seite **Benutzerdefinierte Domäne hinzufügen** wird angezeigt.
 

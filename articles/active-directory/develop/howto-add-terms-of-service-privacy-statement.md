@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300008"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
@@ -55,7 +55,7 @@ Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert 
 * [Mithilfe des JSON-Codes des App-Objekts](#app-object-json)
 * [Über die Microsoft Graph-API](#msgraph-rest-api)
 
-### <a name="azure-portal"></a>Verwenden des Azure-Portals
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
@@ -66,7 +66,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus.
 
     ![Eigenschaften der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
 
 Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie über den Manifest-Editor im Azure-Portal oder App-Registrierungsportal Links zu den Nutzungsbedingungen und Datenschutzbestimmungen Ihrer App einfügen.
 
@@ -77,7 +77,7 @@ Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie übe
     }
 ```
 
-### <a name="msgraph-rest-api"></a>Verwenden der Microsoft Graph-API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>Verwenden der Microsoft Graph-API
 
 Zur programmgesteuerten Aktualisierung aller Ihrer Apps können Sie mithilfe der Betaversion der Microsoft Graph-API alle Ihre Apps so ändern, dass sie Links zu den Dokumenten zu den Nutzungsbedingungen und Datenschutzbestimmungen enthalten.
 

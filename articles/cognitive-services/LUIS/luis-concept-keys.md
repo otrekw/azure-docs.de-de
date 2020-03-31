@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969339"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219156"
 ---
 # <a name="authoring-and-runtime-keys"></a>Erstellungs- und Laufzeitschlüssel
 
@@ -44,7 +44,7 @@ Wenn Sie ganz neu in die Verwendung von LUIS einsteigen, wird ein **Startschlüs
 
 LUIS lässt drei Arten von Azure-Ressourcen zu: 
  
-|Key|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
+|Schlüssel|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
 |[Erstellungsschlüssel](#programmatic-key)|Sie greifen auf die Daten der Anwendung durch Erstellen, Trainieren, Veröffentlichen und Testen zu, und verwalten diese Daten auch so. Erstellen Sie einen LUIS-Erstellungsschlüssel, wenn Sie LUIS-Apps programmgesteuert erstellen möchten.<br><br>Der Zweck des `LUIS.Authoring`-Schlüssels besteht darin, Ihnen Folgendes zu ermöglichen:<br>* programmgesteuerte Verwaltung von Language Understanding-Apps und -Modellen, einschließlich Training und Veröffentlichung<br> * Steuern der Berechtigungen für die Erstellungsressource, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen.|`LUIS.Authoring`|`Cognitive Services`|
 |[Vorhersageschlüssel](#prediction-endpoint-runtime-key)| Anforderungen von Abfragen eines Vorhersageendpunkts. Erstellen Sie einen LUIS-Vorhersageschlüssel, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Startressource zur Verfügung gestellt werden. |`LUIS`|`Cognitive Services`|

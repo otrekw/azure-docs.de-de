@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: c03be46207e7698d0557729c546488412c0cc5dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282850"
 ---
 # <a name="about-expressroute-fastpath"></a>Informationen zu ExpressRoute FastPath
 
@@ -32,16 +32,6 @@ Zum Konfigurieren von FastPath muss das Gateway für virtuelle Netzwerke eines d
 
 * Höchstleistung
 * ErGw3AZ
-
-#### <a name="aggthroughput"></a>Geschätzte Leistungen nach Gateway-SKU
-In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
-> [!IMPORTANT]
-> Die Anwendungsleistung hängt von mehreren Faktoren ab, z.B. der End-to-End-Latenz und der Anzahl der Datenflüsse, die die Anwendung öffnet. Die Zahlen in der Tabelle stellen die Obergrenze dar, die die Anwendung theoretisch in einer idealen Umgebung erzielen kann.
->
->
 
 ## <a name="supported-features"></a>Unterstützte Features
 

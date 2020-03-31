@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310565"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382969"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -37,11 +37,11 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 
 [Regionen, in denen der Azure Media Services-Dienst bereitgestellt wird](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Name des Regionscodes 
+### <a name="region-code-name"></a>Name des Regionscodes
 
 Wenn Sie den Parameter **location** festlegen müssen, müssen Sie den Regionscodenamen als **location**-Wert angeben. Sie können die folgende Zeile in der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ausführen, um den Codenamen der Region abzurufen, in der sich Ihr Konto befindet und an die Ihr Aufruf weitergeleitet werden soll:
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -66,18 +66,18 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 
 ### <a name="global-azure"></a>Globale Azure-Umgebung
 
-|Endpunkte ||
-| --- | --- | 
+|Endpunkte||
+| --- | --- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentifizierung | `https://login.microsoftonline.com/` | 
+| Authentifizierung | `https://login.microsoftonline.com/` |
 | Zielgruppe | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
 |Endpunkte||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentifizierung | `https://login.microsoftonline.us/` | 
+| Authentifizierung | `https://login.microsoftonline.us/` |
 | Zielgruppe | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Deutschland
@@ -91,7 +91,7 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
 |Endpunkte||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Authentifizierung | `https://login.chinacloudapi.cn/` |
 | Zielgruppe |  `https://management.core.chinacloudapi.cn/` |

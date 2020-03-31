@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/18/2020
 ms.author: alzam
-ms.openlocfilehash: 02c8bf24d4ddb6408160da7a4c517d6c8c82de5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450901"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060311"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Benutzer-VPN-Verbindung per Azure Virtual WAN
 
@@ -29,7 +29,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Verbinden eines VNET mit einem Hub
 > * Herunterladen und Anwenden der VPN-Clientkonfiguration
 > * Anzeigen Ihrer Virtual WAN-Instanz
-> * Anzeigen der Ressourcenintegrität
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -45,7 +44,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
-## <a name="wan"></a>Erstellen eines Virtual WAN
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>Erstellen eines Virtual WAN
 
 Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -63,7 +62,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 4. Klicken Sie nach dem Ausfüllen der Felder auf **Überprüfen + erstellen**.
 5. Klicken Sie nach bestandenen Überprüfung auf **Erstellen**, um das virtuelle WAN zu erstellen.
 
-## <a name="site"></a>Erstellen eines leeren virtuellen Hubs
+## <a name="create-an-empty-virtual-hub"></a><a name="hub"></a>Erstellen eines leeren virtuellen Hubs
 
 1. Wählen Sie unter Ihrem virtuellen WAN „Hubs“ aus, und klicken Sie auf **+Neuer Hub**.
 
@@ -80,7 +79,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 3. Klicken Sie auf **Überprüfen und erstellen**.
 4. Klicken Sie auf der Seite **Überprüfung erfolgreich** auf **Erstellen**.
 
-## <a name="site"></a>Erstellen einer P2S-Konfiguration
+## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>Erstellen einer P2S-Konfiguration
 
 Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindung mit Remoteclients.
 
@@ -99,10 +98,9 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 
    **Daten des öffentlichen Zertifikats**: X.509-Zertifikatdaten mit Base64-Codierung.
   
-   ![Neue Site](media/virtual-wan-point-to-site-portal/p2s2.jpg)
 5. Klicken Sie auf **Erstellen**, um die Konfiguration zu erstellen.
 
-## <a name="hub"></a>Bearbeiten der Hub-Zuweisung
+## <a name="edit-hub-assignment"></a><a name="edit"></a>Bearbeiten der Hub-Zuweisung
 
 1. Navigieren Sie unter dem virtuellen WAN zum Blatt **Hubs**.
 2. Wählen Sie den Hub aus, dem Sie die VPN-Serverkonfiguration zuordnen möchten, und klicken Sie auf **...** .
@@ -116,7 +114,7 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 6. Klicken Sie auf **Bestätigen**.
 7. Der Vorgang kann bis zu 30 Minuten dauern.
 
-## <a name="device"></a>Herunterladen des VPN-Profils
+## <a name="download-vpn-profile"></a><a name="download"></a>Herunterladen des VPN-Profils
 
 Verwenden Sie das VPN-Profil, um Ihre Clients zu konfigurieren.
 
@@ -134,8 +132,8 @@ Verwenden Sie das heruntergeladene Profil, um die Clients für den Remotezugriff
 1. Laden Sie den OpenVPN-Client von der offiziellen Website herunter, und installieren Sie ihn.
 2. Laden Sie das VPN-Profil für das Gateway herunter. Dies kann auf der Registerkarte „Benutzer-VPN-Konfigurationen“ im Azure-Portal oder über „New-AzureRmVpnClientConfiguration“ in PowerShell erfolgen.
 3. Entzippen Sie das Profil. Öffnen Sie dann im Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
-4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Hier erfahren Sie, [wie Sie ein Zertifikat exportieren, um den codierten öffentlichen Schlüssel zu erhalten](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site).
-5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Eine Anleitung zum Extrahieren des privaten Schlüssels finden Sie [hier](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients#windows).
+4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den Base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Die Schritte sind unter [Generieren und Exportieren von Zertifikaten für VPN-Verbindungen von Virtual WAN-Benutzern](certificates-point-to-site.md) beschrieben.
+5. Füllen Sie den Abschnitt „Private key“ mit dem privaten Schlüssel für das P2S-Clientzertifikat in Base64 aus. Weitere Informationen finden Sie unter [Extrahieren des privaten Schlüssels](howto-openvpn-clients.md#windows).
 6. Ändern Sie keine anderen Felder. Verwenden Sie die ausgefüllte Konfiguration in der Clienteingabe, um eine Verbindung mit dem VPN herzustellen.
 7. Kopieren Sie die Datei „vpnconfig.ovpn“ in den Ordner „C:\Programme\OpenVPN\config“.
 8. Klicken Sie mit rechten Maustaste auf das Symbol „OpenVPN“, und wählen Sie „Verbinden“ aus.
@@ -145,21 +143,16 @@ Verwenden Sie das heruntergeladene Profil, um die Clients für den Remotezugriff
 1. Wählen Sie die VPN-Clientkonfigurationsdateien, die der Architektur des Windows-Computers entsprechen. Wählen Sie für eine 64-Bit-Prozessorarchitektur das Installer-Paket „VpnClientSetupAmd64“ aus. Wählen Sie für eine 32-Bit-Prozessorarchitektur das Installer-Paket „VpnClientSetupX86“ aus.
 2. Doppelklicken Sie auf das Paket, um es zu installieren. Sollte ein SmartScreen-Popup erscheinen, klicken Sie auf „Weitere Informationen“ und anschließend auf „Trotzdem ausführen“.
 3. Navigieren Sie auf dem Clientcomputer zu „Netzwerkeinstellungen“, und klicken Sie auf „VPN“. Die VPN-Verbindung zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird.
-4. Bevor Sie versuchen, eine Verbindung herzustellen, überprüfen Sie, ob Sie auf dem Clientcomputer ein Clientzertifikat installiert haben. Ein Clientzertifikat ist für die Authentifizierung erforderlich, wenn Sie den Typ „native Azure-Zertifikatauthentifizierung“ verwenden. Weitere Informationen zum Generieren von Zertifikaten finden Sie unter [Generieren von Zertifikaten](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site). Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter „Installieren eines Clientzertifikats“.
+4. Bevor Sie versuchen, eine Verbindung herzustellen, überprüfen Sie, ob Sie auf dem Clientcomputer ein Clientzertifikat installiert haben. Ein Clientzertifikat ist für die Authentifizierung erforderlich, wenn Sie den Typ „native Azure-Zertifikatauthentifizierung“ verwenden. Weitere Informationen zum Generieren von Zertifikaten finden Sie unter [Generieren von Zertifikaten](certificates-point-to-site.md). Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter [Installieren eines Clientzertifikats](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
 
 1. Navigieren Sie zum virtuellen WAN.
-2. Auf der Seite „Übersicht“ steht jeder Punkt auf der Karte für einen Hub. Bewegen Sie den Mauszeiger jeweils auf einen dieser Punkte, um die Zusammenfassung zur Integrität des Hubs anzuzeigen.
+2. Auf der Seite „Übersicht“ steht jeder Punkt auf der Karte für einen Hub.
 3. Im Abschnitt mit den Hubs und Verbindungen können Sie den Hubstatus, die Site, die Region, den VPN-Verbindungsstatus und die Anzahl von ein- und ausgehenden Byte anzeigen.
 
-## <a name="viewhealth"></a>Anzeigen der Ressourcenintegrität
 
-1. Navigieren Sie zu Ihrem WAN.
-2. Klicken Sie auf der Seite für Ihr WAN im Abschnitt **Support + Problembehandlung** auf **Integrität**, und zeigen Sie Ihre Ressource an.
-
-
-## <a name="cleanup"></a>Bereinigen von Ressourcen
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Bereinigen von Ressourcen
 
 Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
 

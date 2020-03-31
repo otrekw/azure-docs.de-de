@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
 ms.openlocfilehash: 5d27aa80a63232694e1c9951f98b2191ba575e74
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75913072"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
@@ -73,7 +73,7 @@ Anforderungen müssen als HTTP-POST-Anforderungen gesendet werden.
 
 Die folgenden Abfrageparameter sollten in der Anforderung angegeben werden. Fügen Sie auf jeden Fall zumindest den `mkt`-Abfrageparameter ein:
 
-| Name | value | type | Erforderlich |
+| Name | Wert | type | Erforderlich |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Ein zweistelliger Ländercode, der angibt, woher die Ergebnisse stammen.<br /><br /> Wenn Sie diesen Parameter festlegen, müssen Sie auch den Header [Accept-Language](#acceptlanguage) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste der Sprachen und kombiniert sie mit dem Ländercode, den Sie für den Markt angeben, aus dem Ergebnisse zurückgegeben werden sollen. Enthält die Liste der Sprachen keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die die Anforderung unterstützen. Alternativ dazu wird anstatt des angegebenen Marktes ein aggregierter oder Standardmarkt für die Ergebnisse verwendet.<br /><br /> Verwenden Sie diesen und den `Accept-Language`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Andernfalls sollten Sie die Abfrageparameter `mkt` und `setLang` verwenden.<br /><br /> Dieser Parameter und der Abfrageparameter [mkt](#mkt) schließen sich gegenseitig aus. Geben Sie daher nicht beide an. | String | Nein       |
 | <a name="mkt" />mkt   | Der Markt, aus dem die Ergebnisse stammen. <br /><br /> **HINWEIS:** Sie sollten immer den Markt angeben, falls bekannt. Die Angabe des Marktes ermöglicht Bing, die Anforderung weiterzuleiten und eine geeignete und optimale Antwort zurückzugeben.<br /><br /> Dieser Parameter und der Abfrageparameter [cc](#cc) schließen sich gegenseitig aus. Geben Sie daher nicht beide an. | String | Ja      |
@@ -84,7 +84,7 @@ Die folgenden Abfrageparameter sollten in der Anforderung angegeben werden. Füg
 
 Die folgenden Header sollten in der Anforderung angegeben werden. Die Header `Content-Type` und `Ocp-Apim-Subscription-Key` sind die einzigen erforderlichen Header, aber Sie sollten auch `User-Agent`, `X-MSEdge-ClientID`, `X-MSEdge-ClientIP` und `X-Search-Location` hinzufügen.
 
-| Header | Beschreibung |
+| Header | BESCHREIBUNG |
 | --- | --- |
 | <a name="acceptlanguage" />Accept-Language  | Optionaler Anforderungsheader.<br /><br /> Eine durch Kommas getrennte Liste mit Sprachen, die für Zeichenfolgen der Benutzeroberfläche verwendet werden sollen. Die Liste ist absteigend nach Präferenz sortiert. Weitere Informationen hierzu (sowie zum erwarteten Format) finden Sie unter [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Dieser Header und der Abfrageparameter [setLang](#setlang) schließen sich gegenseitig aus. Geben Sie daher nicht beide an.<br /><br /> Wenn Sie diesen Header festlegen, müssen Sie auch den Abfrageparameter [cc](#cc) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste, um den Markt zu bestimmen, für den Ergebnisse zurückgegeben werden sollen, und kombiniert sie mit dem Parameterwert `cc`. Enthält die Liste keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die bzw. der die Anforderung unterstützt. Alternativ dazu wird für die Ergebnisse ein aggregierter oder Standardmarkt verwendet. Wenn Sie sehen möchten, welchen Markt Bing verwendet hat, untersuchen Sie den Header `BingAPIs-Market`.<br /><br /> Verwenden Sie diesen Header und den `cc`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Verwenden Sie andernfalls die Abfrageparameter [mkt](#mkt) und [setLang](#setlang).<br /><br /> Eine Zeichenfolge der Benutzeroberfläche ist eine Zeichenfolge, die als Bezeichnung in einer Benutzeroberfläche verwendet wird. Die JSON-Antwortobjekte enthalten nur wenige Zeichenfolgen für Benutzeroberflächen. Die Links zu Eigenschaften von „bing.com“ in den Antwortobjekten verwenden die angegebene Sprache.  |
 | <a name="contenttype" />Content-Type  |     |

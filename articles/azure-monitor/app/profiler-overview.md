@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671646"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilerstellung für Produktionsanwendungen in Azure mit Application Insights Profiler
@@ -53,39 +53,39 @@ Der Dienst-Profiler von Microsoft analysiert die Leistung Ihrer Anwendung mithil
 
 Die Aufrufliste in der Zeitachsenansicht ist das Ergebnis des oben erwähnten Samplings und der Instrumentierung. Da jede Stichprobe die vollständige Aufrufliste des Threads erfasst, enthält sie auch Code aus Microsoft .NET Framework sowie aus anderen Frameworks, auf die Sie verweisen.
 
-### <a id="jitnewobj"></a>Objektzuordnung („clr!JIT\_New“ oder „clr!JIT\_Newarr1“)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>Objektzuordnung („clr!JIT\_New“ oder „clr!JIT\_Newarr1“)
 
 **clr!JIT\_New** und **clr!JIT\_Newarr1** sind Hilfsfunktionen in .NET Framework, die Arbeitsspeicher von einem verwalteten Heap zuweisen. **clr!JIT\_New** wird aufgerufen, wenn ein Objekt zugeordnet wird. **clr!JIT\_Newarr1** wird aufgerufen, wenn ein Objektarray zugeordnet wird. Diese beiden Funktionen sind in der Regel schnell und benötigen relativ wenig Zeit. Sollten **clr!JIT\_New** oder **clr!JIT\_Newarr1** auf Ihrer Zeitachse viel Zeit beanspruchen, deutet das darauf hin, dass der Code viele Objekte zuordnet und eine erhebliche Menge an Arbeitsspeicher beansprucht.
 
-### <a id="theprestub"></a>Laden von Code (clr!ThePreStub)
+### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>Laden von Code (clr!ThePreStub)
 
 **clr!ThePreStub** ist eine Hilfsfunktion in .NET Framework, die den Code für die erstmalige Ausführung vorbereitet. Die Ausführung schließt normalerweise auch die JIT-Kompilierung (Just-In-Time) ein. Während eines Prozesses sollte **clr!ThePreStub** für jede C#-Methode höchstens einmal aufgerufen werden.
 
 Wenn **clr!ThePreStub** für eine Anforderung viel Zeit beansprucht, ist dies ein Hinweis darauf, dass die Anforderung die erste ist, die diese Methode ausführt. Das Laden der ersten Methode durch .NET Framework Runtime dauert relativ lange. Verwenden Sie ggf. einen Vorbereitungsprozess, der diesen Teil des Codes ausführt, bevor Ihre Benutzer darauf zugreifen, oder führen Sie Native Image Generator (ngen.exe) für Ihre Assemblys aus.
 
-### <a id="lockcontention"></a> („clr!JITutil\_MonContention“ oder „clr!JITutil\_MonEnterWorker“)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a> („clr!JITutil\_MonContention“ oder „clr!JITutil\_MonEnterWorker“)
 
 **clr!JITutil\_MonContention** oder **clr!JITutil\_MonEnterWorker** gibt an, dass der aktuelle Thread auf die Aufhebung einer Sperre wartet. Dieser Text wird häufig angezeigt, wenn Sie eine C#-Anweisung vom Typ **LOCK** ausführen, die **Monitor.Enter**-Methode aufrufen oder eine Methode mit dem Attribut **MethodImplOptions.Synchronized** aufrufen. Ein Sperrkonflikt ist meist darauf zurückzuführen, dass Thread _A_ eine Sperre abruft und Thread _B_ versucht, die gleiche Sperre abzurufen, bevor sie von Thread _A_ wieder aufgehoben wurde.
 
-### <a id="ngencold"></a>Laden von Code ([COLD])
+### <a name="loading-code-cold"></a><a id="ngencold"></a>Laden von Code ([COLD])
 
 Falls der Methodenname **[COLD]** enthält (Beispiel: **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**), führt .NET Framework Runtime zum ersten Mal Code aus, der nicht durch die [profilgesteuerte Optimierung](/cpp/build/profile-guided-optimizations) optimiert wurde. Während des Prozesses sollte dies für jede Methode höchstens einmal angezeigt werden.
 
 Falls das Laden von Code bei einer Anforderung sehr lange dauert, ist die Anforderung die erste, die den nicht optimierten Teil der Methode ausführt. Verwenden Sie ggf. einen Vorbereitungsprozess, der diesen Teil des Codes ausführt, bevor Ihre Benutzer darauf zugreifen.
 
-### <a id="httpclientsend"></a>Senden von HTTP-Anforderungen
+### <a name="send-http-request"></a><a id="httpclientsend"></a>Senden von HTTP-Anforderungen
 
 Methoden wie **HttpClient.Send** deuten darauf hin, dass der Code auf den Abschluss einer HTTP-Anforderung wartet.
 
-### <a id="sqlcommand"></a>Datenbankvorgang
+### <a name="database-operation"></a><a id="sqlcommand"></a>Datenbankvorgang
 
 Methoden wie **SqlCommand.Execute** deuten darauf hin, dass der Code auf den Abschluss eines Datenbankvorgangs wartet.
 
-### <a id="await"></a>Warten (AWAIT\_TIME)
+### <a name="waiting-await_time"></a><a id="await"></a>Warten (AWAIT\_TIME)
 
 **AWAIT\_TIME** deutet darauf hin, dass der Code auf den Abschluss einer anderen Aufgabe wartet. Diese Verzögerung tritt normalerweise bei C#-Anweisungen vom Typ **AWAIT** auf. Wenn der Code eine C#-Anweisung vom Typ **AWAIT** ausführt, wird der Thread entladen und übergibt die Steuerung wieder an den Threadpool, sodass kein Thread auf den Abschluss der **AWAIT**-Anweisung warten muss und dadurch blockiert wird. Logisch betrachtet ist allerdings der Thread, der die **AWAIT**-Anweisung ausgeführt hat, blockiert und wartet auf den Abschluss des Vorgangs. Die **AWAIT\_TIME**-Anweisung gibt die blockierte Zeit an, für die auf den Abschluss der Aufgabe gewartet wird.
 
-### <a id="block"></a>Blockierte Zeit
+### <a name="blocked-time"></a><a id="block"></a>Blockierte Zeit
 
 **BLOCKED_TIME** gibt an, dass der Code darauf wartet, dass eine andere Ressource verfügbar ist. Beispielsweise könnte er auf ein Synchronisierungsobjekt warten, darauf, dass ein Thread verfügbar ist, oder auf den Abschluss einer Anforderung.
 
@@ -93,19 +93,19 @@ Methoden wie **SqlCommand.Execute** deuten darauf hin, dass der Code auf den Abs
 
 .NET Framework gibt ETW-Ereignisse aus und übergibt Aktivitäts-IDs zwischen Threads, damit asynchrone Aufrufe threadübergreifend nachverfolgt werden können. Bei nicht verwaltetem Code (nativem Code) und einigen älteren Arten von asynchronem Code fehlen diese Ereignisse und Aktivitäts-IDs, sodass der Profiler nicht feststellen kann, um welchen Thread es sich handelt und welche Funktionen auf dem Thread ausgeführt werden. Dies wird in der Aufrufliste mit „Async (nicht verwaltet)“ bezeichnet. Wenn Sie die ETW-Datei herunterladen, können Sie möglicherweise [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) verwenden, um einen besseren Einblick in die Abläufe zu erhalten.
 
-### <a id="cpu"></a>CPU-Zeit
+### <a name="cpu-time"></a><a id="cpu"></a>CPU-Zeit
 
 Die CPU ist mit der Ausführung der Anweisungen beschäftigt.
 
-### <a id="disk"></a>Datenträgerzeit
+### <a name="disk-time"></a><a id="disk"></a>Datenträgerzeit
 
 Die Anwendung führt Datenträgervorgänge aus.
 
-### <a id="network"></a>Netzwerkzeit
+### <a name="network-time"></a><a id="network"></a>Netzwerkzeit
 
 Die Anwendung führt Netzwerkvorgänge aus.
 
-### <a id="when"></a>Wann-Spalte
+### <a name="when-column"></a><a id="when"></a>Wann-Spalte
 
 Die Spalte **Wann** ist eine Visualisierung der Abweichungen INKLUSIVER Stichproben für einen Knoten im Zeitverlauf. Der Gesamtbereich der Anforderung wird in 32 Zeitrahmen unterteilt. Die inklusiven Stichproben für diesen Knoten werden in diesen 32 Zeitrahmen akkumuliert. Jeder Zeitrahmen wird als Balken dargestellt. Die Höhe der Balken stellt einen skalierten Wert dar. Bei Knoten, die mit **CPU_TIME** oder **BLOCKED_TIME** gekennzeichnet sind oder bei denen ein offensichtlicher Zusammenhang mit der Nutzung einer Ressource (CPU, Datenträger, Thread) besteht, stellt der Balken die Nutzung einer dieser Ressourcen für den Bucket dar. Für diese Metriken ist es möglich, durch die Nutzung mehrerer Ressourcen einen Wert von mehr als 100 % zu erhalten. Wenn Sie also beispielsweise innerhalb eines Intervalls im Schnitt zwei CPUs verwenden, erhalten Sie 200 %.
 

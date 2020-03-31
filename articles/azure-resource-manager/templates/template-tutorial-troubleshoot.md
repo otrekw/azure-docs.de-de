@@ -5,16 +5,16 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ab12b206d5bb82956a8b607368af44ea0eaca40e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471035"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239239"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Problembehandlung bei der Resource Manager-Vorlagenbereitstellung
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>Tutorial: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
 
-Hier erfahren Sie, wie Fehler bei der Ressource Manager-Vorlagenbereitstellung behandelt werden. In diesem Tutorial erzeugen Sie zwei Fehler in einer Vorlage und lernen dann, wie die Probleme mithilfe der Aktivitätsprotokolle und des Bereitstellungsverlaufs behoben werden.
+Hier erfahren Sie, wie Probleme bei der Bereitstellung von ARM-Vorlagen (Azure Resource Manager) behandelt werden. In diesem Tutorial erzeugen Sie zwei Fehler in einer Vorlage und lernen dann, wie die Probleme mithilfe der Aktivitätsprotokolle und des Bereitstellungsverlaufs behoben werden.
 
 Im Zusammenhang mit der Vorlagenbereitstellung gibt es zwei Fehlertypen:
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md).
 
 ## <a name="create-a-problematic-template"></a>Erstellen einer problematischen Vorlage
 
@@ -128,4 +128,4 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Fehler bei der Ressource Manager-Vorlagenbereitstellung behandelt werden.  Weitere Informationen finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).
+In diesem Tutorial haben Sie erfahren, wie Probleme bei der Bereitstellung von ARM-Vorlagen behandelt werden.  Weitere Informationen finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).

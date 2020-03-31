@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233834"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurieren von Blockchain Data Manager über das Azure-Portal
 
@@ -42,7 +42,7 @@ Eine ausgehende Verbindung sendet Blockchaindaten an Azure Event Grid. Beim Erst
 
     Einstellung | BESCHREIBUNG
     --------|------------
-    NAME | Geben Sie einen eindeutigen Namen für einen verbundenen Blockchain Data Manager ein. Der Blockchain Data Manager-Name darf nur Kleinbuchstaben und Ziffern enthalten und eine maximale Länge von 20 Zeichen aufweisen.
+    Name | Geben Sie einen eindeutigen Namen für einen verbundenen Blockchain Data Manager ein. Der Blockchain Data Manager-Name darf nur Kleinbuchstaben und Ziffern enthalten und eine maximale Länge von 20 Zeichen aufweisen.
     Transaktionsknoten | Wählen Sie einen Transaktionsknoten aus. Es werden nur Transaktionsknoten aufgelistet, auf die Sie Lesezugriff haben.
     Verbindungsname | Geben Sie einen eindeutigen Namen für die ausgehende Verbindung ein, an die Blockchaintransaktionsdaten gesendet werden.
     Event Grid-Endpunkt | Wählen Sie ein Event Grid-Thema im gleichen Abonnement aus,unter dem auch die Blockchain Data Manager-Instanz verwendet wird.
@@ -110,7 +110,7 @@ Blockchain Data Manager erfordert, dass die Contract ABI- und Bytecodedateien be
 
     | Feld | BESCHREIBUNG |
     |-------|-------------|
-    | NAME  | Geben Sie dem Container einen Namen. Beispiel: *smartcontract* |
+    | Name  | Geben Sie dem Container einen Namen. Beispiel: *smartcontract* |
     | Öffentliche Zugriffsebene | Wählen Sie *Privat (kein anonymer Zugriff)* aus. |
 
 1. Wählen Sie **OK** aus, um den Container zu erstellen.
@@ -146,7 +146,7 @@ Generieren Sie für jedes Blob eine Shared Access Signature.
 
     Einstellung | BESCHREIBUNG
     --------|------------
-    NAME | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
+    Name | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
     Vertrags-ABI | Der URL-Pfad zur Datei mit der Vertrags-ABI. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
     Vertragsbytecode | Der URL-Pfad zur Bytecodedatei. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
 

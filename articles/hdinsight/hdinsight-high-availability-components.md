@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74069623"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
@@ -50,7 +50,7 @@ Microsoft bietet Unterstützung für die vier Apache-Dienste in der folgenden Ta
 
 | Dienst | Clusterknoten | Clustertypen | Zweck |
 |---|---|---|---|
-| Apache Ambari-Server| Aktiver Hauptknoten | Alle | Überwacht und verwaltet den Cluster.|
+| Apache Ambari-Server| Aktiver Hauptknoten | All | Überwacht und verwaltet den Cluster.|
 | Anwendungszeitachsenserver für Apache YARN | Aktiver Hauptknoten | Alle außer Kafka | Verwaltet Debuginformationen über YARN-Aufträge, die auf dem Cluster ausgeführt werden.|
 | Auftragsverlaufsserver für Hadoop MapReduce | Aktiver Hauptknoten | Alle außer Kafka | Verwaltet Debugdaten für MapReduce-Aufträge.|
 | Apache Livy | Aktiver Hauptknoten | Spark | Ermöglicht die einfache Interaktion mit einem Spark-Cluster über eine REST-Schnittstelle. |
@@ -58,7 +58,7 @@ Microsoft bietet Unterstützung für die vier Apache-Dienste in der folgenden Ta
 >[!Note]
 > HDInsight-ESP-Cluster (Enterprise-Sicherheitspaket, Enterprise Security Package) bieten zurzeit nur Hochverfügbarkeit für den Ambari-Server.
 
-### <a name="architecture"></a>Architecture
+### <a name="architecture"></a>Aufbau
 
 Jeder HDInsight-Cluster verfügt über zwei Hauptknoten im aktiven bzw. Standbymodus. Die HDInsight-Hochverfügbarkeitsdienste werden nur auf Hauptknoten ausgeführt. Diese Dienste sollten immer auf dem aktiven Hauptknoten ausgeführt werden und auf dem Standbyhauptknoten angehalten und in den Wartungsmodus versetzt werden.
 

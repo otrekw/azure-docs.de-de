@@ -9,10 +9,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903665"
 ---
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
@@ -33,7 +33,7 @@ Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGa
 1. Klicken Sie auf der Seite **Katalog mit freigegebenen Images** auf **Erstellen**.
 1. Wählen Sie das richtige Abonnement aus.
 1. Wählen Sie in **Ressourcengruppe** **Neu erstellen** aus, und geben Sie *myGalleryRG* für den Namen ein.
-1. Geben Sie unter **Name** *myGallery* als Namen des Katalogs ein.
+1. Geben Sie unter **Name***myGallery* als Namen des Katalogs ein.
 1. Übernehmen Sie den Standardwert für **Region**.
 1. Sie können eine kurze Beschreibung des Katalogs eingeben, wie *Mein Imagekatalog zum Testen*. Klicken Sie dann auf **Überprüfen + Erstellen**.
 1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
@@ -46,13 +46,13 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden ver
 Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In diesem Beispiel heißt das Katalogimage *myImageDefinition*.
 
 1. Wählen Sie auf der Seite Ihres neuen Imagekatalogs **Neue Imagedefinition hinzufügen** oben auf der Seite aus. 
-1. Geben Sie für **Name der Imagedefinition** *myImageDefinition* ein.
+1. Geben Sie für **Name der Imagedefinition***myImageDefinition* ein.
 1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quell-VM aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
-1. Geben Sie für **Herausgeber** *myPublisher* ein. 
-1. Geben Sie für **Angebot** *myOffer* ein.
-1. Geben Sie für **SKU** *mySKU* ein.
+1. Geben Sie für **Herausgeber***myPublisher* ein. 
+1. Geben Sie für **Angebot***myOffer* ein.
+1. Geben Sie für **SKU***mySKU* ein.
 1. Wenn Sie fertig sind, wählen Sie **Überprüfen und erstellen** aus.
 1. Nachdem die Imagedefinition erfolgreich überprüft wurde, wählen Sie **Erstellen**.
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
@@ -60,7 +60,7 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 
 ## <a name="create-an-image-version"></a>Erstellen einer Imageversion
 
-Erstellen Sie eine Imageversion aus einem verwalteten Image. In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die Region *Quelle* als Ziel für die Replikation angeben müssen.
+Erstellen Sie eine Imageversion aus einem verwalteten Image. In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die *Quell*region als Ziel für die Replikation angeben müssen.
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
@@ -70,7 +70,7 @@ Die Schritte zum Erstellen einer Imageversion unterscheiden sich geringfügig, a
 
 1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
 1. Wählen Sie unter **Region** die Region, in der Ihr verwaltetes Image gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie das verwaltete Image, aus dem sie erstellt wurden.
-1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
+1. Geben Sie für **Name***1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
 1. Wählen Sie unter **Quellimage** aus der Dropdownliste das von der Quelle verwaltete Image aus.
 1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
 1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.
@@ -85,7 +85,7 @@ Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
 
 1. Wählen Sie oben auf der Seite für Ihre Imagedefinition **Version hinzufügen** aus.
 1. Wählen Sie unter **Region** die Region aus, in der die Momentaufnahme gespeichert ist. Imageversionen müssen in der gleichen Region erstellt werden wie die Quelle, aus der sie erstellt wurden.
-1. Geben Sie für **Name** *1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
+1. Geben Sie für **Name***1.0.0* ein. Der Name der Imageversion sollte dem Format *major*.*minor*.*patch* mit ganzen Zahlen entsprechen. 
 1. Wählen Sie in **Betriebssystemdatenträger-Momentaufnahme** die Momentaufnahme aus der Quell-VM in der Dropdownliste aus. Wenn die Quell-VM einen Datenträger enthält, den Sie einschließen möchten, wählen Sie in der Dropdownliste die richtige **LUN** aus, und wählen Sie dann für **Datenträger-Momentaufnahme** die Momentaufnahme des Datenträgers aus. 
 1. Übernehmen Sie für **Aus aktueller Version ausschließen** den Standardwert *Nein*.
 1. Wählen Sie unter **Datum für Ende des Lebenszyklus** ein Datum aus dem Kalender aus, das einige Monate in der Zukunft liegt.

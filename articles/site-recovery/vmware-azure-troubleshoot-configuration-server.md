@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748553"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
@@ -100,7 +100,7 @@ Einstellung | Details
 Verwendung | UnifiedAgentConfigurator.exe  /CSEndPoint <IP-Adresse des Konfigurationsservers\> /PassphraseFilePath <Dateipfad der Passphrase\>
 Agent-Konfigurationsprotokolle | Befindet sich unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log“.
 /CSEndPoint | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
-/PassphraseFilePath |  Obligatorisch. Der Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
+/PassphraseFilePath |  Mandatory. Der Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
 
 ### <a name="if-the-source-machine-runs-linux"></a>Wenn der Quellcomputer Linux ausführt
 
@@ -114,7 +114,7 @@ Einstellung | Details
 --- | ---
 Verwendung | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <IP-Adresse des Konfigurationsservers\> -P <Dateipfad der Passphrase\>
 -i | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
--P |  Obligatorisch. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
+-P |  Mandatory. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
 
 ## <a name="unable-to-configure-the-configuration-server"></a>Konfigurieren des Konfigurationsservers nicht möglich
 
@@ -191,7 +191,7 @@ Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active 
 Um das Problem zu beheben, melden Sie sich beim Azure-Portal an, und führen Sie einen der folgenden Schritte aus:
 
 - Fordern Sie die Rolle „Anwendungsentwickler“ in AAD an. Weitere Informationen zur Rolle des Anwendungsentwicklers finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Überprüfen Sie, ob das Flag **Benutzer kann die Anwendung erstellen** in AAD auf *true* gesetzt ist. Weitere Informationen finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Prozessserver/Masterziel können nicht mit dem Konfigurationsserver kommunizieren 
 

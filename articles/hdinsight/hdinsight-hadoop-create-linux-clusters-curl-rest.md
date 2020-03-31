@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239916"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API
 
@@ -223,7 +223,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 1. Führen Sie an einer Befehlszeile den folgenden Befehl aus, um Ihre Azure-Abonnements aufzulisten.
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -231,7 +231,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 2. Führen Sie den folgenden Befehl zum Erstellen einer Anwendung in Azure Active Directory aus.
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
@@ -244,7 +244,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 3. Führen Sie den folgenden Befehl aus, um mithilfe der **App-ID** einen Dienstprinzipal zu erstellen.
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -252,7 +252,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 4. Weisen Sie dem Dienstprinzipal mit dem **Objekt-ID**-Wert die Rolle **Besitzer** zu. Verwenden Sie die **Abonnement-ID**, die Sie zuvor erhalten haben.
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -292,7 +292,7 @@ Gehen Sie wie folgt vor, um eine Ressourcengruppe zu erstellen.
 
 * Legen Sie `$SUBSCRIPTIONID` auf die Abonnement-ID fest, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
 * Legen Sie`$ACCESSTOKEN` auf das Zugriffstoken fest, das Sie im vorherigen Schritt erhalten haben.
-* Ersetzen Sie `DATACENTERLOCATION` durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
+* Ersetzen Sie `DATACENTERLOCATION` durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: &quot;USA, Süden-Mitte&quot;.
 * Legen Sie `$RESOURCEGROUPNAME` auf den Namen fest, den Sie für diese Gruppe verwenden möchten:
 
 ```bash

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672377"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
@@ -51,7 +51,7 @@ In den folgenden Tabellen sind die Daten aufgeführt, die von der Windows- und L
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-Diagnoseerweiterung (LAD)
 
-| Data source | Beschreibung |
+| Data source | BESCHREIBUNG |
 | --- | --- |
 | syslog | Ereignisse, die an das Linux-Ereignisprotokollierungssystem gesendet werden.   |
 | Leistungsindikatoren  | Numerische Werte, die die Leistung verschiedener Aspekte von Betriebssystem und Workloads messen. |

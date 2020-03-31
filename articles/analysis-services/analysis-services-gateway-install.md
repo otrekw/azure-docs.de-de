@@ -8,10 +8,10 @@ ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062148"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
@@ -44,11 +44,11 @@ Weitere Informationen zur Zusammenarbeit von Azure Analysis Services mit dem Gat
 * Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
 * Wenn sich die Datenquellen in einem Azure Virtual Network (VNET) befinden, müssen Sie die [AlwaysUseGateway](analysis-services-vnet-gateway.md)-Servereigenschaft konfigurieren.
 
-## <a name="download"></a>Herunterladen
+## <a name="download"></a><a name="download"></a>Herunterladen
 
  [Gateway herunterladen](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a>Installieren
+## <a name="install"></a><a name="install"></a>Installieren
 
 1. Führen Sie das Setup aus.
 
@@ -67,7 +67,7 @@ Weitere Informationen zur Zusammenarbeit von Azure Analysis Services mit dem Gat
    > [!NOTE]
    > Wenn Sie sich mit einem Domänenkonto anmelden, wird es Ihrem Unternehmenskonto in Azure AD zugeordnet. Ihr Unternehmenskonto wird vom Gatewayadministrator verwendet.
 
-## <a name="register"></a>Registrieren
+## <a name="register"></a><a name="register"></a>Registrieren
 
 Um eine Gatewayressource in Azure zu erstellen, müssen Sie die lokale Instanz registrieren, die Sie mit dem Gateway-Clouddienst installiert haben. 
 
@@ -83,7 +83,7 @@ Um eine Gatewayressource in Azure zu erstellen, müssen Sie die lokale Instanz r
    ![Register](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-resource"></a>Erstellen einer Azure-Gatewayressource
+## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>Erstellen einer Azure-Gatewayressource
 
 Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Azure eine Gatewayressource erstellen. Melden Sie sich bei Azure mit dem Konto an, das Sie beim Registrieren des Gateways verwendet haben.
 
@@ -107,7 +107,7 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Azure 
 
      Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-## <a name="connect-servers"></a>Verbinden von Servern mit der Gatewayressource
+## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>Verbinden von Servern mit der Gatewayressource
 
 1. Klicken Sie in der Übersicht über Ihre Azure Analysis Services-Server auf **Lokales Datengateway**.
 

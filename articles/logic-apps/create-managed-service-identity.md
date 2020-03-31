@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: 82710a66cdf7874c745070e49b2c7aff7bc8816d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117420"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
@@ -74,7 +74,7 @@ Im Unterschied zu benutzerseitig zugewiesenen Identitäten müssen Sie systemsei
 
    ![Objekt-ID für die systemseitig zugewiesene Identität](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Objekt-ID** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die systemseitig zugewiesene Identität für Ihre Logik-App in einem Azure AD-Mandanten angibt |
    ||||
@@ -120,7 +120,7 @@ Wenn die Ressourcendefinition der Logik-App in Azure erstellt wird, erhält das 
 }
 ```
 
-| Eigenschaft (JSON) | value | BESCHREIBUNG |
+| Eigenschaft (JSON) | Wert | BESCHREIBUNG |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Die GUID (Globally Unique Identifier) des Dienstprinzipalobjekts für die verwaltete Identität, die die Logik-App im Azure AD-Mandanten angibt. Diese GUID wird manchmal als „Objekt-ID“ oder `objectID` angezeigt. |
 | `tenantId` | <*Azure-AD-tenant-ID*> | Die GUID (Globally Unique Identifier), die den Azure AD-Mandanten angibt, in dem die Logik-App nun Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. |
@@ -160,7 +160,7 @@ Um eine vom Benutzer zugewiesene verwaltete Identität für Ihre Logik-App einzu
 
    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Ressourcenname** | Ja | <*user-assigned-identity-name*> | Der Name für die benutzerseitig zugewiesene Identität. In diesem Beispiel wird „Fabrikam-user-assigned-identity“ verwendet. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
@@ -232,7 +232,7 @@ Dieses Beispiel zeigt die Ressourcendefinition einer Logik-App für eine HTTP PU
 }
 ```
 
-| Eigenschaft (JSON) | value | Beschreibung |
+| Eigenschaft (JSON) | Wert | BESCHREIBUNG |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Die GUID (Globally Unique Identifier) für die vom Benutzer zugewiesene verwaltete Identität im Azure AD-Mandanten |
 | `clientId` | <*client-ID*> | Eine GUID (Globally Unique Identifier) für die neue Identität Ihrer Logik-App, die zur Laufzeit für Aufrufe verwendet wird |
@@ -291,7 +291,7 @@ Wenn die Vorlage auch die Ressourcendefinition der verwalteten Identität enthä
 }
 ```
 
-| Eigenschaft (JSON) | value | BESCHREIBUNG |
+| Eigenschaft (JSON) | Wert | BESCHREIBUNG |
 |-----------------|-------|-------------|
 | `tenantId` | <*Azure-AD-tenant-ID*> | Die GUID (Globally Unique Identifier), die den Azure AD-Mandanten angibt, in dem die benutzerseitig zugewiesene Identität nun Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die benutzerseitig zugewiesene Identität. |
 | `principalId` | <*principal-ID*> | Die GUID (Globally Unique Identifier) für die vom Benutzer zugewiesene verwaltete Identität im Azure AD-Mandanten |
@@ -394,7 +394,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    Zum Ausführen des [Snapshot Blob-Vorgangs](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) werden in der HTTP-Aktion die folgenden Eigenschaften angegeben:
 
-   | Eigenschaft | Erforderlich | Beispielwert | Beschreibung |
+   | Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
    |----------|----------|---------------|-------------|
    | **Methode** | Ja | `PUT`| Die im Snapshot Blob-Vorgang verwendete HTTP-Methode |
    | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Die Ressourcen-ID für eine Azure Blob Storage-Datei in der globalen (öffentlichen) Azure-Umgebung, in der diese Syntax verwendet wird. |

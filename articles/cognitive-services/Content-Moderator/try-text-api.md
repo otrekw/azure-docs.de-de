@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: e0930558f31b27a77fa2cd6b44fcea2fe9091086
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538826"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderieren von Text über die API-Konsole
@@ -33,7 +33,7 @@ Greifen Sie auf die [Referenz zur Textmoderations-API](https://westus.dev.cognit
 
 ## <a name="open-the-api-console"></a>Öffnen der API-Konsole
 
-Wählen Sie für **Open API testing console** (API-Testkonsole öffnen) die Region aus, die Ihrem Standort am ehesten nahekommt. 
+Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt. 
 
   ![Seite „Text – Screen“ (Text – Überprüfen) – Auswahl der Region](images/test-drive-region.png)
 
@@ -54,7 +54,7 @@ Wählen Sie für **autocorrect**, **PII** und **classify (preview)** die Option 
 
   ![Konsole „Text – Screen“ (Text – Überprüfen) – Abfrageparameter](images/text-api-console-inputs.PNG)
 
-### <a name="content-type"></a>Content-Typ
+### <a name="content-type"></a>Inhaltstyp
 
 Wählen Sie für **Content-Type** den Inhaltstyp aus, den Sie überprüfen möchten. Verwenden Sie für dieses Beispiel den Standardinhaltstyp **text/plain**. Geben Sie in das Feld **Ocp-Apim-Subscription-Key** Ihren Abonnementschlüssel ein.
 

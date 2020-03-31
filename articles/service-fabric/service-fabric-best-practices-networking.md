@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551793"
 ---
 # <a name="networking"></a>Netzwerk
@@ -51,7 +51,7 @@ Die Erweiterung der Infrastruktur ist erforderlich, um beschleunigten Netzwerkbe
 
 * Service Fabric-Cluster können in einem vorhandenen virtuellen Netzwerk bereitgestellt werden, indem die unter [Service Fabric-Netzwerkmuster](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking) beschriebenen Schritte ausgeführt werden.
 
-* Netzwerksicherheitsgruppen (NSGs) werden für Knotentypen empfohlen, die eingehenden und ausgehenden Datenverkehr auf ihrem Cluster beschränken. Stellen Sie sicher, dass die erforderlichen Ports in der NSG geöffnet sind. Beispiel:  ![Service Fabric-NSG-Regeln][NSGSetup]
+* Netzwerksicherheitsgruppen (NSGs) werden für Knotentypen empfohlen, die eingehenden und ausgehenden Datenverkehr auf ihrem Cluster beschränken. Stellen Sie sicher, dass die erforderlichen Ports in der NSG geöffnet sind. Beispiel: ![Service Fabric-NSG-Regeln][NSGSetup]
 
 * Der primäre Knotentyp, der die Service Fabric-Systemdienste enthält, muss nicht über den externen Lastausgleich bereitgestellt werden. Er kann über einen [internen Lastausgleich](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer) bereitgestellt werden.
 

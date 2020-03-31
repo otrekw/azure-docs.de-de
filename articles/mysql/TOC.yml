@@ -97,6 +97,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure AD-Authentifizierung
           href: concepts-azure-ad-authentication.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Geschäftskontinuität
       items:
         - name: Einführung in Geschäftskontinuität
@@ -176,6 +178,8 @@
           href: howto-configure-ssl.md
         - name: Web-Apps
           href: howto-connect-webapp.md
+        - name: Herstellen einer Verbindung mit Umleitung
+          href: howto-redirection.md
     - name: Konfigurieren von Serverparametern
       items:
         - name: Azure-Portal
@@ -246,6 +250,10 @@
       items:
         - name: "Konfigurieren der Azure\_AD-Integration"
           href: howto-configure-sign-in-azure-ad-authentication.md
+    - name: Verweigern des Zugriffs auf das öffentliche Netzwerk
+      items:
+        - name: Azure-Portal
+          href: howto-deny-public-network-access.md
     - name: Neustarten des Servers
       items:
         - name: Azure-Portal

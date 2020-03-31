@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357029"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235874"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -235,7 +235,7 @@ Sie können auf Ressourcen zugreifen, die nicht in Ihrem Abonnement enthalten si
 
 In diesem Beispiel wird Data Lake Storage Gen1 verwendet. Azure Data Lake Storage Gen2 ist jetzt verfügbar. Weitere Informationen finden Sie in der [Was ist Azure Data Lake Storage Gen1?](./data-lake-store/data-lake-store-overview.md).
 
-## Generieren einer Shared Access Signature-Definition in Storage-Explorer<a name="generate-a-sas-in-storage-explorer"></a>
+## <a name="generate-a-shared-access-signature-in-storage-explorer"></a>Generieren einer Shared Access Signature-Definition in Storage-Explorer<a name="generate-a-sas-in-storage-explorer"></a>
 
 ### <a name="account-level-shared-access-signature"></a>Shared Access Signature auf Kontoebene
 

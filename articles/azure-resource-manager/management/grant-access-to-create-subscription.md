@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
 ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474644"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
@@ -27,7 +27,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     Sie müssen entweder der Kontobesitzer sein oder in diesem Konto über die RBAC-Rolle „Besitzer“ verfügen, um anderen in einem Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen zu können.
 
-    # <a name="resttabrest"></a>[REST](#tab/rest)
+    # <a name="rest"></a>[REST](#tab/rest)
 
     Fordern Sie eine Liste aller Registrierungskonten an, auf die Sie zugreifen können:
 
@@ -62,7 +62,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in dem Sie die RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise dem SignUpEngineering@contoso.com-Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dies ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
-    # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     Verwenden Sie das Cmdlet [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie dann **Einfügen** aus.
 
@@ -80,7 +80,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, dem Sie die RBAC-Rolle „Besitzer“ zuweisen möchten. Kopieren Sie den `ObjectId`-Wert dieses Kontos. Wenn Sie beispielsweise dem SignUpEngineering@contoso.com-Registrierungskonto die RBAC-Rolle „Besitzer“ zuweisen möchten, müssen Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Kopieren Sie diese Objekt-ID, um sie im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
-    # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
     Verwenden Sie den Befehl [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie dann **Einfügen** aus.
 
@@ -122,7 +122,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     Verwenden Sie die Werte, die Sie in den ersten beiden Schritten erfasst haben, um dem Benutzer oder der Gruppe die RBAC-Rolle „Besitzer“ im Registrierungskonto zuzuweisen.
 
-    # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
+    # <a name="rest"></a>[REST](#tab/rest-2)
 
     Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei ```<enrollmentAccountObjectId>``` durch den `name`-Wert, den Sie im ersten Schritt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopiert haben. Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt kopiert haben.
 
@@ -156,7 +156,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
     }
     ```
 
-    # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
     Führen Sie den folgenden [New-AzRoleAssignment](../../active-directory/role-based-access-control-manage-access-powershell.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `ObjectId`-Wert, den Sie im ersten Schritt erfasst haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
 
@@ -164,7 +164,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    # <a name="azure-clitabazure-cli-2"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-2)
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli-2)
 
     Führen Sie den folgenden [az role assignment create](../../active-directory/role-based-access-control-manage-access-azure-cli.md)-Befehl aus, und ersetzen Sie ```<enrollmentAccountObjectId>``` durch den `name`-Wert, den Sie im ersten Schritt kopiert haben (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ersetzen Sie ```<userObjectId>``` durch die Objekt-ID, die Sie im zweiten Schritt erfasst haben.
 

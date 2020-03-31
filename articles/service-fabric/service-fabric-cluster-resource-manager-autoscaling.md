@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452082"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
@@ -130,7 +130,7 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 * Die _minimale Anzahl von Instanzen_ definiert die Untergrenze für die Skalierung. Wenn die Anzahl von Partitionen des Diensts diesen Grenzwert erreicht, wird der Dienst unabhängig von der Last nicht horizontal herunterskaliert.
 
 > [!WARNING] 
-> Bei Verwendung von „AddRemoveIncrementalNamedPartitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim zentralen Hochskalieren sind die neuen Partitionen leer, und beim zentralen Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
+> Bei Verwendung von „AddRemoveIncrementalNamedPartitionScalingMechanism“ mit „stateful“-Diensten wird Service Fabric Partitionen **ohne Benachrichtigung oder Warnung** hinzufügen oder entfernen. Die Neupartitionierung von Daten wird nicht durchgeführt, wenn ein Skalierungsmechanismus ausgelöst wird. Beim Hochskalieren sind die neuen Partitionen leer, und beim Herunterskalieren wird die **Partition zusammen mit allen darin enthaltenen Daten gelöscht**.
 
 ## <a name="setting-auto-scaling-policy"></a>Festlegen der Richtlinie für die automatische Skalierung
 

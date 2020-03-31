@@ -1,18 +1,17 @@
 ---
 title: Kommerzieller Marketplace – Zahlungsübersicht | Azure Marketplace
 description: Die Zahlungsübersicht enthält Einzelheiten zu dem Betrag, den Sie mit Ihrem Angebot eingenommen haben. Aus ihr geht auch hervor, wann und in welcher Höhe Sie Zahlungen erhalten.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 678dc8b058d0ae0694dafeb4222b2fc9f10ecda7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715433"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288698"
 ---
 # <a name="payout-reporting"></a>Zahlungsberichte
 
@@ -68,7 +67,7 @@ Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
 ## <a name="corelation-between-payout-and-usage"></a>Korrelation zwischen Auszahlung und Nutzung
 
-|Beschreibung    |    Date  | Aufträge/Nutzung  | Auszahlung |
+|BESCHREIBUNG    |    Date  | Aufträge/Nutzung  | Auszahlung |
 |----------|----------|-----------|-------------|
 |Auftragszeitraum   | 15. August 2019 bis 30. August 2019 | **Korrelationsattribute der Aufträge** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Verwendung** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> Geschätzte erweiterte Gebühren <br> Geschätzte Auszahlung (PC) </li> </ul> |  |
 |Laufzeitende (Monat)   | 30. August 2019 | | |
@@ -82,7 +81,7 @@ Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enterprise Agreement (vierteljährliche/monatliche Kunden)
 
-| Beschreibung |    Date  | Verwendung | Auszahlung |
+| BESCHREIBUNG |    Date  | Verwendung | Auszahlung |
 |----------|----------|---------|-----------|
 |Auftragszeitraum | 15. August 2019 bis 30. August 2019 | **Korrelationsattribute der Aufträge** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Nutzungsbericht** <br> <ul> <li>CustomerId </li> <li>Customer Name</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> Geschätzte erweiterte Gebühren <br> Geschätzte Auszahlung (PC) </li> </ul> | |
 |Laufzeitende (Quartal) | 30. September 2019 | | |
@@ -99,7 +98,7 @@ Der Kunde bezahlt beispielsweise mit einer Kreditkarte.
 
 Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transaktionsverlauf“ angezeigt wird, wie beispielsweise Einnahmetyp, Datum, zugehöriger Transaktionsbetrag, Kunde, Produkt und andere Transaktionsdetails, die für das Incentive-Programm gelten, herunterladen.
 
-| Spaltenname     | Beschreibung    |
+| Spaltenname     | BESCHREIBUNG    |
 |-------------|-------------------------------|
 | earningId                      | Eindeutiger Bezeichner für jede Einnahme                                                                                                       |
 | participantID                  | Primäre Identität des Partners, der unter dem Programm die Einnahme erzielt                                                                            |

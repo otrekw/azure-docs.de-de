@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74091252"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problembehandlung von vCenter Server-Ermittlungsfehlern
@@ -46,8 +46,8 @@ Im Allgemeinen wird der Proxy zur Kommunikation mit öffentlichen Netzwerken ver
 
 Die folgenden Situationen treten auf, wenn dieses Problem vorliegt:
 
-- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: (503) Server nicht verfügbar
-- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: Der Remoteserver hat einen Fehler zurückgegeben: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: The remote server returned an error: (503) Server nicht verfügbar
+- Der vCenter-Server \<vCenter> ist aufgrund des Fehlers nicht erreichbar: The remote server returned an error: Es konnte keine Verbindung mit dem Remoteserver hergestellt werden.
 - Es konnte keine Verbindung mit dem vCenter/ESXi-Server hergestellt werden.
 
 So lösen Sie das Problem:

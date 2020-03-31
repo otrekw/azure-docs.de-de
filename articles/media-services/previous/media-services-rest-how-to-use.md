@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773659"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
@@ -58,7 +58,7 @@ Berücksichtigen Sie Folgendes, wenn Sie REST verwenden:
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Anforderungsheader
 Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header in Ihre Anforderung einschließen. Darüber hinaus stehen verschiedene optionale Header zur Auswahl. In der folgenden Tabelle sind die erforderlichen Header aufgeführt:
 
-| Header | type | value |
+| Header | type | Wert |
 | --- | --- | --- |
 | Authorization |Bearer |Das Bearer-Token ist der einzig zulässige Autorisierungsmechanismus. Der Wert muss außerdem das von Azure Active Directory bereitgestellte Zugriffstoken enthalten. |
 | x-ms-version |Decimal |2.17 (oder die neueste Version)|
@@ -72,7 +72,7 @@ Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header i
 
 Im Folgenden finden Sie eine Reihe optionaler Header:
 
-| Header | type | value |
+| Header | type | Wert |
 | --- | --- | --- |
 | Date |RFC 1123-Datum |Zeitstempel der Anforderung |
 | Akzeptieren |Inhaltstyp |Der angeforderte Inhaltstyp für die Antwort, z. B.:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Antworten können unterschiedliche Inhaltstypen aufweisen, z. B. einen Blobabruf, bei dem eine erfolgreiche Antwort den Blobdatenstrom als Nutzlast enthält. |
@@ -86,7 +86,7 @@ Im Folgenden finden Sie eine Reihe optionaler Header:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Antwortheader
 Im Folgenden lernen Sie einen Satz von Headern kennen, die je nach der angeforderten Ressource und beabsichtigten Aktion zurückgegeben werden können.
 
-| Header | type | value |
+| Header | type | Wert |
 | --- | --- | --- |
 | request-id |String |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
 | client-request-id |String |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |
@@ -97,7 +97,7 @@ Im Folgenden lernen Sie einen Satz von Headern kennen, die je nach der angeforde
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Verben
 Im Folgenden finden eine vollständige Liste der HTTP-Verben, die für HTTP-Anforderungen verwendet werden können:
 
-| Verb | Beschreibung |
+| Verb | BESCHREIBUNG |
 | --- | --- |
 | GET |Gibt den aktuellen Wert eines Objekts zurück. |
 | POST |Erstellt ein Objekt auf Grundlage der bereitgestellten Daten oder sendet einen Befehl. |

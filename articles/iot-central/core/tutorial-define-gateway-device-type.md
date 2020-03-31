@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623461"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79298834"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -203,6 +203,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 * Definieren einer Visualisierung für die Gerätetelemetriedaten
 * Hinzufügen von Beziehungen
 * Veröffentlichen Ihrer Gerätevorlage
+
+> [!NOTE]
+> Die VS Code-basierte Codegenerierung für Gatewaygeräte, die in IoT Central modelliert werden, wird derzeit nicht unterstützt.
 
 Als Nächstes haben Sie folgende Möglichkeiten:
 

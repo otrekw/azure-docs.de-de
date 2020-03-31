@@ -4,16 +4,16 @@ description: Installieren Sie die Azure IoT-Erweiterung für Azure CLI, und verw
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b5907c0fb127947e90352e68b2726a22f5afea0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251014"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234682"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Installieren und Verwenden der Azure IoT-Erweiterung für die Azure CLI
 
@@ -48,7 +48,7 @@ In der [Infodatei zur IoT-Erweiterung](https://github.com/Azure/azure-iot-cli-ex
 
 Führen Sie den folgenden Befehl aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
-```cmd/sh
+```azurecli
 az login
 ```
 
@@ -57,14 +57,11 @@ az login
 
 Um die Azure IoT-Erweiterung für die Azure CLI verwenden zu können, benötigen Sie Folgendes:
 
-- Einen Azure IoT Hub. Es gibt viele Möglichkeiten, um einen IoT-Hub zu Ihrem Azure-Abonnement hinzuzufügen, z.B. das [Erstellen eines IoT-Hubs mit der Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Sie benötigen die Verbindungszeichenfolge für den IoT-Hub, um die Befehle für die Azure IoT-Erweiterung ausführen zu können. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-    > [!NOTE]
-    > Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
+- Einen Azure IoT Hub. Es gibt viele Möglichkeiten, um einen IoT-Hub zu Ihrem Azure-Abonnement hinzuzufügen, z.B. das [Erstellen eines IoT-Hubs mit der Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Sie benötigen die Verbindungszeichenfolge für den IoT-Hub, um die Befehle für die Azure IoT-Erweiterung ausführen zu können. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 - Ein in Ihrem IoT-Hub registriertes Gerät. Sie können den folgenden Azure CLI-Befehl zum Registrieren eines Geräts verwenden. Ersetzen Sie darin die Platzhalter `{YourIoTHubName}` und `{YourDeviceID}` durch Ihre Werte:
 
-    ```cmd/sh
+    ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
@@ -78,13 +75,13 @@ Sie können die Erweiterung nutzen, um die mit einem IoT-Hub verbundenen IoT Plu
 
 Auflisten aller Geräte auf einem IoT-Hub:
 
-```cmd/sh
+```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
 Auflisten aller Schnittstellen, die von einem IoT Plug & Play-Gerät registriert wurden:
 
-```cmd/sh
+```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
@@ -92,13 +89,13 @@ az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 
 Auflisten aller Eigenschaften und Eigenschaftswerte für eine Schnittstelle auf einem Gerät:
 
-```cmd/sh
+```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
 Festlegen des Werts für eine Lese-/Schreibeigenschaft:
 
-```cmd/sh
+```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
@@ -122,7 +119,7 @@ Ein Beispiel für eine Nutzlastdatei zum Festlegen der Eigenschaft **name** für
 
 Auflisten aller Befehle für eine Schnittstelle auf einem Gerät:
 
-```cmd/sh
+```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -130,7 +127,7 @@ Ohne den Parameter `--repo-login` verwendet dieser Befehl das öffentliche Model
 
 Aufrufen eines Befehls:
 
-```cmd/sh
+```azurecli
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
@@ -138,13 +135,13 @@ az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} 
 
 Überwachen aller IoT Plug & Play-Digital Twins-Ereignisse, die zur Event Hub-Consumergruppe **$Default** gesendet werden, von einem bestimmten Gerät und einer bestimmten Schnittstelle aus:
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
 Überwachen aller IoT Plug & Play-Digital Twins-Ereignisse, die an eine bestimmte Consumergruppe gesendet werden, von einem bestimmten Gerät und einer bestimmten Schnittstelle aus:
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
@@ -154,19 +151,19 @@ Die folgenden Befehle verwenden das öffentliche IoT Plug & Play-Modellrepositor
 
 Auflisten der Schnittstellen im öffentlichen IoT Plug & Play-Modellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp interface list
 ```
 
 Anzeigen einer Schnittstelle im öffentlichen IoT Plug & Play-Modellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
 Erstellen einer Schnittstelle in Ihrem IoT Plug & Play-Unternehmensmodellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -174,7 +171,7 @@ Sie können eine Schnittstelle im öffentlichen Modellrepository nicht direkt er
 
 Aktualisieren einer Schnittstelle in Ihrem IoT Plug & Play-Unternehmensmodellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -182,7 +179,7 @@ Sie können eine Schnittstelle im öffentlichen Modellrepository nicht direkt ak
 
 Veröffentlichen Sie eine Schnittstelle aus Ihrem IoT-Plug & Play-Unternehmensmodellrepository im öffentlichen Modellrepository. Durch diesen Vorgang wird die Schnittstelle unveränderlich:
 
-```cmd/sh
+```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -194,19 +191,19 @@ Die folgenden Befehle verwenden das öffentliche IoT Plug & Play-Modellrepositor
 
 Auflisten von Gerätefunktionsmodellen im öffentlichen IoT Plug & Play-Modellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model list
 ```
 
 Anzeigen eines Gerätefunktionsmodells im öffentlichen IoT Plug & Play-Modellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
 Erstellen eines Gerätefunktionsmodells in einem IoT Plug & Play-Unternehmensmodellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -214,7 +211,7 @@ Sie können ein Modell im öffentlichen Modellrepository nicht direkt erstellen.
 
 Aktualisieren eines Gerätefunktionsmodells im IoT Plug & Play-Unternehmensmodellrepository:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
@@ -222,7 +219,7 @@ Sie können ein Modell im öffentlichen Modellrepository nicht direkt aktualisie
 
 Veröffentlichen Sie ein Gerätefunktionsmodell aus Ihrem IoT-Plug & Play-Unternehmensmodellrepository im öffentlichen Modellrepository. Durch diesen Vorgang wird das Modell unveränderlich:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 

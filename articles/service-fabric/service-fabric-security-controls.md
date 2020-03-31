@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645428"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Sicherheitskontrollen für Azure Service Fabric
@@ -39,7 +39,7 @@ In diesem Artikel werden die in Azure Service Fabric integrierten Sicherheitskon
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |
+| Authentifizierung| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |
 | Authorization| Ja | Identitäts- und Zugriffsverwaltung (IAM) für Aufrufe über SFRP. Direkte Aufrufe von Clusterendpunkten unterstützen zwei Rollen: „Benutzer“ und „Administrator“. Der Kunde kann die APIs einer der beiden Rollen zuordnen. |
 
 ## <a name="data-protection"></a>Schutz von Daten

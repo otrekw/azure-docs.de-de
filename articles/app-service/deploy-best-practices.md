@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 14946a05f021a9b155fd9a9621f73bde980970fa
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750470"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
@@ -65,7 +65,7 @@ Verwenden Sie immer einen lokalen Cache zusammen mit [Bereitstellungsslots](depl
 
 ### <a name="high-cpu-or-memory"></a>Hohe CPU- oder Arbeitsspeicherauslastung
 
-Wenn Ihr App Service-Plan mehr als 90 % der verfügbaren CPU oder des Arbeitsspeichers verwendet, hat der zugrunde liegende virtuelle Computer möglicherweise Probleme beim Verarbeiten Ihrer Bereitstellung. Wenn dies geschieht, skalieren Sie die Anzahl Ihrer Instanzen vorübergehend zentral hoch, um die Bereitstellung auszuführen. Nachdem die Bereitstellung abgeschlossen ist, können Sie die Anzahl der Instanzen auf den vorherigen Wert zurücksetzen.
+Wenn Ihr App Service-Plan mehr als 90 % der verfügbaren CPU oder des Arbeitsspeichers verwendet, hat der zugrunde liegende virtuelle Computer möglicherweise Probleme beim Verarbeiten Ihrer Bereitstellung. Wenn dies geschieht, skalieren Sie die Anzahl Ihrer Instanzen vorübergehend hoch, um die Bereitstellung auszuführen. Nachdem die Bereitstellung abgeschlossen ist, können Sie die Anzahl der Instanzen auf den vorherigen Wert zurücksetzen.
 
 Unter [Übersicht über die Azure App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) finden Sie spezifische bewährte Methoden für Ihre Ressource.
 

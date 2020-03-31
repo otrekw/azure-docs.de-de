@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 310decf8053ea16ba46250ba3aabe81c9c254e5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243121"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Unity-Bakingtutorial für Projekt Akustik
@@ -24,7 +24,7 @@ In diesem Tutorial wird das Akustikbaking anhand von Projekt Akustik in Unity be
 Softwareanforderungen:
 * [Unity 2018.2 oder höher](https://unity3d.com) für Windows oder macOS
 * [In das Unity-Projekt integriertes Projekt Akustik-Plug-In](unity-integration.md) oder [Projekt Akustik-Beispielinhalte für Unity](unity-quickstart.md)
-* *Optional*: Ein [Azure Batch-Konto](create-azure-account.md) zum Beschleunigen des Bakings per Cloud Computing
+* *Optional:* Ein [Azure Batch-Konto](create-azure-account.md) zum Beschleunigen des Bakings per Cloud Computing
 
 ## <a name="open-the-project-acoustics-bake-window"></a>Öffnen des Bakingfensters in Projekt Akustik
 Wählen Sie in Unity im Menü **Window** (Fenster) die Option **Acoustics** (Akustik) aus.
@@ -104,7 +104,7 @@ Die Nachhallzeit eines bestimmten Materials in einem Raum ist umgekehrt proporti
 4. Verwenden Sie diese Optionen, um die Reihenfolge der Optionen in einem Menü in der Spalte **Acoustics** (Akustik) (6) zu ändern. Sortieren Sie Akustikmaterialien nach **Name** oder aufsteigend nach **Absorptivity** (Absorptionsgrad).
 5. Eine alphabetisch sortierte Liste mit den Materialien, die in der Szene verwendet werden. Wenn das Kontrollkästchen **Show Marked Only** (Nur markierte anzeigen) (3) aktiviert ist, werden nur Materialien angezeigt, die von Objekten mit der Markierung **Acoustics Geometry** (Akustikgeometrie) verwendet werden. Wählen Sie hier eines der Materialien aus, um alle Objekte der Szene auszuwählen, in denen dieses Material verwendet wird.
 6. Die Akustikmaterialien, denen die Szenenmaterialien zugewiesen wurden. Wählen Sie ein beliebiges Element aus, um das Akustikmaterial zu ändern, das diesem Szenenmaterial zugewiesen ist. Verwenden Sie die Optionen unter **Sort Acoustics By** (Akustik sortieren nach) (4), um die Sortierreihenfolge dieser Menüs zu ändern.
-7. Der Absorptionskoeffizient des ausgewählten Akustikmaterials, das links in der Spalte (6) ausgewählt wurde. Ein Wert von „0“ steht für „perfekte Reflektion“ (keine Absorption), während „1“ für „perfekte Absorption“ (keine Reflektion) steht. Der Absorptionskoeffizient kann nicht geändert werden, sofern das ausgewählte Material nicht vom Typ **Custom** (Benutzerdefiniert) ist.
+7. Der Absorptionskoeffizient des ausgewählten Akustikmaterials, das links in der Spalte (6) ausgewählt wurde. Ein Wert von „0“ steht für „perfekte Reflexion“ (keine Absorption), während „1“ für „perfekte Absorption“ (keine Reflexion) steht. Der Absorptionskoeffizient kann nicht geändert werden, sofern das ausgewählte Material nicht vom Typ **Custom** (Benutzerdefiniert) ist.
 8. Für ein Material, das als **Custom** (Benutzerdefiniert) markiert ist, ist der Schieberegler aktiviert. Sie können den Schieberegler verwenden oder einen Wert eingeben, um einen Absorptionskoeffizienten zuzuweisen.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Berechnen und Überprüfen der Zuhörer-Prüfpunktpositionen
@@ -201,7 +201,7 @@ Aus Sicherheitsgründen werden die Azure-Anmeldeinformationen auf Ihrem lokalen 
    ![Aufgabenstatus für Baking](media/azure-batch-task-state.png)  
 
 
-### <a name="Estimating-bake-cost"></a> Schätzen der Kosten für den Azure-Bakingvorgang
+### <a name="estimate-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> Schätzen der Kosten für den Azure-Bakingvorgang
 
 Beginnen Sie mit dem Wert **Geschätzte Computekosten**. Dies ist ein Wert für eine Dauer. Multiplizieren Sie diesen Wert mit den stündlichen Kosten in Ihrer lokalen Währung für den gewählten **VM-Knotentyp**. Beachten Sie Folgendes: Das Ergebnis enthält nicht die Knotenzeit, die benötigt wird, um für die Knoten die Betriebsbereitschaft herzustellen.
 
@@ -209,7 +209,7 @@ Angenommen, Sie wählen **Standard_F8s_v2** als Knotentyp aus, sodass sich Koste
 
 Informationen zu den stündlichen Kosten finden Sie auf der Seite mit den [Azure Batch-Preisen](https://azure.microsoft.com/pricing/details/virtual-machines/linux). (Wählen Sie **Optimiert für Compute** oder **Hochleistungscomputing**  als Kategorie aus.)
 
-## <a name="Local-bake"></a> Baking Ihrer Szene auf Ihrem PC
+## <a name="bake-your-scene-on-your-pc"></a><a name="Local-bake"></a> Baking Ihrer Szene auf Ihrem PC
 Sie können das Baking Ihrer Szene auch auf Ihrem PC ausführen. Dieses Verfahren kann nützlich sein, um für kleine Szenen mit der Akustik zu experimentieren, bevor Sie ein Azure Batch-Konto erstellen. Beachten Sie aber, dass eine lokale Akustiksimulation je nach Größe der Szene sehr lange dauern kann.
 
 ### <a name="minimum-hardware-requirements"></a>Minimale Hardwareanforderungen
@@ -233,7 +233,7 @@ Installieren und Konfigurieren von Docker auf dem PC, auf dem die Simulation ver
 2. Starten Sie die Simulation unter Windows mit dem Skript *runlocalbake.bat* bzw. unter macOS mit dem Skript *runlocalbake.sh*. Dieses Skript ruft das Docker-Image für Projekt Akustik mit dem für die Simulationsbearbeitung erforderlichen Toolset ab und startet die Simulation.
 3. Kopieren Sie die resultierende *ACE*-Datei nach Abschluss der Simulation zurück in Ihr Unity-Projekt. Um sicherzustellen, dass Unity dies als Binärdatei erkennt, fügen Sie „.bytes“ an die Dateierweiterung an (z. B. „Scene1.ace.bytes“). Die ausführlichen Protokolle für die Simulation werden in der Datei *AcousticsLog.txt* gespeichert. Falls Probleme auftreten, sollten Sie diese Datei untersuchen, um Hilfe beim Diagnostizieren des Problems zu erhalten.
 
-## <a name="Data-Files"></a> Durch den Bakingvorgang hinzugefügte Datendateien
+## <a name="data-files-added-by-the-bake-process"></a><a name="Data-Files"></a> Durch den Bakingvorgang hinzugefügte Datendateien
 
 Die folgenden vier Datendateien werden während des Bakingvorgangs erstellt. Eine enthält die Simulationsergebnisse und wird mit Ihrem Titel erstellt. In den anderen werden die zugehörigen Daten des Unity-Editors gespeichert.
 
