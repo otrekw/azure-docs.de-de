@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure 
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249761"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)

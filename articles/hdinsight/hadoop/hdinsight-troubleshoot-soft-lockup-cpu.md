@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894105"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Szenario: Fehler „watchdog: BUG: soft lockup - CPU“ in einem Azure HDInsight-Cluster
@@ -36,7 +36,7 @@ Wenden Sie einen Kernelpatch an. Das folgende Skript aktualisiert den Linux-Kern
 
 1. Wählen Sie **Neue übermitteln** aus, und geben Sie Folgendes ein:
 
-    | Eigenschaft | value |
+    | Eigenschaft | Wert |
     | --- | --- |
     | Skripttyp | -Custom |
     | Name |Fix for kernel soft lock issue |

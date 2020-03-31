@@ -13,15 +13,15 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930761"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Node.js
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API senden. Diese JavaScript-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
+In diesem Schnellstart erfahren Sie, wie Sie Suchanforderungen an die Bing-Bildersuche-API senden. Diese JavaScript-Anwendung sendet eine Suchabfrage an die API und zeigt die URL des ersten Bilds in den Ergebnissen an. Die Anwendung ist zwar in JavaScript geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 

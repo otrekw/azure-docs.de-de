@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75475780"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generieren eines Wärmebilds zur Bodenfeuchtigkeit
@@ -26,7 +26,7 @@ In diesem Artikel wird der Prozess zum Generieren eines Wärmebilds zur Bodenfeu
 
 Stellen Sie Folgendes sicher:  
 
-- ein Azure-Abonnement
+- Ein Azure-Abonnement.
 - Ausführung einer Instanz von Azure FarmBeats.
 - Mindestens drei verfügbare Sensoren zur Ermittlung der Bodenfeuchtigkeit für den landwirtschaftlichen Betrieb.
 

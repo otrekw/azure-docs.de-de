@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230922"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -51,7 +51,7 @@ Wenn ein Azure MFA-Masterserver offline geschaltet wird, können die untergeordn
 
 Stellen Sie sicher, dass der Server, den Sie für Azure Multi-Factor Authentication verwenden, die folgenden Anforderungen erfüllt:
 
-| Anforderungen an den Azure Multi-Factor Authentication-Server | Beschreibung |
+| Anforderungen an den Azure Multi-Factor Authentication-Server | BESCHREIBUNG |
 |:--- |:--- |
 | Hardware |<li>200 MB Festplattenspeicher</li><li>x32- oder x64-fähiger Prozessor</li><li>1 GB oder mehr RAM</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, alle Editionen</li><li>Windows 8, alle Editionen</li><li>Windows 7, alle Editionen</li><li>Windows Vista, alle Editionen, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher bei Installation des Benutzerportals oder des Webdienst-SDK</li> |

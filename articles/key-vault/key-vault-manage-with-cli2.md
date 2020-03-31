@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: f69b65ece09a63c7a1d9e23d5cd488d9659724ad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195276"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457422"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -219,7 +219,7 @@ Um dieselbe Anwendung so zu autorisieren, dass sie Geheimnisse in Ihrem Tresor l
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> Festlegen von erweiterten Zugriffsrichtlinien für Schlüsseltresore
+## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> Festlegen von erweiterten Zugriffsrichtlinien für Schlüsseltresore
 
 Verwenden Sie [az keyvault update](/cli/azure/keyvault#az-keyvault-update), um erweiterte Richtlinien für den Schlüsseltresor zu aktivieren.
 
@@ -237,9 +237,9 @@ Aktivieren von Key Vault für die Datenträgerverschlüsselung: Dieser Befehl is
 
 Aktivieren von Key Vault für die Vorlagenbereitstellung: Der Resource Manager kann Geheimnisse aus dem Tresor abrufen.
 
-```azurecli 
- az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
- ```
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
+```
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Verwenden von Hardwaresicherheitsmodulen (HSMs)
 
@@ -265,7 +265,7 @@ Sie können mit dem folgenden Befehl einen Schlüssel aus einer PEM-Datei auf Ih
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --pem-file "/.softkey.pem" --protection "hsm" --pem-password "PaSSWORD"
 ```
 
-Der nächste Befehl importiert ein BYOK-Paket (Bring Your Own Key). Auf diese Weise können Sie Ihren Schlüssel im lokalen HSM generieren und ihn in HSMs im Schlüsseltresordienst übertragen, ohne dass der Schlüssel die HSM-Grenzen verlässt:
+Mit dem nächsten Befehl wird ein BYOK-Paket (Bring Your Own Key) importiert. Auf diese Weise können Sie Ihren Schlüssel im lokalen HSM generieren und ihn in HSMs im Schlüsseltresordienst übertragen, ohne dass der Schlüssel die HSM-Grenzen verlässt:
 
 ```azurecli
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"

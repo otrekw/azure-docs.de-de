@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Tutorial: Azure Active Directory-Integration mit ScreenSteps
@@ -130,7 +130,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Klicken Sie auf **Kontoeinstellungen**.
 
-    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontoverwaltung")
+    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontenverwaltung")
 
 1. Klicken Sie auf **Einmaliges Anmelden**.
 
@@ -142,13 +142,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Führen Sie im Abschnitt **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen) die folgenden Schritte aus:
 
-    ![Erstellen eines Authentifizierungsendpunkts](./media/screensteps-tutorial/ic778526.png "Erstellen eines Authentifizierungsendpunkts")
+    ![Authentifizierungsendpunkt erstellen](./media/screensteps-tutorial/ic778526.png "Authentication Endpoint erstellen")
 
     a. Geben Sie in das Textfeld **Titel** einen Titel ein.
 
     b. Wählen Sie in der Liste **Modus** die Option **SAML** aus.
 
-    c. Klicken Sie auf **Create**.
+    c. Klicken Sie auf **Erstellen**.
 
 1. **Bearbeiten** Sie den neuen Endpunkt.
 
@@ -156,7 +156,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Führen Sie im Abschnitt **Edit Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden bearbeiten) die folgenden Schritte aus:
 
-    ![Remote Authentication Endpoint](./media/screensteps-tutorial/ic778527.png "Remote Authentication Endpoint")
+    ![Endpunkt für Remoteauthentifizierung](./media/screensteps-tutorial/ic778527.png "Remote Authentication Endpoint")
 
     a. Klicken Sie auf **Upload new SAML Certificate file** (Neue SAML-Zertifikatsdatei hochladen), und laden Sie dann das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -197,7 +197,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -241,4 +241,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ScreenSteps“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

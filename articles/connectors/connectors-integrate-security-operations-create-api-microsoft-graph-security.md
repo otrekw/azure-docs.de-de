@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598832"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbessern des Bedrohungsschutzes durch Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
@@ -38,7 +38,7 @@ Weitere Informationen zu Microsoft Graph-Sicherheit finden Sie in der [Übersich
 
 * Um den Sicherheits-API-Connector von Microsoft Graph verwenden zu können, benötigen Sie die *explizit gegebene* Zustimmung des Mandantenadministrators für Azure Active Directory (AD), die Teil der [Authentifizierungsanforderungen der Sicherheits-API in Microsoft Graph](https://aka.ms/graphsecurityauth) ist. Diese Zustimmung erfordert die Anwendungs-ID des Sicherheits-API-Connectors von Microsoft Graph und den Namen, die Sie auch im [Azure-Portal](https://portal.azure.com) finden:
 
-  | Eigenschaft | value |
+  | Eigenschaft | Wert |
   |----------|-------|
   | **Anwendungsname** | `MicrosoftGraphSecurityConnector` |
   | **Anwendungs-ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
@@ -128,7 +128,7 @@ Microsoft Graph unterstützt [*Abonnements*](https://docs.microsoft.com/graph/ap
 
 `security/alerts?$filter=status eq 'New'`
 
-| Aktion | Beschreibung |
+| Aktion | BESCHREIBUNG |
 |--------|-------------|
 | **Erstellen von Abonnements** | [Erstellen Sie ein Abonnement](https://docs.microsoft.com/graph/api/subscription-post-subscriptions), das Sie über Änderungen informiert. Sie können dieses Abonnement nach den bestimmten Warnungstypen filtern, die Sie wünschen. Beispielsweise können Sie ein Abonnement erstellen, das Sie bei Warnungen mit hohem Schweregrad benachrichtigt. |
 | **Aktive Abonnements abrufen** | [Rufen Sie nicht abgelaufene Abonnements ab](https://docs.microsoft.com/graph/api/subscription-list). | 

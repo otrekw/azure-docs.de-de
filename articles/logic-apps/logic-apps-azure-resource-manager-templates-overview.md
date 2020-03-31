@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 920d8bfbcef33464d528306113abe6223d752889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477747"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -61,7 +61,7 @@ Auf der obersten Ebene hat eine Resource Manager-Vorlage diese Struktur, die vol
 
 In einer Logik-App-Vorlage arbeiten Sie hauptsächlich mit diesen Vorlagenobjekten:
 
-| attribute | Beschreibung |
+| attribute | BESCHREIBUNG |
 |-----------|-------------|
 | `parameters` | Deklariert die [Vorlagenparameter](../azure-resource-manager/templates/template-syntax.md#parameters) zum Akzeptieren der Werte, die verwendet werden sollen, wenn Ressourcen zur Bereitstellung in Azure erstellt und angepasst werden. Diese Parameter akzeptieren z. B. die Werte für den Namen und den Speicherort Ihrer Logik-App, Verbindungen und weitere Ressourcen, die für die Bereitstellung erforderlich sind. Sie können diese Parameterwerte in einer [Parameterdatei](#template-parameter-files) speichern, die weiter unten in diesem Thema beschrieben ist. Allgemeine Informationen finden Sie unter [Parameter – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Definiert die [Ressourcen](../azure-resource-manager/templates/template-syntax.md#resources), die erstellt oder aktualisiert und in einer Azure-Ressourcengruppe bereitgestellt werden sollen, wozu Ihre Logik-App, Verbindungen, Azure-Speicherkonten usw. gehören. Allgemeine Informationen finden Sie unter [Ressourcen – Struktur und Syntax einer Resource Manager-Vorlage](../azure-resource-manager/templates/template-syntax.md#resources). |
@@ -121,7 +121,7 @@ In diesem Beispiel sind lediglich die Vorlagenparameter für die Werte aufgefüh
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location for the logic app"
@@ -1053,7 +1053,7 @@ Nachstehend ist die parametrisierte Beispielvorlage aufgeführt, die in den Beis
       },
       "LogicAppLocation": {
          "type": "string",
-         "min length": 1,
+         "minLength": 1,
          "defaultValue": "[resourceGroup().location]",
          "metadata": {
             "description": "The resource location to use for the logic app"

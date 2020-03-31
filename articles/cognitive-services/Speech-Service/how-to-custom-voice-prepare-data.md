@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74805976"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme
@@ -31,7 +31,7 @@ Es kann vorkommen, dass Sie noch kein passendes Dataset haben und das Training f
 
 In der folgenden Tabelle sind die Datentypen und ihre Verwendung zum Erstellen eines benutzerdefinierten Stimmmodells für die Sprachsynthese aufgeführt.
 
-| Datentyp | BESCHREIBUNG | Einsatzgebiete | Zusätzlicher Dienst erforderlich | Menge zum Trainieren eines Modells | Gebietsschema(s) |
+| Datentyp | BESCHREIBUNG | Verwendung | Zusätzlicher Dienst erforderlich | Menge zum Trainieren eines Modells | Gebietsschema(s) |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
 | **Einzelne Äußerungen und entsprechendes Transkript** | Eine Sammlung (.zip) von Audiodateien (.wav) als einzelne Äußerungen. Jede Audiodatei sollte maximal 15 Sekunden lang sein und über ein zugehöriges formatiertes Transkript (.txt) verfügen. | Professionelle Aufnahmen mit entsprechenden Transkripten | Bereit zum Training. | Keine zwingende Anforderung für „en-US“ und „zh-CN“. Mehr als 2.000 unterschiedliche Äußerungen für andere Gebietsschemas. | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
 | **Lange Audiodatei und Transkript (Betaversion)** | Eine Sammlung (.zip) von langen, nicht segmentierten Audiodateien (länger als 20 Sekunden) mit einem zugehörigen Transkript (.txt), das alle gesprochenen Wörter enthält. | Sie haben Audiodateien und entsprechende Transkripte, die aber nicht in Äußerungen segmentiert sind. | Segmentierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich). | Keine zwingende Anforderung  | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
@@ -151,5 +151,5 @@ Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Nachdem das Datas
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer benutzerdefinierten Stimme](how-to-custom-voice-create-voice.md)
+- [Create a Custom Voice](how-to-custom-voice-create-voice.md) (Erstellen einer benutzerdefinierten Stimme)
 - [Aufzeichnen Aufnehmen Ihrer Sprachbeispiele](record-custom-voice-samples.md)

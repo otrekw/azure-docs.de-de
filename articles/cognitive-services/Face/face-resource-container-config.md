@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76167974"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
@@ -51,7 +51,7 @@ Diese Einstellung finden Sie hier:
 
 Denken Sie daran, die _Gesichtserkennungs_-Weiterleitung dem Endpunkt-URI anzufügen, wie im folgenden Beispiel dargestellt. 
 
-|Erforderlich| Name | Datentyp | Beschreibung |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
 |Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](face-how-to-install-containers.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
@@ -61,7 +61,7 @@ Denken Sie daran, die _Gesichtserkennungs_-Weiterleitung dem Endpunkt-URI anzuf�
 
 Die Konfigurationseinstellungen im Abschnitt `CloudAI` umfassen containerspezifische Optionen für Ihren Container. Die folgenden Einstellungen und Objekte werden beim Container für die Gesichtserkennung im Abschnitt `CloudAI` unterstützt:
 
-| Name | Datentyp | Beschreibung |
+| Name | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
 | `Storage` | Object | Das vom Container für die Gesichtserkennung verwendete Speicherszenario. Weitere Informationen zu Speicherszenarien und den zugehörigen Einstellungen für das `Storage`-Objekt finden Sie unter [Einstellungen für das Speicherszenario](#storage-scenario-settings). |
 
@@ -80,7 +80,7 @@ Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschl
 
 Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vom `Storage`-Objekt unter dem Konfigurationsabschnitt `CloudAI` verwaltet. Die folgenden Konfigurationseinstellungen sind im `Storage`-Objekt verfügbar:
 
-| Name | Datentyp | Beschreibung |
+| Name | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
 | `StorageScenario` | String | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
 | `ConnectionStringOfAzureStorage` | String | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
@@ -122,7 +122,7 @@ Die Container für die Gesichtserkennung verwenden keine Eingabe- oder Ausgabeei
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](face-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| Name | Datentyp | Beschreibung |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
 |Nicht zulässig| `Input` | String | Wird von Containern für die Gesichtserkennung nicht verwendet.|
 |Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -136,7 +136,7 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
-| Platzhalter | value | Format oder Beispiel |
+| Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
 | **{API_KEY}** | Der Endpunktschlüssel der `Face`-Ressource auf der Azure `Face`-Schlüsselseite. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Face`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](face-how-to-install-containers.md#gathering-required-parameters). |

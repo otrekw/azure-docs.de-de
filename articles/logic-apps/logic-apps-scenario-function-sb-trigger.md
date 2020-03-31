@@ -7,10 +7,10 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75428706"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Aufrufen oder Auslösen von Logik-Apps mithilfe von Azure Functions und Azure Service Bus
@@ -19,7 +19,7 @@ Sie können [Azure Functions](../azure-functions/functions-overview.md) verwende
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein Azure Service Bus-Namespace. Wenn Sie keinen Namespace besitzen, [erstellen Sie zunächst Ihren Namespace](../service-bus-messaging/service-bus-create-namespace-portal.md).
 

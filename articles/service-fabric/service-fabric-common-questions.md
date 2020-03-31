@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254886"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
@@ -132,7 +132,7 @@ B. Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen 
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Was ist die beste Möglichkeit, Daten über Partitionen einer zuverlässigen Sammlung hinweg abzufragen?
 
-Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concepts-partitioning.md), um eine horizontale Hochskalierung für bessere Leistung und einen verbesserten Durchsatz zu ermöglichen. Das bedeutet, dass der Zustand für einen bestimmten Dienst über Dutzende oder Hunderte von Computern verteilt sein kann. Um Vorgänge über dieses vollständige Dataset auszuführen, stehen Ihnen einige Optionen zur Verfügung:
+Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concepts-partitioning.md), um eine Aufskalierung für bessere Leistung und einen verbesserten Durchsatz zu ermöglichen. Das bedeutet, dass der Zustand für einen bestimmten Dienst über Dutzende oder Hunderte von Computern verteilt sein kann. Um Vorgänge über dieses vollständige Dataset auszuführen, stehen Ihnen einige Optionen zur Verfügung:
 
 - Erstellen Sie einen Dienst, der alle Partitionen eines anderen Diensts abfragt, um die erforderlichen Daten abzurufen.
 - Erstellen Sie einen Dienst, der Daten von allen Partitionen eines anderen Diensts empfangen kann.

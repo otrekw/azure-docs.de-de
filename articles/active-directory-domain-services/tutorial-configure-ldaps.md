@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612775"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481533"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -66,9 +66,9 @@ Das Zertifikat, das Sie anfordern oder erstellen, muss die folgenden Anforderung
 * **Antragstellername**: Der Name des Antragstellers im Zertifikat muss Ihre verwaltete Domäne sein. Wenn Ihre Domäne z. B. *aaddscontoso.com* heißt, muss als Antragstellername im Zertifikat * *.aaddscontoso.com* angegeben sein.
     * Der DNS-Name oder alternative Antragstellername des Zertifikats muss ein Platzhalterzertifikat sein, um sicherzustellen, dass Secure LDAP ordnungsgemäß mit den Azure AD Domain Services funktioniert. Domänencontroller verwenden zufällig vergebene Namen und können entfernt oder hinzugefügt werden, um sicherzustellen, dass der Dienst verfügbar bleibt.
 * **Schlüsselverwendung**: Das Zertifikat muss für *digitale Signaturen* und *Schlüsselverschlüsselung* konfiguriert sein.
-* **Zertifikatzweck** : Das Zertifikat muss für die SSL-Serverauthentifizierung gültig sein.
+* **Zertifikatzweck** : Das Zertifikat muss für die TLS-Serverauthentifizierung gültig sein.
 
-In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
+Es sind verschiedene Tools verfügbar, mit denen ein selbstsigniertes Zertifikat erstellt werden kann, z. B. OpenSSL, Keytool, MakeCert, Cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] usw. In diesem Tutorial erstellen Sie mithilfe des Cmdlets [New-SelfSignedCertificate][New-SelfSignedCertificate] ein selbstsigniertes Zertifikat für Secure LDAP. Öffnen Sie ein PowerShell-Fenster als **Administrator**, und führen Sie die folgenden Befehle aus. Ersetzen Sie die Variable *$dnsName* durch den DNS-Namen, der von Ihrer verwalteten Domäne verwendet wird (z. B. *aaddscontoso.com*):
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 1. Da dieses Zertifikat zum Entschlüsseln von Daten verwendet wird, sollten Sie den Zugriff sorgfältig steuern. Zum Schutz des Zertifikats kann ein Kennwort verwendet werden. Ohne das richtige Kennwort kann das Zertifikat nicht auf einen Dienst angewendet werden.
 
     Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Azure AD DS-Domäne verwendet.
-1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds.pfx*.
+1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds.pfx*. Notieren Sie sich das Kennwort und den Speicherort der *PFX*-Datei, da Sie diese Informationen in den nächsten Schritten benötigen.
 1. Klicken Sie auf der Überprüfungsseite auf **Fertig stellen**, um das Zertifikat in eine *PFX*-Zertifikatdatei zu exportieren. Wenn das Zertifikat erfolgreich exportiert wurde, wird ein Bestätigungsdialogfeld angezeigt.
 1. Lassen Sie die MMC für den nächsten Abschnitt geöffnet.
 
@@ -211,7 +211,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
 1. Die Liste der vorhandenen Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Wählen Sie auf der linken Seite des Fensters „Netzwerksicherheitsgruppe“ die Optionen **Einstellungen > Eingangssicherheitsregeln** aus.
 1. Klicken Sie auf **Hinzufügen**, und erstellen Sie eine Regel zum Zulassen von *TCP*-Port *636*. Wählen Sie zur Verbesserung der Sicherheit *IP-Adressen* als Quelle aus, und geben Sie die eigene gültige IP-Adresse oder den eigenen gültigen IP-Adressbereich für Ihre Organisation an.
 
-    | Einstellung                           | value        |
+    | Einstellung                           | Wert        |
     |-----------------------------------|--------------|
     | `Source`                            | IP-Adressen |
     | IP-Quelladressen/CIDR-Bereiche | Eine gültige IP-Adresse oder ein gültiger IP-Adressbereich für Ihre Umgebung |

@@ -1,15 +1,15 @@
 ---
 title: 'Aktualisieren von Azure Cosmos DB mithilfe von Blockchain Data Manager: Azure Blockchain Service'
 description: Senden von Blockchaindaten an Azure Cosmos DB mithilfe von Blockchain Data Manager für Azure Blockchain Service
-ms.date: 12/04/2019
+ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977392"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79533180"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Tutorial: Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB
 
@@ -51,7 +51,7 @@ Eine Blockchain Data Manager-Instanz verbindet und überwacht einen Azure Blockc
 
     Einstellung | Beispiel | BESCHREIBUNG
     --------|---------|------------
-    NAME | mywatcher | Geben Sie einen eindeutigen Namen für einen verbundenen Blockchain Data Manager ein.
+    Name | mywatcher | Geben Sie einen eindeutigen Namen für einen verbundenen Blockchain Data Manager ein.
     Transaktionsknoten | myblockchainmember | Wählen Sie den Standardtransaktionsknoten des Azure Blockchain Service-Mitglieds aus, das Sie in der Voraussetzung erstellt haben.
     Verbindungsname | cosmosdb | Geben Sie einen eindeutigen Namen für die ausgehende Verbindung ein, an die Blockchaintransaktionsdaten gesendet werden.
     Event Grid-Endpunkt | myTopic | Wählen Sie ein Event Grid-Thema aus, das Sie in der Voraussetzung erstellt haben. Hinweis: Die Blockchain Data Manager-Instanz und das Event Grid-Thema müssen sich in demselben Abonnement befinden.
@@ -110,7 +110,7 @@ Blockchain Data Manager erfordert, dass die Contract ABI- und Bytecodedateien be
 
     | Einstellung | BESCHREIBUNG |
     |---------|-------------|
-    | NAME  | Geben Sie dem Container einen Namen. Beispiel: *smartcontract* |
+    | Name  | Geben Sie dem Container einen Namen. Beispiel: *smartcontract* |
     | Öffentliche Zugriffsebene | Wählen Sie *Privat (kein anonymer Zugriff)* aus. |
 
 1. Wählen Sie **OK** aus, um den Container zu erstellen.
@@ -146,7 +146,7 @@ Generieren Sie für jedes Blob eine Shared Access Signature.
 
     Einstellung | BESCHREIBUNG
     --------|------------
-    NAME | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
+    Name | Geben Sie einen eindeutigen Namen zur Verfolgung der Blockchainanwendung ein.
     Vertrags-ABI | Der URL-Pfad zur Datei mit der Vertrags-ABI. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
     Vertragsbytecode | Der URL-Pfad zur Bytecodedatei. Weitere Informationen finden Sie unter [Erstellen von Vertrags-ABI- und Bytecode-URLs](#create-contract-abi-and-bytecode-url).
 
@@ -174,7 +174,7 @@ Sie können mit dem Daten-Explorer im Azure-Portal eine Datenbank und einen Cont
     | Einstellung | BESCHREIBUNG
     |---------|-------------|
     | Datenbank-ID | Geben Sie **blockchain-data** als Namen für die neue Datenbank ein. |
-    | Throughput | Belassen Sie den Durchsatz bei **400** Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.|
+    | Throughput | Belassen Sie den Durchsatz bei **400** Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten.|
     | Container-ID | Geben Sie **Messages** als Namen für den neuen Container ein. |
     | Partitionsschlüssel | Verwenden Sie **/MessageType** als Partitionsschlüssel. |
 
@@ -247,17 +247,17 @@ Die Logik-App überwacht das Event Grid-Thema. Wenn eine neue Transaktionsnachri
 
 ## <a name="send-a-transaction"></a>Senden einer Transaktion
 
-Anschließend senden Sie eine Transaktion an den Blockchainledger, um zu testen, was Sie erstellt haben. Verwenden Sie das Skript **sendrequest.js**, das Sie in der Voraussetzung [Tutorial: Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md) erstellt haben.
+Anschließend senden Sie eine Transaktion an den Blockchainledger, um zu testen, was Sie erstellt haben. Verwenden Sie die Funktion **SendRequest** des **HelloBlockchain**-Vertrags, die Sie als Voraussetzung unter [Tutorial: Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md) erstellt haben.
 
-Verwenden Sie Truffle im Terminalbereich von VS Code, um das Skript in Ihrem Blockchainnetzwerk für Konsortien auszuführen. Wählen Sie in der Menüleiste des Terminalbereichs die Registerkarte **Terminal** und in der Dropdownliste die Option **PowerShell**.
+1. Verwenden Sie die Seite für die Smart Contract-Interaktion des Azure Blockchain Development Kit, um die Funktion **SendRequest** aufzurufen. Klicken Sie mit der rechten Maustaste auf **HelloBlockchain.sol**, und wählen Sie im Menü die Option **Show Smart Contract Interaction Page** (Smart Contract-Interaktionsseite anzeigen) aus.
 
-``` PowerShell
-truffle exec sendrequest.js --network <blockchain network>
-```
+    ![Auswählen von „Show Smart Contract Interaction Page“ (Smart Contract-Interaktionsseite anzeigen) im Menü](./media/data-manager-cosmosdb/contract-interaction.png)
 
-Ersetzen Sie \<blockchain network\> durch den Namen des Blockchainnetzwerks, das in der Datei **truffle-config.js** definiert ist.
+1. Wählen Sie die Vertragsaktion **SendRequest** aus, und geben Sie **Hello, Blockchain!** für den Parameter **requestMessage** ein. Wählen Sie **Ausführen** aus, um die Funktion **SendRequest** per Transaktion aufzurufen.
 
-![Senden einer Transaktion](./media/data-manager-cosmosdb/send-request.png)
+    ![Ausführen der Aktion „SendRequest“](./media/data-manager-cosmosdb/sendrequest-action.png)
+
+Mit der Funktion „SendRequest“ werden die Felder **RequestMessage** und **State** festgelegt. Der aktuelle Zustand für **RequestMessage** ist das übergebene Argument **Hello, Blockchain**. Das Feld **State** lautet weiterhin **Request**.
 
 ## <a name="view-transaction-data"></a>Anzeigen von Transaktionsdaten
 

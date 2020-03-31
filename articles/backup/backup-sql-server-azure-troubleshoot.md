@@ -3,18 +3,18 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8d49adb0ab741903ccb2989cfeb4ceaef2e8a38d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408615"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
 Dieser Artikel enthält Informationen zur Problembehandlung bei SQL Server-Datenbank-Instanzen, die auf Azure-VMs ausgeführt werden.
 
-Weitere Informationen zu Sicherungsprozess und Einschränkungen finden Sie unter [Funktionsaspekte und Einschränkungen](backup-azure-sql-database.md#feature-consideration-and-limitations).
+Weitere Informationen zu Sicherungsprozess und Einschränkungen finden Sie unter [Funktionsaspekte und Einschränkungen](sql-support-matrix.md#feature-consideration-and-limitations).
 
 ## <a name="sql-server-permissions"></a>SQL Server-Berechtigungen
 

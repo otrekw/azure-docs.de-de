@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68297781"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
@@ -224,7 +224,7 @@ Dies sind die wirksamen TCP-Einstellungen für `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zur <br/>Berechnung der maximalen Fenstergröße**|
-|Deaktiviert|Keine|Keine|Fenstergröße|
+|Disabled|Keine|Keine|Fenstergröße|
 |Eingeschränkt|4|2^4|Fenstergröße * (2^4)|
 |Stark eingeschränkt|2|2^2|Fenstergröße * (2^2)|
 |Normal|8|2^8|Fenstergröße * (2^8)|
@@ -265,7 +265,7 @@ Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empf
 
 Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](https://aka.ms/FastVM).
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
+### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
 
 TCP TIME_WAIT ist eine weitere gängige Einstellung, die die Netzwerk- und Anwendungsleistung beeinflusst. Auf ausgelasteten VMs, die viele Sockets öffnen und schließen, entweder als Clients oder Server (Quell-IP:Quellport + Ziel-IP:Zielport), kann ein bestimmter Socket während des normalen Betriebs von TCP für lange Zeit in einem TIME_WAIT-Zustand verharren. Der TIME_WAIT-Zustand soll es ermöglichen, dass jegliche zusätzliche Daten an einen Socket gesendet werden können, bevor er geschlossen wird. Daher verhindern TCP/IP-Stapel grundsätzlich die Wiederverwendung eines Sockets, indem sie das TCP-SYN-Paket des Clients automatisch verwerfen.
 

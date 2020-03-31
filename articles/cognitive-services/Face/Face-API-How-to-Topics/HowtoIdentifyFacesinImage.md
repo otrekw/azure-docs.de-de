@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169915"
 ---
 # <a name="example-identify-faces-in-images"></a>Beispiel: Identifizieren von Gesichtern in Bildern
@@ -80,7 +80,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step2-2"></a> Schritt 2.2: Erkennen von Gesichtern und Zuordnen zur richtigen Person
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a> Schritt 2.2: Erkennen von Gesichtern und Zuordnen zur richtigen Person
 Senden Sie zur Gesichtserkennung eine POST-Webanforderung an die API [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) mit der Bilddatei im Text der HTTP-Anforderung. Bei Verwendung der Clientbibliothek erfolgt die Gesichtserkennung über eine der DetectAsync-Methoden für die FaceClient-Klasse.
 
 Rufen Sie für jedes erkannte Gesicht [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) auf, um es der richtigen Person hinzuzufügen.

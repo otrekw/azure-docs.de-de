@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial zur Bildklassifizierung: Bereitstellen von Modellen'
 titleSuffix: Azure Machine Learning
-description: Dieses Tutorial zeigt, wie Sie mit Azure Machine Learning ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe.
+description: Dies ist das zweite Tutorial einer zweiteiligen Reihe. Es veranschaulicht, wie Sie mit Azure Machine Learning ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116505"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159071"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen Tutorial](tutorial-train-models-with-aml.md) haben Sie Machine Learning-Modelle trainiert und anschließend ein Modell in Ihrem Arbeitsbereich in der Cloud registriert.  
-
-Nun können Sie das Modell als Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Ein Webdienst ist ein Image (in diesem Fall: ein Docker-Image). Es kapselt die Bewertungslogik und das eigentliche Modell. 
+Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [vorherigen Tutorial](tutorial-train-models-with-aml.md) haben Sie Machine Learning-Modelle trainiert und anschließend ein Modell in Ihrem Arbeitsbereich in der Cloud registriert.  Nun können Sie das Modell als Webdienst bereitstellen. Ein Webdienst ist ein Image (in diesem Fall: ein Docker-Image). Es kapselt die Bewertungslogik und das eigentliche Modell. 
 
 In diesem Teil des Tutorials verwenden Sie Azure Machine Learning für Folgendes:
 
@@ -50,7 +48,7 @@ Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNo
 > Wechseln Sie nun zur Jupyter Notebook-Instanz, wenn Sie während der Ausführung des Codes mitlesen möchten.
 > Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie auf der oberen Symbolleiste **Alle ausführen** auswählen.
 
-## <a name="start"></a>Einrichten der Umgebung
+## <a name="set-up-the-environment"></a><a name="start"></a>Einrichten der Umgebung
 
 Zunächst richten Sie eine Testumgebung ein.
 
@@ -299,7 +297,6 @@ Rufen Sie den Bewertungswebdienst des HTTP-Endpunkts ab, der REST-Clientaufrufe 
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>Testen des bereitgestellten Diensts
 

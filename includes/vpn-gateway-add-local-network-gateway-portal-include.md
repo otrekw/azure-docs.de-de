@@ -9,13 +9,13 @@ ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522892"
 ---
-1. Wählen Sie im [Azure-Portalmenü](https://portal.azure.com) die Option **Ressource erstellen** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)-Menü die Option **Ressource erstellen** aus. 
 
    ![Erstellen einer Ressource im Azure-Portal](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
 2. Geben Sie im Feld **Marketplace durchsuchen** den Text **Lokales Netzwerkgateway** ein, und drücken Sie zum Suchen die **EINGABETASTE**. Daraufhin wird eine Liste mit Ergebnissen zurückgegeben. Klicken Sie auf **Lokales Netzwerkgateway** und anschließend auf die Schaltfläche **Erstellen**, um die Seite **Lokales Netzwerkgateway erstellen** zu öffnen.

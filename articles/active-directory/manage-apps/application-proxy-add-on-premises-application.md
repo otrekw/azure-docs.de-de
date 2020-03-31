@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ab39c10686066599a23d12c4fd8e66caae732e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586069"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481414"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -90,7 +90,7 @@ Ermöglichen Sie zuerst die Kommunikation mit Azure-Rechenzentren, um Ihre Umgeb
 
    | Portnummer | Wie diese verwendet wird |
    | --- | --- |
-   | 80 | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
+   | 80 | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
    | 443 | Gesamte ausgehende Kommunikation mit dem Webanwendungsproxy-Dienst |
 
 Wenn Ihre Firewall Datenverkehr gemäß Ursprungsbenutzern erzwingt, öffnen Sie auch die Ports 80 und 443 für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
@@ -102,7 +102,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | URL | Wie diese verwendet wird |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure verwendet diese URLs, um Zertifikate zu überprüfen. |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Der Connector verwendet diese URLs während der Registrierung. |
 
 Sie können Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen, wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
@@ -185,7 +185,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 
 6. Konfigurieren Sie bei Bedarf die Einstellungen unter **Zusätzliche Einstellungen**. Für die meisten Anwendungen sollten Sie diese Einstellungen im Standardzustand belassen. 
 
-    | Feld | Beschreibung |
+    | Feld | BESCHREIBUNG |
     | :---- | :---------- |
     | **Timeout der Back-End-Anwendung** | Legen Sie diesen Wert nur auf **Lang** fest, wenn Ihre Anwendung bei der Authentifizierung und dem Verbinden langsam ist. Standardmäßig beträgt das Timeout der Back-End-Anwendung 85 Sekunden. Wird der Wert auf „Lang“ festgelegt, wird das Back-End-Timeout auf 180 Sekunden erhöht. |
     | **Nur-HTTP-Cookie verwenden** | Legen Sie diesen Wert auf **Ja** fest, damit Anwendungsproxycookies das Flag HTTPOnly im HTTP-Antwortheader enthalten. Wenn Sie Remotedesktopdienste verwenden, sollten Sie diese Option auf **Nein** festlegen.|

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 50e4fe1e2573c8566bbdf5697bb81b025a00935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131733"
 ---
 # <a name="detect-popular-brands-in-images"></a>Erkennen von bekannten Marken in Bildern
 
@@ -76,5 +76,5 @@ In einigen Fällen wird der Markendetektor sowohl das Logobild als auch den stil
 
 Die Funktion zur Erkennung von Marken ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Brands` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"brands"`.
 
-* [Schnellstart: Maschinelles Sehen: .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Schnellstart: Maschinelles Sehen: .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)

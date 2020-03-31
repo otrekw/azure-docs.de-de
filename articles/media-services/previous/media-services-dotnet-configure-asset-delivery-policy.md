@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974511"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK
@@ -199,9 +199,9 @@ Im Abschnitt [Beim Definieren von AssetDeliveryPolicy verwendete Typen](#types) 
     }
 ```
 
-## <a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>Beim Definieren von AssetDeliveryPolicy verwendete Typen
 
-### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
+### <a name="assetdeliveryprotocol"></a><a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
 Die folgende Enumeration beschreibt Werte, die Sie für das Protokoll zur Übermittlung von Medienobjekten festlegen können.
 
@@ -237,7 +237,7 @@ Die folgende Enumeration beschreibt Werte, die Sie für das Protokoll zur Überm
         All = 0xFFFF
     }
 ```
-### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+### <a name="assetdeliverypolicytype"></a><a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
 Die folgende Enumeration beschreibt Werte, die Sie für den Richtlinientyp zur Übermittlung von Medienobjekten festlegen können.  
 ```csharp
@@ -270,7 +270,7 @@ Die folgende Enumeration beschreibt Werte, die Sie für den Richtlinientyp zur �
         DynamicCommonEncryption
         }
 ```
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 Die folgende Enumeration beschreibt Werte, die Sie verwenden können, um die Übermittlungsmethode des symmetrischen Schlüssels an den Client zu konfigurieren.
   ```csharp  
@@ -302,7 +302,7 @@ Die folgende Enumeration beschreibt Werte, die Sie verwenden können, um die Üb
 
     }
 ```
-### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+### <a name="assetdeliverypolicyconfigurationkey"></a><a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
 Die folgende Enumeration beschreibt Werte, die Sie festlegen können, um die Schlüssel zum Abrufen einer spezifischen Konfiguration für eine Richtlinie zur Übermittlung von Medienobjekten zu konfigurieren.
 ```csharp

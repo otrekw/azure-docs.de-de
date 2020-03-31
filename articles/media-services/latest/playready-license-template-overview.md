@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
 ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705886"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 mit PlayReady-Lizenzvorlage 
@@ -58,7 +58,7 @@ Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im Absch
     </PlayReadyLicenseResponseTemplate>
 
 
-## <a id="classes"></a>Verwenden von Media Services-APIs zum Konfigurieren von Lizenzvorlagen
+## <a name="use-media-services-apis-to-configure-license-templates"></a><a id="classes"></a>Verwenden von Media Services-APIs zum Konfigurieren von Lizenzvorlagen
 
 Media Services umfasst Typen, mit denen Sie eine PlayReady-Lizenzvorlage konfigurieren können. 
 
@@ -88,7 +88,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 };
 ```
 
-## <a id="schema"></a>XML-Schema für PlayReady-Lizenzvorlage
+## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>XML-Schema für PlayReady-Lizenzvorlage
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />

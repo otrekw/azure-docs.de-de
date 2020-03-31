@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: dccd2ebb6ac2c11e19e986d39eabda5f0ab6a8fc
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774286"
 ---
 # <a name="quickstart-content-moderator-client-library-for-net"></a>Schnellstart: Content Moderator-Clientbibliothek für .NET
@@ -96,7 +96,7 @@ Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbar
 
 Mit den folgenden Klassen werden einige Hauptfunktionen des Content Moderator .NET SDK verarbeitet.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|Diese Klasse wird für alle Content Moderator-Funktionen benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[ImageModeration](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|Diese Klasse stellt die Funktionalität zum Analysieren von Bildern auf nicht jugendfreie Inhalte, persönliche Informationen oder menschliche Gesichter bereit.|

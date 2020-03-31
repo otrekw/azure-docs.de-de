@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
 ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978275"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Resource Manager-Ausnahmen
@@ -34,7 +34,7 @@ Im Folgenden finden Sie die verschiedenen Ausnahmen/Fehler, die durch Azure Reso
 
 „Ungültige Anforderung“ impliziert, dass die von Resource Manager empfangene Anforderung die Überprüfung nicht bestanden hat.
 
-| Fehlercode | Fehler-SubCode | Fehlermeldung | Beschreibung | Empfehlung |
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Ungültige Anforderung | 40.000 | SubCode=40000. Die Eigenschaft *'Eigenschaftsname'* kann beim Erstellen einer Warteschlange nicht festgelegt werden, weil der Namespace *' Namespacename'* den Tarif 'Basic' verwendet. Dieser Vorgang wird nur im Tarif 'Basic' oder 'Premium' unterstützt. | Im Tarif Basic von Azure Service Bus können die folgenden Eigenschaften nicht festgelegt oder aktualisiert werden: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Themen </li> </ul> | Führen Sie ein Upgrade von Basic auf Standard oder Premium durch, um diese Funktion zu verwenden. |
 | Ungültige Anforderung | 40.000 | SubCode=40000. Der Wert für die Eigenschaft 'requiresDuplicateDetection' einer vorhandenen Warteschlange (oder eines Themas) kann nicht geändert werden. | Die Duplikaterkennung muss zum Zeitpunkt der Erstellung der Entität aktiviert/deaktiviert werden. Der Konfigurationsparameter für die Duplikaterkennung kann nach der Erstellung nicht mehr geändert werden. | Um die Duplikaterkennung für eine zuvor erstellte Warteschlange/ein Thema zu aktivieren, können Sie eine neue Warteschlange/ein neues Thema mit Duplikaterkennung erstellen und dann aus der ursprünglichen Warteschlange an die neue Warteschlange/das neue Thema weiterleiten. |
@@ -52,7 +52,7 @@ Im Folgenden finden Sie die verschiedenen Ausnahmen/Fehler, die durch Azure Reso
 
 Genau wie in HTTP gibt „Fehlercode 429“ an, dass zu viele Anforderungen vorhanden sind. Dies impliziert, dass die spezifische Ressource (Namespace) aufgrund einer zu großen Anzahl von Anforderungen (oder aufgrund von in Konflikt stehenden Vorgängen) für diese Ressource gedrosselt wird.
 
-| Fehlercode | Fehler-SubCode | Fehlermeldung | Beschreibung | Empfehlung |
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | 50004 | SubCode=50004. Die Anforderung wurde beendet, weil der Namespace *IhrNamespace* gedrosselt wird. | Diese Fehlerbedingung wird ausgelöst, wenn die Anzahl der eingehenden Anforderungen die Einschränkung der Ressource überschreitet. | Warten Sie einige Sekunden, und versuchen Sie es noch mal. <br/> <br/> Weitere Informationen zu den [Kontingenten](service-bus-quotas.md) und [Azure Resource Manager-Anforderungslimits](../azure-resource-manager/management/request-limits-and-throttling.md)|
 | 429 | 40901 | SubCode=40901. Ein anderer in Konflikt stehender Vorgang wird ausgeführt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der aktuell ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
@@ -66,7 +66,7 @@ Genau wie in HTTP gibt „Fehlercode 429“ an, dass zu viele Anforderungen vorh
 
 Diese Fehlerklasse gibt an, dass die Ressource nicht gefunden wurde.
 
-| Fehlercode | Fehler-SubCode | Fehlermeldung | Beschreibung | Empfehlung |
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Nicht gefunden | none | Die Entität *'Entitätsname'* wurde nicht gefunden. | Die Entität, für die der Vorgang ausgeführt werden soll, wurde nicht gefunden. | Überprüfen Sie, ob die Entität vorhanden ist, und wiederholen Sie den Vorgang. |
 | Nicht gefunden | none | Nicht gefunden. Der Vorgang ist nicht vorhanden. | Der Vorgang, den Sie ausführen möchten, ist nicht vorhanden. | Überprüfen Sie den Vorgang, und versuchen Sie es noch mal. |
@@ -77,7 +77,7 @@ Diese Fehlerklasse gibt an, dass die Ressource nicht gefunden wurde.
 
 Diese Fehlerklasse gibt an, dass ein interner Serverfehler aufgetreten ist.
 
-| Fehlercode | Fehler-SubCode | Fehlermeldung | Beschreibung | Empfehlung |
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Interner Serverfehler | 50000 | SubCode=50000. Interner Serverfehler| Dies kann aus verschiedenen Gründen geschehen. Einige der Symptome sind: <ul> <li> Clientanforderung/Text ist beschädigt und führt zu einem Fehler. </li> <li> Timeout bei der Clientanforderung aufgrund von Verarbeitungsproblemen für den Dienst. </li> </ul> | Problembehebung: <ul> <li> Stellen Sie sicher, dass die Anforderungsparameter nicht NULL oder falsch formatiert sind. </li> <li> Wiederholen Sie die Anforderung. </li> </ul> |
 
@@ -85,7 +85,7 @@ Diese Fehlerklasse gibt an, dass ein interner Serverfehler aufgetreten ist.
 
 Diese Fehlerklasse gibt an, dass keine Autorisierung zum Ausführen des Befehls vorhanden ist.
 
-| Fehlercode | Fehler-SubCode | Fehlermeldung | Beschreibung | Empfehlung |
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Nicht autorisiert | none | Ungültiger Vorgang für den sekundären Namespace. Der sekundäre Namespace ist schreibgeschützt. | Der Vorgang wurde für den sekundären Namespace ausgeführt, der als schreibgeschützter Namespace eingerichtet ist. | Wiederholen Sie den Befehl für den primären Namespace. Weitere Informationen zum [sekundären Namespace](service-bus-geo-dr.md) |
 | Nicht autorisiert | none | MissingToken: Der Autorisierungsheader wurde nicht gefunden. | Dieser Fehler tritt auf, wenn die Autorisierung NULL oder falsche Werte aufweist. | Stellen Sie sicher, dass der im Autorisierungsheader angegebene Tokenwert richtig und nicht NULL ist. |

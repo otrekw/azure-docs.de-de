@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71351149"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
@@ -33,7 +33,7 @@ Die zentrale Innovation von Projekt Akustik besteht darin, eine auf echten Schal
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Video Präsentation von der GDC 2019 (ca. 30 Minuten)
 [![Projekt Akustik: Video](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Zum Abspielen des Videos klicken")
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 Die [Unity-Integration von Projekt Akustik](unity-integration.md) unterstützt Drag & Drop und enthält ein Unity-Audio-Engine-Plug-In. Erweitern Sie die Audioquellen-Steuerelemente von Unity, indem Sie eine Komponente für Projekt Akustik-C#-Steuerelemente an jedes Audioobjekt anfügen.
 
 Die [Unreal-Integration von Projekt Akustik](unreal-integration.md) enthält Editor- und Spiel-Plug-Ins für Unreal sowie ein Wwise-Mixer-Plug-In. Eine benutzerdefinierte Audiokomponente erweitert die vertrauten Wwise-Funktionen in Unreal um Liveakustik-Entwurfssteuerelemente. Die Entwurfssteuerelemente sind außerdem in Wwise im Mixer-Plug-In verfügbar.
@@ -46,7 +46,7 @@ Die [Unreal-Integration von Projekt Akustik](unreal-integration.md) enthält Edi
 ## <a name="runtime-platforms"></a>Runtime-Plattformen
 Die Projekt Akustik-Runtime-Plug-Ins können derzeit auf den folgenden Plattformen bereitgestellt werden:
 * Windows
-* macOS
+* MacOS
 * Android
 * Xbox One
 

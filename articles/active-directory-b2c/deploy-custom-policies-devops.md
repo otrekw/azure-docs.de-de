@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188748"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
@@ -131,7 +131,7 @@ Nachdem Sie Ihr Repository initialisiert und mit Ihren benutzerdefinierten Richt
 1. Wählen Sie die Registerkarte **Variablen** aus.
 1. Fügen Sie unter **Pipelinevariablen** die folgenden Variablen hinzu, und legen Sie die Werte wie angegeben fest:
 
-    | Name | value |
+    | Name | Wert |
     | ---- | ----- |
     | `clientId` | **Anwendungs-ID (Client)** der zuvor von Ihnen registrierten Anwendung. |
     | `clientSecret` | Wert des **geheimen Clientschlüssels**, den Sie zuvor erstellt haben. <br /> Ändern Sie den Variablentyp in **Geheimnis** (wählen Sie das Schlosssymbol aus). |

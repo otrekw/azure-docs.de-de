@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904947"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -17,7 +17,7 @@ Ermöglicht es, Befehle an den Reparatur-Manager-Dienst abzufragen und zu senden
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 | approve-force | Erzwingt die Genehmigung das angegebenen Reparaturtasks. |
 | delete | Löscht einen abgeschlossenen Reparaturtask. |
@@ -30,14 +30,14 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --task-id [erforderlich] | Die ID des Reparaturtasks. |
 | --version | Die aktuelle Versionsnummer des Reparaturtasks. Ist der Wert ungleich null, ist die Anforderung nur dann erfolgreich, wenn dieser Wert mit der tatsächlichen aktuellen Version des Reparaturtasks übereinstimmt. Ist der Wert gleich null, wird keine Versionsüberprüfung ausgeführt. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -52,14 +52,14 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --task-id [erforderlich] | Die ID des abgeschlossenen Reparaturtasks, der gelöscht werden soll. |
 | --version | Die aktuelle Versionsnummer des Reparaturtasks. Ist der Wert ungleich null, ist die Anforderung nur dann erfolgreich, wenn dieser Wert mit der tatsächlichen aktuellen Version des Reparaturtasks übereinstimmt. Ist der Wert gleich null, wird keine Versionsüberprüfung ausgeführt. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -74,7 +74,7 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --executor-filter | Der Name des Reparaturexecutors, dessen beanspruchte Tasks in der Liste enthalten sein sollen. |
 | --state-filter | Eine bitweise OR-Operation für die folgenden Werte, die angibt, welche Taskstatus in der Ergebnisliste enthalten sein sollen. <ul><li>1 – „Created“</li><li>2 – „Claimed“</li><li>4 – „Preparing“</li><li>8 – „Approved“</li><li>16 – „Executing“</li><li>32 – „Restoring“</li><li>64 – „Completed“</li></ul>
@@ -82,7 +82,7 @@ Diese API unterstützt die Service Fabric-Plattform. Sie ist nicht dazu vorgeseh
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

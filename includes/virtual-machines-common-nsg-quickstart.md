@@ -9,10 +9,10 @@ ms.date: 09/12/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: ec6cbcbc93fe87634c87caeb0041b75ec916a22f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178061"
 ---
 In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer, indem Sie einen Netzwerkfilter für ein Subnetz oder eine VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert wird, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt.

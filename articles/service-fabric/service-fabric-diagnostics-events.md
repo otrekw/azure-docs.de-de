@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451725"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-Ereignisse 
@@ -25,7 +25,7 @@ Die Service Fabric-Plattform schreibt mehrere strukturierte Ereignisse für die 
 Eine vollständige Liste der von der Plattform verfügbar gemachten Ereignisse finden Sie unter [Auflistung der Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md).
 
 Nachfolgend sind Sie einige Beispiele für Szenarien aufgeführt, für die Sie Ereignisse in Ihrem Cluster anzeigen sollten. 
-* Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Herunter-/Hochskalieren, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
+* Lebenszyklusereignisse von Knoten: Ereignisse wie das Erstellen, Entfernen, Ab-/Aufskalieren, Aktivieren, Deaktivieren oder Neustarten von Knoten werden verfügbar gemacht und geben Ihnen einen Überblick über das, was passiert ist. Mit ihrer Hilfe können Sie feststellen, ob es ein Problem mit dem Computer gibt, oder ob eine über Service Fabric aufgerufene API den Status eines Knotens geändert hat.
 * Clusterupgrade: Bei einem Clusterupgrade (SF-Version oder Konfigurationsänderung) sehen Sie, wie das Upgrade initiiert, in den einzelnen Upgradedomänen angewendet und abgeschlossen wird (oder ein Rollback erfolgt). 
 * Anwendungsupgrades: Wie bei Clusterupgrades gibt es eine komplexe Reihe von Ereignissen während der Anwendung des Upgrades. Es kann hilfreich sein, diese Ereignisse zu verstehen: wann ein Upgrade geplant wurde, den aktuellen Stand des Upgrades und die allgemeine Abfolge der Ereignisse. Damit können Sie auf praktische Weise zurückverfolgen, welche Upgrades erfolgreich angewandt wurden oder ob ein Rollback ausgelöst wurde.
 * Bereitstellen/Löschen von Anwendungen/Diensten: Es gibt Ereignisse für jede Anwendung, jeden Dienst und jeden Container, die bzw. der erstellt oder gelöscht wird. Dies ist hilfreich beim horizontalen Herunter- oder Hochskalieren, d. h. beim Erhöhen der Anzahl der Replikate.

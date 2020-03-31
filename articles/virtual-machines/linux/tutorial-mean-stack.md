@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034402"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154320"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 
@@ -36,7 +36,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie einen MEAN-Stack (MongoDB, Expr
 
 Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 
 ## <a name="create-a-linux-vm"></a>Erstellen eines virtuellen Linux-Computers
@@ -339,7 +339,7 @@ In [MongoDB](https://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Webanwendung erstellt, in der Buchdatensätze mithilfe eines MEAN-Stacks auf einem virtuellen Linux-Computer nachverfolgt werden. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Webanwendung erstellt, in der Buchdatensätze mithilfe eines MEAN-Stacks auf einem virtuellen Linux-Computer nachverfolgt werden. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Linux-Computers
@@ -349,7 +349,7 @@ In diesem Tutorial haben Sie eine Webanwendung erstellt, in der Buchdatensätze 
 > * Zugreifen auf die Routen mit AngularJS
 > * Ausführen der Anwendung
 
-Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit SSL-Zertifikaten sichern.
+Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit TLS-Zertifikaten schützen.
 
 > [!div class="nextstepaction"]
-> [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)
+> [Schützen von Webservern mit TLS](tutorial-secure-web-server.md)

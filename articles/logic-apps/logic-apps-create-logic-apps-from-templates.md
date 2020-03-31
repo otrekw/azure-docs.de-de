@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905118"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
@@ -21,7 +21,7 @@ Damit Sie schneller mit dem Erstellen von Workflows beginnen können, werden von
 
 Hier sind einige Vorlagenkategorien angegeben:
 
-| Vorlagentyp | Beschreibung | 
+| Vorlagentyp | BESCHREIBUNG | 
 | ------------- | ----------- | 
 | Enterprise Cloud-Vorlagen | Dienen zum Integrieren von Azure Blob, Dynamics CRM, Salesforce, Box, Azure Blob und enthalten andere Connectors für die Anforderungen Ihrer Unternehmenscloud. Sie können diese Vorlagen beispielsweise verwenden, um geschäftliche Leads zu organisieren oder Ihre Unternehmensdateidaten zu sichern. | 
 | Persönliche Produktivitätsvorlagen | Dienen zum Verbessern der persönlichen Produktivität, indem tägliche Erinnerungen festgelegt, wichtige Arbeitselemente in Aufgabenlisten umgewandelt und langwierige Aufgaben bis hinunter zu einem Genehmigungsschritt durch einen einzelnen Benutzer automatisiert werden. | 
@@ -44,7 +44,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
    ![Angeben von Details zur Logik-App](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | Einstellung | value | Beschreibung | 
+   | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
    | **Name** | *Name Ihrer Logik-App* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
    | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 

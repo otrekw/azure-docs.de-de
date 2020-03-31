@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905938"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
@@ -17,7 +17,7 @@ Ruft Replikatdetails ab und listet Replikate eines angegebenen Diensts in einer 
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 | list | Listet alle Replikate eines Diensts auf. |
 | show | Ruft das angegebene Replikat des Diensts einer Anwendung ab. |
@@ -29,14 +29,14 @@ Ruft die Informationen zu allen Replikaten eines Diensts ab. Die Informationen u
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --app-name --application-name [erforderlich] | Der Namen der Anwendung. |
 | --service-name                [erforderlich] | Der Name des Diensts. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -51,7 +51,7 @@ Ruft die Informationen zum Dienstreplikat mit dem angegebenen Namen ab. Die Info
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --app-name --application-name [erforderlich] | Der Namen der Anwendung. |
 | --name -n                     [erforderlich] | Der Name des Dienstreplikats. |
@@ -59,7 +59,7 @@ Ruft die Informationen zum Dienstreplikat mit dem angegebenen Namen ab. Die Info
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

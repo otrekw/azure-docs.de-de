@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466976"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501878"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -28,6 +28,7 @@ Der Datenkopierdienst eignet sich für Folgendes:
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Kopieren von Daten auf die Data Box
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -43,9 +44,13 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Nachdem Sie die Verbindung mit dem NAS-Gerät hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Bevor Sie mit dem Kopieren der Daten beginnen, sollten Sie folgende Aspekte beachten:
 
-- Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
-- Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
-- Wenn die Daten geändert werden, während sie gerade vom Datenkopierdienst gelesen werden, kommt es ggf. zu Fehlern oder Datenbeschädigungen.
+* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
+
+* Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
+
+* Wenn die Daten geändert werden, während sie gerade vom Datenkopierdienst gelesen werden, kommt es ggf. zu Fehlern oder Datenbeschädigungen.
+
+* Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
 
 Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren:
 
@@ -56,7 +61,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 3. Füllen Sie im Dialogfeld **Auftrag konfigurieren und starten** die folgenden Felder aus:
     
-    |Feld                          |value    |
+    |Feld                          |Wert    |
     |-------------------------------|---------|
     |**Auftragsname**                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |**Quellpfad**                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |

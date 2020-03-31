@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535441"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -129,7 +129,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `apiVersion`: Die aktuelle apiVersion kann über den [Ressourcen-Explorer](https://resources.azure.com/) oder über die Azure-Befehlszeilenschnittstelle mit dem Befehl `az provider list -o json` gefunden werden.
 * `skipDos2Unix` (optional, boolesch): Überspringen der dos2unix-Konvertierung von skriptbasierten Datei-URLs oder des Skripts.
 * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
-  * `commandToExecute` (**erforderlich**, wenn Skript nicht festgelegt; Zeichenfolge): das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
+* `commandToExecute` (**erforderlich**, wenn Skript nicht festgelegt; Zeichenfolge): das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, falls Ihr Befehl vertrauliche Informationen (beispielsweise Kennwörter) enthält.
 * `script` (**erforderlich**, wenn „commandToExecute“ nicht festgelegt; Zeichenfolge): ein Base64-codiertes (und optional mit Gzip komprimiertes) Skript, das durch „/bin/sh“ ausgeführt wird.
 * `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
@@ -212,7 +212,7 @@ CustomScript verwendet den folgenden Algorithmus zum Ausführen eines Skripts.
 
 CustomScript (ab Version 2.1) unterstützt [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
 
-Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) oder [vom Benutzer zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 
 Um die vom System zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, legen Sie das Feld „managedidentity“ auf ein leeres JSON-Objekt fest. 
 
@@ -390,7 +390,8 @@ Beim Ausführen der Erweiterung für benutzerdefinierte Skripts wird das Skript 
 ```
 
 Suchen Sie nach der Erweiterungsausführung. Diese sieht in etwa wie folgt aus:
-```text
+
+```output
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
 2018/04/26 17:47:22.339958 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Initialize extension directory
@@ -400,6 +401,7 @@ Suchen Sie nach der Erweiterungsausführung. Diese sieht in etwa wie folgt aus:
 2018/04/26 17:47:23.476151 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Enable extension [bin/custom-script-shim enable]
 2018/04/26 17:47:24.516444 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Enable, message=Launch command succeeded: bin/custom-sc
 ```
+
 Hinweise:
 1. „Enable“ gibt den Beginn der Befehlsausführung an.
 2. „Download“ bezieht sich auf das Herunterladen des CustomScript-Erweiterungspakets von Azure (nicht auf die in „fileUris“ angegebenen Skriptdateien).
@@ -412,7 +414,8 @@ Das von der Azure-Skripterweiterung erzeugte Protokoll finden Sie hier:
 ```
 
 Suchen Sie nach der jeweiligen Ausführung. Diese ähnelt der folgenden:
-```text
+
+```output
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event="comparing seqnum" path=mrseq
@@ -436,6 +439,7 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=enabled
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
+
 Darin sind folgende Informationen enthalten:
 * Der Befehl „Enable“ zum Starten dieses Protokolls.
 * Die an die Erweiterung übergebenen Einstellungen.
@@ -450,7 +454,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
-```azurecli
+```output
 info:    Executing command vm extension get
 + Looking up the VM "scripttst001"
 data:    Publisher                   Name                                      Version  State

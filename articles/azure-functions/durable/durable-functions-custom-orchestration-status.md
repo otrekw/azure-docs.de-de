@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766270"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Status der benutzerdefinierten Orchestrierung in Durable Functions (Azure Functions)
@@ -24,7 +24,7 @@ Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefi
 
 Clients können den Statusendpunkt per Poll abrufen und eine Statusanzeige zur Visualisierung der aktuellen Ausführungsphase anzeigen. Das folgende Beispiel veranschaulicht die Ausführungsfreigabe:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,7 +51,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `E1_HelloSequence`-Orchestratorfunktion:
 
@@ -85,7 +85,7 @@ module.exports = async function(context, name) {
 
 Und dann erhält der Client die Ausgabe der Orchestrierung nur, wenn das `CustomStatus`-Feld auf "London" festgelegt ist:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -156,7 +156,7 @@ module.exports = async function(context, req) {
 
 Ein weiteres interessantes Szenario ist die Segmentierung der Benutzer durch Zurückgeben einer angepassten Ausgabe basierend auf bestimmten Eigenschaften oder Interaktionen. Mithilfe des Status der benutzerdefinierten Orchestrierung bleibt der clientseitige Code generisch. Alle wichtigen Änderungen erfolgen auf der Serverseite, wie im folgenden Beispiel gezeigt:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -233,7 +233,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Der Orchestrator kann den Clients eindeutige Anweisungen über den benutzerdefinierten Status bereitstellen. Anweisungen zum benutzerdefinierten Status werden den Schritten im Orchestrierungscode zugeordnet:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -294,7 +294,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Im folgenden Beispiel wird zuerst der benutzerdefinierte Status festgelegt.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

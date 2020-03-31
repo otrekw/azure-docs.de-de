@@ -1,20 +1,18 @@
 ---
 title: include file
 description: include file
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b9f0816ad67afa05a5325f03991ac22393c1b416
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1ae2d694853b72009af3f45013e147099943577c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177879"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "76277376"
 ---
 Dies sind Referenzinformationen für Azure Functions-Entwickler. Falls Sie mit Azure Functions noch nicht vertraut sind, beginnen Sie mit den folgenden Ressourcen:
 

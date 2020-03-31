@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430562"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
@@ -225,7 +225,7 @@ Sie können `memwatch` genau wie v8-profiler installieren und Ihren Code bearbei
 Es gibt einige Gründe, die dazu führen können, dass „node.exe“ zufällig beendet wird:
 
 1. Ihre Anwendung löst nicht abgefangene Ausnahmen aus. Suchen Sie in der Datei „d:\\home\\LogFiles\\Application\\logging-errors.txt“ nach Details zur ausgelösten Ausnahme. Diese Datei enthält die Stapelüberwachung, die zum Debuggen und Beheben von Anwendungsfehlern verwendet werden kann.
-2. Ihre Anwendung verbraucht zu viel Arbeitsspeicher, und dies wirkt sich auf den Start anderer Prozesse aus. Wenn der gesamte VM-Arbeitsspeicher nahe bei 100 % liegt, werden Ihre „node.exe“-Instanzen möglicherweise vom Prozess-Manager beendet. Der Prozess-Manager beendet einige Prozesse, damit andere Prozesse ausgeführt werden können. Erstellen Sie zum Beheben dieses Problems ein Profil zur Erkennung von Arbeitsspeicherverlusten für Ihre Anwendung. Falls die Anwendung viel Arbeitsspeicher benötigt, skalieren Sie zentral auf eine größere VM hoch (dadurch wird der für die VM verfügbare RAM erhöht).
+2. Ihre Anwendung verbraucht zu viel Arbeitsspeicher, und dies wirkt sich auf den Start anderer Prozesse aus. Wenn der gesamte VM-Arbeitsspeicher nahe bei 100 % liegt, werden Ihre „node.exe“-Instanzen möglicherweise vom Prozess-Manager beendet. Der Prozess-Manager beendet einige Prozesse, damit andere Prozesse ausgeführt werden können. Erstellen Sie zum Beheben dieses Problems ein Profil zur Erkennung von Arbeitsspeicherverlusten für Ihre Anwendung. Falls die Anwendung viel Arbeitsspeicher benötigt, skalieren Sie auf eine größere VM hoch (dadurch wird der für die VM verfügbare RAM erhöht).
 
 ### <a name="my-node-application-does-not-start"></a>Meine Node-Anwendung startet nicht
 

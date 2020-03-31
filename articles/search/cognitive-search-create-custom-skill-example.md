@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113820"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
@@ -311,7 +311,7 @@ namespace SampleSkills
 }
 ```
 
-Wichtig: Geben Sie in der Konstanten `key` *Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
+Wichtig: Geben Sie in der Konstanten `key`*Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
 
 Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
@@ -347,7 +347,7 @@ POST https://localhost:7071/api/EntitySearch
 }
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 Die Antwort sollte in etwa wie hier dargestellt aussehen:
 
 ```json

@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688679"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Skalieren von Apps in einer ASE v1
@@ -32,14 +32,14 @@ Das Ändern dieser Elemente erfolgt über die entsprechende Benutzeroberfläche 
 
 ![][1]
 
-Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus zentral hochskaliert werden kann.  Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen.  Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie hier: [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE].  Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen.  Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Skalieren von Apps in einer App Service-Umgebung][ASEAutoscale].
+Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus hochskaliert werden kann.  Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen.  Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie hier: [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE].  Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen.  Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Skalieren von Apps in einer App Service-Umgebung][ASEAutoscale].
 
 Sie können mehrere App Service-Pläne mit Computeressourcen aus verschiedenen Workerpools erstellen. Sie können aber auch den gleichen Workerpool verwenden.  Wenn in Workerpool 1 beispielsweise (10) Computeressourcen verfügbar sind, können Sie einen App Service-Plan mit (6) Computeressourcen und einen zweiten mit (4) Computeressourcen erstellen.
 
 ### <a name="scaling-the-number-of-instances"></a>Skalieren der Anzahl von Instanzen
-Wenn Sie Ihre Web-App in einer App Service-Umgebung erstellen, beginnt sie mit einer Instanz.  Sie können dann auf zusätzliche Instanzen horizontal hochskalieren, um zusätzliche Computeressourcen für Ihre App bereitzustellen .   
+Wenn Sie Ihre Web-App in einer App Service-Umgebung erstellen, beginnt sie mit einer Instanz.  Sie können dann auf zusätzliche Instanzen aufskalieren, um zusätzliche Computeressourcen für Ihre App bereitzustellen.   
 
-Wenn Ihre App Service-Umgebung über ausreichend Kapazität verfügt, ist dies ganz einfach.  Wechseln Sie zum App Service-Plan, der die zu skalierenden Websites umfasst, und wählen Sie die Option zum Skalieren.  Daraufhin wird die Benutzeroberfläche geöffnet, auf der Sie manuell die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.  Zum manuellen Skalieren der App legen Sie einfach ***Skalieren nach*** auf ***Eine Anzahl von Instanzen, die ich manuell festlege*** fest.  Von hier aus können Sie entweder den Schieberegler auf die gewünschte Menge einstellen oder diese in das Feld neben dem Schieberegler eingeben.  
+Wenn Ihre App Service-Umgebung über ausreichend Kapazität verfügt, ist dies ganz einfach.  Wechseln Sie zum App Service-Plan, der die hochzuskalierenden Websites umfasst, und wählen Sie die Option zum Skalieren.  Daraufhin wird die Benutzeroberfläche geöffnet, auf der Sie manuell die Skalierung für Ihren ASP festlegen oder Regeln für das automatische Skalieren Ihres ASP konfigurieren können.  Zum manuellen Skalieren der App legen Sie einfach ***Skalieren nach*** auf ***Eine Anzahl von Instanzen, die ich manuell festlege*** fest.  Von hier aus können Sie entweder den Schieberegler auf die gewünschte Menge einstellen oder diese in das Feld neben dem Schieberegler eingeben.  
 
 ![][2] 
 

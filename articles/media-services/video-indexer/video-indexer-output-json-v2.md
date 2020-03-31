@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225454"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
 
@@ -38,7 +38,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 ## <a name="root-elements"></a>Stammelemente
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
@@ -78,7 +78,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|attribute | Beschreibung|
+|attribute | BESCHREIBUNG|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |id|Die ID des Videos. Beispiel: 63c6d532ff.|
@@ -98,7 +98,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
 ## <a name="videos"></a>videos
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID des Videos.|
 |id|Die ID des Videos.|
@@ -196,14 +196,14 @@ Beispiel:
 
 #### <a name="blocks"></a>blocks
 
-attribute | Beschreibung
+attribute | BESCHREIBUNG
 ---|---
 id|Die ID des Blocks.|
 instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 
 #### <a name="transcript"></a>Transkript
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
@@ -241,7 +241,7 @@ Beispiel:
 
 #### <a name="ocr"></a>ocr
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
@@ -276,7 +276,7 @@ Beispiel:
 
 #### <a name="keywords"></a>keywords
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
@@ -307,7 +307,7 @@ Beispiel:
 
 #### <a name="faces"></a>faces
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
@@ -352,7 +352,7 @@ Beispiel:
 
 #### <a name="labels"></a>Bezeichnungen
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
@@ -411,7 +411,7 @@ Beispiel:
 
 #### <a name="scenes"></a>scenes
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Szenen-ID.|
 |instances|Eine Liste der Zeitbereiche dieser Szene (eine Szene kann nur eine Instanz aufweisen).|
@@ -444,7 +444,7 @@ Beispiel:
 
 #### <a name="shots"></a>shots
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Aufnahme.|
 |keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Jede keyFrame-Instanz verfügt über ein „thumbnailId“-Feld, das die Miniaturbild-ID von keyFrame enthält.|
@@ -494,7 +494,7 @@ Beispiel:
 
 Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennung bzw. in den Video-OCR-Daten erkannt werden. Die visuelle Erkennung von Marken oder die Logoerkennung sind hierin nicht enthalten.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Marken-ID.|
 |name|Der Name der Marke.|
@@ -553,7 +553,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 #### <a name="statistics"></a>statistics
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
 |SpeakerWordCount|Die Anzahl von Wörtern pro Sprecher.|
@@ -561,9 +561,9 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
 |SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Audioeffekts.|
 |type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
@@ -592,7 +592,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 
 Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stimmungs-ID.|
 |averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
@@ -631,7 +631,7 @@ Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Inde
 
 Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer haben die Möglichkeit, für den Inhalt eine Überprüfung durch einen Menschen anzufordern. In diesem Fall enthält das IsAdult-Attribut das Ergebnis der Überprüfung durch den Menschen.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Moderation des visuellen Inhalts.|
 |adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|
@@ -667,7 +667,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Textinhaltsmoderation.|
 |bannedWordsCount |Die Anzahl von gesperrten Wörtern.|
@@ -677,7 +677,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den erkannten Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Emotion.|
 |type|Der Moment der Emotion, der basierend auf Sprach- und Audiosignalen erkannt wurde. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.|
@@ -767,7 +767,7 @@ Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den
 
 Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Falls möglich, ist eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie zweiter Ebene eingeschlossen. 
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID des Themas.|
 |name|Der Name des Themas, z.B.: „Pharmazeutika“.|

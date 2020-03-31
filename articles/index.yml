@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129820"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286012"
 highlightedContent:
   items:
   - title: Anleitung mit den ersten Schritten für Azure-Entwickler
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Durchsuchen von Azure-Produkten
   items:
@@ -278,7 +278,7 @@ productDirectory:
     azureCategories:
     - analytics
     url: data-explorer/index.yml
-  - title: Azure Data Lake Store
+  - title: Azure Data Lake Storage
     summary: Hochgradig skalierbare, sichere Data Lake-Funktionalität auf Basis von Azure Blob Storage
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -336,7 +336,7 @@ productDirectory:
     - analytics
     url: hdinsight/index.yml
   - title: Log Analytics
-    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
     azureCategories:
     - analytics
@@ -674,7 +674,7 @@ productDirectory:
     - developer-tools
     url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
   - title: Application Insights
-    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
     azureCategories:
     - devops
@@ -693,7 +693,7 @@ productDirectory:
     - devops
     url: https://docs.microsoft.com/azure/devops/boards/
   - title: Azure Monitor
-    summary: vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
+    summary: Vollständiger Einblick in Anwendungen, Infrastruktur und Netzwerk
     imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
     azureCategories:
     - devops
