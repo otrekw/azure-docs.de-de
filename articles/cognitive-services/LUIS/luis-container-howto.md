@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
 ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888565"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218780"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -166,7 +166,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Platzhalter | value |
+| Platzhalter | Wert |
 |-------------|-------|
 | **{APP_ID}** | Die Anwendungs-ID der veröffentlichten LUIS-App. |
 | **{SLOT_NAME}** | Die Umgebung der veröffentlichten LUIS-App. Verwenden Sie einen der folgenden Werte:<br/>`PRODUCTION`<br/>`STAGING` |
@@ -185,7 +185,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Platzhalter | value |
+| Platzhalter | Wert |
 |-------------|-------|
 | **{APP_ID}** | Die Anwendungs-ID der trainierten LUIS-App. |
 | **{APP_VERSION}** | Die Anwendungsversion der trainierten LUIS-App. |
@@ -243,7 +243,7 @@ Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bere
 
 Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3-Vorhersageendpunkt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Vorhersageendpunkt](#tab/v3)
 
 |Pakettyp|HTTP-Verb|Route|Abfrageparameter|
 |--|--|--|--|
@@ -254,12 +254,12 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 
 |Query parameter (Abfrageparameter)|type|Zweck|
 |--|--|--|
-|`query`|string|Die Äußerung des Benutzers.|
+|`query`|Zeichenfolge|Die Äußerung des Benutzers.|
 |`verbose`|boolean|Ein boolescher Wert, der angibt, ob alle Metadaten für die vorhergesagten Modelle zurückgegeben werden sollen. Der Standardwert ist "false".|
 |`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist "false".|
 |`show-all-intents`|boolean|Ein boolescher Wert, der angibt, ob alle Absichten zurückgegeben werden sollen oder nur die Absicht mit der höchsten Bewertung. Der Standardwert ist "false".|
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Vorhersageendpunkt](#tab/v2)
 
 |Pakettyp|HTTP-Verb|Route|Abfrageparameter|
 |--|--|--|--|
@@ -270,7 +270,7 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 
 |Query parameter (Abfrageparameter)|type|Zweck|
 |--|--|--|
-|`q`|string|Die Äußerung des Benutzers.|
+|`q`|Zeichenfolge|Die Äußerung des Benutzers.|
 |`timezoneOffset`|number|Das „timeZoneOffset“ ermöglicht das [Ändern der Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity), die von der vordefinierten datetimeV2-Entität verwendet wird.|
 |`verbose`|boolean|Gibt bei Festlegung auf TRUE alle Absichten und deren Bewertungen zurück. Der Standardwert ist FALSE, bei dem nur die Hauptabsicht zurückgegeben wird.|
 |`staging`|boolean|Gibt bei Festlegung auf TRUE die Abfrage aus den Ergebnissen der Stagingumgebung zurück. |
@@ -282,7 +282,7 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 
 Ein Beispiel für einen cURL-Befehl zum Abfragen des Containers für eine veröffentlichte App lautet:
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3-Vorhersageendpunkt](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3-Vorhersageendpunkt](#tab/v3)
 
 Verwenden Sie die folgende API, um ein Modell in einem Slot abzufragen:
 
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2-Vorhersageendpunkt](#tab/v2)
 
 Verwenden Sie die folgende API, um ein Modell in einem Slot abzufragen:
 

@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895367"
 ---
 # <a name="client-side-encryption-with-python"></a>Clientseitige Verschlüsselung mit Python
@@ -53,7 +53,7 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 ## <a name="encryption-mechanism"></a>Verschlüsselungsmechanismus
 Die Speicherclientbibliothek verwendet [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
-### <a name="blobs"></a>Blobs (in englischer Sprache)
+### <a name="blobs"></a>BLOBs
 Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create**\*-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.

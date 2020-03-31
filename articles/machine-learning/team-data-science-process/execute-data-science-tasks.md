@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477152"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
@@ -26,7 +26,7 @@ Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1. <a name='DataQualityReportUtility-1'></a> Durchsuchen 
+## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> Durchsuchen 
 
 Datenanalysten haben verschiedene Möglichkeiten für das Durchsuchen und die Berichterstellung: mit verfügbaren Bibliotheken und Paketen für Python (z.B. matplotlib) oder mit R (z.B. ggplot oder lattice). Solchen Code können Datenanalysten entsprechend den Anforderungen an Datendurchsuchung für spezifische Szenarien anpassen. Die Anforderungen für den Umgang mit strukturierten Daten unterscheiden sich von denen für unstrukturierte Daten wie Texte oder Bilder. 
 
@@ -41,7 +41,7 @@ Dieses auf R Markdown oder einem Python-Notebook basierende Hilfsprogramm stellt
 Zurzeit funktioniert das Tool nur mit Datenrahmen im Arbeitsspeicher. Zum Angeben der zu durchsuchenden Parameter des DataSets ist eine YAML-Datei erforderlich. Weitere Informationen finden Sie unter [IDEAR in TDSP Data Science-Hilfsprogrammen](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
-## 2. <a name='ModelingUtility-2'></a> Modellierung
+## <a name="2--modeling"></a>2. <a name='ModelingUtility-2'></a> Modellierung
 
 Es gibt zahlreiche Toolkits und Pakete für das Trainieren von Modellen in einer Vielzahl von Sprachen. Datenanalysten können die verwenden, mit denen sie gut umgehen können, solange die Leistungsaspekte bezüglich der Genauigkeit und Latenz für die relevanten geschäftlichen Anwendungsfälle und Produktionsszenarien zufriedenstellend sind.
 
@@ -74,11 +74,11 @@ Weitere Informationen finden Sie unter [Automatisiertes Modellierungs- und Beric
 Nachdem mehrere Modelle erstellt wurden, benötigen Sie in der Regel ein System zum Registrieren und Verwalten der Modelle. Normalerweise benötigen Sie eine Kombination aus Skripts oder APIs und einer Back-End-Datenbank oder einem Versionsverwaltungssystem. Für diese Verwaltungsaufgaben stehen Ihnen unter anderem die folgenden Optionen zur Verfügung:
 
 1. [Azure Machine Learning-Modellverwaltungsdienst](../index.yml)
-2. [ModelDB von MIT](https://mitdbg.github.io/modeldb/) 
+2. [ModelDB von MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL Server als ein Modellverwaltungssystem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3. <a name='Deployment-3'></a> Bereitstellung
+## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> Bereitstellung
 
 Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem Unternehmen spielen. Vorhersagen aus einem bereitgestellten Modell können für Geschäftsentscheidungen verwendet werden.
 

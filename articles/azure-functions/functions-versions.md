@@ -4,11 +4,11 @@ description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356723"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234878"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -36,7 +36,7 @@ Experimentelle Sprachen von Azure Functions 1.x verwenden das neue Modell nicht 
 
 Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Ausführen auf einer spezifischen Version
+## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Ausführen auf einer spezifischen Version
 
 Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 3.x festgelegt. Diese Version kann bei Bedarf geändert werden. Die Runtimeversion kann nur in 1.x geändert werden, wenn Sie Ihre Funktions-App erstellt, aber noch keine Funktionen hinzugefügt haben.  Der Wechsel zwischen 2.x und 3.x ist auch bei Apps möglich, die bereits über Funktionen verfügen. Es empfiehlt sich allerdings trotzdem, zuerst einen Test in einer neuen App durchzuführen.
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden die Änderungen erläutert, die vor einem App-Upgrade
 
 Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwendet wird, wird durch die [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)-Anwendungseinstellung bestimmt. Für die Hauptversion der Runtime werden folgende Werte unterstützt:
 
-| value | Runtimeziel |
+| Wert | Runtimeziel |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |

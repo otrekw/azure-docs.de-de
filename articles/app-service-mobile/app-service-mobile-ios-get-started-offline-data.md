@@ -7,10 +7,10 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459173"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps
@@ -23,7 +23,7 @@ Falls Sie noch keine Erfahrung mit Mobile Apps haben, sollten Sie zunächst das 
 
 Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie unter [Offlinedatensynchronisierung in Mobile Apps].
 
-## <a name="review-sync"></a>Überprüfen des Clientcodes für die Synchronisierung
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>Überprüfen des Clientcodes für die Synchronisierung
 Das Clientprojekt, das Sie für das Tutorial [Erstellen einer iOS-App] heruntergeladen haben, enthält bereits Code zur Unterstützung der Offlinesynchronisierung mithilfe einer lokalen auf Kerndaten basierenden Datenbank. In diesem Abschnitt wird zusammengefasst, was bereits im Code des Tutorials enthalten ist. Eine grundlegende Übersicht über die Funktion finden Sie unter [Offlinedatensynchronisierung in Mobile Apps].
 
 Mit der Funktion zur Offlinedatensynchronisierung von Mobile Apps können Endbenutzer mit einer lokalen Datenbank interagieren, auch wenn das Netzwerk nicht verfügbar ist. Um diese Funktionen in Ihrer App zu verwenden, initialisieren Sie den Synchronisierungskontext von `MSClient` , und verweisen Sie auf einen lokalen Datenspeicher. Erstellen Sie dann über die **MSSyncTable**-Schnittstelle einen Verweis auf die Tabelle.
@@ -129,7 +129,7 @@ Die Swift-App führt eine Synchronisierung durch, wenn der Benutzer die Aktualis
 
 Da die App immer dann eine Synchronisierung durchführt, sobald Daten geändert werden (Objective-C) oder die App gestartet wird (Objective-C und Swift), setzt die App voraus, dass der Benutzer online ist. In einem späteren Abschnitt werden Sie die App modifizieren, sodass Benutzer auch im Offlinemodus Daten bearbeiten können.
 
-## <a name="review-core-data"></a>Überprüfen des Core-Datenmodells
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>Überprüfen des Core-Datenmodells
 Bei Verwendung des Offlinespeichers für die Kerndaten müssen Sie bestimmte Tabellen und Felder in Ihrem Datenmodell definieren. Die Beispiel-App enthält bereits ein Datenmodell mit dem richtigen Format. In diesem Abschnitt werden die Tabellen und ihre Verwendung erläutert.
 
 Öffnen Sie **QSDataModel.xcdatamodeld**. Vier Tabellen sind definiert – drei, die durch das SDK verwendet werden, und eine, die für die To-do-Elemente selbst verwendet wird:
@@ -196,7 +196,7 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 | updatedAt | Date | (optional) Zuordnung zur **updatedAt**-Systemeigenschaft |
 | version | String | (optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
 
-## <a name="setup-sync"></a>Ändern des Synchronisierungsverhaltens der App
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>Ändern des Synchronisierungsverhaltens der App
 In diesem Abschnitt ändern Sie die App, sodass beim App-Start oder beim Einfügen und Aktualisieren von Elementen keine Synchronisierung erfolgt. Es wird nur synchronisiert, wenn die Aktualisierungsschaltfläche betätigt wird.
 
 **Objective-C:**
@@ -225,7 +225,7 @@ Kommentieren Sie in `viewDidLoad` in **ToDoTableViewController.swift** diese bei
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>Testen der App
+## <a name="test-the-app"></a><a name="test-app"></a>Testen der App
 In diesem Abschnitt stellen Sie eine Verbindung mit einer ungültigen URL her, um ein Offlineszenario zu simulieren. Wenn Sie Datenelemente hinzufügen, werden diese im lokalen Kerndatenspeicher vorgehalten, jedoch nicht mit dem Back-End der mobilen App synchronisiert.
 
 1. Ändern Sie die URL der mobilen App in **QSTodoService.m** in eine ungültige URL, und führen Sie sie erneut aus:

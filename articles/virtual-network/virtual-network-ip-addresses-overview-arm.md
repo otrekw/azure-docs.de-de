@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225226"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 

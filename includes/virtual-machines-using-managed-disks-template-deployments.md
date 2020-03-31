@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76037707"
 ---
 In diesem Dokument erhalten Sie Informationen über die Unterschiede zwischen verwalteten und nicht verwalteten Datenträgern bei der Verwendung von Azure Resource Manager-Vorlagen zur Bereitstellung virtueller Computer. In diesem Beispiel werden Sie bei der Aktualisierung vorhandener Vorlagen auf verwaltete Datenträger unterstützt, die vorher nicht verwaltete Datenträger verwendet haben. Zu Referenzzwecken verwenden wir die Vorlage [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als Leitfaden. Sie können die Vorlage mit [verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) und einer vorherigen Version mit [nicht verwalteten Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) anzeigen lassen, wenn Sie sie direkt miteinander vergleichen möchten.

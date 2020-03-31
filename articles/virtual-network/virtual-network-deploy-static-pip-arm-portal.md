@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
 ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76043544"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
@@ -36,14 +36,14 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Wählen Sie **Compute** und dann **Windows Server 2016-VM** oder ein anderes Betriebssystem Ihrer Wahl aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |---|---|
     |Name|myVM|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |Location| Wählen Sie **USA, Osten** aus.|
+    |Position| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die Option **Öffentliche IP-Adresse** aus.

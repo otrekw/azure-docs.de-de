@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918313"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung  
@@ -59,7 +59,7 @@ Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumb
 
 Derzeit können Sie die folgenden Parameter ändern:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: „True“ oder „False“. Der Standardwert lautet "True". |
 | fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: „True“ oder „False“.  Der Standardwert lautet "True". |

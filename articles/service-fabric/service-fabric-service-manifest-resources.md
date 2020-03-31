@@ -4,11 +4,11 @@ description: 'Gewusst wie: Beschreiben von Endpunktressourcen in einem Dienstman
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464171"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236602"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Angeben von Ressourcen in einem Dienstmanifest
 ## <a name="overview"></a>Übersicht

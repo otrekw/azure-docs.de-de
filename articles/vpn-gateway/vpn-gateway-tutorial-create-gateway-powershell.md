@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424147"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137176"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways mit PowerShell
 
@@ -28,9 +28,7 @@ Im folgenden Diagramm sind das virtuelle Netzwerk und das VPN-Gateway dargestell
 
 ![VNet und VPN-Gateway](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell und Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>Verwenden von Azure Cloud Shell und Azure PowerShell
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -190,5 +188,5 @@ Fahren Sie mit den folgenden Tutorials fort, um sich über S2S-, VNET-zu-VNET- u
 
 > [!div class="nextstepaction"]
 > * [Erstellen von S2S-Verbindungen](vpn-gateway-tutorial-vpnconnection-powershell.md)
-> * [Erstellen von VNet-zu-VNet-Verbindungen](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Erstellen von VNET-zu-VNET-Verbindungen](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [Erstellen von P2S-Verbindungen](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

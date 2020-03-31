@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.openlocfilehash: eda0011ea4d259d0e60cb894c2b42325ddfc2eb7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a39cf4e09a70ca2b1225d699c84abf0e7f1d2eab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076630"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476405"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Global Reach unter Verwendung der Azure CLI
 
@@ -67,7 +67,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 Die CLI-Ausgabe sieht wie folgt aus:
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -103,7 +103,7 @@ Wenn sich die beiden Leitungen nicht im gleichen Azure-Abonnement befinden, ben√
 
    Die CLI-Ausgabe sieht wie folgt aus:
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",

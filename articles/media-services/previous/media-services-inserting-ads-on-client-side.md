@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565739"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
@@ -31,7 +31,7 @@ Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Li
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>Einfügen von Werbeeinblendungen in Ihre Medien
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>Einfügen von Werbeeinblendungen in Ihre Medien
 Azure Media Services bietet Unterstützung für das Einfügen von Werbeeinblendungen mithilfe der Windows Media-Plattform: Player-Frameworks. Player-Frameworks mit Unterstützung für Werbeeinblendungen sind für Windows 8, Silverlight, Windows Phone 8 und iOS-Geräte verfügbar. Jedes Player-Framework enthält Beispielcode, der zeigt, wie eine Playeranwendung implementiert werden kann. Es gibt drei verschiedene Arten von Anzeigen, die Sie in Ihre Medien einfügen können:
 
 * **Linear** : Werbeeinblendungen auf dem kompletten Frame, die das Hauptvideo unterbrechen

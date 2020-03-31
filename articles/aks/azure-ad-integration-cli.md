@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Azu
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d17ae12beecf9d83ef6d688af799787c5ccf322b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596605"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227646"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit der Azure CLI
 
@@ -25,11 +25,13 @@ Es gelten die folgenden Einschränkungen:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
+
+Wechseln Sie zu [https://shell.azure.com](https://shell.azure.com), um Cloud Shell in Ihrem Browser zu öffnen.
 
 Aus Konsistenzgründen und um die Ausführung der Befehle in diesem Artikel zu erleichtern, erstellen Sie eine Variable für den gewünschten AKS-Clusternamen. Im folgenden Beispiel wird der Name *myakscluster* verwendet:
 
-```azurecli-interactive
+```console
 aksname="myakscluster"
 ```
 
@@ -209,8 +211,10 @@ kubectl get pods --all-namespaces
 Sie erhalten eine Anmeldeaufforderung, sich in einem Webbrowser mit Azure AD-Anmeldeinformationen zu authentifizieren. Nach erfolgreicher Authentifizierung zeigt der Befehl `kubectl` die Pods im AKS-Cluster an, wie in der folgenden Beispielausgabe veranschaulicht:
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -229,7 +233,7 @@ Das für `kubectl` empfangene Authentifizierungstoken wird zwischengespeichert. 
 
 Wenn wie in der folgenden Beispielausgabe nach erfolgreicher Anmeldung im Webbrowser eine Meldung zu einem Authentifizierungsfehler angezeigt wird, untersuchen Sie die folgenden möglichen Probleme:
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

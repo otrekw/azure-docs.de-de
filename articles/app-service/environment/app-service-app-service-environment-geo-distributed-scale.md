@@ -8,10 +8,10 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688811"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch verteilte Skalierung mit App Service-Umgebungen
@@ -21,7 +21,7 @@ ms.locfileid: "74688811"
 
 Anwendungsszenarien, die eine sehr große Skalierung erfordern, können die Computeressourcenkapazität überschreiten, die für eine einzelne Bereitstellung einer App verfügbar ist.  Anwendungen mit Abstimmfunktion, Sportveranstaltungen und im Fernsehen übertragene Unterhaltungssendungen sind Beispiele für Szenarien, die eine extrem hohe Skalierbarkeit erfordern. Anforderungen für eine hohe Skalierbarkeit können durch das horizontale Hochskalieren von Apps erfüllt werden, wobei mehrere App-Bereitstellungen innerhalb einer Region sowie regionsübergreifend erfolgen, um extreme Lastanforderungen zu verarbeiten.
 
-App Service-Umgebungen sind eine ideale Plattform für das horizontale Hochskalieren.  Wenn eine App Service-Umgebungskonfiguration ausgewählt wurde, die eine bekannte Anforderungsrate unterstützen kann, können Entwickler nach Bedarf zusätzliche App Service-Umgebungen bereitstellen, um eine gewünschte Höchstlastkapazität zu erreichen.
+App Service-Umgebungen sind eine ideale Plattform für das Aufskalieren.  Wenn eine App Service-Umgebungskonfiguration ausgewählt wurde, die eine bekannte Anforderungsrate unterstützen kann, können Entwickler nach Bedarf zusätzliche App Service-Umgebungen bereitstellen, um eine gewünschte Höchstlastkapazität zu erreichen.
 
 Nehmen Sie beispielsweise an, eine App, die auf einer App Service-Umgebungskonfiguration ausgeführt wird, wurde für die Verarbeitung von 20.000 Anforderungen pro Sekunde (RPS) getestet.  Ist die gewünschte Höchstlastkapazität 100.000 RPS, können fünf (5) App Service-Umgebungen erstellt und konfiguriert werden, um sicherzustellen, dass die Anwendung die voraussichtliche maximale Last verarbeiten kann.
 

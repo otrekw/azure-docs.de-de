@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754181"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Definieren und Verwenden von Moderationsworkflows (REST)
@@ -80,7 +80,7 @@ Geben Sie Werte für **team**, **workflowname** und **Ocp-Apim-Subscription-Key*
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
   
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird `true` angezeigt.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird `true` angezeigt.
 
 ### <a name="examine-the-new-workflow"></a>Prüfen des neuen Workflows
 
@@ -102,7 +102,7 @@ Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. Stellen Sie sich
 
 ![Abrufen allgemeiner Parameter und Header](images/workflow-get-default.PNG)
 
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der Workflow im JSON-Format wie folgt angezeigt:
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird der Workflow im JSON-Format wie folgt angezeigt:
 
 ```json
 {

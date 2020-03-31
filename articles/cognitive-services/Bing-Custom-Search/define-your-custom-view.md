@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218884"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -133,7 +133,7 @@ Standardmäßig werden Webseiten nur dann oben in den Suchergebnissen angeheftet
 |---------------|----------------------------------------------------------------------------------|
 | Beginnt mit | Zum Anheften muss die Abfragezeichenfolge des Benutzers mit der Abfragezeichenfolge der Anheftung beginnen. |
 | Endet mit   | Zum Anheften muss die Abfragezeichenfolge des Benutzers auf die Abfragezeichenfolge der Anheftung enden.  |
-| Contains    | Zum Anheften muss die Abfragezeichenfolge des Benutzers die Abfragezeichenfolge der Anheftung enthalten.   |
+| Enthält    | Zum Anheften muss die Abfragezeichenfolge des Benutzers die Abfragezeichenfolge der Anheftung enthalten.   |
 
 
 Klicken Sie auf das Symbol „Bearbeiten“, um die Übereinstimmungsbedingung der Anheftung zu ändern. Klicken Sie in der Spalte **Query match condition** (Übereinstimmungsbedingung für Abfrage) auf die Dropdownliste, und wählen Sie die neue Bedingung aus. Klicken Sie dann auf das Symbol zum Speichern, um die Änderung zu speichern.
@@ -159,5 +159,5 @@ Wenn Sie die benutzerdefinierte Suche auf der entsprechenden Ebene abonniert hab
 
 - [Aufrufen der benutzerdefinierten Suche](./search-your-custom-view.md)
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
+- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)

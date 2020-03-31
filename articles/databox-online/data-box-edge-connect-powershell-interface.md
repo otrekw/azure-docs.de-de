@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613855"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231470"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Verwalten eines Azure Data Box Edge-Geräts mittels Windows PowerShell
 

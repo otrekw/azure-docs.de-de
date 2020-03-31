@@ -9,13 +9,13 @@ ms.date: 02/18/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e950d194ab48cec1a70c7bd17617332cb858a55d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77485685"
 ---
-## <a name="tenant"></a>1. Erstellen des Azure AD-Mandanten
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. Erstellen des Azure AD-Mandanten
 
 Erstellen Sie mit den im Artikel [Erstellen eines neuen Mandanten](../articles/active-directory/fundamentals/active-directory-access-create-new-tenant.md) beschriebenen Schritten einen Azure AD-Mandanten:
 
@@ -26,14 +26,14 @@ Erstellen Sie mit den im Artikel [Erstellen eines neuen Mandanten](../articles/a
 
    ![Neuer Azure AD-Mandant](./media/openvpn-azure-ad-tenant-multi-app/new-tenant.png)
 
-## <a name="users"></a>2. Erstellen von Mandantenbenutzern
+## <a name="2-create-tenant-users"></a><a name="users"></a>2. Erstellen von Mandantenbenutzern
 
 In diesem Schritt erstellen Sie zwei Azure AD-Mandantenbenutzer: Ein globales Administratorkonto und ein Masterbenutzerkonto. Das Masterbenutzerkonto wird als Masterkonto für die Einbettung verwendet (Dienstkonto). Wenn Sie ein Azure AD-Mandantenbenutzerkonto erstellen, passen Sie die Verzeichnisrolle für den Typ des Benutzers an, den Sie erstellen möchten. Verwenden Sie die Schritte in [diesem Artikel](../articles/active-directory/fundamentals/add-users-azure-active-directory.md), um mindestens zwei Benutzer für Ihren Azure AD-Mandanten zu erstellen. Achten Sie darauf, dass Sie die **Verzeichnisrolle** ändern, um die Kontotypen zu erstellen:
 
 * Globaler Administrator
 * Benutzer
 
-## <a name="register-client"></a>3. Registrieren des VPN-Clients
+## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. Registrieren des VPN-Clients
 
 Registrieren des VPN-Client im Azure AD-Mandanten.
 
@@ -83,7 +83,7 @@ Registrieren des VPN-Client im Azure AD-Mandanten.
 
      ![Azure-VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
-## <a name="register-apps"></a>4. Registrieren zusätzlicher Anwendungen
+## <a name="4-register-additional-applications"></a><a name="register-apps"></a>4. Registrieren zusätzlicher Anwendungen
 
 In diesem Schritt registrieren Sie zusätzliche Anwendungen für verschiedene Benutzer und Gruppen.
 
@@ -124,7 +124,7 @@ In diesem Schritt registrieren Sie zusätzliche Anwendungen für verschiedene Be
 
 10. Wiederholen Sie die Schritte in diesem Abschnitt [Registrieren zusätzlicher Anwendungen](#register-apps), um so viele Anwendungen zu erstellen, wie für Ihre Sicherheitsanforderung erforderlich sind. Jede Anwendung wird einem VPN-Gateway zugeordnet und kann über eine jeweils andere Benutzergruppe verfügen. Einem Gateway kann nur eine Anwendung zugeordnet werden.
 
-## <a name="assign-users"></a>5. Zuweisen von Benutzern zu Anwendungen
+## <a name="5-assign-users-to-applications"></a><a name="assign-users"></a>5. Zuweisen von Benutzern zu Anwendungen
 
 Zuweisen der Benutzer zu Ihren Anwendungen.
 

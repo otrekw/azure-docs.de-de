@@ -12,16 +12,16 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227194"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
 
-## <a name="dataset"></a>Beschreibung des NYC Taxi Trips-DataSets
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>Beschreibung des NYC Taxi Trips-DataSets
 Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit mehr als 173 Millionen einzelnen Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers (Hack) und die eindeutige ID des Taxis (Medallion). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die CSV-Datei "trip_data" enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
@@ -43,7 +43,7 @@ Die NYC Taxi Trips-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB 
 
 Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „trip\_fare“ besteht aus den Feldern: „medallion“, „hack\_licence“ und „pickup\_datetime“.
 
-## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 Wir werden drei Vorhersageprobleme formulieren, die auf *tip\_amount* basieren, nämlich:
 
 * Binäre Klassifizierung: Vorhersagen, ob Trinkgeld für eine Fahrt bezahlt wurde. Das bedeutet: *tip\_amount* größer 0 ist ein Positivbeispiel, *tip\_amount* gleich 0 ist ein Negativbeispiel.
@@ -56,7 +56,7 @@ Wir werden drei Vorhersageprobleme formulieren, die auf *tip\_amount* basieren, 
         Class 4 : tip_amount > $20
 * Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
-## <a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
+## <a name="setting-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
 Wie Sie unter [Planen Ihrer Umgebung](plan-your-environment.md) sehen können, gibt es mehrere Möglichkeiten für die Arbeit mit dem DataSet "NYC Taxi Trips" in Azure:
 
 * Verarbeiten der Daten in Azure-Blobs und anschließendes Modellieren in Azure Machine Learning
@@ -81,7 +81,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 
 Basierend auf der Größe des Datasets, dem Speicherort der Datenquelle und der ausgewählten Azure-Zielumgebung ähnelt dieses Szenario dem [Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server in Azure VM](plan-sample-scenarios.md#largelocaltodb).
 
-## <a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
+## <a name="get-the-data-from-public-source"></a><a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
 Sie können zum Abrufen des Datasets [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) von seinem öffentlichen Speicherort eine der Methoden, die unter [Verschieben von Daten in und aus Azure Blob Storage](move-azure-blob.md) beschrieben werden, zum Kopieren der Daten auf den neuen virtuellen Computer verwenden.
 
 So kopieren Sie die Daten mit AzCopy:
@@ -95,7 +95,7 @@ So kopieren Sie die Daten mit AzCopy:
     Nach Abschluss von AzCopy sollten insgesamt 24 komprimierte CSV-Dateien (12 für „trip\_data“ und 12 für „trip\_fare“) im Datenordner enthalten sein.
 4. Extrahieren Sie die heruntergeladenen Dateien. Notieren Sie sich den Ordner mit den extrahierten Dateien. Sie verweisen auf diesen Ordner mit <path\_to\_data\_files\>.
 
-## <a name="dbload"></a>Massenimport von Daten in eine SQL Server-Datenbank
+## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>Massenimport von Daten in eine SQL Server-Datenbank
 Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank und den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. In diesem Abschnitt führen wir die Anweisungen unter [Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen](parallel-load-sql-partitioned-tables.md) durch, um eine neue Datenbank zu erstellen und die Daten parallel in partitionierte Tabellen zu laden.
 
 1. Starten Sie, während sie am virtuellen Computer angemeldet sind, **SQL Server Management Studio**.
@@ -136,7 +136,7 @@ Die Leistung beim Laden/Übertragen großer Datenmengen in eine SQL-Datenbank un
 11. Untersuchen Sie in **SQL Server Management Studio** das bereitgestellte Beispielskript **sample\_queries.sql**. Um eine der Beispielabfragen auszuführen, markieren Sie die Abfragezeilen, und klicken Sie auf der Symbolleiste auf **Ausführen**.
 12. Die "NYC Taxi Trips"-Daten werden in zwei separate Tabellen geladen. Zur Verbesserung der Join-Vorgänge empfiehlt es sich dringend, die Tabellen zu indizieren. Das Beispielskript **create\_partitioned\_index.sql** erstellt partitionierte Indizes für den zusammengesetzten Verknüpfungsschlüssel **medallion, hack\_license und pickup\_datetime**.
 
-## <a name="dbexplore"></a>Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server
+## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server
 In diesem Abschnitt durchsuchen wir Daten und generieren Funktionen durch Ausführen von SQL-Abfragen direkt in **SQL Server Management Studio**. Wir verwenden dazu die zuvor erstellte SQL Server-Datenbank. Das Beispielskript **sample\_queries.sql** ist im Ordner **Sample Scripts** enthalten. Ändern Sie das Skript, um den Datenbanknamen zu ändern, falls er nicht dem Standardwert entspricht: **TaxiNYC**.
 
 In dieser Übung führen Sie die folgenden Aktionen durch:
@@ -251,7 +251,7 @@ Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare**
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 
-## <a name="ipnb"></a>Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook
 In diesem Abschnitt werden wir Daten durchsuchen und Funktionen generieren, und zwar sowohl mit Python als auch mit SQL-Abfragen in der zuvor erstellten SQL Server-Datenbank. Ein Beispiel-IPython Notebook namens **machine-Learning-data-science-process-sql-story.ipynb** ist im Ordner **Sample IPython Notebooks** enthalten. Dieses Notebook ist auch auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)verfügbar.
 
 Wenn Sie mit Big Data arbeiten, folgen Sie dieser empfohlenen Reihenfolge:
@@ -550,7 +550,7 @@ Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine L
 2. Multiklassenklassifizierung: Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
 3. Regressionsaufgabe: Vorhersage des Trinkgeldbetrags für eine Fahrt.  
 
-## <a name="mlmodel"></a>Erstellen von Modellen in Azure Machine Learning
+## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Erstellen von Modellen in Azure Machine Learning
 Melden Sie sich zum Starten der Modellierungsübung im Azure Machine Learning-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md).
 
 1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
@@ -592,7 +592,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 > 
 > 
 
-## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
+## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
 Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../studio/deploy-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:

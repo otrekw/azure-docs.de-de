@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: dapine
 ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866945"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218592"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
@@ -49,7 +49,7 @@ Cognitive Services-Ressourcen sind in [Microsoft Azure](https://azure.microsoft.
 
 Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containern, von denen jeder eine Teilmenge der Funktionalität von Diensten in Azure Cognitive Services enthält:
 
-| Dienst | Unterstützter Tarif | Container | Beschreibung |
+| Dienst | Unterstützter Tarif | Container | BESCHREIBUNG |
 |---------|----------|----------|-------------|
 |[Anomalieerkennung][ad-containers] |F0, S0|**Anomalieerkennung** |Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern](https://aka.ms/adcontainer)|
 |[Maschinelles Sehen][cv-containers] |F0, S1|**Lesen** |Extrahiert gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen, wie z.B. Belege, Poster, und Visitenkarten. Der Container für das Lesen erkennt auch *handgeschriebenen Text* in Bildern und bietet Unterstützung für PDF, TIFF oder mehrere Seiten.<br/><br/>**Wichtig:** Der Container für das Lesen funktioniert derzeit nur für Englisch.|

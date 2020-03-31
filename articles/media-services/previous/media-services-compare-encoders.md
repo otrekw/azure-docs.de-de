@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016655"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Vergleich der Azure On-Demand Media Encoder  
@@ -43,7 +43,7 @@ In der folgenden Tabelle werden die Funktionen von Media Encoder Standard (MES) 
 |Überlagern von Grafiken|Aus Bildquellen|Aus Bild- und Textquellen|
 |Mehrere Audiosprachspuren|Eingeschränkt|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
-## <a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
+## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>Von Encodern verwendetes Abrechnungsverfahren
 | Medienprozessorname | Geltende Preise | Notizen |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |Codierungsaufgaben werden basierend auf der Gesamtdauer in Minuten für die Ausgabe aller Mediendateien in Rechnung gestellt. Den entsprechenden Kostensatz finden Sie [hier][1] in der Spalte „ENCODER“. |

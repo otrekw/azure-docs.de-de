@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 4647d78255f611959bb86ca00ff6920bc823d49a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158573"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutorial: Azure Active Directory-Integration mit ClickUp Productivity Platform
 
@@ -120,7 +120,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem ClickUp Productivity Platform-Mandanten als Administrator an.
 
-2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie die Option **Einstellungen**.
+2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Einstellungen** aus.
+
+    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure1.png)
 
@@ -163,7 +165,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -195,7 +197,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem ClickUp Productivity Platform-Mandanten als Administrator an.
 
-2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie die Option **Benutzer**.
+2. Klicken Sie auf das **Benutzerprofil**, und wählen Sie anschließend die Option **Personen** aus.
+   
+    ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![ClickUp Productivity-Konfiguration](./media/clickup-productivity-platform-tutorial/user1.png)
 
@@ -218,5 +222,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ClickUp Productivity Platform“ k
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

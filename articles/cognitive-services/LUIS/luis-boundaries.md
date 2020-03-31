@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218836"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
@@ -89,7 +89,7 @@ Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung bei
 
 * 500 Anwendungen pro Azure-Erstellungsressource
 
-|Key|Erstellen|Endpunkt|Zweck|
+|Schlüssel|Erstellen|Endpunkt|Zweck|
 |--|--|--|--|
 |Starter|1 Mio./Monat, 5/Sekunde|1\.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
 |F0: Free-Tarif |1 Mio./Monat, 5/Sekunde|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
@@ -102,7 +102,7 @@ Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung bei
 
 ## <a name="keyboard-controls"></a>Tastenkombinationen
 
-|Tastatureingabe | Beschreibung |
+|Tastatureingabe | BESCHREIBUNG |
 |--|--|
 |STRG+E|Wechselt in der Liste der Äußerungen zwischen Token und Entitäten|
 

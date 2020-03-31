@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72242500"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
@@ -27,7 +27,7 @@ Die Textübersetzungs-API, Version 2, kann nahtlos in Ihre Apps, Websites, Tools
 ## <a name="getting-started"></a>Erste Schritte
 Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
 
-## <a name="authentication"></a>Authentication 
+## <a name="authentication"></a>Authentifizierung 
 Alle Aufrufe der Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmethoden:
 
 - Ein Zugriffstoken. Verwenden Sie den Abonnementschlüssel, um ein Zugriffstoken zu generieren. Senden Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des `Authorization`-Headers oder des `access_token`-Abfrageparameters an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
@@ -51,9 +51,9 @@ Wenn Sie keine Obszönitäten in der Übersetzung wünschen, auch wenn diese im 
 
 |ProfanityAction    |Aktion |Beispielquelltext (Japanisch)  |Beispielübersetzung (Englisch)  |
 |:--|:--|:--|:--|
-|NoAction   |Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönitäten werden von der Ausgangs- in die Zielsprache übergeben.        |彼はジャッカスです。     |Er ist ein Trottel.   |
+|NoAction   |Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönitäten werden von der Quell- in die Zielsprache übertragen.        |彼はジャッカスです。     |Er ist ein Trottel.   |
 |Marked     |Obszöne Wörter werden von den XML-Tags \<profanity> und \</profanity> umschlossen.       |彼はジャッカスです。 |Er ist ein \<profanity>Trottel\</profanity>.  |
-|Deleted    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |Er ist ein.   |
+|Deleted    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |He is a. (Er ist ein.)   |
 
     
 ## <a name="excluding-content-from-translation"></a>Ausschließen von Inhalt aus der Übersetzung
@@ -85,12 +85,12 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG    |Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid  |(leer)    |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|text|(leer)   |Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text darstellt. Der Text darf nicht mehr als 10.000 Zeichen enthalten.|query|Zeichenfolge|
-|from|(leer)   |Optional. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, aus der der Text übersetzt werden soll. Z.B. „en“ für Englisch|query|Zeichenfolge|
-|zu|(leer) |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
-|contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind `text/plain` (Standard) und `text/html`. HTML-Elemente müssen wohlgeformt und vollständig sein.|query|Zeichenfolge|
-|category|(leer)   |Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.|query|Zeichenfolge|
+|appid  |(leer)    |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|text|(leer)   |Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text darstellt. Der Text darf nicht mehr als 10.000 Zeichen enthalten.|Abfrage|Zeichenfolge|
+|from|(leer)   |Optional. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, aus der der Text übersetzt werden soll. Z.B. „en“ für Englisch|Abfrage|Zeichenfolge|
+|zu|(leer) |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|Abfrage|Zeichenfolge|
+|contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind `text/plain` (Standard) und `text/html`. HTML-Elemente müssen wohlgeformt und vollständig sein.|Abfrage|Zeichenfolge|
+|category|(leer)   |Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.|Abfrage|Zeichenfolge|
 |Authorization|(leer)  |Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -231,8 +231,8 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|locale|(leer) |Erforderlich. Eine Zeichenfolge, die eines der folgenden Elemente darstellt, das zum Lokalisieren der Sprachnamen verwendet wird: <ul><li>Die Kombination eines aus zwei Kleinbuchstaben bestehenden ISO 639-Kulturcodes, der einer Sprache zugeordnet ist, und einem aus zwei Großbuchstaben bestehenden ISO 3166-Subkulturcode. <li>Ein eigenständiger, aus zwei Kleinbuchstaben bestehender ISO 639-Kulturcode.|query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|locale|(leer) |Erforderlich. Eine Zeichenfolge, die eines der folgenden Elemente darstellt, das zum Lokalisieren der Sprachnamen verwendet wird: <ul><li>Die Kombination eines aus zwei Kleinbuchstaben bestehenden ISO 639-Kulturcodes, der einer Sprache zugeordnet ist, und einem aus zwei Großbuchstaben bestehenden ISO 3166-Subkulturcode. <li>Ein eigenständiger, aus zwei Kleinbuchstaben bestehender ISO 639-Kulturcode.|Abfrage|Zeichenfolge|
 |Authorization|(leer)  |Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -265,7 +265,7 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
 |Authorization|(leer)  |Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -298,7 +298,7 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
  
@@ -322,7 +322,7 @@ Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/Speak`
 
 ### <a name="response-class-status-200"></a>Antwortklasse (Status 200)
 
-binary
+BINARY
 
 Antwortinhaltstyp: application/xml
 
@@ -330,11 +330,11 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|text|(leer)   |Erforderlich. Eine Zeichenfolge, die eine oder mehrere Sätze, die für den Stream gesprochen werden sollen, in der angegebenen Sprache enthält. Der Text darf maximal 2.000 Zeichen lang sein.|query|Zeichenfolge|
-|language|(leer)   |Erforderlich. Eine Zeichenfolge, die den unterstützten Sprachcode der Sprache darstellt, in der der Text gesprochen werden soll. Der Code muss einer der Codes sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
-|format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID angibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|query|Zeichenfolge|
-|options|(leer)    |Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt:<ul><li>`MaxQuality` und `MinSize` geben die Qualität des Audiosignals an. `MaxQuality` bietet die höchste Qualität. `MinSize` liefert die geringste Dateigröße. Der Standardwert ist `MinSize`.</li><li>`female` und `male` geben das gewünschte Geschlecht bei der Sprachwiedergabe an. Der Standardwert lautet `female`. Verwenden Sie den senkrechten Strich (<code>\|</code>), um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul>  |query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|text|(leer)   |Erforderlich. Eine Zeichenfolge, die eine oder mehrere Sätze, die für den Stream gesprochen werden sollen, in der angegebenen Sprache enthält. Der Text darf maximal 2.000 Zeichen lang sein.|Abfrage|Zeichenfolge|
+|language|(leer)   |Erforderlich. Eine Zeichenfolge, die den unterstützten Sprachcode der Sprache darstellt, in der der Text gesprochen werden soll. Der Code muss einer der Codes sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|Abfrage|Zeichenfolge|
+|format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID angibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|Abfrage|Zeichenfolge|
+|Optionen|(leer)    |Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt:<ul><li>`MaxQuality` und `MinSize` geben die Qualität des Audiosignals an. `MaxQuality` bietet die höchste Qualität. `MinSize` liefert die geringste Dateigröße. Der Standardwert ist `MinSize`.</li><li>`female` und `male` geben das gewünschte Geschlecht bei der Sprachwiedergabe an. Der Standardwert lautet `female`. Verwenden Sie den senkrechten Strich (<code>\|</code>), um mehrere Optionen einzuschließen. z. B. `MaxQuality|Male`.</li></li></ul>  |Abfrage|Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -366,8 +366,8 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)  |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|text|(leer)|Erforderlich. Eine Zeichenfolge, die Text enthält, dessen Sprache identifiziert werden soll. Der Text darf maximal 10.000 Zeichen lang sein.|query|  Zeichenfolge|
+|appid|(leer)  |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|text|(leer)|Erforderlich. Eine Zeichenfolge, die Text enthält, dessen Sprache identifiziert werden soll. Der Text darf maximal 10.000 Zeichen lang sein.|Abfrage|  Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key  |(leer)    |Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -422,7 +422,7 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden.  Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -456,16 +456,16 @@ Anforderungsinhaltstyp: application: xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp   |
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|originalText|(leer)|Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text enthält. Die Zeichenfolge darf maximal 1.000 Zeichen lang sein.|query|Zeichenfolge|
-|translatedText|(leer) |Erforderlich. Eine Zeichenfolge, die den in die Zielsprache übersetzten Text enthält. Die Zeichenfolge darf maximal 2.000 Zeichen lang sein.|query|Zeichenfolge|
-|from|(leer)   |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Ausgangssprache des Texts darstellt. Beispiel: „en“ für Englisch und „de“ für Deutsch.|query|Zeichenfolge|
-|zu|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
-|rating|(leer) |Optional. Eine ganze Zahl, die die Qualitätsbewertung für die Zeichenfolge darstellt. Der Wert liegt zwischen -10 und 10. Der Standardwert ist 1.|query|integer|
-|contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate lauten `text/plain` und `text/html`. HTML-Elemente müssen wohlgeformt und vollständig sein.    |query|Zeichenfolge|
-|category|(leer)|Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.|query|Zeichenfolge|
-|user|(leer)|Erforderlich. Eine Zeichenfolge, die zur Nachverfolgung des Erstellers der Einreichung verwendet wird.|query|Zeichenfolge|
-|uri|(leer)|Optional. Eine Zeichenfolge, die den Inhaltsspeicherort der Übersetzung enthält.|query|Zeichenfolge|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|originalText|(leer)|Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text enthält. Die Zeichenfolge darf maximal 1.000 Zeichen lang sein.|Abfrage|Zeichenfolge|
+|translatedText|(leer) |Erforderlich. Eine Zeichenfolge, die den in die Zielsprache übersetzten Text enthält. Die Zeichenfolge darf maximal 2.000 Zeichen lang sein.|Abfrage|Zeichenfolge|
+|from|(leer)   |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Ausgangssprache des Texts darstellt. Beispiel: „en“ für Englisch und „de“ für Deutsch.|Abfrage|Zeichenfolge|
+|zu|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|Abfrage|Zeichenfolge|
+|rating|(leer) |Optional. Eine ganze Zahl, die die Qualitätsbewertung für die Zeichenfolge darstellt. Der Wert liegt zwischen -10 und 10. Der Standardwert ist 1.|Abfrage|integer|
+|contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate lauten `text/plain` und `text/html`. HTML-Elemente müssen wohlgeformt und vollständig sein.    |Abfrage|Zeichenfolge|
+|category|(leer)|Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.|Abfrage|Zeichenfolge|
+|user|(leer)|Erforderlich. Eine Zeichenfolge, die zur Nachverfolgung des Erstellers der Einreichung verwendet wird.|Abfrage|Zeichenfolge|
+|uri|(leer)|Optional. Eine Zeichenfolge, die den Inhaltsspeicherort der Übersetzung enthält.|Abfrage|Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden.  Autorisierungstoken: `"Bearer" + " " + "access_token"`  |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -568,9 +568,9 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)  |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query| Zeichenfolge|
-|text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der in Sätze aufgeteilt werden soll. Die maximale Größe des Texts beträgt 10.000 Zeichen.|query|Zeichenfolge|
-|language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|query|Zeichenfolge|
+|appid|(leer)  |Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage| Zeichenfolge|
+|text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der in Sätze aufgeteilt werden soll. Die maximale Größe des Texts beträgt 10.000 Zeichen.|Abfrage|Zeichenfolge|
+|language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|Abfrage|Zeichenfolge|
 |Authorization|(leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`   |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 
@@ -665,11 +665,11 @@ Antwortinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|text|(leer)|Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text darstellt. Die maximale Größe des Texts beträgt 10.000 Zeichen.|query|Zeichenfolge|
-|from|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, aus der der Text übersetzt werden soll.|query|Zeichenfolge|
-|zu |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
-|maxTranslations|(leer)|Erforderlich. Eine ganze Zahl, die die maximale Anzahl der Übersetzungen darstellt, die zurückgegeben werden sollen.|query|integer|
+|appid|(leer)|Erforderlich. Wenn der `Authorization`- oder `Ocp-Apim-Subscription-Key`-Header verwendet wird, lassen Sie das Feld `appid` leer. Schließen Sie andernfalls eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|Abfrage|Zeichenfolge|
+|text|(leer)|Erforderlich. Eine Zeichenfolge, die den zu übersetzenden Text darstellt. Die maximale Größe des Texts beträgt 10.000 Zeichen.|Abfrage|Zeichenfolge|
+|from|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, aus der der Text übersetzt werden soll.|Abfrage|Zeichenfolge|
+|zu |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode der Sprache darstellt, in die der Text übersetzt werden soll.|Abfrage|Zeichenfolge|
+|maxTranslations|(leer)|Erforderlich. Eine ganze Zahl, die die maximale Anzahl der Übersetzungen darstellt, die zurückgegeben werden sollen.|Abfrage|integer|
 |Authorization| (leer)|Erforderlich, wenn das Feld `appid` und der `Ocp-Apim-Subscription-Key`-Header leer gelassen werden. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Zeichenfolge|  Header|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, wenn das Feld `appid` und der `Authorization`-Header leer gelassen werden.|Header|Zeichenfolge|
 

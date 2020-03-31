@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 1de2e70ccafbbde49e764437bfe8ce94602747b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d603dbf2746608f499ba37b4f17b533b64bc941
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034454"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154354"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LEMP-Webservers auf einem virtuellen Linux-Computer in Azure
 
@@ -37,7 +37,7 @@ Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht.
 
 Dieses Tutorial verwendet die CLI innerhalb des Diensts [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), der ständig auf die neueste Version aktualisiert wird. Wählen Sie zum Öffnen von Cloud Shell oben in einem Codeblock die Option **Ausprobieren** aus.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 
@@ -161,7 +161,7 @@ Nun können Sie die erstellte PHP-Infoseite überprüfen. Öffnen Sie einen Brow
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen LEMP-Server in Azure bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen LEMP-Server in Azure bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines virtuellen Ubuntu-Computers
@@ -170,10 +170,10 @@ In diesem Tutorial haben Sie einen LEMP-Server in Azure bereitgestellt. Es wurde
 > * Überprüfen der Installation und Konfiguration
 > * Installieren von WordPress im LEMP-Stack
 
-Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit SSL-Zertifikaten sichern.
+Im nächsten Tutorial erfahren Sie, wie Sie Webserver mit TLS/SSL-Zertifikaten schützen.
 
 > [!div class="nextstepaction"]
-> [Sichern von Webservern mit SSL](tutorial-secure-web-server.md)
+> [Schützen von Webservern mit TLS](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

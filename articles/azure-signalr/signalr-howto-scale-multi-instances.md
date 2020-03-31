@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158162"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Skalieren von SignalR Service mit mehreren Instanzen
@@ -219,11 +219,11 @@ Das `ServiceEndpoint`-Objekt verfügt über eine `EndpointType`-Eigenschaft mit 
 
 Endpunkte vom Typ `primary` werden als Endpunkte zum Empfangen von Clientdatenverkehr bevorzugt und verfügen meist über zuverlässigere Netzwerkverbindungen. Endpunkte vom Typ `secondary` verfügen meist über weniger zuverlässige Netzwerkverbindungen und werden nur für Datenverkehr vom Server zum Client verwendet, z. B. Broadcastmeldungen. Für Datenverkehr vom Client zum Server werden sie dagegen nicht genutzt.
 
-In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. Für einen App-Server in der Region *USA, Osten* kann der SignalR Service-Endpunkt in derselben Region (also ebenfalls *USA, Osten*) als `primary` und die Endpunkte in anderen Regionen als `secondary` konfiguriert werden. Bei dieser Konfiguration können Dienstendpunkte in anderen Regionen Nachrichten von diesem App-Server in der Region *USA, Osten* **empfangen**, aber es werden keine **regionsübergreifenden** Clients an diesen App-Server geleitet. Die Architektur ist in diesem Diagramm dargestellt:
+In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. Für einen App-Server in der Region *USA, Osten* kann der SignalR Service-Endpunkt in derselben Region (also ebenfalls *USA, Osten*) als `primary` und die Endpunkte in anderen Regionen als `secondary` konfiguriert werden. Bei dieser Konfiguration können Dienstendpunkte in anderen Regionen Nachrichten von diesem App-Server in der Region *USA, Osten***empfangen**, aber es werden keine **regionsübergreifenden** Clients an diesen App-Server geleitet. Die Architektur ist in diesem Diagramm dargestellt:
 
 ![Regionsübergreifende Infrastruktur](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary` **zufällig ausgewählt**. Wenn der primäre Endpunkt nicht verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
+Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary`**zufällig ausgewählt**. Wenn der primäre Endpunkt nicht verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
 
 Wenn ein Client in einem regionsübergreifenden Szenario versucht, per `/negotiate` die Aushandlung mit dem App-Server durchzuführen, der in *USA, Osten* gehostet wird, wird standardmäßig immer der Endpunkt vom Typ `primary` zurückgegeben, der sich in derselben Region befindet. Falls alle Endpunkte der Region *USA, Osten* nicht verfügbar sind, wird der Client an die Endpunkte in anderen Regionen umgeleitet. Unten im Abschnitt „Failover“ ist das Szenario ausführlich beschrieben.
 

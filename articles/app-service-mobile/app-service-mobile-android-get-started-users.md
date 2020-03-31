@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 705ebb5809840155e6bbf3f8eef091eb95f63e63
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461639"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hinzufügen der Authentifizierung zu Ihrer Android-App
@@ -19,10 +19,10 @@ ms.locfileid: "77461639"
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial verwenden Sie einen unterstützten Identitätsanbieter, um dem Aufgabenlisten-Schnellstartprojekt unter Android eine Authentifizierung hinzuzufügen. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit mobilen Apps] auf, das Sie zuerst abschließen müssen.
 
-## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von Azure App Service
+## <a name="register-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von Azure App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren. Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist. In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_. Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden. Es sollte für Ihre mobile Anwendung eindeutig sein. So aktivieren Sie die Umleitung auf der Serverseite
 
@@ -36,7 +36,7 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 
 5. Klicken Sie auf **Speichern**.
 
-## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 * Öffnen Sie in Android Studio das Projekt, das Sie im Tutorial [Erste Schritte mit mobilen Apps] erstellt haben. Klicken Sie im Menü **Ausführen** auf **App ausführen**. Vergewissern Sie sich, dass nach dem Start der App ein Ausnahmefehler mit dem Statuscode 401 (nicht autorisiert) ausgelöst wird.
@@ -50,7 +50,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
 
 
 
-## <a name="cache-tokens"></a>Zwischenspeichern von Authentifizierungstoken auf dem Client
+## <a name="cache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>Zwischenspeichern von Authentifizierungstoken auf dem Client
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte

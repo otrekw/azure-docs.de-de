@@ -11,11 +11,11 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230134"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory  
 Bei der **Integrationslaufzeit** (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory mehrere Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Es werden drei Arten von Integrationslaufzeiten von Azure Data Factory angeboten:
@@ -40,11 +40,11 @@ Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollstä
 ### <a name="properties"></a>Eigenschaften
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 -------- | ------------- | 
 | Name | Name der Azure-Integrationslaufzeit. |  
 | State | Status der Azure-Integrationslaufzeit. | 
-| Location | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
+| Position | Standort der Azure-Integrationslaufzeit. Weitere Informationen zum Standort einer Azure-Integrationslaufzeit finden Sie unter [Einführung in die Integrationslaufzeit](concepts-integration-runtime.md). |
 | DataFactoryName | Name der Data Factory, zu der die Azure-Integrationslaufzeit gehört. | 
 | ResourceGroupName | Name der Ressourcengruppe, zu der die Data Factory gehört.  |
 | BESCHREIBUNG | Beschreibung der Integrationslaufzeit.  |
@@ -75,16 +75,16 @@ Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für
 | Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
 | CPU-Auslastung | CPU-Auslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. |
 | Netzwerk (Eingang/Ausgang) | Netzwerkauslastung für einen Knoten der selbstgehosteten Integrationslaufzeit. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. | 
-| Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt**. Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit**. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien zentral hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
+| Gleichzeitige Aufträge (ausgeführt/Limit) | **Wird ausgeführt**. Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. <br/><br/>**Limit**. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Wenn Zeitüberschreitungen für Aktivitäten auftreten, können Sie das Limit auch dann erhöhen, um die gleichzeitige Ausführung von Aufträgen in erweiterten Szenarien hochzuskalieren, wenn CPU, Arbeitsspeicher oder Netzwerk nicht voll ausgelastet sind. Diese Funktion ist auch für eine selbstgehostete Integrationslaufzeit mit einem einzelnen Knoten verfügbar. |
 | Role | Bei einer selbstgehosteten Integrationslaufzeit mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten genutzt wird. Der Verteilerknoten ist auch ein Workerknoten. |
 
-Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit (d.h. in einem Szenario mit horizontalem Hochskalieren) mindestens zwei Knoten enthalten sind.
+Einige Einstellungen der Eigenschaften sind sinnvoller, wenn in der selbstgehosteten Integrationslaufzeit (d.h. in einem Szenario mit Aufskalieren) mindestens zwei Knoten enthalten sind.
 
 #### <a name="concurrent-jobs-limit"></a>Limit für gleichzeitige Aufträge
 
 Der Standardwert des Limits für gleichzeitige Aufträge basierend auf der Größe des Computers. Welche Faktoren zum Berechnen dieses Wertes verwendet werden, hängt von der Größe des Arbeitsspeichers und der Anzahl der CPU-Kerne des Computers ab. Je mehr Kerne und Arbeitsspeicher, desto höher das Standardlimit für gleichzeitige Aufträge.
 
-Sie skalieren horizontal hoch, indem Sie die Anzahl der Knoten erhöhen. Wenn Sie die Anzahl von Knoten erhöhen, entspricht das Limit für gleichzeitige Aufträge der Summe der Grenzwerte für gleichzeitige Aufträge aller verfügbaren Knoten.  Wenn Sie z.B. auf einem Knoten maximal zwölf gleichzeitige Aufträge ausführen können und drei ähnliche Knoten hinzufügen, können Sie maximal 48 (d.h. 4 x 12) gleichzeitige Aufträge ausführen. Sie sollten das Limit für gleichzeitige Aufträge nur dann erhöhen, wenn Sie mit den Standardwerten auf jedem Knoten eine geringe Ressourcennutzung feststellen.
+Sie skalieren auf, indem Sie die Anzahl der Knoten erhöhen. Wenn Sie die Anzahl von Knoten erhöhen, entspricht das Limit für gleichzeitige Aufträge der Summe der Grenzwerte für gleichzeitige Aufträge aller verfügbaren Knoten.  Wenn Sie z.B. auf einem Knoten maximal zwölf gleichzeitige Aufträge ausführen können und drei ähnliche Knoten hinzufügen, können Sie maximal 48 (d.h. 4 x 12) gleichzeitige Aufträge ausführen. Sie sollten das Limit für gleichzeitige Aufträge nur dann erhöhen, wenn Sie mit den Standardwerten auf jedem Knoten eine geringe Ressourcennutzung feststellen.
 
 Sie können den berechneten Standardwert im Azure-Portal überschreiben. Wählen Sie „Autor > Verbindungen > Integration Runtimes > Bearbeiten > Knoten > Wert für gleichzeitige Aufträge pro Knoten ändern“ aus. Sie können auch den PowerShell-Befehl [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) verwenden.
   
@@ -163,7 +163,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | OtherErrors | Die nicht knotenabhängigen handlungsrelevanten Fehler für Ihre Azure-SSIS-Integrationslaufzeit. |
 | LastOperation | Das Ergebnis des letzten Vorgangs zum Starten/Beenden für Ihre Azure-SSIS-Integrationslaufzeit mit handlungsrelevanten Fehlern, wenn ein Fehler aufgetreten ist. |
 | State | Der allgemeine Status (Initial/Wird gestartet/Gestartet/Wird beendet/Beendet) Ihrer Azure-SSIS-Integrationslaufzeit. |
-| Location | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
+| Position | Der Standort Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeSize | Die Größe der einzelnen Knoten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | NodeCount | Die Anzahl der Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
 | MaxParallelExecutionsPerNode | Die Anzahl gleichzeitiger Ausführungen pro Knoten in Ihrer Azure-SSIS-Integrationslaufzeit. |
@@ -223,7 +223,7 @@ Weitere Informationen zur Azure-SSIS-Integrationslaufzeit finden Sie in den folg
 - [Azure-SSIS-Integrationslaufzeit](concepts-integration-runtime.md#azure-ssis-integration-runtime): Dieser Artikel enthält konzeptionelle Informationen zu Integrationslaufzeiten, die im Allgemeinen die Azure-SSIS-Integrationslaufzeit einschließen. 
 - [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
 - [Vorgehensweise: Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Datenbank-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
-- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit horizontal hochskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
+- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit aufskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
 - [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk:](join-azure-ssis-integration-runtime-virtual-network.md). Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-IR mit einem virtuellen Azure-Netzwerk. Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des virtuellen Netzwerks, damit die Azure-SSIS-Integrationslaufzeit dem virtuellen Netzwerk beitreten kann. 
 
 ## <a name="next-steps"></a>Nächste Schritte

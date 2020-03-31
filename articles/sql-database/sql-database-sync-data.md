@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
 ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74422527"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
@@ -29,7 +29,7 @@ SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert un
 
 Die Datensynchronisierung ist nützlich, wenn Daten über mehrere Azure SQL-Datenbanken oder SQL Server-Datenbanken hinweg auf dem neuesten Stand gehalten werden müssen. Hier sind die wichtigsten Anwendungsfälle für die Datensynchronisierung aufgeführt:
 
-- **Hybriddatensynchronisierung:** Mit der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
+- **Synchronisierung von Hybriddaten:** Mit der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
 - **Verteilte Anwendungen:** In vielen Fällen ist es vorteilhaft, unterschiedliche Workloads auf verschiedene Datenbanken aufzuteilen. Wenn Sie beispielsweise über eine große Produktionsdatenbank verfügen, aber gleichzeitig die Berichterstellung oder Analyse für diese Daten durchführen müssen, ist für diese zusätzliche Workload die Verwendung einer zweiten Datenbank hilfreich. Bei diesem Ansatz werden die Auswirkungen auf die Leistung Ihrer Produktionsworkload reduziert. Sie können die Datensynchronisierung nutzen, um diese beiden Datenbanken synchron zu halten.
 - **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen und sogar mehreren Ländern/Regionen ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
 
@@ -112,7 +112,7 @@ Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren un
 
 Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken.
 
-## <a name="sync-req-lim"></a> Anforderungen und Einschränkungen
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> Anforderungen und Einschränkungen
 
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -146,7 +146,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 
 Mit der Datensynchronisierung können keine schreibgeschützten oder vom System generierten Spalten synchronisiert werden. Beispiel:
 
-- Berechnete Spalten
+- Berechnete Spalten.
 - Vom System generierte Spalten für temporale Tabellen
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen

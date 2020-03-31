@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71840221"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Gewusst wie: Verwenden der Anomalieerkennungs-API für Zeitreihendaten  

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 6ecf5ba01b03ab899fec96b8ecd282a29e5ce3e0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: de395f7167f0ab7d7c6429c14d5efce46831b576
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218232"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Nutzen eines (klassischen) Azure Machine Learning Studio-Webdiensts
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Sobald Sie ein (klassisches) Azure Machine Learning Studio-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
 
@@ -67,7 +69,7 @@ So rufen Sie den API-Schlüssel für einen klassischen Machine Learning-Webdiens
 1. Klicken Sie in Machine Learning Studio (klassisch) links auf **WEB SERVICES**.
 2. Klicken Sie auf einen Webdienst. Der **API Key** befindet sich auf der Registerkarte **DASHBOARD**.
 
-## <a id="connect"></a>Herstellen der Verbindung mit einem Machine Learning-Webdienst
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>Herstellen der Verbindung mit einem Machine Learning-Webdienst
 Sie können mit jeder Programmiersprache, die HTTP-Anforderungen und -Antworten unterstützt, eine Verbindung mit einem Machine Learning-Webdienst herstellen. Sie können Beispiele in C#, Python und R auf einer Hilfeseite für den Machine Learning-Webdienst anzeigen.
 
 **Hilfe zur Machine Learning-API** Wenn Sie einen Webdienst bereitstellen, wird Hilfe zur Machine Learning-API erstellt. Weitere Informationen finden Sie unter [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md).

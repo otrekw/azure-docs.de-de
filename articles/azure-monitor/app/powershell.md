@@ -1,18 +1,14 @@
 ---
 title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-Dokumentation
 description: Automatisieren Sie die Erstellung und Verwaltung von Ressourcen, Warnungen und Verfügbarkeitstests in PowerShell mithilfe einer Azure Resource Manager-Vorlage.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977835"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234670"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
@@ -132,7 +128,7 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -324,16 +320,30 @@ Verwenden Sie das Cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.mic
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-Zum Festlegen der Eigenschaften für die tägliche Obergrenze verwenden Sie das gleiche Cmdlet. Führen Sie zum Festlegen der Obergrenze auf 300 GB/Tag beispielsweise Folgendes aus: 
+Zum Festlegen der Eigenschaften für die tägliche Obergrenze verwenden Sie das gleiche Cmdlet. Führen Sie zum Festlegen der Obergrenze auf 300 GB/Tag beispielsweise Folgendes aus:
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+Sie können [ARMClient](https://github.com/projectkudu/ARMClient) auch verwenden, um Parameter für das Obergrenze pro Tag abzurufen und festzulegen.  Verwenden Sie Folgendes, um die aktuellen Werte zu erhalten:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>Festlegen der Zeit der Zurücksetzung der Obergrenze pro Tag
+
+Mit [ARMClient](https://github.com/projectkudu/ARMClient) können Sie die Zeit der Zurücksetzung der Obergrenze pro Tag festlegen. Hier ist ein Beispiel mit `ARMClient`, um die Zeit der Zurücksetzung auf eine neue Stunde festzulegen (in diesem Beispiel 12:00 UTC):
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>Festlegen des Tarifs 
 
-Zum Abrufen des aktuellen Tarifs verwenden Sie das Cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan): 
+Zum Abrufen des aktuellen Tarifs verwenden Sie das Cmdlet [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan):
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -354,10 +364,27 @@ Sie können auch den Tarif für eine vorhandene Application Insights-Ressource m
                -appName myApp
 ```
 
+`priceCode` ist wie folgt definiert:
+
 |priceCode|Tarif|
 |---|---|
 |1|Pro GB (früher als Basic-Tarif bezeichnet)|
 |2|Pro Knoten (früher als Enterprise-Tarif bezeichnet)|
+
+Schließlich können Sie [ARMClient](https://github.com/projectkudu/ARMClient) verwenden, um Preispläne und Parameter für das Obergrenze pro Tag abzurufen und festzulegen.  Verwenden Sie Folgendes, um die aktuellen Werte zu erhalten:
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+Sie können alle diese Einstellungen mit folgenden Parametern festlegen:
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+Dadurch wird die Obergrenze pro Tag auf 200 GB/Tag und die Zeit der Zurücksetzung der Obergrenze pro Tag auf 12:00 UTC festgelegt. Außerdem werden E-Mails bei Erreichen sowohl der Obergrenze als auch der Warnstufe gesendet, und die Warnschwelle wird auf 90 % der Obergrenze festgelegt.  
 
 ## <a name="add-a-metric-alert"></a>Hinzufügen einer Metrikwarnung
 

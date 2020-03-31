@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772498"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79218498"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -37,7 +37,7 @@ Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource d
 
 1. Konfigurieren Sie das Abonnement mit den folgenden Einstellungen:
 
-   |Einstellung|value|Zweck|
+   |Einstellung|Wert|Zweck|
    |--|--|--|
    |Name|`my-luis-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
    |Subscription|Ihr Abonnement|Wählen Sie eines der mit Ihrem Konto verknüpften Abonnements aus.|

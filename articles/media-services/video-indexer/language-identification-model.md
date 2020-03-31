@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
 ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513880"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung
@@ -25,7 +25,7 @@ Video Indexer unterstützt die automatische Identifizierung von Sprachen (Langua
 
 Wählen Sie beim Indizieren bzw. [erneuten Indizieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) eines Videos mit der API die Option `auto detect` für den Parameter `sourceLanguage`.
 
-Navigieren Sie bei Verwendung des Portals auf der Startseite von [Video Indexer](https://www.videoindexer.ai/) zu Ihren **Kontovideos**, und zeigen Sie auf den Namen des Videos, das Sie neu indizieren möchten. Klicken Sie unten rechts auf die Schaltfläche „Erneut indizieren“. Wählen Sie im Dialogfeld **Video erneut indizieren** im Dropdownfeld **Ausgangssprache des Videos** die Option *Automatische Erkennung*.
+Navigieren Sie bei Verwendung des Portals auf der Startseite von **Video Indexer** zu Ihren [Kontovideos](https://www.videoindexer.ai/), und zeigen Sie auf den Namen des Videos, das Sie neu indizieren möchten. Klicken Sie unten rechts auf die Schaltfläche „Erneut indizieren“. Wählen Sie im Dialogfeld **Video erneut indizieren** im Dropdownfeld *Ausgangssprache des Videos* die Option **Automatische Erkennung**.
 
 ![Automatische Erkennung](./media/language-identification-model/auto-detect.png)
 

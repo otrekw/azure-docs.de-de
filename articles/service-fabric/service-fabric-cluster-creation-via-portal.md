@@ -4,11 +4,11 @@ description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229414"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 2. Die **Mindestgröße** von virtuellen Computern für den primären Knotentyp hängt von der **Dauerhaftigkeitsstufe** ab, die Sie für den Cluster auswählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Auswählen der Dauerhaftigkeitsmerkmale für Service Fabric-Cluster][service-fabric-cluster-durability].
 3. Wählen Sie die **Größe des virtuellen Computers** aus. VMs der D-Serie verfügen über SSDs (Solid-State Drives) und werden für zustandsbehaftete Anwendungen sehr empfohlen. Verwenden Sie keine SKU für virtuelle Computer, die über Teilkerne oder über weniger als 10 GB verfügbaren Speicherplatz auf dem Datenträger verfügt. Lesen Sie das Dokument [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][service-fabric-cluster-capacity], um Hilfe bei der Auswahl der Größe des virtuellen Computers zu erhalten.
 4.  **Cluster mit einem Knoten und Cluster mit drei Knoten** sind nur für Testzwecke vorgesehen. Sie werden für ausgeführte Produktionsworkloads nicht unterstützt.
-5. Wählen Sie die **Anfängliche Kapazität der VM-Skalierungsgruppe** für den Knotentyp aus. Sie können die Anzahl von VMs in einem Knotentyp später zentral hoch- oder herunterskalieren, für den primären Knotentyp beträgt die Mindestanzahl jedoch fünf für Produktionsworkloads. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen. Die **Mindestanzahl** von virtuellen Computern für den primären Knotentyp steuert die **Zuverlässigkeit** des Clusters.  
+5. Wählen Sie die **Anfängliche Kapazität der VM-Skalierungsgruppe** für den Knotentyp aus. Sie können die Anzahl von VMs in einem Knotentyp später hoch- oder herunterskalieren, für den primären Knotentyp beträgt die Mindestanzahl jedoch fünf für Produktionsworkloads. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen. Die **Mindestanzahl** von virtuellen Computern für den primären Knotentyp steuert die **Zuverlässigkeit** des Clusters.  
 6. Konfigurieren Sie **benutzerdefinierte Endpunkte**. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten][service-fabric-connect-and-communicate-with-services].
 7. **Aktivieren Sie den Reverseproxy**.  Der [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md) unterstützt die in einem Service Fabric-Cluster ausgeführten Microservices beim Ermitteln von und Kommunizieren mit anderen Diensten mit HTTP-Endpunkten.
 8. Konfigurieren Sie zurück auf dem Blatt **Clusterkonfiguration** unter **+ Optionale Einstellungen anzeigen** die **Diagnose** für den Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.

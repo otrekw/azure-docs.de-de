@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227026"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeiten mit Kanälen, die Livestreams mit Mehrfachbitrate von lokalen Encodern empfangen
 
@@ -51,7 +51,7 @@ Im folgenden Diagramm ist ein Livestreaming-Workflow dargestellt, der über eine
 
 ![Liveworkflow][live-overview]
 
-## <a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
 Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwendeten Livestreaminganwendungen.
 
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmentiertes MP4-Datenstrom (Smooth Streaming) mit Mehrfachbitrate ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
@@ -75,7 +75,7 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwen
     >[!NOTE]
     >Beim Erstellen Ihres Azure Media Services-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
-7. Starten Sie das Programm, wenn Sie zum Starten von Streaming und Archivierung bereit sind.
+7. Starten Sie das Programm, wenn Sie zum Starten des Streaming- und Archivierungsvorgangs bereit sind.
 
 8. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 
@@ -83,9 +83,9 @@ Die folgenden Schritte beschreiben die Aufgaben zum Erstellen von häufig verwen
 
 10. Löschen Sie das Programm (und optional das Medienobjekt).     
 
-## <a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
-### <a id="channel_input"></a>Kanaleingangskonfigurationen (Erfassung)
-#### <a id="ingest_protocols"></a>Erfassungsstreamingprotokoll
+## <a name="description-of-a-channel-and-its-related-components"></a><a id="channel"></a>Beschreibung von Kanälen und zugehörigen Komponenten
+### <a name="channel-input-ingest-configurations"></a><a id="channel_input"></a>Kanaleingangskonfigurationen (Erfassung)
+#### <a name="ingest-streaming-protocol"></a><a id="ingest_protocols"></a>Erfassungsstreamingprotokoll
 Media Services unterstützt die Erfassung von Livefeeds, indem „Fragmentiertes MP4“ und „RTMP“ (jeweils mit Mehrfachbitrate) als Streamingprotokolle verwendet werden. Wenn das Erfassungs-Streamingprotokoll RTMP aktiviert ist, werden für den Kanal zwei Eingangsendpunkte für die Erfassung erstellt:
 
 * **Primäre URL**: Gibt die vollqualifizierte URL des primären RTMP-Erfassungsendpunkts für den Kanal an.
@@ -114,7 +114,7 @@ Sie können die Erfassungs-URLs beim Erstellen des Kanals erhalten. Der Kanal mu
 
 Sie können Livestreams vom Typ „Fragmentiertes MP4“ (Smooth Streaming) über eine SSL-Verbindung erfassen. Zur Erfassung über SSL stellen Sie sicher, dass die Erfassungs-URL auf HTTPS aktualisiert wurde. Derzeit kann RTMP nicht über SSL erfasst werden.
 
-#### <a id="keyframe_interval"></a>Keyframe-Intervall
+#### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Keyframe-Intervall
 Wenn Sie einen lokalen Liveencoder zum Erzeugen eines Datenstroms mit Mehrfachbitrate nutzen, gibt das Keyframe-Intervall die GOP-Dauer (Group of Pictures) wie von diesem externen Encoder verwendet an. Nachdem der Kanal diesen eingehenden Datenstrom empfangen hat, können Sie Ihren Livedatenstrom in einem der folgenden Formate für Wiedergabe-Clientanwendungen bereitstellen: Smooth Streaming, Dynamisches adaptives Streaming über HTTP (DASH) und HTTP Live Streaming (HLS). Beim Livestreaming wird HLS immer dynamisch verpackt. Standardmäßig berechnet Media Services das HLS-Segment-Paketerstellungsverhältnis (Fragmente pro Segment) basierend auf dem Keyframe-Intervall, das vom Liveencoder empfangen wird.
 
 Die folgende Tabelle zeigt, wie die Segmentdauer berechnet wird:
@@ -173,12 +173,12 @@ Zum Löschen von archivierten Inhalten beenden und löschen Sie das Programm und
 
 Auch nach dem Beenden und Löschen des Programms ist es für Benutzer möglich, Ihre archivierten Inhalte als Video on Demand zu streamen, bis Sie das Medienobjekt löschen. Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für das Streaming verfügbar sein sollen, löschen Sie den Streaminglocator.
 
-## <a id="states"></a>Kanalstatus und Abrechnung
+## <a name="channel-states-and-billing"></a><a id="states"></a>Kanalstatus und Abrechnung
 Mögliche Werte für den aktuellen Status eines Kanals sind:
 
-* **Beendet**: Dies ist der anfängliche Status eines Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist aber nicht zulässig.
+* **Beendet:** Dies ist der anfängliche Status eines Kanals nach der Erstellung. In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist aber nicht zulässig.
 * **Wird gestartet**: Der Kanal wird gestartet. In diesem Status sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, erhält der Kanal wieder den Status **Beendet**.
-* **Running**: Der Kanal kann Livestreams verarbeiten.
+* **Wird ausgeführt:** Der Kanal kann Livestreams verarbeiten.
 * **Wird beendet**: Der Kanal wird beendet. In diesem Status sind weder Updates noch Streaming zulässig.
 * **Wird gelöscht**: Der Kanal wird gelöscht. In diesem Status sind weder Updates noch Streaming zulässig.
 
@@ -191,7 +191,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus zu den Abrechnungsmod
 | **Wird beendet** |**Wird beendet** |Nein (Übergangsstatus) |
 | **Beendet** |**Beendet** |Nein |
 
-## <a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen
+## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Untertitel und Werbeeinblendungen
 Die folgende Tabelle enthält die unterstützten Standards für Untertitel und Werbeeinblendungen.
 
 | Standard | Notizen |
@@ -200,7 +200,7 @@ Die folgende Tabelle enthält die unterstützten Standards für Untertitel und W
 | TTML in ISMT (Smooth Streaming-Texttracks) |Die dynamische Paketerstellung von Media Services ermöglicht Ihren Clients das Streamen von Inhalten in einem der folgenden Formate: DASH, HLS oder Smooth Streaming. Wenn Sie Fragmentiertes MP4 (Smooth Streaming) mit Untertiteln in ISMT (Smooth Streaming-Texttracks) erfassen, kann der Datenstrom aber nur an Smooth Streaming-Clients gesendet werden. |
 | SCTE-35 |SCTE-35 ist ein digitales Signalisierungssystem zum Einfügen von Werbeeinblendungen. Downstream-Empfänger verwenden das Signal zum Einfügen von Werbung in den Stream für die vorgesehene Zeit. SCTE-35 muss als Spur mit geringer Dichte in den Eingabestream gesendet werden.<p><p>Derzeit wird als Eingabestreamformat mit Werbesignalen nur Fragmentiertes MP4 (Smooth Streaming) unterstützt. Das einzige unterstützte Ausgabeformat ist ebenfalls Smooth Streaming. |
 
-## <a id="considerations"></a>Überlegungen
+## <a name="considerations"></a><a id="considerations"></a>Überlegungen
 Wenn Sie mit einem lokalen Liveencoder einen Datenstrom mit Mehrfachbitrate an einen Kanal senden, gelten folgende Einschränkungen:
 
 * Stellen Sie sicher, dass Sie ausreichend ungenutzte Internetbandbreite zum Senden an die Erfassungspunkte haben.

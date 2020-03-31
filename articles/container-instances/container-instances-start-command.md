@@ -4,11 +4,11 @@ description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspu
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533404"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225822"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 
@@ -112,7 +112,7 @@ Ausgabe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Befehlszeilen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Containern finden Sie unter [Ausführen von Aufgaben in Containern mit Neustartrichtlinien](container-instances-restart-policy.md).
+Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Befehlszeilen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Container finden Sie unter [Ausführen von Aufgaben in Containern mit Neustartrichtlinien](container-instances-restart-policy.md).
 
 <!-- LINKS - External -->
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

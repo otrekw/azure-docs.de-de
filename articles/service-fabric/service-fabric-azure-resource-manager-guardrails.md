@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368581"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric-Sicherungsmaßnahmen 
@@ -79,7 +79,7 @@ Ein Vorgang zum Entfernen des Startknotens wurde erkannt und wird abgelehnt.
 Stellen Sie sicher, dass Ihr primärer Knotentyp über genügend virtuelle Computer für die für Ihren Cluster angegebene Zuverlässigkeit verfügt. Sie können keinen virtuellen Computer entfernen, wenn dies die VM-Skalierungsgruppe unter die Mindestanzahl Knoten für die bestimmte Zuverlässigkeitsebene bringen würde.
 * Wenn die Zuverlässigkeitsebene ordnungsgemäß angegeben ist, stellen Sie sicher, dass genügend Knoten vom primären Knotentyp vorhanden sind, wie es für die Zuverlässigkeitsebene erforderlich ist. 
 * Wenn die Zuverlässigkeitsebene falsch ist, leiten Sie eine Änderung der Service Fabric-Ressource ein, um zuerst die Zuverlässigkeitsebene herabzusetzen, bevor Sie Vorgänge für die VM-Skalierungsgruppe einleiten, und warten Sie, bis diese abgeschlossen ist.
-* Wenn die Zuverlässigkeitsebene Bronze ist, führen Sie bitte diese [Schritte](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) aus, um Ihren Cluster ordnungsgemäß herunter zu skalieren.
+* Wenn die Zuverlässigkeitsebene Bronze ist, führen Sie bitte diese [Schritte](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) aus, um Ihren Cluster ordnungsgemäß herunterzuskalieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen eines Clusters auf virtuellen Computern oder Computern mit Windows Server: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)

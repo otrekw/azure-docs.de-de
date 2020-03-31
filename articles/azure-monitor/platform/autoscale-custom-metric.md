@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425118"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure
@@ -30,10 +30,10 @@ Dieser Artikel setzt voraus, dass Sie eine mit Application Insights konfiguriert
   ![Skalierungseinstellung für die neue Web-App][5]
 - Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf „Regel hinzufügen“. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Ändern Sie die Metrikquelle im oberen Bereich in „Application Insights“, wählen Sie in der Dropdownliste „Ressource“ die Application Insights-Ressource aus, und wählen Sie dann die benutzerdefinierte Metrik basierend auf dem zu skalierenden Inhalt.
   ![Skalieren anhand einer benutzerdefinierten Metrik][6]
-- Fügen Sie ähnlich wie beim obigen Schritt eine Skalierungsregel zum horizontalen Herunterskalieren hinzu, und verringern Sie die Anzahl der Skalierungen um 1, wenn die benutzerdefinierte Metrik unterhalb eines bestimmten Schwellenwerts liegt.
+- Fügen Sie ähnlich wie beim obigen Schritt eine Skalierungsregel zum Abskalieren hinzu, und verringern Sie die Anzahl der Skalierungen um 1, wenn die benutzerdefinierte Metrik unterhalb eines bestimmten Schwellenwerts liegt.
   ![Skalieren basierend auf der CPU][7]
 - Legen Sie die Instanzgrenzwerte fest. Wenn beispielsweise 2 bis 5 Instanzen abhängig von den Schwankungen benutzerdefinierter Metriken skaliert werden sollen, setzen Sie „Minimum“ auf „2“, „Maximum“ auf „5“ und „Standard“ auf „2“.
-  > Hinweis: Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt und die aktuelle Kapazität unterhalb der Standardkapazität liegt, stellen Sie zum Gewährleisten der Verfügbarkeit der Ressource sicher, dass die Autoskalierung horizontal auf den Standardwert skaliert. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert.
+  > Hinweis: Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt und die aktuelle Kapazität unterhalb der Standardkapazität liegt, stellen Sie zum Gewährleisten der Verfügbarkeit der Ressource sicher, dass die Autoskalierung auf den Standardwert aufskaliert. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird durch die automatische Skalierung nicht abskaliert.
 - Klicken Sie auf „Speichern“.
 
 Herzlichen Glückwunsch. Sie haben nun Ihre Skalierungseinstellung erfolgreich für die automatische Skalierung Ihrer Web-App basierend auf einer benutzerdefinierten Metrik konfiguriert.

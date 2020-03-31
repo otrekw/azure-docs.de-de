@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234098"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 
@@ -58,19 +58,19 @@ Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht d
 
 Verwenden Sie eine der folgenden Methoden, um die Ressourcengruppe zu löschen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az group delete --name ExampleResourceGroup
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im [Portal](https://portal.azure.com) die Ressourcengruppe aus, die Sie löschen möchten.
 
@@ -86,7 +86,7 @@ az group delete --name ExampleResourceGroup
 
 Verwenden Sie eine der folgenden Methoden, um eine Ressource zu löschen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -95,7 +95,7 @@ Remove-AzResource `
   -ResourceType Microsoft.Compute/virtualMachines
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az resource delete \
@@ -104,7 +104,7 @@ az resource delete \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie im [Portal](https://portal.azure.com) die Ressource aus, die Sie löschen möchten.
 

@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9de9fd2eb7a46719b841a885ac173f8d9c1271c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71059110"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer (klassisch) über das Azure-Portal
@@ -47,7 +47,7 @@ Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen
 3. Geben Sie unter **VM erstellen** den Namen des zu erstellenden virtuellen Computers (in diesem Szenario *DNS01*), das lokale Administratorkonto und das Kennwort ein.
    
     ![Erstellen einer VM im Azure-Portal](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. Wählen Sie **Optionale Konfiguration** > **Netzwerk** > **Virtual Network** und anschließend **TestVNet**. Wenn **TestVNet** nicht verfügbar ist, stellen Sie sicher, dass Sie den Speicherort *USA (Mitte)* verwenden und dass die am Anfang dieses Artikels beschriebene Testumgebung erstellt wurde.
+4. Wählen Sie **Optionale Konfiguration** > **Netzwerk** > **Virtual Network** und anschließend **TestVNet**. Wenn **TestVNet** nicht verfügbar ist, stellen Sie sicher, dass Sie den Speicherort *USA, Mitte* verwenden und dass die am Anfang dieses Artikels beschriebene Testumgebung erstellt wurde.
    
     ![Erstellen einer VM im Azure-Portal](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. Stellen Sie unter **Netzwerk** sicher, dass das Subnetz *FrontEnd* ausgewählt ist, und wählen Sie anschließend **IP-Adressen**. Wählen Sie unter **IP-Adresszuweisung** die Option **Statisch**, und geben Sie dann im Feld **IP-Adressen** den Wert *192.168.1.101* ein, wie nachfolgend dargestellt.

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275217"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227886"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -120,7 +120,7 @@ In diesem Szenario vertraut (mindestens) eine Ressourcengesamtstruktur allen Kon
 ## <a name="office-365-and-topology-considerations"></a>Office 365 und Überlegungen zur Netzwerktopologie
 Für einige Office 365-Workloads gelten bestimmte Einschränkungen für unterstützte Topologien:
 
-| Workload | Einschränkungen |
+| Workload | Beschränkungen |
 | --------- | --------- |
 | Exchange Online | Weitere Informationen zu Hybridtopologien, die von Exchange Online unterstützt werden, finden Sie unter [Hybridbereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://technet.microsoft.com/library/jj873754.aspx). |
 | Skype for Business | Wenn Sie mehrere lokale Gesamtstrukturen verwenden, wird nur die Topologie mit Kontoressourcengesamtstruktur unterstützt. Weitere Informationen finden Sie unter [Anforderungen für die Umgebung für Skype for Business Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
@@ -197,4 +197,4 @@ Weitere Informationen zum Installieren von Azure AD-Connect für diese Szenarios
 
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md) .
 
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
+Erfahren Sie mehr zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

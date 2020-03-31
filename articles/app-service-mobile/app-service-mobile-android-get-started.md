@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 9be9402bff1a1263de3c6f21b78899464c50c823
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459565"
 ---
 # <a name="create-an-android-app"></a>Erstellen einer Android-App

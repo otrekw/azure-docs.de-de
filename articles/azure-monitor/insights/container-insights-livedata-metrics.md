@@ -3,12 +3,12 @@ title: Anzeigen von Metriken in Echtzeit mit Azure Monitor für Container | Micr
 description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwendung von kubectl mit Azure Monitor für Container beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79216589"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 
@@ -34,7 +34,7 @@ Diese Funktion führt standardmäßig alle fünf Sekunden einen Abrufvorgang fü
 
 Das Abrufintervall wird mithilfe des Dropdownmenüs **Intervall festlegen** konfiguriert, in dem Sie den Abruf neuer Daten auf alle 1, 5, 15 oder 30 Sekunden festlegen können. 
 
-![Dropdownmenü für Abrufintervall unter „Live schalten“](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![Dropdownmenü für Abrufintervall unter „Live schalten“](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >Es wird empfohlen, das Abrufintervall bei der Problembehandlung für kurze Zeit auf eine Sekunde festzulegen. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken. Anschließend legen Sie wieder ein längeres Abrufintervall fest. 
@@ -56,7 +56,7 @@ Diese beiden Leistungsdiagramme bilden eine Entsprechung des Aufrufs von `kubect
 
 ![Diagramm zum Prozentsatz der Knotenspeicherauslastung](./media/container-insights-livedata-metrics/cluster-view-node-memory-util.png)
 
-Die Perzentilberechnungen funktionieren bei größeren Clustern, um Ausreißerknoten im Cluster zu erkennen. Hiermit kann beispielsweise zum Zweck des zentralen Herunterskalierens festgestellt werden, ob Knoten nicht genügend ausgelastet sind. Mithilfe der **Min**-Aggregation können Sie erkennen, welche Knoten eine geringe Auslastung im Cluster aufweisen. Zur weiteren Untersuchung wählen Sie die Registerkarte **Knoten** aus und sortieren das Raster nach CPU- oder Arbeitsspeicherauslastung.
+Die Perzentilberechnungen funktionieren bei größeren Clustern, um Ausreißerknoten im Cluster zu erkennen. Hiermit kann beispielsweise zum Zweck des Herunterskalierens festgestellt werden, ob Knoten nicht genügend ausgelastet sind. Mithilfe der **Min**-Aggregation können Sie erkennen, welche Knoten eine geringe Auslastung im Cluster aufweisen. Zur weiteren Untersuchung wählen Sie die Registerkarte **Knoten** aus und sortieren das Raster nach CPU- oder Arbeitsspeicherauslastung.
 
 Dies hilft ebenfalls zu verstehen, welche Knoten nahe den Grenzwerten liegen und ob eine horizontale Skalierung erforderlich ist. Mithilfe der **Max**- und **P95**-Aggregationen können Sie feststellen, ob im Cluster Knoten mit hoher Ressourcenauslastung vorhanden sind. Zur weiteren Untersuchung wechseln Sie wieder zur Registerkarte **Knoten**.
 

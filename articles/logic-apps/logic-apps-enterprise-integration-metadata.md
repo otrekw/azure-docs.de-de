@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792474"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Hinzufügen oder Abrufen von Artefaktmetadaten in Integrationskonten in Azure Logic Apps und Enterprise Integration Pack
@@ -61,7 +61,7 @@ Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten de
 
 1. Geben Sie diese Informationen für das gesuchte Artefakt ein:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
    |----------|---------|-------|-------------| 
    | **Artefakttyp** | Ja | **Schema**, **Zuordnung**, **Partner**, **Vereinbarung** oder ein benutzerdefinierter Typ | Der Typ des gewünschten Artefakts | 
    | **Artefaktname** | Ja | <*artifact-name*> | Der Name des gewünschten Artefakts | 
@@ -83,11 +83,11 @@ Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten de
 
       Beispiel: Sie möchten die `routingUrl`-Metadaten abrufen, die Sie zuvor hinzugefügt haben. Diese Eigenschaftswerte könnten Sie angeben: 
 
-      | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
+      | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
       |----------|----------|-------|-------------| 
       | **Methode** | Ja | <*operation-to-run*> | Der HTTP-Vorgang, der auf das Artefakt ausgeführt werden soll. Diese HTTP-Aktion verwendet z.B. die **GET**-Methode. | 
       | **URI** | Ja | <*metadata-location*> | Um auf den `routingUrl`-Metadatenwert des abgerufenen Artefakts zuzugreifen, können Sie einen Ausdruck verwenden. Beispiel: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Header** | Nein | <*header-values*> | Alle Headerausgaben des Auslösers, die Sie in die HTTP-Aktion übergeben möchten. Um den `headers`-Eigenschaftswert des Auslöser zu übergeben, können Sie beispielsweise einen Ausdruck verwenden. Beispiel: <p>`@triggeroutputs()['headers']` | 
+      | **Headers** | Nein | <*header-values*> | Alle Headerausgaben des Auslösers, die Sie in die HTTP-Aktion übergeben möchten. Um den `headers`-Eigenschaftswert des Auslöser zu übergeben, können Sie beispielsweise einen Ausdruck verwenden. Beispiel: <p>`@triggeroutputs()['headers']` | 
       | **Text** | Nein | <*body-content*> | Alle anderen Inhalte, die Sie über die `body`-Eigenschaft der HTTP-Aktion übergeben möchten. In diesem Beispiel werden die `properties`-Werte in die HTTP-Aktion übergeben: <p>1. Klicken Sie in die Eigenschaft **Body**, damit die dynamische Inhaltsliste angezeigt wird. Wenn keine Eigenschaften angezeigt werden, wählen Sie **Mehr anzeigen**. <br>2. Wählen Sie aus der dynamischen Inhaltsliste unter **Artefaktsuche für Integrationskonto** die Option **Eigenschaften**. | 
       |||| 
 

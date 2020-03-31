@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 358a1c96d598788170993fc48e60daae2b6b036c
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505876"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Sichern des Systemstatus und Durchführen einer Bare-Metal-Wiederherstellung mithilfe von Azure Backup Server
@@ -23,7 +23,7 @@ Azure Backup Server sichert den Systemstatus und bietet Bare-Metal-Recovery-Schu
 
 In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstellen können. Ausführliche Informationen zu App-Versionen, die mittels Systemstatus und BMR geschützt werden können, finden Sie in der [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md).
 
-|Sicherung|Problem|Wiederherstellung aus Azure Backup Server-Sicherung|Wiederherstellung aus einer Systemstatussicherung|BMR|
+|Backup|Problem|Wiederherstellung aus Azure Backup Server-Sicherung|Wiederherstellung aus einer Systemstatussicherung|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Dateidaten**<br /><br />Reguläre Datensicherung<br /><br />BMR-/Systemstatussicherung|Verlust von Dateidaten|J|N|N|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|

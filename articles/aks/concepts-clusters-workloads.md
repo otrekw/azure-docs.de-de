@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596231"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229674"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -65,9 +65,9 @@ Zum Ausführen Ihrer Anwendungen und der unterstützenden Dienste benötigen Sie
 
 ![Virtuelle Azure-Computer und unterstützende Ressourcen für einen Kubernetes-Knoten](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Größe des Arbeitsspeichers und die Größe und den Typ des verfügbaren Speichers (z.B. hochleistungsfähige SSDs oder reguläre HDDs). Wenn Sie damit rechnen, dass Sie Anwendungen bereitstellen werden, die große Mengen an CPUs und Arbeitsspeicher oder hochleistungsfähigen Datenspeicher erfordern, planen Sie die Knotengröße entsprechend. Sie können auch die Anzahl von Knoten in Ihrem AKS-Cluster zentral hochskalieren, um Anforderungen zu erfüllen.
+Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Größe des Arbeitsspeichers und die Größe und den Typ des verfügbaren Speichers (z.B. hochleistungsfähige SSDs oder reguläre HDDs). Wenn Sie damit rechnen, dass Sie Anwendungen bereitstellen werden, die große Mengen an CPUs und Arbeitsspeicher oder hochleistungsfähigen Datenspeicher erfordern, planen Sie die Knotengröße entsprechend. Sie können auch die Anzahl von Knoten in Ihrem AKS-Cluster hochskalieren, um Anforderungen zu erfüllen.
 
-In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten zentral hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte, über die Sie auf die von Ihnen verwendete VM-Größe verfügen (einschließlich [Azure-Reservierungen][reservation-discounts]), automatisch angewendet werden.
+In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte, über die Sie auf die von Ihnen verwendete VM-Größe verfügen (einschließlich [Azure-Reservierungen][reservation-discounts]), automatisch angewendet werden.
 
 Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `aks-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. eine andere Containerruntime als Moby verwenden möchten, können Sie mithilfe von `aks-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
 

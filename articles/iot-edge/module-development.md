@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548627"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233286"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Entwickeln eigener IoT Edge-Module
 
@@ -51,7 +51,7 @@ Um die Erstellung von Routen zu vereinfachen, wird in IoT Edge das Konzept von *
 
 Schließlich werden vom Edge-Hub behandelte D2C-Nachrichten mit den folgenden Eigenschaften gekennzeichnet:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | $connectionDeviceId | Die Geräte-ID des Clients, der die Nachricht gesendet hat. |
 | $connectionModuleId | Die Modul-ID des Moduls, das die Nachricht gesendet hat. |

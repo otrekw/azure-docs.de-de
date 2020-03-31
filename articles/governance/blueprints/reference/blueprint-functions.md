@@ -4,11 +4,11 @@ description: Beschreibt die Funktionen, die mit Blaupausenartefakten in Azure Bl
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970889"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236146"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
@@ -34,9 +34,9 @@ Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupause
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| artifactName |Ja |string |Der Name eines Blaupausenartefakts. |
+| artifactName |Ja |Zeichenfolge |Der Name eines Blaupausenartefakts. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -109,10 +109,10 @@ Einige Beispiele für das Abrufen von Daten aus dem _myTemplateArtifact_-Beispie
 | Ausdruck | type | Wert |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Zeichenfolge | "first" |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | Zeichenfolge | "my string value" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "my string value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | { "myproperty": "my value", "anotherProperty": true } |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Zeichenfolge | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
@@ -123,16 +123,16 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| string1 |Ja |string |Der erste Wert für die Verkettung. |
-| zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+| string1 |Ja |Zeichenfolge |Der erste Wert für die Verkettung. |
+| zusätzliche Argumente |Nein |Zeichenfolge |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
 Eine Zeichenfolge aus verketteten Werten.
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
 Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Zeichenfolgen arbeitet.
 
@@ -148,15 +148,15 @@ Gibt einen Blaupausenparameterwert zurück. Der angegebene Parametername muss in
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
 Der Wert des angegebenen Blaupausen- oder Blaupausenartefaktparameters.
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
 Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion darin, dass sie nur mit Blaupausenparametern arbeitet.
 
@@ -216,7 +216,7 @@ Das zurückgegebene Objekt hat das folgende Format:
 }
 ```
 
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
 
 Die Azure Blueprint-Funktion unterscheidet sich von der Azure Resource Manager-Vorlagenfunktion. Die `resourceGroup()`-Funktion kann nicht in einem Artefakt der Abonnementebene oder der Blaupausendefinition verwendet werden. Sie kann nur in Blaupausenartefakten verwendet werden, die Teil eines Ressourcengruppenartefakts sind.
 
@@ -269,9 +269,9 @@ Gibt ein Objekt zurück, das das angegebene Ressourcengruppenartefakt darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Ja |string |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
+| placeholderName |Ja |Zeichenfolge |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 

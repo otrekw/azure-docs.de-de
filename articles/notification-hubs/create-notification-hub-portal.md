@@ -12,14 +12,14 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3aeeb989d15dc74849c85fa58cbefa891809f3c5
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71212439"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347088"
 ---
-# <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Erstellen einer Azure Notification Hub-Instanz über das Azure-Portal 
+# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Notification Hub-Instanz über das Azure-Portal 
 Azure Notification Hubs bietet ein benutzerfreundliches, horizontal skalierbares Pushmodul, mit dem Sie von einem beliebigen Back-End (cloudbasiert oder lokal) Benachrichtigungen an sämtliche Plattformen (iOS, Android, Windows, Kindle, Baidu usw.) senden können. Weitere Informationen zu diesem Dienst finden Sie unter [Was ist Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
 In dieser Schnellstartanleitung erstellen Sie einen Notification Hub über das Azure-Portal. Im ersten Abschnitt erfahren Sie, wie Sie einen Notification Hubs-Namespace und einen Hub in diesem Namespace erstellen. Im zweiten Abschnitt erfahren Sie, wie Sie einen Notification Hub in einem bereits vorhandenen Notification Hubs-Namespace erstellen. 
@@ -33,7 +33,7 @@ In diesem Abschnitt erstellen Sie einen Namespace und einem Hub in dem Namespace
 In diesem Abschnitt erstellen Sie einen Notification Hub in einem vorhandenen Namespace. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Menü die Option **Alle Dienste** aus, suchen Sie nach **Notification Hub**, und wählen Sie neben **Notification Hub-Namespaces** den `*`Stern **(** ) aus, um die Option dem Abschnitt **FAVORITEN** des linken Menüs hinzuzufügen. Wählen Sie **Notification Hub-Namespaces** aus. 
+2. Wählen Sie im linken Menü die Option **Alle Dienste** aus, suchen Sie nach **Notification Hub**, und wählen Sie neben **Notification Hub-Namespaces** den **Stern** (`*`) aus, um die Option dem Abschnitt **FAVORITEN** des linken Menüs hinzuzufügen. Wählen Sie **Notification Hub-Namespaces** aus. 
 
       ![Azure-Portal: Auswählen von „Notification Hub-Namespaces“](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. Wählen Sie in der Liste auf der Seite **Notification Hub-Namespaces** Ihren Namespace aus. 

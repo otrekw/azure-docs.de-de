@@ -6,10 +6,10 @@ ms.custom: fasttrack-edit
 ms.topic: article
 ms.date: 06/24/2019
 ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596809"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
@@ -124,7 +124,7 @@ Beachten Sie, dass in neueren Kubernetes-Versionen (ab 1.17.0) in AKS `topology.
 
 ## <a name="verify-pod-distribution-across-zones"></a>Überprüfen der Verteilung der Pods auf die Zonen
 
-Wie unter [Well-Known Labels, Annotations and Taints][kubectl-well_known_labels] (Bekannte Bezeichnungen, Anmerkungen und Taints) dokumentiert, wird in Kubernetes die Bezeichnung `failure-domain.beta.kubernetes.io/zone` zum automatischen Verteilen von Pods in einem Replikationscontroller oder Replikationsdienst in den verschiedenen verfügbaren Zonen verwendet. Um dies zu testen, können Sie den Cluster von 3 auf 5 Knoten zentral hochskalieren, um die korrekte Verteilung der Pods zu überprüfen:
+Wie unter [Well-Known Labels, Annotations and Taints][kubectl-well_known_labels] (Bekannte Bezeichnungen, Anmerkungen und Taints) dokumentiert, wird in Kubernetes die Bezeichnung `failure-domain.beta.kubernetes.io/zone` zum automatischen Verteilen von Pods in einem Replikationscontroller oder Replikationsdienst in den verschiedenen verfügbaren Zonen verwendet. Um dies zu testen, können Sie den Cluster von 3 auf 5 Knoten hochskalieren, um die korrekte Verteilung der Pods zu überprüfen:
 
 ```azurecli-interactive
 az aks scale \

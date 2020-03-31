@@ -15,11 +15,11 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230734"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -99,7 +99,7 @@ Sie können in Azure AD definierten Ansprüchen einen beliebigen konstanten (sta
 
 Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
 | **Join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
 ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118267"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Tutorial: Verwenden der Formularerkennung mit Azure Logic Apps zum Analysieren von Rechnungen
@@ -77,7 +77,7 @@ Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow einzurichten.
 
 1. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | value | BESCHREIBUNG |
+   | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*logic-app-name*> | Der Name Ihrer Logik-App, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. In diesem Beispiel wird „My-First-Logic-App“ verwendet. |
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |

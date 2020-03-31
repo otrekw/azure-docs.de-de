@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
 ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235990"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -161,7 +161,7 @@ Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, u
 
 ![Allgemeine Einstellungen](./media/configure-common/open-general.png)
 
-Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Einige Einstellungen erfordern [zentrales Hochskalieren auf höhere Tarife](manage-scale-up.md).
+Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Einige Einstellungen erfordern das [Hochskalieren auf höhere Tarife](manage-scale-up.md).
 
 - **Stapeleinstellungen**: Der Softwarestapel zum Ausführen der App, einschließlich der Sprach- und SDK-Version. Für Linux-Apps und benutzerdefinierte Container-Apps können Sie auch optional einen Startbefehl oder eine Startdatei festlegen.
 - **Plattformeinstellungen**: Ermöglicht das Konfigurieren von Einstellungen für die Hostingplattform, einschließlich:

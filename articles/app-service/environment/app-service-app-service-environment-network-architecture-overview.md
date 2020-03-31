@@ -8,11 +8,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224814"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Übersicht über die Netzwerkarchitektur von App Service-Umgebungen
 App Service-Umgebungen werden stets in einem Subnetz eines [virtuellen Netzwerks][virtualnetwork] erstellt. Apps, die in einer App Service-Umgebung ausgeführt werden, können mit privaten Endpunkten kommunizieren, die sich in derselben virtuellen Netzwerktopologie befinden.  Da Kunden Teile ihrer virtuellen Netzwerkinfrastruktur sperren können, ist es wichtig, die Arten von Netzwerkkommunikationsabläufen zu kennen, die in einer App Service-Umgebung vorkommen.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970447"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10  
@@ -72,7 +72,7 @@ Medienobjekt 2:
 * URL für progressiven Download: [https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
 * PlayReady LA-URL (lokal): [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
-Zum Testen der Wiedergabe habe ich eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows-universal-samples](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.
+Zum Testen der Wiedergabe habe ich eine universelle Windows-Anwendung unter Windows 10 verwendet. Unter [Windows 10 Universal Sample](https://github.com/Microsoft/Windows-universal-samples) auf GitHub finden Sie ein einfaches Beispiel für einen Player namens [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming). Alles, was wir tun müssen, ist, den Code hinzuzufügen, damit wir das heruntergeladene Video auswählen und es anstelle der adaptiven Streamingquelle als Quelle verwenden können. Die Änderungen befinden sich im Ereignishandler für das Schaltflächenklickereignis.
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -128,7 +128,7 @@ Zusammengefasst haben wir den Offlinemodus in Azure Media Services erreicht:
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

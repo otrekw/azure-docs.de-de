@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966923"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235678"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -91,7 +91,7 @@ Der folgende Codeausschnitt enthält ein Beispiel für die Antwort:
 }
 ```
 
-## <a name="diagnostic-logging"></a>Diagnoseprotokolle
+## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnoseprotokolle
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Sie können auf einige dieser Protokolle über das Portal zugreifen. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie [Azure Monitor-Protokollen](../azure-monitor/insights/azure-networking-analytics.md), Excel und Power BI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
 
@@ -158,7 +158,7 @@ Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokoll
 
 Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel für v1 im JSON-Format protokolliert:
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -202,7 +202,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 ```
 Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -256,7 +256,7 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Daten für das Leistungsprotokoll werden in Intervallen von einer Minute generiert. Diese Funktion ist nur für die v1-SKU verfügbar. Verwenden Sie für die v2-SKU [Metriken](application-gateway-metrics.md) für die Leistungsdaten. Die folgenden Daten werden protokolliert:
 
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     |  Application Gateway-Instanz, für die Leistungsdaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.        |
 |healthyHostCount     | Anzahl von fehlerfreien Hosts im Back-End-Pool        |
@@ -293,7 +293,7 @@ Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gat
 Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgateway gemäß den obigen Schritten aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
 
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, für die Firewalldaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.         |
 |clientIp     |   Ursprungs-IP für die Anforderung      |

@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666736"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237150"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -29,7 +29,7 @@ In diesen Tabellen sind die Datenvorgänge zusammengefasst, die Sie nutzen könn
 
 Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
 
-| Action | BESCHREIBUNG |
+| Aktion | BESCHREIBUNG |
 |--------|-------------|
 | [**Create CSV table**](#create-csv-table-action) | Dient zum Erstellen einer CSV-Tabelle (durch Trennzeichen getrennt) aus einem Array. |
 | [**Create HTML table**](#create-html-table-action) | Dient zum Erstellen einer HTML-Tabelle aus einem Array. |
@@ -42,7 +42,7 @@ Diese Aktionen erleichtern Ihnen die Arbeit mit Daten in Arrays.
 
 Diese Aktionen erleichtern Ihnen die Arbeit mit Daten im JSON-Format (JavaScript Object Notation).
 
-| Action | BESCHREIBUNG |
+| Aktion | BESCHREIBUNG |
 |--------|-------------|
 | [**Compose**](#compose-action) | Dient zum Erstellen einer Nachricht oder Zeichenfolge aus mehreren Eingaben, die unterschiedliche Datentypen aufweisen können. Sie können diese Zeichenfolge dann als einzelne Eingabe verwenden, anstatt immer wieder die gleichen Eingaben vornehmen zu müssen. Beispielsweise können Sie eine einzelne JSON-Nachricht aus unterschiedlichen Eingaben erstellen. |
 | [**Parse JSON**](#parse-json-action) | Dient zum Erstellen von benutzerfreundlichen Datentoken für Eigenschaften in JSON-Inhalten, damit Sie die Eigenschaften leichter in Ihren Logik-Apps nutzen können. |
@@ -52,7 +52,7 @@ Informationen zur Erstellung von komplexeren JSON-Transformationen finden Sie un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Logik-App, für die Sie den Vorgang für die Arbeit mit den Daten benötigen.
 

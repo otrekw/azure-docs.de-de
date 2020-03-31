@@ -11,17 +11,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472357"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit Azure Machine Learning für ein Azure-FPGA bereitstellen. 
+Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit Azure Machine Learning für ein Azure-FPGA bereitstellen.
 
 FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung.
 
@@ -46,13 +46,13 @@ FPGAs ermöglichen es, eine geringe Latenzzeit für Echtzeit-Rückschlussanforde
 Sie können FPGAs für verschiedene Arten von Machine Learning-Modellen neu konfigurieren. Durch diese Flexibilität ist es einfacher, die Anwendungen auf der Grundlage der optimalen numerischen Genauigkeit und des verwendeten Speichermodells zu beschleunigen. Da FPGAs neu konfigurierbar sind, können Sie mit den Anforderungen der sich schnell ändernden KI-Algorithmen Schritt halten.
 
 ## <a name="whats-supported-on-azure"></a>In Azure unterstützte Funktionen
-Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. Mit dieser FPGA-fähigen Hardwarearchitektur werden trainierte neuronale Netze schnell und mit geringerer Wartezeit ausgeführt. Azure kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst horizontal hochzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
+Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. Mit dieser FPGA-fähigen Hardwarearchitektur werden trainierte neuronale Netze schnell und mit geringerer Wartezeit ausgeführt. Azure kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst aufzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
 
 FPGAs in Azure unterstützen:
 
 + Szenarien zur Bildklassifizierung und -erkennung
 + TensorFlow-Bereitstellung
-+ Intel FPGA-Hardware 
++ Intel FPGA-Hardware
 
 Diese DNN-Modelle sind derzeit verfügbar:
   - ResNet 50
@@ -81,12 +81,9 @@ In den folgenden Szenarien werden FPGAs verwendet:
 
 + [Landnutzungskartierung](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
-
-
-## <a name="example-deploy-models-on-fpgas"></a>Beispiel: Bereitstellen von Modellen auf FPGAs 
+## <a name="example-deploy-models-on-fpgas"></a>Beispiel: Bereitstellen von Modellen auf FPGAs
 
 Sie können ein Modell als Webdienst auf FPGAs mit hardwarebeschleunigten Azure Machine Learning-Modellen bereitstellen. Verwenden von FPGAs bietet Rückschlüsse mit extrem geringen Latenzzeiten, sogar mit einer einzigen Batchgröße. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
-
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +91,7 @@ Sie können ein Modell als Webdienst auf FPGAs mit hardwarebeschleunigten Azure 
 
 - FPGA-Kontingent. Überprüfen Sie mithilfe der Azure CLI, ob Sie über ein Kontingent verfügen:
 
-    ```shell
+    ```azurecli-interactive
     az vm list-usage --location "eastus" -o table --query "[?localName=='Standard PBS Family vCPUs']"
     ```
 
@@ -117,7 +114,7 @@ Sie können ein Modell als Webdienst auf FPGAs mit hardwarebeschleunigten Azure 
  
 - Python SDK für hardwarebeschleunigte Modelle:
 
-    ```shell
+    ```bash
     pip install --upgrade azureml-accel-models
     ```
 

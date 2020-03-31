@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616060"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235490"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -228,7 +228,7 @@ Alle übergeordneten Runbooks enthalten den Parameter _WhatIf_. Bei der Festlegu
 
 In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen aufgeführt. Ändern Sie nur Variablen, die über das Präfix **External** verfügen. Wenn Sie Variablen mit dem Präfix **Internal** ändern, hat dies unerwünschte Auswirkungen.
 
-|Variable | Beschreibung|
+|Variable | BESCHREIBUNG|
 |---------|------------|
 |External_AutoStop_Condition | Der bedingte Operator, der zum Konfigurieren der Bedingung erforderlich ist, bevor eine Warnung ausgelöst wird. Zulässige Werte sind **GreaterThan**, **GreaterThanOrEqual**, **LessThan** und **LessThanOrEqual**.|
 |External_AutoStop_Description | Die Warnung zum Beenden des virtuellen Computers, wenn der CPU-Prozentsatz den Schwellenwert überschreitet.|
@@ -347,7 +347,7 @@ Die folgende Beispiel-E-Mail wird gesendet, wenn die Lösung virtuelle Computer 
 
 ![Seite der Automation-Lösung „Updateverwaltung“](media/automation-solution-vm-management/email.png)
 
-## <a name="add-exclude-vms"></a>Hinzufügen/Ausschließen von VMs
+## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>Hinzufügen/Ausschließen von VMs
 
 Die Lösung bietet die Möglichkeit, VMs hinzuzufügen, auf die die Lösung ausgerichtet ist, oder Computer gezielt von der Lösung auszuschließen.
 

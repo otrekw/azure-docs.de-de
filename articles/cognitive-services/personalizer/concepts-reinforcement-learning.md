@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68662833"
 ---
 # <a name="what-is-reinforcement-learning"></a>Was ist vertiefendes Lernen?
@@ -59,7 +59,7 @@ John hat auch vorher mehrere Tutorials zu Themen wie Joint Prediction (Gemeinsam
 
 Die Personalisierung verwendet derzeit [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) als Grundlage für das Machine Learning. Dieser Rahmen ermöglicht maximalen Datendurchsatz und niedrigste Latenzzeit beim Aufstellen von Personalisierungsrangfolgen und Trainieren des Modells mit allen Ereignissen.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966) (Treffen von Kontextentscheidungen mit geringem technischem Aufwand)
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453) (Ein Reduzierungsansatz zu fairer Klassifizierung)

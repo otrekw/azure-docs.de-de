@@ -5,21 +5,21 @@ services: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596248"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
-Um die Anwendungsanforderungen in Azure Kubernetes Service (AKS) zu erfüllen, müssen Sie möglicherweise die Anzahl von Knoten anpassen, die Ihre Workloads ausführen. Die Komponente für die automatische Clusterskalierung kann auf Pods in Ihrem Cluster überprüfen, die aufgrund von Ressourceneinschränkungen nicht geplant werden können. Sobald Probleme erkannt werden, wird die Anzahl von Knoten in einem Knotenpool erhöht, um den Anwendungsanforderungen gerecht zu werden. Die Knoten werden außerdem regelmäßig auf einen Mangel an ausgeführten Pods überprüft, und bei Bedarf wird die Anzahl von Knoten verringert. Diese Fähigkeit zur automatischen Erhöhung oder Verringerung der Knotenanzahl in Ihrem AKS-Cluster ermöglicht es Ihnen, einen effizienten, kostengünstigen Cluster zu betreiben.
+Um die Anwendungsanforderungen in Azure Kubernetes Service (AKS) zu erfüllen, müssen Sie möglicherweise die Anzahl von Knoten anpassen, die Ihre Workloads ausführen. Die Komponente für die automatische Clusterskalierung kann auf Pods in Ihrem Cluster überprüfen, die aufgrund von Ressourceneinschränkungen nicht geplant werden können. Sobald Probleme erkannt werden, wird die Anzahl von Knoten in einem Knotenpool erhöht, um den Anwendungsanforderungen gerecht zu werden. Die Knoten werden außerdem regelmäßig auf einen Mangel an ausgeführten Pods überprüft, und bei Bedarf wird die Anzahl von Knoten verringert. Diese Fähigkeit zum automatischen Hoch- oder Herunterskalieren der Knotenanzahl in Ihrem AKS-Cluster ermöglicht es Ihnen, einen effizienten, kostengünstigen Cluster zu betreiben.
 
 In diesem Artikel wird gezeigt, wie Sie die Autoskalierung für Cluster in einem AKS-Cluster aktivieren und verwalten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Der Artikel setzt voraus, dass Sie mindestens Version 2.0.76 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Der Artikel setzt voraus, dass Sie mindestens Version 2.0.76 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -105,18 +105,18 @@ Im oben stehenden Beispiel wird die automatische Clusterskalierung für den einz
 
 ## <a name="using-the-autoscaler-profile"></a>Verwenden des Autoskalierungsprofils
 
-Sie können auch differenziertere Details der Clusterautoskalierung konfigurieren, indem Sie die Standardwerte im clusterweiten Autoskalierungsprofil ändern. Ein Ereignis zum zentralen Herunterskalieren tritt z. B. ein, wenn die Knoten nach 10 Minuten nicht ausgelastet sind. Wenn Sie Workloads hatten, die alle 15 Minuten ausgeführt wurden, möchten Sie vielleicht das Autoskalierungsprofil so ändern, dass es nach 15 oder 20 Minuten nicht ausgelastete Knoten zentral herunterskaliert. Wenn Sie die Clusterautoskalierung aktivieren, wird ein Standardprofil verwendet, sofern Sie keine anderen Einstellungen angeben. Das Profil für die Clusterautoskalierung verfügt über die folgenden Einstellungen, die Sie aktualisieren können:
+Sie können auch differenziertere Details der Clusterautoskalierung konfigurieren, indem Sie die Standardwerte im clusterweiten Autoskalierungsprofil ändern. Ein Ereignis zum zentralen Herunterskalieren tritt z. B. ein, wenn die Knoten nach 10 Minuten nicht ausgelastet sind. Wenn Sie Workloads hatten, die alle 15 Minuten ausgeführt wurden, möchten Sie vielleicht das Autoskalierungsprofil so ändern, dass es nach 15 oder 20 Minuten nicht ausgelastete Knoten herunterskaliert. Wenn Sie die Clusterautoskalierung aktivieren, wird ein Standardprofil verwendet, sofern Sie keine anderen Einstellungen angeben. Das Profil für die Clusterautoskalierung verfügt über die folgenden Einstellungen, die Sie aktualisieren können:
 
 | Einstellung                          | BESCHREIBUNG                                                                              | Standardwert |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
-| scan-interval                    | Häufigkeit der Neubewertung von Clustern für das zentrale Hoch- oder Herunterskalieren                                    | 10 Sekunden    |
-| scale-down-delay-after-add       | Wie lange nach dem zentralen Hochskalieren die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                               | 10 Minuten    |
+| scan-interval                    | Häufigkeit der Neubewertung von Clustern für das Hoch- oder Herunterskalieren                                    | 10 Sekunden    |
+| scale-down-delay-after-add       | Wie lange nach dem Hochskalieren die Auswertung für das Herunterskalieren fortgesetzt wird                               | 10 Minuten    |
 | scale-down-delay-after-delete    | Wie lange nach dem Löschen des Knotens die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                          | scan-interval |
 | scale-down-delay-after-failure   | Wie lange nach dem Fehler beim zentralen Herunterskalieren die Auswertung für das zentrale Herunterskalieren fortgesetzt wird                     | 3 Minuten     |
 | scale-down-unneeded-time         | Wie lange ein Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist                  | 10 Minuten    |
 | scale-down-unready-time          | Wie lange ein nicht bereiter Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist         | 20 Minuten    |
 | scale-down-utilization-threshold | Auslastungsgrad des Knotens, definiert als Summe der angeforderten Ressourcen dividiert durch die Kapazität, unterhalb derer ein Knoten für das zentrale Herunterskalieren in Betracht gezogen werden kann | 0.5 |
-| max-graceful-termination-sec     | Maximale Anzahl von Sekunden, die die Clusterautoskalierung beim Versuch, einen Knoten zentral herunterzuskalieren, auf die Beendigung des Pods wartet | 600 Sekunden   |
+| max-graceful-termination-sec     | Maximale Anzahl von Sekunden, die die Clusterautoskalierung beim Versuch, einen Knoten herunterzuskalieren, auf die Beendigung des Pods wartet | 600 Sekunden   |
 
 > [!IMPORTANT]
 > Das Profil der Clusterautoskalierung betrifft alle Knotenpools, die die Clusterautoskalierung verwenden. Sie können kein Autoskalierungsprofil pro Knotenpool festlegen.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612346"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223077"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -68,9 +68,9 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 * **Nicht routingfähige Domänensuffixe:** Im Allgemeinen wird empfohlen, nicht routingfähige Domänennamesuffixe wie z. B. *contoso.local* zu vermeiden. Das Suffix *.local* ist nicht routingfähig und kann zu Problemen mit der DNS-Auflösung führen.
 
 > [!TIP]
-> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Wir empfehlen Ihnen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
+> Lassen Sie beim Erstellen eines benutzerdefinierten Domänennamens Vorsicht in Bezug auf DNS-Namespaces walten. Es wird empfohlen, einen Domänennamen zu verwenden, der von vorhandenen Azure- oder lokalen DNS-Namespaces getrennt ist.
 >
-> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, sollten Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com* erstellen. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
+> Lautet Ihr DNS-Namespace beispielsweise *contoso.com*, erstellen Sie eine verwaltete Azure AD DS-Domäne mit dem benutzerdefinierten Domänennamen *aaddscontoso.com*. Wenn Sie Secure LDAP verwenden, müssen Sie diesen benutzerdefinierten Domänennamen registrieren und sein Besitzer sein, um die erforderlichen Zertifikate generieren zu können.
 >
 > Möglicherweise müssen Sie einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung oder bedingte DNS-Weiterleitungen zwischen vorhandenen DNS-Namespaces in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
@@ -78,7 +78,7 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 
 Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 
-* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (z. B. *aaddscontoso* im Domänennamen *aaddscontoso.com*) darf maximal 15 Zeichen lang sein.
+* **Einschränkungen für Domänenpräfixe:** Sie können keine verwaltete Domäne mit einem Präfix erstellen, das länger ist als 15 Zeichen. Das Präfix des angegebenen Domänennamens (beispielsweise *aaddscontoso* im Domänennamen *aaddscontoso.com*) darf maximal 15 Zeichen lang sein.
 * **Netzwerknamenskonflikte:** Der DNS-Domänenname für Ihre verwaltete Domäne darf im virtuellen Netzwerk noch nicht vorhanden sein. Achten Sie speziell auf die folgenden Szenarien, die zu einem Namenskonflikt führen würden:
     * Im virtuellen Azure-Netzwerk ist bereits eine Active Directory-Domäne mit dem gleichen DNS-Domänennamen vorhanden.
     * Das virtuelle Netzwerk, in dem Sie die verwaltete Domäne aktivieren möchten, verfügt über eine VPN-Verbindung mit Ihrem lokalen Netzwerk. In diesem Szenario stellen Sie sicher, dass Sie keine Domäne mit demselben DNS-Domänennamen in Ihrem lokalen Netzwerk haben.
@@ -136,7 +136,7 @@ Nachdem Azure AD DS erfolgreich bereitgestellt wurde, konfigurieren Sie nun da
 
 1. Auf der Registerkarte **Übersicht** für Ihre verwaltete Domäne werden einige **erforderliche Konfigurationsschritte** angezeigt. Der erste Konfigurationsschritt besteht darin, die DNS-Servereinstellungen für Ihr virtuelles Netzwerk zu aktualisieren. Sobald die DNS-Einstellungen ordnungsgemäß konfiguriert sind, wird dieser Schritt nicht mehr angezeigt.
 
-    Die aufgelisteten Adressen sind die Domänencontroller, die im virtuellen Netzwerk genutzt werden können. In diesem Beispiel lauten die Adressen *10.1.0.4* und *10.1.0.5*. Sie finden diese IP-Adressen später auf der Registerkarte **Eigenschaften**.
+    Die aufgelisteten Adressen sind die Domänencontroller, die im virtuellen Netzwerk genutzt werden können. In diesem Beispiel lauten die Adressen *10.0.1.4* und *10.0.1.5*. Sie finden diese IP-Adressen später auf der Registerkarte **Eigenschaften**.
 
     ![Konfigurieren von DNS-Einstellungen für Ihr virtuelles Netzwerk mit den IP-Adressen der Azure AD Domain Services](./media/tutorial-create-instance/configure-dns.png)
 

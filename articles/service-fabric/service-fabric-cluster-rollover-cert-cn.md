@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Rollover für ein Service Fabric-Clusterz
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451960"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Manuelles Rollover für ein Service Fabric-Clusterzertifikat

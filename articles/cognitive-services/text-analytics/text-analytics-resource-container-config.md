@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 8a39327275dca43ddb6ce0e46a3e3bb51ec4555b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795309"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurieren von Docker-Containern für die Textanalyse
@@ -49,9 +49,9 @@ Diese Einstellung finden Sie hier:
 
 * Azure-Portal: Übersicht über die **Textanalyse** mit der Bezeichnung `Endpoint`
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
+|Erforderlich| Name | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
+|Ja| `Billing` | String | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -77,10 +77,10 @@ Die Container für die Textanalyse verwenden keine Eingabe- oder Ausgabeeinbindu
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](how-tos/text-analytics-how-to-install-containers.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
+|Optional| Name | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für die Textanalyse nicht verwendet.|
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nicht zulässig| `Input` | String | Wird von Containern für die Textanalyse nicht verwendet.|
+|Optional| `Output` | String | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 
@@ -100,15 +100,15 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Text Analytics`-Ressource. 
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[Schlüsselbegriffserkennung](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-#### <a name="language-detectiontablanguage"></a>[Sprachenerkennung](#tab/language)
+#### <a name="language-detection"></a>[Sprachenerkennung](#tab/language)
 
 [!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[Standpunktanalyse](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[Standpunktanalyse](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
@@ -117,4 +117,4 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](how-tos/text-analytics-how-to-install-containers.md).
-* Weitere [Cognitive Services-Container](../cognitive-services-container-support.md) verwenden
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

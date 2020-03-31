@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218776"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
@@ -144,8 +144,8 @@ In den folgenden Äußerungen ist das Wort `fair` ein Homograph. Die Schreibweis
 
 |Äußerung|
 |--|
-|What kind of county fairs are happening in the Seattle area this summer?|
-|Is the current rating for the Seattle review fair?|
+|Welche Arten von Jahrmärkten finden in diesem Sommer in der Region Seattle statt?|
+|Ist die aktuelle Bewertung für die Seattle-Rezension fair?|
 
 Wenn Sie mit einer Veranstaltungsentität alle Veranstaltungsdaten suchen möchten, bezeichnen Sie das Wort `fair` in der ersten Äußerung, aber nicht in der zweiten.
 

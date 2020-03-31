@@ -4,11 +4,11 @@ description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623736"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218572"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Konfigurieren der Lernschleife der Personalisierung
 
@@ -26,7 +26,7 @@ Konfigurieren Sie den Dienst für die Verwendung von Relevanzen durch die Lernsc
 > [!div class="mx-imgBorder"]
 > ![Konfigurieren der Relevanzwerte für die Feedbackschleife](media/settings/configure-model-reward-settings.png)
 
-|value|Zweck|
+|Wert|Zweck|
 |--|--|
 |Belohnungswartezeit|Legt die Zeitspanne, während der die Personalisierung Werte für einen Rangfolgeaufruf sammelt werden, ab dem Zeitpunkt fest, zu dem der Rangfolgeaufruf erfolgt. Dieser Wert wird festgelegt durch die Frage: „How long should Personalizer wait for rewards calls?“ (Wie lange sollte die Personalisierung auf Belohnungsaufrufe warten?) Jede Belohnung, die nach diesem Zeitfenster eingeht, wird protokolliert, aber nicht für das Lernen verwendet.|
 |Standardbelohnung|Wenn während des Zeitfensters für das Warten auf die Belohnung kein Belohnungsaufruf bei der Personalisierung eingeht, weist die Personalisierung die Standardbelohnung zu. Standardmäßig und in den meisten Szenarien ist die Standardrelevanz 0 (null).|

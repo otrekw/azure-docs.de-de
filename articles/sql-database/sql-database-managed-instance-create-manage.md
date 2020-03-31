@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823402"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232510"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -26,11 +26,11 @@ Sie können verwaltete Azure SQL-Datenbank-Instanzen mit dem Azure-Portal, mit P
 
 Eine Schnellstartanleitung zum Erstellen einer verwalteten Azure SQL-Datenbank-Instanz finden Sie unter [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
 
-## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Erstellen und Verwalten verwalteter Instanzen
+## <a name="powershell-create-and-manage-managed-instances"></a>Mit PowerShell: Erstellen und Verwalten verwalteter Instanzen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
@@ -48,7 +48,7 @@ Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe von Azu
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Entfernt eine Datenbank der verwalteten Azure SQL-Datenbank-Instanz|
 |[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Stellt eine Datenbank der verwalteten Azure SQL-Datenbank-Instanz wieder her|
 
-## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure-Befehlszeilenschnittstelle: Erstellen und Verwalten verwalteter Instanzen
+## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Erstellen und Verwalten verwalteter Instanzen
 
 Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-Befehle für eine verwaltete SQL-Instanz](/cli/azure/sql/mi). Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows.
 
@@ -78,7 +78,7 @@ Verwenden Sie zum Erstellen und Verwalten einer Instanzdatenbank nach dem Erstel
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Erstellt eine neue Datenbank der verwalteten Instanz. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Erstellt eine neue Datenbank der verwalteten Instanz. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Ändert eine Datenbank der verwalteten Azure SQL-Instanz.|
 
 ## <a name="rest-api-create-and-manage-managed-instances"></a>REST-API: Erstellen und Verwalten verwalteter Instanzen

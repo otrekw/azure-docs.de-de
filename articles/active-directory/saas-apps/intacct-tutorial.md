@@ -17,10 +17,10 @@ ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73570579"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Tutorial: Integrieren von Sage Intacct in Azure Active Directory
@@ -90,7 +90,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Darüber hinaus erwartet die Sage Intacct-Anwendung, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
-    | NAME  |  Quellattribut|
+    | Name  |  Quellattribut|
     | ---------------| --------------- |
     | Name des Unternehmens | **Sage Intacct-Unternehmens-ID** |
     | name | Der Wert muss der Sage Intacct-**Benutzer-ID** entsprechen, die Sie später in diesem Tutorial im Abschnitt **Erstellen eines Sage Intacct-Testbenutzers** eingeben. |
@@ -128,7 +128,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -154,11 +154,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 1. Klicken Sie auf die Registerkarte **Unternehmen** und dann auf **Unternehmensinformationen**.
 
-    ![Unternehmen](./media/intacct-tutorial/ic790037.png "Unternehmen")
+    ![Company](./media/intacct-tutorial/ic790037.png "Company")
 
 1. Klicken Sie auf die Registerkarte **Sicherheit** und dann auf **Bearbeiten**.
 
-    ![Sicherheit](./media/intacct-tutorial/ic790038.png "Sicherheit")
+    ![Security](./media/intacct-tutorial/ic790038.png "Sicherheit")
 
 1. Führen Sie im Abschnitt **Einmaliges Anmelden (SSO)** die folgenden Schritte aus:
 
@@ -190,7 +190,7 @@ Um Azure AD-Benutzer so einzurichten, dass sie sich bei Sage Intacct anmelden k�
 
 1. Klicken Sie auf die Registerkarte **Hinzufügen**.
 
-    ![Hinzufügen](./media/intacct-tutorial/ic790042.png "Hinzufügen")
+    ![Add (Hinzufügen)](./media/intacct-tutorial/ic790042.png "Hinzufügen")
 
 1. Führen Sie im Abschnitt **Benutzerinformationen** die folgenden Schritte aus:
 

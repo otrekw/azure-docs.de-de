@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60754198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231446"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Anmerkungen zum Release zur allgemeinen Verfügbarkeit von Azure Data Box Edge/Azure Data Box Gateway
 
@@ -29,7 +29,7 @@ Das Release zur allgemeinen Verfügbarkeit entspricht den folgenden Softwarevers
 - **Data Box Edge 1903 (1.5.814.447)**
 
 
-## <a name="whats-new"></a>Neuigkeiten
+## <a name="whats-new"></a>Neues
 
 - **Neue Images für virtuelle Datenträger** – Im Azure-Portal stehen jetzt neue VHDX- und VMDK-Dateien zur Verfügung. Laden Sie diese Images zum Bereitstellen und Konfigurieren von neuen Data Box Gateway-Geräten zur allgemeinen Verfügbarkeit herunter. Die in den früheren Vorschauversionen erstellten Data Box Gateway-Geräte können nicht auf diese Version aktualisiert werden. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
 - **NFS-Unterstützung** – NFS-Unterstützung steht derzeit in der Vorschauversion sowie für v3.0- und v4.1-Clients zur Verfügung, die auf die Data Box Edge- und Data Box Gateway-Geräte zugreifen.
@@ -40,7 +40,7 @@ Das Release zur allgemeinen Verfügbarkeit entspricht den folgenden Softwarevers
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme bei der Data Box Gateway-Version.
 
-| Nein. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Dateitypen | Die folgenden Dateitypen werden nicht unterstützt: Zeichendateien, Blockdateien, Sockets, Pipes, symbolische Verknüpfungen.  |Das Kopieren dieser Dateien führt dazu, dass auf der NFS-Freigabe Dateien mit Nulllänge erstellt werden. Diese Dateien verbleiben in einem Fehlerzustand und werden außerdem in *error.xml* gemeldet. <br> Symbolische Verknüpfungen mit Verzeichnissen führen dazu, dass Verzeichnisse niemals als offline markiert werden. Infolgedessen wird möglicherweise kein graues Kreuz auf den Verzeichnissen angezeigt, mit dem gekennzeichnet wird, dass die Verzeichnisse offline sind und alle zugehörigen Inhalte vollständig nach Azure hochgeladen wurden. |
 | **2.** |Löschen | Aufgrund eines Fehlers in dieser Version wird beim Löschen einer NFS-Freigabe die Freigabe möglicherweise nicht gelöscht. Als Status der Freigabe wird *Wird gelöscht* angezeigt.  |Dies erfolgt nur, wenn die Freigabe einen nicht unterstützten Dateinamen verwendet. |

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234326"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.

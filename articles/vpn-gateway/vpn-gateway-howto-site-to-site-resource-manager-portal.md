@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224994"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -39,7 +39,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen.
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten. 
 
-### <a name="values"></a>Beispielwerte
+### <a name="example-values"></a><a name="values"></a>Beispielwerte
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen. Weitere Informationen zu Gatewayeinstellungen im Allgemeinen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
@@ -59,11 +59,11 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 * **Verbindungsname**: VNet1toSite1
 * **Gemeinsam verwendeter Schlüssel:** In diesem Beispiel verwenden wir „abc123“. Sie können jedoch einen beliebigen, mit Ihrer VPN-Hardware kompatiblen Wert verwenden. Wichtig ist, dass die Werte auf beiden Seiten der Verbindung übereinstimmen.
 
-## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
+## <a name="1-create-a-virtual-network"></a><a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="VNetGateway"></a>2. Erstellen des VPN-Gateways
+## <a name="2-create-the-vpn-gateway"></a><a name="VNetGateway"></a>2. Erstellen des VPN-Gateways
 
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern.
 
@@ -84,7 +84,7 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 
-## <a name="LocalNetworkGateway"></a>3. Erstellen des Gateways des lokalen Netzwerks
+## <a name="3-create-the-local-network-gateway"></a><a name="LocalNetworkGateway"></a>3. Erstellen des Gateways des lokalen Netzwerks
 
 Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gemeint. Sie geben dem Standort einen Namen, über den Azure darauf verweisen kann, und geben dann die IP-Adresse des lokalen VPN-Geräts an, mit dem Sie eine Verbindung herstellen. Außerdem geben Sie die IP-Adresspräfixe an, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden. Die von Ihnen angegebenen Adresspräfixe befinden sich in Ihrem lokalen Netzwerk. Wenn bei dem lokalen Netzwerk Änderungen vorgenommen werden oder Sie die öffentliche IP-Adresse des VPN-Geräts ändern müssen, können Sie dies Werte später bequem aktualisieren.
 
@@ -97,7 +97,7 @@ Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gem
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 
-## <a name="VPNDevice"></a>4. Konfigurieren des VPN-Geräts
+## <a name="4-configure-your-vpn-device"></a><a name="VPNDevice"></a>4. Konfigurieren des VPN-Geräts
 
 Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erforderlich. In diesem Schritt konfigurieren Sie Ihr VPN-Gerät. Beim Konfigurieren des VPN-Geräts benötigen Sie Folgendes:
 
@@ -106,29 +106,29 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
-## <a name="CreateConnection"></a>5. Erstellen der VPN-Verbindung
+## <a name="5-create-the-vpn-connection"></a><a name="CreateConnection"></a>5. Erstellen der VPN-Verbindung
 
 Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem lokalen VPN-Gerät.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
 
-## <a name="VerifyConnection"></a>6. Überprüfen der VPN-Verbindung
+## <a name="6-verify-the-vpn-connection"></a><a name="VerifyConnection"></a>6. Überprüfen der VPN-Verbindung
 
 [!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
-## <a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="reset"></a>Zurücksetzen einer VPN Gateway-Instanz
+## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>Zurücksetzen einer VPN Gateway-Instanz
 
 Das Zurücksetzen von Azure VPN Gateway-Instanzen ist nützlich, wenn die standortübergreifende VPN-Verbindung bei mindestens einem Site-to-Site-VPN-Tunnel unterbrochen ist. In diesem Fall funktionieren Ihre lokalen VPN-Geräte ordnungsgemäß, können jedoch keine IPsec-Tunnelverbindungen mit Azure VPN Gateway-Instanzen herstellen. Eine entsprechende Anleitung finden Sie unter [Zurücksetzen einer VPN Gateway-Instanz](vpn-gateway-resetgw-classic.md).
 
-## <a name="resize"></a>Ändern einer Gateway-SKU (Ändern der Gatewaygröße)
+## <a name="how-to-change-a-gateway-sku-resize-a-gateway"></a><a name="resize"></a>Ändern einer Gateway-SKU (Ändern der Gatewaygröße)
 
 Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
-## <a name="addconnect"></a>Hinzufügen zusätzlicher Verbindungen zu einem VPN-Gateway
+## <a name="how-to-add-an-additional-connection-to-a-vpn-gateway"></a><a name="addconnect"></a>Hinzufügen zusätzlicher Verbindungen zu einem VPN-Gateway
 
 Sie können weitere Verbindungen hinzufügen. Voraussetzung dafür ist, dass sich Adressbereiche zwischen Verbindungen nicht überlappen.
 

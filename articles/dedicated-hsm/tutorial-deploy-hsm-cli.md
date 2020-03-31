@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4750673eb60529d812e4df71de9203d4d59a0cc9
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212261"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454311"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
 
@@ -71,7 +71,7 @@ az feature show \
    --name AllowBaremetalServers
 ```
 
-Bei beiden Befehlen muss der Status „Registered“ zurückgegeben werden, wie in der folgenden Abbildung zu sehen. Wird für die Befehle nicht „Registered“ zurückgegeben, müssen Sie sich noch für den Dienst registrieren. Wenden Sie sich hierzu an Ihren Microsoft-Kontobeauftragten.
+Bei beiden Befehlen muss der Status „Registered“ zurückgegeben werden (wie in der folgenden Abbildung). Wird für die Befehle nicht „Registered“ zurückgegeben, müssen Sie sich noch für den Dienst registrieren. Wenden Sie sich hierzu an Ihren Microsoft-Kontobeauftragten.
 
 ![Abonnementstatus](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
@@ -144,7 +144,8 @@ az network vnet create \
 ```
 
 ```azurecli
---vnet-name myHSM-vnet \
+az network vnet create \
+  --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \
   --address-prefixes 10.2.1.0/24 \
@@ -193,7 +194,7 @@ az resource show \
 
 ![Bereitstellen der Ausgabe](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
-Die Ressource wird nun auch im [Azure-Ressourcen-Explorer](https://resources.azure.com/) angezeigt.   Erweitern Sie im Explorer auf der linken Seite die Option „Abonnements“, erweitern Sie das Abonnement für dedizierte HSMs, erweitern Sie „Ressourcengruppen“, erweitern Sie die verwendete Ressourcengruppe, und wählen Sie schließlich das Element „Ressourcen“ aus.
+Die Ressource wird nun auch im [Azure-Ressourcen-Explorer](https://resources.azure.com/) angezeigt.   Erweitern Sie im Explorer auf der linken Seite nacheinander die Option „Abonnements“, das Abonnement für dedizierte HSMs, die Option „Ressourcengruppen“ und die verwendete Ressourcengruppe, und wählen Sie anschließend das Element „Ressourcen“ aus.
 
 ## <a name="testing-the-deployment"></a>Testen der Bereitstellung
 
@@ -209,7 +210,7 @@ Anstelle des DNS-Namens kann im obigen Befehl auch die IP-Adresse des virtuellen
 >[!NOTE]
 >Das Kontrollkästchen „Ausgeblendete Typen anzeigen“ muss aktiviert sein, damit HSM-Ressourcen angezeigt werden.
 
-Wenn Sie auf „HSM1_HSMnic“ oder „HSM2_HSMnic“ klicken, wird die entsprechende private IP-Adresse angezeigt, wie im obigen Screenshot zu sehen. Alternativ kann die korrekte IP-Adresse auch mithilfe des weiter oben verwendeten Befehls `az resource show` ermittelt werden. 
+Wenn Sie auf „HSM1_HSMnic“ oder „HSM2_HSMnic“ klicken, wird die entsprechende private IP-Adresse angezeigt. Dies ist im obigen Screenshot dargestellt. Alternativ kann die korrekte IP-Adresse auch mithilfe des weiter oben verwendeten Befehls `az resource show` ermittelt werden. 
 
 Wenn Sie über die korrekte IP-Adresse verfügen, führen Sie den folgenden Befehl mit der ermittelten Adresse aus:
 

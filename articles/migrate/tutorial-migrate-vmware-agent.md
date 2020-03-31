@@ -2,14 +2,14 @@
 title: Migrieren von virtuellen VMware-Computern mit Agent-basierter Servermigration mit Azure Migrate
 description: Hier erfahren, wie Sie eine Agent-basierte Migration virtueller VMware-Computer mit Azure Migrate ausführen.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057276"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222027"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
@@ -156,7 +156,7 @@ Der Mobilitätsdienst muss auf Computern installiert sein, die Sie replizieren m
 
 - Die Azure Migrate-Replikationsappliance kann eine Pushinstallation dieses Diensts ausführen, wenn Sie die Replikation für einen Computer aktivieren. Sie können den Dienst aber auch manuell oder mithilfe von Installationstools installieren.
 - In diesem Tutorial installieren wir den Mobilitätsdienst mit der Pushinstallation.
-- Für die Pushinstallation müssen Sie ein Konto vorbereiten, über das die Azure Migrate-Servermigration auf die VM zugreifen kann.
+- Für die Pushinstallation müssen Sie ein Konto vorbereiten, über das die Azure Migrate-Servermigration auf die VM zugreifen kann. Dieses Konto wird nur für die Pushinstallation verwendet, wenn Sie den Mobilitätsdienst nicht manuell installieren.
 
 Bereiten Sie das Konto wie folgt vor:
 
@@ -409,7 +409,10 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
-1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Daraufhin wird Replikation für den lokalen Computer beendet, und die Informationen zum Replikationsstatus der VM werden bereinigt.
+1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Die folgenden Schritte werden ausgeführt:
+    - Beendet die Replikation für den lokalen Computer.
+    - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
+    - Bereinigt die Replikationsstatusinformationen für den virtuellen Computer.
 2. Installieren Sie den [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- oder [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-Agent für die Azure-VM auf den migrierten Computern.
 3. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 4. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.

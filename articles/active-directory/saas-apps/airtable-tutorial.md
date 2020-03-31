@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e0830d470d359b12c23a6cd0430075c94c7a06a
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 883dd7caabba48b42aaeaeddbe854ddf42973cb4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205094"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Airtable
 
@@ -161,7 +161,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Airtable“ klicken, sollten Sie a
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

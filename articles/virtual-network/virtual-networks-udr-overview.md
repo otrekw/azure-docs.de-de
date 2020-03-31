@@ -17,11 +17,11 @@ ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
 ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235958"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -149,7 +149,7 @@ Wenn Datenverkehr für eine IP-Adresse außerhalb der Adresspräfixe von anderen
 
 Eine umfassende Routentabelle mit Erklärungen der Routen in der Tabelle finden Sie unter [Routingbeispiel](#routing-example).
 
-## <a name="default-route"></a>Adresspräfix 0.0.0.0/0
+## <a name="00000-address-prefix"></a><a name="default-route"></a>Adresspräfix 0.0.0.0/0
 
 Eine Route mit dem Adresspräfix 0.0.0.0/0 weist Azure an, wie Datenverkehr für eine IP-Adresse, die nicht innerhalb des Adresspräfixes einer anderen Route in einer Routentabelle des Subnetzes liegt, weitergeleitet wird. Bei der Erstellung eines Subnetzes erstellt Azure eine Route vom Typ [Standard](#default) zum Adresspräfix 0.0.0.0/0 mit **Internet** als Typ des nächsten Hops. Wenn Sie diese Route nicht außer Kraft setzen, leitet Azure den gesamten Datenverkehr, der für IP-Adressen außerhalb des Adresspräfix einer anderen Route bestimmt ist, in das Internet weiter. Die Ausnahme besteht darin, dass Datenverkehr an die öffentlichen IP-Adressen von Azure im Azure-Backbonenetzwerk verbleibt und nicht in das Internet weitergeleitet wird. Wenn Sie diese Route mit einer [benutzerdefinierten](#custom-routes) Route außer Kraft setzen, wird Datenverkehr für Adressen, die nicht innerhalb der Adresspräfixe anderer Routen in der Routentabelle liegen, an ein virtuelles Netzwerkgerät oder ein Gateway für virtuelle Netzwerke gesendet. Dies hängt davon ab, was Sie in einer benutzerdefinierten Route angegeben haben.
 

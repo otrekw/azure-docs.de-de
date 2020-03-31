@@ -4,10 +4,10 @@ description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663674"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics

@@ -4,10 +4,10 @@ description: Nutzen Sie den Advisor, um die Leistung Ihrer Azure-Bereitstellunge
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443057"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
@@ -55,9 +55,9 @@ Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Au
 
 Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) aufweisen, und empfiehlt das Erstellen oder Aktualisieren der Tabellenstatistiken. Der SQL Data Warehouse-Abfrageoptimierer verwendet aktuelle Statistiken zur Schätzung der Kardinalität oder Zeilenanzahl im Abfrageergebnis. Dadurch kann der Abfrageoptimierer einen hochwertigen Abfrageplan für die schnellste Leistung erstellen.
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Zentrales Hochskalieren zum Optimieren der Cachenutzung durch Ihre SQL Data Warehouse-Tabellen, um die Abfrageleistung zu verbessern
+## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Hochskalieren zum Optimieren der Cachenutzung durch Ihre SQL Data Warehouse-Tabellen, um die Abfrageleistung zu verbessern
 
-Azure Advisor erkennt, ob Ihre SQL Data Warehouse-Instanz eine hohe prozentuale Cachenutzung und einen niedrigen Trefferprozentsatz aufweist. Diese Bedingung gibt an, dass die hohe Cachenutzung aufgehoben wird, was sich auf die Leistung Ihrer SQL Data Warehouse-Instanz auswirken kann. Advisor schlägt vor, dass Sie Ihre SQL Data Warehouse-Instanz zentral hochskalieren, um sicherzustellen, dass Sie ausreichend Cachekapazität für Ihre Workload zuweisen.
+Azure Advisor erkennt, ob Ihre SQL Data Warehouse-Instanz eine hohe prozentuale Cachenutzung und einen niedrigen Trefferprozentsatz aufweist. Diese Bedingung gibt an, dass die hohe Cachenutzung aufgehoben wird, was sich auf die Leistung Ihrer SQL Data Warehouse-Instanz auswirken kann. Advisor schlägt vor, dass Sie Ihre SQL Data Warehouse-Instanz hochskalieren, um sicherzustellen, dass Sie ausreichend Cachekapazität für Ihre Workload zuweisen.
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Konvertieren von SQL Data Warehouse-Tabellen in replizierte Tabellen, um die Abfrageleistung zu erhöhen
 
@@ -82,7 +82,7 @@ Eine sehr hohe CPU-Auslastung über einen längeren Zeitraum kann die Abfragelei
 ### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Reduzieren der Speicherbeschränkungen auf den Azure MySQL-, Azure PostgreSQL- und Azure MariaDB-Servern oder Verschieben in arbeitsspeicheroptimierte SKU
 Eine niedrige Cachetrefferquote kann die Abfrageleistung beeinträchtigen und zu erhöhtem IOPS führen. Dies kann auf einen ungültigen Abfrageplan oder die Ausführung einer speicherintensiven Workload zurückzuführen sein. Durch Korrigieren des Abfrageplans oder  [Vergrößern des Speichers](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) des Azure Database for PostgreSQL-Datenbankservers, Azure MySQL-Datenbankservers oder Azure MariaDB-Servers kann die Ausführung der Datenbankworkload optimiert werden. Azure Advisor identifiziert Server, die durch diese hohe Änderungsrate des Pufferpools betroffen sind, und empfiehlt entweder die Korrektur des Abfrageplans, den Wechsel zu einer höheren SKU mit mehr Speicher oder die Vergrößerung des Speichers, um mehr IOPS zu erhalten.
 
-### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Verwenden eines MySQL- oder Azure PostgreSQL-Lesereplikats zum horizontalen Skalieren von Lesevorgängen für leseintensive Workloads
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Verwenden eines MySQL- oder Azure PostgreSQL-Lesereplikats zum Aufskalieren von Lesevorgängen für leseintensive Workloads
 Azure Advisor nutzt workloadbasierte Heuristik, z. B. das Verhältnis von Lese-zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem sehr hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- und oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor identifiziert Server mit diesen leseintensiven Workloads und empfiehlt, dass ein [Lesereplikat](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hinzugefügt wird, um einige der Leseworkloads auszulagern.
 
 

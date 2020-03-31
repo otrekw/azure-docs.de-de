@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73816780"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, SQL Data Warehouse, Data Factory und Power BI vertraut
@@ -62,7 +62,7 @@ Schließlich werden die Tabellen im Sternschema abgefragt. Die Abfrageergebnisse
 
 Dieses Tutorial enthält grundlegende Beispiele für Erkenntnisse, die aus Wingtip Tickets-Daten gewonnen werden können. Wenn der Verkäufer von Wingtip Tickets weiß, wie jeder Veranstaltungsort den Dienst verwendet, kann er z.B. verschiedene Servicepläne für mehr oder weniger aktive Veranstaltungsorte entwickeln. 
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

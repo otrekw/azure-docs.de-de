@@ -7,11 +7,11 @@ ms.date: 08/23/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231642"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -29,7 +29,7 @@ Für Bitbucket oder GitHub autorisieren Sie den Azure App Service, sich mit Ihre
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus. 
 
-   ![Suchen nach App Services](media/app-service-continuous-deployment/search-for-app-services.png)
+   ![Suchen Sie nach App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
 1. Wählen Sie die Web-App aus, die Sie bereitstellen möchten.
 

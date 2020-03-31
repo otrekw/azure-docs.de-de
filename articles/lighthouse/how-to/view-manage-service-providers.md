@@ -4,11 +4,11 @@ description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwe
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649737"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233054"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 

@@ -1,15 +1,15 @@
 ---
-title: 'Tutorial: Bedarfsorientiertes Sichern von virtuellen Azure-Computern'
+title: 'Tutorial: Sichern von mehreren virtuellen Azure-Computern'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, eine Sicherungsrichtlinie definieren und mehrere virtuelle Computer gleichzeitig sichern.
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171852"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245241"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 

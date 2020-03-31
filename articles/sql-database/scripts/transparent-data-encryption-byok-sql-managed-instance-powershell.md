@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: Aktivieren von BYOK-TDE: verwaltete Azure SQL-Datenbank-Instanz '
+title: 'Mit PowerShell: Aktivieren von BYOK-TDE: verwaltete Azure SQL-Datenbank-Instanz '
 description: Erfahren Sie, wie eine verwaltete Azure SQL-Datenbank-Instanz mithilfe von PowerShell für die Verwendung von Transparent Data Encryption (TDE) zur Verschlüsselung ruhender Daten in einem BYOK-Szenario konfiguriert wird.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
 ms.openlocfilehash: ddffda5229c9c0d33c563e3ae7b4a884f0f92dff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73691394"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Verwalten von Transparent Data Encryption in einer verwalteten Instanz mithilfe eines eigenen Azure Key Vault-Schlüssels

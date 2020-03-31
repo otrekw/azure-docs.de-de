@@ -10,22 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561458"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239205"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats (Vorschau)
 
-Es wird beschrieben, wie Sie Bereitstellungsskripts in Azure Resource Manager-Vorlagen verwenden. Bereitstellungsskripts können genutzt werden, um benutzerdefinierte Schritte auszuführen, die für Resource Manager-Vorlagen nicht möglich sind. Ein Beispiel hierfür ist die Erstellung eines selbstsignierten Zertifikats.  In diesem Tutorial erstellen Sie eine Vorlage für die Bereitstellung eines Azure-Schlüsseltresors. Anschließend verwenden Sie die `Microsoft.Resources/deploymentScripts`-Ressource in derselben Vorlage, um ein Zertifikat zu erstellen, und fügen das Zertifikat dann dem Schlüsseltresor hinzu. Weitere Informationen zum Bereitstellungsskript finden Sie unter [Verwenden von Bereitstellungsskripts in Azure Resource Manager-Vorlagen](./deployment-script-template.md).
-
-> [!NOTE]
-> Das Bereitstellungsskript befindet sich derzeit in der Vorschauphase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/armtemplatepreviews).
+Es wird beschrieben, wie Sie Bereitstellungsskripts in ARM-Vorlagen (Azure Resource Manager) verwenden. Bereitstellungsskripts können genutzt werden, um benutzerdefinierte Schritte auszuführen, die für ARM-Vorlagen nicht möglich sind. Ein Beispiel hierfür ist die Erstellung eines selbstsignierten Zertifikats.  In diesem Tutorial erstellen Sie eine Vorlage für die Bereitstellung eines Azure-Schlüsseltresors. Anschließend verwenden Sie die `Microsoft.Resources/deploymentScripts`-Ressource in derselben Vorlage, um ein Zertifikat zu erstellen, und fügen das Zertifikat dann dem Schlüsseltresor hinzu. Weitere Informationen zum Bereitstellungsskript finden Sie unter [Verwenden von Bereitstellungsskripts in ARM-Vorlagen](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Zwei Bereitstellungsskriptressourcen – ein Speicherkonto und eine Containerinstanz – werden für die Skriptausführung und Problembehandlung in derselben Ressourcengruppe erstellt. Diese Ressourcen werden vom Skriptdienst normalerweise gelöscht, bevor die Skriptausführung beendet wird. Die Ressourcen werden Ihnen in Rechnung gestellt, bis sie gelöscht werden. Weitere Informationen finden Sie unter [Bereinigen von Bereitstellungsskriptressourcen](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -43,9 +40,9 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./use-vs-code-to-create-template.md).
+* **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](./use-vs-code-to-create-template.md).
 
-* **Vom Benutzer zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene**. Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
+* **Vom Benutzer zugewiesene verwaltete Identität mit der Rolle „Mitwirkender“ auf Abonnementebene.** Diese Identität wird zum Ausführen von Bereitstellungsskripts verwendet. Informationen zur Erstellung finden Sie unter [Benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Sie benötigen die Identitäts-ID beim Bereitstellen der Vorlage. Das Format der Identität lautet:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -62,7 +59,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen.
+Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. Azure-Schnellstartvorlagen ist ein Repository für ARM-Vorlagen.
 
 Die in dieser Schnellstartanleitung verwendete Vorlage ist [Erstellen eines Azure-Schlüsseltresors und eines Geheimnisses](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Mit der Vorlage wird ein Schlüsseltresor erstellt, und anschließend wird dafür ein Geheimnis hinzugefügt.
 
@@ -348,7 +345,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie in Azure Resource Manager-Vorlagen Bereitstellungsskripts verwenden. Informationen zum Bereitstellen von Azure-Ressourcen auf der Grundlage von Bedingungen finden Sie hier:
+In diesem Tutorial wurde beschrieben, wie Sie in ARM-Vorlagen Bereitstellungsskripts verwenden. Informationen zum Bereitstellen von Azure-Ressourcen auf der Grundlage von Bedingungen finden Sie hier:
 
 > [!div class="nextstepaction"]
 > [Verwenden von Bedingungen](./template-tutorial-use-conditions.md)

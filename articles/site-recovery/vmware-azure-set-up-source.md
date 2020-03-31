@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228878"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Einrichten der Quellumgebung für die Replikation von VMware in Azure
 
@@ -33,7 +33,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes bereits durchgefüh
 2. Wählen Sie unter **Erste Schritte** die Option „Site Recovery“ aus. Klicken Sie anschließend auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Wählen Sie dann **OK**aus.
+5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Klicken Sie anschließend auf **OK**.
 
 ## <a name="set-up-the-configuration-server"></a>Einrichten des Konfigurationsservers
 
@@ -69,7 +69,7 @@ Schließen Sie für eine reibungslose Replikation und zur Vermeidung von Konnekt
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Installationsverzeichnis des Site Recovery-Servers. Beispiel:  E:\Programme (x86)\Microsoft Azure Site Recovery
+  - Installationsverzeichnis des Site Recovery-Servers. Beispiel: E:\Programme (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Aktive Antivirensoftware auf Prozessserver/Masterziel mit horizontaler Skalierung
 

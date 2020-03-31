@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 05968fdd9e2ddfd89bd9310c744d9ee699f440d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198166"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472723"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Tutorial: Verwenden eines virtuellen Linux-Computers und einer .NET-App zum Speichern von Geheimnissen in Azure Key Vault
 
@@ -43,7 +43,7 @@ Lesen Sie die Informationen zu [grundlegenden Konzepten in Key Vault](basic-conc
 
 ## <a name="understand-managed-service-identity"></a>Grundlegendes zur verwalteten Dienstidentität
 
-Azure Key Vault kann Anmeldeinformationen sicher speichern. Dadurch befinden sie sich nicht in Ihrem Code. Zum Abrufen der Anmeldeinformationen ist jedoch eine Authentifizierung bei Azure Key Vault erforderlich. Für die Authentifizierung bei Key Vault benötigen Sie aber Anmeldeinformationen. Es handelt sich um ein klassisches Bootstrap-Problem. Die verwaltete Dienstidentität (Managed Service Identity, MSI) stellt über Azure und Azure Active Directory (Azure AD) eine Bootstrap-Identität bereit, die die ersten Schritte erheblich vereinfacht.
+Azure Key Vault kann Anmeldeinformationen sicher speichern, damit diese nicht in Ihrem Code enthalten sind. Zum Abrufen der Anmeldeinformationen ist aber eine Authentifizierung bei Azure Key Vault erforderlich. Für die Authentifizierung bei Key Vault benötigen Sie aber Anmeldeinformationen. Es handelt sich um ein klassisches Bootstrap-Problem. Die verwaltete Dienstidentität (Managed Service Identity, MSI) stellt über Azure und Azure Active Directory (Azure AD) eine Bootstrap-Identität bereit, die die ersten Schritte erheblich vereinfacht.
 
 Wenn Sie die MSI für einen Azure-Dienst (z. B. Virtual Machines, App Service oder Functions) aktivieren, erstellt Azure einen Dienstprinzipal für die Instanz des Diensts in Azure Active Directory. Die Anmeldeinformationen für den Dienstprinzipal werden in die Instanz des Diensts eingefügt.
 
@@ -114,7 +114,7 @@ az vm create \
 
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten. In der folgenden Beispielausgabe wird angezeigt, dass die Erstellung des virtuellen Computers erfolgreich war.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -139,7 +139,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 Die Ausgabe des Befehls sollte wie folgt aussehen:
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082601"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover und Failback von Hyper-V-VMs, die nach Ihrem sekundären lokalen Standort repliziert werden
@@ -58,7 +58,7 @@ Sie können ein reguläres oder geplantes Failover für virtuelle Hyper-V-Comput
 3. Nachdem Sie die VM überprüft haben, **committen** Sie das Failover. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>„Umgekehrt replizieren“ und „Failover“

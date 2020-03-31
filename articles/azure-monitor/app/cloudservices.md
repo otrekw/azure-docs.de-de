@@ -4,11 +4,11 @@ description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application 
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234766"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -94,7 +94,7 @@ Dadurch werden die Application Insights-Instrumentierungsschlüssel in die Datei
 
 Wenn Sie festlegen möchten, welche Diagnosedaten an Application Insights gesendet werden, können Sie dies [direkt durch Bearbeiten der *CSCFG*-Dateien erledigen](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
-## <a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
+## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>Installieren des SDK in den einzelnen Projekten
 Mit dieser Option können Sie jeder Rolle benutzerdefinierte Geschäftstelemetriedaten hinzufügen. Die Option bietet eine genauere Analyse der Nutzung und Leistung Ihrer App.
 
 Konfigurieren Sie in Visual Studio das Application Insights SDK für jedes Cloud-App-Projekt.

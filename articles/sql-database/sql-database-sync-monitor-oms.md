@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74114619"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Überwachen der SQL-Datensynchronisierung mit Azure Monitor-Protokollen 
@@ -27,7 +27,7 @@ Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie 
 Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Die Azure SQL-Datensynchronisierung unterstützt zurzeit **keine** verwalteten Azure SQL-Datenbank-Instanzen.
+> Die Azure SQL-Datensynchronisierung unterstützt derzeit **keine** verwalteten Azure SQL-Datenbank-Instanzen.
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Überwachungsdashboard für alle Synchronisierungsgruppen 
 

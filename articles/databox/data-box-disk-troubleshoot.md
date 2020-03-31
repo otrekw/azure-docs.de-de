@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67805706"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk
@@ -75,7 +75,7 @@ In der folgenden Tabelle sind die Fehler, die in *error.xml* enthalten sind, zus
 
 | Fehlercode| BESCHREIBUNG                       | Empfohlene Aktionen               |
 |------------|--------------------------|-----------------------------------|
-| `None` | Die Daten wurden erfolgreich überprüft. | Es ist keine Aktion erforderlich. |
+| `None` | Die Daten wurden erfolgreich überprüft. | Keine Aktion erforderlich. |
 | `InvalidXmlCharsInPath` |Es konnte keine Manifestdatei erstellt werden, da der Dateipfad ungültige Zeichen enthält. | Entfernen Sie diese Zeichen, um fortzufahren.  |
 | `OpenFileForReadFailed`| Die Datei konnte nicht verarbeitet werden. Die Ursache hierfür kann ein Zugriffsproblem oder eine Beschädigung des Dateisystems sein.|Die Datei konnte aufgrund eines Fehlers nicht gelesen werden. Die Fehlerdetails befinden sich in der Ausnahme. |
 | `Not512Aligned` | Diese Datei weist kein gültiges Format für den Ordner „PageBlob“ auf.| Laden Sie nur Daten, die einem ganzzahligen Vielfachen von 512 Bytes entsprechen, in den Ordner `PageBlob` hoch. Entfernen Sie die Datei aus dem Ordner „PageBlob“, oder verschieben Sie sie in den Ordner „BlockBlob“. Wiederholen Sie die Überprüfung.|

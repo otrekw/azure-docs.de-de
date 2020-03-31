@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwend
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77583434"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
@@ -75,9 +75,9 @@ Erstellen bzw. verwenden Sie einen Recovery Services-Tresor, um Sicherungsdaten 
 
 Wenn Sie Ihre Bereitstellung skalieren möchten, haben Sie die folgenden Optionen:
 
-- Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-manage-vm-disks).
+- Hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-manage-vm-disks).
 - Daten auslagern: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der dem Azure Backup Server angefügt ist.
-- Horizontal hochskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
+- Aufskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
 
 ### <a name="net-framework"></a>.NET Framework
 

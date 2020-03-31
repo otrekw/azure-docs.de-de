@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687279"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatische Skalierung und App Service-Umgebung v1
@@ -43,7 +43,7 @@ Profile für die automatische Skalierung sind nützlich, um Grenzwerte für die 
 
 ![Skalierungseinstellungen im Profil][scale-profile2]
 
-Nach dem Definieren eines Profils können Sie Regeln für die automatische Skalierung hinzufügen, um die Anzahl von Instanzen im Workerpool innerhalb der Grenzen des Profils zentral hoch- oder herunterzuskalieren. Die automatische Skalierung basiert auf Metriken.
+Nach dem Definieren eines Profils können Sie Regeln für die automatische Skalierung hinzufügen, um die Anzahl von Instanzen im Workerpool innerhalb der Grenzen des Profils hoch- oder herunterzuskalieren. Die automatische Skalierung basiert auf Metriken.
 
 ![Skalierungsregel][scale-rule]
 
@@ -83,12 +83,12 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 | **Startzeit**: 9:00 |**Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
 |  | |
-| **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Regel für die automatische Skalierung (Hochskalieren)** |**Regel für die automatische Skalierung (Hochskalieren)** |
 | **Ressource:** Produktion (App Service-Umgebung) |**Ressource:** Produktion (App Service-Umgebung) |
 | **Metrik:** CPU % |**Metrik:** CPU % |
 | **Betrieb:** Mehr als 60 % |**Betrieb:** Mehr als 80 % |
 | **Dauer:** 5 Minuten |**Dauer:** 10 Minuten |
-| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |**Zeitaggregation**: Average |
 | **Aktion:** Anzahl erhöhen um 2 |**Aktion:** Anzahl erhöhen um 1 |
 | **Abkühlen (Minuten):** 15 |**Abkühlen (Minuten):** 20 |
 |  | |
@@ -97,7 +97,7 @@ Frank ist mit der Anwendung gut vertraut. Er weiß, dass die Spitzenzeiten mit d
 | **Metrik:** CPU % |**Metrik:** CPU % |
 | **Betrieb:** Weniger als 30 % |**Betrieb:** Weniger als 20 % |
 | **Dauer:** 10 Minuten |**Dauer:** 15 Minuten |
-| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |**Zeitaggregation**: Average |
 | **Aktion:** Anzahl verringern um 1 |**Aktion:** Anzahl verringern um 1 |
 | **Abkühlen (Minuten):** 20 |**Abkühlen (Minuten):** 10 |
 
@@ -110,13 +110,13 @@ Die Inflationsrate für den App Service-Plan wird wie folgt berechnet:
 
 ![Berechnung der Inflationsrate für den App Service-Plan][ASP-Inflation]
 
-Basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“ für das Profil „Werktage“ des App Service-Plans für die Produktion:
+Basierend auf der „Regel für die automatische Skalierung (Hochskalieren)“ für das Profil „Werktage“ des App Service-Plans für die Produktion:
 
-![Inflationsrate für den App Service-Plan für Werktage basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“][Equation1]
+![Inflationsrate für den App Service-Plan für Werktage basierend auf der „Regel für die automatische Skalierung (Hochskalieren)“][Equation1]
 
-Für die „Regel für die automatische Skalierung (Zentral hochskalieren)“ für das Profil „Wochenenden“ des App Service-Plans für die Produktion würde die Formel wie folgt aufgelöst werden:
+Für die „Regel für die automatische Skalierung (Hochskalieren)“ für das Profil „Wochenenden“ des App Service-Plans für die Produktion würde die Formel wie folgt aufgelöst werden:
 
-![Inflationsrate für den App Service-Plan für Wochenenden basierend auf der „Regel für die automatische Skalierung (Zentral hochskalieren)“][Equation2]
+![Inflationsrate für den App Service-Plan für Wochenenden basierend auf der „Regel für die automatische Skalierung (Hochskalieren)“][Equation2]
 
 Dieser Wert kann auch für Vorgänge zum zentralen Herunterskalieren berechnet werden:
 
@@ -154,12 +154,12 @@ Mit diesen Informationen kann Frank die folgenden Profile und Regeln für die au
 | **Startzeit**: 7:00 |**Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |**Zeitzone:** UTC-08 |
 |  | |
-| **Regel für die automatische Skalierung (Zentral hochskalieren)** |**Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Regel für die automatische Skalierung (Hochskalieren)** |**Regel für die automatische Skalierung (Hochskalieren)** |
 | **Ressource:** Workerpool 1 |**Ressource:** Workerpool 1 |
 | **Metrik:** WorkersAvailable |**Metrik:** WorkersAvailable |
 | **Betrieb:** Weniger als 8 |**Betrieb:** Weniger als 3 |
 | **Dauer:** 20 Minuten |**Dauer:** 30 Minuten |
-| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |**Zeitaggregation**: Average |
 | **Aktion:** Anzahl erhöhen um 8 |**Aktion:** Anzahl erhöhen um 3 |
 | **Abkühlen (Minuten):** 180 |**Abkühlen (Minuten):** 180 |
 |  | |
@@ -168,7 +168,7 @@ Mit diesen Informationen kann Frank die folgenden Profile und Regeln für die au
 | **Metrik:** WorkersAvailable |**Metrik:** WorkersAvailable |
 | **Betrieb:** Mehr als 8 |**Betrieb:** Mehr als 3 |
 | **Dauer:** 20 Minuten |**Dauer:** 15 Minuten |
-| **Zeitaggregation**: Durchschnitt |**Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |**Zeitaggregation**: Average |
 | **Aktion:** Anzahl verringern um 2 |**Aktion:** Anzahl verringern um 3 |
 | **Abkühlen (Minuten):** 120 |**Abkühlen (Minuten):** 120 |
 
@@ -176,7 +176,7 @@ Der im Profil definierte Zielbereich wird anhand der minimalen Instanzen, die im
 
 Der maximale Bereich wäre die Summe aller maximalen Bereiche für alle App Service-Pläne, die im Workerpool gehostet werden.
 
-Bei den Regeln für das zentrale Hochskalieren sollte die Anzahl, um die erhöht wird, mindestens auf den einfachen Wert der Inflationsrate für den App Service-Plan für das zentrale Hochskalieren festgelegt werden.
+Bei den Regeln für das Hochskalieren sollte die Anzahl, um die erhöht wird, mindestens auf den einfachen Wert der Inflationsrate für den App Service-Plan für das Hochskalieren festgelegt werden.
 
 Die Anzahl, um die verringert wird, kann zwischen dem 0,5- und 1-Fachen der Inflationsrate für den App Service-Plan für das zentrale Herunterskalieren liegen.
 
@@ -199,12 +199,12 @@ In diesem Szenario weiß Frank, dass sich die Fehlerrate erhöht, sobald Front-E
 | **Startzeit**: 9:00 |
 | **Zeitzone:** UTC-08 |
 |  |
-| **Regel für die automatische Skalierung (Zentral hochskalieren)** |
+| **Regel für die automatische Skalierung (Hochskalieren)** |
 | **Ressource:** Front-End-Pool |
 | **Metrik:** CPU % |
 | **Betrieb:** Mehr als 60 % |
 | **Dauer:** 20 Minuten |
-| **Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |
 | **Aktion:** Anzahl erhöhen um 3 |
 | **Abkühlen (Minuten):** 120 |
 |  |
@@ -213,7 +213,7 @@ In diesem Szenario weiß Frank, dass sich die Fehlerrate erhöht, sobald Front-E
 | **Metrik:** CPU % |
 | **Betrieb:** Weniger als 30 % |
 | **Dauer:** 20 Minuten |
-| **Zeitaggregation**: Durchschnitt |
+| **Zeitaggregation**: Average |
 | **Aktion:** Anzahl verringern um 3 |
 | **Abkühlen (Minuten):** 120 |
 

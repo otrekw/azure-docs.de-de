@@ -6,13 +6,13 @@ author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301844"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477135"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Tutorial: Konvertieren von ML-Experimentcode in Produktionscode
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Generieren Sie die [MLOpsPython-Vorlage](https://github.com/microsoft/MLOpsPython/generate), und verwenden Sie die Notebooks `experimentation/Diabetes Ridge Regression Training.ipynb` und `experimentation/Diabetes Ridge Regression Scoring.ipynb`. Diese Notebooks werden als Beispiel für die Konvertierung vom Experiment in die Produktion verwendet.
+- Generieren Sie die [MLOpsPython-Vorlage](https://github.com/microsoft/MLOpsPython/generate), und verwenden Sie die Notebooks `experimentation/Diabetes Ridge Regression Training.ipynb` und `experimentation/Diabetes Ridge Regression Scoring.ipynb`. Diese Notebooks werden als Beispiel für die Konvertierung vom Experiment in die Produktion verwendet. Sie finden diese Notebooks unter [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation).
 - Installieren Sie „nbconvert“. Befolgen Sie die Installationsanleitung auf der Seite [Installation](https://nbconvert.readthedocs.io/en/latest/install.html) im Abschnitt __Installing nbconvert__ (nbconvert installieren).
 
 ## <a name="remove-all-nonessential-code"></a>Entfernen des unwichtigen Codes
@@ -99,7 +99,7 @@ Mit der obigen Anweisung wird die Funktion `train_model` aufgerufen, die Paramet
 Führen Sie unter `experimentation/Diabetes Ridge Regression Training.ipynb` die folgenden Schritte aus:
 
 1. Erstellen Sie eine neue Funktion mit dem Namen `main`, für die keine Parameter verwendet werden und nichts zurückgegeben wird.
-1. Kopieren Sie den Code unter den Überschriften „Load Data“ (Daten laden), „Split Data into Training and Validation Sets” (Daten in Trainings- und Validierungssätze aufteilen) und „Save Model“ (Modell speichern) in die Funktion `main`.
+1. Kopieren Sie den Code unter den Überschriften „Load Data“ (Daten laden), „Split Data into Training and Validation Sets“ (Daten in Trainings- und Validierungssätze aufteilen) und „Save Model“ (Modell speichern) in die Funktion `main`.
 1. Kopieren Sie den neu erstellten Aufruf von `train_model` in die Funktion `main`.
 
 Die Funktion `main` sollte wie der folgende Code aussehen:
@@ -122,7 +122,7 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-Ersetzen Sie nach dem Erstellen der Funktion `main` den gesamten Code unter den Überschriften „Load Data“ (Daten laden), „Split Data into Training and Validation Sets” (Daten in Trainings- und Validierungssätze aufteilen) und „Save Model“ (Modell speichern) sowie den neu erstellten Aufruf von `train_model` durch die folgende Anweisung:
+Ersetzen Sie nach dem Erstellen der Funktion `main` den gesamten Code unter den Überschriften „Load Data“ (Daten laden), „Split Data into Training and Validation Sets“ (Daten in Trainings- und Validierungssätze aufteilen) und „Save Model“ (Modell speichern) sowie den neu erstellten Aufruf von `train_model` durch die folgende Anweisung:
 
 ```python
 main()

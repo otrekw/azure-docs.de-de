@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687803"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio
@@ -23,7 +23,7 @@ Erfahren Sie, wie Sie die Data Lake Tools für Visual Studio für Abfragen in Ap
 
 * Ein Apache Hadoop-Cluster in HDInsight. Informationen zum Erstellen dieses Elements finden Sie unter [Erstellen eines Apache Hadoop-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage](./apache-hadoop-linux-tutorial-get-started.md).
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) Für die Schritte in diesem Artikel wird Visual Studio 2019 verwendet.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/). Für die Schritte in diesem Artikel wird Visual Studio 2019 verwendet.
 
 * HDInsight-Tools für Visual Studio oder Azure Data Lake-Tools für Visual Studio. Informationen zum Installieren und Konfigurieren der Tools finden Sie unter [Installieren von Data Lake-Tools für Visual Studio](apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio).
 

@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231690"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -43,7 +43,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
     *Ressourcengruppen* ermöglichen Ihnen, verwandte Azure-Ressourcen als Einheit zu verwalten, und sind hilfreich beim Einrichten von *RBAC-Regeln* (Role-Based Access Control, rollenbasierte Zugriffssteuerung) für Ihre Apps. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager][ResourceGroups]. 
 4. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen.
    
-    Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps.  Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist.  Um die Anzahl von Instanzen einer Web-App zentral hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus.  Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen.  Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../overview-hosting-plans.md).
+    Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps.  Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist.  Um die Anzahl von Instanzen einer Web-App hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans hoch. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus.  Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen.  Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../overview-hosting-plans.md).
    
     Sie können die App Service-Pläne in Ihrer ASE anhand des Standorts identifizieren, der unter dem Plannamen angegeben ist.  
    
@@ -57,7 +57,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
     Wenn Ihre ASE eine interne VIP-Adresse verwendet, lautet die URL einer App in dieser ASE: [*Websitename*].[*während der ASE-Erstellung angegebene Unterdomäne*]   
     Nach der Auswahl Ihres ASP während der Erstellung der ASE sehen Sie die aktualisierte Unterdomäne unter **Name**.
 
-## <a name="createplan"></a> Erstellen eines App Service-Plans
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a> Erstellen eines App Service-Plans
 Wenn Sie einen App Service-Plan in einer App Service-Umgebung erstellen, stehen andere Worker zur Auswahl, da es in einer ASE keine gemeinsam verwendeten Worker gibt.  Es können ausschließlich die Worker verwendet werden, die der App Service-Umgebung vom Administrator zugewiesen wurden.  Um einen neuen Plan erstellen zu können, müssen dem ASE-Workerpool mehr Worker zugewiesen sein als die Gesamtzahl der Instanzen all Ihrer Pläne innerhalb dieses Workerpools.  Wenn im Workerpool Ihrer App Service-Umgebung nicht genügend Worker vorhanden sind, um Ihren Plan zu erstellen, müssen Sie sich an Ihren ASE-Administrator wenden und veranlassen, dass weitere Worker hinzugefügt werden.
 
 Ein weiterer Unterschied bei App Service-Plänen, die in einer App Service-Umgebung gehostet werden, besteht darin, dass keine Preise ausgewählt werden können.  Mit einer App Service-Umgebung zahlen Sie für die vom System verwendeten Computeressourcen, und es fallen keine zusätzlichen Kosten für die Pläne innerhalb der Umgebung an.  Beim Erstellen eines App Service-Plans wählen Sie üblicherweise einen Tarif, auf dessen Basis die Abrechnung erfolgt.  Bei einer App Service-Umgebung handelt es sich im Wesentlichen um einen privaten Speicherort, an dem Sie Inhalte erstellen können.  Sie zahlen nicht für das Hosten Ihrer Inhalte, sondern für die Umgebung.

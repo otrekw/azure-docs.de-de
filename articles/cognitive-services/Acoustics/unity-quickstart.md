@@ -12,17 +12,17 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fabdd221ef99414eae0156babbd76dedb1f0745d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243019"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Schnellstart für Projekt Akustik mit Unity
 Verwenden Sie die Projekt Akustik-Beispielinhalte für Unity zum Experimentieren mit simulationsgestützten Entwurfssteuerelementen.
 
 Softwareanforderungen:
-* [Unity 2018.2+](https://unity3d.com) für Windows
+* [Unity 2018.2 oder höher](https://unity3d.com) für Windows
 * [Projekt Akustik-Beispielinhaltspaket](https://www.microsoft.com/download/details.aspx?id=57346)
 
 Was ist im Beispielpaket enthalten?
@@ -36,9 +36,9 @@ Importieren Sie das Beispielpaket in ein neues Unity-Projekt.
 
     ![Die Unity-Optionen zum Importieren von Paketen](media/import-package.png)  
 
-1. Wählen Sie **ProjectAcoustics.unitypackage**.
+1. Wählen Sie **ProjectAcoustics.unitypackage** aus.
 
-1. Wählen Sie die Schaltfläche **Importieren** aus, um das Unity-Paket in Ihr Projekt zu integrieren.  
+1. Wählen Sie die Schaltfläche **Import** (Importieren) aus, um das Unity-Paket in Ihr Projekt zu integrieren.  
   
     ![Das Unity-Dialogfeld zum Importieren von Paketen](media/import-dialog.png)  
 
@@ -48,7 +48,7 @@ Weitere Schritte und Anmerkungen zum Importieren des Pakets in ein vorhandenes P
 >Nach Abschluss des Imports werden im Konsolenprotokoll mehrere Fehlermeldungen angezeigt. Fahren Sie mit dem nächsten Schritt fort, und starten Sie Unity neu.
 
 ## <a name="restart-unity"></a>Neustarten von Unity
-Für den Bakevorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.*x* erforderlich. Durch den Paketimport werden die Einstellungen des Unity-Players aktualisiert. Starten Sie Unity neu, damit die Einstellungen übernommen werden. Überprüfen Sie in den Einstellungen des **Players**, ob die Einstellung übernommen wurde.
+Für den Bakingvorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.*x* erforderlich. Durch den Paketimport werden die Einstellungen des Unity-Players aktualisiert. Starten Sie Unity neu, damit die Einstellungen übernommen werden. Überprüfen Sie in den Einstellungen des **Players**, ob die Einstellung übernommen wurde.
 
 ![Einstellungsmenü des Unity-Projekts](media/player-settings.png)  
 
@@ -60,7 +60,7 @@ Für den Bakevorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.*x
 ## <a name="open-the-project-acoustics-bake-window"></a>Öffnen des Bakingfensters in Projekt Akustik
 Wählen Sie in Unity im Menü **Window** (Fenster) die Option **Acoustics** (Akustik).
 
-![Unity-Editor mit hervorgehobener Option „Acoustics“ im Menü „Window“](media/window-acoustics.png)
+![Unity-Editor mit hervorgehobener Option „Acoustics“ (Akustik) im Menü „Window“ (Fenster)](media/window-acoustics.png)
 
 Das unverankerte Fenster **Acoustics** wird geöffnet. In diesem Fenster legen Sie die Eigenschaften der Akustiksimulation fest.
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
 ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201865"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Hinzufügen oder Entfernen einer Subnetzdelegierung
@@ -36,13 +36,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz, das S
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.0.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Location | Wählen Sie **EastUS** aus.|
+    | Position | Wählen Sie **EastUS** aus.|
     | Subnetzname | Geben Sie *mySubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.0.0.0/24* ein. |
     |||

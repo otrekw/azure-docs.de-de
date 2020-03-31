@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298780"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
@@ -40,7 +40,7 @@ Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer An
 ## <a name="access-queues-in-code"></a>Zugriff auf Warteschlangen in Code
 Um auf Warteschlangen in Projekten der Visual Studio-Clouddienste zuzugreifen, müssen Sie die folgenden Elemente zu jeder C#-Quelldatei hinzufügen, in der auf Azure-Warteschlangenspeicher zugegriffen wird.
 
-1. Vergewissern Sie sich, dass die Namespace-Deklarationen am Anfang der C#-Datei diese **using** -Anweisungen enthalten.
+1. Vergewissern Sie sich, dass die Namespacedeklarationen am Anfang der C#-Datei diese **using** -Anweisungen enthalten.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;

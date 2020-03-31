@@ -2,15 +2,15 @@
 title: Konfigurieren und Verwalten von Azure Notebooks Preview
 description: Erfahren Sie, wie Sie Projektmetadaten, Projektdateien, Projektumgebung und Setupschritte sowohl über die Azure Notebooks-Benutzeroberfläche als auch mit direktem Terminalzugriff verwalten.
 ms.topic: how-to
-ms.date: 05/13/2019
-ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/28/2020
+ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236122"
 ---
-# <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Verwalten und Konfigurieren von Projekten in Azure Notebooks Preview
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Verwalten und Konfigurieren von Projekten in Azure Notebooks Preview
 
 Ein Projekt in Azure Notebooks Preview stellt im Wesentlichen eine Konfiguration des zugrunde liegenden virtuellen Linux-Computers, auf dem Jupyter-Notebooks ausgeführt werden, in Kombination mit einem Dateiordner und beschreibenden Metadaten dar. 
 
@@ -73,7 +73,7 @@ Der Befehl **Hochladen** bietet zwei Optionen zum Importieren von Daten aus ande
 
 ![Befehle im Kontextmenü einer Datei](media/project-file-commands.png)
 
-| Get-Help | Tastenkombinationen | Action |
+| Get-Help | Tastenkombinationen | Aktion |
 | --- | --- | --- |
 | Ausführen | r (oder Klicken) | Führt eine Notebook-Datei aus. Andere Dateitypen werden zur Ansicht geöffnet.  |
 | Link kopieren | y | Kopiert einen Link zur Datei in die Zwischenablage. |
@@ -91,7 +91,7 @@ Eine Vorschau einer Datei oder eines Notebooks ist eine schreibgeschützte Darst
 
 Die Seite „Vorschau“ unterstützt eine Reihe von Symbolleisten mit Tastenkombinationen:
 
-| Get-Help | Tastenkombinationen | Action |
+| Get-Help | Tastenkombinationen | Aktion |
 | --- | --- | --- |
 | Freigabe | s | Zeigt das Freigabepopup an, aus dem Sie einen Link abrufen, in sozialen Medien teilen, eine HTML zur Einbettung abrufen oder eine E-Mail senden können. |
 | Klon | c  | Klont das Notebook in Ihr Konto. |
@@ -131,6 +131,9 @@ Die Informationen, die Sie anschließend vorgeben, hängen vom ausgewählten Vor
 - **Shellskript**: Wählen Sie in der zweiten Dropdownliste ein Bash-Shellskript im Projekt aus (normalerweise eine Datei mit der *.sh*-Erweiterung), die alle Befehle enthält, die Sie zur Initialisierung der Umgebung ausführen möchten.
 
 - **Environment.yml**: Wählen Sie in der zweiten Dropdownliste eine *environments.yml*-Datei für Python-Projekte aus, die eine Conda-Umgebung verwenden.
+
+   > [!WARNING]
+   > Da es sich hierbei um einen in der Entwicklung befindlichen Vorschaudienst handelt, gibt es derzeit ein bekanntes Problem, das dazu führt, dass die Einstellung `Environment.yml` wie erwartet auf Ihr Projekt angewendet wird. Die angegebene Umgebungsdatei wird vom Projekt und den darin enthaltenen Jupyter Notebooks momentan nicht geladen.
 
 Wenn Sie mit dem Hinzufügen von Schritten fertig sind, wählen Sie **Speichern** aus.
 

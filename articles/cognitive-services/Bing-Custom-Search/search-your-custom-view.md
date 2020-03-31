@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76983111"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Aufrufen Ihrer Instanz der benutzerdefinierten Bing-Suche über das Portal
@@ -31,7 +31,7 @@ Geben Sie zum Erstellen einer Suchabfrage die Parameterwerte für Ihren Endpunkt
 Im Anschluss finden Sie einige wichtige Parameter:
 
 
-|Parameter  |Beschreibung  |
+|Parameter  |BESCHREIBUNG  |
 |---------|---------|
 |Abfrage     | Der gewünschte Suchbegriff. Nur für Endpunkte für die Web-, Bilder-, Video- und Vorschlagssuche verfügbar. |
 |Benutzerdefinierte Konfigurations-ID | Die Konfigurations-ID der ausgewählten benutzerdefinierten Suchinstanz. Dieses Feld ist schreibgeschützt. |
@@ -40,7 +40,7 @@ Im Anschluss finden Sie einige wichtige Parameter:
 
 Wenn Sie auf **Zusätzliche Parameter** klicken, werden die folgenden Parameter angezeigt:  
 
-|Parameter  |Beschreibung  |
+|Parameter  |BESCHREIBUNG  |
 |---------|---------|
 |Safe Search     | Ein Filter, der Webseiten nach jugendgefährdenden Inhalten durchsucht. Nur für Endpunkte für die Web-, Bilder- und Videosuche und die gehostete Benutzeroberfläche verfügbar. Beachten Sie, dass die benutzerdefinierte Bing-Videosuche nur zwei Werte unterstützt: `moderate` und `strict`.        |
 |Benutzeroberflächensprache    | Die Sprache für Zeichenfolgen auf der Benutzeroberfläche. Wenn Sie beispielsweise Bilder und Videos in der gehosteten Benutzeroberfläche aktivieren, wird auf den Registerkarten **Bild** und **Video** die angegebene Sprache verwendet.        |

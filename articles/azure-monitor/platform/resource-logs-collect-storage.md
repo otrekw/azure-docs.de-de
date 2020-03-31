@@ -8,11 +8,11 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234158"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird beschrieben, wie Plattformprotokolle in einem Azure-Speicherkonto erfasst werden, um Daten für die Archivierung beizubehalten.

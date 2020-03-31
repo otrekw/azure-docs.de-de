@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229010"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 
@@ -189,7 +189,7 @@ Ein umfassendes End-to-End-Skript für dieses Szenario finden Sie [hier](https:/
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Verwenden einer komplexen Variablen zum Speichern von weiteren Informationen
 
-In einigen Szenarios können Sie möglicherweise keine separaten Variablen für jeden Wiederherstellungsplan erstellen. Stellen Sie sich ein Szenario vor, bei dem mit nur einem Skript für bestimmte VMs eine öffentliche IP-Adresse zugewiesen werden soll. In einem anderen Szenario kann es sein, dass Sie verschiedene NSGs unterschiedlichen VMs (nicht auf allen VMs) zuordnen möchten. Beachten Sie Folgendes:
+In einigen Szenarios können Sie möglicherweise keine separaten Variablen für jeden Wiederherstellungsplan erstellen. Stellen Sie sich ein Szenario vor, bei dem mit nur einem Skript für bestimmte VMs eine öffentliche IP-Adresse zugewiesen werden soll. In einem anderen Szenario kann es sein, dass Sie verschiedene NSGs unterschiedlichen VMs (nicht auf allen VMs) zuordnen möchten. Beachten Sie dabei Folgendes:
 
 - Sie können ein Skript erstellen, das für alle Wiederherstellungspläne wiederverwendet werden kann.
 - Jeder Wiederherstellungsplan kann über eine variable Anzahl von VMs verfügen.

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
 ms.openlocfilehash: 38ff40b537730418fe9f0f8295884dae98a2fe0d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225142"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
 
@@ -62,7 +62,7 @@ Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den
    |IP-Adresszuweisung (nur sichtbar, wenn Sie als IP-Version **Beide** auswählen)|Ja, wenn Sie als IP-Version **Beide** auswählen|Dieselben Einschränkungen wie bei der IP-Adresszuweisung oben|
    |Subscription|Ja|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentlichen IP-Adressen zuordnen.|
    |Resource group|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie bzw. als die Ressource vorhanden sein, der Sie die öffentlichen IP-Adressen zuordnen.|
-   |Location|Ja|Muss am selben [Standort](https://azure.microsoft.com/regions) (auch als Region bezeichnet) wie die Ressource vorhanden sein, der Sie die öffentlichen IP-Adressen zuordnen.|
+   |Position|Ja|Muss am selben [Standort](https://azure.microsoft.com/regions) (auch als Region bezeichnet) wie die Ressource vorhanden sein, der Sie die öffentlichen IP-Adressen zuordnen.|
    |Verfügbarkeitszone| Nein | Diese Einstellung wird nur angezeigt, wenn Sie einen unterstützten Standort auswählen. Eine Liste der unterstützten Standorte finden Sie unter [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie die **Basic**-SKU ausgewählt haben, wird automatisch *Keine* ausgewählt. Wenn Sie es vorziehen, eine bestimmte Zone zu gewährleisten, können Sie eine bestimmte Zone auswählen. Keine der beiden Optionen ist zonenredundant. Bei Auswahl der **Standard**-SKU: Es wird automatisch die zonenredundante Option ausgewählt, und der Datenpfad wird gegen Zonenausfall stabilisiert. Wenn Sie es vorziehen, eine bestimmte Zone zu gewährleisten, die nicht gegen Zonenausfall stabilisiert ist, können Sie eine bestimmte Zone auswählen.
 
 **Befehle**

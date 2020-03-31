@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672530"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
@@ -36,7 +36,7 @@ Verschiedene Optionen zum Aktivieren und Konfigurieren der Diagnoseerweiterung f
 
 Azure-Diagnose sendet Protokolle und Metriken stets an ein Azure Storage-Konto. Sie können eine oder mehrere *Datensenken* konfigurieren, die Daten an zusätzliche Speicherorte senden. Die einzelnen Senken sind im [SinksConfig-Element](diagnostics-extension-schema-windows.md#sinksconfig-element) der öffentlichen Konfiguration mit sensiblen Informationen in der privaten Konfiguration definiert. Diese Konfiguration für Event Hubs verwendet die Werte in der folgenden Tabelle.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:---|:---|
 | Name | Beschreibender Name für die Senke. Wird in der Konfiguration verwendet, um die Datenquellen anzugeben, die an die Senke senden sollen. |
 | url  | URL des Event Hubs in der Form \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>.          |

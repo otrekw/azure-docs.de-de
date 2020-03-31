@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: 536b95eb07619d0ce2d02ec01e1f51ed52c1b5e1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649202"
 ---
 # <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>Bereitstellen von Zuordnungen für einen benutzerdefinierten Anbieter per Azure-Richtlinie

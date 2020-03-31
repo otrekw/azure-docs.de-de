@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324507"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
@@ -101,7 +101,7 @@ Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zus
 
 ### <a name="create-contract"></a>Erstellen eines Vertrags
 
-Diese Anforderung erstellt einen neuen Vertrag.
+Erstellt einen neuen Vertrag.
 
 Für die Anforderung sind folgende Felder erforderlich:
 
@@ -375,10 +375,10 @@ Abhängig von **messageName** weisen die Benachrichtigungen einen der folgenden 
 
 Enthält Informationen zu einzelnen Blöcken. Die Blocknachricht (*BlockMessage*) enthält einen Abschnitt mit Block-Level-Informationen und einen Abschnitt mit Transaktionsinformationen.
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | block | Enthält [Blockinformationen](#block-information) |
-| transactions | Enthält eine Sammlung mit [Transaktionsinformationen](#transaction-information) für den Block |
+| Transaktionen | Enthält eine Sammlung mit [Transaktionsinformationen](#transaction-information) für den Block |
 | connectionId | Eindeutiger Bezeichner für die Verbindung |
 | messageSchemaVersion | Version des Messagingschemas |
 | messageName | **BlockMessage** |
@@ -386,7 +386,7 @@ Enthält Informationen zu einzelnen Blöcken. Die Blocknachricht (*BlockMessage*
 
 #### <a name="block-information"></a>Blockinformationen
 
-| NAME              | BESCHREIBUNG |
+| Name              | BESCHREIBUNG |
 |-------------------|-------------|
 | blockId           | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
 | blockNumber       | Eindeutiger Bezeichner für einen Block im Ledger |
@@ -396,7 +396,7 @@ Enthält Informationen zu einzelnen Blöcken. Die Blocknachricht (*BlockMessage*
 
 #### <a name="transaction-information"></a>Transaktionsinformationen
 
-| NAME               | BESCHREIBUNG |
+| Name               | BESCHREIBUNG |
 |--------------------|-------------|
 | transactionId      | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
 | transactionHash    | Der Hash der Transaktion im Ledger |
@@ -442,7 +442,7 @@ Beispiel für eine Blocknachricht (*BlockMessage*) aus Blockchain Workbench:
 
 Enthält Informationen zu einem Vertrag. Die Nachricht enthält einen Abschnitt mit Vertragseigenschaften und einen Abschnitt mit Transaktionsinformationen. Alle Transaktionen, durch die der Vertrag für den spezifischen Block geändert wurde, sind im Transaktionsabschnitt enthalten.
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | blockId | Eindeutiger Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
 | blockHash | Hash des Blocks |
@@ -458,7 +458,7 @@ Enthält Informationen zu einem Vertrag. Die Nachricht enthält einen Abschnitt 
 
 #### <a name="modifying-transaction-information"></a>Ändern von Transaktionsinformationen
 
-| NAME               | BESCHREIBUNG |
+| Name               | BESCHREIBUNG |
 |--------------------|-------------|
 | transactionId | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
 | transactionHash | Der Hash der Transaktion im Ledger |
@@ -467,7 +467,7 @@ Enthält Informationen zu einem Vertrag. Die Nachricht enthält einen Abschnitt 
 
 #### <a name="contract-properties"></a>Vertragseigenschaften
 
-| NAME               | BESCHREIBUNG |
+| Name               | BESCHREIBUNG |
 |--------------------|-------------|
 | workflowPropertyId | Eindeutiger Bezeichner für die Workfloweigenschaft innerhalb von Azure Blockchain Workbench |
 | name | Name der Workfloweigenschaft |
@@ -554,7 +554,7 @@ Beispiel für eine Vertragsnachricht (*ContractMessage*) aus Blockchain Workbenc
 
 Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zählen etwa der Funktionsname, die Eingabeparameter und der Aufrufer der Funktion.
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | eventName                   | **ContractFunctionInvocation** |
 | caller                      | [Aufruferinformationen](#caller-information) |
@@ -571,7 +571,7 @@ Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zähl
 
 #### <a name="caller-information"></a>Aufruferinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | type | Art des Aufrufers (beispielsweise Benutzer oder Vertrag) |
 | id | Eindeutiger Bezeichner für den Aufrufer innerhalb von Azure Blockchain Workbench |
@@ -579,14 +579,14 @@ Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zähl
 
 #### <a name="parameter-information"></a>Parameterinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | name | Parametername |
 | value | Parameterwert |
 
 #### <a name="event-message-transaction-information"></a>Ereignisnachricht: Transaktionsinformationen
 
-| NAME               | BESCHREIBUNG |
+| Name               | BESCHREIBUNG |
 |--------------------|-------------|
 | transactionId      | Eindeutiger Bezeichner für die Transaktion innerhalb von Azure Blockchain Workbench |
 | transactionHash    | Der Hash der Transaktion im Ledger |
@@ -634,7 +634,7 @@ Beispiel für *EventMessage ContractFunctionInvocation* aus Blockchain Workbench
 
 Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – etwa Name und Version der hochgeladenen Anwendung.
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | eventName | **ApplicationIngestion** |
 | applicationId | Eindeutiger Bezeichner für die Anwendung innerhalb von Azure Blockchain Workbench |
@@ -652,7 +652,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 
 #### <a name="contract-code-information"></a>Vertragscodeinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Vertragscodedatei innerhalb von Azure Blockchain Workbench |
 | ledgerId | Eindeutiger Bezeichner für den Ledger innerhalb von Azure Blockchain Workbench |
@@ -660,14 +660,14 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 
 #### <a name="application-role-information"></a>Anwendungsrolleninformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsrolle innerhalb von Azure Blockchain Workbench |
 | name | Name der Anwendungsrolle |
 
 #### <a name="application-workflow-information"></a>Anwendungsworkflowinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für den Anwendungsworkflow innerhalb von Azure Blockchain Workbench |
 | name | Name des Anwendungsworkflows |
@@ -678,7 +678,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 
 ##### <a name="workflow-function-information"></a>Workflowfunktionsinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsworkflowfunktion innerhalb von Azure Blockchain Workbench |
 | name | Funktionsname |
@@ -686,7 +686,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 
 ##### <a name="workflow-state-information"></a>Informationen zum Workflowstatus
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | name | Name des Zustands |
 | displayName | Anzeigename des Zustands |
@@ -694,7 +694,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 
 ##### <a name="workflow-property-information"></a>Workfloweigenschaftsinformationen
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsworkfloweigenschaft innerhalb von Azure Blockchain Workbench |
 | name | Eigenschaftenname |
@@ -828,7 +828,7 @@ Beispiel für *EventMessage ApplicationIngestion* aus Blockchain Workbench:
 
 Enthält Informationen, wenn einem Benutzer eine Rolle in Workbench zugewiesen wird. Hierzu zählt unter anderem, wer die Rollenzuweisung vorgenommen hat, sowie der Name der Rolle und die entsprechende Anwendung.
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | eventName | **RoleAssignment** |
 | applicationId | Eindeutiger Bezeichner für die Anwendung innerhalb von Azure Blockchain Workbench |
@@ -845,14 +845,14 @@ Enthält Informationen, wenn einem Benutzer eine Rolle in Workbench zugewiesen w
 
 #### <a name="roleassignment-application-role"></a>RoleAssignment: Anwendungsrolle
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsrolle innerhalb von Azure Blockchain Workbench |
 | name | Name der Anwendungsrolle |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment: Zuweiser
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner des Benutzers innerhalb von Azure Blockchain Workbench |
 | type | Art des Zuweisers |
@@ -860,7 +860,7 @@ Enthält Informationen, wenn einem Benutzer eine Rolle in Workbench zugewiesen w
 
 #### <a name="roleassignment-assignee"></a>RoleAssignment: zugewiesene Person
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | id | Eindeutiger Bezeichner des Benutzers innerhalb von Azure Blockchain Workbench |
 | type | Art der zugewiesenen Person |

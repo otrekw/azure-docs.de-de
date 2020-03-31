@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721369"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
@@ -38,7 +38,7 @@ In diesem Dokument wird davon ausgegangen, dass die SQL-Befehle in SQL Server Ma
 >
 >
 
-## <a name="prereqs"></a>Voraussetzungen
+## <a name="prerequisites"></a><a name="prereqs"></a>Voraussetzungen
 In diesem Tutorial wird Folgendes vorausgesetzt:
 
 * Ein **Azure-Abonnement**. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/)registrieren.
@@ -46,14 +46,14 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 * Bereitgestellter **SQL Server auf einem virtuellen Azure-Computer**. Anleitungen finden Sie unter [Einrichten eines virtuellen Azure SQL Server-Computers als IPython Notebook-Server für die erweiterte Analyse](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Lokal installierte und konfigurierte **Azure PowerShell** . Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
-## <a name="filesource_to_sqlonazurevm"></a> Verschieben von Daten aus einer Flatfilequelle zu SQL Server auf einem virtuellen Azure-Computer
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Verschieben von Daten aus einer Flatfilequelle zu SQL Server auf einem virtuellen Azure-Computer
 Wenn sich Ihre Daten in einer Flatfile (in Zeilen/Spalten angeordnet) befinden, können sie über die folgenden Methoden auf eine SQL Server-VM in Azure verschoben werden:
 
 1. [Befehlszeilenprogramm zum Massenkopieren (BCP)](#insert-tables-bcp)
 2. [SQL-Abfrage zum Masseneinfügen](#insert-tables-bulkquery)
 3. [Integrierte grafische Hilfsprogramme in SQL Server (Importieren/Exportieren, SSIS)](#sql-builtin-utilities)
 
-### <a name="insert-tables-bcp"></a>Befehlszeilenprogramm zum Massenkopieren (BCP)
+### <a name="command-line-bulk-copy-utility-bcp"></a><a name="insert-tables-bcp"></a>Befehlszeilenprogramm zum Massenkopieren (BCP)
 BPC ist ein Befehlszeilenprogramm, das mit SQL Server installiert wird und eine der schnellsten Möglichkeiten zum Verschieben von Daten darstellt. Es funktioniert für alle drei SQL Server-Varianten (lokaler SQL Server, SQL Azure und SQL Server-VM in Azure).
 
 > [!NOTE]
@@ -86,7 +86,7 @@ BPC ist ein Befehlszeilenprogramm, das mit SQL Server installiert wird und eine 
 >
 >
 
-### <a name="insert-tables-bulkquery-parallel"></a>Parallelisieren von Einfügevorgängen für schnellere Datenverschiebungen
+### <a name="parallelizing-inserts-for-faster-data-movement"></a><a name="insert-tables-bulkquery-parallel"></a>Parallelisieren von Einfügevorgängen für schnellere Datenverschiebungen
 Wenn die Daten, die Sie verschieben möchten, sehr umfangreich sind, können Sie den Vorgang beschleunigen, indem Sie mehrere BPC-Befehle parallel in einem PowerShell-Skript ausführen.
 
 > [!NOTE]
@@ -132,7 +132,7 @@ Get-Job | Receive-Job
 Set-ExecutionPolicy Restricted #reset the execution policy
 ```
 
-### <a name="insert-tables-bulkquery"></a>SQL-Abfrage zum Masseneinfügen
+### <a name="bulk-insert-sql-query"></a><a name="insert-tables-bulkquery"></a>SQL-Abfrage zum Masseneinfügen
 Mit der [SQL-Abfrage zum Masseneinfügen](https://msdn.microsoft.com/library/ms188365) können Sie Daten aus zeilen-/spaltenbasierten Dateien in die Datenbank importieren (Informationen zu den unterstützten Typen finden Sie unter [Vorbereiten von Daten für den Massenexport oder -import [SQL Server])](https://msdn.microsoft.com/library/ms188609).
 
 Im Folgenden sehen Sie einige Beispielbefehle für Masseneinfügungen:  
@@ -156,14 +156,14 @@ Im Folgenden sehen Sie einige Beispielbefehle für Masseneinfügungen:
     )
     ```
 
-### <a name="sql-builtin-utilities"></a>Integrierte Hilfsprogramme in SQL Server
+### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>Integrierte Hilfsprogramme in SQL Server
 Sie können die SQL Server Integration Services (SSIS) zum Importieren von Daten aus einer Flatfile in die SQL Server-VM in Azure verwenden.
 SSIS ist in zwei Studio-Umgebungen verfügbar. Weitere Informationen finden Sie unter [Integration Services (SSIS) und Studio-Umgebungen](https://technet.microsoft.com/library/ms140028.aspx):
 
 * Einzelheiten zu den SQL Server Data Tools finden Sie unter [Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
 * Ausführliche Informationen zum Import/Export-Assistenten finden Sie unter [SQL Server-Import/Export-Assistent](https://msdn.microsoft.com/library/ms141209.aspx)
 
-## <a name="sqlonprem_to_sqlonazurevm"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer
+## <a name="moving-data-from-on-premises-sql-server-to-sql-server-on-an-azure-vm"></a><a name="sqlonprem_to_sqlonazurevm"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer
 Sie können auch die folgenden Migrationsstrategien verwenden:
 
 1. [Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
@@ -176,7 +176,7 @@ Diese Optionen werden im Folgenden beschrieben:
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer
 Der **Assistent zum Bereitstellen einer SQL Server-Datenbank auf einem virtuellen Microsoft Azure-Computer** ist eine einfache und empfohlene Möglichkeit zum Verschieben von Daten von einer lokalen SQL Server-Instanz nach SQL Server auf einem virtuellen Azure-Computer. Ausführliche Schritte sowie eine Erläuterung weitere Alternativen finden Sie unter [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
 
-### <a name="export-flat-file"></a>Exportieren in eine Flatfile
+### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exportieren in eine Flatfile
 Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen verschiedene Vorgehensweisen zur Verfügung, die unter [Massenimport und -export von Daten [SQL Server]](https://msdn.microsoft.com/library/ms175937.aspx) beschrieben werden. In diesem Dokument wird als Beispiel BPC (Bulk Copy Program) beschrieben. Nachdem die Daten in eine Flatfile exportiert wurden, können sie mit einem Massenimport auf einen anderen SQL Server importiert werden.
 
 1. Exportieren Sie die Daten vom lokalen SQL Server folgendermaßen mit dem Dienstprogramm BPC in eine Datei:
@@ -194,12 +194,12 @@ Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen
         bcp dbname..tablename format nul -c -x -f  exportformatfilename.xml  -U username@servername.database.windows.net -S tcp:servername -P password  --t \t -r \n
 4. Verwenden Sie eine der im Abschnitt [Dateiquelle](#filesource_to_sqlonazurevm) beschriebenen Methoden, um die Daten in Flatfiles auf einen SQL Server zu verschieben.
 
-### <a name="sql-migration"></a>SQL-Datenbankmigrations-Assistent
+### <a name="sql-database-migration-wizard"></a><a name="sql-migration"></a>SQL-Datenbankmigrations-Assistent
 [SQL-Datenbankmigrations-Assistent](https://sqlazuremw.codeplex.com/) stellt eine benutzerfreundliche Möglichkeit zum Verschieben von Daten zwischen zwei SQL Server-Instanzen dar. Er bietet Ihnen die Möglichkeit, das Datenschema zwischen Quell- und Zieltabellen zuzuordnen und die Spaltentypen auszuwählen, sowie verschiedene andere Funktionen. Im Hintergrund wird BPC zum Massenkopieren verwendet. Nachfolgend finden Sie einen Screenshot des Begrüßungsbildschirms für den SQL-Datenbankmigrations-Assistenten.  
 
 ![SQL Server-Migrations-Assistent][2]
 
-### <a name="sql-backup"></a>Datenbanksicherung und -wiederherstellung
+### <a name="database-back-up-and-restore"></a><a name="sql-backup"></a>Datenbanksicherung und -wiederherstellung
 SQL Server unterstützt:
 
 1. [Funktionen zur Datenbanksicherung und -wiederherstellung](https://msdn.microsoft.com/library/ms187048.aspx) (sowohl in einer lokalen Datei als auch per bacpac-Export in ein Blob) und [Datenebenenanwendungen](https://msdn.microsoft.com/library/ee210546.aspx) (mit bacpac).

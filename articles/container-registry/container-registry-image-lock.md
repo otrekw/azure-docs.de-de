@@ -4,10 +4,10 @@ description: Festlegen von Attributen für ein Containerimage oder Repository, s
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659695"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung

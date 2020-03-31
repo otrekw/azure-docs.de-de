@@ -6,16 +6,16 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250067"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239174"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
-Erfahren Sie, wie Sie bei der Bereitstellung von Azure Resource Manager Geheimnisse aus einer Azure Key Vault-Instanz abrufen und als Parameter übergeben. Der Parameterwert wird nie verfügbar gemacht, da lediglich die Key Vault-ID als Verweis verwendet wird. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
+Es wird beschrieben, wie Sie bei der Bereitstellung einer ARM-Vorlage (Azure Resource Manager) Geheimnisse aus einer Azure Key Vault-Instanz abrufen und als Parameter übergeben. Der Parameterwert wird nie verfügbar gemacht, da lediglich die Key Vault-ID als Verweis verwendet wird. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
 
 Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./template-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer (VM). Sie müssen den Administratorbenutzernamen und das Kennwort für den virtuellen Computer angeben. Anstatt das Kennwort einzugeben, können Sie es in Azure Key Vault vorab speichern und die Vorlage anschließend anpassen, um das Kennwort während der Bereitstellung aus dem Schlüsseltresor abzurufen.
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```console
@@ -49,7 +49,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-key-vault"></a>Vorbereiten eines Schlüsseltresors
 
-In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Geheimnis hinzu, damit Sie dieses beim Bereitstellen der Vorlage abrufen können. Es gibt zahlreiche Möglichkeiten zum Erstellen eines Schlüsseltresors. In diesem Tutorial verwenden Sie Azure PowerShell, um eine [Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json) bereitstellen. Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
+In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Geheimnis hinzu, damit Sie dieses beim Bereitstellen der Vorlage abrufen können. Es gibt zahlreiche Möglichkeiten zum Erstellen eines Schlüsseltresors. In diesem Tutorial verwenden Sie Azure PowerShell, um eine [ARM-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json) bereitzustellen. Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 * Erstellen eines Schlüsseltresors mit aktivierter `enabledForTemplateDeployment`-Eigenschaft. Diese Eigenschaft muss auf *true* festgelegt sein, damit der Vorlagenbereitstellungsprozess auf die im Schlüsseltresor definierten Geheimnisse zugreifen kann.
 * Hinzufügen eines Geheimnisses zum Schlüsseltresor. Das Geheimnis enthält das Administratorkennwort für den virtuellen Computer.
@@ -97,7 +97,7 @@ Damit haben Sie einen Schlüsseltresor und ein Geheimnis vorbereitet. In den fol
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
+„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 
@@ -107,7 +107,7 @@ Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. St
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Das Szenario entspricht dem verwendeten Szenario unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet haben.
+1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Das Szenario entspricht dem verwendeten Szenario unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md).
    Die Vorlage definiert fünf Ressourcen:
 
    * `Microsoft.Storage/storageAccounts` Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).

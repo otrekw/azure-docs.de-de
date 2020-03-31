@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076702"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Entwurf für die Notfallwiederherstellung mit privatem ExpressRoute-Peering
 
-ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keinen Single Point of Failure im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
+ExpressRoute wurde für Hochverfügbarkeit entwickelt, um Konnektivität für private Netzwerke mit Microsoft-Ressourcen auf Netzbetreiberniveau bereitzustellen. Das heißt, gibt es keine einzelne Fehlerquelle im ExpressRoute-Pfad im Microsoft-Netzwerk. Entwurfsüberlegungen zum Maximieren der Verfügbarkeit einer ExpressRoute-Verbindung finden Sie unter [Entwerfen für Hochverfügbarkeit mit ExpressRoute][HA].
 
 Wir wollen jedoch Murphys populäres Sprichwort nicht vergessen: *Alles, was schiefgehen kann, wird auch schiefgehen*. Konzentrieren wir uns in diesem Artikel also auf Lösungen, die über Fehler hinausgehen, die mit einer einzigen ExpressRoute-Verbindung behoben werden können. Mit anderen Worten, lassen Sie uns in diesem Artikel Überlegungen zur Netzwerkarchitektur anstellen, um eine robuste Back-End-Netzwerkverbindung für die Notfallwiederherstellung mit georedundanten ExpressRoute-Verbindungen aufzubauen.
 
@@ -116,7 +116,7 @@ Sie können das Szenario mithilfe der Verbindungsgewichtung entwerfen, um VNETs 
 
 [![8]][8]
 
-### <a name="scenario-2"></a>Szenario 2:
+### <a name="scenario-2"></a>Szenario 2
 
 Szenario 2 wird in der folgenden Abbildung dargestellt. In der Abbildung geben grüne Linien Pfade für den Datenverkehrsfluss zwischen VNet1 und lokalen Netzwerken an. Die blauen Linien geben Pfade für den Datenverkehrsfluss zwischen VNet2 und lokalen Netzwerken an. Im stabilen Zustand (durchgezogene Linien in der Abbildung) fließt der gesamte Datenverkehr zwischen VNETs und lokalen Standorten größtenteils über einen Microsoft-Backbone und durchläuft die Verbindung zwischen lokalen Standorten nur im Fehlerzustand (gestrichelte Linien im Diagramm) einer ExpressRoute-Verbindung.
 

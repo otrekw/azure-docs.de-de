@@ -4,10 +4,10 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET/.NET Core-
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663588"
 ---
 # <a name="eventcounters-introduction"></a>Einführung in EventCounters
@@ -146,6 +146,6 @@ EventCounter erfordert keine besonderen Berechtigungen und wird auf allen Plattf
 
  Die [Application Insights-Erweiterung](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) für ASP.NET Core unterstützt dieses Feature noch nicht. Dieses Dokument wird aktualisiert, sobald dieses Feature unterstützt wird.
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
 * [Abhängigkeitsüberwachung](../../azure-monitor/app/asp-net-dependencies.md)

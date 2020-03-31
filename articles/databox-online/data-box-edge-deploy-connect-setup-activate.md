@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 144c59c8bc24e8e10584702ec6cd48f7aa8c15c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075082"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222907"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge 
 
@@ -101,6 +101,11 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
    c. Falls Sie eine Authentifizierung verwenden, geben Sie einen Benutzernamen und ein Kennwort ein.
 
    d. Klicken Sie auf **Einstellungen anwenden**, um die konfigurierten Webproxyeinstellungen zu überprüfen und anzuwenden.
+   
+   > [!NOTE]
+   > Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können.
+   > Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist.
+   > In der Regel funktionieren transparente Proxys gut mit Azure Data Box Edge.
 
 4. (Optional) Klicken Sie im linken Bereich auf **Zeiteinstellungen**, und konfigurieren Sie die Zeitzone und die primären und sekundären NTP-Server für das Gerät.  
     NTP-Server sind für die Zeitsynchronisierung erforderlich, damit Ihr Gerät bei den Clouddienstanbietern authentifiziert werden kann.

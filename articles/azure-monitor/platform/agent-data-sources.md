@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668773"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226430"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Agent-Datenquellen in Azure Monitor
 Welche Daten Azure Monitor von Agents sammelt, wird durch die von Ihnen konfigurierten Datenquellen festgelegt.  Die Daten aus Agents werden als [Protokolldaten](data-platform-logs.md) mit einer Reihe von Datensätzen gespeichert.  Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976977"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
@@ -121,7 +121,7 @@ Der Code, mit dem eine einzelne Videodatei komprimiert wird, ist die `AmsCompone
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
-Mit diesem Code werden die folgenden Schritte ausgeführt:
+Der Code führt die folgenden Schritte aus:
 
 - Es wird überprüft, ob die Konfiguration in `App.config` alle erforderlichen Daten enthält.
 - Es wird überprüft, ob die `ffmpeg`-Binärdaten vorhanden sind.

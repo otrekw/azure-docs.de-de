@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73673774"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan
@@ -324,10 +324,10 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 
 | JSON-Eigenschaft | type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Object | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | Nein | 1 | 1 bis 1.000 | `"interval":10` |
-| **endTime** | Zeichenfolge | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Object | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft

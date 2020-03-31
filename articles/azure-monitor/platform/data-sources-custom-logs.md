@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670592"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
@@ -74,7 +74,7 @@ Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei,
 
 Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Protokolldateien:
 
-| Beschreibung | `Path` |
+| BESCHREIBUNG | `Path` |
 |:--- |:--- |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit der Erweiterung „.txt“ |C:\Logs\\\*.txt |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt |C:\Logs\log\*.txt |

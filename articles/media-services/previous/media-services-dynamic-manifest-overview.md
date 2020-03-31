@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015847"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
@@ -98,7 +98,7 @@ Weitere Informationen zum Übermitteln Ihrer Inhalte und zum Erstellen von Strea
 > 
 > 
 
-### <a id="filters"></a>Filter
+### <a name="filters"></a><a id="filters"></a>Filter
 Es gibt zwei Typen von Filtern für Medienobjekte: 
 
 * Globale Filter (können auf jedes Medienobjekt im Azure Media Services-Konto angewendet werden und haben die Lebensdauer des Kontos) und 
@@ -106,7 +106,7 @@ Es gibt zwei Typen von Filtern für Medienobjekte:
 
 Globale und lokale Filter verfügen über genau die gleichen Eigenschaften. Der Hauptunterschied zwischen den beiden Filtern liegt in ihrer jeweils besseren Tauglichkeit für verschiedene Szenarios. Globale Filter eignen sich in der Regel für Geräteprofile (Filtern der Wiedergabe), lokale Filter hingegen können zum Kürzen eines bestimmten Medienobjekts eingesetzt werden.
 
-## <a id="scenarios"></a>Allgemeine Szenarios
+## <a name="common-scenarios"></a><a id="scenarios"></a>Allgemeine Szenarios
 Wie bereits zuvor erwähnt, besteht Ihr Ziel bei der Übermittlung Ihrer Inhalte für Kunden (Streaming von Liveereignissen oder Video-on-Demand) darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Darüber hinaus haben Sie möglicherweise andere Anforderungen, beispielsweise die Filterung Ihrer Medienobjekte oder die Verwendung **dynamischer Manifeste**. In den folgenden Abschnitten erhalten Sie einen kurzen Überblick über verschiedene Filterungsszenarios.
 
 * Angeben einer spezifischen Teilmenge von Audio- und Videowiedergaben (anstatt aller mit dem Medienobjekt verknüpften Wiedergaben), die für bestimmte Geräte geeignet sind. 
@@ -195,7 +195,7 @@ Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/az
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Bereitstellen von Inhalten für Kunden – Übersicht](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png

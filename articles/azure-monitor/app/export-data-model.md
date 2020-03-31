@@ -4,10 +4,10 @@ description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in J
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663874"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell

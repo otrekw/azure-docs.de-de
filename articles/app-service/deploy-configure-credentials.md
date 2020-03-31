@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231654"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](deploy-local-git.md) und [FTP/S-Bereitstellungen](deploy-ftp.md). Diese Anmeldeinformationen sind nicht identisch mit den Anmeldeinformationen Ihres Azure-Abonnements.
@@ -19,7 +19,7 @@ ms.locfileid: "76843785"
 
 * **Anmeldeinformationen auf App-Ebene**: ein Satz von Anmeldeinformationen für jede App. Er kann nur verwendet werden, um diese App bereitzustellen. Die Anmeldeinformationen für eine App werden bei der Erstellung jeder App automatisch generiert. Sie können nicht manuell konfiguriert, jedoch jederzeit zurückgesetzt werden. Damit ein Benutzer Zugriff auf Anmeldeinformationen auf App-Ebene über die rollenbasierte Zugriffssteuerung (RBAC) erhalten kann, muss er in der App mindestens ein Mitwirkender sein (einschließlich der integrierten Rolle „Websitemitwirkender“). Benutzer mit Leseberechtigung dürfen nicht veröffentlichen und haben keinen Zugriff auf diese Anmeldeinformationen.
 
-## <a name="userscope"></a>Konfigurieren von Anmeldeinformationen auf Benutzerebene
+## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Konfigurieren von Anmeldeinformationen auf Benutzerebene
 
 Sie können die Anmeldeinformationen auf Benutzerebene auf der [Ressourcenseite](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
 
@@ -67,7 +67,7 @@ Für die Authentifizierung an einem FTP/FTPS-Endpunkt mit Anmeldeinformationen a
 
 Weil Anmeldeinformationen auf Benutzerebene mit dem Benutzer und nicht einer bestimmten Ressource verknüpft sind, muss der Benutzername dieses Format aufweisen, damit die Anmeldeaktion an den richtigen App-Endpunkt weitergeleitet wird.
 
-## <a name="appscope"></a>Abrufen und Zurücksetzen der Anmeldeinformationen auf App-Ebene
+## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Abrufen und Zurücksetzen der Anmeldeinformationen auf App-Ebene
 So rufen Sie die Anmeldeinformationen auf App-Ebene ab
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü **App Services** >  **&lt;beliebige_App>**  > **Bereitstellungscenter** > **FTP/Anmeldeinformationen** aus.

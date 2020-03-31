@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64575591"
 ---
 # <a name="virtual-appliance-scenario"></a>Szenario für virtuelle Geräte
@@ -78,30 +78,30 @@ Um sicherzustellen, dass die Kommunikation basierend auf der letzten oben angef�
 ### <a name="azgwudr"></a>azgwudr
 In diesem Szenario wird nur der Datenverkehr von lokalen Quellen zu Azure zum Verwalten der Firewalls durch Verbinden mit **AZF3** verwendet. Dieser Datenverkehr muss über die interne Firewall **AZF2** geleitet werden. Daher ist nur eine Route im **GatewaySubnet** erforderlich (siehe unten).
 
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.4.0/24 |10.0.3.11 |Ermöglicht, dass lokaler Datenverkehr zur Verwaltungsfirewall **AZF3** |
 
 ### <a name="azsn2udr"></a>azsn2udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.3.0/24 |10.0.2.11 |Ermöglicht den Datenverkehr zum Back-End-Subnetz, in dem der Anwendungsserver gehostet wird, über **AZF2** |
 | 0.0.0.0/0 |10.0.2.10 |Ermöglicht die Weiterleitung des gesamten anderen Datenverkehrs über **AZF1** |
 
 ### <a name="azsn3udr"></a>azsn3udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.2.0/24 |10.0.3.10 |Ermöglicht, dass der Datenverkehr an **azsn2** vom Anwendungsserver zum Webserver über **AZF2** geleitet wird |
 
 Sie müssen zudem Routingtabellen für die Subnetze in **onpremvnet** erstellen, um das lokale Rechenzentrum zu imitieren.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 192.168.2.0/24 |192.168.1.4 |Ermöglicht den Datenverkehr zu **onpremsn2** über **OPFW** |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
-| Ziel | Nächster Hop | Erklärung |
+| Destination | Nächster Hop | Erklärung |
 | --- | --- | --- |
 | 10.0.3.0/24 |192.168.2.4 |Ermöglicht den Datenverkehr zum Back-End-Subnetz in Azure über **OPFW** |
 | 192.168.1.0/24 |192.168.2.4 |Ermöglicht den Datenverkehr zu **onpremsn1** über **OPFW** |

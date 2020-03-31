@@ -1,7 +1,7 @@
 ---
 title: 'Satzpaarbildung und -zuordnung: Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Während der Ausführung des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator lernt Übersetzungen Satz für Satz durch Lesen eines Satzes und der zugehörigen Übersetzung. Anschließend werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet.
+description: Während der Ausführung des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator lernt Übersetzungen Satz für Satz durch Lesen eines Satzes und der zugehörigen Übersetzung. Danach werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: adbc21c3e963a98a8482de0c26bf5e257f43013e
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80370137"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
@@ -37,8 +37,8 @@ Die folgende Tabelle enthält die für ein erfolgreiches Training erforderliche 
 | Dokumenttyp   | Empfohlene Mindestanzahl von Sätzen | Maximale Anzahl von Sätzen |
 |------------|--------------------------------------------|--------------------------------|
 | Training   | 10.000                                     | Keine Obergrenze                 |
-| Optimierung     | 5\.000                                      | 2\.500                          |
-| Testen    | 5\.000                                      | 2\.500                          |
+| Optimierung     | 500                                      | 2\.500       |
+| Testen    | 500                                      | 2\.500  |
 | Wörterbuch | 0                                          | Keine Obergrenze                 |
 
 > [!NOTE]

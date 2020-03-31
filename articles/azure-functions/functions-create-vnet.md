@@ -7,10 +7,10 @@ ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433211"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
@@ -73,7 +73,7 @@ Als Nächstes erstellen Sie eine vorkonfigurierte VM, auf der WordPress in einem
 
     ![Registerkarte für Netzwerkeinstellungen in „Virtuelles Netzwerk erstellen“](./media/functions-create-vnet/create-vm-2.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Name** | myResourceGroup-vnet | Sie können den für Ihr virtuelles Netzwerk generierten Standardnamen verwenden. |
     | **Adressbereich** | 10.10.0.0/16 | Verwenden Sie einen einzelnen Adressbereich für das virtuelle Netzwerk. |
@@ -122,7 +122,7 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
     | **Subnetz** | Neues Subnetz erstellen | Erstellen Sie ein Subnetz in dem virtuellen Netzwerk zur Verwendung durch Ihre Funktions-App. Die VNET-Integration muss so konfiguriert werden, dass ein leeres Subnetz verwendet wird. Es spielt keine Rolle, dass Ihre Funktionen ein anderes Subnetz verwenden als Ihre VM. Das virtuelle Netzwerk leitet den Datenverkehr automatisch zwischen den beiden Subnetzen weiter. |
     | **Subnetzname** | Function-Net | Name des neuen Subnetzes. |
     | **Adressblock des virtuellen Netzwerks** | 10.10.0.0/16 | Wählen Sie denselben Adressblock aus, der von der WordPress-Website verwendet wird. Es sollte nur ein Adressblock definiert sein. |
-    | **Adressbereich** | 10.10.2.0/24   | Die Subnetzgröße begrenzt die Gesamtanzahl von Instanzen, auf die Ihre Funktions-App im Premium-Plan erweitert werden kann. Dieses Beispiel verwendet ein `/24`-Subnetz mit 254 verfügbaren Hostadressen. Dieses Subnetz ist überdimensioniert, aber einfach zu berechnen. |
+    | **Adressbereich** | 10.10.2.0/24   | Die Subnetzgröße begrenzt die Gesamtanzahl von Instanzen, auf die Ihre Funktions-App im Premium-Plan aufskaliert werden kann. Dieses Beispiel verwendet ein `/24`-Subnetz mit 254 verfügbaren Hostadressen. Dieses Subnetz ist überdimensioniert, aber einfach zu berechnen. |
 
 1. Klicken Sie auf **OK**, um das Subnetz hinzuzufügen. Schließen Sie die Seiten „VNET-Integration“ und „Netzwerkfeaturestatus“, um zur Seite Ihrer Funktions-App zurückzukehren.
 
@@ -136,7 +136,7 @@ Wenn die VNET-Integration aktiviert ist, können Sie einen Proxy in Ihrer Funkti
 
     ![Definieren der Proxyeinstellungen](./media/functions-create-vnet/create-proxy.png)
 
-    | Einstellung  | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung  | Vorgeschlagener Wert  | Beschreibung      |
     | -------- | ---------------- | ---------------- |
     | **Name** | Plant | Der Name kann ein beliebiger Wert sein. Er wird zum Identifizieren des Proxys verwendet. |
     | **Routenvorlage** | /plant | Die Route, die einer VM-Ressource zugeordnet ist. |

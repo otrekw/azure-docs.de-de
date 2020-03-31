@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b254621cc414fb9b2b76263957adc80da6e9c22d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821132"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214008"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank
 
 Mit Azure Resource Manager-Vorlagen können Sie Ihre Infrastruktur als Code definieren und Ihre Lösungen in der Azure-Cloud bereitstellen.
 
-## <a name="single-database--elastic-pooltabsingle-database"></a>[Einzeldatenbank und Pool für elastische Datenbanken](#tab/single-database)
+## <a name="single-database--elastic-pool"></a>[Einzeldatenbank und Pool für elastische Datenbanken](#tab/single-database)
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azure SQL-Datenbank:
 
@@ -34,14 +34,14 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 | [Failovergruppen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Diese Vorlage erstellt zwei logische Azure SQL-Server, eine SQL-Datenbank und eine Failovergruppe.|
 | [Bedrohungserkennung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server und eine Gruppe von Azure SQL-Datenbanken mit aktivierter Bedrohungserkennung und einer E-Mail-Adresse für Warnungen für die einzelnen Datenbanken bereitstellen. Die Bedrohungserkennung ist Teil des ATP-Angebots (Advanced Threat Protection) und bietet eine Sicherheitsebene, die auf potenzielle Bedrohungen für SQL-Server und -Datenbanken reagiert.|
 | [Überwachung mit Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen Blobspeicher zu schreiben. Die Überwachung für Azure SQL-Datenbank verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
-| [Überwachung mit Azure Event Hub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Mit dieser Vorlage können Sie einen Azure SQL-Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen vorhandenen Event Hub zu schreiben. Um Überwachungsereignisse an einen Event Hub zu senden, müssen Sie die Überwachungseinstellungen mit `Enabled` `State` konfigurieren und `IsAzureMonitorTargetEnabled` auf `true` festlegen. Konfigurieren Sie außerdem die Diagnoseeinstellungen mit der Diagnoseprotokollkategorie `SQLSecurityAuditEvents` für die `master`-Datenbank (zur Überwachung auf Serverebene). Die Überwachung für Azure SQL-Datenbank und SQL Data Warehouse verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
+| [Überwachung mit Azure Event Hub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Mit dieser Vorlage können Sie einen Azure SQL-Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen vorhandenen Event Hub zu schreiben. Um Überwachungsereignisse an einen Event Hub zu senden, müssen Sie die Überwachungseinstellungen mit `Enabled` `State` konfigurieren und `IsAzureMonitorTargetEnabled` auf `true` festlegen. Konfigurieren Sie außerdem die Diagnoseeinstellungen mit der Protokollkategorie `SQLSecurityAuditEvents` für die `master`-Datenbank (zur Überwachung auf Serverebene). Die Überwachung für Azure SQL-Datenbank und SQL Data Warehouse verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
 | [Azure-Web-App mit SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | Dieses Beispiel erstellt eine kostenlose Azure-Web-App und eine SQL-Datenbank auf der Dienstebene „Basic“.|
 | [Azure-Web-App und Redis Cache mit SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | Diese Vorlage erstellt eine Web-App, eine Redis Cache-Instanz und eine SQL-Datenbank in der gleichen Ressourcengruppe und erstellt in der Web-App zwei Verbindungszeichenfolgen für die SQL-Datenbank und die Redis Cache-Instanz.|
 | [Importieren von Daten aus Blobspeicher mithilfe von ADF V2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | Diese Azure Resource Manager-Vorlage erstellt Azure Data Factory V2, um Daten aus Azure Blob Storage in eine SQL-Datenbank zu kopieren.|
 | [HDInsight-Cluster mit einer SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Mit dieser Vorlage können Sie einen HDInsight-Cluster, einen SQL-Datenbank-Server, eine SQL-Datenbank und zwei Tabellen erstellen. Diese Vorlage wird im Artikel [Verwenden von Apache Sqoop mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) verwendet. |
 | [Azure-Logik-App, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Mit dieser Vorlage können Sie eine Logik-App zu erstellen, die eine gespeicherte SQL-Prozedur gemäß einem Zeitplan ausführt. Argumente für die Prozedur können bei Bedarf im Textabschnitt der Vorlage platziert werden.|
 
-## <a name="managed-instancetabmanaged-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
+## <a name="managed-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für verwaltete Azure SQL-Datenbank-Instanzen:
 

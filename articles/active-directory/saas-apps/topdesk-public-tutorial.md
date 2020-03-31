@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71950420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk – Public
@@ -151,7 +151,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
 
 3. Klicken Sie auf **Anmeldeeinstellungen**.
    
-    ![Anmeldeeinstellungen](./media/topdesk-public-tutorial/ic790599.png "Anmeldeeinstellungen")
+    ![Login Settings (Anmeldeeinstellungen)](./media/topdesk-public-tutorial/ic790599.png "Anmeldeeinstellungen")
 
 4. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
    
@@ -171,7 +171,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
    
 6. Zum Erstellen einer Zertifikatsdatei führen Sie die folgenden Schritte durch:
     
-    ![Zertifikat](./media/topdesk-public-tutorial/ic790606.png "Zertifikat")
+    ![Certificate](./media/topdesk-public-tutorial/ic790606.png "Zertifikat")
     
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene Metadatendatei.
     
@@ -183,11 +183,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
 
 7. Klicken Sie im Abschnitt **Öffentlich** auf **Hinzufügen**.
     
-    ![SAML-Anmeldung](./media/topdesk-public-tutorial/ic790625.png "SAML-Anmeldung")
+    ![SAML Login (SAML-Anmeldung)](./media/topdesk-public-tutorial/ic790625.png "SAML-Anmeldung")
 
 8. Führen Sie auf der Seite **SAML Configuration Assistant** die folgenden Schritte aus:
     
-    ![SAML Configuration Assistant](./media/topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
+    ![SAML Configuration Assistant (SAML-Konfigurationsassistent)](./media/topdesk-public-tutorial/ic790608.png "SAML Configuration Assistant")
     
     a. Klicken Sie zum Hochladen der aus dem Azure-Portal heruntergeladenen Metadatendatei unter **Verbundmetadaten** auf **Durchsuchen**.
 
@@ -223,7 +223,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -290,4 +290,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „TOPdesk - Public“ klicken, sollt
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

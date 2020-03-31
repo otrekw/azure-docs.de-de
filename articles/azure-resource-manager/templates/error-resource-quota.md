@@ -3,12 +3,12 @@ title: Kontingentfehler
 description: Hier wird beschrieben, wie Sie Ressourcenkontingentfehler beim Bereitstellen von Ressourcen mit Azure Resource Manager beheben.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234026"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Das Beheben von Fehlern bei Ressourcenkontingenten
 
@@ -76,7 +76,7 @@ Get-AzVMUsage -Location "South Central US"
 
 Ausgabe des Befehls:
 
-```powershell
+```output
 Name                             Current Value Limit  Unit
 ----                             ------------- -----  ----
 Availability Sets                            0  2000 Count

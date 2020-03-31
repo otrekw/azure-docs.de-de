@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Azure Cosmos DB Datenbankschutz und Datensicherhe
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0c97d70ea3e5c7fdd14b0f97c5e393359f2b948e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087224"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537328"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Sicherheit bei Azure Cosmos DB – Übersicht
 
@@ -66,8 +66,8 @@ Betrachten wir die Anforderungen nun im Detail.
 |Globale Replikation|Azure Cosmos DB bietet eine sofort einsatzbereite globale Verteilung, mit der Sie Ihre Daten mit einem einzigen Mausklick in jedes der weltweiten Azure-Rechenzentren replizieren können. Mit der globalen Replikation können Sie global skalieren und für niedrige Latenzen beim Zugriff auf Ihre Daten auf der ganzen Welt sorgen.<br><br>Im Kontext der Sicherheit schützt die globale Replikation Ihre Daten vor regionalen Ausfällen.<br><br>Weitere Informationen finden Sie unter [Globale Verteilung von Daten](distribute-data-globally.md).|
 |Regionale Failover|Wenn Sie Ihre Daten in mehr als ein Rechenzentrum repliziert haben, führt Azure Cosmos DB automatisch ein Rollover Ihrer Vorgänge aus, falls ein regionales Rechenzentrum offline geschaltet wird. Sie können anhand der Regionen, in denen Ihre Daten repliziert werden, eine Prioritätsliste mit Failoverregionen erstellen. <br><br>Weitere Informationen finden Sie unter [Regionale Failover in Azure Cosmos DB](high-availability.md).|
 |Lokale Replikation|Azure Cosmos DB repliziert Daten automatisch auch innerhalb eines einzelnen Rechenzentrums und sorgt so für Hochverfügbarkeit sowie die Möglichkeit, verschiedene [Konsistenzebenen](consistency-levels.md) auszuwählen. Diese Replikation garantiert eine [Verfügbarkeits-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) von 99,99 % für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie eine Leseverfügbarkeit von 99,999 % für alle Datenbankkonten mit mehreren Regionen.|
-|Automatisierte Onlinesicherungen|Azure Cosmos-Datenbanken werden regelmäßig aktualisiert und in einem georedundanten Speicher gespeichert. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).|
-|Wiederherstellen gelöschter Daten|Automatisierte Onlinesicherungen können zum Wiederherstellen von Daten verwendet werden, die versehentlich gelöscht wurden. Dies ist bis zu ca. 30 Tage nach dem Löschen möglich. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).|
+|Automatisierte Onlinesicherungen|Azure Cosmos-Datenbanken werden regelmäßig aktualisiert und in einem georedundanten Speicher gespeichert. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
+|Wiederherstellen gelöschter Daten|Automatisierte Onlinesicherungen können zum Wiederherstellen von Daten verwendet werden, die versehentlich gelöscht wurden. Dies ist bis zu ca. 30 Tage nach dem Löschen möglich. <br><br>Weitere Informationen erhalten Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md).|
 |Schützen und Isolieren von vertraulichen Daten|Jetzt sind alle ruhenden Daten verschlüsselt, die sich in den unter „Neuerungen“ aufgeführten Regionen befinden.<br><br>Personenbezogene und vertrauliche Daten können in einem bestimmten Container isoliert werden, und der Lese-/Schreibzugriff bzw. der schreibgeschützte Zugriff kann auf bestimmte Benutzer beschränkt werden.|
 |Überwachen auf Angriffe|Mithilfe von [Überwachungsprotokollierung und Aktivitätsprotokollen](logging.md) können Sie Ihr Konto auf normale und ungewöhnliche Aktivitäten überwachen. Sie können anzeigen, welche Vorgänge für Ihre Ressourcen ausgeführt wurden, wer den jeweiligen Vorgang initiiert hat, wann der Vorgang ausgeführt wurde, welchen Status der Vorgang aufweist und vieles mehr, wie im Screenshot unter dieser Tabelle gezeigt.|
 |Reagieren auf Angriffe|Nachdem Sie den Azure-Support kontaktiert haben, um einen möglichen Angriff zu melden, wird ein aus fünf Schritten bestehender Prozess zur Reaktion auf den Incident angestoßen. Ziel dieses Prozesses ist es, die normale Dienstsicherheit und den normalen Betrieb so schnell wie möglich wiederherzustellen, nachdem ein Problem erkannt und eine Untersuchung gestartet wurde.<br><br>Weitere Informationen erhalten Sie unter [Microsoft Azure Security Response in the Cloud](https://aka.ms/securityresponsepaper) (Sicherheitsreaktion von Microsoft Azure in der Cloud).|

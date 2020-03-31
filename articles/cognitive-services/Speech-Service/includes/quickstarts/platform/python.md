@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925672"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für Python installieren. Führen Sie `pip install azure-cognitiveservices-speech` aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
@@ -54,7 +54,7 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Sprach-SDK](~/articles/cognitive-
         ```
 
 > [!NOTE]
-> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 - Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform. Beachten Sie, dass Sie bei der erstmaligen Installation vielleicht einen Windows-Neustart ausführen müssen, bevor Sie mit diesem Handbuch fortfahren.
 - Und schließlich benötigen Sie [Python 3.5 bis 3.8](https://www.python.org/downloads/). Um die Installation zu überprüfen, öffnen Sie eine Eingabeaufforderung, geben den Befehl `python --version` ein und überprüfen das Ergebnis. Bei ordnungsgemäßer Installation erhalten Sie die Antwort „Python 3.5.1“ oder ähnliches.

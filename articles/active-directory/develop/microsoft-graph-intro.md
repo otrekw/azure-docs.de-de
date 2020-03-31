@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 65465c6897853617f7f33a989f97d01fb0518a5e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136499"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
@@ -57,4 +57,4 @@ Nach Abschluss des Schnellstarts verfügen Sie über eine ausführungsbereite Ap
 
 Der Microsoft Graph-Tester ist ein webbasiertes Tool, mit dem Sie Anforderungen über die Microsoft Graph-APIs erstellen und testen können. Sie können auf den Microsoft Graph-Tester zugreifen unter: `https://developer.microsoft.com/graph/graph-explorer`.
 
-Postman ist ein Tool, mit dem Sie Anforderungen über die Microsoft Graph-APIs ebenfalls erstellen und testen können. Sie können Postman herunterladen unter: `https://www.getpostman.com/`. Für die Interaktion mit Microsoft Graph in Postman verwenden Sie die Microsoft Graph-Sammlung in Postman. Weitere Informationen finden Sie unter [Use Postman with the Microsoft Graph API](https://docs.microsoft.comgraph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta) (Verwenden von Postman bei der Microsoft Graph-API).
+Postman ist ein Tool, mit dem Sie Anforderungen über die Microsoft Graph-APIs ebenfalls erstellen und testen können. Sie können Postman herunterladen unter: `https://www.getpostman.com/`. Für die Interaktion mit Microsoft Graph in Postman verwenden Sie die Microsoft Graph-Sammlung in Postman. Weitere Informationen finden Sie unter [Use Postman with the Microsoft Graph API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta) (Verwenden von Postman bei der Microsoft Graph-API).

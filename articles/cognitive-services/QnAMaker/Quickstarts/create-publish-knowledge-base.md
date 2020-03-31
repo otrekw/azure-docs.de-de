@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen, Trainieren und Veröffentlichen einer Wissensdatenbank: QnA Maker'
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf der Grundlage einer einfachen FAQ-Webseite, um Fragen zu QnA Maker zu beantworten.
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219016"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -40,7 +40,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 1. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
 
-    |Einstellung|value|
+    |Einstellung|Wert|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
     |**Default answer text** (Standardantworttext)| `Quickstart - default answer not found.`|

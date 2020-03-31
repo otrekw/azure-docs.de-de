@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945824"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search (Vorschauversion)
@@ -57,13 +57,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie dann **OK** aus. |
-    | Location | Wählen Sie **USA, Westen** oder die verwendete Region aus.|
+    | Position | Wählen Sie **USA, Westen** oder die verwendete Region aus.|
     | Subnetzname | Geben Sie *mySubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
     |||
@@ -79,14 +79,14 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
 
 1. Geben Sie unter **Neuer Suchdienst – Grundlagen** folgende Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | **INSTANZDETAILS** |  |
     | URL | Geben Sie einen eindeutigen Namen ein. |
-    | Location | Wählen Sie die Region aus, die Sie beim Anfordern des Zugriffs auf diese Previewfunktion angegeben haben. |
+    | Position | Wählen Sie die Region aus, die Sie beim Anfordern des Zugriffs auf diese Previewfunktion angegeben haben. |
     | Tarif | Wählen Sie **Tarif ändern** und dann **Basic** aus. Dieser Tarif ist für die Vorschauversion erforderlich. |
     |||
   
@@ -100,11 +100,11 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
 
 1. Geben Sie unter **Privaten Endpunkt erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
-    | Location | Wählen Sie **USA, Westen** aus.|
+    | Position | Wählen Sie **USA, Westen** aus.|
     | Name | Geben Sie *myPrivateEndpoint* ein.  |
     | Zielunterressource | Übernehmen Sie den Standardwert **searchService**. |
     | **NETZWERK** |  |
@@ -133,7 +133,7 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -161,7 +161,7 @@ In diesem Abschnitt erstellen Sie einen neuen Azure Cognitive Search-Dienst mit 
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|

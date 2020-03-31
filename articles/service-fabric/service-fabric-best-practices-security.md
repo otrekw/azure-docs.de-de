@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551759"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229454"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-Sicherheit 
 

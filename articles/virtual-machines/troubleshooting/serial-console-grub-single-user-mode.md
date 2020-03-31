@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
 ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883933"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus
@@ -164,7 +164,7 @@ Standardmäßig wird der GRUB-Bereich für Ubuntu-Images nicht automatisch angez
 1. Öffnen Sie */etc/default/grub* in einem Text-Editor.
 1. Kommentieren Sie die Zeile `GRUB_HIDDEN_TIMEOUT=1` aus.
 1. Stellen Sie sicher, dass eine Zeile `GRUB_TIMEOUT_STYLE=menu` vorhanden ist.
-1. Führen Sie `sudo update-grub`aus.
+1. Führen Sie `sudo update-grub` aus.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Einzelbenutzermodus in Ubuntu
 Wenn Ubuntu nicht normal gestartet werden kann, wird automatisch der Einzelbenutzermodus aktiviert. Gehen Sie folgendermaßen vor, um den Einzelbenutzermodus manuell zu aktivieren:

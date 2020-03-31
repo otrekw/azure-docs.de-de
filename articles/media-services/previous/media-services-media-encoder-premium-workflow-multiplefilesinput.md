@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227014"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Verwenden mehrerer Eingabedateien und Komponenteneigenschaften mit Premium-Encoder
 ## <a name="overview"></a>Übersicht
-Es gibt Szenarien, in denen Sie Komponenteneigenschaften möglicherweise anpassen, den XML-Inhalt von Cliplisten angeben oder mehrere Eingabedateien senden müssen, wenn Sie eine Aufgabe mit dem Medienprozessor **Media Encoder Premium Workflow** übermitteln. Hier einige Beispiele:
+Es gibt Szenarien, in denen Sie Komponenteneigenschaften möglicherweise anpassen, den XML-Inhalt von Cliplisten angeben oder mehrere Eingabedateien senden müssen, wenn Sie eine Aufgabe mit dem Medienprozessor **Media Encoder Premium Workflow** übermitteln. Beispiele:
 
 * Überlagern von Video mit Text und Festlegen des Textwerts (z.B. das aktuelle Datum) zur Laufzeit für jedes Eingabevideo.
 * Anpassen des XML-Codes von Cliplisten (zum Angeben einer oder mehrerer Quelldateien, einer Kürzung usw.).

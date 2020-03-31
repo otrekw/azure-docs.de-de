@@ -9,10 +9,10 @@ ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684170"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
@@ -85,7 +85,7 @@ Wenn Sie Visual Studio 2015 verwenden, installieren Sie das [Azure SDK für .NET
 
 Wenn Sie Visual Studio 2017 verwenden, installieren Sie die [Workload „Azure-Entwicklung“](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
-### <a id="convert"></a> Aktivieren der WebJobs- Bereitstellung für ein vorhandenes Konsolenanwendungsprojekt
+### <a name="enable-webjobs-deployment-for-an-existing-console-application-project"></a><a id="convert"></a> Aktivieren der WebJobs- Bereitstellung für ein vorhandenes Konsolenanwendungsprojekt
 
 Sie haben zwei Möglichkeiten:
 
@@ -97,7 +97,7 @@ Sie haben zwei Möglichkeiten:
 
   Konfigurieren Sie ein vorhandenes Konsolenanwendungsprojekt für die Bereitstellung als eigenständiger Webauftrag ohne Verknüpfung mit einem Webprojekt. Wählen Sie diese Option, wenn Sie einen Webauftrag eigenständig ausführen möchten, ohne dass eine Webanwendung in der Web-App ausgeführt wird. Dies empfiehlt sich, wenn Sie Ihre Webauftragsressourcen unabhängig von Ihren Webanwendungsressourcen skalieren möchten.
 
-#### <a id="convertlink"></a> Aktivieren der automatischen Bereitstellung von Webaufträgen mit einem Webprojekt
+#### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Aktivieren der automatischen Bereitstellung von Webaufträgen mit einem Webprojekt
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Webprojekt. Klicken Sie dann auf **Hinzufügen** > **Vorhandenes Projekt als Azure WebJob**.
    
@@ -109,7 +109,7 @@ Sie haben zwei Möglichkeiten:
     ![Auswählen des Projekts im Dialogfeld "Azure-Webauftrag hinzufügen"](./media/webjobs-dotnet-deploy-vs/aaw1.png)
 3. Vervollständigen Sie das Dialogfeld [Azure-Webauftrag hinzufügen](#configure) , und klicken Sie dann auf **OK**. 
 
-#### <a id="convertnolink"></a> Aktivieren der Bereitstellung von Webaufträgen ohne Webprojekt
+#### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Aktivieren der Bereitstellung von Webaufträgen ohne Webprojekt
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und klicken Sie dann auf **Als Azure-WebJob veröffentlichen...** . 
    
     ![Als Azure-Webauftrag veröffentlichen](./media/webjobs-dotnet-deploy-vs/paw.png)
@@ -119,7 +119,7 @@ Sie haben zwei Möglichkeiten:
    
    Der Assistent **Web veröffentlichen** wird geöffnet.  Wenn Sie keine sofortige Veröffentlichung wünschen, schließen Sie den Assistenten. Die eingegebenen Einstellungen werden für den Zeitpunkt der gewünschten [Bereitstellung des Projekts](#deploy)gespeichert.
 
-### <a id="create"></a>Erstellen eines neuen webauftragsfähigen Projekts
+### <a name="create-a-new-webjobs-enabled-project"></a><a id="create"></a>Erstellen eines neuen webauftragsfähigen Projekts
 Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage für Konsolenanwendungsprojekte verwenden und die Bereitstellung von Webaufträgen gemäß den Erläuterungen im [vorherigen Abschnitt](#convert)ermöglichen. Alternativ können Sie die Webauftragsvorlage "new-project" nutzen:
 
 * [Verwenden der Webauftragsvorlage "new-project" für einen unabhängigen Webauftrag](#createnolink)
@@ -134,13 +134,13 @@ Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage f
 > 
 > 
 
-#### <a id="createnolink"></a> Verwenden der Webauftragsvorlage "new-project" für einen unabhängigen Webauftrag
+#### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> Verwenden der Webauftragsvorlage "new-project" für einen unabhängigen Webauftrag
 1. Klicken Sie auf **Datei** > **Neues Projekt** und anschließend im Dialogfeld **Neues Projekt** auf **Cloud** > **Azure WebJob (.NET Framework)** .
    
     ![Dialogfeld "Neues Projekt" mit Webauftragsvorlage](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Befolgen Sie die zuvor gezeigten Anweisungen, um [das Konsolenanwendungsprojekt als unabhängiges Webauftragsprojekt zu erstellen](#convertnolink).
 
-#### <a id="createlink"></a> Verwenden der Webauftragsvorlage "new-project" für einen mit einem Webprojekt verknüpften Webauftrag
+#### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Verwenden der Webauftragsvorlage "new-project" für einen mit einem Webprojekt verknüpften Webauftrag
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Webprojekt. Klicken Sie dann auf **Hinzufügen** > **Neues Azure WebJob-Projekt**.
    
     ![Menüeintrag "Neues Azure-Webauftragsprojekt"](./media/webjobs-dotnet-deploy-vs/nawj.png)
@@ -148,7 +148,7 @@ Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage f
     Das Dialogfeld [Azure-Webauftrag hinzufügen](#configure) wird angezeigt.
 2. Vervollständigen Sie das Dialogfeld [Azure-Webauftrag hinzufügen](#configure) , und klicken Sie dann auf **OK**.
 
-### <a id="configure"></a>Das Dialogfeld "Azure-Webauftrag hinzufügen"
+### <a name="the-add-azure-webjob-dialog"></a><a id="configure"></a>Das Dialogfeld "Azure-Webauftrag hinzufügen"
 Im Dialogfeld **Azure-WebJob hinzufügen** können Sie den WebJob-Namen eingeben und die Moduseinstellung für Ihren WebJob ausführen. 
 
 ![Dialogfeld "Azure-Webauftrag hinzufügen"](./media/webjobs-dotnet-deploy-vs/aaw2.png)
@@ -162,7 +162,7 @@ Die Felder in diesem Dialogfeld entsprechen den Feldern im Dialogfeld **WebJob h
 > 
 > 
 
-### <a id="publishsettings"></a>webjob-publish-settings.json
+### <a name="webjob-publish-settingsjson"></a><a id="publishsettings"></a>webjob-publish-settings.json
 Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfigurieren, installiert Visual Studio das NuGet-Paket [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) und speichert Zeitplanungsinformationen in der Datei *webjob-publish-settings.json* im Ordner *Eigenschaften* des WebJob-Projekts. Hier ist ein Beispiel dieser Datei:
 
         {
@@ -177,7 +177,7 @@ Wenn Sie eine Konsolenanwendung für die Bereitstellung von WebJobs konfiguriere
 
 Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) gespeichert und kann dort angezeigt werden.  
 
-### <a id="webjobslist"></a>webjobs-list.json
+### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Wenn Sie ein WebJob-fähiges Projekt mit einem Webprojekt verknüpfen, speichert Visual Studio den Namen des WebJob-Projekts in der Datei *webjobs-list.json* im Ordner *Eigenschaften* des Webprojekts. Die Liste kann mehrere WebJobs-Projekte umfassen, wie im folgenden Beispiel gezeigt wird:
 
         {
@@ -194,7 +194,7 @@ Wenn Sie ein WebJob-fähiges Projekt mit einem Webprojekt verknüpfen, speichert
 
 Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense zur Verfügung. Das Dateischema wird unter [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) gespeichert und kann dort angezeigt werden.
 
-### <a id="deploy"></a>Bereitstellen eines Webauftragsprojekts
+### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Bereitstellen eines Webauftragsprojekts
 Ein Webauftragsprojekt, das Sie mit einem Webprojekt verknüpft haben, wird automatisch mit dem Webprojekt bereitstellt. Informationen zur Bereitstellung von Webprojekten finden Sie unter **Anleitungen** > **App bereitstellen** im linken Navigationsbereich.
 
 Klicken Sie zum Bereitstellen eines WebJobs-Projekts im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt. Klicken Sie dann auf **Als Azure-WebJob veröffentlichen...** . 
@@ -231,10 +231,10 @@ Webaufträge unterstützen die folgenden Einstellungen:
 
 | **Einstellung** | **Typ**  | **Beschreibung** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Alle | Ermöglicht die direkte Ausführung des Auftrags, ohne ihn zuerst in einen temporären Ordner zu kopieren. Weitere Informationen finden Sie unter [WebJobs working directory (Arbeitsverzeichnis für Webaufträge)](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | All | Ermöglicht die direkte Ausführung des Auftrags, ohne ihn zuerst in einen temporären Ordner zu kopieren. Weitere Informationen finden Sie unter [WebJobs working directory (Arbeitsverzeichnis für Webaufträge)](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Fortlaufend | Die Webaufträge werden nur in einer einzelnen Instanz ausgeführt, wenn horizontal hochskaliert wurde. Weitere Informationen finden Sie unter [Set a continuous job as singleton (Festlegen eines fortlaufenden Auftrags als Singleton)](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
 | `schedule` | Ausgelöst | Der Webauftrag wird gemäß eines CRON-basierten Zeitplans ausgeführt. Weitere Informationen finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Alle | Ermöglicht das Steuern des Verhaltens des Herunterfahrens. Weitere Informationen finden Sie unter [Graceful shutdown (Ordnungsgemäßes Herunterfahren)](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| All | Ermöglicht das Steuern des Verhaltens des Herunterfahrens. Weitere Informationen finden Sie unter [Graceful shutdown (Ordnungsgemäßes Herunterfahren)](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

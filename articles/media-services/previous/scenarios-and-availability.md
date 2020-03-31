@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227010"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -104,7 +104,7 @@ Weitere Informationen zur Verfügbarkeit in Datencentern finden Sie im Abschnitt
     Wenn Sie einen SAS-Locator verwenden, wird der Inhalt aus Azure Blob Storage heruntergeladen. In diesem Fall müssen keine Streamingendpunkte im Status „Gestartet“ vorhanden sein.
 4. Führen Sie einen progressiven Download der Inhalte durch.
 
-## <a id="live_scenarios"></a>Bereitstellen von Livestreaming-Ereignissen 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Bereitstellen von Livestreaming-Ereignissen 
 
 1. Erfassen Sie Liveinhalte über verschiedene Livestreaming-Protokolle (wie etwa RTMP oder Smooth Streaming).
 2. Optional: Codieren Sie Ihren Datenstrom als Datenstrom mit adaptiver Bitrate.
@@ -143,7 +143,7 @@ Azure Media Services stellt die Tools zur Verfügung, die zum Erstellen leistung
 
 Von Media Services wird die Integration mit Azure CDN unterstützt. Informationen zum Aktivieren von Azure CDN finden Sie unter [Verwalten von Streamingendpunkten in Media Services-Konten](media-services-portal-manage-streaming-endpoints.md).
 
-## <a id="scaling"></a>Skalieren eines Media Services-Kontos
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Skalieren eines Media Services-Kontos
 
 AMS-Kunden können Streamingendpunkte, Medienverarbeitung und Speicherung in ihren AMS-Konten skalieren.
 
@@ -161,7 +161,7 @@ AMS-Kunden können Streamingendpunkte, Medienverarbeitung und Speicherung in ihr
     Weitere Informationen finden Sie unter [Skalieren der Medienverarbeitung](media-services-portal-scale-media-processing.md).
 * Außerdem können Sie Ihr Media Services-Konto skalieren, indem Sie Speicherkonten hinzufügen. Jedes Speicherkonto ist auf 500 TB beschränkt. Um den Speicher über die Standardbeschränkungen hinaus zu erweitern, können Sie mehrere Speicherkonten mit einem einzelnen Media Services-Konto verknüpfen. Weitere Informationen finden Sie unter [Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten](meda-services-managing-multiple-storage-accounts.md).
 
-## <a id="availability"></a> Datencenterübergreifende Verfügbarkeit von Media Services-Features
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> Datencenterübergreifende Verfügbarkeit von Media Services-Features
 
 Dieser Abschnitt enthält Details zur datencenterübergreifenden Verfügbarkeit von Media Services-Features.
 
@@ -202,6 +202,9 @@ AMS bietet zwei On-Demand-Encoder: **Media Encoder Standard** und **Media Encode
 ### <a name="analytics-media-processors"></a>Analytics-Medienprozessoren
 
 Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit denen Organisationen und Unternehmen anhand von Videodateien Erkenntnisse gewinnen, aus denen sich umsetzbare Maßnahmen ableiten lassen. Weitere Informationen finden Sie unter [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md).
+
+> [!NOTE]
+> Einige Analytics-Medienprozessoren werden außer Betrieb genommen. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
 #### <a name="availability"></a>Verfügbarkeit
 

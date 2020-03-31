@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232962"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -55,7 +55,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
    ![Bereitstellen von Details zum Integrationskonto](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschaft | Erforderlich | value | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*integration-account-name*> | Der Name Ihres Integrationskontos, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. In diesem Beispiel wird „Fabrikam-Integration“ verwendet. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118348"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Schnellstart: Formularerkennungs-Clientbibliothek für .NET
@@ -90,7 +90,7 @@ Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbar
 
 Die folgenden Klassen verarbeiten die Hauptfunktionen des SDK für die Formularerkennung.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Diese Klasse wird für alle Formularerkennungsfunktionen benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Sie verwenden diese Klasse, um mithilfe Ihrer eigenen Trainingseingabedaten ein benutzerdefiniertes Formularerkennungsmodell zu trainieren. |

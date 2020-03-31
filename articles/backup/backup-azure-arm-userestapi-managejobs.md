@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233946"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
@@ -17,7 +17,7 @@ Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien 
 
 ## <a name="fetch-job-information-from-operations"></a>Abrufen von Auftragsinformationen aus Vorgängen
 
-Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel:  Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
+Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel: Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
 
 ```http
 {
@@ -43,9 +43,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{jobName}` ist die oben erwähnte „jobId“. Die Antwort lautet immer „200 OK“, und im Feld „status“ wird der aktuelle Status des Auftrags angegeben. Wenn er „Completed“ oder „CompletedWithWarnings“ lautet, werden im Abschnitt „extendedInfo“ weitere Details zum Auftrag angegeben.
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

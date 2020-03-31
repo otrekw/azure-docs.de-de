@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668382"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
@@ -80,7 +80,7 @@ Mit der Alert Management-Lösung werden alle Datensätze vom Typ **Warnung**anal
 
 Die Lösung importiert Warnungen aus System Center Operations Manager, und es werden jeweils ein entsprechender Datensatz vom Typ **Warnung** und der SourceSystem-Eintrag **OpsManager** erstellt.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | `Type` |*Warnung* |
 | `SourceSystem` |*OpsManager* |

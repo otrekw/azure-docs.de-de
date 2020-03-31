@@ -4,16 +4,16 @@ description: Es wird beschrieben, wie Sie bei Problemen mit Data Box Edge- oder 
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9db119733bb80d9ae1462b70c3ffe555b2493405
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c93a2e2f3162891e72cf6d57f3df6c3ceaf0c7fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064971"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Erstellen eines Supporttickets für Azure Data Box Edge und Azure Data Box Gateway
 

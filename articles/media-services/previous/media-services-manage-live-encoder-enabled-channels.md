@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162530"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
@@ -57,7 +57,7 @@ In der folgenden Tabelle ist dargestellt, wie Kanalzustände den Abrechnungszust
 Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im Azure-Portal beenden.
 Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des Live Encoding-Kanals abgeschlossen haben.  Wenn Sie einen Codierkanal nicht beenden, werden weiter Gebühren berechnet.
 
-### <a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 * **Stopped**(Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status werden keine Gebühren berechnet. Ein Streaming ist jedoch nicht zulässig.
@@ -85,7 +85,7 @@ Im folgenden Diagramm ist ein Livedatenstrom-Workflow dargestellt, bei dem ein S
 
 ![Liveworkflow][live-overview]
 
-## <a id="scenario"></a>Allgemeines Livestreamingszenario
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Allgemeines Livestreamingszenario
 Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreaminganwendungen erläutert.
 
 > [!NOTE]
@@ -123,14 +123,14 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 > 
 > 
 
-## <a id="channel"></a>Eingabe-/Erfassungskonfigurationen des Kanals
-### <a id="Ingest_Protocols"></a>Erfassungsstreamingprotokoll
+## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>Eingabe-/Erfassungskonfigurationen des Kanals
+### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>Erfassungsstreamingprotokoll
 Wenn der **Encodertyp** die Einstellung **Standard** aufweist, gibt es folgende gültige Optionen:
 
 * Single-Bitrate **RTMP**
 * Single-Bitrate **Fragmentiertes MP4** (Smooth Streaming)
 
-#### <a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
+#### <a name="single-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
 Überlegungen:
 
 * Der eingehende Datenstrom darf kein Multi-Bitrate-Video enthalten.
@@ -210,7 +210,7 @@ Es wird empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) z
 #### <a name="language"></a>Sprache
 Dies ist die Sprachen-ID des Audiodatenstroms entsprechend ISO 639-2, z. B. „DEU“. Wenn keine ID vorhanden ist, gilt die Standardeinstellung „UND“ (undefiniert).
 
-### <a id="preset"></a>Systemvoreinstellung
+### <a name="system-preset"></a><a id="preset"></a>Systemvoreinstellung
 Hier ist die Voreinstellung angegeben, die vom Liveencoder in diesem Kanal verwendet werden soll. Derzeit lautet der einzig zulässige Wert **Default720p** (Standard).
 
 Mit **Default720p** wird das Video in die folgenden 6 Ebenen codiert.
@@ -262,7 +262,7 @@ Dies ist die Dauer des Slates in Sekunden. Es muss sich um einen positiven Wert 
 ### <a name="insert-slate-on-ad-marker"></a>Insert slate on ad marker (Slate bei AD-Marker einfügen)
 Wenn für diese Einstellung der Wert „true“ festgelegt ist, wird der Liveencoder zum Einfügen eines Slatebilds während Werbepausen konfiguriert. Der Standardwert lautet „true“. 
 
-### <a id="default_slate"></a>Default slate Asset Id (ID des Slate-Standardmedienobjekts)
+### <a name="default-slate-asset-id"></a><a id="default_slate"></a>Default slate Asset Id (ID des Slate-Standardmedienobjekts)
 
 Optional. Hier wird die ID des Media Services-Medienobjekts angegeben, welches das Slatebild enthält. Der Standardwert lautet null. 
 
@@ -299,7 +299,7 @@ Wenn Sie die archivierten Inhalte beibehalten möchten, diese aber nicht für da
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>Abrufen einer Miniaturansicht des Livefeeds
 Wenn Livecodierung aktiviert ist, können Sie jetzt eine Vorschau des Livefeeds abrufen, sobald er den Kanal erreicht. Dies kann ein wertvolles Tool sein, um zu überprüfen, ob Ihre Livefeed den Kanal tatsächlich erreicht. 
 
-## <a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
+## <a name="channel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 * **Stopped**(Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status können die Eigenschaften des Kanals aktualisiert werden. Ein Streaming ist jedoch nicht zulässig.
@@ -322,7 +322,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 > 
 > 
 
-## <a id="Considerations"></a>Überlegungen
+## <a name="considerations"></a><a id="Considerations"></a>Überlegungen
 * Tritt für einen Kanal des Codierungstyps **Standard** ein Verlust des Eingabequellen-/Beitragsfeeds auf, wird der Verlust kompensiert, indem der Quellvideo-/-audiodatenstrom durch eine Fehlertafel (Fehlerslate) und Stille ersetzt wird. Der Kanal gibt solange eine Tafel aus, bis der Eingabe-/Beitragsfeed fortgesetzt wird. Es empfiehlt sich, einen Livekanal nicht länger als 2 Stunden in diesem Zustand zu belassen. Nach diesem Punkt ist weder das Verhalten des Kanals nach erneuter Verbindung der Eingabe noch sein Verhalten als Reaktion auf einen Rücksetzungsbefehl vorhersagbar. Sie müssen den Kanal beenden, ihn löschen und dann einen neuen erstellen.
 * Sie können das Eingabeprotokoll nicht ändern, während der Kanal oder seine zugehörigen Programme ausgeführt werden. Wenn Sie andere Protokolle benötigen, erstellen Sie für jedes Eingabeprotokoll einen separaten Kanal.
 * Rufen Sie bei jeder Neukonfiguration des Liveencoders die **Reset** -Methode für den Kanal auf. Bevor Sie den Kanal zurückzusetzen, müssen Sie das Programm beenden. Wenn Sie den Kanal zurückgesetzt haben, starten Sie das Programm neu.

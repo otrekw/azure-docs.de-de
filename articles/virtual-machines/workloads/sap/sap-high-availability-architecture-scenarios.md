@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235910"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -332,7 +332,7 @@ Wenn Sie keine Funktionen wie WSFC oder Pacemaker unter Linux (derzeit nur für 
 
 Weitere Informationen zu diesem Ansatz finden Sie unter [Verwenden der Neustartfunktion von virtuellen Computern der Azure-Infrastruktur für eine höhere Verfügbarkeit des SAP-Systems][sap-higher-availability].
 
-## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Hochverfügbarkeit von SAP-Anwendungen in Azure IaaS
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Hochverfügbarkeit von SAP-Anwendungen in Azure IaaS
 
 Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel:
   * Redundante SAP-Anwendungsserver
@@ -420,6 +420,7 @@ Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red H
 > Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur unter Linux finden Sie unter:
 
 * [Leitfaden zur Multi-SID-Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP-Anwendungen: Multi-SID-Leitfaden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Hochverfügbarkeit für DBMS-Instanzen
 

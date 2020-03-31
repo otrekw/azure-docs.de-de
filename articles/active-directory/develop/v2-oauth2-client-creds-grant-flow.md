@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159759"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230510"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -178,7 +178,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
@@ -223,7 +223,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `access_token` | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen wie einer Web-API verwenden. |
 | `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `bearer`. |
@@ -246,7 +246,7 @@ Eine Fehlerantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `error` | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können |
@@ -277,7 +277,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Lesen Sie die [Übersichtsdokumentation zu Clientanmeldeinformationen](https://aka.ms/msal-net-client-credentials) aus der Microsoft-Authentifizierungsbibliothek.
 
-| Beispiel | Plattform |Beschreibung |
+| Beispiel | Plattform |BESCHREIBUNG |
 |--------|----------|------------|
 |[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1-Konsole | Eine einfache .NET Core-Anwendung, die die Benutzer eines Mandanten anzeigt, der Microsoft Graph unter Verwendung der Anwendungsidentität (statt im Auftrag eines Benutzers) abfragt. Das Beispiel veranschaulicht außerdem die Variante, bei der Zertifikate für die Authentifizierung verwendet werden. |
 |[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Eine Webanwendung, die Daten aus Microsoft Graph unter Verwendung der Anwendungsidentität (statt im Auftrag eines Benutzers) synchronisiert. |

@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968789"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Übersicht
- Mit Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming-Datenströme (HLS) übermitteln, die mit AES (Advanced Encryption Standard) mit 128-Bit-Verschlüsselungsschlüsseln oder [PlayReady DRM (Digital Rights Management)](https://www.microsoft.com/playready/overview/) geschützt sind. Media Services ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Datenströme bereitzustellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt.
+ Mit Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming-Datenströme (HLS) übermitteln, die mit AES (Advanced Encryption Standard) mit 128-Bit-Verschlüsselungsschlüsseln oder [PlayReady DRM (Digital Rights Management)](https://www.microsoft.com/playready/overview/) geschützt sind. Media Services ermöglicht Ihnen auch, mit Widevine DRM verschlüsselte DASH-Streams zu übermitteln. PlayReady und Widevine sind gemäß der Common Encryption-Spezifikation (ISO/IEC 23001-7 CENC) verschlüsselt.
 
 Media Services bietet einen Schlüssel-/Lizenzübermittlungsdienst, von dem die Clients AES-Schlüssel oder PlayReady/Widevine-Lizenzen zur Wiedergabe von verschlüsselten Inhalten abrufen können.
 
@@ -38,11 +38,11 @@ Wenn Sie mehrere Inhaltsschlüssel verwenden oder eine andere Schlüssel-/Lizenz
 * [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit dem Media Services .NET-SDK](media-services-dotnet-configure-content-key-auth-policy.md)
 * [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit der Media Services-REST-API](media-services-rest-configure-content-key-auth-policy.md)
 
-### <a name="some-considerations-apply"></a>Folgende Überlegungen sollten berücksichtigt werden:
+### <a name="some-considerations-apply"></a>Zu berücksichtigende Aspekte
 * Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein Standard-Streamingendpunkt mit dem Status „Beendet“ hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt den Status „Wird ausgeführt“ aufweisen. 
 * Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).
 * „ContentKeyAuthorizationPolicy“ und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst 15 Minuten lang zwischengespeichert. Sie können „ContentKeyAuthorizationPolicy“ erstellen und angeben, dass eine Tokeneinschränkung verwendet, getestet und anschließend die Richtlinie hinsichtlich der offenen Einschränkung aktualisiert werden soll. Dieser Vorgang dauert ungefähr 15 Minuten, bevor die Richtlinie zur offenen Version wechselt.
-* Ein Media Services-Streamingendpunkt legt den Wert des CORS-Headers „Access-Control-Allow-Origin“ in der Preflightantwort als Platzhalter „\*“ fest. Dieser Wert funktioniert mit den meisten Playern gut, einschließlich Azure Media Player, Roku und JWPlayer sowie weitere. Einige Player, die dash.js nutzen, funktionieren jedoch nicht, da „XMLHttpRequest“ in ihrer dash.js mit dem Anmeldeinformationsmodus auf „include“ gesetzt ist und der Platzhalter „\*“ als Wert von „Access-Control-Allow-Origin“ nicht zugelassen wird. Als Problemumgehung für diese Einschränkung in dash.js kann Media Services, wenn Sie Ihren Client von einer einzigen Domäne aus hosten, diese Domäne im Preflightantwortheader angeben. Wenn Sie Hilfe benötigen, öffnen Sie ein Supportticket über das Azure-Portal.
+* Ein Media Services-Streamingendpunkt legt den Wert des CORS-Headers „Access-Control-Allow-Origin“ in der Preflightantwort als Platzhalter „\*“ fest. Dieser Wert funktioniert mit den meisten Playern gut, z.B Azure Media Player, Roku und JWPlayer sowie weitere. Einige Player, die dash.js nutzen, funktionieren jedoch nicht, da „XMLHttpRequest“ in ihrer dash.js mit dem Anmeldeinformationsmodus auf „include“ gesetzt ist und der Platzhalter „\*“ als Wert von „Access-Control-Allow-Origin“ nicht zugelassen wird. Als Problemumgehung für diese Einschränkung in dash.js kann Media Services, wenn Sie Ihren Client von einer einzigen Domäne aus hosten, diese Domäne im Preflightantwortheader angeben. Wenn Sie Hilfe benötigen, öffnen Sie ein Supportticket im Azure-Portal.
 
 ## <a name="configure-the-key-authorization-policy"></a>Konfigurieren der Schlüsselautorisierungsrichtlinie
 Um die Schlüsselautorisierungsrichtlinie zu konfigurieren, wählen Sie die Seite **INHALTSSCHUTZ** aus.

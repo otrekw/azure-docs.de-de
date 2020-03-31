@@ -1,18 +1,14 @@
 ---
 title: Datenaufbewahrung und -speicherung in Azure Application Insights | Microsoft-Dokumentation
 description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234706"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -174,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 Standardmäßig wird `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` für die dauerhafte Speicherung von Daten verwendet. Die Berechtigungen für den Zugriff auf diesen Ordner sind auf den aktuellen Benutzer und Administratoren beschränkt. (Näheres dazu finden Sie in der [Implementierung](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts).)
 
 Das Ordnerpräfix `appInsights-node` kann überschrieben werden, indem der Laufzeitwert der statischen Variablen `Sender.TEMPDIR_PREFIX` geändert wird, die sich in [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) befindet.
+
+### <a name="javascript-browser"></a>JavaScript (Browser)
+
+Der [HTML5-Sitzungsspeicher](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wird verwendet, um Daten dauerhaft zu speichern. Es werden zwei separate Puffer verwendet: `AI_buffer` und `AI_sent_buffer`. Telemetriedaten, die als Batch verarbeitet werden und darauf warten, gesendet zu werden, werden in `AI_buffer` gespeichert. Die soeben gesendeten Telemetriedaten werden in `AI_sent_buffer` abgelegt, bis der Erfassungsserver antwortet, dass sie erfolgreich empfangen wurden. Wurden die Telemetriedaten erfolgreich empfangen, werden sie aus allen Puffern entfernt. Bei vorübergehenden Fehlern (z. B. wenn ein Benutzer die Netzwerkkonnektivität verliert) verbleiben die Telemetriedaten in `AI_buffer`, bis sie erfolgreich empfangen wurden oder der Erfassungsserver antwortet, dass sie ungültig sind (z. B. ein ungültiges Schema aufweisen oder zu alt sind).
+
+Telemetriepuffer können deaktiviert werden, indem [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) auf `false` festgelegt wird. Wenn der Sitzungsspeicher ausgeschaltet ist, wird stattdessen ein lokales Array als dauerhafter Speicher verwendet. Da das JavaScript SDK auf einem Clientgerät ausgeführt wird, kann der Benutzer über die Entwicklertools des Browsers auf diesen Speicherort zugreifen.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

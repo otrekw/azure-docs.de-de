@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235294"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -142,7 +142,7 @@ Wenn der Skalierungscontroller bestimmt, dass die Latenzen der Nachrichten der S
 
 Orchestratorfunktionen werden in einem einzelnen Thread ausgeführt, um sicherzustellen, dass die Ausführung in vielen Wiedergaben deterministisch sein kann. Aufgrund dieser Singlethreadausführung ist es wichtig, dass Orchestratorfunktionsthreads auf keinen Fall CPU-intensive Aufgaben, E/A-Vorgänge oder Blockierungsvorgänge ausführen. Alle Vorgänge, die möglicherweise E/A, die Blockierung oder mehrere Threads erfordern, sollten in die Aktivitätsfunktion verschoben werden.
 
-Aktivitätsfunktionen haben alle dasselbe Verhalten, als reguläre, durch Warteschlangen ausgelöste Funktionen. Sie können problemlos E/A-Vorgänge und CPU-intensive Vorgänge ausführen sowie mehrere Threads verwenden. Da Aktivitätsauslöser zustandslos sind, können sie jederzeit auf eine unbegrenzte Anzahl von virtuellen Computern horizontal hochskaliert werden.
+Aktivitätsfunktionen haben alle dasselbe Verhalten, als reguläre, durch Warteschlangen ausgelöste Funktionen. Sie können problemlos E/A-Vorgänge und CPU-intensive Vorgänge ausführen sowie mehrere Threads verwenden. Da Aktivitätsauslöser zustandslos sind, können sie jederzeit auf eine unbegrenzte Anzahl von virtuellen Computern aufskaliert werden.
 
 Entitätsfunktionen werden ebenfalls in einem einzelnen Thread ausgeführt, und Vorgänge werden nacheinander verarbeitet. Für Entitätsfunktionen gibt es jedoch keine Einschränkungen für den Typ des Codes, der ausgeführt werden kann.
 

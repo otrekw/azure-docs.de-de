@@ -5,20 +5,20 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ad6ea3c68ed6f48ac48bbbdafed7f8660df23937
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250113"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239229"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Schützen von Artefakten in Bereitstellungen per Azure Resource Manager-Vorlage
+# <a name="tutorial-secure-artifacts-in-arm-template-deployments"></a>Tutorial: Schützen von Artefakten bei Bereitstellungen von ARM-Vorlagen
 
-Hier wird beschrieben, wie Sie die in Ihren Azure Resource Manager-Vorlagen verwendeten Artefakte mithilfe eines Azure Storage-Kontos anhand von Shared Access Signatures (SAS) schützen. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zur Hauptvorlagendatei für eine Bereitstellung benötigt werden. Unter [Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) wird mit der Hauptvorlage beispielsweise eine Azure SQL-Datenbank-Instanz erstellt. Außerdem wird eine BACPAC-Datei aufgerufen, um Tabellen zu erstellen und Daten einzufügen. Die BACPAC-Datei ist ein Artefakt, das in einem Azure Storage-Konto gespeichert wird. Ein Speicherkontoschlüssel wurde für den Zugriff auf das Artefakt verwendet. 
+Hier wird beschrieben, wie Sie die in Ihren ARM-Vorlagen (Azure Resource Manager) verwendeten Artefakte mithilfe eines Azure Storage-Kontos mit Shared Access Signatures (SAS) schützen. Bereitstellungsartefakte sind sämtliche Dateien, die zusätzlich zur Hauptvorlagendatei für eine Bereitstellung benötigt werden. Unter [Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) wird mit der Hauptvorlage beispielsweise eine Azure SQL-Datenbank-Instanz erstellt. Außerdem wird eine BACPAC-Datei aufgerufen, um Tabellen zu erstellen und Daten einzufügen. Die BACPAC-Datei ist ein Artefakt, das in einem Azure Storage-Konto gespeichert wird. Ein Speicherkontoschlüssel wurde für den Zugriff auf das Artefakt verwendet.
 
 In diesem Tutorial verwenden Sie SAS, um in Ihrem eigenen Azure Storage-Konto begrenzten Zugriff auf die BACPAC-Datei zu gewähren. Weitere Informationen zu SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-Informationen zum Schützen einer verknüpften Vorlage finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./template-tutorial-create-linked-templates.md).
+Informationen zum Schützen einer verknüpften Vorlage finden Sie unter [Tutorial: Erstellen von verknüpften ARM-Vorlagen](./template-tutorial-create-linked-templates.md).
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -35,19 +35,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./use-vs-code-to-create-template.md).
-* Sehen Sie sich [Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) an. Die hier verwendete Vorlage wird in diesem Tutorial entwickelt. Dieser Artikel enthält einen Link zum Herunterladen der fertigen Vorlage.
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](./use-vs-code-to-create-template.md).
+* Sehen Sie sich [Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) an. Die hier verwendete Vorlage wird in diesem Tutorial entwickelt. Dieser Artikel enthält einen Link zum Herunterladen der fertigen Vorlage.
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das SQL Server-Administratorkonto. Sie können das folgende Beispiel zum Generieren eines Kennworts verwenden:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
+    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="prepare-a-bacpac-file"></a>Vorbereiten einer BACPAC-Datei
 
-In diesem Abschnitt bereiten Sie die BACPAC-Datei vor, damit der sichere Zugriff auf die Datei möglich ist, wenn Sie die Resource Manager-Vorlage bereitstellen. Dieser Abschnitt enthält fünf Verfahren:
+In diesem Abschnitt bereiten Sie die BACPAC-Datei vor, damit der sichere Zugriff auf die Datei möglich ist, wenn Sie die ARM-Vorlage bereitstellen. Dieser Abschnitt enthält fünf Verfahren:
 
 * Herunterladen der BACPAC-Datei
 * Erstellen eines Azure-Speicherkontos.
@@ -115,7 +115,7 @@ In diesem Abschnitt bereiten Sie die BACPAC-Datei vor, damit der sichere Zugriff
 
 ## <a name="open-an-existing-template"></a>Öffnen einer vorhandenen Vorlage
 
-In dieser Sitzung ändern Sie die Vorlage, die Sie unter [Tutorial: Importieren von SQL-BACPAC-Dateien mit Azure Resource Manager-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) erstellt haben, um die BACPAC-Datei mit einem SAS-Token aufzurufen. Die im Tutorial zur SQL-Erweiterung entwickelte Vorlage ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) verfügbar.
+In dieser Sitzung ändern Sie die Vorlage, die Sie unter [Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen](./template-tutorial-deploy-sql-extensions-bacpac.md) erstellt haben, um die BACPAC-Datei mit einem SAS-Token aufzurufen. Die im Tutorial zur SQL-Erweiterung entwickelte Vorlage ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) verfügbar.
 
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 1. Fügen Sie in **Dateiname** die folgende URL ein:
@@ -138,7 +138,7 @@ In dieser Sitzung ändern Sie die Vorlage, die Sie unter [Tutorial: Importieren 
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-1. Ersetzen Sie die Parameterdefinition „storageAccountKey“ durch die folgende Parameterdefinition: 
+1. Ersetzen Sie die Parameterdefinition „storageAccountKey“ durch die folgende Parameterdefinition:
 
     ```json
         "_artifactsLocationSasToken": {
@@ -211,7 +211,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei mit einem SAS-Token importiert. Weitere Informationen zum Erstellen einer Azure Pipeline-Instanz zur kontinuierlichen Entwicklung und Bereitstellung von Resource Manager-Vorlagen finden Sie in folgendem Artikel:
+In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei mit einem SAS-Token importiert. Im folgenden Tutorial erfahren Sie, wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungsverfahren verwenden:
 
 > [!div class="nextstepaction"]
-> [Continuous Integration mit Azure Pipelines](./template-tutorial-use-azure-pipelines.md)
+> [Verwenden von sicheren Bereitstellungsmethoden](./deployment-manager-tutorial.md)

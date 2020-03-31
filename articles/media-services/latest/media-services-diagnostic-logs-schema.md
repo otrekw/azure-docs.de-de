@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750878"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schemas für Diagnoseprotokolle
@@ -38,7 +38,7 @@ Eine detaillierte Beschreibung des Schemas der obersten Ebene für Diagnoseproto
 
 Diese Eigenschaften sind spezifisch für das Protokollschema für Schlüsselübermittlung.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |keyId|Die ID des angeforderten Schlüssels.|
 |keyType|Es kann sich um einen der folgenden Werte handeln: „Clear“ (keine Verschlüsselung), „FairPlay“, „PlayReady“ oder „Widevine“.|

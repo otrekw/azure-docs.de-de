@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235174"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle ist angegeben, wann und wie Sie Bindungen registrieren.
 |C#-Klassenbibliothek mit Visual Studio 2019|[Verwendung von NuGet-Tools](#vs)|[Verwendung von NuGet-Tools](#vs)|
 |C#-Klassenbibliothek mit Visual Studio Code|–|[Verwendung der .NET Core-CLI](#vs-code)|
 
-## <a name="extension-bundles"></a>Erweiterungsbündel für die lokale Entwicklung
+## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Erweiterungsbündel für die lokale Entwicklung
 
 Erweiterungsbündeln sind eine Bereitstellungstechnologie, mit der Sie Ihrer Funktions-App einen kompatiblen Satz mit Functions-Bindungserweiterungen hinzufügen können. Ein vordefinierter Satz von Erweiterungen wird beim Erstellen der App hinzugefügt. Da in einem Bündel definierte Erweiterungspakete miteinander kompatibel sind, ist dies für die Vermeidung von Konflikten zwischen Paketen hilfreich. Sie aktivieren Erweiterungsbündel in der Datei „host.json“ des Hosts der App.  
 
@@ -47,7 +47,7 @@ Um die Erweiterungsbündel zu verwenden, aktualisieren Sie die Datei *host.json*
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a>C\#-Klassenbibliothek mit Visual Studio
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C\#-Klassenbibliothek mit Visual Studio
 
 In **Visual Studio** können Sie Pakete mithilfe des Befehls [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) aus der Paket-Manager-Konsole installieren, wie im folgenden Beispiel gezeigt wird:
 
@@ -61,7 +61,7 @@ Ersetzen Sie `<TARGET_VERSION>` im Beispiel durch eine bestimmte Version des Pak
 
 Wenn Sie `Install-Package` verwenden, um auf eine Bindung zu verweisen, müssen Sie keine [Erweiterungsbündel](#extension-bundles) verwenden. Diese Vorgehensweise ist spezifisch für Klassenbibliotheken, die in Visual Studio erstellt werden.
 
-## <a name="vs-code"></a> C#-Klassenbibliothek mit Visual Studio Code
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> C#-Klassenbibliothek mit Visual Studio Code
 
 Installieren Sie in **Visual Studio Code** Pakete für eine C#-Klassenbibliothek über die Eingabeaufforderung. Verwenden Sie hierfür den Befehl [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) in der .NET Core-CLI. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Bindung hinzufügen:
 

@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459022"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hinzufügen der Authentifizierung zu Ihrer iOS-App
@@ -18,10 +18,10 @@ ms.locfileid: "77459022"
 
 In diesem Lernprogramm fügen Sie dem [iOS-Schnellstartprojekt] mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Lernprogramm baut auf dem [iOS-Schnellstartprojekt] auf, das Sie zuerst abschließen müssen.
 
-## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Hinzufügen Ihrer App zu den zulässigen externen Umleitungs-URLs
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren.  Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist.  In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_.  Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden.  Es sollte für Ihre mobile Anwendung eindeutig sein.  So aktivieren Sie die Umleitung auf der Serverseite:
 
@@ -39,12 +39,12 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 
 7. Klicken Sie auf **Speichern**.
 
-## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird ausgelöst, da die App als nicht authentifizierter Benutzer auf das Back-End zugreift, aber die *TodoItem*-Tabelle nun eine Authentifizierung verlangt.
 
-## <a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
+## <a name="add-authentication-to-app"></a><a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
 **Objective-C:**
 
 1. Öffnen Sie auf dem Mac *QSTodoListViewController.m* in Xcode, und fügen Sie folgende Methode hinzu:

@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204544"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Sie können Ihre im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog über die Benutzeroberfläche oder die Azure KI-Katalog-API anzeigen und löschen. In diesem Artikel erfahren Sie, wie das geht.
 
@@ -30,9 +32,9 @@ Sie können Ihre im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog über 
 
 Sie können veröffentlichte Elemente über die Benutzeroberfläche der Azure KI-Katalog-Website anzeigen. Benutzer können sowohl öffentliche als auch nicht aufgelistete Lösungen, Projekte, Experimente und andere veröffentlichte Elemente anzeigen:
 
-1.  Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
-2.  Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
-3.  Die Profilseite enthält alle im Katalog veröffentlichten Elemente, einschließlich nicht aufgelisteter Einträge.
+1.    Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
+2.    Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
+3.    Die Profilseite enthält alle im Katalog veröffentlichten Elemente, einschließlich nicht aufgelisteter Einträge.
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Verwenden der Azure KI-Katalog-API zum Anzeigen der Daten
 
@@ -43,9 +45,9 @@ Katalogantworten werden im JSON-Format zurückgegeben.
 ### <a name="get-an-author-id"></a>Abrufen einer Autor-ID
 Die Autor-ID basiert auf der E-Mail-Adresse, die beim Veröffentlichen im Azure KI-Katalog verwendet wurde. Sie wird nicht geändert:
 
-1.  Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
-2.  Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
-3.  Die URL in der Adressleiste zeigt im Anschluss an `authorId=` die alphanumerische ID. Zum Beispiel für die URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
+2.    Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
+3.    Die URL in der Adressleiste zeigt im Anschluss an `authorId=` die alphanumerische ID. Zum Beispiel für die URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Die Autor-ID: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ Um nicht aufgelistete Entitäten über die Katalog-API anzuzeigen, benötigen Si
 
 Um ein Zugriffstoken abzurufen, müssen Sie den Header `DataLabAccessToken` einer HTTP-Anforderung überprüfen, die der Browser an die Katalog-API sendet, während Sie angemeldet sind:
 
-1.  Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
-2.  Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
-3.  Öffnen Sie durch Drücken von F12 den Browserbereich „Entwicklertools“, wählen Sie die Registerkarte „Netzwerk“ aus, und aktualisieren Sie die Seite. 
+1.    Melden Sie sich beim [Azure KI-Katalog](https://gallery.azure.ai/) an.
+2.    Klicken Sie auf das Profilfoto in der oberen rechten Ecke und dann auf den Kontonamen, um Ihre Profilseite zu laden.
+3.    Öffnen Sie durch Drücken von F12 den Browserbereich „Entwicklertools“, wählen Sie die Registerkarte „Netzwerk“ aus, und aktualisieren Sie die Seite. 
 4. Filtern Sie die Anforderungen nach der Zeichenfolge *Katalog*, indem Sie diese im Textfeld „Filter“ eingeben.
-5.  Suchen Sie in den Anforderungen an die URL `https://catalog.cortanaanalytics.com/entities` nach einer GET-Anforderung, und wählen Sie die Registerkarte *Header* aus. Scrollen Sie nach unten bis zum Abschnitt *Anforderungsheader*.
-6.  Unter dem Header `DataLabAccessToken` befindet sich das alphanumerische Token. Zum besseren Schutz Ihrer Daten sollten Sie dieses Token niemandem bekanntgeben.
+5.    Suchen Sie in den Anforderungen an die URL `https://catalog.cortanaanalytics.com/entities` nach einer GET-Anforderung, und wählen Sie die Registerkarte *Header* aus. Scrollen Sie nach unten bis zum Abschnitt *Anforderungsheader*.
+6.    Unter dem Header `DataLabAccessToken` befindet sich das alphanumerische Token. Zum besseren Schutz Ihrer Daten sollten Sie dieses Token niemandem bekanntgeben.
 
 ### <a name="view-user-information"></a>Anzeigen von Benutzerinformationen
 Zeigen Sie mithilfe der in den vorherigen Schritten abgerufenen Autor-ID Informationen im Profil eines Benutzers an, indem Sie `[AuthorId]` in der folgenden URL ersetzen:
@@ -92,9 +94,9 @@ Beispiel:
 
 Bei dieser Abfrage werden nur öffentliche Entitäten angezeigt. Um alle Entitäten (einschließlich der nicht aufgelisteten Entitäten) anzuzeigen, stellen Sie das Zugriffstoken bereit, das Sie im vorherigen Abschnitt erhalten haben.
 
-1.  Erstellen Sie mit einem Tool wie [Postman](https://www.getpostman.com) eine HTTP-GET-Anforderung an die Katalog-URL, wie in [Abrufen eines Zugriffstokens](#get-your-access-token) beschrieben.
-2.  Erstellen Sie einen HTTP-Anforderungsheader namens `DataLabAccessToken` mit dem für das Zugriffstoken festgelegten Wert.
-3.  Übergeben Sie die HTTP-Anforderung.
+1.    Erstellen Sie mit einem Tool wie [Postman](https://www.getpostman.com) eine HTTP-GET-Anforderung an die Katalog-URL, wie in [Abrufen eines Zugriffstokens](#get-your-access-token) beschrieben.
+2.    Erstellen Sie einen HTTP-Anforderungsheader namens `DataLabAccessToken` mit dem für das Zugriffstoken festgelegten Wert.
+3.    Übergeben Sie die HTTP-Anforderung.
 
 > [!TIP]
 > Wenn nicht aufgelistete Entitäten in den Antworten der Katalog-API nicht angezeigt werden, hat der Benutzer möglicherweise ein ungültiges oder abgelaufenes Zugriffstoken verwendet. Melden Sie sich vom Azure KI-Katalog ab, und wiederholen Sie die unter [Abrufen eines Zugriffstokens](#get-your-access-token) beschriebenen Schritte, um das Token zu erneuern. 

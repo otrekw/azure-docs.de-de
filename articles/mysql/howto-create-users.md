@@ -5,15 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770474"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382867"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>Erstellen von Benutzern auf einem Azure Database for MySQL-Server 
+# <a name="create-users-in-azure-database-for-mysql-server"></a>Erstellen von Benutzern auf einem Azure Database for MySQL-Server
+
 In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for MySQL-Server erstellen können.
 
 Bei der anfänglichen Erstellung Ihrer Azure Database for MySQL-Instanz haben Sie einen Serveradministrator-Benutzernamen und das dazugehörige Kennwort angegeben. Weitere Informationen erhalten Sie in der [Schnellstartanleitung](quickstart-create-mysql-server-database-using-azure-portal.md). Sie können Ihren Serveradministrator-Benutzernamen im Azure-Portal ermitteln.
@@ -23,55 +24,58 @@ Der Serveradministrator erhält folgende Berechtigungen für Ihren Server: SELEC
 Nach der Erstellung des Azure Database for MySQL-Servers können Sie das erste Serveradministrator-Benutzerkonto verwenden, um weitere Benutzer zu erstellen und ihnen Administratorzugriff zu gewähren. Außerdem kann das Serveradministratorkonto genutzt werden, um Benutzer mit weniger Berechtigungen zu erstellen, die Zugriff auf einzelne Datenbankschemas haben.
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>Erstellen von zusätzlichen Administratorbenutzern in Azure Database for MySQL
-1. Beschaffen Sie die Verbindungsinformationen und den Administratorbenutzernamen.
-   Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Der Servername und die Anmeldeinformationen sind auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal leicht zu finden. 
 
-2. Verwenden Sie das Administratorkonto und das Kennwort zum Herstellen einer Verbindung mit Ihrem Datenbankserver. Nutzen Sie Ihr bevorzugtes Clienttool, z.B. MySQL Workbench, mysql.exe, HeidiSQL oder andere. 
+1. Beschaffen Sie die Verbindungsinformationen und den Administratorbenutzernamen.
+   Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Der Servername und die Anmeldeinformationen sind auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal leicht zu finden.
+
+2. Verwenden Sie das Administratorkonto und das Kennwort zum Herstellen einer Verbindung mit Ihrem Datenbankserver. Nutzen Sie Ihr bevorzugtes Clienttool, z.B. MySQL Workbench, mysql.exe, HeidiSQL oder andere.
    Wenn Sie unsicher sind, wie Sie die Verbindung herstellen sollen, helfen Ihnen die Informationen unter [Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten](./connect-workbench.md) weiter.
 
-3. Bearbeiten Sie den folgenden SQL-Code, und führen Sie ihn aus. Fügen Sie Ihren neuen Benutzernamen anstelle des Platzhalterwerts `new_master_user` ein. Mit dieser Syntax werden die aufgeführten Berechtigungen aller Datenbankschemas ( *.* ) für den Benutzernamen (hier: new_master_user) gewährt. 
+3. Bearbeiten Sie den folgenden SQL-Code, und führen Sie ihn aus. Fügen Sie Ihren neuen Benutzernamen anstelle des Platzhalterwerts `new_master_user` ein. Mit dieser Syntax werden die aufgeführten Berechtigungen aller Datenbankschemas ( *.* ) für den Benutzernamen (hier: new_master_user) gewährt.
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
-   
-   GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'new_master_user'@'%' WITH GRANT OPTION; 
-   
+
+   GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'new_master_user'@'%' WITH GRANT OPTION;
+
    FLUSH PRIVILEGES;
    ```
 
-4. Überprüfen der gewährten Berechtigungen 
+4. Überprüfen der gewährten Berechtigungen
+
    ```sql
    USE sys;
-   
+
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
 ## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>Erstellen von Datenbankbenutzern in Azure Database for MySQL
 
 1. Beschaffen Sie die Verbindungsinformationen und den Administratorbenutzernamen.
-   Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Der Servername und die Anmeldeinformationen sind auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal leicht zu finden. 
+   Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Der Servername und die Anmeldeinformationen sind auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal leicht zu finden.
 
-2. Verwenden Sie das Administratorkonto und das Kennwort zum Herstellen einer Verbindung mit Ihrem Datenbankserver. Nutzen Sie Ihr bevorzugtes Clienttool, z.B. MySQL Workbench, mysql.exe, HeidiSQL oder andere. 
+2. Verwenden Sie das Administratorkonto und das Kennwort zum Herstellen einer Verbindung mit Ihrem Datenbankserver. Nutzen Sie Ihr bevorzugtes Clienttool, z.B. MySQL Workbench, mysql.exe, HeidiSQL oder andere.
    Wenn Sie unsicher sind, wie Sie die Verbindung herstellen sollen, helfen Ihnen die Informationen unter [Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten](./connect-workbench.md) weiter.
 
 3. Bearbeiten Sie den folgenden SQL-Code, und führen Sie ihn aus. Ersetzen Sie den Platzhalterwert `db_user` durch den gewünschten neuen Benutzernamen und den Platzhalterwert `testdb` durch Ihren eigenen Datenbanknamen.
 
-   Mit dieser SQL-Codesyntax wird zu Beispielzwecken eine neue Datenbank mit dem Namen testdb erstellt. Anschließend wird im MySQL-Dienst ein neuer Benutzer erstellt, dem dann alle Berechtigungen für das neue Datenbankschema (testdb.\*) gewährt werden. 
+   Mit dieser SQL-Codesyntax wird zu Beispielzwecken eine neue Datenbank mit dem Namen testdb erstellt. Anschließend wird im MySQL-Dienst ein neuer Benutzer erstellt, dem dann alle Berechtigungen für das neue Datenbankschema (testdb.\*) gewährt werden.
 
    ```sql
    CREATE DATABASE testdb;
-   
+
    CREATE USER 'db_user'@'%' IDENTIFIED BY 'StrongPassword!';
-   
+
    GRANT ALL PRIVILEGES ON testdb . * TO 'db_user'@'%';
-   
+
    FLUSH PRIVILEGES;
    ```
 
 4. Überprüfen Sie die gewährten Berechtigungen in der Datenbank.
+
    ```sql
    USE testdb;
-   
+
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
@@ -82,6 +86,7 @@ Nach der Erstellung des Azure Database for MySQL-Servers können Sie das erste S
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Öffnen Sie die Firewall für die IP-Adressen der Computer der neuen Benutzer, um ihnen das Herstellen einer Verbindung zu ermöglichen: [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe des Azure-Portals](howto-manage-firewall-using-portal.md) oder über die [Azure CLI](howto-manage-firewall-using-cli.md).
 
 Weitere Informationen zur Verwaltung von Benutzerkonten finden Sie in der MySQL-Produktdokumentation in den Abschnitten zu den Themen [Benutzerkontenverwaltung](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), [GRANT-Syntax](https://dev.mysql.com/doc/refman/5.7/en/grant.html) und [Berechtigungen](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).

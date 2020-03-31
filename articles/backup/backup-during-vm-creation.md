@@ -4,11 +4,11 @@ description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtu
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226046"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -50,7 +50,7 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-Ressourcengruppe für virtuelle Computer
 
-Der Backup-Dienst erstellt eine separate Ressourcengruppe (RG) neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung (RPC). Die RPC enthält die Wiederherstellungspunkte für die sofortige Wiederherstellung der verwalteten VMs. Das Standardnamensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: `AzureBackupRG_<Geo>_<number>`. Beispiel:  *AzureBackupRG_northeurope_1*. Sie können den von Azure Backup erstellten Ressourcengruppennamen jetzt anpassen.
+Der Backup-Dienst erstellt eine separate Ressourcengruppe (RG) neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung (RPC). Die RPC enthält die Wiederherstellungspunkte für die sofortige Wiederherstellung der verwalteten VMs. Das Standardnamensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: `AzureBackupRG_<Geo>_<number>`. Beispiel: *AzureBackupRG_northeurope_1*. Sie können den von Azure Backup erstellten Ressourcengruppennamen jetzt anpassen.
 
 Beachten Sie Folgendes:
 

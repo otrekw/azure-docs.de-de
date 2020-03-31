@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
 ms.openlocfilehash: 396e5bc31723768ada334dd5043bca724af5e84f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595857"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
@@ -46,7 +46,7 @@ Informationen zu den ersten Schritten mit der horizontalen automatischen Podskal
 
 Da die horizontale automatische Podskalierung die Metriken-API alle 30 Sekunden überprüft, werden vorherige Skalierungsereignisse möglicherweise nicht erfolgreich abgeschlossen, bevor eine andere Überprüfung erfolgt. Dieses Verhalten kann dazu führen, dass die horizontale automatische Podskalierung die Anzahl der Replikate ändert, bevor das vorherige Skalierungsereignis die Anwendungsworkload empfangen und die Ressourcenanforderungen entsprechend anpassen konnte.
 
-Zum Minimieren dieser Raceereignisse werden Abkühlungs- oder Verzögerungswerte festgelegt. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für zentrales Hochskalieren 3 Minuten und für zentrales Herunterskalieren 5 Minuten.
+Zum Minimieren dieser Raceereignisse werden Abkühlungs- oder Verzögerungswerte festgelegt. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für das Hochskalieren 3 Minuten und für das Herunterskalieren 5 Minuten.
 
 Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 
@@ -60,7 +60,7 @@ Die automatische Clusterskalierung wird normalerweise zusammen mit der horizonta
 
 Informationen zu den ersten Schritten mit der automatischen Clusterskalierung in AKS finden Sie unter [Automatische Clusterskalierung in AKS][aks-cluster-autoscaler].
 
-### <a name="scale-up-events"></a>Zentrales Hochskalieren
+### <a name="scale-up-events"></a>Hochskalieren
 
 Wenn ein Knoten nicht über ausreichende Computeressourcen zum Ausführen eines angeforderten Pods verfügt, kann dieser Pod den Planungsprozess nicht erfüllen. Der Pod kann erst dann gestartet werden, wenn innerhalb des Knotenpools zusätzliche Computeressourcen verfügbar sind.
 

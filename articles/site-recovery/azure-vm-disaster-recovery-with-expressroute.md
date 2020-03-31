@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954083"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
@@ -106,10 +106,10 @@ Die Workloads herkömmlicher Enterprise-Bereitstellungen werden normalerweise au
 
 **Richtung** | **Einstellung** | **State**
 --- | --- | ---
-Spoke zu Hub | Virtuelle Netzwerkadressen zulassen | Enabled
-Spoke zu Hub | Weitergeleiteten Datenverkehr zulassen | Enabled
-Spoke zu Hub | Gatewaytransit zulassen | Deaktiviert
-Spoke zu Hub | „Gateways entfernen“ verwenden | Enabled
+Spoke zu Hub | Virtuelle Netzwerkadressen zulassen | Aktiviert
+Spoke zu Hub | Weitergeleiteten Datenverkehr zulassen | Aktiviert
+Spoke zu Hub | Gatewaytransit zulassen | Disabled
+Spoke zu Hub | „Gateways entfernen“ verwenden | Aktiviert
 
  ![Konfiguration des Spoke-zu-Hub-Peerings](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,10 +117,10 @@ Spoke zu Hub | „Gateways entfernen“ verwenden | Enabled
 
 **Richtung** | **Einstellung** | **State**
 --- | --- | ---
-Hub zu Spoke | Virtuelle Netzwerkadressen zulassen | Enabled
-Hub zu Spoke | Weitergeleiteten Datenverkehr zulassen | Enabled
-Hub zu Spoke | Gatewaytransit zulassen | Enabled
-Hub zu Spoke | „Gateways entfernen“ verwenden | Deaktiviert
+Hub zu Spoke | Virtuelle Netzwerkadressen zulassen | Aktiviert
+Hub zu Spoke | Weitergeleiteten Datenverkehr zulassen | Aktiviert
+Hub zu Spoke | Gatewaytransit zulassen | Aktiviert
+Hub zu Spoke | „Gateways entfernen“ verwenden | Disabled
 
  ![Konfiguration des Hub-zu-Spoke-Peerings](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -164,11 +164,11 @@ Diese Konfiguration hilft Ihnen beim Schutz vor Ausfällen der primären Express
 
 ### <a name="access-with-a-single-circuit"></a>Zugriff mit einer einzelnen Leitung
 
-In dieser Konfiguration gibt es nur eine ExpressRoute-Leitung. Obwohl die Leitung eine redundante Verbindung besitzt, für den Fall, dass eine ausfällt, bietet eine einzelne Routingleitung keine Resilienz, wenn Ihre Peeringregion ausfällt. Beachten Sie Folgendes:
+In dieser Konfiguration gibt es nur eine ExpressRoute-Leitung. Obwohl die Leitung eine redundante Verbindung besitzt, für den Fall, dass eine ausfällt, bietet eine einzelne Routingleitung keine Resilienz, wenn Ihre Peeringregion ausfällt. Beachten Sie dabei Folgendes:
 
 - Sie können virtuelle Azure-Computer in eine beliebige Azure-Region innerhalb [desselben geografischen Standorts](azure-to-azure-support-matrix.md#region-support) replizieren. Wenn sich die Azure-Zielregion nicht innerhalb desselben Standorts wie die Quelle befindet, müssen Sie ExpressRoute Premium aktivieren, wenn Sie eine einzelne ExpressRoute-Leitung verwenden. Erfahren Sie mehr über [ExpressRoute-Standorte](../expressroute/expressroute-locations.md) und [ExpressRoute – Preise](https://azure.microsoft.com/pricing/details/expressroute/).
 - Sie können Quell- und Ziel-vNets nicht gleichzeitig mit der Leitung verbinden, wenn in der Zielregion derselbe IP-Adressraum verwendet wird. Szenario:    
-    -  Trennen Sie die Verbindung mit der Quelle, und stellen Sie dann die Verbindung mit dem Ziel her. Diese Verbindungsänderung kann als Teil eines Site Recovery-Wiederherstellungsplans geskriptet werden. Beachten Sie Folgendes:
+    -  Trennen Sie die Verbindung mit der Quelle, und stellen Sie dann die Verbindung mit dem Ziel her. Diese Verbindungsänderung kann als Teil eines Site Recovery-Wiederherstellungsplans geskriptet werden. Beachten Sie dabei Folgendes:
         - Wenn bei einem regionalen Ausfall kein Zugriff auf die primäre Region möglich ist, kann der Trennvorgang fehlschlagen. Dies könnte sich auf die Herstellung einer Verbindung mit der Zielregion auswirken.
         - Wenn Sie die Verbindung in die Zielregion erstellt haben, und die primäre Region wird später wiederhergestellt, kann es zu Paketverlusten kommen, da zwei gleichzeitige Verbindungen versuchen, auf den gleichen Adressraum zuzugreifen.
         - Um dies zu verhindern, beenden Sie die primäre Verbindung sofort.

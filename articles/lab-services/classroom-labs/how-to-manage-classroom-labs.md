@@ -10,15 +10,15 @@ ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539449"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502021"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 

@@ -6,13 +6,13 @@ author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671408"
 ---
-# <a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden. Es kann viele verschiedene Gründe geben, warum keine Momentaufnahmen generiert werden. Sie können die Integritätsprüfung für Momentaufnahmen ausführen, um einige der möglichen Ursachen zu ermitteln.
 
 ## <a name="use-the-snapshot-health-check"></a>Verwenden der Integritätsprüfung für Momentaufnahmen

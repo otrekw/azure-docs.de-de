@@ -4,11 +4,11 @@ description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokolle
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665985"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234790"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -193,19 +193,19 @@ Verwenden Sie die [Java-Protokolladapter](../../azure-monitor/app/java-trace-log
 * Wenn Sie „System.Diagnostics.Trace“ verwenden, müssen Sie sicherstellen, dass es [in *web.config*](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx) konfiguriert ist.
 * Vergewissern Sie sich, dass die aktuelle Version von Application Insights installiert ist. Wählen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** aus, und öffnen Sie die Registerkarte **Updates**. Wenn die **Developer Analytics-Tools** hier aufgeführt werden, wählen Sie sie aus, um sie zu aktualisieren.
 
-### <a name="emptykey"></a>Eine Fehlermeldung „Instrumentationsschlüssel darf nicht leer sein“ wird angezeigt.
+### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Eine Fehlermeldung „Instrumentationsschlüssel darf nicht leer sein“ wird angezeigt.
 Sie haben möglicherweise das Protokollierungsadapter-Nuget-Paket installiert, ohne Application Insights zu installieren. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf *ApplicationInsights.config*, und wählen Sie **Application Insights aktualisieren** aus. Sie werden aufgefordert, sich bei Azure anzumelden und eine Application Insights-Ressource zu erstellen oder eine vorhandenen Ressource wiederzuverwenden. Damit sollte das Problem behoben werden.
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>Es werden Ablaufverfolgungen in der Diagnosesuche angezeigt, aber keine anderen Ereignisse.
 Es kann eine Weile dauern, bis alle Ereignisse und Anforderungen über die Pipeline abgerufen werden.
 
-### <a name="limits"></a>Wie viele Daten werden beibehalten?
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>Wie viele Daten werden beibehalten?
 Die Menge der beibehaltenen Daten hängt von mehreren Faktoren ab. Weitere Informationen finden Sie auf der Seite mit den Metriken für benutzerdefinierte Ereignisse im Abschnitt [Grenzwerte](../../azure-monitor/app/api-custom-events-metrics.md#limits).
 
 ### <a name="i-dont-see-some-log-entries-that-i-expected"></a>Es werden einige Protokolleinträge nicht angezeigt, die ich erwartet habe.
 Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die adaptive Stichprobenerstellung verwendet, bei der nur ein bestimmter Teil der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
 
-## <a name="add"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="add"></a>Nächste Schritte
 
 * [Diagnostizieren von Fehlern und Ausnahmen in ASP.NET][exceptions]
 * [Weitere Informationen zur Suche][diagnostic]

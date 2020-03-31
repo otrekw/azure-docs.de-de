@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756159"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236034"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
@@ -106,7 +106,7 @@ Wenn Sie Daten löschen, werden diese Daten von Microsoft Azure gelöscht, einsc
 Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://microsoft.com/trustcenter/privacy/you-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
 
 ## <a name="compute-isolation"></a>Computeisolation
-Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
+Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Isolierte Größen virtueller Computer
 

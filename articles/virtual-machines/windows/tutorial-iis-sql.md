@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 286d00ce718a34dea15a075984cc3b2a5e4cfec3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 762d67a291ec33e13ca9e7311b0cf11da140dd6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064659"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154269"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 
@@ -129,7 +129,7 @@ Set-AzVMSqlServerExtension `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell installiert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell installiert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer VM 
@@ -137,8 +137,8 @@ In diesem Tutorial haben Sie einen SQL-/IIS-/.NET-Stapel mithilfe von Azure Powe
 > * Erstellen eines virtuellen Computers, auf dem SQL Server ausgeführt wird
 > * Installieren der SQL Server-Erweiterung
 
-Im nächsten Tutorial erfahren Sie, wie Sie einen IIS-Webserver mit SSL-Zertifikaten schützen.
+Im nächsten Tutorial erfahren Sie, wie Sie einen IIS-Webserver mit TLS/SSL-Zertifikaten schützen.
 
 > [!div class="nextstepaction"]
-> [Schützen eines IIS-Webservers mit SSL-Zertifikaten](tutorial-secure-web-server.md)
+> [Schützen eines IIS-Webservers mit TLS/SSL-Zertifikaten](tutorial-secure-web-server.md)
 

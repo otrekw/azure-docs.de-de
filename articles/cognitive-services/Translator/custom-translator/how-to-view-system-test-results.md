@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595601"
 ---
 # <a name="view-system-test-results"></a>Anzeigen der Ergebnisse von Systemtests
@@ -104,4 +104,4 @@ So aktualisieren Sie die Bereitstellungseinstellungen:
 
 - Beginnen Sie mit der Verwendung Ihres bereitstellten benutzerdefinierten Übersetzungsmodells über die [Microsoft-Textübersetzungs-API (V3)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
 - Informieren Sie sich über das [Verwalten von Einstellungen](how-to-manage-settings.md) zum Freigeben Ihres Arbeitsbereichs sowie über die Verwaltung Ihres Abonnementschlüssels.
-- Informieren Sie sich über das [Migrieren Ihres Arbeitsbereichs und Projekts](how-to-migrate.md) über den [Microsoft Translator-Hub](https://hub.microsofttranslator.com).
+- Erfahren Sie mehr über das [Migrieren Ihres Arbeitsbereichs und Projekts](how-to-migrate.md) aus [Microsoft Translator Hub](https://hub.microsofttranslator.com).

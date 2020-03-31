@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793442"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)
@@ -28,7 +28,7 @@ Der Lucene-Parser unterstützt komplexe Abfragekonstrukte, z.B. feldbezogene Abf
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
 
-Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://opendata.cityofnewyork.us/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Das bedeutet, dass Sie kein Azure-Abonnement und keine Instanz der kognitiven Azure-Suche benötigen, um diese Abfragen zu testen.
+Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://opendata.cityofnewyork.us/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Das bedeutet, dass Sie zum Testen dieser Abfragen weder ein Azure-Abonnement noch Azure Cognitive Search benötigen.
 
 Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Untersuchen mit REST-Clients](search-get-started-postman.md).
 
@@ -44,13 +44,13 @@ Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Ab
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
-Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, in der der Endpunkt der kognitiven Azure-Suche und die Suchzeichenfolge enthalten sind.
+Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, die den Azure Cognitive Search-Endpunkt und die Suchzeichenfolge enthält.
 
   ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Die URL-Komposition umfasst die folgenden Elemente:
 
-+ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Entwicklungsteam für die kognitive Azure-Suche gewartet wird. 
++ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Azure Cognitive Search-Entwicklungsteam gepflegt wird. 
 + **`indexes/nycjobs/`** ist der Index „NYC Jobs“ in der Indexsammlung dieses Diensts. Sowohl der Dienstname als auch der Index sind für die Anforderung erforderlich.
 + **`docs`** ist die Dokumentsammlung, die den gesamten durchsuchbaren Inhalt enthält. Der im Anforderungsheader angegebene Abfrage-API-Schlüssel funktioniert nur für Lesevorgänge, die die Dokumentsammlung betreffen.
 + **`api-version=2019-05-06`** legt die API-Version fest. Dies ist für alle Anforderungen ein erforderlicher Parameter.
@@ -80,7 +80,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 In allen Beispielen in diesem Artikel wird der Suchparameter **queryType=full** verwendet. Damit wird angegeben, dass die vollständige Syntax vom Lucene-Abfrageparser verarbeitet wird. 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Beispiel 1: Auf eine Liste von Feldern begrenzte Abfrage
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Beispiel 1: Auf eine Liste von Feldern begrenzte Abfrage
 
 Dieses erste Beispiel gilt nicht spezifisch für Lucene, es wird jedoch damit begonnen, um das erste Grundkonzept für Abfragen vorzustellen: der Feldbereich. In diesem Beispiel werden die gesamte Abfrage und die Antwort auf wenige bestimmte Felder beschränkt. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
 
@@ -115,7 +115,7 @@ Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
 
 Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer einheitlichen Bewertung von „1“ kommt es, wenn kein Rang vorhanden ist, weil es entweder keine Volltextsuche war oder weil keine Kriterien angewandt wurden. Bei einer NULL-Suche ohne Kriterien werden Zeilen in willkürlicher Reihenfolge zurückgegeben. Wenn Sie tatsächliche Suchkriterien einfügen, werden aussagekräftige Werte für die Suchbewertungen angezeigt.
 
-## <a name="example-2-fielded-search"></a>Beispiel 2: Feldbezogene Suche
+## <a name="example-2-fielded-search"></a>Beispiel 2: Feldbezogene Suche
 
 Die vollständige Lucene-Syntax unterstützt die Bereichsdefinition einzelner Ausdrücke auf ein bestimmtes Feld. Dieses Beispiel sucht nach Geschäftstiteln, in denen der Begriff „Senior“, jedoch nicht der Begriff „Junior“ enthalten ist.
 
@@ -139,7 +139,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman-Beispielantwort](media/search-query-lucene-examples/intrafieldfilter.png)
 
-Sie können einen feldbezogenen Suchvorgang mit der **fieldName:searchExpression**-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Beispiele hierfür sind:
+Sie können einen feldbezogenen Suchvorgang mit der **fieldName:searchExpression**-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Einige Beispiele für Änderungen sind in der folgenden Liste aufgeführt:
 
 - `business_title:(senior NOT junior)`
 - `state:("New York" OR "New Jersey")`
@@ -152,7 +152,7 @@ Das in **fieldName:searchExpression** angegebene Feld muss durchsuchbar sein. Ei
 > [!NOTE]
 > Im obigen Beispiel war der Parameter `searchFields` nicht erforderlich, da für jeden Teil der Abfrage Feldname explizit angegeben ist. Allerdings können Sie den Parameter `searchFields` trotzdem verwenden, wenn Sie eine Abfrage ausführen möchten, bei der einige Teile auf ein bestimmtes Feld beschränkt sind, der Rest sich jedoch auf mehrere Felder beziehen kann. Zum Beispiel würde `senior NOT junior` in der Abfrage `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` nur mit dem Feld `business_title` und „external“ mit dem Feld `posting_type` abgeglichen werden. Der in **fieldName:searchExpression** angegebene Feldname hat immer Vorrang vor dem Parameter `searchFields`, weshalb `business_title` in diesem Beispiel nicht in den Parameter `searchFields` aufgenommen werden muss.
 
-## <a name="example-3-fuzzy-search"></a>Beispiel 3: Fuzzysuche
+## <a name="example-3-fuzzy-search"></a>Beispiel 3: Fuzzysuche
 
 Die vollständige Lucene-Syntax unterstützt auch die Fuzzysuche, bei der sich Übereinstimmungen für Begriffe ergeben, die über eine ähnliche Konstruktion verfügen. Hängen Sie für eine Fuzzysuche das Tildesymbol `~` an das Ende eines einzelnen Worts mit einem optionalen Parameter an, einem Wert zwischen 0 und 2, der die Editierdistanz angibt. Beispielsweise würden bei `blue~` oder `blue~1` die Werte „blue“, „blues“ und „glue“ zurückgegeben.
 
@@ -284,12 +284,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folgenden Links wird erläutert, wie Sie Suchabfragen sowohl für .NET als auch für die REST-API einrichten. Bei diesen Links wird die einfache Standardsyntax „simple“ verwendet, daher müssen Sie das in diesem Artikel Gelernte anwenden, um den **queryType**anzugeben.
 
-* [Abfragen des Index mit dem .NET SDK](search-query-dotnet.md)
+* [Abfragen des Index mit dem .NET SDK](search-query-dotnet.md)
 * [Abfragen des Index mit der REST-API](search-create-index-rest-api.md)
 
 Eine zusätzliche Syntaxreferenz, eine Abfragearchitektur und Beispiele finden Sie unter den folgenden Links:
 
 + [Beispiele für Abfragen mit einfacher Syntax](search-query-simple-examples.md)
-+ [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

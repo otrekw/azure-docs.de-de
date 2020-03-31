@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
 ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78305058"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
@@ -16,7 +16,7 @@ ms.locfileid: "78305058"
 | [Web-Apps, mobile Apps oder API-Apps](https://azure.microsoft.com/services/app-service/) pro [Azure App Service-Plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup> |Unbegrenzt<sup>2</sup>|
 | [App Service-Plan](../articles/app-service/overview-hosting-plans.md) |10 pro Region |10 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe |100 pro Ressourcengruppe|
 | Serverinstanztyp |Shared |Shared |Dediziert<sup>3</sup> |Dediziert<sup>3</sup> |Dediziert<sup>3</sup></p> |Dediziert<sup>3</sup>|
-| [Horizontales Hochskalieren](../articles/app-service/manage-scale-up.md) (Instanzen maximal) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |30 dedizierte<sup>3</sup>|100 dedizierte<sup>4</sup>|
+| [Aufskalieren](../articles/app-service/manage-scale-up.md) (Instanzen maximal) |1 freigegebene |1 freigegebene |3 dedizierte<sup>3</sup> |10 dedizierte<sup>3</sup> |30 dedizierte<sup>3</sup>|100 dedizierte<sup>4</sup>|
 | Speicher<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | CPU-Zeit (5 Minuten)<sup>6</sup> |3 Minuten |3 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-Zeit (Tag)<sup>6</sup> |60 Minuten |240 Minuten |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |Unbegrenzt, normal zu [bezahlen](https://azure.microsoft.com/pricing/details/app-service/)</a> |

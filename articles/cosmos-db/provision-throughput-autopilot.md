@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 89af30788fe5129cddc6a3607b8c722549b610d1
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225678"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
@@ -50,9 +50,9 @@ Die Anwendungsfälle für die im Autopilot-Modus konfigurierten Azure Cosmos-Con
 
 * **Selten genutzte Anwendungen:** Sie verfügen über eine Anwendung, die mehrmals pro Tag, Woche oder Monat für wenige Stunden genutzt wird, beispielsweise eine Anwendung/Website/Blogwebsite mit geringem Volumen.
 
-* **Entwicklungs-und Testdatenbanken:** Ihre Entwickler verwenden Container während der Arbeitszeit, benötigen sie jedoch nicht nachts oder an Wochenenden. Bei Containern, die im Autopilot-Modus konfiguriert sind, wird die Skalierung auf ein Minimum beschränkt, wenn sie nicht verwendet werden.
+* **Entwicklungs-und Testdatenbanken:** Ihre Entwickler verwenden Container während der Arbeitszeit, benötigen sie jedoch nicht nachts oder an Wochenenden. Bei Containern, die im Autopilot-Modus konfiguriert sind, wird auf ein Minimum herunterskaliert, wenn sie nicht verwendet werden.
 
-* **Geplante Produktionsworkloads/-abfragen:** Wenn Sie über eine Reihe geplanter Anforderungen/Vorgänge/Abfragen für einen einzelnen Container verfügen und es Leerlaufphasen gibt, in denen Sie den Durchsatz auf ein absolutes Minimum beschränken möchten, können Sie dies jetzt problemlos tun. Wenn eine geplante Abfrage/Anforderung an einen Container übermittelt wird, der im Autopilot-Modus konfiguriert ist, wird der Durchsatz soweit wie nötig zentral hochskaliert, und der Vorgang wird ausgeführt.
+* **Geplante Produktionsworkloads/-abfragen:** Wenn Sie über eine Reihe geplanter Anforderungen/Vorgänge/Abfragen für einen einzelnen Container verfügen und es Leerlaufphasen gibt, in denen Sie den Durchsatz auf ein absolutes Minimum beschränken möchten, können Sie dies jetzt problemlos tun. Wenn eine geplante Abfrage/Anforderung an einen Container übermittelt wird, der im Autopilot-Modus konfiguriert ist, wird der Durchsatz soweit wie nötig hochskaliert, und der Vorgang wird ausgeführt.
 
 Lösungen für die vorherigen Probleme erfordern nicht nur eine sehr lange Implementierungszeit, sondern erhöhen auch die Komplexität der Konfiguration oder Ihres Codes. Außerdem ist häufig ein manuelles Eingreifen erforderlich, um die Probleme zu beheben. Im Autopilot-Modus werden die oben aufgeführten Szenarien standardmäßig unterstützt, sodass Sie sich nicht mehr um diese Probleme kümmern müssen.
 
@@ -82,7 +82,7 @@ Sie können den Autopilot-Modus für neue Datenbanken oder Container konfigurier
 
 Sie können eine Datenbank mit gemeinsam genutztem Durchsatz mit Autopilot-Modus erstellen, indem Sie die Option **Datenbankdurchsatz** auswählen.
 
-## <a id="autopilot-limits"></a> Durchsatz- und Speicherlimits für Autopilot
+## <a name="throughput-and-storage-limits-for-autopilot"></a><a id="autopilot-limits"></a> Durchsatz- und Speicherlimits für Autopilot
 
 In der nachstehenden Tabelle werden die maximalen Durchsatz- und Speicherlimits für verschiedene Optionen im Autopilot-Modus gezeigt:
 

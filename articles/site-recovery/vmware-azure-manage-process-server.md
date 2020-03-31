@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228938"
 ---
 # <a name="manage-process-servers"></a>Verwalten von Prozessservern
 
@@ -61,7 +61,7 @@ Verschieben Sie die gesamte von einem Prozessserver verarbeitete Workload folgen
 3. Klicken Sie auf den Prozessserver, von dem Sie die Workload wechseln möchten.
 4. Klicken Sie auf **Switch**, und wählen Sie den Zielprozessserver aus, auf den Sie die Workload verschieben möchten. Klicken Sie dann auf **OK**.
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Schalter](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. Überwachen Sie im Tresor den Fortschritt des Auftrags unter **Überwachung** > **Site Recovery-Aufträge**.
 
@@ -138,4 +138,4 @@ Wenn Virenschutzsoftware auf einem Prozessserver mit horizontaler Skalierung (od
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Installationsverzeichnis des Prozessservers. Beispiel:  C:\Programme (x86)\Microsoft Azure Site Recovery
+- Installationsverzeichnis des Prozessservers. Beispiel: C:\Programme (x86)\Microsoft Azure Site Recovery

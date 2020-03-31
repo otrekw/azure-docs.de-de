@@ -7,11 +7,11 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398167"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235238"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid-Trigger für Azure Functions
 
@@ -307,7 +307,7 @@ Mit der [EventGridTrigger](https://github.com/Azure/azure-functions-java-library
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* festlegen. Im Attribut `EventGridTrigger` müssen keine Konstruktorparameter oder -eigenschaften festgelegt werden.
 
-|Eigenschaft von „function.json“ |Beschreibung|
+|Eigenschaft von „function.json“ |BESCHREIBUNG|
 |---------|---------|
 | **type** | Erforderlich – muss auf `eventGridTrigger` festgelegt sein. |
 | **direction** | Erforderlich – muss auf `in` festgelegt sein. |

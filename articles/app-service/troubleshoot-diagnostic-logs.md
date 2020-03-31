@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236082"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -23,7 +23,7 @@ In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Az
 >
 >
 
-|type|Plattform|Location|Beschreibung|
+|type|Plattform|Position|BESCHREIBUNG|
 |-|-|-|-|
 | Anwendungsprotokollierung | Windows, Linux | App Service-Dateisystem und/oder Azure Storage-Blobs | Protokolliert Meldungen, die von Ihrem Anwendungscode generiert werden. Die Meldungen können durch das von Ihnen ausgewählte Webframework oder direkt aus Ihrem Anwendungscode mithilfe des Standardprotokollierungsmusters Ihrer Sprache generiert werden. Jede Meldung wird einer der folgenden Kategorien zugewiesen: **Critical (Kritisch)** , **Error (Fehler)** , **Warning (Warnung)** , **Info (Information)** , **Debug (Debuggen)** und **Trace (Ablaufverfolgung)** . Sie können auswählen, wie ausführlich die Protokollierung erfolgen soll, indem Sie den Schweregrad beim Aktivieren der Anwendungsprotokollierung festlegen.|
 | Webserverprotokollierung| Windows | App Service-Dateisystem oder Azure Storage-Blobs| Unformatierte HTTP-Anforderungsdaten im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Jede Protokollmeldung enthält Daten, etwa die HTTP-Methode, den Ressourcen-URI, die Client-IP, den Clientport, den Benutzer-Agent, den Antwortcode usw. |
@@ -163,7 +163,7 @@ Bei Linux-/Container-Apps enthält die ZIP-Datei Konsolenausgabeprotokolle für 
 
 Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\LogFiles* im App Service- Dateisystem. Sie hat folgende Struktur:
 
-| Protokolltyp | Verzeichnis | Beschreibung |
+| Protokolltyp | Verzeichnis | BESCHREIBUNG |
 |-|-|-|
 | **Anwendungsprotokolle** |*/LogFiles/Application/* | Enthält mindestens eine Textdatei. Das Format der Protokollmeldungen hängt vom verwendeten Protokollierungsanbieter ab. |
 | **Ablaufverfolgung für Anforderungsfehler** | */LogFiles/W3SVC#########/* | Enthält XML-Dateien und eine XSL-Datei. Sie können die formatierten XML-Dateien im Browser anzeigen. |
@@ -182,7 +182,7 @@ Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) könn
 
 In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibungen dieser aufgeführt: 
 
-| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | Beschreibung |
+| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | BESCHREIBUNG |
 |-|-|-|
 | AppServiceConsoleLogs | Wird noch angekündigt | Ja | Standardausgabe und Standardfehler |
 | AppServiceHTTPLogs | Ja | Ja | Webserverprotokolle |
@@ -191,7 +191,7 @@ In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibu
 | AppServiceFileAuditLogs | Wird noch angekündigt | Ja | Dateiänderungen per FTP und Kudu |
 | AppServiceAppLogs | Wird noch angekündigt | Java SE & Tomcat | Anwendungsprotokolle |
 
-## <a name="nextsteps"></a> Nächste Schritte
+## <a name="next-steps"></a><a name="nextsteps"></a> Nächste Schritte
 * [Abfrageprotokolle mit Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [How to Monitor Azure App Service (Vorgehensweise: Überwachen von Azure App Service)](web-sites-monitor.md)
 * [Troubleshooting Azure App Service in Visual Studio (Problembehandlung für Azure App Service in Visual Studio)](troubleshoot-dotnet-visual-studio.md)

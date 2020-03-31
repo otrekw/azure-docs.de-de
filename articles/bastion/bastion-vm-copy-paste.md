@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989534"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopieren und Einfügen bei virtuellen Computern: Azure Bastion
@@ -24,7 +24,7 @@ Für Browser, die den erweiterten Zugriff auf die Zwischenablage-API unterstütz
 
 Nur das Kopieren/Einfügen von Text wird unterstützt. Zum direkten Kopieren und Einfügen fordert Ihr Browser Sie möglicherweise auf, den Zugriff auf die Zwischenablage zuzulassen, wenn die Bastion-Sitzung initialisiert wird. **Erlauben** Sie den Zugriff der Webseite auf die Zwischenablage.
 
-## <a name="to"></a>Kopieren in eine Remotesitzung
+## <a name="copy-to-a-remote-session"></a><a name="to"></a>Kopieren in eine Remotesitzung
 
 Führen Sie die folgenden Schritte aus, nachdem Sie im [Azure-Portal](https://portal.azure.com) eine Verbindung mit dem virtuellen Computer hergestellt haben:
 
@@ -39,7 +39,7 @@ Führen Sie die folgenden Schritte aus, nachdem Sie im [Azure-Portal](https://po
 
    ![Einfügen](./media/bastion-vm-manage/local.png)
 
-## <a name="from"></a>Kopieren aus einer Remotesitzung
+## <a name="copy-from-a-remote-session"></a><a name="from"></a>Kopieren aus einer Remotesitzung
 
 Führen Sie die folgenden Schritte aus, nachdem Sie im [Azure-Portal](https://portal.azure.com) eine Verbindung mit dem virtuellen Computer hergestellt haben:
 

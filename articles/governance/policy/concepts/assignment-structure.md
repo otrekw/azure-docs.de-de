@@ -4,11 +4,11 @@ description: Beschreibt die Definition der Richtlinienzuweisung, die von Azure P
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231414"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-Zuweisungsstruktur
 
@@ -59,10 +59,10 @@ Mit der **enforcementMode**-Eigenschaft können Kunden das Ergebnis einer Richtl
 
 Diese Eigenschaft weist die folgenden Werte auf:
 
-|Mode |JSON-Wert |type |Manuelle Behebung |Aktivitätsprotokolleintrag |Beschreibung |
+|Mode |JSON-Wert |type |Manuelle Behebung |Aktivitätsprotokolleintrag |BESCHREIBUNG |
 |-|-|-|-|-|-|
-|Enabled |Standard |string |Ja |Ja |Die Richtlinienauswirkung wird während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
-|Disabled |DoNotEnforce |string |Ja |Nein | Die Richtlinienauswirkung wird nicht während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
+|Aktiviert |Standard |Zeichenfolge |Ja |Ja |Die Richtlinienauswirkung wird während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
+|Disabled |DoNotEnforce |Zeichenfolge |Ja |Nein | Die Richtlinienauswirkung wird nicht während der Erstellung oder Aktualisierung von Ressourcen erzwungen. |
 
 Wenn **enforcementMode** nicht in einer Richtlinie oder Initiativendefinition angegeben ist, wird der Wert _Default_ verwendet. [Aufgaben zur Bereinigung](../how-to/remediate-resources.md) können für [deployIfNotExists](./effects.md#deployifnotexists)-Richtlinien gestartet werden, auch wenn **enforcementMode** auf _DoNotEnforce_ festgelegt ist.
 

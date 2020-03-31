@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77468761"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
@@ -58,7 +58,7 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Videos mit den folgenden Optionen h
 
 Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-formats.md#input-containerfile-formats) finden Sie eine Liste der Dateiformate, die Sie mit Video Indexer verwenden können.
 
-## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Hochladen und Indizieren eines Videos über die Video Indexer-Website
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>Hochladen und Indizieren eines Videos über die Video Indexer-Website
 
 > [!NOTE]
 > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
@@ -74,7 +74,7 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-form
 
     Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
 
-## <a name="a-idapisupload-and-index-with-api"></a><a id="apis"/>Hochladen und Indizieren mithilfe der API
+## <a name="upload-and-index-with-api"></a><a id="apis"/>Hochladen und Indizieren mithilfe der API
 
 Verwenden Sie die API zum [Hochladen eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), um Ihre Videos über eine URL hochzuladen und zu indizieren. Das nachstehende Codebeispiel enthält auch auskommentierten Code, der das Hochladen des Bytearrays zeigt. 
 

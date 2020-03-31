@@ -3,12 +3,12 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233878"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -65,7 +65,7 @@ Lesen Sie den Abschnitt [Zugriffsanforderungen](#access-requirements), um sicher
 
 #### <a name="for-windows"></a>Für Windows
 
-Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen gegebenenfalls nicht den Buchstaben der ursprünglichen VM. Der Volumename wird jedoch beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
+Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen gegebenenfalls nicht den Buchstaben der ursprünglichen VM. Der Volumename wird jedoch beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer den Namen „Data Disk (E:`\`)“ trug, kann dieses Volume auf dem lokalen Computer als „Data Disk (<Beliebiger Buchstabe>:`\`)“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
 
    ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -125,7 +125,7 @@ Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe au
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt:
@@ -202,11 +202,11 @@ Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, 
 
 - `download.microsoft.com`
 - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Gebiete)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Für Azure China 21Vianet)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
-- Ausgehender Port 3260
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (für öffentliche Azure-Gebiete)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Für Azure China 21Vianet)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (für Azure US Government)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (für Azure Deutschland)
+- Ausgehende Ports 53 (DNS), 443, 3260
 
 > [!NOTE]
 >
@@ -257,9 +257,9 @@ Wenn Sie Probleme beim Wiederherstellen von Dateien von den virtuellen Computern
 | ------------------------ | -------------- | ------------------ |
 | EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* | Das Skript kann nicht auf den Wiederherstellungspunkt zugreifen.    | Prüfen Sie, ob der Computer die [zuvor genannten Zugriffsanforderungen](#access-requirements) erfüllt. |  
 | EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. NICHT mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers bereitgestellt. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
-| EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* |    Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. | Diese bestimmte EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
+| EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* |    Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. | Diese spezifische EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
 | Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. | Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert seine Verbindung mit dem Ziel nicht und verwaltet auch den Cache nicht. |  Warten Sie nach dem Klicken auf **Aufheben der Bereitstellung** einige Minuten. Wenn die Bereitstellung der neuen Volumes nicht aufgehoben wurde, blättern Sie durch alle Volumes. Das Blättern durch alle Volumes zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
-| EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber „Neue Volumes angefügt“ wird nicht in der Ausgabe des Skripts angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
+| EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber in der Ausgabe des Skripts wird nicht „Neue Volumes angefügt“ angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
 | Linux-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Das Betriebssystem des Computers, auf dem das Skript ausgeführt wird, erkennt möglicherweise das zugrunde liegende Dateisystem des geschützten virtuellen Computers nicht. | Prüfen Sie, ob der Wiederherstellungspunkt absturz- oder dateikonsistent ist. Falls dateikonsistent, führen Sie das Skript auf einem anderen Computer aus, dessen Betriebssystem das Dateisystem des geschützten virtuellen Computers erkennt. |
 | Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger in einem Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger klicken und dann **Online** auswählen.|
 
@@ -295,7 +295,7 @@ Zum Durchsuchen von Dateien und Ordnern verwendet das Skript den iSCSI-Initiator
 
 Ein Mechanismus für eine gegenseitige CHAP-Authentifizierung wird verwendet, damit sich die Komponenten gegenseitig authentifizieren. Aus diesem Grund ist es sehr schwierig, eine Verbindung zwischen einem gefälschten Initiator und dem iSCSI-Ziel oder eine Verbindung zwischen einem gefälschten Ziel und dem Computer herzustellen, auf dem das Skript ausgeführt wird.
 
-Der Datenfluss zwischen dem Wiederherstellungsdienst und dem Computer wird mithilfe eines sicheren SSL-Tunnels über TCP geschützt (auf dem Computer, auf dem das Skript ausgeführt wird, [sollte TLS 1.2 unterstützt werden](#system-requirements)).
+Der Datenfluss zwischen dem Wiederherstellungsdienst und dem Computer wird mithilfe eines sicheren TLS-Tunnels über TCP geschützt (auf dem Computer, auf dem das Skript ausgeführt wird, [sollte TLS 1.2 unterstützt werden](#system-requirements)).
 
 Alle Zugriffssteuerungslisten (ACL) für Dateien, die auf der übergeordneten/gesicherten VM vorhanden sind, werden ebenfalls im eingebundenen Dateisystem gespeichert.
 

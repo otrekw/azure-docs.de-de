@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229842"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Systemanforderungen für Azure Data Box Gateway
 
@@ -34,7 +34,7 @@ Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folge
 | Virtuelle Prozessoren (Kerne)   | Mindestens 4 |
 | Arbeitsspeicher  | Mindestens 8 GB|
 | Verfügbarkeit|Einzelner Knoten|
-| Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
+| Datenträger| Betriebssystemdatenträger: 250 GB <br> Datenträger für Daten: Mindestens 2 TB, für schlanke Speicherzuweisung geeignet, muss durch SSD-Datenträger unterstützt werden|
 | Netzwerkschnittstellen|Mindestens eine virtuelle Netzwerkschnittstelle|
 
 
@@ -51,7 +51,7 @@ Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folge
 | **Betriebssystem/-plattform**  |**Versionen**   |**Hinweise**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
-|VMware ESXi     | 6,0 <br> 6,5 <br> 6.7       |VMware-Tools werden nicht unterstützt.         |
+|VMware ESXi     | 6.0 <br> 6,5 <br> 6.7       |VMware-Tools werden nicht unterstützt.         |
 
 
 ## <a name="supported-storage-accounts"></a>Unterstützte Speicherkonten

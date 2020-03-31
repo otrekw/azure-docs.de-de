@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sethm
 ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260744"
 ---
 ## <a name="webapi-project"></a>WebAPI-Projekt
 
-1. Öffnen Sie in Visual Studio das Projekt **AppBackend** , das Sie im Tutorial **Benachrichtigen von Benutzern** erstellt haben.
+1. Öffnen Sie in Visual Studio das Projekt **AppBackend** , das Sie im Lernprogramm **Benachrichtigen von Benutzern** erstellt haben.
 2. Ersetzen Sie in der Datei "Notifications.cs" die gesamte **Notifications** -Klasse durch den folgenden Code. Stellen Sie sicher, dass Sie die Platzhalter durch Ihre Verbindungszeichenfolge (mit vollständigem Zugriff) für Ihr Notification Hub und den Hub-Namen ersetzen. Diese Werte erhalten Sie im [Azure-Portal](https://portal.azure.com). Dieses Modul stellt nun die unterschiedlichen sicheren Benachrichtigungen dar, die gesendet werden. In einer vollständigen Implementierung werden die Benachrichtigungen in einer Datenbank gespeichert; der Einfachheit halber speichern wir Sie in diesem Fall im Speicher.
    
    ```csharp

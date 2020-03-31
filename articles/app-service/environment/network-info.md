@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229730"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -40,12 +40,12 @@ Wenn Sie über eine ILB-ASE verfügen, ist die Adresse der ILB der Endpunkt für
 
 ## <a name="ase-subnet-size"></a>ASE-Subnetzgröße ##
 
-Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden im Azure-Netzwerk fünf Adressen für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Wenn Sie Ihre ASE horizontal hochskalieren, werden Infrastrukturrollen jedes Vielfache von 15 und 20 Ihrer App Service-Planinstanzen hinzugefügt.
+Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden im Azure-Netzwerk fünf Adressen für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Wenn Sie Ihre ASE aufskalieren, werden Infrastrukturrollen jedes Vielfache von 15 und 20 Ihrer App Service-Planinstanzen hinzugefügt.
 
    > [!NOTE]
    > Im Subnetz kann sich ausschließlich die ASE befinden. Achten Sie darauf, einen Adressbereich auszuwählen, der auf künftiges Wachstum ausgelegt ist. Diese Einstellung kann später nicht geändert werden. Es wird eine Größe von `/24` mit 256 Adressen empfohlen.
 
-Wenn Sie zentral hoch- oder herunterskalieren, werden neue Rollen der entsprechenden Größe hinzugefügt und Ihre Workloads werden dann von der aktuellen Größe auf die Zielgröße migriert. Die ursprünglichen VMs werden erst nach der Migration der Workloads entfernt. Wenn Sie beispielsweise über eine ASE mit 100 ASP-Instanzen verfügen, gibt es einen bestimmten Zeitraum, in dem Sie die doppelte Anzahl von VMs benötigen.  Aus diesem Grund empfehlen wir die Verwendung von „/24“, um eventuelle Änderungen zu berücksichtigen.  
+Wenn Sie hoch- oder herunterskalieren, werden neue Rollen der entsprechenden Größe hinzugefügt und Ihre Workloads werden dann von der aktuellen Größe auf die Zielgröße migriert. Die ursprünglichen VMs werden erst nach der Migration der Workloads entfernt. Wenn Sie beispielsweise über eine ASE mit 100 ASP-Instanzen verfügen, gibt es einen bestimmten Zeitraum, in dem Sie die doppelte Anzahl von VMs benötigen.  Aus diesem Grund empfehlen wir die Verwendung von „/24“, um eventuelle Änderungen zu berücksichtigen.  
 
 ## <a name="ase-dependencies"></a>ASE-Abhängigkeiten ##
 

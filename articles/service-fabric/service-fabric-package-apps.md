@@ -4,11 +4,11 @@ description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-An
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229274"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 

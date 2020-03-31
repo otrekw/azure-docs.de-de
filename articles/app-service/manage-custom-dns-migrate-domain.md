@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672370"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
@@ -71,7 +71,7 @@ Wählen Sie auf der Seite **Benutzerdefinierte Domänen** neben **Hostname hinzu
 
 Geben Sie den vollqualifizierten Domänennamen ein, für den Sie den TXT-Eintrag hinzugefügt haben (beispielsweise `www.contoso.com`). Für eine Platzhalterdomäne (Beispiel: \*.contoso.com), können Sie einen beliebigen DNS-Namen verwenden, der der Platzhalterdomäne entspricht. 
 
-Wählen Sie **Überprüfen**.
+Wählen Sie **Überprüfen** aus.
 
 Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
 
@@ -113,7 +113,7 @@ Ordnen Sie für das Stammdomänenbeispiel `contoso.com` den A- oder CNAME-Eintra
 
 | FQDN-Beispiel | Eintragstyp | Host | Wert |
 | - | - | - | - |
-| contoso.com (Stammdomäne) | Eine Datei | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+| contoso.com (Stammdomäne) | Ein | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | www\.contoso.com (Unterdomäne) | CNAME | `www` | _&lt;App-Name&gt;.azurewebsites.net_ |
 | \*.contoso.com (Platzhalter) | CNAME | _\*_ | _&lt;App-Name&gt;.azurewebsites.net_ |
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
 ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533622"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage
@@ -145,7 +145,7 @@ Fügen Sie ein Objekt zum JSON-Dokument mit dem folgenden Format hinzu, um einen
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe.
+Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Ressourcengruppe.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -222,7 +222,7 @@ Wie Sie sehen können, erfolgt vom Sidecar in regelmäßigen Abständen eine HTT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Containergruppe mit mehreren Containern mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Containergruppe mit mehreren Containern mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer Vorlage für eine Gruppe mit mehreren Containern

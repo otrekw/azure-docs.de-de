@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953346"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Überprüfen von Kostenvorkalkulationen im VMware-Bereitstellungsplaner 
@@ -54,8 +54,8 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Compute**: Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die von Azure Site Recovery bei DR-Drills (Testfailovern) erstellt werden, und VMs, die in Azure ausgeführt werden, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern/Domänennamenservern.
 
-**Speicher**: Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
-„Network“ (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
+**Storage**: Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+Netzwerk: Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
 **ASR license** (ASR-Lizenz): Azure Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Azure Site Recovery-Lizenzkosten für diese VM enthalten.
 
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * VM total storage size (GB) of the source machine (VM-Gesamtspeichergröße des Quellcomputers in GB)
 * Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr) 
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
-* OS Type (Betriebssystemtyp)
+* Betriebssystemtyp
 * Datenredundanz 
 * Azure-Hybridvorteil
 
@@ -112,7 +112,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Klicken Sie auf „Re-calculate cost“ (Kosten neu berechnen), um die Kosten zu aktualisieren.
 
-**VM Name** (VM-Name): Der Name der VM.
+**VM Name:** Der Name der VM.
 
 **Number of VMs** (Anzahl von VMs): Die Anzahl von VMs, die mit der Konfiguration übereinstimmen. Sie können die Anzahl von vorhandenen VMs aktualisieren, wenn für VMs mit ähnlicher Konfiguration keine Profilerstellung durchgeführt wird, diese VMs aber geschützt werden.
 
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Currency|NAME||Currency|NAME||Currency|NAME|
+|Währung|Name||Währung|Name||Währung|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
 |CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (chf)||DKK|Dänische Krone (kr)|

@@ -4,10 +4,10 @@ description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregi
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456494"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Fol
 > * Gewähren des Zugriffs auf eine Azure Container Registry-Instanz für die Identität
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen 
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
@@ -102,7 +102,7 @@ Führen Sie die in [Installieren der Azure CLI mit apt](/cli/azure/install-azure
 
 Beenden Sie die SSH-Sitzung.
 
-## <a name="example-1-access-with-a-user-assigned-identity"></a>Beispiel 1: Zugriff mit einer benutzerseitig zugewiesenen Identität
+## <a name="example-1-access-with-a-user-assigned-identity"></a>Beispiel 1: Zugriff mit einer benutzerseitig zugewiesenen Identität
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
@@ -178,7 +178,7 @@ Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können 
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="example-2-access-with-a-system-assigned-identity"></a>Beispiel 2: Zugriff mit einer systemseitig zugewiesenen Identität
+## <a name="example-2-access-with-a-system-assigned-identity"></a>Beispiel 2: Zugriff mit einer systemseitig zugewiesenen Identität
 
 ### <a name="configure-the-vm-with-a-system-managed-identity"></a>Konfigurieren der VM mit einer systemseitig verwalteten Identität
 

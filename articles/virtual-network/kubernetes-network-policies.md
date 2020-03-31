@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73159693"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Übersicht über Azure Kubernetes-Netzwerkrichtlinien
@@ -87,7 +87,7 @@ Die folgende JSON-Beispielkonfiguration erstellt ein neues virtuelles Netzwerk u
 
 ```
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Erstellen Ihres Kubernetes-Clusters in Azure
-Die Implementierung kann verwendet werden, um Netzwerkrichtlinien für Pods in Kubernetes-Clustern bereitzustellen, die Sie selbst implementieren, ohne Tools wie AKS-Engine. Installieren Sie zunächst das CNI-Plug-In, und aktivieren Sie es auf jeder VM in einem Cluster. Genaue Anweisungen finden Sie unter [Bereitstellen eines Plug-Ins für den eigenen Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+Die Implementierung kann verwendet werden, um Netzwerkrichtlinien für Pods in Kubernetes-Clustern bereitzustellen, die Sie selbst implementieren, ohne Tools wie AKS-Engine. Installieren Sie zunächst das CNI-Plug-In, und aktivieren Sie es auf jeder VM in einem Cluster. Ausführliche Anweisungen finden Sie unter [Bereitstellen des Plug-Ins für einen eigenen Kubernetes-Cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
 Wenn der Cluster bereitgestellt wurde, führen Sie den folgenden Befehl `kubectl` aus, um die Azure-Netzwerkrichtlinie *daemonset* herunterzuladen und auf den Cluster anzuwenden.
 

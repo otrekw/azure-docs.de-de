@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen 
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122654"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang

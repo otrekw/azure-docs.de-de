@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235150"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus-Ausgabebindung für Azure Functions
 
@@ -279,7 +279,7 @@ Die Anmerkungen `ServiceBusQueueOutput` und `ServiceBusTopicOutput` sind zum Sch
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `ServiceBus` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf „serviceBus“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „out“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
@@ -381,7 +381,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
 |autoComplete|true|Ob der Trigger die Nachricht sofort als erledigt markieren soll (automatische Erledigung), oder ob er auf den erfolgreichen Abschluss der Funktion warten soll, um sie dann als abgeschlossen zu markieren.|

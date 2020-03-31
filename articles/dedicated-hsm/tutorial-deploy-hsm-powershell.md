@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368542"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474423"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -250,15 +250,7 @@ Wenn Sie das HSM-Gerät nicht mehr benötigen, kann es als Ressource gelöscht u
 > [!NOTE]
 > Wenden Sie sich bei Problemen mit der Gemalto-Gerätekonfiguration bitte an den [Gemalto-Kundensupport](https://safenet.gemalto.com/technical-support/).
 
-Wenn Sie nur die HSM-Ressource in Azure entfernen möchten, können Sie den folgenden Befehl verwenden. Ersetzen Sie dabei die Variablen „$“ durch Ihre eindeutigen Parameter:
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-Wenn Sie die Ressourcen in dieser Ressourcengruppe nicht mehr benötigen, können Sie alle mithilfe des folgenden Befehls entfernen:
+Wenn Sie die HSM-Ressource in Azure entfernen möchten, können Sie den folgenden Befehl verwenden. Ersetzen Sie dabei die „$“-Variablen durch Ihre eindeutigen Parameter:
 
 ```powershell
 

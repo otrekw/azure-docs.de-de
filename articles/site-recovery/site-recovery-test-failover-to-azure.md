@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091739"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229022"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Ausführen eines Testfailovers (Notfallwiederherstellungsübung) zu Azure 
 
@@ -31,11 +31,11 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
 1. Klicken Sie im Azure-Portal in der Site Recovery auf **Wiederherstellungspläne** > *wiederherstellungsplan_name* > **Testfailover**.
 2. Wählen Sie einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
     - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover aller VMs im Plan auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Um den letzten Wiederherstellungspunkt für eine bestimmte VM zu finden, überprüfen Sie **Letzte Wiederherstellungspunkte** in den Einstellungen der VM. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-    - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover aller VMs im Plan auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Um den letzten Wiederherstellungspunkt für eine bestimmte VM zu finden, überprüfen Sie **Letzte Wiederherstellungspunkte** in den Einstellungen der VM.
-    - **Neueste**: Diese Option verarbeitet zuerst alle Daten, die an den Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
+    - **Letzter anwendungskonsistenter Zeitpunkt**: Mit dieser Option wird ein Failover aller VMs im Plan auf den letzten app-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Um den letzten Wiederherstellungspunkt für eine bestimmte VM zu finden, überprüfen Sie **Letzte Wiederherstellungspunkte** in den Einstellungen der VM.
+    - **Aktuell**: Diese Option verarbeitet zuerst alle Daten, die an den Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jede VM zu erstellen. Diese Option bietet die niedrigste RPO (Recovery Point Objective), da die nach dem Failover erstellte VM über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
     - **Letzte Verarbeitung mit mehreren VMs**: Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, für die die Einstellung aktiviert ist, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Konsistenz durch. Andere VMs führen ein Failover auf den letzten verarbeiteten Wiederherstellungspunkt durch.  
     - **Letzter anwendungskonsistenter Zeitpunkt (mehrere VMs)** : Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, die Teil einer Replikationsgruppe sind, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere VMs führen ein Failover auf ihren letzten anwendungskonsistenten Wiederherstellungspunkt durch.
-    - **Benutzerdefinierte**: Verwenden Sie diese Option für ein Failover einer bestimmten VM auf einen bestimmten Wiederherstellungspunkt.
+    - **Benutzerdefiniert**: Verwenden Sie diese Option für ein Failover einer bestimmten VM auf einen bestimmten Wiederherstellungspunkt.
 3. Wählen Sie ein virtuelles Azure-Netzwerk aus, in dem Test-VMs erstellt werden.
 
     - Site Recovery versucht, Test-VMs in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen der VM unter **Compute und Netzwerk** angegeben sind.
@@ -52,10 +52,10 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
 
 Wenn ein Testfailover ausgelöst wird, geschieht Folgendes:
 
-1. **Voraussetzungen**: Eine Überprüfung der Voraussetzungen wird ausgeführt, um sicherzustellen, dass alle Bedingungen für ein Failover erfüllt sind.
+1. **Voraussetzungen:** Eine Überprüfung der Voraussetzungen wird ausgeführt, um sicherzustellen, dass alle Bedingungen für ein Failover erfüllt sind.
 2. **Failover**: Das Failover verarbeitet die Daten und bereitet sie vor, sodass auf ihrer Basis eine Azure-VM erstellt werden kann.
-3. **Neueste**: Wenn Sie den neuesten Wiederherstellungspunkt gewählt haben, wird ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
-4. **Start**: In diesem Schritt wird ein virtueller Azure-Computer aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
+3. **Aktuell**: Wenn Sie den neuesten Wiederherstellungspunkt gewählt haben, wird ein Wiederherstellungspunkt aus den Daten erstellt, die an den Dienst gesendet wurden.
+4. **Start**: In diesem Schritt wird eine Azure-VM aus den Daten erstellt, die im vorherigen Schritt verarbeitet wurden.
 
 ### <a name="failover-timing"></a>Failovertiming
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234270"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).

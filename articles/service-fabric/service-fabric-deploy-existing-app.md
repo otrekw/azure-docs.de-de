@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als aus
 ms.topic: conceptual
 ms.date: 07/02/2017
 ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377105"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
@@ -267,8 +267,8 @@ Ein Service Fabric-Dienst kann mit verschiedenen „Konfigurationen“ bereitges
 
 Mit dem `InstanceCount`-Parameter des Cmdlets `New-ServiceFabricService` wird angegeben, wie viele Instanzen des Diensts im Service Fabric-Cluster gestartet werden sollen. Sie können den Wert `InstanceCount` abhängig vom Typ der bereitzustellenden Anwendung festlegen. Die beiden häufigsten Szenarien:
 
-* [https://login.microsoftonline.com/consumers/](`InstanceCount = "1"`). In diesem Fall wird nur eine Instanz des Diensts im Cluster bereitgestellt. Der Service Fabric-Scheduler bestimmt den Knoten, auf dem der Dienst bereitgestellt werden soll.
-* [https://login.microsoftonline.com/consumers/](`InstanceCount ="-1"`). In diesem Fall wird eine Instanz des Diensts auf jedem Knoten im Service Fabric-Cluster bereitgestellt. Das Ergebnis ist eine (und nur eine) Instanz des Diensts für jeden Knoten im Cluster.
+* `InstanceCount = "1"`. In diesem Fall wird nur eine Instanz des Diensts im Cluster bereitgestellt. Der Service Fabric-Scheduler bestimmt den Knoten, auf dem der Dienst bereitgestellt werden soll.
+* `InstanceCount ="-1"`. In diesem Fall wird eine Instanz des Diensts auf jedem Knoten im Service Fabric-Cluster bereitgestellt. Das Ergebnis ist eine (und nur eine) Instanz des Diensts für jeden Knoten im Cluster.
 
 Dies ist eine praktische Konfiguration für Front-End-Anwendungen (z.B. REST-Endpunkte), da Clientanwendungen eine Verbindung mit einem Knoten im Cluster herstellen müssen, um den Endpunkt zu verwenden. Diese Konfiguration kann auch verwendet werden, wenn beispielsweise alle Knoten des Service Fabric-Clusters mit einem Lastenausgleichsmodul verbunden sind. Der Clientdatenverkehr kann dann über den Dienst verteilt werden, der auf allen Knoten im Cluster ausgeführt wird.
 

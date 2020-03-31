@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357595"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234958"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 

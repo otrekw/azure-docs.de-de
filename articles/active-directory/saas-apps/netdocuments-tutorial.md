@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72035706"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit NetDocuments
@@ -113,7 +113,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -149,7 +149,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 5. Führen Sie im Dialogfeld **Identitätsverbund** die folgenden Schritte aus:
    
-    ![Identitätsverbund](./media/netdocuments-tutorial/ic795049.png "Identitätsverbund")
+    ![Verbundidentität](./media/netdocuments-tutorial/ic795049.png "Verbundidentität")
    
     a. Wählen Sie als **Servertyp für Identitätsverbund** die Option **Active Directory-Verbunddienste** aus.
    
@@ -168,7 +168,7 @@ Im Fall von NetDocuments ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie oben im Menü auf **Administrator**.
    
-    ![Admin](./media/netdocuments-tutorial/ic795051.png "Admin")
+    ![Administrator](./media/netdocuments-tutorial/ic795051.png "Admin")
 
 3. Klicken Sie auf **Benutzer und Gruppen hinzufügen und entfernen**.
    

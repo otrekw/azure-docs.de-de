@@ -4,11 +4,11 @@ description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Urs
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972823"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "79231210"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -188,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Änderungsverlauf (Vorschau)
+## <a name="change-history-preview"></a><a name="change-history"/>Änderungsverlauf (Vorschau)
 
 Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Änderungsverlaufs für alle Azure-Ressourcen verfügbar, die die [Löschung im vollständigen Modus](../../../azure-resource-manager/templates/complete-mode-deletion.md) unterstützen. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Resource Manager-Eigenschaften hinzugefügt, entfernt oder geändert werden.
 

@@ -1,6 +1,6 @@
 ---
-title: Verwalten des horizontalen Skalierens (Hochskalieren) eines Clusters zum Anpassen an den Bedarf in Azure Data Explorer
-description: Dieser Artikel beschreibt Schritte zum horizontalen Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
+title: Verwalten des horizontalen Skalierens (Aufskalieren) eines Clusters zum Anpassen an den Bedarf in Azure Data Explorer
+description: Dieser Artikel beschreibt Schritte zum Auf- und Abskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664132"
 ---
-# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (Aufskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
 Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist. Da der Bedarf für einen Cluster nicht mit absoluter Genauigkeit vorhergesagt werden kann, ist es besser, einen Cluster zu *skalieren* und je nach Bedarf Kapazität und CPU-Ressourcen hinzuzufügen bzw. zu entfernen. 
 
@@ -27,9 +27,9 @@ In diesem Artikel wird der Workflow für die horizontale Skalierung beschrieben.
 
 Bei Verwendung der horizontalen Skalierung können Sie die Instanzenanzahl anhand von vordefinierten Regeln und Zeitplänen automatisch skalieren. Geben Sie die Einstellungen für die Autoskalierung für Ihren Cluster wie folgt an:
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Data Explorer-Clusterressource. Wählen Sie unter **Einstellungen** die Option **Horizontal hochskalieren** aus. 
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Data Explorer-Clusterressource. Wählen Sie unter **Einstellungen** die Option **Aufskalieren** aus. 
 
-2. Wählen Sie im Fenster **Horizontal hochskalieren** die gewünschte Methode für die Autoskalierung aus: **Manuelle Skalierung**, **Optimierte Autoskalierung** oder **Benutzerdefinierte Autoskalierung**.
+2. Wählen Sie im Fenster **Aufskalieren** die gewünschte Methode für die Autoskalierung aus: **Manuelle Skalierung**, **Optimierte Autoskalierung** oder **Benutzerdefinierte Autoskalierung**.
 
 ### <a name="manual-scale"></a>Manuelles Skalieren
 
@@ -53,22 +53,22 @@ Die optimierte automatische Skalierung beginnt mit der Arbeit. Ihre Aktionen sin
 
 #### <a name="logic-of-optimized-autoscale"></a>Logik der optimierten Autoskalierung 
 
-**Horizontales Skalieren**
+**Aufskalieren**
 
-Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er horizontal hochskaliert, damit die optimale Leistung erhalten bleibt. Das horizontale Hochskalieren tritt in folgenden Situationen auf:
+Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er aufskaliert, damit die optimale Leistung erhalten bleibt. Das Aufskalieren tritt in folgenden Situationen auf:
 * Die Anzahl der Clusterinstanzen liegt unter der maximalen Anzahl von Instanzen, die vom Benutzer definiert wurden.
 * Die Cacheauslastung ist länger als eine Stunde sehr hoch.
 * Die CPU-Auslastung ist für mehr als eine Stunde hoch.
 * Die Erfassungsauslastung ist seit über einer Stunde hoch.
 
 > [!NOTE]
-> Die Logik für das Erweitern berücksichtigt derzeit nicht die Metrik zur Erfassungsauslastung. Wenn diese Metrik für Ihren Anwendungsfall wichtig ist, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
+> Die Logik für das Aufskalieren berücksichtigt derzeit nicht die Metrik zur Erfassungsauslastung. Wenn diese Metrik für Ihren Anwendungsfall wichtig ist, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
 
-**Horizontales Herunterskalieren**
+**Abskalieren**
 
-Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er horizontal herunterskaliert, um bei gleichbleibender Leistung die Kosten zu senken. Es werden mehrere Metriken verwendet, um zu überprüfen, ob das horizontale Herunterskalieren des Clusters sicher ist. Die folgenden Regeln werden 6 Stunden lang stündlich ausgewertet, bevor eine horizontale Herunterskalierung erfolgt:
+Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er abskaliert, um bei gleichbleibender Leistung die Kosten zu senken. Es werden mehrere Metriken verwendet, um zu überprüfen, ob das Abskalieren des Clusters sicher ist. Die folgenden Regeln werden 6 Stunden lang stündlich ausgewertet, bevor eine horizontale Herunterskalierung erfolgt:
 * Die Anzahl der Instanzen liegt über 2 und über der definierten Mindestanzahl von Instanzen.
-* Um sicherzustellen, dass keine Ressourcen überladen werden, müssen die folgenden Metriken überprüft werden, bevor ein horizontales Herunterskalieren erfolgt: 
+* Um sicherzustellen, dass keine Ressourcen überladen werden, müssen die folgenden Metriken überprüft werden, bevor ein Abskalieren erfolgt: 
     * Die Cacheauslastung ist nicht hoch.
     * Die CPU-Auslastung liegt unter dem Durchschnitt. 
     * Die Erfassungsauslastung liegt unter dem Durchschnitt. 
@@ -78,7 +78,7 @@ Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er 
     * Die Anzahl der fehlerhaften Abfragen liegt unter einem definierten Mindestwert.
 
 > [!NOTE]
-> Die Logik zum horizontalen Herunterskalieren erfordert derzeit eine 7-tägige Auswertung, bevor eine optimierte horizontale Herunterskalierung erfolgt. Diese Auswertung erfolgt einmal alle 24 Stunden. Wenn eine schnelle Änderung erforderlich ist, nutzen Sie die [manuelle Skalierung](#manual-scale).
+> Die Logik zum Abskalieren erfordert derzeit eine 7-tägige Auswertung, bevor eine optimierte Abskalierung erfolgt. Diese Auswertung erfolgt einmal alle 24 Stunden. Wenn eine schnelle Änderung erforderlich ist, nutzen Sie die [manuelle Skalierung](#manual-scale).
 
 ### <a name="custom-autoscale"></a>Benutzerdefinierte Autoskalierung
 
@@ -110,7 +110,7 @@ Bei Verwendung der benutzerdefinierten Autoskalierung können Sie Ihren Cluster 
 
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
-    | **Vorgang** | Wählen Sie die entsprechende Option zum horizontalen Hoch- oder Herunterskalieren aus. |
+    | **Vorgang** | Wählen Sie die entsprechende Option zum Auf- oder Abskalieren aus. |
     | **Anzahl der Instanzen** | Wählen Sie die Anzahl von Knoten oder Instanzen aus, die hinzugefügt oder entfernt werden sollen, wenn eine Metrikbedingung erfüllt ist. |
     | **Abkühlen (Minuten)** | Wählen Sie ein geeignetes Intervall für die Zeit zwischen den einzelnen Skalierungsvorgängen. Beginnen Sie mit dem Standardwert von 5 Minuten. |
     |  |  |

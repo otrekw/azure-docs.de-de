@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663061"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
@@ -190,7 +190,7 @@ Die Eigenschaften für Anmeldeinformationsressourcen werden in der folgenden Tab
 
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | description |Optionale Beschreibung für den Zeitplan |
 | startTime |Gibt die Startzeit eines Zeitplans als DateTime-Objekt an. Eine Zeichenfolge kann bereitgestellt werden, wenn sie in ein gültiges DateTime-Objekt konvertiert werden kann. |
@@ -260,7 +260,7 @@ Die Eigenschaften für Auftragszeitpläne werden in der folgenden Tabelle beschr
 
 Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | description | Optionale Beschreibung für die Variable |
 | isEncrypted | Gibt an, ob die Variable verschlüsselt werden soll |
@@ -272,7 +272,7 @@ Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle besch
 
 Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen Datentyp konfiguriert werden.  Die folgende Tabelle enthält die unterschiedlichen zulässigen Datentypen und ihre Syntax.  Beachten Sie, dass Werte im JSON-Format immer eingeschlossen in Anführungszeichen erwartet werden, wobei Sonderzeichen innerhalb der Anführungszeichen enthalten sein müssen.  So würde beispielsweise ein Zeichenfolgenwert mit einschließenden Anführungszeichen angegeben werden (mit dem Escapezeichen \\), während ein numerischer Wert mit nur einem Satz von Anführungszeichen angegeben werden müsste.
 
-| Datentyp | Beschreibung | Beispiel | Aufgelöst in |
+| Datentyp | BESCHREIBUNG | Beispiel | Aufgelöst in |
 |:--|:--|:--|:--|
 | Zeichenfolge   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
 | NUMERIC  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |

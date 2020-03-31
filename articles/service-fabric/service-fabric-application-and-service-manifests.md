@@ -4,10 +4,10 @@ description: Beschreibt, wie Manifeste zum Definieren von Service Fabric-Anwendu
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349965"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349342"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229266"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
 Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.

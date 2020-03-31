@@ -4,10 +4,10 @@ description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithil
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 8cbb8c833bc2933afac300bcc848fd50861011d0
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505935"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload

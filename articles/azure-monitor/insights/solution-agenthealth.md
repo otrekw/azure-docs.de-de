@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663256"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
@@ -48,7 +48,7 @@ Wenn Sie die Lösung dem Log Analytics-Arbeitsbereich hinzufügen, wird Ihrem Da
 
 Klicken Sie auf die Kachel **Agent-Integrität**, um das Dashboard **Agent-Integrität** zu öffnen.  Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind die zehn häufigsten Ereignisse entsprechend den Kriterien der Spalte für den angegebenen Zeitbereich aufgeführt. Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie rechts unten in jeder Spalte die Option **Alle anzeigen** wählen oder auf die Spaltenüberschrift klicken.
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |--------|-------------|
 | Agent-Anzahl über die Zeit | Ein Trend der Agent-Anzahl für einen Zeitraum von sieben Tagen für Linux- und Windows-Agents.|
 | Anzahl der nicht reagierenden Agents | Eine Liste mit Agents, die in den letzten 24 Stunden keinen Heartbeat gesendet haben.|
@@ -67,7 +67,7 @@ Die Lösung erstellt im Log Analytics-Arbeitsbereich eine Art von Datensatz.
 ### <a name="heartbeat-records"></a>Heartbeat-Datensätze
 Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt.  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | `Type` | *Heartbeat*|
 | `Category` | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|

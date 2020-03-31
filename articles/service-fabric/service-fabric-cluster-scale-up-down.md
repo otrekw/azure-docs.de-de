@@ -4,11 +4,11 @@ description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert horizonta
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587480"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229394"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 
@@ -52,13 +52,13 @@ Die automatische Skalierungsfunktion wird derzeit nicht durch die Lasten gesteue
 Befolgen Sie diese Anweisungen, um eine [automatische Skalierung für jede VM-Skalierungsgruppe einzurichten](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> In einem Szenario, in dem zentral herunterskaliert wird, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem Namen des entsprechenden Knotens aufrufen, es sei denn, Ihr Knotentyp besitzt die [Dauerhaftigkeitsstufe][durability] „Gold“ oder „Silber“. Für die Dauerhaftigkeitsstufe „Bronze“wird nicht empfohlen, mehrere Knoten gleichzeitig zentral herunterzuskalieren.
+> In einem Szenario, in dem herunterskaliert wird, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem Namen des entsprechenden Knotens aufrufen, es sei denn, Ihr Knotentyp besitzt die [Dauerhaftigkeitsstufe][durability] „Gold“ oder „Silber“. Für die Dauerhaftigkeitsstufe „Bronze“wird nicht empfohlen, mehrere Knoten gleichzeitig herunterzuskalieren.
 > 
 > 
 
 ## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Manuelles Hinzufügen von virtuellen Computern zu einem Knotentyp oder einer VM-Skalierungsgruppe
 
-Beim horizontalen Hochskalieren werden der Skalierungsgruppe mehr VM-Instanzen hinzugefügt. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. 
+Beim Aufskalieren werden der Skalierungsgruppe mehr VM-Instanzen hinzugefügt. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. 
 
 > [!NOTE]
 > Das Hinzufügen virtueller Computer ist zeitaufwendig. Rechnen Sie also nicht damit, dass das Hinzufügen unmittelbar erfolgt. Planen Sie deshalb das Hinzufügen von Kapazität vorausschauend, um mehr als 10 Minuten einzuräumen, bis die VM-Kapazität für die Platzierung der Replikate und Dienstinstanzen verfügbar ist.
@@ -88,7 +88,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 ```
 
 ## <a name="manually-remove-vms-from-a-node-typevirtual-machine-scale-set"></a>Manuelles Entfernen von virtuellen Computern aus einem Knotentyp oder einer VM-Skalierungsgruppe
-Wenn Sie in einem Knotentyp horizontal herunterskalieren, entfernen Sie damit VM-Instanzen aus der Skalierungsgruppe. Wenn der Knotentyp die Dauerhaftigkeitsstufe „Bronze“ aufweist, weiß Service Fabric nicht, was passiert ist, und meldet, dass ein Knoten verloren gegangen ist. Daraufhin meldet Service Fabric einen fehlerhaften Zustand für den Cluster. Um diesen Zustand zu verhindern, müssen Sie den Knoten explizit aus dem Cluster entfernen und den Knotenstatus korrigieren.
+Wenn Sie in einem Knotentyp abskalieren, entfernen Sie damit VM-Instanzen aus der Skalierungsgruppe. Wenn der Knotentyp die Dauerhaftigkeitsstufe „Bronze“ aufweist, weiß Service Fabric nicht, was passiert ist, und meldet, dass ein Knoten verloren gegangen ist. Daraufhin meldet Service Fabric einen fehlerhaften Zustand für den Cluster. Um diesen Zustand zu verhindern, müssen Sie den Knoten explizit aus dem Cluster entfernen und den Knotenstatus korrigieren.
 
 Die Service Fabric-Systemdienste werden auf dem primären Knotentyp in Ihrem Cluster ausgeführt. Skalieren Sie beim zentralen Herunterskalieren des primären Knotentyps auf keinen Fall die Anzahl der Instanzen auf einen Wert herunter, der unter dem von der [Zuverlässigkeitsstufe](service-fabric-cluster-capacity.md) vorgegebenen liegt. 
  
@@ -207,7 +207,7 @@ sfctl node remove-state --node-name _nt1vm_5
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
-### <a name="scale-in-the-scale-set"></a>Horizontales Herunterskalieren der Skalierungsgruppe
+### <a name="scale-in-the-scale-set"></a>Abskalieren der Skalierungsgruppe
 
 Nachdem der Service Fabric-Knoten aus dem Cluster entfernt wurde, kann die VM-Skalierungsgruppe horizontal herunterskaliert werden. Im folgenden Beispiel wird die Kapazität der Skalierungsgruppe um 1 verringert:
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten
-Wenn Sie einen Cluster zentral hochskalieren, zeigt Service Fabric Explorer die Anzahl von Knoten (Instanzen der VM-Skalierungsgruppen) an, die zum Cluster gehören.  Wenn Sie einen Cluster jedoch zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem entsprechenden Knotennamen auf.   
+Wenn Sie einen Cluster hochskalieren, zeigt Service Fabric Explorer die Anzahl von Knoten (Instanzen der VM-Skalierungsgruppen) an, die zum Cluster gehören.  Wenn Sie einen Cluster jedoch zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem entsprechenden Knotennamen auf.   
 
 Dieses Verhalten erklärt sich wie folgt:
 

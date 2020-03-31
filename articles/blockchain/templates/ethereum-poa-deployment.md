@@ -5,10 +5,10 @@ ms.date: 12/18/2019
 ms.topic: article
 ms.reviewer: coborn
 ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75387502"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
@@ -84,7 +84,7 @@ Geben Sie unter **Grundlagen** Werte für die Standardparameter für jede Bereit
 
 ![Grundlagen](./media/ethereum-poa-deployment/basic-blade.png)
 
-Parameter | Beschreibung | Beispielwert
+Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 Neues Netzwerk erstellen oder vorhandenem Netzwerk beitreten? | Sie können ein neues Netzwerk erstellen oder einem bereits vorhandenen Konsortiumnetzwerk beitreten. Für den Beitritt zu einem vorhandenen Netzwerk sind zusätzliche Parameter erforderlich. | Neu erstellen
 E-Mail-Adresse | Sie erhalten eine E-Mail-Benachrichtigung mit Informationen zu Ihrer Bereitstellung, wenn die Bereitstellung abgeschlossen ist. | eine gültige E-Mail-Adresse
@@ -93,7 +93,7 @@ Authentifizierungsart | Die Methode zur Authentifizierung des virtuellen Compute
 Kennwort | Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Alle VMs verfügen anfänglich über das gleiche Kennwort. Sie können das Kennwort nach der Bereitstellung ändern. | 12 bis 72 Zeichen 
 Subscription | Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird. |
 Ressourcengruppe| Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird. | myResourceGroup
-Location | Die Azure-Region für die Ressourcengruppe. | USA, Westen 2
+Position | Die Azure-Region für die Ressourcengruppe. | USA, Westen 2
 
 Klicken Sie auf **OK**.
 
@@ -103,7 +103,7 @@ Geben Sie unter *Bereitstellungsregionen* die Anzahl der Regionen und Standorte 
 
 ![Bereitstellungsregionen](./media/ethereum-poa-deployment/deployment-regions.png)
 
-Parameter | Beschreibung | Beispielwert
+Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 Anzahl der Regionen|Die Anzahl der Regionen, in denen das Konsortiumsnetzwerk bereitgestellt wird.| 2
 Erste Region | Die erste Region, in der das Konsortiumsnetzwerk bereitgestellt wird. | USA, Westen 2
@@ -117,7 +117,7 @@ Geben Sie unter *Netzwerkgröße und -leistung* Werte für die Größe des Konso
 
 ![Netzwerkgröße und -leistung](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-Parameter | Beschreibung | Beispielwert
+Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 Anzahl von Validierungsknoten mit Lastenausgleich | Anzahl von Validierungsknoten, die als Teil des Netzwerks bereitgestellt werden | 2
 Speicherleistung von Validierungsknoten | Die Art des verwalteten Datenträgers für die einzelnen bereitgestellten Validierungsknoten – Informationen zu den Preisen finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/). | SSD Standard
@@ -139,7 +139,7 @@ Geben Sie unter *Ethereum-Einstellungen* die für Ethereum gültigen Konfigurati
 
 ![Ethereum-Einstellungen](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-Parameter | Beschreibung | Beispielwert
+Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 ID des Konsortiumsmitglieds | Die ID, die jedem Mitglied des Konsortiumnetzwerks zugeordnet ist. Sie wird verwendet, um IP-Adressräume zu konfigurieren und Kollisionen zu vermeiden. Bei einem privaten Netzwerk sollte die Mitglieds-ID für verschiedene Organisationen in demselben Netzwerk eindeutig sein.  Eine eindeutige Mitglieds-ID ist erforderlich, auch dieselbe Organisation Bereitstellungen in mehreren Regionen vornimmt. Notieren Sie sich den Wert dieses Parameters, da Sie ihn anderen teilnehmenden Mitgliedern mitteilen müssen, um Konflikte auszuschließen. Der gültige Bereich liegt zwischen 0 und 255. | 0
 Netzwerk-ID | Die Netzwerk-ID für das bereitgestellte Ethereum-Konsortiumsnetzwerk. Jedes Ethereum-Netzwerk verfügt über eine eigene Netzwerk-ID, wobei 1 die ID für das öffentliche Netzwerk ist. Der gültige Bereich liegt zwischen 5 und 999.999.999. | 10101010
@@ -158,11 +158,11 @@ Mithilfe der Überwachung können Sie eine Protokollressource für Ihr Netzwerk 
 
 ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
-Parameter | Beschreibung | Beispielwert
+Parameter | BESCHREIBUNG | Beispielwert
 ----------|-------------|--------------
 Überwachung | Option zum Aktivieren der Überwachung | Aktivieren
 Connect to existing Azure Monitor logs (Mit vorhandenen Azure Monitor-Protokollen verbinden) | Option zum Erstellen einer neuen Azure Monitor-Protokollinstanz oder zum Beitritt zu einer vorhandenen Instanz | Neu erstellen
-Location | Die Region, in der die neue Instanz bereitgestellt wird | East US
+Position | Die Region, in der die neue Instanz bereitgestellt wird | East US
 Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Join Existing) (Vorhandene Log Analytics-Arbeitsbereichs-ID (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Die Arbeitsbereichs-ID der vorhandenen Azure Monitor-Protokollinstanz||Nicht verfügbar
 Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
 
@@ -545,7 +545,7 @@ Rechts oben befinden sich Ihr Ethereum-Kontoalias und -Identicon.  Wenn Sie Admi
 
 ![Konto](./media/ethereum-poa-deployment/governance-dapp-account.png)
 
-## Ethereum-Entwicklung<a id="tutorials"></a>
+## <a name="ethereum-development"></a>Ethereum-Entwicklung<a id="tutorials"></a>
 
 Es gibt einige Optionen für das Kompilieren, Bereitstellen und Testen von Smart Contracts, die Sie für die Ethereum-Entwicklung in Betracht ziehen können:
 * [Truffle Suite:](https://www.trufflesuite.com/docs/truffle/overview) eine clientbasierte Entwicklungsumgebung für Ethereum

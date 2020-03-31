@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236550"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Herstellen einer Verbindung mit Azure-VMs nach einem Failover aus der lokalen Umgebung 
 
@@ -48,7 +48,7 @@ Führen Sie auf lokalen Windows-Computern die folgenden Schritte aus:
 5. Wenn Sie nach einem Failover auf eine Azure-VM über ein Site-to-Site-VPN zugreifen möchten, lassen Sie in der Windows-Firewall auf dem lokalen Computer RDP für das Domänenprofil und private Profile zu. [Erfahren Sie](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules), wie RDP-Datenverkehr zugelassen wird.
 6. Stellen Sie sicher, dass auf der lokalen VM keine ausstehenden Windows-Updates vorhanden sind, wenn Sie ein Failover auslösen. Sollte dies nämlich der Fall sein, können Updates nach dem Failover auf dem virtuellen Azure-Computer installiert werden, und Sie können sich erst dann bei der VM anmelden, wenn die Updates abgeschlossen sind.
 
-### <a name="prepare-linux-machines"></a>Vorbereiten von Linux-Computern:
+### <a name="prepare-linux-machines"></a>Vorbereiten von Linux-Computern
 
 Führen Sie auf lokalen Linux-Computern die folgenden Schritte aus:
 
@@ -66,7 +66,7 @@ Führen Sie nach dem Failover auf den Azure-VMs, die erstellt werden, die folgen
 
 
 > [!NOTE]
-> Der Azure Bastion-Dienst bietet privaten RDP- und SSH-Zugriff auf Azure-VMs. [Weitere Informationen](../bastion/bastion-overview.md) zu diesem Dienst.
+> Der Azure Bastion-Dienst bietet privaten RDP- und SSH-Zugriff auf Azure-VMs. Sehen Sie sich die [weiteren Informationen](../bastion/bastion-overview.md) zu diesem Dienst an.
 
 ## <a name="set-a-public-ip-address"></a>Festlegen einer öffentlichen IP-Adresse
 

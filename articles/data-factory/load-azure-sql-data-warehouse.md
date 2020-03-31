@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: 7815a99d4521e6797b4095a38fcfce50ac29a2b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: dc6d8c9da749e7ee60713f4357dc6d46051d89f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981196"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131273"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Laden von Daten in Azure SQL Data Warehouse mit Azure Data Factory
 
-[Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. SQL Data Warehouse basiert auf der MPP-Architektur (Massively Parallel Processing), die für Data Warehouse-Workloads für Unternehmen optimiert ist. Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
+[Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. SQL Data Warehouse basiert auf der MPP-Architektur (Massively Parallel Processing), die für Data Warehouse-Workloads für Unternehmen optimiert ist. Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
 
 Die ersten Schritte mit Azure SQL Data Warehouse sind jetzt mithilfe von Azure Data Factory einfacher als je zuvor. Azure Data Factory ist ein vollständig verwalteter, cloudbasierter Datenintegrationsdienst. Mithilfe dieses Diensts können Sie ein SQL Data Warehouse mit Daten aus dem vorhandenen System füllen und Zeit beim Erstellen von Analyselösungen sparen.
 

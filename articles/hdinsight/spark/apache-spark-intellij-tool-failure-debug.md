@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494603"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Debuggen von fehlgeschlagenen Spark-Aufträgen mit dem Azure-Toolkit für IntelliJ (Vorschau)
@@ -44,9 +44,9 @@ Erstellen Sie ein Spark 2.3.2-Projekt, um das Debuggen fortzusetzen. Verwenden S
 
      ![Intellij – Erstellen eines Debugprojekts](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Klicken Sie auf **Weiter**.
+   c. Wählen Sie **Weiter** aus.
 
-2. Führen Sie im Fenster **Neues Projekt** folgende Schritte aus:
+2. Führen Sie im Fenster **New Project** (Neues Projekt) die folgenden Schritte aus:
 
    ![Intellij – Neues Projekt – Spark-Version auswählen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
 
@@ -114,7 +114,7 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 
 1. Wenn das Projekt nach dem Debuggen erfolgreich abgeschlossen wurde, können Sie den fehlgeschlagenen Auftrag erneut an den Cluster in Spark für HDInsight übermitteln.
 
-## <a name="seealso"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="seealso"></a>Nächste Schritte
 
 * [Übersicht: Debuggen von Apache Spark-Anwendungen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
@@ -146,7 +146,7 @@ Wenn die Auftragsübermittlung fehlschlägt, können Sie das Profil des fehlgesc
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

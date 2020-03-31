@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946148"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79212959"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>Tutorial: Übertragen von Daten mit Azure Data Box Edge
 
@@ -59,26 +59,28 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
     Zur Auswahl stehen **SMB** und **NFS** (Standardeinstellung: SMB). „SMB“ ist die Standardeinstellung für Windows-Clients, und „NFS“ wird für Linux-Clients verwendet.  
     Je nachdem, ob Sie sich für SMB- oder NFS-Freigaben entscheiden, variiert der Rest der Optionen geringfügig. 
 
-    c. Geben Sie das gewünschte Speicherkonto für die Freigabe an. 
+    c. Geben Sie das gewünschte Speicherkonto für die Freigabe an.
 
-    
+      > [!IMPORTANT]
+      > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Azure Stack Edge- oder Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+
     d. Wählen Sie in der Dropdownliste **Speicherdienst** **Blockblob**, **Seitenblob** oder **Dateien** aus.  
     Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure verwendet werden sollen. In diesem Beispiel sollen die Daten als Blobblöcke in Azure gespeichert werden. Daher wählen wir **Blockblob** aus. Bei Verwendung von **Seitenblob** müssen Ihre Daten ganzzahlige Vielfache von 512 Bytes sein. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
 
     e. Erstellen Sie einen neuen Blobcontainer, oder wählen Sie in der Dropdownliste einen vorhandenen Blobcontainer aus. Geben Sie bei Erstellung eines Blobcontainers einen Containernamen an. Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt.
-   
-    f. Je nachdem, ob Sie eine SMB-Freigabe oder eine NFS-Freigabe erstellt haben, führen Sie einen der folgenden Schritte aus: 
-     
-    - **SMB-Freigabe**: Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer anlegen, geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Die Änderung der Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
+
+    f. Je nachdem, ob Sie eine SMB-Freigabe oder eine NFS-Freigabe erstellt haben, führen Sie einen der folgenden Schritte aus:
+
+    * **SMB-Freigabe**: Wählen Sie unter **Alle lokalen Benutzer mit Berechtigungen** die Option **Neu erstellen** oder **Vorhandene verwenden**. Wenn Sie einen neuen lokalen Benutzer anlegen, geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie dann das Kennwort. Dadurch werden die Berechtigungen dem lokalen Benutzer zugewiesen. Die Änderung der Berechtigungen auf Freigabeebene wird derzeit nicht unterstützt.
 
         Wenn Sie für diese Freigabedaten das Kontrollkästchen **Nur Lesevorgänge zulassen** aktivieren, können Sie Benutzer angeben, die nur über Lesezugriff verfügen.
 
         ![Hinzufügen einer SMB-Freigabe](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS-Freigabe**: Geben Sie die IP-Adressen der zulässigen Clients ein, die auf die Freigabe zugreifen können.
+
+    * **NFS-Freigabe**: Geben Sie die IP-Adressen der zulässigen Clients ein, die auf die Freigabe zugreifen können.
 
         ![Hinzufügen einer NFS-Freigabe](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. Wählen Sie **Erstellen** aus, um die Freigabe zu erstellen.
     
     Sie werden benachrichtigt, wenn die Freigabe erstellt wird. Nachdem die Freigabe mit den angegebenen Einstellungen erstellt wurde, wird die Kachel **Freigaben** aktualisiert, und die neue Freigabe wird angezeigt.

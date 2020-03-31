@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672892"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planen von U-SQL-Aufträgen mit SQL Server Integration Services (SSIS)
@@ -28,7 +28,7 @@ Das [Azure Feature Pack für Integration Services](https://docs.microsoft.com/sq
 - [Herunterladen und Installieren von SQL Server Data Tools (SSDT) für Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017)
 - [Installieren von Azure Feature Pack für SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017)
 
-## <a name="azure-data-lake-analytics-task"></a>Der Task „Azure Data Lake Analytics“
+## <a name="azure-data-lake-analytics-task"></a>Azure Data Lake Analytics-Task
 
 Der Task „Azure Data Lake Analytics“ ermöglicht Benutzern das Übermitteln von U-SQL-Aufträgen an das Azure Data Lake Analytics-Konto. 
 

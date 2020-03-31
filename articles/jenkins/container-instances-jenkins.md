@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie einen Jenkins-Server so konfigurieren, dass B
 ms.topic: article
 ms.date: 08/31/2018
 ms.openlocfilehash: 8bb84895fb581053248fbad326ea7b2c8d1873a2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617742"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Verwenden von Azure Container Instances als Jenkins-Build-Agent

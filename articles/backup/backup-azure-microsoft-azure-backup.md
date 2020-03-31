@@ -4,11 +4,11 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schu
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233910"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188184"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
@@ -61,7 +61,7 @@ In diesem Artikel generieren Sie Beispieldaten und senden sie an einen Event Hub
     |---|---|---|
     | Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
     | Resource group | *test-hub-rg* | Erstellen Sie eine neue Ressourcengruppe. |
-    | Location | *USA, Westen* | Wählen Sie für diesen Artikel die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
+    | Position | *USA, Westen* | Wählen Sie für diesen Artikel die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
     | Namespacename | Ein eindeutiger Namespacename | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert. Beispiel: *mytestnamespace*. Der Domänenname *servicebus.windows.net* wird an den von Ihnen angegebenen Namen angefügt. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden. Der Wert muss zwischen 6 und 50 Zeichen umfassen.
     | Event Hub-Name | *test-hub* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. Der Name des Event Hubs muss innerhalb des Namespaces eindeutig sein. |
     | Name der Consumergruppe | *test-group* | Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |

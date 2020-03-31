@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649067"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472995"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Tutorial: Veröffentlichen von verwalteten Azure-Anwendungen im Marketplace
 
 Hersteller können ihre Lösungen mithilfe von verwalteten Azure-Anwendungen für alle Azure Marketplace-Kunden anbieten. Zu diesen Herstellern zählen Anbieter verwalteter Dienste (Managed Service Providers, MSPs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Systemintegratoren (SIs). Verwaltete Anwendungen verringern den Verwaltungs- und Wartungsaufwand für Kunden. Anbieter können Infrastruktur und Software über den Marketplace verkaufen. Sie können für verwaltete Anwendungen Dienste und Support für den Betrieb hinzufügen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Anwendungen](overview.md).
 

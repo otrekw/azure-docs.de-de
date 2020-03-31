@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455941"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI
@@ -36,11 +36,11 @@ Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritt
 
 Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/bash](https://shell.azure.com/bash) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
 
-Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Version 2.0.51 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie die CLI installieren oder aktualisieren müssen, finden Sie die entsprechende Anleitung unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Wenn Sie es vorziehen, die CLI lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens Version 2.0.51 der Azure CLI verwenden. Führen Sie `az --version` aus, um die Version zu ermitteln. Wenn Sie die CLI installieren oder aktualisieren müssen, finden Sie die entsprechende Anleitung unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -415,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Versuchen Sie im Rahmen des nächsten Tutorials, mit Blockchain Data Manager und Azure Cosmos DB einen Explorer für Blockchaintransaktionsnachrichten zu erstellen.
+Versuchen Sie im Rahmen des nächsten Tutorials, mit Blockchain Data Manager und Azure Cosmos DB einen Explorer für Blockchaintransaktionsnachrichten zu erstellen.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB](data-manager-cosmosdb.md)

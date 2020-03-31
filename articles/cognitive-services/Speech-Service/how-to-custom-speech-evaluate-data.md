@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806095"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Bewerten der Custom Speech-Genauigkeit
@@ -56,7 +56,7 @@ Parallele Auswertung von Modellen:
 3. Klicken Sie auf **Test hinzufügen**.
 4. Wählen Sie **Bewerten der Genauigkeit** aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audio- und menschenmarkiertes Transkriptionsdataset aus.
 5. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
 Nachdem der Test erfolgreich erstellt wurde, können Sie die Ergebnisse nebeneinander vergleichen.
 

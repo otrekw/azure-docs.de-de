@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der Azure-
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844040"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle

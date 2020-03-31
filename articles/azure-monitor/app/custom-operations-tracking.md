@@ -1,19 +1,15 @@
 ---
 title: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET SDK
 description: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET-SDK
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951342"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234738"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -212,7 +208,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie Vorgänge der [Azure Storage
 Die Storage-Warteschlange verfügt über eine HTTP-API. Alle Aufrufe der Warteschlange werden von der Application Insights-Abhängigkeitserfassung für HTTP-Anforderungen nachverfolgt.
 Dies ist in ASP.NET- und ASP.NET Core-Anwendungen standardmäßig konfiguriert. Entsprechende Informationen zu anderen Arten von Anwendungen finden Sie in der [Dokumentation zu Konsolenanwendungen](../../azure-monitor/app/console.md).
 
-Zudem sollten Sie die Vorgangs-ID von Application Insights mit der Anforderungs-ID von Storage korrelieren. Informationen zum Einrichten eines Storage-Anforderungsclients und Abrufen einer Serveranforderungs-ID erhalten Sie unter [Überwachung, Diagnose und Problembehandlung in Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
+Zudem sollten Sie die Vorgangs-ID von Application Insights mit der Anforderungs-ID von Storage korrelieren. Informationen zum Festlegen und Abrufen eines Storage-Anforderungsclients und einer Serveranforderungs-ID erhalten Sie unter [Überwachung, Diagnose und Problembehandlung in Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
 #### <a name="enqueue"></a>Einreihen in die Warteschlange
 Da Storage-Warteschlangen die HTTP-API unterstützen, werden alle Vorgänge der Warteschlange von Application Insights automatisch nachverfolgt. In vielen Fällen sollte diese Instrumentierung ausreichend sein. Zum Korrelieren von Ablaufverfolgungen auf Consumerseite mit Ablaufverfolgungen für Producer müssen Sie aber auf ähnliche Weise Korrelationskontext übergeben, wie wir dies für das HTTP-Protokoll für die Korrelation getan haben. 

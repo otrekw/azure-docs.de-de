@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986834"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
@@ -82,7 +82,7 @@ Dateibeschreibungen:
 
 Konfigurieren Sie im Azure-Portal Ihre [Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) so, dass die **Häufigkeit der Modellaktualisierung** auf 15 Sekunden und die **Wartezeit für Belohnung** ebenfalls auf 15 Sekunden festgelegt ist. Diese Werte finden Sie auf der Seite **[Konfiguration](how-to-settings.md#configure-service-settings-in-the-azure-portal)** .
 
-|Einstellung|value|
+|Einstellung|Wert|
 |--|--|
 |Häufigkeit der Modellaktualisierung|15 Sekunden|
 |Wartezeit für Belohnung|15 Sekunden|

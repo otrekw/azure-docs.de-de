@@ -7,10 +7,10 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458748"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronisierung von Offlinedaten in Azure Mobile Apps
@@ -55,7 +55,7 @@ Ein *Synchronisierungskontext* ist einem mobilen Clientobjekt zugeordnet (z. B. 
 
 Ein lokaler Speicher wird mithilfe einer Initialisierungsmethode wie `IMobileServicesSyncContext.InitializeAsync(localstore)` im [.NET Client SDK]dem Synchronisierungskontext zugeordnet.
 
-## <a name="how-sync-works"></a>So funktioniert die Offlinesynchronisierung
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>So funktioniert die Offlinesynchronisierung
 Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderungen mit einem Azure Mobile App-Back-End synchronisiert werden sollen. Nichts wird an das Back-End gesendet, bis ein Aufruf für einen *Pushvorgang* für lokale Änderungen erfolgt. Auf ähnliche Weise wird der lokale Speicher nur dann mit neuen Daten aufgefüllt, wenn ein Aufruf für einen *Pullvorgang* von Daten erfolgt.
 
 * **Push**: Ein Pushvorgang ist ein Vorgang im Synchronisierungskontext, bei dem alle CUD-Änderungen seit dem letzten Pushvorgang gesendet werden. Beachten Sie, dass es nicht möglich ist, nur die Änderungen einer einzelnen Tabelle zu senden, da andernfalls Vorgänge außerhalb der Reihenfolge gesendet werden könnten. Ein Pushvorgang führt eine Reihe von REST-Aufrufen an Ihr Azure Mobile App-Back-End durch, das wiederum die Serverdatenbank ändert.

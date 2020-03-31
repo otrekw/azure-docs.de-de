@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233242"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -137,9 +137,33 @@ Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Mess
 | defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten | ISO_8601-Intervall bis zu 2 Tage (mindestens 1 Minute); Standardwert: 1 Stunde |
 | maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät | 1 bis 100; Standard: 10 |
 | feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten | ISO_8601-Intervall bis zu 2 Tage (mindestens 1 Minute); Standardwert: 1 Stunde |
-| feedback.maxDeliveryCount | Maximale Zustellungsanzahl für die Feedbackwarteschlange | 1 bis 100; Standard: 100 |
+| feedback.maxDeliveryCount | Maximale Zustellungsanzahl für die Feedbackwarteschlange | 1 bis 100; Standard: 10 |
+| feedback.lockDurationAsIso8601 | Maximale Zustellungsanzahl für die Feedbackwarteschlange | ISO_8601-Intervall von 5 bis 300 Sekunden (mindestens 5 Sekunden). Standard: 60 Sekunden. |
 
-Weitere Informationen zum Festlegen dieser Konfigurationsoptionen finden Sie unter [Erstellen von IoT Hub-Instanzen](iot-hub-create-through-portal.md).
+Sie können die Konfigurationsoptionen auf eine der folgenden Weisen festlegen:
+
+* **Azure-Portal**: Wählen Sie auf Ihrem IoT-Hub unter **Einstellungen** die Option **Integrierten Endpunkte** aus, und erweitern Sie **Cloud-zu-Gerät-Nachrichten**. (Das Festlegen der Eigenschaften **feedback.maxDeliveryCount** und **feedback.lockDurationAsIso8601** im Azure-Portal wird derzeit nicht unterstützt.)
+
+    ![Festlegen von Konfigurationsoptionen für Cloud-zu-Gerät-Nachrichten im Portal](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Azure CLI**: Verwenden Sie den Befehl [az iot hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update):
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

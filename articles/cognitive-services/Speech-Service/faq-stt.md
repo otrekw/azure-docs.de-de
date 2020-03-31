@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
 ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77168458"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
@@ -88,7 +88,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **F: Was geschieht, wenn ich eine höhere Parallelität für mein bereitgestelltes Modell benötige, als im Portal angeboten wird?**
 
-**A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen zentral hochskalieren.
+**A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren.
 
 Erstellen Sie im [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) mit den erforderlichen Informationen eine Supportanfrage. Veröffentlichen Sie die Informationen nicht auf den öffentlichen Kanälen (GitHub, Stackoverflow usw.), die auf der Seite [Support](support.md) erwähnt werden.
 

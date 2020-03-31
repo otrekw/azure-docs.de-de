@@ -9,10 +9,10 @@ ms.date: 10/25/2019
 ms.author: jehollan, glenga
 ms.custom: include file
 ms.openlocfilehash: fca8c3b0b1bd4d22720a6d15313e297d05b7fac9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76021087"
 ---
 1. Öffnen Sie das Azure-Portal unter [https://portal.azure.com](https://portal.azure.com).
@@ -29,7 +29,7 @@ ms.locfileid: "76021087"
 
     ![Grundlagen](./media/functions-premium-create/function-app-create-basics.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. |
     | **[Ressourcengruppe](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird |
@@ -44,7 +44,7 @@ ms.locfileid: "76021087"
 
     ![Hosting](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ | ---------------- | ----------- |
     | **[Speicherkonto](../articles/storage/common/storage-account-create.md)** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können auch ein vorhandenes Konto verwenden, das die [Anforderungen an das Speicherkonto](../articles/azure-functions/functions-scale.md#storage-account-requirements) erfüllen muss. |
     |**Betriebssystem**| Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |
@@ -56,7 +56,7 @@ ms.locfileid: "76021087"
 
     ![Überwachung](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Standard | Erstellt eine Application Insights-Ressource mit dem gleichen *App-Namen* in der nächstgelegenen unterstützten Region. Durch Erweitern dieser Einstellung können Sie den **neuen Ressourcennamen** ändern oder einen anderen **Standort** in einer [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) wählen, in der Sie Ihre Daten speichern möchten. |
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68423917"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Verwenden der Rangfolge zum Anzeigen von Ergebnissen der Entitätssuche  

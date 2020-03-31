@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: f075362f976e6abb26c9781c4b0cdeb7912c0862
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514033"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen über Azure Monitor
@@ -42,7 +42,7 @@ Media Services unterstützt das Überwachen von Metriken für die folgenden Ress
 
 Sie können die folgenden Kontometriken überwachen.
 
-|Metrikname|`Display name`|Beschreibung|
+|Metrikname|`Display name`|BESCHREIBUNG|
 |---|---|---|
 |AssetCount|Anzahl der Medienobjekte|Die Medienobjekte in Ihrem Konto.|
 |AssetQuota|Kontingent der Medienobjekte|Das Kontingent der Medienobjekte in Ihrem Konto.|
@@ -60,7 +60,7 @@ Informieren Sie sich außerdem über [Kontingente und Einschränkungen für Kont
 
 Die folgenden [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) von Media Services-Metriken werden unterstützt:
 
-|Metrikname|`Display name`|Beschreibung|
+|Metrikname|`Display name`|BESCHREIBUNG|
 |---|---|---|
 |Requests|Requests|Gibt die Gesamtzahl der HTTP-Anforderungen an, die vom Streamingendpunkt behandelt werden.|
 |Ausgehende Daten|Ausgehende Daten|Die Gesamtzahl der ausgehenden Bytes. Beispiel: Vom Streamingendpunkt gestreamte Bytes.|
@@ -72,7 +72,7 @@ Hier sind Beispiele dafür, wie Sie durch das Überwachen von Media Services-Met
 
 * Wie überwache ich meinen Standardstreamingendpunkt, um zu wissen, wann die Grenzwerte überschritten wurden?
 * Wie erkenne ich, ob ich über genügend Premium-Streamingendpunkt-Skalierungseinheiten verfüge?
-* Wie kann ich eine Warnung festlegen, um zu wissen, wann die Streamingendpunkte zentral hochskaliert werden müssen?
+* Wie kann ich eine Warnung festlegen, um zu wissen, wann die Streamingendpunkte hochskaliert werden müssen?
 * Wie lege ich eine Warnung fest, um zu wissen, wann der für das Konto konfigurierte maximale ausgehende Datenverkehr erreicht wurde?
 * Wie kann ich die Aufschlüsselung der fehlgeschlagenen Anforderungen und die Fehlerursachen anzeigen?
 * Wie kann ich erkennen, wie viele HLS- oder DASH-Anforderungen aus dem Objekt-Manager abgerufen werden?
@@ -92,7 +92,7 @@ Media Services unterstützt die folgenden Diagnoseprotokolle:
 
 ### <a name="key-delivery"></a>Schlüsselübermittlung
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |Dienstanforderung zur Schlüsselübermittlung|Protokolle, die die wichtigsten Informationen zur Dienstanforderung für die Schlüsselübermittlung anzeigen. Weitere Informationen finden Sie unter [Schemas](media-services-diagnostic-logs-schema.md).|
 

@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68882765"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Hinzufügen von Analysen in den Bing-Suche-APIs
@@ -51,7 +51,7 @@ Standardmäßig werden in den Diagrammen und Graphen alle Metriken und Daten ang
 - **Endpunkte:** Die Endpunkte der Bing-Suche-API. Die Liste enthält alle Endpunkte, für die Sie ein kostenpflichtiges Abonnement besitzen. Standardmäßig sind alle Endpunkte ausgewählt.  
 
 - **Zeitrahmen:** Der Berichtszeitraum. Sie können Folgendes angeben:
-  - **Alle**: Enthält Daten aus bis zu 13 Monaten.  
+  - **All**: Enthält Daten aus bis zu 13 Monaten.  
   - **Letzte 24 Stunden**: Enthält Analysen der letzten 24 Stunden.  
   - **Letzte Woche**: Enthält Analysen der letzten sieben Tage.  
   - **Letzter Monat**: Enthält Analysen der letzten 30 Tage.  

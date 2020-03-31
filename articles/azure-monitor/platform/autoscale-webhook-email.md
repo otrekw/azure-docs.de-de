@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120686"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
@@ -56,7 +56,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
     ]
 ```
 
-| Feld | Erforderlich? | Beschreibung |
+| Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | operation |ja |Als Wert muss „Scale“ angegeben werden. |
 | sendToSubscriptionAdministrator |ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
@@ -99,10 +99,10 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 ```
 
 
-| Feld | Erforderlich? | Beschreibung |
+| Feld | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | status |ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
-| operation |ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |
+| operation |ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Aufskalieren“ und „Abskalieren“ zum Verringern der Anzahl der Instanzen. |
 | context |ja |Der Kontext des automatischen Skalierungsvorgangs |
 | timestamp |ja |Zeitstempel der Auslösung des automatischen Skalierungsvorgangs |
 | id |Ja |Resource Manager-ID der Einstellung für die automatische Skalierung |

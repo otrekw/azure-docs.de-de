@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
 ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543074"
 ---
 # <a name="live-event-states-and-billing"></a>Zustandswerte von Liveereignissen und Abrechnung
@@ -33,7 +33,7 @@ Wenn **LiveEventEncodingType** für Ihr [Liveereignis](https://docs.microsoft.co
 
 Das Liveereignis kann folgende Zustandswerte aufweisen:
 
-|State|Beschreibung|
+|State|BESCHREIBUNG|
 |---|---|
 |**Beendet**| Dies ist der anfängliche Zustand des Liveereignisses nach der Erstellung (es sei denn, der automatische Start wurde auf „true“ festgelegt). In diesem Status werden keine Gebühren berechnet. In diesem Zustand können die Eigenschaften des Liveereignisses aktualisiert werden, Streaming ist jedoch nicht zulässig.|
 |**Wird gestartet**| Das Liveereignis wird gestartet, und Ressourcen werden zugewiesen. In diesem Status werden keine Gebühren berechnet. In diesem Zustand sind weder Updates noch Streaming zulässig. Wenn ein Fehler auftritt, wird das Liveereignis in den Zustand „Stopped“ (Angehalten) zurückgesetzt.|

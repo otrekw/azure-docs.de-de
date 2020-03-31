@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650860"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225894"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure Blob Storage mithilfe von Azure Logic Apps
 
@@ -121,7 +121,7 @@ In diesem Beispiel wird nur der Inhalt für ein Blob abgerufen. Fügen Sie zum A
 
 1. Wenn Sie zum Erstellen der Verbindung aufgefordert werden, geben Sie diese Informationen an:
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | **Speicherkonto** | Ja | <*storage-account*> | Wählen Sie Ihr Speicherkonto aus der Liste aus. |

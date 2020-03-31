@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: afa197c83b4f66f12863de4185ef7763447f3ed9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75453365"
 ---
 # <a name="how-to-add-a-confirmation-to-a-custom-command-preview"></a>Anleitung: Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl (Vorschau)
@@ -65,7 +65,7 @@ Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem 
 Wählen Sie den Testbereich aus, und testen Sie einige Interaktionen.
 
 - Eingabe: Set alarm for tomorrow at noon (Alarm für morgen Mittag festlegen)
-- Ausgabe: "Ok, alarm set for 12/06/2019 12:00:00" (OK, Alarm für 06.12.2019 12 Uhr festgelegt)
+- Ausgabe: „Ok, alarm set for 12/06/2019 12:00:00“ (OK, Alarm für 06.12.2019 12 Uhr festgelegt)
 
 - Eingabe: Set an alarm (Alarm festlegen)
 - Ausgabe: "What time?" (Welche Uhrzeit)

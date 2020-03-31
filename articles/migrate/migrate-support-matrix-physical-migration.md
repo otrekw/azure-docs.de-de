@@ -4,11 +4,11 @@ description: Hier finden Sie Informationen zur Unterstützung der Migration phys
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030929"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232722"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -65,8 +65,8 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 Stellen Sie bei der manuellen Einrichtung der Replikationsappliance auf einem physischen Server sicher, dass sie die in der Tabelle angegebenen Anforderungen erfüllt. Wenn Sie die Azure Migrate-Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub als virtuellen VMware-Computer einrichten, wird die Appliance mit Windows Server 2016 eingerichtet und erfüllt die Supportanforderungen. 
 
 - Informationen zu den Anforderungen für die Replikationsappliance finden Sie [hier](migrate-replication-appliance.md#appliance-requirements).
-- MySQL muss auf der Appliance installiert sein. Informationen zu den Installationsoptionen finden Sie [hier](migrate-replication-appliance.md#mysql-installation).
-- Informationen zu URLs, auf die die Replikationsappliance Zugriff benötigt, finden Sie [hier](migrate-replication-appliance.md#url-access).
+- MySQL muss auf der Appliance installiert sein. Erfahren Sie etwas über die [Installationsoptionen ](migrate-replication-appliance.md#mysql-installation).
+- Erfahren Sie etwas über die [URLs](migrate-replication-appliance.md#url-access), auf die die Replikationsappliance Zugriff benötigt.
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 

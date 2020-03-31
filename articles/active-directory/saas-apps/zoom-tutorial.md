@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70743965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Zoom
@@ -114,7 +114,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
     1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
     1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -140,13 +140,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
 
-    ![Registerkarte für einmaliges Anmelden](./media/zoom-tutorial/ic784700.png "Einmaliges Anmelden")
+    ![Registerkarte „Einmaliges Anmelden“](./media/zoom-tutorial/ic784700.png "Einmaliges Anmelden")
 
 3. Klicken Sie auf die Registerkarte **Sicherheitskontrollen**, und navigieren Sie dann zu den Einstellungen für **Einmaliges Anmelden**.
 
 4. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
 
-    ![Abschnitt für einmaliges Anmelden](./media/zoom-tutorial/ic784701.png "Einmaliges Anmelden")
+    ![Abschnitt „Einmaliges Anmelden“](./media/zoom-tutorial/ic784701.png "Einmaliges Anmelden")
 
     a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 

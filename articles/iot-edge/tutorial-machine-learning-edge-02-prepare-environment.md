@@ -4,16 +4,16 @@ description: 'Tutorial: Es wird beschrieben, wie Sie Ihre Umgebung für die Entw
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944293"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79296800"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
@@ -189,12 +189,13 @@ Bei der Erstellung des IoT-Hubs wurden mit dem Skript, das wir im vorherigen Abs
 
 1. Erweitern Sie den Abschnitt **Speicher**:
 
-   ![Überprüfen, ob „turbofandevicestorage“ in der Liste mit den benutzerdefinierten Endpunkten enthalten ist](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Überprüfen, ob „turbofanDeviceStorage“ in der Liste mit den benutzerdefinierten Endpunkten enthalten ist](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   Sie sehen, dass **turbofandevicestorage** in der Liste mit den benutzerdefinierten Endpunkten enthalten ist. Beachten Sie die folgenden Eigenschaften dieses Endpunkts:
+   Sie sehen, dass **turbofanDeviceStorage** in der Liste mit den benutzerdefinierten Endpunkten enthalten ist. Beachten Sie die folgenden Eigenschaften dieses Endpunkts:
 
    * Er verweist auf den von Ihnen erstellten Blobspeichercontainer mit dem Namen `devicedata`. Dies wird über den **Containernamen** angegeben.
    * Unter **Format des Dateinamens** ist „Partition“ als letztes Element des Namens angegeben. Dieses Format ist besser für die Dateivorgänge geeignet, die wir später in diesem Tutorial mit Azure Notebooks durchführen.
+   * Als **Status** sollte „Fehlerfrei“ angezeigt werden.
 
 1. Wählen Sie die Registerkarte **Routen**.
 

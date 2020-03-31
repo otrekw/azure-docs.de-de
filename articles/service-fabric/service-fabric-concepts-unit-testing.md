@@ -4,10 +4,10 @@ description: Informationen zu den Konzepten und Verfahren von Unittests für zus
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433905"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Ausführen von Unittests für zustandsbehaftete Dienste in Service Fabric

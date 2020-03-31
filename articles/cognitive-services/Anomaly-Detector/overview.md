@@ -10,14 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448968"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053711"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Worum handelt es sich bei der Anomalieerkennungs-API?
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen. Die Anomalieerkennungs-API passt sich an, indem die am besten passenden Modelle für Ihre Daten automatisch identifiziert und angewendet werden, unabhängig von der Branche, dem Szenario oder der Datenmenge. Mithilfe der Zeitreihendaten bestimmt die API die Grenzen für die Anomalieerkennung, die erwarteten Werte und, welche Datenpunkte Anomalien sind.
 
@@ -27,7 +29,7 @@ Für die Verwendung der Anomalieerkennung sind keine Erfahrungen im Bereich des 
 
 ## <a name="features"></a>Features
 
-Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder auch während sie in Echtzeit auftreten, automatisch erkennen. 
+Mit der Anomalieerkennung können Sie Anomalien in allen Zeitreihendaten, oder auch während sie in Echtzeit auftreten, automatisch erkennen.
 
 |Funktion  |BESCHREIBUNG  |
 |---------|---------|
@@ -52,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um das Notebook auszuführen:
 1. Deaktivieren Sie im Dialogfeld die Option „Öffentlich“, bevor Sie den Klonvorgang durchführen. Andernfalls ist Ihr Notebook, einschließlich aller Abonnementschlüssel, öffentlich zugänglich.
 1. Klicken Sie auf **Run on free compute (Mit kostenlosem Compute ausführen)** .
 1. Wählen Sie eines der Notebooks aus.
-1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu. 
+1. Fügen Sie Ihren gültigen Abonnementschlüssel für die Anomalieerkennungs-API zur Variablen `subscription_key` hinzu.
 1. Ändern Sie die Variable `endpoint` in Ihren Endpunkt. Beispiel: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. Klicken Sie auf der oberen Menüleiste auf **Zelle** und dann auf **Alle ausführen**.
 

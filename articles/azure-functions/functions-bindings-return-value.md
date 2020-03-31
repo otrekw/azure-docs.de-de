@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74480568"
 ---
 # <a name="using-the-azure-function-return-value"></a>Verwenden des Rückgabewerts einer Azure-Funktion
@@ -26,7 +26,7 @@ Wenn mehrere Ausgabebindungen vorhanden sind, verwenden Sie den Rückgabewert f�
 
 In C# und C#-Skripts können Daten alternativ mithilfe von `out`-Parametern und [Collector-Objekten](functions-reference-csharp.md#writing-multiple-output-values) an eine Ausgabebindung gesendet werden.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Hier sehen Sie C#-Code, der den Rückgabewert für eine Ausgabebindung gefolgt von einem asynchronen Beispiel verwendet:
 
@@ -52,7 +52,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+# <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -85,7 +85,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F#](#tab/fsharp)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -107,7 +107,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -130,7 +130,7 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -153,7 +153,7 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Hier sehen Sie Java-Code, der den Rückgabewert für eine Ausgabebindung verwendet:
 

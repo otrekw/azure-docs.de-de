@@ -16,10 +16,10 @@ ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163997"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indizieren von Mediendateien mit Azure Media Indexer
@@ -142,7 +142,7 @@ Die Mediendatei wird mit allen Standardeinstellungen indiziert, wenn keine Konfi
 ```
 
 <!-- __ -->
-### <a id="output_files"></a>Ausgabedateien
+### <a name="output-files"></a><a id="output_files"></a>Ausgabedateien
 Ein Indizierungsauftrag generiert standardmäßig die folgenden Ausgabedateien. Die Dateien werden im ersten Ausgabemedienobjekt gespeichert.
 
 Wenn mehrere Eingabemediendateien vorhanden sind, generiert Indexer die Manifestdatei „JobResult.txt“ für die Auftragsausgaben. Die sich daraus ergebenden TTML-, WebVTT- und Stichwortdateien werden für jede Eingabemediendatei fortlaufend nummeriert und mithilfe des „Alias“ benannt.
@@ -240,16 +240,16 @@ Wenn nicht alle Eingabemediendateien erfolgreich indiziert werden, verursacht de
 
 Es werden die gleichen Ausgaben (wie bei erfolgreichen Aufträgen) generiert. Sie können anhand der Ausgabemanifestdatei feststellen, welche Eingabedateien gemäß den Werten in der Fehlerspalte fehlerhaft sind. Bei fehlerhaften Eingabedateien werden KEINE TTML-, WebVTT- und Stichwortdateien generiert.
 
-### <a id="preset"></a> Aufgabenvoreinstellungen für Azure Media Indexer
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Aufgabenvoreinstellungen für Azure Media Indexer
 Die Verarbeitung von Azure Media Indexer kann angepasst werden, indem zusätzlich zur Aufgabe eine optionale Aufgabenvoreinstellung bereitgestellt wird.  Im Folgenden wird das Format dieser XML-Konfigurationsdatei beschrieben.
 
 | Name | Anforderung | BESCHREIBUNG |
 | --- | --- | --- |
 | **input** |false |Medienobjekte, die Sie indizieren möchten.</p><p>Azure Media Indexer unterstützt die folgenden Mediendateiformate: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Sie können die Dateinamen im Attribut **name** oder **list** des Elements **input** angeben (wie nachfolgend gezeigt). Wenn Sie nicht angeben, welche Medienobjektdatei indiziert werden soll, wird die primäre Datei ausgewählt. Wenn keine primäre Medienobjektdatei festgelegt ist, wird die erste Datei im Eingabemedienobjekt indiziert.</p><p>So legen Sie den Namen der Medienobjektdatei explizit fest:<br/>`<input name="TestFile.wmv">`<br/><br/>Sie können auch in einem Arbeitsschritt mehrere Medienobjektdateien indizieren (bis zu 10 Dateien). Gehen Sie dazu folgendermaßen vor:<br/><br/><ol class="ordered"><li><p>Erstellen Sie eine Textdatei (Manifestdatei), und geben Sie ihr die Erweiterung .LST. </p></li><li><p>Fügen Sie dieser Manifestdatei eine Liste aller Medienobjektdateinamen im Eingabemedienobjekt hinzu. </p></li><li><p>Fügen Sie die Manifestdatei dem Medienobjekt hinzu (laden Sie sie hoch).  </p></li><li><p>Geben Sie den Namen der Manifestdatei im list-Attribut der Eingabe an.<br/>`<input list="input.lst">`</li></ol><br/><br/>Hinweis: Wenn Sie der Manifestdatei mehr als zehn Dateien hinzufügen, tritt bei der Indizierung ein Fehler auf (Fehlercode 2006). |
 | **metadata** |false |Metadaten für die festgelegten Medienobjektdateien zur Vokabularanpassung.  So kann der Indexer nicht standardmäßiges Vokabular wie z.B. Eigennamen erkennen.<br/>`<metadata key="..." value="..."/>` <br/><br/>Sie können Werte (**values**) für vordefinierte Schlüssel (**keys**) angeben. Derzeit werden die folgenden Schlüssel unterstützt:<br/><br/>„title“ und „description“: Diese dienen der Vokabularanpassung zum Optimieren des Sprachmodells für Ihren Auftrag und zum Verbessern der Spracherkennungsgenauigkeit.  Über Internetsuchen finden die Werte kontextrelevante Textdokumente und nutzen deren Inhalte zur Vergrößern des internen Wörterbuchs während der Indizierungsaufgabe.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **features** <br/><br/> Wurde in Version 1.2 hinzugefügt. Das einzige unterstützte Feature ist derzeit die Spracherkennung („ASR“). |false |Die Spracherkennungsfunktion umfasst die folgenden Einstellungsschlüssel:<table><tr><th><p>Key</p></th>        <th><p>BESCHREIBUNG</p></th><th><p>Beispielwert</p></th></tr><tr><td><p>Sprache</p></td><td><p>Die natürliche Sprache, die in der Multimediadatei erkannt werden soll.</p></td><td><p>English, Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>Eine mit Semikolon getrennte Liste der gewünschten Ausgabeuntertitelformate (sofern vorhanden)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Ein boolesches Flag, das angibt, ob eine XML-Datei mit Schlüsselwörtern erforderlich ist oder nicht.</p></td><td><p>True; False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Ein boolesches Flag, das angibt, ob vollständige Untertitel erzwungen werden sollen (unabhängig vom Grad der Zuverlässigkeit).  </p><p>Der Standardwert lautet „false“. Bei dieser Einstellung werden Wörter und Sätze, deren Zuverlässigkeit unter 50 % liegt, in den final ausgegebenen Untertiteln durch Auslassungspunkte („...“) ersetzt.  Die Auslassungspunkte eignen sich für die Qualitätskontrolle der Untertitel und für die Überwachung.</p></td><td><p>True; False. </p></td></tr></table> |
+| **features** <br/><br/> Wurde in Version 1.2 hinzugefügt. Das einzige unterstützte Feature ist derzeit die Spracherkennung („ASR“). |false |Die Spracherkennungsfunktion umfasst die folgenden Einstellungsschlüssel:<table><tr><th><p>Schlüssel</p></th>        <th><p>BESCHREIBUNG</p></th><th><p>Beispielwert</p></th></tr><tr><td><p>Sprache</p></td><td><p>Die natürliche Sprache, die in der Multimediadatei erkannt werden soll.</p></td><td><p>English, Spanish</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>Eine mit Semikolon getrennte Liste der gewünschten Ausgabeuntertitelformate (sofern vorhanden)</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>Ein boolesches Flag, das angibt, ob eine XML-Datei mit Schlüsselwörtern erforderlich ist oder nicht.</p></td><td><p>True; False. </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>Ein boolesches Flag, das angibt, ob vollständige Untertitel erzwungen werden sollen (unabhängig vom Grad der Zuverlässigkeit).  </p><p>Der Standardwert lautet „false“. Bei dieser Einstellung werden Wörter und Sätze, deren Zuverlässigkeit unter 50 % liegt, in den final ausgegebenen Untertiteln durch Auslassungspunkte („...“) ersetzt.  Die Auslassungspunkte eignen sich für die Qualitätskontrolle der Untertitel und für die Überwachung.</p></td><td><p>True; False. </p></td></tr></table> |
 
-### <a id="error_codes"></a>Fehlercodes
+### <a name="error-codes"></a><a id="error_codes"></a>Fehlercodes
 Wenn ein Fehler auftritt, gibt Azure Media Indexer einen der folgenden Fehlercodes aus:
 
 | Code | Name | Mögliche Ursachen |
@@ -265,7 +265,7 @@ Wenn ein Fehler auftritt, gibt Azure Media Indexer einen der folgenden Fehlercod
 | 4000 |Batchindizierung teilweise erfolgreich |Bei einigen Eingabemediendateien ist beim Indizieren ein Fehler aufgetreten Weitere Informationen finden Sie unter <a href="#output_files">Ausgabedateien</a>. |
 | Sonstige |Interne Fehler |Wenden Sie sich an das Supportteam. indexer@microsoft.com |
 
-## <a id="supported_languages"></a>Unterstützte Sprachen
+## <a name="supported-languages"></a><a id="supported_languages"></a>Unterstützte Sprachen
 Derzeit werden die Sprachen Englisch und Spanisch unterstützt.  
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

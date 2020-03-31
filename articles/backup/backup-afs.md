@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateif
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: c1dea6925bad96be178f875567077fafa4db9326
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938146"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Sichern von Azure-Dateifreigaben in einem Recovery Services-Tresor

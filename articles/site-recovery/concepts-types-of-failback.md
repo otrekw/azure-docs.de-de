@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236502"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Failback von VMware-VMs nach Notfallwiederherstellung zu Azure
 

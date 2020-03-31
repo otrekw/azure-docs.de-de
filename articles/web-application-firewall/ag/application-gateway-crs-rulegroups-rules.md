@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075371"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235706"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
@@ -94,24 +94,24 @@ CRS 2.2.9 umfasst 10 Regelgruppen, wie in der folgenden Tabelle gezeigt. Jede di
 
 Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Firewall auf Application Gateway verfügbar.
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3.1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3.1](#tab/owasp31)
 
-## <a name="owasp31"></a>-Regelsätze
+## <a name="rule-sets"></a><a name="owasp31"></a>-Regelsätze
 
-### <a name="general-31"></a> <p x-ms-format-detection="none">Allgemein</p>
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">Allgemein</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
 |200004|Mehrteiliger Parser hat eine mögliche fehlende Übereinstimmung für eine Grenze erkannt.|
 
-### <a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
 |911100|Methode ist gemäß Richtlinie nicht zulässig|
 
 
-### <a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -122,7 +122,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |913120|Anforderungsdateiname/-argument mit Zuordnung zu Sicherheitsscanner gefunden|
 
 
-### <a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -174,7 +174,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |920470|Illegaler Content-Type-Header|
 |920480|Einschränken des Zeichensatzparameters im Content-Type-Header|
 
-### <a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -188,7 +188,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |921170|HTTP-Parameterverunreinigung|
 |921180|HTTP-Parameterverunreinigung (%{TX.1})|
 
-### <a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -197,7 +197,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |930120|Zugriffsversuch auf Betriebssystemdatei|
 |930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
 
-### <a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -206,7 +206,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |931120|Möglicher RFI-Angriff (Remote File Inclusion) = Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
 |931130|Möglicher RFI-Angriff (Remote File Inclusion) = Domänenexterner Verweis/Link|
 
-### <a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -224,7 +224,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932180|Eingeschränkter Dateiuploadversuch|
 |932190|Remotebefehlsausführung: Platzhalterumgehungstechnik-Versuch|
 
-### <a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -243,7 +243,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |933180|PHP Injection-Angriff = Aufruf einer Variablenfunktion gefunden|
 |933190|Angriff mit PHP-Einschleusung: PHP-Schließtag gefunden|
 
-### <a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -275,7 +275,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 
 
-### <a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -324,7 +324,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942480|Angriff mit Einschleusung von SQL-Befehlen|
 |942490|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen 3/3|
 
-### <a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -332,7 +332,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |943110|Möglicher Session Fixation-Angriff = SessionID-Parametername mit domänenexternem Verweiser|
 |943120|Möglicher Session Fixation-Angriff = SessionID-Parametername ohne Verweiser|
 
-### <a name="crs944-31"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA</p>
+### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -340,24 +340,24 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |944130|Verdächtige Java-Klassen|
 |944200|Ausnutzung der Java-Deserialisierung (Apache Commons)|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
-## <a name="owasp30"></a>-Regelsätze
+## <a name="rule-sets"></a><a name="owasp30"></a>-Regelsätze
 
-### <a name="general-30"></a> <p x-ms-format-detection="none">Allgemein</p>
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">Allgemein</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
 |200004|Mehrteiliger Parser hat eine mögliche fehlende Übereinstimmung für eine Grenze erkannt.|
 
-### <a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
 |911100|Methode ist gemäß Richtlinie nicht zulässig|
 
 
-### <a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -367,7 +367,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |913101|Benutzer-Agent mit Zuordnung zu Skripterstellungs- bzw. generischem HTTP-Client gefunden|
 |913102|Benutzer-Agent mit Zuordnung zu Webcrawler/Bot gefunden|
 
-### <a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -413,7 +413,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |920274|Ungültiges Zeichen in Anforderungsheadern (außerhalb des sehr strengen Satzes)|
 |920460|Ungewöhnliche Escapezeichen|
 
-### <a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -428,7 +428,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |921170|HTTP-Parameterverunreinigung|
 |921180|HTTP-Parameterverunreinigung (%@{TX.1})|
 
-### <a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -437,7 +437,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |930120|Zugriffsversuch auf Betriebssystemdatei|
 |930130|Zugriffsversuch auf Datei mit eingeschränktem Zugriff|
 
-### <a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -446,7 +446,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |931120|Möglicher RFI-Angriff (Remote File Inclusion) = Verwendung von URL-Nutzlast mit nachgestelltem Fragezeichen (?)|
 |931130|Möglicher RFI-Angriff (Remote File Inclusion) = Domänenexterner Verweis/Link|
 
-### <a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -457,7 +457,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |932170|Ausführung eines Remotebefehls = Shellshock (CVE-2014-6271)|
 |932171|Ausführung eines Remotebefehls = Shellshock (CVE-2014-6271)|
 
-### <a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -473,7 +473,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |933161|PHP Injection-Angriff = PHP-Funktionsaufruf mit niedrigem Wert gefunden|
 |933111|PHP Injection-Angriff = Upload von PHP-Skriptdatei gefunden|
 
-### <a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -500,7 +500,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 |941320|Möglicher XSS-Angriff erkannt – HTML-Taghandler|
 
-### <a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -532,7 +532,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |942251|Erkennt HAVING-Einschleusungen.|
 |942460|Warnung: Erkennung einer Metazeichenanomalie – Wiederholte Non-Word-Zeichen|
 
-### <a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -540,11 +540,11 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |943110|Möglicher Session Fixation-Angriff = SessionID-Parametername mit domänenexternem Verweiser|
 |943120|Möglicher Session Fixation-Angriff = SessionID-Parametername ohne Verweiser|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="owasp229"></a>-Regelsätze
+## <a name="rule-sets"></a><a name="owasp229"></a>-Regelsätze
 
-### <a name="crs20"></a> crs_20_protocol_violations
+### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -570,7 +570,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |960901|Ungültiges Zeichen in Anforderung|
 |960018|Ungültiges Zeichen in Anforderung|
 
-### <a name="crs21"></a> crs_21_protocol_anomalies
+### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a> crs_21_protocol_anomalies
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -583,7 +583,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |960904|Anforderung enthält Inhalt, aber keinen Content-Type-Header|
 |960017|Hostheader ist eine numerische IP-Adresse|
 
-### <a name="crs23"></a> crs_23_request_limits
+### <a name="crs_23_request_limits"></a><a name="crs23"></a> crs_23_request_limits
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -594,7 +594,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |960342|Hochgeladene Datei zu groß|
 |960343|Gesamtgröße der hochgeladenen Dateien zu hoch|
 
-### <a name="crs30"></a> crs_30_http_policy
+### <a name="crs_30_http_policy"></a><a name="crs30"></a> crs_30_http_policy
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -604,7 +604,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |960035|URL-Dateierweiterung wird durch Richtlinie eingeschränkt|
 |960038|HTTP-Header ist durch Richtlinie eingeschränkt|
 
-### <a name="crs35"></a> crs_35_bad_robots
+### <a name="crs_35_bad_robots"></a><a name="crs35"></a> crs_35_bad_robots
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -613,7 +613,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |990902|Anforderung gibt an, dass die Website mit einem Sicherheitsscanner gescannt wurde|
 |990012|Nicht autorisierter Websitecrawler|
 
-### <a name="crs40"></a> crs_40_generic_attacks
+### <a name="crs_40_generic_attacks"></a><a name="crs40"></a> crs_40_generic_attacks
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -642,7 +642,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |958976|Angriff mit PHP-Einschleusung|
 |958977|Angriff mit PHP-Einschleusung|
 
-### <a name="crs41sql"></a> crs_41_sql_injection_attacks
+### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a> crs_41_sql_injection_attacks
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -679,7 +679,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |981253|Erkennt Einschleusungen von gespeicherten Prozeduren/Funktionen für MySQL und PostgreSQL.|
 |981251|Erkennt MySQL-UDF-Einschleusung und andere Versuche der Manipulation von Daten bzw. der Struktur.|
 
-### <a name="crs41xss"></a> crs_41_xss_attacks
+### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a> crs_41_xss_attacks
 
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -784,13 +784,13 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |973329|IE-XSS-Filter – Angriff erkannt|
 |973328|IE-XSS-Filter – Angriff erkannt|
 
-### <a name="crs42"></a> crs_42_tight_security
+### <a name="crs_42_tight_security"></a><a name="crs42"></a> crs_42_tight_security
 
 |RuleId|BESCHREIBUNG|
 |---|---|
 |950103|Path Traversal-Angriff|
 
-### <a name="crs45"></a> crs_45_trojans
+### <a name="crs_45_trojans"></a><a name="crs45"></a> crs_45_trojans
 
 |RuleId|BESCHREIBUNG|
 |---|---|

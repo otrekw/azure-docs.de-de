@@ -4,10 +4,10 @@ description: Erfahren Sie, wie der Zugriff auf Dateien, REST-APIs, Datenbanken u
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646346"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Zugreifen auf Clouddaten in einem Notebook

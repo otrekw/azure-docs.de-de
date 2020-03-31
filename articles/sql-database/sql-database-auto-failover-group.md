@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
 ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116196"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232810"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -417,7 +417,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
 | [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Entfernt eine Failovergruppe vom Server. |
@@ -427,7 +427,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Verwalten von SQL-Datenbank-Failovergruppen mit verwalteten Instanzen
 
-| Get-Help | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 | [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Instanzen. |
 | [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Ändert die Konfiguration einer Failovergruppe.|

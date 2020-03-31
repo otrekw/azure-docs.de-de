@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 482dc0ab549ec6b9f05bc9f74a3d31ac13646ce5
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6c81e50560de69f7702e852d4602680fde7f01f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218128"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Bereitstellen eines (klassischen) Azure Machine Learning Studio-Webdiensts
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (klassisch) ermöglicht Ihnen, Vorhersageanalyselösungen zu erstellen und zu testen. Dann können Sie die Lösung als Webdienst bereitstellen.
 
@@ -123,7 +125,7 @@ Weitere Informationen zum Zugreifen auf einen (klassischen) Machine Learning Stu
 
 Sie können Ihre neuen Webdienste über das (klassische) Webdienstportal von Machine Learning Studio verwalten. Klicken Sie auf der [Hauptseite des Portals](https://services.azureml.net/) auf **Web Services**. Auf der Seite „Web Services“ können Sie einen Dienst löschen oder kopieren. Um einen bestimmten Dienst zu überwachen, klicken Sie auf den Dienst und dann auf **Dashboard**. Klicken Sie zum Überwachen von Batchaufträgen im Zusammenhang mit dem Webdienst auf **Batch Request Log**.
 
-### <a id="multi-region"></a> Bereitstellen Ihres neuen Webdiensts in mehreren Regionen
+### <a name="deploy-your-new-web-service-to-multiple-regions"></a><a id="multi-region"></a> Bereitstellen Ihres neuen Webdiensts in mehreren Regionen
 
 Sie können mühelos einen neuen Webdienst in mehreren Regionen bereitstellen, ohne dass mehrere Abonnements oder Arbeitsbereiche erforderlich sind.
 

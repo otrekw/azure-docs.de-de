@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8e5ff917e7283457e7ff1d4c5fd0cbd91a1b0ace
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9fa9d414b89c7229b0577faad778f6cc8b87fa99
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973746"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244817"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und Python in der Maschinelles Sehen-API
 
@@ -44,6 +44,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels zu Sehenswürdigkeiten di
 1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-landmarks.py`.
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline
@@ -115,7 +117,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebsei
 
 Führen Sie zum Erstellen und Ausführen des Beispiels zu Sehenswürdigkeiten die folgenden Schritte aus:
 
-1. Kopieren Sie den folgenden Code, und fügen Sie ihn in einen Text-Editor ein.
+1. Kopieren Sie den folgenden Code in einen Text-Editor.
 1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
     1. Ersetzen Sie den `subscription_key`-Wert durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie den Wert von `vision_base_url` durch die Endpunkt-URL für die Ressource „Maschinelles Sehen-API“ in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.

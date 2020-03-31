@@ -4,11 +4,11 @@ description: Beschreibt das Authentifizieren des Clientzugriffs auf einen Servic
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229346"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 

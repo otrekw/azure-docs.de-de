@@ -13,14 +13,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236446"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-amazon-simple-storage-service.md)
 
@@ -93,10 +93,10 @@ Abschnitte wie „structure“, „availability“ und „policy“ sind bei all
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| bucketName |Der Name des S3-Buckets. |Zeichenfolge |Ja |
-| key |Der S3-Objektschlüssel. |Zeichenfolge |Nein |
-| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |Zeichenfolge |Nein |
-| version |Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |Zeichenfolge |Nein |
+| bucketName |Der Name des S3-Buckets. |String |Ja |
+| Schlüssel |Der S3-Objektschlüssel. |String |Nein |
+| prefix |Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Gilt nur, wenn der Schlüssel leer ist. |String |Nein |
+| version |Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |String |Nein |
 | format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den Formatabschnitt in den Definitionen von Eingabe- und Ausgabedatasets überspringen. | |Nein |
 | compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Die unterstützten Typen sind: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Die folgenden Ebenen werden unterstützt: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). | |Nein |
 
@@ -174,7 +174,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| recursive |Gibt an, ob S3-Objekte rekursiv im Verzeichnis aufgelistet werden. |True/False |Nein |
+| recursive |Gibt an, ob S3-Objekte rekursiv im Verzeichnis aufgelistet werden. |TRUE/FALSE |Nein |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten aus Amazon S3 in Azure Blob Storage
 Dieses Beispiel zeigt, wie Sie Daten aus Amazon S3 in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Data Factory direkt in eine [beliebige der unterstützten Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.
@@ -360,7 +360,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 * Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 

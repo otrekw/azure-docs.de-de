@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74787368"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
@@ -147,9 +147,9 @@ Hier finden Sie weitere Informationen zu den Ausgaben eines „HTTP + Swagger“
 
 | Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
-| headers | object | Die Header aus der Anforderung |
-| body | object | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
-| status code | int | Der Statuscode aus der Anforderung |
+| headers | Objekt (object) | Die Header aus der Anforderung |
+| body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| status code | INT | Der Statuscode aus der Anforderung |
 |||
 
 | Statuscode | BESCHREIBUNG |

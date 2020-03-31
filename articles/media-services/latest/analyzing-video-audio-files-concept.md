@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232826"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysieren von Video- und Audiodateien mit Azure Media Services
 
@@ -30,7 +30,7 @@ Um Ihren Inhalt mit Media Services v3 zu analysieren, erstellen Sie eine **Trans
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
 
-Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze verstoßen, und weder Video Indexer noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie ein Video mit biometrischen Daten zur Verarbeitung und Speicherung in den Video Indexer-Dienst hochladen, müssen Sie über sämtliche erforderlichen Rechte verfügen, einschließlich entsprechender Einwilligungen der Person(en) im Video. Informationen zu Compliance, Datenschutz und Sicherheit in Video Indexer finden Sie in den [Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) von Microsoft. Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Microsoft-Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen einschließlich Informationen zur Datenaufbewahrung und Datenlöschung/-vernichtung finden Sie in den Bestimmungen für Onlinedienste und [hier](../video-indexer/faq.md). Durch die Nutzung von Video Indexer akzeptieren Sie die Cognitive Services-Bestimmungen, die OST, den DPA und die Datenschutzbestimmungen.
+Wichtig: Ihre Nutzung von Video Indexer darf nicht gegen geltende Gesetze verstoßen, und weder Video Indexer noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. Bevor Sie ein Video mit biometrischen Daten zur Verarbeitung und Speicherung in den Video Indexer-Dienst hochladen, müssen Sie über sämtliche erforderlichen Rechte verfügen (einschließlich entsprechender Einwilligungen von den Personen im Video). Informationen zu Compliance, Datenschutz und Sicherheit in Video Indexer finden Sie in den [Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/) von Microsoft. Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Lizenzbedingungen für Onlinedienste und [hier](../video-indexer/faq.md). Durch die Nutzung von Video Indexer akzeptieren Sie die Cognitive Services-Bestimmungen, die OST, den DPA und die Datenschutzbestimmungen.
 
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
@@ -67,7 +67,7 @@ Die Ausgabe umfasst eine JSON-Datei (insights.json) mit allen Informationen, die
 
 ### <a name="transcript"></a>Transkript
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
@@ -105,7 +105,7 @@ Beispiel:
 
 ### <a name="ocr"></a>ocr
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
@@ -148,7 +148,7 @@ Beispiel:
 
 ### <a name="faces"></a>faces
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
@@ -193,7 +193,7 @@ Beispiel:
 
 ### <a name="shots"></a>shots
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID der Aufnahme.|
 |keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Keyframeinstanzen weisen ein Feld „thumbnailId“ mit der keyFrame-Miniaturansicht-ID auf.|
@@ -250,7 +250,7 @@ Beispiel:
 
 ### <a name="statistics"></a>statistics
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
 |WordCount|Die Anzahl von Wörtern pro Sprecher.|
@@ -263,7 +263,7 @@ Beispiel:
 
 Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stimmungs-ID.|
 |averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
@@ -298,7 +298,7 @@ Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negati
 
 ### <a name="labels"></a>Bezeichnungen
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
@@ -356,7 +356,7 @@ Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negati
 
 ### <a name="keywords"></a>keywords
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
@@ -407,7 +407,7 @@ Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Inde
 
 Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer können die Überprüfung des Inhalts durch einen Menschen anfordern. In diesem Fall enthält das Attribut `IsAdult` das Ergebnis der Überprüfung durch den Menschen.
 
-|Name|Beschreibung|
+|Name|BESCHREIBUNG|
 |---|---|
 |id|Die ID für die Moderation des visuellen Inhalts.|
 |adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|

@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68976824"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
@@ -76,7 +76,7 @@ Die UX kann dann entscheiden, wie die Kombination dargestellt wird. Für die Anz
 Wie bereits im Abschnitt mit den wichtigen Begriffen angedeutet, enthält das Objektmodell von **Azure Data Catalog** Elemente, bei denen es sich um Assets oder Anmerkungen handeln kann. Elemente besitzen optionale oder erforderliche Eigenschaften. Einige Eigenschaften gelten für alle Elemente. Einige Eigenschaften gelten für alle Assets. Einige Eigenschaften gelten nur für bestimmte Assettypen.
 
 ### <a name="system-properties"></a>Systemeigenschaften
-<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>Zeichenfolge</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>Zeichenfolge</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
+<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>String</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>String</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
 
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
 Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstypen.
@@ -90,21 +90,21 @@ Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstyp
 <p>
 Diese Eigenschaften gelten für alle Stammassettypen.
 
-<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>name</td><td>Zeichenfolge</td><td>Ein Name, der sich aus den Speicherortinformationen der Datenquelle ableitet.</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Beschreibt die Datenquelle eindeutig und ist einer der Bezeichner für das Asset. (Siehe Abschnitt zu dualer Identität.)  Die DSL-Struktur variiert je nach Protokoll und Quelltyp.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Weitere Informationen zum Typ des Assets.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beschreibt den Benutzer, der dieses Asset zuletzt registriert hat.  Enthält die eindeutige ID für den Benutzer („Upn“) und einen Anzeigenamen („lastName“ und „firstName“).</td></tr><tr><td>containerId</td><td>Zeichenfolge</td><td>Die ID des Containerassets für die Datenquelle. Diese Eigenschaft wird für den Containertyp nicht unterstützt.</td></tr></table>
+<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>name</td><td>String</td><td>Ein Name, der sich aus den Speicherortinformationen der Datenquelle ableitet.</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Beschreibt die Datenquelle eindeutig und ist einer der Bezeichner für das Asset. (Siehe Abschnitt zu dualer Identität.)  Die DSL-Struktur variiert je nach Protokoll und Quelltyp.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Weitere Informationen zum Typ des Assets.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Beschreibt den Benutzer, der dieses Asset zuletzt registriert hat.  Enthält die eindeutige ID für den Benutzer („Upn“) und einen Anzeigenamen („lastName“ und „firstName“).</td></tr><tr><td>containerId</td><td>String</td><td>Die ID des Containerassets für die Datenquelle. Diese Eigenschaft wird für den Containertyp nicht unterstützt.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Allgemeine Nicht-Singleton-Anmerkungseigenschaften
 Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkungen, von denen pro Asset mehrere vorhanden sein können).
 
 <table>
 <tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
-<tr><td>key</td><td>Zeichenfolge</td><td>Ein benutzerdefinierter Schlüssel, der die Anmerkung in der aktuellen Sammlung eindeutig identifiziert. Die Länge des Schlüssels darf 256 Zeichen nicht überschreiten.</td></tr>
+<tr><td>Schlüssel</td><td>String</td><td>Ein benutzerdefinierter Schlüssel, der die Anmerkung in der aktuellen Sammlung eindeutig identifiziert. Die Länge des Schlüssels darf 256 Zeichen nicht überschreiten.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Stammassettypen
 Stammassettypen stellen die verschiedenen Typen von Datenassets dar, die im Katalog registriert werden können. Für jeden Stammtyp gibt es eine Sicht, die die in der Sicht enthaltenen Assets und Anmerkungen beschreibt. Der Sichtname sollte bei der Veröffentlichung eines Assets mithilfe der REST-API im entsprechenden {view_name}-URL-Segment verwendet werden.
 
-<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiel:  SQL-Tabelle, SQL-Sicht, tabellarische Analysis Services-Tabelle, mehrdimensionale Analysis Services-Dimension, Oracle-Tabelle usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
-<tr><td>Bericht („reports“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
+<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiel: SQL-Tabelle, SQL-Sicht, tabellarische Analysis Services-Tabelle, mehrdimensionale Analysis Services-Dimension, Oracle-Tabelle usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, der bzw. die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Ein numerischer MDX-Ausdruck, der den Ist-Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in bestimmten geschäftlichen Zusammenhängen nützlich ist.</td>
+<tr><td>Bericht („reports“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anmerkungstypen
 Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des Katalogs zugewiesen werden können.
@@ -122,15 +122,15 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 <tr><td></td><td>friendlyName</td><td>Zeichenfolge</td><td>Ein Anzeigename des Assets.</td></tr>
 
 <tr><td>Schema („schema“)</td><td></td><td></td><td>Das Schema beschreibt die Struktur der Daten.  Es listet die Namen, Typen und andere Metadaten des Attributs (Spalte, Attribut, Feld usw.) auf.  Diese Informationen werden alle von der Datenquelle abgeleitet.  Das Schema ist eine Singleton-Anmerkung; für ein Asset kann immer nur ein einzelnes Schema kann hinzugefügt werden.</td></tr>
-<tr><td></td><td>columns</td><td>Column[]</td><td>Ein Array mit Spaltenobjekten. Diese beschreiben die Spalte mit aus der Datenquelle abgeleiteten Informationen.</td></tr>
+<tr><td></td><td>Spalten</td><td>Column[]</td><td>Ein Array mit Spaltenobjekten. Diese beschreiben die Spalte mit aus der Datenquelle abgeleiteten Informationen.</td></tr>
 
 <tr><td>ColumnDescription („columnDescriptions“)</td><td></td><td></td><td>Diese Eigenschaft enthält eine Beschreibung für eine Spalte.  Jeder Benutzer des Systems kann seine eigenen Beschreibungen für mehrere Spalten hinzufügen (höchstens eine pro Spalte). Nur der Benutzer, der ein ColumnDescription-Objekt erstellt hat, kann dieses bearbeiten.  (Administratoren und Assetbesitzer können das ColumnDescription-Objekt löschen, aber nicht bearbeiten.) Die Spaltenbeschreibungen dieses Benutzers werden vom System separat verwaltet.  Es gibt daher ein Array mit ColumnDescription-Objekten für die einzelnen Assets (eins für jeden Benutzer, der einen Beitrag zu der Spalte geleistet hat, sowie ggf. ein weiteres mit Informationen, die aus der Datenquelle abgeleitet wurde).  Da die ColumnDescription nur lose an das Schema gebunden ist, kann es vorkommen, dass Beschreibung und Schema nicht mehr synchron sind. Die ColumnDescription kann eine Spalte beschreiben, die im Schema nicht mehr vorhanden ist.  Der Autor muss sicherstellen, dass Beschreibung und Schema synchron sind.  Die Datenquelle kann auch beschreibende Spalteninformationen enthalten. Hierbei handelt es sich um zusätzliche ColumnDescription-Objekte, die beim Ausführen des Tools erstellt werden.</td></tr>
-<tr><td></td><td>columnName</td><td>Zeichenfolge</td><td>Der Name der Spalte, auf die sich diese Beschreibung bezieht.</td></tr>
-<tr><td></td><td>description</td><td>Zeichenfolge</td><td>Eine kurze Beschreibung der Spalte (zwei bis drei Zeilen).</td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>Der Name der Spalte, auf die sich diese Beschreibung bezieht.</td></tr>
+<tr><td></td><td>description</td><td>String</td><td>Eine kurze Beschreibung der Spalte (zwei bis drei Zeilen).</td></tr>
 
 <tr><td>ColumnTag („columnTags“)</td><td></td><td></td><td>Diese Eigenschaft enthält ein Tag für eine Spalte. Jeder Benutzer des Systems kann mehrere Tags für eine bestimmte Spalte sowie Tags für mehrere Spalten hinzufügen. Nur der Benutzer, der ein ColumnTag-Objekt erstellt hat, kann dieses bearbeiten. (Administratoren und Assetbesitzer können das ColumnTag-Objekt löschen, aber nicht bearbeiten.) Die Spaltentags dieser Benutzer werden vom System separat verwaltet.  Es gibt daher ein Array von ColumnTag-Objekten für jedes Asset.  Da das ColumnTag nur lose an das Schema gebunden ist, kann es vorkommen, dass Tag und Beschreibung nicht mehr synchron sind. Das ColumnTag kann eine Spalte beschreiben, die im Schema nicht mehr vorhanden ist.  Der Autor muss sicherstellen, dass Spaltentag und Schema synchron sind.</td></tr>
-<tr><td></td><td>columnName</td><td>Zeichenfolge</td><td>Der Name der Spalte, auf die sich dieses Tag bezieht.</td></tr>
-<tr><td></td><td>tag</td><td>Zeichenfolge</td><td>Ein Tag mit einer Beschreibung der Spalte.</td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>Der Name der Spalte, auf die sich dieses Tag bezieht.</td></tr>
+<tr><td></td><td>tag</td><td>String</td><td>Ein Tag mit einer Beschreibung der Spalte.</td></tr>
 
 <tr><td>Experte („experts“)</td><td></td><td></td><td>Diese Eigenschaft enthält einen Benutzer, der im Dataset als Experte angesehen wird. Expertenmeinungen (Beschreibungen) werden in der UX zuerst aufgelistet. Jeder Benutzer kann eigene Experten angeben. Nur dieser Benutzer kann das Expertenobjekt bearbeiten. (Administratoren und Assetbesitzer können das Expertenobjekt löschen, aber nicht bearbeiten.)</td></tr>
 <tr><td></td><td>Experte</td><td>SecurityPrincipal</td><td></td></tr>
@@ -143,17 +143,17 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 <tr><td></td><td>Inhalt</td><td>Zeichenfolge</td><td>Die Anweisungen für den Zugriff auf dieses Datenasset. Der Inhalt kann eine URL, eine E-Mail-Adresse oder ein Satz von Anweisungen sein.</td></tr>
 
 <tr><td>TableDataProfile („tableDataProfiles“)</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>numberOfRows</td></td><td>int</td><td>Die Anzahl der Zeilen im Dataset</td></tr>
-<tr><td></td><td>size</td><td>lang</td><td>Die Größe des Datasets in Bytes.  </td></tr>
+<tr><td></td><td>numberOfRows</td></td><td>INT</td><td>Die Anzahl der Zeilen im Dataset</td></tr>
+<tr><td></td><td>size</td><td>long</td><td>Die Größe des Datasets in Bytes.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>Zeichenfolge</td><td>Der Zeitpunkt der letzten Schemaänderung</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>Zeichenfolge</td><td>Der Zeitpunkt der letzten Datasetänderung. (Daten wurden hinzugefügt, geändert oder gelöscht.)</td></tr>
 
 <tr><td>ColumnsDataProfile („columnsDataProfiles“)</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>Ein Array von Spaltendatenprofilen.</td></tr>
+<tr><td></td><td>Spalten</td></td><td>ColumnDataProfile[]</td><td>Ein Array von Spaltendatenprofilen.</td></tr>
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName</td><td>Zeichenfolge</td><td>Der Name der Spalte, auf die sich diese Klassifizierung bezieht.</td></tr>
-<tr><td></td><td>Klassifizierung</td><td>Zeichenfolge</td><td>Die Klassifizierung der Daten in dieser Spalte.</td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>Der Name der Spalte, auf die sich diese Klassifizierung bezieht.</td></tr>
+<tr><td></td><td>Klassifizierung</td><td>String</td><td>Die Klassifizierung der Daten in dieser Spalte.</td></tr>
 
 <tr><td>Dokumentation („documentation“)</td><td></td><td></td><td>Einem bestimmten Asset kann nur eine Dokumentation zugeordnet sein.</td></tr>
 <tr><td></td><td>mimeType</td><td>Zeichenfolge</td><td>Der MIME-Typ des Inhalts.</td></tr>
@@ -165,40 +165,40 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind aber keine Elemente.
 
 <table>
-<tr><td><b>Allgemeiner Typ</b></td><td><b>Properties</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
+<tr><td><b>Allgemeiner Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>Zeichenfolge</td><td>Beschreibt die Art der Datenquelle.  Beispiel:  SQL Server, Oracle-Datenbank usw.  </td></tr>
-<tr><td></td><td>objectType</td><td>Zeichenfolge</td><td>Beschreibt die Art des Objekts in der Datenquelle. Beispiel:  Tabelle oder Sicht für SQL Server.</td></tr>
+<tr><td></td><td>sourceType</td><td>Zeichenfolge</td><td>Beschreibt die Art der Datenquelle.  Beispiel: SQL Server, Oracle-Datenbank usw.  </td></tr>
+<tr><td></td><td>objectType</td><td>Zeichenfolge</td><td>Beschreibt die Art des Objekts in der Datenquelle. Beispiel: Tabelle oder Sicht für SQL Server.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protocol</td><td>Zeichenfolge</td><td>Erforderlich. Beschreibt ein Protokoll für die Kommunikation mit der Datenquelle. Beispiele: „tds“ für SQL Server, „oracle“ für Oracle usw. Die Liste mit den derzeit unterstützten Protokollen finden Sie unter <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Spezifikation des Datenquellenverweises – DSL-Struktur</a>.</td></tr>
+<tr><td></td><td>Protokoll</td><td>Zeichenfolge</td><td>Erforderlich. Beschreibt ein Protokoll für die Kommunikation mit der Datenquelle. Beispiele: „tds“ für SQL Server, „oracle“ für Oracle usw. Die Liste mit den derzeit unterstützten Protokollen finden Sie unter <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Spezifikation des Datenquellenverweises – DSL-Struktur</a>.</td></tr>
 <tr><td></td><td>address</td><td>Dictionary&lt;string, object&gt;</td><td>Erforderlich. Bei „address“ handelt es sich um eine protokollspezifische Gruppe von Daten zur Identifizierung der Datenquelle, auf die verwiesen wird. Die für ein bestimmtes Protokoll gültigen Adressdaten, d.h. ohne Kenntnis des Protokolls bedeutungslos.</td></tr>
 <tr><td></td><td>authentication</td><td>Zeichenfolge</td><td>Optional. Das Authentifizierungsschema, das zur Kommunikation mit der Datenquelle verwendet wird. Beispiele: windows, oauth, usw.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Dictionary&lt;string, object&gt;</td><td>Optional. Weitere Informationen zum Herstellen einer Verbindung mit einer Datenquelle.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Das Back-End führt im Rahmen der Veröffentlichung keinerlei Überprüfung der angegebenen Eigenschaften anhand von AAD durch.</td></tr>
 <tr><td></td><td>upn</td><td>Zeichenfolge</td><td>Eindeutige E-Mail-Adresse des Benutzers. Muss angegeben werden, wenn keine Objekt-ID angegeben wurde, oder im Zusammenhang mit der Eigenschaft „lastRegisteredBy“, andernfalls optional.</td></tr>
-<tr><td></td><td>objectId</td><td>GUID</td><td>AAD-Identität einer Benutzer- oder Sicherheitsgruppe. Optional. Muss angegeben werden, wenn kein UPN angegeben wurde, andernfalls optional.</td></tr>
+<tr><td></td><td>objectId</td><td>Guid</td><td>AAD-Identität einer Benutzer- oder Sicherheitsgruppe. Optional. Muss angegeben werden, wenn kein UPN angegeben wurde, andernfalls optional.</td></tr>
 <tr><td></td><td>firstName</td><td>Zeichenfolge</td><td>Der Vorname des Benutzers (für die Anzeige). Optional. Nur im Kontext der Eigenschaft „lastRegisteredBy“ gültig. Kann bei der Bereitstellung eines Sicherheitsprinzipals für Rollen, Berechtigungen und Experten nicht angegeben werden.</td></tr>
 <tr><td></td><td>lastName</td><td>Zeichenfolge</td><td>Der Nachname des Benutzers (für die Anzeige). Optional. Nur im Kontext der Eigenschaft „lastRegisteredBy“ gültig. Kann bei der Bereitstellung eines Sicherheitsprinzipals für Rollen, Berechtigungen und Experten nicht angegeben werden.</td></tr>
 
 <tr><td>Column</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>Zeichenfolge</td><td>Der Name der Spalte oder des Attributs.</td></tr>
 <tr><td></td><td>type</td><td>Zeichenfolge</td><td>Der Datentyp der Spalte oder des Attributs. Die zulässigen Typen hängen vom Datenquellentyp des Assets ab.  Nur eine Teilmenge von Typen wird unterstützt.</td></tr>
-<tr><td></td><td>maxLength</td><td>int</td><td>Die maximal zulässige Länge für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
-<tr><td></td><td>Genauigkeit</td><td>byte</td><td>Die Genauigkeit für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
+<tr><td></td><td>maxLength</td><td>INT</td><td>Die maximal zulässige Länge für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
+<tr><td></td><td>precision</td><td>byte</td><td>Die Genauigkeit für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 <tr><td></td><td>isNullable</td><td>Boolean</td><td>Gibt an, ob die Spalte einen Nullwert enthalten kann. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 <tr><td></td><td>expression</td><td>Zeichenfolge</td><td>Wenn es sich bei dem Wert um eine berechnete Spalte handelt, enthält dieses Feld den Ausdruck, der den Wert angibt. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>Zeichenfolge</td><td>Der Name der Spalte</td></tr>
 <tr><td></td><td>type </td><td>Zeichenfolge</td><td>Der Typ der Spalte</td></tr>
-<tr><td></td><td>min </td><td>Zeichenfolge</td><td>Der Mindestwert im Dataset</td></tr>
+<tr><td></td><td>Min </td><td>Zeichenfolge</td><td>Der Mindestwert im Dataset</td></tr>
 <tr><td></td><td>max </td><td>Zeichenfolge</td><td>Der Höchstwert im Dataset</td></tr>
 <tr><td></td><td>avg </td><td>double</td><td>Der durchschnittliche Wert im Dataset</td></tr>
 <tr><td></td><td>stdev </td><td>double</td><td>Die Standardabweichung für das Dataset</td></tr>
-<tr><td></td><td>nullCount </td><td>int</td><td>Die Anzahl der Nullwerte im Dataset</td></tr>
-<tr><td></td><td>distinctCount  </td><td>int</td><td>Die Anzahl der unterschiedlichen Werte im Dataset</td></tr>
+<tr><td></td><td>nullCount </td><td>INT</td><td>Die Anzahl der Nullwerte im Dataset</td></tr>
+<tr><td></td><td>distinctCount  </td><td>INT</td><td>Die Anzahl der unterschiedlichen Werte im Dataset</td></tr>
 
 
 </table>
@@ -211,7 +211,7 @@ Der Satz der unterstützten Protokolle kann programmgesteuert erweitert werden. 
 
 ### <a name="custom-data-source-protocol-specification"></a>Benutzerdefinierte Datenquellenprotokoll-Spezifikation
 <table>
-<tr><td><b>Typ</b></td><td><b>Properties</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
+<tr><td><b>Typ</b></td><td><b>Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>Namespace</td><td>Zeichenfolge</td><td>Der Namespace des Protokolls. Der Namespace muss zwischen 1 und 255 Zeichen lang sein, mindestens ein nicht leeres Teil enthalten, die Teile müssen durch den Punkt (.) getrennt sein. Jeder Teil muss zwischen 1 und 255 Zeichen lang sein, mit einem Buchstaben beginnen und darf nur Buchstaben und Zahlen enthalten.</td></tr>
@@ -245,7 +245,7 @@ Drei Rollen stehen zur Verfügung: **Administrator**, **Besitzer** oder **Mitwir
 
 <table><tr><td><b>Rolle</b></td><td><b>Umfang</b></td><td><b>Rechte</b></td></tr><tr><td>Administrator</td><td>Katalog (alle Assets/Anmerkungen im Katalog)</td><td>Read Delete ViewRoles
 
-ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Owner (Besitzer)</td><td>Jedes Asset (Stammelement)</td><td>Read Delete ViewRoles
+ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Besitzer</td><td>Jedes Asset (Stammelement)</td><td>Read Delete ViewRoles
 
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Mitwirkender</td><td>Jedes einzelne Asset und jede einzelne Anmerkung</td><td>Read Update Delete ViewRoles – Hinweis: Wird dem Mitwirkenden die Leseberechtigung für das Objekt entzogen, werden ihm auch die anderen Rechte entzogen.</td></tr></table>
 

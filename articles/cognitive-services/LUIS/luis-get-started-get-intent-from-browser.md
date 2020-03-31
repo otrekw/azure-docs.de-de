@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987953"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Schnellstart: Abrufen der Absicht im Browser
@@ -34,7 +34,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 1. Öffnen Sie einen Webbrowser.
 1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel als Abfragezeichenfolgen-Parameter.
 
-    #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3-Vorhersageanforderung](#tab/V3-1-1)
+    #### <a name="v3-prediction-request"></a>[V3-Vorhersageanforderung](#tab/V3-1-1)
 
 
     Das Format der V3-URL für eine **GET**-Endpunktanforderung (nach Slots) ist wie folgt:
@@ -43,7 +43,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
-    #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2-Vorhersageanforderung](#tab/V2-1-2)
+    #### <a name="v2-prediction-request"></a>[V2-Vorhersageanforderung](#tab/V2-1-2)
 
     Das Format der V2-URL für eine **GET**-Endpunktanforderung ist wie folgt:
 
@@ -53,7 +53,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
 1. Fügen Sie die URL in ein Browserfenster ein, und drücken Sie die EINGABETASTE. Das im Browser angezeigte JSON-Ergebnis gibt an, dass LUIS die Absicht `HomeAutomation.TurnOn` als die am höchsten bewertete Absicht und die Entität `HomeAutomation.Operation` mit dem Wert `on` erkennt.
 
-    #### <a name="v3-prediction-responsetabv3-2-1"></a>[V3-Vorhersageantwort](#tab/V3-2-1)
+    #### <a name="v3-prediction-response"></a>[V3-Vorhersageantwort](#tab/V3-2-1)
 
     ```JSON
     {
@@ -74,7 +74,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     }
     ```
 
-    #### <a name="v2-prediction-responsetabv2-2-2"></a>[V2-Vorhersageantwort](#tab/V2-2-2)
+    #### <a name="v2-prediction-response"></a>[V2-Vorhersageantwort](#tab/V2-2-2)
 
     ```json
     {
@@ -99,7 +99,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
 1. Fügen Sie den entsprechenden Abfragezeichenfolgen-Parameter hinzu, um alle Absichten anzuzeigen.
 
-    #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3-Vorhersageendpunkt](#tab/V3-3-1)
+    #### <a name="v3-prediction-endpoint"></a>[V3-Vorhersageendpunkt](#tab/V3-3-1)
 
     Fügen Sie `show-all-intents=true` am Ende der Abfragezeichenfolge hinzu, um **alle Absichten anzuzeigen**:
 
@@ -132,7 +132,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     }
     ```
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/V2)
+    #### <a name="v2-prediction-endpoint"></a>[V2-Vorhersageendpunkt](#tab/V2)
 
     Fügen Sie `verbose=true` am Ende der Abfragezeichenfolge hinzu, um **alle Absichten anzuzeigen**:
 

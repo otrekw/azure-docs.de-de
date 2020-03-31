@@ -1,20 +1,18 @@
 ---
 title: Aktivieren des gemeinsamen Zugriffs auf Leads im Azure Marketplace | Azure
 description: Erfahren Sie, wie Sie den gemeinsamen Zugriff auf Leads für Azure Marketplace und AppSource, für App- und Dienstherausgeber aktivieren.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b41a29fb3548937e9071cfb9f065dd46f63df83e
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818686"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387604"
 ---
 # <a name="enable-lead-sharing"></a>Gemeinsamen Zugriff auf Leads aktivieren
 Sicherzustellen, dass die Verwaltung von Leads für Ihr Angebot in [Azure Marketplace](https://azuremarketplace.microsoft.com) oder [Microsoft AppSource](https://appsource.microsoft.com) aktiviert ist, kann Ihnen helfen, Kontaktinformationen für die folgenden Zielgruppen zu erhalten:

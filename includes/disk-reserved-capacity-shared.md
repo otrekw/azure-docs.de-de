@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77590785"
 ---
 Sparen Sie beim Azure Disk Storage-Verbrauch mit reservierter Kapazität. Mit Azure Disk Storage-Reservierungen in Kombination mit Azure Reserved Virtual Machine Instances können Sie die Gesamtkosten virtueller Computer (VM) senken. Der Reservierungsrabatt wird automatisch auf die entsprechenden Datenträger im ausgewählten Reservierungsbereich angewandt. Aufgrund dieser automatischen Anwendung müssen Sie einem verwalteten Datenträger keine Reservierung zuweisen, um die Rabatte zu erhalten.

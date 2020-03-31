@@ -7,11 +7,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77458918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226506"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Verwenden der iOS-Clientbibliothek für Azure Mobile Apps
 
@@ -31,11 +31,11 @@ Das iOS-SDK unterstützt Objective-C-Projekte, Swift 2.2-Projekte und Swift 2.3-
 Die Authentifizierung für den „Serverfluss“ verwendet eine Webansicht für die dargestellte Benutzeroberfläche.  Wenn das Gerät keine Benutzeroberfläche in Form einer Webansicht darstellen kann, ist eine andere Authentifizierungsmethode erforderlich, die außerhalb des Bereichs des Produkts liegt.  
 Dieses SDK eignet sich daher nicht für Geräte vom Typ „Überwachung“ oder für ähnlich eingeschränkte Geräte.
 
-## <a name="Setup"></a>Einrichtung und Voraussetzungen
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>Einrichtung und Voraussetzungen
 
 Dieses Lernprogramm setzt voraus, dass Sie ein Back-End mit einer Tabelle erstellt haben. In dieser Anleitung wird davon ausgegangen, dass die Tabelle das gleiche Schema wie die Tabellen in diesen Lernprogrammen aufweist. Dieses Handbuch setzt außerdem voraus, dass Sie in Ihrem Code auf das `MicrosoftAzureMobile.framework` verweisen und `MicrosoftAzureMobile/MicrosoftAzureMobile.h` importieren.
 
-## <a name="create-client"></a>Vorgehensweise: Erstellen von Clients
+## <a name="how-to-create-client"></a><a name="create-client"></a>Vorgehensweise: Erstellen von Clients
 
 Erstellen Sie für den Zugriff auf ein Azure Mobile Apps-Back-End in Ihrem Projekt einen `MSClient`. Ersetzen Sie `AppUrl` durch die URL der App. Sie können `gatewayURLString` und `applicationKey` leer lassen. Wenn Sie ein Gateway für die Authentifizierung einrichten, befüllen Sie `gatewayURLString` mit der Gateway-URL.
 
@@ -51,7 +51,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Vorgehensweise: Erstellen von Tabellenverweisen
+## <a name="how-to-create-table-reference"></a><a name="table-reference"></a>Vorgehensweise: Erstellen von Tabellenverweisen
 
 Zum Zugreifen auf oder Aktualisieren von Daten erstellen Sie einen Verweis auf die Back-End-Tabelle. Ersetzen Sie `TodoItem` durch den Namen Ihrer Tabelle.
 
@@ -67,7 +67,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Vorgehensweise: Abfragen von Daten
+## <a name="how-to-query-data"></a><a name="querying"></a>Vorgehensweise: Abfragen von Daten
 
 Fragen Sie zum Erstellen einer Abfrage das `MSTable` -Objekt ab. Die folgende Abfrage ruft alle Elemente im `TodoItem` ab und protokolliert den Text von jedem Element.
 
@@ -99,7 +99,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>Vorgehensweise: Zurückgegebene Daten filtern
+## <a name="how-to-filter-returned-data"></a><a name="filtering"></a>Vorgehensweise: Zurückgegebene Daten filtern
 
 Für das Filtern von Ergebnissen stehen zahlreiche Optionen zur Verfügung.
 
@@ -139,7 +139,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Vorgehensweise: Verwenden von MSQuery
+## <a name="how-to-use-msquery"></a><a name="query-object"></a>Vorgehensweise: Verwenden von MSQuery
 
 Um eine komplexe Abfrage (einschließlich Sortierung und Paging) auszuführen, erstellen Sie ein `MSQuery` -Objekt entweder direkt oder durch Verwenden eines Prädikats:
 
@@ -168,7 +168,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 Führen Sie eine `MSQuery`-Abfrage aus, indem Sie `readWithCompletion` im Objekt aufrufen.
 
-## <a name="sorting"></a>Vorgehensweise: Sortieren von Daten mit MSQuery
+## <a name="how-to-sort-data-with-msquery"></a><a name="sorting"></a>Vorgehensweise: Sortieren von Daten mit MSQuery
 
 Um die Ergebnisse zu sortieren, sehen wir uns ein Beispiel an. Um aufsteigend nach dem Feld „text“ und danach absteigend nach „complete“ zu sortieren, rufen Sie `MSQuery` wie folgt auf:
 
@@ -204,7 +204,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>Gewusst wie: Einschränken von Feldern und Erweitern von Abfragezeichenfolgen-Parametern mit MSQuery
+## <a name="how-to-limit-fields-and-expand-query-string-parameters-with-msquery"></a><a name="selecting"></a><a name="parameters"></a>Gewusst wie: Einschränken von Feldern und Erweitern von Abfragezeichenfolgen-Parametern mit MSQuery
 
 Um die in einer Abfrage zurückzugebenden Felder einzuschränken, geben Sie die Namen der Felder in der **SelectFields** -Eigenschaft an. Dieses Beispiel gibt nur die Felder „text“ und „completed“ zurück:
 
@@ -237,7 +237,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>Vorgehensweise: Konfigurieren der Seitengröße
+## <a name="how-to-configure-page-size"></a><a name="paging"></a>Vorgehensweise: Konfigurieren der Seitengröße
 
 Bei Azure Mobile Apps steuert die Seitengröße die Anzahl der Datensätze, die gleichzeitig von den Back-End-Tabellen abgerufen werden. Bei einem Aufruf von `pull`-Daten werden dann Daten basierend auf dieser Seitengröße zusammengefasst, bis keine weiteren Datensätze mehr abzurufen sind.
 
@@ -274,7 +274,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Vorgehensweise: Einfügen von Daten
+## <a name="how-to-insert-data"></a><a name="inserting"></a>Vorgehensweise: Einfügen von Daten
 
 Um eine neue Tabellenzeile einzufügen, erstellen Sie ein `NSDictionary`, und rufen Sie `table insert` auf. Wenn das [dynamische Schema] aktiviert ist, generiert das mobile Azure App Service-Back-End automatisch neue Spalten basierend auf dem `NSDictionary`.
 
@@ -308,7 +308,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Vorgehensweise: Ändern von Daten
+## <a name="how-to-modify-data"></a><a name="modifying"></a>Vorgehensweise: Ändern von Daten
 
 Um eine vorhandene Zeile zu aktualisieren, ändern Sie ein Element, und rufen Sie `update`auf:
 
@@ -369,7 +369,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 Für Änderungen muss zumindest das `id` -Attribut gesetzt sein.
 
-## <a name="deleting"></a>Vorgehensweise: Löschen von Daten
+## <a name="how-to-delete-data"></a><a name="deleting"></a>Vorgehensweise: Löschen von Daten
 
 Um ein Element zu löschen, rufen Sie `delete` mit dem Element auf:
 
@@ -425,7 +425,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 Für Löschungen muss zumindest das `id` -Attribut gesetzt sein.
 
-## <a name="customapi"></a>Vorgehensweise: Aufrufen einer benutzerdefinierten API
+## <a name="how-to-call-custom-api"></a><a name="customapi"></a>Vorgehensweise: Aufrufen einer benutzerdefinierten API
 
 Mit einer benutzerdefinierten API können Sie beliebige Back-End-Funktionen verfügbar machen. Sie muss keinem Tabellenvorgang zuordnet sein. Sie erhalten nicht nur mehr Kontrolle über das Messaging, sondern können sogar Header lesen/festlegen und das Layout der Antwort ändern.
 
@@ -466,7 +466,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Vorgehensweise: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
+## <a name="how-to-register-push-templates-to-send-cross-platform-notifications"></a><a name="templates"></a>Vorgehensweise: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
 
 Um Vorlagen zu registrieren, übergeben Sie die Vorlagen mit Ihrer **client.push registerDeviceToken** -Methode in Ihrer Client-App.
 
@@ -506,7 +506,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Aus Sicherheitsgründen werden alle Tags aus der Anforderung entfernt.  Informationen zum Hinzufügen von Tags zu Installationen bzw. Vorlagen innerhalb von Installationen finden Sie unter [Verwenden des .NET-Back-End-Server SDK für Azure Mobile Apps][4].  Zum Senden von Benachrichtigungen, die diese registrierten Vorlagen verwenden, arbeiten Sie mit [Notification Hubs-APIs][3].
 
-## <a name="errors"></a>Vorgehensweise: Fehlerbehandlung
+## <a name="how-to-handle-errors"></a><a name="errors"></a>Vorgehensweise: Fehlerbehandlung
 
 Beim Aufrufen eines mobilen Azure App Service-Back-Ends enthält der completion-Block einen `NSError` -Parameter. Wenn ein Fehler auftritt, ist der Wert dieses Parameters “non-nil“. Sie sollten diesen Parameter in Ihrem Code prüfen und Fehler entsprechend behandeln, wie in den vorigen Codeausschnitten veranschaulicht.
 
@@ -538,7 +538,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Vorgehensweise: Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
+## <a name="how-to-authenticate-users-with-the-active-directory-authentication-library"></a><a name="adal"></a>Vorgehensweise: Authentifizieren von Benutzern mit der Active Directory-Authentifizierungsbibliothek
 
 Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um Benutzer mithilfe von Azure Active Directory bei Ihrer Anwendung anzumelden. Die Clientflussauthentifizierung über das SDK eines Identitätsanbieters ist der `loginWithProvider:completion:` -Methode vorzuziehen.  Die Clientflussauthentifizierung bietet eine bessere Bedienbarkeit und die Möglichkeit, zusätzliche Anpassungen vorzunehmen.
 
@@ -625,7 +625,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Vorgehensweise: Authentifizieren von Benutzern mit dem Facebook-SDK für iOS
+## <a name="how-to-authenticate-users-with-the-facebook-sdk-for-ios"></a><a name="facebook-sdk"></a>Vorgehensweise: Authentifizieren von Benutzern mit dem Facebook-SDK für iOS
 
 Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihrer App anmelden.  Die Verwendung der Clientflussauthentifizierung ist der `loginWithProvider:completion:` -Methode vorzuziehen.  Die Clientflussauthentifizierung bietet eine bessere Bedienbarkeit und die Möglichkeit, zusätzliche Anpassungen vorzunehmen.
 
@@ -704,7 +704,7 @@ Mithilfe des Facebook-SDKs für iOS können Sie Benutzer über Facebook bei Ihre
     }
     ```
 
-## <a name="twitter-fabric"></a>Vorgehensweise: Authentifizieren von Benutzern mit Twitter Fabric für iOS
+## <a name="how-to-authenticate-users-with-twitter-fabric-for-ios"></a><a name="twitter-fabric"></a>Vorgehensweise: Authentifizieren von Benutzern mit Twitter Fabric für iOS
 
 Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App anmelden. Aufgrund der besseren Bedienbarkeit und der Möglichkeit, zusätzliche Anpassungen vorzunehmen, ist die Clientflussauthentifizierung der `loginWithProvider:completion:` -Methode vorzuziehen.
 
@@ -786,7 +786,7 @@ Mithilfe von Fabric für iOS können Sie Benutzer über Twitter bei Ihrer App an
     }
     ```
 
-## <a name="google-sdk"></a>Vorgehensweise: Authentifizieren von Benutzern mit dem Google-Anmelde-SDK für iOS
+## <a name="how-to-authenticate-users-with-the-google-sign-in-sdk-for-ios"></a><a name="google-sdk"></a>Vorgehensweise: Authentifizieren von Benutzern mit dem Google-Anmelde-SDK für iOS
 
 Mithilfe des Google-Anmelde-SDKs für iOS können Sie Benutzer über ein Google-Konto bei Ihrer Anwendung anmelden.  Google kündigte vor Kurzem Änderungen an den OAuth-Sicherheitsrichtlinien an.  Aufgrund dieser Richtlinienänderungen ist in Zukunft die Verwendung des Google-SDK erforderlich.
 

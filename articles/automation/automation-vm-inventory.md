@@ -7,10 +7,10 @@ keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgun
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844818"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
@@ -61,7 +61,7 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 ### <a name="windows-registry"></a>Windows-Registrierung
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -70,7 +70,7 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 ### <a name="windows-files"></a>Windows-Dateien
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -79,7 +79,7 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 ### <a name="linux-files"></a>Linux-Dateien
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |

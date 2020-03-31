@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235142"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 

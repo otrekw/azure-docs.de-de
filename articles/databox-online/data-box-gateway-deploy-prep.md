@@ -8,23 +8,23 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 74fec059bdffb91f5a7774d430e2f1897f0e863c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303204"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474457"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Gateway
 
-
-Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen Ihres Azure Data Box Gateway erforderlich sind. In diesem Tutorial wird beschrieben, wie Sie das Azure-Portal für die Bereitstellung Ihrer Data Box Gateway-Ressource vorbereiten. 
+Dies ist das erste Tutorial einer Reihe von Bereitstellungstutorials, die zum vollständigen Bereitstellen Ihres Azure Data Box Gateway erforderlich sind. In diesem Tutorial wird beschrieben, wie Sie das Azure-Portal für die Bereitstellung Ihrer Data Box Gateway-Ressource vorbereiten.
 
 Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzuschließen. Die Vorbereitung des Portals erfordert weniger als 10 Minuten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Neue Ressource erstellen
 > * Herunterladen des Images des virtuellen Geräts
 > * Abrufen des Aktivierungsschlüssels
@@ -50,12 +50,11 @@ Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Data Box Gate
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-- Ihr Microsoft Azure-Abonnement wird für die Data Box Gateway-Ressource unterstützt. Abonnements mit nutzungsbasierter Bezahlung werden auch unterstützt.
-- Sie verfügen für die Data Box Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf der Ressourcengruppenebene.
-
+* Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Sie verfügen für die Data Box Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf der Ressourcengruppenebene.
     - Für die Erstellung von Data Box Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. Vergewissern Sie sich außerdem, dass der Anbieter `Microsoft.DataBoxEdge` registriert ist. Eine Registrierungsanleitung finden Sie unter [Register resource provider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers) (Registrieren des Ressourcenanbieters).
     - Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.
-- Sie haben als Administrator oder Benutzer Zugriff auf die Azure Active Directory Graph-API. Weitere Informationen finden Sie unter [Azure Active Directory Graph-API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+- Sie verfügen über Administrator- oder Benutzerzugriff auf die Microsoft Graph-API. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://docs.microsoft.com/graph/permissions-reference).
 - Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
 
 ### <a name="for-the-data-box-gateway-device"></a>Für das Data Box Gateway-Gerät
@@ -100,14 +99,14 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Data Box Gateway
 
 4. Geben Sie auf der Registerkarte **Grundlagen** die folgenden **Projektdetails** ein, bzw. wählen Sie sie aus:
     
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Subscription    |Dieser Wert wird auf der Grundlage Ihrer zuvor getroffenen Auswahl automatisch aufgefüllt. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
     |Resource group  |Wählen Sie eine vorhandene Gruppe aus, oder erstellen Sie eine neue Gruppe.<br>Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/management/overview.md).     |
 
 5. Geben Sie die folgenden **Instanzendetails** ein, bzw. wählen Sie sie aus:
 
-    |Einstellung  |value  |
+    |Einstellung  |Wert  |
     |---------|---------|
     |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |   
     |Region     |Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die für Azure Government verfügbaren Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/). <br> Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist.|
