@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: genli
 ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548967"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Richtlinien zum Verwenden des Dienstprogramms für den Dateiupload bei einer neuen Microsoft Azure-Supportanfrage

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087187"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
@@ -63,10 +63,10 @@ Die Shard-Zuordnungsverwaltung schützt den Benutzer vor inkonsistenten Sichten 
 
 Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken und der Entity Framework-APIs sollten die folgenden Eigenschaften beibehalten werden: 
 
-* **Horizontale Skalierung:** Datenbanken werden der Datenschicht der Anwendung entsprechend den Kapazitätsanforderungen der partitionierten Anwendung hinzugefügt oder aus dieser entfernt. Dies impliziert die Kontrolle über die Erstellung und Löschung von Datenbanken und den Einsatz der APIs für die Shardzuordnungsverwaltung von elastischen Datenbanken, um Datenbanken und die Zuordnung von Shardlets zu verwalten. 
-* **Konsistenz:** Die Anwendung nutzt Sharding und verwendet die datenabhängigen Routingfunktionen der Clientbibliothek. Um Beschädigung von Daten oder falsche Abfrageergebnisse zu vermeiden, werden Verbindungen über die Shard-Zuordnungsverwaltung vermittelt. Dadurch bleiben auch Gültigkeitsprüfung und Konsistenz gewahrt.
+* **Horizontale Skalierung**: Datenbanken werden entsprechend den Kapazitätsanforderungen der partitionierten Anwendung zur Datenbankebene der Anwendung hinzugefügt oder daraus entfernt. Dies impliziert die Kontrolle über die Erstellung und Löschung von Datenbanken und den Einsatz der APIs für die Shardzuordnungsverwaltung von elastischen Datenbanken, um Datenbanken und die Zuordnung von Shardlets zu verwalten. 
+* **Konsistenz:** Die Anwendung nutzt das Sharding und verwendet die datenabhängigen Routingfunktionen der Clientbibliothek. Um Beschädigung von Daten oder falsche Abfrageergebnisse zu vermeiden, werden Verbindungen über die Shard-Zuordnungsverwaltung vermittelt. Dadurch bleiben auch Gültigkeitsprüfung und Konsistenz gewahrt.
 * **Code First:** Beibehalten des komfortablen Code-First-Paradigmas von EF. In Code First werden in der Anwendung vorhandene Klassen transparent den zugrunde liegenden Datenbankstrukturen zugeordnet. Der Anwendungscode arbeitet mit DbSets, wodurch die meisten Aspekte der zugrunde liegenden Datenbankverarbeitung maskiert werden.
-* **Schema**: Entity Framework übernimmt die Schemaerstellung für die Ausgangsdatenbank und die nachfolgende Weiterentwicklung des Schemas über Migrationsvorgänge. Wenn diese Funktionen beibehalten werden, lassen sich Anwendung einfach an die Datenentwicklung anpassen. 
+* **Schema:** Entity Framework übernimmt die Schemaerstellung für die Ausgangsdatenbank und die nachfolgende Weiterentwicklung des Schemas über Migrationen. Wenn diese Funktionen beibehalten werden, lassen sich Anwendung einfach an die Datenentwicklung anpassen. 
 
 Die folgende Anleitung beschreibt, wie diese Anforderungen für Code-First-Anwendungen unter Verwendung der Tools für elastische Datenbanken erfüllt werden. 
 
@@ -204,7 +204,7 @@ Die oben aufgeführten Codebeispiele veranschaulichen, welche Änderungen am Sta
 
 Die automatische Schemaverwaltung wird von Entity Framework bereitgestellt. Diese Möglichkeit sollte im Kontext von Anwendungen beibehalten werden, die Tools für elastische Datenbanken verwenden, um das Schema automatisch für neu erstellte Shards bereitzustellen, wenn der partitionierten Anwendung Datenbanken hinzugefügt werden. Der Hauptzweck besteht darin, für partitionierte Anwendungen die Kapazität auf Datenebene mithilfe von EF zu vergrößern. Durch die Nutzung der EF-Funktionen zur Schemaverwaltung lässt sich der Datenbankverwaltungsaufwand für die auf EF basierende partitionierte Anwendung verringern. 
 
-Die Schemabereitstellung über EF-Migrationen funktioniert am besten bei **nicht geöffneten Verbindungen**. Dies unterscheidet sich von dem Szenario für das datenabhängige Routing, das sich auf die von der API für elastische Datenbanken bereitgestellte geöffnete Verbindung stützt. Ein weiterer Unterschied ist die Konsistenzanforderung: Es ist zwar wünschenswert, die Konsistenz für alle datenabhängigen Routingverbindungen zum Schutz vor gleichzeitiger Manipulation der Shardzuordnung sicherzustellen, aber bei der anfänglichen Schemabereitstellung in einer neuen Datenbank, die noch nicht in der Shardzuordnung registriert wurde und folglich noch keine Shardlets enthält, ist dies nicht von Belang. Sie können daher für dieses Szenario anders als beim datenabhängigen Routing reguläre Datenbankverbindungen verwenden.  
+Die Schemabereitstellung über EF-Migrationen funktioniert am besten bei **nicht geöffneten Verbindungen**. Dies unterscheidet sich von dem Szenario für das datenabhängige Routing, das sich auf die von der API für elastische Datenbanken bereitgestellte geöffnete Verbindung stützt. Ein weiterer Unterschied ist die Konsistenzanforderung: Es ist zwar wünschenswert, die Konsistenz für alle datenabhängigen Routingverbindungen zum Schutz vor gleichzeitiger Manipulation der Shard-Zuordnung sicherzustellen, aber bei der anfänglichen Schemabereitstellung in einer neuen Datenbank, die noch nicht in der Shard-Zuordnung registriert wurde und folglich noch keine Shardlets enthält, ist es nicht von Belang. Sie können daher für dieses Szenario anders als beim datenabhängigen Routing reguläre Datenbankverbindungen verwenden.  
 
 Dies führt zu einem Vorgehen, bei dem die Schemabereitstellung über EF-Migrationen eng mit der Registrierung der neuen Datenbank als Shard in der Shard-Zuordnung verbunden ist. Dabei wird Folgendes vorausgesetzt: 
 

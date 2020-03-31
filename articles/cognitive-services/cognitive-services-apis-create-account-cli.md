@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3e5fd2315a5d352ed5abee9253b5c84eea3b73a9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218664"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -34,7 +34,7 @@ In diesem Schnellstart erfahren Sie, wie Sie sich mit der [Azure-Befehlszeilensc
 
 Installieren Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) aus:
 
-```console
+```azurecli-interactive
 az login
 ```
 
@@ -156,7 +156,7 @@ az cognitiveservices account create \
 
 Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle (CLI) anmelden möchten, führen Sie den Befehl [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) aus.
 
-```console
+```azurecli-interactive
 az login
 ```
 

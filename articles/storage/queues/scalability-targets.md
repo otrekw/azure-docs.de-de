@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: queues
 ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750483"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>Skalierbarkeits- und Leistungsziele für Queue Storage

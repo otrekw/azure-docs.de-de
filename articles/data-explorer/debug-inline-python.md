@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444467"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Debuggen der Kusto-Abfragesprache in Python-Inlinecode mithilfe von Visual Studio Code

@@ -1,5 +1,5 @@
 ---
-title: Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs und Firebase Cloud Messaging | Microsoft-Dokumentation
+title: Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs und Firebase | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Google Firebase Cloud Messaging Pushbenachrichtigungen an Android-Geräte senden.
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 1af109405118754daa08adf848f1da3f04534455
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387505"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127537"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-google-firebase-cloud-messaging"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Google Firebase Cloud Messaging
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Firebase
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -44,7 +44,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/free/). 
+Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/free/). 
 
 Sie benötigen außerdem folgende Elemente: 
 
@@ -86,7 +86,7 @@ Das Abschließen dieses Tutorial ist eine Voraussetzung für alle anderen Notifi
 
 Der Hub ist jetzt für die Verwendung mit Firebase Cloud Messaging konfiguriert. Sie verfügen außerdem über die Verbindungszeichenfolgen, die erforderlich sind, um Benachrichtigungen an ein Gerät zu senden und eine App für den Empfang von Benachrichtigungen zu registrieren.
 
-## <a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>Verbinden Ihrer App mit dem Notification Hub
 
 ### <a name="add-google-play-services-to-the-project"></a>Hinzufügen von Google Play Services zum Projekt
 
@@ -177,8 +177,8 @@ Der Hub ist jetzt für die Verwendung mit Firebase Cloud Messaging konfiguriert.
 
     Aktualisieren Sie diese drei Platzhalter im weiter unten angegebenen Code für die `NotificationSettings`-Klasse:
 
-   * **HubListenConnectionString:** Die **DefaultListenAccessSignature**-Verbindungszeichenfolge für Ihren Hub. Sie können diese Verbindungszeichenfolge kopieren, indem Sie im [Azure-Portal] im Hub auf **Zugriffsrichtlinien** klicken.
-   * **HubName:** Verwenden Sie den Namen des Hubs, der im [Azure-Portal] auf der Hubseite angezeigt wird.
+   * **HubListenConnectionString:** Die **DefaultListenAccessSignature**-Verbindungszeichenfolge für Ihren Hub. Sie können diese Verbindungszeichenfolge kopieren, indem Sie im [Azure portal] im Hub auf **Zugriffsrichtlinien** klicken.
+   * **HubName:** Verwenden Sie den Namen des Hubs, der im [Azure portal] auf der Hubseite angezeigt wird.
 
      `NotificationSettings` -Code:
 
@@ -540,7 +540,7 @@ Der Hub ist jetzt für die Verwendung mit Firebase Cloud Messaging konfiguriert.
 
 ## <a name="test-send-notification-from-the-notification-hub"></a>Testsendung der Benachrichtigung über den Notification Hub
 
-Sie können Pushbenachrichtigungen mit folgenden Schritten über das [Azure-Portal] senden:
+Sie können Pushbenachrichtigungen mit folgenden Schritten über das [Azure portal] senden:
 
 1. Wählen Sie im Azure-Portal auf der Seite „Notification Hub“ für Ihren Hub im Abschnitt **Problembehandlung** die Option **Testsendevorgang** aus.
 3. Wählen Sie für **Plattformen** die Option **Android** aus.
@@ -573,4 +573,4 @@ In diesem Tutorial haben Sie mit Firebase Cloud Messaging Benachrichtigungen an 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

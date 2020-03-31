@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74913514"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Ausführen eines Databricks-Notebooks mit der Databricks-Notebook-Aktivität in Azure Data Factory
@@ -92,7 +92,7 @@ In diesem Abschnitt erstellen Sie einen verknüpften Databricks-Dienst. Dieser v
     
     ![Erstellen einer neuen Verbindung](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
 
-1.  Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Compute**\>**Azure Databricks** und dann **Weiter**.
+1.  Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Compute** \> **Azure Databricks** und dann **Weiter** aus.
     
     ![Angeben eines verknüpften Databricks-Diensts](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image7.png)
 
@@ -223,7 +223,7 @@ Sie können auf den **Auftragsnamen** klicken und weitere Details anzeigen. Bei 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Pipeline in diesem Beispiel löst eine Databricks-Notebook-Aktivität aus und übergibt einen Parameter. Es wurde Folgendes vermittelt:
+Die Pipeline in diesem Beispiel löst eine Databricks-Notebook-Aktivität aus und übergibt einen Parameter. Sie haben Folgendes gelernt:
 
   - Erstellen einer Data Factory.
 

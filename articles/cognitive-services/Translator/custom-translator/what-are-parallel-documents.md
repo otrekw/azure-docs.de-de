@@ -1,5 +1,5 @@
 ---
-title: Was sind parallele Dokumente? - Custom Translator
+title: Was sind parallele Dokumente? – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
 author: swmachan
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72675467"
 ---
 # <a name="what-are-parallel-documents"></a>Was sind parallele Dokumente?

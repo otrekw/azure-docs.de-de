@@ -4,10 +4,10 @@ description: Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Acce
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74893483"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry: Rollen und Berechtigungen
@@ -16,7 +16,7 @@ Der Azure Container Registry-Dienst unterstützt mehrere [integrierte Azure-Roll
 
 | Rolle/Berechtigung       | [Zugreifen auf Resource Manager](#access-resource-manager) | [Erstellen/löschen einer Registrierung](#create-and-delete-registry) | [Übertragen eines Image mithilfe von Push](#push-image) | [Übertragen eines Images mithilfe von Pull](#pull-image) | [Löschen von Imagedaten](#delete-image-data) | [Ändern von Richtlinien](#change-policies) |   [Signieren von Images](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Owner (Besitzer) | X | X | X | X | X | X |  |  
+| Besitzer | X | X | X | X | X | X |  |  
 | Mitwirkender | X | X | X |  X | X | X |  |  
 | Leser | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  

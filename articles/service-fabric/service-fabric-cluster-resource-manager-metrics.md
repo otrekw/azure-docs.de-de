@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451999"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
@@ -48,7 +48,7 @@ Hinweise, die Sie beachten sollten:
 
 So weit, so gut.
 
-Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Beispiel:  Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
+Die Standardmetriken funktionieren hervorragend als Ausgangspunkt. Anschließend reichen die Standardmetriken jedoch nicht mehr aus. Beispiel: Wie hoch ist die Wahrscheinlichkeit, dass sich mit dem gewählten Partitionierungsschema eine absolut gleichmäßige Auslastung für alle Partitionen erreichen lässt? Wie hoch ist die Wahrscheinlichkeit, dass die Auslastung für einen bestimmten Dienst dauerhaft konstant oder auch nur zum aktuellen Zeitpunkt für mehrere Partitionen gleich ist?
 
 Sie können den Dienst auch nur mit den Standardmetriken ausführen. Dies bedeutet jedoch im Allgemeinen nur, dass Ihre Clusterauslastung geringer und ungleichmäßiger als erwartet ist. Das liegt daran, dass die Standardmetriken nicht adaptiv sind und davon ausgegangen wird, dass alles gleichwertig ist. So tragen sowohl ein ausgelasteter als auch ein nicht ausgelasteter primärer Knoten zur Metrik „PrimaryCount“ jeweils „1“ bei. Im schlimmsten Fall kann die ausschließliche Verwendung der Standardmetriken auch zu überlasteten Knoten und damit zu Leistungseinbußen führen. Wenn Sie also Ihren Cluster optimal nutzen und Leistungsprobleme vermeiden möchten, müssen Sie auf benutzerdefinierte Metriken und dynamische Auslastungsberichte zurückgreifen.
 

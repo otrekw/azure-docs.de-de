@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DP
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616739"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell

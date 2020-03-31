@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Probleme mit verschiedenen SDKs beim Abfragen
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74303896"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
@@ -20,7 +20,7 @@ Die meisten Fehler werden durch Probleme beim Ausführen einer Abfrage mit Azure
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="toomanysubscription"></a>Szenario: Zu viele Abonnements
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Szenario: Zu viele Abonnements
 
 #### <a name="issue"></a>Problem
 
@@ -57,7 +57,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Szenario: Nicht unterstützter REST-Header „Content-Type“
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>Szenario: Nicht unterstützter REST-Header „Content-Type“
 
 #### <a name="issue"></a>Problem
 
@@ -71,7 +71,7 @@ Die Azure Resource Graph-REST-API unterstützt nur **application/json** als `Con
 
 Überprüfen Sie, ob in dem Tool oder Agent, das oder den Sie zum Abfragen von Azure Resource Graph verwenden, der REST-API-Header `Content-Type` für **application/json** konfiguriert ist.
 
-### <a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
 
 #### <a name="issue"></a>Problem
 
