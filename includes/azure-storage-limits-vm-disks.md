@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c3028ed7629c41eece354dd2554ede9249bac4f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "68669666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334961"
 ---
 Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anfügen. Basierend auf den Skalierbarkeits- und Leistungszielen für Datenträger eines virtuellen Computers können Sie die Anzahl und den Typ der Datenträger festlegen, die Sie benötigen, um Ihre Anforderungen an Leistung und Kapazität zu erfüllen.
 
@@ -20,14 +20,14 @@ Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anf�
 
 In der folgenden Tabelle sind die standardmäßigen und maximal zulässigen Limits für die Anzahl von Ressourcen pro Region und Abonnement aufgeführt. Es gilt kein Limit für die Anzahl von verwalteten Datenträgern, Momentaufnahmen und Images pro Ressourcengruppe.  
 
-> | Resource | Standardlimit  | Maximales Limit |
-> | --- | --- | --- |
-> | Verwaltete Standarddatenträger | 50.000 | 50.000 |
-> | Verwaltete SSD Standard-Datenträger | 50.000 | 50.000 |
-> | Verwaltete Premium-Datenträger | 50.000 | 50.000 |
-> | Standard_LRS-Momentaufnahmen | 50.000 | 50.000 |
-> | Standard_ZRS-Momentaufnahmen | 50.000 | 50.000 |
-> | Verwaltetes Image | 50.000 | 50.000 |
+> | Resource | Begrenzung |
+> | --- | --- |
+> | Verwaltete Standarddatenträger | 50.000 |
+> | Verwaltete SSD Standard-Datenträger | 50.000 |
+> | Verwaltete Premium-Datenträger | 50.000 |
+> | Standard_LRS-Momentaufnahmen | 50.000 |
+> | Standard_ZRS-Momentaufnahmen | 50.000 |
+> | Verwaltetes Image | 50.000 |
 
 * **Standardspeicherkonten:** Ein Standardspeicherkonto hat eine maximale Gesamtanforderungsrate von 20.000 IOPS. Die gesamten IOPS auf allen Datenträgern eines virtuellen Computers in einem Standardspeicherkonto dürfen dieses Limit nicht überschreiten.
   

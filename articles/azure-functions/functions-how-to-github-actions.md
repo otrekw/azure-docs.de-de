@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
 ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649907"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
@@ -33,7 +33,7 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
+Sie können mit dem Befehl [az ad sp create-for-rbac](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) in der [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) einen [Dienstprinzipal](/cli/azure/) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -217,7 +217,7 @@ Im folgenden Beispiel wird Version 1 von `functions-action` verwendet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit `functionapp` im Namen im [Repository mit Workflowbeispielen für Azure GitHub Actions ](https://aka.ms/functions-actions-samples). Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
+Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit [ im Namen im ](https://aka.ms/functions-actions-samples)Repository mit Workflowbeispielen für Azure GitHub Actions `functionapp`. Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu GitHub Actions](https://help.github.com/en/articles/about-github-actions)

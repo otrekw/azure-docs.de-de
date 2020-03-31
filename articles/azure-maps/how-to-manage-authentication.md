@@ -1,19 +1,19 @@
 ---
 title: Verwalten der Authentifizierung | Microsoft Azure Maps
 description: Verwalten der Authentifizierung in Microsoft Azure Maps über das Azure-Portal.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ef88f9794fcba8c702ee793044d5482912ec3d89
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: dfe73971f29ea362fdd0ddd654e705b622ab1866
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335524"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -48,7 +48,7 @@ Sie können Ihre Authentifizierungsdetails im Azure-Portal anzeigen. Wählen Sie
 
 1. Führen Sie je nach verwendeter Authentifizierungsmethode einen der folgenden Schritte aus. 
 
-    * Wenn in Ihrer Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK verwendet wird, aktivieren Sie `oauth2AllowImplicitFlow`. Um diese Einstellung zu aktivieren, legen Sie `oauth2AllowImplicitFlow` im Abschnitt **Manifest** der App-Registrierung auf TRUE fest. 
+    * Wenn in Ihrer Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK verwendet wird, aktivieren Sie `oauth2AllowImplicitFlow`. Um diese Einstellung zu aktivieren, legen Sie **im Abschnitt**Manifest`oauth2AllowImplicitFlow` der App-Registrierung auf TRUE fest. 
     
        ![App-Manifest](./media/how-to-manage-authentication/app-manifest.png)
 

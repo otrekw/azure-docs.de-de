@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67870907"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Verwenden des E-Mail-Diensts SendGrid aus PHP
@@ -47,7 +47,7 @@ Weitere Informationen finden Sie unter [https://sendgrid.com][https://sendgrid.c
 
 Die Verwendung von SendGrid in Azure-PHP-Anwendungen erfordert keine besondere Konfiguration oder Programmierung. Da es sich bei SendGrid um einen Dienst handelt, kann auf ihn von einer Cloudanwendung auf dieselbe Weise zugegriffen werden wie von einer lokalen Anwendung.
 
-## <a name="how-to-send-an-email"></a>Gewusst wie: Senden einer E-Mail
+## <a name="how-to-send-an-email"></a>Senden von E-Mails
 
 E-Mails können Sie entweder über SMTP oder über die von SendGrid bereitgestellte Web-API senden.
 
@@ -162,7 +162,7 @@ Um E-Mails über die SendGrid-Web-API zu versenden, verwenden Sie die [Curl -Fun
 
 Die Web-API von SendGrid ist einer REST-API sehr ähnlich, obwohl es sich nicht wirklich um eine RESTful-API handelt, da in den meisten Aufrufen die Verben GET und POST austauschbar sind.
 
-## <a name="how-to-add-an-attachment"></a>Gewusst wie: Hinzufügen einer Anlage
+## <a name="how-to-add-an-attachment"></a>Hinzufügen von Anlagen
 
 ### <a name="smtp-api"></a>SMTP-API
 
@@ -297,7 +297,7 @@ Das Senden einer Anlage mithilfe der Web-API ähnelt dem Senden einer E-Mail mit
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Gewusst wie: Verwenden von Filtern zur Aktivierung von Fußzeilen sowie für Nachverfolgungen und Analysen
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Verwenden von Filtern zur Aktivierung von Fußzeilen sowie für Nachverfolgungen und Analysen
 
 SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von *Filtern*. Hierbei handelt es sich um Einstellungen, die zu einer E-Mail-Nachricht hinzugefügt werden können, um spezifische Funktionen wie etwa Aktivierung von Klickprotokollierung, Google Analytics, Abonnement-Tracking usw. zu ermöglichen.
 

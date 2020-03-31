@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545023"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
@@ -484,7 +484,7 @@ Zur Verwendung dieser Pufferungsklasse erstellt die Anwendung ein statisches Nav
 
 ### <a name="master-detail"></a>Master/Detail
 
-Tabellenwertparameter eignen sich für einfache INSERT-Szenarien. Bei Einfügevorgängen mit mehreren Tabellen kann sich die Batchverarbeitung jedoch als etwas schwieriger erweisen. Ein gutes Beispiel ist das Master/Detail-Szenario. Die Mastertabelle gibt die primäre Entität an. In mindestens einer Detailtabelle werden Daten zur Entität gespeichert. Im vorliegenden Szenario erzwingen Fremdschlüsselbeziehungen die Beziehung zwischen Details und einer eindeutigen Masterentität. Stellen Sie sich eine vereinfachte Version einer PurchaseOrder-Tabelle und die dazugehörige OrderDetail-Tabelle vor. Die folgende Transact-SQL-Anweisung erstellt die PurchaseOrder-Tabelle mit vier Spalten: „OrderID“, „OrderDate“, „CustomerID“ und „Status“.
+Tabellenwertparameter eignen sich für einfache INSERT-Szenarien. Bei Einfügevorgängen mit mehreren Tabellen kann sich die Batchverarbeitung jedoch als etwas schwieriger erweisen. Ein gutes Beispiel ist das Master/Detail-Szenario. Die Mastertabelle gibt die primäre Entität an. In mindestens einer Detailtabelle werden Daten zur Entität gespeichert. Im vorliegenden Szenario erzwingen Fremdschlüsselbeziehungen die Beziehung zwischen Details und einer eindeutigen Masterentität. Stellen Sie sich eine vereinfachte Version einer PurchaseOrder-Tabelle und die dazugehörige OrderDetail-Tabelle vor. Die folgende Transact-SQL-Anweisung erstellt eine PurchaseOrder-Tabelle mit vier Spalten („OrderID“, „OrderDate“, „CustomerID“ und „Status“):
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Jeder Auftrag enthält mindestens einen Produktkauf. Die entsprechenden Informationen werden in der PurchaseOrderDetail-Tabelle erfasst. Die folgende Transact-SQL-Anweisung erstellt die PurchaseOrderDetail-Tabelle mit fünf Spalten: „OrderID“, „OrderDetailID“, „ProductID“, „UnitPrice“ und „OrderQty“.
+Jeder Auftrag enthält mindestens einen Produktkauf. Die entsprechenden Informationen werden in der PurchaseOrderDetail-Tabelle erfasst. Die folgende Transact-SQL-Anweisung erstellt eine PurchaseOrderDetail-Tabelle mit fünf Spalten („OrderID“, „OrderDetailID“, „ProductID“, „UnitPrice“ und „OrderQty“):
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](

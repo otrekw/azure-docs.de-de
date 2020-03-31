@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a22c0cc922e021edc37dfbb2d89fdd20c77b2c87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848764"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
@@ -25,7 +25,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 ## <a name="troubleshoot-self-service-password-reset-errors-that-a-user-might-see"></a>Behandeln von Problemen mit Fehlern bei der Self-Service-Kennwortzurücksetzung, die einem Benutzer angezeigt werden können
 
-| Error | Details | Technische Details |
+| Fehler | Details | Technische Details |
 | --- | --- | --- |
 | TenantSSPRFlagDisabled = 9 | Sie können Ihr Kennwort zurzeit nicht zurücksetzen, weil Ihr Administrator das Zurücksetzen von Kennwörtern für Ihre Organisation deaktiviert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, dieses Feature zu aktivieren. Weitere Informationen finden Sie unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions). | SSPR_0009: Wir haben festgestellt, dass die Kennwortzurücksetzung von Ihrem Administrator nicht aktiviert wurde. Bitten Sie Ihren Administrator, die Kennwortzurücksetzung für Ihre Organisation zu aktivieren. |
 | WritebackNotEnabled = 10 |Sie können Ihr Kennwort zurzeit nicht zurücksetzen, weil Ihr Administrator einen notwendigen Dienst für Ihre Organisation nicht aktiviert hat. Sie können keine weitere Aktion ergreifen, um dieses Problem zu beheben. Wenden Sie sich an Ihren Administrator, und bitten Sie ihn, die Konfiguration für Ihre Organisation zu überprüfen. Weitere Informationen zu diesem notwendigen Dienst finden Sie unter [Konfigurieren des Kennwortrückschreibens](howto-sspr-writeback.md). | SSPR_0010: Wir haben festgestellt, dass das Kennwortrückschreiben nicht aktiviert wurde. Bitten Sie Ihren Administrator, das Kennwortrückschreiben zu aktivieren. |
@@ -38,7 +38,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 ## <a name="troubleshoot-the-password-reset-configuration-in-the-azure-portal"></a>Behandeln von Problemen mit Konfiguration der Kennwortzurücksetzung im Azure-Portal
 
-| Error | Lösung |
+| Fehler | Lösung |
 | --- | --- |
 | Im Azure-Portal wird unter Azure AD kein Abschnitt für die **Kennwortzurücksetzung** angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Weisen Sie dem betreffenden Administratorkonto eine Lizenz zu. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
 | Mir wird eine bestimmte Konfigurationsoption nicht angezeigt. | Viele Benutzeroberflächenelemente werden erst angezeigt, wenn sie benötigt werden. Versuchen Sie, alle Optionen zu aktivieren, die angezeigt werden sollen. |
@@ -46,14 +46,14 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 ## <a name="troubleshoot-password-reset-reporting"></a>Problembehandlung: Berichte zur Kennwortzurücksetzung
 
-| Error | Lösung |
+| Fehler | Lösung |
 | --- | --- |
 | In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden keine Aktivitätstypen für die Kennwortverwaltung angezeigt. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
 | Benutzerregistrierungen werden mehrfach angezeigt. | Aktuell werden separat registrierte Daten bei der Benutzerregistrierung jeweils als separates Ereignis protokolliert. <br> <br> Wenn Sie diese Daten aggregieren und von flexibleren Darstellungsmöglichkeiten profitieren möchten, können Sie den Bericht herunterladen und die Daten als Pivottabelle in Excel öffnen.
 
 ## <a name="troubleshoot-the-password-reset-registration-portal"></a>Problembehandlung: Registrierungsportal für die Kennwortzurücksetzung
 
-| Error | Lösung |
+| Fehler | Lösung |
 | --- | --- |
 | Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
 | Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
@@ -61,7 +61,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>Problembehandlung: Kennwortzurücksetzungsportal
 
-| Error | Lösung |
+| Fehler | Lösung |
 | --- | --- |
 | Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
 | Dem Benutzer ist keine Azure AD-Lizenz zugewiesen. | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
@@ -79,7 +79,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 ## <a name="troubleshoot-password-writeback"></a>Problembehandlung: Kennwortrückschreiben
 
-| Error | Lösung |
+| Fehler | Lösung |
 | --- | --- |
 | Der Dienst für die Kennwortzurücksetzung startet lokal nicht. Das Anwendungsereignisprotokoll des Azure AD Connect-Computers enthält den Fehler 6800. <br> <br> Nach der Integration können Verbundbenutzer oder Benutzer mit Pass-Through-Authentifizierung bzw. Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen. | Bei aktiviertem Kennwortrückschreiben ruft das Synchronisierungsmodul die Bibliothek für das Rückschreiben auf, um die Konfiguration (Integration) mittels Kommunikation mit dem Cloudintegrationsdienst durchzuführen. Fehler bei der Integration oder beim Start des WCF-Endpunkts ( Windows Communication Foundation) für das Kennwortrückschreiben führen zu Fehlern im Ereignisprotokoll auf Ihrem Azure AD Connect-Computer. <br> <br> Im Rahmen des Neustarts des ADSync-Diensts (Azure AD Sync) wird der WCF-Endpunkt gestartet, sofern das Kennwortrückschreiben konfiguriert wurde. Falls beim Starten des Endpunkts jedoch ein Fehler auftritt, wird der Fehler 6800 protokolliert, und der Synchronisierungsdienst wird gestartet. Dieses Ereignis bedeutet, dass der Endpunkt für das Kennwortrückschreiben nicht gestartet wurde. Die Ereignisprotokolldetails für dieses Ereignis (6800) geben – zusammen mit den von der PasswordResetService-Komponente generierten Ereignisprotokolleinträgen – an, warum der Endpunkt nicht gestartet werden kann. Überprüfen Sie diese Ereignisprotokollfehler, und versuchen Sie Azure AD Connect neu zu starten, wenn das Kennwortrückschreiben weiterhin nicht funktioniert. Sollte das Problem bestehen bleiben, versuchen Sie, das Kennwortrückschreiben zu deaktivieren und erneut zu aktivieren.
 | Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen oder ein Konto mit aktiviertem Kennwortrückschreiben zu entsperren, tritt dabei ein Fehler auf. <br> <br> Darüber hinaus wird nach dem Entsperren ein Ereignis im Azure AD Connect-Ereignisprotokoll mit folgendem Inhalt angezeigt: „Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long“ (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=800700CE, message=Der Dateiname oder die Dateierweiterung ist zu lang.). | Suchen Sie das Active Directory-Konto für Azure AD Connect, und setzen Sie das Kennwort zurück, sodass es maximal 256 Zeichen umfasst. Öffnen Sie dann über das **Startmenü** den **Synchronisierungsdienst**. Navigieren Sie zu **Connectors**, und suchen Sie **Active Directory Connector**. Wählen Sie diesen Connector aus, und klicken Sie anschließend auf **Eigenschaften**. Navigieren Sie zur Seite **Anmeldeinformationen**, und geben Sie das neue Kennwort ein. Wählen Sie **OK**, um die Seite zu schließen. |
@@ -297,5 +297,5 @@ Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
 * [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
-* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](concept-sspr-howitworks.md)
-* [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
+* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)

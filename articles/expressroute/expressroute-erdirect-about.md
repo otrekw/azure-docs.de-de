@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083604"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
@@ -21,7 +21,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 * Umfangreiche Datenerfassung in Diensten wie Azure Storage und Cosmos DB
-* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. Bankwesen, Behörden und Einzelhandel
+* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. das Bankwesen, Behörden und der Einzelhandel.
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
 ## <a name="onboard-to-expressroute-direct"></a>Onboarding für ExpressRoute Direct

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085152"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Abrufen und Zwischenspeichern von Token mithilfe der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
@@ -92,7 +92,7 @@ Die Vorgehensweise bei öffentlichen Clientanwendungen (Desktopanwendung oder mo
 ### <a name="confidential-client-applications"></a>Vertrauliche Clientanwendungen
 
 Die Vorgehensweise bei vertraulichen Clientanwendungen (Web-App, Web-API oder Daemon-Anwendung wie ein Windows-Dienst):
-- Token werden über den [Flow für Clientanmeldeinformationen](msal-authentication-flows.md#client-credentials)**für die Anwendung selbst** und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten. 
+- Token werden über den **Flow für Clientanmeldeinformationen**[für die Anwendung selbst](msal-authentication-flows.md#client-credentials) und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten. 
 - Der [OBO-Flow (On Behalf Of)](msal-authentication-flows.md#on-behalf-of) wird für den Aufruf einer Web-API verwendet, die eine API im Namen des Benutzers aufruft. Die Anwendung wird anhand von Clientanmeldeinformationen identifiziert, um ein Token basierend auf einer Benutzerassertion (SAML oder ein JWT-Token) abzurufen. Dieser Flow wird von Anwendungen verwendet, die für Dienst-zu-Dienst-Aufrufe auf Ressourcen eines bestimmten Benutzers zugreifen müssen.
 - Token werden in Web-Apps über den [Flow für Autorisierungscode](msal-authentication-flows.md#authorization-code) abgerufen, nachdem sich der Benutzer über die URL für Autorisierungsanforderungen angemeldet hat. OpenID Connect-Anwendungen verwenden in der Regel diesen Mechanismus, der die Benutzeranmeldung über Open ID Connect sowie den Zugriff auf Web-APIs im Namen des Benutzers zulässt.
 

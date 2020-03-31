@@ -12,10 +12,10 @@ ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189989"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
@@ -85,7 +85,7 @@ https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signu
 
 Informationen zur Migration von OWIN-basierten Webanwendungen zu b2clogin.com finden Sie unter [Migrieren einer OWIN-basierten Web-API zu b2clogin.com](multiple-token-endpoints.md).
 
-Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2C geschützt sind, finden Sie unter [Sichern einer Azure API Management-API mit Azure AD B2C](secure-api-management.md) im Abschnitt [Migrieren zu b2clogin.com](secure-api-management.md#migrate-to-b2clogincom).
+Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2C geschützt sind, finden Sie unter [Sichern einer Azure API Management-API mit Azure AD B2C](secure-api-management.md#migrate-to-b2clogincom) im Abschnitt [Migrieren zu b2clogin.com](secure-api-management.md).
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
 
@@ -115,7 +115,7 @@ this.clientApplication = new UserAgentApplication(
 
 Informationen zur Migration von OWIN-basierten Webanwendungen zu b2clogin.com finden Sie unter [Migrieren einer OWIN-basierten Web-API zu b2clogin.com](multiple-token-endpoints.md).
 
-Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2C geschützt sind, finden Sie unter [Sichern einer Azure API Management-API mit Azure AD B2C](secure-api-management.md) im Abschnitt [Migrieren zu b2clogin.com](secure-api-management.md#migrate-to-b2clogincom).
+Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2C geschützt sind, finden Sie unter [Sichern einer Azure API Management-API mit Azure AD B2C](secure-api-management.md#migrate-to-b2clogincom) im Abschnitt [Migrieren zu b2clogin.com](secure-api-management.md).
 
 <!-- LINKS - External -->
 [msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet

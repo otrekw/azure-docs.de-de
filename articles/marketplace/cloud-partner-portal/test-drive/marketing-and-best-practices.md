@@ -1,31 +1,29 @@
 ---
 title: 'Testversion: Marketing-Best Practices | Azure Marketplace'
 description: 'Testversion: Marketing-Best Practices für Herausgeber'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 3520e2c16f9a0c891db0d641fa7c9b811cac7b10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278245"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>Testversion: Marketing und Best Practices
 =======================================
 
 Eine Testversion im Azure Marketplace ist ein hervorragendes Tool für Marketingexperten, und es empfiehlt sich, Testversionen in Ihre Markteinführungsbemühungen zu integrieren. Wir haben mehrere Best Practices für Testversionen zusammengestellt, die sofort bei der Veröffentlichung angewendet werden sollten und erheblich zur Leadgenerierung beitragen:
 
-- **Empfehlungsseite**: Verweisen Sie in Ihrer Webpräsenz auf eine Seite mit spezifischen Informationen zu Ihrer Azure-Testversion, und posten Sie mehrere Links, um Datenverkehr zu Ihrer Testversion zu leiten.
+- **Empfehlungsseite:** Verweisen Sie in Ihrer Webpräsenz auf eine Seite mit spezifischen Informationen zu Ihrer Azure-Testversion, und posten Sie mehrere Links, um Datenverkehr zu Ihrer Testversion zu leiten.
 - **Soziale Medien**: Erstellen Sie einen Zeitplan für regelmäßige Beiträge zu Ihrer Testversion auf Ihren Kanälen in sozialen Medien.
 - **Blogs**: Schreiben Sie einen Blogbeitrag über Ihre Azure-Testversion. Heben Sie die Features und Vorteile hervor, die der Benutzer kostenlos und in kürzester Zeit erleben kann. Verlinken Sie die Seite Ihrer Azure-Testversion an mehreren Stellen in Ihrem Blogbeitrag. Hier ist ein Link zu einem exemplarischen Blogbeitrag zur Azure-Testversion. Das reicht noch nicht? Posten Sie Links zu Ihrem Blogbeitrag über Ihre Kanäle in sozialen Medien.
 - **E-Mail-Förderung**: Informieren Sie Leads, die bereits über andere Kanäle mit Ihrer Marke interagiert haben, per E-Mail über die Testversion, und animieren Sie sie dazu, sie kostenlos auszuprobieren.
-- **Vertriebstraining und -tools**: Setzen Sie eine Trainingssitzung mit Ihrem Vertriebsteam an, um die Testversion vorzuführen und einige Ideen zu sammeln, wie das Team sie in die Interaktion mit Leads und Kunden integrieren kann. Vertriebsmitarbeiter können dann eine Vorführung für mehrere Ansprechpartner in einem Unternehmen anberaumen und den Teilnehmern anschließend jeweils den Link zu der Testversion zukommen lassen, damit diese die Testversion selbst ausprobieren können.
+- **Vertriebstraining und -tools**: Setzen Sie eine Trainingssitzung mit Ihrem Vertriebsteam an, um die Testversion vorzuführen und einige Ideen zu sammeln, wie das Vertriebsteam sie in die Interaktion mit Leads und Kunden integrieren kann. Vertriebsmitarbeiter können dann eine Vorführung für mehrere Ansprechpartner in einem Unternehmen anberaumen und den Teilnehmern anschließend jeweils den Link zu der Testversion zukommen lassen, damit diese die Testversion selbst ausprobieren können.
 - **Messen und Konferenzen**: Sie sind mit einem Stand bei einer Branchenveranstaltung vertreten, die von potenziellen Kunden besucht wird? Stellen Sie an Ihrem Stand einige Laptops mit Ihrer Testversion auf, damit Kunden sie dort ausprobieren können, und sprechen Sie dabei und danach mit ihnen über das Produkt.
 
 <a name="lead-management"></a>Leadverwaltung

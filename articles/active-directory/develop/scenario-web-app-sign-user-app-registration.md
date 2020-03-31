@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701568"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
@@ -48,7 +48,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 1. Wenn Sie unter Ihrem Konto Zugriff auf mehrere Mandanten haben, können Sie Ihr Konto rechts oben auswählen. Legen Sie dann die Portalsitzung auf den gewünschten Azure AD-Mandanten (Azure Active Directory) fest.
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** > **Neue Registrierung** aus.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
    1. Wählen Sie die unterstützten Kontotypen für Ihre Anwendung aus. (Weitere Informationen finden Sie unter [Unterstützte Kontotypen](./v2-supported-account-types.md).)
@@ -60,7 +60,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
    1. Wählen Sie unter **Implizite Gewährung** die Option **ID-Token** aus.
    1. Wählen Sie **Speichern** aus.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
    1. Wählen Sie die unterstützten Kontotypen für Ihre Anwendung aus. (Weitere Informationen finden Sie unter [Unterstützte Kontotypen](./v2-supported-account-types.md).)
@@ -71,7 +71,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 1. Wählen Sie im Abschnitt **Erweiterte Einstellungen** | **Implizite Gewährung** die Option **ID-Token** aus. Für dieses Beispiel muss der [Flow zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden, damit Benutzer angemeldet werden.
 1. Wählen Sie **Speichern** aus.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Anzeigenamen für die Anwendung ein. Geben Sie z. B. **java-webapp** ein.
 1. Wählen Sie **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** und dann für **Anwendungstyp** die Option **Web-App/API** aus.
@@ -95,7 +95,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
    1. Wählen Sie **Hinzufügen**.
    1. Wenn der Schlüsselwert angezeigt wird, kopieren Sie ihn für später. Dieser Wert wird nicht noch einmal angezeigt, und er kann nicht auf andere Weise abgerufen werden.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
    1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird. Geben Sie z. B. **python-webapp** ein.

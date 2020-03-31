@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186266"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
@@ -50,7 +50,7 @@ Erstellen Sie eine Instanz von Application Insights in Ihrem Abonnement, falls S
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Fügen Sie dem Knoten `<RelyingParty>` einen untergeordneten Knoten `<UserJourneyBehaviors>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` angeordnet werden.
+1. Fügen Sie dem Knoten `<UserJourneyBehaviors>` einen untergeordneten Knoten `<RelyingParty>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` angeordnet werden.
 1. Fügen Sie den folgenden Knoten als untergeordnetes Element des `<UserJourneyBehaviors>`-Elements hinzu. Achten Sie darauf, `{Your Application Insights Key}` durch den Application Insights-**Instrumentierungsschlüssel** zu ersetzen, den Sie zuvor notiert haben.
 
     ```XML
@@ -93,7 +93,7 @@ Es gibt eine kurze Verzögerung (in der Regel weniger als fünf Minuten), bevor 
 
 Es folgt eine Liste der Abfragen, die Sie zum Anzeigen der Protokolle verwenden können:
 
-| Abfrage | Beschreibung |
+| Abfrage | BESCHREIBUNG |
 |---------------------|--------------------|
 `traces` | Anzeigen aller von Azure AD B2C generierten Protokolle |
 `traces | where timestamp > ago(1d)` | Anzeigen aller am letzten Tag von Azure AD B2C generierten Protokolle

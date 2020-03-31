@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie die Chatfunktion in Ihr
 author: v-krghan
 ms.author: v-krghan
 ms.date: 08/23/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: bd1c3d27ebedfb8479b9f30ac08d8132b2a44a04
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023462"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157703"
 ---
 # <a name="toggle-live-chat"></a>Ein-/Ausschalten des Livechats
 

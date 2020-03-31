@@ -4,12 +4,12 @@ description: Lernen Sie die ersten Schritte mit Azure API Management und dem Wei
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292144"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
@@ -160,7 +160,7 @@ Die [Back-End-Konfiguration für Service Fabric](/azure/api-management/api-manag
 * Replikatauswahl für zustandsbehaftete Dienste.
 * Retry-Bedingungen der Lösung, mit denen Sie die Bedingungen für das erneute Beheben eines Dienstspeicherorts und erneutes Senden einer Anforderung festlegen können.
 
-**policyContent** ist der mit Escapezeichen versehene Json-XML-Inhalt der Richtlinie.  Erstellen Sie für diesen Artikel eine Back-End-Richtlinie, um Anforderungen direkt an den zuvor bereitgestellten zustandslosen .NET- oder Java-Dienst weiterzuleiten. Fügen Sie eine `set-backend-service`-Richtlinie unter „inbound policies“ hinzu.  Ersetzen Sie in den Wert *sf-service-instance-name* durch `fabric:/ApiApplication/WebApiService`, wenn Sie zuvor den .NET-Back-End-Dienst bereitgestellt haben, oder durch `fabric:/EchoServerApplication/EchoServerService`, wenn Sie den Java-Dienst bereitgestellt haben.  *backend-id* verweist auf eine Back-End-Ressource (in diesem Fall auf die in der Vorlage *apim.json* definierte Ressource `Microsoft.ApiManagement/service/backends`). *backend-id* kann auch auf eine andere Back-End-Ressource verweisen, die mithilfe der API Management-APIs erstellt wurde. Legen Sie *backend-id* für diesen Artikel auf den Wert des Parameters *service_fabric_backend_name* fest.
+**policyContent** ist der mit Escapezeichen versehene Json-XML-Inhalt der Richtlinie.  Erstellen Sie für diesen Artikel eine Back-End-Richtlinie, um Anforderungen direkt an den zuvor bereitgestellten zustandslosen .NET- oder Java-Dienst weiterzuleiten. Fügen Sie eine `set-backend-service`-Richtlinie unter „inbound policies“ hinzu.  Ersetzen Sie in den Wert *sf-service-instance-name* durch `fabric:/ApiApplication/WebApiService`, wenn Sie zuvor den .NET-Back-End-Dienst bereitgestellt haben, oder durch `fabric:/EchoServerApplication/EchoServerService`, wenn Sie den Java-Dienst bereitgestellt haben.  *backend-id* verweist auf eine Back-End-Ressource (in diesem Fall auf die in der Vorlage `Microsoft.ApiManagement/service/backends`apim.json*definierte Ressource*). *backend-id* kann auch auf eine andere Back-End-Ressource verweisen, die mithilfe der API Management-APIs erstellt wurde. Legen Sie *backend-id* für diesen Artikel auf den Wert des Parameters *service_fabric_backend_name* fest.
 
 ```xml
 <policies>
@@ -196,7 +196,7 @@ Geben Sie für die Bereitstellung die folgenden leeren Parameter in der Datei *a
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
 |serviceFabricCertificate|&lt;Base64-codierte Zeichenfolge&gt;|
 |url_path|/api/values|
-|clusterHttpManagementEndpoint|https://mysfcluster.southcentralus.cloudapp.azure.com:19080|
+|clusterHttpManagementEndpoint|`https://mysfcluster.southcentralus.cloudapp.azure.com:19080`|
 |inbound_policy|&lt;XML-Zeichenfolge&gt;|
 
 *certificatePassword* und *serviceFabricCertificateThumbprint* müssen mit dem zum Einrichten des Clusters verwendeten Clusterzertifikat übereinstimmen.
@@ -209,7 +209,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-Ersetzen Sie in *inbound_policy* den Wert *sf-service-instance-name* durch `fabric:/ApiApplication/WebApiService`, wenn Sie zuvor den .NET-Back-End-Dienst bereitgestellt haben, oder durch `fabric:/EchoServerApplication/EchoServerService`, wenn Sie den Java-Dienst bereitgestellt haben. *backend-id* verweist auf eine Back-End-Ressource (in diesem Fall auf die in der Vorlage *apim.json* definierte Ressource `Microsoft.ApiManagement/service/backends`). *backend-id* kann auch auf eine andere Back-End-Ressource verweisen, die mithilfe der API Management-APIs erstellt wurde. Legen Sie *backend-id* für diesen Artikel auf den Wert des Parameters *service_fabric_backend_name* fest.
+Ersetzen Sie in *inbound_policy* den Wert *sf-service-instance-name* durch `fabric:/ApiApplication/WebApiService`, wenn Sie zuvor den .NET-Back-End-Dienst bereitgestellt haben, oder durch `fabric:/EchoServerApplication/EchoServerService`, wenn Sie den Java-Dienst bereitgestellt haben. *backend-id* verweist auf eine Back-End-Ressource (in diesem Fall auf die in der Vorlage `Microsoft.ApiManagement/service/backends`apim.json*definierte Ressource*). *backend-id* kann auch auf eine andere Back-End-Ressource verweisen, die mithilfe der API Management-APIs erstellt wurde. Legen Sie *backend-id* für diesen Artikel auf den Wert des Parameters *service_fabric_backend_name* fest.
 
 ```xml
 <policies>

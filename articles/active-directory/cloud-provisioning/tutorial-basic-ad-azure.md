@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74795365"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Tutorial: Grundlegende Active Directory-Umgebung
@@ -42,7 +42,7 @@ Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung di
 > Kopien der in diesem Tutorial verwendeten PowerShell-Skripts sind unter [diesem Link](https://github.com/billmath/tutorial-phs) auf GitHub verfügbar.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Um die Hybrididentitätsumgebung einzurichten und auszuführen, müssen Sie als Erstes einen virtuellen Computer erstellen, der als lokaler Active Directory-Server verwendet wird.  Gehen Sie wie folgt vor:
+Um die Hybrididentitätsumgebung einzurichten und auszuführen, müssen Sie als Erstes einen virtuellen Computer erstellen, der als lokaler Active Directory-Server verwendet wird.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -83,11 +83,11 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
 8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
-9. Klicken Sie unten auf der Seite auf **Weiter**
+9. Klicken Sie auf **Weiter**.
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 
 ## <a name="install-active-directory-prerequisites"></a>Installieren der erforderlichen Active Directory-Komponenten
-Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der Installation von Active Directory noch ein paar Vorbereitungen treffen.  Das heißt, dass Sie den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie wie folgt vor:
+Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der Installation von Active Directory noch ein paar Vorbereitungen treffen.  Das heißt, dass Sie den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -123,7 +123,7 @@ Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der I
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Erstellen einer Windows Server AD-Umgebung
-Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine statische IP-Adresse verfügt, können Sie als Nächstes die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie wie folgt vor:
+Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine statische IP-Adresse verfügt, können Sie als Nächstes die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -154,7 +154,7 @@ Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine s
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Erstellen eines Windows Server AD-Benutzers
-Nachdem nun die Active Directory-Umgebung vorhanden ist, benötigen Sie ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie wie folgt vor:
+Nachdem nun die Active Directory-Umgebung vorhanden ist, benötigen Sie ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -270,11 +270,11 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
 8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
-9. Klicken Sie unten auf der Seite auf **Weiter**
+9. Klicken Sie auf **Weiter**.
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 
 ### <a name="install-active-directory-prerequisites"></a>Installieren der erforderlichen Active Directory-Komponenten
-Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der Installation von Active Directory noch ein paar Vorbereitungen treffen.  Das heißt, dass Sie den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie wie folgt vor:
+Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der Installation von Active Directory noch ein paar Vorbereitungen treffen.  Das heißt, dass Sie den virtuellen Computer umbenennen, eine statische IP-Adresse und DNS-Informationen festlegen und die Remoteserver-Verwaltungstools installieren müssen.   Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -324,7 +324,7 @@ Nachdem Sie nun über einen virtuellen Computer verfügen, müssen Sie vor der I
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Erstellen einer Windows Server AD-Umgebung
-Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine statische IP-Adresse verfügt, können Sie als Nächstes die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie wie folgt vor:
+Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine statische IP-Adresse verfügt, können Sie als Nächstes die Active Directory Domain Services installieren und konfigurieren.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -370,7 +370,7 @@ Nachdem nun der virtuelle Computer erstellt und umbenannt wurde und über eine s
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Erstellen eines Windows Server AD-Benutzers
-Nachdem nun die Active Directory-Umgebung vorhanden ist, benötigen Sie ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie wie folgt vor:
+Nachdem nun die Active Directory-Umgebung vorhanden ist, benötigen Sie ein Testkonto.  Dieses Konto wird in unserer lokalen Active Directory-Umgebung erstellt und dann mit Azure AD synchronisiert.  Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.
@@ -413,5 +413,5 @@ Nun verfügen Sie über eine Umgebung, die für vorhandene Tutorials und zum Tes
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)

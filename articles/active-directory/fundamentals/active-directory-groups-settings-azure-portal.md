@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561875"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Bearbeiten Ihrer Gruppeninformationen in Azure Active Directory
@@ -47,7 +47,7 @@ In Azure Active Directory (Azure AD) können Sie die Einstellungen einer Gruppe 
 
     - **Gruppenname.** Bearbeiten Sie den vorhandenen Gruppennamen.
     
-    - **Gruppenbeschreibung.** Bearbeiten Sie die vorhandene Gruppenbeschreibung.
+    - **Gruppenbeschreibung**: Bearbeiten Sie die vorhandene Gruppenbeschreibung.
 
     - **Gruppentyp.** Sie können den Typ der Gruppe nach deren Erstellung nicht mehr ändern. Um den **Gruppentyp** zu ändern, müssen Sie die Gruppe löschen und eine neue erstellen.
     

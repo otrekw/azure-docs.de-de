@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
-ms.openlocfilehash: 22ee4aad6d2aabcc26dd97e50a2c716cb14be67a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d0238e0b5b882748218835d7f06a147d435a9f90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245054"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -76,7 +76,7 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 
 * Wählen Sie für Pools in der Konfiguration „Virtueller Computer“ ein vorkonfiguriertes [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)-VM-Image aus, auf dem Treiber und Software vorinstalliert sind. Beispiele: 
 
-  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview): umfasst RDMA-Treiber und Intel MPI 5.1
+  * [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview): umfasst RDMA-Treiber und Intel MPI 5.1
 
   * [Data Science Virtual Machine](../machine-learning/data-science-virtual-machine/overview.md) für Linux oder Windows: umfasst NVIDIA CUDA-Treiber
 
@@ -106,7 +106,7 @@ Um CUDA-Anwendungen in einem Pool von Windows-NC-Knoten ausführen zu können, m
 3. Laden Sie das Paket in Ihr Batch-Konto hoch. Anweisungen finden Sie in der Anleitung zum [Anwendungspaket](batch-application-packages.md). Geben Sie eine Anwendungs-ID (z. B. *GPUDriver*) und eine Version (z. B. *411.82*) an.
 1. Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool in der Konfiguration „Virtueller Computer“ mit der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispieleinstellungen für die mithilfe einer Startaufgabe im Hintergrund ausgeführte Installation der NVIDIA GPU-Treiber aufgeführt:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ---- | ----- | 
 | **Imagetyp** | Marketplace (Linux/Windows) |
 | **Herausgeber** | MicrosoftWindowsServer |
@@ -127,7 +127,7 @@ Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, mü
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
 5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ---- | ---- |
 | **Imagetyp** | Benutzerdefiniertes Image |
 | **Benutzerdefiniertes Image** | *Name des Image* |
@@ -145,7 +145,7 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 1. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
 1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Shared Image Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ---- | ---- |
 | **Imagetyp** | Benutzerdefiniertes Image |
 | **Benutzerdefiniertes Image** | *Name des Image* |
@@ -156,11 +156,11 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 
 ## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>Beispiel: Intel MPI in einem H16r-VM-Pool unter Linux
 
-Eine Möglichkeit zum Ausführen von MPI-Anwendungen in einem Pool von Linux-Knoten der H-Serie besteht darin, das Image [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74HPC?tab=Overview) aus dem Azure Marketplace zu verwenden. Linux-RDMA-Treiber und Intel MPI sind vorinstalliert. Dieses Image unterstützt auch Docker-Containerworkloads.
+Eine Möglichkeit zum Ausführen von MPI-Anwendungen in einem Pool von Linux-Knoten der H-Serie besteht darin, das Image [CentOS-based 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) aus dem Azure Marketplace zu verwenden. Linux-RDMA-Treiber und Intel MPI sind vorinstalliert. Dieses Image unterstützt auch Docker-Containerworkloads.
 
 Erstellen Sie mit den Batch-APIs oder im Azure-Portal einen Pool mit diesem Image sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. In der folgenden Tabelle werden Beispielpooleinstellungen aufgeführt:
 
-| Einstellung | value |
+| Einstellung | Wert |
 | ---- | ---- |
 | **Imagetyp** | Marketplace (Linux/Windows) |
 | **Herausgeber** | OpenLogic |

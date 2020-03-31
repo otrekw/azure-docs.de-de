@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71211874"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrieren des aktuellen Benutzers für Pushbenachrichtigungen mit ASP.NET
@@ -36,13 +36,13 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
 
 1. Fügen Sie die folgenden Komponenten aus der Objektbibliothek zu MainStoryboard_iPhone.storyboard hinzu:
 
-   * **Bezeichnung:** Push to User with Notification Hubs
-   * **Bezeichnung:** InstallationId
-   * **Bezeichnung:** User
-   * **Textfeld:** User
-   * **Bezeichnung:** Password
-   * **Textfeld:** Password
-   * **Schaltfläche:** Login
+   * **Beschriftung**: "Push to User with Notification Hubs"
+   * **Beschriftung**: "InstallationId"
+   * **Beschriftung**: "User"
+   * **Textfeld**: "User"
+   * **Beschriftung**: "Password"
+   * **Textfeld**: "Password"
+   * **Schaltfläche**: "Login"
 
      Ihr Storyboard sieht nun wie folgt aus:
 
@@ -124,7 +124,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
     Dieser Code legt das Geräte-Token für die Anfrage fest.
 
    > [!NOTE]
-   > Die Methode sollte nun keinen weiteren Code mehr enthalten. Falls Sie aus dem Tutorial [Erste Schritte mit Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) bereits über einen Aufruf der Methode `registerNativeWithDeviceToken` verfügen, müssen Sie diesen Aufruf auskommentieren oder entfernen.
+   > Die Methode sollte nun keinen weiteren Code mehr enthalten. Falls Sie aus dem Tutorial `registerNativeWithDeviceToken`Erste Schritte mit Notification Hubs[ bereits über einen Aufruf der Methode ](notification-hubs-ios-apple-push-notification-apns-get-started.md) verfügen, müssen Sie diesen Aufruf auskommentieren oder entfernen.
 
 8. Fügen Sie in der Datei `PushToUserAppDelegate.m` die folgende Handlermethode hinzu:
 
@@ -151,7 +151,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
     }
     ```
 
-10. Initialisieren Sie in der Datei `PushToUserViewController.m` die Bezeichnung `installationId` in der Methode `viewDidLoad` wie folgt:
+10. Initialisieren Sie in der Datei `viewDidLoad` die Bezeichnung `PushToUserViewController.m` in der Methode `installationId` wie folgt:
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];

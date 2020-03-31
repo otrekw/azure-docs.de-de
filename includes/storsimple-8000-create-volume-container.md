@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 467af776af95cf035121250fdcadd2fee65d9805
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178136"
 ---
 #### <a name="to-create-a-volume-container"></a>So erstellen Sie einen Volumecontainer
@@ -31,7 +31,7 @@ ms.locfileid: "67178136"
       Wenn Ihnen Informationen zur Bandbreitenauslastung vorliegen, können Sie möglicherweise Bandbreite nach einem Zeitplan zuordnen, indem Sie **Bandbreitenvorlage auswählen**angeben. Eine detaillierte Anleitung finden Sie unter [Hinzufügen einer Bandbreitenvorlage](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template).
 
       ![Blatt „Volumecontainer“](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Klicken Sie auf **Create**.
+   7. Klicken Sie auf **Erstellen**.
 
         ![Blatt „Volumecontainer“](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

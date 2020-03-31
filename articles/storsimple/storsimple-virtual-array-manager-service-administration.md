@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62123804"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Verwalten des StorSimple Virtual Array mithilfe des StorSimple Geräte-Manager-Diensts
@@ -42,7 +42,7 @@ In diesem Artikel lernen Sie Folgendes:
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Verbindungen mit mehreren StorSimple Virtual Arrays her. Diese Geräte werden über ein zentrales browserbasiertes Microsoft Azure-Portal verwaltet. Gehen Sie wie folgt vor, um eine Verbindung mit dem StorSimple-Geräte-Manager-Dienst herzustellen:
 
 #### <a name="to-connect-to-the-service"></a>So stellen Sie eine Verbindung mit dem Dienst her
-1. Navigieren Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
+1. Wechseln Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
 2. Melden Sie sich mit den Anmeldeinformationen Ihres Microsoft-Kontos beim Microsoft Azure-Portal (rechts oben) an.
 3. Navigieren Sie zu „Durchsuchen“ > „Filter“ unter „StorSimple-Geräte-Manager“, um alle Geräte-Manager in einem bestimmten Abonnement anzuzeigen.
 
@@ -58,7 +58,7 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 | Anzeigen der Aktivitätsprotokolle |[Verwenden der StorSimple-Dienstübersicht](storsimple-virtual-array-service-summary.md) |
 | Deaktivieren eines Virtual Arrays</br>Löschen eines Virtual Arrays |[Deaktivieren oder Löschen eines Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md) |
 | Notfallwiederherstellung und Gerätefailover</br>Failovervoraussetzungen</br>Business Continuity Disaster Recovery (BCDR)</br>Fehler während der Notfallwiederherstellung |[Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md) |
-| Sichern von Freigaben und Volumes</br>Erstellen einer manuellen Sicherung</br>Ändern des Sicherungszeitplans</br>Anzeigen von vorhandenen Backups |[Sichern des StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
+| Sichern von Freigaben und Volumes</br>Erstellen einer manuellen Sicherung</br>Ändern des Sicherungszeitplans</br>Anzeigen vorhandener Sicherungen |[Sichern des StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
 | Klonen von Freigaben aus einem Sicherungssatz</br>Klonen von Volumes aus einem Sicherungssatz</br>Wiederherstellung auf Elementebene (nur Dateiserver) |[Klonen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md) |
 | Informationen zu Speicherkonten</br>Hinzufügen von Speicherkonten</br>Bearbeiten eines Speicherkontos</br>Löschen von Speicherkonten |[Verwalten von Speicherkonten für das StorSimple Virtual Array](storsimple-virtual-array-manage-storage-accounts.md) |
 | Informationen zu Access Control-Datensätzen</br>Hinzufügen oder Ändern von Access Control-Datensätzen </br>Löschen von Access Control-Datensätzen |[Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array](storsimple-virtual-array-manage-acrs.md) |

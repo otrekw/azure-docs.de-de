@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: labrenne
-ms.openlocfilehash: f1f47df841b61599b6aed8cd4d6715decd27a288
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5c217971bd213c97a2ee31a0a1f513b601d14df9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025978"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472978"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -35,7 +35,7 @@ Weitere Informationen zur Nutzung der Batch Management .NET-Bibliothek und des A
 
 Die Azure [Active Directory Authentication Library][aad_adal] (ADAL) stellt eine programmgesteuerte Schnittstelle für Azure AD bereit, die Sie in Ihren Anwendungen einsetzen können. Zum Aufrufen von ADAL aus Ihrer Anwendung müssen Sie Ihre Anwendung in einem Azure AD-Mandanten registrieren. Beim Registrieren Ihrer Anwendung stellen Sie für Azure AD Informationen zu Ihrer Anwendung bereit, einschließlich eines entsprechenden Namens im Azure AD-Mandanten. Azure AD stellt dann eine Anwendungs-ID bereit, die Sie verwenden, um Ihre Anwendung zur Laufzeit Azure AD zuzuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-register-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um die AccountManagement-Beispielanwendung zu registrieren. Geben Sie als Typ der Anwendung **Systemeigene Clientanwendung** an. Der OAuth 2.0-URI nach Industriestandard für den **Umleitungs-URI** ist `urn:ietf:wg:oauth:2.0:oob`. Für den **Umleitungs-URI** können Sie einen beliebigen gültigen URI angeben (z. B. `http://myaccountmanagementsample`), da dies kein echter Endpunkt sein muss:
+Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-register-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um die AccountManagement-Beispielanwendung zu registrieren. Geben Sie als Typ der Anwendung **Systemeigene Clientanwendung** an. Der OAuth 2.0-URI nach Industriestandard für den **Umleitungs-URI** ist `urn:ietf:wg:oauth:2.0:oob`. Für den `http://myaccountmanagementsample`Umleitungs-URI**können Sie einen beliebigen gültigen URI angeben (z. B.** ), da dies kein echter Endpunkt sein muss:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -91,9 +91,9 @@ Ihre Clientanwendung verwendet die Anwendungs-ID (auch als Client-ID bezeichnet)
 
 ```csharp
 // Specify the unique identifier (the "Client ID") for your application. This is required so that your
-// native client application (i.e. this sample) can access the Microsoft Azure AD Graph API. For information
-// about registering an application in Azure Active Directory, please see "Adding an Application" here:
-// https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
+// native client application (i.e. this sample) can access the Microsoft Graph API. For information
+// about registering an application in Azure Active Directory, please see "Register an application with the Microsoft identity platform" here:
+// https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
 private const string ClientId = "<application-id>";
 ```
 Kopieren Sie außerdem den Umleitungs-URI, den Sie während des Registrierungsprozesses angegeben haben. Der im Code angegebene Umleitungs-URI muss mit dem Umleitungs-URI übereinstimmen, den Sie beim Registrieren der Anwendung bereitgestellt haben.

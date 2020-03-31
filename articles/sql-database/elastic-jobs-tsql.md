@@ -12,10 +12,10 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087346"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
@@ -24,7 +24,7 @@ Dieser Artikel enthält eine Vielzahl von Beispielszenarien für die ersten Schr
 
 In den Beispielen werden die [gespeicherten Prozeduren](#job-stored-procedures) und [Ansichten](#job-views) verwendet, die in der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) verfügbar sind.
 
-Transact-SQL (T-SQL) dient zum Erstellen, Konfigurieren, Ausführen und Verwalten von Aufträgen. Die Erstellung des Agents für Aufträge für die elastische Datenbank wird nicht in T-SQL unterstützt. Daher müssen Sie mithilfe des Portals oder mit [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) zuerst einen *Agent für Aufträge für die elastische Datenbank* erstellen.
+Transact-SQL (T-SQL) dient zum Erstellen, Konfigurieren, Ausführen und Verwalten von Aufträgen. Die Erstellung des Agents für Aufträge für die elastische Datenbank wird nicht in T-SQL unterstützt. Daher müssen Sie mithilfe des Portals oder mit *PowerShell* zuerst einen [Agent für Aufträge für die elastische Datenbank](elastic-jobs-powershell.md#create-the-elastic-job-agent) erstellen.
 
 
 ## <a name="create-a-credential-for-job-execution"></a>Erstellen von Anmeldeinformationen für die Auftragsausführung
@@ -428,7 +428,7 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 
 
-### <a name="sp_add_job"></a>sp_add_job
+### <a name="sp_add_job"></a><a name="sp_add_job"></a>sp_add_job
 
 Fügt einen neuen Auftrag hinzu. 
   
@@ -494,7 +494,7 @@ Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese g
 
 Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Berechtigungen“ in diesem Dokument. Nur Mitglieder der Rolle „sysadmin“ können mithilfe dieser gespeicherten Prozedur Attribute von Aufträgen bearbeiten, die anderen Benutzern gehören.
 
-### <a name="sp_update_job"></a>sp_update_job
+### <a name="sp_update_job"></a><a name="sp_update_job"></a>sp_update_job
 
 Aktualisiert einen vorhandenen Auftrag.
 
@@ -557,7 +557,7 @@ Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Bere
 
 
 
-### <a name="sp_delete_job"></a>sp_delete_job
+### <a name="sp_delete_job"></a><a name="sp_delete_job"></a>sp_delete_job
 
 Löscht einen vorhandenen Auftrag.
 
@@ -589,7 +589,7 @@ Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Bere
 
 
 
-### <a name="sp_add_jobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a><a name="sp_add_jobstep"></a>sp_add_jobstep
 
 Fügt einen Schritt zu einem Auftrag hinzu.
 
@@ -715,7 +715,7 @@ Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Bere
 
 
 
-### <a name="sp_update_jobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a><a name="sp_update_jobstep"></a>sp_update_jobstep
 
 Aktualisiert einen Auftragsschritt.
 
@@ -840,7 +840,7 @@ Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Bere
 
 
 
-### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a><a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 Entfernt einen Auftragsschritt aus einem Auftrag.
 
@@ -886,7 +886,7 @@ Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Bere
 
 
 
-### <a name="sp_start_job"></a>sp_start_job
+### <a name="sp_start_job"></a><a name="sp_start_job"></a>sp_start_job
 
 Startet die Ausführung eines Auftrags.
 
@@ -917,7 +917,7 @@ Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese g
 
 Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Berechtigungen“ in diesem Dokument. Nur Mitglieder der Rolle „sysadmin“ können mithilfe dieser gespeicherten Prozedur Attribute von Aufträgen bearbeiten, die anderen Benutzern gehören.
 
-### <a name="sp_stop_job"></a>sp_stop_job
+### <a name="sp_stop_job"></a><a name="sp_stop_job"></a>sp_stop_job
 
 Hält die Ausführung eines Auftrags an.
 
@@ -946,7 +946,7 @@ Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese g
 Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Berechtigungen“ in diesem Dokument. Nur Mitglieder der Rolle „sysadmin“ können mithilfe dieser gespeicherten Prozedur Attribute von Aufträgen bearbeiten, die anderen Benutzern gehören.
 
 
-### <a name="sp_add_target_group"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a><a name="sp_add_target_group"></a>sp_add_target_group
 
 Fügt eine Zielgruppe hinzu.
 
@@ -977,7 +977,7 @@ Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese g
 
 Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Berechtigungen“ in diesem Dokument. Nur Mitglieder der Rolle „sysadmin“ können mithilfe dieser gespeicherten Prozedur Attribute von Aufträgen bearbeiten, die anderen Benutzern gehören.
 
-### <a name="sp_delete_target_group"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a><a name="sp_delete_target_group"></a>sp_delete_target_group
 
 Löscht eine Zielgruppe.
 
@@ -1005,7 +1005,7 @@ Standardmäßig können Mitglieder der festen Serverrolle „sysadmin“ diese g
 
 Einzelheiten zu den Berechtigungen dieser Rollen finden Sie im Abschnitt „Berechtigungen“ in diesem Dokument. Nur Mitglieder der Rolle „sysadmin“ können mithilfe dieser gespeicherten Prozedur Attribute von Aufträgen bearbeiten, die anderen Benutzern gehören.
 
-### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a><a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 Fügt einer Zielgruppe eine Datenbank oder eine Gruppe von Datenbanken hinzu.
 
@@ -1094,7 +1094,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a><a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 Entfernt ein Zielgruppenmitglied aus einer Zielgruppe.
 
@@ -1145,7 +1145,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a><a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 Entfernt die Verlaufsdatensätze für einen Auftrag.
 
@@ -1206,14 +1206,14 @@ Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automat
 |[target_group_members](#target_group_members-view)     |   Zeigt alle Mitglieder sämtlicher Zielgruppen an.      |
 
 
-### <a name="job_executions-view"></a>Ansicht „job_executions“
+### <a name="job_executions-view"></a><a name="job_executions-view"></a>Ansicht „job_executions“
 
 [jobs].[job_executions]
 
 Zeigt den Auftragsausführungsverlauf an.
 
 
-|Spaltenname|   Datentyp   |Beschreibung|
+|Spaltenname|   Datentyp   |BESCHREIBUNG|
 |---------|---------|---------|
 |**job_execution_id**   |UNIQUEIDENTIFIER|  Eindeutige ID einer Instanz einer Auftragsausführung.
 |**job_name**   |nvarchar(128)  |Der Name des Auftrags.
@@ -1241,7 +1241,7 @@ Zeigt den Auftragsausführungsverlauf an.
 
 Zeigt alle Aufträge an.
 
-|Spaltenname|   Datentyp|  Beschreibung|
+|Spaltenname|   Datentyp|  BESCHREIBUNG|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    UNIQUEIDENTIFIER    |Eindeutige ID des Auftrags.|
@@ -1253,7 +1253,7 @@ Zeigt alle Aufträge an.
 |**schedule_end_time**| datetime2(7)|   Datum und Uhrzeit, an dem die Ausführung des Auftrags zuletzt abgeschlossen wurde.|
 
 
-### <a name="job_versions-view"></a>Ansicht „job_versions“
+### <a name="job_versions-view"></a><a name="job_versions-view"></a>Ansicht „job_versions“
 
 [jobs].[job_versions]
 
@@ -1272,7 +1272,7 @@ Zeigt alle Auftragsversionen an.
 
 Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 
-|Spaltenname    |Datentyp| Beschreibung|
+|Spaltenname    |Datentyp| BESCHREIBUNG|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| Der Name des Auftrags.|
 |**job_id** |UNIQUEIDENTIFIER   |Eindeutige ID des Auftrags.|
@@ -1301,13 +1301,13 @@ Zeigt alle Schritte in der aktuellen Version des jeweiligen Auftrags an.
 |**max_parallelism**|   INT|    Die maximale Anzahl von Datenbanken pro Pool für elastische Datenbanken, in der der Auftragsschritt jeweils ausgeführt wird. Der Standardwert ist NULL, d.h., es liegt keine Begrenzung vor. |
 
 
-### <a name="jobstep_versions-view"></a>Ansicht „jobstep_versions“
+### <a name="jobstep_versions-view"></a><a name="jobstep_versions-view"></a>Ansicht „jobstep_versions“
 
 [jobs].[jobstep_versions]
 
 Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an. Das Schema ist mit [jobsteps](#jobsteps-view) identisch.
 
-### <a name="target_groups-view"></a>Ansicht „target_groups“
+### <a name="target_groups-view"></a><a name="target_groups-view"></a>Ansicht „target_groups“
 
 [jobs].[target_groups]
 
@@ -1318,7 +1318,7 @@ Listet alle Zielgruppen auf.
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe, eine Sammlung von Datenbanken. 
 |**target_group_id**    |UNIQUEIDENTIFIER   |Eindeutige ID der Zielgruppe.
 
-### <a name="target_group_members-view"></a>target_group_members-Ansicht
+### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members-Ansicht
 
 [jobs].[target_group_members]
 

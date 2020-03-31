@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: a32d26629bb9efed4a4f1f49eee2f0534e1873a9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960203"
 ---
 #  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Diagnoseprotokolle für ein Azure Event Grid-Thema
@@ -28,7 +28,7 @@ Mit Diagnoseeinstellungen können Benutzer von Event Grid Fehlerprotokolle zu Ve
 
 ## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>Schritte zum Aktivieren von Diagnoseprotokollen für ein Thema
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Event Grid-Thema, für das Sie Diagnoseprotokolleinstellungen aktivieren möchten. 
 3. Wählen Sie unter **Überwachung** im linken Menü die Option **Diagnoseeinstellungen** aus.
 4. Wählen Sie auf der Seite **Diagnoseeinstellungen** den Eintrag **Diagnoseeinstellung hinzufügen** aus. 

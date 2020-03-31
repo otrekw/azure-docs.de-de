@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 812ca0d502572f43c968c75dee17f45d066bcf04
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128861"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Validierungsunterschiede nach unterstützten Kontotypen (signInAudience)
 
@@ -33,7 +33,7 @@ Der Wert, den Sie für diese Eigenschaft auswählen, hat Auswirkungen auf andere
 
 In der folgenden Tabelle finden Sie die Validierungsunterschiede verschiedener Eigenschaften bei den unterschiedlichen unterstützten Kontotypen.
 
-| Eigenschaft | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
+| Eigenschaft | `AzureADMyOrg` | `AzureADMultipleOrgs` | `AzureADandPersonalMicrosoftAccount` und `PersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
 | Anwendungs-ID-URI (`identifierURIs`)  | Muss im Mandanten eindeutig sein <br><br> urn://-Schemas werden unterstützt <br><br> Platzhalter werden nicht unterstützt <br><br> Abfragezeichenfolgen und Fragmente werden unterstützt <br><br> Die maximale Länge beträgt 255 Zeichen <br><br> Keine Begrenzung* für die Anzahl der ID-URIs  | Global eindeutig <br><br> urn://-Schemas werden unterstützt <br><br> Platzhalter werden nicht unterstützt <br><br> Abfragezeichenfolgen und Fragmente werden unterstützt <br><br> Die maximale Länge beträgt 255 Zeichen <br><br> Keine Begrenzung* für die Anzahl der ID-URIs | Global eindeutig <br><br> urn://-Schemas werden nicht unterstützt <br><br> Platzhalter, Fragmente und Abfragezeichenfolgen werden nicht unterstützt <br><br> Die maximale Länge beträgt 120 Zeichen <br><br> Maximal 50 ID-URIs |
 | Zertifikate (`keyCredentials`) | Symmetrischer Signaturschlüssel | Symmetrischer Signaturschlüssel | Verschlüsselungsschlüssel und asymmetrischer Signaturschlüssel | 

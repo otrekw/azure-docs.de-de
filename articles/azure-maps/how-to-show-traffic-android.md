@@ -1,19 +1,19 @@
 ---
 title: Anzeigen von Verkehrsdaten auf einer Android-Karte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Android SDK für Microsoft Azure Maps auf einer Karte Verkehrsdaten anzeigen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249496"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335371"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Anzeigen von Verkehrsdaten auf der Karte mithilfe des Android SDK für Azure Maps
 

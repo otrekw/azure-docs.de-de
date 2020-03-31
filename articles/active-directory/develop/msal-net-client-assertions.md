@@ -13,12 +13,12 @@ ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3d73e803a31867bedbd0ff069b8c9321257b78cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050287"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
 
@@ -50,9 +50,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Von Azure AD werden folgende Ansprüche erwartet:
 
-Anspruchstyp | value | Beschreibung
+Anspruchstyp | value | BESCHREIBUNG
 ---------- | ---------- | ----------
-aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
 exp | Thu Jun 27 2019 15:04:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519 Abschnitt 4.1.4]
 iss | {ClientID} | Der Anspruch „iss“ (Aussteller) identifiziert den Prinzipal, der das JWT ausgestellt hat. Die Verarbeitung dieses Anspruchs ist anwendungsspezifisch. Der Wert von „iss“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung, die einen StringOrURI-Wert enthält. [RFC 7519, Abschnitt 4.1.1]
 jti | (eine GUID) | Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Es MUSS ein Bezeichnerwert zugewiesen werden, bei dem die Wahrscheinlichkeit vernachlässig ist, dass derselbe Wert versehentlich einem anderen Datenobjekt zugewiesen wird. Wenn die Anwendung mehrere Aussteller verwendet, MÜSSEN auch Konflikte zwischen von mehreren Ausstellern erstellten Werten verhindert werden. Der Anspruch „jti“ kann verwendet werden, um die erneute Wiedergabe des JWT zu verhindern. Der Wert von „JTI“ ist eine Zeichenfolge mit Beachtung der Groß-/Kleinschreibung. [RFC 7519, Abschnitt 4.1.7]
@@ -196,4 +196,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Wenn einer der Ansprüche im Wörterbuch, das Sie übergeben, mit einem der obligatorischen Ansprüche identisch ist, wird der Wert des zusätzlichen Anspruchs berücksichtigt. Er überschreibt die von MSAL.NET berechneten Ansprüche.
 
-Wenn Sie eigene Ansprüche, einschließlich der obligatorischen Ansprüche, die von Azure AD erwartet werden, angeben möchten, übergeben Sie als `mergeWithDefaultClaims`-Parameter `false`.
+Wenn Sie eigene Ansprüche, einschließlich der obligatorischen Ansprüche, die von Azure AD erwartet werden, angeben möchten, übergeben Sie als `false`-Parameter `mergeWithDefaultClaims`.

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632821"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228166"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Überwachen von Hardwarekomponenten und Status mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -79,7 +79,7 @@ Führen Sie die folgenden Schritte aus, um den Hardwarestatus einer Gerätekompo
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Komponentenliste für das primäre Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im primären Gehäuse Ihres lokalen StorSimple-Geräts (sowohl bei 8100 als auch bei 8600).
 
-| Komponente | Modul | Type | Location | FRU (Field Replaceable Unit)? | BESCHREIBUNG |
+| Komponente | Modul | type | Location | FRU (Field Replaceable Unit)? | BESCHREIBUNG |
 | --- | --- | --- | --- | --- | --- |
 | Laufwerk in Einschubfach [0-11] |Laufwerke |Physisch |Shared |Ja |Die einzelnen SSD- oder HDD-Laufwerke des primären Gehäuses werden jeweils in einer eigenen Zeile angegeben. |
 | Ambiente-Temperatursensor |Gehäuse |Physisch |Shared |Nein |Misst die Temperatur im Gehäuse. |
@@ -120,7 +120,7 @@ Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponen
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Komponentenliste für das EBOD-Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im EBOD-Gehäuse Ihres lokalen StorSimple-Geräts (nur bei 8600).
 
-| Komponente | Modul | Type | Location | FRU? | BESCHREIBUNG |
+| Komponente | Modul | type | Location | FRU? | BESCHREIBUNG |
 | --- | --- | --- | --- | --- | --- |
 | Laufwerk in Einschubfach [0-11] |Laufwerke |Physisch |Shared |Ja |Die einzelnen HDD-Laufwerke an der Vorderseite des EBOD-Gehäuses werden jeweils in einer eigenen Zeile angegeben. |
 | Ambiente-Temperatursensor |Gehäuse |Physisch |Shared |Nein |Misst die Temperatur im Gehäuse. |

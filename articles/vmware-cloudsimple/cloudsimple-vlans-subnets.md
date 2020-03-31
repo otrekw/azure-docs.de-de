@@ -1,6 +1,6 @@
 ---
-title: VLANs und Subnetze in Azure VMware Solutions (AVS)
-description: Hier erfahren Sie mehr über VLANs und Subnetze in einer privaten AVS-Cloud.
+title: VLANs und Subnetze in Azure VMware Solution by CloudSimple
+description: Erfahren Sie mehr über VLANs und Subnetze in einer privaten CloudSimple-Cloud.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d0ce15c782ae70e16f55a28ec8c4b70f3b080f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024890"
 ---
 # <a name="vlans-and-subnets-overview"></a>Übersicht über VLANs und Subnetze
 
-AVS stellt ein Netzwerk pro Region zur Verfügung, in der Ihr AVS-Dienst bereitgestellt wird. Das Netzwerk ist ein einzelner TCP-Schicht-3-Adressraum mit standardmäßig aktiviertem Routing. Alle privaten AVS-Clouds und Subnetze, die in dieser Region erstellt werden, können ohne zusätzliche Konfiguration miteinander kommunizieren. Sie können mit den VLANs verteilte Portgruppen im vCenter erstellen.
+CloudSimple stellt ein Netzwerk pro Region bereit, in der Ihr CloudSimple-Dienst bereitgestellt wird.  Das Netzwerk ist ein einzelner TCP-Schicht-3-Adressraum mit standardmäßig aktiviertem Routing.  Alle privaten Clouds und Subnetze, die in dieser Region erstellt wurden, können ohne zusätzliche Konfiguration miteinander kommunizieren.  Sie können mit den VLANs verteilte Portgruppen im vCenter erstellen.
 
-![AVS-Netzwerktopologie](media/cloudsimple-network-topology.png)
+![CloudSimple-Netzwerktopologie](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>VLANs
 
-Ein VLAN (Netzwerk der Ebene 2) wird für jede private AVS-Cloud erstellt. Der Datenverkehr der Ebene 2 bleibt innerhalb der Grenzen einer privaten AVS-Cloud, sodass Sie den lokalen Datenverkehr in der privaten AVS-Cloud isolieren können. Ein VLAN, das in einer privaten AVS-Cloud erstellt wurde, kann nur dazu verwendet werden, verteilte Portgruppen in dieser privaten AVS-Cloud zu erstellen. Ein VLAN, das in einer privaten AVS-Cloud erstellt wurde, wird automatisch für alle Switches konfiguriert, die mit den Hosts einer privaten AVS-Cloud verbunden sind.
+Ein VLAN (Netzwerk der Ebene 2) wird für jede private Cloud erstellt.  Der Datenverkehr der Ebene 2 bleibt innerhalb der Grenzen einer privaten Cloud, sodass Sie den lokalen Datenverkehr in der privaten Cloud isolieren können.  Ein VLAN, das in einer privaten Cloud erstellt wurde, kann nur dazu verwendet werden, verteilte Portgruppen in dieser privaten Cloud zu erstellen.  Ein VLAN, das in einer privaten Cloud erstellt wurde, wird automatisch für alle Switches konfiguriert, die mit den Hosts der privaten Cloud verbunden sind.
 
 ## <a name="subnets"></a>Subnetze
 
 Sie können beim Erstellen eines VLAN ein Subnetz erstellen, indem Sie den Adressraum des Subnetzes definieren. Eine IP-Adresse aus dem Adressraum wird als ein Subnetzgateway zugewiesen. Ein einzelner privater Schicht-3-Adressraum wird pro Kunde und Region zugewiesen. Sie können jeden nicht überlappenden RFC 1918-Adressraum mit Ihrem lokalen Netzwerk oder virtuellen Azure-Netzwerk in Ihrer Netzwerkregion konfigurieren.
 
-Alle Subnetze können standardmäßig miteinander kommunizieren, wodurch der Konfigurationsmehraufwand für Routing zwischen privaten AVS-Clouds verringert wird. Ost-West-Daten zwischen PCs in derselben Region bleiben im selben Schicht-3-Netzwerk und werden über die lokale Netzwerkinfrastruktur innerhalb der Region übertragen. Es sind keine ausgehenden Daten für die Kommunikation zwischen privaten AVS-Clouds in einer Region erforderlich. Mit diesem Ansatz werden WAN-/Ausgangsleistungseinbußen vermieden, die sich durch Bereitstellen verschiedener Workloads in unterschiedlichen privaten AVS-Clouds ergeben würden.
+Alle Subnetze können standardmäßig miteinander kommunizieren, wodurch der Konfigurationsmehraufwand für Routing zwischen privaten Clouds verringert wird. Ost-West-Daten zwischen PCs in derselben Region bleiben im selben Schicht-3-Netzwerk und werden über die lokale Netzwerkinfrastruktur innerhalb der Region übertragen. Es sind keine ausgehenden Daten für die Kommunikation zwischen privaten Clouds in einer Region erforderlich. Mit diesem Ansatz werden WAN-/Ausgangsleistungseinbußen vermieden, die sich durch Bereitstellen verschiedener Workloads in verschiedenen privaten Clouds ergeben würden.
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>CIDR-Bereich für vSphere/vSAN-Subnetze
 
-Eine private AVS-Cloud wird als isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt.
+Eine private Cloud wird als isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird.  Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist.  Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt.
 
 * Minimales Präfix für den CIDR-Bereich der vSphere-/vSAN-Subnetze: **/24**
 * Maximales Präfix für den CIDR-Bereich der vSphere-/vSAN-Subnetze: **/21**
 
-> [!IMPORTANT]
-> IP-Adressen im vSphere/vSAN-CIDR-Bereich sind für die Verwendung durch die private AVS-Cloudinfrastruktur reserviert. Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
+> [!CAUTION]
+> IP-Adressen im vSphere/vSAN CIDR-Bereich sind zur Verwendung durch die private Cloudinfrastruktur reserviert.  Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>Grenzwerte für vSphere/vSAN-Subnetze-CIDR
 
-Die ausgewählte CIDR-Bereichsgröße für vSphere-/vSAN-Subnetze wirkt sich auf die Größe Ihrer privaten AVS-Cloud aus. In der folgenden Tabelle ist für jede Größe von vSphere-/vSAN-Subnetze-CIDR die maximal mögliche Anzahl von Knoten aufgeführt.
+Die ausgewählte CIDR-Bereichsgröße für vSphere-/vSAN-Subnetze wirkt sich auf die Größe Ihrer privaten Cloud aus.  In der folgenden Tabelle ist für jede Größe von vSphere-/vSAN-Subnetze-CIDR die maximal mögliche Anzahl von Knoten aufgeführt.
 
 | Angegebene Länge für vSphere/vSAN-Subnetze-CIDR-Präfix | Maximale Knotenanzahl |
 |---------------------------------------------------|-------------------------|
@@ -52,9 +52,9 @@ Die ausgewählte CIDR-Bereichsgröße für vSphere-/vSAN-Subnetze wirkt sich auf
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-an-avs-private-cloud"></a>Verwaltungssubnetze, die in einer privaten AVS-Cloud erstellt werden
+### <a name="management-subnets-created-on-a-private-cloud"></a>Verwaltungssubnetze, die in einer privaten Cloud erstellt werden
 
-Die folgenden Verwaltungssubnetze werden erstellt, wenn Sie eine private AVS-Cloud erstellen.
+Die folgenden Verwaltungssubnetze werden erstellt, wenn Sie eine private Cloud erstellen.
 
 * **Systemverwaltung**. VLAN und Subnetz für das Verwaltungsnetzwerk der ESXi-Hosts, DNS-Server, vCenter-Server.
 * **VMotion**. VLAN und Subnetz für das vMotion-Netzwerk der ESXi-Hosts.
@@ -66,7 +66,7 @@ Die folgenden Verwaltungssubnetze werden erstellt, wenn Sie eine private AVS-Clo
 
 ### <a name="management-network-cidr-range-breakdown"></a>Aufschlüsselung eines Verwaltungsnetzwerk-CIDR-Bereichs
 
-Der angegebene vSphere/vSAN-Subnetze-CIDR-Bereich wird in mehrere Subnetze aufgeteilt. In der folgenden Tabelle ist ein Beispiel für die Aufschlüsselung zulässiger Präfixe aufgeführt. In dem Beispiel wird 192.168.0.0 als CIDR-Bereich verwendet.
+Der angegebene vSphere/vSAN-Subnetze-CIDR-Bereich wird in mehrere Subnetze aufgeteilt.  In der folgenden Tabelle ist ein Beispiel für die Aufschlüsselung zulässiger Präfixe aufgeführt.  In dem Beispiel wird 192.168.0.0 als CIDR-Bereich verwendet.
 
 Beispiel:
 

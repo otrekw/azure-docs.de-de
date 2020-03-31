@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit etouches | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und etouches konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Aventri | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Aventri konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,75 +11,72 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 03/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0774873370d6006e0a1108c4b01c60274d69f0d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c088bd47b4f5a3a847fd98943614c2d167d18686
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561185"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454498"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-etouches"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit etouches
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aventri"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Aventri
 
-In diesem Tutorial erfahren Sie, wie Sie etouches in Azure Active Directory (Azure AD) integrieren. Die Integration von etouches in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Aventri in Azure Active Directory (Azure AD) integrieren. Die Integration von Aventri in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf etouches hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei etouches anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf Aventri hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei Aventri anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* etouches-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Aventri-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* etouches unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Aventri unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von Aventri können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 
+## <a name="adding-aventri-from-the-gallery"></a>Hinzufügen von Aventri aus dem Katalog
 
-
-
-## <a name="adding-etouches-from-the-gallery"></a>Hinzufügen von etouches aus dem Katalog
-
-Zum Konfigurieren der Integration von etouches in Azure AD müssen Sie etouches aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Um die Integration von Aventri in Azure AD zu konfigurieren, müssen Sie Aventri aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **etouches** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **etouches** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Aventri** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich die Option **Aventri** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-etouches"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für etouches
+## <a name="configure-and-test-azure-ad-single-sign-on-for-aventri"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Aventri
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit etouches mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in etouches eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Aventri unter Verwendung eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Aventri eingerichtet werden.
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit etouches zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Aventri die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für etouches](#configure-etouches-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines etouches-Testbenutzers](#create-etouches-test-user)** , um eine Entsprechung von B. Simon in etouches zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für Aventri](#configure-aventri-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Aventri-Testbenutzers](#create-aventri-test-user)** , um in Aventri eine Entsprechung von B. Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **etouches** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Aventri** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -87,18 +84,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://na-admin.eventscloud.com/saml/accounts/acs/<ACCOUNTID>`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://www.eiseverywhere.com/<instance name>`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://na-admin.eventscloud.com/saml/accounts/sso/<ACCOUNTID>`.
 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Sie ersetzen den Wert durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben.
 
-1. Die etouches-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+1. Die Aventri-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
     ![image](common/edit-attribute.png)
 
-1. Darüber hinaus wird von der etouches-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+1. Darüber hinaus wird von der Aventri-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
     | Name | Quellattribut|
     | ------------------- | -------------------- |
@@ -108,7 +105,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Kopieren Sie im Abschnitt **etouches einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Aventri einrichten** die entsprechenden URLs basierend Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -126,10 +123,10 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf etouches gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Aventri gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste **etouches** aus.
+1. Wählen Sie in der Anwendungsliste **Aventri** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
@@ -142,13 +139,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-etouches-sso"></a>Konfigurieren des einmaligen Anmeldens für etouches
+## <a name="configure-aventri-sso"></a>Konfigurieren des einmaligen Anmeldens für Aventri
 
-1. Führen Sie zum Konfigurieren von SSO für Ihre Anwendung in der etouches-Anwendung die folgenden Schritte aus: 
+1. Führen Sie zum Konfigurieren des einmaligen Anmeldens für Ihre Anwendung in der Aventri-Anwendung die folgenden Schritte aus: 
 
-    ![etouches-Konfiguration](./media/etouches-tutorial/tutorial_etouches_06.png) 
+    ![Aventri-Konfiguration](./media/etouches-tutorial/aventri-tutorial-06.png) 
 
-    a. Melden Sie sich mit Administratorrechten bei der **etouches**-Anwendung an.
+    a. Melden Sie sich mit Administratorrechten bei der **Aventri**-Anwendung an.
    
     b. Navigieren Sie zur **SAML**-Konfiguration.
 
@@ -166,23 +163,24 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     i. Kopieren Sie den Wert für **SSO URL / ACS** (SSO-URL/ACS), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Anmelde-URL** ein.
 
-### <a name="create-etouches-test-user"></a>Erstellen eines etouches-Testbenutzers
+### <a name="create-aventri-test-user"></a>Erstellen eines Aventri-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in etouches einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das [Clientsupportteam von etouches](https://www.etouches.com/event-software/support/customer-support/), um die Benutzer in der etouches-Plattform hinzuzufügen.
+In diesem Abschnitt erstellen Sie in Aventri einen Benutzer namens B. Simon. Arbeiten Sie mit dem [Supportteam für den Aventri-Client](mailto:support@aventri.com) zusammen, um die Benutzer zur Aventri-Plattform hinzuzufügen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „etouches“ klicken, sollten Sie automatisch bei der etouches-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Aventri“ klicken, sollten Sie automatisch bei der Aventri-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [etouches mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+- [Aventri mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

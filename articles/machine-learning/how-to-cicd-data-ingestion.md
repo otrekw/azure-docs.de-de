@@ -11,12 +11,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: 49b384e9e2d9b77179a0154bf2d96524c064c2ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247179"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps für eine Datenerfassungspipeline
 
@@ -28,7 +28,7 @@ Betrachten Sie den folgenden Datenerfassungsworkflow:
 
 ![data-ingestion-pipeline](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
-Bei diesem Ansatz werden die Trainingsdaten in einem Azure-Blobspeicher gespeichert. Eine Azure Data Factory-Pipeline ruft die Daten aus einem Eingabeblobcontainer ab, wandelt sie um und speichert die Daten dann im Ausgabeblobcontainer. Dieser Container dient als [Datenspeicher](https://docs.microsoft.com/azure/machine-learning/concept-data#access-data-in-storage) für Azure Machine Learning Service. Wenn die Daten vorbereitet sind, ruft die Data Factory eine Machine Learning-Trainingspipeline auf, um ein Modell zu trainieren. In diesem speziellen Beispiel wird die Datentransformation von einem Python-Notebook ausgeführt, das in einem Azure Databricks-Cluster ausgeführt wird. 
+Bei diesem Ansatz werden die Trainingsdaten in einem Azure-Blobspeicher gespeichert. Eine Azure Data Factory-Pipeline ruft die Daten aus einem Eingabeblobcontainer ab, wandelt sie um und speichert die Daten dann im Ausgabeblobcontainer. Dieser Container dient als [Datenspeicher](concept-data.md) für Azure Machine Learning Service. Wenn die Daten vorbereitet sind, ruft die Data Factory eine Machine Learning-Trainingspipeline auf, um ein Modell zu trainieren. In diesem speziellen Beispiel wird die Datentransformation von einem Python-Notebook ausgeführt, das in einem Azure Databricks-Cluster ausgeführt wird. 
 
 ## <a name="what-we-are-building"></a>Was wir erstellen
 
@@ -44,7 +44,7 @@ Die Teammitglieder arbeiten auf eine etwas andere Art und Weise an dem Python-No
 
 ### <a name="python-notebook-source-code"></a>Python-Notebookquellcode
 
-Die Data Engineers arbeiten mit dem Python-Notebookquellcode entweder lokal in einer IDE (z. B. [Visual Studio Code](https://code.visualstudio.com)) oder direkt im Databricks-Arbeitsbereich. Letzteres bietet die Möglichkeit, den Code in der Entwicklungsumgebung zu debuggen. In jedem Fall wird der Code gemäß einer Branchingrichtlinie in das Repository gemergt. Es wird dringend empfohlen, den Code nicht im `.ipynb`-Format von Jupyter-Notebooks, sondern in `.py`-Dateien zu speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
+Die Data Engineers arbeiten mit dem Python-Notebookquellcode entweder lokal in einer IDE (z. B. [Visual Studio Code](https://code.visualstudio.com)) oder direkt im Databricks-Arbeitsbereich. Letzteres bietet die Möglichkeit, den Code in der Entwicklungsumgebung zu debuggen. In jedem Fall wird der Code gemäß einer Branchingrichtlinie in das Repository gemergt. Es wird dringend empfohlen, den Code nicht im `.py`-Format von Jupyter-Notebooks, sondern in `.ipynb`-Dateien zu speichern. Dadurch wird die Lesbarkeit des Codes verbessert, und es werden automatische Codequalitätsprüfungen im CI-Prozess ermöglicht.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory-Quellcode
 
@@ -187,7 +187,7 @@ Bei den Werten in der JSON-Datei handelt es sich um in der Pipelinedefinition ko
 Der Continuous Delivery-Prozess verwendet die Artefakte und stellt sie in der ersten Zielumgebung bereit. Er stellt sicher, dass die Lösung funktioniert, indem Tests ausgeführt werden. Bei Erfolg wird der Vorgang in der nächsten Umgebung fortgesetzt. Die Azure-CD-Pipeline besteht aus mehreren Stufen, die die Umgebungen darstellen. Jede Stufe enthält [Bereitstellungen](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) und [Aufträge](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml), mit denen die folgenden Schritte ausgeführt werden:
 * Bereitstellen eines Python-Notebooks im Azure Databricks-Arbeitsbereich
 * Bereitstellen einer Azure Data Factory-Pipeline 
-* Ausführen der Pipeline
+* Führen Sie die Pipeline aus.
 * Überprüfen des Ergebnisses der Datenerfassung
 
 Die Pipelinestufen können mit [Genehmigungen](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) und [Gates](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) konfiguriert werden, die zusätzliche Kontrolle über die Weiterentwicklung des Bereitstellungsprozesses in der Kette der Umgebungen bieten.

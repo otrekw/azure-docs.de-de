@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896015"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Verwenden von Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten/Auflösungs-Paaren  
@@ -34,7 +34,7 @@ Wenn Sie Ihr Quellvideo nur für das Streamen codieren möchten, verwenden Sie d
 
 Wenn Sie Ihr Quellvideo für das Streamen sowie für das Erstellen von MP4-Dateien für den progressiven Download codieren möchten, sollten Sie die Voreinstellung „Content Adaptive Multiple Bitrate MP4“ (Für den Inhalt angepasste Content Adaptive multiple Bitrate MP4) verwenden, wenn Sie eine Codierungsaufgabe erstellen. Wenn Sie die Voreinstellung **Content Adaptive Multiple Bitrate MP4** verwenden, wendet der MES-Encoder die gleiche Codierungslogik wie oben an. Nun enthält aber das Ausgabeasset MP4-Dateien, wobei sich Audio und Video überlappen. Sie können eine dieser MP4-Dateien als progressive Download-Datei verwenden (z.B. die Version mit der höchsten Bitrate).
 
-## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
@@ -167,7 +167,7 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>Ausgabe
+## <a name="output"></a><a id="output"></a>Ausgabe
 
 Dieser Abschnitt zeigt drei Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. 
 
@@ -208,6 +208,6 @@ Die Quelle mit der Höhe „360“ und der Bildrate „29,970“ produziert 3 Vi
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Media Services-Codierung (Übersicht)](media-services-encode-asset.md)
 

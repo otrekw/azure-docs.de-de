@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178041"
 ---
 ## <a name="next-steps"></a>Nächste Schritte
@@ -17,7 +17,7 @@ Nach dem Aktivieren der Azure-Schlüsseltresor-Integration können Sie die SQL S
 
 Es gibt verschiedene Arten der Verschlüsselung, die Sie nutzen können:
 
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparente Datenverschlüsselung (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Verschlüsselte Sicherungen](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Column Level Encryption (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
@@ -50,7 +50,7 @@ WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires th
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
+### <a name="transparent-data-encryption-tde"></a>TDE (Transparent Data Encryption)
 
 1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine für TDE verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
 
@@ -89,7 +89,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>Verschlüsselte Sicherungen
 
-1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine für die Verschlüsselung von Sicherungen verwendet werden kann, und fügen Sie die Anmeldeinformationen hinzu.
+1. Erstellen Sie eine SQL Server-Anmeldung, die von der Datenbank-Engine zum Verschlüsseln von Sicherungen verwendet wird, und fügen Sie die Anmeldeinformationen hinzu.
 
    ``` sql
    USE master;

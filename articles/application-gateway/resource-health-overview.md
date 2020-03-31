@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67659424"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Übersicht über Resource Health für Azure Application Gateway
@@ -43,7 +43,7 @@ Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungspr
 
 ![Status „Nicht verfügbar“](media/resource-health-overview/unavailable.png)
 
-## <a name="unknown"></a>Unbekannt
+## <a name="unknown"></a>Unknown
 
 Der Integritätsstatus **Unbekannt** gibt an, dass Resource Health seit mehr als zehn Minuten keine Informationen mehr zum Gateway empfangen hat. Dieser Status ist keine definitive Angabe des Gatewayzustands. Er ist jedoch ein wichtiger Datenpunkt für die Problembehandlung.
 

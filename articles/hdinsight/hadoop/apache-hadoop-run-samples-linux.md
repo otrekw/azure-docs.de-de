@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435752"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Ausführen von MapReduce-Beispielen in HDInsight
@@ -172,13 +172,13 @@ Dieses Beispiel verwendet bescheidene 10GB an Daten, um eine zügige Ausführung
 
 Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 
-* **TeraGen:** Ein MapReduce-Programm, das Zeilen mit zu sortierenden Daten generiert
+* **TeraGen**: Ein MapReduce-Programm, das Zeilen mit zu sortierenden Daten generiert
 
-* **TeraSort:** „TeraSort“ prüft die Eingangsdaten und verwendet MapReduce, um die Daten in eine Gesamtreihenfolge zu bringen.
+* **TeraSort**prüft die Eingangsdaten und verwendet MapReduce, um die Daten in eine Gesamtreihenfolge zu bringen.
 
     TeraSort ist eine MapReduce-Standardsortierung, die zusätzlich einen eigenen Partitionierer bietet. Der Partitionierer verwendet eine sortierte Liste mit N-1 Stichprobenschlüsseln, um den Schlüsselbereich für die einzelnen Reduce-Vorgänge zu definieren. Speziell werden alle Schlüssel mit Probe[i-1] <= Schlüssel < Probe[i] an Reduce-Vorgang i gesendet. Durch den Partitionierer wird sichergestellt, dass die Ausgaben der Reduce-Vorgänge i immer kleiner sind als die Ausgabe des Reduce-Vorgangs i + 1.
 
-* **TeraValidate:** Ein MapReduce-Programm, das die globale Sortierung der Ausgabe prüft
+* **TeraValidate**: Ein MapReduce-Programm, das die globale Sortierung der Ausgabe prüft
 
     TeraValidate erstellt eine Map pro Datei im Ausgabeverzeichnis, und jede Map stellt sicher, dass jeder Schlüssel kleiner als der vorherige oder gleich dem vorherigen Schlüssel ist. Die Zuordnungsfunktion generiert Datensätze des ersten und letzten Schlüssels jeder Datei. Die Reduce-Funktion stellt sicher, dass der erste Schlüssel der Datei i größer ist als der letzte Schlüssel der Datei i-1. Probleme werden als Ausgabe der Reduce-Phase zusammen mit den Schlüsseln gemeldet, die nicht in der richtigen Reihenfolge sind.
 

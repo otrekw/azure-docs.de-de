@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen eines Dynamics 365 for Customer Engagement-Anwendungsangebots | Azure Marketplace
 description: 'CPP-Artikel als veraltet markiert und mit dem PC-Artikel verknüpft. Zuvor: „Beschreibt den Prozess und die Schritte des Veröffentlichens eines Dynamics 365 for Customer Engagement-Anwendungsangebots im AppSource Marketplace“.'
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.author: v-chjen
-ms.openlocfilehash: cf2961f5def6933b46cdca099a176d952fb940b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: aa66d8c4d7d70cda5a2c4e8eebfe54e360844150
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824717"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278330"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Veröffentlichen eines Dynamics 365 for Customer Engagement-Angebots
 

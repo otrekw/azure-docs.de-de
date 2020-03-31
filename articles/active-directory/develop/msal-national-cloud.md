@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: dfca2b1311f1b55f19d5709f7c9ca7c3e366769c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76695737"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Verwenden der MSAL in einer nationalen Cloudumgebung
@@ -55,7 +55,7 @@ Wenn Sie kein Azure Government-Abonnement besitzen, können Sie zu Beginn ein [k
 
 Weitere Informationen zur Verwendung einer nationalen Cloud mit einer bestimmten Programmiersprache erhalten Sie, indem Sie die Registerkarte entsprechend der gewünschten Sprache auswählen:
 
-## <a name="nettabdonet"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/donet)
 
 Über MSAL.NET können Sie Benutzer anmelden, Token anfordern und die Microsoft Graph-API in nationalen Clouds aufrufen.
 
@@ -64,7 +64,7 @@ In den folgenden Tutorials erfahren Sie, wie Sie eine .NET Core 2.2-MVC-Web-Ap
 - Informationen zum Anmelden von Benutzern und Abrufen von Token finden Sie in diesem Tutorial: [Erstellen einer ASP.NET Core-Web-App, die Benutzer mit der Microsoft Identity Platform bei Sovereign Clouds anmeldet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform).
 - Informationen zum Aufrufen der Microsoft Graph-API finden Sie in diesem Tutorial: [Verwenden der Microsoft Identity Platform zum Abrufen der Microsoft Graph-API aus einer ASP.NET Core 2.x-Web-App im Auftrag eines Benutzers, der sich mit seinem Geschäfts-, Schul- oder Unikonto bei einer nationalen Microsoft-Cloud anmeldet](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud).
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 So aktivieren Sie Ihre MSAL.js-Anwendung für Sovereign Clouds
 
@@ -136,7 +136,7 @@ Informationen zu diesem Code:
 
    Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Microsoft Graph-Endpunkte in nationalen Clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 So aktivieren Sie Ihre MSAL-Python-Anwendung für Sovereign Clouds
 
@@ -159,7 +159,7 @@ So aktivieren Sie Ihre MSAL-Python-Anwendung für Sovereign Clouds
     "scope": "User.Read"
     ```
     
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 So aktivieren Sie Ihre MSAL-Java-Anwendung für Sovereign Clouds
 
@@ -182,7 +182,7 @@ Hier ist ein Beispiel für einen Graph-Endpunkt mit einem Bereich:
 "scope": "User.Read"
 ```
 
-## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 MSAL für iOS und macOS kann zum Abrufen von Token in nationalen Clouds verwendet werden. Für die Erstellung von `MSALPublicClientApplication` ist jedoch zusätzliche Konfiguration erforderlich.
 
@@ -205,7 +205,7 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-## <a name="swifttabswift"></a>[Swift](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 MSAL für iOS und macOS kann zum Abrufen von Token in nationalen Clouds verwendet werden. Für die Erstellung von `MSALPublicClientApplication` ist jedoch zusätzliche Konfiguration erforderlich.
 

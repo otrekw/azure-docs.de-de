@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77200111"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Verwenden von Azure Key Vault-Geheimnissen in Pipelineaktivitäten
@@ -52,7 +52,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
     |Sichere Ausgabe     |True         |
     |URL     |[Ihr Geheimnis-URI]?api-version=7.0         |
     |Methode     |GET         |
-    |Authentifizierung     |MSI         |
+    |Authentication     |MSI         |
     |Resource        |https://vault.azure.net       |
 
     ![Webaktivität](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)

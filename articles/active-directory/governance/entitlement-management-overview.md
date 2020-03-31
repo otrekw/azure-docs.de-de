@@ -3,7 +3,7 @@ title: Was ist Berechtigungsverwaltung? – Azure AD
 description: Verschaffen Sie sich einen Überblick über die Berechtigungsverwaltung von Azure Active Directory, und lesen Sie, wie Sie mit ihr den Zugriff auf Gruppen, Anwendungen und SharePoint Online-Websites für interne und externe Benutzer verwalten können.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128558"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -114,7 +114,7 @@ Zugriffspakete ersetzen keine anderen Mechanismen für die Zugriffszuweisung.  S
 
 Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dokumentation sollten Sie mit den folgenden Begriffen vertraut sein.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Zugriffspaket | Ein Ressourcenpaket, das von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind immer in einem Katalog enthalten. Sie erstellen ein neues Zugriffspaket für ein Szenario, in dem Benutzer Zugriff anfordern müssen.  |
 | Zugriffsanforderung | Die Anforderung des Zugriffs auf die Ressourcen in einem Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Genehmigungsworkflow.  Bei einer Genehmigung erhält der anfordernde Benutzer eine Zugriffspaketzuweisung. |

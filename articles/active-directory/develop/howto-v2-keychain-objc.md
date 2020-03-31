@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085852"
 ---
 # <a name="configure-keychain"></a>Konfigurieren einer Keychain
@@ -46,7 +46,7 @@ Unter macOS 10.15 und höher (macOS Catalina) verwendet MSAL ähnlich wie unter 
 
 Wenn Sie eine andere Keychain-Zugriffsgruppe verwenden möchten, können Sie beim Erstellen von `MSALPublicClientApplicationConfig` eine benutzerdefinierte Gruppe übergeben, bevor Sie `MSALPublicClientApplication` erstellen:
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -62,7 +62,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -84,13 +84,13 @@ do {
 
 Wenn Sie den SSO-Status nicht zwischen mehreren Apps freigeben oder wenn Sie keine Keychain-Zugriffsgruppen verwenden möchten, können Sie die Keychainfreigabe deaktivieren. Übergeben Sie hierzu die Anwendungspaket-ID als Wert für „keychainGroup“:
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {

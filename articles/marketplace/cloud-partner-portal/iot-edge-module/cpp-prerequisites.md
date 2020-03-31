@@ -1,19 +1,18 @@
 ---
 title: Voraussetzungen für Azure IoT Edge-Module | Azure Marketplace
 description: Voraussetzungen für die Veröffentlichung eines IoT Edge-Moduls.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 610f9bc8d87ac75e2868e247fe1332574480b498
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b6e021fc452b45edd7b1be9fd5afd77b792b4853
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813876"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286539"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>Voraussetzungen für die Veröffentlichung von IoT Edge-Modulen
 

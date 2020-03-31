@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
 ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594210"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
@@ -300,11 +300,11 @@ Angebote und Tarife für Verwaltungslösungen finden Sie [hier](https://docs.mic
 
 Sie können die Ansichten für Ihre Daten anpassen, in dem Sie den **Ansicht-Designer** verwenden. Um mit dem Entwerfen zu beginnen, navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich und wählen Sie die Kachel **Ansicht-Designer**.
 
-![Ansicht-Designer](./media/cdn-diagnostics-log/27_Designer.png)
+![Sicht-Designer](./media/cdn-diagnostics-log/27_Designer.png)
 
 Ziehen Sie die Diagrammtypen per Drag & Drop und geben Sie die Datendetails ein, die analysiert werden sollen.
 
-![Ansicht-Designer](./media/cdn-diagnostics-log/28_Designer.png)
+![Sicht-Designer](./media/cdn-diagnostics-log/28_Designer.png)
 
     
 ## <a name="log-data-delays"></a>Protokolldatenverzögerungen

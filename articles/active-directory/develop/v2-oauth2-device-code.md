@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159730"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
@@ -58,7 +58,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Kann "/common", „/consumers“ oder „/organizations“ sein.  Dies kann auch der Verzeichnismandant sein, von dem Sie die Berechtigung im GUID- oder Anzeigenamensformat anfordern möchten.  |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -97,7 +97,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parameter | Erforderlich | Beschreibung|
+| Parameter | Erforderlich | BESCHREIBUNG|
 | -------- | -------- | ---------- |
 | `tenant`  | Erforderlich | Derselbe Mandant oder Mandantenalias, der in der ursprünglichen Anforderung verwendet wurde. | 
 | `grant_type` | Erforderlich | Muss gleich `urn:ietf:params:oauth:grant-type:device_code` sein.|
@@ -108,11 +108,11 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, Fehler zu erhalten, bevor der Benutzer die Authentifizierung abgeschlossen hat.  
 
-| Fehler | Beschreibung | Clientaktion |
+| Fehler | BESCHREIBUNG | Clientaktion |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Der Benutzer hat die Authentifizierung nicht abgeschlossen, den Flow aber nicht abgebrochen. | Wiederholen Sie die Anforderung nach mindestens `interval` Sekunden. |
 | `authorization_declined` | Der Endbenutzer hat die Autorisierungsanforderung verweigert.| Beenden Sie das Abrufen, und kehren Sie in einen nicht authentifizierten Zustand zurück.  |
-| `bad_verification_code`| Der an den `/token`-Endpunkt gesendete `device_code` wurde nicht erkannt. | Stellen Sie sicher, dass der Client den richtigen `device_code` in der Anforderung sendet. |
+| `bad_verification_code`| Der an den `device_code`-Endpunkt gesendete `/token` wurde nicht erkannt. | Stellen Sie sicher, dass der Client den richtigen `device_code` in der Anforderung sendet. |
 | `expired_token` | Mindestens `expires_in` Sekunden sind verstrichen, und die Authentifizierung ist mit diesem `device_code` nicht mehr möglich. | Beenden des Abrufens und Wiederherstellen eines nicht authentifizierten Zustands. |   
 
 ### <a name="successful-authentication-response"></a>Erfolgreiche Authentifizierungsantwort

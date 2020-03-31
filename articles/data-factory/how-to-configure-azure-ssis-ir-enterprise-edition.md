@@ -11,10 +11,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 8096da955da0266f3727197f21d67c33d099aa4f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74922649"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Bereitstellen der Enterprise-Edition für die Azure-SSIS Integration Runtime
@@ -40,7 +40,7 @@ Für einige dieser Features müssen Sie zusätzliche Komponenten installieren, u
 | Transformationen für Fuzzygruppierung und Fuzzysuche  | Die Transformationen für die Fuzzygruppierung und Fuzzysuche sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Diese Komponenten unterstützen für die Speicherung von Verweisdaten sowohl SQL Server als auch Azure SQL-Datenbank. |
 | Transformationen für Ausdrucksextrahierung und Ausdruckssuche | Die Transformationen für die Ausdrucksextrahierung und Ausdruckssuche sind für die Enterprise Edition der Azure-SSIS-Integrationslaufzeit vorinstalliert. Diese Komponenten unterstützen für die Speicherung von Verweisdaten sowohl SQL Server als auch Azure SQL-Datenbank. |
 
-## <a name="instructions"></a>Anleitung
+## <a name="instructions"></a>Instructions
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

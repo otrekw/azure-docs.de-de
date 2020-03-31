@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74932065"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell-Skript: Transformieren von Daten in der Cloud mithilfe von Azure Data Factory
@@ -63,7 +63,7 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline, die Daten in der Cloud 
 
 ### <a name="upload-the-input-file"></a>Hochladen der Eingabedatei
 1. Erstellen Sie eine Datei mit dem Namen **minecraftstory.txt** und etwas Text darin. Das Spark-Programm zählt die Wörter in diesem Text. 
-2. Erstellen Sie im Blobcontainer im Ordner `spark` einen Unterordner mit dem Namen `inputfiles`. 
+2. Erstellen Sie im Blobcontainer im Ordner `inputfiles` einen Unterordner mit dem Namen `spark`. 
 3. Laden Sie `minecraftstory.txt` in den Unterordner `inputfiles` hoch. 
 
 ## <a name="sample-script"></a>Beispielskript

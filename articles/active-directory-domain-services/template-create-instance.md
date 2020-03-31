@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
 ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612798"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Erstellen einer verwalteten Azure Active Directory Domain Services-Domäne mithilfe einer Resource Manager-Vorlage
@@ -121,7 +121,7 @@ Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurati
 
 Für die Resource Manager-Ressourcendefinition sind u. a. die folgenden Konfigurationsparameter erforderlich:
 
-| Parameter               | value |
+| Parameter               | Wert |
 |-------------------------|---------|
 | domainName              | Geben Sie den DNS-Domänennamen für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die obigen Ausführungen zu Namenspräfixen und Konflikten. |
 | filteredSync            | Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Gruppen synchronisieren oder eine *bereichsbezogene* Synchronisierung spezifischer Gruppen durchführen. Wenn Sie alle Benutzer und Gruppen für die Synchronisierung auswählen, können Sie sich später nicht für eine nur bereichsbezogene Synchronisierung entscheiden.<br /> Weitere Informationen zur bereichsbezogenen Synchronisierung finden Sie unter [Bereichsbezogene Synchronisierung für Azure AD Domain Services][scoped-sync].|

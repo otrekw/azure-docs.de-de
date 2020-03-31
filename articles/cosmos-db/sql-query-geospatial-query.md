@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566459"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Abfragen räumlicher Daten mit Azure Cosmos DB
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von SQL und LINQ räumliche Daten in Azure Cosmos DB abfragen. Das Speichern und Verwenden räumlicher Daten wird derzeit nur von Azure Cosmos DB-SQL-API-Konten unterstützt. Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen der SQL-Sprache finden Sie unter [Systemfunktionen (Azure Cosmos DB)](sql-query-system-functions.md).
+In diesem Artikel erfahren Sie, wie Sie mithilfe von SQL und LINQ räumliche Daten in Azure Cosmos DB abfragen. Das Speichern und Verwenden räumlicher Daten wird derzeit nur von Azure Cosmos DB-SQL-API-Konten unterstützt. Azure Cosmos DB unterstützt die folgenden integrierten OGC-Funktionen (Open Geospatial Consortium ) für das Abfragen von Geodaten. Weitere Informationen zu sämtlichen integrierten Funktionen der SQL-Sprache finden Sie unter [Systemfunktionen (Azure Cosmos DB)](sql-query-system-functions.md).
 
 ## <a name="spatial-sql-built-in-functions"></a>Integrierte räumliche SQL-Funktionen
 

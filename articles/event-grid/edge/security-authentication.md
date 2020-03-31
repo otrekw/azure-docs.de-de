@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844512"
 ---
 # <a name="security-and-authentication"></a>Sicherheit und Authentifizierung
@@ -39,10 +39,10 @@ Das Event Grid-Modul hostet sowohl HTTP- als auch HTTPS-Endpunkte. Jedem IoT Edg
 
 Standardmäßig ist nur HTTPS-Kommunikation zulässig. Sie können dieses Verhalten mithilfe der Konfiguration **inbound__serverAuth__tlsPolicy** außer Kraft setzen. Die folgende Tabelle enthält die möglichen Werte dieser Eigenschaft.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ---------------- | ------------ |
 | Strict | Standard. Aktiviert nur HTTPS
-| Aktiviert | Aktiviert HTTP und HTTPS
+| Enabled | Aktiviert HTTP und HTTPS
 | Disabled | Aktivieren nur HTTP
 
 ## <a name="inbound-client-authentication"></a>Eingehende Clientauthentifizierung
@@ -60,20 +60,20 @@ Standardmäßig ist das Event Grid-Modul so konfiguriert, dass nur zertifikatbas
 
 Zertifikatbasierte Authentifizierung ist standardmäßig aktiviert. Sie können die zertifikatbasierte Authentifizierung über die Eigenschaft **inbound__clientAuth__clientCert__enabled** deaktivieren. Die folgende Tabelle enthält die möglichen Werte.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------ |
 | true | Standard. Erfordert von allen in das Event Grid-Modul eingehenden Anforderungen, ein Clientzertifikat vorzuweisen. Außerdem müssen Sie **inbound__clientAuth__clientCert__source** konfigurieren.
 | false | Ein Client wird nicht gezwungen, ein Clientzertifikat vorzuweisen.
 
 Die folgende Tabelle enthält die möglichen Werte für **inbound__clientAuth__clientCert__source**.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ---------------- | ------------ |
 | IoT Edge | Standard. Verwendet das IoT Edge-Trustbundle, um alle Clientzertifikate zu überprüfen.
 
 Wenn ein Client ein selbstsigniertes Zertifikat vorweist, weist das Event Grid-Modul solche Anforderungen standardmäßig zurück. Sie können selbstsignierte Clientzertifikate über die Eigenschaft **inbound__clientAuth__clientCert__allowUnknownCA** zulassen. Die folgende Tabelle enthält die möglichen Werte.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------|
 | true | Standard. Lässt zu, dass selbstsignierte Zertifikate erfolgreich vorgewiesen werden.
 | false | Lässt Anforderungen fehlschlagen, wenn selbstsignierte Zertifikate vorgewiesen werden.
@@ -87,7 +87,7 @@ Zusätzlich zur zertifikatbasierten Authentifizierung kann das Event Grid-Modul 
 
 Die Konfiguration zur Kontrolle der SAS-Schlüssel-basierten Authentifizierung erfolgt mit **inbound__clientAuth__sasKeys__enabled**.
 
-| Mögliche Werte | Beschreibung  |
+| Mögliche Werte | BESCHREIBUNG  |
 | ----------------  | ------------ |
 | true | Lässt die SAS-Schlüssel-basierte Authentifizierung zu. Erfordert **inbound__clientAuth__sasKeys__key1** oder **inbound__clientAuth__sasKeys__key2**
 | false | Standard. SAS-Schlüssel-basierte Authentifizierung ist deaktiviert.
@@ -105,14 +105,14 @@ Jedem IoT Edge-Modul wird vom IoT Edge-Sicherheitsdaemon ein Identitätszertifik
 
 Die Konfiguration zur Kontrolle der ausgehenden Clientauthentifizierung erfolgt mit **outbound__clientAuth__clientCert__enabled**.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------ |
 | true | Standard. Erfordert von allen aus dem Event Grid-Modul ausgehenden Anforderungen, ein Zertifikat vorzuweisen. **outbound__clientAuth__clientCert__source** muss dazu konfiguriert sein.
 | false | Fordert vom Event Grid-Modul nicht an, sein Zertifikat vorzuweisen.
 
 Die Konfiguration, die die Quelle für das Zertifikat kontrolliert, lautet **outbound__clientAuth__clientCert__source**.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ---------------- | ------------ |
 | IoT Edge | Standard. Verwendet das von IoT Edge-Sicherheitsdaemon konfigurierte Identitätszertifikat des Moduls.
 
@@ -122,21 +122,21 @@ Einer der Zieltypen für einen Event Grid-Abonnenten ist „Webhook“. Standard
 
 Die Konfiguration zur Kontrolle der Webhook-Zielrichtlinie lautet **outbound__webhook__httpsOnly**.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------ |
 | true | Standard. Lässt nur Abonnenten mit HTTPS-Endpunkt zu.
 | false | Lässt Abonnenten mit HTTP- oder HTTPS-Endpunkt zu.
 
 Standardmäßig überprüft das Event Grid-Modul das Serverzertifikat des Abonnenten. Sie können die Überprüfung überspringen, indem Sie **outbound__webhook__skipServerCertValidation** außer Kraft setzen. Mögliche Werte:
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------ |
 | true | Das Serverzertifikat des Abonnenten nicht überprüfen.
 | false | Standard. Das Serverzertifikat des Abonnenten überprüfen.
 
 Wenn das Zertifikat des Abonnenten selbstsigniert ist, weist das Event Grid-Modul solche Abonnenten standardmäßig ab. Um ein selbstsigniertes Zertifikat zuzulassen, können Sie **outbound__webhook__allowUnknownCA** außer Kraft setzen. Die folgende Tabelle enthält die möglichen Werte.
 
-| Mögliche Werte | Beschreibung |
+| Mögliche Werte | BESCHREIBUNG |
 | ----------------  | ------------ |
 | true | Standard. Lässt zu, dass selbstsignierte Zertifikate erfolgreich vorgewiesen werden.
 | false | Lässt Anforderungen fehlschlagen, wenn selbstsignierte Zertifikate vorgewiesen werden.

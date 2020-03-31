@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 97f265d76ac70891e9cefc0ef6651e439706ed23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392302"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334851"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -35,21 +35,21 @@ ms.locfileid: "75392302"
 
 **Azure portal**
 
-| Category | Einschränkungen | Kommentare |
+| Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen, die von einer Protokollabfrage zurückgegebenen werden | 10.000 | Reduziert die Ergebnisse durch die Verwendung eines Abfragebereichs, eines Zeitbereichs und von Filtern in der Abfrage. |
 
 
 **Datensammler-API**
 
-| Category | Einschränkungen | Kommentare |
+| Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Größe für einen einzelnen Beitrag | 30 MB | Teilen Sie größere Volumen auf mehrere Beiträge auf. |
 | Maximale Größe für Feldwerte  | 32 KB | Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
 
 **Search-API**
 
-| Category | Einschränkungen | Kommentare |
+| Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Datensätzen, die bei einer einzelnen Abfrage zurückgegeben werden | 500.000 | |
 | Maximale Größe der zurückgegebenen Daten | 64.000.000 Byte (~61 MiB)| |
@@ -58,7 +58,7 @@ ms.locfileid: "75392302"
 
 **Allgemeine Grenzwerte für Arbeitsbereiche**
 
-| Category | Einschränkungen | Kommentare |
+| Category | Begrenzung | Kommentare |
 |:---|:---|:---|
 | Maximale Anzahl von Spalten in einer Tabelle         | 500 | |
 | Maximale Anzahl an Zeichen für einen Spaltennamen | 500 | |

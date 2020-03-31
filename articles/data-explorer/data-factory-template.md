@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293554"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Massenkopieren aus einer Datenbank in Azure Data Explorer mithilfe der Azure Data Factory-Vorlage 
@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 Die Codeelemente werden in der folgenden Tabelle beschrieben:
 
-|Eigenschaft  |Beschreibung  | Beispiel
+|Eigenschaft  |BESCHREIBUNG  | Beispiel
 |---------|---------| ---------|
 |PartitionId   |  Kopierauftrag | 1  |  
 |SourceQuery   |  Die Abfrage, die angibt, welche Daten während der Pipelineruntime kopiert werden | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    

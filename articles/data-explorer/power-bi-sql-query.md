@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560472"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Visualisieren von Daten aus Azure Data Explorer mithilfe einer SQL-Abfrage in Power BI
@@ -68,7 +68,7 @@ In der Regel verwenden Sie die native Abfragesprache mit Azure Data Explorer. Hi
 
     ![Anmelden](media/power-bi-sql-query/sign-in.png)
 
-1. Wählen Sie auf dem Bildschirm **help.kusto.windows.net: Beispiele** die Option **Laden** aus.
+1. Klicken Sie auf dem Bildschirm **help.kusto.windows.net: Beispiele**  auf **Laden**.
 
     ![Laden der Daten](media/power-bi-sql-query/load-data.png)
 

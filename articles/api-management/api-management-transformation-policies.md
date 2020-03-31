@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047697"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="TransformationPolicies"></a> Transformationsrichtlinien
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Transformationsrichtlinien
 
 -   [JSON in XML konvertieren](api-management-transformation-policies.md#ConvertJSONtoXML) – Konvertiert den Anforderungs- oder Antworttext von JSON in XML.
 
@@ -44,7 +44,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   [XML mithilfe von XSLT transformieren](api-management-transformation-policies.md#XSLTransform) – Wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
 
-##  <a name="ConvertJSONtoXML"></a> JSON in XML konvertieren
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON in XML konvertieren
  Die Richtlinie `json-to-xml` konvertiert einen Anforderungs- oder Antworttext von JSON in XML.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -69,16 +69,16 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |json-to-xml|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Die Konvertierung immer anwenden.<br />– content-type-json – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von JSON angibt.|Ja|–|
-|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
+|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn XML im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
 |parse-date|Ist dieses Attribut auf `false` festgelegt, werden Datumswerte während der Transformation einfach kopiert.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
@@ -88,7 +88,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren
  Die Richtlinie `xml-to-json` konvertiert einen Anforderungs- oder Antworttext von XML in JSON. Diese Richtlinie kann verwendet werden, um APIs basierend auf reinen XML-Back-End-Webdiensten zu aktualisieren.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -113,17 +113,17 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |xml-to-json|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |kind|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – javascript-friendly – Die konvertierte JSON hat ein für JavaScript-Entwickler verständliches Format.<br />– direct – Die konvertierte JSON spiegelt die Struktur des ursprünglichen XML-Dokuments wider.|Ja|–|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Immer konvertieren.<br />– content-type-xml – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von XML angibt.|Ja|–|
-|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn XML im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
+|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -132,7 +132,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen
  Die Richtlinie `find-and-replace` sucht nach einer Teilzeichenfolge in der Antwort oder Anforderung und ersetzt diese durch eine andere Teilzeichenfolge.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -149,16 +149,16 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |find-and-replace|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |from|Die zu suchende Zeichenfolge.|Ja|–|
-|To|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|Ja|–|
+|zu|Die Ersatzzeichenfolge. Geben Sie eine leere Ersatzzeichenfolge an, um die Suchzeichenfolge zu entfernen.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
@@ -167,7 +167,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="MaskURLSContent"></a> URLs in Inhalt maskieren
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> URLs in Inhalt maskieren
  Die Richtlinie `redirect-content-urls` ändert (maskiert) Links im Antworttext, sodass diese über das Gateway auf den äquivalenten Link zeigen. Verwenden Sie sie im Abschnitt „outbound“, um Links im Antworttext so zu ändern, dass sie auf das Gateway zeigen. Verwenden Sie sie im Abschnitt „inbound“ für den entgegengesetzten Effekt.
 
 > [!NOTE]
@@ -187,7 +187,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |redirect-content-urls|Stammelement|Ja|
 
@@ -198,7 +198,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="SetBackendService"></a> Back-End-Dienst festlegen
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> Back-End-Dienst festlegen
  Verwenden Sie die Richtlinie `set-backend-service`, um eine eingehende Anforderung an einen anderen Back-End umzuleiten, als in den API-Einstellungen für diesen Vorgang angegeben ist. Diese Richtlinie ändert die Basis-URL des Back-End-Diensts der eingehenden Anforderung in die in der Richtlinie angegebene.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -260,13 +260,13 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-backend-service|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |base-url|Neue Basis-URL für den Back-End-Dienst.|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
 |backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll (Back-End-Entitäten werden über die [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) und in [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet.)|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
@@ -283,7 +283,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="SetBody"></a> Text festlegen
+##  <a name="set-body"></a><a name="SetBody"></a> Text festlegen
  Verwenden Sie die Richtlinie `set-body`, um den Nachrichtentext für eingehende und ausgehende Anforderungen festzulegen. Um auf den Nachrichtentext zuzugreifen, können Sie die Eigenschaft `context.Request.Body` oder `context.Response.Body` verwenden, je nachdem, ob sich die Richtlinie im Abschnitt „inbound“ oder „outbound“ befindet.
 
 > [!IMPORTANT]
@@ -342,7 +342,7 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 ```
 
 #### <a name="filter-response-based-on-product"></a>Filtern der Antwort basierend auf dem Produkt
- In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemente aus der über den Back-End-Dienst empfangenen Antwort entfernt werden, wenn das Produkt `Starter` verwendet wird. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 34:30 durch). Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.
+ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemente aus der über den Back-End-Dienst empfangenen Antwort entfernt werden, wenn das Produkt `Starter` verwendet wird. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 34:30 durch. Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -396,13 +396,13 @@ Die Richtlinie `set-body` kann so konfiguriert werden, dass Sie den Hauptteil ei
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|Ja|
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |Vorlage|Es wird verwendet, um den Vorlagenmodus zu ändern, in dem die Richtlinie zum Festlegen von Text ausgeführt werden wird. Der einzige derzeit unterstützte Wert ist:<br /><br />– Liquid: Die Richtlinie zum Festlegen von Text verwendet die Liquid-Vorlagen-Engine. |Nein||
 
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="SetHTTPheader"></a> HTTP-Header setzen
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> HTTP-Header setzen
  Die Richtlinie `set-header` weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.
 
  Fügt eine Liste von HTTP-Headern in eine HTTP-Nachricht ein. In eingehenden Pipelines setzt diese Richtlinie die HTTP-Header für die Anforderung, die an den Zieldienst übergeben wird. In ausgehenden Pipelines legt diese Richtlinie die HTTP-Header für die Antwort fest, die an den Client des Gateways gesendet wird.
@@ -484,7 +484,7 @@ OriginalUrl.
 
 
 #### <a name="forward-context-information-to-the-backend-service"></a>Weiterleiten von Kontextinformationen an den Back-End-Dienst
- In diesem Beispiel wird gezeigt, wie die Richtlinie auf API-Ebene angewendet wird, um dem Back-End-Dienst Kontextinformationen bereitzustellen. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 10:30 durch). Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie die Richtlinie bei der Arbeit sehen können.
+ In diesem Beispiel wird gezeigt, wie die Richtlinie auf API-Ebene angewendet wird, um dem Back-End-Dienst Kontextinformationen bereitzustellen. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 10:30 durch. Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie die Richtlinie bei der Arbeit sehen können.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->
@@ -510,14 +510,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-header|Stammelement|Ja|
 |value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Nein|
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|
 |name|Der Name des zu setzenden Headers.|Ja|–|
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="SetQueryStringParameter"></a> Abfrageparameter setzen
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> Abfrageparameter setzen
  Die Richtlinie `set-query-parameter` fügt Abfrageparameter von Anforderungen hinzu, löscht diese oder ersetzt deren Werte. Mit dieser Richtlinie können Sie erwartete Abfrageparameter an den Back-End-Dienst übergeben, die optional sind oder in der Anforderung nie vorkommen.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -556,7 +556,7 @@ OriginalUrl.
 ```
 
 #### <a name="forward-context-information-to-the-backend-service"></a>Weiterleiten von Kontextinformationen an den Back-End-Dienst
- In diesem Beispiel wird gezeigt, wie die Richtlinie auf API-Ebene angewendet wird, um dem Back-End-Dienst Kontextinformationen bereitzustellen. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 10:30 durch). Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie die Richtlinie bei der Arbeit sehen können.
+ In diesem Beispiel wird gezeigt, wie die Richtlinie auf API-Ebene angewendet wird, um dem Back-End-Dienst Kontextinformationen bereitzustellen. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 10:30 durch. Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie die Richtlinie bei der Arbeit sehen können.
 
 ```xml
 <!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->
@@ -570,14 +570,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-query-parameter|Stammelement|Ja|
 |value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |exists-action|Gibt die auszuführende Aktion an, wenn ein Abfrageparameter bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Parameters.<br />– skip – Ersetzt den vorhandenen Abfrageparameterwert nicht.<br />– append – Fügt den Wert an den vorhandenen Abfrageparameterwert an.<br />– delete – Entfernt den Abfrageparameter aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Abfrageparameter gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|
 |name|Gibt den Namen des festzulegenden Abfrageparameters an.|Ja|–|
@@ -589,7 +589,7 @@ OriginalUrl.
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="RewriteURL"></a> URL umschreiben
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> URL umschreiben
  Die Richtlinie `rewrite-uri` konvertiert eine Anforderungs-URL von der öffentlichen Form in die vom Webdienst erwartete Form, wie im folgenden Beispiel gezeigt.
 
 - Öffentliche URL: `http://api.example.com/storenumber/ordernumber`
@@ -649,13 +649,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |rewrite-uri|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|Attribut|BESCHREIBUNG|Erforderlich|Standard|
+|attribute|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|Ja|–|
 |copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein|true|
@@ -667,7 +667,7 @@ OriginalUrl.
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-##  <a name="XSLTransform"></a> XML mithilfe von XSLT transformieren
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XML mithilfe von XSLT transformieren
  Die Richtlinie `Transform XML using an XSLT` wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -718,10 +718,10 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |xsl-transform|Stammelement|Ja|
-|Parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein|
+|parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein|
 |xsl:stylesheet|Stylesheet-Stammelement. Für alle darunter definierten Elemente und Attribute gilt die standardmäßige [XSLT-Spezifikation](https://www.w3.org/TR/xslt)|Ja|
 
 ### <a name="usage"></a>Verwendung
@@ -737,4 +737,4 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
++ [API Management-Richtlinienbeispiele](policy-samples.md)

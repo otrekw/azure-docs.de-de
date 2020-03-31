@@ -11,17 +11,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721896"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
 In diesem Artikel wird beschrieben, wie Sie Git als Framework für die gemeinschaftliche Codeentwicklung für Data Science-Projekte verwenden. Der Artikel enthält Informationen dazu, wie Sie Code in Azure Repos mit Arbeitselementen der [agilen Entwicklung](agile-development.md) in Azure Boards verknüpfen, Code Reviews durchführen und Pull Requests für Änderungen erstellen und zusammenführen.
 
-## <a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Azure Repos-Branch 
+## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Azure Repos-Branch 
 
 Mit Azure DevOps können Sie eine Azure Boards User Story oder ein Arbeitselement bequem mit einem Azure Repos-Git-Repositorybranch verbinden. Sie können Ihre User Story oder Aufgabe direkt mit dem zugeordneten Code verknüpfen. 
 
@@ -59,7 +59,7 @@ Sie können auch ein Arbeitselement mit einer vorhandenen Verzweigung verknüpfe
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-## <a name='WorkonaBranchandCommittheChanges-2'></a>Arbeiten am Branch und Committen von Änderungen 
+## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>Arbeiten am Branch und Committen von Änderungen 
 
 Nachdem Sie eine Änderung für Ihr Arbeitselement vorgenommen haben, z. B. das Hinzufügen einer R-Skriptdatei zum Branch `script` Ihres lokalen Computers, können Sie hierfür einen Commit von Ihrem lokalen Branch zum Upstream-Arbeitsbranch durchführen, indem Sie die folgenden Git Bash-Befehle verwenden:
 
@@ -72,7 +72,7 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name='CreateapullrequestonVSTS-3'></a>Erstellen eines Pull Requests
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>Erstellen eines Pull Requests
 
 Wenn Sie nach einem oder mehreren Commit- und Pushvorgängen zum Zusammenführen Ihres aktuellen Arbeitsbranchs mit dem Basisbranch bereit sind, können Sie in Azure Repos einen *Pull Request* erstellen und übermitteln. 
 
@@ -84,7 +84,7 @@ Navigieren Sie auf dem Bildschirm **Neuer Pull Request** bei Bedarf zum Git-Repo
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>Überprüfen und Zusammenführen
+## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>Überprüfen und Zusammenführen
 
 Nachdem Sie den Pull Request erstellt haben, erhalten die Prüfer eine E-Mail-Benachrichtigung, um den Pull Request überprüfen zu können. Die Prüfer testen, ob die Änderungen funktionieren, und überprüfen die Änderungen ggf. gemeinsam mit dem Anforderer. Die Prüfer können Kommentare abgeben, Änderungen fordern und den Pull Request basierend auf der jeweiligen Bewertung genehmigen oder ablehnen. 
 

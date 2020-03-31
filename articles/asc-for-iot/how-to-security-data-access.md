@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68597183"
 ---
 # <a name="access-your-security-data"></a>Zugreifen auf Sicherheitsdaten 
@@ -68,9 +68,9 @@ SecurityAlert
 
 | TimeGenerated           | IoTHubId                                                                                                       | deviceId      | AlertSeverity | DisplayName                           | BESCHREIBUNG                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18:10:29.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | Erfolgreicher Brute-Force-Angriff           | Ein Brute-Force-Angriff auf dem Gerät war erfolgreich        |    { "Vollständige Quelladresse": "[\"10.165.12.18:\"]", "Benutzernamen": "[\"\"]", "DeviceId": "IoT-Device-Linux" }                                                                       |
-| 2018-11-19T12:40:31.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | Erfolgreiche lokale Anmeldung auf dem Gerät      | Eine erfolgreiche lokale Anmeldung auf dem Gerät wurde erkannt     | { "Remoteadresse": "?", "Remoteport": "", "Lokaler Port": "", "Anmeldeshell": "/bin/su", "Anmeldeprozess-ID": "28207", "Benutzername": "Angreifer", "DeviceId": "IoT-Device-Linux" } |
-| 2018-11-19T12:40:31.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | Ein fehlgeschlagener Anmeldeversuch auf dem Gerät wurde erkannt |  { "Remoteadresse": "?", "Remoteport": "", "Lokaler Port": "", "Anmeldeshell": "/bin/su", "Anmeldeprozess-ID": "22644", "Benutzername": "Angreifer", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-18T18:10:29.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | Erfolgreicher Brute-Force-Angriff           | Ein Brute-Force-Angriff auf dem Gerät war erfolgreich        |    { "Vollständige Quelladresse": "[\"10.165.12.18:\"]", "Benutzernamen": "[\"\"]", "DeviceId": "IoT-Device-Linux" }                                                                       |
+| 2018-11-19T12:40:31.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | Erfolgreiche lokale Anmeldung auf dem Gerät      | Eine erfolgreiche lokale Anmeldung auf dem Gerät wurde erkannt     | { "Remoteadresse": "?", "Remoteport": "", "Lokaler Port": "", "Anmeldeshell": "/bin/su", "Anmeldeprozess-ID": "28207", "Benutzername": "Angreifer", "DeviceId": "IoT-Device-Linux" } |
+| 2018-11-19T12:40:31.000 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | Ein fehlgeschlagener Anmeldeversuch auf dem Gerät wurde erkannt |  { "Remoteadresse": "?", "Remoteport": "", "Lokaler Port": "", "Anmeldeshell": "/bin/su", "Anmeldeprozess-ID": "22644", "Benutzername": "Angreifer", "DeviceId": "IoT-Device-Linux" } |
 
 ### <a name="device-summary"></a>Gerätezusammenfassung
 
@@ -89,12 +89,12 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | deviceId      | AlertSeverity | DisplayName                           | Count |
+| IoTHubId                                                                                                       | deviceId      | AlertSeverity | DisplayName                           | Anzahl |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | Erfolgreicher Brute-Force-Angriff           | 9   |   
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel        | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | 242 |    
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | Erfolgreiche lokale Anmeldung auf dem Gerät      | 31  |
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel        | Crypto Coin Miner                     | 4   |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | Erfolgreicher Brute-Force-Angriff           | 9   |   
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium        | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | 242 |    
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | Erfolgreiche lokale Anmeldung auf dem Gerät      | 31  |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium        | Crypto Coin Miner                     | 4   |
 
 ### <a name="iot-hub-summary"></a>IoT Hub-Zusammenfassung
 
@@ -115,10 +115,10 @@ SecurityAlert
 
 | IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Hoch          | Erfolgreicher Brute-Force-Angriff           | 1          |    
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Mittel        | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | 1          | 
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Hoch          | Erfolgreiche lokale Anmeldung auf dem Gerät      | 1          |
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Mittel        | Crypto Coin Miner                     | 1          |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | High          | Erfolgreicher Brute-Force-Angriff           | 1          |    
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Medium        | Fehler bei lokalem Anmeldeversuch auf dem Gerät  | 1          | 
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | High          | Erfolgreiche lokale Anmeldung auf dem Gerät      | 1          |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | Medium        | Crypto Coin Miner                     | 1          |
 
 ## <a name="security-recommendations"></a>Sicherheitsempfehlungen
 
@@ -148,8 +148,8 @@ SecurityRecommendation
     
 | TimeGenerated | IoTHubId | deviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | BESCHREIBUNG | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10:21:06.060 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel | Aktiv | In der INPUT-Kette wurde eine zu wenig einschränkende Firewallregel gefunden | In der Firewall wurde eine Regel gefunden, die ein zu wenig einschränkendes Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
-| 2019-03-22T10:50:27.237 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel | Aktiv | In der INPUT-Kette wurde eine zu wenig einschränkende Firewallregel gefunden | In der Firewall wurde eine Regel gefunden, die ein zu wenig einschränkendes Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:21:06.060 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium | Aktiv | In der INPUT-Kette wurde eine zu wenig einschränkende Firewallregel gefunden | In der Firewall wurde eine Regel gefunden, die ein zu wenig einschränkendes Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium | Aktiv | In der INPUT-Kette wurde eine zu wenig einschränkende Firewallregel gefunden | In der Firewall wurde eine Regel gefunden, die ein zu wenig einschränkendes Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
 
 ### <a name="device-summary"></a>Gerätezusammenfassung
 
@@ -166,12 +166,12 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | deviceId      | RecommendationSeverity | Count |
+| IoTHubId                                                                                                       | deviceId      | RecommendationSeverity | Anzahl |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | 2   |    
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel        | 1 |  
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Hoch          | 1  |
-| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Mittel        | 4   |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | 2   |    
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium        | 1 |  
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | High          | 1  |
+| /subscriptions/<Abonnement-ID>/resourceGroups/<Ressourcengruppe>/providers/Microsoft.Devices/IotHubs/<IoT_Hub> | <Gerätename> | Medium        | 4   |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

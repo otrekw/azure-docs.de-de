@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501467"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -155,7 +155,7 @@ Die folgenden Schritte sollen Ihnen dabei helfen, Ihre Lösungen beim Einsatz vo
 
 1. Wenn Sie den bereitgestellten Durchsatz für Container und Datenbanken erheblich überdimensioniert haben, sollten Sie das Verhältnis der bereitgestellten zu den verbrauchten Anforderungseinheiten überprüfen und die Workloads optimieren.  
 
-2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](online-backup-and-restore.md). 
+2. Eine Methode zum Schätzen des von der Anwendung benötigten reservierten Durchsatzes besteht darin, für typische Vorgänge mit einem von Ihrer Anforderung verwendeten repräsentativen Azure Cosmos-Container bzw. einer Datenbank die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl der Vorgänge zu schätzen, die höchstwahrscheinlich pro Sekunde ausgeführt werden. Stellen Sie sicher, dass auch typische Abfragen und deren Nutzung gemessen und berücksichtigt werden. Informationen zum Schätzen der Anforderungskosten von Abfragen (entweder programmgesteuert oder mithilfe des Portals) finden Sie unter [Optimieren der Kosten von Abfragen](../synapse-analytics/sql-data-warehouse/backup-and-restore.md). 
 
 3. Als weitere Möglichkeit zum Abrufen von Vorgängen und deren Kosten in Anforderungseinheiten können Sie Azure Monitor-Protokolle aktivieren, eine Analyse, die Vorgänge/Dauer und die Anforderungsgebühr detailliert aufschlüsselt. Azure Cosmos DB gibt die Anforderungsgebühren für jeden Vorgang an. Daher kann jede Vorgangsgebühr separat von der Antwort gespeichert und anschließend für eine Analyse verwendet werden. 
 

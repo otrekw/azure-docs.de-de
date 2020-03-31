@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083992"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.NET
@@ -115,7 +115,7 @@ Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen
 
 Folgende Modifizierer können Sie für einen öffentlichen Clientanwendungsersteller in Xamarin.iOS festlegen:
 
-|Modifizierer | Beschreibung|
+|Modifizierer | BESCHREIBUNG|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Nur Xamarin.iOS**: Legt die Sicherheitsgruppe der iOS-Keychain (für die Cachepersistenz) fest.|
 

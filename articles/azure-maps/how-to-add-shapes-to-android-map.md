@@ -1,19 +1,19 @@
 ---
 title: Hinzufügen von Formen zu Android-Karten | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK verschiedene Formen auf einer Karte rendern.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6c59aadf89190f796134e22eb155eebb8579f3f0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335608"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Form zu einer Karte mithilfe des Android SDK für Azure Maps
 

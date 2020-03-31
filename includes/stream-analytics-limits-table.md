@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178487"
 ---
 ---
-| Begrenzungsbezeichner | Begrenzung | Kommentare |
+| Grenzwertbezeichner | Begrenzung | Kommentare |
 | --- | --- | --- |
 | Maximale Anzahl der Streamingeinheiten pro Abonnement und Region |500 |Um eine Erhöhung der Streamingeinheiten für Ihr Abonnement über 500 anzufordern, wenden Sie sich an den [Microsoft-Support](https://support.microsoft.com/en-us). |
 | Maximale Anzahl der Eingaben pro Auftrag |60 |Es gibt eine harte Grenze von 60 Eingaben pro Azure Stream Analytics-Auftrag. |

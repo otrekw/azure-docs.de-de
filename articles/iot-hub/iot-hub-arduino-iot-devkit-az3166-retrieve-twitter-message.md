@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60779834"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Nutzung des Bewegungssensors zum Abrufen einer Twitter-Nachricht mit Azure Functions
@@ -52,7 +52,7 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 Erweitern Sie auf der linken Seite den Abschnitt **ARDUINO-BEISPIELE**, wechseln Sie zu **Beispiele für MXCHIP AZ3166 > AzureIoT**, und wählen Sie **ShakeShake** aus. Daraufhin wird ein neues VS Code-Fenster mit dem Projektordner geöffnet. Wenn Sie den Abschnitt „MXCHIP AZ3166“ nicht anzeigen können, stellen Sie sicher, dass Ihr Gerät ordnungsgemäß verbunden ist, und starten Sie Visual Studio Code neu.  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Sie können das Beispielprojekt auch über die Befehlspalette öffnen. Klicken Sie auf `Ctrl+Shift+P`(macOS: `Cmd+Shift+P`), um die Befehlspalette zu öffnen, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie den Eintrag aus.
+Sie können das Beispielprojekt auch über die Befehlspalette öffnen. Klicken Sie zum Öffnen der Befehlspalette auf `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`), geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ## <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
@@ -92,7 +92,7 @@ Erstellen Sie als Nächstes den Gerätecode, und laden Sie ihn hoch.
 
 1. Verwenden Sie `Ctrl+P` zum Ausführen von `task device-upload`.
 
-2. Das Terminal fordert Sie zum Wechseln in den Konfigurationsmodus auf. Gehen Sie dazu wie folgt vor:
+2. Das Terminal fordert Sie zum Wechseln in den Konfigurationsmodus auf. Gehen Sie folgendermaßen vor:
 
    * Halten Sie die Taste A gedrückt.
 
@@ -118,7 +118,7 @@ Nachdem die Verbindungszeichenfolge festgelegt wurde, überprüft es die App, l�
 
 2. Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
-Möglicherweise wird die Fehlermeldung „Fehler: AZ3166: Unbekanntes Paket“ angezeigt. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht ordnungsgemäß aktualisiert wurde. Um dieses Problem zu beheben, lesen Sie den [Abschnitt zum Fehler bezüglich eines unbekanntes Pakets in den FAQs zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+Möglicherweise wird Ihnen folgende Meldung angezeigt: „Fehler: AZ3166: Unbekanntes Paket.“ Dieser Fehler tritt auf, wenn der Boardpaketindex nicht ordnungsgemäß aktualisiert wurde. Um dieses Problem zu beheben, lesen Sie den [Abschnitt zum Fehler bezüglich eines unbekanntes Pakets in den FAQs zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
@@ -151,7 +151,7 @@ Drücken Sie nach der App-Initialisierung einmalig die Taste A, und schütteln S
 - Drücken Sie erneut A, und schütteln Sie das Board vorsichtig für einen neuen Tweet.
 - Drücken Sie B, um durch den restlichen Tweet zu scrollen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 ![Diagramm](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 

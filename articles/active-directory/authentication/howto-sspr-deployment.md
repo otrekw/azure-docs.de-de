@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061414"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Planen der Self-Service-Kennwortzurücksetzung von Azure Active Directory
@@ -142,7 +142,7 @@ Informationen zum Erstellen einer Gruppe finden Sie unter [Erstellen einer Grupp
 
 Die folgenden Einstellungen sind erforderlich, um SSPR mit den empfohlenen Werten zu aktivieren.
 
-| Bereich | Einstellung | value |
+| Bereich | Einstellung | Wert |
 | --- | --- | --- |
 | **SSPR-Eigenschaften** | Self-Service-Kennwortzurücksetzung aktiviert | **Ausgewählte** Gruppe für das Pilotprojekt/**Alle** für die Produktion |
 | **Authentifizierungsmethoden** | Zum Registrieren erforderliche Authentifizierungsmethoden | Immer 1 mehr als für das Zurücksetzen erforderlich |
@@ -247,7 +247,7 @@ Auch wenn SSPR normalerweise keine Benutzerprobleme mit sich bringt, ist es wich
 
 Damit ihr Supportteam erfolgreich tätig werden kann, können Sie anhand der von Benutzer gestellten Fragen ein Dokument mit häufig gestellten Fragen erstellen. Hier sind einige Beispiele:
 
-| Szenarien| Beschreibung |
+| Szenarien| BESCHREIBUNG |
 | - | - |
 | Dem Benutzer stehen keine registrierten Authentifizierungsmethoden zur Verfügung| Ein Benutzer versucht, sein Kennwort zurückzusetzen, es ist aber keine der für ihn registrierten Authentifizierungsmethoden verfügbar (Beispiel: Handy zu Hause vergessen und kein Zugriff auf E-Mail) |
 | Der Benutzer erhält keine SMS und keinen Anruf auf seinem Geschäfts- oder Mobiltelefon| Ein Benutzer versucht, seine Identität per SMS oder Anruf zu bestätigen, erhält aber keine SMS/keinen Anruf. |

@@ -1,18 +1,18 @@
 ---
 title: Sichere und zuverlässige globale Bereitstellung und Beschleunigung von Inhalten mit Azure Content Delivery Network
 description: Erfahren Sie mehr über die Dienste, mit denen eine sichere und zuverlässige globale Bereitstellung von Inhalten für mobile Anwendungen erstellt werden kann.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: e72118ea0f90cfbb08d81ebded6ca7edf08a06c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 1daff5c610092b009b122d05655ea637d5da5c3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241023"
 ---
 # <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Netzwerk zur Bereitstellung von Inhalten in Azure mit Azure Content Delivery Network
 [Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite – Videos, Bilder oder statische Dateien – an Benutzer, indem die Inhalte auf Hunderten von Präsenzpunkten auf der ganzen Welt zwischengespeichert werden. Content Delivery Network kann auch die Übermittlung von dynamischen Inhalten beschleunigen, die nicht zwischengespeichert werden können. So können Sie Ladezeiten reduzieren, Bandbreite sparen und die Reaktionsfähigkeit erhöhen. Ob Sie Websites oder mobile Anwendungen entwickeln oder verwalten oder ob Sie Streamingmedien, Gamingsoftware, Firmwareupdates oder IoT-Endpunkte codieren und verteilen – Sie werden von diesen Vorteilen profitieren.

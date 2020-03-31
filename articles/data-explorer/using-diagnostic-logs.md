@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277423"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Überwachen von Azure Data Explorer-Erfassungsvorgängen mithilfe von Diagnoseprotokollen (Vorschau)
@@ -66,7 +66,7 @@ Alle [Azure Monitor-Diagnoseprotokolle verfügen über das gleiche Schema der ob
 
 JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-|Name               |Beschreibung
+|Name               |BESCHREIBUNG
 |---                |---
 |time               |Die Zeit des Berichts
 |resourceId         |Azure Resource Manager-Ressourcen-ID
@@ -100,7 +100,7 @@ JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle
 ```
 **Eigenschaften eines Diagnoseprotokolls für einen erfolgreichen Vorgang**
 
-|Name               |Beschreibung
+|Name               |BESCHREIBUNG
 |---                |---
 |succeededOn        |Der Abschlusszeitpunkt der Erfassung
 |operationId        |Die ID des Azure Data Explorer-Erfassungsvorgangs
@@ -141,7 +141,7 @@ JSON-Zeichenfolgen im Protokoll enthalten Elemente, die in der folgenden Tabelle
 
 **Eigenschaften eines Diagnoseprotokolls für einen fehlgeschlagenen Vorgang**
 
-|Name               |Beschreibung
+|Name               |BESCHREIBUNG
 |---                |---
 |failedOn           |Der Abschlusszeitpunkt der Erfassung
 |operationId        |Die ID des Azure Data Explorer-Erfassungsvorgangs

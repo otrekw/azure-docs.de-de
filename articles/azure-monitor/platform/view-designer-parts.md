@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658556"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungskomponenten in Azure Monitor
@@ -137,7 +137,7 @@ Die Kopfzeile zeigt eine einzelne Zahl, die eine Wertspalte in einer Protokollab
 | Click-through navigation (Navigation per Klick) | Aktion, die durchgeführt wird, wenn Sie auf den Header klicken.  Weitere Informationen finden Sie unter [Allgemeine Einstellungen](#click-through-navigation). |
 | **Ring** |**&gt; Mitte** |
 | Text |Der Text, der unter dem Wert innerhalb des Ringdiagramms angezeigt wird. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, zu der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie als Einzelwert zusammenzufassen.<ul><li>Summe: Addiert die Werte aller Datensätze.</li><li>Prozentsatz: Das Verhältnis der Datensätze, die von den Werten in **Vom Vorgang in der Mitte verwendete Ergebniswerte** zurückgegeben werden, von der Gesamtanzahl der Datensätze in der Abfrage.</li></ul> |
 | Vom Vorgang in der Mitte verwendete Ergebniswerte |Klicken Sie optional auf das Pluszeichen (+), um einen oder mehrere Werte hinzuzufügen. Die Ergebnisse der Abfrage werden auf Datensätze mit den von Ihnen angegebenen Eigenschaftswerten beschränkt. Wenn keine Werte hinzugefügt werden, werden alle Datensätze in die Abfrage aufgenommen. |
 | **Weitere Optionen** |**&gt; Farben** |
 | Farbe 1<br>Farbe 2<br>Farbe 3 |Wählen Sie die Farbe für jeden der im Ring angezeigten Werte aus. |
@@ -163,7 +163,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 
 ![Ansicht mit zwei Zeitachsen und Liste](media/view-designer-parts/view-two-timelines-list.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **Allgemein** | |
 | Gruppentitel |Der Text, der im oberen Bereich der Kachel angezeigt wird. |
@@ -176,7 +176,7 @@ Die Kopfzeile zeigt die Ergebnisse von zwei Protokollabfragen im Verlauf als Sä
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
 | Color |Die Farbe, die für die Säulen in der Reihe verwendet wird. |
 | Abfrage |Die Abfrage, die für die erste Reihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Letztes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Summe: Die Summe der Werte aller Datensätze.</li><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Erstes Beispiel: Der Wert aus dem ersten Intervall im Diagramm.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li></ul> |
 | **Liste** | |
 | Abfrage |Die Abfrage, die für die Liste ausgeführt wird. Die Anzahl von Datensätzen wird angezeigt, die von der Abfrage zurückgegeben werden. |
 | Diagramm ausblenden |Wählen Sie diesen Link, um das Diagramm rechts neben der numerischen Spalte zu deaktivieren. |
@@ -232,7 +232,7 @@ Die Kopfzeile zeigt ein Liniendiagramm mit mehreren Reihen aus einer Protokollab
 | **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel |Der Text, der über dem Legendenwert angezeigt wird. |
 | Reihenname |Eigenschaftswert für die Reihe, die für den Wert der Legende verwendet wird. Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie für die Legende als Einzelwert zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
@@ -312,17 +312,17 @@ Der Liniendiagrammstapel zeigt drei separate Liniendiagramme mit mehreren Reihen
 ## <a name="common-settings"></a>Allgemeine Einstellungen
 In den folgenden Abschnitten werden die Einstellungen beschrieben, die für verschiedene Visualisierungsteile gelten.
 
-### <a name="name-value-separator"></a>Trennlinie für Name und Wert
+### <a name="name-and-value-separator"></a><a name="name-value-separator"></a>Trennlinie für Name und Wert
 Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Texteigenschaft aus einer Listenabfrage in mehrere Werte zu gliedern. Wenn Sie ein Trennzeichen angeben, können Sie Namen für die einzelnen Felder getrennt durch dieses Trennzeichen im Feld **Name** bereitstellen.
 
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
-### <a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
+### <a name="click-through-navigation"></a><a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
 Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage in [Log Analytics](../../azure-monitor/log-query/portals.md) geöffnet oder eine andere Ansicht gestartet.
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 
-| Einstellung           | Beschreibung |
+| Einstellung           | BESCHREIBUNG |
 |:--|:--|
 | Protokollsuche (Automatisch) | Protokollabfrage, die durchgeführt wird, wenn Sie ein Headerelement auswählen.  Dies ist die gleiche Protokollabfrage, auf der das Element basiert.
 | Protokollsuche        | Die Protokollabfrage, die durchgeführt wird, wenn Sie in einer Liste einen Eintrag auswählen.  Geben Sie die Abfrage im Feld **Navigationsabfrage** ein.   Verwenden Sie *{ausgewähltes Element}* , um die Syntax für das Element einzubinden, das der Benutzer ausgewählt hat.  Beispiel: Wenn die Abfrage eine Spalte namens *Computer* aufweist und die Navigationsabfrage *{ausgewähltes Element}* ist, wird eine Abfrage wie *Computer="MeinComputer"* ausgeführt, wenn der Benutzer einen Computer auswählt. Wenn die Navigationsabfrage *Type=Event {ausgewähltes Element}* ist, wird *Type=Event Computer="MeinComputer"* ausgeführt. |
@@ -330,7 +330,7 @@ In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick be
 
 
 
-### <a name="sparklines"></a>Sparklines
+### <a name="sparklines"></a><a name="sparklines"></a>Sparklines
 Eine Sparkline ist ein kleines Liniendiagramm, das den Wert eines Listeneintrags im Lauf der Zeit veranschaulicht. Bei Visualisierungsteilen mit einer Liste können Sie auswählen, ob ein horizontaler Balken mit dem relativen Wert einer numerischen Spalte oder eine Sparkline mit dem Wert im Verlauf angezeigt werden soll.
 
 In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben:
@@ -340,7 +340,7 @@ In der folgenden Tabelle sind Einstellungen für Sparklines beschrieben:
 | Sparklines aktivieren |Wählen Sie diesen Link, um eine Sparkline anstatt eines horizontalen Balkens anzuzeigen. |
 | Vorgang |Wenn Sparklines aktiviert sind, ist dies der Vorgang, der für jede Eigenschaft in der Liste ausgeführt wird, um die Werte für die Sparkline zu berechnen.<ul><li>Letztes Beispiel: Der letzte Wert für die Reihe im Zeitintervall.</li><li>Max: Der Höchstwert für die Reihe im Zeitintervall.</li><li>Min: Der Mindestwert für die Reihe im Zeitintervall.</li><li>Summe: Die Summe der Werte für die Reihe im Zeitintervall.</li><li>Zusammenfassung: Verwendet den gleichen `measure`-Befehl wie die Abfrage in der Kopfzeile.</li></ul> |
 
-### <a name="thresholds"></a>Schwellenwerte
+### <a name="thresholds"></a><a name="thresholds"></a>Schwellenwerte
 Mithilfe von Schwellenwerten können Sie ein farbiges Symbol neben jedem Element in einer Liste anzeigen. Schwellenwerte bieten Ihnen einen schnellen visuellen Indikator für Elemente, die einen bestimmten Wert überschreiten oder innerhalb eines bestimmten Bereichs liegen. Sie können beispielsweise folgende Farbgebung festlegen: ein grünes Symbol für Elemente mit akzeptablem Wert, ein gelbes Symbol für Elemente mit einem Wert in einem Bereich, der auf eine Warnung hindeutet, und ein rotes Symbol für Elemente, die einen Fehlerwert überschreiten.
 
 Wenn Sie Schwellenwerte für eine Komponente aktivieren, müssen Sie mindestens einen Schwellenwert angeben. Wenn der Wert eines Elements größer ist als ein Schwellenwert und kleiner als der nächste Schwellenwert, wird die entsprechende Farbe für diesen Wert verwendet. Wenn das Element größer ist als der höchste Schwellenwert, wird eine andere Farbe verwendet. 
@@ -349,7 +349,7 @@ Jeder Schwellenwertsatz verfügt über einen Schwellenwert mit dem Wert **Standa
 
 In der folgenden Tabelle sind Einstellungen für Schwellenwerte beschrieben:
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |:--- |:--- |
 | Schwellenwerte aktivieren |Wählen Sie diesen Link, um ein Farbsymbol links von jedem Wert anzuzeigen. Das Symbol gibt die Integrität des Werts relativ zu den angegebenen Schwellenwerten an. |
 | Name |Der Name des Schwellenwerts |

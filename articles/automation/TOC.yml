@@ -31,6 +31,11 @@
     - name: Verwalten von Azure Automation-Daten
       href: automation-managing-data.md
       displayName: backup
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung bei Automation-Konten
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: Prozessautomatisierung
   items:
     - name: Hybrid-Runbook-Worker – Übersicht

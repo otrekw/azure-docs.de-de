@@ -4,11 +4,11 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78941002"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235066"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -184,7 +184,7 @@ In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufüge
 
 Im Folgenden finden Sie Beispieleingabeaufforderungen zum Definieren einer neuen Ausgabebindung für den Speicher:
 
-| Prompt | value | BESCHREIBUNG |
+| Prompt | Wert | BESCHREIBUNG |
 | -------- | ----- | ----------- |
 | **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
 | **Select binding with direction** (Bindung mit Richtung auswählen) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
@@ -234,7 +234,7 @@ Wenn Sie **+ Neue Funktions-App in Azure erstellen...** auswählen, generiert di
 
 Wenn Sie für die erstellten Ressourcen aussagekräftige Namen bereitstellen möchten, müssen Sie den erweiterten Erstellungspfad auswählen.
 
-### <a name="enable-publishing-with-advanced-create-options"></a>Veröffentlichen eines Projekts in einer neuen Funktions-App in Azure mit erweiterten Optionen
+### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>Veröffentlichen eines Projekts in einer neuen Funktions-App in Azure mit erweiterten Optionen
 
 Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröffentlicht, die mit erweiterten Erstellungsoptionen erstellt wurde:
 
@@ -248,7 +248,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | value | BESCHREIBUNG |
+    | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |

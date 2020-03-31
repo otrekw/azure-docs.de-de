@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440369"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
@@ -56,7 +56,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 name | Der Name der `Until`-Aktivität. | String | Ja
 type | Muss auf **Until** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
-timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage | Nein
+timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein
 activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
 
 ## <a name="example-1"></a>Beispiel 1
@@ -65,7 +65,7 @@ activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck al
 > Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Pipeline mit Until-Aktivität
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
+In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -246,7 +246,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
 
 ```powershell
 Connect-AzAccount

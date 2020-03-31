@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651956"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Behandeln von Problemen mit der NAS-Konfiguration und dem NFS-Speicherziel
@@ -32,7 +32,7 @@ Die Ports für Speichersysteme verschiedener Anbieter sind jeweils unterschiedli
 
 Im Allgemeinen benötigt der Cache Zugriff auf die folgenden Ports:
 
-| Protokoll | Port  | Dienst  |
+| Protocol | Port  | Dienst  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |

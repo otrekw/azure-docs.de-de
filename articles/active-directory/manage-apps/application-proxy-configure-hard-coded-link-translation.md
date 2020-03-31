@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69533702"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
@@ -35,9 +35,9 @@ Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können
 > [!NOTE]
 > Die Linkübersetzung wird für hartcodierte interne URLs, die mit JavaScript generiert wurden, nicht unterstützt.
 
-**Option 1: Verwenden von Managed Browser oder Microsoft Edge:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser oder den Microsoft Edge-Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
+**Option 1: Verwenden von Managed Browser oder Microsoft Edge:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser oder den Microsoft Edge-Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
 
-**Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung kann aber alle veröffentlichten URLs verarbeiten und in den meisten gängigen Browsern verwendet werden. 
+**Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung kann aber alle veröffentlichten URLs verarbeiten und in den meisten gängigen Browsern verwendet werden. 
 
 **Option 3: Verwenden der Einstellung für die Linkübersetzung:** Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet.   
 
@@ -90,7 +90,7 @@ In der vollständigen Liste der HTML-Codetags, für die der Anwendungsproxy die 
 * a
 * audio
 * base
-* button
+* Schaltfläche
 * div
 * embed
 * form
@@ -103,7 +103,7 @@ In der vollständigen Liste der HTML-Codetags, für die der Anwendungsproxy die 
 * link
 * menuitem
 * meta
-* object
+* Objekt (object)
 * script
 * source
 * track

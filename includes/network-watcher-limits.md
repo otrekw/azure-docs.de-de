@@ -4,14 +4,14 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 5aa658fd301bd53fa63df7d86445a4a07e50a7c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 380842a1b5cdb1ce9dead8bb18f2a748b363289a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224511"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334798"
 ---
-| Resource | Standardlimit | Maximales Limit | Hinweis |
+| Resource | Begrenzung | Hinweis |
 | --- | --- | --- | --- |
-| Azure Network Watcher | 1 pro Region | 1 pro Region | Der Network Watcher wird erstellt, um Zugriff auf den Dienst zu erlauben. Es ist pro Abonnement und Region nur eine Network Watcher-Instanz erforderlich. |
-| Paketerfassungssitzungen |10.000 pro Region | 10.000 |Nur Anzahl von Sitzungen, ohne gespeicherte Erfassungen. |
+| Azure Network Watcher | 1 pro Region | Der Network Watcher wird erstellt, um Zugriff auf den Dienst zu erlauben. Es ist pro Abonnement und Region nur eine Network Watcher-Instanz erforderlich. |
+| Paketerfassungssitzungen |10.000 pro Region |Nur Anzahl von Sitzungen, ohne gespeicherte Erfassungen. |

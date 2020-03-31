@@ -15,11 +15,11 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918375"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224606"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 
@@ -91,7 +91,7 @@ Vorausgesetzt, Sie haben DNS in Ihrem virtuellen Netzwerk konfiguriert, können 
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a id="change"></a> Ändern der SQL-Konnektivitätseinstellungen
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a> Ändern der SQL-Konnektivitätseinstellungen
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ Die Konnektivitätseinstellungen für den virtuellen SQL Server-Computer können
 
    ![Aktualisierungsbenachrichtigung für den virtuellen SQL-Computer](./media/virtual-machines-windows-sql-connect/sql-vm-updating-notification.png)
 
-## <a id="manualtcp"></a> Aktivieren von TCP/IP für die Editionen Developer und Express
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a> Aktivieren von TCP/IP für die Editionen Developer und Express
 
 Wenn Sie die SQL Server-Konnektivitätseinstellungen ändern, wird das TCP/IP-Protokoll für die SQL Server-Editionen Developer und Express nicht automatisch aktiviert. In den folgenden Schritten wird erläutert, wie TCP/IP manuell aktiviert wird, sodass Sie über die IP-Adresse eine Remoteverbindung herstellen können.
 
@@ -129,7 +129,7 @@ Die folgenden Schritte zeigen, wie Sie eine optionale DNS-Bezeichnung für Ihren
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a id="manual"></a> Manuelle Konfiguration und Problembehandlung
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a> Manuelle Konfiguration und Problembehandlung
 
 Obwohl das Portal Optionen zum automatischen Konfigurieren der Konnektivität enthält, ist es hilfreich, zu wissen, wie Sie Verbindungen manuell konfigurieren. Grundlegende Informationen zu den Anforderungen können auch für die Problembehandlung hilfreich sein.
 

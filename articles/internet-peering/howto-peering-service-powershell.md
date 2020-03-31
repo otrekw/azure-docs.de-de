@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ac843fa5440f7ba085d33cd897bcd4a1722f77ac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773629"
 ---
 # <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>Aktivieren von Peering Service für Direct Peering mithilfe von PowerShell
@@ -32,10 +32,10 @@ Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe des [Portals](
 
 ## <a name="enable-peering-service-on-a-direct-peering"></a>Aktivieren von Peering Service für direktes Peering
 
-### <a name= get></a>Direct Peering anzeigen
+### <a name="view-direct-peering"></a><a name= get></a>Direct Peering anzeigen
 [!INCLUDE [peering-direct-get](./includes/direct-powershell-get.md)]
 
-### <a name= get></a>Aktivieren von Direct Peering für Peering Service
+### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>Aktivieren von Direct Peering für Peering Service
 
 Nachdem Sie im vorherigen Schritt Direct Peering erhalten haben, aktivieren Sie es für Peering Service.
 [!INCLUDE [peering-direct-modify](./includes/peering-service-direct-powershell.md)]

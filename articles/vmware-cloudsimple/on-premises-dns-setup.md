@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware Solutions (AVS): Konfigurieren von DNS für eine private AVS-Cloud'
-description: Beschreibt das Einrichten der DNS-Namensauflösung für den Zugriff auf vCenter-Server in einer privaten AVS-Cloud über lokale Arbeitsstationen
+title: 'Azure VMware Solution by CloudSimple: Konfigurieren von DNS für die private CloudSimple-Cloud'
+description: Beschreibt das Einrichten der DNS-Namensauflösung für den Zugriff auf vCenter-Server in einer privaten CloudSimple-Cloud über lokale Arbeitsstationen.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,26 +8,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083083"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225510"
 ---
-# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten AVS-Cloud über lokale Arbeitsstationen
+# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen
 
-Für den Zugriff auf den vCenter-Server in einer privaten AVS-Cloud über lokale Arbeitsstationen müssen Sie die DNS-Adressauflösung konfigurieren, damit der vCenter-Server sowohl über den Hostnamen als auch über die IP-Adresse angesprochen werden kann.
+Für den Zugriff auf den vCenter-Server in einer privaten CloudSimple-Cloud über lokale Arbeitsstationen müssen Sie DNS-Adressauflösung konfigurieren, damit der vCenter-Server sowohl über den Hostnamen als auch über die IP-Adresse angesprochen werden kann.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>Abrufen der IP-Adresse des DNS-Servers für die private AVS-Cloud
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Abrufen der IP-Adresse des DNS-Servers für die private Cloud
 
-1. Melden Sie sich beim [AVS-Portal](access-cloudsimple-portal.md) an.
+1. Melden Sie sich am [CloudSimple-Portal](access-cloudsimple-portal.md) an.
 
-2. Navigieren Sie zu **Resources** > **AVS Private Clouds** (Ressourcen > Private AVS-Clouds), und wählen Sie die private AVS-Cloud aus, mit der Sie eine Verbindung herstellen möchten.
+2. Navigieren Sie zu **Resources (Ressourcen)**  > **Private Clouds**, und wählen Sie die private Cloud aus, mit der Sie eine Verbindung herstellen möchten.
 
-3. Kopieren Sie auf der Seite **Summary** (Zusammenfassung) der privaten AVS-Cloud unter **Basic Info** (Grundlegende Informationen) die IP-Adresse des DNS-Servers für die private AVS-Cloud.
+3. Kopieren Sie auf der Seite **Summary** (Zusammenfassung) der privaten Cloud unter **Basic Info** (Grundlegende Informationen) die IP-Adresse des DNS-Servers für die private Cloud.
 
-    ![DNS-Server in der privaten AVS-Cloud](media/private-cloud-dns-server.png)
+    ![DNS-Server in der privaten Cloud](media/private-cloud-dns-server.png)
 
 
 Verwenden Sie eine dieser Optionen für die DNS-Konfiguration.
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. Geben Sie den Zonennamen ein, und klicken Sie auf **Next** (Weiter).
 
     ![Neue Zone](media/DNS05.png)
-6. Geben Sie die IP-Adressen der DNS-Server für die private AVS-Cloud ein, die Sie aus dem AVS-Portal abgerufen haben.
+6. Geben Sie die IP-Adressen der DNS-Server für die private Cloud ein, die Sie aus dem CloudSimple-Portal abgerufen haben.
 
     ![Neue Zone](media/DNS06.png)
 7. Klicken Sie bei Bedarf auf **Next** (Weiter), um das Setup des Assistenten abzuschließen.
 
 ## <a name="create-a-conditional-forwarder"></a>Erstellen einer bedingten Weiterleitung
 
-Bei einer bedingten Weiterleitung werden alle DNS-Namensauflösungsanforderungen an den vorgesehenen Server weitergeleitet. Mit diesem Setup werden alle Anforderungen an *.cloudsimple.io an die DNS-Server in der privaten AVS-Cloud weitergeleitet. In den folgenden Beispielen wird gezeigt, wie Weiterleitungen für verschiedene DNS-Servertypen eingerichtet werden.
+Bei einer bedingten Weiterleitung werden alle DNS-Namensauflösungsanforderungen an den vorgesehenen Server weitergeleitet. Mit diesem Setup werden alle Anforderungen an *.cloudsimple.io an die DNS-Server in der privaten Cloud weitergeleitet. In den folgenden Beispielen wird gezeigt, wie Weiterleitungen für verschiedene DNS-Servertypen eingerichtet werden.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Erstellen einer bedingten Weiterleitung auf einem BIND-DNS-Server
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. Klicken Sie mit der rechten Maustaste auf **Conditional Forwarders** (Bedingte Weiterleitungen), und wählen Sie dann die Option zum Hinzufügen einer neuen bedingten Weiterleitung aus.
 
     ![Bedingte Weiterleitung 1 Windows-DNS](media/DNS08.png)
-3. Geben Sie die DNS-Domäne und die IP-Adresse der DNS-Server in der privaten AVS-Cloud ein, und klicken Sie auf **OK**.
+3. Geben Sie die DNS-Domäne und die IP-Adresse der DNS-Server in der privaten Cloud ein, und klicken Sie dann auf **OK**.

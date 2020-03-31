@@ -14,11 +14,11 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
 ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461197"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230762"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -430,7 +430,7 @@ Aktualisiert eine vorhandene Richtlinie.
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -448,7 +448,7 @@ Löscht die angegebene Richtlinie.
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. | `-Id <ObjectId of Policy>` |
 

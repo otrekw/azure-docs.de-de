@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: baselden
 ms.reviewer: mimart
 ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77032232"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrieren in den Azure AD-Anwendungsproxy auf einem NDES-Server (Network Device Enrollment Service, Registrierungsdienst für Netzwerke)

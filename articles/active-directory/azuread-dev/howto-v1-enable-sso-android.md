@@ -4,7 +4,6 @@ description: Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre A
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
@@ -15,14 +14,15 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0b87a9cd0ae29281faad4209f4449d547921835d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190295"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154813"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO auf Android mit ADAL
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 

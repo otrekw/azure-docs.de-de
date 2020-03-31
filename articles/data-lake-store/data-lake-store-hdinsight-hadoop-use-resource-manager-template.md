@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66161384"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 mithilfe einer Azure Resource Manager-Vorlage
@@ -34,7 +34,7 @@ Für unterstützte Clustertypen kann Data Lake Storage Gen1 als Standardspeicher
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Verwenden von Azure Data Lake Storage Gen1 für HDInsight-Clusterspeicher
 
-Hier finden Sie einige wichtige Überlegungen zur Verwendung von HDInsight mit Data Lake Storage Gen1:
+Hier sind einige wichtige Überlegungen zur Verwendung von HDInsight mit Data Lake Storage Gen1 aufgeführt:
 
 * Eine Option zum Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1 als Standardspeicher ist für die HDInsight-Versionen 3.5 und 3.6 verfügbar.
 

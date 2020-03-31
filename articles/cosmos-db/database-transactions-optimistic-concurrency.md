@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806523"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transaktionen und Steuerung für optimistische Nebenläufigkeit
@@ -47,7 +47,7 @@ Die JavaScript-basierten gespeicherten Prozeduren, Trigger, UDFs und Mergeprozed
 
 Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank-Engine bietet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Elemente eines Containers. Da die Azure Cosmos-Datenbank-Engine JSON und JavaScript nativ unterstützt, treten darüber hinaus keine Impedanzabweichungen zwischen den Typsystemen einer Anwendung und der Datenbank auf.
 
-## <a name="optimistic-concurrency-control"></a>Steuerung für optimistische Parallelität
+## <a name="optimistic-concurrency-control"></a>Steuerung durch vollständige Parallelität
 
 Mit der Steuerung für optimistische Nebenläufigkeit können Sie den Verlust von Aktualisierungen und Löschvorgängen vermeiden. Gleichzeitige, konfliktverursachende Vorgänge unterliegen der regulären pessimistischen Sperrung der Datenbank-Engine, die in der logischen Partition gehostet wird, die das Element besitzt. Wenn in zwei parallelen Vorgängen versucht wird, die neueste Version eines Elements in einer logischen Partition zu aktualisieren, ist nur einer der beiden Vorgänge erfolgreich. Wenn jedoch in einem oder beiden Vorgängen, mit denen versucht wird, gleichzeitig dasselbe Element zu aktualisieren, zuvor bereits ein älterer Wert des Elements gelesen wurde, kann in der Datenbank nicht ermittelt werden, ob der zuvor mit den konfliktverursachenden Vorgängen gelesene Wert tatsächlich der neueste Wert des Elements war. Dies kann zum Glück mit der Steuerung für **optimistische Nebenläufigkeit (Optimistic Concurrency Control, OCC)** erkannt werden, bevor die beiden Vorgänge die Transaktionsgrenze innerhalb der Datenbank-Engine überschreiten. Mit der Steuerung für optimistische Nebenläufigkeit werden Ihre Daten davor geschützt, dass Änderungen, die von anderen Benutzern vorgenommen wurden, versehentlich überschrieben werden. Ebenso wird verhindert, dass andere Benutzer versehentlich die von Ihnen vorgenommenen Änderungen überschreiben.
 

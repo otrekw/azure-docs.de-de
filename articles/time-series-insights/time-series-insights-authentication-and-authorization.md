@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76984560"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
@@ -102,18 +102,18 @@ In diesem Abschnitt werden allgemeine HTTP-Anforderungsheader und Parameter besc
 > [!TIP]
 > Weitere Informationen zum Nutzen von REST-APIs, Ausführen von HTTP-Anforderungen und Verarbeiten von HTTP-Antworten finden Sie in der [Azure-Rest-API-Referenz](https://docs.microsoft.com/rest/api/azure/).
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Um authentifizierte Abfragen der [Time Series Insights-REST-APIs](https://docs.microsoft.com/rest/api/time-series-insights/) durchzuführen, muss ein gültiges OAuth 2.0-Bearertoken im [Autorisierungsheader](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) mit einem REST-Client Ihrer Wahl (Postman, JavaScript, C#) übergeben werden. 
 
 > [!TIP]
-> Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://tsiclientsample.azurewebsites.net/).
+> Weitere Informationen zur programmgesteuerten Authentifizierung mit den APIs von Time Series Insights unter Verwendung des [JavaScript Client SDK](https://tsiclientsample.azurewebsites.net/) zusammen mit Diagrammen und Grafiken finden Sie in der gehosteten [Beispielvisualisierung des Azure Time Series Insights-Client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
 ### <a name="http-headers"></a>HTTP-Header
 
 Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
-| Erforderlicher Anforderungsheader | Beschreibung |
+| Erforderlicher Anforderungsheader | BESCHREIBUNG |
 | --- | --- |
 | Authorization | Für die Authentifizierung bei Time Series Insights muss im **Autorisierungsheader** ein gültiges OAuth 2.0-Bearertoken übergeben werden. | 
 
@@ -124,7 +124,7 @@ Erforderliche Anforderungsheader werden nachfolgend beschrieben.
 
 Optionale Anforderungsheader werden nachfolgend beschrieben.
 
-| Optionaler Anforderungsheader. | Beschreibung |
+| Optionaler Anforderungsheader. | BESCHREIBUNG |
 | --- | --- |
 | Inhaltstyp | Nur `application/json` wird unterstützt. |
 | x-ms-client-request-id | Eine Clientanforderungs-ID. Der Dienst zeichnet diesen Wert auf. Ermöglicht es dem Dienst, den Vorgang dienstübergreifend nachzuverfolgen. |
@@ -133,7 +133,7 @@ Optionale Anforderungsheader werden nachfolgend beschrieben.
 
 Optionale, aber empfohlene Antwortheader werden unten beschrieben.
 
-| Antwortheader | Beschreibung |
+| Antwortheader | BESCHREIBUNG |
 | --- | --- |
 | Inhaltstyp | Nur `application/json` wird unterstützt. |
 | x-ms-request-id | Vom Server generierte Anforderungs-ID. Kann zum Kontaktieren von Microsoft verwendet werden, um eine Anforderung zu untersuchen. |
@@ -154,7 +154,7 @@ Die erforderlichen URL-Abfragezeichenfolgenparameter hängen von der API-Version
 
 Optionale URL-Abfragezeichenfolgen-Parameter umfassen das Festlegen eines Timeouts für die HTTP-Anforderungsausführungszeiten.
 
-| Optionaler Abfrageparameter | Beschreibung | Version |
+| Optionaler Abfrageparameter | BESCHREIBUNG | Version |
 | --- |  --- | --- |
 | `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) und [Abrufen von Umgebungsaggregaten](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Allgemein verfügbar |
 | `storeType=<storeType>` | In Vorschauumgebungen, in denen der Warmspeicher aktiviert ist, kann die Abfrage entweder im `WarmStore` oder `ColdStore` ausgeführt werden. Dieser Parameter in der Abfrage definiert, in welchem Speicher die Abfrage ausgeführt werden soll. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. Um den warmen Speicher abzufragen, muss **storeType** auf `WarmStore` festgelegt werden. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. | Vorschau |

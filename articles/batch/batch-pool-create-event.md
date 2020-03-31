@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022188"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
@@ -75,14 +75,14 @@ ms.locfileid: "77022188"
 |`maxTasksPerNode`|Int32|Die maximale Anzahl von Tasks, die gleichzeitig auf einem einzelnen Computeknoten im Pool ausgeführt werden können.|
 |`vmFillType`|String|Definiert, wie vom Batch-Dienst Tasks zwischen den Computeknoten im Pool verteilt werden. Gültige Werte sind „Spread“ oder „Pack“.|
 
-###  <a name="bk_csconf"></a> cloudServiceConfiguration
+###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
 |`osFamily`|String|Die Azure-Gastbetriebssystemfamilie, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Mögliche Werte:<br /><br /> **2**: Betriebssystemfamilie 2, gleichbedeutend mit Windows Server 2008 R2 SP1.<br /><br /> **3**: Betriebssystemfamilie 3, gleichbedeutend mit Windows Server 2012.<br /><br /> **4**: Betriebssystemfamilie 4, gleichbedeutend mit Windows Server 2012 R2.<br /><br /> Weitere Informationen finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 |`targetOSVersion`|String|Die Azure-Gastbetriebssystemversion, die auf den virtuellen Computern im Pool installiert werden soll.<br /><br /> Der Standardwert ist **\*** , der die aktuelle Betriebssystemversion für die angegebene Familie angibt.<br /><br /> Andere zulässige Werte finden Sie unter [Azure-Gastbetriebssystemversionen](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
-###  <a name="bk_vmconf"></a> virtualMachineConfiguration
+###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
@@ -90,7 +90,7 @@ ms.locfileid: "77022188"
 |`nodeAgentId`|String|Die SKU des Batch-Knoten-Agents, die auf dem Computeknoten bereitgestellt ist.|
 |[`windowsConfiguration`](#bk_winconf)|Komplexer Typ|Gibt die Einstellungen des Windows-Betriebssystems auf dem virtuellen Computer an. Diese Eigenschaft darf nicht angegeben werden, wenn „ImageReference“ auf ein Linux-Betriebssystemimage verweist.|
 
-###  <a name="bk_imgref"></a> imageReference
+###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
@@ -99,13 +99,13 @@ ms.locfileid: "77022188"
 |`sku`|String|Die SKU des Images.|
 |`version`|String|Die Version des Images.|
 
-###  <a name="bk_winconf"></a> windowsConfiguration
+###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
 |Elementname|type|Notizen|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boolean|Gibt an, ob der virtuelle Computer für automatische Updates aktiviert ist. Wenn diese Eigenschaft nicht angegeben wird, ist der Standardwert TRUE.|
 
-###  <a name="bk_netconf"></a> networkConfiguration
+###  <a name="networkconfiguration"></a><a name="bk_netconf"></a> networkConfiguration
 
 |Elementname|type|Notizen|
 |------------------|--------------|----------|
