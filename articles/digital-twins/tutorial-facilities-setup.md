@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163040"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79371408"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Mit dem Azure Digital Twins-Dienst (Vorschauversion) können Sie Personen, Orte und Geräte in einem kohärenten räumlichen System zusammenbringen. In dieser Tutorialreihe wird veranschaulicht, wie Sie mit Azure Digital Twins die Raumbelegung mit optimalen Temperatur- und Luftqualitätsbedingungen ermitteln. 
 
@@ -38,7 +40,7 @@ In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie noch kein Azure-Konto haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ein Azure-Abonnement. Falls Sie noch kein Azure-Konto haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
 - Das .NET Core SDK. Die Azure Digital Twins-Beispiele in diesen Tutorials sind in C# geschrieben. Zum Erstellen und Ausführen des Beispiels müssen Sie [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer installieren. Überprüfen Sie, ob die richtige Version auf Ihrem Computer installiert ist, indem Sie `dotnet --version` in einem Befehlsfenster ausführen.
 
@@ -147,7 +149,7 @@ Die Datei **provisionSample.yaml** enthält die folgenden Knoten:
 
 - **spaces**: Im Digital Twins-Objektmodell stellen `spaces` (Gebäudebereiche) die physischen Orte dar. Jeder Gebäudebereich verfügt über einen `Type`, beispielsweise „Region“, „Venue“ oder „Customer“ und einen angezeigten `Name`. Gebäudebereiche können zu anderen Gebäudebereichen gehören, sodass eine hierarchische Struktur entsteht. Die Datei „provisionSample.yaml“ enthält einen Raumgraphen für ein imaginäres Gebäude. Beachten Sie die logische Schachtelung von Gebäudebereichen des Typs `Floor` innerhalb von `Venue`, von `Area` innerhalb einer Etage und von `Room`-Knoten in einem Bereich. 
 
-- **devices**: Gebäudebereiche können `devices` (Geräte) enthalten. Dies sind physische oder virtuelle Entitäten, die eine Reihe von Sensoren verwalten. Ein Gerät kann beispielsweise das Telefon eines Benutzers sein, ein Raspberry Pi-Sensorhalter oder ein Gateway. Im imaginären Gebäude im Beispiel enthält der Raum namens **Focus Room** ein Gerät **Raspberry Pi 3 A1**. Jeder Geräteknoten wird durch eine eindeutige `hardwareId` identifiziert, die in diesem Beispiel hartcodiert ist. Ersetzen Sie diese Werte durch die Werte aus Ihrem Setup, um das Beispiel für eine reale Produktionsumgebung zu konfigurieren.  
+- **devices**: Gebäudebereiche können `devices` (Geräte) enthalten. Dies sind physische oder virtuelle Entitäten, die eine Reihe von Sensoren verwalten. Ein Gerät kann beispielsweise das Telefon eines Benutzers, ein Raspberry Pi-Sensorhalter oder ein Gateway sein. Im imaginären Gebäude im Beispiel enthält der Raum namens **Focus Room** ein Gerät **Raspberry Pi 3 A1**. Jeder Geräteknoten wird durch eine eindeutige `hardwareId` identifiziert, die in diesem Beispiel hartcodiert ist. Ersetzen Sie diese Werte durch die Werte aus Ihrem Setup, um das Beispiel für eine reale Produktionsumgebung zu konfigurieren.  
 
 - **sensors**: Ein Gerät kann mehrere `sensors` (Sensoren) enthalten. Sie können physische Änderungen wie Temperatur, Bewegung und Akkustand erkennen und aufzeichnen. Jeder Sensorknoten wird durch eine `hardwareId` eindeutig identifiziert, die hier hartcodiert ist. Ersetzen Sie diese IDs für eine reale Anwendung durch die eindeutigen Bezeichner der Sensoren in Ihrem Setup. Die Datei „provisionSample.yaml“ enthält zwei Sensoren zum Aufzeichnen von *Motion* (Bewegung) und *CarbonDioxide* (Kohlendioxid). Fügen Sie einen weiteren Sensor zum Aufzeichnen der *Temperature* (Temperatur) hinzu, indem Sie die folgenden Zeilen unterhalb der Zeilen für den CarbonDioxide-Sensor hinzufügen. Diese werden in der Datei „provisionSample.yaml“ als auskommentierte Zeilen angegeben. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen. 
 

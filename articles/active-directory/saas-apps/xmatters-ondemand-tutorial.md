@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: e8ae31122d59238ac104d7d873cf56f32977c9af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Azure Active Directory-Integration mit xMatters OnDemand
@@ -152,7 +152,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei xMatters
 
 2. Klicken Sie in der Symbolleiste oben auf **Administrator**, und klicken Sie dann in der Navigationsleiste auf der linken Seite auf **Unternehmensdetails**.
 
-    ![Admin](./media/xmatters-ondemand-tutorial/IC776795.png "Admin")
+    ![Administrator](./media/xmatters-ondemand-tutorial/IC776795.png "Admin")
 
 3. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -168,7 +168,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei xMatters
 
     e. Klicken Sie auf der Seite „Unternehmensdetails“ oben auf **Speichern**.
 
-    ![Unternehmensdetails](./media/xmatters-ondemand-tutorial/IC776797.png "Unternehmensdetails")
+    ![Company details](./media/xmatters-ondemand-tutorial/IC776797.png "Unternehmensdetails")
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -192,7 +192,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -234,7 +234,7 @@ In diesem Abschnitt wird in xMatters OnDemand eine Benutzerin namens Britta Simo
 
 3. Führen Sie im Abschnitt **Benutzer hinzufügen** die folgenden Schritte aus:
 
-    ![Benutzer hinzufügen](./media/xmatters-ondemand-tutorial/IC781049.png "Benutzer hinzufügen")
+    ![Hinzufügen eines Benutzers](./media/xmatters-ondemand-tutorial/IC781049.png "Benutzer hinzufügen")
 
     a. Wählen Sie **Aktiv**.
 
@@ -260,5 +260,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „xMatters OnDemand“ klicken, soll
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

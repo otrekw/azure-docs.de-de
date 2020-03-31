@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 510e2648db3076a0e3ee2535c6058f7ed212f558
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387486"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127203"
 ---
-# <a name="tutorial-send-location-based-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Tutorial: Senden standortbasierter Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data
+# <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Tutorial: Senden standortbasierter Pushbenachrichtigungen mit Notification Hubs und Bing Spatial Data
 
 In diesem Tutorial erfahren Sie, wie Sie standortbasierte Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data bereitstellen.
 
@@ -196,7 +196,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
     ![](./media/notification-hubs-geofence/notification-hubs-location-output.png)
 
-    Jetzt wissen Sie, dass die Standorterfassung funktioniert. Wenn Sie möchten, können Sie den Testereignishandler „Loaded“ jetzt entfernen, da er nicht mehr benötigt wird.
+    Jetzt wissen Sie, dass die Standorterfassung funktioniert. Wenn Sie möchten, können Sie den Testereignishandler „Loaded“ nun entfernen, da er nicht mehr benötigt wird.
 8. Der nächste Schritt ist das Erfassen der Standortänderungen. Fügen Sie in der `LocationHelper`-Klasse den Ereignishandler für `PositionChanged` hinzu:
 
     ```csharp
@@ -348,7 +348,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
     ```
 
     > [!NOTE]
-    > Legen Sie die `POST_URL` auf den Speicherort Ihrer bereitgestellten Webanwendung fest. Für den Zweck dieses Tutorials ist die lokale Ausführung in Ordnung. Wenn Sie jedoch eine öffentliche Version bereitstellen möchten, müssen Sie diese über einen externen Anbieter hosten.
+    > Legen Sie die `POST_URL` auf den Speicherort Ihrer bereitgestellten Webanwendung fest. Für den Zweck dieses Tutorials ist die lokale Ausführung in Ordnung. Falls Sie aber eine öffentliche Version bereitstellen möchten, müssen Sie diese über einen externen Anbieter hosten.
 2. Registrieren Sie die UWP-App für Pushbenachrichtigungen. Wählen Sie in Visual Studio **Projekt** > **Store** > **App mit Store verknüpfen**.
 
     ![](./media/notification-hubs-geofence/vs-associate-with-store.png)

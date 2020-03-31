@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364219"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
 
 > [!NOTE]
-> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Informationen zu einer einfachen Einstellung zum horizontalen Herunterskalieren bzw. Hochskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md)- und [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)-Dokumenten.
+> Während diese exemplarische Vorgehensweise die Schritte für VM-Skalierungsgruppen erläutert, gelten dieselben Informationen auch für die automatische Skalierung von [Clouddiensten](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Diensten](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Informationen zu einer einfachen Einstellung zum Abskalieren bzw. Aufskalieren für eine VM-Skalierungsgruppe, die auf einer einfachen Leistungsmetrik wie „CPU“ basiert, finden Sie in den [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md)- und [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)-Dokumenten.
 >
 >
 
@@ -43,7 +43,7 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 4. Dies ist ein hypothetisches Skalierungsszenario, das wir für diese exemplarische Vorgehensweise verwenden.
 
-   * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, horizontal hoch- oder herunterskalieren.*
+   * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, auf- oder abskalieren.*
    * **Länge der Nachrichtenwarteschlange:** Ich verwende eine Service Bus-Warteschlange für die eingehenden Nachrichten, die an meine Anwendung gerichtet sind. Ich verwende die Anzahl von Warteschlangennachrichten und CPU%. Außerdem konfiguriere ich ein Standardprofil zum Auslösen einer Skalierungsaktion, wenn entweder die Nachrichtenanzahl oder die CPU-Nutzung in Prozent den Schwellenwert erreicht.\*
    * **Zeitpunkt innerhalb einer Woche und Tageszeit:** Ich möchte ein sich wöchentlich wiederholendes, auf der Tageszeit basierendes Profil namens „Wochentage, morgens“ verwenden. Den Verlaufsdaten habe ich entnommen, dass es besser ist, über eine bestimmte Anzahl von VM-Instanzen zu verfügen, damit meine Anwendungslast während dieser Zeit bewältigt werden kann.\*
    * **Sondertermine:** Ich habe ein Profil vom Typ „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last verarbeiten kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird.\*

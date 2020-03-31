@@ -4,10 +4,10 @@ description: Konfigurieren Sie Ihr Benutzerkonto für Azure Notebooks mithilfe e
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646295"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Ihr Benutzerkonto für Azure Notebooks (Vorschau)

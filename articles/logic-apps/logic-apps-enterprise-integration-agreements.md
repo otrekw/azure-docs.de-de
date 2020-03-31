@@ -9,16 +9,16 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790735"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
 Ein [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
- *Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
+*Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
 
 * Sie ermöglichen Organisationen den Austausch von Informationen über ein bekanntes Format.
 * Sie erhöhen die Effizienz beim Durchführen von B2B-Transaktionen.
@@ -57,7 +57,7 @@ Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Su
 
    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*agreement-name*> | Der Name für Ihre Vereinbarung. |
    | **Vereinbarungstyp** | Ja | **AS2**, **X12** oder **EDIFACT** | Der Protokolltyp für Ihre Vereinbarung. Wenn Sie Ihre Vereinbarungsdatei erstellen, muss der Inhalt dieser Datei mit dem Vereinbarungstyp übereinstimmen. | |  

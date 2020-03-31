@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792423"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Austauschen von RosettaNet-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps
@@ -202,7 +202,7 @@ Sie können Vorlagen für Logik-Apps zum Decodieren und Codieren von RosettaNet-
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Meldung** | Ja | Die zu decodierende RosettaNet-Nachricht  |
-   | **Header** | Ja | Die HTTP-Header, die die Werte für die Version (die RNIF-Version) und den Antworttyp (Kommunikationsart zwischen Partnern, kann synchron oder asynchron sein) angeben |
+   | **Headers** | Ja | Die HTTP-Header, die die Werte für die Version (die RNIF-Version) und den Antworttyp (Kommunikationsart zwischen Partnern, kann synchron oder asynchron sein) angeben |
    | **Rolle** | Ja | Die Rolle des Hostpartners im PIP |
    ||||
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Tutorial: Azure Active Directory-Integration mit Igloo Software
@@ -143,7 +143,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Igloo S
 
 4. Klicken Sie im Abschnitt für die SAML-Konfiguration auf **SAML-Authentifizierung konfigurieren**.
 
-    ![SAML-Konfiguration](./media/igloo-software-tutorial/ic783969.png "SAML-Konfiguration")
+    ![SAML Configuration (SAML-Konfiguration)](./media/igloo-software-tutorial/ic783969.png "SAML-Konfiguration")
 
 5. Führen Sie im Abschnitt **Allgemeine Konfiguration** die folgenden Schritte aus:
 
@@ -206,7 +206,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -252,4 +252,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Igloo Software“ klicken, sollte
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

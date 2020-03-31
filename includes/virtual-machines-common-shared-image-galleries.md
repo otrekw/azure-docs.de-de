@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474159"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117107"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -167,7 +167,7 @@ Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche 
 Sobald die Imagekatalogressourcen erstellt sind, können Sie diese ändern. Diese Änderungen sind auf Folgendes beschränkt:
  
 Katalog mit geteilten Images:
-- Beschreibung
+- BESCHREIBUNG
 
 Imagedefinition:
 - Empfohlene vCPUs
@@ -231,7 +231,7 @@ Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg 
  
    Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
-   ```bash
+   ```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 

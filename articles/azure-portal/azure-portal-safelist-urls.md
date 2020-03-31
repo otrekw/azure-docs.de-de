@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900661"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver
@@ -26,7 +26,7 @@ Netzwerkadministratoren stellen häufig Proxyserver, Firewalls oder andere Gerä
 
 Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-Endpunkte sind für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt wird. Um dem Netzwerkdatenverkehr an diese Endpunkte zu erlauben, Einschränkungen zu umgehen, wählen Sie Ihre Cloud aus. Fügen Sie dann die Liste der URLs Ihrem Proxyserver oder der Firewall hinzu.
 
-#### <a name="public-cloudtabpublic-cloud"></a>[Öffentliche Cloud](#tab/public-cloud)
+#### <a name="public-cloud"></a>[Öffentliche Cloud](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[US- Government Cloud](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[US- Government Cloud](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloudtabchina-government-cloud"></a>[China-Government Cloud](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[China-Government Cloud](#tab/china-government-cloud)
 
 ```
 *.azure.cn

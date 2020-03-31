@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844699"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Tutorial: Weiterleiten von Ereignissen an IoTHub
@@ -214,4 +214,4 @@ In diesem Tutorial haben Sie ein Event Grid-Thema und ein Edge Hub-Abonnement er
 * Richten Sie die Persistenz des Event Grid-Moduls unter [Linux](persist-state-linux.md) oder [Windows](persist-state-windows.md) ein.
 * Befolgen Sie die Informationen zum Konfigurieren der Clientauthentifizierung in der [Dokumentation](configure-client-auth.md).
 * Befolgen Sie die Anleitung in diesem [Tutorial](forward-events-event-grid-cloud.md), um Ereignisse an Azure Event Grid in der Cloud weiterzuleiten.
-* [Überwachen von Themen und Abonnements am Edge](monitor-topics-subscriptions.md)
+* [Überwachen von Themen und Ereignisabonnements](monitor-topics-subscriptions.md)

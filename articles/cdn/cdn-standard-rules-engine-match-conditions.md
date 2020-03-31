@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900180"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN
@@ -58,7 +58,7 @@ Identifiziert Anforderungen anhand der Cookieinformationen in der eingehenden An
 
 Cookiename | Operator | Cookiewert | Umwandlung der Groß-/Kleinschreibung
 ------------|----------|--------------|---------------
-Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
+String | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
 #### <a name="key-information"></a>Wichtige Informationen
 
@@ -77,7 +77,7 @@ Identifiziert Anforderungen auf der Grundlage von Argumenten, die für die POST-
 
 Argumentname | Operator | Argumentwert | Umwandlung der Groß-/Kleinschreibung
 --------------|----------|----------------|---------------
-Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
+String | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
 ### <a name="query-string"></a>Abfragezeichenfolge
 
@@ -132,7 +132,7 @@ Identifiziert Anforderungen, die einen bestimmten Header in der Anforderung verw
 
 Headername | Operator | Headerwert | Umwandlung der Groß-/Kleinschreibung
 ------------|----------|--------------|---------------
-Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
+String | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
 ### <a name="request-method"></a>Anforderungsmethode
 
@@ -222,7 +222,7 @@ Für Regeln, die Werte aus der Liste der Standardoperatoren akzeptieren, sind di
 
 - Any
 - Equals 
-- Contains 
+- Enthält 
 - Beginnt mit 
 - Endet mit 
 - Kleiner als
@@ -244,5 +244,5 @@ Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* bas
 
 - [Übersicht über das Azure Content Delivery Network](cdn-overview.md)
 - [Referenz zur Standardregel-Engine](cdn-standard-rules-engine-reference.md)
-- [Aktionen der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
+- [Aktionen in der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
 - [Erzwingen von HTTPS mithilfe der Standardregel-Engine](cdn-standard-rules-engine.md)

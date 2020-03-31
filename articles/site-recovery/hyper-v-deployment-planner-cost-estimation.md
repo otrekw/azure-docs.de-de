@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60947199"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
@@ -28,7 +28,7 @@ Die Zusammenfassung erleichtert das Verständnis der Kosten, die für Speicher, 
  
 Sie können die Kosten entweder monatlich oder jährlich anzeigen. Erfahren Sie mehr zu [unterstützten Zielregionen](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions) und [unterstützten Währungen](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher- und Netzwerkkosten sowie Azure Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
+**Cost by components** (Kosten nach Komponenten): Die Gesamtkosten für die Notfallwiederherstellung sind in vier Komponenten unterteilt: Compute-, Speicher-, Netzwerk- und Site Recovery-Lizenzkosten. Die Kosten werden basierend auf dem Verbrauch berechnet, zu dem es während der Replikation und des DR-Drills kommt. Für die Berechnungen werden die Bereiche Compute, Speicher (Premium und Standard), die zwischen dem lokalen Standort und Azure konfigurierte ExpressRoute/VPN-Verbindung und die Site Recovery-Lizenz herangezogen.
 
 **Cost by states** (Kosten nach Zustand): Die Kategorie für die Gesamtkosten der Notfallwiederherstellung basieren auf zwei unterschiedlichen Zuständen: Replikation und DR-Drill. 
 
@@ -52,16 +52,16 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Compute**: Die Kosten für IaaS-VMs, die in Azure zu Notfallwiederherstellungszwecken ausgeführt werden. Hierin sind VMs enthalten, die mit Site Recovery bei DR-Drills (Testfailovern) erstellt werden. Außerdem sind die in Azure ausgeführten VMs enthalten, z.B. SQL Server mit Always On-Verfügbarkeitsgruppen und Domänencontrollern oder Domänennamenservern.
 
-**Speicher**: Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
+**Storage**: Die Kosten für den Azure-Speicherverbrauch für Notfallwiederherstellungszwecke. Hierin ist die Speichernutzung für Replikationsvorgänge und DR-Drills enthalten.
 
-**Network** (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
+**Netzwerk:** Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
 **Azure Site Recovery-Lizenz**: Die Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Site Recovery-Lizenzkosten für diese VM enthalten.
 
 ### <a name="overall-dr-costs-by-states"></a>Overall DR costs by states (Gesamtkosten der Notfallwiederherstellung nach Zuständen)
 Die Gesamtkosten der Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill.
 
-**Replication** (Replikation): Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
+**Replikation**: Die Kosten, die während der Replikation anfallen. Hierin sind die Kosten für Speicher, Netzwerk und die Site Recovery-Lizenz enthalten. 
 
 **DR-Drill**: Die Kosten, die bei DR-Drills anfallen. Bei DR-Drills startet Site Recovery virtuelle Computer. Die Kosten für DR-Drills decken die Compute- und Speicherkosten für die ausgeführten VMs ab.
 
@@ -78,7 +78,7 @@ Wählen Sie je nach Ihren Anforderungen die passende Einstellung aus.
 
 **VPN Gateway type** (Typ des VPN-Gateways): Wählen Sie das Azure VPN-Gateway aus, sofern ein solches in Ihrer Umgebung vorhanden ist. Standardmäßig ist „NA“ (Nicht verfügbar) festgelegt.
 
-**Target Region** (Zielregion): Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
+**Zielregion**: Angegebene Azure-Region für die Notfallwiederherstellung. Der im Bericht verwendete Preis für Compute, Speicher, Netzwerk und Lizenz basiert auf den Azure-Preisen für diese Region. 
 
 ### <a name="vm-running-on-azure"></a>VM running on Azure (VM unter Azure)
 Es kann beispielsweise sein, dass Sie über einen Domänencontroller oder eine DNS- oder SQL Server-VM mit Always On-Verfügbarkeitsgruppen verfügen, die in Azure für die Notfallwiederherstellung ausgeführt werden. Sie können die Anzahl von VMs und die Größe angeben, um die entsprechenden Computingkosten in den DR-Gesamtkosten zu berücksichtigen. 
@@ -129,7 +129,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Wählen Sie **Re-calculate cost** (Kosten erneut berechnen), um die Kosten zu aktualisieren.
 
-**VM Name** (VM-Name): Der Name der VM.
+**VM Name:** Der Name der VM.
 
 **Number of VMs** (Anzahl von VMs): Die Anzahl von VMs, die mit der Konfiguration übereinstimmen. Sie können die Anzahl von vorhandenen VMs aktualisieren, wenn für eine ähnliche Konfiguration mit VMs keine Profilerstellung durchgeführt wird, sondern wenn diese geschützt werden.
 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Currency|NAME||Currency|NAME||Currency|NAME|
+|Währung|Name||Währung|Name||Währung|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
 |CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (CHF)||DKK|Dänische Krone (kr)|

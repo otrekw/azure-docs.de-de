@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
 ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156453"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Anleitung: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)
@@ -39,7 +39,7 @@ Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem 
    > [!div class="mx-imgBorder"]
    > ![Hinzufügen einer Bereichsvalidierung](media/custom-speech-commands/validations-add-temperature.png)
 
-   | Einstellung           | Vorgeschlagener Wert                                          | Beschreibung                                                                                      |
+   | Einstellung           | Vorgeschlagener Wert                                          | BESCHREIBUNG                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
    | Name              | Temperatur                                              | Ein aussagekräftiger Name für Ihren Befehlsparameter.                                                    |
    | Erforderlich          | true                                                     | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter vor dem Abschließen des Befehls erforderlich ist. |
@@ -59,7 +59,7 @@ Um Validierungen zu veranschaulichen, erstellen wir einen neuen Befehl, mit dem 
 
 1. Hinzufügen einer Vervollständigungsregel zur Bestätigung des Ergebnisses
 
-   | Einstellung    | Vorgeschlagener Wert                                           | Beschreibung                                        |
+   | Einstellung    | Vorgeschlagener Wert                                           | BESCHREIBUNG                                        |
    | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
    | Regelname  | Bestätigungsmeldung                                      | Ein Name, der den Zweck der Regel beschreibt.          |
    | Bedingungen | Erforderlicher Parameter – Temperature                          | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |

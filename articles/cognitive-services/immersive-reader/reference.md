@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
 ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156402"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>SDK für plastischen Reader: Referenzhandbuch
@@ -41,10 +41,10 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parameter
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 | ---- | ---- |------------ |
-| `token` | string | Das Azure AD-Authentifizierungstoken. |
-| `subdomain` | string | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. |
+| `token` | Zeichenfolge | Das Azure AD-Authentifizierungstoken. |
+| `subdomain` | Zeichenfolge | Die benutzerdefinierte Unterdomäne ihrer Plastischer Reader-Ressource in Azure. |
 | `content` | [Inhalt](#content) | Ein Objekt mit dem Inhalt, der im Plastischen Reader angezeigt werden soll. |
 | `options` | [Optionen](#options) | Optionen zum Konfigurieren bestimmter Verhaltensweisen des Plastischen Readers. Optional. |
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parameter
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Optionen zum Konfigurieren bestimmter Verhaltensweisen der Funktion „renderButtons“. Optional. |
 
@@ -130,7 +130,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>Unterstützte MIME-Typen
 
-| MIME-Typ | Beschreibung |
+| MIME-Typ | BESCHREIBUNG |
 | --------- | ----------- |
 | text/plain | Nur-Text. |
 | text/html | HTML-Inhalt. [Weitere Informationen](#html-support)|
@@ -189,7 +189,7 @@ Enthält Informationen zum Fehler.
 
 #### <a name="error-codes"></a>Fehlercodes
 
-| Code | Beschreibung |
+| Code | BESCHREIBUNG |
 | ---- | ----------- |
 | BadArgument | Das angegebene Argument ist ungültig. Details finden Sie unter `message`. |
 | Timeout | Der Plastische Reader konnte innerhalb des angegebenen Zeitlimits nicht geladen werden. |
@@ -208,7 +208,7 @@ Das SDK stellt einen Standardstil für die Schaltfläche zum Starten des Plastis
 
 Verwenden Sie die folgenden Attribute, um das Aussehen und Verhalten der Schaltfläche zu konfigurieren.
 
-| attribute | Beschreibung |
+| attribute | BESCHREIBUNG |
 | --------- | ----------- |
 | `data-button-style` | Legt den Stil der Schaltfläche fest. Kann `icon`, `text` oder `iconAndText` sein. Der Standardwert lautet `icon`. |
 | `data-locale` | Legt das Gebietsschema fest. Zum Beispiel: `en-US` oder `fr-FR`. Der Standardwert ist „Englisch“ `en`. |

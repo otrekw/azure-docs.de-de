@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: c85d958074ea5d41d32f71350164c3c983e372a2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976654"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
@@ -165,7 +165,7 @@ Zuerst müssen Sie ein Repository und eine Bibliothek für Ihren benutzerdefinie
     - Benutzerdefiniertes TPM: Implementieren Sie die Funktionen, die unter [HSM TPM API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api) definiert sind.  
     - Benutzerdefiniertes X.509: Implementieren Sie die Funktionen, die unter [HSM X509 API](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api) definiert sind. 
 
-Nach der erfolgreichen eigenständigen Erstellung Ihrer Bibliothek muss sie per Verknüpfung in das Client-SDK des Device Provisioning-Diensts integriert werden. :
+Nach der erfolgreichen eigenständigen Erstellung Ihrer Bibliothek muss sie per Verknüpfung in das Client-SDK des Device Provisioning-Diensts integriert werden. decodiert werden:
 
 1. Geben Sie das benutzerdefinierte GitHub-Repository und die Bibliothek im folgenden `cmake`-Befehl an:
     ```cmd/sh

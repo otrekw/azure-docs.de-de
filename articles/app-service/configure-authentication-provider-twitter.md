@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/28/2020
 ms.custom: seodec18
 ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78207137"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Twitter-Anmeldung
@@ -20,7 +20,7 @@ In diesem Artikel wird veranschaulicht, wie Sie Azure App Service zur Verwendung
 
 Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnummer, um den in diesem Artikel beschriebenen Vorgang abzuschließen. Rufen Sie die Seite [twitter.com] auf, um ein neues Twitter-Konto zu erstellen.
 
-## <a name="register"> </a>Registrieren Ihrer Anwendung für Twitter
+## <a name="register-your-application-with-twitter"></a><a name="register"> </a>Registrieren Ihrer Anwendung für Twitter
 
 1. Melden Sie sich beim [Azure portal] an, und wechseln Sie zu Ihrer Anwendung. Kopieren Sie die **URL**. Sie verwenden sie zur Konfiguration Ihrer Twitter-App.
 1. Wechseln Sie zur [Twitter Developers]-Website, melden Sie sich mit den Anmeldeinformationen für Ihr Twitter-Konto an, und wählen Sie dann **App erstellen** aus.
@@ -35,7 +35,7 @@ Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnum
    > [!NOTE]
    > Der geheime API-Schlüssel ist ein wichtiges Sicherheitsmerkmal. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre App frei.
 
-## <a name="secrets"> </a>Hinzufügen von Twitter-Informationen zu Ihrer Anwendung
+## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Hinzufügen von Twitter-Informationen zu Ihrer Anwendung
 
 1. Wechseln Sie im [Azure portal] zu Ihrer Anwendung.
 1. Wählen Sie **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
@@ -56,7 +56,7 @@ Sie benötigen ein Twitter-Konto mit verifizierter E-Mail-Adresse und Telefonnum
 
 Sie können nun Twitter für die Authentifizierung in Ihrer App verwenden.
 
-## <a name="related-content"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

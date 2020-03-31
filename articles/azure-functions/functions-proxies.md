@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849189"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
@@ -21,40 +21,40 @@ In diesem Artikel werden das Konfigurieren von Azure Functions-Proxys und das Ar
 > [!NOTE] 
 > Für Proxyausführungen gilt die standardmäßige Functions-Abrechnung. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="create"></a>Erstellen eines Proxys
+## <a name="create-a-proxy"></a><a name="create"></a>Erstellen eines Proxys
 
 In diesem Abschnitt erfahren Sie, wie Sie einen Proxy im Functions-Portal erstellen.
 
-1. Öffnen Sie das [Azure-Portal], und navigieren Sie dann zu Ihrer Funktionen-App.
+1. Öffnen Sie das [Azure portal], und navigieren Sie dann zu Ihrer Funktionen-App.
 2. Wählen Sie im linken Bereich **Neuer Proxy** aus.
 3. Geben Sie einen Namen für Ihren Proxy an.
 4. Konfigurieren Sie den in dieser Funktionen-App verfügbar gemachten Endpunkt durch Angeben von **Routenvorlage** und **HTTP-Methoden**. Diese Parameter verhalten sich entsprechend den Regeln für [HTTP-Trigger].
 5. Legen Sie für die **Back-End-URL** einen anderen Endpunkt fest. Dieser Endpunkt könnte eine Funktion in einer anderen Funktionen-App oder eine beliebige andere API sein. Der Wert muss nicht statisch sein und kann auf [Anwendungseinstellungen] und [Parameter von der ursprünglichen Clientanforderung] verweisen.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 
 Ihr Proxy ist jetzt als neuer Endpunkt in Ihrer Funktionen-App vorhanden. Aus Sicht eines Clients entspricht dies einem HttpTrigger in Azure Functions. Sie können Ihren neuen Proxy ausprobieren, indem Sie die Proxy-URL kopieren und mit Ihrem bevorzugten HTTP-Client testen.
 
-## <a name="modify-requests-responses"></a>Ändern von Anforderungen und Antworten
+## <a name="modify-requests-and-responses"></a><a name="modify-requests-responses"></a>Ändern von Anforderungen und Antworten
 
 Mit Azure Functions-Proxys können Sie Anforderungen an und Antworten vom Back-End ändern. Diese Transformationen können Variablen gemäß Definition in [Verwenden von Variablen] verwenden.
 
-### <a name="modify-backend-request"></a>Ändern der Back-End-Anforderung
+### <a name="modify-the-back-end-request"></a><a name="modify-backend-request"></a>Ändern der Back-End-Anforderung
 
 Standardmäßig wird die Back-End-Anforderung als Kopie der ursprünglichen Anforderung initialisiert. Zusätzlich zum Festlegen der Back-End-URL können Sie die HTTP-Methode, Header und Abfragezeichenfolgen-Parameter ändern. Die geänderten Werte können auf [Anwendungseinstellungen] und [Parameter von der ursprünglichen Clientanforderung] verweisen.
 
 Back-End-Anforderungen können im Portal geändert werden, indem Sie auf der Proxydetailseite den Abschnitt *Außerkraftsetzung von Anforderung* erweitern. 
 
-### <a name="modify-response"></a>Ändern der Antwort
+### <a name="modify-the-response"></a><a name="modify-response"></a>Ändern der Antwort
 
 Standardmäßig wird die Clientantwort als Kopie der Back-End-Antwort initialisiert. Sie können Änderungen an Statuscode, Ursachentext, Headern und Text der Antwort vornehmen. Die geänderten Werte können auf [Anwendungseinstellungen], [Parameter von der ursprünglichen Clientanforderung] und [Parameter der Back-End-Antwort] verweisen.
 
 Back-End-Anforderungen können im Portal geändert werden, indem Sie auf der Proxydetailseite den Abschnitt *Außerkraftsetzung von Antwort* erweitern. 
 
-## <a name="using-variables"></a>Verwenden von Variablen
+## <a name="use-variables"></a><a name="using-variables"></a>Verwenden von Variablen
 
 Die Konfiguration für einen Proxy muss nicht statisch sein. Sie können ihn zur Verwendung von Variablen aus der ursprünglichen Clientanforderung, der Back-End-Antwort oder Anwendungseinstellungen konditionieren.
 
-### <a name="reference-localhost"></a>Verweisen auf lokale Funktionen
+### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Verweisen auf lokale Funktionen
 Verwenden Sie `localhost`, um direkt auf eine Funktion innerhalb der gleichen Funktions-App zu verweisen, ohne eine Roundtrip-Proxyanforderung.
 
 `"backendurl": "https://localhost/api/httptriggerC#1"` verweist auf eine lokale, durch HTTP ausgelöste Funktion auf der Route `/api/httptriggerC#1`.
@@ -63,7 +63,7 @@ Verwenden Sie `localhost`, um direkt auf eine Funktion innerhalb der gleichen Fu
 >[!Note]  
 >Wenn Ihre Funktion die Autorisierungsstufe *function, admin oder sys* verwendet, müssen Sie den Code und die Client-ID gemäß der ursprünglichen Funktions-URL angeben. In diesem Fall sieht der Verweis wie folgt aus: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` Sie sollten diese Schlüssel in den [Anwendungseinstellungen] speichern und in Ihren Proxys auf diese verweisen. Dadurch wird das Speichern von Geheimnissen im Quellcode vermieden. 
 
-### <a name="request-parameters"></a>Verweisen auf Anforderungsparameter
+### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Verweisen auf Anforderungsparameter
 
 Sie können Anforderungsparameter als Eingaben für die Back-End-URL-Eigenschaft oder im Rahmen der Änderung von Anforderungen und Antworten verwenden. Einige Parameter können der Routenvorlage entnommen werden, die in der Basisproxykonfiguration angegeben wird, und andere können von Eigenschaften der eingehenden Anforderung stammen.
 
@@ -79,7 +79,7 @@ Zusätzlich zu den Routenvorlagenparametern können die folgenden Werte in Konfi
 * **{request.headers.\<Headername\>}** : Ein Header, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 * **{request.querystring.\<Parametername\>}** : Ein Abfragezeichenfolgen-Parameter, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie lesen möchten. Wenn der Parameter nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
-### <a name="response-parameters"></a>Verweisen auf Back-End-Antwortparameter
+### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>Verweisen auf Back-End-Antwortparameter
 
 Antwortparameter können als Teil der Änderung der Antwort an den Client verwendet werden. Die folgenden Werte können in Konfigurationswerten verwendet werden:
 
@@ -87,7 +87,7 @@ Antwortparameter können als Teil der Änderung der Antwort an den Client verwen
 * **{backend.response.statusReason}** : Der HTTP-Ursachentext, der in der Back-End-Antwort zurückgegeben wird.
 * **{backend.response.headers.\<Headername\>}** : Ein Header, der aus der Back-End-Antwort gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Antwort enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
-### <a name="use-appsettings"></a>Verweisen auf Anwendungseinstellungen
+### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Verweisen auf Anwendungseinstellungen
 
 Sie können auch auf [Anwendungseinstellungen verweisen, die für die Funktionen-App definiert sind](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings), indem Sie den Namen der Einstellung in Prozentzeichen (%) einschließen.
 
@@ -96,7 +96,7 @@ Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* würde „%ORD
 > [!TIP] 
 > Verwenden Sie Anwendungseinstellungen für Back-End-Hosts, wenn Sie mehrere Bereitstellungen oder Testumgebungen haben. Auf diese Weise können Sie sicherstellen, dass Sie immer mit dem richtigen Back-End für die jeweilige Umgebung kommunizieren.
 
-## <a name="debugProxies"></a>Problembehandlung bei Proxys
+## <a name="troubleshoot-proxies"></a><a name="debugProxies"></a>Problembehandlung bei Proxys
 
 Wenn Sie das Flag `"debug":true` zu einem Proxy in `proxies.json` hinzufügen, aktivieren Sie die Debugprotokollierung. Die Protokolle werden unter `D:\home\LogFiles\Application\Proxies\DetailedTrace` gespeichert. Auf sie kann über die erweiterten Tools (Kudu) zugegriffen werden. HTTP-Antworten enthalten auch einen `Proxy-Trace-Location`-Header mit einer URL für den Zugriff auf die Protokolldatei.
 
@@ -144,7 +144,7 @@ Jeder Proxy hat einen Anzeigenamen, wie z.B. *proxy1* im vorherigen Beispiel. Da
 > [!NOTE] 
 > Die Eigenschaft *route* in Azure-Funktionsproxys berücksichtigt die Eigenschaft *routePrefix* der Funktionen-App-Hostkonfiguration nicht. Wenn Sie ein Präfix wie `/api` einschließen möchten, muss es in der Eigenschaft *route* enthalten sein.
 
-### <a name="disableProxies"></a> Deaktivieren einzelner Proxys
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> Deaktivieren einzelner Proxys
 
 Sie können einzelne Proxys deaktivieren, indem Sie `"disabled": true` zum Proxy in der `proxies.json`-Datei hinzufügen. Dies bewirkt, dass alle Anforderungen, die mit matchCondition übereinstimmen, den Fehler 404 zurückgeben.
 ```json
@@ -162,14 +162,14 @@ Sie können einzelne Proxys deaktivieren, indem Sie `"disabled": true` zum Proxy
 }
 ```
 
-### <a name="applicationSettings"></a> Anwendungseinstellungen
+### <a name="application-settings"></a><a name="applicationSettings"></a> Anwendungseinstellungen
 
 Das Proxyverhalten kann über verschiedene App-Einstellungen gesteuert werden. Eine Beschreibung dieser Funktionen finden Sie in der [Referenz zu den Einstellungen der Funktionen-App](./functions-app-settings.md).
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reservedChars"></a> Reservierte Zeichen (Formatierung von Zeichenfolgen)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> Reservierte Zeichen (Formatierung von Zeichenfolgen)
 
 Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapesymbol. Proxys interpretieren auch geschweifte Klammern. Alle Beispiele hierfür finden Sie im Folgenden.
 
@@ -179,7 +179,7 @@ Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapes
 | \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
 |"|\\\"| `\"example\"` --> `"example"`
 
-### <a name="requestOverrides"></a>Definieren eines requestOverrides-Objekts
+### <a name="define-a-requestoverrides-object"></a><a name="requestOverrides"></a>Definieren eines requestOverrides-Objekts
 
 Das requestOverrides-Objekt definiert Änderungen an der Anforderung, wenn die Back-End-Ressource aufgerufen wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
@@ -210,7 +210,7 @@ Eine Beispielkonfiguration könnte folgendermaßen aussehen:
 }
 ```
 
-### <a name="responseOverrides"></a>Definieren eines responseOverrides-Objekts
+### <a name="define-a-responseoverrides-object"></a><a name="responseOverrides"></a>Definieren eines responseOverrides-Objekts
 
 Das responseOverrides-Objekt definiert Änderungen an der Antwort, die an den Client zurückgegeben wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
@@ -243,7 +243,7 @@ Eine Beispielkonfiguration könnte folgendermaßen aussehen:
 > [!NOTE] 
 > In diesem Beispiel wird der Antworttext direkt festgelegt, sodass keine `backendUri`-Eigenschaft erforderlich ist. Das Beispiel zeigt, wie Sie mit Azure Functions-Proxys APIs imitieren können.
 
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [HTTP-Trigger]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response

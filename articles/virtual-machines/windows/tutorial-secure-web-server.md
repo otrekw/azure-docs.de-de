@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Schützen eines Windows-Webservers mit SSL-Zertifikaten in Azure'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Sichern eines virtuellen Windows-Computers verwenden, auf dem der IIS-Webserver mit im Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
+title: 'Tutorial: Schützen eines Windows-Webservers mit TLS/SSL-Zertifikaten in Azure'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Schützen eines virtuellen Windows-Computers verwenden, auf dem der IIS-Webserver mit im Azure Key Vault gespeicherten TLS/SSL-Zertifikaten ausgeführt wird.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,25 +15,25 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6185ad4f0e043329c4e833b97a09922ba0238a82
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b084f8a226d1cfd5bab2cc81512fb51fa6bf41c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264236"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154286"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
 
 > [!NOTE]
 > Derzeit gilt dieses Dokument nur für generalisierte Images. Wenn Sie in diesem Tutorial einen spezialisierten Datenträger verwenden, tritt ein Fehler auf. 
 
-Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
+Als Schutz für Webserver kann ein TLS-Zertifikat (Transport Layer Security) verwendet werden, um Webdatenverkehr zu verschlüsseln. „Transport Layer Security“ wurde früher als „Secure Sockets Layer“ (SSL) bezeichnet. Diese TLS/SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern (VMs) in Azure. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des IIS-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer TLS-Bindung
 
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
@@ -172,13 +172,13 @@ Die gesicherte IIS-Website wird dann wie im folgenden Beispiel angezeigt:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie einen IIS-Webserver mit einem in Azure Key Vault gespeicherten SSL-Zertifikat gesichert. Sie haben Folgendes gelernt:
+In diesem Tutorial haben Sie einen IIS-Webserver mit einem in Azure Key Vault gespeicherten TLS/SSL-Zertifikat geschützt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des IIS-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer TLS-Bindung
 
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 

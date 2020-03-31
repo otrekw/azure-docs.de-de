@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963851"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
@@ -29,7 +29,7 @@ Der `{policyName}` und der `{vaultName}` werden im URI angegeben. Zusätzliche I
 
 Um z.B. eine Richtlinie für Azure-VM-Sicherungen zu erstellen, werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|Name  |Erforderlich  |type  |Beschreibung  |
+|Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
 |tags     |         | Object        |  Ressourcentags       |
@@ -137,7 +137,7 @@ Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchrone
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |Beschreibung  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61094644"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Wiederholungslogik im Media Services SDK für .NET  
@@ -37,7 +37,7 @@ Bei der Arbeit mit Microsoft Azure-Diensten können vorübergehende Fehler auftr
 ## <a name="exception-types"></a>Ausnahmetypen
 Die folgende Tabelle beschreibt die Ausnahmen, die das Media Services SDK für .NET verarbeitet oder für einige Vorgänge nicht verarbeitet, die möglicherweise vorübergehende Fehler auslösen könnten.  
 
-| Ausnahme | Webanforderung | Storage | Abfragen | SaveChanges |
+| Ausnahme | Webanforderung | Storage | Abfrage | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>Weitere Informationen finden Sie im Abschnitt [WebException-Statuscodes](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus). |Ja |Ja |Ja |Ja |
 | DataServiceClientException<br/> Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nein |Ja |Ja |Ja |
@@ -49,10 +49,10 @@ Die folgende Tabelle beschreibt die Ausnahmen, die das Media Services SDK für .
 | StorageException |Nein |Ja |Nein |Nein |
 | IOException |Nein |Ja |Nein |Nein |
 
-### <a name="WebExceptionStatus"></a> WebException status codes
+### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException status codes
 Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholungslogik implementiert ist. Die [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx)-Enumeration definiert die Statuscodes.  
 
-| Status | Webanforderung | Storage | Abfragen | SaveChanges |
+| Status | Webanforderung | Storage | Abfrage | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |Ja |Ja |Ja |Ja |
 | NameResolutionFailure |Ja |Ja |Ja |Ja |
@@ -67,10 +67,10 @@ Die folgende Tabelle zeigt, für welche WebException-Fehlercodes die Wiederholun
 | Timeout |Ja |Ja |Ja |Nein |
 | ProtocolError <br/>Die Wiederholung bei ProtocolError wird von der HTTP-Statuscodebehandlung gesteuert. Weitere Informationen finden Sie unter [HTTP-Fehlerstatuscodes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ja |Ja |Ja |Ja |
 
-### <a name="HTTPStatusCode"></a> HTTP-Fehlerstatuscodes
+### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP-Fehlerstatuscodes
 Wenn Abfrage- und SaveChanges-Vorgänge DataServiceClientException, DataServiceQueryException, oder DataServiceQueryException ausgeben, wird der HTTP-Fehlerstatuscode in der StatusCode-Eigenschaft zurückgegeben.  Die folgende Tabelle zeigt, für welche Fehlercodes die Wiederholungslogik implementiert ist.  
 
-| Status | Webanforderung | Storage | Abfragen | SaveChanges |
+| Status | Webanforderung | Storage | Abfrage | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Nein |Ja |Nein |Nein |
 | 403 |Nein |Ja<br/>Behandeln von Wiederholungen mit längeren Wartezeiten. |Nein |Nein |

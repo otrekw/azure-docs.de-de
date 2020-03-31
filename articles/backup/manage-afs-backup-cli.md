@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle Az
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 44a49913abd99b285397b8b78ad9d4c0f9df52ea
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934889"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle

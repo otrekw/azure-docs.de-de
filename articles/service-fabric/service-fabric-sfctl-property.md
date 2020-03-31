@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905832"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -17,7 +17,7 @@ Speichern und Abfragen von Eigenschaften unter Service Fabric-Namen.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 | delete | Löscht die angegebene Service Fabric-Eigenschaft. |
 | get | Ruft die angegebene Service Fabric-Eigenschaft ab. |
@@ -31,7 +31,7 @@ Löscht die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
@@ -39,7 +39,7 @@ Löscht die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen. 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -54,7 +54,7 @@ Ruft die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen ab. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
@@ -62,7 +62,7 @@ Ruft die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen ab. 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -77,7 +77,7 @@ Ein Service Fabric-Name kann eine oder mehrere benannte Eigenschaften haben, in 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
@@ -86,7 +86,7 @@ Ein Service Fabric-Name kann eine oder mehrere benannte Eigenschaften haben, in 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -101,7 +101,7 @@ Erstellt oder aktualisiert die angegebene Service Fabric-Eigenschaft unter einem
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Der Name der Service Fabric-Eigenschaft. |
@@ -111,7 +111,7 @@ Erstellt oder aktualisiert die angegebene Service Fabric-Eigenschaft unter einem
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

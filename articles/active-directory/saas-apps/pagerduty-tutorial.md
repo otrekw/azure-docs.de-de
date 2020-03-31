@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095329"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Tutorial: Azure Active Directory-Integration mit PagerDuty
@@ -132,7 +132,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei PagerDut
 
 2. Klicken Sie im oberen Menü auf **Kontoeinstellungen**.
 
-    ![Konteneinstellungen](./media/pagerduty-tutorial/ic778535.png "Konteneinstellungen")
+    ![Account Settings (Kontoeinstellungen)](./media/pagerduty-tutorial/ic778535.png "Kontoeinstellungen")
 
 3. Klicken Sie auf **Einmaliges Anmelden**.
 
@@ -177,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -221,11 +221,11 @@ Im Fall von PagerDuty ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Klicken Sie auf **Benutzer hinzufügen**.
    
-    ![Benutzer hinzufügen](./media/pagerduty-tutorial/ic778539.png "Benutzer hinzufügen")
+    ![Add Users (Benutzer hinzufügen)](./media/pagerduty-tutorial/ic778539.png "Benutzer hinzufügen")
 
 4.  Führen Sie im Dialogfeld **Ihr Team einladen** die folgenden Schritte aus:
    
-    ![Ihr Team einladen](./media/pagerduty-tutorial/ic778540.png "Ihr Team einladen")
+    ![Team einladen](./media/pagerduty-tutorial/ic778540.png "Team einladen")
 
     a. Geben Sie den **Vor- und Nachnamen** des Benutzers ein, z.B. **Britta Simon**. 
    
@@ -248,5 +248,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „PagerDuty“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

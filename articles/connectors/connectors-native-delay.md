@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74787335"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Verzögern der Ausführung der nächsten Aktion in Azure Logic Apps
@@ -50,10 +50,10 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung dieser Aktion:
 
    ![Festlegen der Zeitspanne für die Verzögerung](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Eigenschaft | JSON-Name | Erforderlich | Typ | BESCHREIBUNG |
+   | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
-   | Count | count | Ja | Integer | Die Anzahl von Zeiteinheiten für die Verzögerung. |
-   | Unit | unit | Ja | Zeichenfolge | Die Zeiteinheit, z.B.: `Second`, `Minute`, `Hour`, `Day`, `Week` oder `Month` |
+   | Anzahl | count | Ja | Integer | Die Anzahl von Zeiteinheiten für die Verzögerung. |
+   | Einheit | unit | Ja | String | Die Zeiteinheit, z.B.: `Second`, `Minute`, `Hour`, `Day`, `Week` oder `Month` |
    ||||||
 
 1. Fügen Sie weitere Aktionen hinzu, die in Ihrem Workflow ausgeführt werden sollen.
@@ -76,9 +76,9 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung dieser Aktion:
 
    ![Angeben des Zeitstempels für das Ende der Verzögerung](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Eigenschaft | JSON-Name | Erforderlich | Typ | BESCHREIBUNG |
+   | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | Ja | Zeichenfolge | Das Datum und die Uhrzeit für die Fortsetzung des Workflows in folgendem Format: <p>YYYY-MM-DDThh:mm:ssZ <p>Beispiel: Für den 18. September 2017 um 14:00 Uhr würden Sie „2017-09-18T14:00:00Z“ angeben. <p>**Hinweis:** Dieses Zeitformat muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Uhrzeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Timestamp | timestamp | Ja | String | Das Datum und die Uhrzeit für die Fortsetzung des Workflows in folgendem Format: <p>YYYY-MM-DDThh:mm:ssZ <p>Beispiel: Für den 18. September 2017 um 14:00 Uhr würden Sie „2017-09-18T14:00:00Z“ angeben. <p>**Hinweis:** Dieses Zeitformat muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Uhrzeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
 1. Fügen Sie weitere Aktionen hinzu, die in Ihrem Workflow ausgeführt werden sollen.

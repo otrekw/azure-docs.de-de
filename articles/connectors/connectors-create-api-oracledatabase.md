@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/29/2017
 tags: connectors
 ms.openlocfilehash: 99abd48bde97c2a2e085688cdfbb365e5e4cfd56
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789425"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
@@ -91,19 +91,19 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 ## <a name="common-errors"></a>Häufige Fehler
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Fehler**: Das Gateway ist nicht erreichbar.
+#### <a name="error-cannot-reach-the-gateway"></a>**Fehler:** Das Gateway ist nicht erreichbar.
 
 **Ursache:** Das lokale Datengateway kann keine Verbindung zur Cloud herstellen. 
 
 **Lösung**: Stellen Sie sicher, dass Ihr Gateway auf dem lokalen Computer ausgeführt wird, auf dem dieser installiert ist, und dass eine Internetverbindung hergestellt werden kann.  Es wird empfohlen, das Gateway nicht auf einem Computer zu installieren, der möglicherweise ausgeschaltet wird oder in den Standbymodus wechselt. Sie können auch den lokalen Datengatewaydienst (PBIEgwService) neu starten.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler**: Der verwendete Anbieter ist veraltet: System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Fehler:** Der verwendete Anbieter ist veraltet: System.Data.OracleClient erfordert Version 8.1.7 oder höher der Oracle-Clientsoftware. Informationen zum Installieren des offiziellen Anbieters finden Sie unter [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376).
 
 **Ursache:** Das Oracle-Client-SDK ist nicht auf dem Computer installiert, auf dem das lokale Datengateway ausgeführt wird.  
 
 **Lösung:** Laden Sie das Oracle-Client-SDK auf demselben Computer herunter, auf dem sich das lokale Datengateway befindet, und installieren Sie es.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fehler**: Für die Tabelle „[Tablename]“ sind keine Schlüsselspalten definiert.
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Fehler:** Für die Tabelle „[Tablename]“ sind keine Schlüsselspalten definiert.
 
 **Ursache:** Die Tabelle weist keinen Primärschlüssel auf.  
 
@@ -111,7 +111,7 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 #### <a name="currently-not-supported"></a>Wird derzeit nicht unterstützt.
 
-* Ansichten 
+* Sichten 
 * Tabellen mit zusammengesetzten Schlüsseln
 * Geschachtelte Objekttypen in Tabellen
  

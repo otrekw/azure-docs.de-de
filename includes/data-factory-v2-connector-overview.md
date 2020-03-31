@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.openlocfilehash: d0dcdf89962c93348b3cf9c1f96221ae8940717d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444189"
 ---
 | Category              | Datenspeicher                                                   | [Kopieraktivität](../articles/data-factory/copy-activity-overview.md) (Quelle/Senke) | [Zuordnen des Datenflusses](../articles/data-factory/concepts-data-flow-overview.md) (Quelle/Senke) | [Lookup-Aktivität](../articles/data-factory/control-flow-lookup-activity.md) | [Aktivität „Metadaten abrufen“](../articles/data-factory/control-flow-get-metadata-activity.md) | [Aktivität löschen](../articles/data-factory/delete-activity.md) |

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758681"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Ausführen einer Image Factory aus AzureDevOps
@@ -78,7 +78,7 @@ Zu diesem Zeitpunkt haben Sie die Quelldateien in einem Git-Repository in Azure 
 Um die Befehlszeilenparameter zu vereinfachen, kapseln Sie die Schlüsselwerte, die die Image Factory steuern, in einen Satz Buildvariablen. Wählen Sie die Registerkarte **Variablen** aus, wo eine Liste mehrerer Standardvariablen angezeigt wird. Dies ist die Liste der in Azure DevOps einzugebenden Variablen:
 
 
-| Variablenname | value | Notizen |
+| Variablenname | Wert | Notizen |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | Dies ist der vollständige Pfad im Repository zum Ordner **Configuration**. Wenn Sie oben das gesamte Repository importiert haben, ist der Wert auf der linken Seite zutreffend. Andernfalls aktualisieren Sie ihn so, dass er auf den Speicherort von „Configuration“ verweist. |
 | DevTestLabName | MyImageFactory | Der Name des Labs in Azure DevTest Labs, das als Factory zur Erzeugung von Images verwendet wird. Wenn Sie keins haben, erstellen Sie eins. Stellen Sie sicher, dass sich das Lab im selben Abonnement befindet, auf das auch der Dienstendpunkt Zugriff hat. |

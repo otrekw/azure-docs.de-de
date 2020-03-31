@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76907221"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
@@ -45,7 +45,7 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
 
    Die Ausführung einer Logik-App kann folgende Statuswerte annehmen:
 
-   | Status | Beschreibung |
+   | Status | BESCHREIBUNG |
    |--------|-------------|
    | **Abgebrochen** | Der Workflow wurde ausgeführt, hat dann aber eine Abbruchanforderung erhalten. |
    | **Fehler** | Mindestens eine Aktion war nicht erfolgreich, und der aufgetretene Fehler konnte von keiner nachfolgenden Aktion im Workflow behandelt werden. |
@@ -115,7 +115,7 @@ Jede Logik-App-Ausführung beginnt mit einem Trigger. Der Triggerverlauf enthäl
 
    Ein Auslöseversuch kann folgende Statuswerte haben:
 
-   | Status | Beschreibung |
+   | Status | BESCHREIBUNG |
    |--------|-------------|
    | **Fehler** | Ein Fehler ist aufgetreten. Wählen Sie zum Überprüfen der ggf. generierten Fehlermeldungen für einen fehlerhaften Trigger den entsprechenden Auslöseversuch aus, und klicken Sie auf **Ausgaben**. Möglicherweise sind ungültige Eingaben vorhanden. |
    | **Übersprungen** | Der Trigger hat den Endpunkt geprüft, aber keine Daten gefunden. |

@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60509096"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Verwenden von Azure Data Lake Tools für Visual Studio Code
@@ -94,7 +94,7 @@ Sie müssen eine U-SQL-Datei oder einen entsprechenden Ordner öffnen, um mit U-
 **So übermitteln Sie ein U-SQL-Skript**
 
 1. Drücken Sie STRG+UMSCHALT+P, um die Befehlspalette zu öffnen. 
-2. Geben Sie **ADL: Submit Job** ein. Sie können auch mit der rechten Maustaste auf eine Skriptdatei klicken und dann **ADL: Submit Job** ein. 
+2. Geben Sie **ADL: Submit Job** auswählen. Sie können auch mit der rechten Maustaste auf eine Skriptdatei klicken und dann **ADL: Submit Job** auswählen. 
 
 Nach dem Übermitteln eines U-SQL-Auftrags werden die Übermittlungsprotokolle in Visual Studio Code im Fenster **Ausgabe** angezeigt. Die Auftragsansicht wird im rechten Bereich angezeigt. Wenn die Übermittlung erfolgreich war, wird auch die Auftrags-URL angezeigt. Sie können die Auftrags-URL in einem Webbrowser öffnen, um den Auftragsstatus in Echtzeit nachzuverfolgen. 
 
@@ -460,7 +460,7 @@ Navigieren Sie zum Blob-Speicher:
 
 Data Lake Tools öffnet den Azure-Speicherpfad im Azure-Portal. Sie können den Pfad aus dem Web suchen und eine Vorschau der Datei anzeigen.
 
-## <a name="additional-features"></a>Zusätzliche Funktionen
+## <a name="additional-features"></a>Zusätzliche Features
 
 Data Lake Tools für VS Code unterstützt die folgenden Features:
 

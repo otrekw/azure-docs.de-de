@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ee04fa7120f5510d703d72e662036f4fe952cd66
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330667"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals
@@ -47,7 +47,7 @@ Auf dieser Seite können Sie die Authentifizierungsmethode auswählen, die Sie f
 
 ## <a name="service-principal-authentication--recommended"></a>Dienstprinzipalauthentifizierung (empfohlen)
 
-Authentifiziert einen Dienst mit einer App und einem Geheimnis von Azure Active Directory (Azure AD). Dies wird für alle Dienste der mittleren Ebene empfohlen, die die Media Services-API aufrufen. Beispiele sind Web-Apps, Funktionen, Logik-Apps, APIs und Microservices. Dies ist die empfohlene Authentifizierungsmethode.
+Authentifiziert einen Dienst mit einer App und einem Geheimnis von Azure Active Directory (Azure AD). Dies wird für alle Dienste der mittleren Ebene empfohlen, die die Media Services-API aufrufen. Beispiele sind Web-Apps, Funktionen, Logik-Apps, APIs und Microservices. Dies ist die empfohlene Authentifizierungsmethode.
 
 ### <a name="manage-your-azure-ad-app-and-secret"></a>Verwalten von Azure AD-App und -Geheimnis
 
@@ -55,17 +55,17 @@ Im Abschnitt **AAD-App und Geheimnis verwalten** können Sie eine neue Azure AD
 
 Stellen Sie sicher, dass Sie über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen. Weitere Informationen finden Sie unter [Erforderliche Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-### <a name="connect-to-media-services-api"></a>Herstellen einer Verbindung mit der Media Services-API
+### <a name="connect-to-media-services-api"></a>Herstellen einer Verbindung mit der Media Services-API
 
-Über **Verbindung mit Media Services-API herstellen** erhalten Sie Werte, mit denen Sie Ihre Dienstprinzipalanwendung verbinden können. Sie können Textwerte abrufen oder die JSON- oder XML-Blöcke kopieren.
+Über **Verbindung mit Media Services-API herstellen** erhalten Sie Werte, mit denen Sie Ihre Dienstprinzipalanwendung verbinden können. Sie können Textwerte abrufen oder die JSON- oder XML-Blöcke kopieren.
 
 ## <a name="user-authentication"></a>Benutzerauthentifizierung
 
-Mithilfe dieser Option kann ein Mitarbeiter oder ein Mitglied einer Azure Active Directory-Instanz authentifiziert werden, der für die Interaktion mit Media Services-Ressourcen eine App verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Diese Authentifizierungsmethode sollte nur für Managementanwendungen verwendet werden.
+Mithilfe dieser Option kann ein Mitarbeiter oder ein Mitglied einer Azure Active Directory-Instanz authentifiziert werden, der für die Interaktion mit Media Services-Ressourcen eine App verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Diese Authentifizierungsmethode sollte nur für Managementanwendungen verwendet werden.
 
-### <a name="connect-to-media-services-api"></a>Herstellen einer Verbindung mit der Media Services-API
+### <a name="connect-to-media-services-api"></a>Herstellen einer Verbindung mit der Media Services-API
 
-Kopieren Sie Ihre Anmeldeinformationen, um Ihre Benutzeranwendung über den Abschnitt **Verbindung mit Media Services-API herstellen** zu verbinden. Sie können Textwerte abrufen oder die JSON- oder XML-Blöcke kopieren.
+Kopieren Sie Ihre Anmeldeinformationen, um Ihre Benutzeranwendung über den Abschnitt **Verbindung mit Media Services-API herstellen** zu verbinden. Sie können Textwerte abrufen oder die JSON- oder XML-Blöcke kopieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

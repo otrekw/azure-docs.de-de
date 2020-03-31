@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927328"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
@@ -38,7 +38,7 @@ Bei dieser Vorlage (*Vorlagenname: migrate historical data from AWS S3 to Azure 
 Die Vorlage enthält fünf Aktivitäten:
 - **Lookup** ruft die Partitionen ab, die noch nicht aus einer externen Steuertabelle in Azure Data Lake Storage Gen2 kopiert wurden. Der Tabellenname lautet *s3_partition_control_table* und die Abfrage zum Laden von Daten aus der Tabelle *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"* .
 - **ForEach** ruft die Partitionsliste aus der *Lookup-Aktivität* ab und durchläuft jede Partition für die *TriggerCopy-Aktivität*. Sie können einen Wert für *batchCount* festlegen, um mehrere ADF-Kopieraufträge gleichzeitig auszuführen. In dieser Vorlage wurde 2 festgelegt.
-- **ExecutePipeline** führt die Pipeline *CopyFolderPartitionFromS3* aus. Die zusätzliche Pipeline, die dafür sorgt, dass bei jedem Kopierauftrag eine Partition kopiert wird, wird hinzugefügt, um den nicht erfolgreichen Kopierauftrag mühelos erneut ausführen und so die spezifische Partition erneut aus ASW S3 laden zu können. Alle anderen Kopieraufträge, bei denen andere Partitionen geladen werden, werden nicht beeinträchtigt.
+- **ExecutePipeline** führt die Pipeline *CopyFolderPartitionFromS3* aus. Die zusätzliche Pipeline, die dafür sorgt, dass bei jedem Kopierauftrag eine Partition kopiert wird, wird hinzugefügt, um den nicht erfolgreichen Kopierauftrag mühelos erneut ausführen und so die spezifische Partition erneut aus AWS S3 laden zu können. Alle anderen Kopieraufträge, bei denen andere Partitionen geladen werden, werden nicht beeinträchtigt.
 - Mit der **Copy**-Aktivität wird jede Partition aus AWS S3 in Azure Data Lake Storage Gen2 kopiert.
 - **SqlServerStoredProcedure** aktualisiert den Status des Kopiervorgangs für jede Partition in der Steuertabelle.
 

@@ -4,10 +4,10 @@ description: Mithilfe von Azure Advisor können Sie die Sicherheit Ihrer Azure-B
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443039"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erhöhen der Sicherheit von Ressourcen mit Azure Advisor

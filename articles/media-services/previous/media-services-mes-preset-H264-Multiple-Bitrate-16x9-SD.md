@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a0d272a01a6969f702ff4eedf05660833ba1f531
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463710"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd"></a>H264 Multiple Bitrate 16x9 SD
@@ -29,7 +29,7 @@ ms.locfileid: "61463710"
  Diese Voreinstellung erzeugt einen Satz von fünf MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 1.900 KBit/s und 400 KBit/s sowie AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel:  1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
+>  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel: 1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
   
  XML  
   

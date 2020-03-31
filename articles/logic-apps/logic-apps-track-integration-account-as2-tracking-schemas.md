@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906959"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Erstellen von Schemas zur Nachverfolgung von AS2-Nachrichten in Azure Logic Apps
@@ -52,7 +52,7 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 }
 ```
 
-| Eigenschaft | Erforderlich | type | Beschreibung |
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 |----------|----------|------|-------------|
 | senderPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenabsenders |
 | receiverPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenempfängers |
@@ -105,7 +105,7 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 }
 ```
 
-| Eigenschaft | Erforderlich | type | Beschreibung |
+| Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 |----------|----------|------|-------------|
 | senderPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenabsenders |
 | receiverPartnerName | Nein | String | Name des Partners des AS2-Nachrichtenempfängers |

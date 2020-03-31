@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252034"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
@@ -23,7 +23,7 @@ Die Hardwarekomponenten des Microsoft Azure Data Box Edge-Geräts verfügen übe
 
 Das Data Box Edge-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
 
-| Spezifikation           | value                  |
+| Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10-Kern-CPU                     |
 | Arbeitsspeicher              | 128 GB RAM                  |
@@ -33,7 +33,7 @@ Das Data Box Edge-Gerät verfügt über die folgenden Spezifikationen für Compu
 
 Auf jedem Data Box Edge Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein Field Programmable Gate Array (FPGA). 
 
-| Spezifikation           | value                  |
+| Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
@@ -65,7 +65,7 @@ Ihr Data Box-Edgegerät verfügt über 6 Netzwerkschnittstellen, PORT1 bis PORT
 
 Die Data Box Edge-Geräte verfügen über 9 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern ist einer ein Betriebssystemdatenträger, und die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
 
-|     Spezifikation                          |     value             |
+|     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
 |    Anzahl von Solid-State-Laufwerken (SSDs)     |    8                  |
 |    Kapazität eines SSD-Laufwerks                     |    1,6 TB             |

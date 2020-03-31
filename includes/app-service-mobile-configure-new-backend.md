@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
 ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67440219"
 ---
 1. Laden Sie die Client-SDK-Schnellstarts für die folgenden Plattformen herunter:
@@ -58,7 +58,7 @@ ms.locfileid: "67440219"
 
             3. Sie müssen den **Namen**, **Wert** und **Typ** Ihrer Verbindungszeichenfolge angeben.
 
-            4. Geben Sie als **Name** `MS_TableConnectionString` ein.
+            4. Geben Sie als **Name**`MS_TableConnectionString` ein.
 
             5. Der Wert muss der Verbindungszeichenfolge entsprechen, die Sie im vorherigen Schritt zusammengestellt haben.
 

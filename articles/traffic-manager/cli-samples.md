@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
 ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938017"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Azure CLI-Beispiele für Traffic Manager
 
 Die folgende Tabelle enthält Links zu Bashskripts für Traffic Manager, die mithilfe der Azure-Befehlszeilenschnittstelle erstellt wurden.
 
-|Titel  |Beschreibung |
+|Titel  |BESCHREIBUNG |
 |---------|---------|
 |[Weiterleiten von Datenverkehr über mehrere Regionen hinweg für hohe Anwendungsverfügbarkeit](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Erstellt zwei App Service-Pläne, zwei Web-Apps, ein Traffic Manager-Profil und zwei Traffic Manager-Endpunkte.     |
 |    |         |
